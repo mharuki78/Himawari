@@ -40,32 +40,35 @@ if (reducedMotion.matches || !('IntersectionObserver' in window)) {
 }
 
 const form = document.querySelector('.contact-form');
-const status = form.querySelector('.form-status');
-const fields = [...form.querySelectorAll('input, textarea')];
+if (form) {
+  const status = form.querySelector('.form-status');
+  const fields = [...form.querySelectorAll('input, textarea')];
 
-function validate(field) {
-  const error = document.querySelector(`#${field.id}-error`);
-  let message = '';
-  if (!field.value.trim()) message = `${field.labels[0].textContent}을(를) 입력해 주세요.`;
-  if (field.type === 'email' && field.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) message = '올바른 이메일 주소를 입력해 주세요.';
-  error.textContent = message;
-  field.setAttribute('aria-invalid', String(Boolean(message)));
-  field.setAttribute('aria-describedby', error.id);
-  return !message;
+  function validate(field) {
+    const error = document.querySelector(`#${field.id}-error`);
+    let message = '';
+    if (!field.value.trim()) message = `${field.labels[0].textContent}을(를) 입력해 주세요.`;
+    if (field.type === 'email' && field.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) message = '올바른 이메일 주소를 입력해 주세요.';
+    error.textContent = message;
+    field.setAttribute('aria-invalid', String(Boolean(message)));
+    field.setAttribute('aria-describedby', error.id);
+    return !message;
+  }
+
+  fields.forEach((field) => field.addEventListener('blur', () => validate(field)));
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const valid = fields.map(validate).every(Boolean);
+    if (!valid) {
+      fields.find((field) => field.getAttribute('aria-invalid') === 'true')?.focus();
+      status.textContent = '입력 내용을 확인해 주세요.';
+      return;
+    }
+    status.textContent = '문의 접수 예시입니다. 실제 발송 기능은 이후 연결할 수 있어요.';
+    form.reset();
+    fields.forEach((field) => field.removeAttribute('aria-invalid'));
+  });
 }
 
-fields.forEach((field) => field.addEventListener('blur', () => validate(field)));
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const valid = fields.map(validate).every(Boolean);
-  if (!valid) {
-    fields.find((field) => field.getAttribute('aria-invalid') === 'true')?.focus();
-    status.textContent = '입력 내용을 확인해 주세요.';
-    return;
-  }
-  status.textContent = '문의 접수 예시입니다. 실제 발송 기능은 이후 연결할 수 있어요.';
-  form.reset();
-  fields.forEach((field) => field.removeAttribute('aria-invalid'));
-});
-
-document.querySelector('#year').textContent = new Date().getFullYear();
+const year = document.querySelector('#year');
+if (year) year.textContent = new Date().getFullYear();
