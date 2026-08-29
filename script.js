@@ -2,42 +2,41 @@ const menuButton = document.querySelector('.menu-button');
 const navigation = document.querySelector('.site-nav');
 const menuLabel = menuButton.querySelector('.sr-only');
 
-function closeMenu() {
+function closeMenu({ restoreFocus = false } = {}) {
   menuButton.setAttribute('aria-expanded', 'false');
   menuLabel.textContent = '메뉴 열기';
   navigation.classList.remove('is-open');
   document.body.style.overflow = '';
+  if (restoreFocus) menuButton.focus();
 }
 
 menuButton.addEventListener('click', () => {
-  const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
-  menuButton.setAttribute('aria-expanded', String(!isOpen));
-  menuLabel.textContent = isOpen ? '메뉴 열기' : '메뉴 닫기';
-  navigation.classList.toggle('is-open', !isOpen);
-  document.body.style.overflow = isOpen ? '' : 'hidden';
+  const willOpen = menuButton.getAttribute('aria-expanded') !== 'true';
+  menuButton.setAttribute('aria-expanded', String(willOpen));
+  menuLabel.textContent = willOpen ? '메뉴 닫기' : '메뉴 열기';
+  navigation.classList.toggle('is-open', willOpen);
+  document.body.style.overflow = willOpen ? 'hidden' : '';
 });
 
-navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => closeMenu()));
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && navigation.classList.contains('is-open')) {
-    closeMenu();
-    menuButton.focus();
-  }
+  if (event.key === 'Escape' && navigation.classList.contains('is-open')) closeMenu({ restoreFocus: true });
 });
 
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (reducedMotion || !('IntersectionObserver' in window)) {
-  document.querySelectorAll('.reveal').forEach((element) => element.classList.add('is-visible'));
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const revealItems = document.querySelectorAll('.reveal');
+
+if (reducedMotion.matches || !('IntersectionObserver' in window)) {
+  revealItems.forEach((item) => item.classList.add('is-visible'));
 } else {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
     });
   }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+  revealItems.forEach((item) => observer.observe(item));
 }
 
 const form = document.querySelector('.contact-form');
@@ -64,7 +63,7 @@ form.addEventListener('submit', (event) => {
     status.textContent = '입력 내용을 확인해 주세요.';
     return;
   }
-  status.textContent = '문의가 접수된 예시 상태입니다. 실제 발송 기능은 이후 연결할 수 있어요.';
+  status.textContent = '문의 접수 예시입니다. 실제 발송 기능은 이후 연결할 수 있어요.';
   form.reset();
   fields.forEach((field) => field.removeAttribute('aria-invalid'));
 });
