@@ -5,24 +5,38 @@
     {
       "name": "히마와리 학생가방 책가방 데일리 백팩 No.1027+체스트벨트 SET",
       "price": 76800,
+      "tagline": "등굣길 준비를 한 번에 챙겨요",
+      "curatedRank": 1,
       "image": "https://shop-phinf.pstatic.net/20260818_98/1787036782613YA6CK_JPEG/121169699272443039_180820011.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13725138516"
     },
     {
       "name": "히마와리 학생가방 책가방 데일리 백팩 No.1088M+체스트벨트 SET",
       "price": 75800,
+      "tagline": "가볍게 메고 하루 종일 편안해요",
+      "curatedRank": 2,
       "image": "https://shop-phinf.pstatic.net/20260818_154/1787037270549kjjeP_JPEG/63499181689066464_215958226.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13725149652"
     },
     {
       "name": "히마와리 학생가방 책가방 데일리 백팩 No.0422+체스트벨트 SET",
       "price": 66700,
+      "tagline": "매일 필요한 수납을 단정하게 담아요",
+      "curatedRank": 3,
       "image": "https://shop-phinf.pstatic.net/20260818_300/1787036975976uo0Gu_JPEG/2281183790791076_2111175244.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13725143555"
     },
     {
       "name": "히마와리 남성 출근 출장 직장인 방수 노트북백팩 No.1884 블랙",
       "price": 132000,
+      "tagline": "출근길, 어깨가 한결 편안해요",
+      "featured": true,
+      "highlights": [
+        "자주 쓰는 물건을 바로 찾아요",
+        "넉넉히 담아도 안은 깔끔해요",
+        "출장과 짧은 여행에도 충분해요",
+        "정장과 캐주얼에 모두 잘 어울려요"
+      ],
       "image": "https://shop-phinf.pstatic.net/20260708_79/1783479884744eVyuv_JPEG/117612733821439951_1379023069.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13326303755"
     },
@@ -65,12 +79,16 @@
     {
       "name": "히마와리 여행 유모차 기저귀가방 백팩 No.1208 아이보리",
       "price": 76800,
+      "tagline": "아이와의 외출 준비를 가볍게 담아요",
+      "curatedRank": 4,
       "image": "https://shop-phinf.pstatic.net/20260327_177/17745877470621bKeS_JPEG/3728478673959279_1633863399.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13326577567"
     },
     {
       "name": "히마와리 여성 미니 여행 데일리 스트링백팩 No.0514 0514Mini 실버",
       "price": 125000,
+      "tagline": "가벼운 여행에 은은한 포인트를 더해요",
+      "curatedRank": 5,
       "image": "https://shop-phinf.pstatic.net/20260828_147/1787879951207YvXT4_JPEG/37480638312887197_339724870.jpg",
       "url": "https://smartstore.naver.com/baegot/products/11788400997"
     },
