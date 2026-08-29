@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Himawari가 오래 쓰는 가방과 만드는 사람들의 이야기를 기록합니다.">
+    <meta name="theme-color" content="#FBF8F0">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="이야기 — Himawari">
+    <meta property="og:description" content="가방 뒤에 있는 사람과 과정, 오래 쓰기 위한 생각을 기록합니다.">
+    <title>이야기 — Himawari</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="story.css">
+    <script src="../script.js" defer></script>
+    <script src="blog.js" defer></script>
+  </head>
+  <body class="story-page">
+    <a class="skip-link" href="#main">본문으로 바로가기</a>
+    <header class="site-header interior-header">
+      <a class="brand" href="../index.html" aria-label="Himawari 홈">HIMAWARI</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">메뉴 열기</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
+        <a href="../about.html">내 소개</a><a href="../products.html">제품</a><a href="index.html" aria-current="page">이야기</a><a href="../index.html#contact">연락하기</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="story-list-hero" aria-labelledby="story-title">
+        <div class="story-list-hero-copy reveal">
+          <p class="kicker">Himawari Journal</p>
+          <h1 id="story-title">오래 쓰기 위해<br>기록합니다.</h1>
+          <p>가방 뒤에 있는 사람과 과정,<br>매일의 작은 생각을 나눕니다.</p>
+        </div>
+      </section>
+
+      <section class="story-archive section" aria-labelledby="archive-title">
+        <div class="section-inner">
+          <div class="story-archive-head reveal">
+            <p class="kicker">All stories</p>
+            <h2 id="archive-title">천천히 쌓아가는<br>Himawari의 이야기.</h2>
+          </div>
+          <ul class="story-index-list" id="story-list" data-story-index aria-live="polite" aria-busy="true">
+            <li class="story-list-state">이야기를 불러오는 중입니다.</li>
+          </ul>
+          <a class="story-admin-link" href="admin.html">이야기 관리 <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand"><strong>HIMAWARI</strong><p>매일의 방향을 가볍게.</p></div>
+      <nav aria-label="푸터 메뉴"><a href="../about.html">내 소개</a><a href="../products.html">제품</a><a href="index.html" aria-current="page">이야기</a><a href="../index.html#contact">연락하기</a></nav>
+      <p class="copyright">© <span id="year">2026</span> HIMAWARI</p>
+    </footer>
+  </body>
+</html>

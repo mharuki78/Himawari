@@ -19,8 +19,10 @@ python -m http.server 8000
 - `products.html` — 전체 제품 목록
 - `products.json` — 제품명, 가격, 이미지, 스마트스토어 구매 링크
 - `products.js` — JSON을 읽어 홈과 제품 페이지에 카드를 표시
+- `stories.js` — `story/posts.json`에서 최신 글을 읽어 홈에 표시
 - `styles.css` — 반응형 디자인과 애니메이션
 - `script.js` — 모바일 메뉴, 스크롤 노출, 문의 폼 예시 동작
+- `story/` — 블로그 목록, 글 상세, 관리 페이지와 글 데이터
 - `assets/` — 브랜드 이미지
 
 ## 제품 추가

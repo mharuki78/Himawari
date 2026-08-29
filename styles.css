@@ -111,6 +111,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .journal-card h3 { margin: 0; font-size: clamp(1.8rem, 3.4vw, 3.8rem); font-weight: 300; letter-spacing: -.045em; line-height: 1.12; }
 .journal-card p { margin: 1.25rem 0 0; font-size: .8rem; opacity: .72; }
 .journal-card > a > span { font-size: 1.2rem; }
+.journal-state { min-height: 15rem; display: grid; place-items: center; margin: 0; border-bottom: 1px solid var(--green); font-size: .82rem; text-align: center; }
 
 .contact { background: var(--green); color: var(--ivory); }
 .contact-grid { display: grid; grid-template-columns: 1fr .8fr; gap: clamp(4rem, 12vw, 12rem); }
