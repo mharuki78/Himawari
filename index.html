@@ -60,16 +60,16 @@
 
       <section class="collection section" id="products" aria-labelledby="products-title">
         <div class="section-inner">
-          <div class="section-head reveal"><p class="kicker">The Collection</p><h2 id="products-title" class="display-title">세 가지 하루,<br>하나의 태도.</h2></div>
-          <figure class="collection-visual reveal">
-            <picture>
-              <source media="(max-width: 520px)" srcset="assets/himawari-collection-mobile-v2.png">
-              <img src="assets/himawari-collection-v2.png" alt="딥그린 Himawari 백팩 세 가지 컬렉션" width="1536" height="1024" loading="lazy">
-            </picture>
-            <figcaption>HIMAWARI COLLECTION · 2026</figcaption>
-          </figure>
-          <div class="product-grid" data-products data-product-limit="3" aria-live="polite" aria-busy="true">
-            <p class="product-list-state">제품을 불러오는 중입니다.</p>
+          <div class="section-head reveal"><p class="kicker">The Collection</p><h2 id="products-title" class="display-title">모든 하루를 위한<br>선택.</h2></div>
+          <div class="featured-product-slot" data-featured-product aria-live="polite" aria-busy="true">
+            <p class="product-list-state">대표 제품을 불러오는 중입니다.</p>
+          </div>
+          <div class="curated-heading reveal">
+            <p class="kicker">All products</p>
+            <h3>나머지 모든 제품을 한눈에.</h3>
+          </div>
+          <div class="product-grid" data-products data-product-mode="all-except-featured" aria-live="polite" aria-busy="true">
+            <p class="product-list-state">전체 제품을 불러오는 중입니다.</p>
           </div>
           <a class="collection-link reveal" href="https://smartstore.naver.com/baegot" target="_blank" rel="noopener noreferrer" aria-label="Himawari 스마트스토어 전체 제품 보기 — 새 탭에서 열림">전체 제품 보기 <span aria-hidden="true">↗</span></a>
         </div>

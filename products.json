@@ -6,7 +6,6 @@
       "name": "히마와리 학생가방 책가방 데일리 백팩 No.1027+체스트벨트 SET",
       "price": 76800,
       "tagline": "등굣길 준비를 한 번에 챙겨요",
-      "curatedRank": 1,
       "image": "https://shop-phinf.pstatic.net/20260818_98/1787036782613YA6CK_JPEG/121169699272443039_180820011.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13725138516"
     },
@@ -14,7 +13,6 @@
       "name": "히마와리 학생가방 책가방 데일리 백팩 No.1088M+체스트벨트 SET",
       "price": 75800,
       "tagline": "가볍게 메고 하루 종일 편안해요",
-      "curatedRank": 2,
       "image": "https://shop-phinf.pstatic.net/20260818_154/1787037270549kjjeP_JPEG/63499181689066464_215958226.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13725149652"
     },
@@ -22,7 +20,6 @@
       "name": "히마와리 학생가방 책가방 데일리 백팩 No.0422+체스트벨트 SET",
       "price": 66700,
       "tagline": "매일 필요한 수납을 단정하게 담아요",
-      "curatedRank": 3,
       "image": "https://shop-phinf.pstatic.net/20260818_300/1787036975976uo0Gu_JPEG/2281183790791076_2111175244.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13725143555"
     },
@@ -43,36 +40,42 @@
     {
       "name": "히마와리 학생가방 책가방 데일리 백팩 No.0422 블루",
       "price": 76000,
+      "tagline": "맑은 색으로 등굣길에 가벼운 기분을 더해요",
       "image": "https://shop-phinf.pstatic.net/20260330_75/17748467055316cbOy_JPEG/932098654912450_478698910.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13326274547"
     },
     {
       "name": "히마와리 남성 출근 출장 직장인 방수 노트북백팩 No.1884 블랙M",
       "price": 118000,
+      "tagline": "가벼운 출근과 미팅에 단정하게 어울려요",
       "image": "https://shop-phinf.pstatic.net/20260624_69/1782261531752iBsKp_JPEG/116394465901053202_1600110756.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13641866477"
     },
     {
       "name": "히마와리 남성 출근 출장 직장인 방수 노트북백팩 No.1884 카키",
       "price": 132000,
+      "tagline": "출장 짐도 여유롭게, 차분한 인상을 완성해요",
       "image": "https://shop-phinf.pstatic.net/20260708_26/1783479881442IJMDp_JPEG/128389886240827058_66176657.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13326303754"
     },
     {
       "name": "히마와리 학생가방 책가방 데일리 백팩 No.0422 핑크",
       "price": 76000,
+      "tagline": "포근한 색과 실용적인 수납을 함께 챙겨요",
       "image": "https://shop-phinf.pstatic.net/20260211_210/1770775146360wtyEd_JPEG/20747499473883479_1805454657.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13326274548"
     },
     {
       "name": "히마와리 학생가방 책가방 데일리 백팩 No.0422 블랙",
       "price": 76000,
+      "tagline": "교복과 일상복 어디에나 단정하게 어울려요",
       "image": "https://shop-phinf.pstatic.net/20260330_189/1774846678364k36J3_JPEG/19816660226525405_1405975195.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13326274540"
     },
     {
       "name": "히마와리 초경량 학생 책가방 데일리 백팩 No.1088M 블랙",
       "price": 93000,
+      "tagline": "가벼운 무게로 긴 등굣길의 부담을 덜어요",
       "image": "https://shop-phinf.pstatic.net/20260804_47/1785803414778hzWwG_PNG/119936201675485415_1797035653.png",
       "url": "https://smartstore.naver.com/baegot/products/11070870979"
     },
@@ -80,7 +83,6 @@
       "name": "히마와리 여행 유모차 기저귀가방 백팩 No.1208 아이보리",
       "price": 76800,
       "tagline": "아이와의 외출 준비를 가볍게 담아요",
-      "curatedRank": 4,
       "image": "https://shop-phinf.pstatic.net/20260327_177/17745877470621bKeS_JPEG/3728478673959279_1633863399.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13326577567"
     },
@@ -88,139 +90,160 @@
       "name": "히마와리 여성 미니 여행 데일리 스트링백팩 No.0514 0514Mini 실버",
       "price": 125000,
       "tagline": "가벼운 여행에 은은한 포인트를 더해요",
-      "curatedRank": 5,
       "image": "https://shop-phinf.pstatic.net/20260828_147/1787879951207YvXT4_JPEG/37480638312887197_339724870.jpg",
       "url": "https://smartstore.naver.com/baegot/products/11788400997"
     },
     {
       "name": "히마와리 여성 미니 여행 데일리 스트링백팩 No.0514 0514Mini 실버미니",
       "price": 118000,
+      "tagline": "작은 소지품만 챙기는 날 가볍게 나서요",
       "image": "https://shop-phinf.pstatic.net/20260211_152/17707744461046CCJC_JPEG/104907218390027692_404109632.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13326396058"
     },
     {
       "name": "히마와리 초경량 노트북 가방 파우치 LG 그램 삼성 맥북 No.2513 블랙",
       "price": 64900,
+      "tagline": "노트북을 가볍고 안전하게 들고 이동해요",
       "image": "https://shop-phinf.pstatic.net/20260420_222/1776672718551bbtgo_JPEG/31205936622607670_209756021.jpg",
       "url": "https://smartstore.naver.com/baegot/products/12986327631"
     },
     {
       "name": "히마와리 남녀공용 대용량 중고등 책가방 대학생 백팩 No.9291 라벤더",
       "price": 177000,
+      "tagline": "교재와 노트북을 넉넉하고 산뜻하게 담아요",
       "image": "https://shop-phinf.pstatic.net/20260416_30/1776315459037ny7Nf_JPEG/108348427949227048_692471493.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13408069845"
     },
     {
       "name": "히마와리 남여공용 스타일 경량 데일리 여행백팩 스포츠 가방 No.0515 실버",
       "price": 95900,
+      "tagline": "운동과 여행 사이, 가볍게 멜 가방이 필요할 때",
       "image": "https://shop-phinf.pstatic.net/20260728_237/1785203739585y5VOY_JPEG/130548331178797772_1520188927.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13685201448"
     },
     {
       "name": "히마와리 50L 대용량 노트북 여행 백팩 스포츠 No.1111 그린",
       "price": 122000,
+      "tagline": "긴 여행의 많은 짐을 한 가방에 정돈해요",
       "image": "https://shop-phinf.pstatic.net/20260511_282/1778476837383QWJQU_JPEG/8477290463441894_476336728.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13513526834"
     },
     {
       "name": "히마와리 50L 대용량 노트북 여행 백팩 스포츠 No.1111 블랙",
       "price": 122000,
+      "tagline": "50L 수납으로 여행과 스포츠 장비를 든든하게",
       "image": "https://shop-phinf.pstatic.net/20260511_20/1778476832133VaHYa_JPEG/28146806243459778_1540434264.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13513526833"
     },
     {
       "name": "히마와리 초경량 여행 데일리 노트북 스트링 백팩 No.0513 핑크",
       "price": 90000,
+      "tagline": "가벼운 외출과 노트북 이동에 산뜻함을 더해요",
       "image": "https://shop-phinf.pstatic.net/20260416_231/1776311499142kYlwk_JPEG/110444334792441177_3490121.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13312570674"
     },
     {
       "name": "히마와리 초경량 여행 데일리 노트북 스트링 백팩 No.0513 스카이",
       "price": 90000,
+      "tagline": "하늘빛 포인트로 여행의 기분을 가볍게",
       "image": "https://shop-phinf.pstatic.net/20260416_279/1776311593691l3vHW_JPEG/596354370083117_582164802.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13312570673"
     },
     {
       "name": "히마와리 여성 대용량 보부상 노트북 데일리백팩 여행용백팩 No.1089 핑크",
       "price": 84900,
+      "tagline": "많이 담는 하루에도 부드러운 인상을 잃지 않아요",
       "image": "https://shop-phinf.pstatic.net/20260728_177/1785204907093Rb8GH_JPEG/32449486153229195_959631206.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13685218117"
     },
     {
       "name": "히마와리 여성 데일리 여행 리사이클링 백팩 No.1230 그레이",
       "price": 84900,
+      "tagline": "여행과 일상에 리사이클링의 가치를 더해요",
       "image": "https://shop-phinf.pstatic.net/20260326_238/1774503626907819SG_JPEG/29145858851779990_764507912.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13308483411"
     },
     {
       "name": "히마와리 여성 데일리 노트북 여행 백팩 크로스백 No.0403 베이지",
       "price": 87600,
+      "tagline": "백팩과 크로스백, 하루에 맞춰 바꿔 들어요",
       "image": "https://shop-phinf.pstatic.net/20260211_281/1770774598923VUxxR_JPEG/20746952034287940_427742899.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13308523903"
     },
     {
       "name": "히마와리 여행 유모차 기저귀가방 백팩 No.1211 블랙",
       "price": 75800,
+      "tagline": "아이와의 외출 짐을 차분하고 빠르게 꺼내요",
       "image": "https://shop-phinf.pstatic.net/20260327_53/1774591677108YLGWg_JPEG/47566029953353167_889905254.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13313475536"
     },
     {
       "name": "히마와리 여행 유모차 기저귀가방 백팩 No.1223 화이트",
       "price": 71000,
+      "tagline": "유모차 옆에서도 산뜻하고 깔끔하게 정돈해요",
       "image": "https://shop-phinf.pstatic.net/20260330_110/1774843091752lRdub_JPEG/60885435181830789_147192211.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13313756862"
     },
     {
       "name": "히마와리 여행 유모차 기저귀가방 백팩 No.1208 블랙",
       "price": 76800,
+      "tagline": "기저귀와 외출용품을 실용적으로 나눠 담아요",
       "image": "https://shop-phinf.pstatic.net/20260327_88/1774587500184vx9dl_JPEG/29135891486812949_1683738579.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13326577564"
     },
     {
       "name": "히마와리 여행 유모차 기저귀가방 백팩 No.1223 블랙",
       "price": 71000,
+      "tagline": "오염 걱정을 덜고 매일 편하게 함께해요",
       "image": "https://shop-phinf.pstatic.net/20260211_155/1770774832275FXD6k_JPEG/9310800270407694_948731888.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13326074553"
     },
     {
       "name": "히마와리 초경량 학생 책가방 데일리 백팩 No.1088M 그린",
       "price": 93000,
+      "tagline": "싱그러운 색과 초경량 착용감으로 등교해요",
       "image": "https://shop-phinf.pstatic.net/20260326_100/17745078126890NcU7_JPEG/593205736606817_1806444046.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13308752642"
     },
     {
       "name": "히마와리 초경량 학생 책가방 데일리 백팩 No.1088M 라벤더",
       "price": 93000,
+      "tagline": "부드러운 색으로 가벼운 등굣길을 만들어요",
       "image": "https://shop-phinf.pstatic.net/20260326_96/1774507803871t7XEQ_JPEG/47042248162949102_951683944.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13308752640"
     },
     {
       "name": "히마와리 학생가방 책가방 데일리 백팩 No.0422 민트",
       "price": 76000,
+      "tagline": "민트빛 포인트와 알찬 수납을 함께 챙겨요",
       "image": "https://shop-phinf.pstatic.net/20260330_49/1774846665445U1rS5_JPEG/47821018312387168_766126403.jpg",
       "url": "https://smartstore.naver.com/baegot/products/11070824181"
     },
     {
       "name": "히마와리 학생가방 책가방 데일리 백팩 No.1027 라벤더",
       "price": 94000,
+      "tagline": "넉넉한 책가방에 부드러운 색을 더해요",
       "image": "https://shop-phinf.pstatic.net/20260210_108/1770707978865U4o9A_JPEG/43528032995650075_718147852.jpg",
       "url": "https://smartstore.naver.com/baegot/products/11070925709"
     },
     {
       "name": "히마와리 학생가방 책가방 데일리 백팩 No.1027 블랙",
       "price": 94000,
+      "tagline": "학업과 일상에 오래 어울리는 기본을 선택해요",
       "image": "https://shop-phinf.pstatic.net/20260210_201/1770709035243OicU2_JPEG/18070600097326153_1285571532.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13326224847"
     },
     {
       "name": "히마와리 학생가방 책가방 데일리 백팩 No.1027 민트",
       "price": 94000,
+      "tagline": "산뜻한 민트 컬러로 매일의 준비를 즐겁게",
       "image": "https://shop-phinf.pstatic.net/20260210_233/17707090344933os6X_JPEG/18070599351222800_1030039765.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13326224850"
     },
     {
       "name": "히마와리 학생가방 책가방 데일리 백팩 No.1027 민트네이비",
       "price": 94000,
+      "tagline": "산뜻함과 차분함을 한 가방에 담아요",
       "image": "https://shop-phinf.pstatic.net/20260210_160/1770709034927d7UGb_JPEG/18070599780121193_35109771.jpg",
       "url": "https://smartstore.naver.com/baegot/products/13326224849"
     }

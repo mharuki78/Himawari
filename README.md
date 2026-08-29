@@ -25,7 +25,7 @@ python -m http.server 8000
 
 ## 제품 추가
 
-`products.json`의 `products` 배열에 아래 형식의 항목을 추가하면 홈과 제품 페이지에 자동으로 반영됩니다. 홈에는 배열 앞쪽의 제품 3개가 표시됩니다. 제품 페이지에서는 `featured: true`인 제품 1개를 크게 보여주고, `curatedRank`가 있는 제품을 순서대로 최대 5개까지 보여줍니다.
+`products.json`의 `products` 배열에 아래 형식의 항목을 추가하면 홈과 제품 페이지에 자동으로 반영됩니다. 두 페이지 모두 `featured: true`인 제품 1개를 크게 보여주고, 나머지 제품은 그 아래 그리드에 모두 표시합니다.
 
 ```json
 {
@@ -37,6 +37,6 @@ python -m http.server 8000
 }
 ```
 
-대표 제품에는 `featured: true`와 `highlights` 배열을, 추천 제품에는 `curatedRank` 숫자를 추가해 주세요.
+대표 제품에는 `featured: true`와 `highlights` 배열을 추가해 주세요. 대표 제품이 아닌 새 제품은 `products.json`에 추가하는 즉시 전체 제품 그리드에 표시됩니다.
 
 문의 폼 전송 기능은 실제 서비스에 맞게 연결해 주세요.

@@ -147,12 +147,19 @@ async function loadProducts() {
 
     productLists.forEach((container) => {
       const limit = Number.parseInt(container.dataset.productLimit || '', 10);
-      const visibleProducts = container.dataset.productMode === 'curated'
-        ? products
+      const mode = container.dataset.productMode;
+      let visibleProducts;
+
+      if (mode === 'curated') {
+        visibleProducts = products
           .filter((product) => Number.isFinite(product.curatedRank))
           .sort((first, second) => first.curatedRank - second.curatedRank)
-          .slice(0, Number.isFinite(limit) ? limit : 5)
-        : (Number.isFinite(limit) ? products.slice(0, limit) : products);
+          .slice(0, Number.isFinite(limit) ? limit : 5);
+      } else if (mode === 'all-except-featured') {
+        visibleProducts = products.filter((product) => product.featured !== true);
+      } else {
+        visibleProducts = Number.isFinite(limit) ? products.slice(0, limit) : products;
+      }
 
       if (!visibleProducts.length) {
         showListState(container, '등록된 제품이 없습니다.');
