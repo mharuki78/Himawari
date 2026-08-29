@@ -1,0 +1,20 @@
+# Himawari
+
+오래 곁에 둘 수 있는 백팩을 만드는 Himawari입니다.
+
+## 파는 것
+
+학생, 직장인과 여행자를 위한 패션 백팩을 소개하고 스마트스토어에서 판매합니다.
+
+## 페이지 안내
+
+- [홈](https://himawari-three.vercel.app/): 브랜드 소개와 대표 제품
+- [내 소개](https://himawari-three.vercel.app/about.html): Himawari를 시작한 이유와 약속
+- [제품](https://himawari-three.vercel.app/products.html): 제품 목록과 구매 링크
+- [이야기](https://himawari-three.vercel.app/story/): 백팩을 고르고 오래 쓰는 방법
+
+## 이야기(블로그)
+
+- [좋은 백팩은 어떤 기준으로 골라야 하나요?](https://himawari-three.vercel.app/story/how-to-choose-backpack.html): 수납, 착용감, 마감과 디자인을 차례로 확인하는 방법
+- [직장인에게 어울리는 백팩은 어떻게 고르나요?](https://himawari-three.vercel.app/story/backpack-for-office-workers.html): 출근 옷차림과 업무 수납, 출장 동선을 고려한 선택법
+- [신학기 우리 아이 백팩은 어떻게 골라야 하나요?](https://himawari-three.vercel.app/story/back-to-school-backpack-for-kids.html): 아이 몸에 맞는 크기와 수납, 소재와 취향을 살피는 방법

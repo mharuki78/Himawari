@@ -33,6 +33,7 @@
 .story-post-rule { width: 4rem; margin: 3rem 0; border: 0; border-top: 1px solid var(--green); }
 .story-body { font-size: 1.03rem; line-height: 1.95; word-break: keep-all; }
 .story-body p { margin: 0 0 1.7em; }
+.story-body a, .story-related a { text-decoration: underline; text-decoration-color: var(--moss); text-underline-offset: .25rem; }
 .story-body h2 { margin: 2.6em 0 .9em; font-size: clamp(1.6rem, 3.5vw, 2.15rem); font-weight: 380; letter-spacing: -.035em; line-height: 1.35; }
 .story-body ul { margin: 0 0 1.7em; padding-left: 1.35rem; }
 .story-body li { margin-bottom: .55em; }
@@ -47,6 +48,9 @@
 .story-sources { font-size: .82rem; }
 .story-sources ol { padding-left: 1.25rem; }
 .story-sources a { text-decoration: underline; text-underline-offset: .25rem; }
+.story-related { margin-top: 3rem !important; padding-top: 1.5rem; border-top: 1px solid var(--green); font-size: .86rem; }
+.story-cta { margin: 3rem 0 0; }
+.story-cta a { display: inline-flex; justify-content: space-between; gap: 4rem; min-width: min(100%, 18rem); padding: .95rem 0; border-bottom: 1px solid var(--green); font-size: .82rem; font-weight: 650; }
 .story-post-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 5rem; padding-top: .5rem; border-top: 1px solid var(--green); }
 .story-post-nav a { display: block; min-width: 0; padding: 1.5rem .25rem; }
 .story-post-nav a:hover { background: color-mix(in srgb, var(--moss) 10%, transparent); }

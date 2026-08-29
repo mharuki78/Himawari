@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Himawari 이야기</title>
+    <link>https://himawari-three.vercel.app/story/</link>
+    <description>오래 쓰는 백팩과 일상에 맞는 가방 선택 이야기를 기록합니다.</description>
+    <language>ko-KR</language>
+    <lastBuildDate>Sat, 29 Aug 2026 00:00:00 +0900</lastBuildDate>
+    <item>
+      <title>좋은 백팩은 어떤 기준으로 골라야 하나요?</title>
+      <link>https://himawari-three.vercel.app/story/how-to-choose-backpack.html</link>
+      <description>매일 넣는 물건과 착용 시간부터 살펴보고, 수납·착용감·마감·디자인을 차례로 확인하는 백팩 선택 기준을 정리했습니다.</description>
+      <pubDate>Sat, 29 Aug 2026 00:00:00 +0900</pubDate>
+      <guid isPermaLink="true">https://himawari-three.vercel.app/story/how-to-choose-backpack.html</guid>
+    </item>
+    <item>
+      <title>직장인에게 어울리는 백팩은 어떻게 고르나요?</title>
+      <link>https://himawari-three.vercel.app/story/backpack-for-office-workers.html</link>
+      <description>출근 옷차림, 노트북과 서류 수납, 출장 동선까지 고려해 직장인에게 어울리는 백팩을 고르는 방법을 정리했습니다.</description>
+      <pubDate>Sat, 29 Aug 2026 00:00:00 +0900</pubDate>
+      <guid isPermaLink="true">https://himawari-three.vercel.app/story/backpack-for-office-workers.html</guid>
+    </item>
+    <item>
+      <title>신학기 우리 아이 백팩은 어떻게 골라야 하나요?</title>
+      <link>https://himawari-three.vercel.app/story/back-to-school-backpack-for-kids.html</link>
+      <description>아이 몸에 맞는 크기와 착용감, 스스로 정리하기 쉬운 수납, 소재와 취향을 함께 살피는 신학기 백팩 선택법입니다.</description>
+      <pubDate>Sat, 29 Aug 2026 00:00:00 +0900</pubDate>
+      <guid isPermaLink="true">https://himawari-three.vercel.app/story/back-to-school-backpack-for-kids.html</guid>
+    </item>
+  </channel>
+</rss>
