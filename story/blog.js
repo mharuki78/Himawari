@@ -105,7 +105,10 @@ function addStructuredData(data) {
 function setPostMeta(post) {
   const title = String(post.title || '이야기');
   const description = String(post.description || post.summary || '').slice(0, 160);
-  const canonicalUrl = `${location.origin}${location.pathname}?id=${encodeURIComponent(post.id || '')}`;
+  const storyBase = new URL('./', location.href);
+  const canonicalUrl = post.url
+    ? new URL(String(post.url), storyBase).href
+    : `${location.origin}${location.pathname}?id=${encodeURIComponent(post.id || '')}`;
   const author = String(post.author || '').trim();
 
   document.title = `${title} — Himawari`;
@@ -146,8 +149,9 @@ function setPostMeta(post) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: '이야기', item: location.href.replace(/post\.html.*$/, '') },
-      { '@type': 'ListItem', position: 2, name: title, item: canonicalUrl },
+      { '@type': 'ListItem', position: 1, name: '홈', item: `${location.origin}/` },
+      { '@type': 'ListItem', position: 2, name: '이야기', item: storyBase.href },
+      { '@type': 'ListItem', position: 3, name: title, item: canonicalUrl },
     ],
   });
 }

@@ -19,3 +19,5 @@
 - [좋은 백팩은 어떤 기준으로 골라야 하나요?](https://himawari-three.vercel.app/story/how-to-choose-backpack.html): 수납, 착용감, 마감과 디자인을 차례로 확인하는 방법
 - [직장인에게 어울리는 백팩은 어떻게 고르나요?](https://himawari-three.vercel.app/story/backpack-for-office-workers.html): 출근 옷차림과 업무 수납, 출장 동선을 고려한 선택법
 - [신학기 우리 아이 백팩은 어떻게 골라야 하나요?](https://himawari-three.vercel.app/story/back-to-school-backpack-for-kids.html): 아이 몸에 맞는 크기와 수납, 소재와 취향을 살피는 방법
+- [우리가 이 브랜드를 시작한 이유](https://himawari-three.vercel.app/story/first-story.html): 작은 불편에서 시작된 브랜드의 첫 마음
+- [패키지 하나를 바꾸는 데 석 달이 걸린 이야기](https://himawari-three.vercel.app/story/behind-package.html): 패키지의 작은 디테일을 고민한 기록
