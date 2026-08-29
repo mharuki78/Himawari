@@ -228,6 +228,7 @@ p { max-width: 40ch; text-wrap: pretty; }
   .site-header { height: 4.75rem; }
   .menu-button { position: relative; z-index: 32; display: grid; place-content: center; gap: 6px; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; color: var(--ivory); cursor: pointer; }
   .menu-button > span:not(.sr-only) { display: block; width: 23px; height: 1px; background: currentColor; }
+  .menu-button[aria-expanded="true"] { color: var(--cream); }
   .menu-button[aria-expanded="true"] > span:nth-of-type(2) { transform: translateY(3.5px) rotate(45deg); }
   .menu-button[aria-expanded="true"] > span:nth-of-type(3) { transform: translateY(-3.5px) rotate(-45deg); }
   .site-nav { position: fixed; z-index: 30; inset: 0; display: none; flex-direction: column; justify-content: center; align-items: center; gap: 1.5rem; background: var(--ink); color: var(--cream); font-size: 1.35rem; letter-spacing: .06em; }
@@ -282,6 +283,8 @@ p { max-width: 40ch; text-wrap: pretty; }
   .founder-promise h2 { font-size: clamp(3.2rem, 13vw, 5rem); }
   .interior-header .menu-button span:not(.sr-only) { background: var(--ink); }
   .interior-header .site-nav { color: var(--cream); }
+  .about-header .menu-button[aria-expanded="true"] span:not(.sr-only),
+  .interior-header .menu-button[aria-expanded="true"] span:not(.sr-only) { background: var(--cream); }
   .catalog-hero { grid-template-columns: 1fr; gap: 3.5rem; min-height: auto; padding-top: 9rem; padding-bottom: var(--section-space); }
   .catalog-hero h1 { max-width: 8ch; font-size: clamp(3.5rem, 16vw, 5.2rem); }
   .catalog-index { min-height: 24rem; }

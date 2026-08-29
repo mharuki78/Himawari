@@ -95,6 +95,7 @@
 @media (max-width: 880px) {
   .rd-scrub__band { max-width: 100%; }
   .rd-scrub__copy { padding-bottom: 72px; }
+  .rd-scrub__cue { right: auto; left: var(--scrub-pad); }
 }
 @media (prefers-reduced-motion: reduce) {
   .rd-scrub__video, .rd-scrub__band { transition: none; }
