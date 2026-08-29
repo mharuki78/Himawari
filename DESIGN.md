@@ -42,7 +42,7 @@ components:
 - **Locale(s) and language policy:** `ko-KR` 단일 언어. 한국어는 어절을 억지로 분리하지 않고 `word-break: keep-all`을 우선한다.
 - **Usage scene:** 모바일에서 제품을 빠르게 훑고, 데스크톱에서 큰 사진과 브랜드 이야기를 천천히 읽는다.
 - **Register:** 공개 브랜드·콘텐츠 사이트. `story/admin.html`은 기존 관리 도구이며 이 공개 디자인 계약의 대상이 아니다.
-- **Memorable signature:** 풀스크린 제품 사진 안쪽의 얇은 인쇄 프레임과 18초 동안 한 번만 서서히 가까워지는 히어로.
+- **Memorable signature:** 스크롤 위치에 맞춰 장면이 감기는 풀스크린 제품 영상과 두 구간으로 이어지는 브랜드 문장.
 - **Restraint:** 나머지 화면은 헤어라인, 넓은 여백, 가벼운 고딕 제목으로 조용하게 유지한다.
 - **Anti-references:** 둥근 카드가 반복되는 SaaS 스타일, 그림자와 그라데이션이 많은 쇼핑몰, 여러 포인트색을 섞은 경쾌한 키즈 브랜드.
 - **Token ownership/runtime mapping:** `styles.css`가 런타임 토큰의 소유자다. 이 문서는 `--cream`, `--ink`, `--moss`, `--section-space`, `--max-width`의 승인된 값을 그대로 기록한다. 기존 선택자를 위한 `--ivory`, `--green`, `--blue`는 세 기본 토큰을 가리키는 호환 별칭이다.
@@ -91,7 +91,7 @@ components:
 
 ### Motion
 
-허용된 모션은 스크롤 리빌과 홈 히어로의 느린 줌 두 가지다. 리빌은 800ms, 히어로 줌은 18초이며 반복하지 않는다. `prefers-reduced-motion: reduce`에서는 애니메이션, 전환, 부드러운 스크롤을 모두 끈다.
+허용된 모션은 스크롤 리빌과 홈 히어로의 영상 스크럽 두 가지다. 리빌은 800ms, 영상은 사용자의 스크롤 위치만 따라가며 자동 재생하지 않는다. `prefers-reduced-motion: reduce`에서는 영상 대신 포스터와 문구를 정적으로 보여주고 애니메이션, 전환, 부드러운 스크롤을 모두 끈다.
 
 ### Content and data visualization
 

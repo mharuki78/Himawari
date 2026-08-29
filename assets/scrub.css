@@ -6,19 +6,20 @@
    클래스가 전부 rd-scrub 로 시작해서 내 CSS 와 겹치지 않습니다.
    ========================================================================== */
 :root {
-  --scrub-ink:     #ffffff;                       /* 영상 위 글자색 */
-  --scrub-dim:     rgba(255,255,255,.72);         /* 보조 문장 · 킥커 */
-  --scrub-bg:      #0e0b08;                       /* 영상 로드 전 바탕 · 스크림 색 */
-  --scrub-scrim:   .55;                           /* 어두운 막 세기 0(없음)~1 */
-  --scrub-font:    inherit;                       /* 제목 서체 (예: "Noto Serif KR", serif) */
-  --scrub-title:   clamp(32px, 7vw, 68px);        /* 제목 크기 */
-  --scrub-pad:     clamp(20px, 6vw, 72px);        /* 좌우 여백 */
+  --scrub-ink:     var(--cream, #F4EFE3);          /* 영상 위 글자색 */
+  --scrub-dim:     color-mix(in srgb, var(--cream, #F4EFE3) 72%, transparent); /* 보조 문장 · 킥커 */
+  --scrub-bg:      var(--ink, #24241F);            /* 영상 로드 전 바탕 · 스크림 색 */
+  --scrub-scrim:   .62;                            /* 어두운 막 세기 0(없음)~1 */
+  --scrub-font:    "Pretendard Variable", Pretendard, "Noto Sans KR", system-ui, sans-serif;
+  --scrub-title:   clamp(3.4rem, 8.4vw, 8.8rem);   /* 제목 크기 */
+  --scrub-pad:     var(--page-pad, clamp(20px, 5vw, 88px)); /* 좌우 여백 */
   --scrub-align:   left;                          /* left | center (문구 정렬) */
   --scrub-justify: start;                         /* start | center (문구 덩어리 위치) */
-  --scrub-accent:  #ffffff;                       /* 버튼 바탕 */
-  --scrub-accent-ink: #111111;                    /* 버튼 글자 */
+  --scrub-accent:  var(--moss, #304030);          /* 버튼 바탕 */
+  --scrub-accent-ink: var(--cream, #F4EFE3);      /* 버튼 글자 */
 }
 
+.site-header { background: transparent; }
 .rd-scrub { position: relative; background: var(--scrub-bg); color: var(--scrub-ink); }
 .rd-scrub__stage { position: relative; height: 100svh; min-height: 480px; overflow: hidden; }
 .rd-scrub--live .rd-scrub__stage { position: sticky; top: 0; }
@@ -36,8 +37,8 @@
 .rd-scrub__scrim {
   position: absolute; inset: 0; pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(0,0,0,calc(var(--scrub-scrim) * .7)) 0%, rgba(0,0,0,0) 30%,
-                            rgba(0,0,0,0) 55%, rgba(0,0,0,var(--scrub-scrim)) 100%);
+    linear-gradient(180deg, color-mix(in srgb, var(--scrub-bg) calc(var(--scrub-scrim) * 70%), transparent) 0%, transparent 30%,
+                            transparent 55%, color-mix(in srgb, var(--scrub-bg) calc(var(--scrub-scrim) * 100%), transparent) 100%);
 }
 
 /* 문구 */
@@ -54,17 +55,16 @@
   display: block; font-size: 11px; font-weight: 700; letter-spacing: .28em; color: var(--scrub-dim); margin-bottom: 14px;
 }
 .rd-scrub__band h1, .rd-scrub__band h2 {
-  margin: 0; font-family: var(--scrub-font); font-size: var(--scrub-title); line-height: 1.12;
-  letter-spacing: -.02em; font-weight: 700; color: var(--scrub-ink); max-width: 14ch;
-  text-shadow: 0 2px 24px rgba(0,0,0,.25);
+  margin: 0; font-family: var(--scrub-font); font-size: var(--scrub-title); line-height: .98;
+  letter-spacing: -.058em; font-weight: 230; color: var(--scrub-ink); max-width: 12ch;
 }
 .rd-scrub__band p { margin: 16px 0 0; font-size: clamp(15px, 1.6vw, 18px); line-height: 1.7; color: var(--scrub-dim); max-width: 34ch; }
 .rd-scrub__btn {
   display: inline-flex; align-items: center; min-height: 46px; padding: 0 22px; margin-top: 24px; margin-right: 8px;
-  border-radius: 999px; background: var(--scrub-accent); color: var(--scrub-accent-ink);
-  font-size: 14px; font-weight: 700; text-decoration: none;
+  border-radius: 0; background: var(--scrub-accent); color: var(--scrub-accent-ink);
+  font-size: 14px; font-weight: 620; text-decoration: none; cursor: pointer;
 }
-.rd-scrub__btn--ghost { background: transparent; color: var(--scrub-ink); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.6); }
+.rd-scrub__btn--ghost { background: transparent; color: var(--scrub-ink); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--scrub-ink) 60%, transparent); }
 
 /* 스크롤 유도 · 진행 바 */
 .rd-scrub__cue {
@@ -73,7 +73,7 @@
 }
 .rd-scrub__cue i { width: 1px; height: 36px; background: currentColor; transform-origin: top; animation: rd-scrub-cue 1.6s ease-in-out infinite; }
 @keyframes rd-scrub-cue { 0%,100% { transform: scaleY(.3); opacity: .4 } 50% { transform: scaleY(1); opacity: 1 } }
-.rd-scrub__progress { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: rgba(255,255,255,.15); }
+.rd-scrub__progress { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: color-mix(in srgb, var(--scrub-ink) 15%, transparent); }
 .rd-scrub__progress i { display: block; height: 100%; width: 100%; background: var(--scrub-ink); transform: scaleX(var(--p, 0)); transform-origin: left; }
 .rd-scrub--static .rd-scrub__cue, .rd-scrub--static .rd-scrub__progress { display: none; }
 
@@ -97,5 +97,6 @@
   .rd-scrub__copy { padding-bottom: 72px; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .rd-scrub__video, .rd-scrub__band { transition: none; }
   .rd-scrub__cue i { animation: none; }
 }
