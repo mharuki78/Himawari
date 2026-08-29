@@ -24,11 +24,15 @@ document.addEventListener('keydown', (event) => {
 });
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const revealItems = document.querySelectorAll('.reveal');
+function setupReveals(root = document) {
+  const revealItems = root.querySelectorAll('.reveal:not([data-reveal-ready])');
+  revealItems.forEach((item) => item.setAttribute('data-reveal-ready', 'true'));
 
-if (reducedMotion.matches || !('IntersectionObserver' in window)) {
-  revealItems.forEach((item) => item.classList.add('is-visible'));
-} else {
+  if (reducedMotion.matches || !('IntersectionObserver' in window)) {
+    revealItems.forEach((item) => item.classList.add('is-visible'));
+    return;
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
@@ -38,6 +42,9 @@ if (reducedMotion.matches || !('IntersectionObserver' in window)) {
   }, { threshold: 0.12 });
   revealItems.forEach((item) => observer.observe(item));
 }
+
+window.himawariReveal = setupReveals;
+setupReveals();
 
 const form = document.querySelector('.contact-form');
 if (form) {

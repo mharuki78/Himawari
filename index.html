@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+    <script src="products.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">본문으로 바로가기</a>
@@ -24,7 +25,7 @@
         <span class="sr-only">메뉴 열기</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
-        <a href="about.html">내 소개</a><a href="#products">제품</a><a href="#stories">이야기</a><a href="#contact">연락하기</a>
+        <a href="about.html">내 소개</a><a href="products.html">제품</a><a href="#stories">이야기</a><a href="#contact">연락하기</a>
       </nav>
     </header>
 
@@ -67,12 +68,10 @@
             </picture>
             <figcaption>HIMAWARI COLLECTION · 2026</figcaption>
           </figure>
-          <div class="product-grid">
-            <article class="product-card card reveal"><div class="product-crop crop-left"><img src="assets/himawari-collection-v2.png" alt="작고 단정한 Meadow 백팩" loading="lazy"></div><div class="card-copy"><p class="card-label">Compact · 16L</p><h3>Meadow</h3><p>가벼운 외출을 위한<br>컴팩트 백팩</p><strong>₩98,000</strong></div></article>
-            <article class="product-card card reveal"><div class="product-crop crop-center"><img src="assets/himawari-collection-v2.png" alt="수납이 넉넉한 Daylight 백팩" loading="lazy"></div><div class="card-copy"><p class="card-label">Daily · 24L</p><h3>Daylight</h3><p>출근과 여행을 잇는<br>데일리 백팩</p><strong>₩129,000</strong></div></article>
-            <article class="product-card card reveal"><div class="product-crop crop-right"><img src="assets/himawari-collection-v2.png" alt="넉넉한 크기의 Afterglow 백팩" loading="lazy"></div><div class="card-copy"><p class="card-label">Wide · 30L</p><h3>Afterglow</h3><p>긴 하루를 위한<br>와이드 백팩</p><strong>₩149,000</strong></div></article>
+          <div class="product-grid" data-products data-product-limit="3" aria-live="polite" aria-busy="true">
+            <p class="product-list-state">제품을 불러오는 중입니다.</p>
           </div>
-          <p class="placeholder-note">제품명과 가격은 임시 정보입니다.</p>
+          <a class="collection-link reveal" href="products.html">모든 제품 보기 <span aria-hidden="true">→</span></a>
         </div>
       </section>
 
@@ -108,7 +107,7 @@
 
     <footer class="site-footer">
       <div class="footer-brand"><strong>HIMAWARI</strong><p>매일의 방향을 가볍게.</p></div>
-      <nav aria-label="푸터 메뉴"><a href="about.html">내 소개</a><a href="#products">제품</a><a href="#stories">이야기</a><a href="#contact">연락하기</a></nav>
+      <nav aria-label="푸터 메뉴"><a href="about.html">내 소개</a><a href="products.html">제품</a><a href="#stories">이야기</a><a href="#contact">연락하기</a></nav>
       <p class="copyright">© <span id="year">2026</span> HIMAWARI</p>
     </footer>
   </body>
