@@ -42,17 +42,20 @@ function createProductMedia(product, className) {
 }
 
 function createBuyLink(product, className = 'buy-link') {
-  const link = document.createElement('a');
+  const link = document.createElement('button');
+  link.type = 'button';
   link.className = className;
-  link.href = safeHttpsUrl(product.url);
-  link.target = '_blank';
-  link.rel = 'noopener noreferrer';
-  link.textContent = '구매하기';
-  link.setAttribute('aria-label', `${product.name} 구매하기 — 새 탭에서 열림`);
+  link.textContent = '장바구니 담기';
+  link.dataset.cartAdd = '';
+  link.dataset.name = product.name;
+  link.dataset.price = String(product.price);
+  link.dataset.url = safeHttpsUrl(product.url);
+  link.setAttribute('aria-label', `${product.name} 장바구니에 담기`);
+  link.setAttribute('aria-live', 'polite');
 
   const arrow = document.createElement('span');
   arrow.setAttribute('aria-hidden', 'true');
-  arrow.textContent = '↗';
+  arrow.textContent = '+';
   link.append(' ', arrow);
   return link;
 }
