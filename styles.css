@@ -136,11 +136,14 @@ p { max-width: 40ch; text-wrap: pretty; }
 .contact-form button { display: flex; justify-content: space-between; width: 100%; min-height: 48px; margin-top: .6rem; padding: 1rem 0; border: 0; border-bottom: 1px solid var(--moss); background: transparent; color: var(--cream); cursor: pointer; font-size: .78rem; font-weight: 620; letter-spacing: .05em; }
 .form-status { min-height: 1.4em; margin: 0; color: var(--cream); font-size: .72rem; }
 
-.site-footer { display: grid; grid-template-columns: 1fr auto; gap: 3rem; padding: 4rem var(--page-pad) 2rem; border-top: var(--hairline); background: var(--cream); }
+.site-footer { display: grid; grid-template-columns: 1fr auto auto; gap: 3rem; align-items: start; padding: 4rem var(--page-pad) 2rem; border-top: var(--hairline); background: var(--cream); }
 .footer-brand strong { font-size: .85rem; letter-spacing: .24em; }
 .footer-brand p { margin: .6rem 0 0; font-size: .75rem; }
 .site-footer nav { display: flex; gap: 2rem; font-size: .72rem; }
 .site-footer nav a:hover { text-decoration: underline; text-underline-offset: .35rem; }
+.footer-contact { display: grid; gap: .45rem; justify-items: end; font-size: .7rem; }
+.footer-contact a { padding-bottom: .1rem; border-bottom: 1px solid transparent; }
+.footer-contact a:hover { border-color: currentColor; }
 .copyright { grid-column: 1 / -1; margin: 4rem 0 0; font-size: .6rem; letter-spacing: .14em; }
 
 /* Founder story */
@@ -206,6 +209,17 @@ p { max-width: 40ch; text-wrap: pretty; }
 .store-link { display: inline-flex; justify-content: space-between; gap: 4rem; min-width: 16rem; min-height: 44px; margin-top: max(8vh, 4rem); padding: 1rem 0; border-bottom: var(--hairline); cursor: pointer; font-size: .78rem; font-weight: 620; letter-spacing: .05em; }
 .catalog-note { margin: 2rem 0 0; font-size: .7rem; }
 
+/* Contact */
+.contact-page-hero { min-height: 100svh; display: grid; grid-template-columns: minmax(0, .72fr) minmax(30rem, 1fr); gap: clamp(4rem, 10vw, 11rem); align-items: center; width: min(100%, var(--max-width)); margin: 0 auto; padding: clamp(9rem, 16vh, 13rem) var(--page-pad) max(10vh, 6rem); }
+.contact-page-intro h1 { max-width: 9ch; margin: 0; font-size: clamp(4rem, 7.4vw, 8rem); font-weight: 225; letter-spacing: -.06em; line-height: .98; word-break: keep-all; }
+.contact-page-intro > p:last-child { margin: 2rem 0 0; font-size: clamp(1rem, 1.3vw, 1.2rem); }
+.contact-actions { border-top: var(--hairline); }
+.contact-action { min-height: clamp(9rem, 18vh, 12rem); display: grid; grid-template-columns: minmax(5rem, .28fr) 1fr; grid-template-rows: 1fr auto; gap: .5rem 2rem; align-items: center; padding: 1.5rem 0; border-bottom: var(--hairline); cursor: pointer; }
+.contact-action:hover { background: var(--moss); color: var(--cream); }
+.contact-action > span { align-self: start; padding-top: .25rem; font-size: .64rem; font-weight: 650; letter-spacing: .16em; text-transform: uppercase; }
+.contact-action > strong { font-size: clamp(1.5rem, 2.8vw, 3.2rem); font-weight: 270; letter-spacing: -.04em; line-height: 1.12; overflow-wrap: anywhere; }
+.contact-action > small { grid-column: 2; align-self: end; font-size: .7rem; letter-spacing: .06em; }
+
 .reveal { opacity: 0; transform: translateY(1.6rem); transition: opacity .8s cubic-bezier(.22,.61,.36,1), transform .8s cubic-bezier(.22,.61,.36,1); }
 .reveal.is-visible { opacity: 1; transform: none; }
 
@@ -230,6 +244,7 @@ p { max-width: 40ch; text-wrap: pretty; }
   .principles dt { margin: 0; }
   .product-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
+  .contact-page-hero { grid-template-columns: 1fr; gap: max(10vh, 5rem); min-height: auto; padding-top: 9rem; padding-bottom: var(--section-space); }
 }
 
 @media (max-width: 520px) {
@@ -243,7 +258,13 @@ p { max-width: 40ch; text-wrap: pretty; }
   .journal-card time { grid-column: 1 / -1; }
   .site-footer { grid-template-columns: 1fr; }
   .site-footer nav { flex-wrap: wrap; }
+  .footer-contact { justify-items: start; }
   .copyright { grid-column: auto; }
+  .contact-page-intro h1 { font-size: clamp(3.5rem, 16vw, 5.2rem); }
+  .contact-action { min-height: 9rem; grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; gap: .65rem; }
+  .contact-action > span { padding-top: 0; }
+  .contact-action > strong { font-size: clamp(1.45rem, 7vw, 2.2rem); }
+  .contact-action > small { grid-column: 1; }
   .about-header .menu-button span:not(.sr-only) { background: var(--ink); }
   .about-header .site-nav { color: var(--cream); }
   .about-hero { grid-template-columns: 1fr; gap: 3.5rem; min-height: auto; padding-top: 9rem; padding-bottom: var(--section-space); }

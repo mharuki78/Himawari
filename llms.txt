@@ -12,6 +12,7 @@
 - [내 소개](https://himawari-three.vercel.app/about.html): Himawari를 시작한 이유와 약속
 - [제품](https://himawari-three.vercel.app/products.html): 제품 목록과 구매 링크
 - [이야기](https://himawari-three.vercel.app/story/): 백팩을 고르고 오래 쓰는 방법
+- [연락하기](https://himawari-three.vercel.app/contact.html): 이메일, Instagram과 스마트스토어 연락 채널
 
 ## 이야기(블로그)
 
