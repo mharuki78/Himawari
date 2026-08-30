@@ -103,10 +103,19 @@
         </div>
       </section>
 
-      <section class="feature section" aria-labelledby="feature-title">
-        <img class="feature-image--portrait" src="assets/campaign-0422-pink.webp" alt="핑크와 민트색 Himawari 백팩을 멘 학생" width="900" height="1115" loading="lazy">
-        <div class="feature-scrim" aria-hidden="true"></div>
-        <div class="feature-copy reveal"><p class="kicker">Daylight 01</p><h2 id="feature-title" class="display-title">매일 메어도<br>질리지 않는 것.</h2><p>필요한 것은 빠르게 꺼내고,<br>무게는 몸 가까이에 둡니다.</p><a href="#contact">제품 문의하기 <span aria-hidden="true">→</span></a></div>
+      <section class="feature section" id="campaign-film" aria-labelledby="feature-title">
+        <div class="feature-film">
+          <video class="feature-film__video" autoplay muted loop playsinline preload="metadata" poster="assets/campaign-film-poster.jpg" aria-label="Himawari 백팩을 일상에서 사용하는 모습">
+            <source src="assets/campaign-film.mp4" type="video/mp4">
+          </video>
+          <button class="feature-film__toggle" type="button" data-film-toggle aria-pressed="false" onclick="window.himawariToggleFilm?.()">영상 일시정지</button>
+        </div>
+        <div class="feature-copy reveal">
+          <p class="kicker">Himawari in motion</p>
+          <h2 id="feature-title" class="display-title">매일 메어도<br>질리지 않는 것.</h2>
+          <p>필요한 것은 빠르게 꺼내고,<br>무게는 몸 가까이에 둡니다.</p>
+          <a href="https://www.instagram.com/himawari.korea/" target="_blank" rel="noopener noreferrer" aria-label="Himawari 인스타그램 보기 — 새 탭에서 열림">Instagram · @himawari.korea <span aria-hidden="true">↗</span></a>
+        </div>
       </section>
 
       <section class="journal section" id="stories" aria-labelledby="stories-title">

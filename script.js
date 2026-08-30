@@ -46,6 +46,38 @@ function setupReveals(root = document) {
 window.himawariReveal = setupReveals;
 setupReveals();
 
+const featureFilm = document.querySelector('.feature-film__video');
+const featureFilmToggle = document.querySelector('[data-film-toggle]');
+
+if (featureFilm && featureFilmToggle) {
+  function updateFilmControl() {
+    const isPaused = featureFilm.paused;
+    featureFilmToggle.textContent = isPaused ? '영상 재생' : '영상 일시정지';
+    featureFilmToggle.setAttribute('aria-pressed', String(isPaused));
+  }
+
+  function respectMotionPreference(event = reducedMotion) {
+    if (event.matches) {
+      featureFilm.pause();
+      featureFilm.removeAttribute('autoplay');
+      updateFilmControl();
+      return;
+    }
+
+    featureFilm.setAttribute('autoplay', '');
+    featureFilm.play().catch(updateFilmControl);
+  }
+
+  window.himawariToggleFilm = () => {
+    if (featureFilm.paused) featureFilm.play().catch(updateFilmControl);
+    else featureFilm.pause();
+  };
+  featureFilm.addEventListener('play', updateFilmControl);
+  featureFilm.addEventListener('pause', updateFilmControl);
+  reducedMotion.addEventListener?.('change', respectMotionPreference);
+  respectMotionPreference();
+}
+
 const form = document.querySelector('.contact-form');
 if (form) {
   const status = form.querySelector('.form-status');
