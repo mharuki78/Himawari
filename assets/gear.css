@@ -60,9 +60,13 @@ html {
 .brand {
   grid-column: 1;
   align-self: center;
-  font-size: .82rem;
-  font-weight: 780;
-  letter-spacing: .28em;
+  width: clamp(8rem, 10vw, 10.25rem);
+  height: 3.6rem;
+  overflow: hidden;
+  background: transparent url("himawari-logo.png") center / 100% auto no-repeat;
+  color: transparent;
+  font-size: 0;
+  white-space: nowrap;
 }
 
 .site-nav {
@@ -183,9 +187,74 @@ html {
 .section-head { margin-bottom: max(7vh, 3.5rem); }
 .kicker { font-weight: 720; letter-spacing: .24em; }
 
-.intro { min-height: auto; }
+.intro,
+.journal,
+.founder-quote,
+.founder-promise {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.intro::before,
+.journal::before,
+.founder-quote::before,
+.founder-promise::before,
+.intro::after,
+.journal::after,
+.founder-quote::after,
+.founder-promise::after {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  content: "";
+}
+
+.intro::before {
+  background: url("campaign-1027.webp") 76% 42% / cover no-repeat;
+}
+
+.intro::after {
+  z-index: -1;
+  background: linear-gradient(90deg, var(--ink) 0 32%, color-mix(in srgb, var(--ink) 88%, transparent) 58%, color-mix(in srgb, var(--ink) 66%, transparent) 100%);
+}
+
+.journal::before {
+  background: url("himawari-collection-v2.webp") center / cover no-repeat;
+}
+
+.journal::after {
+  z-index: -1;
+  background: color-mix(in srgb, var(--ink) 84%, transparent);
+}
+
+.founder-quote::before {
+  background: url("campaign-0422-pink.webp") 78% 38% / cover no-repeat;
+}
+
+.founder-quote::after {
+  z-index: -1;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--ink) 92%, transparent) 0 46%, color-mix(in srgb, var(--ink) 68%, transparent) 100%);
+}
+
+.founder-promise::before {
+  background: url("campaign-1884-gray.webp") 62% center / cover no-repeat;
+}
+
+.founder-promise::after {
+  z-index: -1;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--ink) 92%, transparent) 0 44%, color-mix(in srgb, var(--ink) 58%, transparent) 100%);
+}
+
+.intro { min-height: min(100svh, 62rem); }
 .intro-grid { margin-top: max(8vh, 4rem); }
 .principles { margin-top: max(7vh, 3.5rem); }
+.intro .principles,
+.intro .principles > div { border-color: color-mix(in srgb, var(--cream) 42%, transparent); }
+.intro .body-copy,
+.intro .principles dd { color: color-mix(in srgb, var(--cream) 82%, transparent); }
 
 .collection { background: var(--cream); color: var(--ink); }
 .collection .featured-product-slot,
@@ -301,7 +370,10 @@ html {
 .journal-card a,
 .story-list-card > a { padding-right: 1rem; padding-left: 1rem; }
 
-.journal-card:hover,
+.journal .journal-list,
+.journal .journal-card { border-color: color-mix(in srgb, var(--cream) 42%, transparent); }
+.journal .journal-card:hover { background: color-mix(in srgb, var(--cream) 10%, transparent); }
+
 .story-list-card:hover,
 .story-post-nav a:hover { background: color-mix(in srgb, var(--ink) 7%, var(--cream)); }
 
@@ -318,7 +390,17 @@ html {
   color: var(--cream);
 }
 
-.footer-brand strong { font-size: 1.25rem; font-weight: 780; letter-spacing: .28em; }
+.footer-brand strong {
+  display: block;
+  width: min(13rem, 100%);
+  height: 5rem;
+  overflow: hidden;
+  background: transparent url("himawari-logo.png") center / 100% auto no-repeat;
+  color: transparent;
+  filter: brightness(0) invert(1);
+  font-size: 0;
+  white-space: nowrap;
+}
 .footer-brand p { max-width: 30ch; opacity: .68; }
 .site-footer nav { display: grid; grid-template-columns: repeat(2, auto); gap: .8rem 3rem; }
 .footer-contact { opacity: .78; }
@@ -340,7 +422,8 @@ html {
 .founder-portrait > img { filter: none; }
 .founder-quote { min-height: 82svh; }
 .founder-quote p { font-weight: 520; }
-.founder-promise { background: var(--ink); }
+.founder-quote blockquote,
+.founder-promise .section-inner { position: relative; z-index: 1; }
 .catalog-index { background: var(--ink); }
 .catalog-products { padding-top: max(9vh, 5rem); }
 .contact-page-hero { padding-top: max(10vh, 6rem); }
@@ -384,7 +467,13 @@ html {
     color: var(--ink);
   }
 
-  .brand { grid-column: 2; grid-row: 1; justify-self: center; }
+  .brand {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    width: 7.5rem;
+    height: 3.25rem;
+  }
 
   .header-store {
     grid-column: 3;
@@ -453,6 +542,13 @@ html {
   .trust-item:nth-child(2) { border-right: 0; }
   .trust-item:nth-child(-n+2) { border-bottom: 1px solid color-mix(in srgb, var(--cream) 24%, transparent); }
 
+  .intro::before { background-position: 64% 42%; }
+  .intro::after { background: color-mix(in srgb, var(--ink) 78%, transparent); }
+  .journal::after { background: color-mix(in srgb, var(--ink) 88%, transparent); }
+  .founder-quote::before { background-position: 66% 38%; }
+  .founder-quote::after,
+  .founder-promise::after { background: color-mix(in srgb, var(--ink) 74%, transparent); }
+
   .featured-product { grid-template-columns: 1fr; }
 
   .collection .section-head::after,
@@ -472,7 +568,7 @@ html {
 
 @media (max-width: 520px) {
   .announcement-bar { font-size: .58rem; letter-spacing: .11em; }
-  .brand { font-size: .68rem; }
+  .brand { width: 6.7rem; height: 3rem; }
   .display-title { font-size: clamp(3rem, 14vw, 4.5rem); }
 
   .product-grid {
@@ -510,4 +606,25 @@ html {
   .announcement-bar,
   .site-footer,
   .featured-product { forced-color-adjust: auto; }
+
+  .brand,
+  .footer-brand strong {
+    width: auto;
+    height: auto;
+    background: none;
+    color: CanvasText;
+    filter: none;
+    font-size: .82rem;
+    font-weight: 780;
+    letter-spacing: .18em;
+  }
+
+  .intro::before,
+  .journal::before,
+  .founder-quote::before,
+  .founder-promise::before,
+  .intro::after,
+  .journal::after,
+  .founder-quote::after,
+  .founder-promise::after { display: none; }
 }
