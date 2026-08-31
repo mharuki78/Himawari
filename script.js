@@ -78,6 +78,151 @@ if (featureFilm && featureFilmToggle) {
   respectMotionPreference();
 }
 
+const reelShowcase = document.querySelector('[data-reel-showcase]');
+
+if (reelShowcase) {
+  const reelRail = reelShowcase.querySelector('[data-reel-rail]');
+  const reelCards = [...reelShowcase.querySelectorAll('[data-reel-card]')];
+  const reelVideos = reelCards.map((card) => card.querySelector('[data-reel-video]'));
+  const previousReel = reelShowcase.querySelector('[data-reel-prev]');
+  const nextReel = reelShowcase.querySelector('[data-reel-next]');
+  const playReel = reelShowcase.querySelector('[data-reel-play]');
+  const soundReel = reelShowcase.querySelector('[data-reel-sound]');
+  const reelStatus = reelShowcase.querySelector('[data-reel-status]');
+  let activeReelIndex = 0;
+  let reelSectionVisible = false;
+  let reelSoundEnabled = false;
+  let reelUserPaused = false;
+  let reelScrollFrame = 0;
+
+  function updateReelControls() {
+    const activeVideo = reelVideos[activeReelIndex];
+    const isPaused = activeVideo.paused;
+    playReel.textContent = isPaused ? '영상 재생' : '영상 일시정지';
+    playReel.setAttribute('aria-pressed', String(!isPaused));
+    soundReel.textContent = reelSoundEnabled ? '소리 끄기' : '소리 켜기';
+    soundReel.setAttribute('aria-pressed', String(reelSoundEnabled));
+  }
+
+  function playActiveReel() {
+    reelVideos.forEach((video, index) => {
+      if (index !== activeReelIndex) video.pause();
+    });
+
+    const activeVideo = reelVideos[activeReelIndex];
+    activeVideo.muted = !reelSoundEnabled;
+    if (!reelSectionVisible || reelUserPaused || reducedMotion.matches || document.hidden) {
+      activeVideo.pause();
+      updateReelControls();
+      return;
+    }
+
+    activeVideo.play().catch(() => {
+      reelSoundEnabled = false;
+      activeVideo.muted = true;
+      activeVideo.play().catch(updateReelControls);
+    });
+    updateReelControls();
+  }
+
+  function setActiveReel(nextIndex) {
+    const boundedIndex = Math.max(0, Math.min(reelCards.length - 1, nextIndex));
+    if (boundedIndex === activeReelIndex) {
+      playActiveReel();
+      return;
+    }
+
+    activeReelIndex = boundedIndex;
+    reelUserPaused = false;
+    reelCards.forEach((card, index) => {
+      const isActive = index === activeReelIndex;
+      card.classList.toggle('is-active', isActive);
+      if (isActive) card.setAttribute('aria-current', 'true');
+      else card.removeAttribute('aria-current');
+    });
+    reelStatus.textContent = `${activeReelIndex + 1} / ${reelCards.length} · ${reelCards[activeReelIndex].dataset.reelName}`;
+    playActiveReel();
+  }
+
+  function findCenteredReel() {
+    const railCenter = reelRail.getBoundingClientRect().left + reelRail.clientWidth / 2;
+    return reelCards.reduce((closest, card, index) => {
+      const rect = card.getBoundingClientRect();
+      const distance = Math.abs(rect.left + rect.width / 2 - railCenter);
+      return distance < closest.distance ? { index, distance } : closest;
+    }, { index: 0, distance: Number.POSITIVE_INFINITY }).index;
+  }
+
+  function scrollToReel(index) {
+    const nextIndex = (index + reelCards.length) % reelCards.length;
+    reelCards[nextIndex].scrollIntoView({
+      behavior: reducedMotion.matches ? 'auto' : 'smooth',
+      block: 'nearest',
+      inline: 'center'
+    });
+    setActiveReel(nextIndex);
+  }
+
+  reelRail.addEventListener('scroll', () => {
+    if (reelScrollFrame) return;
+    reelScrollFrame = requestAnimationFrame(() => {
+      reelScrollFrame = 0;
+      setActiveReel(findCenteredReel());
+    });
+  }, { passive: true });
+
+  reelRail.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    scrollToReel(activeReelIndex + (event.key === 'ArrowRight' ? 1 : -1));
+  });
+
+  previousReel.addEventListener('click', () => scrollToReel(activeReelIndex - 1));
+  nextReel.addEventListener('click', () => scrollToReel(activeReelIndex + 1));
+
+  playReel.addEventListener('click', () => {
+    const activeVideo = reelVideos[activeReelIndex];
+    if (activeVideo.paused) {
+      reelUserPaused = false;
+      playActiveReel();
+    } else {
+      reelUserPaused = true;
+      activeVideo.pause();
+    }
+    updateReelControls();
+  });
+
+  soundReel.addEventListener('click', () => {
+    reelSoundEnabled = !reelSoundEnabled;
+    reelVideos[activeReelIndex].muted = !reelSoundEnabled;
+    playActiveReel();
+  });
+
+  reelVideos.forEach((video, index) => {
+    video.addEventListener('play', () => {
+      reelCards[index].classList.add('is-playing');
+      updateReelControls();
+    });
+    video.addEventListener('pause', () => {
+      reelCards[index].classList.remove('is-playing');
+      updateReelControls();
+    });
+  });
+
+  const reelVisibility = new IntersectionObserver((entries) => {
+    const entry = entries[0];
+    reelSectionVisible = entry.isIntersecting && entry.intersectionRatio >= 0.25;
+    if (reelSectionVisible) playActiveReel();
+    else reelVideos.forEach((video) => video.pause());
+    updateReelControls();
+  }, { threshold: [0, 0.25, 0.6] });
+
+  reducedMotion.addEventListener?.('change', playActiveReel);
+  document.addEventListener('visibilitychange', playActiveReel);
+  reelVisibility.observe(reelShowcase);
+  setActiveReel(0);
+}
+
 const form = document.querySelector('.contact-form');
 if (form) {
   const status = form.querySelector('.form-status');

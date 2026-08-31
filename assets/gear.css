@@ -60,8 +60,8 @@ html {
 .brand {
   grid-column: 1;
   align-self: center;
-  width: clamp(8rem, 10vw, 10.25rem);
-  height: 3.6rem;
+  width: clamp(4.8rem, 6vw, 6.15rem);
+  height: 2.2rem;
   overflow: hidden;
   background: transparent url("himawari-logo.png") center / 100% auto no-repeat;
   color: transparent;
@@ -374,6 +374,137 @@ html {
 .journal .journal-card { border-color: color-mix(in srgb, var(--cream) 42%, transparent); }
 .journal .journal-card:hover { background: color-mix(in srgb, var(--cream) 10%, transparent); }
 
+.reel-showcase {
+  --reel-card-width: clamp(17rem, 29vw, 28rem);
+  overflow: hidden;
+  padding-right: 0;
+  padding-left: 0;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.reel-showcase > .section-inner { padding-right: var(--page-pad); padding-left: var(--page-pad); }
+
+.reel-showcase__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(19rem, .85fr);
+  gap: clamp(2rem, 7vw, 8rem);
+  align-items: end;
+  padding-bottom: clamp(2rem, 5vh, 4rem);
+  border-bottom: 1px solid var(--ink);
+}
+
+.reel-showcase__guide {
+  display: grid;
+  gap: 1.5rem;
+  justify-items: start;
+}
+
+.reel-showcase__guide > p { max-width: 32ch; }
+
+.reel-showcase__controls {
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
+}
+
+.reel-showcase__controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  min-height: 44px;
+  padding: .72rem .9rem;
+  border: 0;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: .66rem;
+  font-weight: 720;
+  letter-spacing: .08em;
+  cursor: pointer;
+}
+
+.reel-showcase__controls button:hover,
+.reel-showcase__controls button[aria-pressed="true"] { background: var(--ink); color: var(--cream); }
+
+.reel-rail {
+  display: flex;
+  gap: clamp(.8rem, 1.8vw, 1.75rem);
+  margin-top: clamp(2rem, 6vh, 5rem);
+  padding: 0 calc((100% - var(--reel-card-width)) / 2) 1.5rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: calc((100% - var(--reel-card-width)) / 2);
+  scroll-snap-type: x mandatory;
+  scrollbar-gutter: stable;
+}
+
+.reel-card {
+  flex: 0 0 var(--reel-card-width);
+  scroll-snap-align: center;
+  border: 1px solid var(--ink);
+  background: var(--cream);
+  opacity: .38;
+  transition: opacity 320ms ease;
+}
+
+.reel-card.is-active { opacity: 1; }
+
+.reel-card__media {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.reel-card:nth-child(1) .reel-card__media { background: var(--ink) url("reel-1884-poster.jpg") center / cover no-repeat; }
+.reel-card:nth-child(2) .reel-card__media { background: var(--ink) url("reel-1027-poster.jpg") center / cover no-repeat; }
+.reel-card:nth-child(3) .reel-card__media { background: var(--ink) url("reel-school-set-poster.jpg") center / cover no-repeat; }
+
+.reel-card__media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reel-card__playing {
+  position: absolute;
+  top: .8rem;
+  left: .8rem;
+  padding: .45rem .55rem;
+  border: 1px solid var(--cream);
+  background: var(--ink);
+  color: var(--cream);
+  font-size: .58rem;
+  font-weight: 720;
+  letter-spacing: .14em;
+  opacity: 0;
+  text-transform: uppercase;
+}
+
+.reel-card.is-playing .reel-card__playing { opacity: 1; }
+
+.reel-card__caption {
+  min-height: 8.5rem;
+  padding: 1.15rem;
+  border-top: 1px solid var(--ink);
+}
+
+.reel-card__caption p {
+  margin-bottom: .75rem;
+  font-size: .62rem;
+  font-weight: 720;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.reel-card__caption h3 { max-width: 17ch; font-size: clamp(1.35rem, 2.2vw, 2rem); line-height: 1.18; }
+
 .story-list-card:hover,
 .story-post-nav a:hover { background: color-mix(in srgb, var(--ink) 7%, var(--cream)); }
 
@@ -392,8 +523,8 @@ html {
 
 .footer-brand strong {
   display: block;
-  width: min(13rem, 100%);
-  height: 5rem;
+  width: min(7.8rem, 100%);
+  height: 3rem;
   overflow: hidden;
   background: transparent url("himawari-logo.png") center / 100% auto no-repeat;
   color: transparent;
@@ -471,8 +602,8 @@ html {
     grid-column: 2;
     grid-row: 1;
     justify-self: center;
-    width: 7.5rem;
-    height: 3.25rem;
+    width: 4.5rem;
+    height: 2rem;
   }
 
   .header-store {
@@ -562,14 +693,20 @@ html {
   .feature-film__video { min-height: 62svh; }
   .feature-copy { grid-column: 1; grid-row: 2; min-height: 60svh; }
 
+  .reel-showcase__head { grid-template-columns: 1fr; align-items: start; }
+
   .site-footer { grid-template-columns: 1fr 1fr; }
   .footer-contact { grid-column: 1 / -1; justify-items: start; }
 }
 
 @media (max-width: 520px) {
   .announcement-bar { font-size: .58rem; letter-spacing: .11em; }
-  .brand { width: 6.7rem; height: 3rem; }
+  .brand { width: 4rem; height: 1.8rem; }
   .display-title { font-size: clamp(3rem, 14vw, 4.5rem); }
+
+  .reel-showcase { --reel-card-width: min(78vw, 22rem); }
+  .reel-showcase__controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+  .reel-showcase__controls button { justify-content: center; }
 
   .product-grid {
     grid-auto-flow: column;
@@ -596,6 +733,11 @@ html {
 
 @media (prefers-reduced-motion: reduce) {
   .product-grid { scroll-snap-type: none; }
+  .reel-rail { scroll-snap-type: none; }
+  .reel-card { transition: none; }
+  .reel-card__media video { visibility: hidden; }
+  [data-reel-play],
+  [data-reel-sound] { display: none; }
   .feature-film__video,
   .feature-film__toggle { display: none; }
   .feature-film { min-height: min(82svh, 54rem); }
