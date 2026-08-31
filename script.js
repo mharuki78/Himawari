@@ -89,7 +89,8 @@ if (reelShowcase) {
   const playReel = reelShowcase.querySelector('[data-reel-play]');
   const soundReel = reelShowcase.querySelector('[data-reel-sound]');
   const reelStatus = reelShowcase.querySelector('[data-reel-status]');
-  let activeReelIndex = 0;
+  const initialReelIndex = Math.max(0, reelCards.findIndex((card) => card.hasAttribute('data-reel-initial')));
+  let activeReelIndex = initialReelIndex;
   let reelSectionVisible = false;
   let reelSoundEnabled = false;
   let reelUserPaused = false;
@@ -163,6 +164,11 @@ if (reelShowcase) {
     setActiveReel(nextIndex);
   }
 
+  function centerReelImmediately(index) {
+    const card = reelCards[index];
+    reelRail.scrollLeft = card.offsetLeft - (reelRail.clientWidth - card.offsetWidth) / 2;
+  }
+
   reelRail.addEventListener('scroll', () => {
     if (reelScrollFrame) return;
     reelScrollFrame = requestAnimationFrame(() => {
@@ -179,6 +185,7 @@ if (reelShowcase) {
 
   previousReel.addEventListener('click', () => scrollToReel(activeReelIndex - 1));
   nextReel.addEventListener('click', () => scrollToReel(activeReelIndex + 1));
+  window.himawariSelectReel = scrollToReel;
 
   playReel.addEventListener('click', () => {
     const activeVideo = reelVideos[activeReelIndex];
@@ -220,7 +227,10 @@ if (reelShowcase) {
   reducedMotion.addEventListener?.('change', playActiveReel);
   document.addEventListener('visibilitychange', playActiveReel);
   reelVisibility.observe(reelShowcase);
-  setActiveReel(0);
+  requestAnimationFrame(() => {
+    centerReelImmediately(initialReelIndex);
+    setActiveReel(initialReelIndex);
+  });
 }
 
 const form = document.querySelector('.contact-form');

@@ -41,7 +41,7 @@ function createProductMedia(product, className) {
   return media;
 }
 
-function createBuyLink(product, className = 'buy-link') {
+function createCartButton(product, className = 'buy-link') {
   const link = document.createElement('button');
   link.type = 'button';
   link.className = className;
@@ -56,6 +56,22 @@ function createBuyLink(product, className = 'buy-link') {
   const arrow = document.createElement('span');
   arrow.setAttribute('aria-hidden', 'true');
   arrow.textContent = '+';
+  link.append(' ', arrow);
+  return link;
+}
+
+function createDirectBuyLink(product, className = 'direct-buy-link') {
+  const link = document.createElement('a');
+  link.className = className;
+  link.href = safeHttpsUrl(product.url) || 'https://smartstore.naver.com/baegot';
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.textContent = '바로 구매하기';
+  link.setAttribute('aria-label', `${product.name} 네이버 스마트스토어에서 바로 구매하기 — 새 탭에서 열림`);
+
+  const arrow = document.createElement('span');
+  arrow.setAttribute('aria-hidden', 'true');
+  arrow.textContent = '↗';
   link.append(' ', arrow);
   return link;
 }
@@ -87,9 +103,11 @@ function createProductCard(product) {
   const price = document.createElement('strong');
   price.textContent = priceFormatter.format(product.price);
 
-  const link = createBuyLink(product);
+  const actions = document.createElement('div');
+  actions.className = 'store-product-actions';
+  actions.append(createCartButton(product), createDirectBuyLink(product));
 
-  footer.append(price, link);
+  footer.append(price, actions);
   body.append(label, name, tagline, footer);
   article.append(media, body);
   return article;
@@ -126,7 +144,13 @@ function createFeaturedProduct(product) {
   footer.className = 'featured-product-footer';
   const price = document.createElement('strong');
   price.textContent = priceFormatter.format(product.price);
-  footer.append(price, createBuyLink(product, 'buy-link featured-buy-link'));
+  const actions = document.createElement('div');
+  actions.className = 'featured-product-actions';
+  actions.append(
+    createCartButton(product, 'buy-link featured-buy-link'),
+    createDirectBuyLink(product, 'direct-buy-link featured-direct-buy-link')
+  );
+  footer.append(price, actions);
 
   content.append(label, name, tagline, highlights, footer);
   article.append(media, content);
