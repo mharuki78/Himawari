@@ -251,22 +251,32 @@ export function updateProductRecord(product, value, media) {
   });
 }
 
-async function verifyManagedImage(requestId, url, maximumSize, kind = '') {
+export function classifyProductImagePath(pathname, requestId) {
   const prefix = `product-media/${requestId}/`;
+  const relativePath = typeof pathname === 'string' && pathname.startsWith(prefix)
+    ? pathname.slice(prefix.length)
+    : '';
+  if (/^main(?:[-.])/.test(relativePath)) return 'main';
+  if (/^gallery-\d+(?:[-.])/.test(relativePath)) return 'gallery';
+  if (/^image-\d+(?:[-.])/.test(relativePath)) return 'legacy';
+  return '';
+}
+
+async function verifyManagedImage(requestId, url, maximumSize, kind = '') {
   let metadata;
   try {
     metadata = await head(url, { token: productToken() });
   } catch {
     throw Object.assign(new Error('업로드된 이미지를 확인할 수 없습니다. 이미지를 다시 선택해 주세요.'), { status: 400 });
   }
-  const relativePath = metadata.pathname.startsWith(prefix) ? metadata.pathname.slice(prefix.length) : '';
-  const mainRoleMatches = /^main(?:[-.])/.test(relativePath);
-  const galleryRoleMatches = /^gallery-\d+(?:[-.])/.test(relativePath);
+  const pathRole = classifyProductImagePath(metadata.pathname, requestId);
+  // Tabs opened before the role-specific upload release used image-N filenames.
+  // The request UUID still proves ownership; the role-specific size check below remains authoritative.
   const roleMatches = kind === 'main'
-    ? mainRoleMatches
+    ? pathRole === 'main' || pathRole === 'legacy'
     : kind === 'gallery'
-      ? galleryRoleMatches
-      : mainRoleMatches || galleryRoleMatches;
+      ? pathRole === 'gallery' || pathRole === 'legacy'
+      : Boolean(pathRole);
   if (!roleMatches || !IMAGE_TYPES.has(metadata.contentType) || metadata.size > maximumSize) {
     throw Object.assign(new Error('허용되지 않은 이미지가 포함되어 있습니다.'), { status: 400 });
   }

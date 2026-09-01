@@ -7,6 +7,7 @@ import {
   MAX_GALLERY_IMAGE_SIZE,
   MAX_MAIN_IMAGE_SIZE,
   REQUEST_ID_PATTERN,
+  classifyProductImagePath,
   productStoreIsConfigured,
 } from '../_lib/products.js';
 
@@ -37,9 +38,9 @@ export async function fetch(request) {
         }
         const requestId = typeof payload.requestId === 'string' ? payload.requestId : '';
         const kind = payload.kind === 'main' || payload.kind === 'gallery' ? payload.kind : '';
-        const prefix = `product-media/${requestId}/`;
-        const rolePath = kind === 'main' ? `${prefix}main.` : `${prefix}gallery-`;
-        if (!REQUEST_ID_PATTERN.test(requestId) || !kind || !pathname.startsWith(rolePath)) {
+        const pathRole = classifyProductImagePath(pathname, requestId);
+        const roleMatches = kind ? pathRole === kind : pathRole === 'legacy';
+        if (!REQUEST_ID_PATTERN.test(requestId) || !roleMatches) {
           throw new Error('업로드 경로를 확인할 수 없습니다.');
         }
         return {
@@ -56,6 +57,13 @@ export async function fetch(request) {
     });
     return json(result);
   } catch (error) {
-    return json({ message: error.message || '이미지를 업로드하지 못했습니다.' }, Number(error.status) || 400);
+    const status = Number(error.status) || 400;
+    const message = error.message || '이미지를 업로드하지 못했습니다.';
+    console[status >= 500 ? 'error' : 'warn']('product_upload_rejected', {
+      status,
+      message,
+      requestType: request.method,
+    });
+    return json({ message }, status);
   }
 }

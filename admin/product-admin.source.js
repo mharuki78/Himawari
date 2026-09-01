@@ -168,10 +168,10 @@ function beginEdit(product, trigger) {
   field('url').value = product.url;
   renderFilePreviews();
   dirty = false;
-  formStatus.textContent = `“${product.name}” 제품 정보를 수정하고 있습니다.`;
+  formStatus.textContent = `“${product.name}” 제품을 편집하고 있습니다. 변경 후 ‘변경사항 저장’을 눌러 주세요.`;
   formStatus.classList.remove('is-error');
   trigger.disabled = true;
-  trigger.textContent = '수정 중';
+  trigger.textContent = '선택됨';
   const editingRow = trigger.closest('tr');
   editingRow?.classList.add('is-editing');
   rows.querySelectorAll('[data-delete-product-id]').forEach((button) => { button.disabled = true; });
@@ -232,6 +232,7 @@ function clearFormErrors() {
 function markFormError(message) {
   formSummary.textContent = message;
   formSummary.hidden = false;
+  formStatus.textContent = message;
   formSummary.focus();
   formStatus.classList.add('is-error');
 }
@@ -459,7 +460,7 @@ function renderRows() {
     if (editTarget?.id === product.id) {
       row.classList.add('is-editing');
       edit.disabled = true;
-      edit.textContent = '수정 중';
+      edit.textContent = '선택됨';
       editTrigger = edit;
     }
     editCell.append(edit);
@@ -746,7 +747,11 @@ productForm.addEventListener('submit', async (event) => {
       markFormError(error.message || '이미지를 업로드하지 못했습니다. 파일을 확인한 뒤 다시 시도해 주세요.');
     } else if (!handleSessionError(error)) {
       Object.entries(error.fieldErrors || {}).forEach(([name, message]) => setFieldError(name, message));
-      markFormError(error.message || `${editingProduct ? '제품을 수정' : '제품을 등록'}하지 못했습니다. 입력 내용은 유지됩니다.`);
+      const failure = error.message || `${editingProduct ? '제품을 수정' : '제품을 등록'}하지 못했습니다.`;
+      const recovery = editingProduct
+        ? '입력 내용과 선택한 파일은 유지했습니다. 오류를 확인한 뒤 ‘변경사항 저장’을 다시 눌러 주세요.'
+        : '입력 내용과 선택한 파일은 유지했습니다. 오류를 확인한 뒤 ‘제품 등록’을 다시 눌러 주세요.';
+      markFormError(`${failure} ${recovery}`);
       const firstServerField = Object.keys(error.fieldErrors || {})[0];
       if (firstServerField && field(firstServerField)) field(firstServerField).focus();
     }

@@ -4,6 +4,7 @@ import test from 'node:test';
 import {
   MAX_GALLERY_IMAGE_SIZE,
   MAX_MAIN_IMAGE_SIZE,
+  classifyProductImagePath,
   createProductRecord,
   mergeProductMedia,
   publicProduct,
@@ -48,6 +49,15 @@ test('기존 제품 34개에 안정적인 공개 ID를 부여한다', () => {
 test('대표 이미지와 상세 이미지의 역할별 업로드 용량을 구분한다', () => {
   assert.equal(MAX_MAIN_IMAGE_SIZE, 8 * 1024 * 1024);
   assert.equal(MAX_GALLERY_IMAGE_SIZE, 15 * 1024 * 1024);
+});
+
+test('현재 및 이전 관리자 탭의 제품 이미지 경로를 역할별로 구분한다', () => {
+  assert.equal(classifyProductImagePath(`product-media/${requestId}/main.webp`, requestId), 'main');
+  assert.equal(classifyProductImagePath(`product-media/${requestId}/main-random.webp`, requestId), 'main');
+  assert.equal(classifyProductImagePath(`product-media/${requestId}/gallery-1-random.jpg`, requestId), 'gallery');
+  assert.equal(classifyProductImagePath(`product-media/${requestId}/image-2-random.jpg`, requestId), 'legacy');
+  assert.equal(classifyProductImagePath(`product-media/other/image-1.jpg`, requestId), '');
+  assert.equal(classifyProductImagePath(`product-media/${requestId}/arbitrary.jpg`, requestId), '');
 });
 
 test('공개할 제품 이미지와 관계없는 관리 이미지 URL을 함께 제출하면 거부한다', () => {

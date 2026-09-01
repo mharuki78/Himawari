@@ -6692,10 +6692,10 @@ function beginEdit(product, trigger) {
   field("url").value = product.url;
   renderFilePreviews();
   dirty = false;
-  formStatus.textContent = `\u201C${product.name}\u201D \uC81C\uD488 \uC815\uBCF4\uB97C \uC218\uC815\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.`;
+  formStatus.textContent = `\u201C${product.name}\u201D \uC81C\uD488\uC744 \uD3B8\uC9D1\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4. \uBCC0\uACBD \uD6C4 \u2018\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5\u2019\uC744 \uB20C\uB7EC \uC8FC\uC138\uC694.`;
   formStatus.classList.remove("is-error");
   trigger.disabled = true;
-  trigger.textContent = "\uC218\uC815 \uC911";
+  trigger.textContent = "\uC120\uD0DD\uB428";
   const editingRow = trigger.closest("tr");
   editingRow?.classList.add("is-editing");
   rows.querySelectorAll("[data-delete-product-id]").forEach((button) => {
@@ -6750,6 +6750,7 @@ function clearFormErrors() {
 function markFormError(message2) {
   formSummary.textContent = message2;
   formSummary.hidden = false;
+  formStatus.textContent = message2;
   formSummary.focus();
   formStatus.classList.add("is-error");
 }
@@ -6953,7 +6954,7 @@ function renderRows() {
     if (editTarget?.id === product.id) {
       row.classList.add("is-editing");
       edit.disabled = true;
-      edit.textContent = "\uC218\uC815 \uC911";
+      edit.textContent = "\uC120\uD0DD\uB428";
       editTrigger = edit;
     }
     editCell.append(edit);
@@ -7219,7 +7220,9 @@ productForm.addEventListener("submit", async (event) => {
       markFormError(error.message || "\uC774\uBBF8\uC9C0\uB97C \uC5C5\uB85C\uB4DC\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. \uD30C\uC77C\uC744 \uD655\uC778\uD55C \uB4A4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574 \uC8FC\uC138\uC694.");
     } else if (!handleSessionError(error)) {
       Object.entries(error.fieldErrors || {}).forEach(([name, message2]) => setFieldError(name, message2));
-      markFormError(error.message || `${editingProduct ? "\uC81C\uD488\uC744 \uC218\uC815" : "\uC81C\uD488\uC744 \uB4F1\uB85D"}\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. \uC785\uB825 \uB0B4\uC6A9\uC740 \uC720\uC9C0\uB429\uB2C8\uB2E4.`);
+      const failure = error.message || `${editingProduct ? "\uC81C\uD488\uC744 \uC218\uC815" : "\uC81C\uD488\uC744 \uB4F1\uB85D"}\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.`;
+      const recovery = editingProduct ? "\uC785\uB825 \uB0B4\uC6A9\uACFC \uC120\uD0DD\uD55C \uD30C\uC77C\uC740 \uC720\uC9C0\uD588\uC2B5\uB2C8\uB2E4. \uC624\uB958\uB97C \uD655\uC778\uD55C \uB4A4 \u2018\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5\u2019\uC744 \uB2E4\uC2DC \uB20C\uB7EC \uC8FC\uC138\uC694." : "\uC785\uB825 \uB0B4\uC6A9\uACFC \uC120\uD0DD\uD55C \uD30C\uC77C\uC740 \uC720\uC9C0\uD588\uC2B5\uB2C8\uB2E4. \uC624\uB958\uB97C \uD655\uC778\uD55C \uB4A4 \u2018\uC81C\uD488 \uB4F1\uB85D\u2019\uC744 \uB2E4\uC2DC \uB20C\uB7EC \uC8FC\uC138\uC694.";
+      markFormError(`${failure} ${recovery}`);
       const firstServerField = Object.keys(error.fieldErrors || {})[0];
       if (firstServerField && field(firstServerField)) field(firstServerField).focus();
     }

@@ -111,6 +111,11 @@ export async function fetch(request) {
       return json({ message: '다른 관리자 작업으로 제품 목록이 변경되었습니다. 새로고침한 뒤 다시 시도해 주세요.' }, 409, { Vary: 'Cookie' });
     }
     const status = Number(error.status) || 500;
+    console[status >= 500 ? 'error' : 'warn']('product_catalog_mutation_failed', {
+      method: request.method,
+      status,
+      message: error.message || 'unknown error',
+    });
     return json({ message: status < 500 ? error.message : '제품 관리 작업을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요.' }, status, { Vary: 'Cookie' });
   }
 }
