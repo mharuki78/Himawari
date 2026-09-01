@@ -3,7 +3,7 @@ import { isSameOrigin, json, methodNotAllowed, readJson } from '../_lib/http.js'
 import {
   deleteManagedImages,
   productStoreIsConfigured,
-  verifyManagedImages,
+  verifyManagedImageOwnership,
 } from '../_lib/products.js';
 
 export async function fetch(request) {
@@ -14,7 +14,7 @@ export async function fetch(request) {
 
   try {
     const input = await readJson(request, 16_384);
-    const urls = await verifyManagedImages(input.requestId, Array.isArray(input.urls) ? input.urls : []);
+    const urls = await verifyManagedImageOwnership(input.requestId, Array.isArray(input.urls) ? input.urls : []);
     const removed = await deleteManagedImages(urls);
     if (!removed) return json({ message: '임시 이미지를 정리하지 못했습니다. 잠시 후 다시 시도해 주세요.' }, 503);
     return json({ ok: true });

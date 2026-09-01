@@ -11,7 +11,8 @@ import seedPayload from '../../products.json' with { type: 'json' };
 const CATALOG_PATH = 'products/v1/catalog.json';
 const REQUEST_ID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const IMAGE_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/avif']);
-const MAX_IMAGE_SIZE = 8 * 1024 * 1024;
+const MAX_MAIN_IMAGE_SIZE = 8 * 1024 * 1024;
+const MAX_GALLERY_IMAGE_SIZE = 15 * 1024 * 1024;
 const MAX_GALLERY_IMAGES = 5;
 
 function productToken() {
@@ -142,7 +143,12 @@ export function validateProductInput(input) {
   if (!value.image) fieldErrors.mainImage = '대표 이미지를 선택해 주세요.';
   if (value.gallery.length > MAX_GALLERY_IMAGES) fieldErrors.gallery = `상세 이미지는 최대 ${MAX_GALLERY_IMAGES}개까지 등록할 수 있습니다.`;
   const allImages = [value.image, ...value.gallery];
-  if (new Set(value.managedImages).size !== value.managedImages.length || allImages.some((url) => !value.managedImages.includes(url))) {
+  if (
+    new Set(value.managedImages).size !== value.managedImages.length
+    || new Set(allImages).size !== allImages.length
+    || allImages.length !== value.managedImages.length
+    || allImages.some((url) => !value.managedImages.includes(url))
+  ) {
     fieldErrors.mainImage = '이 관리자 화면에서 업로드한 이미지만 새 제품에 사용할 수 있습니다.';
   }
 
@@ -189,6 +195,7 @@ export function validateProductUpdateInput(input, currentProduct = null) {
   if (replacementImages.length && !REQUEST_ID_PATTERN.test(value.requestId)) fieldErrors.form = '이미지 교체 요청을 새로 시작해 주세요.';
   if (
     new Set(value.managedImages).size !== value.managedImages.length
+    || new Set(replacementImages).size !== replacementImages.length
     || replacementImages.some((url) => !value.managedImages.includes(url))
     || value.managedImages.some((url) => !replacementImages.includes(url))
   ) {
@@ -244,24 +251,64 @@ export function updateProductRecord(product, value, media) {
   });
 }
 
-export async function verifyManagedImages(requestId, urls) {
-  if (!REQUEST_ID_PATTERN.test(requestId) || !urls.length || urls.length > MAX_GALLERY_IMAGES + 1) {
+async function verifyManagedImage(requestId, url, maximumSize, kind = '') {
+  const prefix = `product-media/${requestId}/`;
+  let metadata;
+  try {
+    metadata = await head(url, { token: productToken() });
+  } catch {
+    throw Object.assign(new Error('업로드된 이미지를 확인할 수 없습니다. 이미지를 다시 선택해 주세요.'), { status: 400 });
+  }
+  const relativePath = metadata.pathname.startsWith(prefix) ? metadata.pathname.slice(prefix.length) : '';
+  const mainRoleMatches = /^main(?:[-.])/.test(relativePath);
+  const galleryRoleMatches = /^gallery-\d+(?:[-.])/.test(relativePath);
+  const roleMatches = kind === 'main'
+    ? mainRoleMatches
+    : kind === 'gallery'
+      ? galleryRoleMatches
+      : mainRoleMatches || galleryRoleMatches;
+  if (!roleMatches || !IMAGE_TYPES.has(metadata.contentType) || metadata.size > maximumSize) {
+    throw Object.assign(new Error('허용되지 않은 이미지가 포함되어 있습니다.'), { status: 400 });
+  }
+  return metadata.url;
+}
+
+export async function verifyManagedImages(requestId, { mainImage = '', gallery = [] } = {}) {
+  const normalizedMainImage = httpsUrl(mainImage);
+  const normalizedGallery = (Array.isArray(gallery) ? gallery : []).map(httpsUrl).filter(Boolean);
+  const urls = [...(normalizedMainImage ? [normalizedMainImage] : []), ...normalizedGallery];
+  if (
+    !REQUEST_ID_PATTERN.test(requestId)
+    || !urls.length
+    || normalizedGallery.length > MAX_GALLERY_IMAGES
+    || new Set(urls).size !== urls.length
+  ) {
     throw Object.assign(new Error('업로드 이미지를 확인할 수 없습니다.'), { status: 400 });
   }
-  const prefix = `product-media/${requestId}/`;
-  const verified = [];
 
-  for (const url of urls) {
-    let metadata;
-    try {
-      metadata = await head(url, { token: productToken() });
-    } catch {
-      throw Object.assign(new Error('업로드된 이미지를 확인할 수 없습니다. 이미지를 다시 선택해 주세요.'), { status: 400 });
-    }
-    if (!metadata.pathname.startsWith(prefix) || !IMAGE_TYPES.has(metadata.contentType) || metadata.size > MAX_IMAGE_SIZE) {
-      throw Object.assign(new Error('허용되지 않은 이미지가 포함되어 있습니다.'), { status: 400 });
-    }
-    verified.push(metadata.url);
+  const verifiedMainImage = normalizedMainImage
+    ? await verifyManagedImage(requestId, normalizedMainImage, MAX_MAIN_IMAGE_SIZE, 'main')
+    : '';
+  const verifiedGallery = [];
+  for (const url of normalizedGallery) {
+    verifiedGallery.push(await verifyManagedImage(requestId, url, MAX_GALLERY_IMAGE_SIZE, 'gallery'));
+  }
+  return { mainImage: verifiedMainImage, gallery: verifiedGallery };
+}
+
+export async function verifyManagedImageOwnership(requestId, urls) {
+  const normalizedUrls = (Array.isArray(urls) ? urls : []).map(httpsUrl).filter(Boolean);
+  if (
+    !REQUEST_ID_PATTERN.test(requestId)
+    || !normalizedUrls.length
+    || normalizedUrls.length > MAX_GALLERY_IMAGES + 1
+    || new Set(normalizedUrls).size !== normalizedUrls.length
+  ) {
+    throw Object.assign(new Error('업로드 이미지를 확인할 수 없습니다.'), { status: 400 });
+  }
+  const verified = [];
+  for (const url of normalizedUrls) {
+    verified.push(await verifyManagedImage(requestId, url, MAX_GALLERY_IMAGE_SIZE));
   }
   return verified;
 }
@@ -343,4 +390,11 @@ export async function deleteManagedImages(urls) {
   }
 }
 
-export { BlobPreconditionFailedError, IMAGE_TYPES, MAX_GALLERY_IMAGES, MAX_IMAGE_SIZE, REQUEST_ID_PATTERN };
+export {
+  BlobPreconditionFailedError,
+  IMAGE_TYPES,
+  MAX_GALLERY_IMAGES,
+  MAX_GALLERY_IMAGE_SIZE,
+  MAX_MAIN_IMAGE_SIZE,
+  REQUEST_ID_PATTERN,
+};

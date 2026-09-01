@@ -20,7 +20,7 @@
 | Legal / regulatory copy | 공개 폼의 운영 안내만 확정됨; 별도 법률 검토 자료 없음 | Release risk | 2026-08-31 |
 | Market / content conventions | `DESIGN.md` | Design/content guide | 2026-08-31 |
 | Product permission / lifecycle | `docs/PRODUCT-CATALOG-POLICY.md` | User-approved product policy | 2026-08-31 |
-| Product media limits / storage | `docs/PRODUCT-CATALOG-POLICY.md` | Maintained product policy | 2026-08-31 |
+| Product media limits / storage | `docs/PRODUCT-CATALOG-POLICY.md` | Maintained product policy | 2026-09-01 |
 
 ## Visual contract
 
@@ -75,7 +75,7 @@
 | Logout | `로그아웃` | button locked | login view | inline confirmation | board remains with error | password input | `docs/INQUIRY-POLICY.md` |
 | Create product | `제품 등록` | fields retained, files upload with progress, duplicate blocked | same admin route with refreshed owning list | persistent list acknowledgement | uploaded result and values retained when safe; retry without duplicate | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Edit product | `수정` then `변경사항 저장` | current values retained, selected replacement files upload with progress, duplicate blocked | same admin route with refreshed owning list | persistent list acknowledgement | form stays open; ETag conflict asks for refresh without overwriting | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
-| Read product detail | product image/name/`상세 보기` | reserved product loader | `product.html?id=...` | complete product content | app-owned not-found state and products link | product title | `docs/PRODUCT-CATALOG-POLICY.md` |
+| Read product detail | product image/name/`상세 보기` | reserved product loader | `product.html?id=...` | product content followed by an original-ratio continuous detail-image rail | app-owned not-found state and products link | product title | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Hard-delete product | `삭제` then `제품 삭제` | dialog stays open, duplicate blocked | refreshed product list | persistent deletion acknowledgement | dialog remains; conflict asks for refresh | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
 
 ## Navigation and responsive behavior
@@ -105,7 +105,7 @@
 - Session expiry: 8-hour HttpOnly, SameSite=Strict signed session; 401 returns to login without exposing data.
 - Stale request handling: admin list uses `AbortController`; duplicate loads and mutations are blocked.
 - Delete failure: confirmation dialog remains open with retry and cancel.
-- Product image upload: browser-to-Blob direct upload, 15-minute scoped token, 8MB per image, determinate progress and explicit cancellation. Partial uploads are cleaned up when the session remains valid.
+- Product image upload: browser-to-Blob direct upload with a 15-minute role-scoped token; representative image maximum 8MB and each detail image maximum 15MB; determinate progress and explicit cancellation. Partial uploads are cleaned up when the session remains valid.
 - Product catalog writes: conditional ETag write prevents a stale administrator from overwriting a concurrent create, edit, or delete. Edit preserves existing images unless a replacement file was selected. Conflict keeps form or delete context and requests a refresh.
 
 ## Validation

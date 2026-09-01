@@ -69,7 +69,8 @@ const priceFormatter = new Intl.NumberFormat('ko-KR', {
   maximumFractionDigits: 0,
 });
 const allowedImageTypes = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/avif']);
-const maxImageSize = 8 * 1024 * 1024;
+const maxMainImageSize = 8 * 1024 * 1024;
+const maxGalleryImageSize = 15 * 1024 * 1024;
 const maxGallery = 5;
 const fieldNames = ['name', 'model', 'price', 'tagline', 'description', 'highlights', 'url', 'mainImage', 'gallery'];
 
@@ -130,7 +131,7 @@ function setCreateMode() {
   mainImageInput.required = true;
   mainRequired.hidden = false;
   mainImageHelp.textContent = 'JPG, PNG, WebP, AVIF · 최대 8MB · 1장';
-  galleryHelp.textContent = '제품의 구조와 사용 장면을 보여줄 이미지 · 장당 최대 8MB · 최대 5장';
+  galleryHelp.textContent = '상세페이지에서 원본 비율로 이어서 보여줄 이미지 · 장당 최대 15MB · 최대 5장';
   resetLabel.textContent = '입력 지우기';
   submitLabel.textContent = '제품 등록';
 }
@@ -153,8 +154,8 @@ function beginEdit(product, trigger) {
   editProduct.textContent = product.name;
   mainImageInput.required = false;
   mainRequired.hidden = true;
-  mainImageHelp.textContent = '새 파일을 선택하면 현재 대표 이미지를 교체합니다. 선택하지 않으면 그대로 유지합니다.';
-  galleryHelp.textContent = '새 파일을 선택하면 현재 상세 이미지 전체를 교체합니다. 선택하지 않으면 그대로 유지합니다.';
+  mainImageHelp.textContent = '새 파일을 선택하면 현재 대표 이미지를 교체합니다. JPG, PNG, WebP, AVIF · 최대 8MB';
+  galleryHelp.textContent = '새 파일을 선택하면 현재 상세 이미지 전체를 교체합니다. 장당 최대 15MB · 최대 5장';
   resetLabel.textContent = '수정 취소';
   submitLabel.textContent = '변경사항 저장';
 
@@ -244,10 +245,17 @@ function validStoreUrl(value) {
   }
 }
 
-function validateFile(file) {
+function validateFile(file, maximumSize, label) {
   if (!allowedImageTypes.has(file.type)) return 'JPG, PNG, WebP, AVIF 이미지만 선택할 수 있습니다.';
-  if (file.size <= 0 || file.size > maxImageSize) return '이미지 한 장은 8MB 이하여야 합니다.';
+  if (file.size <= 0 || file.size > maximumSize) return `${label}는 ${maximumSize / 1024 / 1024}MB 이하여야 합니다.`;
   return '';
+}
+
+function validateGalleryFiles(files) {
+  if (files.length > maxGallery) return '상세 이미지는 최대 5개까지 선택할 수 있습니다.';
+  return files
+    .map((file) => validateFile(file, maxGalleryImageSize, '상세 이미지 한 장'))
+    .find(Boolean) || '';
 }
 
 function validateForm() {
@@ -273,10 +281,12 @@ function validateForm() {
   if (!values.highlights.length || values.highlights.length > 8 || values.highlights.some((item) => item.length > 100)) errors.highlights = '제품 포인트를 줄마다 입력해 주세요. 최대 8개까지 가능합니다.';
   if (!validStoreUrl(values.url)) errors.url = '네이버 스마트스토어 제품 주소를 입력해 주세요.';
   if (!mainFile && !editTarget) errors.mainImage = '대표 이미지를 선택해 주세요.';
-  else if (mainFile && validateFile(mainFile)) errors.mainImage = validateFile(mainFile);
-  if (galleryFiles.length > maxGallery) errors.gallery = '상세 이미지는 최대 5개까지 선택할 수 있습니다.';
-  else if (galleryFiles.some(validateFile)) errors.gallery = validateFile(galleryFiles.find(validateFile));
-
+  else if (mainFile) {
+    const mainImageError = validateFile(mainFile, maxMainImageSize, '대표 이미지');
+    if (mainImageError) errors.mainImage = mainImageError;
+  }
+  const galleryError = validateGalleryFiles(galleryFiles);
+  if (galleryError) errors.gallery = galleryError;
   if (editTarget) {
     for (const name of ['name', 'model', 'price', 'tagline', 'description', 'url']) {
       if (errors[name] && values[name] === editTarget[name]) delete errors[name];
@@ -342,7 +352,7 @@ function renderFilePreviews() {
 
   const galleryFiles = [...(galleryInput.files || [])];
   const galleryItems = galleryFiles.length
-    ? galleryFiles.map((file) => ({ image: imagePreview(file), label: `새 상세 이미지 · ${file.name}` }))
+    ? galleryFiles.map((file) => ({ image: imagePreview(file), label: `새 상세 이미지 · ${file.name} · ${(file.size / 1024 / 1024).toFixed(1)}MB` }))
     : (editTarget?.gallery || []).map((url, index) => ({ image: currentImagePreview(url), label: `현재 상세 이미지 ${index + 1} 유지` }));
   galleryItems.forEach((entry) => {
     const item = document.createElement('li');
@@ -543,22 +553,25 @@ function updateUploadProgress(fileIndex, fileCount, percentage, fileName) {
   uploadLabel.textContent = `${fileName} 업로드 중`;
 }
 
-async function uploadImages(files) {
+async function uploadImages(entries) {
   uploadController = new AbortController();
   uploadedImageUrls = [];
   uploadsComplete = false;
   uploadProgress.hidden = false;
   cancelUploadButton.hidden = false;
-  for (let index = 0; index < files.length; index += 1) {
-    const file = files[index];
+  let galleryIndex = 0;
+  for (let index = 0; index < entries.length; index += 1) {
+    const { file, kind } = entries[index];
     const extension = file.type.split('/')[1]?.replace('jpeg', 'jpg') || 'img';
-    const pathname = `product-media/${requestId}/image-${index + 1}.${extension}`;
+    if (kind === 'gallery') galleryIndex += 1;
+    const filename = kind === 'main' ? `main.${extension}` : `gallery-${galleryIndex}.${extension}`;
+    const pathname = `product-media/${requestId}/${filename}`;
     const blob = await upload(pathname, file, {
       access: 'public',
       handleUploadUrl: '/api/admin/product-upload',
-      clientPayload: JSON.stringify({ requestId }),
+      clientPayload: JSON.stringify({ requestId, kind }),
       abortSignal: uploadController.signal,
-      onUploadProgress: ({ percentage }) => updateUploadProgress(index, files.length, percentage, file.name),
+      onUploadProgress: ({ percentage }) => updateUploadProgress(index, entries.length, percentage, file.name),
     });
     uploadedImageUrls.push(blob.url);
   }
@@ -637,7 +650,12 @@ productForm.addEventListener('input', (event) => {
 
 async function handleFileChange(name) {
   dirty = true;
-  setFieldError(name);
+  if (name === 'mainImage') {
+    const file = mainImageInput.files?.[0];
+    setFieldError(name, file ? validateFile(file, maxMainImageSize, '대표 이미지') : '');
+  } else {
+    setFieldError(name, validateGalleryFiles([...(galleryInput.files || [])]));
+  }
   if (uploadedImageUrls.length) {
     const cleaned = await cleanupUploadedImages();
     if (cleaned) requestId = crypto.randomUUID();
@@ -655,21 +673,21 @@ productForm.addEventListener('submit', async (event) => {
   if (!values) return;
   const editingProduct = editTarget;
   const editingCatalogEtag = editEtag;
-  const filesToUpload = [
-    ...(values.mainFile ? [values.mainFile] : []),
-    ...values.galleryFiles,
+  const uploadEntries = [
+    ...(values.mainFile ? [{ file: values.mainFile, kind: 'main' }] : []),
+    ...values.galleryFiles.map((file) => ({ file, kind: 'gallery' })),
   ];
 
   submitButton.disabled = true;
   submitButton.setAttribute('aria-busy', 'true');
   submitLabel.textContent = editingProduct ? '변경사항 저장 중' : '제품 등록 중';
   resetButton.disabled = true;
-  formStatus.textContent = filesToUpload.length
+  formStatus.textContent = uploadEntries.length
     ? '제품 이미지를 안전하게 업로드하고 있습니다.'
     : '제품 정보를 저장하고 있습니다.';
 
   try {
-    if (filesToUpload.length && !uploadsComplete) await uploadImages(filesToUpload);
+    if (uploadEntries.length && !uploadsComplete) await uploadImages(uploadEntries);
     formStatus.textContent = '제품 정보를 저장하고 있습니다.';
     const commonPayload = {
       requestId,
@@ -722,7 +740,7 @@ productForm.addEventListener('submit', async (event) => {
       await cleanupUploadedImages();
       requestId = crypto.randomUUID();
       formStatus.textContent = '이미지 업로드를 취소했습니다. 입력 내용은 그대로 유지됩니다.';
-    } else if (filesToUpload.length && !uploadsComplete) {
+    } else if (uploadEntries.length && !uploadsComplete) {
       await cleanupUploadedImages();
       requestId = crypto.randomUUID();
       markFormError(error.message || '이미지를 업로드하지 못했습니다. 파일을 확인한 뒤 다시 시도해 주세요.');

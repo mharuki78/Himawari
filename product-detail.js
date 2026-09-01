@@ -10,9 +10,10 @@ function setMeta(selector, attribute, value) {
   if (element) element.setAttribute(attribute, value);
 }
 
-function createProductImage(url, alt, eager = false) {
+function createProductImage(url, alt, { eager = false, longform = false } = {}) {
   const frame = document.createElement('div');
   frame.className = 'product-detail-image-frame';
+  if (longform) frame.classList.add('product-detail-image-frame--longform');
   const image = document.createElement('img');
   const imageUrl = safeHttpsUrl(url);
   if (imageUrl) image.src = imageUrl;
@@ -84,7 +85,7 @@ function renderProduct(product) {
   document.querySelector('[data-name]').textContent = product.name;
   document.querySelector('[data-tagline]').textContent = product.tagline;
   document.querySelector('[data-price]').textContent = priceFormatter.format(product.price);
-  document.querySelector('[data-main-image]').replaceChildren(createProductImage(product.image, product.name, true));
+  document.querySelector('[data-main-image]').replaceChildren(createProductImage(product.image, product.name, { eager: true }));
 
   const cart = document.querySelector('[data-detail-cart]');
   cart.dataset.cartAdd = '';
@@ -119,7 +120,7 @@ function renderProduct(product) {
   const gallery = document.querySelector('[data-gallery]');
   gallery.replaceChildren();
   product.gallery.forEach((url, index) => {
-    gallery.append(createProductImage(url, `${product.name} 상세 이미지 ${index + 1}`));
+    gallery.append(createProductImage(url, `${product.name} 상세 이미지 ${index + 1}`, { longform: true }));
   });
   gallerySection.hidden = product.gallery.length === 0;
 

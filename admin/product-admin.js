@@ -6597,7 +6597,8 @@ var priceFormatter = new Intl.NumberFormat("ko-KR", {
   maximumFractionDigits: 0
 });
 var allowedImageTypes = /* @__PURE__ */ new Set(["image/jpeg", "image/png", "image/webp", "image/avif"]);
-var maxImageSize = 8 * 1024 * 1024;
+var maxMainImageSize = 8 * 1024 * 1024;
+var maxGalleryImageSize = 15 * 1024 * 1024;
 var maxGallery = 5;
 var fieldNames = ["name", "model", "price", "tagline", "description", "highlights", "url", "mainImage", "gallery"];
 var products = [];
@@ -6656,7 +6657,7 @@ function setCreateMode() {
   mainImageInput.required = true;
   mainRequired.hidden = false;
   mainImageHelp.textContent = "JPG, PNG, WebP, AVIF \xB7 \uCD5C\uB300 8MB \xB7 1\uC7A5";
-  galleryHelp.textContent = "\uC81C\uD488\uC758 \uAD6C\uC870\uC640 \uC0AC\uC6A9 \uC7A5\uBA74\uC744 \uBCF4\uC5EC\uC904 \uC774\uBBF8\uC9C0 \xB7 \uC7A5\uB2F9 \uCD5C\uB300 8MB \xB7 \uCD5C\uB300 5\uC7A5";
+  galleryHelp.textContent = "\uC0C1\uC138\uD398\uC774\uC9C0\uC5D0\uC11C \uC6D0\uBCF8 \uBE44\uC728\uB85C \uC774\uC5B4\uC11C \uBCF4\uC5EC\uC904 \uC774\uBBF8\uC9C0 \xB7 \uC7A5\uB2F9 \uCD5C\uB300 15MB \xB7 \uCD5C\uB300 5\uC7A5";
   resetLabel.textContent = "\uC785\uB825 \uC9C0\uC6B0\uAE30";
   submitLabel.textContent = "\uC81C\uD488 \uB4F1\uB85D";
 }
@@ -6678,8 +6679,8 @@ function beginEdit(product, trigger) {
   editProduct.textContent = product.name;
   mainImageInput.required = false;
   mainRequired.hidden = true;
-  mainImageHelp.textContent = "\uC0C8 \uD30C\uC77C\uC744 \uC120\uD0DD\uD558\uBA74 \uD604\uC7AC \uB300\uD45C \uC774\uBBF8\uC9C0\uB97C \uAD50\uCCB4\uD569\uB2C8\uB2E4. \uC120\uD0DD\uD558\uC9C0 \uC54A\uC73C\uBA74 \uADF8\uB300\uB85C \uC720\uC9C0\uD569\uB2C8\uB2E4.";
-  galleryHelp.textContent = "\uC0C8 \uD30C\uC77C\uC744 \uC120\uD0DD\uD558\uBA74 \uD604\uC7AC \uC0C1\uC138 \uC774\uBBF8\uC9C0 \uC804\uCCB4\uB97C \uAD50\uCCB4\uD569\uB2C8\uB2E4. \uC120\uD0DD\uD558\uC9C0 \uC54A\uC73C\uBA74 \uADF8\uB300\uB85C \uC720\uC9C0\uD569\uB2C8\uB2E4.";
+  mainImageHelp.textContent = "\uC0C8 \uD30C\uC77C\uC744 \uC120\uD0DD\uD558\uBA74 \uD604\uC7AC \uB300\uD45C \uC774\uBBF8\uC9C0\uB97C \uAD50\uCCB4\uD569\uB2C8\uB2E4. JPG, PNG, WebP, AVIF \xB7 \uCD5C\uB300 8MB";
+  galleryHelp.textContent = "\uC0C8 \uD30C\uC77C\uC744 \uC120\uD0DD\uD558\uBA74 \uD604\uC7AC \uC0C1\uC138 \uC774\uBBF8\uC9C0 \uC804\uCCB4\uB97C \uAD50\uCCB4\uD569\uB2C8\uB2E4. \uC7A5\uB2F9 \uCD5C\uB300 15MB \xB7 \uCD5C\uB300 5\uC7A5";
   resetLabel.textContent = "\uC218\uC815 \uCDE8\uC18C";
   submitLabel.textContent = "\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5";
   field("name").value = product.name;
@@ -6760,10 +6761,14 @@ function validStoreUrl(value) {
     return false;
   }
 }
-function validateFile(file) {
+function validateFile(file, maximumSize, label) {
   if (!allowedImageTypes.has(file.type)) return "JPG, PNG, WebP, AVIF \uC774\uBBF8\uC9C0\uB9CC \uC120\uD0DD\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.";
-  if (file.size <= 0 || file.size > maxImageSize) return "\uC774\uBBF8\uC9C0 \uD55C \uC7A5\uC740 8MB \uC774\uD558\uC5EC\uC57C \uD569\uB2C8\uB2E4.";
+  if (file.size <= 0 || file.size > maximumSize) return `${label}\uB294 ${maximumSize / 1024 / 1024}MB \uC774\uD558\uC5EC\uC57C \uD569\uB2C8\uB2E4.`;
   return "";
+}
+function validateGalleryFiles(files) {
+  if (files.length > maxGallery) return "\uC0C1\uC138 \uC774\uBBF8\uC9C0\uB294 \uCD5C\uB300 5\uAC1C\uAE4C\uC9C0 \uC120\uD0DD\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.";
+  return files.map((file) => validateFile(file, maxGalleryImageSize, "\uC0C1\uC138 \uC774\uBBF8\uC9C0 \uD55C \uC7A5")).find(Boolean) || "";
 }
 function validateForm() {
   clearFormErrors();
@@ -6787,9 +6792,12 @@ function validateForm() {
   if (!values.highlights.length || values.highlights.length > 8 || values.highlights.some((item) => item.length > 100)) errors.highlights = "\uC81C\uD488 \uD3EC\uC778\uD2B8\uB97C \uC904\uB9C8\uB2E4 \uC785\uB825\uD574 \uC8FC\uC138\uC694. \uCD5C\uB300 8\uAC1C\uAE4C\uC9C0 \uAC00\uB2A5\uD569\uB2C8\uB2E4.";
   if (!validStoreUrl(values.url)) errors.url = "\uB124\uC774\uBC84 \uC2A4\uB9C8\uD2B8\uC2A4\uD1A0\uC5B4 \uC81C\uD488 \uC8FC\uC18C\uB97C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
   if (!mainFile && !editTarget) errors.mainImage = "\uB300\uD45C \uC774\uBBF8\uC9C0\uB97C \uC120\uD0DD\uD574 \uC8FC\uC138\uC694.";
-  else if (mainFile && validateFile(mainFile)) errors.mainImage = validateFile(mainFile);
-  if (galleryFiles.length > maxGallery) errors.gallery = "\uC0C1\uC138 \uC774\uBBF8\uC9C0\uB294 \uCD5C\uB300 5\uAC1C\uAE4C\uC9C0 \uC120\uD0DD\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.";
-  else if (galleryFiles.some(validateFile)) errors.gallery = validateFile(galleryFiles.find(validateFile));
+  else if (mainFile) {
+    const mainImageError = validateFile(mainFile, maxMainImageSize, "\uB300\uD45C \uC774\uBBF8\uC9C0");
+    if (mainImageError) errors.mainImage = mainImageError;
+  }
+  const galleryError = validateGalleryFiles(galleryFiles);
+  if (galleryError) errors.gallery = galleryError;
   if (editTarget) {
     for (const name of ["name", "model", "price", "tagline", "description", "url"]) {
       if (errors[name] && values[name] === editTarget[name]) delete errors[name];
@@ -6844,7 +6852,7 @@ function renderFilePreviews() {
     mainPreview.hidden = true;
   }
   const galleryFiles = [...galleryInput.files || []];
-  const galleryItems = galleryFiles.length ? galleryFiles.map((file) => ({ image: imagePreview(file), label: `\uC0C8 \uC0C1\uC138 \uC774\uBBF8\uC9C0 \xB7 ${file.name}` })) : (editTarget?.gallery || []).map((url, index) => ({ image: currentImagePreview(url), label: `\uD604\uC7AC \uC0C1\uC138 \uC774\uBBF8\uC9C0 ${index + 1} \uC720\uC9C0` }));
+  const galleryItems = galleryFiles.length ? galleryFiles.map((file) => ({ image: imagePreview(file), label: `\uC0C8 \uC0C1\uC138 \uC774\uBBF8\uC9C0 \xB7 ${file.name} \xB7 ${(file.size / 1024 / 1024).toFixed(1)}MB` })) : (editTarget?.gallery || []).map((url, index) => ({ image: currentImagePreview(url), label: `\uD604\uC7AC \uC0C1\uC138 \uC774\uBBF8\uC9C0 ${index + 1} \uC720\uC9C0` }));
   galleryItems.forEach((entry) => {
     const item = document.createElement("li");
     const name = document.createElement("span");
@@ -7033,22 +7041,25 @@ function updateUploadProgress(fileIndex, fileCount, percentage, fileName) {
   uploadPercent.textContent = `${combined}%`;
   uploadLabel.textContent = `${fileName} \uC5C5\uB85C\uB4DC \uC911`;
 }
-async function uploadImages(files) {
+async function uploadImages(entries) {
   uploadController = new AbortController();
   uploadedImageUrls = [];
   uploadsComplete = false;
   uploadProgress.hidden = false;
   cancelUploadButton.hidden = false;
-  for (let index = 0; index < files.length; index += 1) {
-    const file = files[index];
+  let galleryIndex = 0;
+  for (let index = 0; index < entries.length; index += 1) {
+    const { file, kind } = entries[index];
     const extension = file.type.split("/")[1]?.replace("jpeg", "jpg") || "img";
-    const pathname = `product-media/${requestId}/image-${index + 1}.${extension}`;
+    if (kind === "gallery") galleryIndex += 1;
+    const filename = kind === "main" ? `main.${extension}` : `gallery-${galleryIndex}.${extension}`;
+    const pathname = `product-media/${requestId}/${filename}`;
     const blob = await upload(pathname, file, {
       access: "public",
       handleUploadUrl: "/api/admin/product-upload",
-      clientPayload: JSON.stringify({ requestId }),
+      clientPayload: JSON.stringify({ requestId, kind }),
       abortSignal: uploadController.signal,
-      onUploadProgress: ({ percentage }) => updateUploadProgress(index, files.length, percentage, file.name)
+      onUploadProgress: ({ percentage }) => updateUploadProgress(index, entries.length, percentage, file.name)
     });
     uploadedImageUrls.push(blob.url);
   }
@@ -7121,7 +7132,12 @@ productForm.addEventListener("input", (event) => {
 });
 async function handleFileChange(name) {
   dirty = true;
-  setFieldError(name);
+  if (name === "mainImage") {
+    const file = mainImageInput.files?.[0];
+    setFieldError(name, file ? validateFile(file, maxMainImageSize, "\uB300\uD45C \uC774\uBBF8\uC9C0") : "");
+  } else {
+    setFieldError(name, validateGalleryFiles([...galleryInput.files || []]));
+  }
   if (uploadedImageUrls.length) {
     const cleaned = await cleanupUploadedImages();
     if (cleaned) requestId = crypto.randomUUID();
@@ -7137,17 +7153,17 @@ productForm.addEventListener("submit", async (event) => {
   if (!values) return;
   const editingProduct = editTarget;
   const editingCatalogEtag = editEtag;
-  const filesToUpload = [
-    ...values.mainFile ? [values.mainFile] : [],
-    ...values.galleryFiles
+  const uploadEntries = [
+    ...values.mainFile ? [{ file: values.mainFile, kind: "main" }] : [],
+    ...values.galleryFiles.map((file) => ({ file, kind: "gallery" }))
   ];
   submitButton.disabled = true;
   submitButton.setAttribute("aria-busy", "true");
   submitLabel.textContent = editingProduct ? "\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5 \uC911" : "\uC81C\uD488 \uB4F1\uB85D \uC911";
   resetButton.disabled = true;
-  formStatus.textContent = filesToUpload.length ? "\uC81C\uD488 \uC774\uBBF8\uC9C0\uB97C \uC548\uC804\uD558\uAC8C \uC5C5\uB85C\uB4DC\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4." : "\uC81C\uD488 \uC815\uBCF4\uB97C \uC800\uC7A5\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
+  formStatus.textContent = uploadEntries.length ? "\uC81C\uD488 \uC774\uBBF8\uC9C0\uB97C \uC548\uC804\uD558\uAC8C \uC5C5\uB85C\uB4DC\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4." : "\uC81C\uD488 \uC815\uBCF4\uB97C \uC800\uC7A5\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
   try {
-    if (filesToUpload.length && !uploadsComplete) await uploadImages(filesToUpload);
+    if (uploadEntries.length && !uploadsComplete) await uploadImages(uploadEntries);
     formStatus.textContent = "\uC81C\uD488 \uC815\uBCF4\uB97C \uC800\uC7A5\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
     const commonPayload = {
       requestId,
@@ -7197,7 +7213,7 @@ productForm.addEventListener("submit", async (event) => {
       await cleanupUploadedImages();
       requestId = crypto.randomUUID();
       formStatus.textContent = "\uC774\uBBF8\uC9C0 \uC5C5\uB85C\uB4DC\uB97C \uCDE8\uC18C\uD588\uC2B5\uB2C8\uB2E4. \uC785\uB825 \uB0B4\uC6A9\uC740 \uADF8\uB300\uB85C \uC720\uC9C0\uB429\uB2C8\uB2E4.";
-    } else if (filesToUpload.length && !uploadsComplete) {
+    } else if (uploadEntries.length && !uploadsComplete) {
       await cleanupUploadedImages();
       requestId = crypto.randomUUID();
       markFormError(error.message || "\uC774\uBBF8\uC9C0\uB97C \uC5C5\uB85C\uB4DC\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. \uD30C\uC77C\uC744 \uD655\uC778\uD55C \uB4A4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574 \uC8FC\uC138\uC694.");

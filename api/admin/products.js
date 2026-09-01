@@ -59,9 +59,13 @@ export async function fetch(request) {
 
       const { value, fieldErrors, valid } = validateProductInput(input);
       if (!valid) return json({ message: '입력 내용을 확인해 주세요.', fieldErrors }, 400, { Vary: 'Cookie' });
-      value.managedImages = await verifyManagedImages(value.requestId, value.managedImages);
-      value.image = value.managedImages[0];
-      value.gallery = value.managedImages.slice(1);
+      const verifiedMedia = await verifyManagedImages(value.requestId, {
+        mainImage: value.image,
+        gallery: value.gallery,
+      });
+      value.image = verifiedMedia.mainImage;
+      value.gallery = verifiedMedia.gallery;
+      value.managedImages = [value.image, ...value.gallery];
       const product = createProductRecord(value, current.catalog.products);
       const saved = await writeProductCatalog({ ...current.catalog, products: [product, ...current.catalog.products] }, current.etag);
       return json({ ok: true, product: publicProduct(product), etag: saved.etag }, 201, { Vary: 'Cookie' });
@@ -81,12 +85,13 @@ export async function fetch(request) {
       if (!valid) return json({ message: '입력 내용을 확인해 주세요.', fieldErrors }, 400, { Vary: 'Cookie' });
 
       if (value.managedImages.length) {
-        const submittedImages = [...value.managedImages];
-        const verifiedImages = await verifyManagedImages(value.requestId, submittedImages);
-        const canonicalImages = new Map(submittedImages.map((url, index) => [url, verifiedImages[index]]));
-        if (value.replaceMainImage) value.image = canonicalImages.get(value.image) || '';
-        if (value.replaceGallery) value.gallery = value.gallery.map((url) => canonicalImages.get(url) || '').filter(Boolean);
-        value.managedImages = verifiedImages;
+        const verifiedMedia = await verifyManagedImages(value.requestId, {
+          mainImage: value.replaceMainImage ? value.image : '',
+          gallery: value.replaceGallery ? value.gallery : [],
+        });
+        if (value.replaceMainImage) value.image = verifiedMedia.mainImage;
+        if (value.replaceGallery) value.gallery = verifiedMedia.gallery;
+        value.managedImages = [verifiedMedia.mainImage, ...verifiedMedia.gallery].filter(Boolean);
       }
 
       const media = mergeProductMedia(product, value);

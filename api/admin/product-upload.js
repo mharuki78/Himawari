@@ -4,7 +4,8 @@ import { authIsConfigured, isAdminRequest } from '../_lib/auth.js';
 import { isSameOrigin, json, methodNotAllowed, readJson } from '../_lib/http.js';
 import {
   IMAGE_TYPES,
-  MAX_IMAGE_SIZE,
+  MAX_GALLERY_IMAGE_SIZE,
+  MAX_MAIN_IMAGE_SIZE,
   REQUEST_ID_PATTERN,
   productStoreIsConfigured,
 } from '../_lib/products.js';
@@ -35,17 +36,20 @@ export async function fetch(request) {
           throw new Error('업로드 정보를 확인할 수 없습니다.');
         }
         const requestId = typeof payload.requestId === 'string' ? payload.requestId : '';
-        if (!REQUEST_ID_PATTERN.test(requestId) || !pathname.startsWith(`product-media/${requestId}/`)) {
+        const kind = payload.kind === 'main' || payload.kind === 'gallery' ? payload.kind : '';
+        const prefix = `product-media/${requestId}/`;
+        const rolePath = kind === 'main' ? `${prefix}main.` : `${prefix}gallery-`;
+        if (!REQUEST_ID_PATTERN.test(requestId) || !kind || !pathname.startsWith(rolePath)) {
           throw new Error('업로드 경로를 확인할 수 없습니다.');
         }
         return {
           allowedContentTypes: [...IMAGE_TYPES],
-          maximumSizeInBytes: MAX_IMAGE_SIZE,
+          maximumSizeInBytes: kind === 'main' ? MAX_MAIN_IMAGE_SIZE : MAX_GALLERY_IMAGE_SIZE,
           addRandomSuffix: true,
           allowOverwrite: false,
           cacheControlMaxAge: 31_536_000,
           validUntil: Date.now() + 15 * 60 * 1000,
-          tokenPayload: JSON.stringify({ requestId }),
+          tokenPayload: JSON.stringify({ requestId, kind }),
         };
       },
       onUploadCompleted: async () => {},

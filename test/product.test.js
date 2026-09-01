@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  MAX_GALLERY_IMAGE_SIZE,
+  MAX_MAIN_IMAGE_SIZE,
   createProductRecord,
   mergeProductMedia,
   publicProduct,
@@ -41,6 +43,25 @@ test('기존 제품 34개에 안정적인 공개 ID를 부여한다', () => {
   assert.equal(catalog.products.length, 34);
   assert.equal(new Set(catalog.products.map((product) => product.id)).size, 34);
   assert.match(catalog.products[0].id, /^store-\d+$/);
+});
+
+test('대표 이미지와 상세 이미지의 역할별 업로드 용량을 구분한다', () => {
+  assert.equal(MAX_MAIN_IMAGE_SIZE, 8 * 1024 * 1024);
+  assert.equal(MAX_GALLERY_IMAGE_SIZE, 15 * 1024 * 1024);
+});
+
+test('공개할 제품 이미지와 관계없는 관리 이미지 URL을 함께 제출하면 거부한다', () => {
+  const unrelatedImageUrl = `https://example.public.blob.vercel-storage.com/product-media/${requestId}/gallery-2.webp`;
+  const result = validateProductInput({
+    requestId,
+    ...productFields,
+    image: imageUrl,
+    gallery: [],
+    managedImages: [imageUrl, unrelatedImageUrl],
+  });
+
+  assert.equal(result.valid, false);
+  assert.match(result.fieldErrors.mainImage, /업로드한 이미지만/);
 });
 
 test('새 제품 입력 계약을 검증하고 관리자 메타데이터를 공개 응답에서 제외한다', () => {
