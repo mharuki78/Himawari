@@ -1,13 +1,13 @@
 const productLists = document.querySelectorAll('[data-products]');
 const featuredProductSlots = document.querySelectorAll('[data-featured-product]');
 
-const priceFormatter = new Intl.NumberFormat('ko-KR', {
+export const priceFormatter = new Intl.NumberFormat('ko-KR', {
   style: 'currency',
   currency: 'KRW',
   maximumFractionDigits: 0,
 });
 
-function safeHttpsUrl(value) {
+export function safeHttpsUrl(value) {
   try {
     const url = new URL(value);
     return url.protocol === 'https:' ? url.href : '';
@@ -16,48 +16,85 @@ function safeHttpsUrl(value) {
   }
 }
 
-function createProductMedia(product, className) {
-  const media = document.createElement('div');
-  media.className = className;
+export function productIdentifier(product, index = 0) {
+  if (product?.id) return String(product.id);
+  const storeNumber = safeHttpsUrl(product?.url).match(/\/products\/(\d+)/)?.[1];
+  return storeNumber ? `store-${storeNumber}` : `product-${index + 1}`;
+}
 
+function normalizeProducts(products) {
+  return (Array.isArray(products) ? products : []).map((product, index) => ({
+    ...product,
+    id: productIdentifier(product, index),
+    model: product.model || product.name?.match(/No\.\d+[A-Za-z]*/i)?.[0] || 'Himawari',
+    description: product.description || product.tagline || '',
+    highlights: Array.isArray(product.highlights) ? product.highlights : [],
+    gallery: Array.isArray(product.gallery) ? product.gallery : [],
+  }));
+}
+
+export async function fetchProducts() {
+  try {
+    const response = await fetch('/api/products', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const payload = await response.json();
+    return normalizeProducts(payload.products);
+  } catch (error) {
+    const isLocalStaticPreview = location.protocol === 'file:' || ['localhost', '127.0.0.1'].includes(location.hostname);
+    if (!isLocalStaticPreview) throw error;
+    const response = await fetch('products.json', { cache: 'no-cache' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const payload = await response.json();
+    return normalizeProducts(payload.products);
+  }
+}
+
+function detailHref(product) {
+  return `product.html?id=${encodeURIComponent(product.id)}`;
+}
+
+function createProductMedia(product, className) {
+  const media = document.createElement('a');
+  media.className = className;
+  media.href = detailHref(product);
+  media.setAttribute('aria-label', `${product.name} 상세페이지 보기`);
   const image = document.createElement('img');
-  image.src = safeHttpsUrl(product.image);
+  const imageUrl = safeHttpsUrl(product.image);
+  if (imageUrl) image.src = imageUrl;
   image.alt = product.name;
   image.loading = 'lazy';
   image.decoding = 'async';
-
   const imageFallback = document.createElement('p');
   imageFallback.className = 'product-image-fallback';
   imageFallback.textContent = '이미지를 불러오지 못했습니다.';
   imageFallback.hidden = true;
-
-  image.addEventListener('error', () => {
+  const showFallback = () => {
     image.hidden = true;
     imageFallback.hidden = false;
     media.classList.add('is-missing');
-  });
-
+  };
+  image.addEventListener('error', showFallback);
+  if (!imageUrl) showFallback();
   media.append(image, imageFallback);
   return media;
 }
 
 function createCartButton(product, className = 'buy-link') {
-  const link = document.createElement('button');
-  link.type = 'button';
-  link.className = className;
-  link.textContent = '장바구니 담기';
-  link.dataset.cartAdd = '';
-  link.dataset.name = product.name;
-  link.dataset.price = String(product.price);
-  link.dataset.url = safeHttpsUrl(product.url);
-  link.setAttribute('aria-label', `${product.name} 장바구니에 담기`);
-  link.setAttribute('aria-live', 'polite');
-
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = className;
+  button.textContent = '장바구니 담기';
+  button.dataset.cartAdd = '';
+  button.dataset.name = product.name;
+  button.dataset.price = String(product.price);
+  button.dataset.url = safeHttpsUrl(product.url);
+  button.setAttribute('aria-label', `${product.name} 장바구니에 담기`);
+  button.setAttribute('aria-live', 'polite');
   const arrow = document.createElement('span');
   arrow.setAttribute('aria-hidden', 'true');
   arrow.textContent = '+';
-  link.append(' ', arrow);
-  return link;
+  button.append(' ', arrow);
+  return button;
 }
 
 function createDirectBuyLink(product, className = 'direct-buy-link') {
@@ -68,7 +105,6 @@ function createDirectBuyLink(product, className = 'direct-buy-link') {
   link.rel = 'noopener noreferrer';
   link.textContent = '바로 구매하기';
   link.setAttribute('aria-label', `${product.name} 네이버 스마트스토어에서 바로 구매하기 — 새 탭에서 열림`);
-
   const arrow = document.createElement('span');
   arrow.setAttribute('aria-hidden', 'true');
   arrow.textContent = '↗';
@@ -76,70 +112,70 @@ function createDirectBuyLink(product, className = 'direct-buy-link') {
   return link;
 }
 
+function createDetailLink(product, className = 'detail-link') {
+  const link = document.createElement('a');
+  link.className = className;
+  link.href = detailHref(product);
+  link.textContent = '상세 보기';
+  link.setAttribute('aria-label', `${product.name} 상세페이지 보기`);
+  const arrow = document.createElement('span');
+  arrow.setAttribute('aria-hidden', 'true');
+  arrow.textContent = '→';
+  link.append(' ', arrow);
+  return link;
+}
+
+function productNameHeading(product) {
+  const heading = document.createElement('h3');
+  const link = document.createElement('a');
+  link.href = detailHref(product);
+  link.textContent = product.name;
+  heading.append(link);
+  return heading;
+}
+
 function createProductCard(product) {
   const article = document.createElement('article');
   article.className = 'store-product-card card reveal';
-
-  const media = createProductMedia(product, 'store-product-media');
-
   const body = document.createElement('div');
   body.className = 'store-product-body';
-
-  const model = product.name.match(/No\.\d+[A-Za-z]*/i)?.[0] || 'Himawari';
   const label = document.createElement('p');
   label.className = 'card-label';
-  label.textContent = model;
-
-  const name = document.createElement('h3');
-  name.textContent = product.name;
-
+  label.textContent = product.model;
   const tagline = document.createElement('p');
   tagline.className = 'product-tagline';
   tagline.textContent = product.tagline || '일상에 자연스럽게 맞는 가방입니다.';
-
   const footer = document.createElement('div');
   footer.className = 'store-product-footer';
-
   const price = document.createElement('strong');
   price.textContent = priceFormatter.format(product.price);
-
   const actions = document.createElement('div');
   actions.className = 'store-product-actions';
-  actions.append(createCartButton(product), createDirectBuyLink(product));
-
+  actions.append(createDetailLink(product), createCartButton(product), createDirectBuyLink(product));
   footer.append(price, actions);
-  body.append(label, name, tagline, footer);
-  article.append(media, body);
+  body.append(label, productNameHeading(product), tagline, footer);
+  article.append(createProductMedia(product, 'store-product-media'), body);
   return article;
 }
 
 function createFeaturedProduct(product) {
   const article = document.createElement('article');
   article.className = 'featured-product card reveal';
-
-  const media = createProductMedia(product, 'featured-product-media');
   const content = document.createElement('div');
   content.className = 'featured-product-content';
-
   const label = document.createElement('p');
   label.className = 'card-label';
-  label.textContent = 'Editor’s choice · No.1884';
-
-  const name = document.createElement('h3');
-  name.textContent = product.name;
-
+  label.textContent = `Editor’s choice · ${product.model}`;
   const tagline = document.createElement('p');
   tagline.className = 'featured-tagline';
   tagline.textContent = product.tagline;
-
   const highlights = document.createElement('ol');
   highlights.className = 'featured-highlights';
-  (Array.isArray(product.highlights) ? product.highlights : []).forEach((highlight) => {
+  product.highlights.forEach((highlight) => {
     const item = document.createElement('li');
     item.textContent = highlight;
     highlights.append(item);
   });
-
   const footer = document.createElement('div');
   footer.className = 'featured-product-footer';
   const price = document.createElement('strong');
@@ -147,13 +183,13 @@ function createFeaturedProduct(product) {
   const actions = document.createElement('div');
   actions.className = 'featured-product-actions';
   actions.append(
+    createDetailLink(product, 'detail-link featured-detail-link'),
     createCartButton(product, 'buy-link featured-buy-link'),
-    createDirectBuyLink(product, 'direct-buy-link featured-direct-buy-link')
+    createDirectBuyLink(product, 'direct-buy-link featured-direct-buy-link'),
   );
   footer.append(price, actions);
-
-  content.append(label, name, tagline, highlights, footer);
-  article.append(media, content);
+  content.append(label, productNameHeading(product), tagline, highlights, footer);
+  article.append(createProductMedia(product, 'featured-product-media'), content);
   return article;
 }
 
@@ -166,17 +202,11 @@ function showListState(container, message) {
 
 async function loadProducts() {
   try {
-    const response = await fetch('products.json', { cache: 'no-cache' });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-    const payload = await response.json();
-    const products = Array.isArray(payload.products) ? payload.products : [];
-
+    const products = await fetchProducts();
     productLists.forEach((container) => {
       const limit = Number.parseInt(container.dataset.productLimit || '', 10);
       const mode = container.dataset.productMode;
       let visibleProducts;
-
       if (mode === 'curated') {
         visibleProducts = products
           .filter((product) => Number.isFinite(product.curatedRank))
@@ -187,31 +217,26 @@ async function loadProducts() {
       } else {
         visibleProducts = Number.isFinite(limit) ? products.slice(0, limit) : products;
       }
-
       if (!visibleProducts.length) {
         showListState(container, '등록된 제품이 없습니다.');
         return;
       }
-
       const fragment = document.createDocumentFragment();
       visibleProducts.forEach((product) => fragment.append(createProductCard(product)));
       container.replaceChildren(fragment);
       container.setAttribute('aria-busy', 'false');
       window.himawariReveal?.(container);
     });
-
     featuredProductSlots.forEach((container) => {
       const featuredProduct = products.find((product) => product.featured === true);
       if (!featuredProduct) {
         showListState(container, '대표 제품이 등록되지 않았습니다.');
         return;
       }
-
       container.replaceChildren(createFeaturedProduct(featuredProduct));
       container.setAttribute('aria-busy', 'false');
       window.himawariReveal?.(container);
     });
-
     document.querySelectorAll('[data-product-count]').forEach((element) => {
       element.textContent = String(products.length);
     });

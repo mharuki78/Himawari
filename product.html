@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Himawari 제품의 이미지, 특징과 구매 정보를 확인하세요.">
+    <meta name="theme-color" content="#F4EFE3">
+    <link rel="canonical" href="https://himawari-three.vercel.app/product.html">
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="제품 상세 — Himawari">
+    <meta property="og:description" content="Himawari 제품의 구조와 쓰임을 자세히 살펴보세요.">
+    <meta property="og:url" content="https://himawari-three.vercel.app/product.html">
+    <meta property="og:image" content="https://himawari-three.vercel.app/assets/himawari-collection-v2.webp">
+    <title>제품 상세 — Himawari</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://shop-phinf.pstatic.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/gear.css">
+    <link rel="stylesheet" href="assets/cart.css">
+    <script src="script.js" defer></script>
+    <script src="product-detail.js" type="module"></script>
+  </head>
+  <body class="product-detail-page">
+    <a class="skip-link" href="#main">본문으로 바로가기</a>
+    <div class="announcement-bar"><a href="products.html">Himawari 전체 컬렉션 보기</a></div>
+    <header class="site-header interior-header">
+      <a class="brand" href="index.html" aria-label="Himawari 홈">HIMAWARI</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">메뉴 열기</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
+        <a href="products.html" aria-current="page">제품</a><a href="about.html">브랜드</a><a href="story/">이야기</a><a href="contact.html">연락하기</a>
+      </nav>
+      <a class="header-store" href="https://smartstore.naver.com/baegot" target="_blank" rel="noopener noreferrer">스토어 ↗</a>
+    </header>
+
+    <main id="main" class="product-detail-main" aria-busy="true">
+      <nav class="product-breadcrumb" aria-label="제품 경로">
+        <ol><li><a href="products.html">제품</a></li><li data-breadcrumb-current aria-current="page">상세</li></ol>
+      </nav>
+
+      <section class="product-detail-state" data-loading-state role="status">
+        <span class="product-loader" aria-hidden="true"></span>
+        <p>제품의 구조와 이미지를 불러오고 있습니다.</p>
+      </section>
+
+      <section class="product-not-found" data-not-found hidden>
+        <p class="kicker" data-state-kicker>Product not found</p>
+        <h1 tabindex="-1" data-state-title>제품을 찾을 수 없습니다.</h1>
+        <p data-state-message>주소가 잘못되었거나 관리자에 의해 삭제된 제품일 수 있습니다.</p>
+        <a href="products.html" data-state-action><span data-state-action-label>전체 제품으로 돌아가기</span> <span aria-hidden="true">→</span></a>
+      </section>
+
+      <article data-product-content hidden>
+        <div class="product-detail-hero">
+          <figure class="product-detail-visual" data-main-image></figure>
+          <div class="product-detail-copy">
+            <p class="product-detail-model" data-model>Himawari</p>
+            <h1 id="product-title" data-name>제품 상세</h1>
+            <p class="product-detail-tagline" data-tagline></p>
+            <strong class="product-detail-price" data-price></strong>
+            <div class="product-detail-actions">
+              <button class="buy-link" type="button" data-detail-cart><span>장바구니 담기</span><span aria-hidden="true">+</span></button>
+              <a class="direct-buy-link" data-direct-buy href="https://smartstore.naver.com/baegot" target="_blank" rel="noopener noreferrer"><span>바로 구매하기</span><span aria-hidden="true">↗</span></a>
+            </div>
+            <p class="product-detail-note">가격과 재고, 배송 정보는 네이버 스마트스토어에서 최종 확인해 주세요.</p>
+          </div>
+        </div>
+
+        <section class="product-description section" aria-labelledby="product-description-title">
+          <div class="section-inner product-description-grid">
+            <div class="product-description-heading reveal">
+              <p class="kicker">Form and function</p>
+              <h2 id="product-description-title" class="display-title"><span class="headline-line">하루의 움직임에 맞춘</span><span class="headline-line accent-word">구조와 균형.</span></h2>
+            </div>
+            <div class="product-description-body reveal" data-description></div>
+          </div>
+        </section>
+
+        <section class="product-highlights section" data-highlights-section aria-labelledby="product-highlights-title">
+          <div class="section-inner product-highlights-grid">
+            <div>
+              <p class="kicker">Details that matter</p>
+              <h2 id="product-highlights-title">제품을 이루는<br>구체적인 포인트.</h2>
+            </div>
+            <ol data-highlights></ol>
+          </div>
+        </section>
+
+        <section class="product-gallery section" data-gallery-section aria-labelledby="product-gallery-title">
+          <div class="section-inner">
+            <div class="product-gallery-head">
+              <p class="kicker">Closer look</p>
+              <h2 id="product-gallery-title">제품을 더 가까이.</h2>
+            </div>
+            <div class="product-gallery-grid" data-gallery></div>
+          </div>
+        </section>
+
+        <section class="product-detail-closing">
+          <div>
+            <p class="kicker">Ready for your day</p>
+            <h2 data-closing-title>오래 곁에 둘 가방을 선택하세요.</h2>
+          </div>
+          <a data-closing-buy href="https://smartstore.naver.com/baegot" target="_blank" rel="noopener noreferrer">스마트스토어에서 확인하기 <span aria-hidden="true">↗</span></a>
+        </section>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand"><strong>HIMAWARI</strong><p>오래 곁에 둘 가방.</p></div>
+      <nav aria-label="푸터 메뉴"><a href="about.html">브랜드</a><a href="products.html" aria-current="page">제품</a><a href="story/">이야기</a><a href="contact.html">연락하기</a></nav>
+      <div class="footer-contact" role="group" aria-label="연락 채널"><a href="contact.html">비공개 문의 남기기</a><a href="https://www.instagram.com/himawari.korea/" target="_blank" rel="noopener noreferrer">@himawari.korea</a></div>
+      <p class="copyright">© <span id="year">2026</span> HIMAWARI</p>
+    </footer>
+    <script src="assets/cart.js" defer></script>
+  </body>
+</html>

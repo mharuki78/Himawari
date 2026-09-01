@@ -1,0 +1,17 @@
+{
+  "name": "himawari-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:admin": "esbuild admin/product-admin.source.js --bundle --format=esm --platform=browser --target=es2022 --outfile=admin/product-admin.js",
+    "test": "node --test",
+    "design": "npx -p @google/design.md designmd lint DESIGN.md",
+    "secrets": "node scripts/generate-admin-secrets.mjs"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.8.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}

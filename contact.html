@@ -1,15 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="XDMGDQaieYKsBbHbxtgqNyMs8_31tYnYQ54ollLS9Y4">
-    <meta name="description" content="Himawari 제품, 협업과 입점 문의를 위한 연락처입니다. 이메일, Instagram과 네이버 스마트스토어에서 Himawari를 만나보세요.">
+    <meta name="description" content="Himawari 제품, 협업과 입점 문의를 관리자만 확인할 수 있는 비공개 문의로 접수하세요.">
     <meta name="theme-color" content="#F4EFE3">
     <link rel="canonical" href="https://himawari-three.vercel.app/contact.html">
     <meta property="og:type" content="website">
     <meta property="og:title" content="연락하기 — Himawari">
-    <meta property="og:description" content="이메일, Instagram과 스마트스토어를 통해 Himawari에 연락할 수 있습니다.">
+    <meta property="og:description" content="제품, 협업과 입점에 관한 이야기를 비공개 문의로 남겨주세요.">
     <meta property="og:url" content="https://himawari-three.vercel.app/contact.html">
     <title>연락하기 — Himawari</title>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -37,19 +37,35 @@
       <section class="contact-page-hero" aria-labelledby="contact-page-title">
         <div class="contact-page-intro reveal">
           <p class="kicker">Contact Himawari</p>
-          <h1 id="contact-page-title">가방에 관한<br>이야기를 나눠요.</h1>
-          <p>제품, 협업과 입점에 관한 문의를<br>편한 채널로 보내주세요.</p>
+          <h1 id="contact-page-title"><span class="headline-line">당신의 이야기를</span><span class="headline-line accent-word">비공개로 전해주세요.</span></h1>
+          <p>제품, 협업과 입점에 관한 문의를 남겨주세요.<br>접수 내용은 관리자만 확인할 수 있습니다.</p>
         </div>
-        <div class="contact-actions reveal" aria-label="Himawari 연락 채널">
-          <a class="contact-action" href="mailto:baekhyunjin@gmail.com" target="_blank" rel="noopener noreferrer">
-            <span>이메일</span><strong>baekhyunjin@gmail.com</strong><small>메일 작성하기</small>
-          </a>
+        <div class="inquiry-panel reveal">
+          <div class="inquiry-panel__head"><p class="kicker">Private board</p><h2>비공개 문의 접수</h2><p>답변을 받을 이메일을 정확히 입력해 주세요.</p></div>
+          <form class="contact-form contact-form--light" data-inquiry-form novalidate>
+            <div class="field"><label for="contact-name">이름</label><input id="contact-name" name="name" type="text" autocomplete="name" maxlength="60" required placeholder="성함을 입력해 주세요" aria-describedby="contact-name-error"><p class="field-error" id="contact-name-error"></p></div>
+            <div class="field"><label for="contact-email">이메일</label><input id="contact-email" name="email" type="email" autocomplete="email" maxlength="160" required placeholder="name@example.com" aria-describedby="contact-email-error"><p class="field-error" id="contact-email-error"></p></div>
+            <div class="field"><label for="contact-subject">문의 제목</label><input id="contact-subject" name="subject" type="text" autocomplete="off" maxlength="120" required placeholder="문의 제목을 입력해 주세요" aria-describedby="contact-subject-error"><p class="field-error" id="contact-subject-error"></p></div>
+            <div class="field"><label for="contact-message">문의 내용</label><textarea class="resize-none" id="contact-message" name="message" rows="7" maxlength="4000" required placeholder="제품, 협업, 입점 등 문의 내용을 남겨주세요" aria-describedby="contact-message-error"></textarea><p class="field-error" id="contact-message-error"></p></div>
+            <div class="inquiry-honeypot" aria-hidden="true"><label for="contact-website">웹사이트</label><input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            <div class="consent-field"><label><input id="contact-consent" name="consent" type="checkbox" required aria-describedby="contact-consent-error"><span>문의 확인과 답변을 위해 이름·이메일·문의 내용을 관리자가 삭제할 때까지 보관하는 데 동의합니다.</span></label><p class="field-error" id="contact-consent-error"></p></div>
+            <button type="submit"><span data-submit-label>비공개 문의 접수</span><span aria-hidden="true">→</span></button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="contact-channels section" aria-labelledby="contact-channels-title">
+        <div class="section-inner">
+          <div class="section-head reveal"><p class="kicker">Other channels</p><h2 id="contact-channels-title" class="display-title"><span class="headline-line">Himawari의 새로운 장면을</span><span class="headline-line accent-word">다른 채널에서도 만나보세요.</span></h2></div>
+          <nav class="contact-actions reveal" aria-label="Himawari 외부 채널">
           <a class="contact-action" href="https://www.instagram.com/himawari.korea/" target="_blank" rel="noopener noreferrer">
             <span>SNS</span><strong>@himawari.korea</strong><small>Instagram에서 보기</small>
           </a>
           <a class="contact-action" href="https://smartstore.naver.com/baegot" target="_blank" rel="noopener noreferrer">
             <span>스토어</span><strong>Himawari Store</strong><small>제품 보러 가기</small>
           </a>
+          </nav>
         </div>
       </section>
     </main>
@@ -57,9 +73,10 @@
     <footer class="site-footer">
       <div class="footer-brand"><strong>HIMAWARI</strong><p>오래 곁에 둘 가방.</p></div>
       <nav aria-label="푸터 메뉴"><a href="about.html">브랜드</a><a href="products.html">제품</a><a href="story/">이야기</a><a href="contact.html" aria-current="page">연락하기</a></nav>
-      <div class="footer-contact" aria-label="연락처"><a href="mailto:baekhyunjin@gmail.com" target="_blank" rel="noopener noreferrer">baekhyunjin@gmail.com</a><a href="https://www.instagram.com/himawari.korea/" target="_blank" rel="noopener noreferrer">@himawari.korea</a></div>
+      <div class="footer-contact" role="group" aria-label="연락 채널"><a href="contact.html">비공개 문의 남기기</a><a href="https://www.instagram.com/himawari.korea/" target="_blank" rel="noopener noreferrer">@himawari.korea</a></div>
       <p class="copyright">© <span id="year">2026</span> HIMAWARI</p>
     </footer>
     <script src="assets/cart.js" defer></script>
+    <script src="assets/inquiry-form.js" defer></script>
   </body>
 </html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="theme-color" content="#24241F">
+    <title>제품 관리 — Himawari</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="product-admin.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#admin-main">본문으로 바로가기</a>
+    <header class="admin-header admin-header--console">
+      <a class="admin-brand" href="../index.html" aria-label="Himawari 공개 사이트 홈">HIMAWARI</a>
+      <nav class="admin-nav" aria-label="관리자 메뉴">
+        <a href="inquiries.html">문의 관리</a>
+        <a href="products.html" aria-current="page">제품 관리</a>
+      </nav>
+      <a class="admin-header__site" href="../products.html">제품 화면 보기 <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="admin-main" class="admin-main admin-main--products">
+      <section class="initial-state" data-initial-view aria-live="polite">
+        <span class="loader" aria-hidden="true"></span>
+        <p>관리자 세션과 제품 목록을 확인하고 있습니다.</p>
+      </section>
+
+      <section class="login-view" data-login-view hidden aria-label="제품 관리자 로그인">
+        <div class="login-copy">
+          <p class="eyebrow">Administrator only</p>
+          <h1 id="login-title">제품 관리</h1>
+          <p>관리자 인증 후 제품을 등록하거나 사이트에서 영구 삭제할 수 있습니다.</p>
+        </div>
+        <form class="login-form" data-login-form novalidate>
+          <div class="form-field">
+            <label for="admin-password">관리자 비밀번호</label>
+            <div class="secret-control">
+              <input id="admin-password" name="password" type="password" autocomplete="current-password" maxlength="256" required aria-describedby="admin-password-error" autofocus>
+              <button type="button" data-password-toggle aria-pressed="false" aria-label="비밀번호 표시">표시</button>
+            </div>
+            <p class="field-error" id="admin-password-error"></p>
+          </div>
+          <button class="button button--primary login-submit" type="submit"><span data-login-label>관리자 로그인</span><span aria-hidden="true">→</span></button>
+          <p class="form-status" data-login-status role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="board-view product-board" data-board-view hidden aria-label="제품 등록 및 목록">
+        <div class="board-head">
+          <div>
+            <p class="eyebrow">Product register</p>
+            <h1 id="board-title" tabindex="-1">제품 관리</h1>
+            <p>제품 정보와 상세 이미지를 한 번 등록하면 제품 목록과 개별 상세페이지에 함께 반영됩니다.</p>
+          </div>
+          <button class="button button--quiet" type="button" data-logout>로그아웃</button>
+        </div>
+
+        <div class="inventory-note">
+          <div><span>등록 제품</span><strong data-product-total>—</strong></div>
+          <p>삭제는 제품 정보와 이 화면에서 업로드한 이미지를 영구 삭제합니다. 기존 스마트스토어 원본 이미지는 삭제하지 않습니다.</p>
+        </div>
+        <div class="board-status" data-board-status role="status" aria-live="polite"></div>
+
+        <div class="product-workbench">
+          <section class="product-register" aria-labelledby="product-list-title">
+            <div class="inquiry-list__head">
+              <h2 id="product-list-title" tabindex="-1">제품 목록</h2>
+              <button class="button button--quiet" type="button" data-retry>새로고침</button>
+            </div>
+            <div class="product-table-wrap" data-table-wrap>
+              <table class="product-table">
+                <caption class="sr-only">공개 사이트에 등록된 제품 목록</caption>
+                <thead><tr><th scope="col">제품</th><th scope="col">가격</th><th scope="col">확인</th><th scope="col">삭제</th></tr></thead>
+                <tbody data-product-rows></tbody>
+              </table>
+            </div>
+            <div class="list-empty" data-empty-state hidden>
+              <p>등록된 제품이 없습니다.</p>
+              <span>오른쪽 등록 양식에서 첫 제품을 추가해 주세요.</span>
+            </div>
+            <div class="list-error" data-list-error hidden>
+              <p>제품 목록을 불러오지 못했습니다.</p>
+              <button class="button button--quiet" type="button" data-error-retry>다시 시도</button>
+            </div>
+            <button class="button button--load" type="button" data-load-more hidden><span data-load-label>제품 20개 더 보기</span><span aria-hidden="true">↓</span></button>
+          </section>
+
+          <section class="product-create" aria-labelledby="product-create-title">
+            <div class="product-create__head">
+              <p class="eyebrow">Add a product</p>
+              <h2 id="product-create-title">새 제품 등록</h2>
+              <p>별표가 있는 항목은 필수입니다. 저장 전까지 입력 내용과 선택한 파일은 이 브라우저에만 있습니다.</p>
+            </div>
+
+            <form class="product-form" data-product-form novalidate>
+              <div class="form-summary" data-form-summary role="alert" hidden tabindex="-1"></div>
+
+              <div class="admin-field">
+                <label for="product-name">제품명 <span aria-hidden="true">*</span></label>
+                <input id="product-name" name="name" type="text" autocomplete="off" maxlength="160" required aria-describedby="product-name-error">
+                <p class="field-error" id="product-name-error"></p>
+              </div>
+
+              <div class="product-form__pair">
+                <div class="admin-field">
+                  <label for="product-model">모델명 <span aria-hidden="true">*</span></label>
+                  <input id="product-model" name="model" type="text" autocomplete="off" maxlength="50" placeholder="예: No.1884" required aria-describedby="product-model-error">
+                  <p class="field-error" id="product-model-error"></p>
+                </div>
+                <div class="admin-field">
+                  <label for="product-price">판매가 <span aria-hidden="true">*</span></label>
+                  <input id="product-price" name="price" type="number" inputmode="numeric" min="1" max="10000000" step="100" placeholder="132000" required aria-describedby="product-price-error">
+                  <p class="field-error" id="product-price-error"></p>
+                </div>
+              </div>
+
+              <div class="admin-field">
+                <label for="product-tagline">한 줄 소개 <span aria-hidden="true">*</span></label>
+                <input id="product-tagline" name="tagline" type="text" autocomplete="off" minlength="5" maxlength="120" required aria-describedby="product-tagline-error">
+                <p class="field-error" id="product-tagline-error"></p>
+              </div>
+
+              <div class="admin-field">
+                <label for="product-description">상세 설명 <span aria-hidden="true">*</span></label>
+                <textarea class="admin-textarea resize-none" id="product-description" name="description" rows="7" minlength="20" maxlength="3000" required aria-describedby="product-description-help product-description-error"></textarea>
+                <p class="field-help" id="product-description-help">형태, 수납 방식, 어울리는 사용 장면을 확인된 사실 위주로 적어 주세요.</p>
+                <p class="field-error" id="product-description-error"></p>
+              </div>
+
+              <div class="admin-field">
+                <label for="product-highlights">제품 포인트 <span aria-hidden="true">*</span></label>
+                <textarea class="admin-textarea admin-textarea--compact resize-none" id="product-highlights" name="highlights" rows="5" maxlength="900" required aria-describedby="product-highlights-help product-highlights-error"></textarea>
+                <p class="field-help" id="product-highlights-help">상세페이지에 보여줄 포인트를 줄마다 하나씩, 최대 8개까지 입력하세요.</p>
+                <p class="field-error" id="product-highlights-error"></p>
+              </div>
+
+              <div class="admin-field">
+                <label for="product-url">네이버 스마트스토어 주소 <span aria-hidden="true">*</span></label>
+                <input id="product-url" name="url" type="url" inputmode="url" autocomplete="url" placeholder="https://smartstore.naver.com/..." required aria-describedby="product-url-error">
+                <p class="field-error" id="product-url-error"></p>
+              </div>
+
+              <div class="upload-group">
+                <div class="admin-field upload-field">
+                  <label for="product-main-image">대표 이미지 <span aria-hidden="true">*</span></label>
+                  <input id="product-main-image" name="mainImage" type="file" accept="image/jpeg,image/png,image/webp,image/avif" required aria-describedby="product-main-image-help product-main-image-error">
+                  <p class="field-help" id="product-main-image-help">JPG, PNG, WebP, AVIF · 최대 8MB · 1장</p>
+                  <p class="field-error" id="product-main-image-error"></p>
+                  <div class="main-image-preview" data-main-preview hidden></div>
+                </div>
+
+                <div class="admin-field upload-field">
+                  <label for="product-gallery">상세 이미지</label>
+                  <input id="product-gallery" name="gallery" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple aria-describedby="product-gallery-help product-gallery-error">
+                  <p class="field-help" id="product-gallery-help">제품의 구조와 사용 장면을 보여줄 이미지 · 장당 최대 8MB · 최대 5장</p>
+                  <p class="field-error" id="product-gallery-error"></p>
+                  <ul class="gallery-preview" data-gallery-preview hidden></ul>
+                </div>
+              </div>
+
+              <div class="upload-progress" data-upload-progress hidden>
+                <div><strong data-upload-label>이미지 업로드 준비 중</strong><span data-upload-percent>0%</span></div>
+                <progress max="100" value="0" data-upload-meter>0%</progress>
+              </div>
+
+              <p class="form-status product-form-status" data-form-status role="status" aria-live="polite"></p>
+              <div class="product-form-actions">
+                <button class="button button--quiet" type="button" data-reset-form>입력 지우기</button>
+                <button class="button button--quiet" type="button" data-cancel-upload hidden>업로드 취소</button>
+                <button class="button button--primary product-submit" type="submit"><span data-submit-label>제품 등록</span><span aria-hidden="true">→</span></button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="delete-dialog" data-delete-dialog aria-labelledby="delete-title" aria-describedby="delete-description">
+      <div class="dialog-head">
+        <p class="eyebrow">Permanent deletion</p>
+        <h2 id="delete-title">제품을 영구 삭제할까요?</h2>
+      </div>
+      <p id="delete-description"><strong data-delete-product></strong> 제품이 공개 목록과 상세페이지에서 사라집니다. 이 관리자 화면에서 올린 이미지도 함께 삭제되며 복구할 수 없습니다.</p>
+      <p class="dialog-error" data-delete-error role="alert"></p>
+      <div class="dialog-actions">
+        <button class="button button--quiet" type="button" data-delete-cancel autofocus>취소</button>
+        <button class="button button--danger" type="button" data-delete-confirm><span data-delete-label>제품 삭제</span></button>
+      </div>
+    </dialog>
+
+    <dialog class="delete-dialog discard-dialog" data-discard-dialog aria-labelledby="discard-title" aria-describedby="discard-description">
+      <div class="dialog-head">
+        <p class="eyebrow">Unsaved product</p>
+        <h2 id="discard-title">입력한 내용을 지울까요?</h2>
+      </div>
+      <p id="discard-description">아직 등록하지 않은 제품 정보와 선택한 이미지가 사라집니다.</p>
+      <div class="dialog-actions">
+        <button class="button button--quiet" type="button" data-discard-cancel autofocus>계속 작성</button>
+        <button class="button button--danger" type="button" data-discard-confirm>입력 내용 지우기</button>
+      </div>
+    </dialog>
+  </body>
+</html>

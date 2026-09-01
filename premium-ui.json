@@ -1,0 +1,14 @@
+{
+  "profile": "product-admin",
+  "canonicalMap": "UX-CONTRACT.md",
+  "sourceRoots": ["."],
+  "requiredCapabilities": ["Form", "Scrollbar", "CRUD"],
+  "ownership": {
+    "Date": "native"
+  },
+  "commands": {
+    "test": "npm test",
+    "design": "npx -p @google/design.md designmd lint DESIGN.md"
+  },
+  "requiredCommands": ["test", "design"]
+}

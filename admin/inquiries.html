@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="theme-color" content="#24241F">
+    <title>비공개 문의 관리 — Himawari</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="admin.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#admin-main">본문으로 바로가기</a>
+    <header class="admin-header admin-header--console">
+      <a class="admin-brand" href="../index.html" aria-label="Himawari 공개 사이트 홈">HIMAWARI</a>
+      <nav class="admin-nav" aria-label="관리자 메뉴">
+        <a href="inquiries.html" aria-current="page">문의 관리</a>
+        <a href="products.html">제품 관리</a>
+      </nav>
+      <a class="admin-header__site" href="../contact.html">문의 화면 보기 <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="admin-main" class="admin-main">
+      <section class="initial-state" data-initial-view aria-live="polite">
+        <span class="loader" aria-hidden="true"></span>
+        <p>관리자 세션을 확인하고 있습니다.</p>
+      </section>
+
+      <section class="login-view" data-login-view hidden aria-labelledby="login-title">
+        <div class="login-copy">
+          <p class="eyebrow">Administrator only</p>
+          <h1 id="login-title">비공개 문의 관리</h1>
+          <p>문의 원문은 관리자 인증 후에만 표시됩니다. 비밀번호는 브라우저에 저장되지 않습니다.</p>
+        </div>
+        <form class="login-form" data-login-form novalidate>
+          <div class="form-field">
+            <label for="admin-password">관리자 비밀번호</label>
+            <div class="secret-control">
+              <input id="admin-password" name="password" type="password" autocomplete="current-password" maxlength="256" required aria-describedby="admin-password-error" autofocus>
+              <button type="button" data-password-toggle aria-pressed="false" aria-label="비밀번호 표시">표시</button>
+            </div>
+            <p class="field-error" id="admin-password-error"></p>
+          </div>
+          <button class="button button--primary login-submit" type="submit"><span data-login-label>관리자 로그인</span><span aria-hidden="true">→</span></button>
+          <p class="form-status" data-login-status role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="board-view" data-board-view hidden aria-labelledby="board-title">
+        <div class="board-head">
+          <div>
+            <p class="eyebrow">Private inquiry desk</p>
+            <h1 id="board-title" tabindex="-1">비공개 문의함</h1>
+            <p>최근 문의부터 20건씩 불러옵니다. 문의 내용은 외부에 공개되지 않습니다.</p>
+          </div>
+          <button class="button button--quiet" type="button" data-logout>로그아웃</button>
+        </div>
+
+        <div class="retention-note">
+          <strong>보관 정책</strong>
+          <p>문의는 자동으로 만료되지 않으며, 관리자가 개별 삭제할 때까지 보관됩니다. 삭제한 문의는 복구할 수 없습니다.</p>
+        </div>
+
+        <div class="board-status" data-board-status role="status" aria-live="polite"></div>
+
+        <div class="board-layout">
+          <section class="inquiry-list" aria-labelledby="inquiry-list-title">
+            <div class="inquiry-list__head">
+              <h2 id="inquiry-list-title">접수 목록</h2>
+              <button class="button button--quiet" type="button" data-retry>새로고침</button>
+            </div>
+            <div class="table-wrap" data-table-wrap>
+              <table>
+                <caption class="sr-only">비공개 문의 접수 목록</caption>
+                <thead><tr><th scope="col">접수 일시</th><th scope="col">문의 제목</th><th scope="col">이름</th><th scope="col">이메일</th><th scope="col">확인</th></tr></thead>
+                <tbody data-inquiry-rows></tbody>
+              </table>
+            </div>
+            <div class="list-empty" data-empty-state hidden>
+              <p>아직 접수된 문의가 없습니다.</p>
+              <span>새 문의가 접수되면 이곳에 최근 순서로 표시됩니다.</span>
+            </div>
+            <div class="list-error" data-list-error hidden>
+              <p>문의 목록을 불러오지 못했습니다.</p>
+              <button class="button button--quiet" type="button" data-error-retry>다시 시도</button>
+            </div>
+            <button class="button button--load" type="button" data-load-more hidden><span data-load-label>문의 20건 더 보기</span><span aria-hidden="true">↓</span></button>
+          </section>
+
+          <aside class="inquiry-detail" data-detail aria-labelledby="detail-title">
+            <div class="detail-empty" data-detail-empty>
+              <p class="eyebrow">Inquiry detail</p>
+              <h2 id="detail-title">확인할 문의를 선택하세요.</h2>
+              <p>목록의 ‘문의 보기’를 누르면 원문과 답변 이메일을 확인할 수 있습니다.</p>
+            </div>
+            <div data-detail-content hidden>
+              <div class="detail-head">
+                <div><p class="eyebrow">Inquiry detail</p><h2 data-detail-subject>문의 상세</h2></div>
+                <button class="button button--quiet" type="button" data-detail-close>닫기</button>
+              </div>
+              <dl class="detail-meta">
+                <div><dt>접수 일시</dt><dd><time data-detail-date></time></dd></div>
+                <div><dt>이름</dt><dd data-detail-name></dd></div>
+                <div><dt>답변 이메일</dt><dd data-detail-email></dd></div>
+              </dl>
+              <div class="detail-message"><h3>문의 내용</h3><p data-detail-message></p></div>
+              <div class="detail-actions">
+                <button class="button button--danger-outline" type="button" data-delete-trigger>문의 삭제</button>
+                <p>삭제 후에는 복구할 수 없습니다.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="delete-dialog" data-delete-dialog aria-labelledby="delete-title" aria-describedby="delete-description">
+      <div class="dialog-head">
+        <p class="eyebrow">Permanent deletion</p>
+        <h2 id="delete-title">문의를 영구 삭제할까요?</h2>
+      </div>
+      <p id="delete-description"><strong data-delete-subject></strong> 문의와 작성자 정보가 즉시 삭제되며 복구할 수 없습니다.</p>
+      <p class="dialog-error" data-delete-error role="alert"></p>
+      <div class="dialog-actions">
+        <button class="button button--quiet" type="button" data-delete-cancel autofocus>취소</button>
+        <button class="button button--danger" type="button" data-delete-confirm><span data-delete-label>문의 삭제</span></button>
+      </div>
+    </dialog>
+  </body>
+</html>
