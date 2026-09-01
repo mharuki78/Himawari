@@ -4,12 +4,15 @@ import {
   BlobPreconditionFailedError,
   createProductRecord,
   deleteManagedImages,
+  mergeProductMedia,
   productStoreIsConfigured,
   publicProduct,
   readProductCatalog,
   validateProductInput,
+  validateProductUpdateInput,
   verifyManagedImages,
   writeProductCatalog,
+  updateProductRecord,
 } from '../_lib/products.js';
 
 const PAGE_SIZE = 20;
@@ -21,7 +24,7 @@ function parseCursor(value) {
 }
 
 export async function fetch(request) {
-  if (!['GET', 'POST', 'DELETE'].includes(request.method)) return methodNotAllowed(['GET', 'POST', 'DELETE']);
+  if (!['GET', 'POST', 'PATCH', 'DELETE'].includes(request.method)) return methodNotAllowed(['GET', 'POST', 'PATCH', 'DELETE']);
   if (!authIsConfigured() || !productStoreIsConfigured()) return json({ message: '제품 관리 저장소 설정이 완료되지 않았습니다.' }, 503);
   if (!isAdminRequest(request)) return json({ message: '관리자 로그인이 필요합니다.' }, 401, { Vary: 'Cookie' });
 
@@ -67,10 +70,33 @@ export async function fetch(request) {
     const id = typeof input.id === 'string' ? input.id : '';
     const suppliedEtag = input.etag === null || typeof input.etag === 'string' ? input.etag : undefined;
     if (!id || suppliedEtag === undefined || suppliedEtag !== current.etag) {
-      return json({ message: '제품 목록이 변경되었습니다. 새로고침한 뒤 다시 삭제해 주세요.' }, 409, { Vary: 'Cookie' });
+      const action = request.method === 'PATCH' ? '수정' : '삭제';
+      return json({ message: `제품 목록이 변경되었습니다. 새로고침한 뒤 다시 ${action}해 주세요.` }, 409, { Vary: 'Cookie' });
     }
     const product = current.catalog.products.find((item) => item.id === id);
     if (!product) return json({ message: '이미 삭제되었거나 찾을 수 없는 제품입니다.' }, 404, { Vary: 'Cookie' });
+
+    if (request.method === 'PATCH') {
+      const { value, fieldErrors, valid } = validateProductUpdateInput(input, product);
+      if (!valid) return json({ message: '입력 내용을 확인해 주세요.', fieldErrors }, 400, { Vary: 'Cookie' });
+
+      if (value.managedImages.length) {
+        const submittedImages = [...value.managedImages];
+        const verifiedImages = await verifyManagedImages(value.requestId, submittedImages);
+        const canonicalImages = new Map(submittedImages.map((url, index) => [url, verifiedImages[index]]));
+        if (value.replaceMainImage) value.image = canonicalImages.get(value.image) || '';
+        if (value.replaceGallery) value.gallery = value.gallery.map((url) => canonicalImages.get(url) || '').filter(Boolean);
+        value.managedImages = verifiedImages;
+      }
+
+      const media = mergeProductMedia(product, value);
+      const updatedProduct = updateProductRecord(product, value, media);
+      const updatedProducts = current.catalog.products.map((item) => (item.id === id ? updatedProduct : item));
+      const saved = await writeProductCatalog({ ...current.catalog, products: updatedProducts }, current.etag);
+      const mediaRemoved = await deleteManagedImages(media.removedManagedImages);
+      return json({ ok: true, product: publicProduct(updatedProduct), etag: saved.etag, mediaRemoved }, 200, { Vary: 'Cookie' });
+    }
+
     const remaining = current.catalog.products.filter((item) => item.id !== id);
     const saved = await writeProductCatalog({ ...current.catalog, products: remaining }, current.etag);
     const mediaRemoved = await deleteManagedImages(product.managedImages);

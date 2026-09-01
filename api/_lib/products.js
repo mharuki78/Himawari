@@ -97,23 +97,18 @@ export function publicProduct(product) {
   return visible;
 }
 
-export function validateProductInput(input) {
+function validateProductFields(input) {
   const value = {
-    requestId: singleLine(input.requestId),
     name: singleLine(input.name),
     model: singleLine(input.model),
     price: Number(input.price),
     tagline: singleLine(input.tagline),
     description: multiLine(input.description),
     highlights: (Array.isArray(input.highlights) ? input.highlights : []).map(singleLine).filter(Boolean),
-    image: httpsUrl(input.image),
-    gallery: (Array.isArray(input.gallery) ? input.gallery : []).map(httpsUrl).filter(Boolean),
     url: httpsUrl(input.url),
-    managedImages: (Array.isArray(input.managedImages) ? input.managedImages : []).map(httpsUrl).filter(Boolean),
   };
   const fieldErrors = {};
 
-  if (!REQUEST_ID_PATTERN.test(value.requestId)) fieldErrors.form = '등록 요청을 새로 시작해 주세요.';
   if (value.name.length < 2 || value.name.length > 160) fieldErrors.name = '제품명은 2~160자로 입력해 주세요.';
   if (!value.model || value.model.length > 50) fieldErrors.model = '모델명은 50자 이내로 입력해 주세요.';
   if (!Number.isInteger(value.price) || value.price < 1 || value.price > 10_000_000) fieldErrors.price = '가격은 1원 이상 1,000만원 이하의 숫자로 입력해 주세요.';
@@ -122,20 +117,131 @@ export function validateProductInput(input) {
   if (!value.highlights.length || value.highlights.length > 8 || value.highlights.some((item) => item.length > 100)) {
     fieldErrors.highlights = '제품 포인트를 줄마다 입력해 주세요. 최대 8개, 각 100자까지 가능합니다.';
   }
-  if (!value.image) fieldErrors.mainImage = '대표 이미지를 선택해 주세요.';
-  if (value.gallery.length > MAX_GALLERY_IMAGES) fieldErrors.gallery = `상세 이미지는 최대 ${MAX_GALLERY_IMAGES}개까지 등록할 수 있습니다.`;
   try {
     const storeUrl = new URL(value.url);
     if (storeUrl.hostname !== 'smartstore.naver.com') throw new Error();
   } catch {
     fieldErrors.url = '네이버 스마트스토어 제품 주소를 입력해 주세요.';
   }
+
+  return { value, fieldErrors };
+}
+
+export function validateProductInput(input) {
+  const fields = validateProductFields(input);
+  const value = {
+    ...fields.value,
+    requestId: singleLine(input.requestId),
+    image: httpsUrl(input.image),
+    gallery: (Array.isArray(input.gallery) ? input.gallery : []).map(httpsUrl).filter(Boolean),
+    managedImages: (Array.isArray(input.managedImages) ? input.managedImages : []).map(httpsUrl).filter(Boolean),
+  };
+  const fieldErrors = { ...fields.fieldErrors };
+
+  if (!REQUEST_ID_PATTERN.test(value.requestId)) fieldErrors.form = '등록 요청을 새로 시작해 주세요.';
+  if (!value.image) fieldErrors.mainImage = '대표 이미지를 선택해 주세요.';
+  if (value.gallery.length > MAX_GALLERY_IMAGES) fieldErrors.gallery = `상세 이미지는 최대 ${MAX_GALLERY_IMAGES}개까지 등록할 수 있습니다.`;
   const allImages = [value.image, ...value.gallery];
   if (new Set(value.managedImages).size !== value.managedImages.length || allImages.some((url) => !value.managedImages.includes(url))) {
     fieldErrors.mainImage = '이 관리자 화면에서 업로드한 이미지만 새 제품에 사용할 수 있습니다.';
   }
 
   return { value, fieldErrors, valid: Object.keys(fieldErrors).length === 0 };
+}
+
+export function validateProductUpdateInput(input, currentProduct = null) {
+  const fields = validateProductFields(input);
+  const replaceMainImage = input.replaceMainImage === true;
+  const replaceGallery = input.replaceGallery === true;
+  const value = {
+    ...fields.value,
+    requestId: singleLine(input.requestId),
+    replaceMainImage,
+    replaceGallery,
+    image: replaceMainImage ? httpsUrl(input.image) : '',
+    gallery: replaceGallery
+      ? (Array.isArray(input.gallery) ? input.gallery : []).map(httpsUrl).filter(Boolean)
+      : [],
+    managedImages: (Array.isArray(input.managedImages) ? input.managedImages : []).map(httpsUrl).filter(Boolean),
+  };
+  const fieldErrors = { ...fields.fieldErrors };
+  const current = currentProduct ? normalizeProduct(currentProduct) : null;
+  const replacementImages = [
+    ...(replaceMainImage && value.image ? [value.image] : []),
+    ...(replaceGallery ? value.gallery : []),
+  ];
+
+  if (current) {
+    for (const name of ['name', 'model', 'price', 'tagline', 'description', 'url']) {
+      if (fieldErrors[name] && value[name] === current[name]) delete fieldErrors[name];
+    }
+    if (
+      fieldErrors.highlights
+      && value.highlights.length === current.highlights.length
+      && value.highlights.every((item, index) => item === current.highlights[index])
+    ) {
+      delete fieldErrors.highlights;
+    }
+  }
+
+  if (replaceMainImage && !value.image) fieldErrors.mainImage = '새 대표 이미지를 다시 선택해 주세요.';
+  if (value.gallery.length > MAX_GALLERY_IMAGES) fieldErrors.gallery = `상세 이미지는 최대 ${MAX_GALLERY_IMAGES}개까지 등록할 수 있습니다.`;
+  if (replacementImages.length && !REQUEST_ID_PATTERN.test(value.requestId)) fieldErrors.form = '이미지 교체 요청을 새로 시작해 주세요.';
+  if (
+    new Set(value.managedImages).size !== value.managedImages.length
+    || replacementImages.some((url) => !value.managedImages.includes(url))
+    || value.managedImages.some((url) => !replacementImages.includes(url))
+  ) {
+    fieldErrors.mainImage = '이 관리자 화면에서 새로 업로드한 이미지만 교체에 사용할 수 있습니다.';
+  }
+
+  return { value, fieldErrors, valid: Object.keys(fieldErrors).length === 0 };
+}
+
+export function mergeProductMedia(product, update) {
+  const current = normalizeProduct(product);
+  const currentManaged = new Set(current.managedImages);
+  const removedCandidates = [];
+  let image = current.image;
+  let gallery = [...current.gallery];
+
+  if (update.replaceMainImage) {
+    if (currentManaged.has(current.image)) removedCandidates.push(current.image);
+    image = update.image;
+  }
+  if (update.replaceGallery) {
+    removedCandidates.push(...current.gallery.filter((url) => currentManaged.has(url)));
+    gallery = [...update.gallery];
+  }
+
+  const referenced = new Set([image, ...gallery]);
+  const removedManagedImages = [...new Set(removedCandidates)].filter((url) => !referenced.has(url));
+  const managedImages = [
+    ...current.managedImages.filter((url) => !removedManagedImages.includes(url) && referenced.has(url)),
+    ...update.managedImages,
+  ].filter((url, index, list) => referenced.has(url) && list.indexOf(url) === index);
+
+  return { image, gallery, managedImages, removedManagedImages };
+}
+
+export function updateProductRecord(product, value, media) {
+  const current = normalizeProduct(product);
+  return normalizeProduct({
+    ...current,
+    name: value.name,
+    model: value.model,
+    price: value.price,
+    tagline: value.tagline,
+    description: value.description,
+    highlights: value.highlights,
+    url: value.url,
+    image: media.image,
+    gallery: media.gallery,
+    managedImages: media.managedImages,
+    id: current.id,
+    createdAt: current.createdAt,
+    requestId: current.requestId,
+  });
 }
 
 export async function verifyManagedImages(requestId, urls) {
@@ -238,4 +344,3 @@ export async function deleteManagedImages(urls) {
 }
 
 export { BlobPreconditionFailedError, IMAGE_TYPES, MAX_GALLERY_IMAGES, MAX_IMAGE_SIZE, REQUEST_ID_PATTERN };
-

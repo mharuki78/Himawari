@@ -3,7 +3,7 @@
 ## Product context
 
 - Audience: 공개 고객과 단일 Himawari 관리자
-- Primary jobs: 고객은 제품별 상세 정보를 확인하고 문의를 비공개로 접수한다. 관리자는 제품과 이미지를 등록·영구 삭제하고 문의를 읽은 뒤 필요할 때 영구 삭제한다.
+- Primary jobs: 고객은 제품별 상세 정보를 확인하고 문의를 비공개로 접수한다. 관리자는 제품과 이미지를 등록·수정·영구 삭제하고 문의를 읽은 뒤 필요할 때 영구 삭제한다.
 - Target market(s): 대한민국
 - Active locales: `ko-KR`
 - Language/content register: 공개 화면은 절제된 브랜드 문장, 관리자 화면은 짧고 구체적인 업무 문장
@@ -35,11 +35,11 @@
 
 | Capability | Canonical owner | Source of truth | Allowed variants | Verification |
 |---|---|---|---|---|
-| Form | `assets/inquiry-form.js`, `admin/admin.js`, `admin/product-admin.source.js` | API validation | public inquiry / admin login / product create | validation + browser flow |
+| Form | `assets/inquiry-form.js`, `admin/admin.js`, `admin/product-admin.source.js` | API validation | public inquiry / admin login / product create / product edit | validation + browser flow |
 | File upload | native file picker + `@vercel/blob/client` upload queue | `api/admin/product-upload.js` | main image / gallery | type-size-owner + progress/cancel browser flow |
 | Scrollbar | global application stylesheets | CSS tokens | product scroll geometry only | computed style |
 | Status | form/list inline live regions | current request state | success / error / pending | live-region inspection |
-| CRUD | inquiry and product APIs under `api/` | server authorization + Blob policies | inquiry create/read/delete / product create/read/delete | full-flow integration |
+| CRUD | inquiry and product APIs under `api/` | server authorization + Blob policies | inquiry create/read/delete / product create/read/update/delete | full-flow integration |
 | Dialog | native modal `<dialog>` with app-owned surface | `admin/inquiries.html` | irreversible delete only | keyboard + failure flow |
 
 ## Component behavior
@@ -74,6 +74,7 @@
 | Hard-delete | `문의 삭제` then confirm | dialog stays open, duplicate blocked | same list | selected row removed, inline acknowledgement | dialog remains with retry/cancel | next surviving view button or board title | `docs/INQUIRY-POLICY.md` |
 | Logout | `로그아웃` | button locked | login view | inline confirmation | board remains with error | password input | `docs/INQUIRY-POLICY.md` |
 | Create product | `제품 등록` | fields retained, files upload with progress, duplicate blocked | same admin route with refreshed owning list | persistent list acknowledgement | uploaded result and values retained when safe; retry without duplicate | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
+| Edit product | `수정` then `변경사항 저장` | current values retained, selected replacement files upload with progress, duplicate blocked | same admin route with refreshed owning list | persistent list acknowledgement | form stays open; ETag conflict asks for refresh without overwriting | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Read product detail | product image/name/`상세 보기` | reserved product loader | `product.html?id=...` | complete product content | app-owned not-found state and products link | product title | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Hard-delete product | `삭제` then `제품 삭제` | dialog stays open, duplicate blocked | refreshed product list | persistent deletion acknowledgement | dialog remains; conflict asks for refresh | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
 
@@ -105,7 +106,7 @@
 - Stale request handling: admin list uses `AbortController`; duplicate loads and mutations are blocked.
 - Delete failure: confirmation dialog remains open with retry and cancel.
 - Product image upload: browser-to-Blob direct upload, 15-minute scoped token, 8MB per image, determinate progress and explicit cancellation. Partial uploads are cleaned up when the session remains valid.
-- Product catalog writes: conditional ETag write prevents a stale administrator from overwriting a concurrent change. Conflict keeps form or delete context and requests a refresh.
+- Product catalog writes: conditional ETag write prevents a stale administrator from overwriting a concurrent create, edit, or delete. Edit preserves existing images unless a replacement file was selected. Conflict keeps form or delete context and requests a refresh.
 
 ## Validation
 
@@ -113,7 +114,7 @@
 - Timing: submit first, then blur/input for fields already in error
 - Policy: `novalidate`, associated inline Korean errors, first-invalid focus, duplicate-submit prevention
 - Sensitive values: password never enters route, log, toast, local/session storage, Blob, or response payload.
-- Product validation: client and server both require name, model, integer price, tagline, detailed description, at least one product point, SmartStore URL and owned representative image. Server verifies every uploaded Blob before publishing.
+- Product validation: client and server both require name, model, integer price, tagline, detailed description, at least one product point and SmartStore URL. Create requires an owned representative image. Edit may preserve current media and unchanged legacy description/highlight values; every changed field uses the current rule and every newly selected replacement Blob is server-verified before publishing.
 
 ## Permission and privacy UI
 
@@ -121,7 +122,7 @@
 - UI hiding is not authorization. Every admin API request verifies the signed HttpOnly cookie.
 - Public form states that inquiry data is retained until the administrator deletes it and requires consent.
 - Admin deletion is irreversible and offers no false Undo.
-- Product create/delete/upload APIs require the same signed administrator session. Public product API exposes only catalog fields and never exposes upload request IDs or managed-image metadata.
+- Product create/edit/delete/upload APIs require the same signed administrator session. Public product API exposes only catalog fields and never exposes upload request IDs or managed-image metadata.
 
 ## Verification
 

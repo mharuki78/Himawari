@@ -32,7 +32,7 @@
         <div class="login-copy">
           <p class="eyebrow">Administrator only</p>
           <h1 id="login-title">제품 관리</h1>
-          <p>관리자 인증 후 제품을 등록하거나 사이트에서 영구 삭제할 수 있습니다.</p>
+          <p>관리자 인증 후 제품을 등록·수정하거나 사이트에서 영구 삭제할 수 있습니다.</p>
         </div>
         <form class="login-form" data-login-form novalidate>
           <div class="form-field">
@@ -53,7 +53,7 @@
           <div>
             <p class="eyebrow">Product register</p>
             <h1 id="board-title" tabindex="-1">제품 관리</h1>
-            <p>제품 정보와 상세 이미지를 한 번 등록하면 제품 목록과 개별 상세페이지에 함께 반영됩니다.</p>
+            <p>제품 정보와 이미지를 등록하거나 수정하면 제품 목록과 개별 상세페이지에 함께 반영됩니다.</p>
           </div>
           <button class="button button--quiet" type="button" data-logout>로그아웃</button>
         </div>
@@ -73,7 +73,7 @@
             <div class="product-table-wrap" data-table-wrap>
               <table class="product-table">
                 <caption class="sr-only">공개 사이트에 등록된 제품 목록</caption>
-                <thead><tr><th scope="col">제품</th><th scope="col">가격</th><th scope="col">확인</th><th scope="col">삭제</th></tr></thead>
+                <thead><tr><th scope="col">제품</th><th scope="col">가격</th><th scope="col">수정</th><th scope="col">확인</th><th scope="col">삭제</th></tr></thead>
                 <tbody data-product-rows></tbody>
               </table>
             </div>
@@ -90,13 +90,18 @@
 
           <section class="product-create" aria-labelledby="product-create-title">
             <div class="product-create__head">
-              <p class="eyebrow">Add a product</p>
-              <h2 id="product-create-title">새 제품 등록</h2>
-              <p>별표가 있는 항목은 필수입니다. 저장 전까지 입력 내용과 선택한 파일은 이 브라우저에만 있습니다.</p>
+              <p class="eyebrow" data-editor-eyebrow>Add a product</p>
+              <h2 id="product-create-title" data-editor-title>새 제품 등록</h2>
+              <p data-editor-description>별표가 있는 항목은 필수입니다. 저장 전까지 입력 내용과 선택한 파일은 이 브라우저에만 있습니다.</p>
             </div>
 
             <form class="product-form" data-product-form novalidate>
               <div class="form-summary" data-form-summary role="alert" hidden tabindex="-1"></div>
+              <div class="edit-context" data-edit-context hidden aria-live="polite">
+                <span>수정 중</span>
+                <strong data-edit-product></strong>
+                <p>새 이미지를 선택하지 않은 항목은 현재 이미지를 그대로 유지합니다.</p>
+              </div>
 
               <div class="admin-field">
                 <label for="product-name">제품명 <span aria-hidden="true">*</span></label>
@@ -145,9 +150,9 @@
 
               <div class="upload-group">
                 <div class="admin-field upload-field">
-                  <label for="product-main-image">대표 이미지 <span aria-hidden="true">*</span></label>
+                  <label for="product-main-image">대표 이미지 <span data-main-required aria-hidden="true">*</span></label>
                   <input id="product-main-image" name="mainImage" type="file" accept="image/jpeg,image/png,image/webp,image/avif" required aria-describedby="product-main-image-help product-main-image-error">
-                  <p class="field-help" id="product-main-image-help">JPG, PNG, WebP, AVIF · 최대 8MB · 1장</p>
+                  <p class="field-help" id="product-main-image-help" data-main-image-help>JPG, PNG, WebP, AVIF · 최대 8MB · 1장</p>
                   <p class="field-error" id="product-main-image-error"></p>
                   <div class="main-image-preview" data-main-preview hidden></div>
                 </div>
@@ -155,7 +160,7 @@
                 <div class="admin-field upload-field">
                   <label for="product-gallery">상세 이미지</label>
                   <input id="product-gallery" name="gallery" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple aria-describedby="product-gallery-help product-gallery-error">
-                  <p class="field-help" id="product-gallery-help">제품의 구조와 사용 장면을 보여줄 이미지 · 장당 최대 8MB · 최대 5장</p>
+                  <p class="field-help" id="product-gallery-help" data-gallery-help>제품의 구조와 사용 장면을 보여줄 이미지 · 장당 최대 8MB · 최대 5장</p>
                   <p class="field-error" id="product-gallery-error"></p>
                   <ul class="gallery-preview" data-gallery-preview hidden></ul>
                 </div>
@@ -168,7 +173,7 @@
 
               <p class="form-status product-form-status" data-form-status role="status" aria-live="polite"></p>
               <div class="product-form-actions">
-                <button class="button button--quiet" type="button" data-reset-form>입력 지우기</button>
+                <button class="button button--quiet" type="button" data-reset-form><span data-reset-label>입력 지우기</span></button>
                 <button class="button button--quiet" type="button" data-cancel-upload hidden>업로드 취소</button>
                 <button class="button button--primary product-submit" type="submit"><span data-submit-label>제품 등록</span><span aria-hidden="true">→</span></button>
               </div>
@@ -194,12 +199,12 @@
     <dialog class="delete-dialog discard-dialog" data-discard-dialog aria-labelledby="discard-title" aria-describedby="discard-description">
       <div class="dialog-head">
         <p class="eyebrow">Unsaved product</p>
-        <h2 id="discard-title">입력한 내용을 지울까요?</h2>
+        <h2 id="discard-title" data-discard-title>입력한 내용을 지울까요?</h2>
       </div>
-      <p id="discard-description">아직 등록하지 않은 제품 정보와 선택한 이미지가 사라집니다.</p>
+      <p id="discard-description" data-discard-description>아직 등록하지 않은 제품 정보와 선택한 이미지가 사라집니다.</p>
       <div class="dialog-actions">
         <button class="button button--quiet" type="button" data-discard-cancel autofocus>계속 작성</button>
-        <button class="button button--danger" type="button" data-discard-confirm>입력 내용 지우기</button>
+        <button class="button button--danger" type="button" data-discard-confirm><span data-discard-confirm-label>입력 내용 지우기</span></button>
       </div>
     </dialog>
   </body>

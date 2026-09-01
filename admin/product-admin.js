@@ -6558,12 +6558,21 @@ var listTitle = $("#product-list-title");
 var productForm = $("[data-product-form]");
 var formSummary = $("[data-form-summary]");
 var formStatus = $("[data-form-status]");
+var editorEyebrow = $("[data-editor-eyebrow]");
+var editorTitle = $("[data-editor-title]");
+var editorDescription = $("[data-editor-description]");
+var editContext = $("[data-edit-context]");
+var editProduct = $("[data-edit-product]");
 var submitButton = productForm.querySelector('button[type="submit"]');
 var submitLabel = $("[data-submit-label]");
 var resetButton = $("[data-reset-form]");
+var resetLabel = $("[data-reset-label]");
 var cancelUploadButton = $("[data-cancel-upload]");
 var mainImageInput = $("#product-main-image");
 var galleryInput = $("#product-gallery");
+var mainRequired = $("[data-main-required]");
+var mainImageHelp = $("[data-main-image-help]");
+var galleryHelp = $("[data-gallery-help]");
 var mainPreview = $("[data-main-preview]");
 var galleryPreview = $("[data-gallery-preview]");
 var uploadProgress = $("[data-upload-progress]");
@@ -6577,8 +6586,11 @@ var deleteCancel = $("[data-delete-cancel]");
 var deleteConfirm = $("[data-delete-confirm]");
 var deleteLabel = $("[data-delete-label]");
 var discardDialog = $("[data-discard-dialog]");
+var discardTitle = $("[data-discard-title]");
+var discardDescription = $("[data-discard-description]");
 var discardCancel = $("[data-discard-cancel]");
 var discardConfirm = $("[data-discard-confirm]");
+var discardConfirmLabel = $("[data-discard-confirm-label]");
 var priceFormatter = new Intl.NumberFormat("ko-KR", {
   style: "currency",
   currency: "KRW",
@@ -6603,6 +6615,9 @@ var uploadController = null;
 var dirty = false;
 var previewUrls = [];
 var discardAction = null;
+var editTarget = null;
+var editEtag = null;
+var editTrigger = null;
 function showLogin(message2 = "") {
   initialView.hidden = true;
   boardView.hidden = true;
@@ -6619,6 +6634,88 @@ function showBoard() {
   initialView.hidden = true;
   loginView.hidden = true;
   boardView.hidden = false;
+}
+function setCreateMode() {
+  if (editTrigger?.isConnected) {
+    editTrigger.disabled = false;
+    editTrigger.textContent = "\uC218\uC815";
+    editTrigger.closest("tr")?.classList.remove("is-editing");
+  }
+  rows.querySelectorAll("[data-delete-product-id]").forEach((button) => {
+    button.disabled = false;
+  });
+  editTarget = null;
+  editEtag = null;
+  editTrigger = null;
+  productForm.dataset.mode = "create";
+  editorEyebrow.textContent = "Add a product";
+  editorTitle.textContent = "\uC0C8 \uC81C\uD488 \uB4F1\uB85D";
+  editorDescription.textContent = "\uBCC4\uD45C\uAC00 \uC788\uB294 \uD56D\uBAA9\uC740 \uD544\uC218\uC785\uB2C8\uB2E4. \uC800\uC7A5 \uC804\uAE4C\uC9C0 \uC785\uB825 \uB0B4\uC6A9\uACFC \uC120\uD0DD\uD55C \uD30C\uC77C\uC740 \uC774 \uBE0C\uB77C\uC6B0\uC800\uC5D0\uB9CC \uC788\uC2B5\uB2C8\uB2E4.";
+  editContext.hidden = true;
+  editProduct.textContent = "";
+  mainImageInput.required = true;
+  mainRequired.hidden = false;
+  mainImageHelp.textContent = "JPG, PNG, WebP, AVIF \xB7 \uCD5C\uB300 8MB \xB7 1\uC7A5";
+  galleryHelp.textContent = "\uC81C\uD488\uC758 \uAD6C\uC870\uC640 \uC0AC\uC6A9 \uC7A5\uBA74\uC744 \uBCF4\uC5EC\uC904 \uC774\uBBF8\uC9C0 \xB7 \uC7A5\uB2F9 \uCD5C\uB300 8MB \xB7 \uCD5C\uB300 5\uC7A5";
+  resetLabel.textContent = "\uC785\uB825 \uC9C0\uC6B0\uAE30";
+  submitLabel.textContent = "\uC81C\uD488 \uB4F1\uB85D";
+}
+function beginEdit(product, trigger) {
+  productForm.reset();
+  clearFormErrors();
+  revokePreviews();
+  uploadedImageUrls = [];
+  uploadsComplete = false;
+  requestId = crypto.randomUUID();
+  editTarget = product;
+  editEtag = catalogEtag;
+  editTrigger = trigger;
+  productForm.dataset.mode = "edit";
+  editorEyebrow.textContent = "Edit a product";
+  editorTitle.textContent = "\uC81C\uD488 \uC218\uC815";
+  editorDescription.textContent = "\uD604\uC7AC \uC81C\uD488 \uC815\uBCF4\uB97C \uBD88\uB7EC\uC654\uC2B5\uB2C8\uB2E4. \uBCC0\uACBD\uD55C \uB0B4\uC6A9\uB9CC \uD655\uC778\uD55C \uB4A4 \uC800\uC7A5\uD574 \uC8FC\uC138\uC694.";
+  editContext.hidden = false;
+  editProduct.textContent = product.name;
+  mainImageInput.required = false;
+  mainRequired.hidden = true;
+  mainImageHelp.textContent = "\uC0C8 \uD30C\uC77C\uC744 \uC120\uD0DD\uD558\uBA74 \uD604\uC7AC \uB300\uD45C \uC774\uBBF8\uC9C0\uB97C \uAD50\uCCB4\uD569\uB2C8\uB2E4. \uC120\uD0DD\uD558\uC9C0 \uC54A\uC73C\uBA74 \uADF8\uB300\uB85C \uC720\uC9C0\uD569\uB2C8\uB2E4.";
+  galleryHelp.textContent = "\uC0C8 \uD30C\uC77C\uC744 \uC120\uD0DD\uD558\uBA74 \uD604\uC7AC \uC0C1\uC138 \uC774\uBBF8\uC9C0 \uC804\uCCB4\uB97C \uAD50\uCCB4\uD569\uB2C8\uB2E4. \uC120\uD0DD\uD558\uC9C0 \uC54A\uC73C\uBA74 \uADF8\uB300\uB85C \uC720\uC9C0\uD569\uB2C8\uB2E4.";
+  resetLabel.textContent = "\uC218\uC815 \uCDE8\uC18C";
+  submitLabel.textContent = "\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5";
+  field("name").value = product.name;
+  field("model").value = product.model;
+  field("price").value = String(product.price);
+  field("tagline").value = product.tagline;
+  field("description").value = product.description;
+  field("highlights").value = product.highlights.join("\n");
+  field("url").value = product.url;
+  renderFilePreviews();
+  dirty = false;
+  formStatus.textContent = `\u201C${product.name}\u201D \uC81C\uD488 \uC815\uBCF4\uB97C \uC218\uC815\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.`;
+  formStatus.classList.remove("is-error");
+  trigger.disabled = true;
+  trigger.textContent = "\uC218\uC815 \uC911";
+  const editingRow = trigger.closest("tr");
+  editingRow?.classList.add("is-editing");
+  rows.querySelectorAll("[data-delete-product-id]").forEach((button) => {
+    button.disabled = true;
+  });
+  document.querySelector(".product-create")?.scrollIntoView({ block: "start" });
+  requestAnimationFrame(() => field("name").focus());
+}
+function openDiscardDialog(action) {
+  discardAction = action;
+  if (editTarget) {
+    discardTitle.textContent = "\uC81C\uD488 \uC218\uC815\uC744 \uCDE8\uC18C\uD560\uAE4C\uC694?";
+    discardDescription.textContent = "\uC800\uC7A5\uD558\uC9C0 \uC54A\uC740 \uBCC0\uACBD \uB0B4\uC6A9\uACFC \uC0C8\uB85C \uC120\uD0DD\uD55C \uC774\uBBF8\uC9C0\uAC00 \uC0AC\uB77C\uC9D1\uB2C8\uB2E4. \uD604\uC7AC \uACF5\uAC1C \uC81C\uD488 \uC815\uBCF4\uB294 \uBC14\uB00C\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.";
+    discardConfirmLabel.textContent = "\uC218\uC815 \uCDE8\uC18C";
+  } else {
+    discardTitle.textContent = "\uC785\uB825\uD55C \uB0B4\uC6A9\uC744 \uC9C0\uC6B8\uAE4C\uC694?";
+    discardDescription.textContent = "\uC544\uC9C1 \uB4F1\uB85D\uD558\uC9C0 \uC54A\uC740 \uC81C\uD488 \uC815\uBCF4\uC640 \uC120\uD0DD\uD55C \uC774\uBBF8\uC9C0\uAC00 \uC0AC\uB77C\uC9D1\uB2C8\uB2E4.";
+    discardConfirmLabel.textContent = "\uC785\uB825 \uB0B4\uC6A9 \uC9C0\uC6B0\uAE30";
+  }
+  discardDialog.showModal();
+  discardCancel.focus();
 }
 function handleSessionError(error) {
   if (error instanceof HttpError && error.status === 401) {
@@ -6689,10 +6786,18 @@ function validateForm() {
   if (values.description.length < 20 || values.description.length > 3e3) errors.description = "\uC0C1\uC138 \uC124\uBA85\uC740 20~3,000\uC790\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
   if (!values.highlights.length || values.highlights.length > 8 || values.highlights.some((item) => item.length > 100)) errors.highlights = "\uC81C\uD488 \uD3EC\uC778\uD2B8\uB97C \uC904\uB9C8\uB2E4 \uC785\uB825\uD574 \uC8FC\uC138\uC694. \uCD5C\uB300 8\uAC1C\uAE4C\uC9C0 \uAC00\uB2A5\uD569\uB2C8\uB2E4.";
   if (!validStoreUrl(values.url)) errors.url = "\uB124\uC774\uBC84 \uC2A4\uB9C8\uD2B8\uC2A4\uD1A0\uC5B4 \uC81C\uD488 \uC8FC\uC18C\uB97C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
-  if (!mainFile) errors.mainImage = "\uB300\uD45C \uC774\uBBF8\uC9C0\uB97C \uC120\uD0DD\uD574 \uC8FC\uC138\uC694.";
-  else if (validateFile(mainFile)) errors.mainImage = validateFile(mainFile);
+  if (!mainFile && !editTarget) errors.mainImage = "\uB300\uD45C \uC774\uBBF8\uC9C0\uB97C \uC120\uD0DD\uD574 \uC8FC\uC138\uC694.";
+  else if (mainFile && validateFile(mainFile)) errors.mainImage = validateFile(mainFile);
   if (galleryFiles.length > maxGallery) errors.gallery = "\uC0C1\uC138 \uC774\uBBF8\uC9C0\uB294 \uCD5C\uB300 5\uAC1C\uAE4C\uC9C0 \uC120\uD0DD\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.";
   else if (galleryFiles.some(validateFile)) errors.gallery = validateFile(galleryFiles.find(validateFile));
+  if (editTarget) {
+    for (const name of ["name", "model", "price", "tagline", "description", "url"]) {
+      if (errors[name] && values[name] === editTarget[name]) delete errors[name];
+    }
+    if (errors.highlights && values.highlights.length === editTarget.highlights.length && values.highlights.every((item, index) => item === editTarget.highlights[index])) {
+      delete errors.highlights;
+    }
+  }
   Object.entries(errors).forEach(([name, message2]) => setFieldError(name, message2));
   const firstError = Object.keys(errors)[0];
   if (firstError) {
@@ -6714,6 +6819,12 @@ function imagePreview(file) {
   image.alt = "";
   return image;
 }
+function currentImagePreview(url) {
+  const image = document.createElement("img");
+  image.src = url;
+  image.alt = "";
+  return image;
+}
 function renderFilePreviews() {
   revokePreviews();
   mainPreview.replaceChildren();
@@ -6721,21 +6832,27 @@ function renderFilePreviews() {
   const mainFile = mainImageInput.files?.[0];
   if (mainFile) {
     const name = document.createElement("p");
-    name.textContent = `${mainFile.name} \xB7 ${(mainFile.size / 1024 / 1024).toFixed(1)}MB`;
+    name.textContent = `\uC0C8 \uB300\uD45C \uC774\uBBF8\uC9C0 \xB7 ${mainFile.name} \xB7 ${(mainFile.size / 1024 / 1024).toFixed(1)}MB`;
     mainPreview.append(imagePreview(mainFile), name);
+    mainPreview.hidden = false;
+  } else if (editTarget?.image) {
+    const name = document.createElement("p");
+    name.textContent = "\uD604\uC7AC \uB300\uD45C \uC774\uBBF8\uC9C0 \uC720\uC9C0";
+    mainPreview.append(currentImagePreview(editTarget.image), name);
     mainPreview.hidden = false;
   } else {
     mainPreview.hidden = true;
   }
   const galleryFiles = [...galleryInput.files || []];
-  galleryFiles.forEach((file) => {
+  const galleryItems = galleryFiles.length ? galleryFiles.map((file) => ({ image: imagePreview(file), label: `\uC0C8 \uC0C1\uC138 \uC774\uBBF8\uC9C0 \xB7 ${file.name}` })) : (editTarget?.gallery || []).map((url, index) => ({ image: currentImagePreview(url), label: `\uD604\uC7AC \uC0C1\uC138 \uC774\uBBF8\uC9C0 ${index + 1} \uC720\uC9C0` }));
+  galleryItems.forEach((entry) => {
     const item = document.createElement("li");
     const name = document.createElement("span");
-    name.textContent = file.name;
-    item.append(imagePreview(file), name);
+    name.textContent = entry.label;
+    item.append(entry.image, name);
     galleryPreview.append(item);
   });
-  galleryPreview.hidden = galleryFiles.length === 0;
+  galleryPreview.hidden = galleryItems.length === 0;
 }
 async function cleanupUploadedImages() {
   if (!uploadedImageUrls.length) {
@@ -6760,6 +6877,7 @@ async function cleanupUploadedImages() {
 }
 async function resetDraft({ cleanup = true } = {}) {
   if (cleanup && !await cleanupUploadedImages()) return false;
+  setCreateMode();
   productForm.reset();
   clearFormErrors();
   revokePreviews();
@@ -6799,6 +6917,14 @@ function createImageCell(product) {
   wrapper.append(image, copy);
   return wrapper;
 }
+async function requestProductEdit(product, trigger) {
+  if (dirty) {
+    openDiscardDialog({ type: "edit", productId: product.id });
+    return;
+  }
+  if (editTarget && editTarget.id !== product.id && !await resetDraft({ cleanup: true })) return;
+  beginEdit(product, trigger);
+}
 function renderRows() {
   rows.replaceChildren();
   products.forEach((product) => {
@@ -6808,6 +6934,21 @@ function renderRows() {
     const price = document.createElement("td");
     price.className = "product-table__price";
     price.textContent = priceFormatter.format(product.price);
+    const editCell = document.createElement("td");
+    const edit = document.createElement("button");
+    edit.type = "button";
+    edit.className = "button button--edit";
+    edit.textContent = "\uC218\uC815";
+    edit.dataset.editProductId = product.id;
+    edit.setAttribute("aria-label", `${product.name} \uC815\uBCF4 \uC218\uC815`);
+    edit.addEventListener("click", () => requestProductEdit(product, edit));
+    if (editTarget?.id === product.id) {
+      row.classList.add("is-editing");
+      edit.disabled = true;
+      edit.textContent = "\uC218\uC815 \uC911";
+      editTrigger = edit;
+    }
+    editCell.append(edit);
     const viewCell = document.createElement("td");
     const view = document.createElement("a");
     view.className = "button button--quiet";
@@ -6822,10 +6963,12 @@ function renderRows() {
     remove.type = "button";
     remove.className = "button button--danger-outline";
     remove.textContent = "\uC0AD\uC81C";
+    remove.dataset.deleteProductId = product.id;
     remove.setAttribute("aria-label", `${product.name} \uC601\uAD6C \uC0AD\uC81C`);
     remove.addEventListener("click", () => openDelete(product, remove));
+    if (editTarget) remove.disabled = true;
     deleteCell.append(remove);
-    row.append(identity, price, viewCell, deleteCell);
+    row.append(identity, price, editCell, viewCell, deleteCell);
     rows.append(row);
   });
   tableWrap.hidden = products.length === 0;
@@ -6953,9 +7096,7 @@ passwordInput.addEventListener("input", () => {
 bindPasswordToggle(passwordInput, passwordToggle);
 logoutButton.addEventListener("click", async () => {
   if (dirty) {
-    discardAction = { type: "logout" };
-    discardDialog.showModal();
-    discardCancel.focus();
+    openDiscardDialog({ type: "logout" });
     return;
   }
   logoutButton.disabled = true;
@@ -6994,48 +7135,75 @@ productForm.addEventListener("submit", async (event) => {
   if (submitButton.disabled) return;
   const values = validateForm();
   if (!values) return;
+  const editingProduct = editTarget;
+  const editingCatalogEtag = editEtag;
+  const filesToUpload = [
+    ...values.mainFile ? [values.mainFile] : [],
+    ...values.galleryFiles
+  ];
   submitButton.disabled = true;
   submitButton.setAttribute("aria-busy", "true");
-  submitLabel.textContent = "\uC81C\uD488 \uB4F1\uB85D \uC911";
+  submitLabel.textContent = editingProduct ? "\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5 \uC911" : "\uC81C\uD488 \uB4F1\uB85D \uC911";
   resetButton.disabled = true;
-  formStatus.textContent = "\uC81C\uD488 \uC774\uBBF8\uC9C0\uB97C \uC548\uC804\uD558\uAC8C \uC5C5\uB85C\uB4DC\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
+  formStatus.textContent = filesToUpload.length ? "\uC81C\uD488 \uC774\uBBF8\uC9C0\uB97C \uC548\uC804\uD558\uAC8C \uC5C5\uB85C\uB4DC\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4." : "\uC81C\uD488 \uC815\uBCF4\uB97C \uC800\uC7A5\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
   try {
-    if (!uploadsComplete) await uploadImages([values.mainFile, ...values.galleryFiles]);
+    if (filesToUpload.length && !uploadsComplete) await uploadImages(filesToUpload);
     formStatus.textContent = "\uC81C\uD488 \uC815\uBCF4\uB97C \uC800\uC7A5\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
-    const payload = await fetchJson("/api/admin/products", {
-      method: "POST",
-      body: JSON.stringify({
-        requestId,
-        name: values.name,
-        model: values.model,
-        price: values.price,
-        tagline: values.tagline,
-        description: values.description,
-        highlights: values.highlights,
-        url: values.url,
-        image: uploadedImageUrls[0],
-        gallery: uploadedImageUrls.slice(1),
-        managedImages: uploadedImageUrls
-      })
-    });
+    const commonPayload = {
+      requestId,
+      name: values.name,
+      model: values.model,
+      price: values.price,
+      tagline: values.tagline,
+      description: values.description,
+      highlights: values.highlights,
+      url: values.url
+    };
+    let payload;
+    if (editingProduct) {
+      const galleryStart = values.mainFile ? 1 : 0;
+      payload = await fetchJson("/api/admin/products", {
+        method: "PATCH",
+        body: JSON.stringify({
+          ...commonPayload,
+          id: editingProduct.id,
+          etag: editingCatalogEtag,
+          replaceMainImage: Boolean(values.mainFile),
+          replaceGallery: values.galleryFiles.length > 0,
+          image: values.mainFile ? uploadedImageUrls[0] : "",
+          gallery: values.galleryFiles.length ? uploadedImageUrls.slice(galleryStart) : [],
+          managedImages: uploadedImageUrls
+        })
+      });
+    } else {
+      payload = await fetchJson("/api/admin/products", {
+        method: "POST",
+        body: JSON.stringify({
+          ...commonPayload,
+          image: uploadedImageUrls[0],
+          gallery: uploadedImageUrls.slice(1),
+          managedImages: uploadedImageUrls
+        })
+      });
+    }
     catalogEtag = payload.etag;
     dirty = false;
     await resetDraft({ cleanup: false });
     await loadProducts({ reset: true });
-    boardStatus.textContent = `\u201C${payload.product.name}\u201D \uC81C\uD488\uC744 \uB4F1\uB85D\uD588\uC2B5\uB2C8\uB2E4.`;
+    boardStatus.textContent = editingProduct ? `\u201C${payload.product.name}\u201D \uC81C\uD488 \uC815\uBCF4\uB97C \uC218\uC815\uD588\uC2B5\uB2C8\uB2E4.${payload.mediaRemoved === false ? " \uAD50\uCCB4 \uC804 \uC774\uBBF8\uC9C0\uB294 \uBCC4\uB3C4 \uC815\uB9AC\uAC00 \uD544\uC694\uD569\uB2C8\uB2E4." : ""}` : `\u201C${payload.product.name}\u201D \uC81C\uD488\uC744 \uB4F1\uB85D\uD588\uC2B5\uB2C8\uB2E4.`;
     listTitle.focus();
   } catch (error) {
     if (error.name === "AbortError") {
       await cleanupUploadedImages();
       requestId = crypto.randomUUID();
       formStatus.textContent = "\uC774\uBBF8\uC9C0 \uC5C5\uB85C\uB4DC\uB97C \uCDE8\uC18C\uD588\uC2B5\uB2C8\uB2E4. \uC785\uB825 \uB0B4\uC6A9\uC740 \uADF8\uB300\uB85C \uC720\uC9C0\uB429\uB2C8\uB2E4.";
-    } else if (!uploadsComplete) {
+    } else if (filesToUpload.length && !uploadsComplete) {
       await cleanupUploadedImages();
       requestId = crypto.randomUUID();
       markFormError(error.message || "\uC774\uBBF8\uC9C0\uB97C \uC5C5\uB85C\uB4DC\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. \uD30C\uC77C\uC744 \uD655\uC778\uD55C \uB4A4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574 \uC8FC\uC138\uC694.");
     } else if (!handleSessionError(error)) {
       Object.entries(error.fieldErrors || {}).forEach(([name, message2]) => setFieldError(name, message2));
-      markFormError(error.message || "\uC81C\uD488\uC744 \uB4F1\uB85D\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. \uC785\uB825 \uB0B4\uC6A9\uC740 \uC720\uC9C0\uB429\uB2C8\uB2E4.");
+      markFormError(error.message || `${editingProduct ? "\uC81C\uD488\uC744 \uC218\uC815" : "\uC81C\uD488\uC744 \uB4F1\uB85D"}\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. \uC785\uB825 \uB0B4\uC6A9\uC740 \uC720\uC9C0\uB429\uB2C8\uB2E4.`);
       const firstServerField = Object.keys(error.fieldErrors || {})[0];
       if (firstServerField && field(firstServerField)) field(firstServerField).focus();
     }
@@ -7044,19 +7212,23 @@ productForm.addEventListener("submit", async (event) => {
     cancelUploadButton.hidden = true;
     submitButton.disabled = false;
     submitButton.removeAttribute("aria-busy");
-    submitLabel.textContent = "\uC81C\uD488 \uB4F1\uB85D";
+    submitLabel.textContent = editTarget ? "\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5" : "\uC81C\uD488 \uB4F1\uB85D";
     resetButton.disabled = false;
   }
 });
 cancelUploadButton.addEventListener("click", () => uploadController?.abort());
-resetButton.addEventListener("click", () => {
+resetButton.addEventListener("click", async () => {
   if (!dirty) {
-    resetDraft();
+    const previousEditTarget = editTarget;
+    const previousEditTrigger = editTrigger;
+    if (!await resetDraft()) return;
+    if (previousEditTarget) {
+      boardStatus.textContent = `\u201C${previousEditTarget.name}\u201D \uC81C\uD488 \uC218\uC815\uC744 \uCDE8\uC18C\uD588\uC2B5\uB2C8\uB2E4.`;
+      previousEditTrigger?.focus();
+    }
     return;
   }
-  discardAction = { type: "reset" };
-  discardDialog.showModal();
-  discardCancel.focus();
+  openDiscardDialog({ type: "reset" });
 });
 deleteCancel.addEventListener("click", () => deleteDialog.close());
 deleteDialog.addEventListener("cancel", () => {
@@ -7100,12 +7272,23 @@ discardCancel.addEventListener("click", () => {
 });
 discardConfirm.addEventListener("click", async () => {
   const action = discardAction;
+  const previousEditTarget = editTarget;
+  const previousEditTrigger = editTrigger;
   discardConfirm.disabled = true;
   const reset = await resetDraft({ cleanup: true });
   discardConfirm.disabled = false;
   if (!reset) return;
   discardDialog.close();
   discardAction = null;
+  if (action?.type === "reset" && previousEditTarget) {
+    boardStatus.textContent = `\u201C${previousEditTarget.name}\u201D \uC81C\uD488 \uC218\uC815\uC744 \uCDE8\uC18C\uD588\uC2B5\uB2C8\uB2E4.`;
+    previousEditTrigger?.focus();
+  }
+  if (action?.type === "edit") {
+    const product = products.find((item) => item.id === action.productId);
+    const trigger = [...rows.querySelectorAll("[data-edit-product-id]")].find((button) => button.dataset.editProductId === action.productId);
+    if (product && trigger) beginEdit(product, trigger);
+  }
   if (action?.type === "navigate") location.href = action.href;
   if (action?.type === "logout") {
     try {
@@ -7120,9 +7303,7 @@ document.querySelectorAll(".admin-header a").forEach((link) => {
   link.addEventListener("click", (event) => {
     if (!dirty || link.target === "_blank") return;
     event.preventDefault();
-    discardAction = { type: "navigate", href: link.href };
-    discardDialog.showModal();
-    discardCancel.focus();
+    openDiscardDialog({ type: "navigate", href: link.href });
   });
 });
 window.addEventListener("beforeunload", (event) => {
@@ -7131,6 +7312,7 @@ window.addEventListener("beforeunload", (event) => {
   event.returnValue = "";
 });
 window.addEventListener("pagehide", revokePreviews);
+setCreateMode();
 loadProducts({ reset: true, initial: true });
 /*! Bundled license information:
 

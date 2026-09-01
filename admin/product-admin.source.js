@@ -29,12 +29,21 @@ const listTitle = $('#product-list-title');
 const productForm = $('[data-product-form]');
 const formSummary = $('[data-form-summary]');
 const formStatus = $('[data-form-status]');
+const editorEyebrow = $('[data-editor-eyebrow]');
+const editorTitle = $('[data-editor-title]');
+const editorDescription = $('[data-editor-description]');
+const editContext = $('[data-edit-context]');
+const editProduct = $('[data-edit-product]');
 const submitButton = productForm.querySelector('button[type="submit"]');
 const submitLabel = $('[data-submit-label]');
 const resetButton = $('[data-reset-form]');
+const resetLabel = $('[data-reset-label]');
 const cancelUploadButton = $('[data-cancel-upload]');
 const mainImageInput = $('#product-main-image');
 const galleryInput = $('#product-gallery');
+const mainRequired = $('[data-main-required]');
+const mainImageHelp = $('[data-main-image-help]');
+const galleryHelp = $('[data-gallery-help]');
 const mainPreview = $('[data-main-preview]');
 const galleryPreview = $('[data-gallery-preview]');
 const uploadProgress = $('[data-upload-progress]');
@@ -48,8 +57,11 @@ const deleteCancel = $('[data-delete-cancel]');
 const deleteConfirm = $('[data-delete-confirm]');
 const deleteLabel = $('[data-delete-label]');
 const discardDialog = $('[data-discard-dialog]');
+const discardTitle = $('[data-discard-title]');
+const discardDescription = $('[data-discard-description]');
 const discardCancel = $('[data-discard-cancel]');
 const discardConfirm = $('[data-discard-confirm]');
+const discardConfirmLabel = $('[data-discard-confirm-label]');
 
 const priceFormatter = new Intl.NumberFormat('ko-KR', {
   style: 'currency',
@@ -76,6 +88,9 @@ let uploadController = null;
 let dirty = false;
 let previewUrls = [];
 let discardAction = null;
+let editTarget = null;
+let editEtag = null;
+let editTrigger = null;
 
 function showLogin(message = '') {
   initialView.hidden = true;
@@ -94,6 +109,88 @@ function showBoard() {
   initialView.hidden = true;
   loginView.hidden = true;
   boardView.hidden = false;
+}
+
+function setCreateMode() {
+  if (editTrigger?.isConnected) {
+    editTrigger.disabled = false;
+    editTrigger.textContent = '수정';
+    editTrigger.closest('tr')?.classList.remove('is-editing');
+  }
+  rows.querySelectorAll('[data-delete-product-id]').forEach((button) => { button.disabled = false; });
+  editTarget = null;
+  editEtag = null;
+  editTrigger = null;
+  productForm.dataset.mode = 'create';
+  editorEyebrow.textContent = 'Add a product';
+  editorTitle.textContent = '새 제품 등록';
+  editorDescription.textContent = '별표가 있는 항목은 필수입니다. 저장 전까지 입력 내용과 선택한 파일은 이 브라우저에만 있습니다.';
+  editContext.hidden = true;
+  editProduct.textContent = '';
+  mainImageInput.required = true;
+  mainRequired.hidden = false;
+  mainImageHelp.textContent = 'JPG, PNG, WebP, AVIF · 최대 8MB · 1장';
+  galleryHelp.textContent = '제품의 구조와 사용 장면을 보여줄 이미지 · 장당 최대 8MB · 최대 5장';
+  resetLabel.textContent = '입력 지우기';
+  submitLabel.textContent = '제품 등록';
+}
+
+function beginEdit(product, trigger) {
+  productForm.reset();
+  clearFormErrors();
+  revokePreviews();
+  uploadedImageUrls = [];
+  uploadsComplete = false;
+  requestId = crypto.randomUUID();
+  editTarget = product;
+  editEtag = catalogEtag;
+  editTrigger = trigger;
+  productForm.dataset.mode = 'edit';
+  editorEyebrow.textContent = 'Edit a product';
+  editorTitle.textContent = '제품 수정';
+  editorDescription.textContent = '현재 제품 정보를 불러왔습니다. 변경한 내용만 확인한 뒤 저장해 주세요.';
+  editContext.hidden = false;
+  editProduct.textContent = product.name;
+  mainImageInput.required = false;
+  mainRequired.hidden = true;
+  mainImageHelp.textContent = '새 파일을 선택하면 현재 대표 이미지를 교체합니다. 선택하지 않으면 그대로 유지합니다.';
+  galleryHelp.textContent = '새 파일을 선택하면 현재 상세 이미지 전체를 교체합니다. 선택하지 않으면 그대로 유지합니다.';
+  resetLabel.textContent = '수정 취소';
+  submitLabel.textContent = '변경사항 저장';
+
+  field('name').value = product.name;
+  field('model').value = product.model;
+  field('price').value = String(product.price);
+  field('tagline').value = product.tagline;
+  field('description').value = product.description;
+  field('highlights').value = product.highlights.join('\n');
+  field('url').value = product.url;
+  renderFilePreviews();
+  dirty = false;
+  formStatus.textContent = `“${product.name}” 제품 정보를 수정하고 있습니다.`;
+  formStatus.classList.remove('is-error');
+  trigger.disabled = true;
+  trigger.textContent = '수정 중';
+  const editingRow = trigger.closest('tr');
+  editingRow?.classList.add('is-editing');
+  rows.querySelectorAll('[data-delete-product-id]').forEach((button) => { button.disabled = true; });
+  document.querySelector('.product-create')?.scrollIntoView({ block: 'start' });
+  requestAnimationFrame(() => field('name').focus());
+}
+
+function openDiscardDialog(action) {
+  discardAction = action;
+  if (editTarget) {
+    discardTitle.textContent = '제품 수정을 취소할까요?';
+    discardDescription.textContent = '저장하지 않은 변경 내용과 새로 선택한 이미지가 사라집니다. 현재 공개 제품 정보는 바뀌지 않습니다.';
+    discardConfirmLabel.textContent = '수정 취소';
+  } else {
+    discardTitle.textContent = '입력한 내용을 지울까요?';
+    discardDescription.textContent = '아직 등록하지 않은 제품 정보와 선택한 이미지가 사라집니다.';
+    discardConfirmLabel.textContent = '입력 내용 지우기';
+  }
+  discardDialog.showModal();
+  discardCancel.focus();
 }
 
 function handleSessionError(error) {
@@ -175,10 +272,23 @@ function validateForm() {
   if (values.description.length < 20 || values.description.length > 3_000) errors.description = '상세 설명은 20~3,000자로 입력해 주세요.';
   if (!values.highlights.length || values.highlights.length > 8 || values.highlights.some((item) => item.length > 100)) errors.highlights = '제품 포인트를 줄마다 입력해 주세요. 최대 8개까지 가능합니다.';
   if (!validStoreUrl(values.url)) errors.url = '네이버 스마트스토어 제품 주소를 입력해 주세요.';
-  if (!mainFile) errors.mainImage = '대표 이미지를 선택해 주세요.';
-  else if (validateFile(mainFile)) errors.mainImage = validateFile(mainFile);
+  if (!mainFile && !editTarget) errors.mainImage = '대표 이미지를 선택해 주세요.';
+  else if (mainFile && validateFile(mainFile)) errors.mainImage = validateFile(mainFile);
   if (galleryFiles.length > maxGallery) errors.gallery = '상세 이미지는 최대 5개까지 선택할 수 있습니다.';
   else if (galleryFiles.some(validateFile)) errors.gallery = validateFile(galleryFiles.find(validateFile));
+
+  if (editTarget) {
+    for (const name of ['name', 'model', 'price', 'tagline', 'description', 'url']) {
+      if (errors[name] && values[name] === editTarget[name]) delete errors[name];
+    }
+    if (
+      errors.highlights
+      && values.highlights.length === editTarget.highlights.length
+      && values.highlights.every((item, index) => item === editTarget.highlights[index])
+    ) {
+      delete errors.highlights;
+    }
+  }
 
   Object.entries(errors).forEach(([name, message]) => setFieldError(name, message));
   const firstError = Object.keys(errors)[0];
@@ -204,6 +314,13 @@ function imagePreview(file) {
   return image;
 }
 
+function currentImagePreview(url) {
+  const image = document.createElement('img');
+  image.src = url;
+  image.alt = '';
+  return image;
+}
+
 function renderFilePreviews() {
   revokePreviews();
   mainPreview.replaceChildren();
@@ -211,22 +328,30 @@ function renderFilePreviews() {
   const mainFile = mainImageInput.files?.[0];
   if (mainFile) {
     const name = document.createElement('p');
-    name.textContent = `${mainFile.name} · ${(mainFile.size / 1024 / 1024).toFixed(1)}MB`;
+    name.textContent = `새 대표 이미지 · ${mainFile.name} · ${(mainFile.size / 1024 / 1024).toFixed(1)}MB`;
     mainPreview.append(imagePreview(mainFile), name);
+    mainPreview.hidden = false;
+  } else if (editTarget?.image) {
+    const name = document.createElement('p');
+    name.textContent = '현재 대표 이미지 유지';
+    mainPreview.append(currentImagePreview(editTarget.image), name);
     mainPreview.hidden = false;
   } else {
     mainPreview.hidden = true;
   }
 
   const galleryFiles = [...(galleryInput.files || [])];
-  galleryFiles.forEach((file) => {
+  const galleryItems = galleryFiles.length
+    ? galleryFiles.map((file) => ({ image: imagePreview(file), label: `새 상세 이미지 · ${file.name}` }))
+    : (editTarget?.gallery || []).map((url, index) => ({ image: currentImagePreview(url), label: `현재 상세 이미지 ${index + 1} 유지` }));
+  galleryItems.forEach((entry) => {
     const item = document.createElement('li');
     const name = document.createElement('span');
-    name.textContent = file.name;
-    item.append(imagePreview(file), name);
+    name.textContent = entry.label;
+    item.append(entry.image, name);
     galleryPreview.append(item);
   });
-  galleryPreview.hidden = galleryFiles.length === 0;
+  galleryPreview.hidden = galleryItems.length === 0;
 }
 
 async function cleanupUploadedImages() {
@@ -253,6 +378,7 @@ async function cleanupUploadedImages() {
 
 async function resetDraft({ cleanup = true } = {}) {
   if (cleanup && !(await cleanupUploadedImages())) return false;
+  setCreateMode();
   productForm.reset();
   clearFormErrors();
   revokePreviews();
@@ -294,6 +420,15 @@ function createImageCell(product) {
   return wrapper;
 }
 
+async function requestProductEdit(product, trigger) {
+  if (dirty) {
+    openDiscardDialog({ type: 'edit', productId: product.id });
+    return;
+  }
+  if (editTarget && editTarget.id !== product.id && !(await resetDraft({ cleanup: true }))) return;
+  beginEdit(product, trigger);
+}
+
 function renderRows() {
   rows.replaceChildren();
   products.forEach((product) => {
@@ -303,6 +438,21 @@ function renderRows() {
     const price = document.createElement('td');
     price.className = 'product-table__price';
     price.textContent = priceFormatter.format(product.price);
+    const editCell = document.createElement('td');
+    const edit = document.createElement('button');
+    edit.type = 'button';
+    edit.className = 'button button--edit';
+    edit.textContent = '수정';
+    edit.dataset.editProductId = product.id;
+    edit.setAttribute('aria-label', `${product.name} 정보 수정`);
+    edit.addEventListener('click', () => requestProductEdit(product, edit));
+    if (editTarget?.id === product.id) {
+      row.classList.add('is-editing');
+      edit.disabled = true;
+      edit.textContent = '수정 중';
+      editTrigger = edit;
+    }
+    editCell.append(edit);
     const viewCell = document.createElement('td');
     const view = document.createElement('a');
     view.className = 'button button--quiet';
@@ -317,10 +467,12 @@ function renderRows() {
     remove.type = 'button';
     remove.className = 'button button--danger-outline';
     remove.textContent = '삭제';
+    remove.dataset.deleteProductId = product.id;
     remove.setAttribute('aria-label', `${product.name} 영구 삭제`);
     remove.addEventListener('click', () => openDelete(product, remove));
+    if (editTarget) remove.disabled = true;
     deleteCell.append(remove);
-    row.append(identity, price, viewCell, deleteCell);
+    row.append(identity, price, editCell, viewCell, deleteCell);
     rows.append(row);
   });
 
@@ -457,9 +609,7 @@ bindPasswordToggle(passwordInput, passwordToggle);
 
 logoutButton.addEventListener('click', async () => {
   if (dirty) {
-    discardAction = { type: 'logout' };
-    discardDialog.showModal();
-    discardCancel.focus();
+    openDiscardDialog({ type: 'logout' });
     return;
   }
   logoutButton.disabled = true;
@@ -503,50 +653,82 @@ productForm.addEventListener('submit', async (event) => {
   if (submitButton.disabled) return;
   const values = validateForm();
   if (!values) return;
+  const editingProduct = editTarget;
+  const editingCatalogEtag = editEtag;
+  const filesToUpload = [
+    ...(values.mainFile ? [values.mainFile] : []),
+    ...values.galleryFiles,
+  ];
 
   submitButton.disabled = true;
   submitButton.setAttribute('aria-busy', 'true');
-  submitLabel.textContent = '제품 등록 중';
+  submitLabel.textContent = editingProduct ? '변경사항 저장 중' : '제품 등록 중';
   resetButton.disabled = true;
-  formStatus.textContent = '제품 이미지를 안전하게 업로드하고 있습니다.';
+  formStatus.textContent = filesToUpload.length
+    ? '제품 이미지를 안전하게 업로드하고 있습니다.'
+    : '제품 정보를 저장하고 있습니다.';
 
   try {
-    if (!uploadsComplete) await uploadImages([values.mainFile, ...values.galleryFiles]);
+    if (filesToUpload.length && !uploadsComplete) await uploadImages(filesToUpload);
     formStatus.textContent = '제품 정보를 저장하고 있습니다.';
-    const payload = await fetchJson('/api/admin/products', {
-      method: 'POST',
-      body: JSON.stringify({
-        requestId,
-        name: values.name,
-        model: values.model,
-        price: values.price,
-        tagline: values.tagline,
-        description: values.description,
-        highlights: values.highlights,
-        url: values.url,
-        image: uploadedImageUrls[0],
-        gallery: uploadedImageUrls.slice(1),
-        managedImages: uploadedImageUrls,
-      }),
-    });
+    const commonPayload = {
+      requestId,
+      name: values.name,
+      model: values.model,
+      price: values.price,
+      tagline: values.tagline,
+      description: values.description,
+      highlights: values.highlights,
+      url: values.url,
+    };
+    let payload;
+
+    if (editingProduct) {
+      const galleryStart = values.mainFile ? 1 : 0;
+      payload = await fetchJson('/api/admin/products', {
+        method: 'PATCH',
+        body: JSON.stringify({
+          ...commonPayload,
+          id: editingProduct.id,
+          etag: editingCatalogEtag,
+          replaceMainImage: Boolean(values.mainFile),
+          replaceGallery: values.galleryFiles.length > 0,
+          image: values.mainFile ? uploadedImageUrls[0] : '',
+          gallery: values.galleryFiles.length ? uploadedImageUrls.slice(galleryStart) : [],
+          managedImages: uploadedImageUrls,
+        }),
+      });
+    } else {
+      payload = await fetchJson('/api/admin/products', {
+        method: 'POST',
+        body: JSON.stringify({
+          ...commonPayload,
+          image: uploadedImageUrls[0],
+          gallery: uploadedImageUrls.slice(1),
+          managedImages: uploadedImageUrls,
+        }),
+      });
+    }
     catalogEtag = payload.etag;
     dirty = false;
     await resetDraft({ cleanup: false });
     await loadProducts({ reset: true });
-    boardStatus.textContent = `“${payload.product.name}” 제품을 등록했습니다.`;
+    boardStatus.textContent = editingProduct
+      ? `“${payload.product.name}” 제품 정보를 수정했습니다.${payload.mediaRemoved === false ? ' 교체 전 이미지는 별도 정리가 필요합니다.' : ''}`
+      : `“${payload.product.name}” 제품을 등록했습니다.`;
     listTitle.focus();
   } catch (error) {
     if (error.name === 'AbortError') {
       await cleanupUploadedImages();
       requestId = crypto.randomUUID();
       formStatus.textContent = '이미지 업로드를 취소했습니다. 입력 내용은 그대로 유지됩니다.';
-    } else if (!uploadsComplete) {
+    } else if (filesToUpload.length && !uploadsComplete) {
       await cleanupUploadedImages();
       requestId = crypto.randomUUID();
       markFormError(error.message || '이미지를 업로드하지 못했습니다. 파일을 확인한 뒤 다시 시도해 주세요.');
     } else if (!handleSessionError(error)) {
       Object.entries(error.fieldErrors || {}).forEach(([name, message]) => setFieldError(name, message));
-      markFormError(error.message || '제품을 등록하지 못했습니다. 입력 내용은 유지됩니다.');
+      markFormError(error.message || `${editingProduct ? '제품을 수정' : '제품을 등록'}하지 못했습니다. 입력 내용은 유지됩니다.`);
       const firstServerField = Object.keys(error.fieldErrors || {})[0];
       if (firstServerField && field(firstServerField)) field(firstServerField).focus();
     }
@@ -555,21 +737,25 @@ productForm.addEventListener('submit', async (event) => {
     cancelUploadButton.hidden = true;
     submitButton.disabled = false;
     submitButton.removeAttribute('aria-busy');
-    submitLabel.textContent = '제품 등록';
+    submitLabel.textContent = editTarget ? '변경사항 저장' : '제품 등록';
     resetButton.disabled = false;
   }
 });
 
 cancelUploadButton.addEventListener('click', () => uploadController?.abort());
 
-resetButton.addEventListener('click', () => {
+resetButton.addEventListener('click', async () => {
   if (!dirty) {
-    resetDraft();
+    const previousEditTarget = editTarget;
+    const previousEditTrigger = editTrigger;
+    if (!(await resetDraft())) return;
+    if (previousEditTarget) {
+      boardStatus.textContent = `“${previousEditTarget.name}” 제품 수정을 취소했습니다.`;
+      previousEditTrigger?.focus();
+    }
     return;
   }
-  discardAction = { type: 'reset' };
-  discardDialog.showModal();
-  discardCancel.focus();
+  openDiscardDialog({ type: 'reset' });
 });
 
 deleteCancel.addEventListener('click', () => deleteDialog.close());
@@ -614,12 +800,24 @@ discardCancel.addEventListener('click', () => {
 
 discardConfirm.addEventListener('click', async () => {
   const action = discardAction;
+  const previousEditTarget = editTarget;
+  const previousEditTrigger = editTrigger;
   discardConfirm.disabled = true;
   const reset = await resetDraft({ cleanup: true });
   discardConfirm.disabled = false;
   if (!reset) return;
   discardDialog.close();
   discardAction = null;
+  if (action?.type === 'reset' && previousEditTarget) {
+    boardStatus.textContent = `“${previousEditTarget.name}” 제품 수정을 취소했습니다.`;
+    previousEditTrigger?.focus();
+  }
+  if (action?.type === 'edit') {
+    const product = products.find((item) => item.id === action.productId);
+    const trigger = [...rows.querySelectorAll('[data-edit-product-id]')]
+      .find((button) => button.dataset.editProductId === action.productId);
+    if (product && trigger) beginEdit(product, trigger);
+  }
   if (action?.type === 'navigate') location.href = action.href;
   if (action?.type === 'logout') {
     try {
@@ -635,9 +833,7 @@ document.querySelectorAll('.admin-header a').forEach((link) => {
   link.addEventListener('click', (event) => {
     if (!dirty || link.target === '_blank') return;
     event.preventDefault();
-    discardAction = { type: 'navigate', href: link.href };
-    discardDialog.showModal();
-    discardCancel.focus();
+    openDiscardDialog({ type: 'navigate', href: link.href });
   });
 });
 
@@ -648,4 +844,5 @@ window.addEventListener('beforeunload', (event) => {
 });
 
 window.addEventListener('pagehide', revokePreviews);
+setCreateMode();
 loadProducts({ reset: true, initial: true });
