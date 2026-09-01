@@ -5,6 +5,7 @@ import {
   createProductRecord,
   deleteManagedImages,
   mergeProductMedia,
+  normalizeBlobEtag,
   productStoreIsConfigured,
   publicProduct,
   readProductCatalog,
@@ -73,7 +74,7 @@ export async function fetch(request) {
 
     const id = typeof input.id === 'string' ? input.id : '';
     const suppliedEtag = input.etag === null || typeof input.etag === 'string' ? input.etag : undefined;
-    if (!id || suppliedEtag === undefined || suppliedEtag !== current.etag) {
+    if (!id || suppliedEtag === undefined || normalizeBlobEtag(suppliedEtag) !== normalizeBlobEtag(current.etag)) {
       const action = request.method === 'PATCH' ? '수정' : '삭제';
       return json({ message: `제품 목록이 변경되었습니다. 새로고침한 뒤 다시 ${action}해 주세요.` }, 409, { Vary: 'Cookie' });
     }

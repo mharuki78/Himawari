@@ -19,6 +19,10 @@ function productToken() {
   return process.env.PRODUCT_BLOB_READ_WRITE_TOKEN || '';
 }
 
+export function normalizeBlobEtag(value) {
+  return String(value || '').trim().replace(/^W\//i, '');
+}
+
 export function productStoreIsConfigured() {
   return Boolean(productToken());
 }
@@ -346,12 +350,18 @@ export async function readProductCatalog() {
   if (!productStoreIsConfigured()) return { catalog: seedCatalog(), etag: null, persisted: false };
 
   try {
-    const result = await get(CATALOG_PATH, {
+    const metadata = await head(CATALOG_PATH, { token: productToken() });
+    const etag = normalizeBlobEtag(metadata.etag);
+    const versionedUrl = new URL(metadata.url);
+    versionedUrl.searchParams.set('version', etag);
+    const result = await get(versionedUrl.href, {
       access: 'public',
       token: productToken(),
-      useCache: false,
     });
     if (!result || result.statusCode !== 200) return { catalog: seedCatalog(), etag: null, persisted: false };
+    if (normalizeBlobEtag(result.blob.etag) !== etag) {
+      throw Object.assign(new Error('제품 목록의 최신 버전을 확인하지 못했습니다.'), { status: 409 });
+    }
     const parsed = JSON.parse(await new Response(result.stream).text());
     const products = (Array.isArray(parsed.products) ? parsed.products : []).map(normalizeProduct);
     return {
@@ -361,7 +371,7 @@ export async function readProductCatalog() {
         updatedAt: singleLine(parsed.updatedAt) || new Date().toISOString(),
         products,
       },
-      etag: result.blob.etag,
+      etag,
       persisted: true,
     };
   } catch (error) {
@@ -383,7 +393,7 @@ export async function writeProductCatalog(catalog, etag) {
     addRandomSuffix: false,
     contentType: 'application/json; charset=utf-8',
     cacheControlMaxAge: 60,
-    ...(etag ? { allowOverwrite: true, ifMatch: etag } : { allowOverwrite: false }),
+    ...(etag ? { allowOverwrite: true, ifMatch: normalizeBlobEtag(etag) } : { allowOverwrite: false }),
   };
   const result = await put(CATALOG_PATH, JSON.stringify(nextCatalog), options);
   return { catalog: nextCatalog, etag: result.etag };

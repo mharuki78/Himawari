@@ -7,6 +7,7 @@ import {
   classifyProductImagePath,
   createProductRecord,
   mergeProductMedia,
+  normalizeBlobEtag,
   publicProduct,
   seedCatalog,
   validateProductInput,
@@ -58,6 +59,12 @@ test('현재 및 이전 관리자 탭의 제품 이미지 경로를 역할별로
   assert.equal(classifyProductImagePath(`product-media/${requestId}/image-2-random.jpg`, requestId), 'legacy');
   assert.equal(classifyProductImagePath(`product-media/other/image-1.jpg`, requestId), '');
   assert.equal(classifyProductImagePath(`product-media/${requestId}/arbitrary.jpg`, requestId), '');
+});
+
+test('공개 CDN의 약한 ETag를 Blob 조건부 쓰기 형식으로 정규화한다', () => {
+  assert.equal(normalizeBlobEtag('W/"f6dc93f3b5a8cf44e31622781d0ed9b2"'), '"f6dc93f3b5a8cf44e31622781d0ed9b2"');
+  assert.equal(normalizeBlobEtag('"a1b2c3"'), '"a1b2c3"');
+  assert.equal(normalizeBlobEtag(''), '');
 });
 
 test('공개할 제품 이미지와 관계없는 관리 이미지 URL을 함께 제출하면 거부한다', () => {
