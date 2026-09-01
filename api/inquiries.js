@@ -19,7 +19,7 @@ function allowed(ip) {
   return current.count <= MAX_ATTEMPTS;
 }
 
-export default async function handler(request) {
+export async function fetch(request) {
   if (request.method !== 'POST') return methodNotAllowed(['POST']);
   if (!isSameOrigin(request)) return json({ message: '요청 출처를 확인할 수 없습니다.' }, 403);
   if (!blobIsConfigured()) return json({ message: '문의 저장 기능을 준비하고 있습니다. 잠시 후 다시 시도해 주세요.' }, 503);

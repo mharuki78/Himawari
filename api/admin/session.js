@@ -23,7 +23,7 @@ function setCookieResponse(data, status, cookies) {
   return new Response(JSON.stringify(data), { status, headers });
 }
 
-export default async function handler(request) {
+export async function fetch(request) {
   if (!['POST', 'DELETE'].includes(request.method)) return methodNotAllowed(['POST', 'DELETE']);
   if (!isSameOrigin(request)) return json({ message: '요청 출처를 확인할 수 없습니다.' }, 403);
   if (!authIsConfigured() || !blobIsConfigured()) return json({ message: '관리자 문의함 설정이 완료되지 않았습니다.' }, 503);

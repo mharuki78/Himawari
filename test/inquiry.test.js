@@ -5,9 +5,9 @@ import test from 'node:test';
 import { createSessionCookie, isAdminRequest, verifyAdminPassword } from '../api/_lib/auth.js';
 import { isSameOrigin, readJson } from '../api/_lib/http.js';
 import { validateInquiry } from '../api/_lib/inquiries.js';
-import adminInquiriesHandler from '../api/admin/inquiries.js';
-import sessionHandler from '../api/admin/session.js';
-import inquiriesHandler from '../api/inquiries.js';
+import { fetch as adminInquiriesHandler } from '../api/admin/inquiries.js';
+import { fetch as sessionHandler } from '../api/admin/session.js';
+import { fetch as inquiriesHandler } from '../api/inquiries.js';
 
 function configureAuth(password = 'correct horse battery staple') {
   const salt = randomBytes(16);

@@ -6,7 +6,7 @@ import {
   verifyManagedImages,
 } from '../_lib/products.js';
 
-export default async function handler(request) {
+export async function fetch(request) {
   if (request.method !== 'DELETE') return methodNotAllowed(['DELETE']);
   if (!authIsConfigured() || !productStoreIsConfigured()) return json({ message: '제품 이미지 저장소 설정이 완료되지 않았습니다.' }, 503);
   if (!isAdminRequest(request)) return json({ message: '관리자 로그인이 필요합니다.' }, 401);

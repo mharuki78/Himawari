@@ -7,8 +7,8 @@ import {
   seedCatalog,
   validateProductInput,
 } from '../api/_lib/products.js';
-import adminProductsHandler from '../api/admin/products.js';
-import productsHandler from '../api/products.js';
+import { fetch as adminProductsHandler } from '../api/admin/products.js';
+import { fetch as productsHandler } from '../api/products.js';
 
 const requestId = '9b3571c6-66cb-4f30-85a7-79ca7486054e';
 const imageUrl = `https://example.public.blob.vercel-storage.com/product-media/${requestId}/main.webp`;

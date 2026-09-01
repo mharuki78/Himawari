@@ -9,7 +9,7 @@ import {
   productStoreIsConfigured,
 } from '../_lib/products.js';
 
-export default async function handler(request) {
+export async function fetch(request) {
   if (request.method !== 'POST') return methodNotAllowed(['POST']);
   if (!productStoreIsConfigured()) return json({ message: '제품 이미지 저장소 설정이 완료되지 않았습니다.' }, 503);
 

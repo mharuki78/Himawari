@@ -3,7 +3,7 @@ import { authIsConfigured, isAdminRequest } from '../_lib/auth.js';
 import { blobIsConfigured, isSameOrigin, json, methodNotAllowed, readJson } from '../_lib/http.js';
 import { BlobPreconditionFailedError, deleteInquiry, listInquiries } from '../_lib/inquiries.js';
 
-export default async function handler(request) {
+export async function fetch(request) {
   if (!['GET', 'DELETE'].includes(request.method)) return methodNotAllowed(['GET', 'DELETE']);
   if (!authIsConfigured() || !blobIsConfigured()) return json({ message: '관리자 문의함 설정이 완료되지 않았습니다.' }, 503);
   if (!isAdminRequest(request)) return json({ message: '관리자 로그인이 필요합니다.' }, 401, { Vary: 'Cookie' });

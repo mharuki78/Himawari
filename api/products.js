@@ -1,7 +1,7 @@
 import { json, methodNotAllowed } from './_lib/http.js';
 import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalog } from './_lib/products.js';
 
-export default async function handler(request) {
+export async function fetch(request) {
   if (request.method !== 'GET') return methodNotAllowed(['GET']);
 
   try {
@@ -18,4 +18,3 @@ export default async function handler(request) {
     return json({ message: '제품 정보를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.' }, 500);
   }
 }
-
