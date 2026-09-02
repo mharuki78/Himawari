@@ -1,5 +1,41 @@
 [
   {
+    "id": "daily-backpack-packing-routine",
+    "title": "백팩이 자꾸 무거워진다면? 매일 짐을 줄이는 수납 루틴",
+    "date": "2026-09-02",
+    "summary": "가방 속 물건을 매일 비우고 용도별로 다시 담는 짧은 루틴으로, 필요한 짐만 남기는 방법을 정리했습니다.",
+    "description": "무거워진 백팩을 가볍게 정리하는 매일 수납 루틴을 소개합니다. 전부 꺼내기, 오늘 쓸 물건 고르기, 자주 쓰는 순서대로 배치하는 체크리스트를 확인하세요.",
+    "tags": ["백팩 정리", "가방 수납", "데일리 루틴"],
+    "image": "../assets/story/backpack-packing-routine.webp",
+    "imageAlt": "올리브색 백팩과 매일 휴대하는 소지품을 정리한 모습",
+    "url": "daily-backpack-packing-routine.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "rainy-day-backpack-care",
+    "title": "비 오는 날 백팩 관리법: 젖은 가방을 안전하게 말리는 순서",
+    "date": "2026-09-02",
+    "summary": "젖은 백팩의 내용물을 꺼내고 물기를 닦은 뒤 통풍이 되는 곳에서 말리는 순서와 소재별 주의점을 담았습니다.",
+    "description": "비에 젖은 백팩을 관리하는 순서를 안내합니다. 내용물 분리, 표면 물기 제거, 자연 건조, 완전히 마른 뒤 보관까지 소재를 상하지 않게 살피는 방법입니다.",
+    "tags": ["백팩 관리", "비 오는 날", "가방 건조"],
+    "image": "../assets/story/rainy-day-backpack-care.webp",
+    "imageAlt": "비 오는 창가에서 수건 위에 펼쳐 말리는 베이지색 백팩",
+    "url": "rainy-day-backpack-care.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "overnight-trip-backpack-checklist",
+    "title": "1박 2일 여행 백팩 짐싸기: 꼭 필요한 것만 담는 체크리스트",
+    "date": "2026-09-02",
+    "summary": "일정과 날씨를 기준으로 옷·세면도구·전자기기를 나누고, 짧은 여행 짐을 찾기 쉽게 담는 순서를 소개합니다.",
+    "description": "1박 2일 여행 백팩 짐싸기 체크리스트입니다. 일정별 필수품을 고르고 파우치로 나눈 뒤 무게와 사용 순서를 고려해 담는 방법을 확인하세요.",
+    "tags": ["여행 백팩", "짐싸기", "1박 2일"],
+    "image": "../assets/story/overnight-backpack-packing.webp",
+    "imageAlt": "검정과 올리브색 백팩 옆에 1박 2일 여행 짐을 펼쳐 둔 모습",
+    "url": "overnight-trip-backpack-checklist.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "how-to-choose-backpack",
     "title": "좋은 백팩은 어떤 기준으로 골라야 하나요?",
     "date": "2026-08-29",

@@ -34,6 +34,16 @@ function renderStoryTags(tags) {
   return container;
 }
 
+function renderStoryImage(post, className, loading = 'lazy') {
+  if (!post?.image) return null;
+  const image = storyElement('img', className);
+  image.src = String(post.image);
+  image.alt = String(post.imageAlt || post.title || '');
+  image.loading = loading;
+  image.decoding = 'async';
+  return image;
+}
+
 function renderStoryIndex(posts) {
   const ordered = sortedPosts(posts);
   storyIndex.replaceChildren();
@@ -52,7 +62,9 @@ function renderStoryIndex(posts) {
     const time = storyElement('time', null, formatStoryDate(post.date));
     time.dateTime = String(post.date || '');
 
-    const copy = storyElement('div');
+    const copy = storyElement('div', 'story-list-copy');
+    const image = renderStoryImage(post, 'story-list-image');
+    if (image) copy.append(image);
     copy.append(storyElement('h3', null, String(post.title || '(제목 없음)')));
     if (post.summary) copy.append(storyElement('p', 'story-summary', String(post.summary)));
     if (Array.isArray(post.tags) && post.tags.length) copy.append(renderStoryTags(post.tags));
@@ -118,6 +130,16 @@ function setPostMeta(post) {
   setMetaAttribute('meta[property="og:title"]', 'content', title);
   setMetaAttribute('meta[property="og:description"]', 'content', description);
   setMetaAttribute('meta[property="og:url"]', 'content', canonicalUrl);
+  if (post.image) {
+    const imageUrl = new URL(String(post.image), storyBase).href;
+    let ogImage = document.querySelector('meta[property="og:image"]');
+    if (!ogImage) {
+      ogImage = document.createElement('meta');
+      ogImage.setAttribute('property', 'og:image');
+      document.head.append(ogImage);
+    }
+    ogImage.setAttribute('content', imageUrl);
+  }
 
   const articleData = {
     '@context': 'https://schema.org',
@@ -253,7 +275,10 @@ function renderStoryPost(posts) {
   }
   if (Array.isArray(post.tags) && post.tags.length) header.append(renderStoryTags(post.tags));
 
-  article.append(header, storyElement('hr', 'story-post-rule'), renderStoryBody(post.body));
+  article.append(header, storyElement('hr', 'story-post-rule'));
+  const image = renderStoryImage(post, 'story-post-image', 'eager');
+  if (image) article.append(image);
+  article.append(renderStoryBody(post.body));
   const faq = Array.isArray(post.faq) ? post.faq.filter((item) => item?.q && item?.a) : [];
   if (faq.length) article.append(renderFaq(faq));
   if (Array.isArray(post.sources) && post.sources.length) article.append(renderSources(post.sources));
