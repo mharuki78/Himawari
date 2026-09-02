@@ -9,6 +9,7 @@ import {
 import seedPayload from '../../products.json' with { type: 'json' };
 
 const CATALOG_PATH = 'products/v1/catalog.json';
+const CATALOG_SNAPSHOT_PREFIX = 'products/v1/catalog-snapshots/';
 const REQUEST_ID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const IMAGE_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/avif']);
 const MAX_MAIN_IMAGE_SIZE = 8 * 1024 * 1024;
@@ -21,6 +22,11 @@ function productToken() {
 
 export function normalizeBlobEtag(value) {
   return String(value || '').trim().replace(/^W\//i, '');
+}
+
+export function catalogSnapshotPath(etag) {
+  const version = normalizeBlobEtag(etag).replace(/[^a-z0-9_-]/gi, '');
+  return version ? `${CATALOG_SNAPSHOT_PREFIX}${version}.json` : '';
 }
 
 export function productStoreIsConfigured() {
@@ -352,21 +358,37 @@ export async function readProductCatalog() {
   try {
     const metadata = await head(CATALOG_PATH, { token: productToken() });
     const etag = normalizeBlobEtag(metadata.etag);
-    const retryDelays = [0, 250, 500, 1_000, 2_000];
     let result = null;
-    for (let attempt = 0; attempt < retryDelays.length; attempt += 1) {
-      if (retryDelays[attempt]) await new Promise((resolve) => setTimeout(resolve, retryDelays[attempt]));
-      const versionedUrl = new URL(metadata.url);
-      versionedUrl.searchParams.set('version', etag);
-      versionedUrl.searchParams.set('read', String(attempt));
-      result = await get(versionedUrl.href, {
-        access: 'public',
-        token: productToken(),
-      });
-      if (result?.statusCode === 200 && normalizeBlobEtag(result.blob.etag) === etag) break;
+    let snapshot = false;
+    const snapshotPath = catalogSnapshotPath(etag);
+    if (snapshotPath) {
+      try {
+        const snapshotMetadata = await head(snapshotPath, { token: productToken() });
+        result = await get(snapshotMetadata.url, {
+          access: 'public',
+          token: productToken(),
+        });
+        snapshot = result?.statusCode === 200;
+      } catch (error) {
+        if (!(error instanceof BlobNotFoundError)) throw error;
+      }
+    }
+    const retryDelays = [0, 250, 500, 1_000, 2_000];
+    if (!snapshot) {
+      for (let attempt = 0; attempt < retryDelays.length; attempt += 1) {
+        if (retryDelays[attempt]) await new Promise((resolve) => setTimeout(resolve, retryDelays[attempt]));
+        const versionedUrl = new URL(metadata.url);
+        versionedUrl.searchParams.set('version', etag);
+        versionedUrl.searchParams.set('read', String(attempt));
+        result = await get(versionedUrl.href, {
+          access: 'public',
+          token: productToken(),
+        });
+        if (result?.statusCode === 200 && normalizeBlobEtag(result.blob.etag) === etag) break;
+      }
     }
     if (!result || result.statusCode !== 200) return { catalog: seedCatalog(), etag: null, persisted: false };
-    if (normalizeBlobEtag(result.blob.etag) !== etag) {
+    if (!snapshot && normalizeBlobEtag(result.blob.etag) !== etag) {
       throw Object.assign(new Error('제품 목록의 최신 버전을 확인하지 못했습니다.'), { status: 409 });
     }
     const parsed = JSON.parse(await new Response(result.stream).text());
@@ -402,7 +424,16 @@ export async function writeProductCatalog(catalog, etag) {
     cacheControlMaxAge: 60,
     ...(etag ? { allowOverwrite: true, ifMatch: normalizeBlobEtag(etag) } : { allowOverwrite: false }),
   };
-  const result = await put(CATALOG_PATH, JSON.stringify(nextCatalog), options);
+  const body = JSON.stringify(nextCatalog);
+  const result = await put(CATALOG_PATH, body, options);
+  await put(catalogSnapshotPath(result.etag), body, {
+    access: 'public',
+    token: productToken(),
+    addRandomSuffix: false,
+    allowOverwrite: false,
+    contentType: 'application/json; charset=utf-8',
+    cacheControlMaxAge: 31_536_000,
+  });
   return { catalog: nextCatalog, etag: result.etag };
 }
 

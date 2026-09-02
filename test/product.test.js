@@ -4,6 +4,7 @@ import test from 'node:test';
 import {
   MAX_GALLERY_IMAGE_SIZE,
   MAX_MAIN_IMAGE_SIZE,
+  catalogSnapshotPath,
   classifyProductImagePath,
   createProductRecord,
   mergeProductMedia,
@@ -65,6 +66,14 @@ test('공개 CDN의 약한 ETag를 Blob 조건부 쓰기 형식으로 정규화�
   assert.equal(normalizeBlobEtag('W/"f6dc93f3b5a8cf44e31622781d0ed9b2"'), '"f6dc93f3b5a8cf44e31622781d0ed9b2"');
   assert.equal(normalizeBlobEtag('"a1b2c3"'), '"a1b2c3"');
   assert.equal(normalizeBlobEtag(''), '');
+});
+
+test('카탈로그 ETag마다 변경 불가능한 스냅샷 경로를 만든다', () => {
+  assert.equal(
+    catalogSnapshotPath('W/"f6dc93f3b5a8cf44e31622781d0ed9b2"'),
+    'products/v1/catalog-snapshots/f6dc93f3b5a8cf44e31622781d0ed9b2.json',
+  );
+  assert.equal(catalogSnapshotPath(''), '');
 });
 
 test('공개할 제품 이미지와 관계없는 관리 이미지 URL을 함께 제출하면 거부한다', () => {
