@@ -352,12 +352,19 @@ export async function readProductCatalog() {
   try {
     const metadata = await head(CATALOG_PATH, { token: productToken() });
     const etag = normalizeBlobEtag(metadata.etag);
-    const versionedUrl = new URL(metadata.url);
-    versionedUrl.searchParams.set('version', etag);
-    const result = await get(versionedUrl.href, {
-      access: 'public',
-      token: productToken(),
-    });
+    const retryDelays = [0, 250, 500, 1_000, 2_000];
+    let result = null;
+    for (let attempt = 0; attempt < retryDelays.length; attempt += 1) {
+      if (retryDelays[attempt]) await new Promise((resolve) => setTimeout(resolve, retryDelays[attempt]));
+      const versionedUrl = new URL(metadata.url);
+      versionedUrl.searchParams.set('version', etag);
+      versionedUrl.searchParams.set('read', String(attempt));
+      result = await get(versionedUrl.href, {
+        access: 'public',
+        token: productToken(),
+      });
+      if (result?.statusCode === 200 && normalizeBlobEtag(result.blob.etag) === etag) break;
+    }
     if (!result || result.statusCode !== 200) return { catalog: seedCatalog(), etag: null, persisted: false };
     if (normalizeBlobEtag(result.blob.etag) !== etag) {
       throw Object.assign(new Error('제품 목록의 최신 버전을 확인하지 못했습니다.'), { status: 409 });
