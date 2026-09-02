@@ -8,8 +8,7 @@ import {
   readOAuthState,
   safeReturnTo,
 } from '../api/_lib/member-auth.js';
-import { fetch as cartHandler } from '../api/member/cart.js';
-import { fetch as wishlistHandler } from '../api/member/wishlist.js';
+import { fetch as memberHandler } from '../api/member.js';
 
 const originalEnvironment = {
   MEMBER_SESSION_SECRET: process.env.MEMBER_SESSION_SECRET,
@@ -69,9 +68,8 @@ test('설정된 네이버 로그인은 공식 인증 주소와 PKCE와 분리된
 test('회원 장바구니와 관심상품 API는 로그인 없는 요청을 거부한다', async () => {
   delete process.env.DATABASE_URL;
   process.env.MEMBER_SESSION_SECRET = 'test-secret-that-is-longer-than-thirty-two-characters';
-  const cart = await cartHandler(new Request('https://allaboutbag.com/api/member/cart'));
-  const wishlist = await wishlistHandler(new Request('https://allaboutbag.com/api/member/wishlist'));
+  const cart = await memberHandler(new Request('https://allaboutbag.com/api/member?route=cart'));
+  const wishlist = await memberHandler(new Request('https://allaboutbag.com/api/member?route=wishlist'));
   assert.equal(cart.status, 401);
   assert.equal(wishlist.status, 401);
 });
-

@@ -1,5 +1,15 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/api/auth/start", "destination": "/api/auth?route=start" },
+    { "source": "/api/auth/callback/naver", "destination": "/api/auth?route=callback-naver" },
+    { "source": "/api/auth/callback/google", "destination": "/api/auth?route=callback-google" },
+    { "source": "/api/auth/session", "destination": "/api/auth?route=session" },
+    { "source": "/api/auth/logout", "destination": "/api/auth?route=logout" },
+    { "source": "/api/member/cart", "destination": "/api/member?route=cart" },
+    { "source": "/api/member/wishlist", "destination": "/api/member?route=wishlist" },
+    { "source": "/api/member/account", "destination": "/api/member?route=account" }
+  ],
   "headers": [
     {
       "source": "/admin/(.*)",

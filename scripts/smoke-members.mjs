@@ -2,9 +2,7 @@ import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 
 import { createMemberSession, deleteMemberAccount, upsertOAuthUser } from '../api/_lib/member-auth.js';
-import { fetch as accountHandler } from '../api/member/account.js';
-import { fetch as cartHandler } from '../api/member/cart.js';
-import { fetch as wishlistHandler } from '../api/member/wishlist.js';
+import { fetch as memberHandler } from '../api/member.js';
 import { seedCatalog } from '../api/_lib/products.js';
 import { database } from '../api/_lib/database.js';
 
@@ -45,25 +43,25 @@ try {
   const cookie = sessionCookie.split(';')[0];
   const productId = seedCatalog().products[0].id;
 
-  const cartPut = await cartHandler(request('/api/member/cart', 'PUT', {
+  const cartPut = await memberHandler(request('/api/member?route=cart', 'PUT', {
     items: [{ productId, quantity: 2 }],
   }, cookie));
   assert.equal(cartPut.status, 200);
   assert.equal((await cartPut.json()).items[0].quantity, 2);
 
-  const wishlistPut = await wishlistHandler(request('/api/member/wishlist', 'PUT', {
+  const wishlistPut = await memberHandler(request('/api/member?route=wishlist', 'PUT', {
     productIds: [productId],
   }, cookie));
   assert.equal(wishlistPut.status, 200);
   assert.equal((await wishlistPut.json()).items[0].productId, productId);
 
-  const accountDelete = await accountHandler(request('/api/member/account', 'DELETE', {
+  const accountDelete = await memberHandler(request('/api/member?route=account', 'DELETE', {
     confirmation: '회원탈퇴',
   }, cookie));
   assert.equal(accountDelete.status, 200);
   deleted = true;
 
-  const afterDelete = await cartHandler(request('/api/member/cart', 'GET', undefined, cookie));
+  const afterDelete = await memberHandler(request('/api/member?route=cart', 'GET', undefined, cookie));
   assert.equal(afterDelete.status, 401);
   console.log('Member database smoke test passed and test data was deleted.');
 } finally {
