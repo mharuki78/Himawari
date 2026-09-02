@@ -1,5 +1,41 @@
 [
   {
+    "id": "backpack-strap-adjustment-guide",
+    "title": "백팩 어깨끈 조절법: 몸에 맞는 길이를 찾는 5단계",
+    "date": "2026-09-03",
+    "summary": "평소 짐을 넣은 상태에서 양쪽 어깨끈을 조금씩 맞추고, 걸으며 흔들림과 좌우 균형을 확인하는 순서를 정리했습니다.",
+    "description": "백팩 어깨끈을 몸과 짐에 맞게 조절하는 5단계 방법입니다. 끈을 풀고 양쪽 길이를 맞춘 뒤 걷기 테스트와 계절별 재조정까지 확인하세요.",
+    "tags": ["백팩 어깨끈", "백팩 착용법", "가방 조절"],
+    "image": "../assets/story/backpack-strap-adjustment.webp",
+    "imageAlt": "올리브색 백팩을 멘 사람이 양쪽 어깨끈 길이를 조절하는 모습",
+    "url": "backpack-strap-adjustment-guide.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "backpack-bottle-pocket-guide",
+    "title": "물병 수납 백팩 고르기: 분리해서 안전하게 담는 점검표",
+    "date": "2026-09-03",
+    "summary": "물병의 지름과 높이, 포켓의 깊이와 입구, 전자기기와의 분리 위치를 확인해 일상에서 쓰기 좋은 물병 수납을 고르는 방법입니다.",
+    "description": "물병 수납 백팩을 고를 때 확인할 크기, 포켓 깊이, 고정력과 분리 수납 기준을 소개합니다. 물병과 전자기기를 함께 챙길 때의 점검표도 확인하세요.",
+    "tags": ["물병 수납", "백팩 포켓", "가방 수납"],
+    "image": "../assets/story/backpack-bottle-pocket.webp",
+    "imageAlt": "샌드색 백팩과 닫힌 물병, 노트와 파우치를 나란히 둔 모습",
+    "url": "backpack-bottle-pocket-guide.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "backpack-shape-storage-guide",
+    "title": "백팩 모양을 오래 유지하는 보관법: 비우기부터 충전재까지",
+    "date": "2026-09-03",
+    "summary": "가방을 완전히 비우고 말린 뒤 깨끗한 종이나 천으로 형태를 가볍게 받쳐, 눌리지 않는 선반에 보관하는 순서를 담았습니다.",
+    "description": "백팩 모양이 무너지지 않도록 보관하는 방법을 안내합니다. 내용물 비우기, 완전 건조, 부드러운 충전재 사용과 선반 배치까지 순서대로 확인하세요.",
+    "tags": ["백팩 보관", "가방 형태", "가방 관리"],
+    "image": "../assets/story/backpack-shape-storage.webp",
+    "imageAlt": "깨끗한 종이로 형태를 받쳐 열린 옷장 선반에 세워 둔 검정 백팩",
+    "url": "backpack-shape-storage-guide.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "daily-backpack-packing-routine",
     "title": "백팩이 자꾸 무거워진다면? 매일 짐을 줄이는 수납 루틴",
     "date": "2026-09-02",
