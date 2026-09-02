@@ -17,7 +17,6 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="assets/scrub.css">
     <link rel="stylesheet" href="assets/gear.css">
     <link rel="stylesheet" href="assets/cart.css">
     <script src="script.js" defer></script>
@@ -45,21 +44,18 @@
     </header>
 
     <main id="main">
-      <section class="rd-scrub" id="home" aria-labelledby="hero-title"
-               data-clip="assets/hero-scrub.mp4"
-               data-clip-m="assets/hero-scrub-m.mp4"
-               data-poster="assets/hero-poster.jpg"
-               data-poster-m="assets/hero-poster-m.jpg"
-               data-scroll="3">
-        <div class="rd-scrub__band" data-a="0" data-b="0.45">
-          <span class="rd-scrub__kicker">Himawari</span>
-          <h1 id="hero-title"><span class="headline-line">형태는 단정하게.</span><span class="headline-line accent-word">쓰임은 오래도록.</span></h1>
-          <p>정제된 실루엣과 편안한 균형으로<br>매일의 움직임을 품격 있게 정돈합니다.</p>
+      <section class="home-film-hero" id="home" aria-labelledby="hero-title">
+        <div class="home-film-hero__media" data-ambient-film>
+          <video class="home-film-hero__video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg" aria-label="No.1884 백팩의 외관과 수납 디테일" data-ambient-video>
+            <source src="assets/hero-film-1884.mp4" type="video/mp4">
+          </video>
+          <button class="home-film-hero__toggle" type="button" data-ambient-toggle aria-pressed="true">영상 일시정지</button>
         </div>
-        <div class="rd-scrub__band" data-a="0.5" data-b="1">
-          <h2><span class="headline-line">도시의 하루부터</span><span class="headline-line accent-word">먼 여행의 장면까지.</span></h2>
-          <p>기능은 섬세하게, 인상은 담백하게.<br>시간이 지날수록 편안해지는 백팩입니다.</p>
-          <a class="rd-scrub__btn" href="products.html">제품 보기</a>
+        <div class="home-film-hero__copy">
+          <span class="home-film-hero__kicker">Himawari · No.1884</span>
+          <h1 id="hero-title"><span class="headline-line">형태는 단정하게.</span><span class="headline-line accent-word">쓰임은 오래도록.</span></h1>
+          <p>도시의 하루부터 먼 여행의 장면까지.<br>정제된 실루엣과 편안한 균형으로<br>매일의 움직임을 품격 있게 정돈합니다.</p>
+          <a class="home-film-hero__link" href="products.html">제품 보기 <span aria-hidden="true">↗</span></a>
         </div>
       </section>
 
@@ -104,11 +100,11 @@
       </section>
 
       <section class="feature section" id="campaign-film" aria-labelledby="feature-title">
-        <div class="feature-film">
-          <video class="feature-film__video" autoplay muted loop playsinline preload="metadata" poster="assets/campaign-film-poster.jpg" aria-label="Himawari 백팩을 일상에서 사용하는 모습">
+        <div class="feature-film" data-ambient-film>
+          <video class="feature-film__video" autoplay muted loop playsinline preload="metadata" poster="assets/campaign-film-poster.jpg" aria-label="Himawari 백팩을 일상에서 사용하는 모습" data-ambient-video>
             <source src="assets/campaign-film.mp4" type="video/mp4">
           </video>
-          <button class="feature-film__toggle" type="button" data-film-toggle aria-pressed="false" onclick="window.himawariToggleFilm?.()">영상 일시정지</button>
+          <button class="feature-film__toggle" type="button" data-ambient-toggle aria-pressed="true">영상 일시정지</button>
         </div>
         <div class="feature-copy reveal">
           <p class="kicker">Himawari in motion</p>
@@ -228,7 +224,6 @@
       <div class="footer-contact" role="group" aria-label="연락 채널"><a href="contact.html">비공개 문의 남기기</a><a href="https://www.instagram.com/himawari.korea/" target="_blank" rel="noopener noreferrer">@himawari.korea</a></div>
       <p class="copyright">© <span id="year">2026</span> HIMAWARI</p>
     </footer>
-    <script src="assets/scrub.js" defer></script>
     <script src="assets/cart.js" defer></script>
     <script src="assets/inquiry-form.js" defer></script>
   </body>

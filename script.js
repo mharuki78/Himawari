@@ -46,37 +46,38 @@ function setupReveals(root = document) {
 window.himawariReveal = setupReveals;
 setupReveals();
 
-const featureFilm = document.querySelector('.feature-film__video');
-const featureFilmToggle = document.querySelector('[data-film-toggle]');
+document.querySelectorAll('[data-ambient-film]').forEach((film) => {
+  const video = film.querySelector('[data-ambient-video]');
+  const toggle = film.querySelector('[data-ambient-toggle]');
+  if (!video || !toggle) return;
 
-if (featureFilm && featureFilmToggle) {
   function updateFilmControl() {
-    const isPaused = featureFilm.paused;
-    featureFilmToggle.textContent = isPaused ? '영상 재생' : '영상 일시정지';
-    featureFilmToggle.setAttribute('aria-pressed', String(isPaused));
+    const isPlaying = !video.paused;
+    toggle.textContent = isPlaying ? '영상 일시정지' : '영상 재생';
+    toggle.setAttribute('aria-pressed', String(isPlaying));
   }
 
   function respectMotionPreference(event = reducedMotion) {
     if (event.matches) {
-      featureFilm.pause();
-      featureFilm.removeAttribute('autoplay');
+      video.pause();
+      video.removeAttribute('autoplay');
       updateFilmControl();
       return;
     }
 
-    featureFilm.setAttribute('autoplay', '');
-    featureFilm.play().catch(updateFilmControl);
+    video.setAttribute('autoplay', '');
+    video.play().catch(updateFilmControl);
   }
 
-  window.himawariToggleFilm = () => {
-    if (featureFilm.paused) featureFilm.play().catch(updateFilmControl);
-    else featureFilm.pause();
-  };
-  featureFilm.addEventListener('play', updateFilmControl);
-  featureFilm.addEventListener('pause', updateFilmControl);
+  toggle.addEventListener('click', () => {
+    if (video.paused) video.play().catch(updateFilmControl);
+    else video.pause();
+  });
+  video.addEventListener('play', updateFilmControl);
+  video.addEventListener('pause', updateFilmControl);
   reducedMotion.addEventListener?.('change', respectMotionPreference);
   respectMotionPreference();
-}
+});
 
 const reelShowcase = document.querySelector('[data-reel-showcase]');
 
