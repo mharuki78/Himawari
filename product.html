@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Himawari 제품의 이미지, 특징과 구매 정보를 확인하세요.">
     <meta name="theme-color" content="#F4EFE3">
-    <link rel="canonical" href="https://himawari-three.vercel.app/product.html">
+    <link rel="canonical" href="https://allaboutbag.com/product.html">
     <meta property="og:type" content="product">
     <meta property="og:title" content="제품 상세 — Himawari">
     <meta property="og:description" content="Himawari 제품의 구조와 쓰임을 자세히 살펴보세요.">
-    <meta property="og:url" content="https://himawari-three.vercel.app/product.html">
-    <meta property="og:image" content="https://himawari-three.vercel.app/assets/himawari-collection-v2.webp">
+    <meta property="og:url" content="https://allaboutbag.com/product.html">
+    <meta property="og:image" content="https://allaboutbag.com/assets/himawari-collection-v2.webp">
     <title>제품 상세 — Himawari</title>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://shop-phinf.pstatic.net">
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="assets/gear.css">
     <link rel="stylesheet" href="assets/cart.css">
+    <link rel="stylesheet" href="assets/member.css">
     <script src="script.js" defer></script>
     <script src="product-detail.js" type="module"></script>
   </head>
@@ -62,6 +63,7 @@
             <strong class="product-detail-price" data-price></strong>
             <div class="product-detail-actions">
               <button class="buy-link" type="button" data-detail-cart><span>장바구니 담기</span><span aria-hidden="true">+</span></button>
+              <button class="wishlist-button" type="button" data-detail-wishlist data-wishlist-toggle aria-pressed="false"><span data-wishlist-label>관심상품 저장</span></button>
               <a class="direct-buy-link" data-direct-buy href="https://smartstore.naver.com/baegot" target="_blank" rel="noopener noreferrer"><span>바로 구매하기</span><span aria-hidden="true">↗</span></a>
             </div>
             <p class="product-detail-note">가격과 재고, 배송 정보는 네이버 스마트스토어에서 최종 확인해 주세요.</p>
@@ -118,5 +120,6 @@
       <p class="copyright">© <span id="year">2026</span> HIMAWARI</p>
     </footer>
     <script src="assets/cart.js" defer></script>
+    <script src="assets/member.js" defer></script>
   </body>
 </html>

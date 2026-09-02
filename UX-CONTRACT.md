@@ -41,6 +41,8 @@
 | Status | form/list inline live regions | current request state | success / error / pending | live-region inspection |
 | CRUD | inquiry and product APIs under `api/` | server authorization + Blob policies | inquiry create/read/delete / product create/read/update/delete | full-flow integration |
 | Dialog | native modal `<dialog>` with app-owned surface | `admin/inquiries.html` | irreversible delete only | keyboard + failure flow |
+| Member session | `assets/member.js`, `api/auth/` | HttpOnly cookie + Neon session hash | Naver / Google | OAuth state + browser flow |
+| Member collection | `assets/cart.js`, `assets/member.js`, `api/member/` | Neon for members, localStorage for guests | cart / wishlist | merge, logout, account delete |
 
 ## Component behavior
 
@@ -69,6 +71,10 @@
 | Operation | Trigger | Pending | Success destination | Success feedback | Failure recovery | Focus outcome | Source ref |
 |---|---|---|---|---|---|---|---|
 | Create inquiry | `비공개 문의 접수` | button locked, stable label slot | same form | inline server-confirmed receipt | values retained, retry with same request ID | remains in form/status | `docs/INQUIRY-POLICY.md` |
+| Start cart inquiry | `주문 문의 남기기` | button locked during navigation | `contact.html?from=cart` | subject/message prefilled from session-scoped cart summary | empty cart stays disabled; unavailable session shows the normal form | inquiry form heading/status | `DESIGN.md` |
+| Social login | `네이버로 계속하기` / `Google로 계속하기` | provider redirect | signed return path | live-region/toast confirmation and member menu update | signed state errors return to same-site path with retry copy | member dialog trigger | `docs/MEMBER-SETUP.md` |
+| Save member cart/wishlist | add/save/remove/quantity | local UI remains usable while account write runs | same route | count and selected state update | local data remains and a retry notice is shown | initiating control | `docs/MEMBER-SETUP.md` |
+| Delete member account | `회원탈퇴` confirmation form | submit locked | same account route signed out | persistent inline deletion confirmation | form remains with inline error | confirmation field/status | `docs/MEMBER-SETUP.md` |
 | Admin login | `관리자 로그인` | button locked | inquiry board | list loads | generic credential error or setup error | password on error, board title on success | `docs/INQUIRY-POLICY.md` |
 | Read list/detail | route load, refresh, load more, view | reserved list status | same route | count/status | persistent retry; stale request aborted | selected detail close then trigger | `docs/INQUIRY-POLICY.md` |
 | Hard-delete | `문의 삭제` then confirm | dialog stays open, duplicate blocked | same list | selected row removed, inline acknowledgement | dialog remains with retry/cancel | next surviving view button or board title | `docs/INQUIRY-POLICY.md` |
@@ -92,7 +98,7 @@
 - Dialog primitive: native modal `<dialog>` with app-owned surface and Korean labels
 - Destructive confirmation: inquiry and product hard-delete only; object name, irreversible consequence, danger action, Cancel initial focus
 - Unsaved product form: app-owned discard dialog for admin navigation or reset; actual tab/window close uses the narrow `beforeunload` lifecycle guard.
-- Toast: not used; actionable feedback remains inline and persistent.
+- Toast: short non-destructive member/cart sync and OAuth completion notices only; forms and destructive actions keep persistent inline feedback.
 - Unsaved changes: public inquiry values remain after request failure; no route guard because the single short form does not save drafts.
 - Layer contract: sticky 100, backdrop 500, dialog 600; native dialog top-layer behavior remains authoritative.
 
@@ -102,7 +108,8 @@
 - Idempotency: public create reuses a client request ID; Blob overwrite is denied and an existing identical pathname is treated as the prior accepted request, so retry does not duplicate the inquiry.
 - Offline/read-stale/write behavior: entered public values remain; admin list error offers retry; no queued writes.
 - Retry/timeout: public request warns when confirmation is uncertain and reuses the request ID; list retry is manual.
-- Session expiry: 8-hour HttpOnly, SameSite=Strict signed session; 401 returns to login without exposing data.
+- Admin session expiry: 8-hour HttpOnly, SameSite=Strict signed session; 401 returns to admin login without exposing data.
+- Member session expiry: 30-day HttpOnly, Secure, SameSite=Lax random token; only its SHA-256 hash is stored in Neon and logout revokes it.
 - Stale request handling: admin list uses `AbortController`; duplicate loads and mutations are blocked.
 - Delete failure: confirmation dialog remains open with retry and cancel.
 - Product image upload: browser-to-Blob direct upload with a 15-minute role-scoped token; representative image maximum 8MB and each detail image maximum 15MB; determinate progress and explicit cancellation. Partial uploads are cleaned up when the session remains valid.
@@ -123,6 +130,8 @@
 - Public form states that inquiry data is retained until the administrator deletes it and requires consent.
 - Admin deletion is irreversible and offers no false Undo.
 - Product create/edit/delete/upload APIs require the same signed administrator session. Public product API exposes only catalog fields and never exposes upload request IDs or managed-image metadata.
+- Member APIs require a server-verified session and same-origin checks on every state-changing request. Provider accounts are keyed by provider and stable provider ID and are never auto-linked by email.
+- Member deletion removes the OAuth connection, sessions, account cart and wishlist through database cascades; private inquiries remain governed by their separate retention consent.
 
 ## Verification
 

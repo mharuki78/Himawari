@@ -24,6 +24,17 @@ python -m http.server 8000
 - `script.js` — 모바일 메뉴, 스크롤 노출, 문의 폼 예시 동작
 - `story/` — 블로그 목록, 글 상세, 관리 페이지와 글 데이터
 - `assets/` — 브랜드 이미지
+- `account.html` — 회원 관심상품과 계정 관리
+- `privacy.html` — 회원·문의 개인정보 처리 안내
+- `api/auth/`, `api/member/` — 네이버·Google OAuth, 회원 세션, 계정별 장바구니와 관심상품 API
+
+## 회원 기능
+
+회원 기능은 Vercel에 연결한 Neon Postgres와 HttpOnly 세션 쿠키를 사용합니다. 환경 변수, OAuth 콜백, 데이터베이스 준비와 운영 확인은 `docs/MEMBER-SETUP.md`를 따르세요.
+
+```bash
+npm run db:migrate
+```
 
 ## 제품 추가
 

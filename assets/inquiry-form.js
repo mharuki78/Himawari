@@ -3,6 +3,20 @@
   if (!forms.length) return;
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const cartInquiryKey = 'himawari-cart-inquiry';
+
+  function readCartInquiry() {
+    if (new URLSearchParams(location.search).get('from') !== 'cart') return null;
+    try {
+      const value = JSON.parse(sessionStorage.getItem(cartInquiryKey));
+      const fresh = value && value.version === 1 && Date.now() - Number(value.createdAt) < 30 * 60 * 1000;
+      return fresh && typeof value.text === 'string' && value.text.trim() ? value : null;
+    } catch {
+      return null;
+    }
+  }
+
+  const cartInquiry = readCartInquiry();
 
   function createRequestId() {
     const inverseTime = String(9_999_999_999_999 - Date.now()).padStart(13, '0');
@@ -30,6 +44,14 @@
     const status = form.querySelector('.form-status');
     let requestId = createRequestId();
     let pending = false;
+
+    if (cartInquiry) {
+      if (!controls.subject.value) controls.subject.value = '장바구니 주문 문의';
+      if (!controls.message.value) {
+        controls.message.value = `다음 제품의 주문을 문의합니다.\n\n${cartInquiry.text}\n\n배송 및 구매 방법을 안내해 주세요.`;
+      }
+      status.textContent = '장바구니 내용을 불러왔습니다. 답변받을 정보를 입력해 주세요.';
+    }
 
     function errorNode(control) {
       const describedBy = control?.getAttribute('aria-describedby');
@@ -122,6 +144,7 @@
         }
 
         form.reset();
+        if (cartInquiry) sessionStorage.removeItem(cartInquiryKey);
         fieldNames.forEach((name) => setError(controls[name], ''));
         requestId = createRequestId();
         status.textContent = '비공개 문의가 접수되었습니다. 확인 후 입력하신 이메일로 답변드리겠습니다.';

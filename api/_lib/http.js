@@ -15,6 +15,12 @@ export function methodNotAllowed(allowed) {
   return json({ message: '지원하지 않는 요청입니다.' }, 405, { Allow: allowed.join(', ') });
 }
 
+export function redirect(location, status = 302, cookies = []) {
+  const headers = new Headers({ Location: location, 'Cache-Control': 'no-store' });
+  for (const cookie of cookies) headers.append('Set-Cookie', cookie);
+  return new Response(null, { status, headers });
+}
+
 export async function readJson(request, maxBytes = 16_384) {
   const contentType = request.headers.get('content-type') || '';
   if (!contentType.toLowerCase().startsWith('application/json')) {

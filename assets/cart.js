@@ -30,7 +30,7 @@
     empty: '장바구니가 비어 있습니다.<br>제품 목록에서 마음에 드는 것을 담아보세요.',
     note: '결제와 재고는 스토어에서 진행됩니다. 담은 목록을 들고 이동하세요.',
     copy: '주문 목록 복사',
-    ask: '문자로 주문 문의',
+    ask: '주문 문의 남기기',
     go: '스토어에서 주문 →'
   };
   var custom = window.CART_TEXT;
@@ -40,6 +40,7 @@
 
   var NOLINK = '스토어 링크 없음';
   var MAX_Q = 99;
+  var INQUIRY_KEY = 'himawari-cart-inquiry';
 
   /* ───────── 상태 ───────── */
   var cart = [];
@@ -50,6 +51,7 @@
         var it = raw[i];
         if (!it || typeof it.name !== 'string') continue;
         cart.push({
+          id: typeof it.id === 'string' ? it.id : '',
           name: it.name,
           price: num(it.price),
           q: Math.min(MAX_Q, Math.max(1, num(it.q) || 1)),
@@ -59,7 +61,13 @@
     }
   } catch (e) { cart = []; }
 
-  function save() { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) {} }
+  function announceCartChange() {
+    document.dispatchEvent(new CustomEvent('himawari:cart-change', { detail: { items: cart.slice() } }));
+  }
+  function save(announce) {
+    try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) {}
+    if (announce !== false) announceCartChange();
+  }
 
   /* ───────── 도구 ───────── */
   function num(v) {
@@ -87,7 +95,7 @@
   }
 
   /* ───────── DOM 만들기 ───────── */
-  var btn, badge, drawer, panel, bodyEl, totalEl, copyBtn, askEl, closeBtn;
+  var btn, badge, drawer, panel, bodyEl, totalEl, copyBtn, askBtn, closeBtn;
   var lastFocus = null;
   var inerted = [];
 
@@ -161,7 +169,7 @@
           '<p class="rdcart__lead">' + esc(T.note) + '</p>' +
           '<div class="rdcart__acts">' +
             '<button class="rdcart__act rdcart__act--solid rdcart__copy" type="button" aria-live="polite">' + esc(T.copy) + '</button>' +
-            '<a class="rdcart__act rdcart__act--ghost rdcart__ask" href="sms:&amp;body=">' + esc(T.ask) + '</a>' +
+            '<button class="rdcart__act rdcart__act--ghost rdcart__ask" type="button">' + esc(T.ask) + '</button>' +
           '</div>' +
         '</div>' +
       '</div>';
@@ -171,11 +179,12 @@
     bodyEl = drawer.querySelector('.rdcart__body');
     totalEl = drawer.querySelector('.rdcart__total');
     copyBtn = drawer.querySelector('.rdcart__copy');
-    askEl = drawer.querySelector('.rdcart__ask');
+    askBtn = drawer.querySelector('.rdcart__ask');
     closeBtn = drawer.querySelector('.rdcart__close');
 
     drawer.addEventListener('click', onDrawerClick);
     copyBtn.addEventListener('click', onCopy);
+    askBtn.addEventListener('click', onInquiry);
   }
 
   /* ───────── 그리기 ───────── */
@@ -226,24 +235,26 @@
       bodyEl.innerHTML = html;
     }
 
-    askEl.setAttribute('href', 'sms:&body=' + encodeURIComponent(orderText()));
-    askEl.setAttribute('aria-disabled', cart.length ? 'false' : 'true');
-    askEl.tabIndex = cart.length ? 0 : -1;
+    askBtn.disabled = !cart.length;
     copyBtn.disabled = !cart.length;
   }
 
   /* ───────── 동작 ───────── */
-  function add(name, price, url) {
+  function add(name, price, url, id) {
     name = String(name == null ? '' : name).trim();
+    id = String(id == null ? '' : id).trim();
     if (!name) return;
     var hit = null;
-    for (var i = 0; i < cart.length; i++) { if (cart[i].name === name) { hit = cart[i]; break; } }
+    for (var i = 0; i < cart.length; i++) {
+      if ((id && cart[i].id === id) || (!id && cart[i].name === name)) { hit = cart[i]; break; }
+    }
     if (hit) {
       if (hit.q < MAX_Q) hit.q++;
+      if (id) hit.id = id;
       if (url) hit.url = url;
       if (price) hit.price = price;
     } else {
-      cart.push({ name: name, price: num(price), q: 1, url: String(url || '') });
+      cart.push({ id: id, name: name, price: num(price), q: 1, url: String(url || '') });
     }
     save(); paint();
   }
@@ -319,6 +330,29 @@
     } else { fallback(); }
   }
 
+  /*
+     수신 전화번호가 없는 sms: 링크는 특히 PC에서 무반응처럼 보입니다.
+     장바구니 내용을 같은 사이트의 비공개 문의 폼으로 넘겨 모든 기기에서
+     확실한 다음 동작을 제공합니다. 문자 수신번호가 확정되면 별도 문자 행동을
+     추가할 수 있도록 주문 데이터는 구조화해 저장합니다.
+  */
+  function onInquiry() {
+    if (!cart.length || askBtn.disabled) return;
+    var payload = {
+      version: 1,
+      createdAt: Date.now(),
+      text: orderText(),
+      items: cart.map(function (item) {
+        return { name: item.name, price: item.price, q: item.q, url: safeUrl(item.url) };
+      })
+    };
+    try { sessionStorage.setItem(INQUIRY_KEY, JSON.stringify(payload)); } catch (e) {}
+    askBtn.disabled = true;
+    askBtn.setAttribute('aria-busy', 'true');
+    askBtn.textContent = '문의서로 이동 중';
+    window.location.assign('/contact.html?from=cart');
+  }
+
   /* ───────── 시작 ───────── */
   function init() {
     if (document.querySelector('.rdcart')) return; /* 두 번 실행 방지 */
@@ -330,7 +364,7 @@
       var b = ev.target.closest ? ev.target.closest('[data-cart-add]') : null;
       if (!b) return;
       ev.preventDefault();
-      add(b.getAttribute('data-name'), b.getAttribute('data-price'), b.getAttribute('data-url'));
+      add(b.getAttribute('data-name'), b.getAttribute('data-price'), b.getAttribute('data-url'), b.getAttribute('data-product-id'));
       if (b.dataset && b.dataset.rdcartBusy) return;
       var was = b.textContent;
       var wasLabel = b.getAttribute('aria-label');
@@ -371,6 +405,7 @@
     });
 
     paint();
+    document.dispatchEvent(new CustomEvent('himawari:cart-ready', { detail: { items: cart.slice() } }));
   }
 
   if (document.readyState === 'loading') {
@@ -382,6 +417,16 @@
     add: add, open: open, close: close,
     items: function () { return cart.slice(); },
     text: orderText,
-    clear: function () { cart = []; save(); paint(); }
+    clear: function () { cart = []; save(); paint(); },
+    replace: function (items, announce) {
+      cart = (Array.isArray(items) ? items : []).map(function (item) {
+        return {
+          id: typeof item.id === 'string' ? item.id : '',
+          name: String(item.name || ''), price: num(item.price),
+          q: Math.min(MAX_Q, Math.max(1, num(item.q) || 1)), url: String(item.url || '')
+        };
+      }).filter(function (item) { return item.name; });
+      save(announce); paint();
+    }
   };
 })();

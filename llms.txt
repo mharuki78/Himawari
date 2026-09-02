@@ -8,16 +8,16 @@
 
 ## 페이지 안내
 
-- [홈](https://himawari-three.vercel.app/): 브랜드 소개와 대표 제품
-- [내 소개](https://himawari-three.vercel.app/about.html): Himawari를 시작한 이유와 약속
-- [제품](https://himawari-three.vercel.app/products.html): 제품 목록과 구매 링크
-- [이야기](https://himawari-three.vercel.app/story/): 백팩을 고르고 오래 쓰는 방법
-- [연락하기](https://himawari-three.vercel.app/contact.html): 이메일, Instagram과 스마트스토어 연락 채널
+- [홈](https://allaboutbag.com/): 브랜드 소개와 대표 제품
+- [내 소개](https://allaboutbag.com/about.html): Himawari를 시작한 이유와 약속
+- [제품](https://allaboutbag.com/products.html): 제품 목록과 구매 링크
+- [이야기](https://allaboutbag.com/story/): 백팩을 고르고 오래 쓰는 방법
+- [연락하기](https://allaboutbag.com/contact.html): 이메일, Instagram과 스마트스토어 연락 채널
 
 ## 이야기(블로그)
 
-- [좋은 백팩은 어떤 기준으로 골라야 하나요?](https://himawari-three.vercel.app/story/how-to-choose-backpack.html): 수납, 착용감, 마감과 디자인을 차례로 확인하는 방법
-- [직장인에게 어울리는 백팩은 어떻게 고르나요?](https://himawari-three.vercel.app/story/backpack-for-office-workers.html): 출근 옷차림과 업무 수납, 출장 동선을 고려한 선택법
-- [신학기 우리 아이 백팩은 어떻게 골라야 하나요?](https://himawari-three.vercel.app/story/back-to-school-backpack-for-kids.html): 아이 몸에 맞는 크기와 수납, 소재와 취향을 살피는 방법
-- [우리가 이 브랜드를 시작한 이유](https://himawari-three.vercel.app/story/first-story.html): 작은 불편에서 시작된 브랜드의 첫 마음
-- [패키지 하나를 바꾸는 데 석 달이 걸린 이야기](https://himawari-three.vercel.app/story/behind-package.html): 패키지의 작은 디테일을 고민한 기록
+- [좋은 백팩은 어떤 기준으로 골라야 하나요?](https://allaboutbag.com/story/how-to-choose-backpack.html): 수납, 착용감, 마감과 디자인을 차례로 확인하는 방법
+- [직장인에게 어울리는 백팩은 어떻게 고르나요?](https://allaboutbag.com/story/backpack-for-office-workers.html): 출근 옷차림과 업무 수납, 출장 동선을 고려한 선택법
+- [신학기 우리 아이 백팩은 어떻게 골라야 하나요?](https://allaboutbag.com/story/back-to-school-backpack-for-kids.html): 아이 몸에 맞는 크기와 수납, 소재와 취향을 살피는 방법
+- [우리가 이 브랜드를 시작한 이유](https://allaboutbag.com/story/first-story.html): 작은 불편에서 시작된 브랜드의 첫 마음
+- [패키지 하나를 바꾸는 데 석 달이 걸린 이야기](https://allaboutbag.com/story/behind-package.html): 패키지의 작은 디테일을 고민한 기록

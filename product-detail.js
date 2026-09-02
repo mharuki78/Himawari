@@ -89,10 +89,15 @@ function renderProduct(product) {
 
   const cart = document.querySelector('[data-detail-cart]');
   cart.dataset.cartAdd = '';
+  cart.dataset.productId = product.id;
   cart.dataset.name = product.name;
   cart.dataset.price = String(product.price);
   cart.dataset.url = safeHttpsUrl(product.url);
   cart.setAttribute('aria-label', `${product.name} 장바구니에 담기`);
+
+  const wishlist = document.querySelector('[data-detail-wishlist]');
+  wishlist.dataset.productId = product.id;
+  wishlist.setAttribute('aria-label', `${product.name} 관심상품 저장`);
 
   const buyLinks = [document.querySelector('[data-direct-buy]'), document.querySelector('[data-closing-buy]')];
   buyLinks.forEach((link) => {

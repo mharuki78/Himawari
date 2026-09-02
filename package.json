@@ -6,9 +6,12 @@
     "build:admin": "esbuild admin/product-admin.source.js --bundle --format=esm --platform=browser --target=es2022 --outfile=admin/product-admin.js",
     "test": "node --test",
     "design": "npx -p @google/design.md designmd lint DESIGN.md",
-    "secrets": "node scripts/generate-admin-secrets.mjs"
+    "secrets": "node scripts/generate-admin-secrets.mjs",
+    "db:migrate": "node scripts/migrate-members.mjs",
+    "smoke:members": "node scripts/smoke-members.mjs"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "@vercel/blob": "^2.8.0"
   },
   "devDependencies": {

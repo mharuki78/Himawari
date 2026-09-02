@@ -85,6 +85,7 @@ function createCartButton(product, className = 'buy-link') {
   button.className = className;
   button.textContent = '장바구니 담기';
   button.dataset.cartAdd = '';
+  button.dataset.productId = product.id;
   button.dataset.name = product.name;
   button.dataset.price = String(product.price);
   button.dataset.url = safeHttpsUrl(product.url);
@@ -94,6 +95,21 @@ function createCartButton(product, className = 'buy-link') {
   arrow.setAttribute('aria-hidden', 'true');
   arrow.textContent = '+';
   button.append(' ', arrow);
+  return button;
+}
+
+function createWishlistButton(product) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'wishlist-button';
+  button.dataset.wishlistToggle = '';
+  button.dataset.productId = product.id;
+  button.setAttribute('aria-pressed', 'false');
+  button.setAttribute('aria-label', `${product.name} 관심상품 저장`);
+  const label = document.createElement('span');
+  label.dataset.wishlistLabel = '';
+  label.textContent = '관심상품 저장';
+  button.append(label);
   return button;
 }
 
@@ -151,7 +167,7 @@ function createProductCard(product) {
   price.textContent = priceFormatter.format(product.price);
   const actions = document.createElement('div');
   actions.className = 'store-product-actions';
-  actions.append(createDetailLink(product), createCartButton(product), createDirectBuyLink(product));
+  actions.append(createDetailLink(product), createCartButton(product), createWishlistButton(product), createDirectBuyLink(product));
   footer.append(price, actions);
   body.append(label, productNameHeading(product), tagline, footer);
   article.append(createProductMedia(product, 'store-product-media'), body);
@@ -185,6 +201,7 @@ function createFeaturedProduct(product) {
   actions.append(
     createDetailLink(product, 'detail-link featured-detail-link'),
     createCartButton(product, 'buy-link featured-buy-link'),
+    createWishlistButton(product),
     createDirectBuyLink(product, 'direct-buy-link featured-direct-buy-link'),
   );
   footer.append(price, actions);
