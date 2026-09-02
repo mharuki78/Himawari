@@ -150,7 +150,11 @@ p { max-width: 40ch; text-wrap: pretty; }
 .footer-contact { display: grid; gap: .45rem; justify-items: end; font-size: .7rem; }
 .footer-contact a { padding-bottom: .1rem; border-bottom: 1px solid transparent; }
 .footer-contact a:hover { border-color: currentColor; }
-.copyright { grid-column: 1 / -1; margin: 4rem 0 0; font-size: .6rem; letter-spacing: .14em; }
+.footer-business { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .35rem 1.5rem; margin: 1rem 0 0; padding-top: 1.5rem; border-top: var(--hairline); font-size: .7rem; line-height: 1.7; word-break: keep-all; }
+.footer-business > div { display: flex; gap: .4rem; max-width: 100%; }
+.footer-business dt { flex: none; font-weight: 650; }
+.footer-business dd { margin: 0; opacity: .68; overflow-wrap: anywhere; }
+.copyright { grid-column: 1 / -1; margin: .75rem 0 0; font-size: .6rem; letter-spacing: .14em; }
 
 /* Founder story */
 .about-header { position: absolute; color: var(--ink); }
@@ -281,6 +285,8 @@ p { max-width: 40ch; text-wrap: pretty; }
   .site-footer { grid-template-columns: 1fr; }
   .site-footer nav { flex-wrap: wrap; }
   .footer-contact { justify-items: start; }
+  .footer-business { display: grid; gap: .3rem; padding-top: 1.25rem; }
+  .footer-business > div { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: .75rem; }
   .copyright { grid-column: auto; }
   .contact-page-intro h1 { font-size: clamp(3.5rem, 16vw, 5.2rem); }
   .contact-action { min-height: 9rem; grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; gap: .65rem; }
