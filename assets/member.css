@@ -93,11 +93,25 @@
 .privacy-section p, .privacy-section li { line-height: 1.85; }
 .privacy-section ul { margin: 0; padding-left: 1.2rem; }
 .privacy-section a { border-bottom: 1px solid currentColor; }
+.terms-main { width: min(100%, 66rem); }
+.terms-main .privacy-lead { max-width: 48rem; }
+.terms-main .privacy-section ol { display: grid; gap: .8rem; margin: 0; padding-left: 1.35rem; }
+.terms-business { margin: 0 0 clamp(4rem, 9vh, 7rem); padding: clamp(1.4rem, 4vw, 2.5rem); border: 1px solid var(--ink); box-shadow: .65rem .65rem 0 var(--moss); }
+.terms-business h2 { margin: 0 0 1.4rem; font-size: clamp(1.5rem, 3vw, 2.4rem); font-weight: 580; letter-spacing: -.03em; }
+.terms-business dl { margin: 0; border-top: 1px solid var(--ink); }
+.terms-business dl > div { display: grid; grid-template-columns: minmax(9rem, .45fr) minmax(0, 1fr); gap: 1.5rem; padding: .8rem 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 24%, transparent); }
+.terms-business dt { font-size: .7rem; font-weight: 720; }
+.terms-business dd { margin: 0; overflow-wrap: anywhere; line-height: 1.7; }
+.terms-business a, .terms-source a { border-bottom: 1px solid currentColor; }
+.terms-source { margin-top: clamp(3rem, 8vh, 6rem); padding: 1.25rem 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.terms-source p { margin: 0 0 .8rem; line-height: 1.75; }
+.terms-source a { font-size: .72rem; font-weight: 700; }
 
 @media (max-width: 520px) {
   .member-dialog { width: calc(100vw - 1.5rem); box-shadow: 6px 6px 0 var(--moss); }
   .member-panel { padding: 1.25rem; }
   .account-wishlist { grid-template-columns: 1fr; }
+  .terms-business dl > div { grid-template-columns: 1fr; gap: .35rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

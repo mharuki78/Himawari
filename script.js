@@ -236,3 +236,39 @@ if (reelShowcase) {
 
 const year = document.querySelector('#year');
 if (year) year.textContent = new Date().getFullYear();
+
+const footerNavigation = document.querySelector('.site-footer nav[aria-label="푸터 메뉴"]');
+if (footerNavigation && !footerNavigation.querySelector('a[href$="terms.html"]')) {
+  const termsLink = document.createElement('a');
+  termsLink.href = '/terms.html';
+  termsLink.textContent = '이용약관';
+  const privacyLink = document.createElement('a');
+  privacyLink.href = '/privacy.html';
+  privacyLink.textContent = '개인정보';
+  footerNavigation.append(termsLink, privacyLink);
+}
+
+const footerBusiness = document.querySelector('.footer-business');
+if (footerBusiness && !footerBusiness.querySelector('a[href^="tel:"]')) {
+  const item = document.createElement('div');
+  const term = document.createElement('dt');
+  const detail = document.createElement('dd');
+  const phone = document.createElement('a');
+  term.textContent = '고객센터';
+  phone.href = 'tel:+821053373981';
+  phone.textContent = '010-5337-3981';
+  detail.append(phone);
+  item.append(term, detail);
+  footerBusiness.append(item);
+}
+
+if (footerBusiness && !footerBusiness.querySelector('[data-business-email]')) {
+  const item = document.createElement('div');
+  item.dataset.businessEmail = '';
+  const term = document.createElement('dt');
+  const detail = document.createElement('dd');
+  term.textContent = '고객센터 이메일';
+  detail.textContent = 'golf484@naver.com';
+  item.append(term, detail);
+  footerBusiness.append(item);
+}

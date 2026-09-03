@@ -17,7 +17,7 @@
 | Permission model | `docs/INQUIRY-POLICY.md` | Maintained product policy | 2026-08-31 |
 | Data lifecycle | `docs/INQUIRY-POLICY.md` | Maintained product policy | 2026-08-31 |
 | Deletion / retention | `docs/INQUIRY-POLICY.md` | User-approved product policy | 2026-08-31 |
-| Legal / regulatory copy | 공개 폼의 운영 안내만 확정됨; 별도 법률 검토 자료 없음 | Release risk | 2026-08-31 |
+| Legal / regulatory copy | `docs/COMMERCE-POLICY.md`, 공정거래위원회 표준약관 제10023호 | User facts + official standard terms | 2026-09-03 |
 | Market / content conventions | `DESIGN.md` | Design/content guide | 2026-08-31 |
 | Product permission / lifecycle | `docs/PRODUCT-CATALOG-POLICY.md` | User-approved product policy | 2026-08-31 |
 | Product media limits / storage | `docs/PRODUCT-CATALOG-POLICY.md` | Maintained product policy | 2026-09-01 |
@@ -59,7 +59,7 @@
 
 - Admin tables: private Blob cursor pagination, 20 records per request
 - Product admin table: catalog offset cursor, 20 products per request; total count and explicit load-more
-- Public product catalog: complete bounded catalog for browsing; product detail reads by stable public product ID
+- Public product catalog: complete bounded catalog for browsing; server-rendered HTML and client enhancement both read the same catalog, and product detail reads by stable public product ID
 - Exploratory lists: none
 - URL state: Blob cursor is transient and not put in the URL; no PII or private record identifier enters browser history.
 - Empty/no-results/error/loading treatment: distinct loading, empty dataset, persistent error with retry; search/no-results is not part of this version.
@@ -82,6 +82,7 @@
 | Create product | `제품 등록` | fields retained, files upload with progress, duplicate blocked | same admin route with refreshed owning list | persistent list acknowledgement | uploaded result and values retained when safe; retry without duplicate | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Edit product | `수정` then `변경사항 저장` | current values retained, selected replacement files upload with progress, duplicate blocked | same admin route with refreshed owning list | persistent list acknowledgement | form stays open; ETag conflict asks for refresh without overwriting | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Read product detail | product image/name/`상세 보기` | reserved product loader | `product.html?id=...` | product content followed by an original-ratio continuous detail-image rail | app-owned not-found state and products link | product title | `docs/PRODUCT-CATALOG-POLICY.md` |
+| Read commerce terms | footer or product order information | static document | `terms.html` | business identity and 24 articles remain directly readable | product/contact navigation remains available | terms title | `docs/COMMERCE-POLICY.md` |
 | Hard-delete product | `삭제` then `제품 삭제` | dialog stays open, duplicate blocked | refreshed product list | persistent deletion acknowledgement | dialog remains; conflict asks for refresh | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
 
 ## Navigation and responsive behavior
@@ -139,4 +140,4 @@
 - Browser matrix: narrow phone and desktop; public product list/detail/not-found; product login/create/upload progress/cancel/empty/list/load-more/session expiry/delete cancel/success/failure; inquiry paths; reduced motion
 - Accessibility: keyboard-only form/login/detail/delete flow, dialog Escape/cancel, visible focus, associated errors
 - CRUD evidence: API unit/integration tests with a mocked private Blob adapter and browser workflow where environment variables are available
-- Remaining release risk: Korean operational privacy copy has no documented legal review.
+- Remaining release risk: Korean operational privacy/terms copy has no documented legal-professional review. Customer-service email and fixed shipping/return operating values were confirmed by the user on 2026-09-03.

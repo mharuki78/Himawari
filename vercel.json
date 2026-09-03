@@ -1,6 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/storefront.js": {
+      "includeFiles": "product*.html"
+    }
+  },
   "rewrites": [
+    { "source": "/products.html", "destination": "/api/storefront?page=catalog" },
+    { "source": "/product.html", "destination": "/api/storefront?page=product" },
     { "source": "/api/auth/start", "destination": "/api/auth?route=start" },
     { "source": "/api/auth/callback/naver", "destination": "/api/auth?route=callback-naver" },
     { "source": "/api/auth/callback/google", "destination": "/api/auth?route=callback-google" },
