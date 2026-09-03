@@ -1,5 +1,41 @@
 [
   {
+    "id": "backpack-fabric-care-guide",
+    "title": "백팩 소재별 표면 관리법: 나일론과 폴리에스터를 살피는 순서",
+    "date": "2026-09-04",
+    "summary": "세탁 전에 관리 표시와 오염 범위를 확인하고, 눈에 띄지 않는 곳에서 시험한 뒤 표면만 천천히 닦는 순서를 정리했습니다.",
+    "description": "나일론·폴리에스터 백팩의 표면을 관리할 때 확인할 관리 표시, 부분 세척, 자연 건조 순서와 피해야 할 행동을 안내합니다.",
+    "tags": ["백팩 소재", "가방 세척", "백팩 관리"],
+    "image": "../assets/story/backpack-fabric-care.webp",
+    "imageAlt": "나무 작업대 위 올리브색 백팩의 안쪽 원단을 손으로 살피는 모습",
+    "url": "backpack-fabric-care-guide.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "subway-commute-backpack-guide",
+    "title": "지하철 출퇴근 백팩 고르기: 폭·수납·여닫는 순서 점검표",
+    "date": "2026-09-04",
+    "summary": "혼잡한 이동에서 부피를 줄이고 자주 쓰는 물건을 빠르게 꺼낼 수 있도록 가방의 폭, 수납 위치와 여닫는 순서를 점검합니다.",
+    "description": "지하철 출퇴근용 백팩을 고를 때 확인할 가방 폭, 수납칸, 개폐 방식과 이동 중 정리 습관을 실용적인 점검표로 소개합니다.",
+    "tags": ["출퇴근 백팩", "지하철 가방", "직장인 백팩"],
+    "image": "../assets/story/subway-commute-backpack.webp",
+    "imageAlt": "밝은 지하철 승강장에서 검정 백팩을 메고 서 있는 출근자",
+    "url": "subway-commute-backpack-guide.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "day-trip-backpack-packing-guide",
+    "title": "당일치기 나들이 백팩 짐싸기: 가볍게 챙기는 4구역 수납법",
+    "date": "2026-09-04",
+    "summary": "겉옷, 물병, 작은 소지품과 바로 꺼낼 물건을 네 구역으로 나눠 당일 일정에 필요한 만큼만 담는 방법입니다.",
+    "description": "당일치기 나들이 백팩을 가볍게 꾸리는 방법입니다. 일정 확인부터 4구역 수납, 귀가 후 비우기까지 단계별 체크리스트를 확인하세요.",
+    "tags": ["당일치기 짐싸기", "나들이 백팩", "가방 수납"],
+    "image": "../assets/story/day-trip-backpack-packing.webp",
+    "imageAlt": "샌드색 백팩과 물병, 얇은 겉옷, 파우치를 가지런히 펼친 모습",
+    "url": "day-trip-backpack-packing-guide.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "backpack-strap-adjustment-guide",
     "title": "백팩 어깨끈 조절법: 몸에 맞는 길이를 찾는 5단계",
     "date": "2026-09-03",
