@@ -1,5 +1,5 @@
 import { authIsConfigured, clearSessionCookies, createSessionCookie, isAdminRequest, verifyAdminPassword } from '../_lib/auth.js';
-import { blobIsConfigured, clientIp, isSameOrigin, json, methodNotAllowed, readJson } from '../_lib/http.js';
+import { clientIp, isSameOrigin, json, methodNotAllowed, readJson } from '../_lib/http.js';
 
 const failures = new Map();
 const WINDOW_MS = 15 * 60 * 1000;
@@ -26,7 +26,7 @@ function setCookieResponse(data, status, cookies) {
 export async function fetch(request) {
   if (!['POST', 'DELETE'].includes(request.method)) return methodNotAllowed(['POST', 'DELETE']);
   if (!isSameOrigin(request)) return json({ message: '요청 출처를 확인할 수 없습니다.' }, 403);
-  if (!authIsConfigured() || !blobIsConfigured()) return json({ message: '관리자 문의함 설정이 완료되지 않았습니다.' }, 503);
+  if (!authIsConfigured()) return json({ message: '관리자 인증 설정이 완료되지 않았습니다.' }, 503);
 
   if (request.method === 'DELETE') {
     return setCookieResponse({ ok: true }, 200, clearSessionCookies(request));

@@ -159,6 +159,7 @@ html.rdcart-locked, body.rdcart-locked { overflow: hidden; }
 .rdcart__lead { margin: 12px 0 14px; font-size: 12.5px; line-height: 1.7; opacity: .62; }
 
 .rdcart__acts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.rdcart__checkout { grid-column: 1 / -1; }
 .rdcart__act {
   display: inline-flex; align-items: center; justify-content: center;
   min-height: 46px; padding: 0 12px;

@@ -2,9 +2,10 @@
   "profile": "product-admin",
   "canonicalMap": "UX-CONTRACT.md",
   "sourceRoots": ["."],
-  "requiredCapabilities": ["Form", "Scrollbar", "CRUD"],
+  "requiredCapabilities": ["Form", "Select/Listbox", "Scrollbar", "CRUD"],
   "ownership": {
-    "Date": "native"
+    "Date": "native",
+    "Select/Listbox": "native"
   },
   "commands": {
     "test": "npm test",

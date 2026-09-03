@@ -17,6 +17,9 @@ python -m http.server 8000
 - `index.html` — 홈 화면 콘텐츠와 대표 제품
 - `about.html` — 브랜드 대표 이야기
 - `products.html` — 전체 제품 목록
+- `checkout.html` — 회원 전용 내부 주문서와 결제 대기 주문 접수
+- `account.html` — 관심상품, 주문 내역, 취소·반품 요청과 계정 관리
+- `admin/orders.html` — 주문·배송·취소·환불 상태 관리
 - `products.json` — 제품명, 가격, 이미지, 스마트스토어 구매 링크
 - `products.js` — JSON을 읽어 홈과 제품 페이지에 카드를 표시
 - `stories.js` — `story/posts.json`에서 최신 글을 읽어 홈에 표시

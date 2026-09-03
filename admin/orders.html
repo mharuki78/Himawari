@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="theme-color" content="#24241F">
+    <title>주문 관리 — Himawari</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="order-admin.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#admin-main">본문으로 바로가기</a>
+    <header class="admin-header admin-header--console">
+      <a class="admin-brand" href="../index.html" aria-label="Himawari 공개 사이트 홈">HIMAWARI</a>
+      <nav class="admin-nav" aria-label="관리자 메뉴"><a href="inquiries.html">문의 관리</a><a href="products.html">제품 관리</a><a href="orders.html" aria-current="page">주문 관리</a></nav>
+      <a class="admin-header__site" href="../account.html#orders">회원 주문 화면 보기 <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="admin-main" class="admin-main admin-main--orders">
+      <section class="initial-state" data-initial-view aria-live="polite"><span class="loader" aria-hidden="true"></span><p>관리자 세션과 주문 목록을 확인하고 있습니다.</p></section>
+
+      <section class="login-view" data-login-view hidden aria-label="주문 관리자 로그인">
+        <div class="login-copy"><p class="eyebrow">Administrator only</p><h1 id="login-title">주문 관리</h1><p>관리자 인증 후 주문·취소·반품 요청과 배송 상태를 확인할 수 있습니다.</p></div>
+        <form class="login-form" data-login-form novalidate>
+          <div class="form-field"><label for="admin-password">관리자 비밀번호</label><div class="secret-control"><input id="admin-password" name="password" type="password" autocomplete="current-password" maxlength="256" required aria-describedby="admin-password-error" autofocus><button type="button" data-password-toggle aria-pressed="false" aria-label="비밀번호 표시">표시</button></div><p class="field-error" id="admin-password-error"></p></div>
+          <button class="button button--primary login-submit" type="submit"><span data-login-label>관리자 로그인</span><span aria-hidden="true">→</span></button>
+          <p class="form-status" data-login-status role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="board-view order-board" data-board-view hidden aria-label="주문 목록과 상세 관리">
+        <div class="board-head"><div><p class="eyebrow">Order register</p><h1 id="board-title" tabindex="-1">주문 관리</h1><p>자사몰에서 접수한 주문과 고객의 취소·반품 요청을 처리합니다.</p></div><button class="button button--quiet" type="button" data-logout>로그아웃</button></div>
+        <div class="inventory-note"><div><span>조회 주문</span><strong data-order-total>—</strong></div><p>PG 연결 전 주문은 결제 대기로 시작합니다. 실제 결제나 환불을 별도 확인하기 전에는 완료 상태로 변경하지 마세요.</p></div>
+        <div class="board-status" data-board-status role="status" aria-live="polite"></div>
+
+        <div class="order-toolbar">
+          <div class="admin-field order-filter"><label for="order-status-filter">주문 상태</label><select id="order-status-filter" data-order-filter><option value="">전체 상태</option><option value="payment_pending">결제 대기</option><option value="confirmed">주문 확인</option><option value="preparing">배송 준비</option><option value="shipped">배송 중</option><option value="delivered">배송 완료</option><option value="cancel_requested">취소 요청</option><option value="cancelled">취소 완료</option><option value="refund_requested">반품·환불 요청</option><option value="refunded">환불 완료</option></select></div>
+          <button class="button button--quiet" type="button" data-retry>새로고침</button>
+        </div>
+
+        <div class="order-workbench">
+          <section class="order-register" aria-labelledby="order-list-title">
+            <div class="inquiry-list__head"><h2 id="order-list-title" tabindex="-1">주문 목록</h2><span data-order-range>0건</span></div>
+            <div class="order-table-wrap" data-order-table-wrap>
+              <table class="order-table"><caption class="sr-only">자사몰 주문 목록</caption><thead><tr><th scope="col">주문</th><th scope="col">고객</th><th scope="col">금액</th><th scope="col">상태</th><th scope="col">확인</th></tr></thead><tbody data-order-rows></tbody></table>
+            </div>
+            <div class="list-empty" data-order-empty hidden><p>조건에 맞는 주문이 없습니다.</p><span>다른 상태를 선택하거나 새로고침해 주세요.</span></div>
+            <div class="list-error" data-order-error hidden><p data-order-error-message>주문 목록을 불러오지 못했습니다.</p><button class="button button--quiet" type="button" data-error-retry>다시 시도</button></div>
+            <nav class="order-pagination" data-order-pagination aria-label="주문 목록 페이지"><button class="button button--quiet" type="button" data-order-previous>이전</button><span data-order-page>1 / 1</span><button class="button button--quiet" type="button" data-order-next>다음</button></nav>
+          </section>
+
+          <section class="order-detail" aria-labelledby="order-detail-title">
+            <div class="order-detail-empty" data-order-detail-empty><p class="eyebrow">Order detail</p><h2 id="order-detail-title">주문을 선택하세요.</h2><p>주문번호, 배송지, 상품과 처리 이력을 이곳에서 확인합니다.</p></div>
+            <div data-order-detail hidden>
+              <div class="order-detail__head"><div><p class="eyebrow">Selected order</p><h2 data-detail-number tabindex="-1"></h2><p data-detail-date></p></div><span class="order-status-badge" data-detail-status></span></div>
+              <section class="order-detail-section" aria-labelledby="detail-products-title"><h3 id="detail-products-title">주문 상품</h3><div data-detail-items></div><dl class="order-detail-totals"><div><dt>상품금액</dt><dd data-detail-subtotal></dd></div><div><dt>배송비</dt><dd data-detail-shipping></dd></div><div><dt>총 주문금액</dt><dd data-detail-total></dd></div></dl></section>
+              <section class="order-detail-section" aria-labelledby="detail-recipient-title"><h3 id="detail-recipient-title">받는 분과 배송지</h3><dl data-detail-recipient></dl></section>
+              <section class="order-detail-section" aria-labelledby="detail-events-title"><h3 id="detail-events-title">처리 이력</h3><ol class="order-event-list" data-detail-events></ol></section>
+              <form class="order-update-form" data-order-update-form novalidate>
+                <h3>주문 상태 변경</h3>
+                <p class="order-update-help">상태 변경은 고객 주문 내역에 즉시 반영됩니다. 취소·환불 완료는 실제 처리를 확인한 뒤 저장하세요.</p>
+                <div class="admin-field"><label for="order-status">변경할 상태</label><select id="order-status" name="status" data-order-status required aria-describedby="order-status-error"></select><p class="field-error" id="order-status-error"></p></div>
+                <div class="admin-field"><label for="tracking-number">로젠택배 운송장 번호</label><input id="tracking-number" name="trackingNumber" type="text" inputmode="numeric" autocomplete="off" maxlength="50" aria-describedby="tracking-number-help tracking-number-error"><p class="field-help" id="tracking-number-help">배송 중으로 변경할 때는 운송장 번호가 필수입니다.</p><p class="field-error" id="tracking-number-error"></p></div>
+                <div class="admin-field"><label for="order-note">관리자 내부 메모</label><textarea class="admin-textarea resize-none" id="order-note" name="note" rows="4" maxlength="1000" aria-describedby="order-note-help"></textarea><p class="field-help" id="order-note-help">관리자 처리 이력에만 보관되며 고객에게 공개하지 않습니다.</p></div>
+                <p class="form-status" data-order-update-status role="status" aria-live="polite"></p>
+                <button class="button button--primary order-update-submit" type="submit"><span data-order-update-label>주문 변경 저장</span><span aria-hidden="true">→</span></button>
+              </form>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="delete-dialog" data-order-confirm-dialog aria-labelledby="order-confirm-title" aria-describedby="order-confirm-description">
+      <div class="dialog-head"><p class="eyebrow">Confirm order status</p><h2 id="order-confirm-title" data-order-confirm-title>주문 상태를 변경할까요?</h2></div>
+      <p id="order-confirm-description" data-order-confirm-description></p><p class="dialog-error" data-order-confirm-error role="alert"></p>
+      <div class="dialog-actions"><button class="button button--quiet" type="button" data-order-confirm-cancel autofocus>돌아가기</button><button class="button button--danger" type="button" data-order-confirm><span data-order-confirm-label>상태 변경</span></button></div>
+    </dialog>
+  </body>
+</html>

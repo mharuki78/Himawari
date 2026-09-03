@@ -3,7 +3,7 @@
 ## Product context
 
 - Audience: 공개 고객과 단일 Himawari 관리자
-- Primary jobs: 고객은 제품별 상세 정보를 확인하고 문의를 비공개로 접수한다. 관리자는 제품과 이미지를 등록·수정·영구 삭제하고 문의를 읽은 뒤 필요할 때 영구 삭제한다.
+- Primary jobs: 고객은 제품을 고르고 내부 주문서에서 결제 대기 주문을 접수하며 취소·반품을 요청한다. 관리자는 제품·문의와 함께 주문·배송·취소·환불 상태를 권한 안에서 관리한다.
 - Target market(s): 대한민국
 - Active locales: `ko-KR`
 - Language/content register: 공개 화면은 절제된 브랜드 문장, 관리자 화면은 짧고 구체적인 업무 문장
@@ -21,6 +21,7 @@
 | Market / content conventions | `DESIGN.md` | Design/content guide | 2026-08-31 |
 | Product permission / lifecycle | `docs/PRODUCT-CATALOG-POLICY.md` | User-approved product policy | 2026-08-31 |
 | Product media limits / storage | `docs/PRODUCT-CATALOG-POLICY.md` | Maintained product policy | 2026-09-01 |
+| Order lifecycle / permissions / retention | `docs/ORDER-POLICY.md` | User-approved scope + official law | 2026-09-03 |
 
 ## Visual contract
 
@@ -40,9 +41,12 @@
 | Scrollbar | global application stylesheets | CSS tokens | product scroll geometry only | computed style |
 | Status | form/list inline live regions | current request state | success / error / pending | live-region inspection |
 | CRUD | inquiry and product APIs under `api/` | server authorization + Blob policies | inquiry create/read/delete / product create/read/update/delete | full-flow integration |
-| Dialog | native modal `<dialog>` with app-owned surface | `admin/inquiries.html` | irreversible delete only | keyboard + failure flow |
+| Dialog | native modal `<dialog>` with app-owned surface | `admin/inquiries.html`, `account.html`, `checkout.html`, `admin/orders.html` | irreversible delete / unsaved order / customer request / admin completion | keyboard + failure flow |
 | Member session | `assets/member.js`, `api/auth/` | HttpOnly cookie + Neon session hash | Naver / Google | OAuth state + browser flow |
 | Member collection | `assets/cart.js`, `assets/member.js`, `api/member/` | Neon for members, localStorage for guests | cart / wishlist | merge, logout, account delete |
+| Order form | `assets/checkout.js`, `api/orders.js` | `docs/ORDER-POLICY.md` + server validation | direct product / member cart | validation + idempotent create |
+| Order admin | `admin/order-admin.js`, `api/admin/orders.js` | server authorization + order state machine | list / detail / status update | pagination + conflict + confirmation |
+| Select/Listbox | native `select` | `DESIGN.md` | order status filter / status update | keyboard + browser popup |
 
 ## Component behavior
 
@@ -58,12 +62,13 @@
 ## Dataset navigation
 
 - Admin tables: private Blob cursor pagination, 20 records per request
+- Admin order table: Neon server pagination, 20 records per page; status and page are URL state, customer PII is not placed in the URL
 - Product admin table: catalog offset cursor, 20 products per request; total count and explicit load-more
 - Public product catalog: complete bounded catalog for browsing; server-rendered HTML and client enhancement both read the same catalog, and product detail reads by stable public product ID
 - Exploratory lists: none
 - URL state: Blob cursor is transient and not put in the URL; no PII or private record identifier enters browser history.
 - Empty/no-results/error/loading treatment: distinct loading, empty dataset, persistent error with retry; search/no-results is not part of this version.
-- Back/scroll restoration: one admin route; load-more appends without moving scroll.
+- Back/scroll restoration: each admin route preserves its own list position; product/inquiry load-more appends without moving scroll and order pagination records page and status in the URL.
 - Selection: single record detail only; no bulk selection or bulk delete.
 
 ## Flow ledger
@@ -84,6 +89,9 @@
 | Read product detail | product image/name/`상세 보기` | reserved product loader | `product.html?id=...` | product content followed by an original-ratio continuous detail-image rail | app-owned not-found state and products link | product title | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Read commerce terms | footer or product order information | static document | `terms.html` | business identity and 24 articles remain directly readable | product/contact navigation remains available | terms title | `docs/COMMERCE-POLICY.md` |
 | Hard-delete product | `삭제` then `제품 삭제` | dialog stays open, duplicate blocked | refreshed product list | persistent deletion acknowledgement | dialog remains; conflict asks for refresh | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
+| Create order | `바로 구매하기` or `장바구니 주문하기` then `결제 대기로 주문 접수` | form and button locked, request ID reused | same page completion state | order number, amount, payment-pending state | values retained; server field errors; retry same ID | completion title | `docs/ORDER-POLICY.md` |
+| Request cancellation/refund | `취소 요청` / `반품·환불 요청` | confirmation action locked | account order list | persistent list acknowledgement | dialog remains with retry/cancel | order list title | `docs/ORDER-POLICY.md` |
+| Admin update order | `주문 변경 저장` | form or confirmation stays open, duplicate blocked | selected order detail | refreshed status and persistent board message | inline field error or dialog error; revision conflict refresh | selected order number | `docs/ORDER-POLICY.md` |
 
 ## Navigation and responsive behavior
 
@@ -115,6 +123,8 @@
 - Delete failure: confirmation dialog remains open with retry and cancel.
 - Product image upload: browser-to-Blob direct upload with a 15-minute role-scoped token; representative image maximum 8MB and each detail image maximum 15MB; determinate progress and explicit cancellation. Partial uploads are cleaned up when the session remains valid.
 - Product catalog writes: conditional ETag write prevents a stale administrator from overwriting a concurrent create, edit, or delete. Edit preserves existing images unless a replacement file was selected. Conflict keeps form or delete context and requests a refresh.
+- Order create: member session required; client request UUID is unique and reused after uncertain completion; the server snapshots current catalog price and recalculates shipping.
+- Order updates: revision-checked pessimistic transitions; customer requests cannot complete cancellation/refund, and admin cancellation/refund completion requires a confirmation dialog.
 
 ## Validation
 

@@ -26,6 +26,10 @@ function detailHref(product) {
   return `product.html?id=${encodeURIComponent(product.id)}`;
 }
 
+function checkoutHref(product) {
+  return `checkout.html?product=${encodeURIComponent(product.id)}`;
+}
+
 function productImage(product, className) {
   const image = safeHttpsUrl(product.image);
   const body = image
@@ -43,7 +47,7 @@ function productActions(product, featured = false) {
     <a class="${classes.detail}" href="${detailHref(product)}" aria-label="${escapeHtml(product.name)} 상세페이지 보기">상세 보기 <span aria-hidden="true">→</span></a>
     <button class="${classes.cart}" type="button" data-cart-add data-product-id="${escapeHtml(product.id)}" data-name="${escapeHtml(product.name)}" data-price="${escapeHtml(product.price)}" data-url="${escapeHtml(storeUrl)}" aria-label="${escapeHtml(product.name)} 장바구니에 담기" aria-live="polite">장바구니 담기 <span aria-hidden="true">+</span></button>
     <button class="wishlist-button" type="button" data-wishlist-toggle data-product-id="${escapeHtml(product.id)}" aria-pressed="false" aria-label="${escapeHtml(product.name)} 관심상품 저장"><span data-wishlist-label>관심상품 저장</span></button>
-    <a class="${classes.buy}" href="${escapeHtml(storeUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(product.name)} 네이버 스마트스토어에서 바로 구매하기 — 새 탭에서 열림">바로 구매하기 <span aria-hidden="true">↗</span></a>
+    <a class="${classes.buy}" href="${checkoutHref(product)}" aria-label="${escapeHtml(product.name)} 내부 주문서에서 바로 구매하기">바로 구매하기 <span aria-hidden="true">→</span></a>
   </div>`;
 }
 
@@ -96,7 +100,7 @@ function catalogSchema(products, origin) {
           '@type': 'Offer',
           priceCurrency: 'KRW',
           price: String(product.price),
-          url: safeHttpsUrl(product.url),
+          url: `${origin}/${detailHref(product)}`,
         },
       },
     })),
@@ -146,6 +150,7 @@ export function renderProductPage(template, product, origin = 'https://allaboutb
   const description = String(product.description || product.tagline || '').slice(0, 160);
   const mainImage = safeHttpsUrl(product.image);
   const storeUrl = safeHttpsUrl(product.url) || 'https://smartstore.naver.com/baegot';
+  const checkoutUrl = `${origin}/${checkoutHref(product)}`;
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -154,7 +159,7 @@ export function renderProductPage(template, product, origin = 'https://allaboutb
     image: [mainImage, ...(Array.isArray(product.gallery) ? product.gallery.map(safeHttpsUrl) : [])].filter(Boolean),
     description,
     brand: { '@type': 'Brand', name: 'Himawari' },
-    offers: { '@type': 'Offer', priceCurrency: 'KRW', price: String(product.price), url: storeUrl },
+    offers: { '@type': 'Offer', priceCurrency: 'KRW', price: String(product.price), url: checkoutUrl },
   };
 
   let html = template
@@ -181,8 +186,8 @@ export function renderProductPage(template, product, origin = 'https://allaboutb
     .replace(/(<meta property="og:image" content=")[^"]*(">)/, `$1${escapeHtml(mainImage)}$2`)
     .replace(/(<meta name="description" content=")[^"]*(">)/, `$1${escapeHtml(description)}$2`)
     .replace(/(<meta property="og:description" content=")[^"]*(">)/, `$1${escapeHtml(description)}$2`)
-    .replace('data-direct-buy href="https://smartstore.naver.com/baegot"', `data-direct-buy href="${escapeHtml(storeUrl)}"`)
-    .replace('data-closing-buy href="https://smartstore.naver.com/baegot"', `data-closing-buy href="${escapeHtml(storeUrl)}"`)
+    .replace('data-direct-buy href="checkout.html"', `data-direct-buy href="${escapeHtml(checkoutHref(product))}"`)
+    .replace('data-closing-buy href="checkout.html"', `data-closing-buy href="${escapeHtml(checkoutHref(product))}"`)
     .replace('data-detail-cart>', `data-detail-cart data-cart-add data-product-id="${escapeHtml(product.id)}" data-name="${escapeHtml(product.name)}" data-price="${escapeHtml(product.price)}" data-url="${escapeHtml(storeUrl)}">`)
     .replace('data-detail-wishlist data-wishlist-toggle', `data-detail-wishlist data-wishlist-toggle data-product-id="${escapeHtml(product.id)}"`);
 

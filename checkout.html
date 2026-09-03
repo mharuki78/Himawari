@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Himawari 자사몰 주문서에서 상품과 배송정보를 확인하고 주문을 접수합니다.">
+    <meta name="robots" content="noindex,follow">
+    <meta name="theme-color" content="#F4EFE3">
+    <title>주문서 — Himawari</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/gear.css">
+    <link rel="stylesheet" href="assets/cart.css">
+    <link rel="stylesheet" href="assets/member.css">
+    <link rel="stylesheet" href="assets/orders.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body class="checkout-page">
+    <a class="skip-link" href="#main">본문으로 바로가기</a>
+    <div class="announcement-bar"><a href="products.html">10만원 이상 주문 시 무료배송</a></div>
+    <header class="site-header interior-header">
+      <a class="brand" href="index.html" aria-label="Himawari 홈">HIMAWARI</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">메뉴 열기</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="주요 메뉴"><a href="products.html">제품</a><a href="about.html">브랜드</a><a href="story/">이야기</a><a href="contact.html">연락하기</a></nav>
+      <a class="header-store" href="products.html">제품 보기 →</a>
+    </header>
+
+    <main id="main" class="checkout-main">
+      <nav class="checkout-breadcrumb" aria-label="주문 경로"><ol><li><a href="products.html">제품</a></li><li aria-current="page">주문서</li></ol></nav>
+      <header class="checkout-heading">
+        <div><p class="kicker">Himawari order</p><h1>선택한 가방을<br><span class="accent-word">주문합니다.</span></h1></div>
+        <p>상품과 배송 정보를 한 번 더 확인해 주세요. 지금은 PG 결제 연결 전이므로 주문은 <strong>결제 대기</strong> 상태로 안전하게 접수됩니다.</p>
+      </header>
+
+      <section class="order-page-state" data-checkout-loading role="status" aria-live="polite">
+        <span class="order-loader" aria-hidden="true"></span><p>회원과 주문 상품을 확인하고 있습니다.</p>
+      </section>
+
+      <section class="order-page-state order-page-state--action" data-checkout-login hidden aria-labelledby="checkout-login-title">
+        <p class="kicker">Member order</p><h2 id="checkout-login-title">로그인 후 주문할 수 있습니다.</h2>
+        <p>네이버 또는 Google 간편 로그인 후 지금 선택한 상품으로 돌아옵니다.</p>
+        <button type="button" class="order-primary-link" data-member-open>간편 로그인 <span aria-hidden="true">→</span></button>
+      </section>
+
+      <section class="order-page-state order-page-state--action" data-checkout-error hidden aria-labelledby="checkout-error-title">
+        <p class="kicker">Order unavailable</p><h2 id="checkout-error-title" tabindex="-1">주문서를 준비하지 못했습니다.</h2>
+        <p data-checkout-error-message>잠시 후 다시 시도해 주세요.</p>
+        <button type="button" class="order-secondary-link" data-checkout-retry>다시 시도</button>
+      </section>
+
+      <div class="checkout-workspace" data-checkout-content hidden>
+        <form class="checkout-form" data-checkout-form novalidate>
+          <div class="order-form-summary" data-order-form-summary role="alert" tabindex="-1" hidden></div>
+
+          <section class="checkout-section" aria-labelledby="recipient-title">
+            <div class="checkout-section__head"><p class="kicker">Delivery</p><h2 id="recipient-title">받는 분 정보</h2></div>
+            <div class="checkout-fields">
+              <div class="order-field">
+                <label for="recipient-name">받는 분 <span aria-hidden="true">*</span></label>
+                <input id="recipient-name" name="recipientName" type="text" autocomplete="shipping name" maxlength="50" required aria-describedby="recipient-name-error">
+                <p class="order-field-error" id="recipient-name-error"></p>
+              </div>
+              <div class="order-field">
+                <label for="order-email">이메일 <span aria-hidden="true">*</span></label>
+                <input id="order-email" name="email" type="email" inputmode="email" autocomplete="shipping email" maxlength="254" required aria-describedby="order-email-help order-email-error">
+                <p class="order-field-help" id="order-email-help">주문 상태 안내와 본인 확인에 사용합니다.</p>
+                <p class="order-field-error" id="order-email-error"></p>
+              </div>
+              <div class="order-field">
+                <label for="recipient-phone">연락처 <span aria-hidden="true">*</span></label>
+                <input id="recipient-phone" name="phone" type="tel" inputmode="tel" autocomplete="shipping tel" maxlength="24" placeholder="010-0000-0000" required aria-describedby="recipient-phone-error">
+                <p class="order-field-error" id="recipient-phone-error"></p>
+              </div>
+              <div class="order-field order-field--postal">
+                <label for="postal-code">우편번호 <span aria-hidden="true">*</span></label>
+                <input id="postal-code" name="postalCode" type="text" inputmode="numeric" autocomplete="shipping postal-code" maxlength="12" required aria-describedby="postal-code-error">
+                <p class="order-field-error" id="postal-code-error"></p>
+              </div>
+              <div class="order-field order-field--wide">
+                <label for="address-line1">기본 주소 <span aria-hidden="true">*</span></label>
+                <input id="address-line1" name="addressLine1" type="text" autocomplete="shipping street-address" maxlength="200" required aria-describedby="address-line1-error">
+                <p class="order-field-error" id="address-line1-error"></p>
+              </div>
+              <div class="order-field order-field--wide">
+                <label for="address-line2">상세 주소</label>
+                <input id="address-line2" name="addressLine2" type="text" autocomplete="shipping address-line2" maxlength="200">
+              </div>
+              <div class="order-field order-field--wide">
+                <label for="delivery-note">배송 요청사항</label>
+                <textarea class="resize-none" id="delivery-note" name="deliveryNote" rows="3" maxlength="200" aria-describedby="delivery-note-help"></textarea>
+                <p class="order-field-help" id="delivery-note-help">공동현관 출입정보 등 배송에 꼭 필요한 내용만 입력해 주세요.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="checkout-section" aria-labelledby="payment-title">
+            <div class="checkout-section__head"><p class="kicker">Payment</p><h2 id="payment-title">결제 상태</h2></div>
+            <div class="payment-pending-card">
+              <span aria-hidden="true">—</span><div><strong>PG 결제 연결 준비 중</strong><p>이 단계에서는 결제가 실행되지 않습니다. 주문은 결제 대기로 접수되며, 결제 완료로 표시하거나 출고하지 않습니다.</p></div>
+            </div>
+          </section>
+
+          <section class="checkout-section checkout-consents" aria-labelledby="consent-title">
+            <div class="checkout-section__head"><p class="kicker">Agreement</p><h2 id="consent-title">주문 동의</h2></div>
+            <label class="order-check" for="terms-consent"><input id="terms-consent" name="termsConsent" type="checkbox" required aria-describedby="terms-consent-error"><span><strong>이용약관 및 주문·취소·반품 조건에 동의합니다.</strong><a href="terms.html" target="_blank" rel="noopener noreferrer">내용 보기 ↗</a></span></label>
+            <p class="order-field-error" id="terms-consent-error"></p>
+            <label class="order-check" for="privacy-consent"><input id="privacy-consent" name="privacyConsent" type="checkbox" required aria-describedby="privacy-consent-error"><span><strong>배송과 주문관리를 위한 개인정보 수집·이용에 동의합니다.</strong><a href="privacy.html" target="_blank" rel="noopener noreferrer">내용 보기 ↗</a></span></label>
+            <p class="order-field-error" id="privacy-consent-error"></p>
+          </section>
+
+          <p class="checkout-submit-status" data-checkout-submit-status role="status" aria-live="polite"></p>
+          <div class="checkout-submit-bar">
+            <a href="products.html" class="order-secondary-link">제품 더 보기</a>
+            <button type="submit" class="order-primary-link"><span data-order-submit-label>결제 대기로 주문 접수</span><span aria-hidden="true">→</span></button>
+          </div>
+        </form>
+
+        <aside class="checkout-summary" aria-labelledby="order-summary-title">
+          <div class="checkout-summary__head"><p class="kicker">Order summary</p><h2 id="order-summary-title">주문 상품</h2><span data-order-count>0개</span></div>
+          <div class="checkout-items" data-checkout-items></div>
+          <dl class="checkout-totals">
+            <div><dt>상품금액</dt><dd data-order-subtotal>0원</dd></div>
+            <div><dt>배송비</dt><dd data-order-shipping>0원</dd></div>
+            <div class="checkout-total"><dt>총 주문금액</dt><dd data-order-total>0원</dd></div>
+          </dl>
+          <p>로젠택배 · 결제 확인 후 영업일 기준 2일 이내 출고</p>
+        </aside>
+      </div>
+
+      <section class="order-complete" data-order-complete hidden aria-labelledby="order-complete-title">
+        <p class="kicker">Order received</p><h1 id="order-complete-title" tabindex="-1">주문을 접수했습니다.</h1>
+        <p>아직 결제는 이루어지지 않았습니다. 결제 수단 연결 전까지 주문은 <strong>결제 대기</strong>로 보관됩니다.</p>
+        <dl><div><dt>주문번호</dt><dd data-complete-number></dd></div><div><dt>주문금액</dt><dd data-complete-total></dd></div><div><dt>현재 상태</dt><dd>결제 대기</dd></div></dl>
+        <div><a class="order-primary-link" href="account.html#orders">내 주문 확인 <span aria-hidden="true">→</span></a><a class="order-secondary-link" href="products.html">제품 더 보기</a></div>
+      </section>
+    </main>
+
+    <dialog class="order-discard-dialog" data-order-discard-dialog aria-labelledby="order-discard-title" aria-describedby="order-discard-description">
+      <p class="kicker">Unsaved order</p><h2 id="order-discard-title">작성 중인 주문서를 닫을까요?</h2><p id="order-discard-description">입력한 배송정보가 사라지며 아직 주문은 접수되지 않습니다.</p>
+      <div><button type="button" class="order-secondary-link" data-order-discard-cancel autofocus>계속 작성</button><button type="button" class="order-danger-link" data-order-discard-confirm>주문서 닫기</button></div>
+    </dialog>
+
+    <footer class="site-footer">
+      <div class="footer-brand"><strong>HIMAWARI</strong><p>오래 곁에 둘 가방.</p></div>
+      <nav aria-label="푸터 메뉴"><a href="about.html">브랜드</a><a href="products.html">제품</a><a href="terms.html">이용약관</a><a href="privacy.html">개인정보</a><a href="contact.html">연락하기</a></nav>
+      <div class="footer-contact"><a href="contact.html">비공개 문의 남기기</a><a href="https://www.instagram.com/himawari.korea/" target="_blank" rel="noopener noreferrer">@himawari.korea</a></div>
+      <dl class="footer-business"><div><dt>상호명</dt><dd>히마와리 코리아</dd></div><div><dt>사업자번호</dt><dd>462-66-00596</dd></div><div><dt>대표자명</dt><dd>남영선</dd></div><div><dt>고객센터</dt><dd><a href="tel:+821053373981">010-5337-3981</a></dd></div><div data-business-email><dt>고객센터 이메일</dt><dd>golf4484@naver.com</dd></div><div><dt>소재지</dt><dd>경기도 시흥시 배곧4로 32-29, 파크뷰 206호</dd></div><div><dt>통신판매번호</dt><dd>제2025-경기시흥-2607호</dd></div></dl>
+      <p class="copyright">© <span id="year">2026</span> HIMAWARI</p>
+    </footer>
+    <script src="assets/cart.js" defer></script>
+    <script src="assets/member.js" defer></script>
+    <script src="assets/checkout.js" defer></script>
+  </body>
+</html>

@@ -50,7 +50,7 @@ function addProductSchema(product, canonicalUrl) {
     url: canonicalUrl,
     offers: {
       '@type': 'Offer',
-      url: product.url,
+      url: canonicalUrl,
       priceCurrency: 'KRW',
       price: String(product.price),
     },
@@ -101,8 +101,10 @@ function renderProduct(product) {
 
   const buyLinks = [document.querySelector('[data-direct-buy]'), document.querySelector('[data-closing-buy]')];
   buyLinks.forEach((link) => {
-    link.href = safeHttpsUrl(product.url) || 'https://smartstore.naver.com/baegot';
-    link.setAttribute('aria-label', `${product.name} 네이버 스마트스토어에서 확인하기 — 새 탭에서 열림`);
+    link.href = `checkout.html?product=${encodeURIComponent(product.id)}`;
+    link.removeAttribute('target');
+    link.removeAttribute('rel');
+    link.setAttribute('aria-label', `${product.name} 내부 주문서에서 바로 구매하기`);
   });
   document.querySelector('[data-closing-title]').textContent = `${product.model}, 오래 곁에 둘 선택.`;
   renderDescription(product.description || product.tagline);

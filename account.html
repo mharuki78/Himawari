@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/gear.css">
     <link rel="stylesheet" href="assets/cart.css">
     <link rel="stylesheet" href="assets/member.css">
+    <link rel="stylesheet" href="assets/orders.css">
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -41,10 +42,22 @@
             <div class="section-head"><p class="kicker">Wish list</p><h2 id="wishlist-title" class="display-title">관심상품.</h2></div>
             <div class="account-wishlist" data-account-wishlist aria-live="polite"></div>
           </section>
+          <section class="account-orders" id="orders" aria-labelledby="account-orders-title" data-account-orders>
+            <div class="account-orders__heading">
+              <div><p class="kicker">My orders</p><h2 id="account-orders-title" tabindex="-1">주문 내역.</h2></div>
+              <a href="checkout.html">장바구니 주문하기 →</a>
+            </div>
+            <p class="account-orders__status" data-account-orders-status role="status" aria-live="polite">주문 내역을 불러오는 중입니다.</p>
+            <div class="account-order-list" data-account-order-list aria-busy="true"></div>
+            <div class="account-order-pagination" data-account-order-pagination hidden>
+              <button class="order-secondary-link" type="button" data-order-previous>이전 20건</button>
+              <button class="order-secondary-link" type="button" data-order-next>다음 20건</button>
+            </div>
+          </section>
           <section class="account-delete" aria-labelledby="account-delete-title">
             <h2 id="account-delete-title">회원탈퇴</h2>
-            <p>탈퇴하면 간편 로그인 연결 정보, 계정 장바구니와 관심상품이 즉시 영구 삭제됩니다. 비공개 문의는 문의 보관 정책에 따라 별도로 관리됩니다.</p>
-            <form data-delete-account>
+            <p>탈퇴하면 간편 로그인 연결 정보, 계정 장바구니와 관심상품이 즉시 영구 삭제됩니다. 주문·취소·배송 기록은 관계 법령에 따른 보존기간 동안 회원정보와 분리해 보관되며, 비공개 문의도 문의 보관 정책에 따라 별도로 관리됩니다.</p>
+            <form data-delete-account novalidate>
               <label for="delete-confirmation">계속하려면 <strong>회원탈퇴</strong>를 입력하세요.<input id="delete-confirmation" name="confirmation" type="text" autocomplete="off" required></label>
               <button type="submit">회원 데이터 영구 삭제</button>
               <p data-delete-status role="status" aria-live="polite"></p>
@@ -53,6 +66,13 @@
         </div>
       </div>
     </main>
+    <dialog class="order-discard-dialog" data-order-request-dialog aria-labelledby="order-request-title" aria-describedby="order-request-description">
+      <p class="kicker">Order request</p>
+      <h2 id="order-request-title" data-order-request-title>주문 취소를 요청할까요?</h2>
+      <p id="order-request-description" data-order-request-description></p>
+      <p class="order-field-error" data-order-request-error role="alert"></p>
+      <div><button type="button" class="order-secondary-link" data-order-request-cancel autofocus>계속 주문 유지</button><button type="button" class="order-danger-link" data-order-request-confirm><span data-order-request-label>취소 요청</span></button></div>
+    </dialog>
     <footer class="site-footer">
       <div class="footer-brand"><strong>HIMAWARI</strong><p>오래 곁에 둘 가방.</p></div>
       <nav aria-label="푸터 메뉴"><a href="about.html">브랜드</a><a href="products.html">제품</a><a href="terms.html">이용약관</a><a href="privacy.html">개인정보</a><a href="contact.html">연락하기</a></nav>
@@ -62,5 +82,6 @@
     </footer>
     <script src="assets/cart.js" defer></script>
     <script src="assets/member.js" defer></script>
+    <script src="assets/account-orders.js" defer></script>
   </body>
 </html>

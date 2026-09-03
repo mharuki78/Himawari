@@ -2,10 +2,9 @@
    장바구니 부품 키트 — cart.js
    실행DAY 2026-08-29 · https://runday.irumai.kr/260829/kit/cart/
 
-   ● 이 장바구니는 "결제 수단"이 아니라 "주문 목록(위시리스트)"입니다.
-     스마트스토어·쿠팡은 외부 사이트에서 자기네 장바구니에 담는 공개 API가
-     없습니다. 그래서 내 사이트에서는 담을 목록만 만들고, 결제·재고는
-     스토어로 이동해서 진행합니다. 문구도 그렇게 정직하게 써 두었습니다.
+   ● 장바구니 상품은 Himawari 내부 주문서로 이어집니다.
+     PG 연결 전에는 주문이 결제 대기 상태로 접수되며 결제를 완료한 것으로
+     표시하지 않습니다.
 
    ● 붙이는 법
      1) </head> 앞:  <link rel="stylesheet" href="assets/cart.css">
@@ -28,19 +27,20 @@
   var T = {
     title: '장바구니',
     empty: '장바구니가 비어 있습니다.<br>제품 목록에서 마음에 드는 것을 담아보세요.',
-    note: '결제와 재고는 스토어에서 진행됩니다. 담은 목록을 들고 이동하세요.',
+    note: '내부 주문서에서 배송정보를 확인합니다. PG 연결 전 주문은 결제 대기로 접수됩니다.',
     copy: '주문 목록 복사',
     ask: '주문 문의 남기기',
-    go: '스토어에서 주문 →'
+    go: '제품 상세 보기 →'
   };
   var custom = window.CART_TEXT;
   if (custom && typeof custom === 'object') {
     for (var k in T) { if (typeof custom[k] === 'string') T[k] = custom[k]; }
   }
 
-  var NOLINK = '스토어 링크 없음';
+  var NOLINK = '제품 상세 준비 중';
   var MAX_Q = 99;
   var INQUIRY_KEY = 'himawari-cart-inquiry';
+  var CHECKOUT_KEY = 'himawari-checkout-items';
 
   /* ───────── 상태 ───────── */
   var cart = [];
@@ -95,7 +95,7 @@
   }
 
   /* ───────── DOM 만들기 ───────── */
-  var btn, badge, drawer, panel, bodyEl, totalEl, copyBtn, askBtn, closeBtn;
+  var btn, badge, drawer, panel, bodyEl, totalEl, checkoutBtn, copyBtn, askBtn, closeBtn;
   var lastFocus = null;
   var inerted = [];
 
@@ -168,6 +168,7 @@
           '<div class="rdcart__sum"><span>합계</span><b class="rdcart__total">0원</b></div>' +
           '<p class="rdcart__lead">' + esc(T.note) + '</p>' +
           '<div class="rdcart__acts">' +
+            '<button class="rdcart__act rdcart__act--solid rdcart__checkout" type="button">장바구니 주문하기 <span aria-hidden="true">→</span></button>' +
             '<button class="rdcart__act rdcart__act--solid rdcart__copy" type="button" aria-live="polite">' + esc(T.copy) + '</button>' +
             '<button class="rdcart__act rdcart__act--ghost rdcart__ask" type="button">' + esc(T.ask) + '</button>' +
           '</div>' +
@@ -178,11 +179,13 @@
     panel = drawer.querySelector('.rdcart__panel');
     bodyEl = drawer.querySelector('.rdcart__body');
     totalEl = drawer.querySelector('.rdcart__total');
+    checkoutBtn = drawer.querySelector('.rdcart__checkout');
     copyBtn = drawer.querySelector('.rdcart__copy');
     askBtn = drawer.querySelector('.rdcart__ask');
     closeBtn = drawer.querySelector('.rdcart__close');
 
     drawer.addEventListener('click', onDrawerClick);
+    checkoutBtn.addEventListener('click', onCheckout);
     copyBtn.addEventListener('click', onCopy);
     askBtn.addEventListener('click', onInquiry);
   }
@@ -212,11 +215,9 @@
       var html = '';
       for (i = 0; i < cart.length; i++) {
         var l = cart[i];
-        var u = safeUrl(l.url);
-        /* 스마트스토어는 외부에서 장바구니에 담을 수 없습니다.
-           제품별 링크로 보내는 것이 유일한 방법입니다. */
-        var go = u
-          ? '<a class="rdcart__go" href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">' + esc(T.go) + '</a>'
+        var detail = l.id ? '/product.html?id=' + encodeURIComponent(l.id) : '';
+        var go = detail
+          ? '<a class="rdcart__go" href="' + esc(detail) + '">' + esc(T.go) + '</a>'
           : '<span class="rdcart__go rdcart__go--off">' + NOLINK + '</span>';
         html +=
           '<div class="rdcart__line">' +
@@ -237,6 +238,7 @@
 
     askBtn.disabled = !cart.length;
     copyBtn.disabled = !cart.length;
+    checkoutBtn.disabled = !cart.length;
   }
 
   /* ───────── 동작 ───────── */
@@ -351,6 +353,23 @@
     askBtn.setAttribute('aria-busy', 'true');
     askBtn.textContent = '문의서로 이동 중';
     window.location.assign('/contact.html?from=cart');
+  }
+
+  function onCheckout() {
+    if (!cart.length || checkoutBtn.disabled) return;
+    try {
+      sessionStorage.setItem(CHECKOUT_KEY, JSON.stringify({
+        version: 1,
+        createdAt: Date.now(),
+        items: cart.filter(function (item) { return item.id; }).map(function (item) {
+          return { productId: item.id, quantity: item.q };
+        })
+      }));
+    } catch (error) {}
+    checkoutBtn.disabled = true;
+    checkoutBtn.setAttribute('aria-busy', 'true');
+    checkoutBtn.textContent = '주문서로 이동 중';
+    window.location.assign('/checkout.html');
   }
 
   /* ───────── 시작 ───────── */

@@ -17,6 +17,7 @@ test('상품 목록 원본 HTML에 전체 카탈로그와 구조화 데이터를
   assert.doesNotMatch(html, /SERVER_CATALOG_SCHEMA|SERVER_FEATURED_PRODUCT|SERVER_PRODUCT_GRID/);
   assert.doesNotMatch(html, /제품을 불러오는 중입니다/);
   assert.match(html, /<strong data-product-count>34<\/strong>/);
+  assert.match(html, /href="checkout\.html\?product=[^"]+"[^>]*>바로 구매하기/);
 });
 
 test('개별 제품 원본 HTML에 이름·가격·이미지·구매정보를 렌더링한다', async () => {
@@ -35,6 +36,17 @@ test('개별 제품 원본 HTML에 이름·가격·이미지·구매정보를 �
   assert.equal(html.includes('100,000원 이상은 무료배송'), true);
   assert.equal(html.includes('편도·왕복 반품비는 8,000원'), true);
   assert.equal(html.includes('golf4484@naver.com'), true);
+  assert.match(html, new RegExp(`data-direct-buy href="checkout\\.html\\?product=${product.id}"`));
+  assert.match(html, new RegExp(`data-closing-buy href="checkout\\.html\\?product=${product.id}"`));
+});
+
+test('내부 주문서는 PG 미연결 경계와 앱 소유 검증을 명확히 표시한다', async () => {
+  const html = await readFile(new URL('../checkout.html', import.meta.url), 'utf8');
+
+  assert.match(html, /data-checkout-form novalidate/);
+  assert.match(html, /결제 대기로 주문 접수/);
+  assert.match(html, /PG 결제 연결 준비 중/);
+  assert.doesNotMatch(html, /네이버페이 구매|카카오페이|결제 완료로 주문/);
 });
 
 test('이용약관에 확정된 배송·반품·고객센터 정보를 표시한다', async () => {

@@ -116,14 +116,12 @@ function createWishlistButton(product) {
 function createDirectBuyLink(product, className = 'direct-buy-link') {
   const link = document.createElement('a');
   link.className = className;
-  link.href = safeHttpsUrl(product.url) || 'https://smartstore.naver.com/baegot';
-  link.target = '_blank';
-  link.rel = 'noopener noreferrer';
+  link.href = `checkout.html?product=${encodeURIComponent(product.id)}`;
   link.textContent = '바로 구매하기';
-  link.setAttribute('aria-label', `${product.name} 네이버 스마트스토어에서 바로 구매하기 — 새 탭에서 열림`);
+  link.setAttribute('aria-label', `${product.name} 내부 주문서에서 바로 구매하기`);
   const arrow = document.createElement('span');
   arrow.setAttribute('aria-hidden', 'true');
-  arrow.textContent = '↗';
+  arrow.textContent = '→';
   link.append(' ', arrow);
   return link;
 }
