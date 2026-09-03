@@ -8,7 +8,7 @@ import { renderCatalogPage, renderProductNotFoundPage, renderProductPage } from 
 const products = seedCatalog().products.map(publicProduct);
 
 test('상품 목록 원본 HTML에 전체 카탈로그와 구조화 데이터를 렌더링한다', async () => {
-  const template = await readFile(new URL('../products.html', import.meta.url), 'utf8');
+  const template = await readFile(new URL('../templates/products.html', import.meta.url), 'utf8');
   const html = renderCatalogPage(template, products);
 
   assert.equal((html.match(/data-server-rendered-product/g) || []).length, 34);
@@ -20,7 +20,7 @@ test('상품 목록 원본 HTML에 전체 카탈로그와 구조화 데이터를
 });
 
 test('개별 제품 원본 HTML에 이름·가격·이미지·구매정보를 렌더링한다', async () => {
-  const template = await readFile(new URL('../product.html', import.meta.url), 'utf8');
+  const template = await readFile(new URL('../templates/product.html', import.meta.url), 'utf8');
   const product = products[0];
   const html = renderProductPage(template, product);
 
@@ -50,7 +50,7 @@ test('이용약관에 확정된 배송·반품·고객센터 정보를 표시한
 });
 
 test('존재하지 않는 제품은 로딩 대신 명확한 오류 페이지를 렌더링한다', async () => {
-  const template = await readFile(new URL('../product.html', import.meta.url), 'utf8');
+  const template = await readFile(new URL('../templates/product.html', import.meta.url), 'utf8');
   const html = renderProductNotFoundPage(template);
 
   assert.match(html, /<title>제품을 찾을 수 없습니다 — Himawari<\/title>/);

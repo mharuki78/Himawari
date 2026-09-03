@@ -28,11 +28,11 @@ export async function fetch(request) {
     const catalog = productStoreIsConfigured() ? (await readProductCatalog()).catalog : seedCatalog();
     const products = catalog.products.map(publicProduct);
     if (page === 'catalog') {
-      return html(renderCatalogPage(await template('products.html'), products, origin));
+      return html(renderCatalogPage(await template('templates/products.html'), products, origin));
     }
     if (page === 'product') {
       const product = products.find((item) => item.id === requestUrl.searchParams.get('id'));
-      const source = await template('product.html');
+      const source = await template('templates/product.html');
       return product ? html(renderProductPage(source, product, origin)) : html(renderProductNotFoundPage(source), 404);
     }
     return html('페이지를 찾을 수 없습니다.', 404);
