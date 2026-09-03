@@ -268,7 +268,7 @@ if (footerBusiness && !footerBusiness.querySelector('[data-business-email]')) {
   const term = document.createElement('dt');
   const detail = document.createElement('dd');
   term.textContent = '고객센터 이메일';
-  detail.textContent = 'golf484@naver.com';
+  detail.textContent = 'golf4484@naver.com';
   item.append(term, detail);
   footerBusiness.append(item);
 }

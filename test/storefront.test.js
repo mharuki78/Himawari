@@ -34,14 +34,14 @@ test('개별 제품 원본 HTML에 이름·가격·이미지·구매정보를 �
   assert.equal(html.includes('기본 배송비는 3,500원'), true);
   assert.equal(html.includes('100,000원 이상은 무료배송'), true);
   assert.equal(html.includes('편도·왕복 반품비는 8,000원'), true);
-  assert.equal(html.includes('golf484@naver.com'), true);
+  assert.equal(html.includes('golf4484@naver.com'), true);
 });
 
 test('이용약관에 확정된 배송·반품·고객센터 정보를 표시한다', async () => {
   const html = await readFile(new URL('../terms.html', import.meta.url), 'utf8');
 
   assert.equal((html.match(/<h2>제\d+조/g) || []).length, 24);
-  assert.equal(html.includes('golf484@naver.com'), true);
+  assert.equal(html.includes('golf4484@naver.com'), true);
   assert.equal(html.includes('로젠택배'), true);
   assert.equal(html.includes('기본 배송비는 3,500원'), true);
   assert.equal(html.includes('100,000원 이상은 무료배송'), true);
