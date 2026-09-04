@@ -1,11 +1,27 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 import { publicProduct, seedCatalog } from '../api/_lib/products.js';
 import { renderCatalogPage, renderProductNotFoundPage, renderProductPage } from '../api/_lib/storefront.js';
 
 const products = seedCatalog().products.map(publicProduct);
+
+test('모든 HTML 페이지와 상품 템플릿이 공통 파비콘을 선언한다', async () => {
+  const rootFiles = ['about.html', 'account.html', 'checkout.html', 'contact.html', 'index.html', 'privacy.html', 'terms.html'];
+  const nestedFiles = await Promise.all(['admin', 'story', 'templates'].map(async (directory) => {
+    const files = await readdir(new URL(`../${directory}/`, import.meta.url));
+    return files.filter((file) => file.endsWith('.html')).map((file) => `${directory}/${file}`);
+  }));
+  const htmlFiles = rootFiles.concat(...nestedFiles);
+
+  for (const file of htmlFiles) {
+    const html = await readFile(new URL(`../${file}`, import.meta.url), 'utf8');
+    assert.match(html, /<link rel="icon" href="\/favicon\.ico" sizes="any">/, `${file}: favicon.ico`);
+    assert.match(html, /<link rel="icon" type="image\/png" sizes="32x32" href="\/assets\/favicon-32\.png">/, `${file}: 32px favicon`);
+    assert.match(html, /<link rel="apple-touch-icon" sizes="180x180" href="\/assets\/apple-touch-icon\.png">/, `${file}: Apple touch icon`);
+  }
+});
 
 test('상품 목록 원본 HTML에 전체 카탈로그와 구조화 데이터를 렌더링한다', async () => {
   const template = await readFile(new URL('../templates/products.html', import.meta.url), 'utf8');
