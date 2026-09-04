@@ -44,7 +44,7 @@
 | Dialog | native modal `<dialog>` with app-owned surface | `admin/inquiries.html`, `account.html`, `checkout.html`, `admin/orders.html` | irreversible delete / unsaved order / customer request / admin completion | keyboard + failure flow |
 | Member session | `assets/member.js`, `api/auth/` | HttpOnly cookie + Neon session hash | Naver / Google | OAuth state + browser flow |
 | Member collection | `assets/cart.js`, `assets/member.js`, `api/member/` | Neon for members, localStorage for guests | cart / wishlist | merge, logout, account delete |
-| Order form | `assets/checkout.js`, `api/orders.js` | `docs/ORDER-POLICY.md` + server validation | direct product / member cart | validation + idempotent create |
+| Order form | `assets/checkout.js`, `api/orders.js` | `docs/ORDER-POLICY.md` + server validation | direct product / guest cart / member cart | validation + idempotent create |
 | Order admin | `admin/order-admin.js`, `api/admin/orders.js` | server authorization + order state machine | list / detail / status update | pagination + conflict + confirmation |
 | Select/Listbox | native `select` | `DESIGN.md` | order status filter / status update | keyboard + browser popup |
 
@@ -89,7 +89,7 @@
 | Read product detail | product image/name/`상세 보기` | reserved product loader | `product.html?id=...` | product content followed by an original-ratio continuous detail-image rail | app-owned not-found state and products link | product title | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Read commerce terms | footer or product order information | static document | `terms.html` | business identity and 24 articles remain directly readable | product/contact navigation remains available | terms title | `docs/COMMERCE-POLICY.md` |
 | Hard-delete product | `삭제` then `제품 삭제` | dialog stays open, duplicate blocked | refreshed product list | persistent deletion acknowledgement | dialog remains; conflict asks for refresh | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
-| Create order | `바로 구매하기` or `장바구니 주문하기` then `결제 대기로 주문 접수` | form and button locked, request ID reused | same page completion state | order number, amount, payment-pending state | values retained; server field errors; retry same ID | completion title | `docs/ORDER-POLICY.md` |
+| Create order | `바로 구매하기` or `장바구니 주문하기` then `결제 대기로 주문 접수` | form and button locked, request ID reused | same page completion state | order number, amount, payment-pending state; guest gets inquiry path | values retained; server field errors; retry same ID | completion title | `docs/ORDER-POLICY.md` |
 | Request cancellation/refund | `취소 요청` / `반품·환불 요청` | confirmation action locked | account order list | persistent list acknowledgement | dialog remains with retry/cancel | order list title | `docs/ORDER-POLICY.md` |
 | Admin update order | `주문 변경 저장` | form or confirmation stays open, duplicate blocked | selected order detail | refreshed status and persistent board message | inline field error or dialog error; revision conflict refresh | selected order number | `docs/ORDER-POLICY.md` |
 
@@ -123,7 +123,7 @@
 - Delete failure: confirmation dialog remains open with retry and cancel.
 - Product image upload: browser-to-Blob direct upload with a 15-minute role-scoped token; representative image maximum 8MB and each detail image maximum 15MB; determinate progress and explicit cancellation. Partial uploads are cleaned up when the session remains valid.
 - Product catalog writes: conditional ETag write prevents a stale administrator from overwriting a concurrent create, edit, or delete. Edit preserves existing images unless a replacement file was selected. Conflict keeps form or delete context and requests a refresh.
-- Order create: member session required; client request UUID is unique and reused after uncertain completion; the server snapshots current catalog price and recalculates shipping.
+- Order create: member session is optional; authenticated orders store the member ID and guest orders store no member ID. A client request UUID is unique and reused after uncertain completion; the server snapshots current catalog price and recalculates shipping. Guest orders have no public list/read endpoint.
 - Order updates: revision-checked pessimistic transitions; customer requests cannot complete cancellation/refund, and admin cancellation/refund completion requires a confirmation dialog.
 
 ## Validation
@@ -141,7 +141,7 @@
 - Public form states that inquiry data is retained until the administrator deletes it and requires consent.
 - Admin deletion is irreversible and offers no false Undo.
 - Product create/edit/delete/upload APIs require the same signed administrator session. Public product API exposes only catalog fields and never exposes upload request IDs or managed-image metadata.
-- Member APIs require a server-verified session and same-origin checks on every state-changing request. Provider accounts are keyed by provider and stable provider ID and are never auto-linked by email.
+- Member cart, wishlist, account, order-list and order-change APIs require a server-verified session and same-origin checks on every state-changing request. Order creation accepts a missing member session, but still requires same-origin POST, server validation, consent and an idempotency key. Provider accounts are keyed by provider and stable provider ID and are never auto-linked by email.
 - Member deletion removes the OAuth connection, sessions, account cart and wishlist through database cascades; private inquiries remain governed by their separate retention consent.
 
 ## Verification

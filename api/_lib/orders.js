@@ -267,24 +267,29 @@ async function hydrateOrders(rows, includeAdminNotes = false) {
   return rows.map((row) => mapOrderRow(row, itemMap.get(row.id), eventMap.get(row.id), includeAdminNotes));
 }
 
-async function readExistingOrder(userId, requestId) {
+async function readExistingOrder(requestId, email) {
   const rows = await database().query(
-    'SELECT * FROM orders WHERE user_id = $1 AND request_id = $2 LIMIT 1',
-    [userId, requestId],
+    'SELECT * FROM orders WHERE request_id = $1 AND email = $2 LIMIT 1',
+    [requestId, email],
   );
   return (await hydrateOrders(rows))[0] || null;
 }
 
-export async function createOrder(user, input) {
-  await ensureOrderSchema();
+async function readOrderById(id) {
+  const rows = await database().query('SELECT * FROM orders WHERE id = $1 LIMIT 1', [id]);
+  return (await hydrateOrders(rows))[0] || null;
+}
+
+export async function createOrder(member, input) {
   const fields = validateOrderFields(input);
   const itemInput = validateOrderItems(input?.items);
   const fieldErrors = { ...fields.fieldErrors, ...itemInput.fieldErrors };
   if (Object.keys(fieldErrors).length) {
     throw Object.assign(new Error('주문서 내용을 확인해 주세요.'), { status: 400, fieldErrors });
   }
+  await ensureOrderSchema();
 
-  const existing = await readExistingOrder(user.id, fields.value.requestId);
+  const existing = await readExistingOrder(fields.value.requestId, fields.value.email);
   if (existing) return { order: existing, duplicate: true };
 
   const catalog = await currentCatalog();
@@ -323,7 +328,7 @@ export async function createOrder(user, input) {
       postal_code, address_line1, address_line2, delivery_note, subtotal, shipping_fee, total,
       terms_agreed_at, privacy_agreed_at, retention_until
     ) VALUES (
-      ${id}, ${number}, ${fields.value.requestId}, ${user.id}, ${user.email || null},
+      ${id}, ${number}, ${fields.value.requestId}, ${member?.id || null}, ${member?.email || null},
       ${fields.value.recipientName}, ${fields.value.email}, ${fields.value.phone},
       ${fields.value.postalCode}, ${fields.value.addressLine1}, ${fields.value.addressLine2 || null},
       ${fields.value.deliveryNote || null}, ${totals.subtotal}, ${totals.shippingFee}, ${totals.total},
@@ -336,19 +341,20 @@ export async function createOrder(user, input) {
       ${item.quantity}, ${item.unitPrice * item.quantity}, ${item.image || null}
     )`),
     sql`INSERT INTO order_events (id, order_id, actor, from_status, to_status, note)
-      VALUES (${randomUUID()}, ${id}, 'member', ${null}, 'payment_pending', 'PG 결제 연결 전 주문 접수')`,
+      VALUES (${randomUUID()}, ${id}, ${member ? 'member' : 'system'}, ${null}, 'payment_pending', ${member ? '회원 주문 접수 · PG 결제 연결 전' : '비회원 주문 접수 · PG 결제 연결 전'})`,
   ];
 
   try {
     await sql.transaction(queries);
   } catch (error) {
     if (error?.code === '23505') {
-      const duplicate = await readExistingOrder(user.id, fields.value.requestId);
+      const duplicate = await readExistingOrder(fields.value.requestId, fields.value.email);
       if (duplicate) return { order: duplicate, duplicate: true };
+      throw Object.assign(new Error('이미 사용된 주문 요청입니다. 주문서를 새로고침한 뒤 다시 시도해 주세요.'), { status: 409 });
     }
     throw error;
   }
-  return { order: await readOrderForMember(user.id, number), duplicate: false };
+  return { order: await readOrderById(id), duplicate: false };
 }
 
 export async function readOrderForMember(userId, number) {

@@ -44,6 +44,9 @@ test('내부 주문서는 PG 미연결 경계와 앱 소유 검증을 명확히 
   const html = await readFile(new URL('../checkout.html', import.meta.url), 'utf8');
 
   assert.match(html, /data-checkout-form novalidate/);
+  assert.match(html, /data-checkout-guest-note/);
+  assert.match(html, /회원가입 없이 주문을 접수할 수 있습니다/);
+  assert.doesNotMatch(html, /data-checkout-login/);
   assert.match(html, /결제 대기로 주문 접수/);
   assert.match(html, /PG 결제 연결 준비 중/);
   assert.doesNotMatch(html, /네이버페이 구매|카카오페이|결제 완료로 주문/);

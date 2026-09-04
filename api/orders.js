@@ -1,21 +1,23 @@
-import { requireMember } from './_lib/member-auth.js';
+import { getMember, requireMember } from './_lib/member-auth.js';
 import { createOrder, listMemberOrders, requestOrderChange } from './_lib/orders.js';
 import { isSameOrigin, json, methodNotAllowed, readJson } from './_lib/http.js';
 
 export async function fetch(request) {
   if (!['GET', 'POST', 'PATCH'].includes(request.method)) return methodNotAllowed(['GET', 'POST', 'PATCH']);
   try {
-    const member = await requireMember(request);
     if (request.method === 'GET') {
+      const member = await requireMember(request);
       const page = Number(new URL(request.url).searchParams.get('page') || 1);
       return json(await listMemberOrders(member.id, page), 200, { Vary: 'Cookie' });
     }
     if (!isSameOrigin(request)) return json({ message: '요청 출처를 확인할 수 없습니다.' }, 403);
     const body = await readJson(request, 65_536);
     if (request.method === 'POST') {
+      const member = await getMember(request);
       const result = await createOrder(member, body);
       return json(result, result.duplicate ? 200 : 201, { Vary: 'Cookie' });
     }
+    const member = await requireMember(request);
     return json({ order: await requestOrderChange(member.id, body) }, 200, { Vary: 'Cookie' });
   } catch (error) {
     const status = Number(error.status) || 500;
@@ -25,4 +27,3 @@ export async function fetch(request) {
     }, status, { Vary: 'Cookie' });
   }
 }
-

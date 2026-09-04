@@ -34,13 +34,7 @@
       </header>
 
       <section class="order-page-state" data-checkout-loading role="status" aria-live="polite">
-        <span class="order-loader" aria-hidden="true"></span><p>회원과 주문 상품을 확인하고 있습니다.</p>
-      </section>
-
-      <section class="order-page-state order-page-state--action" data-checkout-login hidden aria-labelledby="checkout-login-title">
-        <p class="kicker">Member order</p><h2 id="checkout-login-title">로그인 후 주문할 수 있습니다.</h2>
-        <p>네이버 또는 Google 간편 로그인 후 지금 선택한 상품으로 돌아옵니다.</p>
-        <button type="button" class="order-primary-link" data-member-open>간편 로그인 <span aria-hidden="true">→</span></button>
+        <span class="order-loader" aria-hidden="true"></span><p>주문 상품을 확인하고 있습니다.</p>
       </section>
 
       <section class="order-page-state order-page-state--action" data-checkout-error hidden aria-labelledby="checkout-error-title">
@@ -51,6 +45,10 @@
 
       <div class="checkout-workspace" data-checkout-content hidden>
         <form class="checkout-form" data-checkout-form novalidate>
+          <aside class="checkout-member-note" data-checkout-guest-note hidden aria-labelledby="checkout-guest-title">
+            <div><p class="kicker">Guest order</p><h2 id="checkout-guest-title">비회원으로 주문합니다.</h2><p>회원가입 없이 주문을 접수할 수 있습니다. 로그인하면 장바구니와 주문 내역을 계정에서 이어서 볼 수 있습니다.</p></div>
+            <button type="button" class="order-secondary-link" data-member-open>간편 로그인</button>
+          </aside>
           <div class="order-form-summary" data-order-form-summary role="alert" tabindex="-1" hidden></div>
 
           <section class="checkout-section" aria-labelledby="recipient-title">
@@ -130,9 +128,9 @@
 
       <section class="order-complete" data-order-complete hidden aria-labelledby="order-complete-title">
         <p class="kicker">Order received</p><h1 id="order-complete-title" tabindex="-1">주문을 접수했습니다.</h1>
-        <p>아직 결제는 이루어지지 않았습니다. 결제 수단 연결 전까지 주문은 <strong>결제 대기</strong>로 보관됩니다.</p>
+        <p>아직 결제는 이루어지지 않았습니다. 결제 수단 연결 전까지 주문은 <strong>결제 대기</strong>로 보관됩니다. 비회원 주문은 문의할 때 주문번호를 알려주세요.</p>
         <dl><div><dt>주문번호</dt><dd data-complete-number></dd></div><div><dt>주문금액</dt><dd data-complete-total></dd></div><div><dt>현재 상태</dt><dd>결제 대기</dd></div></dl>
-        <div><a class="order-primary-link" href="account.html#orders">내 주문 확인 <span aria-hidden="true">→</span></a><a class="order-secondary-link" href="products.html">제품 더 보기</a></div>
+        <div><a class="order-primary-link" href="account.html#orders" data-member-order-link>내 주문 확인 <span aria-hidden="true">→</span></a><a class="order-primary-link" href="contact.html" data-guest-order-link hidden>주문 문의 남기기 <span aria-hidden="true">→</span></a><a class="order-secondary-link" href="products.html">제품 더 보기</a></div>
       </section>
     </main>
 

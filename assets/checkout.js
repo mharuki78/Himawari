@@ -2,7 +2,6 @@
   'use strict';
 
   var loading = document.querySelector('[data-checkout-loading]');
-  var login = document.querySelector('[data-checkout-login]');
   var failure = document.querySelector('[data-checkout-error]');
   var failureTitle = document.querySelector('#checkout-error-title');
   var failureMessage = document.querySelector('[data-checkout-error-message]');
@@ -15,6 +14,9 @@
   var submitLabel = document.querySelector('[data-order-submit-label]');
   var itemContainer = document.querySelector('[data-checkout-items]');
   var complete = document.querySelector('[data-order-complete]');
+  var guestNote = document.querySelector('[data-checkout-guest-note]');
+  var memberOrderLink = document.querySelector('[data-member-order-link]');
+  var guestOrderLink = document.querySelector('[data-guest-order-link]');
   var discardDialog = document.querySelector('[data-order-discard-dialog]');
   var discardCancel = document.querySelector('[data-order-discard-cancel]');
   var discardConfirm = document.querySelector('[data-order-discard-confirm]');
@@ -22,6 +24,7 @@
   var items = [];
   var requestId = crypto.randomUUID();
   var cartOrder = false;
+  var memberOrder = false;
   var dirty = false;
   var submitted = false;
   var pendingHref = '';
@@ -45,7 +48,7 @@
   }
 
   function showOnly(target) {
-    [loading, login, failure, workspace, complete].forEach(function (element) { element.hidden = element !== target; });
+    [loading, failure, workspace, complete].forEach(function (element) { element.hidden = element !== target; });
   }
 
   function totals() {
@@ -165,7 +168,8 @@
     showOnly(loading);
     try {
       var session = await request('/api/auth/session');
-      if (!session.authenticated) { showOnly(login); return; }
+      memberOrder = session.authenticated === true;
+      guestNote.hidden = memberOrder;
       var productId = new URLSearchParams(location.search).get('product');
       if (productId) {
         var productPayload = await request('/api/products?id=' + encodeURIComponent(productId));
@@ -185,19 +189,20 @@
             var quantity = Math.min(99, Math.max(1, Number(item.quantity) || 1));
             return product ? [{ productId: product.id, quantity: quantity, product: product }] : [];
           });
-        } else {
+        } else if (memberOrder) {
           var cartPayload = await request('/api/member/cart');
           items = (cartPayload.items || []).map(function (item) { return { productId: item.productId, quantity: item.quantity, product: item.product }; });
         }
         cartOrder = true;
       }
       if (!items.length) throw Object.assign(new Error('장바구니가 비어 있습니다. 제품을 담은 뒤 다시 주문해 주세요.'), { status: 400 });
-      field('recipientName').value = session.user.displayName || '';
-      field('email').value = session.user.email || '';
+      if (memberOrder) {
+        field('recipientName').value = session.user.displayName || '';
+        field('email').value = session.user.email || '';
+      }
       renderItems();
       showOnly(workspace);
     } catch (error) {
-      if (error.status === 401) { showOnly(login); return; }
       failureMessage.textContent = error.message;
       showOnly(failure);
       failureTitle.focus();
@@ -242,12 +247,14 @@
       submitted = true;
       dirty = false;
       if (cartOrder) {
-        await request('/api/member/cart', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: [] }) }).catch(function () {});
+        if (memberOrder) await request('/api/member/cart', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: [] }) }).catch(function () {});
         if (window.SiteCart) window.SiteCart.clear();
         try { sessionStorage.removeItem(checkoutStorageKey); } catch (error) {}
       }
       document.querySelector('[data-complete-number]').textContent = order.orderNumber;
       document.querySelector('[data-complete-total]').textContent = priceFormatter.format(order.total);
+      memberOrderLink.hidden = !memberOrder;
+      guestOrderLink.hidden = memberOrder;
       document.title = '주문 접수 완료 — Himawari';
       showOnly(complete);
       document.querySelector('#order-complete-title').focus();
