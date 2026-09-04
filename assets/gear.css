@@ -68,7 +68,7 @@ html {
   width: clamp(4.8rem, 6vw, 6.15rem);
   height: 2.85rem;
   overflow: hidden;
-  background: transparent url("himawari-logo.png") center 48% / 100% auto no-repeat;
+  background: transparent url("himawari-logo-hq.png") center / 100% auto no-repeat;
   color: transparent;
   font-size: 0;
   white-space: nowrap;
@@ -114,7 +114,7 @@ html {
 
 .header-store:hover { background: var(--ink); color: var(--cream); }
 
-/* Split film hero: a real product film that stays independent from page scroll. */
+/* Split collection hero: a calm product still paired with focused campaign copy. */
 .home-film-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(24rem, 1fr);
@@ -128,7 +128,7 @@ html {
   position: relative;
   min-height: 38rem;
   overflow: hidden;
-  background: var(--ink) url("hero-poster.jpg") center / cover no-repeat;
+  background: var(--ink);
 }
 
 .home-film-hero__media::after {
@@ -139,7 +139,7 @@ html {
   pointer-events: none;
 }
 
-.home-film-hero__video {
+.home-film-hero__image {
   display: block;
   width: 100%;
   height: 100%;
@@ -198,24 +198,6 @@ html {
 }
 
 .home-film-hero__link:hover { background: transparent; color: var(--cream); }
-
-.home-film-hero__toggle {
-  position: absolute;
-  z-index: 2;
-  right: 1.25rem;
-  bottom: 1.25rem;
-  min-height: 44px;
-  padding: 0 1rem;
-  border: 1px solid color-mix(in srgb, var(--cream) 72%, transparent);
-  background: color-mix(in srgb, var(--ink) 76%, transparent);
-  color: var(--cream);
-  cursor: pointer;
-  font-size: .68rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-}
-
-.home-film-hero__toggle:hover { background: var(--cream); color: var(--ink); }
 
 .trust-strip {
   display: grid;
@@ -688,6 +670,9 @@ html {
 .reel-card:nth-child(3) .reel-card__media { background: var(--ink) url("reel-1884-poster.jpg") center / cover no-repeat; }
 .reel-card:nth-child(4) .reel-card__media { background: var(--ink) url("reel-1027-poster.jpg") center / cover no-repeat; }
 .reel-card:nth-child(5) .reel-card__media { background: var(--ink) url("reel-school-set-poster.jpg") center / cover no-repeat; }
+.reel-card:nth-child(6) .reel-card__media { background: var(--ink) url("reel-0514-260527-poster.jpg") center / cover no-repeat; }
+.reel-card:nth-child(7) .reel-card__media { background: var(--ink) url("reel-0514-260604-poster.jpg") center / cover no-repeat; }
+.reel-card:nth-child(8) .reel-card__media { background: var(--ink) url("reel-0424-260528-poster.jpg") center / cover no-repeat; }
 
 .reel-card__media video {
   display: block;
@@ -783,7 +768,7 @@ html {
   width: min(7.8rem, 100%);
   height: 3rem;
   overflow: hidden;
-  background: transparent url("himawari-logo.png") center / 100% auto no-repeat;
+  background: transparent url("himawari-logo-hq.png") center / 100% auto no-repeat;
   color: transparent;
   filter: brightness(0) invert(1);
   font-size: 0;
@@ -926,7 +911,6 @@ html {
   }
   .home-film-hero h1 { max-width: 13ch; font-size: clamp(2.55rem, 11.5vw, 3.8rem); }
   .home-film-hero__copy > p { max-width: 31ch; }
-  .home-film-hero__toggle { right: .9rem; bottom: .9rem; }
 
   .trust-strip { grid-template-columns: repeat(2, 1fr); }
   .trust-item:nth-child(2) { border-right: 0; }
@@ -998,13 +982,11 @@ html {
   .store-product-card:hover,
   .store-product-card:focus-within { transform: none; }
   .reel-card__media video { visibility: hidden; }
-  [data-reel-play],
-  [data-reel-sound] { display: none; }
+  .reel-showcase__controls [data-reel-play],
+  .reel-showcase__controls [data-reel-sound] { display: none; }
   .feature-film__video,
   .feature-film__toggle { display: none; }
   .feature-film { min-height: min(82svh, 54rem); }
-  .home-film-hero__video,
-  .home-film-hero__toggle { display: none; }
 }
 
 @media (forced-colors: active) {

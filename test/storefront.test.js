@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readdir, readFile } from 'node:fs/promises';
+import { access, readdir, readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 import { publicProduct, seedCatalog } from '../api/_lib/products.js';
@@ -20,6 +20,33 @@ test('모든 HTML 페이지와 상품 템플릿이 공통 파비콘을 선언한
     assert.match(html, /<link rel="icon" href="\/favicon\.ico" sizes="any">/, `${file}: favicon.ico`);
     assert.match(html, /<link rel="icon" type="image\/png" sizes="32x32" href="\/assets\/favicon-32\.png">/, `${file}: 32px favicon`);
     assert.match(html, /<link rel="apple-touch-icon" sizes="180x180" href="\/assets\/apple-touch-icon\.png">/, `${file}: Apple touch icon`);
+  }
+});
+
+test('홈 첫 화면은 정적 컬렉션 이미지를 쓰고 릴스 8개를 제공한다', async () => {
+  const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const gearCss = await readFile(new URL('../assets/gear.css', import.meta.url), 'utf8');
+
+  assert.match(html, /class="home-film-hero__image"[^>]+src="assets\/himawari-collection-v2\.webp"/);
+  assert.doesNotMatch(html, /hero-film-1884\.mp4|home-film-hero__video|home-film-hero__toggle/);
+  assert.equal((html.match(/data-reel-card/g) || []).length, 8);
+  assert.match(html, /assets\/reel-0514-260527\.mp4/);
+  assert.match(html, /assets\/reel-0514-260604\.mp4/);
+  assert.match(html, /assets\/reel-0424-260528\.mp4/);
+  assert.match(html, /3 \/ 8 · No\.1884 영상/);
+  assert.match(gearCss, /url\("himawari-logo-hq\.png"\)/);
+  assert.doesNotMatch(gearCss, /url\("himawari-logo\.png"\)/);
+
+  for (const asset of [
+    'assets/himawari-logo-hq.png',
+    'assets/reel-0514-260527.mp4',
+    'assets/reel-0514-260527-poster.jpg',
+    'assets/reel-0514-260604.mp4',
+    'assets/reel-0514-260604-poster.jpg',
+    'assets/reel-0424-260528.mp4',
+    'assets/reel-0424-260528-poster.jpg',
+  ]) {
+    await access(new URL(`../${asset}`, import.meta.url));
   }
 });
 

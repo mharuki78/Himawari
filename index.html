@@ -50,14 +50,11 @@
 
     <main id="main">
       <section class="home-film-hero" id="home" aria-labelledby="hero-title">
-        <div class="home-film-hero__media" data-ambient-film>
-          <video class="home-film-hero__video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg" aria-label="No.1884 백팩의 외관과 수납 디테일" data-ambient-video>
-            <source src="assets/hero-film-1884.mp4" type="video/mp4">
-          </video>
-          <button class="home-film-hero__toggle" type="button" data-ambient-toggle aria-pressed="true">영상 일시정지</button>
+        <div class="home-film-hero__media">
+          <img class="home-film-hero__image" src="assets/himawari-collection-v2.webp" alt="스튜디오에 놓인 Himawari 백팩 컬렉션" width="1536" height="1024" fetchpriority="high">
         </div>
         <div class="home-film-hero__copy">
-          <span class="home-film-hero__kicker">Himawari · No.1884</span>
+          <span class="home-film-hero__kicker">Himawari · The Collection</span>
           <h1 id="hero-title"><span class="headline-line">형태는 단정하게.</span><span class="headline-line accent-word">쓰임은 오래도록.</span></h1>
           <p>도시의 하루부터 먼 여행의 장면까지.<br>정제된 실루엣과 편안한 균형으로<br>매일의 움직임을 품격 있게 정돈합니다.</p>
           <a class="home-film-hero__link" href="products.html">제품 보기 <span aria-hidden="true">↗</span></a>
@@ -144,7 +141,7 @@
                 <button type="button" data-reel-sound aria-pressed="false">소리 켜기</button>
                 <button type="button" data-reel-next aria-label="다음 영상 보기"><span>다음</span><span aria-hidden="true">→</span></button>
               </div>
-              <p class="reel-showcase__status sr-only" data-reel-status role="status" aria-live="polite">3 / 5 · No.1884 영상</p>
+              <p class="reel-showcase__status sr-only" data-reel-status role="status" aria-live="polite">3 / 8 · No.1884 영상</p>
             </div>
           </div>
         </div>
@@ -203,6 +200,39 @@
               <button class="reel-card__select" type="button" data-reel-select aria-label="책가방 3종 영상을 가운데에서 재생" onclick="window.himawariSelectReel?.(4)"><span>이 영상 보기</span><span aria-hidden="true">→</span></button>
             </div>
             <div class="reel-card__caption"><p>05 · School collection</p><h3>세 가지 책가방, 한 장면.</h3></div>
+          </article>
+
+          <article class="reel-card" data-reel-card data-reel-name="No.0514 데일리 영상">
+            <div class="reel-card__media">
+              <video muted loop playsinline preload="metadata" poster="assets/reel-0514-260527-poster.jpg" aria-label="No.0514 백팩 데일리 릴스 영상" data-reel-video>
+                <source src="assets/reel-0514-260527.mp4" type="video/mp4">
+              </video>
+              <span class="reel-card__playing" aria-hidden="true">Now playing</span>
+              <button class="reel-card__select" type="button" data-reel-select aria-label="No.0514 데일리 영상을 가운데에서 재생" onclick="window.himawariSelectReel?.(5)"><span>이 영상 보기</span><span aria-hidden="true">→</span></button>
+            </div>
+            <div class="reel-card__caption"><p>06 · No.0514</p><h3>도시의 하루를 가볍게.</h3></div>
+          </article>
+
+          <article class="reel-card" data-reel-card data-reel-name="No.0514 디테일 영상">
+            <div class="reel-card__media">
+              <video muted loop playsinline preload="metadata" poster="assets/reel-0514-260604-poster.jpg" aria-label="No.0514 백팩 디테일 릴스 영상" data-reel-video>
+                <source src="assets/reel-0514-260604.mp4" type="video/mp4">
+              </video>
+              <span class="reel-card__playing" aria-hidden="true">Now playing</span>
+              <button class="reel-card__select" type="button" data-reel-select aria-label="No.0514 디테일 영상을 가운데에서 재생" onclick="window.himawariSelectReel?.(6)"><span>이 영상 보기</span><span aria-hidden="true">→</span></button>
+            </div>
+            <div class="reel-card__caption"><p>07 · No.0514 detail</p><h3>필요한 순간, 바로 꺼내도록.</h3></div>
+          </article>
+
+          <article class="reel-card" data-reel-card data-reel-name="No.0424 영상">
+            <div class="reel-card__media">
+              <video muted loop playsinline preload="metadata" poster="assets/reel-0424-260528-poster.jpg" aria-label="No.0424 백팩 릴스 영상" data-reel-video>
+                <source src="assets/reel-0424-260528.mp4" type="video/mp4">
+              </video>
+              <span class="reel-card__playing" aria-hidden="true">Now playing</span>
+              <button class="reel-card__select" type="button" data-reel-select aria-label="No.0424 영상을 가운데에서 재생" onclick="window.himawariSelectReel?.(7)"><span>이 영상 보기</span><span aria-hidden="true">→</span></button>
+            </div>
+            <div class="reel-card__caption"><p>08 · No.0424</p><h3>함께 걷는 하루의 균형.</h3></div>
           </article>
         </div>
       </section>
