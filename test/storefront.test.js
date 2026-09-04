@@ -50,6 +50,35 @@ test('홈 첫 화면은 정적 컬렉션 이미지를 쓰고 릴스 8개를 제�
   }
 });
 
+test('최신 이야기 3편은 독립 페이지·대표 이미지·검색 메타데이터를 갖춘다', async () => {
+  const posts = JSON.parse(await readFile(new URL('../story/posts.json', import.meta.url), 'utf8'));
+  const sitemap = await readFile(new URL('../sitemap.xml', import.meta.url), 'utf8');
+  const feed = await readFile(new URL('../feed.xml', import.meta.url), 'utf8');
+  const slugs = [
+    'laptop-backpack-compartment-checklist',
+    'backpack-zipper-hardware-care',
+    'airplane-carry-on-backpack-packing',
+  ];
+
+  assert.deepEqual(posts.slice(0, 3).map((post) => post.id), slugs);
+
+  for (const slug of slugs) {
+    const post = posts.find((entry) => entry.id === slug);
+    const html = await readFile(new URL(`../story/${slug}.html`, import.meta.url), 'utf8');
+    const imagePath = post.image.replace('../', '');
+
+    assert.equal(post.date, '2026-09-05');
+    await access(new URL(`../${imagePath}`, import.meta.url));
+    assert.match(html, new RegExp(`<link rel="canonical" href="https://allaboutbag\\.com/story/${slug}\\.html">`));
+    assert.match(html, new RegExp(`<meta property="og:image" content="https://allaboutbag\\.com/assets/story/${slug}\\.webp">`));
+    assert.match(html, /"@type":"BlogPosting"/);
+    assert.match(html, /class="story-related"/);
+    assert.match(html, /class="story-faq"/);
+    assert.equal(sitemap.includes(`https://allaboutbag.com/story/${slug}.html`), true);
+    assert.equal(feed.includes(`https://allaboutbag.com/story/${slug}.html`), true);
+  }
+});
+
 test('상품 목록 원본 HTML에 전체 카탈로그와 구조화 데이터를 렌더링한다', async () => {
   const template = await readFile(new URL('../templates/products.html', import.meta.url), 'utf8');
   const html = renderCatalogPage(template, products);

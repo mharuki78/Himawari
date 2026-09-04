@@ -1,5 +1,41 @@
 [
   {
+    "id": "laptop-backpack-compartment-checklist",
+    "title": "노트북 백팩 수납칸 고르기: 기기 치수부터 바닥 여유까지",
+    "date": "2026-09-05",
+    "summary": "노트북의 실제 치수와 수납칸 입구, 내부 고정, 바닥 여유를 차례로 확인하는 구매 전 점검표입니다.",
+    "description": "노트북 백팩을 고를 때 화면 크기만 보지 않고 기기 전체 치수, 수납칸 입구, 바닥 여유와 다른 소지품의 분리 여부를 확인하는 방법입니다.",
+    "tags": ["노트북 백팩", "노트북 수납", "직장인 가방"],
+    "image": "../assets/story/laptop-backpack-compartment-checklist.webp",
+    "imageAlt": "회색 Himawari 백팩의 노트북 수납칸에 기기를 넣어 크기를 확인하는 모습",
+    "url": "laptop-backpack-compartment-checklist.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "backpack-zipper-hardware-care",
+    "title": "백팩 지퍼·버클 관리법: 부자재를 오래 쓰는 점검 순서",
+    "date": "2026-09-05",
+    "summary": "지퍼 레일의 먼지, 원단 끼임, 버클과 금속 장식의 상태를 차례로 확인하는 백팩 부자재 관리법입니다.",
+    "description": "백팩 지퍼, 버클과 금속 부자재를 사용할 때 먼지를 제거하고 정렬 상태를 확인하는 순서, 억지로 당기지 말아야 할 상황을 정리했습니다.",
+    "tags": ["백팩 지퍼 관리", "가방 버클", "가방 부자재"],
+    "image": "../assets/story/backpack-zipper-hardware-care.webp",
+    "imageAlt": "파스텔 Himawari 백팩의 앞 지퍼를 부드러운 마른 솔로 정리하는 모습",
+    "url": "backpack-zipper-hardware-care.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "airplane-carry-on-backpack-packing",
+    "title": "기내 반입 백팩 짐싸기: 보안검색 전에 나누는 5구역",
+    "date": "2026-09-05",
+    "summary": "항공사와 공항 규정을 확인한 뒤 전자기기, 액체류, 여행서류와 기내 물품을 찾기 쉽게 나누는 짐싸기 순서입니다.",
+    "description": "기내 반입 백팩을 준비할 때 항공사 규정을 먼저 확인하고 전자기기, 액체류, 여행서류와 기내 물품을 다섯 구역으로 나누는 방법입니다.",
+    "tags": ["기내 반입 백팩", "여행 짐싸기", "휴대 수하물"],
+    "image": "../assets/story/airplane-carry-on-backpack-packing.webp",
+    "imageAlt": "공항 대기 공간에서 은색 Himawari 백팩과 기내 준비물을 구역별로 펼친 모습",
+    "url": "airplane-carry-on-backpack-packing.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "backpack-fabric-care-guide",
     "title": "백팩 소재별 표면 관리법: 나일론과 폴리에스터를 살피는 순서",
     "date": "2026-09-04",
