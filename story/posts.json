@@ -1,5 +1,41 @@
 [
   {
+    "id": "backpack-color-selection-guide",
+    "title": "백팩 색상 고르는 법: 자주 입는 옷으로 실패 줄이는 4단계",
+    "date": "2026-09-06",
+    "summary": "자주 입는 옷과 사용하는 장소, 관리 습관을 기준으로 매일 들기 좋은 백팩 색상을 좁히는 방법입니다.",
+    "description": "백팩 색상을 고를 때 자주 입는 옷, 사용하는 장소, 관리 습관과 계절을 기준으로 오래 들기 좋은 색을 좁히는 방법을 소개합니다.",
+    "tags": ["백팩 색상", "가방 선택", "데일리 백팩"],
+    "image": "../assets/story/backpack-color-selection-guide.webp",
+    "imageAlt": "분홍색과 민트색 Himawari 백팩을 흰색·회색·청색 옷과 함께 놓고 색 조합을 살피는 모습",
+    "url": "backpack-color-selection-guide.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "backpack-cable-organizer-guide",
+    "title": "충전기·케이블 백팩 수납법: 엉키지 않게 나누는 5단계",
+    "date": "2026-09-06",
+    "summary": "충전기, 케이블과 보조배터리를 종류와 사용 순서별로 나눠 빠르게 찾고 눌림을 줄이는 백팩 정리법입니다.",
+    "description": "충전기, 케이블, 보조배터리와 이어폰을 백팩 안에서 엉키거나 눌리지 않게 종류와 사용 순서별로 나누는 수납 방법입니다.",
+    "tags": ["케이블 수납", "충전기 파우치", "백팩 정리"],
+    "image": "../assets/story/backpack-cable-organizer-guide.webp",
+    "imageAlt": "크림색과 하늘색 Himawari 백팩 옆에 충전기와 케이블, 이어폰을 종류별로 정리한 모습",
+    "url": "backpack-cable-organizer-guide.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "bicycle-commute-backpack-guide",
+    "title": "자전거 출퇴근 백팩 체크리스트: 크기·끈·수납 점검 순서",
+    "date": "2026-09-06",
+    "summary": "자전거로 이동하기 전 백팩의 착용 균형과 끈, 내용물, 날씨를 차례로 확인하는 실용적인 점검표입니다.",
+    "description": "자전거 출퇴근용 백팩을 고르고 챙길 때 몸에 맞는 크기, 끈 정리, 내부 물건 고정, 날씨와 안전 장비를 확인하는 순서입니다.",
+    "tags": ["자전거 출퇴근", "출근 백팩", "착용 점검"],
+    "image": "../assets/story/bicycle-commute-backpack-guide.webp",
+    "imageAlt": "회색 Himawari 백팩과 자전거 헬멧, 장갑, 전조등을 현관에 준비한 모습",
+    "url": "bicycle-commute-backpack-guide.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "laptop-backpack-compartment-checklist",
     "title": "노트북 백팩 수납칸 고르기: 기기 치수부터 바닥 여유까지",
     "date": "2026-09-05",
