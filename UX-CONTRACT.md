@@ -22,6 +22,7 @@
 | Product permission / lifecycle | `docs/PRODUCT-CATALOG-POLICY.md` | User-approved product policy | 2026-08-31 |
 | Product media limits / storage | `docs/PRODUCT-CATALOG-POLICY.md` | Maintained product policy | 2026-09-01 |
 | Order lifecycle / permissions / retention | `docs/ORDER-POLICY.md` | User-approved scope + official law | 2026-09-03 |
+| Price / coupon / popup operations | `docs/PRODUCT-CATALOG-POLICY.md`, `docs/ORDER-POLICY.md` | User-approved scope + maintained policy | 2026-09-06 |
 
 ## Visual contract
 
@@ -36,17 +37,19 @@
 
 | Capability | Canonical owner | Source of truth | Allowed variants | Verification |
 |---|---|---|---|---|
-| Form | `assets/inquiry-form.js`, `admin/admin.js`, `admin/product-admin.source.js` | API validation | public inquiry / admin login / product create / product edit | validation + browser flow |
+| Form | `assets/inquiry-form.js`, `admin/admin.js`, `admin/product-admin.source.js`, `admin/promotion-admin.js` | API validation | public inquiry / admin login / product create / product edit / promotion settings | validation + browser flow |
 | File upload | native file picker + `@vercel/blob/client` upload queue | `api/admin/product-upload.js` | main image / gallery | type-size-owner + progress/cancel browser flow |
 | Scrollbar | global application stylesheets | CSS tokens | product scroll geometry only | computed style |
 | Status | form/list inline live regions | current request state | success / error / pending | live-region inspection |
 | CRUD | inquiry and product APIs under `api/` | server authorization + Blob policies | inquiry create/read/delete / product create/read/update/delete | full-flow integration |
-| Dialog | native modal `<dialog>` with app-owned surface | `admin/inquiries.html`, `account.html`, `checkout.html`, `admin/orders.html` | irreversible delete / unsaved order / customer request / admin completion | keyboard + failure flow |
+| Dialog | native modal `<dialog>` with app-owned surface | `admin/inquiries.html`, `account.html`, `checkout.html`, `admin/orders.html`, `index.html` | irreversible delete / unsaved order / customer request / admin completion / home promotion | keyboard + failure flow |
+| Promotion settings | `admin/promotion-admin.js`, `api/admin/promotions.js` | private Blob `promotions/v1/settings.json` | four fixed coupons / home popup | auth + ETag + server order revalidation |
 | Member session | `assets/member.js`, `api/auth/` | HttpOnly cookie + Neon session hash | Naver / Google | OAuth state + browser flow |
 | Member collection | `assets/cart.js`, `assets/member.js`, `api/member/` | Neon for members, localStorage for guests | cart / wishlist | merge, logout, account delete |
 | Order form | `assets/checkout.js`, `api/orders.js` | `docs/ORDER-POLICY.md` + server validation | direct product / guest cart / member cart | validation + idempotent create |
 | Order admin | `admin/order-admin.js`, `api/admin/orders.js` | server authorization + order state machine | list / detail / status update | pagination + conflict + confirmation |
 | Select/Listbox | native `select` | `DESIGN.md` | order status filter / status update | keyboard + browser popup |
+| Date/time picker | native `datetime-local` with platform-owned popup accepted | `DESIGN.md` | optional coupon expiry | keyboard + `ko-KR` browser value + ISO UTC storage |
 
 ## Component behavior
 
@@ -90,6 +93,7 @@
 | Read commerce terms | footer or product order information | static document | `terms.html` | business identity and 24 articles remain directly readable | product/contact navigation remains available | terms title | `docs/COMMERCE-POLICY.md` |
 | Hard-delete product | `삭제` then `제품 삭제` | dialog stays open, duplicate blocked | refreshed product list | persistent deletion acknowledgement | dialog remains; conflict asks for refresh | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Create order | `바로 구매하기` or `장바구니 주문하기` then `결제 대기로 주문 접수` | form and button locked, request ID reused | same page completion state | order number, amount, payment-pending state; guest gets inquiry path | values retained; server field errors; retry same ID | completion title | `docs/ORDER-POLICY.md` |
+| Save promotion | `프로모션 저장` | submit locked, fields retained | same admin route | persistent saved status and public config version | inline field errors; ETag conflict asks for refresh | form status | `docs/ORDER-POLICY.md` |
 | Request cancellation/refund | `취소 요청` / `반품·환불 요청` | confirmation action locked | account order list | persistent list acknowledgement | dialog remains with retry/cancel | order list title | `docs/ORDER-POLICY.md` |
 | Admin update order | `주문 변경 저장` | form or confirmation stays open, duplicate blocked | selected order detail | refreshed status and persistent board message | inline field error or dialog error; revision conflict refresh | selected order number | `docs/ORDER-POLICY.md` |
 
@@ -123,7 +127,7 @@
 - Delete failure: confirmation dialog remains open with retry and cancel.
 - Product image upload: browser-to-Blob direct upload with a 15-minute role-scoped token; representative image maximum 8MB and each detail image maximum 15MB; determinate progress and explicit cancellation. Partial uploads are cleaned up when the session remains valid.
 - Product catalog writes: conditional ETag write prevents a stale administrator from overwriting a concurrent create, edit, or delete. Edit preserves existing images unless a replacement file was selected. Conflict keeps form or delete context and requests a refresh.
-- Order create: member session is optional; authenticated orders store the member ID and guest orders store no member ID. A client request UUID is unique and reused after uncertain completion; the server snapshots current catalog price and recalculates shipping. Guest orders have no public list/read endpoint.
+- Order create: member session is optional; authenticated orders store the member ID and guest orders store no member ID. A client request UUID is unique and reused after uncertain completion; the server snapshots the derived self-store price and recalculates the selected active coupon and shipping. Guest orders have no public list/read endpoint.
 - Order updates: revision-checked pessimistic transitions; customer requests cannot complete cancellation/refund, and admin cancellation/refund completion requires a confirmation dialog.
 
 ## Validation
@@ -132,7 +136,7 @@
 - Timing: submit first, then blur/input for fields already in error
 - Policy: `novalidate`, associated inline Korean errors, first-invalid focus, duplicate-submit prevention
 - Sensitive values: password never enters route, log, toast, local/session storage, Blob, or response payload.
-- Product validation: client and server both require name, model, integer price, tagline, detailed description, at least one product point and SmartStore URL. Create requires an owned representative image. Edit may preserve current media and unchanged legacy description/highlight values; every changed field uses the current rule and every newly selected replacement Blob is server-verified before publishing.
+- Product validation: client and server both require name, model, integer Naver sale price, tagline, detailed description, at least one product point and SmartStore URL. The public self-store price is derived as Naver sale price plus 500 won; optional Naver discount rate is an integer from 0 to 99. Create requires an owned representative image. Edit may preserve current media and unchanged legacy description/highlight values; every changed field uses the current rule and every newly selected replacement Blob is server-verified before publishing.
 
 ## Permission and privacy UI
 

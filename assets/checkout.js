@@ -20,8 +20,11 @@
   var discardDialog = document.querySelector('[data-order-discard-dialog]');
   var discardCancel = document.querySelector('[data-order-discard-cancel]');
   var discardConfirm = document.querySelector('[data-order-discard-confirm]');
+  var couponOptions = document.querySelector('[data-coupon-options]');
+  var couponError = document.querySelector('#coupon-error');
   var priceFormatter = new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 });
   var items = [];
+  var coupons = [];
   var requestId = crypto.randomUUID();
   var cartOrder = false;
   var memberOrder = false;
@@ -51,18 +54,77 @@
     [loading, failure, workspace, complete].forEach(function (element) { element.hidden = element !== target; });
   }
 
+  function selectedCoupon() {
+    var checked = form.querySelector('input[name="couponId"]:checked');
+    return coupons.find(function (coupon) { return coupon.id === (checked ? checked.value : ''); }) || null;
+  }
+
   function totals() {
     var subtotal = items.reduce(function (sum, item) { return sum + item.product.price * item.quantity; }, 0);
     var shippingFee = subtotal >= 100000 ? 0 : 3500;
-    return { subtotal: subtotal, shippingFee: shippingFee, total: subtotal + shippingFee };
+    var coupon = selectedCoupon();
+    var discountAmount = 0;
+    if (coupon && subtotal >= Number(coupon.minimumSubtotal || 0)) {
+      if (coupon.type === 'free_shipping') shippingFee = 0;
+      if (coupon.type === 'percent') {
+        discountAmount = Math.floor(subtotal * Number(coupon.rate || 0) / 100);
+        if (Number(coupon.maximumDiscount || 0) > 0) discountAmount = Math.min(discountAmount, Number(coupon.maximumDiscount));
+      }
+    }
+    return { subtotal: subtotal, discountAmount: discountAmount, shippingFee: shippingFee, total: subtotal - discountAmount + shippingFee };
   }
 
   function renderTotals() {
     var value = totals();
     document.querySelector('[data-order-count]').textContent = items.reduce(function (sum, item) { return sum + item.quantity; }, 0) + '개';
     document.querySelector('[data-order-subtotal]').textContent = priceFormatter.format(value.subtotal);
+    document.querySelector('[data-order-discount-row]').hidden = value.discountAmount === 0;
+    document.querySelector('[data-order-discount]').textContent = '−' + priceFormatter.format(value.discountAmount);
     document.querySelector('[data-order-shipping]').textContent = value.shippingFee ? priceFormatter.format(value.shippingFee) : '무료';
     document.querySelector('[data-order-total]').textContent = priceFormatter.format(value.total);
+  }
+
+  function couponDescription(coupon) {
+    var parts = [coupon.type === 'free_shipping' ? '기본 배송비 3,500원 면제' : '상품금액 ' + coupon.rate + '% 할인'];
+    if (coupon.minimumSubtotal) parts.push(priceFormatter.format(coupon.minimumSubtotal) + ' 이상');
+    if (coupon.maximumDiscount) parts.push('최대 ' + priceFormatter.format(coupon.maximumDiscount));
+    if (coupon.expiresAt) parts.push(new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeZone: 'Asia/Seoul' }).format(new Date(coupon.expiresAt)) + '까지');
+    return parts.join(' · ');
+  }
+
+  function renderCoupons() {
+    var selected = form.querySelector('input[name="couponId"]:checked');
+    var current = selected ? selected.value : '';
+    var subtotal = items.reduce(function (sum, item) { return sum + item.product.price * item.quantity; }, 0);
+    var currentCoupon = coupons.find(function (coupon) { return coupon.id === current; });
+    if (currentCoupon && subtotal < Number(currentCoupon.minimumSubtotal || 0)) current = '';
+    couponOptions.replaceChildren();
+    var available = [{ id: '', label: '쿠폰 사용 안 함', type: 'none', minimumSubtotal: 0 }].concat(coupons);
+    available.forEach(function (coupon) {
+      var label = document.createElement('label');
+      label.className = 'coupon-option';
+      var input = document.createElement('input');
+      input.type = 'radio';
+      input.name = 'couponId';
+      input.value = coupon.id;
+      input.checked = coupon.id === current || (!available.some(function (item) { return item.id === current; }) && coupon.id === '');
+      var minimumMissing = coupon.id && subtotal < Number(coupon.minimumSubtotal || 0);
+      input.disabled = Boolean(minimumMissing);
+      var copy = document.createElement('span');
+      var strong = document.createElement('strong');
+      strong.textContent = coupon.label;
+      var detail = document.createElement('small');
+      detail.textContent = coupon.id ? couponDescription(coupon) + (minimumMissing ? ' · 금액 조건 미달' : '') : '기본 배송 정책으로 주문합니다.';
+      copy.append(strong, detail);
+      label.append(input, copy);
+      couponOptions.append(label);
+    });
+    if (!coupons.length) {
+      var note = document.createElement('p');
+      note.className = 'coupon-empty';
+      note.textContent = '현재 활성화된 쿠폰이 없습니다.';
+      couponOptions.append(note);
+    }
   }
 
   function renderItems() {
@@ -113,6 +175,7 @@
       article.append(media, copy);
       itemContainer.append(article);
     });
+    renderCoupons();
     renderTotals();
   }
 
@@ -127,6 +190,11 @@
   }
 
   function setFieldError(name, message) {
+    if (name === 'couponId') {
+      couponError.textContent = message || '';
+      document.querySelector('[data-coupon-fieldset]').setAttribute('aria-invalid', message ? 'true' : 'false');
+      return;
+    }
     var input = field(name);
     var target = errorElement(name);
     if (target) target.textContent = message || '';
@@ -134,7 +202,7 @@
   }
 
   function clearErrors() {
-    ['recipientName', 'email', 'phone', 'postalCode', 'addressLine1', 'termsConsent', 'privacyConsent'].forEach(function (name) { setFieldError(name, ''); });
+    ['recipientName', 'email', 'phone', 'postalCode', 'addressLine1', 'couponId', 'termsConsent', 'privacyConsent'].forEach(function (name) { setFieldError(name, ''); });
     summary.hidden = true;
     summary.textContent = '';
     submitStatus.textContent = '';
@@ -168,6 +236,8 @@
     showOnly(loading);
     try {
       var session = await request('/api/auth/session');
+      var promotionPayload = await request('/api/promotions').catch(function () { return { coupons: [] }; });
+      coupons = Array.isArray(promotionPayload.coupons) ? promotionPayload.coupons : [];
       memberOrder = session.authenticated === true;
       guestNote.hidden = memberOrder;
       var productId = new URLSearchParams(location.search).get('product');
@@ -214,6 +284,7 @@
     if (event.target.name) setFieldError(event.target.name, '');
     summary.hidden = true;
     submitStatus.textContent = '';
+    if (event.target.name === 'couponId') renderTotals();
   });
 
   form.addEventListener('submit', async function (event) {
@@ -239,6 +310,7 @@
           addressLine1: values.addressLine1,
           addressLine2: values.addressLine2,
           deliveryNote: values.deliveryNote,
+          couponId: values.couponId || '',
           termsConsent: values.termsConsent,
           privacyConsent: values.privacyConsent
         })
@@ -263,7 +335,8 @@
       Object.entries(error.fieldErrors || {}).forEach(function (entry) { setFieldError(entry[0], entry[1]); });
       submitStatus.textContent = error.message || '주문을 접수하지 못했습니다. 입력 내용은 유지되며 같은 주문번호로 다시 시도합니다.';
       var first = Object.keys(error.fieldErrors || {})[0];
-      if (first && field(first)) field(first).focus();
+      if (first === 'couponId') document.querySelector('[data-coupon-fieldset]').focus();
+      else if (first && field(first)) field(first).focus();
       else submitStatus.focus?.();
     } finally {
       submitButton.disabled = false;

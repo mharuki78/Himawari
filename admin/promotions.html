@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="theme-color" content="#24241F">
+    <title>프로모션 관리 — Himawari</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="promotion-admin.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#admin-main">본문으로 바로가기</a>
+    <header class="admin-header admin-header--console">
+      <a class="admin-brand" href="../index.html" aria-label="Himawari 공개 사이트 홈">HIMAWARI</a>
+      <nav class="admin-nav" aria-label="관리자 메뉴"><a href="inquiries.html">문의 관리</a><a href="products.html">제품 관리</a><a href="orders.html">주문 관리</a><a href="promotions.html" aria-current="page">프로모션</a></nav>
+      <a class="admin-header__site" href="../index.html">첫 화면 보기 <span aria-hidden="true">↗</span></a>
+    </header>
+    <main id="admin-main" class="admin-main admin-main--promotions">
+      <section class="initial-state" data-initial-view aria-live="polite"><span class="loader" aria-hidden="true"></span><p>관리자 세션과 프로모션 설정을 확인하고 있습니다.</p></section>
+      <section class="login-view" data-login-view hidden aria-label="프로모션 관리자 로그인">
+        <div class="login-copy"><p class="eyebrow">Administrator only</p><h1>프로모션 관리</h1><p>관리자 인증 후 쿠폰 조건과 첫 화면 팝업을 관리할 수 있습니다.</p></div>
+        <form class="login-form" data-login-form novalidate>
+          <div class="form-field"><label for="admin-password">관리자 비밀번호</label><div class="secret-control"><input id="admin-password" name="password" type="password" autocomplete="current-password" maxlength="256" required aria-describedby="admin-password-error" autofocus><button type="button" data-password-toggle aria-pressed="false" aria-label="비밀번호 표시">표시</button></div><p class="field-error" id="admin-password-error"></p></div>
+          <button class="button button--primary" type="submit"><span data-login-label>관리자 로그인</span><span aria-hidden="true">→</span></button><p class="form-status" data-login-status role="status" aria-live="polite"></p>
+        </form>
+      </section>
+      <section class="board-view" data-board-view hidden>
+        <div class="board-head"><div><p class="eyebrow">Promotion controls</p><h1 id="board-title" tabindex="-1">프로모션 관리</h1><p>활성화한 쿠폰만 주문서에 나타납니다. 저장한 팝업은 새 버전으로 한 번씩 노출됩니다.</p></div><button class="button button--quiet" type="button" data-logout>로그아웃</button></div>
+        <div class="inventory-note"><div><span>가격 기준</span><strong>+500</strong></div><p>제품 관리에 입력한 네이버 판매가보다 자사몰 판매가를 500원 높게 서버에서 계산합니다. 쿠폰은 주문 접수 시 다시 검증합니다.</p></div>
+        <p class="board-status" data-board-status role="status" aria-live="polite"></p>
+        <form class="promotion-form" data-promotion-form novalidate>
+          <section class="promotion-panel" aria-labelledby="popup-settings-title">
+            <div class="promotion-panel__head"><div><p class="eyebrow">Home popup</p><h2 id="popup-settings-title">첫 화면 팝업</h2></div><label class="admin-switch"><input type="checkbox" name="popupEnabled"><span>팝업 노출</span></label></div>
+            <div class="admin-field"><label for="popup-title">팝업 제목</label><input id="popup-title" name="popupTitle" type="text" minlength="2" maxlength="80" required aria-describedby="popup-title-error"><p class="field-error" id="popup-title-error"></p></div>
+            <div class="admin-field"><label for="popup-message">팝업 내용</label><textarea class="admin-textarea admin-textarea--compact resize-none" id="popup-message" name="popupMessage" rows="4" minlength="5" maxlength="500" required aria-describedby="popup-message-error"></textarea><p class="field-error" id="popup-message-error"></p></div>
+            <div class="product-form__pair"><div class="admin-field"><label for="popup-link-label">버튼 문구</label><input id="popup-link-label" name="popupLinkLabel" type="text" maxlength="40" required></div><div class="admin-field"><label for="popup-link-url">사이트 내부 주소</label><input id="popup-link-url" name="popupLinkUrl" type="text" maxlength="500" placeholder="/products.html" required aria-describedby="popup-link-url-error"><p class="field-error" id="popup-link-url-error"></p></div></div>
+          </section>
+          <section class="promotion-panel" aria-labelledby="coupon-settings-title">
+            <div class="promotion-panel__head"><div><p class="eyebrow">Order coupons</p><h2 id="coupon-settings-title">쿠폰 조건</h2><p>한 주문에 한 장만 적용됩니다. 최소 주문금액 0원은 제한 없음, 최대 할인금액 0원은 한도 없음입니다.</p></div></div>
+            <div class="coupon-admin-grid" data-coupon-admin-grid></div>
+          </section>
+          <div class="promotion-save"><p class="form-status" data-form-status role="status" aria-live="polite"></p><button class="button button--primary" type="submit"><span data-save-label>프로모션 저장</span><span aria-hidden="true">→</span></button></div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

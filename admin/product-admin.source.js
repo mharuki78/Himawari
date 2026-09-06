@@ -72,7 +72,7 @@ const allowedImageTypes = new Set(['image/jpeg', 'image/png', 'image/webp', 'ima
 const maxMainImageSize = 8 * 1024 * 1024;
 const maxGalleryImageSize = 15 * 1024 * 1024;
 const maxGallery = 5;
-const fieldNames = ['name', 'model', 'price', 'tagline', 'description', 'highlights', 'url', 'mainImage', 'gallery'];
+const fieldNames = ['name', 'model', 'price', 'naverDiscountRate', 'tagline', 'description', 'highlights', 'url', 'mainImage', 'gallery'];
 
 let products = [];
 let total = 0;
@@ -161,7 +161,8 @@ function beginEdit(product, trigger) {
 
   field('name').value = product.name;
   field('model').value = product.model;
-  field('price').value = String(product.price);
+  field('price').value = String(product.naverPrice || Math.max(0, Number(product.price || 0) - 500));
+  field('naverDiscountRate').value = product.naverDiscountRate === null || product.naverDiscountRate === undefined ? '' : String(product.naverDiscountRate);
   field('tagline').value = product.tagline;
   field('description').value = product.description;
   field('highlights').value = product.highlights.join('\n');
@@ -265,6 +266,7 @@ function validateForm() {
     name: String(field('name').value || '').trim(),
     model: String(field('model').value || '').trim(),
     price: Number(field('price').value),
+    naverDiscountRate: field('naverDiscountRate').value === '' ? null : Number(field('naverDiscountRate').value),
     tagline: String(field('tagline').value || '').trim(),
     description: String(field('description').value || '').trim(),
     highlights: String(field('highlights').value || '').split(/\r?\n/).map((item) => item.trim()).filter(Boolean),
@@ -277,6 +279,7 @@ function validateForm() {
   if (values.name.length < 2 || values.name.length > 160) errors.name = '제품명은 2~160자로 입력해 주세요.';
   if (!values.model || values.model.length > 50) errors.model = '모델명은 50자 이내로 입력해 주세요.';
   if (!Number.isInteger(values.price) || values.price < 1 || values.price > 10_000_000) errors.price = '가격은 1원 이상 1,000만원 이하로 입력해 주세요.';
+  if (values.naverDiscountRate !== null && (!Number.isInteger(values.naverDiscountRate) || values.naverDiscountRate < 0 || values.naverDiscountRate > 99)) errors.naverDiscountRate = '할인율은 0~99 사이의 정수로 입력해 주세요.';
   if (values.tagline.length < 5 || values.tagline.length > 120) errors.tagline = '한 줄 소개는 5~120자로 입력해 주세요.';
   if (values.description.length < 20 || values.description.length > 3_000) errors.description = '상세 설명은 20~3,000자로 입력해 주세요.';
   if (!values.highlights.length || values.highlights.length > 8 || values.highlights.some((item) => item.length > 100)) errors.highlights = '제품 포인트를 줄마다 입력해 주세요. 최대 8개까지 가능합니다.';
@@ -289,9 +292,11 @@ function validateForm() {
   const galleryError = validateGalleryFiles(galleryFiles);
   if (galleryError) errors.gallery = galleryError;
   if (editTarget) {
-    for (const name of ['name', 'model', 'price', 'tagline', 'description', 'url']) {
+    for (const name of ['name', 'model', 'tagline', 'description', 'url']) {
       if (errors[name] && values[name] === editTarget[name]) delete errors[name];
     }
+    if (errors.price && values.price === editTarget.naverPrice) delete errors.price;
+    if (errors.naverDiscountRate && values.naverDiscountRate === editTarget.naverDiscountRate) delete errors.naverDiscountRate;
     if (
       errors.highlights
       && values.highlights.length === editTarget.highlights.length
@@ -448,7 +453,12 @@ function renderRows() {
     identity.append(createImageCell(product));
     const price = document.createElement('td');
     price.className = 'product-table__price';
-    price.textContent = priceFormatter.format(product.price);
+    price.replaceChildren();
+    const sitePrice = document.createElement('strong');
+    sitePrice.textContent = priceFormatter.format(product.price);
+    const naverPrice = document.createElement('span');
+    naverPrice.textContent = `네이버 ${priceFormatter.format(product.naverPrice)}`;
+    price.append(sitePrice, naverPrice);
     const editCell = document.createElement('td');
     const edit = document.createElement('button');
     edit.type = 'button';
@@ -694,7 +704,8 @@ productForm.addEventListener('submit', async (event) => {
       requestId,
       name: values.name,
       model: values.model,
-      price: values.price,
+      naverPrice: values.price,
+      naverDiscountRate: values.naverDiscountRate,
       tagline: values.tagline,
       description: values.description,
       highlights: values.highlights,

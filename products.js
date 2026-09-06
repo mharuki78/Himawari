@@ -23,14 +23,21 @@ export function productIdentifier(product, index = 0) {
 }
 
 function normalizeProducts(products) {
-  return (Array.isArray(products) ? products : []).map((product, index) => ({
-    ...product,
-    id: productIdentifier(product, index),
-    model: product.model || product.name?.match(/No\.\d+[A-Za-z]*/i)?.[0] || 'Himawari',
-    description: product.description || product.tagline || '',
-    highlights: Array.isArray(product.highlights) ? product.highlights : [],
-    gallery: Array.isArray(product.gallery) ? product.gallery : [],
-  }));
+  return (Array.isArray(products) ? products : []).map((product, index) => {
+    const hasNaverPrice = Number(product.naverPrice) > 0;
+    const naverPrice = hasNaverPrice ? Number(product.naverPrice) : Number(product.price || 0);
+    return {
+      ...product,
+      id: productIdentifier(product, index),
+      model: product.model || product.name?.match(/No\.\d+[A-Za-z]*/i)?.[0] || 'Himawari',
+      naverPrice,
+      price: hasNaverPrice ? Number(product.price || naverPrice + 500) : naverPrice + 500,
+      naverDiscountRate: Number.isInteger(Number(product.naverDiscountRate)) ? Number(product.naverDiscountRate) : null,
+      description: product.description || product.tagline || '',
+      highlights: Array.isArray(product.highlights) ? product.highlights : [],
+      gallery: Array.isArray(product.gallery) ? product.gallery : [],
+    };
+  });
 }
 
 export async function fetchProducts() {
@@ -148,6 +155,26 @@ function productNameHeading(product) {
   return heading;
 }
 
+function createPriceBlock(product) {
+  const block = document.createElement('div');
+  block.className = 'product-price-block';
+  if (Number.isInteger(product.naverDiscountRate) && product.naverDiscountRate > 0) {
+    const badge = document.createElement('span');
+    badge.className = 'product-discount-badge';
+    badge.textContent = `네이버 ${product.naverDiscountRate}% 할인`;
+    block.append(badge);
+  }
+  const price = document.createElement('strong');
+  price.textContent = priceFormatter.format(product.price);
+  block.append(price);
+  if (Number(product.naverPrice) > 0) {
+    const reference = document.createElement('small');
+    reference.textContent = `네이버 판매가 ${priceFormatter.format(product.naverPrice)} · 자사몰 +500원`;
+    block.append(reference);
+  }
+  return block;
+}
+
 function createProductCard(product) {
   const article = document.createElement('article');
   article.className = 'store-product-card card reveal';
@@ -161,12 +188,10 @@ function createProductCard(product) {
   tagline.textContent = product.tagline || '일상에 자연스럽게 맞는 가방입니다.';
   const footer = document.createElement('div');
   footer.className = 'store-product-footer';
-  const price = document.createElement('strong');
-  price.textContent = priceFormatter.format(product.price);
   const actions = document.createElement('div');
   actions.className = 'store-product-actions';
   actions.append(createDetailLink(product), createCartButton(product), createWishlistButton(product), createDirectBuyLink(product));
-  footer.append(price, actions);
+  footer.append(createPriceBlock(product), actions);
   body.append(label, productNameHeading(product), tagline, footer);
   article.append(createProductMedia(product, 'store-product-media'), body);
   return article;
@@ -192,8 +217,6 @@ function createFeaturedProduct(product) {
   });
   const footer = document.createElement('div');
   footer.className = 'featured-product-footer';
-  const price = document.createElement('strong');
-  price.textContent = priceFormatter.format(product.price);
   const actions = document.createElement('div');
   actions.className = 'featured-product-actions';
   actions.append(
@@ -202,7 +225,7 @@ function createFeaturedProduct(product) {
     createWishlistButton(product),
     createDirectBuyLink(product, 'direct-buy-link featured-direct-buy-link'),
   );
-  footer.append(price, actions);
+  footer.append(createPriceBlock(product), actions);
   content.append(label, productNameHeading(product), tagline, highlights, footer);
   article.append(createProductMedia(product, 'featured-product-media'), content);
   return article;

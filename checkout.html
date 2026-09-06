@@ -96,6 +96,16 @@
             </div>
           </section>
 
+          <section class="checkout-section checkout-coupons" aria-labelledby="coupon-title">
+            <div class="checkout-section__head"><p class="kicker">Coupon</p><h2 id="coupon-title">쿠폰 적용</h2></div>
+            <fieldset class="coupon-fieldset" data-coupon-fieldset tabindex="-1">
+              <legend class="sr-only">주문에 적용할 쿠폰 한 장 선택</legend>
+              <div class="coupon-options" data-coupon-options><p>사용 가능한 쿠폰을 확인하고 있습니다.</p></div>
+            </fieldset>
+            <p class="order-field-help">한 주문에 쿠폰 한 장만 사용할 수 있습니다. 할인 쿠폰은 상품금액에 적용되며 배송비는 할인 전 상품금액을 기준으로 계산합니다.</p>
+            <p class="order-field-error" id="coupon-error"></p>
+          </section>
+
           <section class="checkout-section" aria-labelledby="payment-title">
             <div class="checkout-section__head"><p class="kicker">Payment</p><h2 id="payment-title">결제 상태</h2></div>
             <div class="payment-pending-card">
@@ -123,6 +133,7 @@
           <div class="checkout-items" data-checkout-items></div>
           <dl class="checkout-totals">
             <div><dt>상품금액</dt><dd data-order-subtotal>0원</dd></div>
+            <div data-order-discount-row hidden><dt>쿠폰 할인</dt><dd data-order-discount>−0원</dd></div>
             <div><dt>배송비</dt><dd data-order-shipping>0원</dd></div>
             <div class="checkout-total"><dt>총 주문금액</dt><dd data-order-total>0원</dd></div>
           </dl>

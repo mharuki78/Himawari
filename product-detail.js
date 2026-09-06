@@ -85,6 +85,11 @@ function renderProduct(product) {
   document.querySelector('[data-name]').textContent = product.name;
   document.querySelector('[data-tagline]').textContent = product.tagline;
   document.querySelector('[data-price]').textContent = priceFormatter.format(product.price);
+  const naverPrice = document.querySelector('[data-naver-price]');
+  const discountRate = document.querySelector('[data-naver-discount]');
+  naverPrice.textContent = Number(product.naverPrice) > 0 ? `네이버 판매가 ${priceFormatter.format(product.naverPrice)} · 자사몰 +500원` : '';
+  discountRate.hidden = !(Number.isInteger(product.naverDiscountRate) && product.naverDiscountRate > 0);
+  discountRate.textContent = discountRate.hidden ? '' : `네이버 ${product.naverDiscountRate}% 할인`;
   document.querySelector('[data-main-image]').replaceChildren(createProductImage(product.image, product.name, { eager: true }));
 
   const cart = document.querySelector('[data-detail-cart]');

@@ -23,6 +23,7 @@
         <a href="inquiries.html">문의 관리</a>
         <a href="products.html" aria-current="page">제품 관리</a>
         <a href="orders.html">주문 관리</a>
+        <a href="promotions.html">프로모션</a>
       </nav>
       <a class="admin-header__site" href="../products.html">제품 화면 보기 <span aria-hidden="true">↗</span></a>
     </header>
@@ -114,16 +115,23 @@
                 <p class="field-error" id="product-name-error"></p>
               </div>
 
-              <div class="product-form__pair">
+              <div class="product-form__pair product-form__pair--pricing">
                 <div class="admin-field">
                   <label for="product-model">모델명 <span aria-hidden="true">*</span></label>
                   <input id="product-model" name="model" type="text" autocomplete="off" maxlength="50" placeholder="예: No.1884" required aria-describedby="product-model-error">
                   <p class="field-error" id="product-model-error"></p>
                 </div>
                 <div class="admin-field">
-                  <label for="product-price">판매가 <span aria-hidden="true">*</span></label>
-                  <input id="product-price" name="price" type="number" inputmode="numeric" min="1" max="10000000" step="100" placeholder="132000" required aria-describedby="product-price-error">
+                  <label for="product-price">네이버 판매가 <span aria-hidden="true">*</span></label>
+                  <input id="product-price" name="price" type="number" inputmode="numeric" min="1" max="10000000" step="100" placeholder="132000" required aria-describedby="product-price-help product-price-error">
+                  <p class="field-help" id="product-price-help">자사몰에는 이 금액보다 500원 높게 자동 표시됩니다.</p>
                   <p class="field-error" id="product-price-error"></p>
+                </div>
+                <div class="admin-field">
+                  <label for="product-naver-discount">네이버 할인율</label>
+                  <input id="product-naver-discount" name="naverDiscountRate" type="number" inputmode="numeric" min="0" max="99" step="1" placeholder="예: 20" aria-describedby="product-naver-discount-help product-naver-discount-error">
+                  <p class="field-help" id="product-naver-discount-help">확인한 할인율만 입력하세요. 비워두면 공개 화면에 표시하지 않습니다.</p>
+                  <p class="field-error" id="product-naver-discount-error"></p>
                 </div>
               </div>
 

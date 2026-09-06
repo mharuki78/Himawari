@@ -41,18 +41,18 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// node_modules/is-buffer/index.js
+// node_modules/.pnpm/is-buffer@2.0.5/node_modules/is-buffer/index.js
 var require_is_buffer = __commonJS({
-  "node_modules/is-buffer/index.js"(exports, module) {
+  "node_modules/.pnpm/is-buffer@2.0.5/node_modules/is-buffer/index.js"(exports, module) {
     module.exports = function isBuffer2(obj) {
       return obj != null && obj.constructor != null && typeof obj.constructor.isBuffer === "function" && obj.constructor.isBuffer(obj);
     };
   }
 });
 
-// node_modules/@vercel/oidc/dist/get-context.js
+// node_modules/.pnpm/@vercel+oidc@3.8.5/node_modules/@vercel/oidc/dist/get-context.js
 var require_get_context = __commonJS({
-  "node_modules/@vercel/oidc/dist/get-context.js"(exports, module) {
+  "node_modules/.pnpm/@vercel+oidc@3.8.5/node_modules/@vercel/oidc/dist/get-context.js"(exports, module) {
     "use strict";
     var __defProp2 = Object.defineProperty;
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
@@ -85,19 +85,19 @@ var require_get_context = __commonJS({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/webcrypto.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/webcrypto.js
 var webcrypto_default, isCryptoKey;
 var init_webcrypto = __esm({
-  "node_modules/jose/dist/browser/runtime/webcrypto.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/webcrypto.js"() {
     webcrypto_default = crypto;
     isCryptoKey = (key) => key instanceof CryptoKey;
   }
 });
 
-// node_modules/jose/dist/browser/runtime/digest.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/digest.js
 var digest, digest_default;
 var init_digest = __esm({
-  "node_modules/jose/dist/browser/runtime/digest.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/digest.js"() {
     init_webcrypto();
     digest = async (algorithm, data) => {
       const subtleDigest = `SHA-${algorithm.slice(-3)}`;
@@ -107,7 +107,7 @@ var init_digest = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/lib/buffer_utils.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/buffer_utils.js
 function concat(...buffers) {
   const size = buffers.reduce((acc, { length }) => acc + length, 0);
   const buf = new Uint8Array(size);
@@ -157,7 +157,7 @@ async function concatKdf(secret, bits, value) {
 }
 var encoder, decoder, MAX_INT32;
 var init_buffer_utils = __esm({
-  "node_modules/jose/dist/browser/lib/buffer_utils.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/buffer_utils.js"() {
     init_digest();
     encoder = new TextEncoder();
     decoder = new TextDecoder();
@@ -165,10 +165,10 @@ var init_buffer_utils = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/base64url.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/base64url.js
 var encodeBase64, encode, decodeBase64, decode;
 var init_base64url = __esm({
-  "node_modules/jose/dist/browser/runtime/base64url.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/base64url.js"() {
     init_buffer_utils();
     encodeBase64 = (input) => {
       let unencoded = input;
@@ -208,7 +208,7 @@ var init_base64url = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/util/errors.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/util/errors.js
 var errors_exports = {};
 __export(errors_exports, {
   JOSEAlgNotAllowed: () => JOSEAlgNotAllowed,
@@ -229,7 +229,7 @@ __export(errors_exports, {
 });
 var JOSEError, JWTClaimValidationFailed, JWTExpired, JOSEAlgNotAllowed, JOSENotSupported, JWEDecryptionFailed, JWEInvalid, JWSInvalid, JWTInvalid, JWKInvalid, JWKSInvalid, JWKSNoMatchingKey, JWKSMultipleMatchingKeys, JWKSTimeout, JWSSignatureVerificationFailed;
 var init_errors = __esm({
-  "node_modules/jose/dist/browser/util/errors.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/util/errors.js"() {
     JOSEError = class extends Error {
       constructor(message2, options) {
         super(message2, options);
@@ -346,16 +346,16 @@ var init_errors = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/random.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/random.js
 var random_default;
 var init_random = __esm({
-  "node_modules/jose/dist/browser/runtime/random.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/random.js"() {
     init_webcrypto();
     random_default = webcrypto_default.getRandomValues.bind(webcrypto_default);
   }
 });
 
-// node_modules/jose/dist/browser/lib/iv.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/iv.js
 function bitLength(alg) {
   switch (alg) {
     case "A128GCM":
@@ -375,17 +375,17 @@ function bitLength(alg) {
 }
 var iv_default;
 var init_iv = __esm({
-  "node_modules/jose/dist/browser/lib/iv.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/iv.js"() {
     init_errors();
     init_random();
     iv_default = (alg) => random_default(new Uint8Array(bitLength(alg) >> 3));
   }
 });
 
-// node_modules/jose/dist/browser/lib/check_iv_length.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/check_iv_length.js
 var checkIvLength, check_iv_length_default;
 var init_check_iv_length = __esm({
-  "node_modules/jose/dist/browser/lib/check_iv_length.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/check_iv_length.js"() {
     init_errors();
     init_iv();
     checkIvLength = (enc, iv) => {
@@ -397,10 +397,10 @@ var init_check_iv_length = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/check_cek_length.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/check_cek_length.js
 var checkCekLength, check_cek_length_default;
 var init_check_cek_length = __esm({
-  "node_modules/jose/dist/browser/runtime/check_cek_length.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/check_cek_length.js"() {
     init_errors();
     checkCekLength = (cek, expected) => {
       const actual = cek.byteLength << 3;
@@ -412,10 +412,10 @@ var init_check_cek_length = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/timing_safe_equal.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/timing_safe_equal.js
 var timingSafeEqual, timing_safe_equal_default;
 var init_timing_safe_equal = __esm({
-  "node_modules/jose/dist/browser/runtime/timing_safe_equal.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/timing_safe_equal.js"() {
     timingSafeEqual = (a, b) => {
       if (!(a instanceof Uint8Array)) {
         throw new TypeError("First argument must be a buffer");
@@ -438,7 +438,7 @@ var init_timing_safe_equal = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/lib/crypto_key.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/crypto_key.js
 function unusable(name, prop = "algorithm.name") {
   return new TypeError(`CryptoKey does not support this operation, its ${prop} must be ${name}`);
 }
@@ -595,11 +595,11 @@ function checkEncCryptoKey(key, alg, ...usages) {
   checkUsage(key, usages);
 }
 var init_crypto_key = __esm({
-  "node_modules/jose/dist/browser/lib/crypto_key.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/crypto_key.js"() {
   }
 });
 
-// node_modules/jose/dist/browser/lib/invalid_key_input.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/invalid_key_input.js
 function message(msg, actual, ...types2) {
   types2 = types2.filter(Boolean);
   if (types2.length > 2) {
@@ -626,17 +626,17 @@ function withAlg(alg, actual, ...types2) {
 }
 var invalid_key_input_default;
 var init_invalid_key_input = __esm({
-  "node_modules/jose/dist/browser/lib/invalid_key_input.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/invalid_key_input.js"() {
     invalid_key_input_default = (actual, ...types2) => {
       return message("Key must be ", actual, ...types2);
     };
   }
 });
 
-// node_modules/jose/dist/browser/runtime/is_key_like.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/is_key_like.js
 var is_key_like_default, types;
 var init_is_key_like = __esm({
-  "node_modules/jose/dist/browser/runtime/is_key_like.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/is_key_like.js"() {
     init_webcrypto();
     is_key_like_default = (key) => {
       if (isCryptoKey(key)) {
@@ -648,7 +648,7 @@ var init_is_key_like = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/decrypt.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/decrypt.js
 async function cbcDecrypt(enc, cek, ciphertext, iv, tag2, aad) {
   if (!(cek instanceof Uint8Array)) {
     throw new TypeError(invalid_key_input_default(cek, "Uint8Array"));
@@ -700,7 +700,7 @@ async function gcmDecrypt(enc, cek, ciphertext, iv, tag2, aad) {
 }
 var decrypt, decrypt_default;
 var init_decrypt = __esm({
-  "node_modules/jose/dist/browser/runtime/decrypt.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/decrypt.js"() {
     init_buffer_utils();
     init_check_iv_length();
     init_check_cek_length();
@@ -742,10 +742,10 @@ var init_decrypt = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/lib/is_disjoint.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/is_disjoint.js
 var isDisjoint, is_disjoint_default;
 var init_is_disjoint = __esm({
-  "node_modules/jose/dist/browser/lib/is_disjoint.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/is_disjoint.js"() {
     isDisjoint = (...headers) => {
       const sources = headers.filter(Boolean);
       if (sources.length === 0 || sources.length === 1) {
@@ -771,7 +771,7 @@ var init_is_disjoint = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/lib/is_object.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/is_object.js
 function isObjectLike(value) {
   return typeof value === "object" && value !== null;
 }
@@ -789,14 +789,14 @@ function isObject(input) {
   return Object.getPrototypeOf(input) === proto;
 }
 var init_is_object = __esm({
-  "node_modules/jose/dist/browser/lib/is_object.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/is_object.js"() {
   }
 });
 
-// node_modules/jose/dist/browser/runtime/bogus.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/bogus.js
 var bogusWebCrypto, bogus_default;
 var init_bogus = __esm({
-  "node_modules/jose/dist/browser/runtime/bogus.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/bogus.js"() {
     bogusWebCrypto = [
       { hash: "SHA-256", name: "HMAC" },
       true,
@@ -806,7 +806,7 @@ var init_bogus = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/aeskw.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/aeskw.js
 function checkKeySize(key, alg) {
   if (key.algorithm.length !== parseInt(alg.slice(1, 4), 10)) {
     throw new TypeError(`Invalid key size for alg: ${alg}`);
@@ -824,7 +824,7 @@ function getCryptoKey(key, alg, usage) {
 }
 var wrap, unwrap;
 var init_aeskw = __esm({
-  "node_modules/jose/dist/browser/runtime/aeskw.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/aeskw.js"() {
     init_bogus();
     init_webcrypto();
     init_crypto_key();
@@ -845,7 +845,7 @@ var init_aeskw = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/ecdhes.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/ecdhes.js
 async function deriveKey(publicKey, privateKey, algorithm, keyLength, apu = new Uint8Array(0), apv = new Uint8Array(0)) {
   if (!isCryptoKey(publicKey)) {
     throw new TypeError(invalid_key_input_default(publicKey, ...types));
@@ -883,7 +883,7 @@ function ecdhAllowed(key) {
   return ["P-256", "P-384", "P-521"].includes(key.algorithm.namedCurve) || key.algorithm.name === "X25519" || key.algorithm.name === "X448";
 }
 var init_ecdhes = __esm({
-  "node_modules/jose/dist/browser/runtime/ecdhes.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/ecdhes.js"() {
     init_buffer_utils();
     init_webcrypto();
     init_crypto_key();
@@ -892,19 +892,19 @@ var init_ecdhes = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/lib/check_p2s.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/check_p2s.js
 function checkP2s(p2s2) {
   if (!(p2s2 instanceof Uint8Array) || p2s2.length < 8) {
     throw new JWEInvalid("PBES2 Salt Input must be 8 or more octets");
   }
 }
 var init_check_p2s = __esm({
-  "node_modules/jose/dist/browser/lib/check_p2s.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/check_p2s.js"() {
     init_errors();
   }
 });
 
-// node_modules/jose/dist/browser/runtime/pbes2kw.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/pbes2kw.js
 function getCryptoKey2(key, alg) {
   if (key instanceof Uint8Array) {
     return webcrypto_default.subtle.importKey("raw", key, "PBKDF2", false, ["deriveBits"]);
@@ -940,7 +940,7 @@ async function deriveKey2(p2s2, alg, p2c, key) {
 }
 var encrypt, decrypt2;
 var init_pbes2kw = __esm({
-  "node_modules/jose/dist/browser/runtime/pbes2kw.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/pbes2kw.js"() {
     init_random();
     init_buffer_utils();
     init_base64url();
@@ -962,7 +962,7 @@ var init_pbes2kw = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/subtle_rsaes.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/subtle_rsaes.js
 function subtleRsaEs(alg) {
   switch (alg) {
     case "RSA-OAEP":
@@ -975,15 +975,15 @@ function subtleRsaEs(alg) {
   }
 }
 var init_subtle_rsaes = __esm({
-  "node_modules/jose/dist/browser/runtime/subtle_rsaes.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/subtle_rsaes.js"() {
     init_errors();
   }
 });
 
-// node_modules/jose/dist/browser/runtime/check_key_length.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/check_key_length.js
 var check_key_length_default;
 var init_check_key_length = __esm({
-  "node_modules/jose/dist/browser/runtime/check_key_length.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/check_key_length.js"() {
     check_key_length_default = (alg, key) => {
       if (alg.startsWith("RS") || alg.startsWith("PS")) {
         const { modulusLength } = key.algorithm;
@@ -995,10 +995,10 @@ var init_check_key_length = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/rsaes.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/rsaes.js
 var encrypt2, decrypt3;
 var init_rsaes = __esm({
-  "node_modules/jose/dist/browser/runtime/rsaes.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/rsaes.js"() {
     init_subtle_rsaes();
     init_bogus();
     init_webcrypto();
@@ -1039,7 +1039,7 @@ var init_rsaes = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/lib/is_jwk.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/is_jwk.js
 function isJWK(key) {
   return isObject(key) && typeof key.kty === "string";
 }
@@ -1053,12 +1053,12 @@ function isSecretJWK(key) {
   return isJWK(key) && key.kty === "oct" && typeof key.k === "string";
 }
 var init_is_jwk = __esm({
-  "node_modules/jose/dist/browser/lib/is_jwk.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/is_jwk.js"() {
     init_is_object();
   }
 });
 
-// node_modules/jose/dist/browser/runtime/jwk_to_key.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/jwk_to_key.js
 function subtleMapping(jwk) {
   let algorithm;
   let keyUsages;
@@ -1147,7 +1147,7 @@ function subtleMapping(jwk) {
 }
 var parse, jwk_to_key_default;
 var init_jwk_to_key = __esm({
-  "node_modules/jose/dist/browser/runtime/jwk_to_key.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/jwk_to_key.js"() {
     init_webcrypto();
     init_errors();
     parse = async (jwk) => {
@@ -1169,10 +1169,10 @@ var init_jwk_to_key = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/normalize_key.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/normalize_key.js
 var exportKeyValue, privCache, pubCache, isKeyObject, importAndCache, normalizePublicKey, normalizePrivateKey, normalize_key_default;
 var init_normalize_key = __esm({
-  "node_modules/jose/dist/browser/runtime/normalize_key.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/normalize_key.js"() {
     init_is_jwk();
     init_base64url();
     init_jwk_to_key();
@@ -1241,7 +1241,7 @@ var init_normalize_key = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/lib/cek.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/cek.js
 function bitLength2(alg) {
   switch (alg) {
     case "A128GCM":
@@ -1261,17 +1261,17 @@ function bitLength2(alg) {
 }
 var cek_default;
 var init_cek = __esm({
-  "node_modules/jose/dist/browser/lib/cek.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/cek.js"() {
     init_errors();
     init_random();
     cek_default = (alg) => random_default(new Uint8Array(bitLength2(alg) >> 3));
   }
 });
 
-// node_modules/jose/dist/browser/lib/format_pem.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/format_pem.js
 var format_pem_default;
 var init_format_pem = __esm({
-  "node_modules/jose/dist/browser/lib/format_pem.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/format_pem.js"() {
     format_pem_default = (b64, descriptor) => {
       const newlined = (b64.match(/.{1,64}/g) || []).join("\n");
       return `-----BEGIN ${descriptor}-----
@@ -1281,7 +1281,7 @@ ${newlined}
   }
 });
 
-// node_modules/jose/dist/browser/runtime/asn1.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/asn1.js
 function getElement(seq) {
   const result = [];
   let next = 0;
@@ -1350,7 +1350,7 @@ function getSPKI(x509) {
 }
 var genericExport, toSPKI, toPKCS8, findOid, getNamedCurve2, genericImport, fromPKCS8, fromSPKI, fromX509;
 var init_asn1 = __esm({
-  "node_modules/jose/dist/browser/runtime/asn1.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/asn1.js"() {
     init_webcrypto();
     init_invalid_key_input();
     init_base64url();
@@ -1488,7 +1488,7 @@ var init_asn1 = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/key/import.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/key/import.js
 async function importSPKI(spki, alg, options) {
   if (typeof spki !== "string" || spki.indexOf("-----BEGIN PUBLIC KEY-----") !== 0) {
     throw new TypeError('"spki" must be SPKI formatted string');
@@ -1530,7 +1530,7 @@ async function importJWK(jwk, alg) {
   }
 }
 var init_import = __esm({
-  "node_modules/jose/dist/browser/key/import.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/key/import.js"() {
     init_base64url();
     init_asn1();
     init_jwk_to_key();
@@ -1539,7 +1539,7 @@ var init_import = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/lib/check_key_type.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/check_key_type.js
 function checkKeyType(allowJwk, alg, key, usage) {
   const symmetric = alg.startsWith("HS") || alg === "dir" || alg.startsWith("PBES2") || /^A\d{3}(?:GCM)?KW$/.test(alg);
   if (symmetric) {
@@ -1550,7 +1550,7 @@ function checkKeyType(allowJwk, alg, key, usage) {
 }
 var tag, jwkMatchesOp, symmetricTypeCheck, asymmetricTypeCheck, check_key_type_default, checkKeyTypeWithJwk;
 var init_check_key_type = __esm({
-  "node_modules/jose/dist/browser/lib/check_key_type.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/check_key_type.js"() {
     init_invalid_key_input();
     init_is_key_like();
     init_is_jwk();
@@ -1619,7 +1619,7 @@ var init_check_key_type = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/encrypt.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/encrypt.js
 async function cbcEncrypt(enc, plaintext, cek, iv, aad) {
   if (!(cek instanceof Uint8Array)) {
     throw new TypeError(invalid_key_input_default(cek, "Uint8Array"));
@@ -1658,7 +1658,7 @@ async function gcmEncrypt(enc, plaintext, cek, iv, aad) {
 }
 var encrypt3, encrypt_default;
 var init_encrypt = __esm({
-  "node_modules/jose/dist/browser/runtime/encrypt.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/encrypt.js"() {
     init_buffer_utils();
     init_check_iv_length();
     init_check_cek_length();
@@ -1700,7 +1700,7 @@ var init_encrypt = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/lib/aesgcmkw.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/aesgcmkw.js
 async function wrap2(alg, key, cek, iv) {
   const jweAlgorithm = alg.slice(0, 7);
   const wrapped = await encrypt_default(jweAlgorithm, cek, key, iv, new Uint8Array(0));
@@ -1715,14 +1715,14 @@ async function unwrap2(alg, key, encryptedKey, iv, tag2) {
   return decrypt_default(jweAlgorithm, key, encryptedKey, iv, tag2, new Uint8Array(0));
 }
 var init_aesgcmkw = __esm({
-  "node_modules/jose/dist/browser/lib/aesgcmkw.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/aesgcmkw.js"() {
     init_encrypt();
     init_decrypt();
     init_base64url();
   }
 });
 
-// node_modules/jose/dist/browser/lib/decrypt_key_management.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/decrypt_key_management.js
 async function decryptKeyManagement(alg, key, encryptedKey, joseHeader, options) {
   check_key_type_default(alg, key, "decrypt");
   key = await normalize_key_default.normalizePrivateKey?.(key, alg) || key;
@@ -1836,7 +1836,7 @@ async function decryptKeyManagement(alg, key, encryptedKey, joseHeader, options)
 }
 var decrypt_key_management_default;
 var init_decrypt_key_management = __esm({
-  "node_modules/jose/dist/browser/lib/decrypt_key_management.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/decrypt_key_management.js"() {
     init_aeskw();
     init_ecdhes();
     init_pbes2kw();
@@ -1853,7 +1853,7 @@ var init_decrypt_key_management = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/lib/validate_crit.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/validate_crit.js
 function validateCrit(Err, recognizedDefault, recognizedOption, protectedHeader, joseHeader) {
   if (joseHeader.crit !== void 0 && protectedHeader?.crit === void 0) {
     throw new Err('"crit" (Critical) Header Parameter MUST be integrity protected');
@@ -1885,16 +1885,16 @@ function validateCrit(Err, recognizedDefault, recognizedOption, protectedHeader,
 }
 var validate_crit_default;
 var init_validate_crit = __esm({
-  "node_modules/jose/dist/browser/lib/validate_crit.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/validate_crit.js"() {
     init_errors();
     validate_crit_default = validateCrit;
   }
 });
 
-// node_modules/jose/dist/browser/lib/validate_algorithms.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/validate_algorithms.js
 var validateAlgorithms, validate_algorithms_default;
 var init_validate_algorithms = __esm({
-  "node_modules/jose/dist/browser/lib/validate_algorithms.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/validate_algorithms.js"() {
     validateAlgorithms = (option, algorithms) => {
       if (algorithms !== void 0 && (!Array.isArray(algorithms) || algorithms.some((s) => typeof s !== "string"))) {
         throw new TypeError(`"${option}" option must be an array of strings`);
@@ -1908,7 +1908,7 @@ var init_validate_algorithms = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jwe/flattened/decrypt.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwe/flattened/decrypt.js
 async function flattenedDecrypt(jwe, key, options) {
   if (!isObject(jwe)) {
     throw new JWEInvalid("Flattened JWE must be an object");
@@ -2051,7 +2051,7 @@ async function flattenedDecrypt(jwe, key, options) {
   return result;
 }
 var init_decrypt2 = __esm({
-  "node_modules/jose/dist/browser/jwe/flattened/decrypt.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwe/flattened/decrypt.js"() {
     init_base64url();
     init_decrypt();
     init_errors();
@@ -2065,7 +2065,7 @@ var init_decrypt2 = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jwe/compact/decrypt.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwe/compact/decrypt.js
 async function compactDecrypt(jwe, key, options) {
   if (jwe instanceof Uint8Array) {
     jwe = decoder.decode(jwe);
@@ -2091,14 +2091,14 @@ async function compactDecrypt(jwe, key, options) {
   return result;
 }
 var init_decrypt3 = __esm({
-  "node_modules/jose/dist/browser/jwe/compact/decrypt.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwe/compact/decrypt.js"() {
     init_decrypt2();
     init_errors();
     init_buffer_utils();
   }
 });
 
-// node_modules/jose/dist/browser/jwe/general/decrypt.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwe/general/decrypt.js
 async function generalDecrypt(jwe, key, options) {
   if (!isObject(jwe)) {
     throw new JWEInvalid("General JWE must be an object");
@@ -2127,25 +2127,25 @@ async function generalDecrypt(jwe, key, options) {
   throw new JWEDecryptionFailed();
 }
 var init_decrypt4 = __esm({
-  "node_modules/jose/dist/browser/jwe/general/decrypt.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwe/general/decrypt.js"() {
     init_decrypt2();
     init_errors();
     init_is_object();
   }
 });
 
-// node_modules/jose/dist/browser/lib/private_symbols.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/private_symbols.js
 var unprotected;
 var init_private_symbols = __esm({
-  "node_modules/jose/dist/browser/lib/private_symbols.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/private_symbols.js"() {
     unprotected = /* @__PURE__ */ Symbol();
   }
 });
 
-// node_modules/jose/dist/browser/runtime/key_to_jwk.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/key_to_jwk.js
 var keyToJWK, key_to_jwk_default;
 var init_key_to_jwk = __esm({
-  "node_modules/jose/dist/browser/runtime/key_to_jwk.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/key_to_jwk.js"() {
     init_webcrypto();
     init_invalid_key_input();
     init_base64url();
@@ -2170,7 +2170,7 @@ var init_key_to_jwk = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/key/export.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/key/export.js
 async function exportSPKI(key) {
   return toSPKI(key);
 }
@@ -2181,14 +2181,14 @@ async function exportJWK(key) {
   return key_to_jwk_default(key);
 }
 var init_export = __esm({
-  "node_modules/jose/dist/browser/key/export.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/key/export.js"() {
     init_asn1();
     init_asn1();
     init_key_to_jwk();
   }
 });
 
-// node_modules/jose/dist/browser/lib/encrypt_key_management.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/encrypt_key_management.js
 async function encryptKeyManagement(alg, enc, key, providedCek, providedParameters = {}) {
   let encryptedKey;
   let parameters;
@@ -2268,7 +2268,7 @@ async function encryptKeyManagement(alg, enc, key, providedCek, providedParamete
 }
 var encrypt_key_management_default;
 var init_encrypt_key_management = __esm({
-  "node_modules/jose/dist/browser/lib/encrypt_key_management.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/encrypt_key_management.js"() {
     init_aeskw();
     init_ecdhes();
     init_pbes2kw();
@@ -2284,10 +2284,10 @@ var init_encrypt_key_management = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jwe/flattened/encrypt.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwe/flattened/encrypt.js
 var FlattenedEncrypt;
 var init_encrypt2 = __esm({
-  "node_modules/jose/dist/browser/jwe/flattened/encrypt.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwe/flattened/encrypt.js"() {
     init_base64url();
     init_private_symbols();
     init_encrypt();
@@ -2439,10 +2439,10 @@ var init_encrypt2 = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jwe/general/encrypt.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwe/general/encrypt.js
 var IndividualRecipient, GeneralEncrypt;
 var init_encrypt3 = __esm({
-  "node_modules/jose/dist/browser/jwe/general/encrypt.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwe/general/encrypt.js"() {
     init_encrypt2();
     init_private_symbols();
     init_errors();
@@ -2605,7 +2605,7 @@ var init_encrypt3 = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/subtle_dsa.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/subtle_dsa.js
 function subtleDsa(alg, algorithm) {
   const hash = `SHA-${alg.slice(-3)}`;
   switch (alg) {
@@ -2634,12 +2634,12 @@ function subtleDsa(alg, algorithm) {
   }
 }
 var init_subtle_dsa = __esm({
-  "node_modules/jose/dist/browser/runtime/subtle_dsa.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/subtle_dsa.js"() {
     init_errors();
   }
 });
 
-// node_modules/jose/dist/browser/runtime/get_sign_verify_key.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/get_sign_verify_key.js
 async function getCryptoKey3(alg, key, usage) {
   if (usage === "sign") {
     key = await normalize_key_default.normalizePrivateKey(key, alg);
@@ -2660,7 +2660,7 @@ async function getCryptoKey3(alg, key, usage) {
   throw new TypeError(invalid_key_input_default(key, ...types, "Uint8Array", "JSON Web Key"));
 }
 var init_get_sign_verify_key = __esm({
-  "node_modules/jose/dist/browser/runtime/get_sign_verify_key.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/get_sign_verify_key.js"() {
     init_webcrypto();
     init_crypto_key();
     init_invalid_key_input();
@@ -2669,10 +2669,10 @@ var init_get_sign_verify_key = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/verify.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/verify.js
 var verify, verify_default;
 var init_verify = __esm({
-  "node_modules/jose/dist/browser/runtime/verify.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/verify.js"() {
     init_subtle_dsa();
     init_webcrypto();
     init_check_key_length();
@@ -2691,7 +2691,7 @@ var init_verify = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jws/flattened/verify.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jws/flattened/verify.js
 async function flattenedVerify(jws, key, options) {
   if (!isObject(jws)) {
     throw new JWSInvalid("Flattened JWS must be an object");
@@ -2797,7 +2797,7 @@ async function flattenedVerify(jws, key, options) {
   return result;
 }
 var init_verify2 = __esm({
-  "node_modules/jose/dist/browser/jws/flattened/verify.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jws/flattened/verify.js"() {
     init_base64url();
     init_verify();
     init_errors();
@@ -2812,7 +2812,7 @@ var init_verify2 = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jws/compact/verify.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jws/compact/verify.js
 async function compactVerify(jws, key, options) {
   if (jws instanceof Uint8Array) {
     jws = decoder.decode(jws);
@@ -2832,14 +2832,14 @@ async function compactVerify(jws, key, options) {
   return result;
 }
 var init_verify3 = __esm({
-  "node_modules/jose/dist/browser/jws/compact/verify.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jws/compact/verify.js"() {
     init_verify2();
     init_errors();
     init_buffer_utils();
   }
 });
 
-// node_modules/jose/dist/browser/jws/general/verify.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jws/general/verify.js
 async function generalVerify(jws, key, options) {
   if (!isObject(jws)) {
     throw new JWSInvalid("General JWS must be an object");
@@ -2861,25 +2861,25 @@ async function generalVerify(jws, key, options) {
   throw new JWSSignatureVerificationFailed();
 }
 var init_verify4 = __esm({
-  "node_modules/jose/dist/browser/jws/general/verify.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jws/general/verify.js"() {
     init_verify2();
     init_errors();
     init_is_object();
   }
 });
 
-// node_modules/jose/dist/browser/lib/epoch.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/epoch.js
 var epoch_default;
 var init_epoch = __esm({
-  "node_modules/jose/dist/browser/lib/epoch.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/epoch.js"() {
     epoch_default = (date) => Math.floor(date.getTime() / 1e3);
   }
 });
 
-// node_modules/jose/dist/browser/lib/secs.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/secs.js
 var minute, hour, day, week, year, REGEX, secs_default;
 var init_secs = __esm({
-  "node_modules/jose/dist/browser/lib/secs.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/secs.js"() {
     minute = 60;
     hour = minute * 60;
     day = hour * 24;
@@ -2938,10 +2938,10 @@ var init_secs = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/lib/jwt_claims_set.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/jwt_claims_set.js
 var normalizeTyp, checkAudiencePresence, jwt_claims_set_default;
 var init_jwt_claims_set = __esm({
-  "node_modules/jose/dist/browser/lib/jwt_claims_set.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/lib/jwt_claims_set.js"() {
     init_errors();
     init_buffer_utils();
     init_epoch();
@@ -3044,7 +3044,7 @@ var init_jwt_claims_set = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jwt/verify.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwt/verify.js
 async function jwtVerify(jwt, key, options) {
   const verified = await compactVerify(jwt, key, options);
   if (verified.protectedHeader.crit?.includes("b64") && verified.protectedHeader.b64 === false) {
@@ -3058,14 +3058,14 @@ async function jwtVerify(jwt, key, options) {
   return result;
 }
 var init_verify5 = __esm({
-  "node_modules/jose/dist/browser/jwt/verify.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwt/verify.js"() {
     init_verify3();
     init_jwt_claims_set();
     init_errors();
   }
 });
 
-// node_modules/jose/dist/browser/jwt/decrypt.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwt/decrypt.js
 async function jwtDecrypt(jwt, key, options) {
   const decrypted = await compactDecrypt(jwt, key, options);
   const payload = jwt_claims_set_default(decrypted.protectedHeader, decrypted.plaintext, options);
@@ -3086,17 +3086,17 @@ async function jwtDecrypt(jwt, key, options) {
   return result;
 }
 var init_decrypt5 = __esm({
-  "node_modules/jose/dist/browser/jwt/decrypt.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwt/decrypt.js"() {
     init_decrypt3();
     init_jwt_claims_set();
     init_errors();
   }
 });
 
-// node_modules/jose/dist/browser/jwe/compact/encrypt.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwe/compact/encrypt.js
 var CompactEncrypt;
 var init_encrypt4 = __esm({
-  "node_modules/jose/dist/browser/jwe/compact/encrypt.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwe/compact/encrypt.js"() {
     init_encrypt2();
     CompactEncrypt = class {
       constructor(plaintext) {
@@ -3126,10 +3126,10 @@ var init_encrypt4 = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/sign.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/sign.js
 var sign, sign_default;
 var init_sign = __esm({
-  "node_modules/jose/dist/browser/runtime/sign.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/sign.js"() {
     init_subtle_dsa();
     init_webcrypto();
     init_check_key_length();
@@ -3144,10 +3144,10 @@ var init_sign = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jws/flattened/sign.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jws/flattened/sign.js
 var FlattenedSign;
 var init_sign2 = __esm({
-  "node_modules/jose/dist/browser/jws/flattened/sign.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jws/flattened/sign.js"() {
     init_base64url();
     init_sign();
     init_is_disjoint();
@@ -3231,10 +3231,10 @@ var init_sign2 = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jws/compact/sign.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jws/compact/sign.js
 var CompactSign;
 var init_sign3 = __esm({
-  "node_modules/jose/dist/browser/jws/compact/sign.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jws/compact/sign.js"() {
     init_sign2();
     CompactSign = class {
       constructor(payload) {
@@ -3255,10 +3255,10 @@ var init_sign3 = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jws/general/sign.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jws/general/sign.js
 var IndividualSignature, GeneralSign;
 var init_sign4 = __esm({
-  "node_modules/jose/dist/browser/jws/general/sign.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jws/general/sign.js"() {
     init_sign2();
     init_errors();
     IndividualSignature = class {
@@ -3328,7 +3328,7 @@ var init_sign4 = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jwt/produce.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwt/produce.js
 function validateInput(label, input) {
   if (!Number.isFinite(input)) {
     throw new TypeError(`Invalid ${label} input`);
@@ -3337,7 +3337,7 @@ function validateInput(label, input) {
 }
 var ProduceJWT;
 var init_produce = __esm({
-  "node_modules/jose/dist/browser/jwt/produce.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwt/produce.js"() {
     init_epoch();
     init_is_object();
     init_secs();
@@ -3403,10 +3403,10 @@ var init_produce = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jwt/sign.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwt/sign.js
 var SignJWT;
 var init_sign5 = __esm({
-  "node_modules/jose/dist/browser/jwt/sign.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwt/sign.js"() {
     init_sign3();
     init_errors();
     init_buffer_utils();
@@ -3428,10 +3428,10 @@ var init_sign5 = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jwt/encrypt.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwt/encrypt.js
 var EncryptJWT;
 var init_encrypt5 = __esm({
-  "node_modules/jose/dist/browser/jwt/encrypt.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwt/encrypt.js"() {
     init_encrypt4();
     init_buffer_utils();
     init_produce();
@@ -3503,7 +3503,7 @@ var init_encrypt5 = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jwk/thumbprint.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwk/thumbprint.js
 async function calculateJwkThumbprint(jwk, digestAlgorithm) {
   if (!isObject(jwk)) {
     throw new TypeError("JWK must be an object");
@@ -3547,7 +3547,7 @@ async function calculateJwkThumbprintUri(jwk, digestAlgorithm) {
 }
 var check;
 var init_thumbprint = __esm({
-  "node_modules/jose/dist/browser/jwk/thumbprint.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwk/thumbprint.js"() {
     init_digest();
     init_base64url();
     init_errors();
@@ -3561,7 +3561,7 @@ var init_thumbprint = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jwk/embedded.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwk/embedded.js
 async function EmbeddedJWK(protectedHeader, token) {
   const joseHeader = {
     ...protectedHeader,
@@ -3577,14 +3577,14 @@ async function EmbeddedJWK(protectedHeader, token) {
   return key;
 }
 var init_embedded = __esm({
-  "node_modules/jose/dist/browser/jwk/embedded.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwk/embedded.js"() {
     init_import();
     init_is_object();
     init_errors();
   }
 });
 
-// node_modules/jose/dist/browser/jwks/local.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwks/local.js
 function getKtyFromAlg(alg) {
   switch (typeof alg === "string" && alg.slice(0, 2)) {
     case "RS":
@@ -3636,7 +3636,7 @@ function createLocalJWKSet(jwks) {
 }
 var LocalJWKSet;
 var init_local = __esm({
-  "node_modules/jose/dist/browser/jwks/local.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwks/local.js"() {
     init_import();
     init_errors();
     init_is_object();
@@ -3712,10 +3712,10 @@ var init_local = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/fetch_jwks.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/fetch_jwks.js
 var fetchJwks, fetch_jwks_default;
 var init_fetch_jwks = __esm({
-  "node_modules/jose/dist/browser/runtime/fetch_jwks.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/fetch_jwks.js"() {
     init_errors();
     fetchJwks = async (url, timeout, options) => {
       let controller;
@@ -3752,7 +3752,7 @@ var init_fetch_jwks = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jwks/remote.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwks/remote.js
 function isCloudflareWorkers() {
   return typeof WebSocketPair !== "undefined" || typeof navigator !== "undefined" && navigator.userAgent === "Cloudflare-Workers" || typeof EdgeRuntime !== "undefined" && EdgeRuntime === "vercel";
 }
@@ -3804,7 +3804,7 @@ function createRemoteJWKSet(url, options) {
 }
 var USER_AGENT, jwksCache, RemoteJWKSet, experimental_jwksCache;
 var init_remote = __esm({
-  "node_modules/jose/dist/browser/jwks/remote.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwks/remote.js"() {
     init_fetch_jwks();
     init_errors();
     init_local();
@@ -3883,10 +3883,10 @@ var init_remote = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/jwt/unsecured.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwt/unsecured.js
 var UnsecuredJWT;
 var init_unsecured = __esm({
-  "node_modules/jose/dist/browser/jwt/unsecured.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/jwt/unsecured.js"() {
     init_base64url();
     init_buffer_utils();
     init_errors();
@@ -3921,7 +3921,7 @@ var init_unsecured = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/util/base64url.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/util/base64url.js
 var base64url_exports2 = {};
 __export(base64url_exports2, {
   decode: () => decode2,
@@ -3929,14 +3929,14 @@ __export(base64url_exports2, {
 });
 var encode2, decode2;
 var init_base64url2 = __esm({
-  "node_modules/jose/dist/browser/util/base64url.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/util/base64url.js"() {
     init_base64url();
     encode2 = encode;
     decode2 = decode;
   }
 });
 
-// node_modules/jose/dist/browser/util/decode_protected_header.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/util/decode_protected_header.js
 function decodeProtectedHeader(token) {
   let protectedB64u;
   if (typeof token === "string") {
@@ -3966,14 +3966,14 @@ function decodeProtectedHeader(token) {
   }
 }
 var init_decode_protected_header = __esm({
-  "node_modules/jose/dist/browser/util/decode_protected_header.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/util/decode_protected_header.js"() {
     init_base64url2();
     init_buffer_utils();
     init_is_object();
   }
 });
 
-// node_modules/jose/dist/browser/util/decode_jwt.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/util/decode_jwt.js
 function decodeJwt(jwt) {
   if (typeof jwt !== "string")
     throw new JWTInvalid("JWTs must use Compact JWS serialization, JWT must be a string");
@@ -4001,7 +4001,7 @@ function decodeJwt(jwt) {
   return result;
 }
 var init_decode_jwt = __esm({
-  "node_modules/jose/dist/browser/util/decode_jwt.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/util/decode_jwt.js"() {
     init_base64url2();
     init_buffer_utils();
     init_is_object();
@@ -4009,7 +4009,7 @@ var init_decode_jwt = __esm({
   }
 });
 
-// node_modules/jose/dist/browser/runtime/generate.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/generate.js
 async function generateSecret(alg, options) {
   let length;
   let algorithm;
@@ -4151,51 +4151,51 @@ async function generateKeyPair(alg, options) {
   return webcrypto_default.subtle.generateKey(algorithm, options?.extractable ?? false, keyUsages);
 }
 var init_generate = __esm({
-  "node_modules/jose/dist/browser/runtime/generate.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/generate.js"() {
     init_webcrypto();
     init_errors();
     init_random();
   }
 });
 
-// node_modules/jose/dist/browser/key/generate_key_pair.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/key/generate_key_pair.js
 async function generateKeyPair2(alg, options) {
   return generateKeyPair(alg, options);
 }
 var init_generate_key_pair = __esm({
-  "node_modules/jose/dist/browser/key/generate_key_pair.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/key/generate_key_pair.js"() {
     init_generate();
   }
 });
 
-// node_modules/jose/dist/browser/key/generate_secret.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/key/generate_secret.js
 async function generateSecret2(alg, options) {
   return generateSecret(alg, options);
 }
 var init_generate_secret = __esm({
-  "node_modules/jose/dist/browser/key/generate_secret.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/key/generate_secret.js"() {
     init_generate();
   }
 });
 
-// node_modules/jose/dist/browser/runtime/runtime.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/runtime.js
 var runtime_default;
 var init_runtime = __esm({
-  "node_modules/jose/dist/browser/runtime/runtime.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/runtime/runtime.js"() {
     runtime_default = "WebCryptoAPI";
   }
 });
 
-// node_modules/jose/dist/browser/util/runtime.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/util/runtime.js
 var runtime_default2;
 var init_runtime2 = __esm({
-  "node_modules/jose/dist/browser/util/runtime.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/util/runtime.js"() {
     init_runtime();
     runtime_default2 = runtime_default;
   }
 });
 
-// node_modules/jose/dist/browser/index.js
+// node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/index.js
 var browser_exports = {};
 __export(browser_exports, {
   CompactEncrypt: () => CompactEncrypt,
@@ -4238,7 +4238,7 @@ __export(browser_exports, {
   jwtVerify: () => jwtVerify
 });
 var init_browser = __esm({
-  "node_modules/jose/dist/browser/index.js"() {
+  "node_modules/.pnpm/jose@5.10.0/node_modules/jose/dist/browser/index.js"() {
     init_decrypt3();
     init_decrypt2();
     init_decrypt4();
@@ -4272,9 +4272,9 @@ var init_browser = __esm({
   }
 });
 
-// node_modules/@vercel/oidc/dist/verify-vercel-oidc-token.js
+// node_modules/.pnpm/@vercel+oidc@3.8.5/node_modules/@vercel/oidc/dist/verify-vercel-oidc-token.js
 var require_verify_vercel_oidc_token = __commonJS({
-  "node_modules/@vercel/oidc/dist/verify-vercel-oidc-token.js"(exports, module) {
+  "node_modules/.pnpm/@vercel+oidc@3.8.5/node_modules/@vercel/oidc/dist/verify-vercel-oidc-token.js"(exports, module) {
     "use strict";
     var __defProp2 = Object.defineProperty;
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
@@ -4395,9 +4395,9 @@ var require_verify_vercel_oidc_token = __commonJS({
   }
 });
 
-// node_modules/@vercel/oidc/dist/auth-errors.js
+// node_modules/.pnpm/@vercel+oidc@3.8.5/node_modules/@vercel/oidc/dist/auth-errors.js
 var require_auth_errors = __commonJS({
-  "node_modules/@vercel/oidc/dist/auth-errors.js"(exports, module) {
+  "node_modules/.pnpm/@vercel+oidc@3.8.5/node_modules/@vercel/oidc/dist/auth-errors.js"(exports, module) {
     "use strict";
     var __defProp2 = Object.defineProperty;
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
@@ -4442,9 +4442,9 @@ var require_auth_errors = __commonJS({
   }
 });
 
-// node_modules/@vercel/oidc/dist/index-browser.js
+// node_modules/.pnpm/@vercel+oidc@3.8.5/node_modules/@vercel/oidc/dist/index-browser.js
 var require_index_browser = __commonJS({
-  "node_modules/@vercel/oidc/dist/index-browser.js"(exports, module) {
+  "node_modules/.pnpm/@vercel+oidc@3.8.5/node_modules/@vercel/oidc/dist/index-browser.js"(exports, module) {
     "use strict";
     var __defProp2 = Object.defineProperty;
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
@@ -4489,9 +4489,9 @@ var require_index_browser = __commonJS({
   }
 });
 
-// node_modules/retry/lib/retry_operation.js
+// node_modules/.pnpm/retry@0.13.1/node_modules/retry/lib/retry_operation.js
 var require_retry_operation = __commonJS({
-  "node_modules/retry/lib/retry_operation.js"(exports, module) {
+  "node_modules/.pnpm/retry@0.13.1/node_modules/retry/lib/retry_operation.js"(exports, module) {
     function RetryOperation(timeouts, options) {
       if (typeof options === "boolean") {
         options = { forever: options };
@@ -4624,9 +4624,9 @@ var require_retry_operation = __commonJS({
   }
 });
 
-// node_modules/retry/lib/retry.js
+// node_modules/.pnpm/retry@0.13.1/node_modules/retry/lib/retry.js
 var require_retry = __commonJS({
-  "node_modules/retry/lib/retry.js"(exports) {
+  "node_modules/.pnpm/retry@0.13.1/node_modules/retry/lib/retry.js"(exports) {
     var RetryOperation = require_retry_operation();
     exports.operation = function(options) {
       var timeouts = exports.timeouts(options);
@@ -4710,16 +4710,16 @@ var require_retry = __commonJS({
   }
 });
 
-// node_modules/retry/index.js
+// node_modules/.pnpm/retry@0.13.1/node_modules/retry/index.js
 var require_retry2 = __commonJS({
-  "node_modules/retry/index.js"(exports, module) {
+  "node_modules/.pnpm/retry@0.13.1/node_modules/retry/index.js"(exports, module) {
     module.exports = require_retry();
   }
 });
 
-// node_modules/async-retry/lib/index.js
+// node_modules/.pnpm/async-retry@1.3.3/node_modules/async-retry/lib/index.js
 var require_lib = __commonJS({
-  "node_modules/async-retry/lib/index.js"(exports, module) {
+  "node_modules/.pnpm/async-retry@1.3.3/node_modules/async-retry/lib/index.js"(exports, module) {
     var retrier = require_retry2();
     function retry2(fn, opts) {
       function run(resolve, reject) {
@@ -4763,9 +4763,9 @@ var require_lib = __commonJS({
   }
 });
 
-// node_modules/throttleit/index.js
+// node_modules/.pnpm/throttleit@2.1.0/node_modules/throttleit/index.js
 var require_throttleit = __commonJS({
-  "node_modules/throttleit/index.js"(exports, module) {
+  "node_modules/.pnpm/throttleit@2.1.0/node_modules/throttleit/index.js"(exports, module) {
     function throttle3(function_, wait) {
       if (typeof function_ !== "function") {
         throw new TypeError(`Expected the first argument to be a \`function\`, got \`${typeof function_}\`.`);
@@ -4792,7 +4792,7 @@ var require_throttleit = __commonJS({
   }
 });
 
-// node_modules/is-node-process/lib/index.mjs
+// node_modules/.pnpm/is-node-process@1.2.0/node_modules/is-node-process/lib/index.mjs
 function isNodeProcess() {
   if (typeof navigator !== "undefined" && navigator.product === "ReactNative") {
     return true;
@@ -4807,10 +4807,10 @@ function isNodeProcess() {
   return false;
 }
 
-// node_modules/@vercel/blob/dist/chunk-YYMLUMXS.js
+// node_modules/.pnpm/@vercel+blob@2.8.0/node_modules/@vercel/blob/dist/chunk-YYMLUMXS.js
 var import_is_buffer = __toESM(require_is_buffer(), 1);
 
-// node_modules/@vercel/blob/dist/stream-browser.js
+// node_modules/.pnpm/@vercel+blob@2.8.0/node_modules/@vercel/blob/dist/stream-browser.js
 var Readable = {
   toWeb() {
     throw new Error(
@@ -4819,14 +4819,14 @@ var Readable = {
   }
 };
 
-// node_modules/@vercel/blob/dist/chunk-YYMLUMXS.js
+// node_modules/.pnpm/@vercel+blob@2.8.0/node_modules/@vercel/blob/dist/chunk-YYMLUMXS.js
 var import_oidc = __toESM(require_index_browser(), 1);
 var import_async_retry = __toESM(require_lib(), 1);
 
-// node_modules/@vercel/blob/dist/undici-browser.js
+// node_modules/.pnpm/@vercel+blob@2.8.0/node_modules/@vercel/blob/dist/undici-browser.js
 var fetch2 = globalThis.fetch.bind(globalThis);
 
-// node_modules/@vercel/blob/dist/chunk-YYMLUMXS.js
+// node_modules/.pnpm/@vercel+blob@2.8.0/node_modules/@vercel/blob/dist/chunk-YYMLUMXS.js
 var import_throttleit = __toESM(require_throttleit(), 1);
 var import_throttleit2 = __toESM(require_throttleit(), 1);
 var supportsNewBlobFromArrayBuffer = new Promise((resolve) => {
@@ -6317,7 +6317,7 @@ function createPutMethod({
 var MAX_PRESIGN_CACHE_CONTROL_MAX_AGE_SECONDS = 365 * 24 * 60 * 60;
 var utf8Encoder = new TextEncoder();
 
-// node_modules/@vercel/blob/dist/client.js
+// node_modules/.pnpm/@vercel+blob@2.8.0/node_modules/@vercel/blob/dist/client.js
 function createPutExtraChecks(methodName) {
   return function extraChecks(options) {
     if (!options.token.startsWith("vercel_blob_client_")) {
@@ -6600,7 +6600,7 @@ var allowedImageTypes = /* @__PURE__ */ new Set(["image/jpeg", "image/png", "ima
 var maxMainImageSize = 8 * 1024 * 1024;
 var maxGalleryImageSize = 15 * 1024 * 1024;
 var maxGallery = 5;
-var fieldNames = ["name", "model", "price", "tagline", "description", "highlights", "url", "mainImage", "gallery"];
+var fieldNames = ["name", "model", "price", "naverDiscountRate", "tagline", "description", "highlights", "url", "mainImage", "gallery"];
 var products = [];
 var total = 0;
 var cursor = null;
@@ -6685,7 +6685,8 @@ function beginEdit(product, trigger) {
   submitLabel.textContent = "\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5";
   field("name").value = product.name;
   field("model").value = product.model;
-  field("price").value = String(product.price);
+  field("price").value = String(product.naverPrice || Math.max(0, Number(product.price || 0) - 500));
+  field("naverDiscountRate").value = product.naverDiscountRate === null || product.naverDiscountRate === void 0 ? "" : String(product.naverDiscountRate);
   field("tagline").value = product.tagline;
   field("description").value = product.description;
   field("highlights").value = product.highlights.join("\n");
@@ -6777,6 +6778,7 @@ function validateForm() {
     name: String(field("name").value || "").trim(),
     model: String(field("model").value || "").trim(),
     price: Number(field("price").value),
+    naverDiscountRate: field("naverDiscountRate").value === "" ? null : Number(field("naverDiscountRate").value),
     tagline: String(field("tagline").value || "").trim(),
     description: String(field("description").value || "").trim(),
     highlights: String(field("highlights").value || "").split(/\r?\n/).map((item) => item.trim()).filter(Boolean),
@@ -6788,6 +6790,7 @@ function validateForm() {
   if (values.name.length < 2 || values.name.length > 160) errors.name = "\uC81C\uD488\uBA85\uC740 2~160\uC790\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
   if (!values.model || values.model.length > 50) errors.model = "\uBAA8\uB378\uBA85\uC740 50\uC790 \uC774\uB0B4\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
   if (!Number.isInteger(values.price) || values.price < 1 || values.price > 1e7) errors.price = "\uAC00\uACA9\uC740 1\uC6D0 \uC774\uC0C1 1,000\uB9CC\uC6D0 \uC774\uD558\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
+  if (values.naverDiscountRate !== null && (!Number.isInteger(values.naverDiscountRate) || values.naverDiscountRate < 0 || values.naverDiscountRate > 99)) errors.naverDiscountRate = "\uD560\uC778\uC728\uC740 0~99 \uC0AC\uC774\uC758 \uC815\uC218\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
   if (values.tagline.length < 5 || values.tagline.length > 120) errors.tagline = "\uD55C \uC904 \uC18C\uAC1C\uB294 5~120\uC790\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
   if (values.description.length < 20 || values.description.length > 3e3) errors.description = "\uC0C1\uC138 \uC124\uBA85\uC740 20~3,000\uC790\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
   if (!values.highlights.length || values.highlights.length > 8 || values.highlights.some((item) => item.length > 100)) errors.highlights = "\uC81C\uD488 \uD3EC\uC778\uD2B8\uB97C \uC904\uB9C8\uB2E4 \uC785\uB825\uD574 \uC8FC\uC138\uC694. \uCD5C\uB300 8\uAC1C\uAE4C\uC9C0 \uAC00\uB2A5\uD569\uB2C8\uB2E4.";
@@ -6800,9 +6803,11 @@ function validateForm() {
   const galleryError = validateGalleryFiles(galleryFiles);
   if (galleryError) errors.gallery = galleryError;
   if (editTarget) {
-    for (const name of ["name", "model", "price", "tagline", "description", "url"]) {
+    for (const name of ["name", "model", "tagline", "description", "url"]) {
       if (errors[name] && values[name] === editTarget[name]) delete errors[name];
     }
+    if (errors.price && values.price === editTarget.naverPrice) delete errors.price;
+    if (errors.naverDiscountRate && values.naverDiscountRate === editTarget.naverDiscountRate) delete errors.naverDiscountRate;
     if (errors.highlights && values.highlights.length === editTarget.highlights.length && values.highlights.every((item, index) => item === editTarget.highlights[index])) {
       delete errors.highlights;
     }
@@ -6942,7 +6947,12 @@ function renderRows() {
     identity.append(createImageCell(product));
     const price = document.createElement("td");
     price.className = "product-table__price";
-    price.textContent = priceFormatter.format(product.price);
+    price.replaceChildren();
+    const sitePrice = document.createElement("strong");
+    sitePrice.textContent = priceFormatter.format(product.price);
+    const naverPrice = document.createElement("span");
+    naverPrice.textContent = `\uB124\uC774\uBC84 ${priceFormatter.format(product.naverPrice)}`;
+    price.append(sitePrice, naverPrice);
     const editCell = document.createElement("td");
     const edit = document.createElement("button");
     edit.type = "button";
@@ -7170,7 +7180,8 @@ productForm.addEventListener("submit", async (event) => {
       requestId,
       name: values.name,
       model: values.model,
-      price: values.price,
+      naverPrice: values.price,
+      naverDiscountRate: values.naverDiscountRate,
       tagline: values.tagline,
       description: values.description,
       highlights: values.highlights,

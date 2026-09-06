@@ -58,7 +58,8 @@
       items.append(row);
     });
     var summary = element('div', 'account-order__summary');
-    summary.append(element('span', '', order.shippingFee ? '배송비 포함' : '무료배송'), element('strong', '', priceFormatter.format(order.total)));
+    var summaryLabel = order.coupon ? order.coupon.label + (order.discountAmount ? ' 적용' : ' · 무료배송') : (order.shippingFee ? '배송비 포함' : '무료배송');
+    summary.append(element('span', '', summaryLabel), element('strong', '', priceFormatter.format(order.total)));
 
     var details = document.createElement('details');
     details.append(element('summary', '', '배송정보와 처리 내역 보기'));

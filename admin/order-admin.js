@@ -153,6 +153,9 @@ function selectOrder(order, trigger) {
     itemList.append(line);
   });
   document.querySelector('[data-detail-subtotal]').textContent = priceFormatter.format(order.subtotal);
+  document.querySelector('[data-detail-discount-row]').hidden = !order.discountAmount;
+  document.querySelector('[data-detail-coupon]').textContent = order.coupon?.label || '쿠폰 할인';
+  document.querySelector('[data-detail-discount]').textContent = order.discountAmount ? `−${priceFormatter.format(order.discountAmount)}` : '';
   document.querySelector('[data-detail-shipping]').textContent = order.shippingFee ? priceFormatter.format(order.shippingFee) : '무료';
   document.querySelector('[data-detail-total]').textContent = priceFormatter.format(order.total);
   const recipient = document.querySelector('[data-detail-recipient]');

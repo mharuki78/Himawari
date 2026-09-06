@@ -19,7 +19,7 @@
     <a class="skip-link" href="#admin-main">본문으로 바로가기</a>
     <header class="admin-header admin-header--console">
       <a class="admin-brand" href="../index.html" aria-label="Himawari 공개 사이트 홈">HIMAWARI</a>
-      <nav class="admin-nav" aria-label="관리자 메뉴"><a href="inquiries.html">문의 관리</a><a href="products.html">제품 관리</a><a href="orders.html" aria-current="page">주문 관리</a></nav>
+      <nav class="admin-nav" aria-label="관리자 메뉴"><a href="inquiries.html">문의 관리</a><a href="products.html">제품 관리</a><a href="orders.html" aria-current="page">주문 관리</a><a href="promotions.html">프로모션</a></nav>
       <a class="admin-header__site" href="../account.html#orders">회원 주문 화면 보기 <span aria-hidden="true">↗</span></a>
     </header>
 
@@ -60,7 +60,7 @@
             <div class="order-detail-empty" data-order-detail-empty><p class="eyebrow">Order detail</p><h2 id="order-detail-title">주문을 선택하세요.</h2><p>주문번호, 배송지, 상품과 처리 이력을 이곳에서 확인합니다.</p></div>
             <div data-order-detail hidden>
               <div class="order-detail__head"><div><p class="eyebrow">Selected order</p><h2 data-detail-number tabindex="-1"></h2><p data-detail-date></p></div><span class="order-status-badge" data-detail-status></span></div>
-              <section class="order-detail-section" aria-labelledby="detail-products-title"><h3 id="detail-products-title">주문 상품</h3><div data-detail-items></div><dl class="order-detail-totals"><div><dt>상품금액</dt><dd data-detail-subtotal></dd></div><div><dt>배송비</dt><dd data-detail-shipping></dd></div><div><dt>총 주문금액</dt><dd data-detail-total></dd></div></dl></section>
+              <section class="order-detail-section" aria-labelledby="detail-products-title"><h3 id="detail-products-title">주문 상품</h3><div data-detail-items></div><dl class="order-detail-totals"><div><dt>상품금액</dt><dd data-detail-subtotal></dd></div><div data-detail-discount-row hidden><dt data-detail-coupon>쿠폰 할인</dt><dd data-detail-discount></dd></div><div><dt>배송비</dt><dd data-detail-shipping></dd></div><div><dt>총 주문금액</dt><dd data-detail-total></dd></div></dl></section>
               <section class="order-detail-section" aria-labelledby="detail-recipient-title"><h3 id="detail-recipient-title">받는 분과 배송지</h3><dl data-detail-recipient></dl></section>
               <section class="order-detail-section" aria-labelledby="detail-events-title"><h3 id="detail-events-title">처리 이력</h3><ol class="order-event-list" data-detail-events></ol></section>
               <form class="order-update-form" data-order-update-form novalidate>

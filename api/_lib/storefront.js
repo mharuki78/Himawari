@@ -51,6 +51,16 @@ function productActions(product, featured = false) {
   </div>`;
 }
 
+function productPrice(product) {
+  const discount = Number.isInteger(product.naverDiscountRate) && product.naverDiscountRate > 0
+    ? `<span class="product-discount-badge">네이버 ${product.naverDiscountRate}% 할인</span>`
+    : '';
+  const reference = Number(product.naverPrice) > 0
+    ? `<small>네이버 판매가 ${KRW.format(product.naverPrice)} · 자사몰 +500원</small>`
+    : '';
+  return `<div class="product-price-block">${discount}<strong>${KRW.format(product.price)}</strong>${reference}</div>`;
+}
+
 function renderProductCard(product) {
   return `<article class="store-product-card card reveal is-visible" data-server-rendered-product>
     ${productImage(product, 'store-product-media')}
@@ -58,7 +68,7 @@ function renderProductCard(product) {
       <p class="card-label">${escapeHtml(product.model || 'Himawari')}</p>
       <h3><a href="${detailHref(product)}">${escapeHtml(product.name)}</a></h3>
       <p class="product-tagline">${escapeHtml(product.tagline || '일상에 자연스럽게 맞는 가방입니다.')}</p>
-      <div class="store-product-footer"><strong>${KRW.format(product.price)}</strong>${productActions(product)}</div>
+      <div class="store-product-footer">${productPrice(product)}${productActions(product)}</div>
     </div>
   </article>`;
 }
@@ -74,7 +84,7 @@ function renderFeaturedProduct(product) {
       <h3><a href="${detailHref(product)}">${escapeHtml(product.name)}</a></h3>
       <p class="featured-tagline">${escapeHtml(product.tagline || '')}</p>
       ${highlights ? `<ol class="featured-highlights">${highlights}</ol>` : ''}
-      <div class="featured-product-footer"><strong>${KRW.format(product.price)}</strong>${productActions(product, true)}</div>
+      <div class="featured-product-footer">${productPrice(product)}${productActions(product, true)}</div>
     </div>
   </article>`;
 }
@@ -173,6 +183,10 @@ export function renderProductPage(template, product, origin = 'https://allaboutb
     .replace('data-name>제품 상세<', `data-name>${escapeHtml(product.name)}<`)
     .replace('data-tagline></p>', `data-tagline>${escapeHtml(product.tagline)}</p>`)
     .replace('data-price></strong>', `data-price>${KRW.format(product.price)}</strong>`)
+    .replace('data-naver-price></small>', `data-naver-price>${Number(product.naverPrice) > 0 ? `네이버 판매가 ${KRW.format(product.naverPrice)} · 자사몰 +500원` : ''}</small>`)
+    .replace('data-naver-discount hidden></span>', Number.isInteger(product.naverDiscountRate) && product.naverDiscountRate > 0
+      ? `data-naver-discount>네이버 ${product.naverDiscountRate}% 할인</span>`
+      : 'data-naver-discount hidden></span>')
     .replace('data-main-image></figure>', `data-main-image>${mainImage ? `<div class="product-detail-image-frame"><img src="${escapeHtml(mainImage)}" alt="${escapeHtml(product.name)}" decoding="async" fetchpriority="high"></div>` : '<p class="product-image-fallback">이미지를 불러오지 못했습니다.</p>'}</figure>`)
     .replace('data-description></div>', `data-description>${renderDescription(product.description || product.tagline)}</div>`)
     .replace('data-highlights></ol>', `data-highlights>${renderHighlights(product)}</ol>`)

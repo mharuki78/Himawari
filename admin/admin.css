@@ -132,6 +132,9 @@ td time { white-space: nowrap; }
 .product-table__identity strong { display: block; max-width: 32rem; font-size: .78rem; line-height: 1.45; overflow-wrap: anywhere; }
 .product-table__identity span { display: block; margin-top: .25rem; font-size: .65rem; opacity: .65; }
 .product-table__price { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.product-table__price strong, .product-table__price span { display: block; }
+.product-table__price span { margin-top: .2rem; font-size: .62rem; opacity: .62; }
+.product-form__pair--pricing { grid-template-columns: .75fr 1fr .75fr; }
 .product-table .button { min-width: 5.5rem; }
 .product-table .button--danger-outline { min-width: 4.5rem; }
 
@@ -197,7 +200,7 @@ td time { white-space: nowrap; }
   .dialog-actions { flex-direction: column-reverse; }
   .dialog-actions .button { width: 100%; }
   .inventory-note { grid-template-columns: 1fr; }
-  .product-form__pair { grid-template-columns: 1fr; gap: 0; }
+  .product-form__pair, .product-form__pair--pricing { grid-template-columns: 1fr; gap: 0; }
   .product-form-actions { position: static; grid-template-columns: 1fr; }
   .gallery-preview { grid-template-columns: repeat(2, 1fr); }
 }
@@ -258,9 +261,27 @@ td time { white-space: nowrap; }
 .order-update-form input, .order-update-form textarea { width: 100%; }
 .order-update-submit { width: 100%; margin-top: .7rem; }
 
+.admin-main--promotions { width: min(100%, 88rem); }
+.promotion-form { display: grid; grid-template-columns: minmax(20rem, .72fr) minmax(32rem, 1.28fr); gap: clamp(1.25rem, 3vw, 3rem); align-items: start; }
+.promotion-panel { min-width: 0; padding: clamp(1.25rem, 3vw, 2.5rem); border: 1px solid var(--ink); background: var(--surface); }
+.promotion-panel__head { display: flex; align-items: start; justify-content: space-between; gap: 1.25rem; margin-bottom: 2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--ink); }
+.promotion-panel__head h2 { margin: .35rem 0 0; font-size: clamp(1.8rem, 4vw, 3.4rem); font-weight: 550; letter-spacing: -.04em; }
+.promotion-panel__head p:last-child { max-width: 44rem; margin: .8rem 0 0; font-size: .72rem; line-height: 1.7; }
+.admin-switch { min-height: 44px; display: inline-flex; align-items: center; gap: .55rem; font-size: .68rem; font-weight: 740; white-space: nowrap; }
+.admin-switch input { width: 1.05rem; height: 1.05rem; accent-color: var(--moss); }
+.coupon-admin-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+.coupon-admin-card { min-width: 0; padding: 1rem; border: 1px solid color-mix(in srgb, var(--ink) 34%, transparent); }
+.coupon-admin-card:has([data-coupon-active]:checked) { border-color: var(--moss); box-shadow: inset .22rem 0 0 var(--moss); }
+.coupon-admin-card__head { display: flex; align-items: start; justify-content: space-between; gap: .8rem; margin-bottom: 1rem; }
+.coupon-admin-card__head span { font-size: .6rem; font-weight: 740; letter-spacing: .06em; }
+.coupon-admin-card__head h3 { margin: .3rem 0 0; font-size: 1rem; }
+.promotion-save { grid-column: 1 / -1; position: sticky; z-index: var(--z-sticky); bottom: 0; display: grid; grid-template-columns: 1fr minmax(16rem, .38fr); gap: 1rem; align-items: center; padding: 1rem; border: 1px solid var(--ink); background: var(--cream); }
+.promotion-save .button { margin: 0; }
+
 @media (max-width: 980px) {
   .order-workbench { grid-template-columns: 1fr; }
   .order-detail { position: static; max-height: none; overflow: visible; }
+  .promotion-form { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
@@ -269,4 +290,6 @@ td time { white-space: nowrap; }
   .order-detail { padding: 1rem; box-shadow: .35rem .35rem 0 var(--moss); }
   .order-detail__head { flex-direction: column; }
   .order-detail-totals > div, .order-detail-section dl > div { grid-template-columns: 1fr; gap: .15rem; }
+  .coupon-admin-grid { grid-template-columns: 1fr; }
+  .promotion-save { position: static; grid-template-columns: 1fr; }
 }

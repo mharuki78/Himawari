@@ -78,6 +78,17 @@
 .checkout-item__quantity span { min-width: 1.5rem; text-align: center; font-weight: 700; }
 .checkout-totals { margin: 1.2rem 0 0; }
 .checkout-totals > div { display: flex; justify-content: space-between; gap: 1rem; padding: .42rem 0; font-size: .74rem; }
+.coupon-fieldset { margin: 0; padding: 0; border: 0; outline: 0; }
+.coupon-fieldset[aria-invalid="true"] { box-shadow: inset .22rem 0 0 var(--order-danger); }
+.coupon-options { display: grid; gap: .55rem; }
+.coupon-option { min-height: 58px; display: grid; grid-template-columns: auto 1fr; gap: .8rem; align-items: center; padding: .8rem; border: 1px solid color-mix(in srgb, var(--order-ink) 34%, transparent); cursor: pointer; }
+.coupon-option:has(input:checked) { border-color: var(--moss); box-shadow: inset .22rem 0 0 var(--moss); }
+.coupon-option:has(input:disabled) { cursor: not-allowed; opacity: .52; }
+.coupon-option input { width: 1rem; height: 1rem; accent-color: var(--moss); }
+.coupon-option strong, .coupon-option small { display: block; }
+.coupon-option strong { font-size: .76rem; }
+.coupon-option small { margin-top: .2rem; font-size: .65rem; line-height: 1.5; opacity: .7; }
+.coupon-empty { margin: .35rem 0 0; font-size: .7rem; opacity: .68; }
 .checkout-totals dd { margin: 0; font-weight: 720; }
 .checkout-totals .checkout-total { margin-top: .8rem; padding-top: 1rem; border-top: 1px solid var(--order-ink); font-size: .95rem; }
 .checkout-summary > p { margin: 1.2rem 0 0; padding-top: 1rem; border-top: 1px solid var(--order-line); font-size: .65rem; line-height: 1.7; }

@@ -2,6 +2,7 @@ import { randomUUID } from 'node:crypto';
 
 import { database } from './database.js';
 import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalog } from './products.js';
+import { activeCoupons, readPromotions } from './promotions.js';
 
 export const SHIPPING_FEE = 3_500;
 export const FREE_SHIPPING_THRESHOLD = 100_000;
@@ -65,10 +66,21 @@ function orderNumber(id, now = new Date()) {
   return `HMW-${date}-${id.replaceAll('-', '').slice(0, 12).toUpperCase()}`;
 }
 
-export function calculateOrderTotals(items) {
+export function calculateOrderTotals(items, coupon = null) {
   const subtotal = items.reduce((sum, item) => sum + Number(item.unitPrice || 0) * Number(item.quantity || 0), 0);
-  const shippingFee = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FEE;
-  return { subtotal, shippingFee, total: subtotal + shippingFee };
+  let shippingFee = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FEE;
+  let discountAmount = 0;
+  if (coupon?.type === 'free_shipping') shippingFee = 0;
+  if (coupon?.type === 'percent' && Number(coupon.rate) > 0) {
+    discountAmount = Math.floor(subtotal * Number(coupon.rate) / 100);
+    if (Number(coupon.maximumDiscount) > 0) discountAmount = Math.min(discountAmount, Number(coupon.maximumDiscount));
+  }
+  return {
+    subtotal,
+    discountAmount,
+    shippingFee,
+    total: Math.max(0, subtotal - discountAmount + shippingFee),
+  };
 }
 
 export function validateOrderFields(input) {
@@ -81,6 +93,7 @@ export function validateOrderFields(input) {
     addressLine1: cleanLine(input?.addressLine1, 200),
     addressLine2: cleanLine(input?.addressLine2, 200),
     deliveryNote: cleanLine(input?.deliveryNote, 200),
+    couponId: cleanLine(input?.couponId, 40),
     termsConsent: input?.termsConsent === true,
     privacyConsent: input?.privacyConsent === true,
   };
@@ -151,6 +164,9 @@ export async function ensureOrderSchema() {
         address_line2 text,
         delivery_note text,
         subtotal integer NOT NULL CHECK (subtotal >= 0),
+        coupon_id text,
+        coupon_label text,
+        discount_amount integer NOT NULL DEFAULT 0 CHECK (discount_amount >= 0),
         shipping_fee integer NOT NULL CHECK (shipping_fee >= 0),
         total integer NOT NULL CHECK (total >= 0),
         payment_method text NOT NULL DEFAULT 'provider_pending',
@@ -170,6 +186,9 @@ export async function ensureOrderSchema() {
       tx`CREATE INDEX IF NOT EXISTS orders_user_created_idx ON orders(user_id, created_at DESC)`,
       tx`CREATE INDEX IF NOT EXISTS orders_status_created_idx ON orders(status, created_at DESC)`,
       tx`CREATE INDEX IF NOT EXISTS orders_retention_idx ON orders(retention_until)`,
+      tx`ALTER TABLE orders ADD COLUMN IF NOT EXISTS coupon_id text`,
+      tx`ALTER TABLE orders ADD COLUMN IF NOT EXISTS coupon_label text`,
+      tx`ALTER TABLE orders ADD COLUMN IF NOT EXISTS discount_amount integer NOT NULL DEFAULT 0`,
       tx`CREATE TABLE IF NOT EXISTS order_items (
         id text PRIMARY KEY,
         order_id text NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
@@ -215,6 +234,8 @@ function mapOrderRow(row, items = [], events = [], includeAdminNotes = false) {
     statusLabel: ORDER_STATUS[status].label,
     paymentMethod: row.payment_method,
     subtotal: Number(row.subtotal),
+    coupon: row.coupon_id ? { id: row.coupon_id, label: row.coupon_label || row.coupon_id } : null,
+    discountAmount: Number(row.discount_amount || 0),
     shippingFee: Number(row.shipping_fee),
     total: Number(row.total),
     recipient: {
@@ -311,7 +332,19 @@ export async function createOrder(member, input) {
       quantity: item.quantity,
     };
   });
-  const totals = calculateOrderTotals(items);
+  let coupon = null;
+  if (fields.value.couponId) {
+    const promotions = await readPromotions();
+    coupon = activeCoupons(promotions.config).find((item) => item.id === fields.value.couponId) || null;
+    if (!coupon) {
+      throw Object.assign(new Error('선택한 쿠폰이 종료되었거나 사용할 수 없습니다.'), { status: 409, fieldErrors: { couponId: '사용 가능한 쿠폰을 다시 선택해 주세요.' } });
+    }
+  }
+  const subtotalBeforeCoupon = calculateOrderTotals(items).subtotal;
+  if (coupon && subtotalBeforeCoupon < coupon.minimumSubtotal) {
+    throw Object.assign(new Error('쿠폰 최소 주문금액을 충족하지 못했습니다.'), { status: 400, fieldErrors: { couponId: `${coupon.minimumSubtotal.toLocaleString('ko-KR')}원 이상 주문할 때 사용할 수 있습니다.` } });
+  }
+  const totals = calculateOrderTotals(items, coupon);
   if (totals.total > 30_000_000) {
     throw Object.assign(new Error('한 번에 주문할 수 있는 금액을 초과했습니다.'), { status: 400 });
   }
@@ -325,13 +358,15 @@ export async function createOrder(member, input) {
   const queries = [
     sql`INSERT INTO orders (
       id, order_number, request_id, user_id, member_email, recipient_name, email, phone,
-      postal_code, address_line1, address_line2, delivery_note, subtotal, shipping_fee, total,
+      postal_code, address_line1, address_line2, delivery_note, subtotal, coupon_id, coupon_label,
+      discount_amount, shipping_fee, total,
       terms_agreed_at, privacy_agreed_at, retention_until
     ) VALUES (
       ${id}, ${number}, ${fields.value.requestId}, ${member?.id || null}, ${member?.email || null},
       ${fields.value.recipientName}, ${fields.value.email}, ${fields.value.phone},
       ${fields.value.postalCode}, ${fields.value.addressLine1}, ${fields.value.addressLine2 || null},
-      ${fields.value.deliveryNote || null}, ${totals.subtotal}, ${totals.shippingFee}, ${totals.total},
+      ${fields.value.deliveryNote || null}, ${totals.subtotal}, ${coupon?.id || null}, ${coupon?.label || null},
+      ${totals.discountAmount}, ${totals.shippingFee}, ${totals.total},
       ${now.toISOString()}, ${now.toISOString()}, ${retentionUntil.toISOString()}
     )`,
     ...items.map((item) => sql`INSERT INTO order_items (

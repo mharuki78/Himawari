@@ -15,6 +15,7 @@ const IMAGE_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/avi
 const MAX_MAIN_IMAGE_SIZE = 8 * 1024 * 1024;
 const MAX_GALLERY_IMAGE_SIZE = 15 * 1024 * 1024;
 const MAX_GALLERY_IMAGES = 5;
+export const SELF_STORE_PRICE_MARKUP = 500;
 
 function productToken() {
   return process.env.PRODUCT_BLOB_READ_WRITE_TOKEN || '';
@@ -75,11 +76,20 @@ function normalizeProduct(product, index = 0) {
     .filter(Boolean)
     .slice(0, MAX_GALLERY_IMAGES);
 
+  const legacyPrice = Number.isFinite(Number(product.price)) ? Math.round(Number(product.price)) : 0;
+  const hasNaverPrice = product.naverPrice !== null && product.naverPrice !== undefined && product.naverPrice !== '' && Number.isFinite(Number(product.naverPrice));
+  const naverPrice = hasNaverPrice ? Math.round(Number(product.naverPrice)) : legacyPrice;
+  const naverDiscountRate = product.naverDiscountRate === null || product.naverDiscountRate === undefined || product.naverDiscountRate === ''
+    ? null
+    : Math.round(Number(product.naverDiscountRate));
+
   return {
     id,
     name: singleLine(product.name),
     model: singleLine(product.model) || derivedModel || 'Himawari',
-    price: Number.isFinite(Number(product.price)) ? Math.round(Number(product.price)) : 0,
+    naverPrice,
+    naverDiscountRate: Number.isInteger(naverDiscountRate) && naverDiscountRate >= 0 && naverDiscountRate <= 99 ? naverDiscountRate : null,
+    price: naverPrice > 0 ? naverPrice + SELF_STORE_PRICE_MARKUP : 0,
     tagline: singleLine(product.tagline),
     description: multiLine(product.description) || singleLine(product.tagline),
     highlights: (Array.isArray(product.highlights) ? product.highlights : []).map(singleLine).filter(Boolean).slice(0, 8),
@@ -109,10 +119,16 @@ export function publicProduct(product) {
 }
 
 function validateProductFields(input) {
+  const suppliedNaverPrice = input.naverPrice ?? input.price;
+  const suppliedDiscountRate = input.naverDiscountRate;
+  const naverDiscountRate = suppliedDiscountRate === '' || suppliedDiscountRate === null || suppliedDiscountRate === undefined
+    ? null
+    : Number(suppliedDiscountRate);
   const value = {
     name: singleLine(input.name),
     model: singleLine(input.model),
-    price: Number(input.price),
+    naverPrice: Number(suppliedNaverPrice),
+    naverDiscountRate,
     tagline: singleLine(input.tagline),
     description: multiLine(input.description),
     highlights: (Array.isArray(input.highlights) ? input.highlights : []).map(singleLine).filter(Boolean),
@@ -122,7 +138,10 @@ function validateProductFields(input) {
 
   if (value.name.length < 2 || value.name.length > 160) fieldErrors.name = '제품명은 2~160자로 입력해 주세요.';
   if (!value.model || value.model.length > 50) fieldErrors.model = '모델명은 50자 이내로 입력해 주세요.';
-  if (!Number.isInteger(value.price) || value.price < 1 || value.price > 10_000_000) fieldErrors.price = '가격은 1원 이상 1,000만원 이하의 숫자로 입력해 주세요.';
+  if (!Number.isInteger(value.naverPrice) || value.naverPrice < 1 || value.naverPrice > 10_000_000) fieldErrors.price = '네이버 판매가는 1원 이상 1,000만원 이하의 숫자로 입력해 주세요.';
+  if (value.naverDiscountRate !== null && (!Number.isInteger(value.naverDiscountRate) || value.naverDiscountRate < 0 || value.naverDiscountRate > 99)) {
+    fieldErrors.naverDiscountRate = '네이버 할인율은 0~99 사이의 정수로 입력해 주세요.';
+  }
   if (value.tagline.length < 5 || value.tagline.length > 120) fieldErrors.tagline = '한 줄 소개는 5~120자로 입력해 주세요.';
   if (value.description.length < 20 || value.description.length > 3_000) fieldErrors.description = '상세 설명은 20~3,000자로 입력해 주세요.';
   if (!value.highlights.length || value.highlights.length > 8 || value.highlights.some((item) => item.length > 100)) {
@@ -188,9 +207,11 @@ export function validateProductUpdateInput(input, currentProduct = null) {
   ];
 
   if (current) {
-    for (const name of ['name', 'model', 'price', 'tagline', 'description', 'url']) {
+    for (const name of ['name', 'model', 'tagline', 'description', 'url']) {
       if (fieldErrors[name] && value[name] === current[name]) delete fieldErrors[name];
     }
+    if (fieldErrors.price && value.naverPrice === current.naverPrice) delete fieldErrors.price;
+    if (fieldErrors.naverDiscountRate && value.naverDiscountRate === current.naverDiscountRate) delete fieldErrors.naverDiscountRate;
     if (
       fieldErrors.highlights
       && value.highlights.length === current.highlights.length
@@ -247,7 +268,8 @@ export function updateProductRecord(product, value, media) {
     ...current,
     name: value.name,
     model: value.model,
-    price: value.price,
+    naverPrice: value.naverPrice,
+    naverDiscountRate: value.naverDiscountRate,
     tagline: value.tagline,
     description: value.description,
     highlights: value.highlights,
