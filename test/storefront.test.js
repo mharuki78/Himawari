@@ -60,9 +60,9 @@ test('최신 이야기 3편은 독립 페이지·대표 이미지·검색 메타
   const sitemap = await readFile(new URL('../sitemap.xml', import.meta.url), 'utf8');
   const feed = await readFile(new URL('../feed.xml', import.meta.url), 'utf8');
   const slugs = [
-    'backpack-color-selection-guide',
-    'backpack-cable-organizer-guide',
-    'bicycle-commute-backpack-guide',
+    'books-documents-backpack-packing',
+    'backpack-lining-cleaning-guide',
+    'train-travel-backpack-guide',
   ];
 
   assert.deepEqual(posts.slice(0, 3).map((post) => post.id), slugs);
@@ -72,7 +72,7 @@ test('최신 이야기 3편은 독립 페이지·대표 이미지·검색 메타
     const html = await readFile(new URL(`../story/${slug}.html`, import.meta.url), 'utf8');
     const imagePath = post.image.replace('../', '');
 
-    assert.equal(post.date, '2026-09-06');
+    assert.equal(post.date, '2026-09-07');
     await access(new URL(`../${imagePath}`, import.meta.url));
     assert.match(html, new RegExp(`<link rel="canonical" href="https://allaboutbag\\.com/story/${slug}\\.html">`));
     assert.match(html, new RegExp(`<meta property="og:image" content="https://allaboutbag\\.com/assets/story/${slug}\\.webp">`));

@@ -1,5 +1,41 @@
 [
   {
+    "id": "books-documents-backpack-packing",
+    "title": "책·서류가 구겨지지 않는 백팩 수납법: 모서리를 지키는 5단계",
+    "date": "2026-09-07",
+    "summary": "교과서와 노트, A4 서류를 크기와 무게, 꺼내는 순서에 맞춰 반듯하게 유지하는 백팩 수납법입니다.",
+    "description": "교과서와 노트, A4 서류가 백팩 안에서 구겨지거나 모서리가 접히지 않도록 크기·순서·고정 위치를 정하는 수납법입니다.",
+    "tags": ["책가방 수납", "서류 정리", "학생 백팩"],
+    "image": "../assets/story/books-documents-backpack-packing.webp",
+    "imageAlt": "Himawari 1027 백팩 옆에 교과서와 A4 파일, 노트를 반듯하게 나누어 둔 모습",
+    "url": "books-documents-backpack-packing.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "backpack-lining-cleaning-guide",
+    "title": "백팩 안감 청소법: 먼지·부스러기를 안전하게 비우는 6단계",
+    "date": "2026-09-07",
+    "summary": "가방 안쪽의 먼지와 부스러기를 마른 상태부터 정리하고, 필요한 곳만 조심스럽게 관리하는 순서입니다.",
+    "description": "백팩 안쪽에 쌓인 먼지와 부스러기를 비우고 안감 손상을 줄이며 부분 오염을 정리하는 단계별 관리법입니다.",
+    "tags": ["백팩 안감", "가방 청소", "관리 루틴"],
+    "image": "../assets/story/backpack-lining-cleaning-guide.webp",
+    "imageAlt": "열어 둔 Himawari 0422 백팩 안감을 부드러운 솔로 정리하는 모습",
+    "url": "backpack-lining-cleaning-guide.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "train-travel-backpack-guide",
+    "title": "기차 여행 백팩 준비법: 좌석·선반·환승 동선을 위한 5단계",
+    "date": "2026-09-07",
+    "summary": "승차부터 하차까지 좌석과 선반, 환승 동선에 맞춰 필요한 물건을 빠르게 찾도록 짐을 나누는 방법입니다.",
+    "description": "기차 여행에서 좌석, 선반과 환승 동선을 고려해 백팩의 크기와 짐 위치를 정하고 필요한 물건을 빠르게 꺼내는 준비법입니다.",
+    "tags": ["기차 여행", "여행 백팩", "짐싸기"],
+    "image": "../assets/story/train-travel-backpack-guide.webp",
+    "imageAlt": "아침 햇살이 드는 기차 좌석에 Himawari 1884 백팩과 여행 소지품을 정리한 모습",
+    "url": "train-travel-backpack-guide.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "backpack-color-selection-guide",
     "title": "백팩 색상 고르는 법: 자주 입는 옷으로 실패 줄이는 4단계",
     "date": "2026-09-06",
