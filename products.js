@@ -31,7 +31,7 @@ function normalizeProducts(products) {
       id: productIdentifier(product, index),
       model: product.model || product.name?.match(/No\.\d+[A-Za-z]*/i)?.[0] || 'Himawari',
       naverPrice,
-      price: hasNaverPrice ? Number(product.price || naverPrice + 500) : naverPrice + 500,
+      price: hasNaverPrice ? Number(product.price || naverPrice) : naverPrice,
       naverDiscountRate: Number.isInteger(Number(product.naverDiscountRate)) ? Number(product.naverDiscountRate) : null,
       description: product.description || product.tagline || '',
       highlights: Array.isArray(product.highlights) ? product.highlights : [],
@@ -169,7 +169,7 @@ function createPriceBlock(product) {
   block.append(price);
   if (Number(product.naverPrice) > 0) {
     const reference = document.createElement('small');
-    reference.textContent = `네이버 판매가 ${priceFormatter.format(product.naverPrice)} · 자사몰 +500원`;
+    reference.textContent = '네이버 판매가와 동일';
     block.append(reference);
   }
   return block;

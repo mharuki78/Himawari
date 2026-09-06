@@ -23,12 +23,13 @@ test('모든 HTML 페이지와 상품 템플릿이 공통 파비콘을 선언한
   }
 });
 
-test('홈 첫 화면은 실제 제품 영상을 쓰고 릴스 8개를 제공한다', async () => {
+test('홈 첫 화면은 No.1884 도시형 히어로 영상과 릴스 8개를 제공한다', async () => {
   const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   const gearCss = await readFile(new URL('../assets/gear.css', import.meta.url), 'utf8');
 
-  assert.match(html, /class="home-film-hero__video"[^>]+poster="assets\/hero-products-motion-poster\.jpg"/);
+  assert.match(html, /class="home-film-hero__video"[^>]+poster="assets\/hero-products-motion-poster\.png"/);
   assert.match(html, /<source src="assets\/hero-products-motion\.mp4" type="video\/mp4">/);
+  assert.match(html, /No\.1884 백팩을 착용한 직장인이 도심을 걷는 모습/);
   assert.match(html, /class="home-film-hero__toggle"[^>]+data-ambient-toggle/);
   assert.doesNotMatch(html, /class="home-film-hero__image"/);
   assert.equal((html.match(/data-reel-card/g) || []).length, 8);
@@ -42,7 +43,7 @@ test('홈 첫 화면은 실제 제품 영상을 쓰고 릴스 8개를 제공한�
   for (const asset of [
     'assets/himawari-logo-hq.png',
     'assets/hero-products-motion.mp4',
-    'assets/hero-products-motion-poster.jpg',
+    'assets/hero-products-motion-poster.png',
     'assets/reel-0514-260527.mp4',
     'assets/reel-0514-260527-poster.jpg',
     'assets/reel-0514-260604.mp4',

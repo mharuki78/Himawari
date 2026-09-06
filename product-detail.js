@@ -87,7 +87,7 @@ function renderProduct(product) {
   document.querySelector('[data-price]').textContent = priceFormatter.format(product.price);
   const naverPrice = document.querySelector('[data-naver-price]');
   const discountRate = document.querySelector('[data-naver-discount]');
-  naverPrice.textContent = Number(product.naverPrice) > 0 ? `네이버 판매가 ${priceFormatter.format(product.naverPrice)} · 자사몰 +500원` : '';
+  naverPrice.textContent = Number(product.naverPrice) > 0 ? '네이버 판매가와 동일' : '';
   discountRate.hidden = !(Number.isInteger(product.naverDiscountRate) && product.naverDiscountRate > 0);
   discountRate.textContent = discountRate.hidden ? '' : `네이버 ${product.naverDiscountRate}% 할인`;
   document.querySelector('[data-main-image]').replaceChildren(createProductImage(product.image, product.name, { eager: true }));

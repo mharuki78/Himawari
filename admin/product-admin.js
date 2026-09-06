@@ -6685,7 +6685,7 @@ function beginEdit(product, trigger) {
   submitLabel.textContent = "\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5";
   field("name").value = product.name;
   field("model").value = product.model;
-  field("price").value = String(product.naverPrice || Math.max(0, Number(product.price || 0) - 500));
+  field("price").value = String(product.naverPrice || Math.max(0, Number(product.price || 0)));
   field("naverDiscountRate").value = product.naverDiscountRate === null || product.naverDiscountRate === void 0 ? "" : String(product.naverDiscountRate);
   field("tagline").value = product.tagline;
   field("description").value = product.description;

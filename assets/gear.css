@@ -128,7 +128,7 @@ html {
   position: relative;
   min-height: 38rem;
   overflow: hidden;
-  background: var(--ink) url("hero-products-motion-poster.jpg") center / cover no-repeat;
+  background: var(--ink) url("hero-products-motion-poster.png") center / cover no-repeat;
 }
 
 .home-film-hero__media::after {

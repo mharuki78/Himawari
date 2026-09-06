@@ -161,7 +161,7 @@ function beginEdit(product, trigger) {
 
   field('name').value = product.name;
   field('model').value = product.model;
-  field('price').value = String(product.naverPrice || Math.max(0, Number(product.price || 0) - 500));
+  field('price').value = String(product.naverPrice || Math.max(0, Number(product.price || 0)));
   field('naverDiscountRate').value = product.naverDiscountRate === null || product.naverDiscountRate === undefined ? '' : String(product.naverDiscountRate);
   field('tagline').value = product.tagline;
   field('description').value = product.description;

@@ -43,7 +43,7 @@
 | Status | form/list inline live regions | current request state | success / error / pending | live-region inspection |
 | CRUD | inquiry and product APIs under `api/` | server authorization + Blob policies | inquiry create/read/delete / product create/read/update/delete | full-flow integration |
 | Dialog | native modal `<dialog>` with app-owned surface | `admin/inquiries.html`, `account.html`, `checkout.html`, `admin/orders.html`, `index.html` | irreversible delete / unsaved order / customer request / admin completion / home promotion | keyboard + failure flow |
-| Promotion settings | `admin/promotion-admin.js`, `api/admin/promotions.js` | private Blob `promotions/v1/settings.json` | four fixed coupons / home popup | auth + ETag + server order revalidation |
+| Promotion settings | `admin/promotion-admin.js`, `api/admin/products.js?route=promotions` | private Blob `promotions/v1/settings.json` | four fixed coupons / home popup | auth + ETag + server order revalidation |
 | Member session | `assets/member.js`, `api/auth/` | HttpOnly cookie + Neon session hash | Naver / Google | OAuth state + browser flow |
 | Member collection | `assets/cart.js`, `assets/member.js`, `api/member/` | Neon for members, localStorage for guests | cart / wishlist | merge, logout, account delete |
 | Order form | `assets/checkout.js`, `api/orders.js` | `docs/ORDER-POLICY.md` + server validation | direct product / guest cart / member cart | validation + idempotent create |
@@ -136,7 +136,7 @@
 - Timing: submit first, then blur/input for fields already in error
 - Policy: `novalidate`, associated inline Korean errors, first-invalid focus, duplicate-submit prevention
 - Sensitive values: password never enters route, log, toast, local/session storage, Blob, or response payload.
-- Product validation: client and server both require name, model, integer Naver sale price, tagline, detailed description, at least one product point and SmartStore URL. The public self-store price is derived as Naver sale price plus 500 won; optional Naver discount rate is an integer from 0 to 99. Create requires an owned representative image. Edit may preserve current media and unchanged legacy description/highlight values; every changed field uses the current rule and every newly selected replacement Blob is server-verified before publishing.
+- Product validation: client and server both require name, model, integer Naver sale price, tagline, detailed description, at least one product point and SmartStore URL. The public self-store price is identical to the Naver sale price; optional Naver discount rate is an integer from 0 to 99. Create requires an owned representative image. Edit may preserve current media and unchanged legacy description/highlight values; every changed field uses the current rule and every newly selected replacement Blob is server-verified before publishing.
 
 ## Permission and privacy UI
 

@@ -4,7 +4,6 @@ import test from 'node:test';
 import {
   MAX_GALLERY_IMAGE_SIZE,
   MAX_MAIN_IMAGE_SIZE,
-  SELF_STORE_PRICE_MARKUP,
   catalogSnapshotPath,
   classifyProductImagePath,
   createProductRecord,
@@ -47,7 +46,7 @@ test('기존 제품 34개에 안정적인 공개 ID를 부여한다', () => {
   assert.equal(catalog.products.length, 34);
   assert.equal(new Set(catalog.products.map((product) => product.id)).size, 34);
   assert.match(catalog.products[0].id, /^store-\d+$/);
-  assert.equal(catalog.products[0].price, catalog.products[0].naverPrice + SELF_STORE_PRICE_MARKUP);
+  assert.equal(catalog.products[0].price, catalog.products[0].naverPrice);
 });
 
 test('대표 이미지와 상세 이미지의 역할별 업로드 용량을 구분한다', () => {
@@ -105,7 +104,7 @@ test('새 제품 입력 계약을 검증하고 관리자 메타데이터를 공�
   const visible = publicProduct(record);
   assert.equal(visible.name, '히마와리 테스트 백팩');
   assert.equal(visible.naverPrice, 129000);
-  assert.equal(visible.price, 129500);
+  assert.equal(visible.price, 129000);
   assert.equal('requestId' in visible, false);
   assert.equal('managedImages' in visible, false);
 });
@@ -134,7 +133,7 @@ test('기존 제품 수정은 공개 ID와 기존 이미지를 유지한다', ()
   assert.equal(updated.image, created.image);
   assert.equal(updated.name, '수정한 히마와리 테스트 백팩');
   assert.equal(updated.naverPrice, 135000);
-  assert.equal(updated.price, 135500);
+  assert.equal(updated.price, 135000);
 });
 
 test('예전 등록 기준의 제품도 기존 값을 유지하면 다른 항목을 수정할 수 있다', () => {

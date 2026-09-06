@@ -15,7 +15,6 @@ const IMAGE_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/avi
 const MAX_MAIN_IMAGE_SIZE = 8 * 1024 * 1024;
 const MAX_GALLERY_IMAGE_SIZE = 15 * 1024 * 1024;
 const MAX_GALLERY_IMAGES = 5;
-export const SELF_STORE_PRICE_MARKUP = 500;
 
 function productToken() {
   return process.env.PRODUCT_BLOB_READ_WRITE_TOKEN || '';
@@ -89,7 +88,7 @@ function normalizeProduct(product, index = 0) {
     model: singleLine(product.model) || derivedModel || 'Himawari',
     naverPrice,
     naverDiscountRate: Number.isInteger(naverDiscountRate) && naverDiscountRate >= 0 && naverDiscountRate <= 99 ? naverDiscountRate : null,
-    price: naverPrice > 0 ? naverPrice + SELF_STORE_PRICE_MARKUP : 0,
+    price: naverPrice > 0 ? naverPrice : 0,
     tagline: singleLine(product.tagline),
     description: multiLine(product.description) || singleLine(product.tagline),
     highlights: (Array.isArray(product.highlights) ? product.highlights : []).map(singleLine).filter(Boolean).slice(0, 8),
