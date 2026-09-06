@@ -56,7 +56,7 @@ function productPrice(product) {
     ? `<span class="product-discount-badge">네이버 ${product.naverDiscountRate}% 할인</span>`
     : '';
   const reference = Number(product.naverPrice) > 0
-    ? `<small>네이버 판매가와 동일</small>`
+    ? `<small>네이버 할인가와 동일</small>`
     : '';
   return `<div class="product-price-block">${discount}<strong>${KRW.format(product.price)}</strong>${reference}</div>`;
 }
@@ -183,7 +183,7 @@ export function renderProductPage(template, product, origin = 'https://allaboutb
     .replace('data-name>제품 상세<', `data-name>${escapeHtml(product.name)}<`)
     .replace('data-tagline></p>', `data-tagline>${escapeHtml(product.tagline)}</p>`)
     .replace('data-price></strong>', `data-price>${KRW.format(product.price)}</strong>`)
-    .replace('data-naver-price></small>', `data-naver-price>${Number(product.naverPrice) > 0 ? '네이버 판매가와 동일' : ''}</small>`)
+    .replace('data-naver-price></small>', `data-naver-price>${Number(product.naverPrice) > 0 ? '네이버 할인가와 동일' : ''}</small>`)
     .replace('data-naver-discount hidden></span>', Number.isInteger(product.naverDiscountRate) && product.naverDiscountRate > 0
       ? `data-naver-discount>네이버 ${product.naverDiscountRate}% 할인</span>`
       : 'data-naver-discount hidden></span>')

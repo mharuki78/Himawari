@@ -136,7 +136,7 @@
 - Timing: submit first, then blur/input for fields already in error
 - Policy: `novalidate`, associated inline Korean errors, first-invalid focus, duplicate-submit prevention
 - Sensitive values: password never enters route, log, toast, local/session storage, Blob, or response payload.
-- Product validation: client and server both require name, model, integer Naver sale price, tagline, detailed description, at least one product point and SmartStore URL. The public self-store price is identical to the Naver sale price; optional Naver discount rate is an integer from 0 to 99. Create requires an owned representative image. Edit may preserve current media and unchanged legacy description/highlight values; every changed field uses the current rule and every newly selected replacement Blob is server-verified before publishing.
+- Product validation: client and server both require name, model, integer Naver discount-applied price, tagline, detailed description, at least one product point and SmartStore URL. The public self-store price is identical to that discount-applied price; optional Naver discount rate is an integer from 0 to 99. Create requires an owned representative image. Edit may preserve current media and unchanged legacy description/highlight values; every changed field uses the current rule and every newly selected replacement Blob is server-verified before publishing.
 
 ## Permission and privacy UI
 

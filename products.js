@@ -169,7 +169,7 @@ function createPriceBlock(product) {
   block.append(price);
   if (Number(product.naverPrice) > 0) {
     const reference = document.createElement('small');
-    reference.textContent = '네이버 판매가와 동일';
+    reference.textContent = '네이버 할인가와 동일';
     block.append(reference);
   }
   return block;

@@ -457,7 +457,7 @@ function renderRows() {
     const sitePrice = document.createElement('strong');
     sitePrice.textContent = priceFormatter.format(product.price);
     const naverPrice = document.createElement('span');
-    naverPrice.textContent = `네이버 ${priceFormatter.format(product.naverPrice)}`;
+    naverPrice.textContent = `네이버 할인가 ${priceFormatter.format(product.naverPrice)}`;
     price.append(sitePrice, naverPrice);
     const editCell = document.createElement('td');
     const edit = document.createElement('button');

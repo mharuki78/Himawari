@@ -41,7 +41,7 @@ function request(url, method = 'GET', body) {
   });
 }
 
-test('기존 제품 34개에 안정적인 공개 ID를 부여한다', () => {
+test('기존 제품 34개에 안정적인 공개 ID와 네이버 할인가를 부여한다', () => {
   const catalog = seedCatalog();
   assert.equal(catalog.products.length, 34);
   assert.equal(new Set(catalog.products.map((product) => product.id)).size, 34);

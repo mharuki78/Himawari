@@ -6951,7 +6951,7 @@ function renderRows() {
     const sitePrice = document.createElement("strong");
     sitePrice.textContent = priceFormatter.format(product.price);
     const naverPrice = document.createElement("span");
-    naverPrice.textContent = `\uB124\uC774\uBC84 ${priceFormatter.format(product.naverPrice)}`;
+    naverPrice.textContent = `\uB124\uC774\uBC84 \uD560\uC778\uAC00 ${priceFormatter.format(product.naverPrice)}`;
     price.append(sitePrice, naverPrice);
     const editCell = document.createElement("td");
     const edit = document.createElement("button");
