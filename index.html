@@ -50,8 +50,11 @@
 
     <main id="main">
       <section class="home-film-hero" id="home" aria-labelledby="hero-title">
-        <div class="home-film-hero__media">
-          <img class="home-film-hero__image" src="assets/himawari-collection-v2.webp" alt="스튜디오에 놓인 Himawari 백팩 컬렉션" width="1536" height="1024" fetchpriority="high">
+        <div class="home-film-hero__media" data-ambient-film>
+          <video class="home-film-hero__video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-products-motion-poster.jpg" aria-label="실제 Himawari No.0514, No.0424, No.1884 제품이 일상에서 움직이는 모습" data-ambient-video>
+            <source src="assets/hero-products-motion.mp4" type="video/mp4">
+          </video>
+          <button class="home-film-hero__toggle" type="button" data-ambient-toggle aria-pressed="true">영상 일시정지</button>
         </div>
         <div class="home-film-hero__copy">
           <span class="home-film-hero__kicker">Himawari · The Collection</span>

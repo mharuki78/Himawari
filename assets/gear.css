@@ -114,7 +114,7 @@ html {
 
 .header-store:hover { background: var(--ink); color: var(--cream); }
 
-/* Split collection hero: a calm product still paired with focused campaign copy. */
+/* Split collection hero: real product footage paired with focused campaign copy. */
 .home-film-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(24rem, 1fr);
@@ -128,7 +128,7 @@ html {
   position: relative;
   min-height: 38rem;
   overflow: hidden;
-  background: var(--ink);
+  background: var(--ink) url("hero-products-motion-poster.jpg") center / cover no-repeat;
 }
 
 .home-film-hero__media::after {
@@ -139,13 +139,31 @@ html {
   pointer-events: none;
 }
 
-.home-film-hero__image {
+.home-film-hero__video {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
+
+.home-film-hero__toggle {
+  position: absolute;
+  z-index: 1;
+  right: 1rem;
+  bottom: 1rem;
+  min-height: 44px;
+  padding: .72rem .9rem;
+  border: 1px solid var(--cream);
+  background: var(--ink);
+  color: var(--cream);
+  font: inherit;
+  font-size: .64rem;
+  font-weight: 720;
+  letter-spacing: .11em;
+}
+
+.home-film-hero__toggle:hover { background: var(--cream); color: var(--ink); }
 
 .home-film-hero__copy {
   display: flex;
@@ -987,6 +1005,8 @@ html {
   .feature-film__video,
   .feature-film__toggle { display: none; }
   .feature-film { min-height: min(82svh, 54rem); }
+  .home-film-hero__video,
+  .home-film-hero__toggle { display: none; }
 }
 
 @media (forced-colors: active) {

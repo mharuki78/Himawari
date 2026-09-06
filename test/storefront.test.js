@@ -23,12 +23,14 @@ test('모든 HTML 페이지와 상품 템플릿이 공통 파비콘을 선언한
   }
 });
 
-test('홈 첫 화면은 정적 컬렉션 이미지를 쓰고 릴스 8개를 제공한다', async () => {
+test('홈 첫 화면은 실제 제품 영상을 쓰고 릴스 8개를 제공한다', async () => {
   const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   const gearCss = await readFile(new URL('../assets/gear.css', import.meta.url), 'utf8');
 
-  assert.match(html, /class="home-film-hero__image"[^>]+src="assets\/himawari-collection-v2\.webp"/);
-  assert.doesNotMatch(html, /hero-film-1884\.mp4|home-film-hero__video|home-film-hero__toggle/);
+  assert.match(html, /class="home-film-hero__video"[^>]+poster="assets\/hero-products-motion-poster\.jpg"/);
+  assert.match(html, /<source src="assets\/hero-products-motion\.mp4" type="video\/mp4">/);
+  assert.match(html, /class="home-film-hero__toggle"[^>]+data-ambient-toggle/);
+  assert.doesNotMatch(html, /class="home-film-hero__image"/);
   assert.equal((html.match(/data-reel-card/g) || []).length, 8);
   assert.match(html, /assets\/reel-0514-260527\.mp4/);
   assert.match(html, /assets\/reel-0514-260604\.mp4/);
@@ -39,6 +41,8 @@ test('홈 첫 화면은 정적 컬렉션 이미지를 쓰고 릴스 8개를 제�
 
   for (const asset of [
     'assets/himawari-logo-hq.png',
+    'assets/hero-products-motion.mp4',
+    'assets/hero-products-motion-poster.jpg',
     'assets/reel-0514-260527.mp4',
     'assets/reel-0514-260527-poster.jpg',
     'assets/reel-0514-260604.mp4',
