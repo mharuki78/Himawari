@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import { activeCoupons, defaultPromotions, normalizePromotions, publicPromotions, validatePromotionsInput } from '../api/_lib/promotions.js';
-import { fetch as promotionsHandler } from '../api/promotions.js';
+import { fetch as promotionsHandler } from '../api/products.js';
 
 test('초기 프로모션은 안내 팝업을 제공하고 네 종류 쿠폰을 안전하게 비활성화한다', () => {
   const config = defaultPromotions();
@@ -34,7 +34,7 @@ test('저장소가 없으면 공개 API는 비활성 기본값을 제공한다',
   const previous = process.env.BLOB_READ_WRITE_TOKEN;
   delete process.env.BLOB_READ_WRITE_TOKEN;
   try {
-    const response = await promotionsHandler(new Request('https://allaboutbag.com/api/promotions'));
+    const response = await promotionsHandler(new Request('https://allaboutbag.com/api/products?route=promotions'));
     const payload = await response.json();
     assert.equal(response.status, 200);
     assert.equal(payload.popup.enabled, true);
