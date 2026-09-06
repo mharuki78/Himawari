@@ -17,6 +17,7 @@
   var announcer = root.querySelector('[data-game-announcer]');
   var catchStage = root.querySelector('[data-catch-stage]');
   var catchLayer = root.querySelector('[data-catch-layer]');
+  var playerShadow = root.querySelector('[data-player-shadow]');
   var player = root.querySelector('[data-catch-player]');
   var gameToast = root.querySelector('[data-game-toast]');
   var pauseButton = root.querySelector('[data-game-pause]');
@@ -62,6 +63,9 @@
     objects: [],
     playerX: 50,
     playerY: 76,
+    facing: 'up',
+    footstepSide: 1,
+    lastFootstep: 0,
     lastFrame: 0,
     invulnerableUntil: 0,
     spawnTimer: 0,
@@ -122,6 +126,36 @@
   function renderPlayer() {
     player.style.left = state.playerX + '%';
     player.style.top = state.playerY + '%';
+    playerShadow.style.left = state.playerX + '%';
+    playerShadow.style.top = (state.playerY + 5.8) + '%';
+    if (!reducedMotion) {
+      catchStage.style.setProperty('--world-x', ((50 - state.playerX) * .07).toFixed(2) + '%');
+      catchStage.style.setProperty('--world-y', ((56 - state.playerY) * .06).toFixed(2) + '%');
+    }
+  }
+
+  function setPlayerDirection(dx, dy) {
+    if (Math.abs(dx) > .1) {
+      state.facing = dx < 0 ? 'left' : 'right';
+      player.style.setProperty('--player-flip', dx < 0 ? '-1' : '1');
+    } else if (Math.abs(dy) > .1) {
+      state.facing = dy < 0 ? 'up' : 'down';
+    }
+    player.style.setProperty('--player-lean', (dx * 4).toFixed(1) + 'deg');
+    player.dataset.facing = state.facing;
+  }
+
+  function createFootstep(now, dx, dy) {
+    if (reducedMotion || now - state.lastFootstep < 155) return;
+    state.lastFootstep = now;
+    state.footstepSide *= -1;
+    var step = document.createElement('span');
+    step.className = 'footstep';
+    step.style.left = (state.playerX + state.footstepSide * 1.4) + '%';
+    step.style.top = (state.playerY + 5.6) + '%';
+    step.style.setProperty('--step-angle', (Math.atan2(dy, dx) * 180 / Math.PI + 90).toFixed(1) + 'deg');
+    catchLayer.append(step);
+    window.setTimeout(function () { step.remove(); }, 950);
   }
 
   function clearRound() {
@@ -134,9 +168,14 @@
     state.animationFrame = 0;
     state.toastTimer = 0;
     state.lastFrame = 0;
+    state.lastFootstep = 0;
     state.directions.clear();
     state.objects.forEach(function (object) { object.element.remove(); });
     state.objects = [];
+    catchLayer.querySelectorAll('.footstep').forEach(function (step) { step.remove(); });
+    catchStage.classList.remove('is-moving');
+    player.classList.remove('is-walking');
+    player.style.setProperty('--player-lean', '0deg');
     updateControllerState();
   }
 
@@ -150,6 +189,8 @@
     state.paused = paused;
     state.directions.clear();
     player.classList.remove('is-walking');
+    player.style.setProperty('--player-lean', '0deg');
+    catchStage.classList.remove('is-moving');
     updateControllerState();
     if (message) announce(message);
     showToast(paused ? 'PAUSE' : 'GO!');
@@ -227,12 +268,19 @@
       var dy = (state.directions.has('down') ? 1 : 0) - (state.directions.has('up') ? 1 : 0);
       if (dx || dy) {
         var length = Math.sqrt(dx * dx + dy * dy) || 1;
-        state.playerX = Math.max(10, Math.min(90, state.playerX + (dx / length) * 39 * delta));
-        state.playerY = Math.max(21, Math.min(88, state.playerY + (dy / length) * 39 * delta));
+        var moveX = dx / length;
+        var moveY = dy / length;
+        state.playerX = Math.max(10, Math.min(90, state.playerX + moveX * 39 * delta));
+        state.playerY = Math.max(21, Math.min(88, state.playerY + moveY * 39 * delta));
+        setPlayerDirection(moveX, moveY);
+        createFootstep(now, moveX, moveY);
         player.classList.add('is-walking');
+        catchStage.classList.add('is-moving');
         renderPlayer();
       } else {
         player.classList.remove('is-walking');
+        catchStage.classList.remove('is-moving');
+        player.style.setProperty('--player-lean', '0deg');
       }
 
       state.objects.slice().forEach(function (object) {
@@ -277,7 +325,11 @@
     state.paused = false;
     state.playerX = 50;
     state.playerY = 76;
+    state.facing = 'up';
+    state.footstepSide = 1;
     state.invulnerableUntil = 0;
+    player.style.setProperty('--player-flip', '1');
+    player.style.setProperty('--player-lean', '0deg');
     renderPlayer();
     player.classList.remove('is-hit', 'is-walking');
     showPanel('catch');
@@ -304,7 +356,7 @@
     state.selectedItem = '';
     renderPackingBoard();
     showPanel('pack');
-    announce('공방에 도착했습니다. 모은 물건을 고른 뒤 알맞은 수납칸을 눌러 주세요.');
+    announce('학교에 도착했습니다. 모은 물건을 고른 뒤 알맞은 수납칸을 눌러 주세요.');
     runClock(PACK_SECONDS, finishGame);
   }
 

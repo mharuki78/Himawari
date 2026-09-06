@@ -136,15 +136,16 @@ test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 �
   const gameCss = await readFile(new URL('../assets/game.css', import.meta.url), 'utf8');
   const checkoutJs = await readFile(new URL('../assets/checkout.js', import.meta.url), 'utf8');
 
-  await access(new URL('../assets/game-pixel-world.png', import.meta.url));
+  await access(new URL('../assets/game-pixel-school-world.png', import.meta.url));
   await access(new URL('../assets/game-pixel-player.png', import.meta.url));
   assert.match(html, /data-game-panel="catch"/);
   assert.match(html, /data-game-panel="pack"/);
   assert.match(html, /data-game-panel="result"/);
-  assert.match(html, /assets\/game-pixel-world\.png/);
+  assert.match(html, /assets\/game-pixel-school-world\.png/);
   assert.match(html, /assets\/game-pixel-player\.png/);
   assert.match(html, /data-game-move="up"/);
   assert.match(html, /data-game-lives/);
+  assert.match(html, /data-player-shadow/);
   assert.match(html, /product\.html\?id=store-13326274540/);
   assert.match(gameJs, /var REWARD_STORAGE_KEY = 'himawari-game-coupon-v1'/);
   assert.match(gameJs, /'shipping-free'/);
@@ -152,6 +153,10 @@ test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 �
   assert.match(gameJs, /'discount-15'/);
   assert.match(gameJs, /'discount-20'/);
   assert.match(gameJs, /event\.isComposing/);
+  assert.match(gameJs, /function createFootstep/);
+  assert.match(gameJs, /--player-flip/);
+  assert.match(gameCss, /\.pixel-player\.is-walking/);
+  assert.match(gameCss, /\.adventure-stage\.is-moving \.player-shadow/);
   assert.match(gameCss, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(checkoutJs, /himawari-game-coupon-v1/);
   assert.match(checkoutJs, /게임 획득/);

@@ -7,14 +7,14 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-    <meta name="description" content="Himawari No.0422 가방으로 아이템을 받고 알맞은 수납칸을 완성해 쿠폰을 획득하는 미니게임입니다.">
+    <meta name="description" content="Himawari No.0422 가방을 메고 프리미엄 스쿨 캠퍼스 등굣길을 걸으며 아이템을 모아 쿠폰을 획득하는 미니게임입니다.">
     <meta name="theme-color" content="#F4EFE3">
     <link rel="canonical" href="https://allaboutbag.com/game.html">
     <meta property="og:type" content="website">
     <meta property="og:title" content="0422 PACKING GAME — Himawari">
-    <meta property="og:description" content="아이템을 받고 가방을 정리해 Himawari 쿠폰에 도전하세요.">
+    <meta property="og:description" content="학교로 향하는 픽셀 등굣길에서 아이템을 모으고 가방을 정리해 Himawari 쿠폰에 도전하세요.">
     <meta property="og:url" content="https://allaboutbag.com/game.html">
-    <meta property="og:image" content="https://allaboutbag.com/assets/game-pixel-world.png">
+    <meta property="og:image" content="https://allaboutbag.com/assets/game-pixel-school-world.png">
     <title>0422 PACKING GAME — Himawari</title>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -41,20 +41,20 @@
         <div class="game-hero__copy">
           <p class="kicker">Himawari pixel adventure · No.0422</p>
           <h1 id="game-title"><span class="headline-line">오늘의 가방을 메고</span><span class="headline-line accent-word">작은 모험을 시작하세요.</span></h1>
-          <p>0422 백팩을 멘 캐릭터를 직접 움직여 필요한 물건을 모으고, 공방에 도착해 가방을 완성하면 쿠폰을 획득할 수 있습니다.</p>
-          <a href="#play">픽셀 마을로 들어가기 <span aria-hidden="true">↓</span></a>
+          <p>0422 백팩을 멘 캐릭터를 직접 움직여 등굣길에 필요한 물건을 모으고, 학교에 도착해 가방을 완성하면 쿠폰을 획득할 수 있습니다.</p>
+          <a href="#play">등굣길로 들어가기 <span aria-hidden="true">↓</span></a>
         </div>
         <figure class="game-hero__preview">
-          <img src="assets/game-pixel-world.png" width="564" height="1002" alt="나무와 꽃이 둘러싼 픽셀 마을의 가방 공방 산책로">
+          <img src="assets/game-pixel-school-world.png" width="564" height="1002" alt="황금빛 가로수와 석재 담장 사이 학교로 이어지는 픽셀 등굣길">
           <img class="game-hero__player" src="assets/game-pixel-player.png" width="256" height="384" alt="Himawari No.0422 백팩을 멘 픽셀 캐릭터">
-          <figcaption><span>QUEST 0422</span><strong>가방 공방으로 출발!</strong></figcaption>
+          <figcaption><span>QUEST 0422</span><strong>학교로 출발!</strong></figcaption>
         </figure>
       </section>
 
       <section class="game-workshop section" id="play" aria-labelledby="workshop-title" data-game-root>
         <div class="section-inner">
           <div class="game-workshop__head">
-            <div><p class="kicker">Two stage adventure</p><h2 id="workshop-title"><span>픽셀 마을을 걷고</span><span>가방을 완성하세요.</span></h2></div>
+            <div><p class="kicker">Two stage adventure</p><h2 id="workshop-title"><span>캠퍼스 등굣길을 걷고</span><span>오늘의 가방을 완성하세요.</span></h2></div>
             <p>모바일 방향키를 누르거나 키보드의 화살표·WASD로 움직이세요. 화면을 벗어나면 게임은 자동으로 멈춥니다.</p>
           </div>
 
@@ -70,23 +70,24 @@
               <div class="pixel-screen">
                 <section class="game-panel game-panel--intro" data-game-panel="intro" aria-labelledby="game-intro-title">
                   <div class="intro-scene" aria-hidden="true">
-                    <img src="assets/game-pixel-world.png" width="564" height="1002" alt="">
+                    <img src="assets/game-pixel-school-world.png" width="564" height="1002" alt="">
                     <img class="intro-character" src="assets/game-pixel-player.png" width="256" height="384" alt="">
                   </div>
                   <div class="pixel-dialog">
                     <p class="game-step">QUEST 0422</p>
-                    <h3 id="game-intro-title">공방까지 필요한 물건을 모아 주세요!</h3>
+                    <h3 id="game-intro-title">학교까지 필요한 물건을 모아 주세요!</h3>
                     <p><strong>책 · 노트북 · 물병 · 필통</strong>은 가까이 가서 모으고, 아령과 잉크병은 피하세요. 생명은 3개입니다.</p>
                     <button class="game-primary" type="button" data-game-start><span>모험 시작</span><span aria-hidden="true">▶</span></button>
                   </div>
                 </section>
 
                 <section class="game-panel game-panel--catch" data-game-panel="catch" aria-labelledby="catch-title" hidden>
-                  <h3 class="sr-only" id="catch-title">픽셀 마을 아이템 모으기</h3>
+                  <h3 class="sr-only" id="catch-title">학교 등굣길 아이템 모으기</h3>
                   <div class="adventure-stage" data-catch-stage aria-label="캐릭터를 움직여 필요한 물건을 모으는 게임판">
-                    <img class="adventure-world" src="assets/game-pixel-world.png" width="564" height="1002" alt="">
-                    <div class="quest-ribbon" aria-hidden="true"><span>공방까지</span><strong>ITEM QUEST</strong></div>
+                    <img class="adventure-world" src="assets/game-pixel-school-world.png" width="564" height="1002" alt="">
+                    <div class="quest-ribbon" aria-hidden="true"><span>학교까지</span><strong>ITEM QUEST</strong></div>
                     <div class="collect-layer" data-catch-layer aria-hidden="true"></div>
+                    <div class="player-shadow" data-player-shadow aria-hidden="true"></div>
                     <img class="pixel-player" data-catch-player src="assets/game-pixel-player.png" width="256" height="384" alt="0422 가방을 메고 길을 걷는 내 캐릭터">
                     <div class="game-toast" data-game-toast aria-hidden="true"></div>
                   </div>
@@ -94,7 +95,7 @@
 
                 <section class="game-panel game-panel--pack" data-game-panel="pack" aria-labelledby="pack-title" hidden>
                   <div class="pixel-room">
-                    <div class="pack-dialog"><p class="game-step">ATELIER · STAGE 02</p><h3 id="pack-title">가방 수납을 완성하세요.</h3><p>아래 물건을 먼저 고른 뒤 알맞은 수납칸을 누르세요.</p></div>
+                    <div class="pack-dialog"><p class="game-step">SCHOOL LOCKER · STAGE 02</p><h3 id="pack-title">등교 준비를 완성하세요.</h3><p>아래 물건을 먼저 고른 뒤 알맞은 수납칸을 누르세요.</p></div>
                     <div class="packing-board">
                       <figure class="packing-bag">
                         <img src="assets/game-pixel-player.png" width="256" height="384" alt="No.0422 가방을 멘 픽셀 캐릭터">
@@ -107,7 +108,7 @@
                 </section>
 
                 <section class="game-panel game-panel--result" data-game-panel="result" aria-labelledby="result-title" hidden>
-                  <div class="result-scene" aria-hidden="true"><img src="assets/game-pixel-world.png" width="564" height="1002" alt=""><span class="pixel-confetti"></span></div>
+                  <div class="result-scene" aria-hidden="true"><img src="assets/game-pixel-school-world.png" width="564" height="1002" alt=""><span class="pixel-confetti"></span></div>
                   <div class="result-dialog">
                     <p class="game-step">QUEST COMPLETE!</p>
                     <h3 id="result-title" tabindex="-1">오늘의 가방이 완성됐어요.</h3>
