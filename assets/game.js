@@ -489,7 +489,11 @@
     var direction = button.dataset.gameMove;
     button.addEventListener('pointerdown', function (event) {
       event.preventDefault();
-      button.setPointerCapture?.(event.pointerId);
+      try {
+        button.setPointerCapture?.(event.pointerId);
+      } catch (error) {
+        // Synthetic and legacy touch events may not own an active pointer.
+      }
       pressDirection(direction, button);
     });
     ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(function (eventName) {
