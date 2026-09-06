@@ -237,6 +237,22 @@ html {
 .trust-item strong { font-size: .7rem; letter-spacing: .14em; }
 .trust-item span { display: block; margin-top: .25rem; font-size: .65rem; opacity: .66; }
 
+.game-invite {
+  display: grid;
+  grid-template-columns: minmax(8rem, .25fr) minmax(20rem, .85fr) minmax(20rem, .65fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: center;
+  padding: clamp(4rem, 9vh, 8rem) var(--page-pad);
+  border-bottom: var(--hairline);
+}
+.game-invite__number { align-self: stretch; padding-right: 1rem; border-right: var(--hairline); font: 780 clamp(3rem, 7vw, 7.5rem)/.82 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: -.08em; }
+.game-invite__copy h2 { margin: 0; font-size: clamp(2.6rem, 5vw, 5.8rem); font-weight: 260; letter-spacing: -.045em; line-height: 1.06; word-break: keep-all; }
+.game-invite__copy > p:not(.kicker) { margin: 1.5rem 0 0; font-size: .82rem; }
+.game-invite__copy > a { display: inline-flex; justify-content: space-between; gap: 3rem; min-width: 14rem; min-height: 44px; margin-top: 1.5rem; padding: .65rem 0; border-bottom: var(--hairline); font-size: .74rem; font-weight: 680; }
+.game-invite__product { margin: 0; border: var(--hairline); box-shadow: 8px 8px 0 var(--moss); background: #fff; }
+.game-invite__product img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; image-rendering: pixelated; }
+.game-invite__product figcaption { padding: .65rem; border-top: var(--hairline); background: var(--cream); font: 700 .55rem/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .1em; }
+
 .section { padding: var(--section-space) var(--page-pad); }
 .display-title { font-size: clamp(3.25rem, 5.8vw, 6.4rem); }
 .section-head { margin-bottom: max(7vh, 3.5rem); }
@@ -947,6 +963,9 @@ html {
   .trust-item:nth-child(2) { border-right: 0; }
   .trust-item:nth-child(-n+2) { border-bottom: 1px solid color-mix(in srgb, var(--cream) 24%, transparent); }
 
+  .game-invite { grid-template-columns: minmax(6rem, .2fr) 1fr; }
+  .game-invite__product { grid-column: 2; width: min(100%, 30rem); }
+
   .intro::before { background-position: 64% 42%; }
   .intro::after { background: color-mix(in srgb, var(--ink) 78%, transparent); }
   .journal::after { background: color-mix(in srgb, var(--ink) 88%, transparent); }
@@ -977,6 +996,10 @@ html {
   .announcement-bar { font-size: .58rem; letter-spacing: .11em; }
   .brand { width: 4rem; height: 2.2rem; }
   .display-title { font-size: clamp(3rem, 14vw, 4.5rem); }
+
+  .game-invite { grid-template-columns: 1fr; }
+  .game-invite__number { padding: 0 0 1rem; border-right: 0; border-bottom: var(--hairline); }
+  .game-invite__product { grid-column: auto; }
 
   .reel-showcase { --reel-card-width: min(78vw, 22rem); }
   .reel-showcase__controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }

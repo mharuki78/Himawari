@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <meta name="description" content="Himawari No.0422 가방으로 아이템을 받고 알맞은 수납칸을 완성해 쿠폰을 획득하는 미니게임입니다.">
+    <meta name="theme-color" content="#F4EFE3">
+    <link rel="canonical" href="https://allaboutbag.com/game.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="0422 PACKING GAME — Himawari">
+    <meta property="og:description" content="아이템을 받고 가방을 정리해 Himawari 쿠폰에 도전하세요.">
+    <meta property="og:url" content="https://allaboutbag.com/game.html">
+    <meta property="og:image" content="https://allaboutbag.com/assets/game-0422-black.jpg">
+    <title>0422 PACKING GAME — Himawari</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/gear.css">
+    <link rel="stylesheet" href="assets/cart.css">
+    <link rel="stylesheet" href="assets/member.css">
+    <link rel="stylesheet" href="assets/game.css">
+    <script src="script.js" defer></script>
+    <script src="assets/game.js" defer></script>
+  </head>
+  <body class="game-page">
+    <a class="skip-link" href="#main">본문으로 바로가기</a>
+    <div class="announcement-bar"><a href="products.html">새로운 Himawari 백팩 컬렉션을 만나보세요</a></div>
+    <header class="site-header interior-header">
+      <a class="brand" href="index.html" aria-label="Himawari 홈">HIMAWARI</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">메뉴 열기</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="주요 메뉴"><a href="products.html">제품</a><a href="about.html">브랜드</a><a href="story/">이야기</a><a href="game.html" aria-current="page">게임</a><a href="contact.html">연락하기</a></nav>
+      <a class="header-store" href="product.html?id=store-13326274540">No.0422 보기 →</a>
+    </header>
+
+    <main id="main" class="game-main">
+      <section class="game-hero" aria-labelledby="game-title">
+        <div class="game-hero__copy">
+          <p class="kicker">Himawari pixel workshop · No.0422</p>
+          <h1 id="game-title"><span class="headline-line">받고,</span><span class="headline-line">정리하고,</span><span class="headline-line accent-word">쿠폰을 획득하세요.</span></h1>
+          <p>0422 가방을 좌우로 움직여 필요한 물건을 받은 뒤, 알맞은 수납칸에 정리하면 한 판이 완성됩니다.</p>
+          <a href="#play">게임 시작 지점으로 이동 <span aria-hidden="true">↓</span></a>
+        </div>
+        <figure class="game-hero__product">
+          <span class="game-hero__number" aria-hidden="true">0422</span>
+          <img src="assets/game-0422-black.jpg" width="720" height="720" alt="검정색 Himawari No.0422 백팩">
+          <figcaption>Actual product · Black</figcaption>
+        </figure>
+      </section>
+
+      <section class="game-workshop section" id="play" aria-labelledby="workshop-title" data-game-root>
+        <div class="section-inner">
+          <div class="game-workshop__head">
+            <div><p class="kicker">Two stage challenge</p><h2 id="workshop-title"><span>1. 아이템 받기</span><span>2. 가방 정리</span></h2></div>
+            <p>방향키나 화면 버튼으로 움직일 수 있습니다. 게임 중에는 잠시 멈출 수 있고, 화면을 벗어나면 자동으로 멈춥니다.</p>
+          </div>
+
+          <div class="game-console">
+            <div class="game-hud" aria-label="게임 진행 정보">
+              <div><span>STAGE</span><strong data-game-phase>READY</strong></div>
+              <div><span>SCORE</span><strong data-game-score>0000</strong></div>
+              <div><span>TIME</span><strong data-game-time>24</strong></div>
+            </div>
+
+            <section class="game-panel game-panel--intro" data-game-panel="intro" aria-labelledby="game-intro-title">
+              <div class="game-instructions">
+                <p class="game-step">HOW TO PLAY</p>
+                <h3 id="game-intro-title">오늘의 가방을 완성해 보세요.</h3>
+                <ol>
+                  <li><strong>필요한 물건 받기</strong><span>책·노트북·물병·필통은 받고, 아령과 잉크는 피하세요.</span></li>
+                  <li><strong>수납칸 고르기</strong><span>받은 물건을 메인·노트북·앞·옆 수납칸에 맞게 넣으세요.</span></li>
+                  <li><strong>쿠폰 획득</strong><span>점수에 따라 활성화된 무료배송·10·15·20% 쿠폰에 도전합니다.</span></li>
+                </ol>
+                <button class="game-primary" type="button" data-game-start><span>게임 시작</span><span aria-hidden="true">START →</span></button>
+              </div>
+              <aside class="game-score-guide" aria-label="쿠폰 점수 기준">
+                <p>COUPON SCORE</p>
+                <dl><div><dt>2,100+</dt><dd>20%</dd></div><div><dt>1,600+</dt><dd>15%</dd></div><div><dt>1,000+</dt><dd>10%</dd></div><div><dt>참여</dt><dd>무료배송</dd></div></dl>
+                <small>관리자가 활성화한 쿠폰만 실제로 획득할 수 있습니다.</small>
+              </aside>
+            </section>
+
+            <section class="game-panel game-panel--catch" data-game-panel="catch" aria-labelledby="catch-title" hidden>
+              <div class="game-panel__heading"><div><p class="game-step">STAGE 01</p><h3 id="catch-title">필요한 물건을 받으세요.</h3></div><p>좋은 물건 +100 · 주의 물건 −80</p></div>
+              <div class="catch-stage" data-catch-stage aria-label="다섯 칸 아이템 받기 게임판">
+                <div class="catch-lanes" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                <div class="catch-layer" data-catch-layer aria-hidden="true"></div>
+                <div class="catch-line" aria-hidden="true">PACK LINE</div>
+                <img class="catch-bag" data-catch-bag src="assets/game-0422-black.jpg" width="720" height="720" alt="현재 받기 위치: 가운데 칸">
+              </div>
+              <div class="game-controls">
+                <button type="button" data-game-left><span aria-hidden="true">←</span><span>왼쪽</span></button>
+                <button type="button" data-game-pause aria-pressed="false">잠시 멈춤</button>
+                <button type="button" data-game-right><span>오른쪽</span><span aria-hidden="true">→</span></button>
+              </div>
+            </section>
+
+            <section class="game-panel game-panel--pack" data-game-panel="pack" aria-labelledby="pack-title" hidden>
+              <div class="game-panel__heading"><div><p class="game-step">STAGE 02</p><h3 id="pack-title">알맞은 수납칸에 정리하세요.</h3></div><p>물건을 먼저 고르고 수납칸을 누르세요. 정답 +120 · 오답 −30</p></div>
+              <div class="packing-board">
+                <section class="packing-items" aria-labelledby="packing-items-title"><h4 id="packing-items-title">받은 물건</h4><div data-packing-items></div></section>
+                <figure class="packing-bag">
+                  <img src="assets/game-0422-black.jpg" width="720" height="720" alt="Himawari No.0422 백팩 수납 위치 안내">
+                  <figcaption>NO.0422 / FOUR COMPARTMENTS</figcaption>
+                </figure>
+                <section class="packing-zones" aria-labelledby="packing-zones-title"><h4 id="packing-zones-title">수납칸</h4><div data-packing-zones></div></section>
+              </div>
+            </section>
+
+            <section class="game-panel game-panel--result" data-game-panel="result" aria-labelledby="result-title" hidden>
+              <p class="game-step">PACKING COMPLETE</p>
+              <h3 id="result-title" tabindex="-1">오늘의 가방이 완성됐습니다.</h3>
+              <div class="game-final-score"><span>FINAL SCORE</span><strong data-final-score>0000</strong></div>
+              <div class="game-reward" data-game-reward aria-live="polite"></div>
+              <div class="game-result-actions"><a class="game-primary" href="product.html?id=store-13326274540" data-game-product-link>No.0422 보러가기 <span aria-hidden="true">→</span></a><button type="button" class="game-secondary" data-game-restart>다시 하기</button></div>
+            </section>
+
+            <p class="game-announcer" data-game-announcer role="status" aria-live="polite"></p>
+          </div>
+
+          <aside class="game-wallet" aria-labelledby="wallet-title">
+            <div><p class="kicker">My game coupon</p><h2 id="wallet-title">이 브라우저에 저장된 쿠폰</h2></div>
+            <p data-game-wallet>쿠폰 정보를 확인하고 있습니다.</p>
+            <a href="products.html">쿠폰을 적용할 가방 고르기 <span aria-hidden="true">→</span></a>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand"><strong>HIMAWARI</strong><p>오래 곁에 둘 가방.</p></div>
+      <nav aria-label="푸터 메뉴"><a href="about.html">브랜드</a><a href="products.html">제품</a><a href="story/">이야기</a><a href="game.html" aria-current="page">게임</a><a href="terms.html">이용약관</a><a href="privacy.html">개인정보</a><a href="contact.html">연락하기</a></nav>
+      <div class="footer-contact" role="group" aria-label="연락 채널"><a href="contact.html">비공개 문의 남기기</a><a href="https://www.instagram.com/himawari.korea/" target="_blank" rel="noopener noreferrer">@himawari.korea</a></div>
+      <dl class="footer-business"><div><dt>상호명</dt><dd>히마와리 코리아</dd></div><div><dt>사업자번호</dt><dd>462-66-00596</dd></div><div><dt>대표자명</dt><dd>남영선</dd></div><div><dt>고객센터</dt><dd><a href="tel:+821053373981">010-5337-3981</a></dd></div><div data-business-email><dt>고객센터 이메일</dt><dd>golf4484@naver.com</dd></div><div><dt>소재지</dt><dd>경기도 시흥시 배곧4로 32-29, 파크뷰 206호</dd></div><div><dt>통신판매번호</dt><dd>제2025-경기시흥-2607호</dd></div></dl>
+      <p class="copyright">© <span id="year">2026</span> HIMAWARI</p>
+    </footer>
+    <script src="assets/cart.js" defer></script>
+    <script src="assets/member.js" defer></script>
+  </body>
+</html>

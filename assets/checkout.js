@@ -32,6 +32,17 @@
   var submitted = false;
   var pendingHref = '';
   var checkoutStorageKey = 'himawari-checkout-items';
+  var gameRewardStorageKey = 'himawari-game-coupon-v1';
+  var preferredGameCouponId = '';
+
+  function readGameReward() {
+    try {
+      var reward = JSON.parse(localStorage.getItem(gameRewardStorageKey));
+      return reward && typeof reward.couponId === 'string' ? reward : null;
+    } catch (error) {
+      return null;
+    }
+  }
 
   function request(url, options) {
     return fetch(url, Object.assign({ cache: 'no-store' }, options || {})).then(async function (response) {
@@ -94,7 +105,7 @@
 
   function renderCoupons() {
     var selected = form.querySelector('input[name="couponId"]:checked');
-    var current = selected ? selected.value : '';
+    var current = selected ? selected.value : preferredGameCouponId;
     var subtotal = items.reduce(function (sum, item) { return sum + item.product.price * item.quantity; }, 0);
     var currentCoupon = coupons.find(function (coupon) { return coupon.id === current; });
     if (currentCoupon && subtotal < Number(currentCoupon.minimumSubtotal || 0)) current = '';
@@ -112,7 +123,7 @@
       input.disabled = Boolean(minimumMissing);
       var copy = document.createElement('span');
       var strong = document.createElement('strong');
-      strong.textContent = coupon.label;
+      strong.textContent = coupon.label + (coupon.id && coupon.id === preferredGameCouponId ? ' · 게임 획득' : '');
       var detail = document.createElement('small');
       detail.textContent = coupon.id ? couponDescription(coupon) + (minimumMissing ? ' · 금액 조건 미달' : '') : '기본 배송 정책으로 주문합니다.';
       copy.append(strong, detail);
@@ -238,6 +249,8 @@
       var session = await request('/api/auth/session');
       var promotionPayload = await request('/api/promotions').catch(function () { return { coupons: [] }; });
       coupons = Array.isArray(promotionPayload.coupons) ? promotionPayload.coupons : [];
+      var gameReward = readGameReward();
+      preferredGameCouponId = gameReward && coupons.some(function (coupon) { return coupon.id === gameReward.couponId; }) ? gameReward.couponId : '';
       memberOrder = session.authenticated === true;
       guestNote.hidden = memberOrder;
       var productId = new URLSearchParams(location.search).get('product');

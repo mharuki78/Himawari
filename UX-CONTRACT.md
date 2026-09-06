@@ -22,7 +22,7 @@
 | Product permission / lifecycle | `docs/PRODUCT-CATALOG-POLICY.md` | User-approved product policy | 2026-08-31 |
 | Product media limits / storage | `docs/PRODUCT-CATALOG-POLICY.md` | Maintained product policy | 2026-09-01 |
 | Order lifecycle / permissions / retention | `docs/ORDER-POLICY.md` | User-approved scope + official law | 2026-09-03 |
-| Price / coupon / popup operations | `docs/PRODUCT-CATALOG-POLICY.md`, `docs/ORDER-POLICY.md` | User-approved scope + maintained policy | 2026-09-06 |
+| Price / coupon / popup / game reward operations | `docs/PRODUCT-CATALOG-POLICY.md`, `docs/ORDER-POLICY.md` | User-approved scope + maintained policy | 2026-09-06 |
 
 ## Visual contract
 
@@ -44,6 +44,7 @@
 | CRUD | inquiry and product APIs under `api/` | server authorization + Blob policies | inquiry create/read/delete / product create/read/update/delete | full-flow integration |
 | Dialog | native modal `<dialog>` with app-owned surface | `admin/inquiries.html`, `account.html`, `checkout.html`, `admin/orders.html`, `index.html` | irreversible delete / unsaved order / customer request / admin completion / home promotion | keyboard + failure flow |
 | Promotion settings | `admin/promotion-admin.js`, `api/admin/products.js?route=promotions` | private Blob `promotions/v1/settings.json` | four fixed coupons / home popup | auth + ETag + server order revalidation |
+| Game reward | `assets/game.js`, `assets/checkout.js` | active public promotion response + browser localStorage preference | No.0422 catch / packing / checkout preselection | keyboard + narrow viewport + reduced motion + server coupon revalidation |
 | Member session | `assets/member.js`, `api/auth/` | HttpOnly cookie + Neon session hash | Naver / Google | OAuth state + browser flow |
 | Member collection | `assets/cart.js`, `assets/member.js`, `api/member/` | Neon for members, localStorage for guests | cart / wishlist | merge, logout, account delete |
 | Order form | `assets/checkout.js`, `api/orders.js` | `docs/ORDER-POLICY.md` + server validation | direct product / guest cart / member cart | validation + idempotent create |
@@ -94,6 +95,7 @@
 | Hard-delete product | `삭제` then `제품 삭제` | dialog stays open, duplicate blocked | refreshed product list | persistent deletion acknowledgement | dialog remains; conflict asks for refresh | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Create order | `바로 구매하기` or `장바구니 주문하기` then `결제 대기로 주문 접수` | form and button locked, request ID reused | same page completion state | order number, amount, payment-pending state; guest gets inquiry path | values retained; server field errors; retry same ID | completion title | `docs/ORDER-POLICY.md` |
 | Save promotion | `프로모션 저장` | submit locked, fields retained | same admin route | persistent saved status and public config version | inline field errors; ETag conflict asks for refresh | form status | `docs/ORDER-POLICY.md` |
+| Earn game coupon | `게임 시작` then catch / packing completion | fixed HUD, pause and live score | result panel | score and best active eligible tier stored in current browser | unavailable promotion shows event-preparing state; existing higher reward is retained | result title | `docs/ORDER-POLICY.md` |
 | Request cancellation/refund | `취소 요청` / `반품·환불 요청` | confirmation action locked | account order list | persistent list acknowledgement | dialog remains with retry/cancel | order list title | `docs/ORDER-POLICY.md` |
 | Admin update order | `주문 변경 저장` | form or confirmation stays open, duplicate blocked | selected order detail | refreshed status and persistent board message | inline field error or dialog error; revision conflict refresh | selected order number | `docs/ORDER-POLICY.md` |
 
@@ -128,6 +130,7 @@
 - Product image upload: browser-to-Blob direct upload with a 15-minute role-scoped token; representative image maximum 8MB and each detail image maximum 15MB; determinate progress and explicit cancellation. Partial uploads are cleaned up when the session remains valid.
 - Product catalog writes: conditional ETag write prevents a stale administrator from overwriting a concurrent create, edit, or delete. Edit preserves existing images unless a replacement file was selected. Conflict keeps form or delete context and requests a refresh.
 - Order create: member session is optional; authenticated orders store the member ID and guest orders store no member ID. A client request UUID is unique and reused after uncertain completion; the server snapshots the derived self-store price and recalculates the selected active coupon and shipping. Guest orders have no public list/read endpoint.
+- Game reward: only the public active-coupon response is eligible. The browser stores a coupon preference in guarded localStorage; checkout ignores missing, inactive or ineligible preferences and the order API remains the final pricing authority.
 - Order updates: revision-checked pessimistic transitions; customer requests cannot complete cancellation/refund, and admin cancellation/refund completion requires a confirmation dialog.
 
 ## Validation

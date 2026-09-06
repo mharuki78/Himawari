@@ -8,7 +8,7 @@ import { renderCatalogPage, renderProductNotFoundPage, renderProductPage } from 
 const products = seedCatalog().products.map(publicProduct);
 
 test('모든 HTML 페이지와 상품 템플릿이 공통 파비콘을 선언한다', async () => {
-  const rootFiles = ['about.html', 'account.html', 'checkout.html', 'contact.html', 'index.html', 'privacy.html', 'terms.html'];
+  const rootFiles = ['about.html', 'account.html', 'checkout.html', 'contact.html', 'game.html', 'index.html', 'privacy.html', 'terms.html'];
   const nestedFiles = await Promise.all(['admin', 'story', 'templates'].map(async (directory) => {
     const files = await readdir(new URL(`../${directory}/`, import.meta.url));
     return files.filter((file) => file.endsWith('.html')).map((file) => `${directory}/${file}`);
@@ -128,6 +128,29 @@ test('내부 주문서는 PG 미연결 경계와 앱 소유 검증을 명확히 
   assert.match(html, /결제 대기로 주문 접수/);
   assert.match(html, /PG 결제 연결 준비 중/);
   assert.doesNotMatch(html, /네이버페이 구매|카카오페이|결제 완료로 주문/);
+});
+
+test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 제공한다', async () => {
+  const html = await readFile(new URL('../game.html', import.meta.url), 'utf8');
+  const gameJs = await readFile(new URL('../assets/game.js', import.meta.url), 'utf8');
+  const gameCss = await readFile(new URL('../assets/game.css', import.meta.url), 'utf8');
+  const checkoutJs = await readFile(new URL('../assets/checkout.js', import.meta.url), 'utf8');
+
+  await access(new URL('../assets/game-0422-black.jpg', import.meta.url));
+  assert.match(html, /data-game-panel="catch"/);
+  assert.match(html, /data-game-panel="pack"/);
+  assert.match(html, /data-game-panel="result"/);
+  assert.match(html, /assets\/game-0422-black\.jpg/);
+  assert.match(html, /product\.html\?id=store-13326274540/);
+  assert.match(gameJs, /var REWARD_STORAGE_KEY = 'himawari-game-coupon-v1'/);
+  assert.match(gameJs, /'shipping-free'/);
+  assert.match(gameJs, /'discount-10'/);
+  assert.match(gameJs, /'discount-15'/);
+  assert.match(gameJs, /'discount-20'/);
+  assert.match(gameJs, /event\.isComposing/);
+  assert.match(gameCss, /@media \(prefers-reduced-motion: reduce\)/);
+  assert.match(checkoutJs, /himawari-game-coupon-v1/);
+  assert.match(checkoutJs, /게임 획득/);
 });
 
 test('이용약관에 확정된 배송·반품·고객센터 정보를 표시한다', async () => {
