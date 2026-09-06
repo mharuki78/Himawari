@@ -5,18 +5,22 @@
   if (!root) return;
 
   var REWARD_STORAGE_KEY = 'himawari-game-coupon-v1';
-  var CATCH_SECONDS = 24;
-  var PACK_SECONDS = 18;
+  var CATCH_SECONDS = 35;
+  var PACK_SECONDS = 22;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var panels = Array.from(root.querySelectorAll('[data-game-panel]'));
+  var consoleElement = root.querySelector('[data-game-console]');
   var phaseOutput = root.querySelector('[data-game-phase]');
   var scoreOutput = root.querySelector('[data-game-score]');
   var timeOutput = root.querySelector('[data-game-time]');
+  var livesOutput = root.querySelector('[data-game-lives]');
   var announcer = root.querySelector('[data-game-announcer]');
   var catchStage = root.querySelector('[data-catch-stage]');
   var catchLayer = root.querySelector('[data-catch-layer]');
-  var catchBag = root.querySelector('[data-catch-bag]');
+  var player = root.querySelector('[data-catch-player]');
+  var gameToast = root.querySelector('[data-game-toast]');
   var pauseButton = root.querySelector('[data-game-pause]');
+  var moveButtons = Array.from(root.querySelectorAll('[data-game-move]'));
   var packingItems = root.querySelector('[data-packing-items]');
   var packingZones = root.querySelector('[data-packing-zones]');
   var finalScore = root.querySelector('[data-final-score]');
@@ -24,14 +28,14 @@
   var walletOutput = root.querySelector('[data-game-wallet]');
 
   var goodItems = [
-    { id: 'book', label: '책', tile: '책', code: 'BOOK', zone: 'main' },
-    { id: 'laptop', label: '노트북', tile: 'PC', code: 'LAPTOP', zone: 'laptop' },
-    { id: 'bottle', label: '물병', tile: '물', code: 'BOTTLE', zone: 'side' },
-    { id: 'pencil', label: '필통', tile: '필통', code: 'PENCIL', zone: 'front' }
+    { id: 'book', label: '책', code: 'BOOK', zone: 'main', points: 140 },
+    { id: 'laptop', label: '노트북', code: 'PC', zone: 'laptop', points: 160 },
+    { id: 'bottle', label: '물병', code: 'WATER', zone: 'side', points: 130 },
+    { id: 'pencil', label: '필통', code: 'PEN', zone: 'front', points: 130 }
   ];
   var hazards = [
-    { id: 'weight', label: '무거운 아령', tile: '아령', code: 'AVOID', hazard: true },
-    { id: 'ink', label: '열린 잉크병', tile: '잉크', code: 'AVOID', hazard: true }
+    { id: 'weight', label: '무거운 아령', code: '!', hazard: true },
+    { id: 'ink', label: '열린 잉크병', code: '!', hazard: true }
   ];
   var zones = [
     { id: 'main', label: '메인 수납', detail: '책과 큰 소지품' },
@@ -40,18 +44,30 @@
     { id: 'side', label: '옆 포켓', detail: '세워 두는 물병' }
   ];
   var rewardRank = { 'shipping-free': 1, 'discount-10': 2, 'discount-15': 3, 'discount-20': 4 };
+  var keyDirections = {
+    ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right',
+    w: 'up', s: 'down', a: 'left', d: 'right'
+  };
   var state = {
     phase: 'intro',
     score: 0,
     time: CATCH_SECONDS,
-    lane: 2,
+    lives: 3,
     caught: [],
     packItems: [],
     packed: new Set(),
     selectedItem: '',
     paused: false,
+    directions: new Set(),
+    objects: [],
+    playerX: 50,
+    playerY: 76,
+    lastFrame: 0,
+    invulnerableUntil: 0,
     spawnTimer: 0,
     clockTimer: 0,
+    animationFrame: 0,
+    toastTimer: 0,
     activeCoupons: [],
     couponLoadFailed: false
   };
@@ -61,40 +77,67 @@
     window.setTimeout(function () { announcer.textContent = message; }, 20);
   }
 
+  function showToast(message) {
+    window.clearTimeout(state.toastTimer);
+    gameToast.textContent = message;
+    gameToast.classList.remove('is-visible');
+    void gameToast.offsetWidth;
+    gameToast.classList.add('is-visible');
+    state.toastTimer = window.setTimeout(function () { gameToast.classList.remove('is-visible'); }, 900);
+  }
+
   function padScore(value) {
     return String(Math.max(0, Math.round(value))).padStart(4, '0');
   }
 
   function renderHud() {
-    var phaseLabels = { intro: 'READY', catch: '01 / CATCH', pack: '02 / PACK', result: 'COMPLETE' };
+    var phaseLabels = { intro: 'READY', catch: 'FIND', pack: 'PACK', result: 'CLEAR' };
     phaseOutput.textContent = phaseLabels[state.phase] || 'READY';
     scoreOutput.textContent = padScore(state.score);
-    timeOutput.textContent = state.phase === 'intro' ? String(CATCH_SECONDS) : String(Math.max(0, state.time)).padStart(2, '0');
+    timeOutput.textContent = String(Math.max(0, state.time)).padStart(2, '0');
+    livesOutput.textContent = '♥'.repeat(state.lives) + '♡'.repeat(Math.max(0, 3 - state.lives));
+    livesOutput.setAttribute('aria-label', '남은 생명 ' + state.lives + '개');
+  }
+
+  function updateControllerState() {
+    var active = state.phase === 'catch';
+    moveButtons.forEach(function (button) {
+      button.disabled = !active;
+      button.classList.toggle('is-pressed', active && state.directions.has(button.dataset.gameMove));
+    });
+    pauseButton.disabled = !active;
+    pauseButton.setAttribute('aria-pressed', String(active && state.paused));
+    pauseButton.setAttribute('aria-label', state.paused ? '게임 계속하기' : '게임 잠시 멈춤');
+    pauseButton.querySelector('span').textContent = state.paused ? '▶' : 'Ⅱ';
   }
 
   function showPanel(name) {
     panels.forEach(function (panel) { panel.hidden = panel.dataset.gamePanel !== name; });
     state.phase = name;
+    consoleElement.dataset.phase = name;
     renderHud();
+    updateControllerState();
   }
 
-  function updateBagPosition() {
-    catchBag.style.left = ((state.lane + .5) * 20) + '%';
-    var laneNames = ['맨 왼쪽', '왼쪽 두 번째', '가운데', '오른쪽 두 번째', '맨 오른쪽'];
-    catchBag.alt = '현재 받기 위치: ' + laneNames[state.lane] + ' 칸';
+  function renderPlayer() {
+    player.style.left = state.playerX + '%';
+    player.style.top = state.playerY + '%';
   }
 
-  function moveBag(amount) {
-    if (state.phase !== 'catch' || state.paused) return;
-    state.lane = Math.max(0, Math.min(4, state.lane + amount));
-    updateBagPosition();
-  }
-
-  function clearRoundTimers() {
+  function clearRound() {
     window.clearInterval(state.spawnTimer);
     window.clearInterval(state.clockTimer);
+    window.cancelAnimationFrame(state.animationFrame);
+    window.clearTimeout(state.toastTimer);
     state.spawnTimer = 0;
     state.clockTimer = 0;
+    state.animationFrame = 0;
+    state.toastTimer = 0;
+    state.lastFrame = 0;
+    state.directions.clear();
+    state.objects.forEach(function (object) { object.element.remove(); });
+    state.objects = [];
+    updateControllerState();
   }
 
   function setScore(amount) {
@@ -105,57 +148,105 @@
   function setPause(paused, message) {
     if (state.phase !== 'catch') return;
     state.paused = paused;
-    catchStage.classList.toggle('is-paused', paused);
-    pauseButton.setAttribute('aria-pressed', String(paused));
-    pauseButton.textContent = paused ? '계속 하기' : '잠시 멈춤';
+    state.directions.clear();
+    player.classList.remove('is-walking');
+    updateControllerState();
     if (message) announce(message);
+    showToast(paused ? 'PAUSE' : 'GO!');
   }
 
-  function resolveFallingItem(element, item, lane) {
-    if (!element.isConnected || state.phase !== 'catch') return;
-    element.remove();
-    if (lane !== state.lane) return;
-    if (item.hazard) {
-      setScore(-80);
-      announce(item.label + '을 받아 80점이 줄었습니다.');
-      return;
-    }
-    state.caught.push(item);
-    setScore(100);
-    announce(item.label + '을 받았습니다. 100점 추가.');
-  }
+  function createCollectible(item) {
+    var element = document.createElement('div');
+    var sprite = document.createElement('span');
+    element.className = 'collectible';
+    element.dataset.kind = item.id;
+    sprite.className = 'collectible__sprite';
+    sprite.textContent = item.code;
+    element.append(sprite);
+    catchLayer.append(element);
 
-  function resolveReducedItem(element, item, lane) {
-    if (!element.isConnected || state.phase !== 'catch') return;
-    if (state.paused || document.hidden) {
-      window.setTimeout(function () { resolveReducedItem(element, item, lane); }, 200);
-      return;
-    }
-    resolveFallingItem(element, item, lane);
+    var object = {
+      item: item,
+      element: element,
+      x: 16 + Math.random() * 68,
+      y: reducedMotion ? 25 + Math.random() * 48 : 12,
+      speed: reducedMotion ? 0 : 7.5 + Math.random() * 4.5
+    };
+    element.style.left = object.x + '%';
+    element.style.top = object.y + '%';
+    state.objects.push(object);
   }
 
   function spawnItem() {
-    if (state.phase !== 'catch' || state.paused || document.hidden) return;
-    var pool = Math.random() < .76 ? goodItems : hazards;
-    var item = pool[Math.floor(Math.random() * pool.length)];
-    var lane = Math.floor(Math.random() * 5);
-    var element = document.createElement('div');
-    var strong = document.createElement('strong');
-    var detail = document.createElement('span');
-    element.className = 'falling-item' + (item.hazard ? ' falling-item--hazard' : '') + (reducedMotion ? ' is-reduced' : '');
-    element.style.left = ((lane + .5) * 20) + '%';
-    element.style.setProperty('--fall-duration', Math.max(1.55, 2.35 - (CATCH_SECONDS - state.time) * .018) + 's');
-    strong.textContent = item.tile;
-    detail.textContent = item.code;
-    element.append(strong, detail);
-    catchLayer.append(element);
-    var laneNames = ['맨 왼쪽', '왼쪽 두 번째', '가운데', '오른쪽 두 번째', '맨 오른쪽'];
-    announce(item.label + ', ' + laneNames[lane] + ' 칸.');
-    if (reducedMotion) {
-      window.setTimeout(function () { resolveReducedItem(element, item, lane); }, 1350);
+    if (state.phase !== 'catch' || state.paused || document.hidden || state.objects.length >= 7) return;
+    var pool = Math.random() < .78 ? goodItems : hazards;
+    createCollectible(pool[Math.floor(Math.random() * pool.length)]);
+  }
+
+  function removeObject(object, collected) {
+    state.objects = state.objects.filter(function (entry) { return entry !== object; });
+    if (collected) {
+      object.element.classList.add('is-collected');
+      window.setTimeout(function () { object.element.remove(); }, reducedMotion ? 0 : 260);
     } else {
-      element.addEventListener('animationend', function () { resolveFallingItem(element, item, lane); }, { once: true });
+      object.element.remove();
     }
+  }
+
+  function resolveCollision(object, now) {
+    if (object.item.hazard) {
+      if (now < state.invulnerableUntil) return;
+      state.invulnerableUntil = now + 1050;
+      state.lives = Math.max(0, state.lives - 1);
+      setScore(-120);
+      player.classList.remove('is-hit');
+      void player.offsetWidth;
+      player.classList.add('is-hit');
+      showToast('OUCH!  -120');
+      announce(object.item.label + '을 피해 가지 못했습니다. 생명이 하나 줄었습니다.');
+      removeObject(object, true);
+      renderHud();
+      if (state.lives <= 0) finishCatch();
+      return;
+    }
+
+    state.caught.push(object.item);
+    setScore(object.item.points);
+    showToast(object.item.label + '  +' + object.item.points);
+    announce(object.item.label + '을 모았습니다. ' + object.item.points + '점 추가.');
+    removeObject(object, true);
+  }
+
+  function updateWorld(now) {
+    if (state.phase !== 'catch') return;
+    var delta = state.lastFrame ? Math.min(.035, (now - state.lastFrame) / 1000) : 0;
+    state.lastFrame = now;
+
+    if (!state.paused && !document.hidden) {
+      var dx = (state.directions.has('right') ? 1 : 0) - (state.directions.has('left') ? 1 : 0);
+      var dy = (state.directions.has('down') ? 1 : 0) - (state.directions.has('up') ? 1 : 0);
+      if (dx || dy) {
+        var length = Math.sqrt(dx * dx + dy * dy) || 1;
+        state.playerX = Math.max(10, Math.min(90, state.playerX + (dx / length) * 39 * delta));
+        state.playerY = Math.max(21, Math.min(88, state.playerY + (dy / length) * 39 * delta));
+        player.classList.add('is-walking');
+        renderPlayer();
+      } else {
+        player.classList.remove('is-walking');
+      }
+
+      state.objects.slice().forEach(function (object) {
+        object.y += object.speed * delta;
+        object.element.style.top = object.y + '%';
+        if (Math.abs(object.x - state.playerX) < 8 && Math.abs(object.y - state.playerY) < 7.5) {
+          resolveCollision(object, now);
+        } else if (object.y > 97) {
+          removeObject(object, false);
+        }
+      });
+    }
+
+    state.animationFrame = window.requestAnimationFrame(updateWorld);
   }
 
   function runClock(seconds, onComplete) {
@@ -175,39 +266,45 @@
   }
 
   function startCatch() {
-    clearRoundTimers();
+    clearRound();
     catchLayer.replaceChildren();
     state.score = 0;
-    state.lane = 2;
+    state.lives = 3;
     state.caught = [];
     state.packItems = [];
     state.packed = new Set();
     state.selectedItem = '';
     state.paused = false;
-    updateBagPosition();
-    pauseButton.setAttribute('aria-pressed', 'false');
-    pauseButton.textContent = '잠시 멈춤';
-    catchStage.classList.remove('is-paused');
+    state.playerX = 50;
+    state.playerY = 76;
+    state.invulnerableUntil = 0;
+    renderPlayer();
+    player.classList.remove('is-hit', 'is-walking');
     showPanel('catch');
-    announce('1단계 시작. 필요한 물건을 받고 주의 물건을 피하세요.');
-    spawnItem();
-    state.spawnTimer = window.setInterval(spawnItem, reducedMotion ? 1650 : 850);
+    announce('1단계 시작. 상하좌우로 움직여 필요한 물건을 모으고 위험한 물건은 피하세요.');
+    showToast('QUEST START!');
+    createCollectible(goodItems[0]);
+    createCollectible(goodItems[2]);
+    state.spawnTimer = window.setInterval(spawnItem, reducedMotion ? 1300 : 680);
     runClock(CATCH_SECONDS, finishCatch);
+    state.animationFrame = window.requestAnimationFrame(updateWorld);
   }
 
   function finishCatch() {
-    clearRoundTimers();
-    catchLayer.replaceChildren();
+    if (state.phase !== 'catch') return;
+    clearRound();
     var uniqueIds = Array.from(new Set(state.caught.map(function (item) { return item.id; })));
     goodItems.forEach(function (item) {
-      if (uniqueIds.length < 2 && !uniqueIds.includes(item.id)) uniqueIds.push(item.id);
+      if (uniqueIds.length < 3 && !uniqueIds.includes(item.id)) uniqueIds.push(item.id);
     });
-    state.packItems = uniqueIds.slice(0, 4).map(function (id) { return goodItems.find(function (item) { return item.id === id; }); });
+    state.packItems = uniqueIds.slice(0, 4).map(function (id) {
+      return goodItems.find(function (item) { return item.id === id; });
+    });
     state.packed = new Set();
     state.selectedItem = '';
     renderPackingBoard();
     showPanel('pack');
-    announce('2단계 시작. 물건을 선택한 뒤 알맞은 수납칸을 누르세요.');
+    announce('공방에 도착했습니다. 모은 물건을 고른 뒤 알맞은 수납칸을 눌러 주세요.');
     runClock(PACK_SECONDS, finishGame);
   }
 
@@ -219,10 +316,11 @@
       var hint = document.createElement('span');
       button.type = 'button';
       button.dataset.packItem = item.id;
+      button.dataset.kind = item.id;
       button.setAttribute('aria-pressed', String(state.selectedItem === item.id));
       button.disabled = state.packed.has(item.id);
       name.textContent = item.label;
-      hint.textContent = state.packed.has(item.id) ? '정리 완료' : item.code;
+      hint.textContent = state.packed.has(item.id) ? '정리 완료 ✓' : item.code;
       button.append(name, hint);
       button.addEventListener('click', function () {
         if (button.disabled || state.phase !== 'pack') return;
@@ -251,7 +349,7 @@
   function placeSelectedItem(zone) {
     if (state.phase !== 'pack') return;
     if (!state.selectedItem) {
-      announce('먼저 왼쪽에서 정리할 물건을 선택해 주세요.');
+      announce('먼저 아래에서 정리할 물건을 선택해 주세요.');
       return;
     }
     var item = state.packItems.find(function (entry) { return entry.id === state.selectedItem; });
@@ -259,14 +357,14 @@
     if (item.zone === zone.id) {
       state.packed.add(item.id);
       state.selectedItem = '';
-      setScore(120);
-      announce(item.label + '을 ' + zone.label + '에 정리했습니다. 120점 추가.');
+      setScore(150);
+      announce(item.label + '을 ' + zone.label + '에 정리했습니다. 150점 추가.');
       renderPackingBoard();
       if (state.packed.size === state.packItems.length) finishGame();
       return;
     }
-    setScore(-30);
-    announce(item.label + '은 ' + zone.label + '이 아닙니다. 다시 골라 보세요.');
+    setScore(-40);
+    announce(item.label + '은 ' + zone.label + '이 아닙니다. 다른 수납칸을 골라 보세요.');
   }
 
   function readStoredReward() {
@@ -280,12 +378,7 @@
 
   function saveReward(coupon) {
     try {
-      localStorage.setItem(REWARD_STORAGE_KEY, JSON.stringify({
-        couponId: coupon.id,
-        label: coupon.label,
-        earnedAt: new Date().toISOString(),
-        expiresAt: coupon.expiresAt || null
-      }));
+      localStorage.setItem(REWARD_STORAGE_KEY, JSON.stringify({ couponId: coupon.id, label: coupon.label, earnedAt: new Date().toISOString(), expiresAt: coupon.expiresAt || null }));
       return true;
     } catch (error) {
       return false;
@@ -318,7 +411,7 @@
   function renderWallet() {
     var stored = readStoredReward();
     if (state.couponLoadFailed) {
-      walletOutput.textContent = stored ? stored.label + ' 쿠폰이 저장되어 있습니다. 현재 활성 여부는 주문서에서 다시 확인합니다.' : '쿠폰 정보를 불러오지 못했습니다. 게임은 계속할 수 있습니다.';
+      walletOutput.textContent = stored ? stored.label + ' 쿠폰이 저장되어 있습니다. 활성 여부는 주문서에서 다시 확인합니다.' : '쿠폰 정보를 불러오지 못했습니다. 게임은 계속할 수 있습니다.';
       return;
     }
     var active = stored && state.activeCoupons.find(function (coupon) { return coupon.id === stored.couponId; });
@@ -327,7 +420,7 @@
       return;
     }
     if (stored) removeStoredReward();
-    walletOutput.textContent = state.activeCoupons.length ? '아직 획득한 쿠폰이 없습니다. 게임을 완주해 보세요.' : '현재 관리자가 활성화한 쿠폰이 없습니다. 게임 결과는 기록되며 이벤트가 열리면 다시 도전할 수 있습니다.';
+    walletOutput.textContent = state.activeCoupons.length ? '아직 획득한 쿠폰이 없습니다. 게임을 완주해 보세요.' : '현재 관리자가 활성화한 쿠폰이 없습니다. 이벤트가 열리면 다시 도전해 주세요.';
   }
 
   function rewardCandidates(score) {
@@ -348,7 +441,7 @@
 
   async function finishGame() {
     if (state.phase === 'result') return;
-    clearRoundTimers();
+    clearRound();
     state.paused = false;
     showPanel('result');
     finalScore.textContent = padScore(state.score);
@@ -363,40 +456,75 @@
     var result = chooseReward();
     if (result.coupon) {
       var saved = saveReward(result.coupon);
-      strong.textContent = result.retained ? result.coupon.label + ' 쿠폰 유지' : result.coupon.label + ' 쿠폰 획득';
+      strong.textContent = result.retained ? result.coupon.label + ' 쿠폰 유지' : result.coupon.label + ' 쿠폰 획득!';
       copy.textContent = saved
-        ? (result.retained ? '새 점수보다 더 좋은 기존 쿠폰을 그대로 보관했습니다.' : '이 브라우저에 저장했습니다. 주문 금액 조건을 충족하면 주문서에서 자동 선택됩니다.')
-        : '쿠폰을 획득했지만 브라우저 저장이 제한되어 주문서 자동 선택은 지원되지 않습니다.';
-      announce(strong.textContent + '. ' + copy.textContent);
+        ? (result.retained ? '더 좋은 기존 쿠폰을 그대로 보관했습니다.' : '이 브라우저에 저장했습니다. 주문 조건을 충족하면 주문서에서 자동 선택됩니다.')
+        : '쿠폰을 획득했지만 브라우저 저장이 제한되어 자동 선택은 지원되지 않습니다.';
     } else if (state.couponLoadFailed) {
       strong.textContent = '쿠폰 정보를 확인하지 못했습니다.';
-      copy.textContent = '네트워크 연결을 확인한 뒤 다시 도전해 주세요. 점수는 이 화면에서 확인할 수 있습니다.';
-      announce(strong.textContent);
+      copy.textContent = '네트워크 연결을 확인한 뒤 다시 도전해 주세요.';
     } else {
       strong.textContent = '쿠폰 이벤트 준비 중';
-      copy.textContent = '현재 관리자가 활성화한 쿠폰이 없습니다. 게임은 언제든 다시 도전할 수 있습니다.';
-      announce(strong.textContent);
+      copy.textContent = '현재 관리자가 활성화한 쿠폰이 없습니다. 게임은 언제든 다시 할 수 있습니다.';
     }
+    announce(strong.textContent + ' ' + copy.textContent);
     renderWallet();
     root.querySelector('#result-title')?.focus();
   }
 
+  function pressDirection(direction, button) {
+    if (state.phase !== 'catch' || state.paused) return;
+    state.directions.add(direction);
+    if (button) button.classList.add('is-pressed');
+  }
+
+  function releaseDirection(direction, button) {
+    state.directions.delete(direction);
+    if (button) button.classList.remove('is-pressed');
+  }
+
   root.querySelector('[data-game-start]').addEventListener('click', startCatch);
   root.querySelector('[data-game-restart]').addEventListener('click', startCatch);
-  root.querySelector('[data-game-left]').addEventListener('click', function () { moveBag(-1); });
-  root.querySelector('[data-game-right]').addEventListener('click', function () { moveBag(1); });
-  pauseButton.addEventListener('click', function () { setPause(!state.paused, state.paused ? '게임을 계속합니다.' : '게임을 잠시 멈췄습니다.'); });
+  moveButtons.forEach(function (button) {
+    var direction = button.dataset.gameMove;
+    button.addEventListener('pointerdown', function (event) {
+      event.preventDefault();
+      button.setPointerCapture?.(event.pointerId);
+      pressDirection(direction, button);
+    });
+    ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(function (eventName) {
+      button.addEventListener(eventName, function () { releaseDirection(direction, button); });
+    });
+  });
+  pauseButton.addEventListener('click', function () {
+    setPause(!state.paused, state.paused ? '게임을 계속합니다.' : '게임을 잠시 멈췄습니다.');
+  });
   document.addEventListener('keydown', function (event) {
     if (state.phase !== 'catch' || event.isComposing) return;
-    if (event.key === 'ArrowLeft' || event.key.toLowerCase() === 'a') { event.preventDefault(); moveBag(-1); }
-    if (event.key === 'ArrowRight' || event.key.toLowerCase() === 'd') { event.preventDefault(); moveBag(1); }
-    if (event.key === ' ' && event.target === document.body) { event.preventDefault(); setPause(!state.paused, state.paused ? '게임을 계속합니다.' : '게임을 잠시 멈췄습니다.'); }
+    var key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
+    var direction = keyDirections[key];
+    if (direction) {
+      event.preventDefault();
+      pressDirection(direction);
+      updateControllerState();
+    }
+    if (event.key === ' ' && event.target === document.body) {
+      event.preventDefault();
+      setPause(!state.paused, state.paused ? '게임을 계속합니다.' : '게임을 잠시 멈췄습니다.');
+    }
+  });
+  document.addEventListener('keyup', function (event) {
+    var key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
+    var direction = keyDirections[key];
+    if (!direction) return;
+    releaseDirection(direction);
+    updateControllerState();
   });
   document.addEventListener('visibilitychange', function () {
     if (document.hidden && state.phase === 'catch' && !state.paused) setPause(true, '화면을 벗어나 게임이 자동으로 멈췄습니다.');
   });
 
-  renderHud();
-  updateBagPosition();
+  showPanel('intro');
+  renderPlayer();
   loadCoupons();
 })();

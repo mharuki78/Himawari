@@ -14,7 +14,7 @@
     <meta property="og:title" content="0422 PACKING GAME — Himawari">
     <meta property="og:description" content="아이템을 받고 가방을 정리해 Himawari 쿠폰에 도전하세요.">
     <meta property="og:url" content="https://allaboutbag.com/game.html">
-    <meta property="og:image" content="https://allaboutbag.com/assets/game-0422-black.jpg">
+    <meta property="og:image" content="https://allaboutbag.com/assets/game-pixel-world.png">
     <title>0422 PACKING GAME — Himawari</title>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -39,86 +39,98 @@
     <main id="main" class="game-main">
       <section class="game-hero" aria-labelledby="game-title">
         <div class="game-hero__copy">
-          <p class="kicker">Himawari pixel workshop · No.0422</p>
-          <h1 id="game-title"><span class="headline-line">받고,</span><span class="headline-line">정리하고,</span><span class="headline-line accent-word">쿠폰을 획득하세요.</span></h1>
-          <p>0422 가방을 좌우로 움직여 필요한 물건을 받은 뒤, 알맞은 수납칸에 정리하면 한 판이 완성됩니다.</p>
-          <a href="#play">게임 시작 지점으로 이동 <span aria-hidden="true">↓</span></a>
+          <p class="kicker">Himawari pixel adventure · No.0422</p>
+          <h1 id="game-title"><span class="headline-line">오늘의 가방을 메고</span><span class="headline-line accent-word">작은 모험을 시작하세요.</span></h1>
+          <p>0422 백팩을 멘 캐릭터를 직접 움직여 필요한 물건을 모으고, 공방에 도착해 가방을 완성하면 쿠폰을 획득할 수 있습니다.</p>
+          <a href="#play">픽셀 마을로 들어가기 <span aria-hidden="true">↓</span></a>
         </div>
-        <figure class="game-hero__product">
-          <span class="game-hero__number" aria-hidden="true">0422</span>
-          <img src="assets/game-0422-black.jpg" width="720" height="720" alt="검정색 Himawari No.0422 백팩">
-          <figcaption>Actual product · Black</figcaption>
+        <figure class="game-hero__preview">
+          <img src="assets/game-pixel-world.png" width="564" height="1002" alt="나무와 꽃이 둘러싼 픽셀 마을의 가방 공방 산책로">
+          <img class="game-hero__player" src="assets/game-pixel-player.png" width="256" height="384" alt="Himawari No.0422 백팩을 멘 픽셀 캐릭터">
+          <figcaption><span>QUEST 0422</span><strong>가방 공방으로 출발!</strong></figcaption>
         </figure>
       </section>
 
       <section class="game-workshop section" id="play" aria-labelledby="workshop-title" data-game-root>
         <div class="section-inner">
           <div class="game-workshop__head">
-            <div><p class="kicker">Two stage challenge</p><h2 id="workshop-title"><span>1. 아이템 받기</span><span>2. 가방 정리</span></h2></div>
-            <p>방향키나 화면 버튼으로 움직일 수 있습니다. 게임 중에는 잠시 멈출 수 있고, 화면을 벗어나면 자동으로 멈춥니다.</p>
+            <div><p class="kicker">Two stage adventure</p><h2 id="workshop-title"><span>픽셀 마을을 걷고</span><span>가방을 완성하세요.</span></h2></div>
+            <p>모바일 방향키를 누르거나 키보드의 화살표·WASD로 움직이세요. 화면을 벗어나면 게임은 자동으로 멈춥니다.</p>
           </div>
 
-          <div class="game-console">
-            <div class="game-hud" aria-label="게임 진행 정보">
-              <div><span>STAGE</span><strong data-game-phase>READY</strong></div>
-              <div><span>SCORE</span><strong data-game-score>0000</strong></div>
-              <div><span>TIME</span><strong data-game-time>24</strong></div>
+          <div class="game-console" data-game-console>
+            <div class="game-screen-frame">
+              <div class="game-hud" aria-label="게임 진행 정보">
+                <div class="game-hud__life"><span>LIFE</span><strong data-game-lives aria-label="남은 생명 3개">♥♥♥</strong></div>
+                <div><span>QUEST</span><strong data-game-phase>READY</strong></div>
+                <div><span>SCORE</span><strong data-game-score>0000</strong></div>
+                <div><span>TIME</span><strong><b data-game-time>35</b>s</strong></div>
+              </div>
+
+              <div class="pixel-screen">
+                <section class="game-panel game-panel--intro" data-game-panel="intro" aria-labelledby="game-intro-title">
+                  <div class="intro-scene" aria-hidden="true">
+                    <img src="assets/game-pixel-world.png" width="564" height="1002" alt="">
+                    <img class="intro-character" src="assets/game-pixel-player.png" width="256" height="384" alt="">
+                  </div>
+                  <div class="pixel-dialog">
+                    <p class="game-step">QUEST 0422</p>
+                    <h3 id="game-intro-title">공방까지 필요한 물건을 모아 주세요!</h3>
+                    <p><strong>책 · 노트북 · 물병 · 필통</strong>은 가까이 가서 모으고, 아령과 잉크병은 피하세요. 생명은 3개입니다.</p>
+                    <button class="game-primary" type="button" data-game-start><span>모험 시작</span><span aria-hidden="true">▶</span></button>
+                  </div>
+                </section>
+
+                <section class="game-panel game-panel--catch" data-game-panel="catch" aria-labelledby="catch-title" hidden>
+                  <h3 class="sr-only" id="catch-title">픽셀 마을 아이템 모으기</h3>
+                  <div class="adventure-stage" data-catch-stage aria-label="캐릭터를 움직여 필요한 물건을 모으는 게임판">
+                    <img class="adventure-world" src="assets/game-pixel-world.png" width="564" height="1002" alt="">
+                    <div class="quest-ribbon" aria-hidden="true"><span>공방까지</span><strong>ITEM QUEST</strong></div>
+                    <div class="collect-layer" data-catch-layer aria-hidden="true"></div>
+                    <img class="pixel-player" data-catch-player src="assets/game-pixel-player.png" width="256" height="384" alt="0422 가방을 메고 길을 걷는 내 캐릭터">
+                    <div class="game-toast" data-game-toast aria-hidden="true"></div>
+                  </div>
+                </section>
+
+                <section class="game-panel game-panel--pack" data-game-panel="pack" aria-labelledby="pack-title" hidden>
+                  <div class="pixel-room">
+                    <div class="pack-dialog"><p class="game-step">ATELIER · STAGE 02</p><h3 id="pack-title">가방 수납을 완성하세요.</h3><p>아래 물건을 먼저 고른 뒤 알맞은 수납칸을 누르세요.</p></div>
+                    <div class="packing-board">
+                      <figure class="packing-bag">
+                        <img src="assets/game-pixel-player.png" width="256" height="384" alt="No.0422 가방을 멘 픽셀 캐릭터">
+                        <figcaption>NO.0422 / BAG MAP</figcaption>
+                      </figure>
+                      <section class="packing-zones" aria-labelledby="packing-zones-title"><h4 id="packing-zones-title">수납칸 선택</h4><div data-packing-zones></div></section>
+                    </div>
+                    <section class="packing-items" aria-labelledby="packing-items-title"><h4 id="packing-items-title">모은 물건</h4><div data-packing-items></div></section>
+                  </div>
+                </section>
+
+                <section class="game-panel game-panel--result" data-game-panel="result" aria-labelledby="result-title" hidden>
+                  <div class="result-scene" aria-hidden="true"><img src="assets/game-pixel-world.png" width="564" height="1002" alt=""><span class="pixel-confetti"></span></div>
+                  <div class="result-dialog">
+                    <p class="game-step">QUEST COMPLETE!</p>
+                    <h3 id="result-title" tabindex="-1">오늘의 가방이 완성됐어요.</h3>
+                    <div class="game-final-score"><span>FINAL SCORE</span><strong data-final-score>0000</strong></div>
+                    <div class="game-reward" data-game-reward aria-live="polite"></div>
+                    <div class="game-result-actions"><a class="game-primary" href="product.html?id=store-13326274540" data-game-product-link>No.0422 보러가기 <span aria-hidden="true">→</span></a><button type="button" class="game-secondary" data-game-restart>다시 하기</button></div>
+                  </div>
+                </section>
+              </div>
             </div>
 
-            <section class="game-panel game-panel--intro" data-game-panel="intro" aria-labelledby="game-intro-title">
-              <div class="game-instructions">
-                <p class="game-step">HOW TO PLAY</p>
-                <h3 id="game-intro-title">오늘의 가방을 완성해 보세요.</h3>
-                <ol>
-                  <li><strong>필요한 물건 받기</strong><span>책·노트북·물병·필통은 받고, 아령과 잉크는 피하세요.</span></li>
-                  <li><strong>수납칸 고르기</strong><span>받은 물건을 메인·노트북·앞·옆 수납칸에 맞게 넣으세요.</span></li>
-                  <li><strong>쿠폰 획득</strong><span>점수에 따라 활성화된 무료배송·10·15·20% 쿠폰에 도전합니다.</span></li>
-                </ol>
-                <button class="game-primary" type="button" data-game-start><span>게임 시작</span><span aria-hidden="true">START →</span></button>
+            <div class="game-controller" aria-label="게임 조작기">
+              <div class="d-pad" aria-label="캐릭터 이동">
+                <button type="button" class="d-pad__up" data-game-move="up" aria-label="위로 이동"><span aria-hidden="true">▲</span></button>
+                <button type="button" class="d-pad__left" data-game-move="left" aria-label="왼쪽으로 이동"><span aria-hidden="true">◀</span></button>
+                <button type="button" class="d-pad__center" data-game-pause aria-pressed="false" aria-label="게임 잠시 멈춤"><span aria-hidden="true">Ⅱ</span></button>
+                <button type="button" class="d-pad__right" data-game-move="right" aria-label="오른쪽으로 이동"><span aria-hidden="true">▶</span></button>
+                <button type="button" class="d-pad__down" data-game-move="down" aria-label="아래로 이동"><span aria-hidden="true">▼</span></button>
               </div>
-              <aside class="game-score-guide" aria-label="쿠폰 점수 기준">
-                <p>COUPON SCORE</p>
-                <dl><div><dt>2,100+</dt><dd>20%</dd></div><div><dt>1,600+</dt><dd>15%</dd></div><div><dt>1,000+</dt><dd>10%</dd></div><div><dt>참여</dt><dd>무료배송</dd></div></dl>
-                <small>관리자가 활성화한 쿠폰만 실제로 획득할 수 있습니다.</small>
-              </aside>
-            </section>
-
-            <section class="game-panel game-panel--catch" data-game-panel="catch" aria-labelledby="catch-title" hidden>
-              <div class="game-panel__heading"><div><p class="game-step">STAGE 01</p><h3 id="catch-title">필요한 물건을 받으세요.</h3></div><p>좋은 물건 +100 · 주의 물건 −80</p></div>
-              <div class="catch-stage" data-catch-stage aria-label="다섯 칸 아이템 받기 게임판">
-                <div class="catch-lanes" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-                <div class="catch-layer" data-catch-layer aria-hidden="true"></div>
-                <div class="catch-line" aria-hidden="true">PACK LINE</div>
-                <img class="catch-bag" data-catch-bag src="assets/game-0422-black.jpg" width="720" height="720" alt="현재 받기 위치: 가운데 칸">
-              </div>
-              <div class="game-controls">
-                <button type="button" data-game-left><span aria-hidden="true">←</span><span>왼쪽</span></button>
-                <button type="button" data-game-pause aria-pressed="false">잠시 멈춤</button>
-                <button type="button" data-game-right><span>오른쪽</span><span aria-hidden="true">→</span></button>
-              </div>
-            </section>
-
-            <section class="game-panel game-panel--pack" data-game-panel="pack" aria-labelledby="pack-title" hidden>
-              <div class="game-panel__heading"><div><p class="game-step">STAGE 02</p><h3 id="pack-title">알맞은 수납칸에 정리하세요.</h3></div><p>물건을 먼저 고르고 수납칸을 누르세요. 정답 +120 · 오답 −30</p></div>
-              <div class="packing-board">
-                <section class="packing-items" aria-labelledby="packing-items-title"><h4 id="packing-items-title">받은 물건</h4><div data-packing-items></div></section>
-                <figure class="packing-bag">
-                  <img src="assets/game-0422-black.jpg" width="720" height="720" alt="Himawari No.0422 백팩 수납 위치 안내">
-                  <figcaption>NO.0422 / FOUR COMPARTMENTS</figcaption>
-                </figure>
-                <section class="packing-zones" aria-labelledby="packing-zones-title"><h4 id="packing-zones-title">수납칸</h4><div data-packing-zones></div></section>
-              </div>
-            </section>
-
-            <section class="game-panel game-panel--result" data-game-panel="result" aria-labelledby="result-title" hidden>
-              <p class="game-step">PACKING COMPLETE</p>
-              <h3 id="result-title" tabindex="-1">오늘의 가방이 완성됐습니다.</h3>
-              <div class="game-final-score"><span>FINAL SCORE</span><strong data-final-score>0000</strong></div>
-              <div class="game-reward" data-game-reward aria-live="polite"></div>
-              <div class="game-result-actions"><a class="game-primary" href="product.html?id=store-13326274540" data-game-product-link>No.0422 보러가기 <span aria-hidden="true">→</span></a><button type="button" class="game-secondary" data-game-restart>다시 하기</button></div>
-            </section>
-
-            <p class="game-announcer" data-game-announcer role="status" aria-live="polite"></p>
+              <div class="controller-copy"><strong>MOVE</strong><span>화살표 · WASD</span><span>가운데 버튼: 일시정지</span></div>
+              <div class="controller-buttons" aria-hidden="true"><span>A</span><span>B</span></div>
+            </div>
+            <p class="game-announcer" data-game-announcer role="status" aria-live="polite">게임을 시작할 준비가 됐습니다.</p>
           </div>
 
           <aside class="game-wallet" aria-labelledby="wallet-title">
