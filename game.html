@@ -86,6 +86,7 @@
                   <div class="adventure-stage" data-catch-stage aria-label="캐릭터를 움직여 필요한 물건을 모으는 게임판">
                     <img class="adventure-world" src="assets/game-pixel-school-world.png" width="564" height="1002" alt="">
                     <div class="quest-ribbon" aria-hidden="true"><span>학교까지</span><strong>ITEM QUEST</strong></div>
+                    <button class="game-exit" type="button" data-game-exit aria-label="게임을 닫고 시작 화면으로 돌아가기">×</button>
                     <div class="collect-layer" data-catch-layer aria-hidden="true"></div>
                     <div class="player-shadow" data-player-shadow aria-hidden="true"></div>
                     <img class="pixel-player" data-catch-player src="assets/game-pixel-player.png" width="256" height="384" alt="0422 가방을 메고 길을 걷는 내 캐릭터">
@@ -128,7 +129,7 @@
                 <button type="button" class="d-pad__right" data-game-move="right" aria-label="오른쪽으로 이동"><span aria-hidden="true">▶</span></button>
                 <button type="button" class="d-pad__down" data-game-move="down" aria-label="아래로 이동"><span aria-hidden="true">▼</span></button>
               </div>
-              <div class="controller-copy"><strong>MOVE</strong><span>화살표 · WASD</span><span>가운데 버튼: 일시정지</span></div>
+              <div class="controller-copy"><strong>MOVE</strong><span>화살표 · WASD</span><span>가운데 버튼: 일시정지</span><button class="sound-toggle" type="button" data-game-sound aria-pressed="true"><span aria-hidden="true">♪</span><b>BGM <span data-game-sound-label>ON</span></b></button></div>
               <div class="controller-buttons" aria-hidden="true"><span>A</span><span>B</span></div>
             </div>
             <p class="game-announcer" data-game-announcer role="status" aria-live="polite">게임을 시작할 준비가 됐습니다.</p>

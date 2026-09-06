@@ -5,6 +5,7 @@
   if (!root) return;
 
   var REWARD_STORAGE_KEY = 'himawari-game-coupon-v1';
+  var SOUND_STORAGE_KEY = 'himawari-game-sound-v1';
   var CATCH_SECONDS = 35;
   var PACK_SECONDS = 22;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -21,12 +22,18 @@
   var player = root.querySelector('[data-catch-player]');
   var gameToast = root.querySelector('[data-game-toast]');
   var pauseButton = root.querySelector('[data-game-pause]');
+  var soundButton = root.querySelector('[data-game-sound]');
+  var soundLabel = root.querySelector('[data-game-sound-label]');
+  var exitButton = root.querySelector('[data-game-exit]');
   var moveButtons = Array.from(root.querySelectorAll('[data-game-move]'));
   var packingItems = root.querySelector('[data-packing-items]');
   var packingZones = root.querySelector('[data-packing-zones]');
   var finalScore = root.querySelector('[data-final-score]');
   var rewardOutput = root.querySelector('[data-game-reward]');
   var walletOutput = root.querySelector('[data-game-wallet]');
+  var AudioContextType = window.AudioContext || window.webkitAudioContext;
+  var audioContext = null;
+  var musicBus = null;
 
   var goodItems = [
     { id: 'book', label: '책', code: 'BOOK', zone: 'main', points: 140 },
@@ -72,6 +79,9 @@
     clockTimer: 0,
     animationFrame: 0,
     toastTimer: 0,
+    musicTimer: 0,
+    musicStep: 0,
+    soundEnabled: readSoundPreference(),
     activeCoupons: [],
     couponLoadFailed: false
   };
@@ -88,6 +98,98 @@
     void gameToast.offsetWidth;
     gameToast.classList.add('is-visible');
     state.toastTimer = window.setTimeout(function () { gameToast.classList.remove('is-visible'); }, 900);
+  }
+
+  function readSoundPreference() {
+    try { return localStorage.getItem(SOUND_STORAGE_KEY) !== 'off'; } catch (error) { return true; }
+  }
+
+  function saveSoundPreference() {
+    try { localStorage.setItem(SOUND_STORAGE_KEY, state.soundEnabled ? 'on' : 'off'); } catch (error) {}
+  }
+
+  function updateSoundControl() {
+    var available = Boolean(AudioContextType);
+    soundButton.disabled = !available;
+    soundButton.setAttribute('aria-pressed', String(available && state.soundEnabled));
+    soundButton.setAttribute('aria-label', !available ? '이 브라우저에서는 배경음악을 지원하지 않습니다.' : (state.soundEnabled ? '배경음악 끄기' : '배경음악 켜기'));
+    soundLabel.textContent = available && state.soundEnabled ? 'ON' : 'OFF';
+  }
+
+  function ensureAudio() {
+    if (!AudioContextType) return false;
+    if (!audioContext) {
+      try {
+        audioContext = new AudioContextType();
+        musicBus = audioContext.createGain();
+        musicBus.gain.value = .18;
+        musicBus.connect(audioContext.destination);
+      } catch (error) {
+        audioContext = null;
+        musicBus = null;
+        state.soundEnabled = false;
+        updateSoundControl();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function playTone(frequency, duration, type, volume, delay) {
+    if (!state.soundEnabled || !audioContext || audioContext.state !== 'running') return;
+    var startsAt = audioContext.currentTime + (delay || 0);
+    var oscillator = audioContext.createOscillator();
+    var envelope = audioContext.createGain();
+    oscillator.type = type || 'square';
+    oscillator.frequency.setValueAtTime(frequency, startsAt);
+    envelope.gain.setValueAtTime(.0001, startsAt);
+    envelope.gain.exponentialRampToValueAtTime(volume || .07, startsAt + .018);
+    envelope.gain.exponentialRampToValueAtTime(.0001, startsAt + duration);
+    oscillator.connect(envelope);
+    envelope.connect(musicBus);
+    oscillator.start(startsAt);
+    oscillator.stop(startsAt + duration + .025);
+  }
+
+  function playMusicStep() {
+    if (!state.soundEnabled || !audioContext || audioContext.state !== 'running') return;
+    var melody = [659.25, 783.99, 880, 783.99, 587.33, 659.25, 783.99, 659.25, 523.25, 659.25, 698.46, 659.25, 493.88, 587.33, 659.25, 587.33];
+    var bass = [130.81, 146.83, 110, 123.47];
+    var step = state.musicStep % melody.length;
+    playTone(melody[step], .16, 'square', .055);
+    if (step % 4 === 0) playTone(bass[Math.floor(step / 4)], .36, 'triangle', .085);
+    if (step % 2 === 0) playTone(1046.5, .025, 'square', .018, .08);
+    state.musicStep += 1;
+  }
+
+  function startMusic() {
+    if (!state.soundEnabled || !ensureAudio()) return;
+    audioContext.resume().then(function () {
+      if (!state.soundEnabled || state.musicTimer) return;
+      musicBus.gain.cancelScheduledValues(audioContext.currentTime);
+      musicBus.gain.setTargetAtTime(.18, audioContext.currentTime, .035);
+      playMusicStep();
+      state.musicTimer = window.setInterval(playMusicStep, 230);
+    }).catch(function () {});
+  }
+
+  function stopMusic() {
+    window.clearInterval(state.musicTimer);
+    state.musicTimer = 0;
+    if (musicBus && audioContext) musicBus.gain.setTargetAtTime(.0001, audioContext.currentTime, .025);
+  }
+
+  function playEffect(kind) {
+    if (!state.soundEnabled || !audioContext || audioContext.state !== 'running') return;
+    if (kind === 'collect') {
+      playTone(987.77, .1, 'square', .11);
+      playTone(1318.51, .16, 'square', .09, .07);
+    } else if (kind === 'hazard') {
+      playTone(146.83, .24, 'sawtooth', .1);
+    } else if (kind === 'pack') {
+      playTone(783.99, .1, 'square', .09);
+      playTone(1046.5, .18, 'square', .08, .08);
+    }
   }
 
   function padScore(value) {
@@ -119,6 +221,7 @@
     panels.forEach(function (panel) { panel.hidden = panel.dataset.gamePanel !== name; });
     state.phase = name;
     consoleElement.dataset.phase = name;
+    document.body.classList.toggle('game-round-active', name === 'catch');
     renderHud();
     updateControllerState();
   }
@@ -194,6 +297,8 @@
     updateControllerState();
     if (message) announce(message);
     showToast(paused ? 'PAUSE' : 'GO!');
+    if (paused) stopMusic();
+    else startMusic();
   }
 
   function createCollectible(item) {
@@ -202,7 +307,8 @@
     element.className = 'collectible';
     element.dataset.kind = item.id;
     sprite.className = 'collectible__sprite';
-    sprite.textContent = item.code;
+    sprite.setAttribute('aria-hidden', 'true');
+    element.dataset.label = item.label;
     element.append(sprite);
     catchLayer.append(element);
 
@@ -244,6 +350,7 @@
       void player.offsetWidth;
       player.classList.add('is-hit');
       showToast('OUCH!  -120');
+      playEffect('hazard');
       announce(object.item.label + '을 피해 가지 못했습니다. 생명이 하나 줄었습니다.');
       removeObject(object, true);
       renderHud();
@@ -254,6 +361,7 @@
     state.caught.push(object.item);
     setScore(object.item.points);
     showToast(object.item.label + '  +' + object.item.points);
+    playEffect('collect');
     announce(object.item.label + '을 모았습니다. ' + object.item.points + '점 추가.');
     removeObject(object, true);
   }
@@ -315,6 +423,7 @@
 
   function startCatch() {
     clearRound();
+    startMusic();
     catchLayer.replaceChildren();
     state.score = 0;
     state.lives = 3;
@@ -410,6 +519,7 @@
       state.packed.add(item.id);
       state.selectedItem = '';
       setScore(150);
+      playEffect('pack');
       announce(item.label + '을 ' + zone.label + '에 정리했습니다. 150점 추가.');
       renderPackingBoard();
       if (state.packed.size === state.packItems.length) finishGame();
@@ -535,8 +645,28 @@
     if (button) button.classList.remove('is-pressed');
   }
 
+  function exitGame() {
+    if (state.phase !== 'catch') return;
+    clearRound();
+    stopMusic();
+    state.paused = false;
+    showPanel('intro');
+    announce('게임을 닫았습니다. 준비가 되면 다시 시작하세요.');
+    root.querySelector('[data-game-start]')?.focus();
+  }
+
   root.querySelector('[data-game-start]').addEventListener('click', startCatch);
   root.querySelector('[data-game-restart]').addEventListener('click', startCatch);
+  exitButton.addEventListener('click', exitGame);
+  soundButton.addEventListener('click', function () {
+    if (!AudioContextType) return;
+    state.soundEnabled = !state.soundEnabled;
+    saveSoundPreference();
+    updateSoundControl();
+    if (state.soundEnabled) startMusic();
+    else stopMusic();
+    announce(state.soundEnabled ? '배경음악을 켰습니다.' : '배경음악을 껐습니다.');
+  });
   moveButtons.forEach(function (button) {
     var direction = button.dataset.gameMove;
     button.addEventListener('pointerdown', function (event) {
@@ -568,6 +698,7 @@
       event.preventDefault();
       setPause(!state.paused, state.paused ? '게임을 계속합니다.' : '게임을 잠시 멈췄습니다.');
     }
+    if (event.key === 'Escape') exitGame();
   });
   document.addEventListener('keyup', function (event) {
     var key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
@@ -579,8 +710,10 @@
   document.addEventListener('visibilitychange', function () {
     if (document.hidden && state.phase === 'catch' && !state.paused) setPause(true, '화면을 벗어나 게임이 자동으로 멈췄습니다.');
   });
+  window.addEventListener('pagehide', stopMusic);
 
   showPanel('intro');
   renderPlayer();
+  updateSoundControl();
   loadCoupons();
 })();
