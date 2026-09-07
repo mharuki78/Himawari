@@ -17,7 +17,11 @@
     { "source": "/api/member/wishlist", "destination": "/api/member?route=wishlist" },
     { "source": "/api/member/account", "destination": "/api/member?route=account" },
     { "source": "/api/promotions", "destination": "/api/products?route=promotions" },
-    { "source": "/api/admin/promotions", "destination": "/api/admin/products?route=promotions" }
+    { "source": "/api/admin/promotions", "destination": "/api/admin/products?route=promotions" },
+    { "source": "/api/npay/config", "destination": "/api/orders?route=npay-config" },
+    { "source": "/api/npay/order", "destination": "/api/orders?route=npay-order" },
+    { "source": "/api/npay/product-info", "destination": "/api/orders?route=npay-product-info" },
+    { "source": "/api/npay/wishlist", "destination": "/api/orders?route=npay-wishlist" }
   ],
   "headers": [
     {

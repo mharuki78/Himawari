@@ -1,8 +1,23 @@
 import { getMember, requireMember } from './_lib/member-auth.js';
 import { createOrder, listMemberOrders, requestOrderChange } from './_lib/orders.js';
 import { isSameOrigin, json, methodNotAllowed, readJson } from './_lib/http.js';
+import {
+  fetchNpayConfig,
+  fetchNpayOrder,
+  fetchNpayProductInformation,
+  fetchNpayWishlist,
+} from './_lib/npay-handlers.js';
+
+const NPAY_ROUTES = {
+  'npay-config': fetchNpayConfig,
+  'npay-order': fetchNpayOrder,
+  'npay-product-info': fetchNpayProductInformation,
+  'npay-wishlist': fetchNpayWishlist,
+};
 
 export async function fetch(request) {
+  const route = new URL(request.url).searchParams.get('route');
+  if (NPAY_ROUTES[route]) return NPAY_ROUTES[route](request);
   if (!['GET', 'POST', 'PATCH'].includes(request.method)) return methodNotAllowed(['GET', 'POST', 'PATCH']);
   try {
     if (request.method === 'GET') {

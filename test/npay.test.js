@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readdir } from 'node:fs/promises';
 import test from 'node:test';
 
 import {
@@ -11,8 +12,7 @@ import {
   npayProductId,
   npayPublicConfiguration,
 } from '../api/_lib/npay.js';
-import { fetch as orderHandler } from '../api/npay/order.js';
-import { fetch as productInfoHandler } from '../api/npay/product-info.js';
+import { fetchNpayOrder as orderHandler, fetchNpayProductInformation as productInfoHandler } from '../api/_lib/npay-handlers.js';
 import { publicProduct, seedCatalog } from '../api/_lib/products.js';
 
 const ENV_KEYS = ['NPAY_SHOP_ID', 'NPAY_CERTI_KEY', 'NPAY_BUTTON_KEY', 'NPAY_ACCOUNT_ID', 'NPAY_ENV', 'VERCEL_ENV'];
@@ -157,4 +157,10 @@ test('프로덕션 환경은 별도 모드 값이 없어도 서비스 URL을 사
   await withEnv({ VERCEL_ENV: 'production', NPAY_ENV: '' }, () => {
     assert.match(npayConfiguration().orderRegistrationUrl, /^https:\/\/api\.pay\.naver\.com\//);
   });
+});
+
+test('Npay 공개 경로는 기존 주문 함수 하나로 통합해 Hobby 함수 한도를 지킨다', async () => {
+  const files = await readdir(new URL('../api/', import.meta.url), { recursive: true });
+  const apiFunctions = files.filter((file) => file.endsWith('.js') && !file.replaceAll('\\', '/').startsWith('_lib/'));
+  assert.equal(apiFunctions.length, 12);
 });
