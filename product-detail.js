@@ -111,6 +111,8 @@ function renderProduct(product) {
     link.removeAttribute('rel');
     link.setAttribute('aria-label', `${product.name} 내부 주문서에서 바로 구매하기`);
   });
+  const npayProduct = document.querySelector('[data-npay-product]');
+  if (npayProduct) npayProduct.dataset.productId = product.id;
   document.querySelector('[data-closing-title]').textContent = `${product.model}, 오래 곁에 둘 선택.`;
   renderDescription(product.description || product.tagline);
 
@@ -141,6 +143,7 @@ function renderProduct(product) {
   content.hidden = false;
   main.setAttribute('aria-busy', 'false');
   window.himawariReveal?.(content);
+  document.dispatchEvent(new CustomEvent('himawari:product-ready', { detail: { productId: product.id } }));
 }
 
 function renderNotFound() {

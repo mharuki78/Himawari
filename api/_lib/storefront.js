@@ -205,6 +205,8 @@ export function renderProductPage(template, product, origin = 'https://allaboutb
     .replace('data-detail-cart>', `data-detail-cart data-cart-add data-product-id="${escapeHtml(product.id)}" data-name="${escapeHtml(product.name)}" data-price="${escapeHtml(product.price)}" data-url="${escapeHtml(storeUrl)}">`)
     .replace('data-detail-wishlist data-wishlist-toggle', `data-detail-wishlist data-wishlist-toggle data-product-id="${escapeHtml(product.id)}"`);
 
+  html = html.replace('data-npay-product></div>', `data-npay-product data-product-id="${escapeHtml(product.id)}"></div>`);
+
   if (!(Array.isArray(product.highlights) && product.highlights.length)) {
     html = html.replace('<section class="product-highlights section" data-highlights-section', '<section class="product-highlights section" data-highlights-section hidden');
   }

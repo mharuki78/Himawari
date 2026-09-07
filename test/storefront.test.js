@@ -116,6 +116,8 @@ test('개별 제품 원본 HTML에 이름·가격·이미지·구매정보를 �
   assert.equal(html.includes('golf4484@naver.com'), true);
   assert.match(html, new RegExp(`data-direct-buy href="checkout\\.html\\?product=${product.id}"`));
   assert.match(html, new RegExp(`data-closing-buy href="checkout\\.html\\?product=${product.id}"`));
+  assert.match(html, new RegExp(`data-npay-product data-product-id="${product.id}"`));
+  assert.match(html, /Npay로 구매/);
 });
 
 test('내부 주문서는 PG 미연결 경계와 앱 소유 검증을 명확히 표시한다', async () => {

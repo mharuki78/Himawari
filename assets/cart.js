@@ -167,6 +167,10 @@
         '<div class="rdcart__foot">' +
           '<div class="rdcart__sum"><span>합계</span><b class="rdcart__total">0원</b></div>' +
           '<p class="rdcart__lead">' + esc(T.note) + '</p>' +
+          '<section class="rdcart__npay" data-npay-cart-section aria-label="네이버페이 주문" hidden>' +
+            '<div id="npay-cart-button" class="rdcart__npay-container" data-npay-cart></div>' +
+            '<p class="rdcart__npay-status" data-npay-status role="status" aria-live="polite"></p>' +
+          '</section>' +
           '<div class="rdcart__acts">' +
             '<button class="rdcart__act rdcart__act--solid rdcart__checkout" type="button">장바구니 주문하기 <span aria-hidden="true">→</span></button>' +
             '<button class="rdcart__act rdcart__act--solid rdcart__copy" type="button" aria-live="polite">' + esc(T.copy) + '</button>' +
@@ -377,6 +381,10 @@
     if (document.querySelector('.rdcart')) return; /* 두 번 실행 방지 */
     buildButton();
     buildDrawer();
+
+    import('/assets/npay.js')
+      .then(function (module) { return module.initializeNpay({ cartItems: cart.slice() }); })
+      .catch(function () {});
 
     /* 담기 버튼은 document 위임 — 나중에 JS로 그린 카드도 그대로 잡힙니다. */
     document.addEventListener('click', function (ev) {
