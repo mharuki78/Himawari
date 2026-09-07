@@ -6,13 +6,12 @@
      클래스 이름은 전부 rdcart- 로 시작해서 내 사이트 CSS 와 겹치지 않습니다.
    ========================================================================== */
 :root {
-  --cart-bg:     var(--cream, #F4EFE3); /* 서랍 바탕색 */
-  --cart-ink:    var(--ink, #24241F);   /* 글자색 */
-  --cart-line:   color-mix(in srgb, var(--ink, #24241F) 28%, transparent); /* 구분선 */
-  --cart-accent: var(--moss, #304030);  /* 뱃지·강조 */
-  --cart-radius: 0;                     /* 브랜드의 각진 모서리 */
-  --cart-font:   "Pretendard Variable", Pretendard, "Noto Sans KR",
-                 system-ui, sans-serif;
+  --cart-bg:     var(--snow, #FFFFFF); /* 서랍 바탕색 */
+  --cart-ink:    var(--ink, #333333);  /* 글자색 */
+  --cart-line:   var(--color-fog, #D0D5DD); /* 구분선 */
+  --cart-accent: var(--moss, #D9E8D3); /* 뱃지·강조 */
+  --cart-radius: 999px;
+  --cart-font:   var(--font-brand, "Manrope", "Pretendard Variable", Pretendard, "Noto Sans KR", system-ui, sans-serif);
   --cart-z-trigger: 19;
   --cart-z-drawer: 700;
 }
@@ -25,8 +24,9 @@ html.rdcart-locked, body.rdcart-locked { overflow: hidden; }
   position: relative;
   display: inline-grid; place-items: center;
   width: 46px; height: 46px; padding: 0;
-  border: 1px solid var(--cart-bg); border-radius: var(--cart-radius);
-  background: var(--cart-ink); color: var(--cart-bg);
+  border: 1px solid var(--cart-accent); border-radius: var(--cart-radius);
+  background: var(--cart-accent); color: var(--color-charcoal, #212121);
+  box-shadow: var(--shadow-pop-small, 0 5px 0 rgb(207 226 201 / .9));
   font: inherit; cursor: pointer;
   transition: transform .2s ease, box-shadow .2s ease;
 }
@@ -35,7 +35,7 @@ html.rdcart-locked, body.rdcart-locked { overflow: hidden; }
 }
 .rdcart-btn:active { background: var(--cart-accent); }
 @media (hover: hover) { .rdcart-btn:hover { background: var(--cart-accent); } }
-.rdcart-btn:focus-visible { outline: 2px solid var(--cart-accent); outline-offset: 3px; }
+.rdcart-btn:focus-visible { outline: 2px solid var(--color-deep-wave, #3E6B52); outline-offset: 3px; }
 .rdcart-btn svg { display: block; }
 
 .rdcart-btn__count {
@@ -43,7 +43,7 @@ html.rdcart-locked, body.rdcart-locked { overflow: hidden; }
   min-width: 20px; height: 20px; padding: 0 5px;
   display: grid; place-items: center;
   border-radius: var(--cart-radius);
-  background: var(--cart-accent); color: var(--cart-bg);
+  background: var(--color-deep-harbor, #4F6B58); color: #fff;
   font-family: var(--cart-font);
   font-size: 11px; font-weight: 800; line-height: 1;
   transform: scale(0); transition: transform .25s cubic-bezier(.2, .8, .3, 1);
@@ -77,7 +77,8 @@ html.rdcart-locked, body.rdcart-locked { overflow: hidden; }
   height: 100%; width: min(400px, 92vw);
   display: flex; flex-direction: column;
   background: var(--cart-bg);
-  border-left: 1px solid var(--cart-ink);
+  border-left: 1px solid var(--cart-line);
+  border-radius: 28px 0 0 28px;
   transform: translateX(100%);
   transition: transform .38s cubic-bezier(.2, .8, .3, 1);
 }
@@ -144,7 +145,7 @@ html.rdcart-locked, body.rdcart-locked { overflow: hidden; }
   color: var(--cart-ink); font: inherit; font-size: 12px; opacity: .55;
   text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
 }
-@media (hover: hover) { .rdcart__kill:hover { opacity: 1; color: var(--cart-accent); } }
+@media (hover: hover) { .rdcart__kill:hover { opacity: 1; color: var(--color-deep-wave, #3E6B52); } }
 
 /* ───────── 아래 (합계·안내·버튼) ───────── */
 .rdcart__foot {
@@ -161,7 +162,7 @@ html.rdcart-locked, body.rdcart-locked { overflow: hidden; }
 .rdcart__npay { min-width: 200px; margin: 0 0 14px; padding: 12px 0 2px; border-top: 1px solid var(--cart-line); }
 .rdcart__npay[hidden] { display: none; }
 .rdcart__npay-container { width: 100%; min-width: 200px; height: 150px; overflow: hidden; }
-.rdcart__npay-status { min-height: 1.2em; margin: 5px 0 0; color: var(--cart-accent); font-size: 11.5px; line-height: 1.5; }
+.rdcart__npay-status { min-height: 1.2em; margin: 5px 0 0; color: var(--color-deep-wave, #3E6B52); font-size: 11.5px; line-height: 1.5; }
 .rdcart__npay-status.is-error { color: var(--danger, #9A352F); }
 
 .rdcart__acts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -175,8 +176,8 @@ html.rdcart-locked, body.rdcart-locked { overflow: hidden; }
   transition: opacity .2s ease;
 }
 @media (hover: hover) { .rdcart__act:hover { opacity: .78; } }
-.rdcart__act:focus-visible { outline: 2px solid var(--cart-accent); outline-offset: 2px; }
-.rdcart__act--solid { background: var(--cart-ink); color: var(--cart-bg); }
+.rdcart__act:focus-visible { outline: 2px solid var(--color-deep-wave, #3E6B52); outline-offset: 2px; }
+.rdcart__act--solid { border-color: var(--cart-accent); background: var(--cart-accent); color: var(--color-charcoal, #212121); box-shadow: var(--shadow-pop-small, 0 5px 0 rgb(207 226 201 / .9)); }
 .rdcart__act--ghost { background: none; color: var(--cart-ink); }
 .rdcart__act[aria-disabled="true"] { opacity: .35; pointer-events: none; }
 .rdcart__act:disabled { opacity: .35; cursor: default; }
@@ -185,7 +186,7 @@ html.rdcart-locked, body.rdcart-locked { overflow: hidden; }
 
 /* ───────── 모바일 (375px 에서 전체 폭) ───────── */
 @media (max-width: 480px) {
-  .rdcart__panel { width: 100%; border-left: 0; box-shadow: none; }
+  .rdcart__panel { width: 100%; border-left: 0; border-radius: 0; box-shadow: none; }
   .rdcart__head, .rdcart__body, .rdcart__foot { padding-left: 18px; padding-right: 18px; }
   .rdcart__line { gap: 9px; }
   .rdcart__kill { font-size: 11.5px; }

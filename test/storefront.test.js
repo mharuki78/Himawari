@@ -192,6 +192,8 @@ test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 �
 
   await access(new URL('../assets/game-pixel-school-world.png', import.meta.url));
   await access(new URL('../assets/game-pixel-player.png', import.meta.url));
+  assert.match(html, /<title>HIMAWARI BAG QUEST — 0422 등굣길 어드벤처<\/title>/);
+  assert.match(html, /등굣길 퀘스트 시작/);
   assert.match(html, /data-game-panel="catch"/);
   assert.match(html, /data-game-panel="pack"/);
   assert.match(html, /data-game-panel="result"/);
@@ -256,4 +258,22 @@ test('존재하지 않는 제품은 로딩 대신 명확한 오류 페이지를 
   assert.match(html, /<title>제품을 찾을 수 없습니다 — Himawari<\/title>/);
   assert.match(html, /<section class="product-not-found" data-not-found>/);
   assert.match(html, /data-loading-state role="status" hidden/);
+});
+
+test('공개·주문·관리 화면은 quiet sage 디자인 토큰을 공유한다', async () => {
+  const styles = await readFile(new URL('../styles.css', import.meta.url), 'utf8');
+  const gear = await readFile(new URL('../assets/gear.css', import.meta.url), 'utf8');
+  const orders = await readFile(new URL('../assets/orders.css', import.meta.url), 'utf8');
+  const admin = await readFile(new URL('../admin/admin.css', import.meta.url), 'utf8');
+
+  assert.match(styles, /--color-sage-canvas:\s*#F3F7EF/);
+  assert.match(styles, /--color-deep-grove:\s*#4F6B58/);
+  assert.match(styles, /--color-sage-pop:\s*#D9E8D3/);
+  assert.match(styles, /--radius-card:\s*24px/);
+  assert.match(styles, /--radius-pill:\s*999px/);
+  assert.match(styles, /font-family:\s*var\(--font-brand\)/);
+  assert.match(gear, /\.store-product-card[\s\S]*border-radius:\s*var\(--radius-card\)/);
+  assert.match(orders, /\.checkout-summary[\s\S]*border-radius:\s*var\(--radius-card/);
+  assert.match(admin, /--harbor:\s*#4f6b58/);
+  assert.match(admin, /--moss:\s*#d9e8d3/);
 });

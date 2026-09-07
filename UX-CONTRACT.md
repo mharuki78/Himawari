@@ -31,7 +31,7 @@
 - Runtime design-system/token source: 공개 `styles.css`, 공개 제품 `assets/gear.css`, 관리자 `admin/admin.css`
 - Mapping/adapters: `assets/gear.css`가 제품 상세를 포함한 공개 화면의 기본 토큰을 소비하고, 관리자 문의·제품 화면은 동일 브랜드 토큰에 삭제 전용 `danger`를 추가한다.
 - Token drift gate: `designmd lint`, 변경 색상과 CSS 변수 정적 비교, 공개/관리자 브라우저 확인
-- Supported themes: light only; 관리자 화면은 크림 바탕 제품 레지스터
+- Supported themes: light only; 공개·관리자 화면은 세이지 미스트 바탕과 딥 그로브 브랜드 면을 공유한다.
 
 ## Canonical UI Map
 

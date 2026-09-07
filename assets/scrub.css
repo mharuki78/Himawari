@@ -6,17 +6,17 @@
    클래스가 전부 rd-scrub 로 시작해서 내 CSS 와 겹치지 않습니다.
    ========================================================================== */
 :root {
-  --scrub-ink:     var(--cream, #F4EFE3);          /* 영상 위 글자색 */
-  --scrub-dim:     color-mix(in srgb, var(--cream, #F4EFE3) 72%, transparent); /* 보조 문장 · 킥커 */
-  --scrub-bg:      var(--ink, #24241F);            /* 영상 로드 전 바탕 · 스크림 색 */
+  --scrub-ink:     var(--snow, #FFFFFF);            /* 영상 위 글자색 */
+  --scrub-dim:     color-mix(in srgb, var(--snow, #FFFFFF) 72%, transparent); /* 보조 문장 · 킥커 */
+  --scrub-bg:      var(--harbor, #4F6B58);          /* 영상 로드 전 바탕 · 스크림 색 */
   --scrub-scrim:   .62;                            /* 어두운 막 세기 0(없음)~1 */
   --scrub-font:    "Pretendard Variable", Pretendard, "Noto Sans KR", system-ui, sans-serif;
   --scrub-title:   clamp(3.4rem, 8.4vw, 8.8rem);   /* 제목 크기 */
   --scrub-pad:     var(--page-pad, clamp(20px, 5vw, 88px)); /* 좌우 여백 */
   --scrub-align:   left;                          /* left | center (문구 정렬) */
   --scrub-justify: start;                         /* start | center (문구 덩어리 위치) */
-  --scrub-accent:  var(--moss, #304030);          /* 버튼 바탕 */
-  --scrub-accent-ink: var(--cream, #F4EFE3);      /* 버튼 글자 */
+  --scrub-accent:  var(--moss, #D9E8D3);            /* 버튼 바탕 */
+  --scrub-accent-ink: var(--color-charcoal, #212121); /* 옅은 세이지 위 고대비 버튼 글자 */
 }
 
 .site-header { background: transparent; }
@@ -61,7 +61,7 @@
 .rd-scrub__band p { margin: 16px 0 0; font-size: clamp(15px, 1.6vw, 18px); line-height: 1.7; color: var(--scrub-dim); max-width: 34ch; }
 .rd-scrub__btn {
   display: inline-flex; align-items: center; min-height: 46px; padding: 0 22px; margin-top: 24px; margin-right: 8px;
-  border-radius: 0; background: var(--scrub-accent); color: var(--scrub-accent-ink);
+  border-radius: var(--radius-pill, 999px); background: var(--scrub-accent); color: var(--scrub-accent-ink); box-shadow: var(--shadow-pop-small, 0 5px 0 rgb(207 226 201 / .9));
   font-size: 14px; font-weight: 620; text-decoration: none; cursor: pointer;
 }
 .rd-scrub__btn--ghost { background: transparent; color: var(--scrub-ink); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--scrub-ink) 60%, transparent); }

@@ -275,7 +275,7 @@ html {
 }
 
 .accent-word {
-  color: var(--moss);
+  color: var(--color-deep-wave);
   text-shadow: .045em .055em 0 color-mix(in srgb, var(--ink) 24%, transparent);
 }
 
@@ -1084,4 +1084,188 @@ html {
   .journal::after,
   .founder-quote::after,
   .founder-promise::after { display: none; }
+}
+
+/* Warm paper + deep harbor visual layer. Structure and commerce behavior stay intact. */
+.announcement-bar,
+.home-film-hero,
+.trust-strip,
+.intro,
+.journal,
+.founder-quote,
+.founder-promise,
+.feature,
+.product-highlights,
+.product-detail-closing { background-color: var(--harbor); color: var(--snow); }
+
+.site-header { border-color: var(--color-fog); background: var(--cream); color: var(--ink); }
+.site-nav a[aria-current="page"] { border-bottom-color: var(--moss); color: var(--harbor); }
+
+.header-store,
+.home-film-hero__link,
+.direct-buy-link,
+.featured-direct-buy-link,
+.home-promotion-dialog__link {
+  border-color: var(--moss);
+  border-radius: var(--radius-pill);
+  background: var(--moss);
+  color: var(--color-on-sky);
+  box-shadow: var(--shadow-pop-small);
+}
+
+.header-store:hover,
+.home-film-hero__link:hover,
+.direct-buy-link:hover,
+.featured-direct-buy-link:hover,
+.home-promotion-dialog__link:hover { border-color: var(--color-deep-wave); background: var(--color-deep-wave); color: var(--snow); }
+
+.home-film-hero__toggle,
+.feature-film__toggle,
+.reel-showcase__controls button {
+  border-radius: var(--radius-pill);
+}
+
+.section-head h2,
+.curated-heading h2,
+.catalog-products h1,
+.product-detail-copy h1,
+.commerce-guide h2 { color: var(--harbor); font-weight: 700; }
+
+.intro .display-title,
+.journal .display-title,
+.feature .display-title,
+.contact .display-title,
+.founder-quote .display-title,
+.founder-promise .display-title,
+.product-highlights .display-title,
+.product-detail-closing .display-title { color: var(--snow); }
+
+.intro .accent-word,
+.journal .accent-word,
+.feature .accent-word,
+.contact .accent-word,
+.founder-quote .accent-word,
+.founder-promise .accent-word,
+.product-highlights .accent-word,
+.product-detail-closing .accent-word { color: var(--color-sky-tint); text-shadow: 3px 3px 0 var(--color-deep-wave); }
+
+.featured-product {
+  border-radius: var(--radius-card);
+  background: var(--harbor);
+  color: var(--snow);
+  box-shadow: var(--shadow-card);
+}
+
+.store-product-card {
+  border-color: var(--color-fog);
+  border-radius: var(--radius-card);
+  background: var(--snow);
+  box-shadow: var(--shadow-card);
+}
+
+.store-product-card:hover,
+.store-product-card:focus-within {
+  border-color: var(--color-sky-mid);
+  box-shadow: 0 5px 0 var(--color-sky-wash);
+  transform: translateY(-2px);
+}
+
+.store-product-media { border-color: var(--color-fog); background: var(--snow); }
+.store-product-body h3 { color: var(--harbor); font-weight: 700; }
+.product-discount-badge,
+.story-tag {
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-sky-tint);
+  color: var(--harbor);
+}
+
+.detail-link,
+.buy-link,
+.direct-buy-link,
+.featured-buy-link,
+.featured-detail-link,
+.wishlist-button { border-radius: var(--radius-pill); }
+
+.detail-link,
+.featured-detail-link,
+.wishlist-button { border-color: var(--color-fog); background: var(--snow); color: var(--harbor); }
+.detail-link:hover,
+.featured-detail-link:hover,
+.wishlist-button:hover { border-color: var(--moss); background: var(--color-sky-tint); color: var(--harbor); }
+
+.buy-link,
+.featured-buy-link { border-color: var(--harbor); background: var(--harbor); color: var(--snow); }
+.buy-link:hover,
+.featured-buy-link:hover { border-color: var(--color-deep-wave); background: var(--color-deep-wave); color: var(--snow); }
+
+.featured-product .featured-buy-link { border-color: var(--snow); background: var(--snow); color: var(--harbor); box-shadow: none; }
+.featured-product .featured-detail-link { border-color: var(--color-sky-tint); background: transparent; color: var(--snow); }
+.featured-product .featured-direct-buy-link { border-color: var(--moss); background: var(--moss); color: var(--color-on-sky); }
+.featured-product .featured-buy-link:hover,
+.featured-product .featured-detail-link:hover,
+.featured-product .featured-direct-buy-link:hover { border-color: var(--color-sky-tint); background: var(--color-sky-tint); color: var(--harbor); }
+
+.game-invite__product,
+.reel-card,
+.product-gallery-rail {
+  border-color: var(--color-fog);
+  border-radius: var(--radius-card);
+  background: var(--snow);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.product-detail-visual {
+  overflow: hidden;
+  border-color: var(--color-fog);
+  border-radius: var(--radius-card) 0 0 var(--radius-card);
+  background: var(--snow);
+  box-shadow: none;
+}
+
+.product-detail-copy {
+  border-color: var(--color-fog);
+  border-radius: 0 var(--radius-card) var(--radius-card) 0;
+  background: var(--snow);
+}
+
+.commerce-guide { border-color: var(--color-fog); background: var(--color-sky-wash); }
+.commerce-guide-list,
+.commerce-guide-list > section,
+.product-description,
+.product-gallery-head { border-color: var(--color-fog); }
+
+.home-promotion-dialog {
+  border-color: var(--color-fog);
+  border-radius: 28px;
+  background: var(--snow);
+  box-shadow: var(--shadow-pop);
+}
+.home-promotion-dialog__close { border-color: var(--color-fog); border-radius: 50%; background: var(--cream); }
+
+.npay-purchase,
+.npay-card-purchase { border-color: var(--color-fog); }
+.npay-status { color: var(--color-deep-wave); }
+
+.reel-showcase__controls button[aria-pressed="true"] { border-color: var(--moss); background: var(--moss); color: var(--color-on-sky); }
+
+@media (max-width: 820px) {
+  .product-detail-visual { border-radius: var(--radius-card) var(--radius-card) 0 0; }
+  .product-detail-copy { border-left: 1px solid var(--color-fog); border-radius: 0 0 var(--radius-card) var(--radius-card); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .store-product-card:hover,
+  .store-product-card:focus-within { transform: none; }
+}
+
+@media (forced-colors: active) {
+  .header-store,
+  .home-film-hero__link,
+  .direct-buy-link,
+  .featured-direct-buy-link,
+  .home-promotion-dialog__link,
+  .store-product-card,
+  .featured-product { box-shadow: none; }
 }
