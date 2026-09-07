@@ -7,7 +7,7 @@ import storyPosts from '../story/posts.json' with { type: 'json' };
 
 const SITE_ORIGIN = 'https://allaboutbag.com';
 const SITEMAP_PAGES = [
-  ['/', '2026-09-07'],
+  ['/', '2026-09-08'],
   ['/about.html', '2026-08-29'],
   ['/products.html', '2026-09-03'],
   ['/finder.html', '2026-09-07'],
@@ -15,7 +15,7 @@ const SITEMAP_PAGES = [
   ['/game.html', '2026-09-06'],
   ['/privacy.html', '2026-09-03'],
   ['/terms.html', '2026-09-03'],
-  ['/story/', '2026-09-07'],
+  ['/story/', '2026-09-08'],
 ];
 
 function sitemapUrl(path, lastmod = '') {
