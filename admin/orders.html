@@ -19,7 +19,7 @@
     <a class="skip-link" href="#admin-main">본문으로 바로가기</a>
     <header class="admin-header admin-header--console">
       <a class="admin-brand" href="../index.html" aria-label="Himawari 공개 사이트 홈">HIMAWARI</a>
-      <nav class="admin-nav" aria-label="관리자 메뉴"><a href="inquiries.html">문의 관리</a><a href="products.html">제품 관리</a><a href="orders.html" aria-current="page">주문 관리</a><a href="promotions.html">프로모션</a></nav>
+      <nav class="admin-nav" aria-label="관리자 메뉴"><a href="inquiries.html">문의 관리</a><a href="products.html">제품 관리</a><a href="orders.html" aria-current="page">주문 관리</a><a href="reviews.html">리뷰·재입고</a><a href="promotions.html">프로모션</a></nav>
       <a class="admin-header__site" href="../account.html#orders">회원 주문 화면 보기 <span aria-hidden="true">↗</span></a>
     </header>
 
@@ -37,7 +37,7 @@
 
       <section class="board-view order-board" data-board-view hidden aria-label="주문 목록과 상세 관리">
         <div class="board-head"><div><p class="eyebrow">Order register</p><h1 id="board-title" tabindex="-1">주문 관리</h1><p>자사몰에서 접수한 주문과 고객의 취소·반품 요청을 처리합니다.</p></div><button class="button button--quiet" type="button" data-logout>로그아웃</button></div>
-        <div class="inventory-note"><div><span>조회 주문</span><strong data-order-total>—</strong></div><p>PG 연결 전 주문은 결제 대기로 시작합니다. 실제 결제나 환불을 별도 확인하기 전에는 완료 상태로 변경하지 마세요.</p></div>
+        <div class="inventory-note"><div><span>조회 주문</span><strong data-order-total>—</strong></div><p>자사몰 주문은 ‘주문 확인’ 시 옵션 재고를 예약하고, 취소·환불 완료 시 자동 복원합니다. Npay 주문 자동 수집은 네이버 주문관리 API의 등록 고정 IP 연결 전까지 Npay 센터에서 별도로 확인하세요.</p></div>
         <div class="board-status" data-board-status role="status" aria-live="polite"></div>
 
         <div class="order-toolbar">

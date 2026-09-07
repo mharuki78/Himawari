@@ -1,3 +1,5 @@
+import { CATALOG_CATEGORIES, filterAndSortFamilies, groupProductFamilies } from './assets/catalog-tools.js';
+
 const productLists = document.querySelectorAll('[data-products]');
 const featuredProductSlots = document.querySelectorAll('[data-featured-product]');
 
@@ -234,10 +236,16 @@ function createPriceBlock(product) {
   const price = document.createElement('strong');
   price.textContent = priceFormatter.format(product.price);
   block.append(price);
+  if (Number.isInteger(product.stock) && product.stock > 0 && product.stock <= 5) {
+    const stock = document.createElement('span');
+    stock.className = 'product-low-stock';
+    stock.textContent = `품절 임박 · ${product.stock}개`;
+    block.append(stock);
+  }
   return block;
 }
 
-function createProductCard(product, { includeNpay = false } = {}) {
+function createProductCard(product, { includeNpay = false, family = null } = {}) {
   const article = document.createElement('article');
   article.className = 'store-product-card card reveal';
   const body = document.createElement('div');
@@ -256,6 +264,21 @@ function createProductCard(product, { includeNpay = false } = {}) {
   footer.append(createPriceBlock(product), actions);
   if (includeNpay) footer.append(createNpaySection(product));
   body.append(label, productNameHeading(product), tagline, footer);
+  if (family?.variants?.length > 1) {
+    const variants = document.createElement('div');
+    variants.className = 'product-variants';
+    const summary = document.createElement('span');
+    summary.textContent = `${family.variants.length}가지 선택`;
+    variants.append(summary);
+    family.variants.slice(0, 6).forEach((variant) => {
+      const link = document.createElement('a');
+      link.href = detailHref(variant);
+      link.textContent = variant.name.match(/(블랙|블루|핑크|카키|아이보리|실버|그레이|베이지|브라운|민트|퍼플|레드|옐로|오렌지|그린|네이비|화이트)M?/)?.[0] || variant.model;
+      link.setAttribute('aria-label', `${variant.name} 보기`);
+      variants.append(link);
+    });
+    body.insertBefore(variants, footer);
+  }
   article.append(createProductMedia(product, 'store-product-media'), body);
   return article;
 }
@@ -305,6 +328,7 @@ function showListState(container, message) {
 async function loadProducts() {
   try {
     const products = await fetchProducts();
+    const families = groupProductFamilies(products);
     productLists.forEach((container) => {
       const limit = Number.parseInt(container.dataset.productLimit || '', 10);
       const mode = container.dataset.productMode;
@@ -314,6 +338,11 @@ async function loadProducts() {
           .filter((product) => Number.isFinite(product.curatedRank))
           .sort((first, second) => first.curatedRank - second.curatedRank)
           .slice(0, Number.isFinite(limit) ? limit : 5);
+      } else if (mode === 'featured-families') {
+        visibleProducts = families.filter((family) => !family.representative.featured).slice(0, Number.isFinite(limit) ? limit : 7);
+      } else if (mode === 'catalog') {
+        setupCatalog(container, families);
+        return;
       } else if (mode === 'all-except-featured') {
         visibleProducts = products.filter((product) => product.featured !== true);
       } else {
@@ -325,7 +354,10 @@ async function loadProducts() {
       }
       const fragment = document.createDocumentFragment();
       const includeNpay = container.hasAttribute('data-npay-cards');
-      visibleProducts.forEach((product) => fragment.append(createProductCard(product, { includeNpay })));
+      visibleProducts.forEach((entry) => {
+        const family = entry?.representative ? entry : null;
+        fragment.append(createProductCard(family?.representative || entry, { includeNpay, family }));
+      });
       container.replaceChildren(fragment);
       container.setAttribute('aria-busy', 'false');
       window.himawariReveal?.(container);
@@ -352,6 +384,99 @@ async function loadProducts() {
       showListState(container, '제품 정보를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.');
     });
   }
+}
+
+function setupCatalog(container, families) {
+  const form = document.querySelector('[data-catalog-controls]');
+  const search = form?.querySelector('[data-catalog-search]');
+  const sort = form?.querySelector('[data-catalog-sort]');
+  const categories = form?.querySelector('[data-catalog-categories]');
+  const count = document.querySelector('[data-catalog-result-count]');
+  const more = document.querySelector('[data-catalog-more]');
+  const empty = document.querySelector('[data-catalog-empty]');
+  const params = new URLSearchParams(location.search);
+  let state = {
+    query: params.get('q') || '',
+    category: CATALOG_CATEGORIES.some((item) => item.id === params.get('category')) ? params.get('category') : 'all',
+    sort: ['featured', 'price-low', 'price-high', 'name'].includes(params.get('sort')) ? params.get('sort') : 'featured',
+    shown: 12,
+  };
+  if (search) search.value = state.query;
+  if (sort) sort.value = state.sort;
+  if (categories && !categories.children.length) {
+    CATALOG_CATEGORIES.forEach((category) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.category = category.id;
+      button.textContent = category.label;
+      categories.append(button);
+    });
+  }
+
+  const render = ({ focusGrid = false } = {}) => {
+    const filtered = filterAndSortFamilies(families, state);
+    const visible = filtered.slice(0, state.shown);
+    const fragment = document.createDocumentFragment();
+    const includeNpay = container.hasAttribute('data-npay-cards');
+    visible.forEach((family) => fragment.append(createProductCard(family.representative, { includeNpay, family })));
+    container.replaceChildren(fragment);
+    container.setAttribute('aria-busy', 'false');
+    if (count) count.textContent = `${filtered.length}개 제품군`;
+    if (empty) empty.hidden = filtered.length > 0;
+    if (more) {
+      more.hidden = visible.length >= filtered.length;
+      more.textContent = `제품 더 보기 (${filtered.length - visible.length})`;
+    }
+    categories?.querySelectorAll('[data-category]').forEach((button) => {
+      const selected = button.dataset.category === state.category;
+      button.classList.toggle('is-active', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
+    const url = new URL(location.href);
+    state.query ? url.searchParams.set('q', state.query) : url.searchParams.delete('q');
+    state.category !== 'all' ? url.searchParams.set('category', state.category) : url.searchParams.delete('category');
+    state.sort !== 'featured' ? url.searchParams.set('sort', state.sort) : url.searchParams.delete('sort');
+    history.replaceState(null, '', url);
+    window.himawariReveal?.(container);
+    document.dispatchEvent(new CustomEvent('himawari:npay-cards-ready'));
+    if (focusGrid) container.querySelector('article a')?.focus();
+  };
+
+  let inputTimer;
+  search?.addEventListener('input', (event) => {
+    if (event.isComposing) return;
+    clearTimeout(inputTimer);
+    inputTimer = setTimeout(() => {
+      state = { ...state, query: search.value, shown: 12 };
+      render();
+    }, 160);
+  });
+  search?.addEventListener('compositionend', () => {
+    clearTimeout(inputTimer);
+    state = { ...state, query: search.value, shown: 12 };
+    render();
+  });
+  sort?.addEventListener('change', () => {
+    state = { ...state, sort: sort.value, shown: 12 };
+    render();
+  });
+  categories?.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-category]');
+    if (!button) return;
+    state = { ...state, category: button.dataset.category, shown: 12 };
+    render();
+  });
+  more?.addEventListener('click', () => {
+    state = { ...state, shown: state.shown + 12 };
+    render({ focusGrid: true });
+  });
+  form?.addEventListener('reset', () => {
+    requestAnimationFrame(() => {
+      state = { query: '', category: 'all', sort: 'featured', shown: 12 };
+      render();
+    });
+  });
+  render();
 }
 
 if (productLists.length || featuredProductSlots.length) loadProducts();

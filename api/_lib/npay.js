@@ -6,6 +6,7 @@ import {
   readProductCatalog,
   seedCatalog,
 } from './products.js';
+import { applyInventoryReservations } from './inventory.js';
 
 const SITE_ORIGIN = 'https://allaboutbag.com';
 const SHIPPING_GROUP_ID = 'HIMAWARI_DELIVERY';
@@ -84,7 +85,7 @@ export function npayPublicConfiguration() {
 
 export async function currentProducts() {
   const catalog = productStoreIsConfigured() ? (await readProductCatalog()).catalog : seedCatalog();
-  return catalog.products.map(publicProduct);
+  return applyInventoryReservations(catalog.products.map(publicProduct));
 }
 
 export function npayProductId(product) {

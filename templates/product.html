@@ -3,6 +3,7 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8">
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
@@ -36,7 +37,7 @@
         <span class="sr-only">메뉴 열기</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
-        <a href="products.html" aria-current="page">제품</a><a href="about.html">브랜드</a><a href="story/">이야기</a><a href="contact.html">연락하기</a>
+        <a href="products.html" aria-current="page">제품</a><a href="finder.html">가방 찾기</a><a href="about.html">브랜드</a><a href="story/">이야기</a><a href="contact.html">연락하기</a>
       </nav>
       <a class="header-store" href="https://smartstore.naver.com/baegot" target="_blank" rel="noopener noreferrer">스토어 ↗</a>
     </header>
@@ -85,6 +86,13 @@
               <div id="npay-product-button" class="npay-button-container" data-npay-product></div>
               <p class="npay-status" data-npay-status role="status" aria-live="polite"></p>
             </section>
+            <form class="restock-form" data-restock-form hidden novalidate>
+              <strong>재입고 알림 받기</strong>
+              <input type="email" name="email" aria-label="재입고 알림 이메일" placeholder="email@example.com" autocomplete="email" required>
+              <label><input type="checkbox" name="consent" required> 재입고 안내를 위한 이메일 수집에 동의합니다.</label>
+              <button type="submit">알림 신청</button>
+              <p data-restock-status role="status" aria-live="polite"></p>
+            </form>
             <p class="product-detail-note">실물 상품이며 현재 주문 가능합니다. 옵션별 재고와 최종 결제금액은 주문 화면에서 확인해 주세요.</p>
           </div>
         </div>
@@ -137,6 +145,26 @@
           </div>
         </section>
 
+        <section class="product-reviews section" aria-labelledby="product-reviews-title">
+          <div class="section-inner product-reviews-grid">
+            <div><p class="kicker">Verified reviews</p><h2 id="product-reviews-title">실제 구매자의<br>사용 기록.</h2><p data-review-summary>공개된 리뷰를 불러오고 있습니다.</p></div>
+            <div>
+              <div class="review-list" data-review-list aria-live="polite"></div>
+              <details class="review-form-panel">
+                <summary>배송 완료 제품 리뷰 남기기</summary>
+                <form data-review-form enctype="multipart/form-data" novalidate>
+                  <div class="review-form-row"><label>주문번호<input name="orderNumber" required placeholder="HMW-..."></label><label>주문 이메일<input type="email" name="email" required autocomplete="email"></label></div>
+                  <div class="review-form-row"><label>평점<select name="rating" required><option value="">선택</option><option value="5">5점 · 매우 만족</option><option value="4">4점 · 만족</option><option value="3">3점 · 보통</option><option value="2">2점</option><option value="1">1점</option></select></label><label>한줄 제목<input name="title" maxlength="100"></label></div>
+                  <label>사용 후기<textarea name="content" minlength="10" maxlength="2000" required rows="5"></textarea></label>
+                  <label>사진 1장 (선택, JPG·PNG·WebP, 2MB 이하)<input type="file" name="image" accept="image/jpeg,image/png,image/webp"></label>
+                  <label class="review-consent"><input type="checkbox" name="consent" value="true" required> 이름 일부와 리뷰·사진이 공개되는 데 동의합니다.</label>
+                  <button type="submit">검수 요청하기</button><p data-review-form-status role="status" aria-live="polite"></p>
+                </form>
+              </details>
+            </div>
+          </div>
+        </section>
+
         <section class="product-detail-closing">
           <div>
             <p class="kicker">Ready for your day</p>
@@ -146,6 +174,13 @@
         </section>
       </article>
     </main>
+
+    <aside class="mobile-purchase-bar" data-mobile-purchase hidden aria-label="빠른 구매">
+      <div><span data-sticky-model>Himawari</span><strong data-sticky-price></strong></div>
+      <button type="button" data-sticky-option hidden>옵션 선택</button>
+      <a data-sticky-buy href="checkout.html">구매하기</a>
+      <button type="button" data-sticky-npay>Npay</button>
+    </aside>
 
     <footer class="site-footer">
       <div class="footer-brand"><strong>HIMAWARI</strong><p>오래 곁에 둘 가방.</p></div>

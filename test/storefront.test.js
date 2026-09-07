@@ -5,11 +5,12 @@ import test from 'node:test';
 import { fetch as productsHandler } from '../api/products.js';
 import { publicProduct, seedCatalog } from '../api/_lib/products.js';
 import { renderCatalogPage, renderProductNotFoundPage, renderProductPage } from '../api/_lib/storefront.js';
+import { groupProductFamilies } from '../assets/catalog-tools.js';
 
 const products = seedCatalog().products.map(publicProduct);
 
 test('모든 HTML 페이지와 상품 템플릿이 공통 파비콘을 선언한다', async () => {
-  const rootFiles = ['about.html', 'account.html', 'checkout.html', 'contact.html', 'game.html', 'index.html', 'privacy.html', 'terms.html'];
+  const rootFiles = ['about.html', 'account.html', 'checkout.html', 'contact.html', 'finder.html', 'game.html', 'index.html', 'privacy.html', 'terms.html'];
   const nestedFiles = await Promise.all(['admin', 'story', 'templates'].map(async (directory) => {
     const files = await readdir(new URL(`../${directory}/`, import.meta.url));
     return files.filter((file) => file.endsWith('.html')).map((file) => `${directory}/${file}`);
@@ -85,11 +86,11 @@ test('최신 이야기 3편은 독립 페이지·대표 이미지·검색 메타
   }
 });
 
-test('상품 목록 원본 HTML에 전체 카탈로그와 구조화 데이터를 렌더링한다', async () => {
+test('상품 목록 원본 HTML에 전체 카탈로그를 제품군으로 묶고 구조화 데이터를 렌더링한다', async () => {
   const template = await readFile(new URL('../templates/products.html', import.meta.url), 'utf8');
   const html = renderCatalogPage(template, products);
 
-  assert.equal((html.match(/data-server-rendered-product/g) || []).length, 34);
+  assert.equal((html.match(/data-server-rendered-product/g) || []).length, groupProductFamilies(products).length);
   assert.match(html, /히마와리 학생가방 책가방 데일리 백팩 No\.1027/);
   assert.match(html, /"numberOfItems":34/);
   assert.doesNotMatch(html, /SERVER_CATALOG_SCHEMA|SERVER_FEATURED_PRODUCT|SERVER_PRODUCT_GRID/);
@@ -116,7 +117,7 @@ test('운영 사이트맵은 현재 제품과 이야기 목록을 XML로 동적 
 
   assert.equal(response.status, 200);
   assert.match(response.headers.get('content-type') || '', /^application\/xml/);
-  assert.equal((sitemap.match(/<url>/g) || []).length, 65);
+  assert.equal((sitemap.match(/<url>/g) || []).length, 66);
   for (const product of products) {
     assert.equal(sitemap.includes(`https://allaboutbag.com/product.html?id=${encodeURIComponent(product.id)}`), true);
   }
@@ -164,12 +165,22 @@ test('공통 푸터는 인스타그램과 유튜브 채널을 아이콘과 함�
   assert.match(home, /"https:\/\/www\.youtube\.com\/@himawarikorea"/);
 });
 
-test('전체 제품 페이지는 대표 상품과 모든 제품 카드에 Npay 버튼을 요청한다', async () => {
+test('전체 제품 페이지는 대표 상품과 묶인 제품군 카드에 Npay 버튼을 요청한다', async () => {
   const template = await readFile(new URL('../templates/products.html', import.meta.url), 'utf8');
   const html = renderCatalogPage(template, products);
 
   assert.equal((html.match(/data-npay-cards/g) || []).length, 2);
-  assert.equal((html.match(/data-server-rendered-product/g) || []).length, 34);
+  assert.equal((html.match(/data-server-rendered-product/g) || []).length, groupProductFamilies(products).length);
+});
+
+test('제품 상세 구조화 데이터는 배송·반품·제품군 정보를 포함하고 모바일 빠른 구매를 제공한다', async () => {
+  const template = await readFile(new URL('../templates/product.html', import.meta.url), 'utf8');
+  const html = renderProductPage(template, products[0]);
+  assert.match(html, /OfferShippingDetails/);
+  assert.match(html, /MerchantReturnPolicy/);
+  assert.match(html, /ProductGroup/);
+  assert.match(html, /data-mobile-purchase/);
+  assert.match(html, /data-review-form/);
 });
 
 test('내부 주문서는 PG 미연결 경계와 앱 소유 검증을 명확히 표시한다', async () => {

@@ -3,7 +3,7 @@
 ## Product context
 
 - Audience: 공개 고객과 단일 Himawari 관리자
-- Primary jobs: 고객은 제품을 고르고 내부 주문서에서 결제 대기 주문을 접수하며 취소·반품을 요청한다. 관리자는 제품·문의와 함께 주문·배송·취소·환불 상태를 권한 안에서 관리한다.
+- Primary jobs: 고객은 제품을 검색·비교해 고르고 내부 주문서에서 결제 대기 주문을 접수하며 취소·반품, 구매 확인 리뷰와 재입고 알림을 요청한다. 관리자는 제품·문의·리뷰와 함께 주문·배송·취소·환불·재고 상태를 권한 안에서 관리한다.
 - Target market(s): 대한민국
 - Active locales: `ko-KR`
 - Language/content register: 공개 화면은 절제된 브랜드 문장, 관리자 화면은 짧고 구체적인 업무 문장
@@ -71,7 +71,7 @@
 - Public product catalog: complete bounded catalog for browsing; server-rendered HTML and client enhancement both read the same catalog, and product detail reads by stable public product ID
 - Exploratory lists: none
 - URL state: Blob cursor is transient and not put in the URL; no PII or private record identifier enters browser history.
-- Empty/no-results/error/loading treatment: distinct loading, empty dataset, persistent error with retry; search/no-results is not part of this version.
+- Empty/no-results/error/loading treatment: distinct loading, empty dataset, 검색·필터 0건 안내와 초기화, persistent error with retry. 검색어·용도·정렬은 URL이 기준이며 더보기 수량만 현재 화면 상태로 둔다.
 - Back/scroll restoration: each admin route preserves its own list position; product/inquiry load-more appends without moving scroll and order pagination records page and status in the URL.
 - Selection: single record detail only; no bulk selection or bulk delete.
 
@@ -91,6 +91,10 @@
 | Create product | `제품 등록` | fields retained, files upload with progress, duplicate blocked | same admin route with refreshed owning list | persistent list acknowledgement | uploaded result and values retained when safe; retry without duplicate | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Edit product | `수정` then `변경사항 저장` | current values retained, selected replacement files upload with progress, duplicate blocked | same admin route with refreshed owning list | persistent list acknowledgement | form stays open; ETag conflict asks for refresh without overwriting | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Edit inventory | 제품 수정의 `옵션과 재고` | option rows and values retained, duplicate blocked | same admin route with refreshed owning list | total stock and sold-out state refresh | invalid/duplicate option stays inline; ETag conflict never overwrites | first invalid inventory control or product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
+| Find and compare products | `추천 결과 보기` | 제품 API 조회 중 중복 제출 차단 | 같은 화면 결과 영역 | 세 제품과 비교표 표시 | 기존 응답 유지 또는 인라인 재시도 안내 | 결과 제목 | `docs/PRODUCT-CATALOG-POLICY.md` |
+| Submit verified review | `검수 요청하기` | 주문·파일 검증 중 제출 차단 | 같은 제품 화면 | 관리자 검수 대기 안내 | 입력 유지, 폼 상태에 구체 오류 | 폼 상태 | `docs/PRODUCT-CATALOG-POLICY.md` |
+| Moderate review | `공개` / `비공개` | 처리 버튼 잠금 | 관리자 리뷰 화면 | 목록과 공개 평점 갱신 | 카드 유지, 상단 상태로 재시도 | 관리 목록 | `docs/PRODUCT-CATALOG-POLICY.md` |
+| Subscribe restock | `알림 신청` | 제출 버튼 잠금 | 같은 제품 화면 | 완료 안내 후 입력 초기화 | 이메일 유지, 인라인 오류 | 재입고 폼 상태 | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Read product detail | product image/name/`상세 보기` | reserved product loader | `product.html?id=...` | product content followed by an original-ratio continuous detail-image rail | app-owned not-found state and products link | product title | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Read commerce terms | footer or product order information | static document | `terms.html` | business identity and 24 articles remain directly readable | product/contact navigation remains available | terms title | `docs/COMMERCE-POLICY.md` |
 | Hard-delete product | `삭제` then `제품 삭제` | dialog stays open, duplicate blocked | refreshed product list | persistent deletion acknowledgement | dialog remains; conflict asks for refresh | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |

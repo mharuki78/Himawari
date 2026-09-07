@@ -3,6 +3,8 @@ import { readFile } from 'node:fs/promises';
 import { methodNotAllowed } from './_lib/http.js';
 import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalog } from './_lib/products.js';
 import { renderCatalogPage, renderProductNotFoundPage, renderProductPage } from './_lib/storefront.js';
+import { listPublishedReviews } from './_lib/customer-features.js';
+import { applyInventoryReservations } from './_lib/inventory.js';
 
 function html(body, status = 200) {
   return new Response(body, {
@@ -26,14 +28,17 @@ export async function fetch(request) {
   const origin = requestUrl.origin;
   try {
     const catalog = productStoreIsConfigured() ? (await readProductCatalog()).catalog : seedCatalog();
-    const products = catalog.products.map(publicProduct);
+    const products = await applyInventoryReservations(catalog.products.map(publicProduct));
     if (page === 'catalog') {
       return html(renderCatalogPage(await template('templates/products.html'), products, origin));
     }
     if (page === 'product') {
       const product = products.find((item) => item.id === requestUrl.searchParams.get('id'));
       const source = await template('templates/product.html');
-      return product ? html(renderProductPage(source, product, origin)) : html(renderProductNotFoundPage(source), 404);
+      if (!product) return html(renderProductNotFoundPage(source), 404);
+      let reviewData = null;
+      try { reviewData = await listPublishedReviews(product.id); } catch {}
+      return html(renderProductPage(source, product, origin, reviewData));
     }
     return html('페이지를 찾을 수 없습니다.', 404);
   } catch {

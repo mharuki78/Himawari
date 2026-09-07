@@ -1,3 +1,5 @@
+import { groupProductFamilies, productColor, productFamilyKey } from '../../assets/catalog-tools.js';
+
 const KRW = new Intl.NumberFormat('ko-KR', {
   style: 'currency',
   currency: 'KRW',
@@ -64,7 +66,8 @@ function productPrice(product) {
   const discount = Number.isInteger(product.naverDiscountRate) && product.naverDiscountRate > 0
     ? `<span class="product-discount-badge">네이버 ${product.naverDiscountRate}% 할인</span>`
     : '';
-  return `<div class="product-price-block">${discount}<strong>${KRW.format(product.price)}</strong></div>`;
+  const stock = Number.isInteger(product.stock) && product.stock > 0 && product.stock <= 5 ? `<span class="product-low-stock">품절 임박 · ${product.stock}개</span>` : '';
+  return `<div class="product-price-block">${discount}<strong>${KRW.format(product.price)}</strong>${stock}</div>`;
 }
 
 function renderProductCard(product) {
@@ -126,7 +129,9 @@ function catalogSchema(products, origin) {
 
 export function renderCatalogPage(template, products, origin = 'https://allaboutbag.com') {
   const featured = products.find((product) => product.featured === true) || products[0];
-  const remaining = products.filter((product) => product !== featured);
+  const remaining = groupProductFamilies(products)
+    .filter((family) => !family.variants.includes(featured))
+    .map((family) => family.representative);
   const schema = JSON.stringify(catalogSchema(products, origin)).replaceAll('<', '\\u003c');
   return template
     .replace(/<!-- SERVER_CATALOG_SCHEMA -->\s*<script type="application\/ld\+json" data-catalog-schema>[\s\S]*?<\/script>/, `<script type="application/ld+json" data-catalog-schema>${schema}</script>`)
@@ -162,7 +167,7 @@ function renderGallery(product) {
     .join('');
 }
 
-export function renderProductPage(template, product, origin = 'https://allaboutbag.com') {
+export function renderProductPage(template, product, origin = 'https://allaboutbag.com', reviewData = null) {
   const canonical = `${origin}/product.html?id=${encodeURIComponent(product.id)}`;
   const description = String(product.description || product.tagline || '').slice(0, 160);
   const mainImage = safeHttpsUrl(product.image);
@@ -176,8 +181,18 @@ export function renderProductPage(template, product, origin = 'https://allaboutb
     image: [mainImage, ...(Array.isArray(product.gallery) ? product.gallery.map(safeHttpsUrl) : [])].filter(Boolean),
     description,
     brand: { '@type': 'Brand', name: 'Himawari' },
-    offers: { '@type': 'Offer', priceCurrency: 'KRW', price: String(product.price), availability: product.soldOut ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock', url: checkoutUrl },
+    color: productColor(product) || undefined,
+    isVariantOf: { '@type': 'ProductGroup', productGroupID: `himawari-${productFamilyKey(product)}`, name: `${product.model} 제품군`, variesBy: ['https://schema.org/color', 'https://schema.org/size'] },
+    offers: {
+      '@type': 'Offer', priceCurrency: 'KRW', price: String(product.price), availability: product.soldOut ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock', url: checkoutUrl,
+      shippingDetails: { '@type': 'OfferShippingDetails', shippingRate: { '@type': 'MonetaryAmount', value: product.price >= 100000 ? '0' : '3500', currency: 'KRW' }, shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'KR' }, deliveryTime: { '@type': 'ShippingDeliveryTime', handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 2, unitCode: 'DAY' }, transitTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'DAY' } } },
+      hasMerchantReturnPolicy: { '@type': 'MerchantReturnPolicy', applicableCountry: 'KR', returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow', merchantReturnDays: 7, returnMethod: 'https://schema.org/ReturnByMail', returnFees: 'https://schema.org/ReturnShippingFees', returnShippingFeesAmount: { '@type': 'MonetaryAmount', value: '8000', currency: 'KRW' } },
+    },
   };
+  if (reviewData?.aggregate?.count > 0) {
+    schema.aggregateRating = { '@type': 'AggregateRating', ratingValue: String(reviewData.aggregate.ratingValue), reviewCount: String(reviewData.aggregate.count), bestRating: '5', worstRating: '1' };
+    schema.review = reviewData.reviews.slice(0, 10).map((review) => ({ '@type': 'Review', author: { '@type': 'Person', name: review.reviewerName }, datePublished: review.createdAt.slice(0, 10), reviewBody: review.content, name: review.title || '구매 후기', reviewRating: { '@type': 'Rating', ratingValue: String(review.rating), bestRating: '5', worstRating: '1' } }));
+  }
 
   let html = template
     .replace('<title>제품 상세 — Himawari</title>', `<title>${escapeHtml(product.name)} — Himawari</title>`)

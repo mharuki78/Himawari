@@ -22,6 +22,8 @@ import {
   validatePromotionsInput,
   writePromotions,
 } from '../_lib/promotions.js';
+import { databaseIsConfigured } from '../_lib/database.js';
+import { listAdminReviews, moderateReview, notifyRestockSubscribers } from '../_lib/customer-features.js';
 
 const PAGE_SIZE = 20;
 
@@ -53,8 +55,24 @@ async function fetchPromotions(request) {
   }
 }
 
+async function fetchReviews(request) {
+  if (!['GET', 'PATCH'].includes(request.method)) return methodNotAllowed(['GET', 'PATCH']);
+  if (!authIsConfigured() || !databaseIsConfigured()) return json({ message: '리뷰 관리 설정이 완료되지 않았습니다.' }, 503);
+  if (!isAdminRequest(request)) return json({ message: '관리자 로그인이 필요합니다.' }, 401, { Vary: 'Cookie' });
+  try {
+    if (request.method === 'GET') return json(await listAdminReviews(new URL(request.url).searchParams.get('status') || ''));
+    if (!isSameOrigin(request)) return json({ message: '요청 출처를 확인할 수 없습니다.' }, 403);
+    return json(await moderateReview(await readJson(request, 8_192)));
+  } catch (error) {
+    const status = Number(error.status) || 500;
+    return json({ message: status < 500 ? error.message : '리뷰 정보를 처리하지 못했습니다.' }, status);
+  }
+}
+
 export async function fetch(request) {
-  if (new URL(request.url).searchParams.get('route') === 'promotions') return fetchPromotions(request);
+  const route = new URL(request.url).searchParams.get('route');
+  if (route === 'promotions') return fetchPromotions(request);
+  if (route === 'reviews') return fetchReviews(request);
   if (!['GET', 'POST', 'PATCH', 'DELETE'].includes(request.method)) return methodNotAllowed(['GET', 'POST', 'PATCH', 'DELETE']);
   if (!authIsConfigured() || !productStoreIsConfigured()) return json({ message: '제품 관리 저장소 설정이 완료되지 않았습니다.' }, 503);
   if (!isAdminRequest(request)) return json({ message: '관리자 로그인이 필요합니다.' }, 401, { Vary: 'Cookie' });
@@ -129,8 +147,10 @@ export async function fetch(request) {
       const updatedProduct = updateProductRecord(product, value, media);
       const updatedProducts = current.catalog.products.map((item) => (item.id === id ? updatedProduct : item));
       const saved = await writeProductCatalog({ ...current.catalog, products: updatedProducts }, current.etag);
+      let restockNotification = { sent: 0, configured: false };
+      try { restockNotification = await notifyRestockSubscribers(publicProduct(updatedProduct)); } catch (error) { console.error('restock_notification_failed', { productId: id, message: error.message || 'unknown error' }); }
       const mediaRemoved = await deleteManagedImages(media.removedManagedImages);
-      return json({ ok: true, product: publicProduct(updatedProduct), etag: saved.etag, mediaRemoved }, 200, { Vary: 'Cookie' });
+      return json({ ok: true, product: publicProduct(updatedProduct), etag: saved.etag, mediaRemoved, restockNotification }, 200, { Vary: 'Cookie' });
     }
 
     const remaining = current.catalog.products.filter((item) => item.id !== id);

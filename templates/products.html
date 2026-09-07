@@ -3,6 +3,7 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8">
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
@@ -38,7 +39,7 @@
         <span class="sr-only">메뉴 열기</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
-        <a href="products.html" aria-current="page">제품</a><a href="about.html">브랜드</a><a href="story/">이야기</a><a href="contact.html">연락하기</a>
+        <a href="products.html" aria-current="page">제품</a><a href="finder.html">가방 찾기</a><a href="about.html">브랜드</a><a href="story/">이야기</a><a href="contact.html">연락하기</a>
       </nav>
       <a class="header-store" href="https://smartstore.naver.com/baegot" target="_blank" rel="noopener noreferrer">스토어 ↗</a>
     </header>
@@ -71,10 +72,25 @@
             <p class="kicker">Full collection</p>
             <h3>쓰임과 균형으로 완성한 전체 컬렉션.</h3>
           </div>
-          <div class="product-grid product-grid--catalog" data-products data-product-mode="all-except-featured" data-npay-cards aria-live="polite" aria-busy="true">
+          <form class="catalog-controls" data-catalog-controls role="search" novalidate>
+            <div class="catalog-search-row">
+              <label for="catalog-search">제품 검색</label>
+              <input id="catalog-search" type="search" data-catalog-search placeholder="모델명, 용도, 색상 검색" autocomplete="off">
+              <label for="catalog-sort">정렬</label>
+              <select id="catalog-sort" data-catalog-sort>
+                <option value="featured">추천순</option><option value="price-low">낮은 가격순</option><option value="price-high">높은 가격순</option><option value="name">이름순</option>
+              </select>
+              <button type="reset">조건 초기화</button>
+            </div>
+            <div class="catalog-categories" data-catalog-categories aria-label="용도별 제품 필터"></div>
+            <p class="catalog-result-count" data-catalog-result-count aria-live="polite">제품을 정리하고 있습니다.</p>
+          </form>
+          <p class="catalog-empty" data-catalog-empty hidden>조건에 맞는 제품이 없습니다. 검색어나 필터를 바꿔보세요.</p>
+          <div class="product-grid product-grid--catalog" data-products data-product-mode="catalog" data-npay-cards aria-live="polite" aria-busy="true">
             <!-- SERVER_PRODUCT_GRID -->
             <p class="product-list-state">전체 제품을 불러오는 중입니다.</p>
           </div>
+          <button class="catalog-more" type="button" data-catalog-more hidden>제품 더 보기</button>
           <a class="store-link reveal" href="https://smartstore.naver.com/baegot" target="_blank" rel="noopener noreferrer" aria-label="Himawari 스마트스토어 전체 제품 보기 — 새 탭에서 열림">전체 제품 보기 <span aria-hidden="true">↗</span></a>
           <p class="catalog-note">모든 제품은 실제 구매 가능한 실물 가방입니다. 가격과 옵션별 재고는 각 상세페이지와 주문 화면에서 최종 확인해 주세요.</p>
         </div>

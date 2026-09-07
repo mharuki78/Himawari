@@ -3,6 +3,7 @@ import { randomUUID } from 'node:crypto';
 import { database } from './database.js';
 import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalog } from './products.js';
 import { activeCoupons, readPromotions } from './promotions.js';
+import { applyInventoryReservations } from './inventory.js';
 
 export const SHIPPING_FEE = 3_500;
 export const FREE_SHIPPING_THRESHOLD = 100_000;
@@ -216,6 +217,17 @@ export async function ensureOrderSchema() {
         created_at timestamptz NOT NULL DEFAULT now()
       )`,
       tx`CREATE INDEX IF NOT EXISTS order_events_order_idx ON order_events(order_id, created_at)`,
+      tx`CREATE TABLE IF NOT EXISTS inventory_reservations (
+        order_item_id text PRIMARY KEY REFERENCES order_items(id) ON DELETE CASCADE,
+        order_id text NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
+        product_id text NOT NULL,
+        option_id text NOT NULL DEFAULT '',
+        quantity integer NOT NULL CHECK (quantity BETWEEN 1 AND 99),
+        active boolean NOT NULL DEFAULT true,
+        created_at timestamptz NOT NULL DEFAULT now(),
+        updated_at timestamptz NOT NULL DEFAULT now()
+      )`,
+      tx`CREATE INDEX IF NOT EXISTS inventory_reservations_stock_idx ON inventory_reservations(product_id, option_id, active)`,
     ]).then(() => sql.query('DELETE FROM orders WHERE retention_until <= now()')).catch((error) => {
       schemaPromise = null;
       throw error;
@@ -226,7 +238,7 @@ export async function ensureOrderSchema() {
 
 async function currentCatalog() {
   const catalog = productStoreIsConfigured() ? (await readProductCatalog()).catalog : seedCatalog();
-  return catalog.products.map(publicProduct);
+  return applyInventoryReservations(catalog.products.map(publicProduct));
 }
 
 function mapOrderRow(row, items = [], events = [], includeAdminNotes = false) {
@@ -512,7 +524,46 @@ export async function updateOrderByAdmin(input) {
 
   const eventNote = note || (statusChanged ? `관리자가 주문 상태를 ${ORDER_STATUS[targetStatus].label}(으)로 변경했습니다.` : '관리자가 배송 정보를 변경했습니다.');
   const eventId = randomUUID();
-  const changed = await database().query(
+  let changed;
+  if (statusChanged && targetStatus === 'confirmed') {
+    const catalog = productStoreIsConfigured() ? (await readProductCatalog()).catalog : seedCatalog();
+    const products = catalog.products.map(publicProduct);
+    const orderItems = await database().query('SELECT id, product_id, option_id, quantity FROM order_items WHERE order_id=$1', [current.id]);
+    const byId = new Map(products.map((product) => [product.id, product]));
+    const limits = orderItems.map((item) => {
+      const product = byId.get(item.product_id);
+      const option = product?.options?.find((entry) => entry.id === (item.option_id || ''));
+      const stock = option ? option.stock : product?.stock;
+      if (!product || (product.options?.length && !option)) throw Object.assign(new Error('현재 카탈로그에서 주문 상품 또는 옵션을 찾을 수 없습니다.'), { status: 409 });
+      return { productId: item.product_id, optionId: item.option_id || '', baseStock: stock === null ? null : Number(stock) };
+    });
+    changed = await database().query(
+      `WITH locked AS (SELECT pg_advisory_xact_lock(hashtext('himawari_inventory'))),
+       limits AS (SELECT * FROM jsonb_to_recordset($8::jsonb) AS x("productId" text, "optionId" text, "baseStock" integer)),
+       used AS (SELECT product_id, option_id, SUM(quantity)::integer AS quantity FROM inventory_reservations WHERE active=true AND order_id<>$9 GROUP BY product_id, option_id),
+       stock_ok AS (SELECT NOT EXISTS (
+         SELECT 1 FROM order_items oi JOIN limits l ON l."productId"=oi.product_id AND l."optionId"=COALESCE(oi.option_id,'')
+         LEFT JOIN used u ON u.product_id=oi.product_id AND u.option_id=COALESCE(oi.option_id,'') CROSS JOIN locked
+         WHERE oi.order_id=$9 AND l."baseStock" IS NOT NULL AND oi.quantity+COALESCE(u.quantity,0)>l."baseStock"
+       ) AS ok),
+       updated AS (UPDATE orders SET status=$1, tracking_number=$2, revision=revision+1, updated_at=now() WHERE order_number=$3 AND revision=$4 AND status=$5 AND (SELECT ok FROM stock_ok) RETURNING id),
+       reserved AS (INSERT INTO inventory_reservations (order_item_id,order_id,product_id,option_id,quantity,active)
+         SELECT oi.id,oi.order_id,oi.product_id,COALESCE(oi.option_id,''),oi.quantity,true FROM order_items oi JOIN updated u ON u.id=oi.order_id
+         ON CONFLICT (order_item_id) DO UPDATE SET active=true,quantity=EXCLUDED.quantity,updated_at=now() RETURNING order_id),
+       event AS (INSERT INTO order_events (id,order_id,actor,from_status,to_status,note) SELECT $6,id,'admin',$5,$1,$7 FROM updated RETURNING order_id)
+       SELECT order_id FROM event`,
+      [targetStatus, trackingNumber || null, number, expectedRevision, current.status, eventId, eventNote, JSON.stringify(limits), current.id],
+    );
+    if (!changed[0]) throw Object.assign(new Error('재고가 부족하거나 주문 상태가 변경되었습니다. 제품 재고와 주문 목록을 새로고침해 주세요.'), { status: 409 });
+  } else if (statusChanged && ['cancelled', 'refunded'].includes(targetStatus)) {
+    changed = await database().query(
+      `WITH updated AS (UPDATE orders SET status=$1,tracking_number=$2,revision=revision+1,updated_at=now() WHERE order_number=$3 AND revision=$4 AND status=$5 RETURNING id),
+       released AS (UPDATE inventory_reservations r SET active=false,updated_at=now() FROM updated u WHERE r.order_id=u.id AND r.active=true RETURNING r.order_id),
+       event AS (INSERT INTO order_events (id,order_id,actor,from_status,to_status,note) SELECT $6,id,'admin',$5,$1,$7 FROM updated RETURNING order_id)
+       SELECT order_id FROM event`,
+      [targetStatus, trackingNumber || null, number, expectedRevision, current.status, eventId, eventNote],
+    );
+  } else changed = await database().query(
     `WITH updated AS (
        UPDATE orders
           SET status = $1, tracking_number = $2, revision = revision + 1, updated_at = now()

@@ -36,29 +36,6 @@ function createProductImage(url, alt, { eager = false, longform = false } = {}) 
   return frame;
 }
 
-function addProductSchema(product, canonicalUrl) {
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
-  script.textContent = JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: product.name,
-    image: [product.image, ...product.gallery].filter(Boolean),
-    description: product.description || product.tagline,
-    sku: product.model,
-    brand: { '@type': 'Brand', name: 'Himawari' },
-    url: canonicalUrl,
-    offers: {
-      '@type': 'Offer',
-      url: canonicalUrl,
-      priceCurrency: 'KRW',
-      price: String(product.price),
-      availability: product.soldOut ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
-    },
-  });
-  document.head.append(script);
-}
-
 function renderDescription(value) {
   const container = document.querySelector('[data-description]');
   const blocks = String(value || '').split(/\n\s*\n/).map((block) => block.trim()).filter(Boolean);
@@ -76,6 +53,10 @@ function configureInventory(product, cart, buyLinks, npayProduct) {
   const selectedPrice = document.querySelector('[data-selected-price]');
   const optionError = document.querySelector('[data-option-error]');
   const options = Array.isArray(product.options) ? product.options : [];
+  const sticky = document.querySelector('[data-mobile-purchase]');
+  const stickyBuy = sticky?.querySelector('[data-sticky-buy]');
+  const stickyOption = sticky?.querySelector('[data-sticky-option]');
+  const restockForm = document.querySelector('[data-restock-form]');
   const setBuyState = (option = null) => {
     const unavailable = product.soldOut || (option && option.stock < 1);
     const needsOption = options.length > 0 && !option;
@@ -93,6 +74,21 @@ function configureInventory(product, cart, buyLinks, npayProduct) {
         link.setAttribute('aria-disabled', 'true');
       }
     });
+    if (stickyBuy) {
+      const enabled = !unavailable && !needsOption;
+      if (enabled) {
+        stickyBuy.href = `checkout.html?product=${encodeURIComponent(product.id)}${option ? `&option=${encodeURIComponent(option.id)}` : ''}`;
+        stickyBuy.removeAttribute('aria-disabled');
+      } else {
+        stickyBuy.removeAttribute('href');
+        stickyBuy.setAttribute('aria-disabled', 'true');
+      }
+    }
+    if (stickyOption) stickyOption.hidden = !needsOption;
+    if (restockForm) {
+      restockForm.hidden = !unavailable;
+      restockForm.dataset.optionId = option?.id || '';
+    }
     if (npayProduct) {
       npayProduct.dataset.optionId = option?.id || '';
       npayProduct.dataset.hasOptions = options.length ? 'true' : 'false';
@@ -143,6 +139,91 @@ function configureInventory(product, cart, buyLinks, npayProduct) {
   setBuyState();
 }
 
+function setupCustomerFeatures(product) {
+  const restockForm = document.querySelector('[data-restock-form]');
+  restockForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const button = restockForm.querySelector('button');
+    const status = restockForm.querySelector('[data-restock-status]');
+    const invalid = [...restockForm.querySelectorAll('[required]')].find((control) => !control.validity.valid);
+    if (invalid) { status.textContent = '이메일과 알림 동의를 확인해 주세요.'; invalid.focus(); return; }
+    button.disabled = true;
+    status.textContent = '신청하고 있습니다.';
+    try {
+      const response = await fetch('/api/restock', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ productId: product.id, optionId: restockForm.dataset.optionId || '', email: restockForm.elements.email.value, consent: restockForm.elements.consent.checked }) });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.message);
+      status.textContent = payload.message;
+      restockForm.reset();
+    } catch (error) {
+      status.textContent = error.message || '알림을 신청하지 못했습니다.';
+    } finally { button.disabled = false; }
+  });
+
+  const list = document.querySelector('[data-review-list]');
+  const summary = document.querySelector('[data-review-summary]');
+  const loadReviews = async () => {
+    if (!list) return;
+    try {
+      const response = await fetch(`/api/reviews?productId=${encodeURIComponent(product.id)}`, { cache: 'no-store' });
+      if (!response.ok) throw new Error();
+      const payload = await response.json();
+      list.replaceChildren();
+      (payload.reviews || []).forEach((review) => {
+        const article = document.createElement('article');
+        article.className = 'review-card';
+        const head = document.createElement('div');
+        const stars = document.createElement('span');
+        stars.textContent = `${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}`;
+        stars.setAttribute('aria-label', `5점 중 ${review.rating}점`);
+        const verified = document.createElement('strong');
+        verified.textContent = review.verified ? '구매 확인' : '';
+        head.append(stars, verified);
+        const title = document.createElement('h3');
+        title.textContent = review.title || '사용 후기';
+        const content = document.createElement('p');
+        content.textContent = review.content;
+        const byline = document.createElement('small');
+        byline.textContent = `${review.reviewerName} · ${new Date(review.createdAt).toLocaleDateString('ko-KR')}`;
+        article.append(head, title, content, byline);
+        const media = safeHttpsUrl(review.mediaUrl);
+        if (media) article.append(createProductImage(media, `${review.reviewerName} 구매 후기 사진`));
+        list.append(article);
+      });
+      if (!payload.reviews?.length) list.textContent = '아직 공개된 리뷰가 없습니다. 첫 사용 기록을 남겨주세요.';
+      summary.textContent = payload.aggregate?.count ? `평균 ${payload.aggregate.ratingValue}점 · 구매 확인 리뷰 ${payload.aggregate.count}개` : '배송 완료 주문만 리뷰를 남길 수 있습니다.';
+    } catch { list.textContent = '리뷰를 불러오지 못했습니다.'; summary.textContent = ''; }
+  };
+  loadReviews();
+
+  const reviewForm = document.querySelector('[data-review-form]');
+  reviewForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const button = reviewForm.querySelector('button');
+    const status = reviewForm.querySelector('[data-review-form-status]');
+    const invalid = [...reviewForm.querySelectorAll('[required]')].find((control) => !control.validity.valid);
+    if (invalid) { status.textContent = '주문정보, 평점, 10자 이상의 리뷰와 공개 동의를 확인해 주세요.'; invalid.focus(); return; }
+    const image = reviewForm.elements.image.files?.[0];
+    if (image && (!['image/jpeg', 'image/png', 'image/webp'].includes(image.type) || image.size > 2_000_000)) {
+      status.textContent = '리뷰 사진은 JPG, PNG, WebP 형식의 2MB 이하 파일만 가능합니다.';
+      reviewForm.elements.image.focus();
+      return;
+    }
+    const data = new FormData(reviewForm);
+    data.set('productId', product.id);
+    button.disabled = true;
+    status.textContent = '리뷰를 안전하게 등록하고 있습니다.';
+    try {
+      const response = await fetch('/api/reviews', { method: 'POST', body: data });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.message);
+      status.textContent = payload.message;
+      reviewForm.reset();
+    } catch (error) { status.textContent = error.message || '리뷰를 등록하지 못했습니다.'; }
+    finally { button.disabled = false; }
+  });
+}
+
 function renderProduct(product) {
   const canonicalUrl = `${location.origin}${location.pathname}?id=${encodeURIComponent(product.id)}`;
   const description = String(product.description || product.tagline || '').slice(0, 160);
@@ -153,7 +234,6 @@ function renderProduct(product) {
   setMeta('meta[property="og:description"]', 'content', description);
   setMeta('meta[property="og:url"]', 'content', canonicalUrl);
   setMeta('meta[property="og:image"]', 'content', safeHttpsUrl(product.image));
-  addProductSchema(product, canonicalUrl);
 
   document.querySelector('[data-breadcrumb-current]').textContent = product.model;
   document.querySelector('[data-model]').textContent = product.model;
@@ -187,6 +267,26 @@ function renderProduct(product) {
   const npayProduct = document.querySelector('[data-npay-product]');
   if (npayProduct) npayProduct.dataset.productId = product.id;
   configureInventory(product, cart, buyLinks, npayProduct);
+  setupCustomerFeatures(product);
+  const sticky = document.querySelector('[data-mobile-purchase]');
+  if (sticky) {
+    sticky.hidden = false;
+    sticky.querySelector('[data-sticky-model]').textContent = product.model;
+    sticky.querySelector('[data-sticky-price]').textContent = priceFormatter.format(product.price);
+    sticky.querySelector('[data-sticky-option]')?.addEventListener('click', () => {
+      document.querySelector('[data-option-picker]')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.querySelector('[data-product-option]')?.focus({ preventScroll: true });
+    });
+    sticky.querySelector('[data-sticky-npay]')?.addEventListener('click', () => {
+      const npay = document.querySelector('[data-npay-product-section]');
+      npay?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      npay?.querySelector('a,button')?.focus({ preventScroll: true });
+    });
+    const footer = document.querySelector('.site-footer');
+    if (footer && 'IntersectionObserver' in window) {
+      new IntersectionObserver(([entry]) => sticky.classList.toggle('is-hidden', entry.isIntersecting), { threshold: 0.05 }).observe(footer);
+    }
+  }
   document.querySelector('[data-closing-title]').textContent = `${product.model}, 오래 곁에 둘 선택.`;
   renderDescription(product.description || product.tagline);
 
