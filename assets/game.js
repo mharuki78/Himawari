@@ -83,8 +83,29 @@
     musicStep: 0,
     soundEnabled: readSoundPreference(),
     activeCoupons: [],
-    couponLoadFailed: false
+    couponLoadFailed: false,
+    viewportLocked: false,
+    lockedScrollY: 0
   };
+
+  function setGameViewport(active) {
+    var mobile = window.matchMedia('(max-width: 620px)').matches;
+    if (active && mobile && !state.viewportLocked) {
+      state.lockedScrollY = window.scrollY || window.pageYOffset || 0;
+      document.body.style.setProperty('--game-scroll-offset', '-' + state.lockedScrollY + 'px');
+      state.viewportLocked = true;
+    }
+
+    document.documentElement.classList.toggle('game-round-active', active);
+    document.body.classList.toggle('game-round-active', active);
+
+    if (!active && state.viewportLocked) {
+      var restoreY = state.lockedScrollY;
+      state.viewportLocked = false;
+      document.body.style.removeProperty('--game-scroll-offset');
+      window.requestAnimationFrame(function () { window.scrollTo(0, restoreY); });
+    }
+  }
 
   function announce(message) {
     announcer.textContent = '';
@@ -221,7 +242,7 @@
     panels.forEach(function (panel) { panel.hidden = panel.dataset.gamePanel !== name; });
     state.phase = name;
     consoleElement.dataset.phase = name;
-    document.body.classList.toggle('game-round-active', name === 'catch');
+    setGameViewport(name !== 'intro');
     renderHud();
     updateControllerState();
   }
@@ -646,7 +667,7 @@
   }
 
   function exitGame() {
-    if (state.phase !== 'catch') return;
+    if (state.phase === 'intro') return;
     clearRound();
     stopMusic();
     state.paused = false;
@@ -682,6 +703,9 @@
       button.addEventListener(eventName, function () { releaseDirection(direction, button); });
     });
   });
+  root.querySelector('.d-pad').addEventListener('touchmove', function (event) {
+    event.preventDefault();
+  }, { passive: false });
   pauseButton.addEventListener('click', function () {
     setPause(!state.paused, state.paused ? '게임을 계속합니다.' : '게임을 잠시 멈췄습니다.');
   });
@@ -709,6 +733,9 @@
   });
   document.addEventListener('visibilitychange', function () {
     if (document.hidden && state.phase === 'catch' && !state.paused) setPause(true, '화면을 벗어나 게임이 자동으로 멈췄습니다.');
+  });
+  window.addEventListener('blur', function () {
+    if (state.phase === 'catch' && !state.paused) setPause(true, '게임이 자동으로 멈췄습니다. 계속하려면 가운데 재생 버튼을 누르세요.');
   });
   window.addEventListener('pagehide', stopMusic);
 
