@@ -8,6 +8,7 @@
   var SOUND_STORAGE_KEY = 'himawari-game-sound-v1';
   var CATCH_SECONDS = 35;
   var PACK_SECONDS = 22;
+  var PACK_TRANSFER_MS = 720;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var panels = Array.from(root.querySelectorAll('[data-game-panel]'));
   var consoleElement = root.querySelector('[data-game-console]');
@@ -65,6 +66,7 @@
     packItems: [],
     packed: new Set(),
     selectedItem: '',
+    packFinishing: false,
     paused: false,
     directions: new Set(),
     objects: [],
@@ -79,6 +81,8 @@
     clockTimer: 0,
     animationFrame: 0,
     toastTimer: 0,
+    packCompletionTimer: 0,
+    packEffectTimer: 0,
     musicTimer: 0,
     musicStep: 0,
     soundEnabled: readSoundPreference(),
@@ -287,16 +291,23 @@
     window.clearInterval(state.clockTimer);
     window.cancelAnimationFrame(state.animationFrame);
     window.clearTimeout(state.toastTimer);
+    window.clearTimeout(state.packCompletionTimer);
+    window.clearTimeout(state.packEffectTimer);
     state.spawnTimer = 0;
     state.clockTimer = 0;
     state.animationFrame = 0;
     state.toastTimer = 0;
+    state.packCompletionTimer = 0;
+    state.packEffectTimer = 0;
     state.lastFrame = 0;
     state.lastFootstep = 0;
     state.directions.clear();
+    state.packFinishing = false;
     state.objects.forEach(function (object) { object.element.remove(); });
     state.objects = [];
     catchLayer.querySelectorAll('.footstep').forEach(function (step) { step.remove(); });
+    document.querySelectorAll('.pack-transfer').forEach(function (transfer) { transfer.remove(); });
+    root.querySelector('.packing-bag')?.classList.remove('is-receiving');
     catchStage.classList.remove('is-moving');
     player.classList.remove('is-walking');
     player.style.setProperty('--player-lean', '0deg');
@@ -520,16 +531,54 @@
       var detail = document.createElement('span');
       button.type = 'button';
       button.dataset.packZone = zone.id;
+      button.disabled = state.packFinishing;
       name.textContent = zone.label;
       detail.textContent = zone.detail;
       button.append(name, detail);
-      button.addEventListener('click', function () { placeSelectedItem(zone); });
+      button.addEventListener('click', function () { placeSelectedItem(zone, button); });
       packingZones.append(button);
     });
   }
 
-  function placeSelectedItem(zone) {
-    if (state.phase !== 'pack') return;
+  function animatePackedItem(item, zoneButton) {
+    var bag = root.querySelector('.packing-bag');
+    if (!bag) return 0;
+
+    bag.classList.remove('is-receiving');
+    void bag.offsetWidth;
+    bag.classList.add('is-receiving');
+    window.clearTimeout(state.packEffectTimer);
+    state.packEffectTimer = window.setTimeout(function () {
+      bag.classList.remove('is-receiving');
+      state.packEffectTimer = 0;
+    }, PACK_TRANSFER_MS);
+    if (reducedMotion) return 0;
+
+    var itemButton = packingItems.querySelector('[data-pack-item="' + item.id + '"]');
+    var itemRect = itemButton?.getBoundingClientRect();
+    var itemIsVisible = itemRect && itemRect.bottom > 0 && itemRect.top < window.innerHeight;
+    var sourceRect = (itemIsVisible ? itemButton : zoneButton)?.getBoundingClientRect();
+    if (!sourceRect) return 0;
+
+    var bagRect = bag.getBoundingClientRect();
+    var transfer = document.createElement('span');
+    var sprite = document.createElement('span');
+    transfer.className = 'collectible pack-transfer';
+    transfer.dataset.kind = item.id;
+    transfer.setAttribute('aria-hidden', 'true');
+    sprite.className = 'collectible__sprite';
+    transfer.style.setProperty('--pack-start-x', (sourceRect.left + sourceRect.width / 2) + 'px');
+    transfer.style.setProperty('--pack-start-y', (sourceRect.top + sourceRect.height / 2) + 'px');
+    transfer.style.setProperty('--pack-end-x', (bagRect.left + bagRect.width * .5) + 'px');
+    transfer.style.setProperty('--pack-end-y', (bagRect.top + bagRect.height * .52) + 'px');
+    transfer.append(sprite);
+    document.body.append(transfer);
+    window.setTimeout(function () { transfer.remove(); }, PACK_TRANSFER_MS);
+    return PACK_TRANSFER_MS;
+  }
+
+  function placeSelectedItem(zone, zoneButton) {
+    if (state.phase !== 'pack' || state.packFinishing) return;
     if (!state.selectedItem) {
       announce('먼저 아래에서 정리할 물건을 선택해 주세요.');
       return;
@@ -537,13 +586,27 @@
     var item = state.packItems.find(function (entry) { return entry.id === state.selectedItem; });
     if (!item || state.packed.has(item.id)) return;
     if (item.zone === zone.id) {
+      var transferDuration = animatePackedItem(item, zoneButton);
       state.packed.add(item.id);
       state.selectedItem = '';
+      state.packFinishing = state.packed.size === state.packItems.length;
       setScore(150);
       playEffect('pack');
       announce(item.label + '을 ' + zone.label + '에 정리했습니다. 150점 추가.');
       renderPackingBoard();
-      if (state.packed.size === state.packItems.length) finishGame();
+      if (state.packFinishing) {
+        window.clearInterval(state.clockTimer);
+        state.clockTimer = 0;
+        if (!transferDuration) {
+          finishGame();
+          return;
+        }
+        announce(item.label + '이 가방에 들어갔습니다. 마지막 정리를 확인하고 있습니다.');
+        state.packCompletionTimer = window.setTimeout(function () {
+          state.packCompletionTimer = 0;
+          finishGame();
+        }, transferDuration);
+      }
       return;
     }
     setScore(-40);

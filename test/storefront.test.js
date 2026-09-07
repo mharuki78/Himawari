@@ -169,6 +169,9 @@ test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 �
   assert.match(gameJs, /AudioContext/);
   assert.match(gameJs, /function playMusicStep/);
   assert.match(gameJs, /function setGameViewport/);
+  assert.match(gameJs, /function animatePackedItem/);
+  assert.match(gameJs, /PACK_TRANSFER_MS/);
+  assert.match(gameJs, /마지막 정리를 확인하고 있습니다/);
   assert.match(gameJs, /state\.phase === 'intro'/);
   assert.match(gameJs, /touchmove/);
   assert.doesNotMatch(gameJs, /sprite\.textContent\s*=\s*item\.code/);
@@ -178,6 +181,9 @@ test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 �
   assert.match(gameCss, /body\.game-round-active \.game-console\[data-phase="catch"\]/);
   assert.match(gameCss, /body\.game-round-active \.game-console:not\(\[data-phase="intro"\]\)/);
   assert.match(gameCss, /width: clamp\(3\.2rem, 17cqw, 5\.4rem\)/);
+  assert.match(gameCss, /@keyframes pack-transfer-flight/);
+  assert.match(gameCss, /\.packing-bag\.is-receiving/);
+  assert.match(gameCss, /\.pack-transfer \{ display: none; \}/);
   assert.match(gameCss, /\.collectible\[data-kind="laptop"\] \.collectible__sprite::before/);
   assert.match(gameCss, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(checkoutJs, /himawari-game-coupon-v1/);

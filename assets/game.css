@@ -157,6 +157,17 @@
 .packing-board { display: grid; grid-template-columns: minmax(8rem, .8fr) 1fr; gap: .7rem; margin-top: .8rem; }
 .packing-bag { position: relative; display: grid; min-height: 17rem; place-items: center; margin: 0; overflow: hidden; border: 3px solid var(--pixel-ink); background: #91a95b; box-shadow: 4px 4px 0 var(--pixel-ink); }
 .packing-bag img { width: 72%; max-height: 15rem; object-fit: contain; image-rendering: pixelated; }
+.packing-bag::after { position: absolute; z-index: 2; top: 51%; left: 50%; width: 7px; height: 7px; pointer-events: none; background: var(--pixel-honey); box-shadow: -28px -7px 0 var(--pixel-cream), 29px 6px 0 var(--pixel-cream), -17px 25px 0 var(--pixel-pink), 18px -25px 0 var(--pixel-honey); content: ""; opacity: 0; transform: translate(-50%, -50%); image-rendering: pixelated; }
+.packing-bag.is-receiving img { animation: bag-receive .55s steps(3, jump-none); }
+.packing-bag.is-receiving::after { animation: bag-receive-spark .58s steps(3, jump-none); }
+@keyframes bag-receive { 48% { transform: translateY(3px) scale(.96); } 72% { transform: translateY(-3px) scale(1.03); } }
+@keyframes bag-receive-spark { 0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(.35); } 35%, 72% { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+.pack-transfer { position: fixed; z-index: 1300; top: var(--pack-start-y); left: var(--pack-start-x); width: clamp(3rem, 13vw, 4.6rem); pointer-events: none; will-change: left, top, opacity, transform; animation: pack-transfer-flight .72s cubic-bezier(.18, .78, .25, 1) forwards; }
+@keyframes pack-transfer-flight {
+  0% { top: var(--pack-start-y); left: var(--pack-start-x); opacity: 1; transform: translate(-50%, -50%) scale(.76) rotate(-9deg); }
+  68% { top: calc(var(--pack-end-y) - 1.1rem); left: var(--pack-end-x); opacity: 1; transform: translate(-50%, -50%) scale(1.05) rotate(7deg); }
+  100% { top: var(--pack-end-y); left: var(--pack-end-x); opacity: 0; transform: translate(-50%, -50%) scale(.12) rotate(0); }
+}
 .packing-bag figcaption { position: absolute; right: .35rem; bottom: .35rem; left: .35rem; padding: .28rem; border: 2px solid var(--pixel-ink); background: var(--pixel-cream); font: 850 .46rem/1.2 ui-monospace, SFMono-Regular, Consolas, monospace; text-align: center; }
 .packing-zones h4, .packing-items h4 { margin: 0 0 .35rem; font: 850 .55rem/1.3 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .1em; }
 .packing-zones > div { display: grid; gap: .42rem; }
@@ -252,7 +263,8 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .adventure-world { transform: scale(1.04); }
-  .pixel-player.is-walking, .pixel-player.is-hit, .adventure-stage.is-moving .player-shadow, .collectible::before, .collectible__sprite, .collectible.is-collected, .game-toast.is-visible, .pixel-confetti, .footstep { animation: none; }
+  .pixel-player.is-walking, .pixel-player.is-hit, .adventure-stage.is-moving .player-shadow, .collectible::before, .collectible__sprite, .collectible.is-collected, .game-toast.is-visible, .pixel-confetti, .footstep, .packing-bag.is-receiving img, .packing-bag.is-receiving::after { animation: none; }
+  .pack-transfer { display: none; }
   .footstep { display: none; }
 }
 @media (forced-colors: active) {
