@@ -151,6 +151,19 @@ test('홈 제품 영역은 모든 카드에 Npay 버튼을 요청한다', async 
   assert.equal((html.match(/data-npay-cards/g) || []).length, 2);
 });
 
+test('공통 푸터는 인스타그램과 유튜브 채널을 아이콘과 함께 제공한다', async () => {
+  const memberJs = await readFile(new URL('../assets/member.js', import.meta.url), 'utf8');
+  const css = await readFile(new URL('../styles.css', import.meta.url), 'utf8');
+  const home = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+
+  assert.match(memberJs, /function buildFooterSocialLinks\(\)/);
+  assert.match(memberJs, /https:\/\/www\.youtube\.com\/@himawarikorea/);
+  assert.match(memberJs, /footer-social-link--' \+ network/);
+  assert.match(css, /\.footer-social-link--instagram:hover/);
+  assert.match(css, /\.footer-social-link--youtube \.footer-social-icon/);
+  assert.match(home, /"https:\/\/www\.youtube\.com\/@himawarikorea"/);
+});
+
 test('전체 제품 페이지는 대표 상품과 모든 제품 카드에 Npay 버튼을 요청한다', async () => {
   const template = await readFile(new URL('../templates/products.html', import.meta.url), 'utf8');
   const html = renderCatalogPage(template, products);

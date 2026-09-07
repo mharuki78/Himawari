@@ -8,6 +8,45 @@
   var cartSyncReady = false;
   var cartSyncTimer = 0;
 
+  var SOCIAL_LINKS = {
+    instagram: {
+      label: '@himawari.korea',
+      url: 'https://www.instagram.com/himawari.korea/',
+      icon: '<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5.25"></rect><circle cx="12" cy="12" r="4.15"></circle><circle class="footer-social-icon__dot" cx="17.45" cy="6.75" r="1.05"></circle></svg>'
+    },
+    youtube: {
+      label: '@himawarikorea',
+      url: 'https://www.youtube.com/@himawarikorea',
+      icon: '<svg class="footer-social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.3 7.05a2.9 2.9 0 0 0-2.04-2.06C17.46 4.5 12 4.5 12 4.5s-5.46 0-7.26.49A2.9 2.9 0 0 0 2.7 7.05 30.3 30.3 0 0 0 2.2 12c0 1.67.17 3.32.5 4.95a2.9 2.9 0 0 0 2.04 2.06c1.8.49 7.26.49 7.26.49s5.46 0 7.26-.49a2.9 2.9 0 0 0 2.04-2.06c.33-1.63.5-3.28.5-4.95s-.17-3.32-.5-4.95Z"></path><path class="footer-social-icon__play" d="m9.75 15.25 5.6-3.25-5.6-3.25v6.5Z"></path></svg>'
+    }
+  };
+
+  function decorateSocialLink(link, network) {
+    var social = SOCIAL_LINKS[network];
+    if (!link || link.dataset.socialIcon === network) return;
+    link.classList.add('footer-social-link', 'footer-social-link--' + network);
+    link.dataset.socialIcon = network;
+    link.setAttribute('aria-label', network === 'instagram' ? 'Himawari 인스타그램 — 새 탭에서 열림' : 'Himawari 유튜브 — 새 탭에서 열림');
+    link.innerHTML = social.icon + '<span>' + social.label + '</span>';
+  }
+
+  function buildFooterSocialLinks() {
+    document.querySelectorAll('.footer-contact').forEach(function (group) {
+      var instagram = group.querySelector('a[href*="instagram.com"]');
+      decorateSocialLink(instagram, 'instagram');
+
+      var youtube = group.querySelector('a[href*="youtube.com/@himawarikorea"]');
+      if (!youtube) {
+        youtube = document.createElement('a');
+        youtube.href = SOCIAL_LINKS.youtube.url;
+        youtube.target = '_blank';
+        youtube.rel = 'noopener noreferrer';
+        group.appendChild(youtube);
+      }
+      decorateSocialLink(youtube, 'youtube');
+    });
+  }
+
   function escapeHtml(value) {
     return String(value == null ? '' : value).replace(/[&<>"']/g, function (char) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char];
@@ -409,6 +448,7 @@
   }
 
   function init() {
+    buildFooterSocialLinks();
     buildHeaderActions();
     buildDialog();
     bindAccountDeletion();

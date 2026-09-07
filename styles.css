@@ -150,6 +150,13 @@ p { max-width: 40ch; text-wrap: pretty; }
 .footer-contact { display: grid; gap: .45rem; justify-items: end; font-size: .7rem; }
 .footer-contact a { padding-bottom: .1rem; border-bottom: 1px solid transparent; }
 .footer-contact a:hover { border-color: currentColor; }
+.footer-social-link { display: inline-flex; gap: .48rem; align-items: center; min-height: 1.4rem; }
+.footer-social-icon { width: 1.12rem; height: 1.12rem; flex: 0 0 auto; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.65; }
+.footer-social-icon__dot { fill: currentColor; stroke: none; }
+.footer-social-link--youtube .footer-social-icon { width: 1.22rem; fill: currentColor; stroke: none; }
+.footer-social-link--youtube .footer-social-icon__play { fill: var(--cream); }
+.footer-social-link--instagram:hover { color: #b83b78; }
+.footer-social-link--youtube:hover { color: #d92d2d; }
 .footer-business { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .35rem 1.5rem; margin: 1rem 0 0; padding-top: 1.5rem; border-top: var(--hairline); font-size: .7rem; line-height: 1.7; word-break: keep-all; }
 .footer-business > div { display: flex; gap: .4rem; max-width: 100%; }
 .footer-business dt { flex: none; font-weight: 650; }
