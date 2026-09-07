@@ -69,6 +69,12 @@
               <span class="product-discount-badge" data-naver-discount hidden></span>
               <strong class="product-detail-price" data-price></strong>
             </div>
+            <section class="product-option-picker" id="product-options" data-option-picker hidden aria-labelledby="product-option-label">
+              <label id="product-option-label" for="product-option-select">옵션 선택</label>
+              <select id="product-option-select" data-product-option aria-describedby="product-option-help product-option-error"></select>
+              <div class="product-option-meta"><span id="product-option-help" data-stock-status></span><strong data-selected-price></strong></div>
+              <p class="product-option-error" id="product-option-error" data-option-error role="alert"></p>
+            </section>
             <div class="product-detail-actions">
               <button class="buy-link" type="button" data-detail-cart><span>장바구니 담기</span><span aria-hidden="true">+</span></button>
               <button class="wishlist-button" type="button" data-detail-wishlist data-wishlist-toggle aria-pressed="false"><span data-wishlist-label>관심상품 저장</span></button>

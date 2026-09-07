@@ -253,7 +253,7 @@
   function cartItemsForServer() {
     if (!window.SiteCart) return [];
     return window.SiteCart.items().filter(function (item) { return item.id; }).map(function (item) {
-      return { productId: item.id, quantity: Math.min(99, Math.max(1, Number(item.q) || 1)) };
+      return { productId: item.id, optionId: item.optionId || '', quantity: Math.min(99, Math.max(1, Number(item.q) || 1)) };
     });
   }
 
@@ -286,16 +286,19 @@
       var merged = new Map();
       serverItems.forEach(function (item) {
         var product = item.product || {};
-        merged.set(item.productId, {
+        var cartKey = item.productId + '::' + (item.optionId || '');
+        merged.set(cartKey, {
           id: item.productId, name: product.name, price: product.price,
-          q: item.quantity, url: product.url || ''
+          q: item.quantity, url: product.url || '', optionId: item.optionId || '',
+          optionLabel: item.optionLabel || '', stock: item.stock
         });
       });
       localItems.forEach(function (item) {
         if (!item.id) return;
-        if (!merged.has(item.id)) merged.set(item.id, item);
+        var cartKey = item.id + '::' + (item.optionId || '');
+        if (!merged.has(cartKey)) merged.set(cartKey, item);
         else if (!sameOwner) {
-          var existing = merged.get(item.id);
+          var existing = merged.get(cartKey);
           existing.q = Math.min(99, (Number(existing.q) || 1) + (Number(item.q) || 1));
         }
       });
@@ -327,11 +330,14 @@
     var image = safeImage(product.image);
     var article = document.createElement('article');
     article.className = 'account-product';
+    var cartAction = (product.options || []).length
+      ? '<a href="/product.html?id=' + encodeURIComponent(item.productId) + '#product-options">옵션 선택</a>'
+      : '<button type="button" data-cart-add data-product-id="' + escapeHtml(item.productId) + '" data-name="' + escapeHtml(product.name) + '" data-price="' + Number(product.price || 0) + '" data-stock="' + (product.stock === null || product.stock === undefined ? '' : Number(product.stock)) + '" data-url="' + escapeHtml(product.url || '') + '"' + (product.soldOut ? ' disabled' : '') + '>' + (product.soldOut ? '품절' : '장바구니 담기') + '</button>';
     article.innerHTML =
       '<a class="account-product__media" href="/product.html?id=' + encodeURIComponent(item.productId) + '">' +
         (image ? '<img src="' + escapeHtml(image) + '" alt="" loading="lazy">' : '<span>이미지 준비 중</span>') + '</a>' +
       '<div><p>' + escapeHtml(product.model || 'Himawari') + '</p><h3><a href="/product.html?id=' + encodeURIComponent(item.productId) + '">' + escapeHtml(product.name || '제품') + '</a></h3>' +
-      '<div class="account-product__actions"><button type="button" data-cart-add data-product-id="' + escapeHtml(item.productId) + '" data-name="' + escapeHtml(product.name) + '" data-price="' + Number(product.price || 0) + '" data-url="' + escapeHtml(product.url || '') + '">장바구니 담기</button>' +
+      '<div class="account-product__actions">' + cartAction +
       '<button type="button" data-wishlist-toggle data-product-id="' + escapeHtml(item.productId) + '"><span data-wishlist-label>관심상품 저장됨</span></button></div></div>';
     return article;
   }

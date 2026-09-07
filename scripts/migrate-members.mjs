@@ -95,6 +95,8 @@ await sql.transaction((tx) => [
     created_at timestamptz NOT NULL DEFAULT now()
   )`,
   tx`CREATE INDEX IF NOT EXISTS order_items_order_idx ON order_items(order_id, created_at)`,
+  tx`ALTER TABLE order_items ADD COLUMN IF NOT EXISTS option_id text`,
+  tx`ALTER TABLE order_items ADD COLUMN IF NOT EXISTS option_label text`,
   tx`CREATE TABLE IF NOT EXISTS order_events (
     id text PRIMARY KEY,
     order_id text NOT NULL REFERENCES orders(id) ON DELETE CASCADE,

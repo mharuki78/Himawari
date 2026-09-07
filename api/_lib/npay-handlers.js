@@ -23,14 +23,22 @@ function validateItems(input, products) {
   const seen = new Set();
   return requested.map((item) => {
     const productId = String(item?.productId || '').trim();
+    const optionId = String(item?.optionId || '').trim();
     const quantity = Number(item?.quantity);
-    if (!productId || seen.has(productId) || !Number.isInteger(quantity) || quantity < 1 || quantity > 999) {
+    const key = `${productId}::${optionId}`;
+    if (!productId || seen.has(key) || !Number.isInteger(quantity) || quantity < 1 || quantity > 999) {
       throw Object.assign(new Error('상품 수량을 1~999개 사이로 확인해 주세요.'), { status: 400 });
     }
     const product = byId.get(productId);
     if (!product) throw Object.assign(new Error('판매 중인 상품을 찾을 수 없습니다.'), { status: 400 });
-    seen.add(productId);
-    return { product, quantity };
+    const options = Array.isArray(product.options) ? product.options : [];
+    const option = options.find((entry) => entry.id === optionId) || null;
+    const available = option ? option.stock : product.stock;
+    if ((options.length && !option) || available === 0 || (available !== null && quantity > available)) {
+      throw Object.assign(new Error(options.length && !option ? '주문할 옵션을 선택해 주세요.' : '선택한 상품의 재고가 부족합니다.'), { status: 409 });
+    }
+    seen.add(key);
+    return { product, option, quantity };
   });
 }
 

@@ -49,7 +49,7 @@
 | Member collection | `assets/cart.js`, `assets/member.js`, `api/member/` | Neon for members, localStorage for guests | cart / wishlist | merge, logout, account delete |
 | Order form | `assets/checkout.js`, `api/orders.js` | `docs/ORDER-POLICY.md` + server validation | direct product / guest cart / member cart | validation + idempotent create |
 | Order admin | `admin/order-admin.js`, `api/admin/orders.js` | server authorization + order state machine | list / detail / status update | pagination + conflict + confirmation |
-| Select/Listbox | native `select` | `DESIGN.md` | order status filter / status update | keyboard + browser popup |
+| Select/Listbox | native `select` | `DESIGN.md` | product option / order status filter / status update | keyboard + browser popup |
 | Date/time picker | native `datetime-local` with platform-owned popup accepted | `DESIGN.md` | optional coupon expiry | keyboard + `ko-KR` browser value + ISO UTC storage |
 
 ## Component behavior
@@ -90,6 +90,7 @@
 | Logout | `로그아웃` | button locked | login view | inline confirmation | board remains with error | password input | `docs/INQUIRY-POLICY.md` |
 | Create product | `제품 등록` | fields retained, files upload with progress, duplicate blocked | same admin route with refreshed owning list | persistent list acknowledgement | uploaded result and values retained when safe; retry without duplicate | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Edit product | `수정` then `변경사항 저장` | current values retained, selected replacement files upload with progress, duplicate blocked | same admin route with refreshed owning list | persistent list acknowledgement | form stays open; ETag conflict asks for refresh without overwriting | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
+| Edit inventory | 제품 수정의 `옵션과 재고` | option rows and values retained, duplicate blocked | same admin route with refreshed owning list | total stock and sold-out state refresh | invalid/duplicate option stays inline; ETag conflict never overwrites | first invalid inventory control or product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Read product detail | product image/name/`상세 보기` | reserved product loader | `product.html?id=...` | product content followed by an original-ratio continuous detail-image rail | app-owned not-found state and products link | product title | `docs/PRODUCT-CATALOG-POLICY.md` |
 | Read commerce terms | footer or product order information | static document | `terms.html` | business identity and 24 articles remain directly readable | product/contact navigation remains available | terms title | `docs/COMMERCE-POLICY.md` |
 | Hard-delete product | `삭제` then `제품 삭제` | dialog stays open, duplicate blocked | refreshed product list | persistent deletion acknowledgement | dialog remains; conflict asks for refresh | product list heading | `docs/PRODUCT-CATALOG-POLICY.md` |
@@ -142,6 +143,7 @@
 - Policy: `novalidate`, associated inline Korean errors, first-invalid focus, duplicate-submit prevention
 - Sensitive values: password never enters route, log, toast, local/session storage, Blob, or response payload.
 - Product validation: client and server both require name, model, integer Naver discount-applied price, tagline, detailed description, at least one product point and SmartStore URL. The public self-store price is identical to that discount-applied price; optional Naver discount rate is an integer from 0 to 99. Create requires an owned representative image. Edit may preserve current media and unchanged legacy description/highlight values; every changed field uses the current rule and every newly selected replacement Blob is server-verified before publishing.
+- Inventory validation: one optional native-select product option group may contain up to 30 unique values. Each value has a stable ID and integer stock from 0 to 99,999. No-option stock may be null (not tracked) or an integer in the same range; option products always derive total stock from their values.
 
 ## Permission and privacy UI
 

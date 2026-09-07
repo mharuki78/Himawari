@@ -84,6 +84,15 @@ test('주문 상품은 중복 ID와 잘못된 수량을 거부한다', () => {
   assert.equal(validateOrderItems([{ productId: 'bag-1', quantity: 0 }]).valid, false);
 });
 
+test('같은 제품의 서로 다른 옵션은 별도 주문 항목으로 허용한다', () => {
+  const result = validateOrderItems([
+    { productId: 'bag-1', optionId: 'black', quantity: 1 },
+    { productId: 'bag-1', optionId: 'ivory', quantity: 2 },
+  ]);
+  assert.equal(result.valid, true);
+  assert.deepEqual(result.items.map((item) => item.optionId), ['black', 'ivory']);
+});
+
 test('고객 요청과 관리자 상태 전이를 단계별로 제한한다', () => {
   assert.equal(customerOrderAction('payment_pending'), 'request_cancel');
   assert.equal(customerOrderAction('shipped'), 'request_refund');

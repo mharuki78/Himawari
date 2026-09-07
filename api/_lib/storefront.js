@@ -43,11 +43,20 @@ function productActions(product, featured = false) {
     ? { detail: 'detail-link featured-detail-link', cart: 'buy-link featured-buy-link', buy: 'direct-buy-link featured-direct-buy-link' }
     : { detail: 'detail-link', cart: 'buy-link', buy: 'direct-buy-link' };
   const storeUrl = safeHttpsUrl(product.url) || 'https://smartstore.naver.com/baegot';
+  const hasOptions = Array.isArray(product.options) && product.options.length > 0;
+  const cartAction = hasOptions
+    ? `<a class="${classes.cart}" href="${detailHref(product)}#product-options" aria-label="${escapeHtml(product.name)} 옵션 선택 후 장바구니에 담기">옵션 선택 <span aria-hidden="true">→</span></a>`
+    : `<button class="${classes.cart}" type="button" data-cart-add data-product-id="${escapeHtml(product.id)}" data-name="${escapeHtml(product.name)}" data-price="${escapeHtml(product.price)}" data-url="${escapeHtml(storeUrl)}" data-stock="${product.stock === null ? '' : escapeHtml(product.stock)}" aria-label="${escapeHtml(product.name)} 장바구니에 담기" aria-live="polite"${product.soldOut ? ' disabled' : ''}>${product.soldOut ? '품절' : '장바구니 담기'} <span aria-hidden="true">+</span></button>`;
+  const buyAction = hasOptions
+    ? `<a class="${classes.buy}" href="${detailHref(product)}#product-options" aria-label="${escapeHtml(product.name)} 옵션 선택 후 바로 구매하기">옵션 선택 <span aria-hidden="true">→</span></a>`
+    : product.soldOut
+      ? `<button class="${classes.buy}" type="button" disabled>품절</button>`
+      : `<a class="${classes.buy}" href="${checkoutHref(product)}" aria-label="${escapeHtml(product.name)} 내부 주문서에서 바로 구매하기">바로 구매하기 <span aria-hidden="true">→</span></a>`;
   return `<div class="${featured ? 'featured-product-actions' : 'store-product-actions'}">
     <a class="${classes.detail}" href="${detailHref(product)}" aria-label="${escapeHtml(product.name)} 상세페이지 보기">상세 보기 <span aria-hidden="true">→</span></a>
-    <button class="${classes.cart}" type="button" data-cart-add data-product-id="${escapeHtml(product.id)}" data-name="${escapeHtml(product.name)}" data-price="${escapeHtml(product.price)}" data-url="${escapeHtml(storeUrl)}" aria-label="${escapeHtml(product.name)} 장바구니에 담기" aria-live="polite">장바구니 담기 <span aria-hidden="true">+</span></button>
+    ${cartAction}
     <button class="wishlist-button" type="button" data-wishlist-toggle data-product-id="${escapeHtml(product.id)}" aria-pressed="false" aria-label="${escapeHtml(product.name)} 관심상품 저장"><span data-wishlist-label>관심상품 저장</span></button>
-    <a class="${classes.buy}" href="${checkoutHref(product)}" aria-label="${escapeHtml(product.name)} 내부 주문서에서 바로 구매하기">바로 구매하기 <span aria-hidden="true">→</span></a>
+    ${buyAction}
   </div>`;
 }
 
@@ -107,6 +116,7 @@ function catalogSchema(products, origin) {
           '@type': 'Offer',
           priceCurrency: 'KRW',
           price: String(product.price),
+          availability: product.soldOut ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
           url: `${origin}/${detailHref(product)}`,
         },
       },
@@ -166,7 +176,7 @@ export function renderProductPage(template, product, origin = 'https://allaboutb
     image: [mainImage, ...(Array.isArray(product.gallery) ? product.gallery.map(safeHttpsUrl) : [])].filter(Boolean),
     description,
     brand: { '@type': 'Brand', name: 'Himawari' },
-    offers: { '@type': 'Offer', priceCurrency: 'KRW', price: String(product.price), url: checkoutUrl },
+    offers: { '@type': 'Offer', priceCurrency: 'KRW', price: String(product.price), availability: product.soldOut ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock', url: checkoutUrl },
   };
 
   let html = template

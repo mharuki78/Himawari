@@ -98,6 +98,14 @@ export function productPageUrl(product) {
   return `${SITE_ORIGIN}/product.html?id=${encodeURIComponent(product.id)}`;
 }
 
+export function npayOptionManageCode(product, option) {
+  return `OPT-${createHash('sha256').update(`${product?.id || ''}:${option?.id || ''}`, 'utf8').digest('hex').slice(0, 20)}`;
+}
+
+function npayOptionValueId(product, option) {
+  return `VAL-${createHash('sha256').update(`${product?.id || ''}:${option?.id || ''}`, 'utf8').digest('hex').slice(0, 20)}`;
+}
+
 function ensurePurchasableProduct(product) {
   const name = clean(product?.name).slice(0, 100);
   const price = Number(product?.price);
@@ -112,17 +120,33 @@ function shippingPolicyXml() {
   return `<shippingPolicy><groupId>${SHIPPING_GROUP_ID}</groupId><method>DELIVERY</method><feePayType>PREPAYED</feePayType><feeType>CONDITIONAL_FREE</feeType><feePrice>${SHIPPING_FEE}</feePrice><conditionalFree><basePrice>${FREE_SHIPPING_THRESHOLD}</basePrice></conditionalFree></shippingPolicy>`;
 }
 
-function productXml(product, quantity, includeAvailability = false) {
+function selectedOptionXml(product, option) {
+  return `<selectedItem><type>SELECT</type><name>${xml(clean(product.optionName || '옵션').slice(0, 20))}</name><value><id>${npayOptionValueId(product, option)}</id><text>${xml(clean(option.label).slice(0, 50))}</text></value></selectedItem>`;
+}
+
+function availableOptionsXml(product, options) {
+  if (!options.length) return '';
+  const name = xml(clean(product.optionName || '옵션').slice(0, 20));
+  const values = options.map((option) => `<value><id>${npayOptionValueId(product, option)}</id><text>${xml(clean(option.label).slice(0, 50))}</text><status>${option.stock > 0 ? 'true' : 'false'}</status></value>`).join('');
+  const combinations = options.map((option) => `<combination><manageCode>${npayOptionManageCode(product, option)}</manageCode><price>0</price><stockQuantity>${Math.max(0, option.stock)}</stockQuantity><status>${option.stock > 0 ? 'true' : 'false'}</status><options><name>${name}</name><id>${npayOptionValueId(product, option)}</id></options></combination>`).join('');
+  return `<option><optionItem><type>SELECT</type><name>${name}</name>${values}</optionItem>${combinations}</option>`;
+}
+
+function productXml(product, quantity, includeAvailability = false, selectedOption = null) {
   const { name, price, image } = ensurePurchasableProduct(product);
   const id = npayProductId(product);
+  const options = Array.isArray(product.options) ? product.options : [];
+  const stock = product.stock === null ? 99_999 : Math.max(0, Number(product.stock) || 0);
   const availability = includeAvailability
-    ? '<status>ON_SALE</status><supplementSupport>false</supplementSupport><optionSupport>false</optionSupport>'
-    : `<single><quantity>${quantity}</quantity></single>`;
+    ? `<status>${stock > 0 ? 'ON_SALE' : 'SOLD_OUT'}</status><stockQuantity>${stock}</stockQuantity><supplementSupport>false</supplementSupport><optionSupport>${options.length ? 'true' : 'false'}</optionSupport>${availableOptionsXml(product, options)}`
+    : selectedOption
+      ? `<option><quantity>${quantity}</quantity><price>0</price><manageCode>${npayOptionManageCode(product, selectedOption)}</manageCode>${selectedOptionXml(product, selectedOption)}</option>`
+      : `<single><quantity>${quantity}</quantity></single>`;
   return `<product><id>${xml(id)}</id><merchantProductId>${xml(id)}</merchantProductId><name>${xml(name)}</name><basePrice>${price}</basePrice><taxType>TAX</taxType><infoUrl>${xml(productPageUrl(product))}</infoUrl><imageUrl>${xml(image)}</imageUrl>${availability}${shippingPolicyXml()}</product>`;
 }
 
 export function buildOrderXml({ config, items, backUrl, naverInflowCode = '' }) {
-  const products = items.map(({ product, quantity }) => productXml(product, quantity)).join('');
+  const products = items.map(({ product, quantity, option }) => productXml(product, quantity, false, option)).join('');
   const interfaceXml = clean(naverInflowCode)
     ? `<interface><naverInflowCode>${xml(clean(naverInflowCode).slice(0, 300))}</naverInflowCode></interface>`
     : '';

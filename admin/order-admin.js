@@ -149,7 +149,7 @@ function selectOrder(order, trigger) {
   itemList.replaceChildren();
   order.items.forEach((item) => {
     const line = node('div', 'order-detail-item');
-    line.append(node('strong', '', `${item.name} × ${item.quantity}`), node('span', '', `${priceFormatter.format(item.unitPrice)} · ${priceFormatter.format(item.lineTotal)}`));
+    line.append(node('strong', '', `${item.name}${item.optionLabel ? ` · ${item.optionLabel}` : ''} × ${item.quantity}`), node('span', '', `${priceFormatter.format(item.unitPrice)} · ${priceFormatter.format(item.lineTotal)}`));
     itemList.append(line);
   });
   document.querySelector('[data-detail-subtotal]').textContent = priceFormatter.format(order.subtotal);

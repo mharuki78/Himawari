@@ -9,6 +9,7 @@ import {
   buildProductInformationXml,
   naverOrderResult,
   npayConfiguration,
+  npayOptionManageCode,
   npayProductId,
   npayPublicConfiguration,
 } from '../api/_lib/npay.js';
@@ -85,6 +86,27 @@ test('상품 정보 XML은 판매 중 상태와 같은 가격·배송 정책을 
   assert.match(body, /<optionSupport>false<\/optionSupport>/);
   assert.match(body, new RegExp(`<basePrice>${product.price}</basePrice>`));
   assert.match(body, /<shippingPolicy>/);
+});
+
+test('옵션 상품 XML은 옵션 관리코드와 옵션별 재고를 제공한다', () => {
+  const base = publicProduct(seedCatalog().products[0]);
+  const product = { ...base, optionName: '색상', options: [{ id: 'black', label: '블랙', stock: 4 }], stock: 4, soldOut: false };
+  const option = product.options[0];
+  const info = buildProductInformationXml([product]);
+  assert.match(info, /<optionSupport>true<\/optionSupport>/);
+  assert.match(info, /<optionItem><type>SELECT<\/type><name>색상<\/name>/);
+  assert.match(info, /<text>블랙<\/text><status>true<\/status>/);
+  assert.match(info, /<stockQuantity>4<\/stockQuantity>/);
+  assert.match(info, new RegExp(`<manageCode>${npayOptionManageCode(product, option)}</manageCode>`));
+
+  const order = buildOrderXml({
+    config: { shopId: 'shop-id', certiKey: 'cert-key' },
+    items: [{ product, option, quantity: 2 }],
+    backUrl: 'https://allaboutbag.com/product.html',
+  });
+  assert.match(order, /<option><quantity>2<\/quantity>/);
+  assert.match(order, /<selectedItem><type>SELECT<\/type><name>색상<\/name>/);
+  assert.match(order, new RegExp(`<manageCode>${npayOptionManageCode(product, option)}</manageCode>`));
 });
 
 test('네이버 주문 등록 응답은 성공 키와 가맹점 번호를 엄격히 분리한다', () => {

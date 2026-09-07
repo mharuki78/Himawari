@@ -41,6 +41,13 @@ const resetLabel = $('[data-reset-label]');
 const cancelUploadButton = $('[data-cancel-upload]');
 const mainImageInput = $('#product-main-image');
 const galleryInput = $('#product-gallery');
+const hasOptionsInput = $('#product-has-options');
+const stockInput = $('#product-stock');
+const optionNameInput = $('#product-option-name');
+const simpleStockField = $('[data-simple-stock-field]');
+const optionEditor = $('[data-option-editor]');
+const optionRows = $('[data-option-rows]');
+const addOptionButton = $('[data-add-option]');
 const mainRequired = $('[data-main-required]');
 const mainImageHelp = $('[data-main-image-help]');
 const galleryHelp = $('[data-gallery-help]');
@@ -72,7 +79,7 @@ const allowedImageTypes = new Set(['image/jpeg', 'image/png', 'image/webp', 'ima
 const maxMainImageSize = 8 * 1024 * 1024;
 const maxGalleryImageSize = 15 * 1024 * 1024;
 const maxGallery = 5;
-const fieldNames = ['name', 'model', 'price', 'naverDiscountRate', 'tagline', 'description', 'highlights', 'url', 'mainImage', 'gallery'];
+const fieldNames = ['name', 'model', 'price', 'naverDiscountRate', 'tagline', 'description', 'highlights', 'url', 'stock', 'optionName', 'options', 'mainImage', 'gallery'];
 
 let products = [];
 let total = 0;
@@ -136,6 +143,68 @@ function setCreateMode() {
   submitLabel.textContent = '제품 등록';
 }
 
+function createOptionRow(option = {}) {
+  const row = document.createElement('div');
+  row.className = 'inventory-option-row';
+  row.dataset.optionId = String(option.id || '');
+  const label = document.createElement('input');
+  label.type = 'text';
+  label.maxLength = 50;
+  label.placeholder = '예: 블랙 / M';
+  label.value = String(option.label || '');
+  label.setAttribute('aria-label', '옵션값');
+  const stock = document.createElement('input');
+  stock.type = 'number';
+  stock.inputMode = 'numeric';
+  stock.min = '0';
+  stock.max = '99999';
+  stock.step = '1';
+  stock.value = Number.isInteger(Number(option.stock)) ? String(option.stock) : '0';
+  stock.setAttribute('aria-label', `${option.label || '옵션'} 재고`);
+  const remove = document.createElement('button');
+  remove.type = 'button';
+  remove.className = 'inventory-option-remove';
+  remove.textContent = '−';
+  remove.setAttribute('aria-label', `${option.label || '이 옵션'} 삭제`);
+  remove.addEventListener('click', () => {
+    row.remove();
+    dirty = true;
+    setFieldError('options');
+    if (!optionRows.children.length) createOptionRow();
+  });
+  row.append(label, stock, remove);
+  optionRows.append(row);
+  return row;
+}
+
+function inventoryOptions() {
+  if (!hasOptionsInput.checked) return [];
+  return [...optionRows.children].map((row) => ({
+    id: row.dataset.optionId || '',
+    label: String(row.children[0].value || '').trim(),
+    stock: Number(row.children[1].value),
+  }));
+}
+
+function syncInventoryEditor() {
+  const enabled = hasOptionsInput.checked;
+  optionEditor.hidden = !enabled;
+  simpleStockField.hidden = enabled;
+  optionNameInput.required = enabled;
+  stockInput.disabled = enabled;
+  if (enabled && !optionRows.children.length) createOptionRow();
+}
+
+function loadInventory(product = null) {
+  const options = Array.isArray(product?.options) ? product.options : [];
+  optionRows.replaceChildren();
+  hasOptionsInput.checked = options.length > 0;
+  stockInput.value = options.length || product?.stock === null || product?.stock === undefined ? '' : String(product.stock);
+  optionNameInput.value = product?.optionName || '옵션';
+  options.forEach(createOptionRow);
+  syncInventoryEditor();
+}
+
 function beginEdit(product, trigger) {
   productForm.reset();
   clearFormErrors();
@@ -167,6 +236,7 @@ function beginEdit(product, trigger) {
   field('description').value = product.description;
   field('highlights').value = product.highlights.join('\n');
   field('url').value = product.url;
+  loadInventory(product);
   renderFilePreviews();
   dirty = false;
   formStatus.textContent = `“${product.name}” 제품을 편집하고 있습니다. 변경 후 ‘변경사항 저장’을 눌러 주세요.`;
@@ -210,6 +280,11 @@ function setLoginError(message) {
 
 function field(name) {
   return productForm.elements.namedItem(name);
+}
+
+function focusField(name) {
+  if (name === 'options') return optionRows.querySelector('input')?.focus();
+  return field(name)?.focus();
 }
 
 function errorElement(name) {
@@ -271,6 +346,9 @@ function validateForm() {
     description: String(field('description').value || '').trim(),
     highlights: String(field('highlights').value || '').split(/\r?\n/).map((item) => item.trim()).filter(Boolean),
     url: String(field('url').value || '').trim(),
+    stock: hasOptionsInput.checked || stockInput.value === '' ? null : Number(stockInput.value),
+    optionName: hasOptionsInput.checked ? String(optionNameInput.value || '').trim() : '',
+    options: inventoryOptions(),
   };
   const mainFile = mainImageInput.files?.[0] || null;
   const galleryFiles = [...(galleryInput.files || [])];
@@ -284,6 +362,12 @@ function validateForm() {
   if (values.description.length < 20 || values.description.length > 3_000) errors.description = '상세 설명은 20~3,000자로 입력해 주세요.';
   if (!values.highlights.length || values.highlights.length > 8 || values.highlights.some((item) => item.length > 100)) errors.highlights = '제품 포인트를 줄마다 입력해 주세요. 최대 8개까지 가능합니다.';
   if (!validStoreUrl(values.url)) errors.url = '네이버 스마트스토어 제품 주소를 입력해 주세요.';
+  if (hasOptionsInput.checked) {
+    if (!values.optionName || values.optionName.length > 20) errors.optionName = '옵션명을 1~20자로 입력해 주세요.';
+    const labels = values.options.map((option) => option.label);
+    if (!values.options.length || values.options.length > 30 || values.options.some((option) => !option.label || option.label.length > 50 || !Number.isInteger(option.stock) || option.stock < 0 || option.stock > 99_999)) errors.options = '각 옵션값과 0~99,999 사이의 재고를 확인해 주세요.';
+    else if (new Set(labels).size !== labels.length) errors.options = '같은 옵션값을 두 번 등록할 수 없습니다.';
+  } else if (values.stock !== null && (!Number.isInteger(values.stock) || values.stock < 0 || values.stock > 99_999)) errors.stock = '재고는 0~99,999 사이의 정수로 입력하거나 비워 주세요.';
   if (!mainFile && !editTarget) errors.mainImage = '대표 이미지를 선택해 주세요.';
   else if (mainFile) {
     const mainImageError = validateFile(mainFile, maxMainImageSize, '대표 이미지');
@@ -310,7 +394,7 @@ function validateForm() {
   const firstError = Object.keys(errors)[0];
   if (firstError) {
     markFormError('입력 내용을 확인해 주세요. 오류가 있는 첫 항목으로 이동합니다.');
-    field(firstError)?.focus();
+    focusField(firstError);
     return null;
   }
   return { ...values, mainFile, galleryFiles };
@@ -396,6 +480,7 @@ async function resetDraft({ cleanup = true } = {}) {
   if (cleanup && !(await cleanupUploadedImages())) return false;
   setCreateMode();
   productForm.reset();
+  loadInventory();
   clearFormErrors();
   revokePreviews();
   mainPreview.replaceChildren();
@@ -458,7 +543,9 @@ function renderRows() {
     sitePrice.textContent = priceFormatter.format(product.price);
     const naverPrice = document.createElement('span');
     naverPrice.textContent = `네이버 할인가 ${priceFormatter.format(product.naverPrice)}`;
-    price.append(sitePrice, naverPrice);
+    const stock = document.createElement('span');
+    stock.textContent = product.stock === null ? '재고 제한 없음' : (product.soldOut ? '품절' : `재고 ${product.stock}개`);
+    price.append(sitePrice, naverPrice, stock);
     const editCell = document.createElement('td');
     const edit = document.createElement('button');
     edit.type = 'button';
@@ -676,6 +763,22 @@ async function handleFileChange(name) {
 
 mainImageInput.addEventListener('change', () => handleFileChange('mainImage'));
 galleryInput.addEventListener('change', () => handleFileChange('gallery'));
+hasOptionsInput.addEventListener('change', () => {
+  dirty = true;
+  syncInventoryEditor();
+  setFieldError('stock');
+  setFieldError('optionName');
+  setFieldError('options');
+});
+addOptionButton.addEventListener('click', () => {
+  if (optionRows.children.length >= 30) {
+    setFieldError('options', '옵션은 최대 30개까지 등록할 수 있습니다.');
+    return;
+  }
+  const row = createOptionRow();
+  dirty = true;
+  row.querySelector('input')?.focus();
+});
 
 productForm.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -710,6 +813,9 @@ productForm.addEventListener('submit', async (event) => {
       description: values.description,
       highlights: values.highlights,
       url: values.url,
+      stock: values.stock,
+      optionName: values.optionName,
+      options: values.options,
     };
     let payload;
 
@@ -764,7 +870,7 @@ productForm.addEventListener('submit', async (event) => {
         : '입력 내용과 선택한 파일은 유지했습니다. 오류를 확인한 뒤 ‘제품 등록’을 다시 눌러 주세요.';
       markFormError(`${failure} ${recovery}`);
       const firstServerField = Object.keys(error.fieldErrors || {})[0];
-      if (firstServerField && field(firstServerField)) field(firstServerField).focus();
+      if (firstServerField) focusField(firstServerField);
     }
   } finally {
     uploadController = null;
@@ -879,4 +985,5 @@ window.addEventListener('beforeunload', (event) => {
 
 window.addEventListener('pagehide', revokePreviews);
 setCreateMode();
+loadInventory();
 loadProducts({ reset: true, initial: true });

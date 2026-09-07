@@ -36,6 +36,10 @@ function normalizeProducts(products) {
       description: product.description || product.tagline || '',
       highlights: Array.isArray(product.highlights) ? product.highlights : [],
       gallery: Array.isArray(product.gallery) ? product.gallery : [],
+      optionName: product.optionName || '',
+      options: Array.isArray(product.options) ? product.options : [],
+      stock: product.stock === null || product.stock === undefined ? null : Number(product.stock),
+      soldOut: product.soldOut === true || (product.stock !== null && product.stock !== undefined && Number(product.stock) === 0),
     };
   });
 }
@@ -87,6 +91,18 @@ function createProductMedia(product, className) {
 }
 
 function createCartButton(product, className = 'buy-link') {
+  if (product.options.length) {
+    const link = document.createElement('a');
+    link.className = className;
+    link.href = `${detailHref(product)}#product-options`;
+    link.textContent = '옵션 선택';
+    link.setAttribute('aria-label', `${product.name} 옵션 선택 후 장바구니에 담기`);
+    const arrow = document.createElement('span');
+    arrow.setAttribute('aria-hidden', 'true');
+    arrow.textContent = '→';
+    link.append(' ', arrow);
+    return link;
+  }
   const button = document.createElement('button');
   button.type = 'button';
   button.className = className;
@@ -96,8 +112,11 @@ function createCartButton(product, className = 'buy-link') {
   button.dataset.name = product.name;
   button.dataset.price = String(product.price);
   button.dataset.url = safeHttpsUrl(product.url);
+  button.dataset.stock = product.stock === null ? '' : String(product.stock);
   button.setAttribute('aria-label', `${product.name} 장바구니에 담기`);
   button.setAttribute('aria-live', 'polite');
+  button.disabled = product.soldOut;
+  if (product.soldOut) button.textContent = '품절';
   const arrow = document.createElement('span');
   arrow.setAttribute('aria-hidden', 'true');
   arrow.textContent = '+';
@@ -121,6 +140,21 @@ function createWishlistButton(product) {
 }
 
 function createDirectBuyLink(product, className = 'direct-buy-link') {
+  if (product.options.length) {
+    const link = createDetailLink(product, className);
+    link.href = `${detailHref(product)}#product-options`;
+    link.firstChild.textContent = '옵션 선택';
+    link.setAttribute('aria-label', `${product.name} 옵션 선택 후 바로 구매하기`);
+    return link;
+  }
+  if (product.soldOut) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = className;
+    button.textContent = '품절';
+    button.disabled = true;
+    return button;
+  }
   const link = document.createElement('a');
   link.className = className;
   link.href = `checkout.html?product=${encodeURIComponent(product.id)}`;
@@ -154,6 +188,8 @@ function createNpaySection(product) {
   const section = document.createElement('section');
   section.className = 'npay-card-purchase';
   section.dataset.npayCardSection = '';
+  section.dataset.hasOptions = product.options.length ? 'true' : 'false';
+  section.dataset.soldOut = product.soldOut ? 'true' : 'false';
   section.hidden = true;
   section.setAttribute('aria-label', `${product.name} 네이버페이 구매`);
 

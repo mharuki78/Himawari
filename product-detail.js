@@ -53,6 +53,7 @@ function addProductSchema(product, canonicalUrl) {
       url: canonicalUrl,
       priceCurrency: 'KRW',
       price: String(product.price),
+      availability: product.soldOut ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
     },
   });
   document.head.append(script);
@@ -66,6 +67,80 @@ function renderDescription(value) {
     paragraph.textContent = block;
     return paragraph;
   }));
+}
+
+function configureInventory(product, cart, buyLinks, npayProduct) {
+  const picker = document.querySelector('[data-option-picker]');
+  const select = document.querySelector('[data-product-option]');
+  const stockStatus = document.querySelector('[data-stock-status]');
+  const selectedPrice = document.querySelector('[data-selected-price]');
+  const optionError = document.querySelector('[data-option-error]');
+  const options = Array.isArray(product.options) ? product.options : [];
+  const setBuyState = (option = null) => {
+    const unavailable = product.soldOut || (option && option.stock < 1);
+    const needsOption = options.length > 0 && !option;
+    cart.disabled = unavailable || needsOption;
+    cart.dataset.optionId = option?.id || '';
+    cart.dataset.optionLabel = option?.label || '';
+    cart.dataset.stock = option ? String(option.stock) : (product.stock === null ? '' : String(product.stock));
+    buyLinks.forEach((link) => {
+      const enabled = !unavailable && !needsOption;
+      if (enabled) {
+        link.href = `checkout.html?product=${encodeURIComponent(product.id)}${option ? `&option=${encodeURIComponent(option.id)}` : ''}`;
+        link.removeAttribute('aria-disabled');
+      } else {
+        link.removeAttribute('href');
+        link.setAttribute('aria-disabled', 'true');
+      }
+    });
+    if (npayProduct) {
+      npayProduct.dataset.optionId = option?.id || '';
+      npayProduct.dataset.hasOptions = options.length ? 'true' : 'false';
+      npayProduct.dataset.soldOut = unavailable ? 'true' : 'false';
+    }
+  };
+
+  if (!options.length) {
+    picker.hidden = true;
+    const badge = document.createElement('span');
+    badge.className = `product-stock-badge${product.soldOut ? ' is-sold-out' : ''}`;
+    badge.textContent = product.soldOut ? '품절' : (product.stock === null ? '현재 주문 가능' : `재고 ${product.stock}개`);
+    document.querySelector('.product-detail-pricing')?.append(badge);
+    setBuyState();
+    return;
+  }
+
+  picker.hidden = false;
+  document.querySelector('#product-option-label').textContent = product.optionName || '옵션 선택';
+  select.replaceChildren();
+  const placeholder = document.createElement('option');
+  placeholder.value = '';
+  placeholder.textContent = `${product.optionName || '옵션'}을 선택해 주세요`;
+  select.append(placeholder);
+  options.forEach((option) => {
+    const item = document.createElement('option');
+    item.value = option.id;
+    item.textContent = `${option.label}${option.stock < 1 ? ' · 품절' : ` · 재고 ${option.stock}개`}`;
+    item.disabled = option.stock < 1;
+    select.append(item);
+  });
+  select.addEventListener('change', () => {
+    const option = options.find((item) => item.id === select.value) || null;
+    optionError.textContent = '';
+    select.setAttribute('aria-invalid', 'false');
+    stockStatus.textContent = option ? `${option.label} · ${option.stock}개 주문 가능` : '옵션을 선택하면 주문 버튼이 활성화됩니다.';
+    selectedPrice.textContent = option ? priceFormatter.format(product.price) : '';
+    setBuyState(option);
+  });
+  [cart, ...buyLinks].forEach((control) => control.addEventListener('click', (event) => {
+    if (select.value) return;
+    event.preventDefault();
+    optionError.textContent = '주문할 옵션을 먼저 선택해 주세요.';
+    select.setAttribute('aria-invalid', 'true');
+    select.focus();
+  }));
+  stockStatus.textContent = product.soldOut ? '모든 옵션이 품절되었습니다.' : '옵션을 선택하면 주문 버튼이 활성화됩니다.';
+  setBuyState();
 }
 
 function renderProduct(product) {
@@ -111,6 +186,7 @@ function renderProduct(product) {
   });
   const npayProduct = document.querySelector('[data-npay-product]');
   if (npayProduct) npayProduct.dataset.productId = product.id;
+  configureInventory(product, cart, buyLinks, npayProduct);
   document.querySelector('[data-closing-title]').textContent = `${product.model}, 오래 곁에 둘 선택.`;
   renderDescription(product.description || product.tagline);
 

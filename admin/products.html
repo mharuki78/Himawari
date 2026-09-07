@@ -161,6 +161,32 @@
                 <p class="field-error" id="product-url-error"></p>
               </div>
 
+              <fieldset class="inventory-editor" aria-describedby="product-inventory-help">
+                <legend>옵션과 재고</legend>
+                <p class="field-help" id="product-inventory-help">옵션이 없으면 전체 재고를, 옵션이 있으면 옵션별 재고를 관리합니다. 재고를 비워두면 수량을 제한하지 않습니다.</p>
+                <label class="inventory-toggle" for="product-has-options">
+                  <input id="product-has-options" name="hasOptions" type="checkbox">
+                  <span>색상·사이즈 등의 선택 옵션 사용</span>
+                </label>
+                <div class="admin-field" data-simple-stock-field>
+                  <label for="product-stock">전체 재고</label>
+                  <input id="product-stock" name="stock" type="number" inputmode="numeric" min="0" max="99999" step="1" placeholder="비워두면 재고 제한 없음" aria-describedby="product-stock-help product-stock-error">
+                  <p class="field-help" id="product-stock-help">0을 입력하면 공개 화면과 Npay에서 품절로 표시됩니다.</p>
+                  <p class="field-error" id="product-stock-error"></p>
+                </div>
+                <div class="inventory-options" data-option-editor hidden>
+                  <div class="admin-field">
+                    <label for="product-option-name">옵션명 <span aria-hidden="true">*</span></label>
+                    <input id="product-option-name" name="optionName" type="text" maxlength="20" placeholder="예: 색상 / 크기" aria-describedby="product-option-name-error">
+                    <p class="field-error" id="product-option-name-error"></p>
+                  </div>
+                  <div class="inventory-option-head" aria-hidden="true"><span>옵션값</span><span>재고</span><span></span></div>
+                  <div class="inventory-option-rows" data-option-rows></div>
+                  <button class="button button--quiet inventory-add" type="button" data-add-option>옵션 추가 <span aria-hidden="true">+</span></button>
+                  <p class="field-error" id="product-options-error"></p>
+                </div>
+              </fieldset>
+
               <div class="upload-group">
                 <div class="admin-field upload-field">
                   <label for="product-main-image">대표 이미지 <span data-main-required aria-hidden="true">*</span></label>

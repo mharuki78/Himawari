@@ -488,6 +488,15 @@ html {
 .product-detail-price { margin-top: 2.5rem; font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 650; }
 .product-detail-pricing { display: grid; justify-items: start; gap: .45rem; margin-top: 2.5rem; }
 .product-detail-pricing .product-detail-price { margin-top: 0; }
+.product-option-picker { display: grid; gap: .55rem; margin-top: 1.25rem; padding: 1rem; border: 1px solid var(--color-fog, #D0D5DD); border-radius: var(--radius-soft, 18px); background: var(--color-sky-wash, #F6F9F3); }
+.product-option-picker[hidden] { display: none; }
+.product-option-picker label { color: var(--harbor, #4F6B58); font-size: .72rem; font-weight: 760; }
+.product-option-picker select { width: 100%; min-height: 48px; padding: .65rem .8rem; border: 1px solid var(--color-fog, #D0D5DD); border-radius: 14px; background: var(--snow, #fff); color: var(--ink, #333); font: inherit; cursor: pointer; }
+.product-option-picker select:focus-visible { outline: 3px solid var(--forest-focus, #3E6B52); outline-offset: 2px; }
+.product-option-meta { min-height: 1.25rem; display: flex; justify-content: space-between; gap: 1rem; color: var(--slate, #616C8A); font-size: .66rem; }
+.product-option-error { min-height: 1.2em; margin: 0; color: var(--danger, #9A352F); font-size: .66rem; }
+.product-stock-badge { display: inline-flex; align-items: center; min-height: 1.65rem; margin-top: .5rem; padding: .2rem .65rem; border-radius: 999px; background: var(--color-sky-tint, #EEF5EA); color: var(--harbor, #4F6B58); font-size: .64rem; font-weight: 720; }
+.product-stock-badge.is-sold-out { background: color-mix(in srgb, var(--danger, #9A352F) 10%, #fff); color: var(--danger, #9A352F); }
 .product-price-block { display: grid; justify-items: start; gap: .35rem; min-width: 11rem; }
 .product-price-block > strong { font-size: 1.05rem; font-variant-numeric: tabular-nums; }
 .product-discount-badge { display: inline-flex; width: max-content; padding: .22rem .4rem; border: 1px solid var(--moss); color: var(--moss); font-size: .6rem; font-weight: 760; letter-spacing: .02em; }

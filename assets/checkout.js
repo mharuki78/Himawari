@@ -160,6 +160,10 @@
       model.textContent = product.model || 'Himawari';
       var name = document.createElement('h3');
       name.textContent = product.name;
+      var option = document.createElement('p');
+      option.className = 'checkout-item__option';
+      option.textContent = entry.optionLabel || '';
+      option.hidden = !entry.optionLabel;
       var meta = document.createElement('div');
       meta.className = 'checkout-item__meta';
       var quantity = document.createElement('span');
@@ -176,13 +180,14 @@
       plus.type = 'button';
       plus.textContent = '+';
       plus.setAttribute('aria-label', product.name + ' 수량 늘리기');
-      plus.disabled = entry.quantity >= 99;
-      plus.addEventListener('click', function () { if (entry.quantity < 99) { entry.quantity += 1; dirty = true; renderItems(); } });
+      var maximum = entry.stock === null || entry.stock === undefined ? 99 : Math.min(99, Number(entry.stock));
+      plus.disabled = entry.quantity >= maximum;
+      plus.addEventListener('click', function () { if (entry.quantity < maximum) { entry.quantity += 1; dirty = true; renderItems(); } });
       quantity.append(minus, count, plus);
       var amount = document.createElement('strong');
       amount.textContent = priceFormatter.format(product.price * entry.quantity);
       meta.append(quantity, amount);
-      copy.append(model, name, meta);
+      copy.append(model, name, option, meta);
       article.append(media, copy);
       itemContainer.append(article);
     });
@@ -256,7 +261,11 @@
       var productId = new URLSearchParams(location.search).get('product');
       if (productId) {
         var productPayload = await request('/api/products?id=' + encodeURIComponent(productId));
-        items = [{ productId: productPayload.product.id, quantity: 1, product: productPayload.product }];
+        var optionId = new URLSearchParams(location.search).get('option') || '';
+        var selectedOption = (productPayload.product.options || []).find(function (option) { return option.id === optionId; });
+        if ((productPayload.product.options || []).length && !selectedOption) throw Object.assign(new Error('주문할 옵션을 다시 선택해 주세요.'), { status: 400 });
+        if ((selectedOption ? selectedOption.stock : productPayload.product.stock) === 0) throw Object.assign(new Error('선택한 상품이 품절되었습니다.'), { status: 409 });
+        items = [{ productId: productPayload.product.id, optionId: optionId, optionLabel: selectedOption ? selectedOption.label : '', stock: selectedOption ? selectedOption.stock : productPayload.product.stock, quantity: 1, product: productPayload.product }];
         cartOrder = false;
       } else {
         var checkoutIntent = null;
@@ -270,11 +279,16 @@
           items = intendedItems.slice(0, 30).flatMap(function (item) {
             var product = byId.get(String(item.productId || ''));
             var quantity = Math.min(99, Math.max(1, Number(item.quantity) || 1));
-            return product ? [{ productId: product.id, quantity: quantity, product: product }] : [];
+            var optionId = String(item.optionId || '');
+            var option = (product && product.options || []).find(function (entry) { return entry.id === optionId; });
+            var available = option ? option.stock : product && product.stock;
+            if (available === 0) return [];
+            if (available !== null && available !== undefined) quantity = Math.min(quantity, available);
+            return product && (!(product.options || []).length || option) ? [{ productId: product.id, optionId: optionId, optionLabel: option ? option.label : '', stock: option ? option.stock : product.stock, quantity: quantity, product: product }] : [];
           });
         } else if (memberOrder) {
           var cartPayload = await request('/api/member/cart');
-          items = (cartPayload.items || []).map(function (item) { return { productId: item.productId, quantity: item.quantity, product: item.product }; });
+          items = (cartPayload.items || []).map(function (item) { return { productId: item.productId, optionId: item.optionId || '', optionLabel: item.optionLabel || '', stock: item.stock, quantity: item.quantity, product: item.product }; });
         }
         cartOrder = true;
       }
@@ -315,7 +329,7 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           requestId: requestId,
-          items: items.map(function (item) { return { productId: item.productId, quantity: item.quantity }; }),
+          items: items.map(function (item) { return { productId: item.productId, optionId: item.optionId || '', quantity: item.quantity }; }),
           recipientName: values.recipientName,
           email: values.email,
           phone: values.phone,

@@ -81,6 +81,18 @@ function normalizeProduct(product, index = 0) {
   const naverDiscountRate = product.naverDiscountRate === null || product.naverDiscountRate === undefined || product.naverDiscountRate === ''
     ? null
     : Math.round(Number(product.naverDiscountRate));
+  const options = (Array.isArray(product.options) ? product.options : [])
+    .map((option, optionIndex) => ({
+      id: singleLine(option?.id) || `option-${optionIndex + 1}-${slug(option?.label) || 'item'}`,
+      label: singleLine(option?.label),
+      stock: Number.isInteger(Number(option?.stock)) ? Math.max(0, Math.min(99_999, Number(option.stock))) : 0,
+    }))
+    .filter((option) => option.label)
+    .slice(0, 30);
+  const suppliedStock = product.stock === null || product.stock === undefined || product.stock === '' ? null : Number(product.stock);
+  const stock = options.length
+    ? options.reduce((sum, option) => sum + option.stock, 0)
+    : (Number.isInteger(suppliedStock) ? Math.max(0, Math.min(99_999, suppliedStock)) : null);
 
   return {
     id,
@@ -100,6 +112,10 @@ function normalizeProduct(product, index = 0) {
     createdAt: singleLine(product.createdAt),
     requestId: singleLine(product.requestId),
     managedImages: (Array.isArray(product.managedImages) ? product.managedImages : []).map(httpsUrl).filter(Boolean),
+    optionName: options.length ? (singleLine(product.optionName) || '옵션') : '',
+    options,
+    stock,
+    soldOut: stock === 0,
   };
 }
 
@@ -132,6 +148,13 @@ function validateProductFields(input) {
     description: multiLine(input.description),
     highlights: (Array.isArray(input.highlights) ? input.highlights : []).map(singleLine).filter(Boolean),
     url: httpsUrl(input.url),
+    optionName: singleLine(input.optionName),
+    options: (Array.isArray(input.options) ? input.options : []).map((option) => ({
+      id: singleLine(option?.id),
+      label: singleLine(option?.label),
+      stock: Number(option?.stock),
+    })),
+    stock: input.stock === '' || input.stock === null || input.stock === undefined ? null : Number(input.stock),
   };
   const fieldErrors = {};
 
@@ -151,6 +174,19 @@ function validateProductFields(input) {
     if (storeUrl.hostname !== 'smartstore.naver.com') throw new Error();
   } catch {
     fieldErrors.url = '네이버 스마트스토어 제품 주소를 입력해 주세요.';
+  }
+  if (value.options.length > 30) fieldErrors.options = '옵션은 최대 30개까지 등록할 수 있습니다.';
+  if (value.options.length) {
+    if (!value.optionName || value.optionName.length > 20) fieldErrors.optionName = '옵션명을 1~20자로 입력해 주세요.';
+    const labels = value.options.map((option) => option.label);
+    if (value.options.some((option) => !option.label || option.label.length > 50 || !Number.isInteger(option.stock) || option.stock < 0 || option.stock > 99_999)) {
+      fieldErrors.options = '각 옵션값과 0~99,999 사이의 재고를 확인해 주세요.';
+    } else if (new Set(labels).size !== labels.length) {
+      fieldErrors.options = '같은 옵션값을 두 번 등록할 수 없습니다.';
+    }
+    value.stock = value.options.reduce((sum, option) => sum + option.stock, 0);
+  } else if (value.stock !== null && (!Number.isInteger(value.stock) || value.stock < 0 || value.stock > 99_999)) {
+    fieldErrors.stock = '재고는 0~99,999 사이의 정수로 입력하거나 비워 주세요.';
   }
 
   return { value, fieldErrors };
@@ -273,6 +309,12 @@ export function updateProductRecord(product, value, media) {
     description: value.description,
     highlights: value.highlights,
     url: value.url,
+    optionName: value.optionName,
+    options: value.options.map((option, index) => ({
+      ...option,
+      id: option.id || current.options[index]?.id || `${slug(option.label) || 'option'}-${index + 1}`,
+    })),
+    stock: value.stock,
     image: media.image,
     gallery: media.gallery,
     managedImages: media.managedImages,
@@ -366,6 +408,10 @@ export function createProductRecord(value, existingProducts) {
 
   return normalizeProduct({
     ...value,
+    options: value.options.map((option, index) => ({
+      ...option,
+      id: option.id || `${slug(option.label) || 'option'}-${index + 1}`,
+    })),
     id,
     createdAt: new Date().toISOString(),
     featured: false,

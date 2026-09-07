@@ -73,6 +73,7 @@
 .checkout-item img, .checkout-item__fallback { width: 4.6rem; aspect-ratio: 4 / 5; object-fit: cover; display: grid; place-items: center; background: color-mix(in srgb, var(--order-bg) 78%, var(--order-accent)); font-size: .55rem; }
 .checkout-item p { margin: 0 0 .35rem; font-size: .58rem; font-weight: 760; letter-spacing: .1em; }
 .checkout-item h3 { margin: 0; font-size: .84rem; line-height: 1.5; }
+.checkout-item .checkout-item__option { margin: .35rem 0 0; color: var(--order-accent); font-size: .7rem; font-weight: 700; letter-spacing: 0; }
 .checkout-item__meta { display: flex; justify-content: space-between; gap: .7rem; margin-top: .8rem; font-size: .7rem; }
 .checkout-item__quantity { display: inline-flex; align-items: center; border: 1px solid var(--order-line); }
 .checkout-item__quantity button { width: 32px; height: 32px; border: 0; background: transparent; cursor: pointer; }

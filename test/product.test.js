@@ -109,6 +109,39 @@ test('새 제품 입력 계약을 검증하고 관리자 메타데이터를 공�
   assert.equal('managedImages' in visible, false);
 });
 
+test('옵션별 재고를 정규화하고 총 재고와 품절 상태를 공개한다', () => {
+  const result = validateProductInput({
+    requestId,
+    ...productFields,
+    optionName: '색상 / 크기',
+    options: [
+      { label: '블랙 / M', stock: 3 },
+      { label: '아이보리 / M', stock: 0 },
+    ],
+    image: imageUrl,
+    gallery: [],
+    managedImages: [imageUrl],
+  });
+  assert.equal(result.valid, true);
+  const product = publicProduct(createProductRecord(result.value, []));
+  assert.equal(product.stock, 3);
+  assert.equal(product.soldOut, false);
+  assert.equal(product.options.length, 2);
+  assert.ok(product.options.every((option) => option.id));
+
+  const duplicate = validateProductInput({
+    requestId,
+    ...productFields,
+    optionName: '색상',
+    options: [{ label: '블랙', stock: 2 }, { label: '블랙', stock: 1 }],
+    image: imageUrl,
+    gallery: [],
+    managedImages: [imageUrl],
+  });
+  assert.equal(duplicate.valid, false);
+  assert.match(duplicate.fieldErrors.options, /같은 옵션값/);
+});
+
 test('기존 제품 수정은 공개 ID와 기존 이미지를 유지한다', () => {
   const created = createProductRecord(validateProductInput({
     requestId,

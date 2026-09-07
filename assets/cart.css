@@ -200,3 +200,4 @@ html.rdcart-locked, body.rdcart-locked { overflow: hidden; }
   }
   .rdcart-btn:hover { transform: none; }
 }
+.rdcart__grow em { display: block; margin-top: .18rem; color: var(--cart-muted, #616C8A); font-size: .68rem; font-style: normal; font-weight: 650; }

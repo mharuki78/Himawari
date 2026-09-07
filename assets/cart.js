@@ -55,7 +55,10 @@
           name: it.name,
           price: num(it.price),
           q: Math.min(MAX_Q, Math.max(1, num(it.q) || 1)),
-          url: typeof it.url === 'string' ? it.url : ''
+          url: typeof it.url === 'string' ? it.url : '',
+          optionId: typeof it.optionId === 'string' ? it.optionId : '',
+          optionLabel: typeof it.optionLabel === 'string' ? it.optionLabel : '',
+          stock: it.stock === '' || it.stock === null || it.stock === undefined ? null : Math.max(0, num(it.stock))
         });
       }
     }
@@ -89,7 +92,7 @@
     var t = 0, parts = [];
     for (var i = 0; i < cart.length; i++) {
       t += cart[i].q * cart[i].price;
-      parts.push(cart[i].name + ' ×' + cart[i].q);
+      parts.push(cart[i].name + (cart[i].optionLabel ? ' (' + cart[i].optionLabel + ')' : '') + ' ×' + cart[i].q);
     }
     return parts.join(', ') + ' (합계 ' + won(t) + ')';
   }
@@ -227,12 +230,13 @@
           '<div class="rdcart__line">' +
             '<div class="rdcart__grow">' +
               '<b>' + esc(l.name) + '</b>' +
+              (l.optionLabel ? '<em>' + esc(l.optionLabel) + '</em>' : '') +
               '<small>' + won(l.price) + '</small>' + go +
             '</div>' +
             '<span class="rdcart__qty">' +
               '<button type="button" data-rdcart-dec="' + i + '" aria-label="' + esc(l.name) + ' 수량 줄이기">&minus;</button>' +
               '<span>' + l.q + '</span>' +
-              '<button type="button" data-rdcart-inc="' + i + '" aria-label="' + esc(l.name) + ' 수량 늘리기">+</button>' +
+              '<button type="button" data-rdcart-inc="' + i + '" aria-label="' + esc(l.name) + ' 수량 늘리기"' + (l.stock !== null && l.q >= l.stock ? ' disabled' : '') + '>+</button>' +
             '</span>' +
             '<button type="button" class="rdcart__kill" data-rdcart-kill="' + i + '" aria-label="' + esc(l.name) + ' 삭제">삭제</button>' +
           '</div>';
@@ -246,21 +250,24 @@
   }
 
   /* ───────── 동작 ───────── */
-  function add(name, price, url, id) {
+  function add(name, price, url, id, optionId, optionLabel, stock) {
     name = String(name == null ? '' : name).trim();
     id = String(id == null ? '' : id).trim();
+    optionId = String(optionId == null ? '' : optionId).trim();
+    optionLabel = String(optionLabel == null ? '' : optionLabel).trim();
+    stock = stock === '' || stock === null || stock === undefined ? null : Math.max(0, num(stock));
     if (!name) return;
     var hit = null;
     for (var i = 0; i < cart.length; i++) {
-      if ((id && cart[i].id === id) || (!id && cart[i].name === name)) { hit = cart[i]; break; }
+      if ((id && cart[i].id === id && cart[i].optionId === optionId) || (!id && cart[i].name === name)) { hit = cart[i]; break; }
     }
     if (hit) {
-      if (hit.q < MAX_Q) hit.q++;
+      if (hit.q < MAX_Q && (hit.stock === null || hit.q < hit.stock)) hit.q++;
       if (id) hit.id = id;
       if (url) hit.url = url;
       if (price) hit.price = price;
     } else {
-      cart.push({ id: id, name: name, price: num(price), q: 1, url: String(url || '') });
+      cart.push({ id: id, name: name, price: num(price), q: 1, url: String(url || ''), optionId: optionId, optionLabel: optionLabel, stock: stock });
     }
     save(); paint();
   }
@@ -270,7 +277,7 @@
     var hit = t.closest ? t.closest('[data-rdcart-inc],[data-rdcart-dec],[data-rdcart-kill],[data-rdcart-close]') : null;
     if (!hit) return;
     var d = hit.getAttribute('data-rdcart-inc');
-    if (d !== null) { if (cart[+d] && cart[+d].q < MAX_Q) cart[+d].q++; save(); paint(); return; }
+    if (d !== null) { if (cart[+d] && cart[+d].q < MAX_Q && (cart[+d].stock === null || cart[+d].q < cart[+d].stock)) cart[+d].q++; save(); paint(); return; }
     d = hit.getAttribute('data-rdcart-dec');
     if (d !== null) {
       var l = cart[+d];
@@ -366,7 +373,7 @@
         version: 1,
         createdAt: Date.now(),
         items: cart.filter(function (item) { return item.id; }).map(function (item) {
-          return { productId: item.id, quantity: item.q };
+          return { productId: item.id, optionId: item.optionId || '', quantity: item.q };
         })
       }));
     } catch (error) {}
@@ -391,7 +398,7 @@
       var b = ev.target.closest ? ev.target.closest('[data-cart-add]') : null;
       if (!b) return;
       ev.preventDefault();
-      add(b.getAttribute('data-name'), b.getAttribute('data-price'), b.getAttribute('data-url'), b.getAttribute('data-product-id'));
+      add(b.getAttribute('data-name'), b.getAttribute('data-price'), b.getAttribute('data-url'), b.getAttribute('data-product-id'), b.getAttribute('data-option-id'), b.getAttribute('data-option-label'), b.getAttribute('data-stock'));
       if (b.dataset && b.dataset.rdcartBusy) return;
       var was = b.textContent;
       var wasLabel = b.getAttribute('aria-label');
@@ -450,7 +457,9 @@
         return {
           id: typeof item.id === 'string' ? item.id : '',
           name: String(item.name || ''), price: num(item.price),
-          q: Math.min(MAX_Q, Math.max(1, num(item.q) || 1)), url: String(item.url || '')
+          q: Math.min(MAX_Q, Math.max(1, num(item.q) || 1)), url: String(item.url || ''),
+          optionId: String(item.optionId || ''), optionLabel: String(item.optionLabel || ''),
+          stock: item.stock === '' || item.stock === null || item.stock === undefined ? null : Math.max(0, num(item.stock))
         };
       }).filter(function (item) { return item.name; });
       save(announce); paint();

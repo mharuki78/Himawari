@@ -121,13 +121,15 @@ export function validateOrderItems(input) {
   const items = [];
   for (const item of input) {
     const productId = cleanLine(item?.productId, 120);
+    const optionId = cleanLine(item?.optionId, 120);
     const quantity = Number(item?.quantity);
-    if (!productId || seen.has(productId) || !Number.isInteger(quantity) || quantity < 1 || quantity > MAX_QUANTITY) {
+    const key = `${productId}::${optionId}`;
+    if (!productId || seen.has(key) || !Number.isInteger(quantity) || quantity < 1 || quantity > MAX_QUANTITY) {
       fieldErrors.items = '상품과 수량을 다시 확인해 주세요.';
       break;
     }
-    seen.add(productId);
-    items.push({ productId, quantity });
+    seen.add(key);
+    items.push({ productId, optionId, quantity });
   }
   return { items, fieldErrors, valid: Object.keys(fieldErrors).length === 0 };
 }
@@ -202,6 +204,8 @@ export async function ensureOrderSchema() {
         created_at timestamptz NOT NULL DEFAULT now()
       )`,
       tx`CREATE INDEX IF NOT EXISTS order_items_order_idx ON order_items(order_id, created_at)`,
+      tx`ALTER TABLE order_items ADD COLUMN IF NOT EXISTS option_id text`,
+      tx`ALTER TABLE order_items ADD COLUMN IF NOT EXISTS option_label text`,
       tx`CREATE TABLE IF NOT EXISTS order_events (
         id text PRIMARY KEY,
         order_id text NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
@@ -250,6 +254,8 @@ function mapOrderRow(row, items = [], events = [], includeAdminNotes = false) {
     delivery: { carrier: row.carrier, trackingNumber: row.tracking_number || '' },
     items: items.map((item) => ({
       productId: item.product_id,
+      optionId: item.option_id || '',
+      optionLabel: item.option_label || '',
       name: item.product_name,
       model: item.product_model,
       unitPrice: Number(item.unit_price),
@@ -317,7 +323,10 @@ export async function createOrder(member, input) {
   const byId = new Map(catalog.map((product) => [product.id, product]));
   const items = itemInput.items.map((item) => {
     const product = byId.get(item.productId);
-    if (!product || !Number.isInteger(product.price) || product.price < 1) {
+    const options = Array.isArray(product?.options) ? product.options : [];
+    const option = options.find((entry) => entry.id === item.optionId) || null;
+    const available = option ? option.stock : product?.stock;
+    if (!product || !Number.isInteger(product.price) || product.price < 1 || (options.length && !option) || available === 0 || (available !== null && item.quantity > available)) {
       throw Object.assign(new Error('현재 주문할 수 없는 상품이 포함되어 있습니다.'), {
         status: 409,
         fieldErrors: { items: '상품 정보를 새로 불러온 뒤 다시 주문해 주세요.' },
@@ -325,6 +334,8 @@ export async function createOrder(member, input) {
     }
     return {
       productId: product.id,
+      optionId: option?.id || '',
+      optionLabel: option?.label || '',
       name: product.name,
       model: product.model,
       image: product.image,
@@ -370,9 +381,9 @@ export async function createOrder(member, input) {
       ${now.toISOString()}, ${now.toISOString()}, ${retentionUntil.toISOString()}
     )`,
     ...items.map((item) => sql`INSERT INTO order_items (
-      id, order_id, product_id, product_name, product_model, unit_price, quantity, line_total, image_url
+      id, order_id, product_id, product_name, product_model, option_id, option_label, unit_price, quantity, line_total, image_url
     ) VALUES (
-      ${randomUUID()}, ${id}, ${item.productId}, ${item.name}, ${item.model}, ${item.unitPrice},
+      ${randomUUID()}, ${id}, ${item.productId}, ${item.name}, ${item.model}, ${item.optionId || null}, ${item.optionLabel || null}, ${item.unitPrice},
       ${item.quantity}, ${item.unitPrice * item.quantity}, ${item.image || null}
     )`),
     sql`INSERT INTO order_events (id, order_id, actor, from_status, to_status, note)

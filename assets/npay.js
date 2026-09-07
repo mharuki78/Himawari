@@ -97,14 +97,22 @@ function createProductButton() {
     orderRegistrationVersion: '2.1',
     type: 'template',
     colorTheme: 'green',
-    enable: true,
+    enable: container.dataset.soldOut !== 'true',
     components: {
       wishlist: true,
       talkTalk: false,
       benefitMessage: true,
       benefitCoachMark: true,
     },
-    onBuyClick: () => registerOrder([{ productId, quantity: 1 }], 'product', section),
+    onBuyClick: () => {
+      const optionId = container.dataset.optionId || '';
+      if (container.dataset.hasOptions === 'true' && !optionId) {
+        setStatus(section, '주문할 옵션을 먼저 선택해 주세요.', true);
+        document.querySelector('[data-product-option]')?.focus();
+        return false;
+      }
+      return registerOrder([{ productId, optionId, quantity: 1 }], 'product', section);
+    },
     onWishlistClick: () => registerWishlist(productId, section),
   });
 }
@@ -125,14 +133,20 @@ function createCardButton(section) {
       orderRegistrationVersion: '2.1',
       type: 'template',
       colorTheme: 'green',
-      enable: true,
+      enable: section.dataset.soldOut !== 'true',
       components: {
         wishlist: false,
         talkTalk: false,
         benefitMessage: false,
         benefitCoachMark: false,
       },
-      onBuyClick: () => registerOrder([{ productId, quantity: 1 }], 'product', section),
+      onBuyClick: () => {
+        if (section.dataset.hasOptions === 'true') {
+          location.assign(`/product.html?id=${encodeURIComponent(productId)}#product-options`);
+          return false;
+        }
+        return registerOrder([{ productId, quantity: 1 }], 'product', section);
+      },
     });
     window.setTimeout(() => {
       if (!section.isConnected || container.querySelector('[data-npay-component="buy"]')) return;
@@ -188,7 +202,7 @@ function syncCartButton() {
   if (!section || !container || !config || !window.Npay?.order?.create) return;
   const items = currentCartItems
     .filter((item) => item?.id)
-    .map((item) => ({ productId: item.id, quantity: Number(item.q) || 1 }));
+    .map((item) => ({ productId: item.id, optionId: item.optionId || '', quantity: Number(item.q) || 1 }));
   section.hidden = items.length === 0;
   if (!items.length || container.dataset.npayReady === 'true') return;
 
@@ -209,7 +223,7 @@ function syncCartButton() {
     onBuyClick: () => {
       const latest = currentCartItems
         .filter((item) => item?.id)
-        .map((item) => ({ productId: item.id, quantity: Number(item.q) || 1 }));
+        .map((item) => ({ productId: item.id, optionId: item.optionId || '', quantity: Number(item.q) || 1 }));
       if (!latest.length) {
         setStatus(section, '장바구니에 상품을 먼저 담아 주세요.', true);
         return null;
