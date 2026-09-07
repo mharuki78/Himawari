@@ -151,6 +151,14 @@ test('홈 제품 영역은 모든 카드에 Npay 버튼을 요청한다', async 
   assert.equal((html.match(/data-npay-cards/g) || []).length, 2);
 });
 
+test('전체 제품 페이지는 대표 상품과 모든 제품 카드에 Npay 버튼을 요청한다', async () => {
+  const template = await readFile(new URL('../templates/products.html', import.meta.url), 'utf8');
+  const html = renderCatalogPage(template, products);
+
+  assert.equal((html.match(/data-npay-cards/g) || []).length, 2);
+  assert.equal((html.match(/data-server-rendered-product/g) || []).length, 34);
+});
+
 test('내부 주문서는 PG 미연결 경계와 앱 소유 검증을 명확히 표시한다', async () => {
   const html = await readFile(new URL('../checkout.html', import.meta.url), 'utf8');
 
