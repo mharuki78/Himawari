@@ -487,7 +487,6 @@ html {
 .product-detail-price { margin-top: 2.5rem; font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 650; }
 .product-detail-pricing { display: grid; justify-items: start; gap: .45rem; margin-top: 2.5rem; }
 .product-detail-pricing .product-detail-price { margin-top: 0; }
-.product-detail-pricing small, .product-price-block small { display: block; font-size: .64rem; font-weight: 520; line-height: 1.5; opacity: .66; }
 .product-price-block { display: grid; justify-items: start; gap: .35rem; min-width: 11rem; }
 .product-price-block > strong { font-size: 1.05rem; font-variant-numeric: tabular-nums; }
 .product-discount-badge { display: inline-flex; width: max-content; padding: .22rem .4rem; border: 1px solid var(--moss); color: var(--moss); font-size: .6rem; font-weight: 760; letter-spacing: .02em; }
@@ -507,6 +506,12 @@ html {
 .npay-button-container { width: 100%; min-width: 200px; height: 150px; overflow: hidden; }
 .npay-status { min-height: 1.2em; margin: .45rem 0 0; color: var(--moss); font-size: .65rem; line-height: 1.6; }
 .npay-status.is-error { color: var(--danger, #9A352F); }
+.npay-card-purchase { min-width: 200px; margin-top: .35rem; padding-top: .9rem; border-top: 1px solid color-mix(in srgb, var(--ink) 24%, transparent); }
+.npay-card-purchase[hidden] { display: none; }
+.npay-card-purchase__label { margin: 0 0 .45rem; color: var(--ink); font-size: .61rem; font-weight: 720; letter-spacing: .06em; }
+.npay-card-button-container { width: 100%; min-width: 200px; height: 150px; overflow: hidden; }
+.featured-product .npay-card-purchase { border-color: color-mix(in srgb, var(--cream) 35%, transparent); }
+.featured-product .npay-card-purchase__label { color: var(--cream); }
 .product-description { border-top: 1px solid var(--ink); }
 .product-description-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(19rem, .55fr); gap: clamp(4rem, 11vw, 12rem); align-items: start; }
 .product-description-heading { position: sticky; top: 12vh; }

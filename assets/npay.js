@@ -2,6 +2,7 @@ let initialized = false;
 let currentCartItems = [];
 let config = null;
 let sdkPromise = null;
+let cardObserver = null;
 const pending = new Map();
 
 function setStatus(section, message, isError = false) {
@@ -83,7 +84,7 @@ async function registerWishlist(productId, section) {
 function createProductButton() {
   const section = document.querySelector('[data-npay-product-section]');
   const container = section?.querySelector('[data-npay-product]');
-  if (!section || !container || container.dataset.npayReady === 'true') return;
+  if (!section || !container || !config || !window.Npay?.order?.create || container.dataset.npayReady === 'true') return;
   const productId = container.dataset.productId || new URLSearchParams(location.search).get('id');
   if (!productId) return;
 
@@ -107,10 +108,62 @@ function createProductButton() {
   });
 }
 
+function createCardButton(section) {
+  const container = section?.querySelector('[data-npay-card]');
+  if (!section || !container || container.dataset.npayReady === 'true') return;
+  const productId = container.dataset.productId;
+  if (!productId) return;
+
+  container.dataset.npayReady = 'true';
+  try {
+    window.Npay.order.create({
+      buttonKey: config.buttonKey,
+      containerId: container.id,
+      orderRegistrationVersion: '2.1',
+      type: 'template',
+      colorTheme: 'green',
+      enable: true,
+      components: {
+        wishlist: false,
+        talkTalk: false,
+        benefitMessage: false,
+        benefitCoachMark: false,
+      },
+      onBuyClick: () => registerOrder([{ productId, quantity: 1 }], 'product', section),
+    });
+  } catch (error) {
+    delete container.dataset.npayReady;
+    setStatus(section, '네이버페이 버튼을 준비하지 못했습니다.', true);
+  }
+}
+
+function createCardButtons() {
+  if (!config || !window.Npay?.order?.create) return;
+  const sections = [...document.querySelectorAll('[data-npay-card-section]')]
+    .filter((section) => section.querySelector('[data-npay-card]:not([data-npay-ready="true"])'));
+  if (!sections.length) return;
+
+  sections.forEach((section) => { section.hidden = false; });
+  if (!('IntersectionObserver' in window)) {
+    sections.forEach(createCardButton);
+    return;
+  }
+  if (!cardObserver) {
+    cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        cardObserver.unobserve(entry.target);
+        createCardButton(entry.target);
+      });
+    }, { rootMargin: '500px 0px' });
+  }
+  sections.forEach((section) => cardObserver.observe(section));
+}
+
 function syncCartButton() {
   const section = document.querySelector('[data-npay-cart-section]');
   const container = section?.querySelector('[data-npay-cart]');
-  if (!section || !container || !config) return;
+  if (!section || !container || !config || !window.Npay?.order?.create) return;
   const items = currentCartItems
     .filter((item) => item?.id)
     .map((item) => ({ productId: item.id, quantity: Number(item.q) || 1 }));
@@ -149,6 +202,7 @@ export async function initializeNpay({ cartItems = [] } = {}) {
   if (initialized) {
     syncCartButton();
     createProductButton();
+    createCardButtons();
     return;
   }
   initialized = true;
@@ -158,12 +212,14 @@ export async function initializeNpay({ cartItems = [] } = {}) {
     syncCartButton();
   });
   document.addEventListener('himawari:product-ready', createProductButton);
+  document.addEventListener('himawari:npay-cards-ready', createCardButtons);
 
   try {
     config = await requestJson('/api/npay/config');
     if (!config.enabled) return;
     await loadSdk(config.sdkUrl);
     createProductButton();
+    createCardButtons();
     syncCartButton();
   } catch (error) {
     const productSection = document.querySelector('[data-npay-product-section]');

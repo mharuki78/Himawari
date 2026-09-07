@@ -105,7 +105,7 @@ test('개별 제품 원본 HTML에 이름·가격·이미지·구매정보를 �
   assert.match(html, new RegExp(`<article data-product-content>`));
   assert.equal(html.includes(product.name), true);
   assert.match(html, /76,800/);
-  assert.match(html, /네이버 할인가와 동일/);
+  assert.doesNotMatch(html, /네이버 할인가와 동일/);
   assert.match(html, /data-loading-state role="status" hidden/);
   assert.match(html, /주문 전<br>꼭 확인해 주세요/);
   assert.match(html, /이용약관 전체 보기/);
@@ -118,6 +118,11 @@ test('개별 제품 원본 HTML에 이름·가격·이미지·구매정보를 �
   assert.match(html, new RegExp(`data-closing-buy href="checkout\\.html\\?product=${product.id}"`));
   assert.match(html, new RegExp(`data-npay-product data-product-id="${product.id}"`));
   assert.match(html, /Npay로 구매/);
+});
+
+test('홈 제품 영역은 모든 카드에 Npay 버튼을 요청한다', async () => {
+  const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  assert.equal((html.match(/data-npay-cards/g) || []).length, 2);
 });
 
 test('내부 주문서는 PG 미연결 경계와 앱 소유 검증을 명확히 표시한다', async () => {
