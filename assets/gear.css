@@ -375,6 +375,7 @@ html {
 .featured-product-content h3 { font-weight: 620; }
 .featured-tagline,
 .featured-product-footer { border-color: color-mix(in srgb, var(--cream) 35%, transparent); }
+.featured-product-footer { align-items: stretch; flex-direction: column; }
 .featured-highlights { opacity: .76; }
 .featured-buy-link { border: 1px solid var(--cream); background: var(--cream); color: var(--ink); }
 .featured-buy-link:hover { background: transparent; color: var(--cream); }
@@ -509,7 +510,8 @@ html {
 .npay-card-purchase { min-width: 200px; margin-top: .35rem; padding-top: .9rem; border-top: 1px solid color-mix(in srgb, var(--ink) 24%, transparent); }
 .npay-card-purchase[hidden] { display: none; }
 .npay-card-purchase__label { margin: 0 0 .45rem; color: var(--ink); font-size: .61rem; font-weight: 720; letter-spacing: .06em; }
-.npay-card-button-container { width: 100%; min-width: 200px; height: 150px; overflow: hidden; }
+.npay-card-button-container { width: 100%; min-width: 200px; min-height: 40px; overflow: hidden; }
+.npay-card-purchase .npay-status:empty { min-height: 0; margin: 0; }
 .featured-product .npay-card-purchase { border-color: color-mix(in srgb, var(--cream) 35%, transparent); }
 .featured-product .npay-card-purchase__label { color: var(--cream); }
 .product-description { border-top: 1px solid var(--ink); }
