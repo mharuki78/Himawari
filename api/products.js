@@ -1,6 +1,59 @@
 import { json, methodNotAllowed } from './_lib/http.js';
 import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalog } from './_lib/products.js';
 import { publicPromotions, readPromotions } from './_lib/promotions.js';
+import storyPosts from '../story/posts.json' with { type: 'json' };
+
+const SITE_ORIGIN = 'https://allaboutbag.com';
+const SITEMAP_PAGES = [
+  ['/', '2026-09-07'],
+  ['/about.html', '2026-08-29'],
+  ['/products.html', '2026-09-03'],
+  ['/contact.html', '2026-08-29'],
+  ['/game.html', '2026-09-06'],
+  ['/privacy.html', '2026-09-03'],
+  ['/terms.html', '2026-09-03'],
+  ['/story/', '2026-09-07'],
+];
+
+function sitemapUrl(path, lastmod = '') {
+  const modified = /^\d{4}-\d{2}-\d{2}$/.test(lastmod) ? `<lastmod>${lastmod}</lastmod>` : '';
+  return `  <url><loc>${SITE_ORIGIN}${path}</loc>${modified}</url>`;
+}
+
+async function fetchSitemap(request) {
+  if (request.method !== 'GET') return methodNotAllowed(['GET']);
+  try {
+    const catalog = productStoreIsConfigured() ? (await readProductCatalog()).catalog : seedCatalog();
+    const pages = SITEMAP_PAGES.map(([path, lastmod]) => sitemapUrl(path, lastmod));
+    const products = catalog.products.map((product) => sitemapUrl(`/product.html?id=${encodeURIComponent(product.id)}`));
+    const stories = storyPosts
+      .filter((post) => post && post.id)
+      .map((post) => sitemapUrl(`/story/${encodeURIComponent(post.id)}.html`, post.date));
+    const body = [
+      '<?xml version="1.0" encoding="UTF-8"?>',
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+      ...pages,
+      ...products,
+      ...stories,
+      '</urlset>',
+      '',
+    ].join('\n');
+    return new Response(body, {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/xml; charset=utf-8',
+        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=3600',
+        'X-Content-Type-Options': 'nosniff',
+      },
+    });
+  } catch (error) {
+    console.error('public_sitemap_read_failed', { message: error.message || 'unknown error' });
+    return new Response('사이트맵을 준비하지 못했습니다.', {
+      status: 500,
+      headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' },
+    });
+  }
+}
 
 async function fetchPromotions(request) {
   if (request.method !== 'GET') return methodNotAllowed(['GET']);
@@ -14,7 +67,9 @@ async function fetchPromotions(request) {
 }
 
 export async function fetch(request) {
-  if (new URL(request.url).searchParams.get('route') === 'promotions') return fetchPromotions(request);
+  const route = new URL(request.url).searchParams.get('route');
+  if (route === 'promotions') return fetchPromotions(request);
+  if (route === 'sitemap') return fetchSitemap(request);
   if (request.method !== 'GET') return methodNotAllowed(['GET']);
 
   try {

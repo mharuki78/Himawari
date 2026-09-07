@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { access, readdir, readFile } from 'node:fs/promises';
 import test from 'node:test';
 
+import { fetch as productsHandler } from '../api/products.js';
 import { publicProduct, seedCatalog } from '../api/_lib/products.js';
 import { renderCatalogPage, renderProductNotFoundPage, renderProductPage } from '../api/_lib/storefront.js';
 
@@ -95,6 +96,31 @@ test('상품 목록 원본 HTML에 전체 카탈로그와 구조화 데이터를
   assert.doesNotMatch(html, /제품을 불러오는 중입니다/);
   assert.match(html, /<strong data-product-count>34<\/strong>/);
   assert.match(html, /href="checkout\.html\?product=[^"]+"[^>]*>바로 구매하기/);
+});
+
+test('사이트맵은 모든 공개 제품 상세페이지를 포함한다', async () => {
+  const sitemap = await readFile(new URL('../sitemap.xml', import.meta.url), 'utf8');
+
+  for (const product of products) {
+    assert.equal(
+      sitemap.includes(`https://allaboutbag.com/product.html?id=${encodeURIComponent(product.id)}`),
+      true,
+      `${product.id}: sitemap product URL`,
+    );
+  }
+});
+
+test('운영 사이트맵은 현재 제품과 이야기 목록을 XML로 동적 제공한다', async () => {
+  const response = await productsHandler(new Request('https://allaboutbag.com/api/products?route=sitemap'));
+  const sitemap = await response.text();
+
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get('content-type') || '', /^application\/xml/);
+  assert.equal((sitemap.match(/<url>/g) || []).length, 65);
+  for (const product of products) {
+    assert.equal(sitemap.includes(`https://allaboutbag.com/product.html?id=${encodeURIComponent(product.id)}`), true);
+  }
+  assert.equal(sitemap.includes('https://allaboutbag.com/story/books-documents-backpack-packing.html'), true);
 });
 
 test('개별 제품 원본 HTML에 이름·가격·이미지·구매정보를 렌더링한다', async () => {

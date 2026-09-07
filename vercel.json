@@ -20,6 +20,7 @@
     { "source": "/api/member/cart", "destination": "/api/member?route=cart" },
     { "source": "/api/member/wishlist", "destination": "/api/member?route=wishlist" },
     { "source": "/api/member/account", "destination": "/api/member?route=account" },
+    { "source": "/sitemap.xml", "destination": "/api/products?route=sitemap" },
     { "source": "/api/promotions", "destination": "/api/products?route=promotions" },
     { "source": "/api/admin/promotions", "destination": "/api/admin/products?route=promotions" },
     { "source": "/api/npay/config", "destination": "/api/orders?route=npay-config" },
