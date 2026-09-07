@@ -3,6 +3,7 @@ let currentCartItems = [];
 let config = null;
 let sdkPromise = null;
 let cardObserver = null;
+let cardCreationQueue = Promise.resolve();
 const pending = new Map();
 
 function setStatus(section, message, isError = false) {
@@ -110,10 +111,12 @@ function createProductButton() {
 
 function createCardButton(section) {
   const container = section?.querySelector('[data-npay-card]');
-  if (!section || !container || container.dataset.npayReady === 'true') return;
+  if (!section?.isConnected || !container || container.dataset.npayReady === 'true') return;
   const productId = container.dataset.productId;
   if (!productId) return;
 
+  const attempt = Number(container.dataset.npayAttempt || 0) + 1;
+  container.dataset.npayAttempt = String(attempt);
   container.dataset.npayReady = 'true';
   try {
     window.Npay.order.create({
@@ -131,10 +134,29 @@ function createCardButton(section) {
       },
       onBuyClick: () => registerOrder([{ productId, quantity: 1 }], 'product', section),
     });
+    window.setTimeout(() => {
+      if (!section.isConnected || container.querySelector('[data-npay-component="buy"]')) return;
+      if (attempt < 2) {
+        container.replaceChildren();
+        delete container.dataset.npayReady;
+        queueCardButton(section);
+        return;
+      }
+      setStatus(section, '네이버페이 버튼을 준비하지 못했습니다. 새로고침해 주세요.', true);
+    }, 1_200);
   } catch (error) {
     delete container.dataset.npayReady;
     setStatus(section, '네이버페이 버튼을 준비하지 못했습니다.', true);
   }
+}
+
+function queueCardButton(section) {
+  cardCreationQueue = cardCreationQueue
+    .then(() => {
+      createCardButton(section);
+      return new Promise((resolve) => window.setTimeout(resolve, 60));
+    })
+    .catch(() => {});
 }
 
 function createCardButtons() {
@@ -145,7 +167,7 @@ function createCardButtons() {
 
   sections.forEach((section) => { section.hidden = false; });
   if (!('IntersectionObserver' in window)) {
-    sections.forEach(createCardButton);
+    sections.forEach(queueCardButton);
     return;
   }
   if (!cardObserver) {
@@ -153,7 +175,7 @@ function createCardButtons() {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         cardObserver.unobserve(entry.target);
-        createCardButton(entry.target);
+        queueCardButton(entry.target);
       });
     }, { rootMargin: '500px 0px' });
   }
