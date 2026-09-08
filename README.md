@@ -63,6 +63,6 @@ npm run db:migrate
 
 ## 네이버페이 주문형 검수
 
-연동은 주문등록 v2.1을 사용합니다. 최종 오픈 전에는 `NPAY_PUBLIC_ENABLED=false`로 운영 화면의 버튼을 숨기고, `NPAY_REVIEW_TOKEN`을 포함한 `/npay-review/{token}` 주소에서만 전체 상품의 Sandbox 주문·찜·장바구니를 검수합니다. 상품정보 XML 기본 주소는 `/api/npay/product-info`입니다.
+연동은 주문등록 v2.1을 사용합니다. 최종 오픈 전에는 `NPAY_PUBLIC_ENABLED=false`로 일반 방문자의 버튼을 숨깁니다. `NPAY_REVIEW_TOKEN`을 포함한 `/npay-review/{token}` 주소에 접속하면 HttpOnly 검수 세션을 만든 뒤 실제 `product.html?id=...` 상세페이지로 이동하며, 그 세션에서만 전체 상품 상세의 Sandbox 주문·찜을 검수할 수 있습니다. 상품정보 XML 기본 주소는 `/api/npay/product-info`입니다.
 
-최종 승인 이후 `NPAY_PUBLIC_ENABLED=true`로 변경하고 운영 배포하면 일반 상품·장바구니 화면에 운영용 네이버페이 버튼이 표시됩니다.
+최종 승인 이후 `NPAY_PUBLIC_ENABLED=true`로 변경하고 운영 배포하면 각 상품 상세와 장바구니에 운영용 네이버페이 버튼이 표시됩니다. 상품 목록 카드에는 표시하지 않습니다.

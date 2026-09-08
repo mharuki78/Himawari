@@ -12,6 +12,8 @@ import {
   npayOptionManageCode,
   npayProductId,
   npayPublicConfiguration,
+  npayReviewRequestIsValid,
+  npayReviewSessionCookie,
 } from '../api/_lib/npay.js';
 import { fetchNpayConfig as configHandler, fetchNpayOrder as orderHandler, fetchNpayProductInformation as productInfoHandler } from '../api/_lib/npay-handlers.js';
 import { publicProduct, seedCatalog } from '../api/_lib/products.js';
@@ -79,7 +81,7 @@ test('최종 승인 전 운영 화면에는 Npay 설정을 노출하지 않고 �
   });
 });
 
-test('검수 토큰이 맞는 요청에만 Sandbox 공개 설정을 반환한다', async () => {
+test('검수 진입 쿠키가 맞는 요청에만 Sandbox 공개 설정을 반환한다', async () => {
   await withEnv({
     NPAY_SHOP_ID: 'himawari-shop',
     NPAY_CERTI_KEY: 'server-only-certificate',
@@ -89,11 +91,51 @@ test('검수 토큰이 맞는 요청에만 Sandbox 공개 설정을 반환한다
     NPAY_REVIEW_TOKEN: 'review-secret-1234567890',
   }, async () => {
     const hidden = await (await configHandler(sameOriginRequest('/api/npay/config'))).json();
-    const visible = await (await configHandler(sameOriginRequest('/api/npay/config?reviewToken=review-secret-1234567890'))).json();
+    const cookie = npayReviewSessionCookie('review-secret-1234567890');
+    const reviewRequest = new Request('https://allaboutbag.com/api/npay/config', {
+      headers: { Cookie: cookie.split(';')[0] },
+    });
+    const visible = await (await configHandler(reviewRequest)).json();
     assert.equal(hidden.enabled, false);
+    assert.equal(npayReviewRequestIsValid(reviewRequest), true);
     assert.equal(visible.enabled, true);
     assert.equal(visible.mode, 'test');
     assert.equal(visible.review, true);
+  });
+});
+
+test('검수 세션의 상세 주문은 공개 오픈 전에도 Sandbox 등록 URL과 실제 상품 복귀 주소를 사용한다', async () => {
+  const product = publicProduct(seedCatalog().products[0]);
+  const originalFetch = globalThis.fetch;
+  let registrationUrl = '';
+  let registeredXml = '';
+  await withEnv({
+    NPAY_SHOP_ID: 'himawari-shop',
+    NPAY_CERTI_KEY: 'server-certificate',
+    NPAY_BUTTON_KEY: 'button-key',
+    NPAY_ENV: 'production',
+    NPAY_PUBLIC_ENABLED: 'false',
+    NPAY_REVIEW_TOKEN: 'review-secret-1234567890',
+  }, async () => {
+    globalThis.fetch = async (url, options) => {
+      registrationUrl = String(url);
+      registeredXml = String(options.body || '');
+      return new Response('SUCCESS:BUYKEY123:MERCHANT99');
+    };
+    try {
+      const cookie = npayReviewSessionCookie('review-secret-1234567890').split(';')[0];
+      const response = await orderHandler(new Request('https://allaboutbag.com/api/npay/order', {
+        method: 'POST',
+        headers: { Origin: 'https://allaboutbag.com', 'Content-Type': 'application/json', Cookie: cookie },
+        body: JSON.stringify({ context: 'product', items: [{ productId: product.id, quantity: 1 }] }),
+      }));
+      assert.equal(response.status, 200);
+      assert.match(registrationUrl, /^https:\/\/test-api\.pay\.naver\.com\//);
+      assert.match(registeredXml, new RegExp(`<backUrl>https://allaboutbag\\.com/product\\.html\\?id=${product.id}</backUrl>`));
+      assert.doesNotMatch(registeredXml, /npay-review/);
+    } finally {
+      globalThis.fetch = originalFetch;
+    }
   });
 });
 

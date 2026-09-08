@@ -186,39 +186,6 @@ function createDetailLink(product, className = 'detail-link') {
   return link;
 }
 
-function npayContainerId(product) {
-  return `npay-home-${String(product.id).replace(/[^a-zA-Z0-9_-]/g, '-')}`;
-}
-
-function createNpaySection(product) {
-  const section = document.createElement('section');
-  section.className = 'npay-card-purchase';
-  section.dataset.npayCardSection = '';
-  section.dataset.hasOptions = product.options.length ? 'true' : 'false';
-  section.dataset.soldOut = product.soldOut ? 'true' : 'false';
-  section.hidden = true;
-  section.setAttribute('aria-label', `${product.name} 네이버페이 구매`);
-
-  const label = document.createElement('p');
-  label.className = 'npay-card-purchase__label';
-  label.textContent = 'Npay 바로 구매';
-
-  const container = document.createElement('div');
-  container.id = npayContainerId(product);
-  container.className = 'npay-card-button-container';
-  container.dataset.npayCard = '';
-  container.dataset.productId = product.id;
-
-  const status = document.createElement('p');
-  status.className = 'npay-status';
-  status.dataset.npayStatus = '';
-  status.setAttribute('role', 'status');
-  status.setAttribute('aria-live', 'polite');
-
-  section.append(label, container, status);
-  return section;
-}
-
 function productNameHeading(product) {
   const heading = document.createElement('h3');
   const link = document.createElement('a');
@@ -249,18 +216,17 @@ function createPriceBlock(product) {
   return block;
 }
 
-function createProductFooter(product, includeNpay = false) {
+function createProductFooter(product) {
   const footer = document.createElement('div');
   footer.className = 'store-product-footer';
   const actions = document.createElement('div');
   actions.className = 'store-product-actions';
   actions.append(createDetailLink(product), createCartButton(product), createWishlistButton(product), createDirectBuyLink(product));
   footer.append(createPriceBlock(product), actions);
-  if (includeNpay) footer.append(createNpaySection(product));
   return footer;
 }
 
-function selectProductCardVariant(article, product, family, includeNpay) {
+function selectProductCardVariant(article, product, family) {
   if (article.dataset.selectedProductId === product.id) return;
   article.dataset.selectedProductId = product.id;
 
@@ -276,7 +242,7 @@ function selectProductCardVariant(article, product, family, includeNpay) {
   if (label) label.textContent = product.model;
   heading?.replaceWith(productNameHeading(product));
   if (tagline) tagline.textContent = product.tagline || '일상에 자연스럽게 맞는 가방입니다.';
-  footer?.replaceWith(createProductFooter(product, includeNpay));
+  footer?.replaceWith(createProductFooter(product));
 
   const selectedLabel = productVariantLabel(product);
   const summary = body?.querySelector('[data-variant-summary]');
@@ -291,10 +257,9 @@ function selectProductCardVariant(article, product, family, includeNpay) {
   const status = body?.querySelector('[data-variant-status]');
   if (status) status.textContent = `${selectedLabel} 옵션이 선택되었습니다. 상세 보기를 누르면 선택한 제품 페이지로 이동합니다.`;
 
-  document.dispatchEvent(new CustomEvent('himawari:npay-cards-ready'));
 }
 
-function createProductCard(product, { includeNpay = false, family = null } = {}) {
+function createProductCard(product, { family = null } = {}) {
   const article = document.createElement('article');
   article.className = 'store-product-card card reveal';
   article.dataset.selectedProductId = product.id;
@@ -306,7 +271,7 @@ function createProductCard(product, { includeNpay = false, family = null } = {})
   const tagline = document.createElement('p');
   tagline.className = 'product-tagline';
   tagline.textContent = product.tagline || '일상에 자연스럽게 맞는 가방입니다.';
-  const footer = createProductFooter(product, includeNpay);
+  const footer = createProductFooter(product);
   body.append(label, productNameHeading(product), tagline, footer);
   if (family?.variants?.length > 1) {
     const variants = document.createElement('div');
@@ -331,7 +296,7 @@ function createProductCard(product, { includeNpay = false, family = null } = {})
       check.setAttribute('aria-hidden', 'true');
       check.textContent = selected ? '✓' : '';
       button.append(check, productVariantLabel(variant));
-      button.addEventListener('click', () => selectProductCardVariant(article, variant, family, includeNpay));
+      button.addEventListener('click', () => selectProductCardVariant(article, variant, family));
       variants.append(button);
     });
     const status = document.createElement('span');
@@ -346,7 +311,7 @@ function createProductCard(product, { includeNpay = false, family = null } = {})
   return article;
 }
 
-function createFeaturedProduct(product, { includeNpay = false } = {}) {
+function createFeaturedProduct(product) {
   const article = document.createElement('article');
   article.className = 'featured-product card reveal';
   const content = document.createElement('div');
@@ -375,7 +340,6 @@ function createFeaturedProduct(product, { includeNpay = false } = {}) {
     createDirectBuyLink(product, 'direct-buy-link featured-direct-buy-link'),
   );
   footer.append(createPriceBlock(product), actions);
-  if (includeNpay) footer.append(createNpaySection(product));
   content.append(label, productNameHeading(product), tagline, highlights, footer);
   article.append(createProductMedia(product, 'featured-product-media'), content);
   return article;
@@ -416,10 +380,9 @@ async function loadProducts() {
         return;
       }
       const fragment = document.createDocumentFragment();
-      const includeNpay = container.hasAttribute('data-npay-cards');
       visibleProducts.forEach((entry) => {
         const family = entry?.representative ? entry : null;
-        fragment.append(createProductCard(family?.representative || entry, { includeNpay, family }));
+        fragment.append(createProductCard(family?.representative || entry, { family }));
       });
       container.replaceChildren(fragment);
       container.setAttribute('aria-busy', 'false');
@@ -431,16 +394,13 @@ async function loadProducts() {
         showListState(container, '대표 제품이 등록되지 않았습니다.');
         return;
       }
-      container.replaceChildren(createFeaturedProduct(featuredProduct, {
-        includeNpay: container.hasAttribute('data-npay-cards'),
-      }));
+      container.replaceChildren(createFeaturedProduct(featuredProduct));
       container.setAttribute('aria-busy', 'false');
       window.himawariReveal?.(container);
     });
     document.querySelectorAll('[data-product-count]').forEach((element) => {
       element.textContent = String(products.length);
     });
-    document.dispatchEvent(new CustomEvent('himawari:npay-cards-ready'));
   } catch {
     [...productLists, ...featuredProductSlots].forEach((container) => {
       container.setAttribute('aria-busy', 'false');
@@ -480,8 +440,7 @@ function setupCatalog(container, families) {
     const filtered = filterAndSortFamilies(families, state);
     const visible = filtered.slice(0, state.shown);
     const fragment = document.createDocumentFragment();
-    const includeNpay = container.hasAttribute('data-npay-cards');
-    visible.forEach((family) => fragment.append(createProductCard(family.representative, { includeNpay, family })));
+    visible.forEach((family) => fragment.append(createProductCard(family.representative, { family })));
     container.replaceChildren(fragment);
     container.setAttribute('aria-busy', 'false');
     if (count) count.textContent = `${filtered.length}개 제품군`;
@@ -501,7 +460,6 @@ function setupCatalog(container, families) {
     state.sort !== 'featured' ? url.searchParams.set('sort', state.sort) : url.searchParams.delete('sort');
     history.replaceState(null, '', url);
     window.himawariReveal?.(container);
-    document.dispatchEvent(new CustomEvent('himawari:npay-cards-ready'));
     if (focusGrid) container.querySelector('article a')?.focus();
   };
 

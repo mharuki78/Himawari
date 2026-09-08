@@ -13,6 +13,7 @@ const SHIPPING_GROUP_ID = 'HIMAWARI_DELIVERY';
 const SHIPPING_FEE = 3_500;
 const FREE_SHIPPING_THRESHOLD = 100_000;
 const PRODUCT_ID_PATTERN = /^[A-Za-z0-9!+\-/=_|]{1,30}$/;
+const NPAY_REVIEW_COOKIE = '__Host-himawari_npay_review';
 
 const ENDPOINTS = {
   test: {
@@ -70,6 +71,29 @@ export function npayReviewTokenIsValid(value) {
   const expectedBuffer = Buffer.from(expected);
   const receivedBuffer = Buffer.from(received);
   return expectedBuffer.length === receivedBuffer.length && timingSafeEqual(expectedBuffer, receivedBuffer);
+}
+
+function cookieValue(request, name) {
+  const cookie = request?.headers?.get('cookie') || '';
+  for (const part of cookie.split(';')) {
+    const [cookieName, ...rest] = part.trim().split('=');
+    if (cookieName !== name) continue;
+    try {
+      return decodeURIComponent(rest.join('='));
+    } catch {
+      return '';
+    }
+  }
+  return '';
+}
+
+export function npayReviewRequestIsValid(request) {
+  return npayReviewTokenIsValid(cookieValue(request, NPAY_REVIEW_COOKIE));
+}
+
+export function npayReviewSessionCookie(value) {
+  if (!npayReviewTokenIsValid(value)) return '';
+  return `${NPAY_REVIEW_COOKIE}=${encodeURIComponent(clean(value))}; Path=/; HttpOnly; Secure; SameSite=Lax`;
 }
 
 export function npayConfiguration({ mode: requestedMode } = {}) {

@@ -10,6 +10,7 @@ import {
   npayProductId,
   npayPublicIsOpen,
   npayPublicConfiguration,
+  npayReviewRequestIsValid,
   npayReviewTokenIsValid,
   parseRequestedProductIds,
   productPageUrl,
@@ -44,8 +45,7 @@ function validateItems(input, products) {
   });
 }
 
-function backUrlFor(input, items, reviewToken = '') {
-  if (reviewToken) return `${SITE_ORIGIN}/npay-review/${encodeURIComponent(reviewToken)}`;
+function backUrlFor(input, items) {
   if (input?.context === 'product' && items.length === 1) {
     return `${SITE_ORIGIN}/product.html?id=${encodeURIComponent(items[0].product.id)}`;
   }
@@ -65,7 +65,8 @@ function xmlResponse(body, status = 200) {
 
 export async function fetchNpayConfig(request) {
   if (request.method !== 'GET') return methodNotAllowed(['GET']);
-  const review = npayReviewTokenIsValid(new URL(request.url).searchParams.get('reviewToken'));
+  const review = npayReviewRequestIsValid(request)
+    || npayReviewTokenIsValid(new URL(request.url).searchParams.get('reviewToken'));
   return json(npayPublicConfiguration({ review }));
 }
 
@@ -76,7 +77,7 @@ export async function fetchNpayOrder(request) {
   try {
     const input = await readJson(request, 32_768);
     const reviewToken = String(input?.reviewToken || '').trim();
-    const review = npayReviewTokenIsValid(reviewToken);
+    const review = npayReviewRequestIsValid(request) || npayReviewTokenIsValid(reviewToken);
     if (!review && !npayPublicIsOpen()) return json({ message: '네이버페이 정식 오픈 전 검수 중입니다.' }, 403);
     const config = npayConfiguration({ mode: review ? 'test' : undefined });
     if (!config.enabled) return json({ message: '네이버페이 설정을 확인하고 있습니다.' }, 503);
@@ -84,7 +85,7 @@ export async function fetchNpayOrder(request) {
     const body = buildOrderXml({
       config,
       items,
-      backUrl: backUrlFor(input, items, review ? reviewToken : ''),
+      backUrl: backUrlFor(input, items),
       naverInflowCode: readNaverInflowCode(request),
     });
     const response = await globalThis.fetch(config.orderRegistrationUrl, {
@@ -128,7 +129,7 @@ export async function fetchNpayWishlist(request) {
   try {
     const input = await readJson(request, 8_192);
     const reviewToken = String(input?.reviewToken || '').trim();
-    const review = npayReviewTokenIsValid(reviewToken);
+    const review = npayReviewRequestIsValid(request) || npayReviewTokenIsValid(reviewToken);
     if (!review && !npayPublicIsOpen()) return json({ message: '네이버페이 정식 오픈 전 검수 중입니다.' }, 403);
     const config = npayConfiguration({ mode: review ? 'test' : undefined });
     if (!config.enabled) return json({ message: '네이버페이 설정을 확인하고 있습니다.' }, 503);

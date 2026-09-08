@@ -2,13 +2,12 @@ let initialized = false;
 let currentCartItems = [];
 let config = null;
 let sdkPromise = null;
-let cardObserver = null;
-let cardCreationQueue = Promise.resolve();
 let sdkBlockedMessage = '';
 const pending = new Map();
 
-function reviewToken() {
-  return document.body?.dataset.npayReviewToken || '';
+function revealProductNpay(section) {
+  section.hidden = false;
+  document.querySelector('[data-sticky-npay]')?.removeAttribute('hidden');
 }
 
 function setStatus(section, message, isError = false) {
@@ -70,7 +69,7 @@ async function registerOrder(items, context, section) {
     const result = await runOnce(`order:${context}`, () => requestJson('/api/npay/order', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items, context, reviewToken: reviewToken() }),
+      body: JSON.stringify({ items, context }),
     }));
     setStatus(section, '네이버페이 주문서로 이동합니다.');
     return { key: result.key, merchantNo: result.merchantNo };
@@ -87,7 +86,7 @@ async function registerWishlist(productId, section) {
     const result = await runOnce(`wishlist:${productId}`, () => requestJson('/api/npay/wishlist', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ productId, reviewToken: reviewToken() }),
+      body: JSON.stringify({ productId }),
     }));
     setStatus(section, '네이버 찜 목록으로 이동합니다.');
     return { merchantId: result.merchantId, payProductId: result.payProductId };
@@ -102,14 +101,14 @@ async function createProductButton() {
   const container = section?.querySelector('[data-npay-product]');
   if (!section || !container || !config || !window.Npay?.order?.create || container.dataset.npayReady === 'true') return;
   if (sdkBlockedMessage) {
-    section.hidden = false;
+    revealProductNpay(section);
     setStatus(section, sdkBlockedMessage, true);
     return;
   }
   const productId = container.dataset.productId || new URLSearchParams(location.search).get('id');
   if (!productId) return;
 
-  section.hidden = false;
+  revealProductNpay(section);
   container.dataset.npayReady = 'true';
   try {
     await window.Npay.order.create({
@@ -140,87 +139,6 @@ async function createProductButton() {
     delete container.dataset.npayReady;
     setStatus(section, buttonErrorMessage(error), true);
   }
-}
-
-async function createCardButton(section) {
-  const container = section?.querySelector('[data-npay-card]');
-  if (!section?.isConnected || !container || container.dataset.npayReady === 'true') return;
-  const productId = container.dataset.productId;
-  if (!productId) return;
-  if (sdkBlockedMessage) {
-    setStatus(section, sdkBlockedMessage, true);
-    return;
-  }
-
-  container.dataset.npayReady = 'true';
-  try {
-    await window.Npay.order.create({
-      buttonKey: config.buttonKey,
-      containerId: container.id,
-      orderRegistrationVersion: '2.1',
-      type: 'template',
-      colorTheme: 'green',
-      enable: section.dataset.soldOut !== 'true',
-      components: {
-        wishlist: Boolean(reviewToken()),
-        talkTalk: false,
-        benefitMessage: false,
-        benefitCoachMark: false,
-      },
-      onBuyClick: () => {
-        if (section.dataset.hasOptions === 'true') {
-          const reviewOption = section.querySelector('[data-npay-review-option]');
-          if (reviewOption) {
-            if (!reviewOption.value) {
-              setStatus(section, '주문할 옵션을 먼저 선택해 주세요.', true);
-              reviewOption.focus();
-              return false;
-            }
-            return registerOrder([{ productId, optionId: reviewOption.value, quantity: 1 }], 'review', section);
-          }
-          location.assign(`/product.html?id=${encodeURIComponent(productId)}#product-options`);
-          return false;
-        }
-        return registerOrder([{ productId, quantity: 1 }], reviewToken() ? 'review' : 'product', section);
-      },
-      onWishlistClick: reviewToken() ? () => registerWishlist(productId, section) : undefined,
-    });
-  } catch (error) {
-    delete container.dataset.npayReady;
-    setStatus(section, buttonErrorMessage(error), true);
-  }
-}
-
-function queueCardButton(section) {
-  cardCreationQueue = cardCreationQueue
-    .then(async () => {
-      await createCardButton(section);
-      return new Promise((resolve) => window.setTimeout(resolve, 60));
-    })
-    .catch(() => {});
-}
-
-function createCardButtons() {
-  if (!config || !window.Npay?.order?.create) return;
-  const sections = [...document.querySelectorAll('[data-npay-card-section]')]
-    .filter((section) => section.querySelector('[data-npay-card]:not([data-npay-ready="true"])'));
-  if (!sections.length) return;
-
-  sections.forEach((section) => { section.hidden = false; });
-  if (!('IntersectionObserver' in window)) {
-    sections.forEach(queueCardButton);
-    return;
-  }
-  if (!cardObserver) {
-    cardObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        cardObserver.unobserve(entry.target);
-        queueCardButton(entry.target);
-      });
-    }, { rootMargin: '500px 0px' });
-  }
-  sections.forEach((section) => cardObserver.observe(section));
 }
 
 async function syncCartButton() {
@@ -261,7 +179,7 @@ async function syncCartButton() {
           setStatus(section, '장바구니에 상품을 먼저 담아 주세요.', true);
           return null;
         }
-        return registerOrder(latest, reviewToken() ? 'review-cart' : 'cart', section);
+        return registerOrder(latest, 'cart', section);
       },
     });
   } catch (error) {
@@ -275,7 +193,6 @@ export async function initializeNpay({ cartItems = [] } = {}) {
   if (initialized) {
     syncCartButton();
     createProductButton();
-    createCardButtons();
     return;
   }
   initialized = true;
@@ -285,21 +202,17 @@ export async function initializeNpay({ cartItems = [] } = {}) {
     syncCartButton();
   });
   document.addEventListener('himawari:product-ready', createProductButton);
-  document.addEventListener('himawari:npay-cards-ready', createCardButtons);
 
   try {
-    const token = reviewToken();
-    const configUrl = token ? `/api/npay/config?reviewToken=${encodeURIComponent(token)}` : '/api/npay/config';
-    config = await requestJson(configUrl);
+    config = await requestJson('/api/npay/config');
     if (!config.enabled) return;
     await loadSdk(config.sdkUrl);
     createProductButton();
-    createCardButtons();
     syncCartButton();
   } catch (error) {
     const productSection = document.querySelector('[data-npay-product-section]');
-    if (productSection) {
-      productSection.hidden = false;
+    if (productSection && config?.enabled) {
+      revealProductNpay(productSection);
       setStatus(productSection, '네이버페이 버튼을 준비하지 못했습니다. 잠시 후 다시 시도해 주세요.', true);
     }
   }

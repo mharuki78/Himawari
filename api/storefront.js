@@ -2,8 +2,8 @@ import { readFile } from 'node:fs/promises';
 
 import { methodNotAllowed } from './_lib/http.js';
 import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalog } from './_lib/products.js';
-import { renderCatalogPage, renderNpayReviewPage, renderProductNotFoundPage, renderProductPage } from './_lib/storefront.js';
-import { npayReviewTokenIsValid } from './_lib/npay.js';
+import { renderCatalogPage, renderProductNotFoundPage, renderProductPage } from './_lib/storefront.js';
+import { npayReviewRequestIsValid, npayReviewSessionCookie, npayReviewTokenIsValid } from './_lib/npay.js';
 import { listPublishedReviews } from './_lib/customer-features.js';
 import { applyInventoryReservations } from './_lib/inventory.js';
 import { productCategory, productFamilyKey } from '../assets/catalog-tools.js';
@@ -37,6 +37,19 @@ function privateHtml(body, status = 200) {
     },
   });
 }
+function reviewRedirect(location, cookie) {
+  return new Response(null, {
+    status: 302,
+    headers: {
+      Location: location,
+      'Set-Cookie': cookie,
+      'Cache-Control': 'private, no-store, max-age=0',
+      'X-Robots-Tag': 'noindex, nofollow, noarchive',
+      'Referrer-Policy': 'no-referrer',
+      'X-Content-Type-Options': 'nosniff',
+    },
+  });
+}
 async function template(name) {
   return readFile(new URL(`../${name}`, import.meta.url), 'utf8');
 }
@@ -53,7 +66,10 @@ export async function fetch(request) {
     if (page === 'npay-review') {
       const reviewToken = requestUrl.searchParams.get('token') || '';
       if (!npayReviewTokenIsValid(reviewToken)) return privateHtml('검수 페이지를 찾을 수 없습니다.', 404);
-      return privateHtml(renderNpayReviewPage(await template('templates/npay-review.html'), products, reviewToken));
+      const product = products.find((item) => !item.soldOut && item.image) || products[0];
+      if (!product) return privateHtml('검수할 상품이 없습니다.', 404);
+      const location = `${origin}/product.html?id=${encodeURIComponent(product.id)}`;
+      return reviewRedirect(location, npayReviewSessionCookie(reviewToken));
     }
     if (page === 'catalog') {
       return html(renderCatalogPage(await template('templates/products.html'), products, origin));
@@ -72,7 +88,8 @@ export async function fetch(request) {
       let reviewData = null;
       try { reviewData = await listPublishedReviews(product.id); } catch {}
       const familyProducts = products.filter((item) => productFamilyKey(item) === productFamilyKey(product));
-      return html(renderProductPage(source, product, origin, reviewData, familyProducts));
+      const body = renderProductPage(source, product, origin, reviewData, familyProducts);
+      return npayReviewRequestIsValid(request) ? privateHtml(body) : html(body);
     }
     return html('페이지를 찾을 수 없습니다.', 404);
   } catch {

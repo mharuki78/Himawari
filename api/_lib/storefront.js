@@ -98,41 +98,6 @@ function renderFeaturedProduct(product) {
   </article>`;
 }
 
-function reviewOptions(product) {
-  const options = Array.isArray(product.options) ? product.options : [];
-  if (!options.length) return '';
-  const values = options.map((option) => `<option value="${escapeHtml(option.id)}"${option.stock === 0 ? ' disabled' : ''}>${escapeHtml(option.label)}${option.stock === 0 ? ' · 품절' : ` · 재고 ${escapeHtml(option.stock)}`}</option>`).join('');
-  return `<label class="npay-review-option"><span>${escapeHtml(product.optionName || '옵션')}</span><select data-npay-review-option aria-label="${escapeHtml(product.name)} 옵션"><option value="">옵션을 선택하세요</option>${values}</select></label>`;
-}
-
-function renderNpayReviewProduct(product, index) {
-  const image = safeHttpsUrl(product.image);
-  const hasOptions = Array.isArray(product.options) && product.options.length > 0;
-  return `<article class="npay-review-card">
-    <div class="npay-review-media">${image ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(product.name)}" loading="lazy" decoding="async">` : '<span>이미지 없음</span>'}</div>
-    <div class="npay-review-body">
-      <p class="npay-review-model">${escapeHtml(product.model || product.id)}</p>
-      <h2>${escapeHtml(product.name)}</h2>
-      <p>${escapeHtml(product.tagline || product.description || '')}</p>
-      <strong>${KRW.format(product.price)}</strong>
-      ${reviewOptions(product)}
-      <button class="npay-review-cart-add" type="button" data-review-cart-add data-product-id="${escapeHtml(product.id)}"${product.soldOut ? ' disabled' : ''}>${product.soldOut ? '품절' : '검수 장바구니 담기'}</button>
-      <section class="npay-review-button" data-npay-card-section data-has-options="${hasOptions}" data-sold-out="${product.soldOut}" aria-label="${escapeHtml(product.name)} 네이버페이 테스트" hidden>
-        <div id="npay-review-${index}" data-npay-card data-product-id="${escapeHtml(product.id)}"></div>
-        <p class="npay-status" data-npay-status role="status" aria-live="polite"></p>
-      </section>
-    </div>
-  </article>`;
-}
-
-export function renderNpayReviewPage(template, products, reviewToken) {
-  const cards = products.map(renderNpayReviewProduct).join('\n');
-  return template
-    .replace('data-npay-review-token=""', `data-npay-review-token="${escapeHtml(reviewToken)}"`)
-    .replace('<!-- SERVER_REVIEW_PRODUCTS -->', cards || '<p>검수할 상품이 없습니다.</p>')
-    .replace('data-review-product-count>0<', `data-review-product-count>${products.length}<`);
-}
-
 function catalogSchema(products, origin) {
   return {
     '@context': 'https://schema.org',

@@ -536,13 +536,6 @@ html {
 .npay-button-container { width: 100%; min-width: 200px; height: 150px; overflow: hidden; }
 .npay-status { min-height: 1.2em; margin: .45rem 0 0; color: var(--moss); font-size: .65rem; line-height: 1.6; }
 .npay-status.is-error { color: var(--danger, #9A352F); }
-.npay-card-purchase { min-width: 200px; margin-top: .35rem; padding-top: .9rem; border-top: 1px solid color-mix(in srgb, var(--ink) 24%, transparent); }
-.npay-card-purchase[hidden] { display: none; }
-.npay-card-purchase__label { margin: 0 0 .45rem; color: var(--ink); font-size: .61rem; font-weight: 720; letter-spacing: .06em; }
-.npay-card-button-container { width: 100%; min-width: 200px; min-height: 40px; overflow: hidden; }
-.npay-card-purchase .npay-status:empty { min-height: 0; margin: 0; }
-.featured-product .npay-card-purchase { border-color: color-mix(in srgb, var(--cream) 35%, transparent); }
-.featured-product .npay-card-purchase__label { color: var(--cream); }
 .product-description { border-top: 1px solid var(--ink); }
 .product-description-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(19rem, .55fr); gap: clamp(4rem, 11vw, 12rem); align-items: start; }
 .product-description-heading { position: sticky; top: 12vh; }
@@ -1397,8 +1390,7 @@ html {
 }
 .home-promotion-dialog__close { border-color: var(--color-fog); border-radius: 50%; background: var(--cream); }
 
-.npay-purchase,
-.npay-card-purchase { border-color: var(--color-fog); }
+.npay-purchase { border-color: var(--color-fog); }
 .npay-status { color: var(--color-deep-wave); }
 
 .reel-showcase__controls button[aria-pressed="true"] { border-color: var(--moss); background: var(--moss); color: var(--color-on-sky); }

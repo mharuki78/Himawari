@@ -3,8 +3,9 @@ import { access, readdir, readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 import { fetch as productsHandler } from '../api/products.js';
+import { fetch as storefrontHandler } from '../api/storefront.js';
 import { publicProduct, seedCatalog } from '../api/_lib/products.js';
-import { renderCatalogPage, renderNpayReviewPage, renderProductNotFoundPage, renderProductPage } from '../api/_lib/storefront.js';
+import { renderCatalogPage, renderProductNotFoundPage, renderProductPage } from '../api/_lib/storefront.js';
 import { groupProductFamilies } from '../assets/catalog-tools.js';
 
 const products = seedCatalog().products.map(publicProduct);
@@ -170,9 +171,9 @@ test('개별 제품 원본 HTML에 이름·가격·이미지·구매정보를 �
   assert.match(html, /Npay로 구매/);
 });
 
-test('홈 제품 영역은 모든 카드에 Npay 버튼을 요청한다', async () => {
+test('홈 제품 목록에는 Npay 버튼을 요청하지 않는다', async () => {
   const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
-  assert.equal((html.match(/data-npay-cards/g) || []).length, 2);
+  assert.doesNotMatch(html, /data-npay-cards|data-npay-card/);
 });
 
 test('공통 푸터는 인스타그램과 유튜브 채널을 아이콘과 함께 제공한다', async () => {
@@ -188,24 +189,42 @@ test('공통 푸터는 인스타그램과 유튜브 채널을 아이콘과 함�
   assert.match(home, /"https:\/\/www\.youtube\.com\/@himawarikorea"/);
 });
 
-test('전체 제품 페이지는 대표 상품과 묶인 제품군 카드에 Npay 버튼을 요청한다', async () => {
+test('전체 제품 페이지는 Npay 버튼 없이 대표 상품과 묶인 제품군 카드를 제공한다', async () => {
   const template = await readFile(new URL('../templates/products.html', import.meta.url), 'utf8');
   const html = renderCatalogPage(template, products);
 
-  assert.equal((html.match(/data-npay-cards/g) || []).length, 2);
+  assert.doesNotMatch(html, /data-npay-cards|data-npay-card/);
   assert.equal((html.match(/data-server-rendered-product/g) || []).length, groupProductFamilies(products).length);
 });
 
-test('네이버페이 검수 페이지는 전체 상품과 테스트 주문·찜·장바구니 UI를 제공한다', async () => {
-  const template = await readFile(new URL('../templates/npay-review.html', import.meta.url), 'utf8');
-  const html = renderNpayReviewPage(template, products, 'review-token-example');
+test('네이버페이 검수 링크는 비공개 세션을 만든 뒤 실제 상품 상세페이지로 이동한다', async () => {
+  const previous = process.env.NPAY_REVIEW_TOKEN;
+  process.env.NPAY_REVIEW_TOKEN = 'review-token-example';
+  try {
+    const entry = await storefrontHandler(new Request('https://allaboutbag.com/api/storefront?page=npay-review&token=review-token-example'));
+    const cookie = entry.headers.get('set-cookie') || '';
+    assert.equal(entry.status, 302);
+    assert.match(entry.headers.get('location') || '', /^https:\/\/allaboutbag\.com\/product\.html\?id=/);
+    assert.match(cookie, /__Host-himawari_npay_review=/);
+    assert.match(cookie, /HttpOnly/);
+    assert.match(cookie, /Secure/);
+    assert.equal(entry.headers.get('x-robots-tag'), 'noindex, nofollow, noarchive');
 
-  assert.equal((html.match(/data-npay-card-section/g) || []).length, products.length);
-  assert.equal((html.match(/data-review-cart-add/g) || []).length, products.length);
-  assert.match(html, /data-npay-review-token="review-token-example"/);
-  assert.match(html, /연동 버전 v2\.1/);
-  assert.match(html, /data-npay-cart-section/);
-  assert.doesNotMatch(html, /SERVER_REVIEW_PRODUCTS/);
+    const productId = new URL(entry.headers.get('location')).searchParams.get('id');
+    const detail = await storefrontHandler(new Request(`https://allaboutbag.com/api/storefront?page=product&id=${encodeURIComponent(productId)}`, {
+      headers: { Cookie: cookie.split(';')[0] },
+    }));
+    const html = await detail.text();
+    assert.equal(detail.status, 200);
+    assert.equal(detail.headers.get('cache-control'), 'private, no-store, max-age=0');
+    assert.equal(detail.headers.get('x-robots-tag'), 'noindex, nofollow, noarchive');
+    assert.match(html, /class="product-detail-page"/);
+    assert.match(html, /data-npay-product data-product-id=/);
+    assert.doesNotMatch(html, /테스트 상품 검수|npay-review-products/);
+  } finally {
+    if (previous === undefined) delete process.env.NPAY_REVIEW_TOKEN;
+    else process.env.NPAY_REVIEW_TOKEN = previous;
+  }
 });
 
 test('제품 상세 구조화 데이터는 배송·반품·제품군 정보를 포함하고 모바일 빠른 구매를 제공한다', async () => {
