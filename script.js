@@ -150,6 +150,104 @@ document.querySelectorAll('[data-ambient-film]').forEach((film) => {
   respectMotionPreference();
 });
 
+function initializeBagJourney() {
+  const journey = document.querySelector('[data-bag-journey]');
+  const section = journey?.closest('.intro');
+  if (!journey || !section) return;
+  let journeyVisible = false;
+
+  const updatePosition = () => {
+    if (reducedMotion.matches || window.innerWidth <= 820) {
+      journey.style.removeProperty('--bag-shift');
+      journey.style.removeProperty('--bag-turn');
+      return;
+    }
+    if (!journeyVisible) return;
+    const rect = section.getBoundingClientRect();
+    const travel = Math.max(1, rect.height + window.innerHeight);
+    const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / travel));
+    journey.style.setProperty('--bag-shift', `${((progress - 0.5) * 30).toFixed(2)}px`);
+    journey.style.setProperty('--bag-turn', `${((progress - 0.5) * 3).toFixed(2)}deg`);
+  };
+
+  let frame = 0;
+  const requestPositionUpdate = () => {
+    if (frame) return;
+    frame = requestAnimationFrame(() => {
+      frame = 0;
+      updatePosition();
+    });
+  };
+  const visibility = new IntersectionObserver(([entry]) => {
+    journeyVisible = entry.isIntersecting;
+    journey.classList.toggle('is-in-view', entry.isIntersecting);
+    if (entry.isIntersecting) requestPositionUpdate();
+  }, { threshold: [0, 0.25] });
+
+  visibility.observe(section);
+  window.addEventListener('scroll', requestPositionUpdate, { passive: true });
+  window.addEventListener('resize', requestPositionUpdate, { passive: true });
+  reducedMotion.addEventListener?.('change', requestPositionUpdate);
+  updatePosition();
+}
+
+function initializeGamePreview() {
+  const preview = document.querySelector('[data-game-preview]');
+  const invite = preview?.closest('.game-invite');
+  if (!preview || !invite) return;
+  const visibility = new IntersectionObserver(([entry]) => {
+    invite.classList.toggle('is-previewing', entry.isIntersecting && entry.intersectionRatio >= 0.35);
+  }, { threshold: [0, 0.35, 0.7] });
+  invite.addEventListener('focusin', () => invite.classList.add('is-previewing'));
+  visibility.observe(invite);
+}
+
+function initializeCartFlight() {
+  document.addEventListener('himawari:cart-added', (event) => {
+    const trigger = event.detail?.button;
+    const target = document.querySelector('.rdcart-btn');
+    if (!(trigger instanceof Element) || !target) return;
+
+    target.classList.remove('rdcart-btn--received');
+    requestAnimationFrame(() => target.classList.add('rdcart-btn--received'));
+    window.setTimeout(() => target.classList.remove('rdcart-btn--received'), 520);
+    if (reducedMotion.matches || !target.animate) return;
+
+    const sourceImage = trigger.closest('.store-product-card, .featured-product, .product-detail-hero')?.querySelector('img:not([hidden])');
+    const sourceRect = (sourceImage || trigger).getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+    const flight = document.createElement('span');
+    flight.className = 'rdcart-flight';
+    flight.setAttribute('aria-hidden', 'true');
+    if (sourceImage?.currentSrc || sourceImage?.src) {
+      const image = document.createElement('img');
+      image.src = sourceImage.currentSrc || sourceImage.src;
+      image.alt = '';
+      flight.append(image);
+    }
+    const size = Math.max(46, Math.min(92, sourceRect.width * 0.24));
+    const startX = sourceRect.left + sourceRect.width / 2 - size / 2;
+    const startY = sourceRect.top + sourceRect.height / 2 - size / 2;
+    const moveX = targetRect.left + targetRect.width / 2 - size / 2 - startX;
+    const moveY = targetRect.top + targetRect.height / 2 - size / 2 - startY;
+    flight.style.setProperty('--flight-size', `${size}px`);
+    flight.style.left = `${startX}px`;
+    flight.style.top = `${startY}px`;
+    document.body.append(flight);
+    const animation = flight.animate([
+      { transform: 'translate3d(0, 0, 0) scale(1)', opacity: 0 },
+      { transform: 'translate3d(0, -18px, 0) scale(1)', opacity: 1, offset: 0.18 },
+      { transform: `translate3d(${moveX * 0.62}px, ${moveY * 0.32 - 34}px, 0) scale(.72)`, opacity: 1, offset: 0.62 },
+      { transform: `translate3d(${moveX}px, ${moveY}px, 0) scale(.18)`, opacity: 0.28 }
+    ], { duration: 680, easing: 'cubic-bezier(.22,.78,.28,1)', fill: 'forwards' });
+    animation.finished.catch(() => {}).finally(() => flight.remove());
+  });
+}
+
+initializeBagJourney();
+initializeGamePreview();
+initializeCartFlight();
+
 function renderManagedReels(rail, items) {
   if (!Array.isArray(items) || !items.length) return;
   const cards = items.map((item, index) => {
@@ -186,12 +284,22 @@ async function initReelShowcase() {
   const playReel = reelShowcase.querySelector('[data-reel-play]');
   const soundReel = reelShowcase.querySelector('[data-reel-sound]');
   const reelStatus = reelShowcase.querySelector('[data-reel-status]');
+  const reelProgress = reelShowcase.querySelector('[data-reel-progress]');
+  const reelProgressBar = reelShowcase.querySelector('[data-reel-progress-bar]');
   const initialReelIndex = Math.max(0, reelCards.findIndex((card) => card.hasAttribute('data-reel-initial')));
   let activeReelIndex = initialReelIndex;
   let reelSectionVisible = false;
   let reelSoundEnabled = false;
   let reelUserPaused = false;
   let reelScrollFrame = 0;
+
+  function updateReelProgress() {
+    const activeVideo = reelVideos[activeReelIndex];
+    const duration = Number.isFinite(activeVideo?.duration) && activeVideo.duration > 0 ? activeVideo.duration : 0;
+    const progress = duration ? Math.max(0, Math.min(100, (activeVideo.currentTime / duration) * 100)) : 0;
+    reelProgress?.setAttribute('aria-valuenow', String(Math.round(progress)));
+    reelProgressBar?.style.setProperty('--reel-progress', String(progress / 100));
+  }
 
   function updateReelControls() {
     const activeVideo = reelVideos[activeReelIndex];
@@ -200,6 +308,7 @@ async function initReelShowcase() {
     playReel.setAttribute('aria-pressed', String(!isPaused));
     soundReel.textContent = reelSoundEnabled ? '소리 끄기' : '소리 켜기';
     soundReel.setAttribute('aria-pressed', String(reelSoundEnabled));
+    updateReelProgress();
   }
 
   function playActiveReel() {
@@ -332,6 +441,10 @@ async function initReelShowcase() {
       reelCards[index].classList.remove('is-playing');
       updateReelControls();
     });
+    video.addEventListener('timeupdate', () => {
+      if (index === activeReelIndex) updateReelProgress();
+    });
+    video.addEventListener('durationchange', updateReelProgress);
   });
 
   const reelVisibility = new IntersectionObserver((entries) => {

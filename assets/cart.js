@@ -256,20 +256,23 @@
     optionId = String(optionId == null ? '' : optionId).trim();
     optionLabel = String(optionLabel == null ? '' : optionLabel).trim();
     stock = stock === '' || stock === null || stock === undefined ? null : Math.max(0, num(stock));
-    if (!name) return;
+    if (!name) return false;
     var hit = null;
+    var added = false;
     for (var i = 0; i < cart.length; i++) {
       if ((id && cart[i].id === id && cart[i].optionId === optionId) || (!id && cart[i].name === name)) { hit = cart[i]; break; }
     }
     if (hit) {
-      if (hit.q < MAX_Q && (hit.stock === null || hit.q < hit.stock)) hit.q++;
+      if (hit.q < MAX_Q && (hit.stock === null || hit.q < hit.stock)) { hit.q++; added = true; }
       if (id) hit.id = id;
       if (url) hit.url = url;
       if (price) hit.price = price;
     } else {
       cart.push({ id: id, name: name, price: num(price), q: 1, url: String(url || ''), optionId: optionId, optionLabel: optionLabel, stock: stock });
+      added = true;
     }
-    save(); paint();
+    if (added) { save(); paint(); }
+    return added;
   }
 
   function onDrawerClick(ev) {
@@ -398,14 +401,17 @@
       var b = ev.target.closest ? ev.target.closest('[data-cart-add]') : null;
       if (!b) return;
       ev.preventDefault();
-      add(b.getAttribute('data-name'), b.getAttribute('data-price'), b.getAttribute('data-url'), b.getAttribute('data-product-id'), b.getAttribute('data-option-id'), b.getAttribute('data-option-label'), b.getAttribute('data-stock'));
       if (b.dataset && b.dataset.rdcartBusy) return;
+      var added = add(b.getAttribute('data-name'), b.getAttribute('data-price'), b.getAttribute('data-url'), b.getAttribute('data-product-id'), b.getAttribute('data-option-id'), b.getAttribute('data-option-label'), b.getAttribute('data-stock'));
       var was = b.textContent;
       var wasLabel = b.getAttribute('aria-label');
       b.dataset.rdcartBusy = '1';
-      b.textContent = '담았습니다';
-      b.setAttribute('aria-label', b.getAttribute('data-name') + ' 담았습니다');
+      b.textContent = added ? '담았습니다' : '최대 수량입니다';
+      b.setAttribute('aria-label', added ? b.getAttribute('data-name') + ' 담았습니다' : b.getAttribute('data-name') + ' 최대 수량입니다');
       b.classList.add('rdcart-added');
+      if (added) {
+        document.dispatchEvent(new CustomEvent('himawari:cart-added', { detail: { button: b, productId: b.getAttribute('data-product-id') || '' } }));
+      }
       setTimeout(function () {
         b.textContent = was;
         if (wasLabel === null) b.removeAttribute('aria-label');

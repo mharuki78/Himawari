@@ -1138,7 +1138,7 @@ html {
 .catalog-more { display: block; min-width: 14rem; margin: 2rem auto 0; }
 .catalog-more[hidden] { display: none; }
 .product-variants { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; margin: 1rem 0 .25rem; }
-.product-variants span { width: 100%; color: var(--slate); font-size: .63rem; font-weight: 720; }
+.product-variants > [data-variant-summary] { width: 100%; color: var(--slate); font-size: .63rem; font-weight: 720; }
 .product-variants button { min-height: 44px; display: inline-flex; align-items: center; gap: .3rem; padding: .45rem .7rem; border: 1px solid var(--color-fog); border-radius: 999px; background: var(--color-sky-wash); color: var(--harbor); font: inherit; font-size: .62rem; font-weight: 680; cursor: pointer; transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease, box-shadow 180ms ease; }
 .product-variants button:hover { border-color: var(--moss); background: var(--snow); }
 .product-variants button[aria-pressed="true"] { border-color: var(--harbor); background: var(--moss); color: var(--color-on-sky); box-shadow: inset 0 0 0 1px var(--harbor); }
@@ -1418,4 +1418,142 @@ html {
   .home-promotion-dialog__link,
   .store-product-card,
   .featured-product { box-shadow: none; }
+}
+
+/* Product-led interaction layer: actual No.0422, restrained motion and clear feedback. */
+.intro .section-inner { position: relative; }
+
+.bag-journey {
+  --bag-shift: 0px;
+  --bag-turn: 0deg;
+  width: clamp(10.5rem, 14vw, 13.5rem);
+  display: grid;
+  gap: .65rem;
+  margin: clamp(2rem, 5vh, 4rem) 0 clamp(-2.25rem, -3vh, -1rem) auto;
+  padding: .75rem;
+  border: 1px solid color-mix(in srgb, var(--cream) 66%, transparent);
+  border-radius: var(--radius-card);
+  background: var(--cream);
+  color: var(--ink);
+  box-shadow: .45rem .45rem 0 color-mix(in srgb, var(--moss) 82%, transparent);
+  opacity: .86;
+  transform: translate3d(0, var(--bag-shift), 0) rotate(var(--bag-turn));
+  transition: border-color 180ms ease, box-shadow 180ms ease, opacity 260ms ease;
+}
+
+.bag-journey.is-in-view { opacity: 1; }
+.bag-journey__label,
+.bag-journey__action { font-size: .58rem; font-weight: 760; letter-spacing: .09em; }
+.bag-journey__label { text-transform: uppercase; }
+.bag-journey__action { min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-top: 1px solid var(--color-fog); }
+.bag-journey__visual { position: relative; display: block; overflow: hidden; border-radius: calc(var(--radius-card) - .45rem); background: var(--snow); }
+.bag-journey__visual img { position: relative; z-index: 1; display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; mix-blend-mode: multiply; }
+.bag-journey__orbit { position: absolute; inset: 10%; border: 1px dashed var(--moss); border-radius: 50%; opacity: .55; }
+
+@media (hover: hover) {
+  .bag-journey:hover,
+  .bag-journey:focus-visible { border-color: var(--moss); box-shadow: .65rem .65rem 0 color-mix(in srgb, var(--moss) 92%, transparent); }
+  .bag-journey:hover .bag-journey__orbit { transform: rotate(18deg); }
+}
+
+.store-product-media img {
+  transition: opacity 180ms ease, transform 220ms ease;
+}
+.store-product-media.is-variant-changing img { opacity: .16; transform: scale(.985); }
+
+.game-invite__product { position: relative; container-type: inline-size; }
+.game-invite__product > img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; image-rendering: pixelated; }
+.game-invite__preview { position: absolute; inset: 0 0 2.45rem; overflow: hidden; pointer-events: none; }
+.game-invite__product .game-invite__player { position: absolute; z-index: 3; bottom: 4%; left: 50%; width: 17cqi; height: auto; aspect-ratio: auto; object-fit: contain; transform: translateX(-50%); transform-origin: 50% 100%; image-rendering: pixelated; filter: drop-shadow(4px 5px 0 rgb(31 52 40 / .26)); }
+.game-invite__item { position: absolute; z-index: 2; top: 7%; width: 7cqi; height: 7cqi; min-width: 20px; min-height: 20px; border: max(2px, .7cqi) solid var(--ink); background: var(--accent-on-dark); box-shadow: max(2px, .7cqi) max(2px, .7cqi) 0 rgb(31 52 40 / .28); opacity: 0; }
+.game-invite__item--book { left: 20%; background: #d88f78; }
+.game-invite__item--bottle { left: 49%; width: 5cqi; border-radius: 42% 42% 18% 18%; background: #91b9ab; }
+.game-invite__item--pencil { left: 75%; width: 2.5cqi; background: #e4bd62; }
+.game-invite__spark { position: absolute; z-index: 4; bottom: 20%; left: 50%; width: 1.4cqi; height: 1.4cqi; background: #fff2b7; opacity: 0; }
+.game-invite__spark--two { margin: 0 0 3cqi 6cqi; background: var(--accent-on-dark); }
+
+.game-invite.is-previewing .game-invite__player { animation: game-preview-walk 1.05s steps(2, end) infinite; }
+.game-invite.is-previewing .game-invite__item { animation: game-preview-catch 3.6s cubic-bezier(.4, 0, .2, 1) infinite; }
+.game-invite.is-previewing .game-invite__item--bottle { animation-delay: 1.15s; }
+.game-invite.is-previewing .game-invite__item--pencil { animation-delay: 2.3s; }
+.game-invite.is-previewing .game-invite__spark { animation: game-preview-spark 3.6s steps(2, end) infinite; }
+.game-invite.is-previewing .game-invite__spark--two { animation-delay: .16s; }
+
+@keyframes game-preview-walk {
+  50% { transform: translateX(-50%) translateY(-2.2cqi) rotate(-1.5deg); }
+}
+@keyframes game-preview-catch {
+  0%, 8% { opacity: 0; transform: translate3d(0, -8cqi, 0) rotate(-8deg) scale(.88); }
+  16% { opacity: 1; }
+  68% { opacity: 1; transform: translate3d(0, 54cqi, 0) rotate(8deg) scale(1); }
+  82%, 100% { opacity: 0; transform: translate3d(calc(50cqi - var(--item-x, 0px)), 65cqi, 0) rotate(0) scale(.2); }
+}
+.game-invite__item--book { --item-x: 20cqi; }
+.game-invite__item--bottle { --item-x: 49cqi; }
+.game-invite__item--pencil { --item-x: 75cqi; }
+@keyframes game-preview-spark {
+  0%, 68%, 82%, 100% { opacity: 0; transform: scale(.3); }
+  72%, 78% { opacity: 1; transform: scale(1); }
+}
+
+.reel-showcase__progress { width: min(100%, 27rem); height: 5px; overflow: hidden; border-radius: var(--radius-pill); background: var(--color-fog); }
+.reel-showcase__progress > span { display: block; width: 100%; height: 100%; border-radius: inherit; background: var(--moss); transform: scaleX(var(--reel-progress, 0)); transform-origin: 0 50%; transition: transform 120ms linear; }
+
+.product-detail-visual { position: relative; }
+.product-hotspots { position: absolute; z-index: 3; inset: 0; pointer-events: none; }
+.product-hotspot-controls { position: absolute; inset: 0; }
+.product-hotspot {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--snow);
+  border-radius: 50%;
+  background: var(--harbor);
+  color: var(--snow);
+  box-shadow: 0 0 0 4px rgb(255 255 255 / .72), 4px 4px 0 rgb(31 52 40 / .28);
+  font: 760 .62rem/1 ui-monospace, SFMono-Regular, Consolas, monospace;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 180ms ease, background 180ms ease;
+}
+.product-hotspot--1 { top: 19%; left: 17%; }
+.product-hotspot--2 { top: 45%; right: 15%; }
+.product-hotspot--3 { top: 66%; left: 28%; }
+.product-hotspot[aria-pressed="true"] { background: var(--moss); color: var(--color-on-sky); transform: translateY(-2px); }
+.product-hotspot:focus-visible { outline: 3px solid var(--forest-focus); outline-offset: 5px; }
+.product-hotspot-panel { position: absolute; right: 1rem; bottom: 1rem; width: min(72%, 24rem); margin: 0; padding: .85rem 1rem; border: 1px solid var(--color-fog); border-radius: var(--radius-soft); background: var(--cream); color: var(--ink); box-shadow: 5px 5px 0 color-mix(in srgb, var(--moss) 76%, transparent); font-size: .68rem; font-weight: 690; line-height: 1.65; }
+
+.rdcart-flight { position: fixed; z-index: calc(var(--cart-z-drawer, 700) - 5); width: var(--flight-size); height: var(--flight-size); overflow: hidden; border: 1px solid var(--moss); border-radius: 18px; background: var(--snow); box-shadow: 5px 5px 0 color-mix(in srgb, var(--moss) 76%, transparent); pointer-events: none; }
+.rdcart-flight img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.rdcart-btn--received { animation: cart-received 480ms cubic-bezier(.2, .8, .3, 1); }
+@keyframes cart-received {
+  45% { transform: translateY(-5px) scale(1.08); }
+}
+
+@media (max-width: 820px) {
+  .bag-journey { width: min(100%, 13rem); margin: 2rem auto 0; transform: none; }
+  .product-hotspot--1 { top: 17%; left: 12%; }
+  .product-hotspot--2 { top: 42%; right: 10%; }
+  .product-hotspot--3 { top: 61%; left: 22%; }
+  .product-hotspot-panel { right: .75rem; bottom: .75rem; left: .75rem; width: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bag-journey,
+  .bag-journey__orbit,
+  .store-product-media img,
+  .reel-showcase__progress > span,
+  .product-hotspot { transition: none !important; transform: none !important; }
+  .game-invite__product .game-invite__player { transform: translateX(-50%); animation: none !important; }
+  .game-invite__item,
+  .game-invite__spark,
+  .rdcart-flight { display: none !important; }
+  .rdcart-btn--received { animation: none !important; }
+}
+
+@media (forced-colors: active) {
+  .bag-journey,
+  .product-hotspot-panel,
+  .product-hotspot { box-shadow: none; }
 }

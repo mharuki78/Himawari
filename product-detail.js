@@ -224,6 +224,48 @@ function setupCustomerFeatures(product) {
   });
 }
 
+function configureProductHotspots(product) {
+  const visual = document.querySelector('.product-detail-visual');
+  visual?.querySelector('[data-product-hotspots]')?.remove();
+  const points = Array.isArray(product.highlights)
+    ? product.highlights.map((point) => String(point || '').trim()).filter(Boolean).slice(0, 3)
+    : [];
+  if (!visual || !points.length) return;
+
+  const root = document.createElement('div');
+  root.className = 'product-hotspots';
+  root.dataset.productHotspots = '';
+  const controls = document.createElement('div');
+  controls.className = 'product-hotspot-controls';
+  const panel = document.createElement('p');
+  panel.className = 'product-hotspot-panel';
+  panel.id = `product-hotspot-panel-${String(product.id).replace(/[^a-z0-9_-]/gi, '')}`;
+  panel.setAttribute('role', 'status');
+  panel.setAttribute('aria-live', 'polite');
+
+  const activate = (index) => {
+    const buttons = [...controls.querySelectorAll('.product-hotspot')];
+    buttons.forEach((button, buttonIndex) => button.setAttribute('aria-pressed', String(buttonIndex === index)));
+    panel.textContent = `${String(index + 1).padStart(2, '0')} · ${points[index]}`;
+  };
+
+  points.forEach((point, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `product-hotspot product-hotspot--${index + 1}`;
+    button.textContent = String(index + 1).padStart(2, '0');
+    button.setAttribute('aria-label', `제품 포인트 ${index + 1}: ${point}`);
+    button.setAttribute('aria-controls', panel.id);
+    button.setAttribute('aria-pressed', String(index === 0));
+    button.addEventListener('click', () => activate(index));
+    button.addEventListener('focus', () => activate(index));
+    controls.append(button);
+  });
+  activate(0);
+  root.append(controls, panel);
+  visual.append(root);
+}
+
 function renderProduct(product) {
   const canonicalUrl = `${location.origin}${location.pathname}?id=${encodeURIComponent(product.id)}`;
   const description = String(product.description || product.tagline || '').slice(0, 160);
@@ -303,6 +345,7 @@ function renderProduct(product) {
     highlights.append(item);
   });
   highlightsSection.hidden = product.highlights.length === 0;
+  configureProductHotspots(product);
 
   const gallerySection = document.querySelector('[data-gallery-section]');
   const gallery = document.querySelector('[data-gallery]');
@@ -348,6 +391,16 @@ function renderUnavailable() {
   document.querySelector('[data-state-title]').focus?.();
 }
 
+function enhanceServerRenderedHotspots() {
+  if (content?.hidden) return;
+  const highlights = [...document.querySelectorAll('[data-highlights] li p')].map((node) => node.textContent);
+  if (!highlights.length) return;
+  configureProductHotspots({
+    id: new URLSearchParams(location.search).get('id') || 'product',
+    highlights,
+  });
+}
+
 async function loadProduct() {
   const id = new URLSearchParams(location.search).get('id');
   if (!id) {
@@ -367,4 +420,5 @@ async function loadProduct() {
   }
 }
 
+enhanceServerRenderedHotspots();
 loadProduct();

@@ -226,13 +226,63 @@ function createProductFooter(product) {
   return footer;
 }
 
+function transitionProductCardMedia(article, product) {
+  const media = article.querySelector('.store-product-media');
+  const image = media?.querySelector('img');
+  const fallback = media?.querySelector('.product-image-fallback');
+  if (!media || !image || !fallback) {
+    const replacement = createProductMedia(product, 'store-product-media');
+    replacement.querySelector('img')?.setAttribute('loading', 'eager');
+    media?.replaceWith(replacement);
+    return;
+  }
+
+  const swapId = String((Number(article.dataset.variantSwapId) || 0) + 1);
+  const imageUrl = safeHttpsUrl(product.image);
+  article.dataset.variantSwapId = swapId;
+  article.setAttribute('aria-busy', 'true');
+  media.classList.add('is-variant-changing');
+
+  let settled = false;
+  const finish = (loaded) => {
+    if (settled || article.dataset.variantSwapId !== swapId) return;
+    settled = true;
+    media.href = detailHref(product);
+    media.setAttribute('aria-label', `${product.name} 상세페이지 보기`);
+    image.alt = product.name;
+    if (loaded && imageUrl) {
+      image.src = imageUrl;
+      image.hidden = false;
+      fallback.hidden = true;
+      media.classList.remove('is-missing');
+    } else {
+      image.hidden = true;
+      fallback.hidden = false;
+      media.classList.add('is-missing');
+    }
+    requestAnimationFrame(() => {
+      media.classList.remove('is-variant-changing');
+      article.removeAttribute('aria-busy');
+    });
+  };
+
+  if (!imageUrl) {
+    finish(false);
+    return;
+  }
+  const preload = new Image();
+  preload.onload = () => finish(true);
+  preload.onerror = () => finish(false);
+  preload.src = imageUrl;
+  if (preload.complete) finish(preload.naturalWidth > 0);
+  window.setTimeout(() => finish(false), 8000);
+}
+
 function selectProductCardVariant(article, product, family) {
   if (article.dataset.selectedProductId === product.id) return;
   article.dataset.selectedProductId = product.id;
 
-  const media = createProductMedia(product, 'store-product-media');
-  media.querySelector('img')?.setAttribute('loading', 'eager');
-  article.querySelector('.store-product-media')?.replaceWith(media);
+  transitionProductCardMedia(article, product);
 
   const body = article.querySelector('.store-product-body');
   const label = body?.querySelector('.card-label');
