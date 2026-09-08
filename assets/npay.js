@@ -51,6 +51,7 @@ function runOnce(key, work) {
 }
 
 async function registerOrder(items, context, section) {
+  window.himawariTrack?.('Begin checkout', { destination: 'npay', context, itemCount: items.length });
   setStatus(section, '네이버페이 주문서를 준비하고 있습니다.');
   try {
     const result = await runOnce(`order:${context}`, () => requestJson('/api/npay/order', {
@@ -67,6 +68,7 @@ async function registerOrder(items, context, section) {
 }
 
 async function registerWishlist(productId, section) {
+  window.himawariTrack?.('Npay wishlist', { productId });
   setStatus(section, '네이버 찜 목록에 저장하고 있습니다.');
   try {
     const result = await runOnce(`wishlist:${productId}`, () => requestJson('/api/npay/wishlist', {

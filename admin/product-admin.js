@@ -6607,6 +6607,7 @@ var allowedImageTypes = /* @__PURE__ */ new Set(["image/jpeg", "image/png", "ima
 var maxMainImageSize = 8 * 1024 * 1024;
 var maxGalleryImageSize = 15 * 1024 * 1024;
 var maxGallery = 5;
+var longImageSegmentHeight = 6e3;
 var fieldNames = ["name", "model", "price", "naverDiscountRate", "tagline", "description", "highlights", "url", "stock", "optionName", "options", "mainImage", "gallery"];
 var products = [];
 var total = 0;
@@ -6664,7 +6665,7 @@ function setCreateMode() {
   mainImageInput.required = true;
   mainRequired.hidden = false;
   mainImageHelp.textContent = "JPG, PNG, WebP, AVIF \xB7 \uCD5C\uB300 8MB \xB7 1\uC7A5";
-  galleryHelp.textContent = "\uC0C1\uC138\uD398\uC774\uC9C0\uC5D0\uC11C \uC6D0\uBCF8 \uBE44\uC728\uB85C \uC774\uC5B4\uC11C \uBCF4\uC5EC\uC904 \uC774\uBBF8\uC9C0 \xB7 \uC7A5\uB2F9 \uCD5C\uB300 15MB \xB7 \uCD5C\uB300 5\uC7A5";
+  galleryHelp.textContent = "\uC0C1\uC138\uD398\uC774\uC9C0\uC5D0\uC11C \uC6D0\uBCF8 \uBE44\uC728\uB85C \uC774\uC5B4\uC11C \uBCF4\uC5EC\uC904 \uC774\uBBF8\uC9C0 \xB7 \uC7A5\uB2F9 \uCD5C\uB300 15MB \xB7 \uCD5C\uB300 5\uC7A5 \xB7 \uD55C \uC7A5\uC9DC\uB9AC \uAE34 \uC774\uBBF8\uC9C0\uB294 WebP\uB85C \uC790\uB3D9 \uBD84\uD560";
   resetLabel.textContent = "\uC785\uB825 \uC9C0\uC6B0\uAE30";
   submitLabel.textContent = "\uC81C\uD488 \uB4F1\uB85D";
 }
@@ -6745,7 +6746,7 @@ function beginEdit(product, trigger) {
   mainImageInput.required = false;
   mainRequired.hidden = true;
   mainImageHelp.textContent = "\uC0C8 \uD30C\uC77C\uC744 \uC120\uD0DD\uD558\uBA74 \uD604\uC7AC \uB300\uD45C \uC774\uBBF8\uC9C0\uB97C \uAD50\uCCB4\uD569\uB2C8\uB2E4. JPG, PNG, WebP, AVIF \xB7 \uCD5C\uB300 8MB";
-  galleryHelp.textContent = "\uC0C8 \uD30C\uC77C\uC744 \uC120\uD0DD\uD558\uBA74 \uD604\uC7AC \uC0C1\uC138 \uC774\uBBF8\uC9C0 \uC804\uCCB4\uB97C \uAD50\uCCB4\uD569\uB2C8\uB2E4. \uC7A5\uB2F9 \uCD5C\uB300 15MB \xB7 \uCD5C\uB300 5\uC7A5";
+  galleryHelp.textContent = "\uC0C8 \uD30C\uC77C\uC744 \uC120\uD0DD\uD558\uBA74 \uD604\uC7AC \uC0C1\uC138 \uC774\uBBF8\uC9C0 \uC804\uCCB4\uB97C \uAD50\uCCB4\uD569\uB2C8\uB2E4. \uC7A5\uB2F9 \uCD5C\uB300 15MB \xB7 \uCD5C\uB300 5\uC7A5 \xB7 \uD55C \uC7A5\uC9DC\uB9AC \uAE34 \uC774\uBBF8\uC9C0\uB294 WebP\uB85C \uC790\uB3D9 \uBD84\uD560";
   resetLabel.textContent = "\uC218\uC815 \uCDE8\uC18C";
   submitLabel.textContent = "\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5";
   field("name").value = product.name;
@@ -6841,6 +6842,45 @@ function validateFile(file, maximumSize, label) {
 function validateGalleryFiles(files) {
   if (files.length > maxGallery) return "\uC0C1\uC138 \uC774\uBBF8\uC9C0\uB294 \uCD5C\uB300 5\uAC1C\uAE4C\uC9C0 \uC120\uD0DD\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.";
   return files.map((file) => validateFile(file, maxGalleryImageSize, "\uC0C1\uC138 \uC774\uBBF8\uC9C0 \uD55C \uC7A5")).find(Boolean) || "";
+}
+function canvasBlob(canvas, type = "image/webp", quality = 0.84) {
+  return new Promise((resolve, reject) => canvas.toBlob((blob) => {
+    if (blob) resolve(blob);
+    else reject(new Error("\uC0C1\uC138 \uC774\uBBF8\uC9C0\uB97C WebP\uB85C \uBCC0\uD658\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4."));
+  }, type, quality));
+}
+async function optimizeGalleryFiles(files) {
+  if (files.length !== 1 || typeof createImageBitmap !== "function") return files;
+  const original = files[0];
+  let bitmap;
+  try {
+    bitmap = await createImageBitmap(original);
+    const segmentCount = Math.min(maxGallery, Math.max(1, Math.ceil(bitmap.height / longImageSegmentHeight)));
+    if (segmentCount === 1 && original.type === "image/webp" && original.size < 4 * 1024 * 1024) return files;
+    const sourceSegmentHeight = Math.ceil(bitmap.height / segmentCount);
+    const targetWidth = Math.min(bitmap.width, 1600);
+    const scale = targetWidth / bitmap.width;
+    const basename = original.name.replace(/\.[^.]+$/, "") || "detail";
+    const optimized = [];
+    for (let index = 0; index < segmentCount; index += 1) {
+      const sourceY = index * sourceSegmentHeight;
+      const sourceHeight = Math.min(sourceSegmentHeight, bitmap.height - sourceY);
+      if (sourceHeight <= 0) break;
+      const canvas = document.createElement("canvas");
+      canvas.width = targetWidth;
+      canvas.height = Math.max(1, Math.round(sourceHeight * scale));
+      canvas.getContext("2d", { alpha: false }).drawImage(bitmap, 0, sourceY, bitmap.width, sourceHeight, 0, 0, canvas.width, canvas.height);
+      const blob = await canvasBlob(canvas);
+      if (blob.size > maxGalleryImageSize) throw new Error("\uBCC0\uD658\uB41C \uC0C1\uC138 \uC774\uBBF8\uC9C0 \uD55C \uC7A5\uC774 15MB\uB97C \uCD08\uACFC\uD569\uB2C8\uB2E4. \uC6D0\uBCF8 \uD3ED\uC744 \uC904\uC5EC \uB2E4\uC2DC \uC2DC\uB3C4\uD574 \uC8FC\uC138\uC694.");
+      optimized.push(new File([blob], `${basename}-${String(index + 1).padStart(2, "0")}.webp`, { type: "image/webp", lastModified: Date.now() }));
+    }
+    return optimized;
+  } catch (error) {
+    if (error.message?.includes("15MB")) throw error;
+    return files;
+  } finally {
+    bitmap?.close?.();
+  }
 }
 function validateForm() {
   clearFormErrors();
@@ -7262,16 +7302,21 @@ productForm.addEventListener("submit", async (event) => {
   if (!values) return;
   const editingProduct = editTarget;
   const editingCatalogEtag = editEtag;
-  const uploadEntries = [
-    ...values.mainFile ? [{ file: values.mainFile, kind: "main" }] : [],
-    ...values.galleryFiles.map((file) => ({ file, kind: "gallery" }))
-  ];
+  let uploadEntries = [];
   submitButton.disabled = true;
   submitButton.setAttribute("aria-busy", "true");
   submitLabel.textContent = editingProduct ? "\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5 \uC911" : "\uC81C\uD488 \uB4F1\uB85D \uC911";
   resetButton.disabled = true;
-  formStatus.textContent = uploadEntries.length ? "\uC81C\uD488 \uC774\uBBF8\uC9C0\uB97C \uC548\uC804\uD558\uAC8C \uC5C5\uB85C\uB4DC\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4." : "\uC81C\uD488 \uC815\uBCF4\uB97C \uC800\uC7A5\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
+  formStatus.textContent = values.galleryFiles.length ? "\uAE34 \uC0C1\uC138 \uC774\uBBF8\uC9C0\uB97C \uC804\uC1A1\uC5D0 \uC54C\uB9DE\uAC8C \uC900\uBE44\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4." : "\uC81C\uD488 \uC815\uBCF4\uB97C \uC800\uC7A5\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
   try {
+    values.galleryFiles = await optimizeGalleryFiles(values.galleryFiles);
+    const preparedGalleryError = validateGalleryFiles(values.galleryFiles);
+    if (preparedGalleryError) throw new Error(preparedGalleryError);
+    uploadEntries = [
+      ...values.mainFile ? [{ file: values.mainFile, kind: "main" }] : [],
+      ...values.galleryFiles.map((file) => ({ file, kind: "gallery" }))
+    ];
+    if (uploadEntries.length) formStatus.textContent = "\uC81C\uD488 \uC774\uBBF8\uC9C0\uB97C \uC548\uC804\uD558\uAC8C \uC5C5\uB85C\uB4DC\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
     if (uploadEntries.length && !uploadsComplete) await uploadImages(uploadEntries);
     formStatus.textContent = "\uC81C\uD488 \uC815\uBCF4\uB97C \uC800\uC7A5\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
     const commonPayload = {

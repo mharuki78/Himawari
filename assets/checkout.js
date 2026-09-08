@@ -343,6 +343,7 @@
         })
       });
       var order = payload.order;
+      window.himawariTrack?.('Order submitted', { itemCount: items.length, total: Number(order.total || 0), paymentState: 'pending' });
       submitted = true;
       dirty = false;
       if (cartOrder) {

@@ -10,7 +10,7 @@ import { groupProductFamilies } from '../assets/catalog-tools.js';
 const products = seedCatalog().products.map(publicProduct);
 
 test('모든 HTML 페이지와 상품 템플릿이 공통 파비콘을 선언한다', async () => {
-  const rootFiles = ['about.html', 'account.html', 'checkout.html', 'contact.html', 'finder.html', 'game.html', 'index.html', 'privacy.html', 'terms.html'];
+  const rootFiles = ['404.html', 'about.html', 'account.html', 'checkout.html', 'contact.html', 'finder.html', 'game.html', 'index.html', 'privacy.html', 'terms.html'];
   const nestedFiles = await Promise.all(['admin', 'story', 'templates'].map(async (directory) => {
     const files = await readdir(new URL(`../${directory}/`, import.meta.url));
     return files.filter((file) => file.endsWith('.html')).map((file) => `${directory}/${file}`);
@@ -25,6 +25,26 @@ test('모든 HTML 페이지와 상품 템플릿이 공통 파비콘을 선언한
   }
 });
 
+test('모든 공개 페이지가 동일한 6개 주요 메뉴를 제공한다', async () => {
+  const rootFiles = ['404.html', 'about.html', 'account.html', 'checkout.html', 'contact.html', 'finder.html', 'game.html', 'index.html', 'privacy.html', 'terms.html'];
+  const storyFiles = (await readdir(new URL('../story/', import.meta.url)))
+    .filter((file) => file.endsWith('.html') && file !== 'admin.html')
+    .map((file) => `story/${file}`);
+  const templateFiles = ['templates/product.html', 'templates/products.html'];
+  const htmlFiles = [...rootFiles, ...storyFiles, ...templateFiles];
+  const expectedLabels = ['제품', '가방 찾기', '브랜드', '이야기', '게임', '연락하기'];
+  const expectedHrefs = ['/products.html', '/finder.html', '/about.html', '/story/', '/game.html', '/contact.html'];
+
+  for (const file of htmlFiles) {
+    const html = await readFile(new URL(`../${file}`, import.meta.url), 'utf8');
+    const navigation = html.match(/<nav class="site-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || '';
+    const links = [...navigation.matchAll(/<a href="([^"]+)"([^>]*)>([^<]+)<\/a>/g)];
+
+    assert.deepEqual(links.map((link) => link[3]), expectedLabels, `${file}: 메뉴 이름과 순서`);
+    assert.deepEqual(links.map((link) => link[1]), expectedHrefs, `${file}: 메뉴 링크`);
+  }
+});
+
 test('홈 첫 화면은 No.1884 도시형 히어로 영상과 릴스 8개를 제공한다', async () => {
   const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   const gearCss = await readFile(new URL('../assets/gear.css', import.meta.url), 'utf8');
@@ -35,6 +55,9 @@ test('홈 첫 화면은 No.1884 도시형 히어로 영상과 릴스 8개를 제
   assert.match(html, /class="home-film-hero__toggle"[^>]+data-ambient-toggle/);
   assert.doesNotMatch(html, /class="home-film-hero__image"/);
   assert.equal((html.match(/data-reel-card/g) || []).length, 8);
+  assert.equal((html.match(/data-reel-src=/g) || []).length, 8);
+  assert.equal((html.match(/preload="none"/g) || []).length, 8);
+  assert.doesNotMatch(html, /onclick=/);
   assert.match(html, /assets\/reel-0514-260527\.mp4/);
   assert.match(html, /assets\/reel-0514-260604\.mp4/);
   assert.match(html, /assets\/reel-0424-260528\.mp4/);
@@ -175,12 +198,30 @@ test('전체 제품 페이지는 대표 상품과 묶인 제품군 카드에 Npa
 
 test('제품 상세 구조화 데이터는 배송·반품·제품군 정보를 포함하고 모바일 빠른 구매를 제공한다', async () => {
   const template = await readFile(new URL('../templates/product.html', import.meta.url), 'utf8');
-  const html = renderProductPage(template, products[0]);
+  const family = products.filter((product) => product.model === products[0].model);
+  const html = renderProductPage(template, products[0], 'https://allaboutbag.com', null, family);
   assert.match(html, /OfferShippingDetails/);
   assert.match(html, /MerchantReturnPolicy/);
   assert.match(html, /ProductGroup/);
+  assert.match(html, /hasVariant/);
   assert.match(html, /data-mobile-purchase/);
   assert.match(html, /data-review-form/);
+});
+
+test('공개 사이트는 분석·성능 측정, 브랜드 404와 기본 보안 헤더를 제공한다', async () => {
+  const script = await readFile(new URL('../script.js', import.meta.url), 'utf8');
+  const notFound = await readFile(new URL('../404.html', import.meta.url), 'utf8');
+  const vercel = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
+  const globalHeaders = vercel.headers.find((entry) => entry.source === '/(.*)')?.headers || [];
+
+  assert.match(script, /\/_vercel\/insights\/script\.js/);
+  assert.match(script, /\/_vercel\/speed-insights\/script\.js/);
+  assert.match(script, /Add to cart/);
+  assert.match(notFound, /404 · Wrong pocket/);
+  assert.match(notFound, /나에게 맞는 가방 찾기/);
+  assert.equal(globalHeaders.some((header) => header.key === 'Content-Security-Policy'), true);
+  assert.equal(globalHeaders.some((header) => header.key === 'Permissions-Policy'), true);
+  assert.equal(globalHeaders.some((header) => header.key === 'X-Frame-Options'), true);
 });
 
 test('내부 주문서는 PG 미연결 경계와 앱 소유 검증을 명확히 표시한다', async () => {

@@ -702,6 +702,7 @@
     var result = chooseReward();
     if (result.coupon) {
       var saved = saveReward(result.coupon);
+      if (!result.retained) window.himawariTrack?.('Game coupon earned', { couponId: result.coupon.id, score: state.score, saved: Boolean(saved) });
       strong.textContent = result.retained ? result.coupon.label + ' 쿠폰 유지' : result.coupon.label + ' 쿠폰 획득!';
       copy.textContent = saved
         ? (result.retained ? '더 좋은 기존 쿠폰을 그대로 보관했습니다.' : '이 브라우저에 저장했습니다. 주문 조건을 충족하면 주문서에서 자동 선택됩니다.')

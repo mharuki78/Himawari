@@ -161,37 +161,69 @@ function renderGallery(product) {
     .map((url, index) => {
       const image = safeHttpsUrl(url);
       return image
-        ? `<div class="product-detail-image-frame product-detail-image-frame--longform"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.name)} 상세 이미지 ${index + 1}" loading="lazy" decoding="async"></div>`
+        ? `<div class="product-detail-image-frame product-detail-image-frame--longform"><img src="${escapeHtml(image)}" alt="${escapeHtml(product.name)} 상세 이미지 ${index + 1}" loading="lazy" decoding="async" fetchpriority="low"></div>`
         : '';
     })
     .join('');
 }
 
-export function renderProductPage(template, product, origin = 'https://allaboutbag.com', reviewData = null) {
+function productOffer(product, origin) {
+  return {
+    '@type': 'Offer',
+    priceCurrency: 'KRW',
+    price: String(product.price),
+    availability: product.soldOut ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
+    url: `${origin}/${checkoutHref(product)}`,
+    shippingDetails: { '@type': 'OfferShippingDetails', shippingRate: { '@type': 'MonetaryAmount', value: product.price >= 100000 ? '0' : '3500', currency: 'KRW' }, shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'KR' }, deliveryTime: { '@type': 'ShippingDeliveryTime', handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 2, unitCode: 'DAY' }, transitTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'DAY' } } },
+    hasMerchantReturnPolicy: { '@type': 'MerchantReturnPolicy', applicableCountry: 'KR', returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow', merchantReturnDays: 7, returnMethod: 'https://schema.org/ReturnByMail', returnFees: 'https://schema.org/ReturnShippingFees', returnShippingFeesAmount: { '@type': 'MonetaryAmount', value: '8000', currency: 'KRW' } },
+  };
+}
+
+function productVariantSchema(product, origin, groupId) {
+  const canonical = `${origin}/product.html?id=${encodeURIComponent(product.id)}`;
+  return {
+    '@type': 'Product',
+    '@id': `${canonical}#product`,
+    url: canonical,
+    name: product.name,
+    sku: product.model,
+    image: safeHttpsUrl(product.image) || undefined,
+    description: String(product.description || product.tagline || '').slice(0, 160),
+    brand: { '@type': 'Brand', name: 'Himawari' },
+    color: productColor(product) || undefined,
+    isVariantOf: { '@id': groupId },
+    offers: productOffer(product, origin),
+  };
+}
+
+export function renderProductPage(template, product, origin = 'https://allaboutbag.com', reviewData = null, familyProducts = [product]) {
   const canonical = `${origin}/product.html?id=${encodeURIComponent(product.id)}`;
   const description = String(product.description || product.tagline || '').slice(0, 160);
   const mainImage = safeHttpsUrl(product.image);
   const storeUrl = safeHttpsUrl(product.url) || 'https://smartstore.naver.com/baegot';
-  const checkoutUrl = `${origin}/${checkoutHref(product)}`;
+  const familyKey = productFamilyKey(product);
+  const groupId = `${origin}/product.html?family=${encodeURIComponent(familyKey)}#product-group`;
+  const variants = (Array.isArray(familyProducts) ? familyProducts : [product]).filter((item) => productFamilyKey(item) === familyKey);
+  const selectedSchema = productVariantSchema(product, origin, groupId);
+  selectedSchema.image = [mainImage, ...(Array.isArray(product.gallery) ? product.gallery.map(safeHttpsUrl) : [])].filter(Boolean);
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: product.name,
-    sku: product.model,
-    image: [mainImage, ...(Array.isArray(product.gallery) ? product.gallery.map(safeHttpsUrl) : [])].filter(Boolean),
-    description,
-    brand: { '@type': 'Brand', name: 'Himawari' },
-    color: productColor(product) || undefined,
-    isVariantOf: { '@type': 'ProductGroup', productGroupID: `himawari-${productFamilyKey(product)}`, name: `${product.model} 제품군`, variesBy: ['https://schema.org/color', 'https://schema.org/size'] },
-    offers: {
-      '@type': 'Offer', priceCurrency: 'KRW', price: String(product.price), availability: product.soldOut ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock', url: checkoutUrl,
-      shippingDetails: { '@type': 'OfferShippingDetails', shippingRate: { '@type': 'MonetaryAmount', value: product.price >= 100000 ? '0' : '3500', currency: 'KRW' }, shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'KR' }, deliveryTime: { '@type': 'ShippingDeliveryTime', handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 2, unitCode: 'DAY' }, transitTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'DAY' } } },
-      hasMerchantReturnPolicy: { '@type': 'MerchantReturnPolicy', applicableCountry: 'KR', returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow', merchantReturnDays: 7, returnMethod: 'https://schema.org/ReturnByMail', returnFees: 'https://schema.org/ReturnShippingFees', returnShippingFeesAmount: { '@type': 'MonetaryAmount', value: '8000', currency: 'KRW' } },
-    },
+    '@graph': [
+      {
+        '@type': 'ProductGroup',
+        '@id': groupId,
+        name: `${product.model} 제품군`,
+        productGroupID: `himawari-${familyKey}`,
+        variesBy: ['https://schema.org/color', 'https://schema.org/size'],
+        hasVariant: variants.map((variant) => ({ '@id': `${origin}/product.html?id=${encodeURIComponent(variant.id)}#product` })),
+      },
+      ...variants.filter((variant) => variant.id !== product.id).map((variant) => productVariantSchema(variant, origin, groupId)),
+      selectedSchema,
+    ],
   };
   if (reviewData?.aggregate?.count > 0) {
-    schema.aggregateRating = { '@type': 'AggregateRating', ratingValue: String(reviewData.aggregate.ratingValue), reviewCount: String(reviewData.aggregate.count), bestRating: '5', worstRating: '1' };
-    schema.review = reviewData.reviews.slice(0, 10).map((review) => ({ '@type': 'Review', author: { '@type': 'Person', name: review.reviewerName }, datePublished: review.createdAt.slice(0, 10), reviewBody: review.content, name: review.title || '구매 후기', reviewRating: { '@type': 'Rating', ratingValue: String(review.rating), bestRating: '5', worstRating: '1' } }));
+    selectedSchema.aggregateRating = { '@type': 'AggregateRating', ratingValue: String(reviewData.aggregate.ratingValue), reviewCount: String(reviewData.aggregate.count), bestRating: '5', worstRating: '1' };
+    selectedSchema.review = reviewData.reviews.slice(0, 10).map((review) => ({ '@type': 'Review', author: { '@type': 'Person', name: review.reviewerName }, datePublished: review.createdAt.slice(0, 10), reviewBody: review.content, name: review.title || '구매 후기', reviewRating: { '@type': 'Rating', ratingValue: String(review.rating), bestRating: '5', worstRating: '1' } }));
   }
 
   let html = template

@@ -79,6 +79,7 @@ const allowedImageTypes = new Set(['image/jpeg', 'image/png', 'image/webp', 'ima
 const maxMainImageSize = 8 * 1024 * 1024;
 const maxGalleryImageSize = 15 * 1024 * 1024;
 const maxGallery = 5;
+const longImageSegmentHeight = 6_000;
 const fieldNames = ['name', 'model', 'price', 'naverDiscountRate', 'tagline', 'description', 'highlights', 'url', 'stock', 'optionName', 'options', 'mainImage', 'gallery'];
 
 let products = [];
@@ -138,7 +139,7 @@ function setCreateMode() {
   mainImageInput.required = true;
   mainRequired.hidden = false;
   mainImageHelp.textContent = 'JPG, PNG, WebP, AVIF · 최대 8MB · 1장';
-  galleryHelp.textContent = '상세페이지에서 원본 비율로 이어서 보여줄 이미지 · 장당 최대 15MB · 최대 5장';
+  galleryHelp.textContent = '상세페이지에서 원본 비율로 이어서 보여줄 이미지 · 장당 최대 15MB · 최대 5장 · 한 장짜리 긴 이미지는 WebP로 자동 분할';
   resetLabel.textContent = '입력 지우기';
   submitLabel.textContent = '제품 등록';
 }
@@ -224,7 +225,7 @@ function beginEdit(product, trigger) {
   mainImageInput.required = false;
   mainRequired.hidden = true;
   mainImageHelp.textContent = '새 파일을 선택하면 현재 대표 이미지를 교체합니다. JPG, PNG, WebP, AVIF · 최대 8MB';
-  galleryHelp.textContent = '새 파일을 선택하면 현재 상세 이미지 전체를 교체합니다. 장당 최대 15MB · 최대 5장';
+  galleryHelp.textContent = '새 파일을 선택하면 현재 상세 이미지 전체를 교체합니다. 장당 최대 15MB · 최대 5장 · 한 장짜리 긴 이미지는 WebP로 자동 분할';
   resetLabel.textContent = '수정 취소';
   submitLabel.textContent = '변경사항 저장';
 
@@ -333,6 +334,48 @@ function validateGalleryFiles(files) {
   return files
     .map((file) => validateFile(file, maxGalleryImageSize, '상세 이미지 한 장'))
     .find(Boolean) || '';
+}
+
+function canvasBlob(canvas, type = 'image/webp', quality = .84) {
+  return new Promise((resolve, reject) => canvas.toBlob((blob) => {
+    if (blob) resolve(blob);
+    else reject(new Error('상세 이미지를 WebP로 변환하지 못했습니다.'));
+  }, type, quality));
+}
+
+async function optimizeGalleryFiles(files) {
+  if (files.length !== 1 || typeof createImageBitmap !== 'function') return files;
+  const original = files[0];
+  let bitmap;
+  try {
+    bitmap = await createImageBitmap(original);
+    const segmentCount = Math.min(maxGallery, Math.max(1, Math.ceil(bitmap.height / longImageSegmentHeight)));
+    if (segmentCount === 1 && original.type === 'image/webp' && original.size < 4 * 1024 * 1024) return files;
+    const sourceSegmentHeight = Math.ceil(bitmap.height / segmentCount);
+    const targetWidth = Math.min(bitmap.width, 1_600);
+    const scale = targetWidth / bitmap.width;
+    const basename = original.name.replace(/\.[^.]+$/, '') || 'detail';
+    const optimized = [];
+
+    for (let index = 0; index < segmentCount; index += 1) {
+      const sourceY = index * sourceSegmentHeight;
+      const sourceHeight = Math.min(sourceSegmentHeight, bitmap.height - sourceY);
+      if (sourceHeight <= 0) break;
+      const canvas = document.createElement('canvas');
+      canvas.width = targetWidth;
+      canvas.height = Math.max(1, Math.round(sourceHeight * scale));
+      canvas.getContext('2d', { alpha: false }).drawImage(bitmap, 0, sourceY, bitmap.width, sourceHeight, 0, 0, canvas.width, canvas.height);
+      const blob = await canvasBlob(canvas);
+      if (blob.size > maxGalleryImageSize) throw new Error('변환된 상세 이미지 한 장이 15MB를 초과합니다. 원본 폭을 줄여 다시 시도해 주세요.');
+      optimized.push(new File([blob], `${basename}-${String(index + 1).padStart(2, '0')}.webp`, { type: 'image/webp', lastModified: Date.now() }));
+    }
+    return optimized;
+  } catch (error) {
+    if (error.message?.includes('15MB')) throw error;
+    return files;
+  } finally {
+    bitmap?.close?.();
+  }
 }
 
 function validateForm() {
@@ -787,20 +830,23 @@ productForm.addEventListener('submit', async (event) => {
   if (!values) return;
   const editingProduct = editTarget;
   const editingCatalogEtag = editEtag;
-  const uploadEntries = [
-    ...(values.mainFile ? [{ file: values.mainFile, kind: 'main' }] : []),
-    ...values.galleryFiles.map((file) => ({ file, kind: 'gallery' })),
-  ];
+  let uploadEntries = [];
 
   submitButton.disabled = true;
   submitButton.setAttribute('aria-busy', 'true');
   submitLabel.textContent = editingProduct ? '변경사항 저장 중' : '제품 등록 중';
   resetButton.disabled = true;
-  formStatus.textContent = uploadEntries.length
-    ? '제품 이미지를 안전하게 업로드하고 있습니다.'
-    : '제품 정보를 저장하고 있습니다.';
+  formStatus.textContent = values.galleryFiles.length ? '긴 상세 이미지를 전송에 알맞게 준비하고 있습니다.' : '제품 정보를 저장하고 있습니다.';
 
   try {
+    values.galleryFiles = await optimizeGalleryFiles(values.galleryFiles);
+    const preparedGalleryError = validateGalleryFiles(values.galleryFiles);
+    if (preparedGalleryError) throw new Error(preparedGalleryError);
+    uploadEntries = [
+      ...(values.mainFile ? [{ file: values.mainFile, kind: 'main' }] : []),
+      ...values.galleryFiles.map((file) => ({ file, kind: 'gallery' })),
+    ];
+    if (uploadEntries.length) formStatus.textContent = '제품 이미지를 안전하게 업로드하고 있습니다.';
     if (uploadEntries.length && !uploadsComplete) await uploadImages(uploadEntries);
     formStatus.textContent = '제품 정보를 저장하고 있습니다.';
     const commonPayload = {

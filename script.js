@@ -1,17 +1,86 @@
+function initializeSiteInsights() {
+  window.va = window.va || function () {
+    (window.vaq = window.vaq || []).push(arguments);
+  };
+  window.himawariTrack = function (name, data = {}) {
+    const safeData = Object.fromEntries(Object.entries(data)
+      .filter(([, value]) => ['string', 'number', 'boolean'].includes(typeof value))
+      .map(([key, value]) => [key.slice(0, 80), typeof value === 'string' ? value.slice(0, 180) : value]));
+    window.va('event', { name: String(name).slice(0, 100), data: safeData });
+  };
+
+  [
+    { src: '/_vercel/insights/script.js', name: 'vercel-analytics' },
+    { src: '/_vercel/speed-insights/script.js', name: 'vercel-speed-insights' },
+  ].forEach(({ src, name }) => {
+    if (document.querySelector(`script[data-site-insight="${name}"]`)) return;
+    const script = document.createElement('script');
+    script.src = src;
+    script.defer = true;
+    script.dataset.siteInsight = name;
+    document.head.append(script);
+  });
+
+  document.addEventListener('click', (event) => {
+    const target = event.target.closest?.('a,button');
+    if (!target) return;
+    if (target.matches('[data-cart-add]')) window.himawariTrack('Add to cart', { productId: target.dataset.productId || 'unknown' });
+    if (target.matches('.direct-buy-link,[data-direct-buy],[data-closing-buy],[data-sticky-buy]')) window.himawariTrack('Begin checkout', { destination: 'internal-order' });
+    if (target.closest('.store-product-card,.featured-product') && target.matches('a[href*="product.html"]')) window.himawariTrack('Select product', { href: target.getAttribute('href') || '' });
+    if (target.matches('[data-wishlist-toggle]')) window.himawariTrack('Wishlist', { productId: target.dataset.productId || 'unknown' });
+  });
+
+  const productId = new URLSearchParams(window.location.search).get('id');
+  if (/\/product(?:\.html)?$/.test(window.location.pathname) && productId) window.himawariTrack('View product', { productId });
+  if (/\/checkout(?:\.html)?$/.test(window.location.pathname)) window.himawariTrack('View checkout');
+}
+
+initializeSiteInsights();
+
+function syncSiteNavigation() {
+  const siteNavigation = document.querySelector('.site-nav');
+  if (!siteNavigation) return;
+
+  const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+  const navigationItems = [
+    { label: '제품', href: '/products.html', active: /\/(?:products|product)(?:\.html|\/|$)/.test(currentPath) || currentPath.includes('/templates/product') },
+    { label: '가방 찾기', href: '/finder.html', active: /\/finder(?:\.html|\/|$)/.test(currentPath) },
+    { label: '브랜드', href: '/about.html', active: /\/about(?:\.html|\/|$)/.test(currentPath) },
+    { label: '이야기', href: '/story/', active: currentPath === '/story' || currentPath.startsWith('/story/') },
+    { label: '게임', href: '/game.html', active: /\/game(?:\.html|\/|$)/.test(currentPath) },
+    { label: '연락하기', href: '/contact.html', active: /\/contact(?:\.html|\/|$)/.test(currentPath) },
+  ];
+
+  const links = navigationItems.map((item) => {
+    const link = document.createElement('a');
+    link.href = item.href;
+    link.textContent = item.label;
+    if (item.active) link.setAttribute('aria-current', 'page');
+    return link;
+  });
+
+  siteNavigation.replaceChildren(...links);
+}
+
+syncSiteNavigation();
+
 const menuButton = document.querySelector('.menu-button');
 const navigation = document.querySelector('.site-nav');
 const menuLabel = menuButton.querySelector('.sr-only');
+const siteHeader = document.querySelector('.site-header');
 
 function closeMenu({ restoreFocus = false } = {}) {
   menuButton.setAttribute('aria-expanded', 'false');
   menuLabel.textContent = '메뉴 열기';
   navigation.classList.remove('is-open');
+  navigation.style.removeProperty('--mobile-menu-top');
   document.body.style.overflow = '';
   if (restoreFocus) menuButton.focus();
 }
 
 menuButton.addEventListener('click', () => {
   const willOpen = menuButton.getAttribute('aria-expanded') !== 'true';
+  if (willOpen && siteHeader) navigation.style.setProperty('--mobile-menu-top', `${Math.round(siteHeader.getBoundingClientRect().bottom)}px`);
   menuButton.setAttribute('aria-expanded', String(willOpen));
   menuLabel.textContent = willOpen ? '메뉴 닫기' : '메뉴 열기';
   navigation.classList.toggle('is-open', willOpen);
@@ -108,7 +177,7 @@ if (reelShowcase) {
 
   function playActiveReel() {
     reelVideos.forEach((video, index) => {
-      if (index !== activeReelIndex) video.pause();
+      if (index !== activeReelIndex) releaseReel(video);
     });
 
     const activeVideo = reelVideos[activeReelIndex];
@@ -119,12 +188,31 @@ if (reelShowcase) {
       return;
     }
 
+    ensureReelLoaded(activeVideo);
     activeVideo.play().catch(() => {
       reelSoundEnabled = false;
       activeVideo.muted = true;
       activeVideo.play().catch(updateReelControls);
     });
     updateReelControls();
+  }
+
+  function ensureReelLoaded(video) {
+    if (video.dataset.reelLoaded === 'true' || !video.dataset.reelSrc) return;
+    const source = document.createElement('source');
+    source.src = video.dataset.reelSrc;
+    source.type = 'video/mp4';
+    video.append(source);
+    video.dataset.reelLoaded = 'true';
+    video.load();
+  }
+
+  function releaseReel(video) {
+    video.pause();
+    if (video.dataset.reelLoaded !== 'true') return;
+    video.replaceChildren();
+    delete video.dataset.reelLoaded;
+    video.load();
   }
 
   function setActiveReel(nextIndex) {
@@ -186,7 +274,9 @@ if (reelShowcase) {
 
   previousReel.addEventListener('click', () => scrollToReel(activeReelIndex - 1));
   nextReel.addEventListener('click', () => scrollToReel(activeReelIndex + 1));
-  window.himawariSelectReel = scrollToReel;
+  reelCards.forEach((card, index) => {
+    card.querySelector('[data-reel-select]')?.addEventListener('click', () => scrollToReel(index));
+  });
 
   playReel.addEventListener('click', () => {
     const activeVideo = reelVideos[activeReelIndex];
@@ -221,7 +311,7 @@ if (reelShowcase) {
     const entry = entries[0];
     reelSectionVisible = entry.isIntersecting && entry.intersectionRatio >= 0.25;
     if (reelSectionVisible) playActiveReel();
-    else reelVideos.forEach((video) => video.pause());
+    else reelVideos.forEach(releaseReel);
     updateReelControls();
   }, { threshold: [0, 0.25, 0.6] });
 

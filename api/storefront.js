@@ -5,6 +5,7 @@ import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalo
 import { renderCatalogPage, renderProductNotFoundPage, renderProductPage } from './_lib/storefront.js';
 import { listPublishedReviews } from './_lib/customer-features.js';
 import { applyInventoryReservations } from './_lib/inventory.js';
+import { productFamilyKey } from '../assets/catalog-tools.js';
 
 function html(body, status = 200) {
   return new Response(body, {
@@ -38,7 +39,8 @@ export async function fetch(request) {
       if (!product) return html(renderProductNotFoundPage(source), 404);
       let reviewData = null;
       try { reviewData = await listPublishedReviews(product.id); } catch {}
-      return html(renderProductPage(source, product, origin, reviewData));
+      const familyProducts = products.filter((item) => productFamilyKey(item) === productFamilyKey(product));
+      return html(renderProductPage(source, product, origin, reviewData, familyProducts));
     }
     return html('페이지를 찾을 수 없습니다.', 404);
   } catch {
