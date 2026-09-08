@@ -33,6 +33,15 @@ export function productColor(product) {
   return COLOR_WORDS.find((color) => text.includes(color)) || '';
 }
 
+export function productVariantLabel(product) {
+  const name = String(product?.name || '').trim();
+  const modelMatch = name.match(/(?:no\.?)?\s*\d{3,5}[a-z]?/i);
+  const suffix = modelMatch
+    ? name.slice((modelMatch.index || 0) + modelMatch[0].length).replace(/^[\s+·\-_/]+/, '').trim()
+    : '';
+  return suffix || productColor(product) || String(product?.model || '기본');
+}
+
 export function groupProductFamilies(products) {
   const families = new Map();
   (Array.isArray(products) ? products : []).forEach((product) => {

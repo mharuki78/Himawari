@@ -1090,6 +1090,7 @@ html {
   .reel-rail { scroll-snap-type: none; }
   .reel-card { transition: none; }
   .store-product-card { transition: none; }
+  .product-variants button { transition: none; }
   .store-product-card:hover,
   .store-product-card:focus-within { transform: none; }
   .reel-card__media video { visibility: hidden; }
@@ -1145,8 +1146,10 @@ html {
 .catalog-more[hidden] { display: none; }
 .product-variants { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; margin: 1rem 0 .25rem; }
 .product-variants span { width: 100%; color: var(--slate); font-size: .63rem; font-weight: 720; }
-.product-variants a { min-height: 36px; display: inline-flex; align-items: center; padding: .35rem .65rem; border: 1px solid var(--color-fog); border-radius: 999px; background: var(--color-sky-wash); font-size: .62rem; }
-.product-variants a:hover { border-color: var(--moss); background: var(--snow); }
+.product-variants button { min-height: 44px; display: inline-flex; align-items: center; gap: .3rem; padding: .45rem .7rem; border: 1px solid var(--color-fog); border-radius: 999px; background: var(--color-sky-wash); color: var(--harbor); font: inherit; font-size: .62rem; font-weight: 680; cursor: pointer; transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease, box-shadow 180ms ease; }
+.product-variants button:hover { border-color: var(--moss); background: var(--snow); }
+.product-variants button[aria-pressed="true"] { border-color: var(--harbor); background: var(--moss); color: var(--color-on-sky); box-shadow: inset 0 0 0 1px var(--harbor); }
+.product-variants .product-variant-check { width: .75rem; color: currentColor; font-size: .68rem; line-height: 1; text-align: center; }
 .product-low-stock { width: max-content; padding: .24rem .5rem; border-radius: 999px; background: #fff2dc; color: #8a5712; font-size: .58rem; font-weight: 760; }
 .finder-main { padding-top: clamp(8rem, 14vh, 11rem); }
 .finder-hero, .finder-form, .finder-results { width: min(100% - (var(--page-pad) * 2), 76rem); margin-inline: auto; }

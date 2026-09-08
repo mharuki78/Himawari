@@ -1,4 +1,4 @@
-import { CATALOG_CATEGORIES, filterAndSortFamilies, groupProductFamilies } from './assets/catalog-tools.js';
+import { CATALOG_CATEGORIES, filterAndSortFamilies, groupProductFamilies, productVariantLabel } from './assets/catalog-tools.js';
 
 const productLists = document.querySelectorAll('[data-products]');
 const featuredProductSlots = document.querySelectorAll('[data-featured-product]');
@@ -136,7 +136,11 @@ function createWishlistButton(product) {
   button.setAttribute('aria-label', `${product.name} 관심상품 저장`);
   const label = document.createElement('span');
   label.dataset.wishlistLabel = '';
-  label.textContent = '관심상품 저장';
+  const savedProducts = window.HimawariMember?.wishlist?.() || [];
+  const selected = savedProducts.includes(product.id);
+  button.classList.toggle('is-selected', selected);
+  button.setAttribute('aria-pressed', String(selected));
+  label.textContent = selected ? '관심상품 저장됨' : '관심상품 저장';
   button.append(label);
   return button;
 }
@@ -245,9 +249,55 @@ function createPriceBlock(product) {
   return block;
 }
 
+function createProductFooter(product, includeNpay = false) {
+  const footer = document.createElement('div');
+  footer.className = 'store-product-footer';
+  const actions = document.createElement('div');
+  actions.className = 'store-product-actions';
+  actions.append(createDetailLink(product), createCartButton(product), createWishlistButton(product), createDirectBuyLink(product));
+  footer.append(createPriceBlock(product), actions);
+  if (includeNpay) footer.append(createNpaySection(product));
+  return footer;
+}
+
+function selectProductCardVariant(article, product, family, includeNpay) {
+  if (article.dataset.selectedProductId === product.id) return;
+  article.dataset.selectedProductId = product.id;
+
+  const media = createProductMedia(product, 'store-product-media');
+  media.querySelector('img')?.setAttribute('loading', 'eager');
+  article.querySelector('.store-product-media')?.replaceWith(media);
+
+  const body = article.querySelector('.store-product-body');
+  const label = body?.querySelector('.card-label');
+  const heading = body?.querySelector('h3');
+  const tagline = body?.querySelector('.product-tagline');
+  const footer = body?.querySelector('.store-product-footer');
+  if (label) label.textContent = product.model;
+  heading?.replaceWith(productNameHeading(product));
+  if (tagline) tagline.textContent = product.tagline || '일상에 자연스럽게 맞는 가방입니다.';
+  footer?.replaceWith(createProductFooter(product, includeNpay));
+
+  const selectedLabel = productVariantLabel(product);
+  const summary = body?.querySelector('[data-variant-summary]');
+  if (summary) summary.textContent = `${family.variants.length}가지 중 ${selectedLabel} 선택`;
+  body?.querySelectorAll('[data-product-variant]').forEach((button) => {
+    const selected = button.dataset.productVariant === product.id;
+    button.classList.toggle('is-selected', selected);
+    button.setAttribute('aria-pressed', String(selected));
+    const check = button.querySelector('[data-variant-check]');
+    if (check) check.textContent = selected ? '✓' : '';
+  });
+  const status = body?.querySelector('[data-variant-status]');
+  if (status) status.textContent = `${selectedLabel} 옵션이 선택되었습니다. 상세 보기를 누르면 선택한 제품 페이지로 이동합니다.`;
+
+  document.dispatchEvent(new CustomEvent('himawari:npay-cards-ready'));
+}
+
 function createProductCard(product, { includeNpay = false, family = null } = {}) {
   const article = document.createElement('article');
   article.className = 'store-product-card card reveal';
+  article.dataset.selectedProductId = product.id;
   const body = document.createElement('div');
   body.className = 'store-product-body';
   const label = document.createElement('p');
@@ -256,27 +306,40 @@ function createProductCard(product, { includeNpay = false, family = null } = {})
   const tagline = document.createElement('p');
   tagline.className = 'product-tagline';
   tagline.textContent = product.tagline || '일상에 자연스럽게 맞는 가방입니다.';
-  const footer = document.createElement('div');
-  footer.className = 'store-product-footer';
-  const actions = document.createElement('div');
-  actions.className = 'store-product-actions';
-  actions.append(createDetailLink(product), createCartButton(product), createWishlistButton(product), createDirectBuyLink(product));
-  footer.append(createPriceBlock(product), actions);
-  if (includeNpay) footer.append(createNpaySection(product));
+  const footer = createProductFooter(product, includeNpay);
   body.append(label, productNameHeading(product), tagline, footer);
   if (family?.variants?.length > 1) {
     const variants = document.createElement('div');
     variants.className = 'product-variants';
+    variants.setAttribute('role', 'group');
+    variants.setAttribute('aria-label', `${product.model} 제품 옵션`);
     const summary = document.createElement('span');
-    summary.textContent = `${family.variants.length}가지 선택`;
+    summary.dataset.variantSummary = '';
+    summary.textContent = `${family.variants.length}가지 중 ${productVariantLabel(product)} 선택`;
     variants.append(summary);
     family.variants.slice(0, 6).forEach((variant) => {
-      const link = document.createElement('a');
-      link.href = detailHref(variant);
-      link.textContent = variant.name.match(/(블랙|블루|핑크|카키|아이보리|실버|그레이|베이지|브라운|민트|퍼플|레드|옐로|오렌지|그린|네이비|화이트)M?/)?.[0] || variant.model;
-      link.setAttribute('aria-label', `${variant.name} 보기`);
-      variants.append(link);
+      const button = document.createElement('button');
+      const selected = variant.id === product.id;
+      button.type = 'button';
+      button.dataset.productVariant = variant.id;
+      button.classList.toggle('is-selected', selected);
+      button.setAttribute('aria-pressed', String(selected));
+      button.setAttribute('aria-label', `${variant.name} 옵션 선택`);
+      const check = document.createElement('span');
+      check.className = 'product-variant-check';
+      check.dataset.variantCheck = '';
+      check.setAttribute('aria-hidden', 'true');
+      check.textContent = selected ? '✓' : '';
+      button.append(check, productVariantLabel(variant));
+      button.addEventListener('click', () => selectProductCardVariant(article, variant, family, includeNpay));
+      variants.append(button);
     });
+    const status = document.createElement('span');
+    status.className = 'sr-only';
+    status.dataset.variantStatus = '';
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    variants.append(status);
     body.insertBefore(variants, footer);
   }
   article.append(createProductMedia(product, 'store-product-media'), body);
