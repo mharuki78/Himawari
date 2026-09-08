@@ -55,7 +55,7 @@
         <div class="section-inner">
           <div class="game-workshop__head">
             <div><p class="kicker">Two stage adventure</p><h2 id="workshop-title"><span>캠퍼스 등굣길을 걷고</span><span>오늘의 가방을 완성하세요.</span></h2></div>
-            <p>모바일 방향키를 누르거나 키보드의 화살표·WASD로 움직이세요. 화면을 벗어나면 게임은 자동으로 멈춥니다.</p>
+            <p>방향키로 움직이고, 점프로 위험물을 넘거나 새총으로 아령을 부수세요. 화면을 벗어나면 게임은 자동으로 멈춥니다.</p>
           </div>
 
           <section class="game-rules" aria-labelledby="game-rules-title">
@@ -65,7 +65,7 @@
             </div>
             <ol>
               <li><span aria-hidden="true">01</span><div><strong>35초 동안 모으기</strong><p>방향키로 움직여 책·노트북·물병·필통을 모으세요.</p></div></li>
-              <li><span aria-hidden="true">02</span><div><strong>위험한 물건 피하기</strong><p>아령과 잉크병에 닿으면 생명이 줄어요. 생명은 3개입니다.</p></div></li>
+              <li><span aria-hidden="true">02</span><div><strong>점프하고 새총 쏘기</strong><p>점프로 위험물을 넘고, 새총으로 아령을 부수면 보너스 점수를 받아요.</p></div></li>
               <li><span aria-hidden="true">03</span><div><strong>가방 정리하고 쿠폰 받기</strong><p>모은 물건을 알맞은 수납칸에 넣으면 점수에 맞는 활성 쿠폰이 저장됩니다.</p></div></li>
             </ol>
             <p class="game-rules__reward"><strong>활성 쿠폰 기준</strong><span>완주 시 무료배송 · 1,000점 10% · 1,600점 15% · 2,100점 20%</span></p>
@@ -90,7 +90,7 @@
                   <div class="pixel-dialog">
                     <p class="game-step">HIMAWARI BAG QUEST</p>
                     <h3 id="game-intro-title">0422와 함께 학교로 출발해요!</h3>
-                    <p><strong>책 · 노트북 · 물병 · 필통</strong>은 가까이 가서 모으고, 아령과 잉크병은 피하세요. 생명은 3개입니다.</p>
+                    <p><strong>책 · 노트북 · 물병 · 필통</strong>을 모으세요. 점프로 위험물을 넘고 새총으로 아령을 부술 수 있어요.</p>
                     <button class="game-primary" type="button" data-game-start><span>등굣길 퀘스트 시작</span><span aria-hidden="true">▶</span></button>
                   </div>
                 </section>
@@ -142,8 +142,11 @@
                 <button type="button" class="d-pad__right" data-game-move="right" aria-label="오른쪽으로 이동"><span aria-hidden="true">▶</span></button>
                 <button type="button" class="d-pad__down" data-game-move="down" aria-label="아래로 이동"><span aria-hidden="true">▼</span></button>
               </div>
-              <div class="controller-copy"><strong>MOVE</strong><span>화살표 · WASD</span><span>가운데 버튼: 일시정지</span><button class="sound-toggle" type="button" data-game-sound aria-pressed="true"><span aria-hidden="true">♪</span><b>BGM <span data-game-sound-label>ON</span></b></button></div>
-              <div class="controller-buttons" aria-hidden="true"><span>A</span><span>B</span></div>
+              <div class="controller-copy"><strong>MOVE &amp; ACTION</strong><span>이동 화살표 · WASD</span><span>점프 Space · 새총 F/J</span><button class="sound-toggle" type="button" data-game-sound aria-pressed="true"><span aria-hidden="true">♪</span><b>BGM <span data-game-sound-label>ON</span></b></button></div>
+              <div class="controller-actions" aria-label="점프와 새총 조작">
+                <button class="controller-action controller-action--jump" type="button" data-game-jump aria-label="점프해서 위험물 피하기" disabled><span aria-hidden="true">A</span><b>JUMP</b></button>
+                <button class="controller-action controller-action--fire" type="button" data-game-fire aria-label="새총을 쏴서 아령 부수기" disabled><span aria-hidden="true">B</span><b>SHOT</b></button>
+              </div>
             </div>
             <p class="game-announcer" data-game-announcer role="status" aria-live="polite">게임을 시작할 준비가 됐습니다.</p>
           </div>

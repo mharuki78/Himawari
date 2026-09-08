@@ -264,6 +264,9 @@ test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 �
   assert.match(html, /assets\/game-pixel-school-world\.png/);
   assert.match(html, /assets\/game-pixel-player\.png/);
   assert.match(html, /data-game-move="up"/);
+  assert.match(html, /data-game-jump/);
+  assert.match(html, /data-game-fire/);
+  assert.match(html, /점프로 위험물을 넘고, 새총으로 아령을 부수면/);
   assert.match(html, /data-game-lives/);
   assert.match(html, /data-player-shadow/);
   assert.match(html, /data-game-sound/);
@@ -283,6 +286,10 @@ test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 �
   assert.match(gameJs, /function playMusicStep/);
   assert.match(gameJs, /function setGameViewport/);
   assert.match(gameJs, /function animatePackedItem/);
+  assert.match(gameJs, /function jumpPlayer/);
+  assert.match(gameJs, /function fireSlingshot/);
+  assert.match(gameJs, /object\.item\.id === 'weight'/);
+  assert.match(gameJs, /key === 'f' \|\| key === 'j'/);
   assert.match(gameJs, /PACK_TRANSFER_MS/);
   assert.match(gameJs, /마지막 정리를 확인하고 있습니다/);
   assert.match(gameJs, /state\.phase === 'intro'/);
@@ -293,6 +300,9 @@ test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 �
   assert.match(gameCss, /\.adventure-stage\.is-moving \.player-shadow/);
   assert.match(gameCss, /body\.game-round-active \.game-console\[data-phase="catch"\]/);
   assert.match(gameCss, /body\.game-round-active \.game-console:not\(\[data-phase="intro"\]\)/);
+  assert.match(gameCss, /height: 100dvh/);
+  assert.match(gameCss, /\.pixel-player\.is-jumping/);
+  assert.match(gameCss, /\.slingshot-shot/);
   assert.match(gameCss, /width: clamp\(3\.2rem, 17cqw, 5\.4rem\)/);
   assert.match(gameCss, /@keyframes pack-transfer-flight/);
   assert.match(gameCss, /\.packing-bag\.is-receiving/);

@@ -9,6 +9,10 @@
   var CATCH_SECONDS = 35;
   var PACK_SECONDS = 22;
   var PACK_TRANSFER_MS = 720;
+  var JUMP_DURATION_MS = 620;
+  var JUMP_COOLDOWN_MS = 820;
+  var SHOT_COOLDOWN_MS = 340;
+  var SHOT_SPEED = 72;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var panels = Array.from(root.querySelectorAll('[data-game-panel]'));
   var consoleElement = root.querySelector('[data-game-console]');
@@ -27,6 +31,8 @@
   var soundLabel = root.querySelector('[data-game-sound-label]');
   var exitButton = root.querySelector('[data-game-exit]');
   var moveButtons = Array.from(root.querySelectorAll('[data-game-move]'));
+  var jumpButton = root.querySelector('[data-game-jump]');
+  var fireButton = root.querySelector('[data-game-fire]');
   var packingItems = root.querySelector('[data-packing-items]');
   var packingZones = root.querySelector('[data-packing-zones]');
   var finalScore = root.querySelector('[data-final-score]');
@@ -70,6 +76,7 @@
     paused: false,
     directions: new Set(),
     objects: [],
+    projectiles: [],
     playerX: 50,
     playerY: 76,
     facing: 'up',
@@ -77,12 +84,17 @@
     lastFootstep: 0,
     lastFrame: 0,
     invulnerableUntil: 0,
+    jumpUntil: 0,
+    jumpCooldownUntil: 0,
+    fireCooldownUntil: 0,
     spawnTimer: 0,
     clockTimer: 0,
     animationFrame: 0,
     toastTimer: 0,
     packCompletionTimer: 0,
     packEffectTimer: 0,
+    jumpTimer: 0,
+    fireTimer: 0,
     musicTimer: 0,
     musicStep: 0,
     soundEnabled: readSoundPreference(),
@@ -93,8 +105,7 @@
   };
 
   function setGameViewport(active) {
-    var mobile = window.matchMedia('(max-width: 620px)').matches;
-    if (active && mobile && !state.viewportLocked) {
+    if (active && !state.viewportLocked) {
       state.lockedScrollY = window.scrollY || window.pageYOffset || 0;
       document.body.style.setProperty('--game-scroll-offset', '-' + state.lockedScrollY + 'px');
       state.viewportLocked = true;
@@ -211,6 +222,14 @@
       playTone(1318.51, .16, 'square', .09, .07);
     } else if (kind === 'hazard') {
       playTone(146.83, .24, 'sawtooth', .1);
+    } else if (kind === 'jump') {
+      playTone(659.25, .08, 'square', .07);
+      playTone(987.77, .1, 'square', .06, .06);
+    } else if (kind === 'fire') {
+      playTone(392, .055, 'square', .07);
+    } else if (kind === 'smash') {
+      playTone(196, .08, 'square', .1);
+      playTone(130.81, .13, 'sawtooth', .07, .04);
     } else if (kind === 'pack') {
       playTone(783.99, .1, 'square', .09);
       playTone(1046.5, .18, 'square', .08, .08);
@@ -240,6 +259,11 @@
     pauseButton.setAttribute('aria-pressed', String(active && state.paused));
     pauseButton.setAttribute('aria-label', state.paused ? '게임 계속하기' : '게임 잠시 멈춤');
     pauseButton.querySelector('span').textContent = state.paused ? '▶' : 'Ⅱ';
+    jumpButton.disabled = !active;
+    fireButton.disabled = !active;
+    jumpButton.classList.toggle('is-active', active && performance.now() < state.jumpUntil);
+    jumpButton.setAttribute('aria-pressed', String(active && performance.now() < state.jumpUntil));
+    fireButton.classList.toggle('is-active', active && performance.now() < state.fireCooldownUntil);
   }
 
   function showPanel(name) {
@@ -260,6 +284,60 @@
       catchStage.style.setProperty('--world-x', ((50 - state.playerX) * .07).toFixed(2) + '%');
       catchStage.style.setProperty('--world-y', ((56 - state.playerY) * .06).toFixed(2) + '%');
     }
+  }
+
+  function jumpPlayer() {
+    if (state.phase !== 'catch' || state.paused) return;
+    var now = performance.now();
+    if (now < state.jumpCooldownUntil) return;
+    state.jumpUntil = now + JUMP_DURATION_MS;
+    state.jumpCooldownUntil = now + JUMP_COOLDOWN_MS;
+    player.classList.remove('is-jumping');
+    catchStage.classList.remove('is-jumping');
+    void player.offsetWidth;
+    player.classList.add('is-jumping');
+    catchStage.classList.add('is-jumping');
+    jumpButton.classList.add('is-active');
+    jumpButton.setAttribute('aria-pressed', 'true');
+    playEffect('jump');
+    announce('점프했습니다. 점프 중에는 위험물을 안전하게 넘을 수 있습니다.');
+    window.clearTimeout(state.jumpTimer);
+    state.jumpTimer = window.setTimeout(function () {
+      player.classList.remove('is-jumping');
+      catchStage.classList.remove('is-jumping');
+      jumpButton.classList.remove('is-active');
+      jumpButton.setAttribute('aria-pressed', 'false');
+      state.jumpTimer = 0;
+    }, JUMP_DURATION_MS);
+  }
+
+  function removeProjectile(projectile) {
+    state.projectiles = state.projectiles.filter(function (entry) { return entry !== projectile; });
+    projectile.element.remove();
+  }
+
+  function fireSlingshot() {
+    if (state.phase !== 'catch' || state.paused) return;
+    var now = performance.now();
+    if (now < state.fireCooldownUntil) return;
+    state.fireCooldownUntil = now + SHOT_COOLDOWN_MS;
+    var vectors = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
+    var vector = vectors[state.facing] || vectors.up;
+    var element = document.createElement('span');
+    element.className = 'slingshot-shot';
+    element.setAttribute('aria-hidden', 'true');
+    catchLayer.append(element);
+    var projectile = { element: element, x: state.playerX + vector[0] * 5, y: state.playerY + vector[1] * 5, dx: vector[0], dy: vector[1] };
+    element.style.left = projectile.x + '%';
+    element.style.top = projectile.y + '%';
+    state.projectiles.push(projectile);
+    fireButton.classList.add('is-active');
+    playEffect('fire');
+    window.clearTimeout(state.fireTimer);
+    state.fireTimer = window.setTimeout(function () {
+      fireButton.classList.remove('is-active');
+      state.fireTimer = 0;
+    }, 120);
   }
 
   function setPlayerDirection(dx, dy) {
@@ -293,23 +371,29 @@
     window.clearTimeout(state.toastTimer);
     window.clearTimeout(state.packCompletionTimer);
     window.clearTimeout(state.packEffectTimer);
+    window.clearTimeout(state.jumpTimer);
+    window.clearTimeout(state.fireTimer);
     state.spawnTimer = 0;
     state.clockTimer = 0;
     state.animationFrame = 0;
     state.toastTimer = 0;
     state.packCompletionTimer = 0;
     state.packEffectTimer = 0;
+    state.jumpTimer = 0;
+    state.fireTimer = 0;
     state.lastFrame = 0;
     state.lastFootstep = 0;
     state.directions.clear();
     state.packFinishing = false;
     state.objects.forEach(function (object) { object.element.remove(); });
     state.objects = [];
+    state.projectiles.forEach(function (projectile) { projectile.element.remove(); });
+    state.projectiles = [];
     catchLayer.querySelectorAll('.footstep').forEach(function (step) { step.remove(); });
     document.querySelectorAll('.pack-transfer').forEach(function (transfer) { transfer.remove(); });
     root.querySelector('.packing-bag')?.classList.remove('is-receiving');
-    catchStage.classList.remove('is-moving');
-    player.classList.remove('is-walking');
+    catchStage.classList.remove('is-moving', 'is-jumping');
+    player.classList.remove('is-walking', 'is-jumping');
     player.style.setProperty('--player-lean', '0deg');
     updateControllerState();
   }
@@ -362,11 +446,11 @@
     createCollectible(pool[Math.floor(Math.random() * pool.length)]);
   }
 
-  function removeObject(object, collected) {
+  function removeObject(object, collected, effectClass) {
     state.objects = state.objects.filter(function (entry) { return entry !== object; });
     if (collected) {
-      object.element.classList.add('is-collected');
-      window.setTimeout(function () { object.element.remove(); }, reducedMotion ? 0 : 260);
+      object.element.classList.add(effectClass || 'is-collected');
+      window.setTimeout(function () { object.element.remove(); }, reducedMotion ? 0 : 320);
     } else {
       object.element.remove();
     }
@@ -374,6 +458,14 @@
 
   function resolveCollision(object, now) {
     if (object.item.hazard) {
+      if (now < state.jumpUntil) {
+        setScore(35);
+        showToast('NICE JUMP!  +35');
+        playEffect('jump');
+        announce(object.item.label + '을 점프로 피했습니다. 35점 추가.');
+        removeObject(object, true);
+        return;
+      }
       if (now < state.invulnerableUntil) return;
       state.invulnerableUntil = now + 1050;
       state.lives = Math.max(0, state.lives - 1);
@@ -423,6 +515,26 @@
         player.style.setProperty('--player-lean', '0deg');
       }
 
+      state.projectiles.slice().forEach(function (projectile) {
+        projectile.x += projectile.dx * SHOT_SPEED * delta;
+        projectile.y += projectile.dy * SHOT_SPEED * delta;
+        projectile.element.style.left = projectile.x + '%';
+        projectile.element.style.top = projectile.y + '%';
+        var target = state.objects.find(function (object) {
+          return object.item.id === 'weight' && Math.abs(object.x - projectile.x) < 7 && Math.abs(object.y - projectile.y) < 6;
+        });
+        if (target) {
+          removeObject(target, true, 'is-smashed');
+          removeProjectile(projectile);
+          setScore(80);
+          showToast('SLINGSHOT!  +80');
+          playEffect('smash');
+          announce('새총으로 아령을 부쉈습니다. 80점 추가.');
+          return;
+        }
+        if (projectile.x < -4 || projectile.x > 104 || projectile.y < -4 || projectile.y > 104) removeProjectile(projectile);
+      });
+
       state.objects.slice().forEach(function (object) {
         object.y += object.speed * delta;
         object.element.style.top = object.y + '%';
@@ -469,6 +581,9 @@
     state.facing = 'up';
     state.footstepSide = 1;
     state.invulnerableUntil = 0;
+    state.jumpUntil = 0;
+    state.jumpCooldownUntil = 0;
+    state.fireCooldownUntil = 0;
     player.style.setProperty('--player-flip', '1');
     player.style.setProperty('--player-lean', '0deg');
     renderPlayer();
@@ -478,6 +593,7 @@
     showToast('QUEST START!');
     createCollectible(goodItems[0]);
     createCollectible(goodItems[2]);
+    createCollectible(hazards[0]);
     state.spawnTimer = window.setInterval(spawnItem, reducedMotion ? 1300 : 680);
     runClock(CATCH_SECONDS, finishCatch);
     state.animationFrame = window.requestAnimationFrame(updateWorld);
@@ -779,19 +895,24 @@
   pauseButton.addEventListener('click', function () {
     setPause(!state.paused, state.paused ? '게임을 계속합니다.' : '게임을 잠시 멈췄습니다.');
   });
+  jumpButton.addEventListener('click', jumpPlayer);
+  fireButton.addEventListener('click', fireSlingshot);
   document.addEventListener('keydown', function (event) {
     if (state.phase !== 'catch' || event.isComposing) return;
     var key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
     var direction = keyDirections[key];
+    var nativeControl = event.target instanceof Element && event.target.closest('button, a, input, select, textarea');
     if (direction) {
       event.preventDefault();
       pressDirection(direction);
       updateControllerState();
     }
-    if (event.key === ' ' && event.target === document.body) {
+    if (event.key === ' ' && !nativeControl) {
       event.preventDefault();
-      setPause(!state.paused, state.paused ? '게임을 계속합니다.' : '게임을 잠시 멈췄습니다.');
+      jumpPlayer();
     }
+    if ((key === 'f' || key === 'j') && !nativeControl) fireSlingshot();
+    if (key === 'p' && !nativeControl) setPause(!state.paused, state.paused ? '게임을 계속합니다.' : '게임을 잠시 멈췄습니다.');
     if (event.key === 'Escape') exitGame();
   });
   document.addEventListener('keyup', function (event) {
