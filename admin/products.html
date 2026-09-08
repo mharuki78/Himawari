@@ -24,7 +24,7 @@
         <a href="products.html" aria-current="page">제품 관리</a>
         <a href="orders.html">주문 관리</a>
         <a href="reviews.html">리뷰·재입고</a>
-        <a href="promotions.html">프로모션</a>
+        <a href="promotions.html">프로모션</a><a href="reels.html">영상 관리</a>
       </nav>
       <a class="admin-header__site" href="../products.html">제품 화면 보기 <span aria-hidden="true">↗</span></a>
     </header>
@@ -69,14 +69,16 @@
           <div><span>등록 제품</span><strong data-product-total>—</strong></div>
           <p>삭제는 제품 정보와 이 화면에서 업로드한 이미지를 영구 삭제합니다. 기존 스마트스토어 원본 이미지는 삭제하지 않습니다.</p>
         </div>
+        <div class="catalog-readiness" data-catalog-readiness aria-live="polite"><p>판매 준비 상태를 확인하고 있습니다.</p></div>
         <div class="board-status" data-board-status role="status" aria-live="polite"></div>
 
         <div class="product-workbench">
           <section class="product-register" aria-labelledby="product-list-title">
             <div class="inquiry-list__head">
               <h2 id="product-list-title" tabindex="-1">제품 목록</h2>
-              <button class="button button--quiet" type="button" data-retry>새로고침</button>
+              <div class="bulk-product-actions"><button class="button button--quiet" type="button" data-bulk-download>재고 CSV 받기</button><label class="button button--quiet" for="bulk-product-file">CSV 반영</label><input id="bulk-product-file" type="file" accept=".csv,text/csv" data-bulk-file><button class="button button--quiet" type="button" data-retry>새로고침</button></div>
             </div>
+            <p class="field-help bulk-product-help">CSV에서는 전체 재고, 옵션별 재고, 네이버 할인율만 일괄 수정할 수 있습니다. 제품 ID·모델명·제품명은 식별용이므로 바꾸지 마세요.</p>
             <div class="product-table-wrap" data-table-wrap>
               <table class="product-table">
                 <caption class="sr-only">공개 사이트에 등록된 제품 목록</caption>

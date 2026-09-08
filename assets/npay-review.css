@@ -1,0 +1,55 @@
+:root {
+  color-scheme: light;
+  --ink: #26362d;
+  --moss: #557461;
+  --mint: #e8f0e8;
+  --cream: #faf8f1;
+  --line: #cbd8cd;
+  --white: #fff;
+  font-family: Pretendard, "Noto Sans KR", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: var(--cream); }
+button, select { font: inherit; }
+.npay-review-header { display: grid; grid-template-columns: 150px 1fr; gap: 2rem; align-items: center; padding: clamp(2rem, 6vw, 5rem) max(1.25rem, calc((100vw - 1180px) / 2)); background: var(--mint); border-top: 8px solid var(--moss); }
+.npay-review-header img { width: 140px; height: auto; }
+.npay-review-header p, .npay-review-model, .npay-review-cart p { margin: 0 0 .5rem; font-size: .72rem; font-weight: 800; letter-spacing: .08em; }
+.npay-review-header h1 { margin: 0 0 1rem; font-size: clamp(2rem, 5vw, 4.8rem); line-height: 1.05; }
+main { width: min(1180px, calc(100% - 2.5rem)); margin: 2rem auto 5rem; }
+.npay-review-notice { display: flex; gap: .75rem 1.25rem; flex-wrap: wrap; padding: 1.1rem 1.25rem; background: #fff4d7; border: 1px solid #e7d39e; line-height: 1.6; }
+.npay-review-cart { display: grid; grid-template-columns: 1fr minmax(260px, 360px); gap: 2rem; align-items: center; margin: 1.5rem 0 2.5rem; padding: 1.5rem; background: var(--white); border: 1px solid var(--line); }
+.npay-review-cart h2 { margin: 0 0 .75rem; }
+[data-review-cart-summary] { color: #607166; line-height: 1.6; }
+.npay-review-products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.npay-review-card { overflow: hidden; background: var(--white); border: 1px solid var(--line); box-shadow: 0 12px 30px rgba(57, 78, 64, .08); }
+.npay-review-media { aspect-ratio: 1 / 1; display: grid; place-items: center; background: #f1f3ec; }
+.npay-review-media img { width: 100%; height: 100%; object-fit: cover; }
+.npay-review-body { padding: 1.15rem; }
+.npay-review-body h2 { min-height: 2.8em; margin: 0 0 .5rem; font-size: 1rem; line-height: 1.4; }
+.npay-review-body > p:not(.npay-review-model) { min-height: 3em; color: #627067; font-size: .82rem; line-height: 1.5; }
+.npay-review-body > strong { display: block; margin: 1rem 0; font-size: 1.2rem; }
+.npay-review-option { display: grid; gap: .4rem; margin-bottom: .75rem; font-size: .76rem; font-weight: 700; }
+.npay-review-option select { width: 100%; min-height: 44px; padding: 0 .75rem; border: 1px solid var(--line); background: var(--white); }
+.npay-review-cart-add { width: 100%; min-height: 44px; margin-bottom: .75rem; border: 1px solid var(--moss); color: var(--moss); background: transparent; font-weight: 800; cursor: pointer; }
+.npay-review-cart-add:hover { color: var(--white); background: var(--moss); }
+.npay-review-cart-add:disabled { opacity: .45; cursor: not-allowed; }
+.npay-review-button { padding-top: .85rem; border-top: 1px solid var(--line); }
+.npay-review-button[hidden], [data-npay-cart-section][hidden] { display: none; }
+[data-npay-card], [data-npay-cart] { width: 100%; min-width: 200px; min-height: 40px; overflow: hidden; }
+.npay-status { min-height: 1.2em; margin: .4rem 0 0; color: var(--moss); font-size: .72rem; }
+.npay-status.is-error { color: #9a352f; }
+footer { display: grid; gap: .35rem; padding: 2rem max(1.25rem, calc((100vw - 1180px) / 2)); color: #dce8df; background: var(--ink); font-size: .78rem; }
+
+@media (max-width: 860px) {
+  .npay-review-products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .npay-review-header { grid-template-columns: 82px 1fr; gap: 1rem; padding-block: 2rem; }
+  .npay-review-header img { width: 80px; }
+  .npay-review-header h1 { font-size: 1.65rem; }
+  main { width: min(100% - 1.25rem, 1180px); margin-top: .75rem; }
+  .npay-review-cart, .npay-review-products { grid-template-columns: 1fr; }
+  .npay-review-cart { gap: 1rem; }
+}

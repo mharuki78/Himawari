@@ -5,6 +5,7 @@ import {
   productStoreIsConfigured,
   verifyManagedImageOwnership,
 } from '../_lib/products.js';
+import { REQUEST_ID_PATTERN, deleteReelMedia, verifyReelUpload } from '../_lib/reels.js';
 
 export async function fetch(request) {
   if (request.method !== 'DELETE') return methodNotAllowed(['DELETE']);
@@ -14,8 +15,16 @@ export async function fetch(request) {
 
   try {
     const input = await readJson(request, 16_384);
-    const urls = await verifyManagedImageOwnership(input.requestId, Array.isArray(input.urls) ? input.urls : []);
-    const removed = await deleteManagedImages(urls);
+    let removed;
+    if (input.kind === 'reel') {
+      if (!REQUEST_ID_PATTERN.test(String(input.requestId || ''))) throw Object.assign(new Error('업로드 요청을 확인할 수 없습니다.'), { status: 400 });
+      const candidates = Array.isArray(input.urls) ? input.urls : [];
+      const verified = await verifyReelUpload({ requestId: input.requestId, videoUrl: candidates.find((url) => String(url).includes('/video')) || '', posterUrl: candidates.find((url) => String(url).includes('/poster')) || '' });
+      removed = await deleteReelMedia(verified.managedMedia);
+    } else {
+      const urls = await verifyManagedImageOwnership(input.requestId, Array.isArray(input.urls) ? input.urls : []);
+      removed = await deleteManagedImages(urls);
+    }
     if (!removed) return json({ message: '임시 이미지를 정리하지 못했습니다. 잠시 후 다시 시도해 주세요.' }, 503);
     return json({ ok: true });
   } catch (error) {

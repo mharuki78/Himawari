@@ -3,13 +3,19 @@ import { createVerifiedReview, listPublishedReviews, subscribeRestock, unsubscri
 import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalog } from './_lib/products.js';
 import { publicPromotions, readPromotions } from './_lib/promotions.js';
 import { applyInventoryReservations } from './_lib/inventory.js';
+import { publicReels, readReelsConfig } from './_lib/reels.js';
 import storyPosts from '../story/posts.json' with { type: 'json' };
+import { database, databaseIsConfigured } from './_lib/database.js';
 
 const SITE_ORIGIN = 'https://allaboutbag.com';
 const SITEMAP_PAGES = [
   ['/', '2026-09-08'],
   ['/about.html', '2026-08-29'],
   ['/products.html', '2026-09-03'],
+  ['/collections/school', '2026-09-08'],
+  ['/collections/business', '2026-09-08'],
+  ['/collections/travel', '2026-09-08'],
+  ['/collections/daily', '2026-09-08'],
   ['/finder.html', '2026-09-07'],
   ['/contact.html', '2026-08-29'],
   ['/game.html', '2026-09-06'],
@@ -69,6 +75,29 @@ async function fetchPromotions(request) {
   }
 }
 
+async function fetchReels(request) {
+  if (request.method !== 'GET') return methodNotAllowed(['GET']);
+  try {
+    const { config, persisted } = await readReelsConfig();
+    return json({ items: publicReels(config), persisted }, 200, {
+      'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300',
+    });
+  } catch (error) {
+    console.error('public_reels_read_failed', { message: error.message || 'unknown error' });
+    return json({ message: '영상 목록을 불러오지 못했습니다.' }, 500);
+  }
+}
+
+async function fetchHealth(request) {
+  if (request.method !== 'GET') return methodNotAllowed(['GET']);
+  const checks = { catalog: false, database: false, reels: false };
+  try { const source = productStoreIsConfigured() ? (await readProductCatalog()).catalog : seedCatalog(); checks.catalog = Array.isArray(source.products); } catch {}
+  try { if (databaseIsConfigured()) { await database()`SELECT 1 AS ok`; checks.database = true; } } catch {}
+  try { checks.reels = Array.isArray((await readReelsConfig()).config.reels); } catch {}
+  const ok = checks.catalog && checks.database && checks.reels;
+  return json({ ok, checks, checkedAt: new Date().toISOString() }, ok ? 200 : 503, { 'Cache-Control': 'no-store' });
+}
+
 function xml(value) {
   return String(value ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&apos;');
 }
@@ -78,7 +107,7 @@ async function fetchMerchantFeed(request) {
   const catalog = productStoreIsConfigured() ? (await readProductCatalog()).catalog : seedCatalog();
   const available = await applyInventoryReservations(catalog.products.map(publicProduct));
   const items = available.filter((product) => product.image && product.price > 0).map((product) => `
-    <item><g:id>${xml(product.id)}</g:id><title>${xml(product.name)}</title><description>${xml(product.description || product.tagline)}</description><link>${SITE_ORIGIN}/product.html?id=${encodeURIComponent(product.id)}</link><g:image_link>${xml(product.image)}</g:image_link><g:availability>${product.soldOut ? 'out_of_stock' : 'in_stock'}</g:availability><g:price>${Number(product.price)} KRW</g:price><g:condition>new</g:condition><g:brand>Himawari</g:brand><g:mpn>${xml(product.model)}</g:mpn><g:shipping><g:country>KR</g:country><g:service>로젠택배</g:service><g:price>${product.price >= 100000 ? 0 : 3500} KRW</g:price></g:shipping></item>`).join('');
+    <item><g:id>${xml(product.id)}</g:id><title>${xml(product.name)}</title><description>${xml(product.description || product.tagline)}</description><link>${SITE_ORIGIN}/product.html?id=${encodeURIComponent(product.id)}</link><g:image_link>${xml(product.image)}</g:image_link><g:availability>${product.soldOut ? 'out_of_stock' : 'in_stock'}</g:availability><g:price>${Number(product.price)} KRW</g:price><g:condition>new</g:condition><g:brand>Himawari</g:brand><g:mpn>${xml(product.model)}</g:mpn><g:product_type>가방 &gt; 백팩</g:product_type><g:google_product_category>5181</g:google_product_category><g:custom_label_0>${product.price >= 100000 ? '무료배송' : '일반배송'}</g:custom_label_0><g:shipping><g:country>KR</g:country><g:service>로젠택배</g:service><g:price>${product.price >= 100000 ? 0 : 3500} KRW</g:price></g:shipping></item>`).join('');
   const body = `<?xml version="1.0" encoding="UTF-8"?>\n<rss xmlns:g="http://base.google.com/ns/1.0" version="2.0"><channel><title>Himawari 제품</title><link>${SITE_ORIGIN}</link><description>Himawari 백팩 공식 상품 피드</description>${items}\n</channel></rss>\n`;
   return new Response(body, { headers: { 'Content-Type': 'application/xml; charset=utf-8', 'Cache-Control': 'public, s-maxage=900, stale-while-revalidate=3600', 'X-Content-Type-Options': 'nosniff' } });
 }
@@ -114,6 +143,8 @@ export async function fetch(request) {
   if (route === 'merchant-feed') return fetchMerchantFeed(request);
   if (route === 'reviews') return fetchReviews(request);
   if (route === 'restock') return fetchRestock(request);
+  if (route === 'reels') return fetchReels(request);
+  if (route === 'health') return fetchHealth(request);
   if (request.method !== 'GET') return methodNotAllowed(['GET']);
 
   try {

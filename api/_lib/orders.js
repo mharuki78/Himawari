@@ -4,6 +4,7 @@ import { database } from './database.js';
 import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalog } from './products.js';
 import { activeCoupons, readPromotions } from './promotions.js';
 import { applyInventoryReservations } from './inventory.js';
+import { consumeCouponClaim, releaseCouponClaim } from './coupon-claims.js';
 
 export const SHIPPING_FEE = 3_500;
 export const FREE_SHIPPING_THRESHOLD = 100_000;
@@ -95,6 +96,7 @@ export function validateOrderFields(input) {
     addressLine2: cleanLine(input?.addressLine2, 200),
     deliveryNote: cleanLine(input?.deliveryNote, 200),
     couponId: cleanLine(input?.couponId, 40),
+    couponToken: cleanLine(input?.couponToken, 200),
     termsConsent: input?.termsConsent === true,
     privacyConsent: input?.privacyConsent === true,
   };
@@ -249,6 +251,7 @@ function mapOrderRow(row, items = [], events = [], includeAdminNotes = false) {
     status,
     statusLabel: ORDER_STATUS[status].label,
     paymentMethod: row.payment_method,
+    isGuest: !row.user_id,
     subtotal: Number(row.subtotal),
     coupon: row.coupon_id ? { id: row.coupon_id, label: row.coupon_label || row.coupon_id } : null,
     discountAmount: Number(row.discount_amount || 0),
@@ -373,7 +376,8 @@ export async function createOrder(member, input) {
   }
 
   const sql = database();
-  const id = randomUUID();
+  // 요청 ID를 주문 ID로 재사용해 쿠폰 사용과 주문 생성이 재시도에도 같은 작업으로 묶이게 합니다.
+  const id = fields.value.requestId;
   const number = orderNumber(id);
   const now = new Date();
   const retentionUntil = new Date(now);
@@ -403,8 +407,10 @@ export async function createOrder(member, input) {
   ];
 
   try {
+    if (coupon) await consumeCouponClaim(coupon.id, fields.value.couponToken, id);
     await sql.transaction(queries);
   } catch (error) {
+    if (coupon) await releaseCouponClaim(id).catch(() => {});
     if (error?.code === '23505') {
       const duplicate = await readExistingOrder(fields.value.requestId, fields.value.email);
       if (duplicate) return { order: duplicate, duplicate: true };
@@ -422,6 +428,46 @@ export async function readOrderForMember(userId, number) {
     [userId, cleanLine(number, 80)],
   );
   return (await hydrateOrders(rows))[0] || null;
+}
+
+export async function readOrderForGuest(input) {
+  await ensureOrderSchema();
+  const number = cleanLine(input?.orderNumber, 80).toUpperCase();
+  const email = cleanLine(input?.email, 254).toLowerCase();
+  const phone = cleanLine(input?.phone, 24);
+  if (!number || !EMAIL_PATTERN.test(email) || !PHONE_PATTERN.test(phone)) {
+    throw Object.assign(new Error('주문번호와 주문 시 입력한 이메일·전화번호를 확인해 주세요.'), { status: 400 });
+  }
+  const rows = await database().query(
+    'SELECT * FROM orders WHERE order_number = $1 AND lower(email) = $2 AND phone = $3 AND user_id IS NULL LIMIT 1',
+    [number, email, phone],
+  );
+  const order = (await hydrateOrders(rows))[0] || null;
+  if (!order) throw Object.assign(new Error('일치하는 비회원 주문을 찾을 수 없습니다.'), { status: 404 });
+  return order;
+}
+
+export async function requestGuestOrderChange(input) {
+  const order = await readOrderForGuest(input);
+  const action = cleanLine(input?.action, 40);
+  const expectedRevision = Number(input?.revision);
+  if (!Number.isInteger(expectedRevision) || !['request_cancel', 'request_refund'].includes(action)) {
+    throw Object.assign(new Error('주문 요청 내용을 확인해 주세요.'), { status: 400 });
+  }
+  if (order.revision !== expectedRevision) throw Object.assign(new Error('주문 상태가 변경되었습니다. 다시 조회해 주세요.'), { status: 409 });
+  if (order.customerAction !== action) throw Object.assign(new Error('현재 주문 단계에서는 이 요청을 접수할 수 없습니다.'), { status: 409 });
+  const target = action === 'request_cancel' ? 'cancel_requested' : 'refund_requested';
+  const note = action === 'request_cancel' ? '비회원 고객이 주문 취소를 요청했습니다.' : '비회원 고객이 반품·환불을 요청했습니다.';
+  const rows = await database().query(
+    `WITH changed AS (
+       UPDATE orders SET status=$1,revision=revision+1,updated_at=now()
+        WHERE order_number=$2 AND lower(email)=$3 AND phone=$4 AND user_id IS NULL AND revision=$5 AND status=$6 RETURNING id
+     ) INSERT INTO order_events (id,order_id,actor,from_status,to_status,note)
+       SELECT $7,id,'system',$6,$1,$8 FROM changed RETURNING order_id`,
+    [target, order.orderNumber, cleanLine(input.email, 254).toLowerCase(), cleanLine(input.phone, 24), expectedRevision, order.status, randomUUID(), note],
+  );
+  if (!rows[0]) throw Object.assign(new Error('주문 상태가 변경되었습니다. 다시 조회해 주세요.'), { status: 409 });
+  return readOrderForGuest(input);
 }
 
 export async function listMemberOrders(userId, page = 1) {

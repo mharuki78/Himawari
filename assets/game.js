@@ -622,9 +622,9 @@
     }
   }
 
-  function saveReward(coupon) {
+  function saveReward(coupon, token) {
     try {
-      localStorage.setItem(REWARD_STORAGE_KEY, JSON.stringify({ couponId: coupon.id, label: coupon.label, earnedAt: new Date().toISOString(), expiresAt: coupon.expiresAt || null }));
+      localStorage.setItem(REWARD_STORAGE_KEY, JSON.stringify({ couponId: coupon.id, label: coupon.label, token: token || '', earnedAt: new Date().toISOString(), expiresAt: coupon.expiresAt || null }));
       return true;
     } catch (error) {
       return false;
@@ -701,12 +701,18 @@
     if (state.couponLoadFailed) await loadCoupons();
     var result = chooseReward();
     if (result.coupon) {
-      var saved = saveReward(result.coupon);
+      var issued = null;
+      try {
+        var issuedResponse = await fetch('/api/coupons/claim', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ source: 'game', score: state.score }) });
+        if (issuedResponse.ok) issued = await issuedResponse.json();
+      } catch (error) {}
+      if (issued?.coupon) result.coupon = issued.coupon;
+      var saved = Boolean(issued?.token) && saveReward(result.coupon, issued.token);
       if (!result.retained) window.himawariTrack?.('Game coupon earned', { couponId: result.coupon.id, score: state.score, saved: Boolean(saved) });
       strong.textContent = result.retained ? result.coupon.label + ' 쿠폰 유지' : result.coupon.label + ' 쿠폰 획득!';
       copy.textContent = saved
         ? (result.retained ? '더 좋은 기존 쿠폰을 그대로 보관했습니다.' : '이 브라우저에 저장했습니다. 주문 조건을 충족하면 주문서에서 자동 선택됩니다.')
-        : '쿠폰을 획득했지만 브라우저 저장이 제한되어 자동 선택은 지원되지 않습니다.';
+        : '쿠폰 인증을 완료하지 못했습니다. 네트워크를 확인하고 다시 도전해 주세요.';
     } else if (state.couponLoadFailed) {
       strong.textContent = '쿠폰 정보를 확인하지 못했습니다.';
       copy.textContent = '네트워크 연결을 확인한 뒤 다시 도전해 주세요.';

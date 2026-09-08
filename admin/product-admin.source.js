@@ -17,6 +17,7 @@ const logoutButton = $('[data-logout]');
 const boardTitle = $('#board-title');
 const boardStatus = $('[data-board-status]');
 const productTotal = $('[data-product-total]');
+const catalogReadiness = $('[data-catalog-readiness]');
 const tableWrap = $('[data-table-wrap]');
 const rows = $('[data-product-rows]');
 const emptyState = $('[data-empty-state]');
@@ -26,6 +27,8 @@ const errorRetryButton = $('[data-error-retry]');
 const loadMoreButton = $('[data-load-more]');
 const loadLabel = $('[data-load-label]');
 const listTitle = $('#product-list-title');
+const bulkDownload = $('[data-bulk-download]');
+const bulkFile = $('[data-bulk-file]');
 const productForm = $('[data-product-form]');
 const formSummary = $('[data-form-summary]');
 const formStatus = $('[data-form-status]');
@@ -656,6 +659,12 @@ async function loadProducts({ reset = false, initial = false } = {}) {
     cursor = payload.nextCursor;
     hasMore = payload.hasMore;
     catalogEtag = payload.etag;
+    const readiness = payload.readiness || {};
+    catalogReadiness.replaceChildren();
+    [['재고 미입력', readiness.inventoryMissing], ['할인율 미입력', readiness.discountMissing], ['핵심 특징 부족', readiness.highlightsMissing]].forEach(([label, count]) => {
+      const item = document.createElement('div'); const strong = document.createElement('strong'); const span = document.createElement('span');
+      strong.textContent = String(Number(count) || 0); span.textContent = label; item.append(strong, span); catalogReadiness.append(item);
+    });
     showBoard();
     renderRows();
     boardStatus.textContent = total ? `${total}개 제품 중 ${products.length}개를 불러왔습니다.` : '등록된 제품이 없습니다.';
@@ -780,6 +789,33 @@ logoutButton.addEventListener('click', async () => {
 retryButton.addEventListener('click', () => loadProducts({ reset: true }));
 errorRetryButton.addEventListener('click', () => loadProducts({ reset: true }));
 loadMoreButton.addEventListener('click', () => loadProducts());
+
+function csvCell(value) { const text = String(value ?? ''); return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text; }
+function parseCsvLine(line) { const result = []; let value = ''; let quoted = false; for (let index = 0; index < line.length; index += 1) { const char = line[index]; if (char === '"' && quoted && line[index + 1] === '"') { value += '"'; index += 1; } else if (char === '"') quoted = !quoted; else if (char === ',' && !quoted) { result.push(value); value = ''; } else value += char; } result.push(value); return result; }
+function optionText(options) { return (options || []).map((option) => `${option.label}=${option.stock}`).join('|'); }
+function parseOptions(value) { if (!String(value).trim()) return []; return String(value).split('|').map((part) => { const split = part.lastIndexOf('='); return { label: part.slice(0, split).trim(), stock: Number(part.slice(split + 1)) }; }); }
+
+bulkDownload.addEventListener('click', async () => {
+  bulkDownload.disabled = true; boardStatus.textContent = '현재 재고 CSV를 준비하고 있습니다.';
+  try {
+    const payload = await fetchJson('/api/admin/products/bulk');
+    const lines = [['id','model','name','stock','optionName','options(label=stock|...)','naverDiscountRate'], ...payload.items.map((item) => [item.id,item.model,item.name,item.stock ?? '',item.optionName,optionText(item.options),item.naverDiscountRate ?? ''])];
+    const blob = new Blob(['\ufeff' + lines.map((line) => line.map(csvCell).join(',')).join('\r\n')], { type: 'text/csv;charset=utf-8' }); const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = `himawari-stock-${new Date().toISOString().slice(0,10)}.csv`; link.click(); setTimeout(() => URL.revokeObjectURL(link.href), 1000); boardStatus.textContent = '재고 CSV를 내려받았습니다.';
+  } catch (error) { boardStatus.textContent = error.message || 'CSV를 준비하지 못했습니다.'; }
+  finally { bulkDownload.disabled = false; }
+});
+
+bulkFile.addEventListener('change', async () => {
+  const file = bulkFile.files[0]; if (!file) return;
+  try {
+    const lines = (await file.text()).replace(/^\ufeff/, '').split(/\r?\n/).filter(Boolean); const header = parseCsvLine(lines.shift() || '');
+    const indexes = Object.fromEntries(header.map((name, index) => [name, index])); if (indexes.id === undefined || indexes.stock === undefined || indexes['options(label=stock|...)'] === undefined) throw new Error('Himawari에서 내려받은 CSV 형식이 아닙니다.');
+    const updates = lines.map(parseCsvLine).map((row) => ({ id: row[indexes.id], stock: row[indexes.stock], optionName: row[indexes.optionName] || '', options: parseOptions(row[indexes['options(label=stock|...)']]), naverDiscountRate: row[indexes.naverDiscountRate] || '' }));
+    if (!confirm(`${updates.length}개 제품의 재고·할인율을 CSV 내용으로 반영할까요?`)) { bulkFile.value = ''; return; }
+    boardStatus.textContent = 'CSV 내용을 검증하고 반영하고 있습니다.'; await fetchJson('/api/admin/products/bulk', { method: 'PUT', body: JSON.stringify({ etag: catalogEtag, updates }) }); await loadProducts({ reset: true }); boardStatus.textContent = `${updates.length}개 제품의 재고·할인율을 반영했습니다.`;
+  } catch (error) { boardStatus.textContent = error.message || 'CSV를 반영하지 못했습니다.'; }
+  finally { bulkFile.value = ''; }
+});
 
 productForm.addEventListener('input', (event) => {
   dirty = true;

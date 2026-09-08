@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "api/storefront.js": {
-      "includeFiles": "templates/product*.html"
+      "includeFiles": "templates/*.html"
     }
   },
   "redirects": [
@@ -12,6 +12,8 @@
   "rewrites": [
     { "source": "/products.html", "destination": "/api/storefront?page=catalog" },
     { "source": "/product.html", "destination": "/api/storefront?page=product" },
+    { "source": "/npay-review/:token", "destination": "/api/storefront?page=npay-review&token=:token" },
+    { "source": "/collections/:collection", "destination": "/api/storefront?page=collection&collection=:collection" },
     { "source": "/api/auth/start", "destination": "/api/auth?route=start" },
     { "source": "/api/auth/callback/naver", "destination": "/api/auth?route=callback-naver" },
     { "source": "/api/auth/callback/google", "destination": "/api/auth?route=callback-google" },
@@ -25,12 +27,19 @@
     { "source": "/api/promotions", "destination": "/api/products?route=promotions" },
     { "source": "/api/reviews", "destination": "/api/products?route=reviews" },
     { "source": "/api/restock", "destination": "/api/products?route=restock" },
+    { "source": "/api/reels", "destination": "/api/products?route=reels" },
+    { "source": "/api/health", "destination": "/api/products?route=health" },
     { "source": "/api/admin/promotions", "destination": "/api/admin/products?route=promotions" },
     { "source": "/api/admin/reviews", "destination": "/api/admin/products?route=reviews" },
+    { "source": "/api/admin/reels", "destination": "/api/admin/products?route=reels" },
+    { "source": "/api/admin/products/bulk", "destination": "/api/admin/products?route=bulk-products" },
     { "source": "/api/npay/config", "destination": "/api/orders?route=npay-config" },
     { "source": "/api/npay/order", "destination": "/api/orders?route=npay-order" },
     { "source": "/api/npay/product-info", "destination": "/api/orders?route=npay-product-info" },
-    { "source": "/api/npay/wishlist", "destination": "/api/orders?route=npay-wishlist" }
+    { "source": "/api/npay/wishlist", "destination": "/api/orders?route=npay-wishlist" },
+    { "source": "/api/orders/guest", "destination": "/api/orders?route=guest-order" },
+    { "source": "/api/orders/guest/change", "destination": "/api/orders?route=guest-order-change" },
+    { "source": "/api/coupons/claim", "destination": "/api/orders?route=coupon-claim" }
   ],
   "headers": [
     {
@@ -41,7 +50,7 @@
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
         { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=()" },
         { "key": "Cross-Origin-Opener-Policy", "value": "same-origin-allow-popups" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' https://npay-order.pstatic.net https://test-pay.naver.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' data: https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.naver.com https://*.pstatic.net https://*.vercel-insights.com; frame-src https://pay.naver.com https://*.naver.com; form-action 'self' https://pay.naver.com https://*.naver.com; upgrade-insecure-requests" }
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' https://npay-order.pstatic.net https://test-pay.naver.com https://t1.daumcdn.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' data: https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://*.naver.com https://*.pstatic.net https://*.vercel-insights.com; frame-src https://pay.naver.com https://*.naver.com https://t1.daumcdn.net; form-action 'self' https://pay.naver.com https://*.naver.com; upgrade-insecure-requests" }
       ]
     },
     {

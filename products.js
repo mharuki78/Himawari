@@ -397,7 +397,7 @@ function setupCatalog(container, families) {
   const params = new URLSearchParams(location.search);
   let state = {
     query: params.get('q') || '',
-    category: CATALOG_CATEGORIES.some((item) => item.id === params.get('category')) ? params.get('category') : 'all',
+    category: CATALOG_CATEGORIES.some((item) => item.id === (document.body.dataset.collection || params.get('category'))) ? (document.body.dataset.collection || params.get('category')) : 'all',
     sort: ['featured', 'price-low', 'price-high', 'name'].includes(params.get('sort')) ? params.get('sort') : 'featured',
     shown: 12,
   };
@@ -434,7 +434,7 @@ function setupCatalog(container, families) {
     });
     const url = new URL(location.href);
     state.query ? url.searchParams.set('q', state.query) : url.searchParams.delete('q');
-    state.category !== 'all' ? url.searchParams.set('category', state.category) : url.searchParams.delete('category');
+    if (!document.body.dataset.collection) state.category !== 'all' ? url.searchParams.set('category', state.category) : url.searchParams.delete('category');
     state.sort !== 'featured' ? url.searchParams.set('sort', state.sort) : url.searchParams.delete('sort');
     history.replaceState(null, '', url);
     window.himawariReveal?.(container);

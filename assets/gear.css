@@ -838,6 +838,10 @@ html {
 
 .reel-card__caption h3 { max-width: 17ch; font-size: clamp(1.35rem, 2.2vw, 2rem); line-height: 1.18; }
 
+.collection-links { display: flex; flex-wrap: wrap; gap: .55rem; margin: 1.5rem 0 2rem; }
+.collection-links a { min-height: 44px; display: inline-flex; align-items: center; padding: 0 1rem; border: 1px solid var(--fog); border-radius: 999px; background: var(--snow); color: var(--harbor); font-size: .72rem; font-weight: 720; text-decoration: none; }
+.collection-links a:hover, .collection-links a:focus-visible { border-color: var(--moss); background: var(--sky-tint); }
+
 .story-list-card:hover,
 .story-post-nav a:hover { background: color-mix(in srgb, var(--ink) 7%, var(--cream)); }
 

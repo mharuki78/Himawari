@@ -34,6 +34,20 @@
   var checkoutStorageKey = 'himawari-checkout-items';
   var gameRewardStorageKey = 'himawari-game-coupon-v1';
   var preferredGameCouponId = '';
+  var couponTokens = {};
+  var couponRequests = {};
+
+  function readCouponWallet() { try { return JSON.parse(localStorage.getItem('himawari-coupon-wallet-v1')) || {}; } catch (error) { return {}; } }
+  function saveCouponWallet() { try { localStorage.setItem('himawari-coupon-wallet-v1', JSON.stringify(couponTokens)); } catch (error) {} }
+  async function issueCoupon(couponId) {
+    if (!couponId || couponTokens[couponId]) return couponTokens[couponId] || '';
+    if (couponRequests[couponId]) return couponRequests[couponId];
+    couponError.textContent = '쿠폰을 안전하게 발급하고 있습니다.';
+    couponRequests[couponId] = request('/api/coupons/claim', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ couponId: couponId, source: 'checkout' }) }).then(function (payload) {
+      couponTokens[couponId] = payload.token; saveCouponWallet(); couponError.textContent = '쿠폰을 발급했습니다. 이 주문에 한 번 사용할 수 있습니다.'; return payload.token;
+    }).finally(function () { delete couponRequests[couponId]; });
+    return couponRequests[couponId];
+  }
 
   function readGameReward() {
     try {
@@ -255,6 +269,8 @@
       var promotionPayload = await request('/api/promotions').catch(function () { return { coupons: [] }; });
       coupons = Array.isArray(promotionPayload.coupons) ? promotionPayload.coupons : [];
       var gameReward = readGameReward();
+      couponTokens = readCouponWallet();
+      if (gameReward?.couponId && gameReward?.token) { couponTokens[gameReward.couponId] = gameReward.token; saveCouponWallet(); }
       preferredGameCouponId = gameReward && coupons.some(function (coupon) { return coupon.id === gameReward.couponId; }) ? gameReward.couponId : '';
       memberOrder = session.authenticated === true;
       guestNote.hidden = memberOrder;
@@ -311,7 +327,10 @@
     if (event.target.name) setFieldError(event.target.name, '');
     summary.hidden = true;
     submitStatus.textContent = '';
-    if (event.target.name === 'couponId') renderTotals();
+    if (event.target.name === 'couponId') {
+      renderTotals();
+      if (event.target.value) issueCoupon(event.target.value).catch(function (reason) { event.target.checked = false; form.querySelector('input[name="couponId"][value=""]').checked = true; renderTotals(); couponError.textContent = reason.message || '쿠폰을 발급하지 못했습니다.'; });
+    }
   });
 
   form.addEventListener('submit', async function (event) {
@@ -338,6 +357,7 @@
           addressLine2: values.addressLine2,
           deliveryNote: values.deliveryNote,
           couponId: values.couponId || '',
+          couponToken: values.couponId ? (couponTokens[values.couponId] || await issueCoupon(values.couponId)) : '',
           termsConsent: values.termsConsent,
           privacyConsent: values.privacyConsent
         })
@@ -355,6 +375,7 @@
       document.querySelector('[data-complete-total]').textContent = priceFormatter.format(order.total);
       memberOrderLink.hidden = !memberOrder;
       guestOrderLink.hidden = memberOrder;
+      if (!memberOrder) guestOrderLink.href = 'guest-order.html?order=' + encodeURIComponent(order.orderNumber);
       document.title = '주문 접수 완료 — Himawari';
       showOnly(complete);
       document.querySelector('#order-complete-title').focus();
@@ -374,6 +395,13 @@
   });
 
   retry.addEventListener('click', load);
+  document.querySelector('[data-address-search]')?.addEventListener('click', function () {
+    function openPostcode() {
+      new window.daum.Postcode({ oncomplete: function (data) { field('postalCode').value = data.zonecode || ''; field('addressLine1').value = data.roadAddress || data.jibunAddress || ''; field('addressLine2').focus(); dirty = true; setFieldError('postalCode', ''); setFieldError('addressLine1', ''); } }).open();
+    }
+    if (window.daum && window.daum.Postcode) return openPostcode();
+    var script = document.createElement('script'); script.src = 'https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js'; script.onload = openPostcode; script.onerror = function () { submitStatus.textContent = '주소 검색을 불러오지 못했습니다. 주소를 직접 입력해 주세요.'; }; document.head.append(script);
+  });
   discardCancel.addEventListener('click', function () { pendingHref = ''; discardDialog.close(); });
   discardConfirm.addEventListener('click', function () { var href = pendingHref; dirty = false; discardDialog.close(); if (href) location.href = href; });
   document.addEventListener('click', function (event) {

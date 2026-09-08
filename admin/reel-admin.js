@@ -5505,7 +5505,7 @@ async function requestApi(pathname, init, commandOptions) {
       commandOptions.presignedUrlPayload
     );
   }
-  const requestId2 = `${auth.storeId}:${Date.now()}:${Math.random().toString(16).slice(2)}`;
+  const requestId = `${auth.storeId}:${Date.now()}:${Math.random().toString(16).slice(2)}`;
   let retryCount = 0;
   let bodyLength = 0;
   let totalLoaded = 0;
@@ -5531,7 +5531,7 @@ async function requestApi(pathname, init, commandOptions) {
           init: {
             ...init,
             headers: {
-              "x-api-blob-request-id": requestId2,
+              "x-api-blob-request-id": requestId,
               // Store ID is not encoded in OIDC token, so pass it separately as a header
               "x-vercel-blob-store-id": auth.storeId,
               "x-api-blob-request-attempt": String(retryCount),
@@ -5544,9 +5544,9 @@ async function requestApi(pathname, init, commandOptions) {
           },
           onUploadProgress: (commandOptions == null ? void 0 : commandOptions.onUploadProgress) ? (loaded) => {
             var _a3;
-            const total2 = bodyLength !== 0 ? bodyLength : loaded;
+            const total = bodyLength !== 0 ? bodyLength : loaded;
             totalLoaded = loaded;
-            const percentage = bodyLength > 0 ? Number((loaded / total2 * 100).toFixed(2)) : 0;
+            const percentage = bodyLength > 0 ? Number((loaded / total * 100).toFixed(2)) : 0;
             if (percentage === 100 && bodyLength > 0) {
               return;
             }
@@ -5556,7 +5556,7 @@ async function requestApi(pathname, init, commandOptions) {
               // Instead of defining total as total?: number we decided to set the total to the currently
               // loaded number. This is not inaccurate and way more practical for DX.
               // Passing down a stream to put() is very rare
-              total: total2,
+              total,
               percentage
             });
           } : void 0
@@ -5951,9 +5951,9 @@ function uploadAllParts({
           },
           0
         );
-        const total2 = totalToLoad || loaded;
+        const total = totalToLoad || loaded;
         const percentage = totalToLoad > 0 ? Number(((loaded / totalToLoad || loaded) * 100).toFixed(2)) : 0;
-        (_a3 = options.onUploadProgress) == null ? void 0 : _a3.call(options, { loaded, total: total2, percentage });
+        (_a3 = options.onUploadProgress) == null ? void 0 : _a3.call(options, { loaded, total, percentage });
       }, 150);
     }
     read().catch(cancel);
@@ -6530,7 +6530,7 @@ function bindPasswordToggle(input, button) {
   });
 }
 
-// admin/product-admin.source.js
+// admin/reel-admin.source.js
 var $ = (selector) => document.querySelector(selector);
 var initialView = $("[data-initial-view]");
 var loginView = $("[data-login-view]");
@@ -6538,108 +6538,22 @@ var boardView = $("[data-board-view]");
 var loginForm = $("[data-login-form]");
 var passwordInput = $("#admin-password");
 var passwordError = $("#admin-password-error");
-var passwordToggle = $("[data-password-toggle]");
-var loginButton = loginForm.querySelector('button[type="submit"]');
-var loginLabel = $("[data-login-label]");
 var loginStatus = $("[data-login-status]");
-var logoutButton = $("[data-logout]");
-var boardTitle = $("#board-title");
+var form = $("[data-reel-form]");
+var list = $("[data-reel-list]");
 var boardStatus = $("[data-board-status]");
-var productTotal = $("[data-product-total]");
-var catalogReadiness = $("[data-catalog-readiness]");
-var tableWrap = $("[data-table-wrap]");
-var rows = $("[data-product-rows]");
-var emptyState = $("[data-empty-state]");
-var listError = $("[data-list-error]");
-var retryButton = $("[data-retry]");
-var errorRetryButton = $("[data-error-retry]");
-var loadMoreButton = $("[data-load-more]");
-var loadLabel = $("[data-load-label]");
-var listTitle = $("#product-list-title");
-var bulkDownload = $("[data-bulk-download]");
-var bulkFile = $("[data-bulk-file]");
-var productForm = $("[data-product-form]");
-var formSummary = $("[data-form-summary]");
 var formStatus = $("[data-form-status]");
-var editorEyebrow = $("[data-editor-eyebrow]");
-var editorTitle = $("[data-editor-title]");
-var editorDescription = $("[data-editor-description]");
-var editContext = $("[data-edit-context]");
-var editProduct = $("[data-edit-product]");
-var submitButton = productForm.querySelector('button[type="submit"]');
+var submit = form.querySelector('button[type="submit"]');
 var submitLabel = $("[data-submit-label]");
-var resetButton = $("[data-reset-form]");
-var resetLabel = $("[data-reset-label]");
-var cancelUploadButton = $("[data-cancel-upload]");
-var mainImageInput = $("#product-main-image");
-var galleryInput = $("#product-gallery");
-var hasOptionsInput = $("#product-has-options");
-var stockInput = $("#product-stock");
-var optionNameInput = $("#product-option-name");
-var simpleStockField = $("[data-simple-stock-field]");
-var optionEditor = $("[data-option-editor]");
-var optionRows = $("[data-option-rows]");
-var addOptionButton = $("[data-add-option]");
-var mainRequired = $("[data-main-required]");
-var mainImageHelp = $("[data-main-image-help]");
-var galleryHelp = $("[data-gallery-help]");
-var mainPreview = $("[data-main-preview]");
-var galleryPreview = $("[data-gallery-preview]");
-var uploadProgress = $("[data-upload-progress]");
-var uploadLabel = $("[data-upload-label]");
-var uploadPercent = $("[data-upload-percent]");
-var uploadMeter = $("[data-upload-meter]");
-var deleteDialog = $("[data-delete-dialog]");
-var deleteProduct = $("[data-delete-product]");
-var deleteError = $("[data-delete-error]");
-var deleteCancel = $("[data-delete-cancel]");
-var deleteConfirm = $("[data-delete-confirm]");
-var deleteLabel = $("[data-delete-label]");
-var discardDialog = $("[data-discard-dialog]");
-var discardTitle = $("[data-discard-title]");
-var discardDescription = $("[data-discard-description]");
-var discardCancel = $("[data-discard-cancel]");
-var discardConfirm = $("[data-discard-confirm]");
-var discardConfirmLabel = $("[data-discard-confirm-label]");
-var priceFormatter = new Intl.NumberFormat("ko-KR", {
-  style: "currency",
-  currency: "KRW",
-  maximumFractionDigits: 0
-});
-var allowedImageTypes = /* @__PURE__ */ new Set(["image/jpeg", "image/png", "image/webp", "image/avif"]);
-var maxMainImageSize = 8 * 1024 * 1024;
-var maxGalleryImageSize = 15 * 1024 * 1024;
-var maxGallery = 5;
-var longImageSegmentHeight = 6e3;
-var fieldNames = ["name", "model", "price", "naverDiscountRate", "tagline", "description", "highlights", "url", "stock", "optionName", "options", "mainImage", "gallery"];
-var products = [];
-var total = 0;
-var cursor = null;
-var hasMore = false;
-var catalogEtag = null;
-var loadingList = false;
-var listController = null;
-var deleteTarget = null;
-var requestId = crypto.randomUUID();
-var uploadedImageUrls = [];
-var uploadsComplete = false;
+var config = { reels: [] };
+var etag = null;
 var uploadController = null;
-var dirty = false;
-var previewUrls = [];
-var discardAction = null;
-var editTarget = null;
-var editEtag = null;
-var editTrigger = null;
 function showLogin(message2 = "") {
   initialView.hidden = true;
   boardView.hidden = true;
   loginView.hidden = false;
   loginStatus.textContent = message2;
   passwordInput.value = "";
-  passwordInput.type = "password";
-  passwordToggle.textContent = "\uD45C\uC2DC";
-  passwordToggle.setAttribute("aria-label", "\uBE44\uBC00\uBC88\uD638 \uD45C\uC2DC");
-  passwordToggle.setAttribute("aria-pressed", "false");
   requestAnimationFrame(() => passwordInput.focus());
 }
 function showBoard() {
@@ -6647,938 +6561,231 @@ function showBoard() {
   loginView.hidden = true;
   boardView.hidden = false;
 }
-function setCreateMode() {
-  if (editTrigger?.isConnected) {
-    editTrigger.disabled = false;
-    editTrigger.textContent = "\uC218\uC815";
-    editTrigger.closest("tr")?.classList.remove("is-editing");
-  }
-  rows.querySelectorAll("[data-delete-product-id]").forEach((button) => {
-    button.disabled = false;
-  });
-  editTarget = null;
-  editEtag = null;
-  editTrigger = null;
-  productForm.dataset.mode = "create";
-  editorEyebrow.textContent = "Add a product";
-  editorTitle.textContent = "\uC0C8 \uC81C\uD488 \uB4F1\uB85D";
-  editorDescription.textContent = "\uBCC4\uD45C\uAC00 \uC788\uB294 \uD56D\uBAA9\uC740 \uD544\uC218\uC785\uB2C8\uB2E4. \uC800\uC7A5 \uC804\uAE4C\uC9C0 \uC785\uB825 \uB0B4\uC6A9\uACFC \uC120\uD0DD\uD55C \uD30C\uC77C\uC740 \uC774 \uBE0C\uB77C\uC6B0\uC800\uC5D0\uB9CC \uC788\uC2B5\uB2C8\uB2E4.";
-  editContext.hidden = true;
-  editProduct.textContent = "";
-  mainImageInput.required = true;
-  mainRequired.hidden = false;
-  mainImageHelp.textContent = "JPG, PNG, WebP, AVIF \xB7 \uCD5C\uB300 8MB \xB7 1\uC7A5";
-  galleryHelp.textContent = "\uC0C1\uC138\uD398\uC774\uC9C0\uC5D0\uC11C \uC6D0\uBCF8 \uBE44\uC728\uB85C \uC774\uC5B4\uC11C \uBCF4\uC5EC\uC904 \uC774\uBBF8\uC9C0 \xB7 \uC7A5\uB2F9 \uCD5C\uB300 15MB \xB7 \uCD5C\uB300 5\uC7A5 \xB7 \uD55C \uC7A5\uC9DC\uB9AC \uAE34 \uC774\uBBF8\uC9C0\uB294 WebP\uB85C \uC790\uB3D9 \uBD84\uD560";
-  resetLabel.textContent = "\uC785\uB825 \uC9C0\uC6B0\uAE30";
-  submitLabel.textContent = "\uC81C\uD488 \uB4F1\uB85D";
-}
-function createOptionRow(option = {}) {
-  const row = document.createElement("div");
-  row.className = "inventory-option-row";
-  row.dataset.optionId = String(option.id || "");
-  const label = document.createElement("input");
-  label.type = "text";
-  label.maxLength = 50;
-  label.placeholder = "\uC608: \uBE14\uB799 / M";
-  label.value = String(option.label || "");
-  label.setAttribute("aria-label", "\uC635\uC158\uAC12");
-  const stock = document.createElement("input");
-  stock.type = "number";
-  stock.inputMode = "numeric";
-  stock.min = "0";
-  stock.max = "99999";
-  stock.step = "1";
-  stock.value = Number.isInteger(Number(option.stock)) ? String(option.stock) : "0";
-  stock.setAttribute("aria-label", `${option.label || "\uC635\uC158"} \uC7AC\uACE0`);
-  const remove = document.createElement("button");
-  remove.type = "button";
-  remove.className = "inventory-option-remove";
-  remove.textContent = "\u2212";
-  remove.setAttribute("aria-label", `${option.label || "\uC774 \uC635\uC158"} \uC0AD\uC81C`);
-  remove.addEventListener("click", () => {
-    row.remove();
-    dirty = true;
-    setFieldError("options");
-    if (!optionRows.children.length) createOptionRow();
-  });
-  row.append(label, stock, remove);
-  optionRows.append(row);
-  return row;
-}
-function inventoryOptions() {
-  if (!hasOptionsInput.checked) return [];
-  return [...optionRows.children].map((row) => ({
-    id: row.dataset.optionId || "",
-    label: String(row.children[0].value || "").trim(),
-    stock: Number(row.children[1].value)
-  }));
-}
-function syncInventoryEditor() {
-  const enabled = hasOptionsInput.checked;
-  optionEditor.hidden = !enabled;
-  simpleStockField.hidden = enabled;
-  optionNameInput.required = enabled;
-  stockInput.disabled = enabled;
-  if (enabled && !optionRows.children.length) createOptionRow();
-}
-function loadInventory(product = null) {
-  const options = Array.isArray(product?.options) ? product.options : [];
-  optionRows.replaceChildren();
-  hasOptionsInput.checked = options.length > 0;
-  stockInput.value = options.length || product?.stock === null || product?.stock === void 0 ? "" : String(product.stock);
-  optionNameInput.value = product?.optionName || "\uC635\uC158";
-  options.forEach(createOptionRow);
-  syncInventoryEditor();
-}
-function beginEdit(product, trigger) {
-  productForm.reset();
-  clearFormErrors();
-  revokePreviews();
-  uploadedImageUrls = [];
-  uploadsComplete = false;
-  requestId = crypto.randomUUID();
-  editTarget = product;
-  editEtag = catalogEtag;
-  editTrigger = trigger;
-  productForm.dataset.mode = "edit";
-  editorEyebrow.textContent = "Edit a product";
-  editorTitle.textContent = "\uC81C\uD488 \uC218\uC815";
-  editorDescription.textContent = "\uD604\uC7AC \uC81C\uD488 \uC815\uBCF4\uB97C \uBD88\uB7EC\uC654\uC2B5\uB2C8\uB2E4. \uBCC0\uACBD\uD55C \uB0B4\uC6A9\uB9CC \uD655\uC778\uD55C \uB4A4 \uC800\uC7A5\uD574 \uC8FC\uC138\uC694.";
-  editContext.hidden = false;
-  editProduct.textContent = product.name;
-  mainImageInput.required = false;
-  mainRequired.hidden = true;
-  mainImageHelp.textContent = "\uC0C8 \uD30C\uC77C\uC744 \uC120\uD0DD\uD558\uBA74 \uD604\uC7AC \uB300\uD45C \uC774\uBBF8\uC9C0\uB97C \uAD50\uCCB4\uD569\uB2C8\uB2E4. JPG, PNG, WebP, AVIF \xB7 \uCD5C\uB300 8MB";
-  galleryHelp.textContent = "\uC0C8 \uD30C\uC77C\uC744 \uC120\uD0DD\uD558\uBA74 \uD604\uC7AC \uC0C1\uC138 \uC774\uBBF8\uC9C0 \uC804\uCCB4\uB97C \uAD50\uCCB4\uD569\uB2C8\uB2E4. \uC7A5\uB2F9 \uCD5C\uB300 15MB \xB7 \uCD5C\uB300 5\uC7A5 \xB7 \uD55C \uC7A5\uC9DC\uB9AC \uAE34 \uC774\uBBF8\uC9C0\uB294 WebP\uB85C \uC790\uB3D9 \uBD84\uD560";
-  resetLabel.textContent = "\uC218\uC815 \uCDE8\uC18C";
-  submitLabel.textContent = "\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5";
-  field("name").value = product.name;
-  field("model").value = product.model;
-  field("price").value = String(product.naverPrice || Math.max(0, Number(product.price || 0)));
-  field("naverDiscountRate").value = product.naverDiscountRate === null || product.naverDiscountRate === void 0 ? "" : String(product.naverDiscountRate);
-  field("tagline").value = product.tagline;
-  field("description").value = product.description;
-  field("highlights").value = product.highlights.join("\n");
-  field("url").value = product.url;
-  loadInventory(product);
-  renderFilePreviews();
-  dirty = false;
-  formStatus.textContent = `\u201C${product.name}\u201D \uC81C\uD488\uC744 \uD3B8\uC9D1\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4. \uBCC0\uACBD \uD6C4 \u2018\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5\u2019\uC744 \uB20C\uB7EC \uC8FC\uC138\uC694.`;
-  formStatus.classList.remove("is-error");
-  trigger.disabled = true;
-  trigger.textContent = "\uC120\uD0DD\uB428";
-  const editingRow = trigger.closest("tr");
-  editingRow?.classList.add("is-editing");
-  rows.querySelectorAll("[data-delete-product-id]").forEach((button) => {
-    button.disabled = true;
-  });
-  document.querySelector(".product-create")?.scrollIntoView({ block: "start" });
-  requestAnimationFrame(() => field("name").focus());
-}
-function openDiscardDialog(action) {
-  discardAction = action;
-  if (editTarget) {
-    discardTitle.textContent = "\uC81C\uD488 \uC218\uC815\uC744 \uCDE8\uC18C\uD560\uAE4C\uC694?";
-    discardDescription.textContent = "\uC800\uC7A5\uD558\uC9C0 \uC54A\uC740 \uBCC0\uACBD \uB0B4\uC6A9\uACFC \uC0C8\uB85C \uC120\uD0DD\uD55C \uC774\uBBF8\uC9C0\uAC00 \uC0AC\uB77C\uC9D1\uB2C8\uB2E4. \uD604\uC7AC \uACF5\uAC1C \uC81C\uD488 \uC815\uBCF4\uB294 \uBC14\uB00C\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.";
-    discardConfirmLabel.textContent = "\uC218\uC815 \uCDE8\uC18C";
-  } else {
-    discardTitle.textContent = "\uC785\uB825\uD55C \uB0B4\uC6A9\uC744 \uC9C0\uC6B8\uAE4C\uC694?";
-    discardDescription.textContent = "\uC544\uC9C1 \uB4F1\uB85D\uD558\uC9C0 \uC54A\uC740 \uC81C\uD488 \uC815\uBCF4\uC640 \uC120\uD0DD\uD55C \uC774\uBBF8\uC9C0\uAC00 \uC0AC\uB77C\uC9D1\uB2C8\uB2E4.";
-    discardConfirmLabel.textContent = "\uC785\uB825 \uB0B4\uC6A9 \uC9C0\uC6B0\uAE30";
-  }
-  discardDialog.showModal();
-  discardCancel.focus();
-}
-function handleSessionError(error) {
-  if (error instanceof HttpError && error.status === 401) {
-    showLogin("\uAD00\uB9AC\uC790 \uC138\uC158\uC774 \uB9CC\uB8CC\uB418\uC5C8\uC2B5\uB2C8\uB2E4. \uB2E4\uC2DC \uB85C\uADF8\uC778\uD574 \uC8FC\uC138\uC694.");
-    return true;
-  }
-  return false;
-}
-function setLoginError(message2) {
-  passwordError.textContent = message2;
-  passwordInput.setAttribute("aria-invalid", message2 ? "true" : "false");
-}
-function field(name) {
-  return productForm.elements.namedItem(name);
-}
-function focusField(name) {
-  if (name === "options") return optionRows.querySelector("input")?.focus();
-  return field(name)?.focus();
-}
-function errorElement(name) {
-  return document.querySelector(`#product-${name.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)}-error`);
-}
-function setFieldError(name, message2 = "") {
-  const control = field(name);
-  const output = errorElement(name);
-  if (output) output.textContent = message2;
-  if (control instanceof HTMLElement) control.setAttribute("aria-invalid", message2 ? "true" : "false");
-}
-function clearFormErrors() {
-  fieldNames.forEach((name) => setFieldError(name));
-  formSummary.hidden = true;
-  formSummary.textContent = "";
-  formStatus.classList.remove("is-error");
-}
-function markFormError(message2) {
-  formSummary.textContent = message2;
-  formSummary.hidden = false;
-  formStatus.textContent = message2;
-  formSummary.focus();
-  formStatus.classList.add("is-error");
-}
-function validStoreUrl(value) {
+function safeMedia(url) {
   try {
-    const url = new URL(value);
-    return url.protocol === "https:" && url.hostname === "smartstore.naver.com";
+    const parsed = new URL(url, location.origin);
+    return ["https:", "http:"].includes(parsed.protocol) ? parsed.href : "";
   } catch {
-    return false;
+    return "";
   }
 }
-function validateFile(file, maximumSize, label) {
-  if (!allowedImageTypes.has(file.type)) return "JPG, PNG, WebP, AVIF \uC774\uBBF8\uC9C0\uB9CC \uC120\uD0DD\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.";
-  if (file.size <= 0 || file.size > maximumSize) return `${label}\uB294 ${maximumSize / 1024 / 1024}MB \uC774\uD558\uC5EC\uC57C \uD569\uB2C8\uB2E4.`;
-  return "";
+function formatBytes(bytes2) {
+  return bytes2 >= 1048576 ? `${(bytes2 / 1048576).toFixed(1)}MB` : `${Math.ceil(bytes2 / 1024)}KB`;
 }
-function validateGalleryFiles(files) {
-  if (files.length > maxGallery) return "\uC0C1\uC138 \uC774\uBBF8\uC9C0\uB294 \uCD5C\uB300 5\uAC1C\uAE4C\uC9C0 \uC120\uD0DD\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.";
-  return files.map((file) => validateFile(file, maxGalleryImageSize, "\uC0C1\uC138 \uC774\uBBF8\uC9C0 \uD55C \uC7A5")).find(Boolean) || "";
+function setFileSummary(input, target) {
+  target.textContent = input.files[0] ? `${input.files[0].name} \xB7 ${formatBytes(input.files[0].size)}` : "\uC120\uD0DD\uB41C \uD30C\uC77C \uC5C6\uC74C";
 }
-function canvasBlob(canvas, type = "image/webp", quality = 0.84) {
-  return new Promise((resolve, reject) => canvas.toBlob((blob) => {
-    if (blob) resolve(blob);
-    else reject(new Error("\uC0C1\uC138 \uC774\uBBF8\uC9C0\uB97C WebP\uB85C \uBCC0\uD658\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4."));
-  }, type, quality));
-}
-async function optimizeGalleryFiles(files) {
-  if (files.length !== 1 || typeof createImageBitmap !== "function") return files;
-  const original = files[0];
-  let bitmap;
-  try {
-    bitmap = await createImageBitmap(original);
-    const segmentCount = Math.min(maxGallery, Math.max(1, Math.ceil(bitmap.height / longImageSegmentHeight)));
-    if (segmentCount === 1 && original.type === "image/webp" && original.size < 4 * 1024 * 1024) return files;
-    const sourceSegmentHeight = Math.ceil(bitmap.height / segmentCount);
-    const targetWidth = Math.min(bitmap.width, 1600);
-    const scale = targetWidth / bitmap.width;
-    const basename = original.name.replace(/\.[^.]+$/, "") || "detail";
-    const optimized = [];
-    for (let index = 0; index < segmentCount; index += 1) {
-      const sourceY = index * sourceSegmentHeight;
-      const sourceHeight = Math.min(sourceSegmentHeight, bitmap.height - sourceY);
-      if (sourceHeight <= 0) break;
-      const canvas = document.createElement("canvas");
-      canvas.width = targetWidth;
-      canvas.height = Math.max(1, Math.round(sourceHeight * scale));
-      canvas.getContext("2d", { alpha: false }).drawImage(bitmap, 0, sourceY, bitmap.width, sourceHeight, 0, 0, canvas.width, canvas.height);
-      const blob = await canvasBlob(canvas);
-      if (blob.size > maxGalleryImageSize) throw new Error("\uBCC0\uD658\uB41C \uC0C1\uC138 \uC774\uBBF8\uC9C0 \uD55C \uC7A5\uC774 15MB\uB97C \uCD08\uACFC\uD569\uB2C8\uB2E4. \uC6D0\uBCF8 \uD3ED\uC744 \uC904\uC5EC \uB2E4\uC2DC \uC2DC\uB3C4\uD574 \uC8FC\uC138\uC694.");
-      optimized.push(new File([blob], `${basename}-${String(index + 1).padStart(2, "0")}.webp`, { type: "image/webp", lastModified: Date.now() }));
-    }
-    return optimized;
-  } catch (error) {
-    if (error.message?.includes("15MB")) throw error;
-    return files;
-  } finally {
-    bitmap?.close?.();
-  }
-}
-function validateForm() {
-  clearFormErrors();
-  const values = {
-    name: String(field("name").value || "").trim(),
-    model: String(field("model").value || "").trim(),
-    price: Number(field("price").value),
-    naverDiscountRate: field("naverDiscountRate").value === "" ? null : Number(field("naverDiscountRate").value),
-    tagline: String(field("tagline").value || "").trim(),
-    description: String(field("description").value || "").trim(),
-    highlights: String(field("highlights").value || "").split(/\r?\n/).map((item) => item.trim()).filter(Boolean),
-    url: String(field("url").value || "").trim(),
-    stock: hasOptionsInput.checked || stockInput.value === "" ? null : Number(stockInput.value),
-    optionName: hasOptionsInput.checked ? String(optionNameInput.value || "").trim() : "",
-    options: inventoryOptions()
-  };
-  const mainFile = mainImageInput.files?.[0] || null;
-  const galleryFiles = [...galleryInput.files || []];
-  const errors = {};
-  if (values.name.length < 2 || values.name.length > 160) errors.name = "\uC81C\uD488\uBA85\uC740 2~160\uC790\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
-  if (!values.model || values.model.length > 50) errors.model = "\uBAA8\uB378\uBA85\uC740 50\uC790 \uC774\uB0B4\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
-  if (!Number.isInteger(values.price) || values.price < 1 || values.price > 1e7) errors.price = "\uAC00\uACA9\uC740 1\uC6D0 \uC774\uC0C1 1,000\uB9CC\uC6D0 \uC774\uD558\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
-  if (values.naverDiscountRate !== null && (!Number.isInteger(values.naverDiscountRate) || values.naverDiscountRate < 0 || values.naverDiscountRate > 99)) errors.naverDiscountRate = "\uD560\uC778\uC728\uC740 0~99 \uC0AC\uC774\uC758 \uC815\uC218\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
-  if (values.tagline.length < 5 || values.tagline.length > 120) errors.tagline = "\uD55C \uC904 \uC18C\uAC1C\uB294 5~120\uC790\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
-  if (values.description.length < 20 || values.description.length > 3e3) errors.description = "\uC0C1\uC138 \uC124\uBA85\uC740 20~3,000\uC790\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
-  if (!values.highlights.length || values.highlights.length > 8 || values.highlights.some((item) => item.length > 100)) errors.highlights = "\uC81C\uD488 \uD3EC\uC778\uD2B8\uB97C \uC904\uB9C8\uB2E4 \uC785\uB825\uD574 \uC8FC\uC138\uC694. \uCD5C\uB300 8\uAC1C\uAE4C\uC9C0 \uAC00\uB2A5\uD569\uB2C8\uB2E4.";
-  if (!validStoreUrl(values.url)) errors.url = "\uB124\uC774\uBC84 \uC2A4\uB9C8\uD2B8\uC2A4\uD1A0\uC5B4 \uC81C\uD488 \uC8FC\uC18C\uB97C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
-  if (hasOptionsInput.checked) {
-    if (!values.optionName || values.optionName.length > 20) errors.optionName = "\uC635\uC158\uBA85\uC744 1~20\uC790\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
-    const labels = values.options.map((option) => option.label);
-    if (!values.options.length || values.options.length > 30 || values.options.some((option) => !option.label || option.label.length > 50 || !Number.isInteger(option.stock) || option.stock < 0 || option.stock > 99999)) errors.options = "\uAC01 \uC635\uC158\uAC12\uACFC 0~99,999 \uC0AC\uC774\uC758 \uC7AC\uACE0\uB97C \uD655\uC778\uD574 \uC8FC\uC138\uC694.";
-    else if (new Set(labels).size !== labels.length) errors.options = "\uAC19\uC740 \uC635\uC158\uAC12\uC744 \uB450 \uBC88 \uB4F1\uB85D\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.";
-  } else if (values.stock !== null && (!Number.isInteger(values.stock) || values.stock < 0 || values.stock > 99999)) errors.stock = "\uC7AC\uACE0\uB294 0~99,999 \uC0AC\uC774\uC758 \uC815\uC218\uB85C \uC785\uB825\uD558\uAC70\uB098 \uBE44\uC6CC \uC8FC\uC138\uC694.";
-  if (!mainFile && !editTarget) errors.mainImage = "\uB300\uD45C \uC774\uBBF8\uC9C0\uB97C \uC120\uD0DD\uD574 \uC8FC\uC138\uC694.";
-  else if (mainFile) {
-    const mainImageError = validateFile(mainFile, maxMainImageSize, "\uB300\uD45C \uC774\uBBF8\uC9C0");
-    if (mainImageError) errors.mainImage = mainImageError;
-  }
-  const galleryError = validateGalleryFiles(galleryFiles);
-  if (galleryError) errors.gallery = galleryError;
-  if (editTarget) {
-    for (const name of ["name", "model", "tagline", "description", "url"]) {
-      if (errors[name] && values[name] === editTarget[name]) delete errors[name];
-    }
-    if (errors.price && values.price === editTarget.naverPrice) delete errors.price;
-    if (errors.naverDiscountRate && values.naverDiscountRate === editTarget.naverDiscountRate) delete errors.naverDiscountRate;
-    if (errors.highlights && values.highlights.length === editTarget.highlights.length && values.highlights.every((item, index) => item === editTarget.highlights[index])) {
-      delete errors.highlights;
-    }
-  }
-  Object.entries(errors).forEach(([name, message2]) => setFieldError(name, message2));
-  const firstError = Object.keys(errors)[0];
-  if (firstError) {
-    markFormError("\uC785\uB825 \uB0B4\uC6A9\uC744 \uD655\uC778\uD574 \uC8FC\uC138\uC694. \uC624\uB958\uAC00 \uC788\uB294 \uCCAB \uD56D\uBAA9\uC73C\uB85C \uC774\uB3D9\uD569\uB2C8\uB2E4.");
-    focusField(firstError);
-    return null;
-  }
-  return { ...values, mainFile, galleryFiles };
-}
-function revokePreviews() {
-  previewUrls.forEach((url) => URL.revokeObjectURL(url));
-  previewUrls = [];
-}
-function imagePreview(file) {
-  const image = document.createElement("img");
-  const url = URL.createObjectURL(file);
-  previewUrls.push(url);
-  image.src = url;
-  image.alt = "";
-  return image;
-}
-function currentImagePreview(url) {
-  const image = document.createElement("img");
-  image.src = url;
-  image.alt = "";
-  return image;
-}
-function renderFilePreviews() {
-  revokePreviews();
-  mainPreview.replaceChildren();
-  galleryPreview.replaceChildren();
-  const mainFile = mainImageInput.files?.[0];
-  if (mainFile) {
-    const name = document.createElement("p");
-    name.textContent = `\uC0C8 \uB300\uD45C \uC774\uBBF8\uC9C0 \xB7 ${mainFile.name} \xB7 ${(mainFile.size / 1024 / 1024).toFixed(1)}MB`;
-    mainPreview.append(imagePreview(mainFile), name);
-    mainPreview.hidden = false;
-  } else if (editTarget?.image) {
-    const name = document.createElement("p");
-    name.textContent = "\uD604\uC7AC \uB300\uD45C \uC774\uBBF8\uC9C0 \uC720\uC9C0";
-    mainPreview.append(currentImagePreview(editTarget.image), name);
-    mainPreview.hidden = false;
-  } else {
-    mainPreview.hidden = true;
-  }
-  const galleryFiles = [...galleryInput.files || []];
-  const galleryItems = galleryFiles.length ? galleryFiles.map((file) => ({ image: imagePreview(file), label: `\uC0C8 \uC0C1\uC138 \uC774\uBBF8\uC9C0 \xB7 ${file.name} \xB7 ${(file.size / 1024 / 1024).toFixed(1)}MB` })) : (editTarget?.gallery || []).map((url, index) => ({ image: currentImagePreview(url), label: `\uD604\uC7AC \uC0C1\uC138 \uC774\uBBF8\uC9C0 ${index + 1} \uC720\uC9C0` }));
-  galleryItems.forEach((entry) => {
-    const item = document.createElement("li");
-    const name = document.createElement("span");
-    name.textContent = entry.label;
-    item.append(entry.image, name);
-    galleryPreview.append(item);
-  });
-  galleryPreview.hidden = galleryItems.length === 0;
-}
-async function cleanupUploadedImages() {
-  if (!uploadedImageUrls.length) {
-    uploadsComplete = false;
-    return true;
-  }
-  const urls = [...uploadedImageUrls];
-  try {
-    await fetchJson("/api/admin/product-media", {
-      method: "DELETE",
-      body: JSON.stringify({ requestId, urls })
-    });
-    uploadedImageUrls = [];
-    uploadsComplete = false;
-    return true;
-  } catch (error) {
-    if (handleSessionError(error)) return false;
-    formStatus.textContent = error.message || "\uC784\uC2DC \uC774\uBBF8\uC9C0\uB97C \uC815\uB9AC\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
-    formStatus.classList.add("is-error");
-    return false;
-  }
-}
-async function resetDraft({ cleanup = true } = {}) {
-  if (cleanup && !await cleanupUploadedImages()) return false;
-  setCreateMode();
-  productForm.reset();
-  loadInventory();
-  clearFormErrors();
-  revokePreviews();
-  mainPreview.replaceChildren();
-  mainPreview.hidden = true;
-  galleryPreview.replaceChildren();
-  galleryPreview.hidden = true;
-  uploadProgress.hidden = true;
-  uploadMeter.value = 0;
-  uploadPercent.textContent = "0%";
-  formStatus.textContent = "";
-  uploadedImageUrls = [];
-  uploadsComplete = false;
-  requestId = crypto.randomUUID();
-  dirty = false;
-  return true;
-}
-function createImageCell(product) {
-  const wrapper = document.createElement("div");
-  wrapper.className = "product-table__identity";
-  const image = document.createElement("img");
-  image.src = product.image;
-  image.alt = "";
-  image.loading = "lazy";
-  image.addEventListener("error", () => {
-    const fallback = document.createElement("span");
-    fallback.className = "product-table__fallback";
-    fallback.textContent = "\uC774\uBBF8\uC9C0 \uC5C6\uC74C";
-    image.replaceWith(fallback);
-  });
-  const copy = document.createElement("div");
-  const name = document.createElement("strong");
-  name.textContent = product.name;
-  const model = document.createElement("span");
-  model.textContent = product.model;
-  copy.append(name, model);
-  wrapper.append(image, copy);
-  return wrapper;
-}
-async function requestProductEdit(product, trigger) {
-  if (dirty) {
-    openDiscardDialog({ type: "edit", productId: product.id });
+function render() {
+  $("[data-reel-count]").textContent = `${config.reels.length} / 12`;
+  if (!config.reels.length) {
+    const empty = document.createElement("p");
+    empty.className = "empty-state";
+    empty.textContent = "\uB4F1\uB85D\uB41C \uC601\uC0C1\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.";
+    list.replaceChildren(empty);
     return;
   }
-  if (editTarget && editTarget.id !== product.id && !await resetDraft({ cleanup: true })) return;
-  beginEdit(product, trigger);
-}
-function renderRows() {
-  rows.replaceChildren();
-  products.forEach((product) => {
-    const row = document.createElement("tr");
-    const identity = document.createElement("td");
-    identity.append(createImageCell(product));
-    const price = document.createElement("td");
-    price.className = "product-table__price";
-    price.replaceChildren();
-    const sitePrice = document.createElement("strong");
-    sitePrice.textContent = priceFormatter.format(product.price);
-    const naverPrice = document.createElement("span");
-    naverPrice.textContent = `\uB124\uC774\uBC84 \uD560\uC778\uAC00 ${priceFormatter.format(product.naverPrice)}`;
-    const stock = document.createElement("span");
-    stock.textContent = product.stock === null ? "\uC7AC\uACE0 \uC81C\uD55C \uC5C6\uC74C" : product.soldOut ? "\uD488\uC808" : `\uC7AC\uACE0 ${product.stock}\uAC1C`;
-    price.append(sitePrice, naverPrice, stock);
-    const editCell = document.createElement("td");
-    const edit = document.createElement("button");
-    edit.type = "button";
-    edit.className = "button button--edit";
-    edit.textContent = "\uC218\uC815";
-    edit.dataset.editProductId = product.id;
-    edit.setAttribute("aria-label", `${product.name} \uC815\uBCF4 \uC218\uC815`);
-    edit.addEventListener("click", () => requestProductEdit(product, edit));
-    if (editTarget?.id === product.id) {
-      row.classList.add("is-editing");
-      edit.disabled = true;
-      edit.textContent = "\uC120\uD0DD\uB428";
-      editTrigger = edit;
-    }
-    editCell.append(edit);
-    const viewCell = document.createElement("td");
-    const view = document.createElement("a");
-    view.className = "button button--quiet";
-    view.href = `../product.html?id=${encodeURIComponent(product.id)}`;
-    view.target = "_blank";
-    view.rel = "noopener noreferrer";
-    view.textContent = "\uC0C1\uC138 \uBCF4\uAE30 \u2197";
-    view.setAttribute("aria-label", `${product.name} \uC0C1\uC138\uD398\uC774\uC9C0 \uC0C8 \uD0ED\uC5D0\uC11C \uBCF4\uAE30`);
-    viewCell.append(view);
-    const deleteCell = document.createElement("td");
+  list.replaceChildren(...config.reels.map((reel, index) => {
+    const article = document.createElement("article");
+    article.className = "reel-admin-card";
+    article.dataset.id = reel.id;
+    const media = document.createElement("div");
+    media.className = "reel-admin-card__media";
+    const video = document.createElement("video");
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = "metadata";
+    video.src = safeMedia(reel.videoUrl);
+    if (reel.posterUrl) video.poster = safeMedia(reel.posterUrl);
+    const play = document.createElement("button");
+    play.type = "button";
+    play.className = "reel-admin-card__preview";
+    play.textContent = "\uBBF8\uB9AC\uBCF4\uAE30";
+    play.addEventListener("click", () => video.paused ? video.play() : video.pause());
+    media.append(video, play);
+    const body = document.createElement("div");
+    body.className = "reel-admin-card__body";
+    const title = document.createElement("strong");
+    title.textContent = reel.name;
+    const copy = document.createElement("p");
+    copy.textContent = `${reel.label} \xB7 ${reel.caption}`;
+    const state = document.createElement("label");
+    state.className = "admin-switch";
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = reel.enabled;
+    checkbox.addEventListener("change", () => update(reel.id, { enabled: checkbox.checked }, checkbox));
+    const stateText = document.createElement("span");
+    stateText.textContent = "\uACF5\uAC1C";
+    state.append(checkbox, stateText);
+    const actions = document.createElement("div");
+    actions.className = "reel-admin-card__actions";
+    [["\uC704\uB85C", -1], ["\uC544\uB798\uB85C", 1]].forEach(([label, direction]) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = label;
+      button.disabled = direction < 0 ? index === 0 : index === config.reels.length - 1;
+      button.addEventListener("click", () => move(index, direction));
+      actions.append(button);
+    });
     const remove = document.createElement("button");
     remove.type = "button";
-    remove.className = "button button--danger-outline";
+    remove.className = "danger-link";
     remove.textContent = "\uC0AD\uC81C";
-    remove.dataset.deleteProductId = product.id;
-    remove.setAttribute("aria-label", `${product.name} \uC601\uAD6C \uC0AD\uC81C`);
-    remove.addEventListener("click", () => openDelete(product, remove));
-    if (editTarget) remove.disabled = true;
-    deleteCell.append(remove);
-    row.append(identity, price, editCell, viewCell, deleteCell);
-    rows.append(row);
-  });
-  tableWrap.hidden = products.length === 0;
-  emptyState.hidden = products.length !== 0 || loadingList;
-  listError.hidden = true;
-  loadMoreButton.hidden = !hasMore || products.length === 0;
-  productTotal.textContent = String(total);
+    remove.addEventListener("click", () => removeReel(reel));
+    actions.append(remove);
+    body.append(title, copy, state, actions);
+    article.append(media, body);
+    return article;
+  }));
 }
-async function loadProducts({ reset = false, initial = false } = {}) {
-  if (loadingList) return;
-  loadingList = true;
-  listController?.abort();
-  listController = new AbortController();
-  const nextCursor = reset ? "" : cursor || "";
-  retryButton.disabled = true;
-  retryButton.setAttribute("aria-busy", "true");
-  loadMoreButton.disabled = true;
-  loadMoreButton.setAttribute("aria-busy", "true");
-  loadLabel.textContent = "\uC81C\uD488 \uBD88\uB7EC\uC624\uB294 \uC911";
-  if (!initial) boardStatus.textContent = reset ? "\uC81C\uD488 \uBAA9\uB85D\uC744 \uC0C8\uB85C \uBD88\uB7EC\uC624\uACE0 \uC788\uC2B5\uB2C8\uB2E4." : "\uC81C\uD488\uC744 \uB354 \uBD88\uB7EC\uC624\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
+async function load() {
   try {
-    const query = nextCursor ? `?cursor=${encodeURIComponent(nextCursor)}` : "";
-    const payload = await fetchJson(`/api/admin/products${query}`, { signal: listController.signal });
-    if (reset) products = [];
-    products = [...products, ...payload.items.filter((item) => !products.some((current) => current.id === item.id))];
-    total = payload.total;
-    cursor = payload.nextCursor;
-    hasMore = payload.hasMore;
-    catalogEtag = payload.etag;
-    const readiness = payload.readiness || {};
-    catalogReadiness.replaceChildren();
-    [["\uC7AC\uACE0 \uBBF8\uC785\uB825", readiness.inventoryMissing], ["\uD560\uC778\uC728 \uBBF8\uC785\uB825", readiness.discountMissing], ["\uD575\uC2EC \uD2B9\uC9D5 \uBD80\uC871", readiness.highlightsMissing]].forEach(([label, count]) => {
-      const item = document.createElement("div");
-      const strong = document.createElement("strong");
-      const span = document.createElement("span");
-      strong.textContent = String(Number(count) || 0);
-      span.textContent = label;
-      item.append(strong, span);
-      catalogReadiness.append(item);
-    });
+    const payload = await fetchJson("/api/admin/reels", { cache: "no-store" });
+    config = payload.config;
+    etag = payload.etag || null;
+    render();
     showBoard();
-    renderRows();
-    boardStatus.textContent = total ? `${total}\uAC1C \uC81C\uD488 \uC911 ${products.length}\uAC1C\uB97C \uBD88\uB7EC\uC654\uC2B5\uB2C8\uB2E4.` : "\uB4F1\uB85D\uB41C \uC81C\uD488\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.";
+    boardStatus.textContent = config.updatedAt ? `\uB9C8\uC9C0\uB9C9 \uC800\uC7A5: ${new Intl.DateTimeFormat("ko-KR", { dateStyle: "medium", timeStyle: "short" }).format(new Date(config.updatedAt))}` : "\uAE30\uBCF8 \uC601\uC0C1 8\uAC1C\uAC00 \uD45C\uC2DC\uB418\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
   } catch (error) {
-    if (error.name === "AbortError") return;
-    if (handleSessionError(error)) return;
+    if (error instanceof HttpError && error.status === 401) return showLogin();
     showBoard();
-    if (!products.length) {
-      tableWrap.hidden = true;
-      emptyState.hidden = true;
-      listError.hidden = false;
-    }
-    boardStatus.textContent = error.message || "\uC81C\uD488 \uBAA9\uB85D\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
+    boardStatus.textContent = error.message || "\uC601\uC0C1 \uBAA9\uB85D\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
+  }
+}
+async function update(id, values, control) {
+  control.disabled = true;
+  try {
+    const payload = await fetchJson("/api/admin/reels", { method: "PATCH", body: JSON.stringify({ id, etag, ...values }) });
+    config = payload.config;
+    etag = payload.etag;
+    render();
+    boardStatus.textContent = "\uACF5\uAC1C \uC124\uC815\uC744 \uC800\uC7A5\uD588\uC2B5\uB2C8\uB2E4.";
+  } catch (error) {
+    boardStatus.textContent = error.message || "\uBCC0\uACBD \uB0B4\uC6A9\uC744 \uC800\uC7A5\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
+    await load();
   } finally {
-    loadingList = false;
-    retryButton.disabled = false;
-    retryButton.removeAttribute("aria-busy");
-    loadMoreButton.disabled = false;
-    loadMoreButton.removeAttribute("aria-busy");
-    loadLabel.textContent = "\uC81C\uD488 20\uAC1C \uB354 \uBCF4\uAE30";
+    control.disabled = false;
   }
 }
-function openDelete(product, trigger) {
-  deleteTarget = { product, trigger };
-  deleteProduct.textContent = product.name;
-  deleteError.textContent = "";
-  deleteDialog.showModal();
-  deleteCancel.focus();
-}
-function updateUploadProgress(fileIndex, fileCount, percentage, fileName) {
-  const combined = Math.round((fileIndex + percentage / 100) / fileCount * 100);
-  uploadMeter.value = combined;
-  uploadPercent.textContent = `${combined}%`;
-  uploadLabel.textContent = `${fileName} \uC5C5\uB85C\uB4DC \uC911`;
-}
-async function uploadImages(entries) {
-  uploadController = new AbortController();
-  uploadedImageUrls = [];
-  uploadsComplete = false;
-  uploadProgress.hidden = false;
-  cancelUploadButton.hidden = false;
-  let galleryIndex = 0;
-  for (let index = 0; index < entries.length; index += 1) {
-    const { file, kind } = entries[index];
-    const extension = file.type.split("/")[1]?.replace("jpeg", "jpg") || "img";
-    if (kind === "gallery") galleryIndex += 1;
-    const filename = kind === "main" ? `main.${extension}` : `gallery-${galleryIndex}.${extension}`;
-    const pathname = `product-media/${requestId}/${filename}`;
-    const blob = await upload(pathname, file, {
-      access: "public",
-      handleUploadUrl: "/api/admin/product-upload",
-      clientPayload: JSON.stringify({ requestId, kind }),
-      abortSignal: uploadController.signal,
-      onUploadProgress: ({ percentage }) => updateUploadProgress(index, entries.length, percentage, file.name)
-    });
-    uploadedImageUrls.push(blob.url);
+async function move(index, direction) {
+  const next = index + direction;
+  if (next < 0 || next >= config.reels.length) return;
+  const ordered = config.reels.map((item) => item.id);
+  [ordered[index], ordered[next]] = [ordered[next], ordered[index]];
+  try {
+    const payload = await fetchJson("/api/admin/reels", { method: "PATCH", body: JSON.stringify({ id: config.reels[index].id, etag, order: ordered }) });
+    config = payload.config;
+    etag = payload.etag;
+    render();
+    boardStatus.textContent = "\uC601\uC0C1 \uC21C\uC11C\uB97C \uC800\uC7A5\uD588\uC2B5\uB2C8\uB2E4.";
+  } catch (error) {
+    boardStatus.textContent = error.message || "\uC21C\uC11C\uB97C \uC800\uC7A5\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
   }
-  uploadMeter.value = 100;
-  uploadPercent.textContent = "100%";
-  uploadLabel.textContent = "\uC774\uBBF8\uC9C0 \uC5C5\uB85C\uB4DC \uC644\uB8CC";
-  uploadsComplete = true;
-  cancelUploadButton.hidden = true;
-  uploadController = null;
-  return uploadedImageUrls;
+}
+async function removeReel(reel) {
+  if (!confirm(`\u201C${reel.name}\u201D \uC601\uC0C1\uC744 \uBAA9\uB85D\uACFC \uC800\uC7A5\uC18C\uC5D0\uC11C \uC0AD\uC81C\uD560\uAE4C\uC694?`)) return;
+  try {
+    const payload = await fetchJson("/api/admin/reels", { method: "DELETE", body: JSON.stringify({ id: reel.id, etag }) });
+    config = payload.config;
+    etag = payload.etag;
+    render();
+    boardStatus.textContent = "\uC601\uC0C1\uC744 \uC0AD\uC81C\uD588\uC2B5\uB2C8\uB2E4.";
+  } catch (error) {
+    boardStatus.textContent = error.message || "\uC601\uC0C1\uC744 \uC0AD\uC81C\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
+  }
 }
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-  if (loginButton.disabled) return;
-  const password = passwordInput.value;
-  if (!password) {
-    setLoginError("\uAD00\uB9AC\uC790 \uBE44\uBC00\uBC88\uD638\uB97C \uC785\uB825\uD574 \uC8FC\uC138\uC694.");
-    passwordInput.focus();
-    return;
+  if (!passwordInput.value) {
+    passwordError.textContent = "\uAD00\uB9AC\uC790 \uBE44\uBC00\uBC88\uD638\uB97C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
+    return passwordInput.focus();
   }
-  setLoginError("");
-  loginStatus.textContent = "\uAD00\uB9AC\uC790 \uAD8C\uD55C\uC744 \uD655\uC778\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
-  loginButton.disabled = true;
-  loginButton.setAttribute("aria-busy", "true");
-  loginLabel.textContent = "\uB85C\uADF8\uC778 \uD655\uC778 \uC911";
+  const button = loginForm.querySelector('button[type="submit"]');
+  button.disabled = true;
   try {
-    await fetchJson("/api/admin/session", { method: "POST", body: JSON.stringify({ password }) });
-    passwordInput.value = "";
-    await loadProducts({ reset: true });
+    await fetchJson("/api/admin/session", { method: "POST", body: JSON.stringify({ password: passwordInput.value }) });
+    await load();
   } catch (error) {
-    loginStatus.textContent = error.message || "\uB85C\uADF8\uC778 \uCC98\uB9AC \uC911 \uBB38\uC81C\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4.";
-    if (error instanceof HttpError && error.status === 401) {
-      setLoginError("\uAD00\uB9AC\uC790 \uBE44\uBC00\uBC88\uD638\uB97C \uD655\uC778\uD574 \uC8FC\uC138\uC694.");
-      passwordInput.select();
-    }
+    loginStatus.textContent = error.message || "\uB85C\uADF8\uC778\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
   } finally {
-    loginButton.disabled = false;
-    loginButton.removeAttribute("aria-busy");
-    loginLabel.textContent = "\uAD00\uB9AC\uC790 \uB85C\uADF8\uC778";
+    button.disabled = false;
   }
 });
-passwordInput.addEventListener("input", () => {
-  if (passwordInput.getAttribute("aria-invalid") === "true") setLoginError("");
+bindPasswordToggle(passwordInput, $("[data-password-toggle]"));
+$("[data-logout]").addEventListener("click", async () => {
+  await fetchJson("/api/admin/session", { method: "DELETE", body: "{}" });
+  showLogin("\uC548\uC804\uD558\uAC8C \uB85C\uADF8\uC544\uC6C3\uD588\uC2B5\uB2C8\uB2E4.");
 });
-bindPasswordToggle(passwordInput, passwordToggle);
-logoutButton.addEventListener("click", async () => {
-  if (dirty) {
-    openDiscardDialog({ type: "logout" });
-    return;
-  }
-  logoutButton.disabled = true;
-  try {
-    await fetchJson("/api/admin/session", { method: "DELETE", body: "{}" });
-    showLogin("\uC548\uC804\uD558\uAC8C \uB85C\uADF8\uC544\uC6C3\uD588\uC2B5\uB2C8\uB2E4.");
-  } catch (error) {
-    boardStatus.textContent = error.message || "\uB85C\uADF8\uC544\uC6C3\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
-  } finally {
-    logoutButton.disabled = false;
-  }
-});
-retryButton.addEventListener("click", () => loadProducts({ reset: true }));
-errorRetryButton.addEventListener("click", () => loadProducts({ reset: true }));
-loadMoreButton.addEventListener("click", () => loadProducts());
-function csvCell(value) {
-  const text = String(value ?? "");
-  return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
-}
-function parseCsvLine(line) {
-  const result = [];
-  let value = "";
-  let quoted = false;
-  for (let index = 0; index < line.length; index += 1) {
-    const char = line[index];
-    if (char === '"' && quoted && line[index + 1] === '"') {
-      value += '"';
-      index += 1;
-    } else if (char === '"') quoted = !quoted;
-    else if (char === "," && !quoted) {
-      result.push(value);
-      value = "";
-    } else value += char;
-  }
-  result.push(value);
-  return result;
-}
-function optionText(options) {
-  return (options || []).map((option) => `${option.label}=${option.stock}`).join("|");
-}
-function parseOptions(value) {
-  if (!String(value).trim()) return [];
-  return String(value).split("|").map((part) => {
-    const split = part.lastIndexOf("=");
-    return { label: part.slice(0, split).trim(), stock: Number(part.slice(split + 1)) };
-  });
-}
-bulkDownload.addEventListener("click", async () => {
-  bulkDownload.disabled = true;
-  boardStatus.textContent = "\uD604\uC7AC \uC7AC\uACE0 CSV\uB97C \uC900\uBE44\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
-  try {
-    const payload = await fetchJson("/api/admin/products/bulk");
-    const lines = [["id", "model", "name", "stock", "optionName", "options(label=stock|...)", "naverDiscountRate"], ...payload.items.map((item) => [item.id, item.model, item.name, item.stock ?? "", item.optionName, optionText(item.options), item.naverDiscountRate ?? ""])];
-    const blob = new Blob(["\uFEFF" + lines.map((line) => line.map(csvCell).join(",")).join("\r\n")], { type: "text/csv;charset=utf-8" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = `himawari-stock-${(/* @__PURE__ */ new Date()).toISOString().slice(0, 10)}.csv`;
-    link.click();
-    setTimeout(() => URL.revokeObjectURL(link.href), 1e3);
-    boardStatus.textContent = "\uC7AC\uACE0 CSV\uB97C \uB0B4\uB824\uBC1B\uC558\uC2B5\uB2C8\uB2E4.";
-  } catch (error) {
-    boardStatus.textContent = error.message || "CSV\uB97C \uC900\uBE44\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
-  } finally {
-    bulkDownload.disabled = false;
-  }
-});
-bulkFile.addEventListener("change", async () => {
-  const file = bulkFile.files[0];
-  if (!file) return;
-  try {
-    const lines = (await file.text()).replace(/^\ufeff/, "").split(/\r?\n/).filter(Boolean);
-    const header = parseCsvLine(lines.shift() || "");
-    const indexes = Object.fromEntries(header.map((name, index) => [name, index]));
-    if (indexes.id === void 0 || indexes.stock === void 0 || indexes["options(label=stock|...)"] === void 0) throw new Error("Himawari\uC5D0\uC11C \uB0B4\uB824\uBC1B\uC740 CSV \uD615\uC2DD\uC774 \uC544\uB2D9\uB2C8\uB2E4.");
-    const updates = lines.map(parseCsvLine).map((row) => ({ id: row[indexes.id], stock: row[indexes.stock], optionName: row[indexes.optionName] || "", options: parseOptions(row[indexes["options(label=stock|...)"]]), naverDiscountRate: row[indexes.naverDiscountRate] || "" }));
-    if (!confirm(`${updates.length}\uAC1C \uC81C\uD488\uC758 \uC7AC\uACE0\xB7\uD560\uC778\uC728\uC744 CSV \uB0B4\uC6A9\uC73C\uB85C \uBC18\uC601\uD560\uAE4C\uC694?`)) {
-      bulkFile.value = "";
-      return;
-    }
-    boardStatus.textContent = "CSV \uB0B4\uC6A9\uC744 \uAC80\uC99D\uD558\uACE0 \uBC18\uC601\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
-    await fetchJson("/api/admin/products/bulk", { method: "PUT", body: JSON.stringify({ etag: catalogEtag, updates }) });
-    await loadProducts({ reset: true });
-    boardStatus.textContent = `${updates.length}\uAC1C \uC81C\uD488\uC758 \uC7AC\uACE0\xB7\uD560\uC778\uC728\uC744 \uBC18\uC601\uD588\uC2B5\uB2C8\uB2E4.`;
-  } catch (error) {
-    boardStatus.textContent = error.message || "CSV\uB97C \uBC18\uC601\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
-  } finally {
-    bulkFile.value = "";
-  }
-});
-productForm.addEventListener("input", (event) => {
-  dirty = true;
-  if (event.target.name) setFieldError(event.target.name);
-  formSummary.hidden = true;
-  formStatus.textContent = "";
-  formStatus.classList.remove("is-error");
-});
-async function handleFileChange(name) {
-  dirty = true;
-  if (name === "mainImage") {
-    const file = mainImageInput.files?.[0];
-    setFieldError(name, file ? validateFile(file, maxMainImageSize, "\uB300\uD45C \uC774\uBBF8\uC9C0") : "");
-  } else {
-    setFieldError(name, validateGalleryFiles([...galleryInput.files || []]));
-  }
-  if (uploadedImageUrls.length) {
-    const cleaned = await cleanupUploadedImages();
-    if (cleaned) requestId = crypto.randomUUID();
-  }
-  renderFilePreviews();
-}
-mainImageInput.addEventListener("change", () => handleFileChange("mainImage"));
-galleryInput.addEventListener("change", () => handleFileChange("gallery"));
-hasOptionsInput.addEventListener("change", () => {
-  dirty = true;
-  syncInventoryEditor();
-  setFieldError("stock");
-  setFieldError("optionName");
-  setFieldError("options");
-});
-addOptionButton.addEventListener("click", () => {
-  if (optionRows.children.length >= 30) {
-    setFieldError("options", "\uC635\uC158\uC740 \uCD5C\uB300 30\uAC1C\uAE4C\uC9C0 \uB4F1\uB85D\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.");
-    return;
-  }
-  const row = createOptionRow();
-  dirty = true;
-  row.querySelector("input")?.focus();
-});
-productForm.addEventListener("submit", async (event) => {
+$("#reel-video").addEventListener("change", (event) => setFileSummary(event.target, $("[data-video-summary]")));
+$("#reel-poster").addEventListener("change", (event) => setFileSummary(event.target, $("[data-poster-summary]")));
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
-  if (submitButton.disabled) return;
-  const values = validateForm();
-  if (!values) return;
-  const editingProduct = editTarget;
-  const editingCatalogEtag = editEtag;
-  let uploadEntries = [];
-  submitButton.disabled = true;
-  submitButton.setAttribute("aria-busy", "true");
-  submitLabel.textContent = editingProduct ? "\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5 \uC911" : "\uC81C\uD488 \uB4F1\uB85D \uC911";
-  resetButton.disabled = true;
-  formStatus.textContent = values.galleryFiles.length ? "\uAE34 \uC0C1\uC138 \uC774\uBBF8\uC9C0\uB97C \uC804\uC1A1\uC5D0 \uC54C\uB9DE\uAC8C \uC900\uBE44\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4." : "\uC81C\uD488 \uC815\uBCF4\uB97C \uC800\uC7A5\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
+  if (submit.disabled) return;
+  form.querySelectorAll("[data-error]").forEach((node) => {
+    node.textContent = "";
+  });
+  const video = form.elements.video.files[0];
+  const poster = form.elements.poster.files[0];
+  if (!video) {
+    form.querySelector('[data-error="video"]').textContent = "\uC601\uC0C1 \uD30C\uC77C\uC744 \uC120\uD0DD\uD574 \uC8FC\uC138\uC694.";
+    return form.elements.video.focus();
+  }
+  if (video.size > 50 * 1024 * 1024) {
+    form.querySelector('[data-error="video"]').textContent = "\uC601\uC0C1\uC740 50MB \uC774\uD558\uB9CC \uC62C\uB9B4 \uC218 \uC788\uC2B5\uB2C8\uB2E4.";
+    return;
+  }
+  if (poster && poster.size > 4 * 1024 * 1024) {
+    form.querySelector('[data-error="poster"]').textContent = "\uD3EC\uC2A4\uD130\uB294 4MB \uC774\uD558\uB9CC \uC62C\uB9B4 \uC218 \uC788\uC2B5\uB2C8\uB2E4.";
+    return;
+  }
+  if (config.reels.length >= 12) {
+    formStatus.textContent = "\uC601\uC0C1\uC744 \uB354 \uB4F1\uB85D\uD558\uB824\uBA74 \uAE30\uC874 \uC601\uC0C1 \uD558\uB098\uB97C \uC0AD\uC81C\uD574 \uC8FC\uC138\uC694.";
+    return;
+  }
+  submit.disabled = true;
+  submitLabel.textContent = "\uC5C5\uB85C\uB4DC \uC911";
+  formStatus.textContent = "";
+  $("[data-progress]").hidden = false;
+  uploadController = new AbortController();
+  const requestId = crypto.randomUUID();
+  const uploaded = [];
   try {
-    values.galleryFiles = await optimizeGalleryFiles(values.galleryFiles);
-    const preparedGalleryError = validateGalleryFiles(values.galleryFiles);
-    if (preparedGalleryError) throw new Error(preparedGalleryError);
-    uploadEntries = [
-      ...values.mainFile ? [{ file: values.mainFile, kind: "main" }] : [],
-      ...values.galleryFiles.map((file) => ({ file, kind: "gallery" }))
-    ];
-    if (uploadEntries.length) formStatus.textContent = "\uC81C\uD488 \uC774\uBBF8\uC9C0\uB97C \uC548\uC804\uD558\uAC8C \uC5C5\uB85C\uB4DC\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
-    if (uploadEntries.length && !uploadsComplete) await uploadImages(uploadEntries);
-    formStatus.textContent = "\uC81C\uD488 \uC815\uBCF4\uB97C \uC800\uC7A5\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
-    const commonPayload = {
-      requestId,
-      name: values.name,
-      model: values.model,
-      naverPrice: values.price,
-      naverDiscountRate: values.naverDiscountRate,
-      tagline: values.tagline,
-      description: values.description,
-      highlights: values.highlights,
-      url: values.url,
-      stock: values.stock,
-      optionName: values.optionName,
-      options: values.options
+    const send = async (file, kind, prefix, start, span) => {
+      const blob = await upload(`reel-media/${requestId}/${prefix}-${file.name}`, file, { access: "public", handleUploadUrl: "/api/admin/product-upload", clientPayload: JSON.stringify({ requestId, kind }), abortSignal: uploadController.signal, onUploadProgress: ({ percentage }) => {
+        const total = Math.round(start + percentage * span / 100);
+        $("[data-progress-bar]").style.width = `${total}%`;
+        $("[data-progress-label]").textContent = `\uC5C5\uB85C\uB4DC ${total}%`;
+      } });
+      uploaded.push(blob.url);
+      return blob.url;
     };
-    let payload;
-    if (editingProduct) {
-      const galleryStart = values.mainFile ? 1 : 0;
-      payload = await fetchJson("/api/admin/products", {
-        method: "PATCH",
-        body: JSON.stringify({
-          ...commonPayload,
-          id: editingProduct.id,
-          etag: editingCatalogEtag,
-          replaceMainImage: Boolean(values.mainFile),
-          replaceGallery: values.galleryFiles.length > 0,
-          image: values.mainFile ? uploadedImageUrls[0] : "",
-          gallery: values.galleryFiles.length ? uploadedImageUrls.slice(galleryStart) : [],
-          managedImages: uploadedImageUrls
-        })
-      });
-    } else {
-      payload = await fetchJson("/api/admin/products", {
-        method: "POST",
-        body: JSON.stringify({
-          ...commonPayload,
-          image: uploadedImageUrls[0],
-          gallery: uploadedImageUrls.slice(1),
-          managedImages: uploadedImageUrls
-        })
-      });
-    }
-    catalogEtag = payload.etag;
-    dirty = false;
-    await resetDraft({ cleanup: false });
-    await loadProducts({ reset: true });
-    boardStatus.textContent = editingProduct ? `\u201C${payload.product.name}\u201D \uC81C\uD488 \uC815\uBCF4\uB97C \uC218\uC815\uD588\uC2B5\uB2C8\uB2E4.${payload.mediaRemoved === false ? " \uAD50\uCCB4 \uC804 \uC774\uBBF8\uC9C0\uB294 \uBCC4\uB3C4 \uC815\uB9AC\uAC00 \uD544\uC694\uD569\uB2C8\uB2E4." : ""}` : `\u201C${payload.product.name}\u201D \uC81C\uD488\uC744 \uB4F1\uB85D\uD588\uC2B5\uB2C8\uB2E4.`;
-    listTitle.focus();
+    const videoUrl = await send(video, "reel-video", "video", 0, poster ? 85 : 100);
+    const posterUrl = poster ? await send(poster, "reel-poster", "poster", 85, 15) : "";
+    const payload = await fetchJson("/api/admin/reels", { method: "POST", body: JSON.stringify({ requestId, etag, videoUrl, posterUrl, name: form.elements.name.value, label: form.elements.label.value, caption: form.elements.caption.value, enabled: form.elements.enabled.checked }) });
+    config = payload.config;
+    etag = payload.etag;
+    form.reset();
+    form.elements.enabled.checked = true;
+    $("[data-video-summary]").textContent = "\uC120\uD0DD\uB41C \uD30C\uC77C \uC5C6\uC74C";
+    $("[data-poster-summary]").textContent = "\uC120\uD0DD\uB41C \uD30C\uC77C \uC5C6\uC74C";
+    render();
+    formStatus.textContent = "\uC601\uC0C1\uC744 \uB4F1\uB85D\uD588\uC2B5\uB2C8\uB2E4. \uD648 \uD558\uB2E8 \uC601\uC0C1 \uC601\uC5ED\uC5D0 \uBC18\uC601\uB429\uB2C8\uB2E4.";
   } catch (error) {
-    if (error.name === "AbortError") {
-      await cleanupUploadedImages();
-      requestId = crypto.randomUUID();
-      formStatus.textContent = "\uC774\uBBF8\uC9C0 \uC5C5\uB85C\uB4DC\uB97C \uCDE8\uC18C\uD588\uC2B5\uB2C8\uB2E4. \uC785\uB825 \uB0B4\uC6A9\uC740 \uADF8\uB300\uB85C \uC720\uC9C0\uB429\uB2C8\uB2E4.";
-    } else if (uploadEntries.length && !uploadsComplete) {
-      await cleanupUploadedImages();
-      requestId = crypto.randomUUID();
-      markFormError(error.message || "\uC774\uBBF8\uC9C0\uB97C \uC5C5\uB85C\uB4DC\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. \uD30C\uC77C\uC744 \uD655\uC778\uD55C \uB4A4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574 \uC8FC\uC138\uC694.");
-    } else if (!handleSessionError(error)) {
-      Object.entries(error.fieldErrors || {}).forEach(([name, message2]) => setFieldError(name, message2));
-      const failure = error.message || `${editingProduct ? "\uC81C\uD488\uC744 \uC218\uC815" : "\uC81C\uD488\uC744 \uB4F1\uB85D"}\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.`;
-      const recovery = editingProduct ? "\uC785\uB825 \uB0B4\uC6A9\uACFC \uC120\uD0DD\uD55C \uD30C\uC77C\uC740 \uC720\uC9C0\uD588\uC2B5\uB2C8\uB2E4. \uC624\uB958\uB97C \uD655\uC778\uD55C \uB4A4 \u2018\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5\u2019\uC744 \uB2E4\uC2DC \uB20C\uB7EC \uC8FC\uC138\uC694." : "\uC785\uB825 \uB0B4\uC6A9\uACFC \uC120\uD0DD\uD55C \uD30C\uC77C\uC740 \uC720\uC9C0\uD588\uC2B5\uB2C8\uB2E4. \uC624\uB958\uB97C \uD655\uC778\uD55C \uB4A4 \u2018\uC81C\uD488 \uB4F1\uB85D\u2019\uC744 \uB2E4\uC2DC \uB20C\uB7EC \uC8FC\uC138\uC694.";
-      markFormError(`${failure} ${recovery}`);
-      const firstServerField = Object.keys(error.fieldErrors || {})[0];
-      if (firstServerField) focusField(firstServerField);
-    }
+    if (uploaded.length) fetch("/api/admin/product-media", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ kind: "reel", requestId, urls: uploaded }) }).catch(() => {
+    });
+    if (error.fieldErrors) Object.entries(error.fieldErrors).forEach(([key, message2]) => {
+      const node = form.querySelector(`[data-error="${key}"]`);
+      if (node) node.textContent = message2;
+    });
+    formStatus.textContent = error.name === "AbortError" ? "\uC5C5\uB85C\uB4DC\uB97C \uCDE8\uC18C\uD588\uC2B5\uB2C8\uB2E4." : error.message || "\uC601\uC0C1\uC744 \uB4F1\uB85D\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
   } finally {
     uploadController = null;
-    cancelUploadButton.hidden = true;
-    submitButton.disabled = false;
-    submitButton.removeAttribute("aria-busy");
-    submitLabel.textContent = editTarget ? "\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5" : "\uC81C\uD488 \uB4F1\uB85D";
-    resetButton.disabled = false;
+    submit.disabled = false;
+    submitLabel.textContent = "\uC601\uC0C1 \uB4F1\uB85D";
+    $("[data-progress]").hidden = true;
   }
 });
-cancelUploadButton.addEventListener("click", () => uploadController?.abort());
-resetButton.addEventListener("click", async () => {
-  if (!dirty) {
-    const previousEditTarget = editTarget;
-    const previousEditTrigger = editTrigger;
-    if (!await resetDraft()) return;
-    if (previousEditTarget) {
-      boardStatus.textContent = `\u201C${previousEditTarget.name}\u201D \uC81C\uD488 \uC218\uC815\uC744 \uCDE8\uC18C\uD588\uC2B5\uB2C8\uB2E4.`;
-      previousEditTrigger?.focus();
-    }
-    return;
-  }
-  openDiscardDialog({ type: "reset" });
-});
-deleteCancel.addEventListener("click", () => deleteDialog.close());
-deleteDialog.addEventListener("cancel", () => {
-  deleteError.textContent = "";
-});
-deleteConfirm.addEventListener("click", async () => {
-  if (!deleteTarget || deleteConfirm.disabled) return;
-  const target = deleteTarget;
-  deleteConfirm.disabled = true;
-  deleteCancel.disabled = true;
-  deleteConfirm.setAttribute("aria-busy", "true");
-  deleteLabel.textContent = "\uC0AD\uC81C\uD558\uB294 \uC911";
-  deleteError.textContent = "";
-  try {
-    const result = await fetchJson("/api/admin/products", {
-      method: "DELETE",
-      body: JSON.stringify({ id: target.product.id, etag: catalogEtag })
-    });
-    catalogEtag = result.etag;
-    deleteDialog.close();
-    deleteTarget = null;
-    await loadProducts({ reset: true });
-    boardStatus.textContent = `\u201C${target.product.name}\u201D \uC81C\uD488\uC744 \uC601\uAD6C \uC0AD\uC81C\uD588\uC2B5\uB2C8\uB2E4.${result.mediaRemoved ? "" : " \uC81C\uD488 \uC774\uBBF8\uC9C0\uB294 \uBCC4\uB3C4 \uC815\uB9AC\uAC00 \uD544\uC694\uD569\uB2C8\uB2E4."}`;
-    listTitle.focus();
-  } catch (error) {
-    if (handleSessionError(error)) {
-      deleteDialog.close();
-      return;
-    }
-    deleteError.textContent = error.message || "\uC81C\uD488\uC744 \uC0AD\uC81C\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. \uB2E4\uC2DC \uC2DC\uB3C4\uD558\uAC70\uB098 \uCDE8\uC18C\uD574 \uC8FC\uC138\uC694.";
-  } finally {
-    deleteConfirm.disabled = false;
-    deleteCancel.disabled = false;
-    deleteConfirm.removeAttribute("aria-busy");
-    deleteLabel.textContent = "\uC81C\uD488 \uC0AD\uC81C";
-  }
-});
-discardCancel.addEventListener("click", () => {
-  discardAction = null;
-  discardDialog.close();
-});
-discardConfirm.addEventListener("click", async () => {
-  const action = discardAction;
-  const previousEditTarget = editTarget;
-  const previousEditTrigger = editTrigger;
-  discardConfirm.disabled = true;
-  const reset = await resetDraft({ cleanup: true });
-  discardConfirm.disabled = false;
-  if (!reset) return;
-  discardDialog.close();
-  discardAction = null;
-  if (action?.type === "reset" && previousEditTarget) {
-    boardStatus.textContent = `\u201C${previousEditTarget.name}\u201D \uC81C\uD488 \uC218\uC815\uC744 \uCDE8\uC18C\uD588\uC2B5\uB2C8\uB2E4.`;
-    previousEditTrigger?.focus();
-  }
-  if (action?.type === "edit") {
-    const product = products.find((item) => item.id === action.productId);
-    const trigger = [...rows.querySelectorAll("[data-edit-product-id]")].find((button) => button.dataset.editProductId === action.productId);
-    if (product && trigger) beginEdit(product, trigger);
-  }
-  if (action?.type === "navigate") location.href = action.href;
-  if (action?.type === "logout") {
-    try {
-      await fetchJson("/api/admin/session", { method: "DELETE", body: "{}" });
-      showLogin("\uC548\uC804\uD558\uAC8C \uB85C\uADF8\uC544\uC6C3\uD588\uC2B5\uB2C8\uB2E4.");
-    } catch (error) {
-      boardStatus.textContent = error.message || "\uB85C\uADF8\uC544\uC6C3\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
-    }
-  }
-});
-document.querySelectorAll(".admin-header a").forEach((link) => {
-  link.addEventListener("click", (event) => {
-    if (!dirty || link.target === "_blank") return;
-    event.preventDefault();
-    openDiscardDialog({ type: "navigate", href: link.href });
-  });
-});
-window.addEventListener("beforeunload", (event) => {
-  if (!dirty) return;
-  event.preventDefault();
-  event.returnValue = "";
-});
-window.addEventListener("pagehide", revokePreviews);
-setCreateMode();
-loadInventory();
-loadProducts({ reset: true, initial: true });
+load();
 /*! Bundled license information:
 
 is-buffer/index.js:

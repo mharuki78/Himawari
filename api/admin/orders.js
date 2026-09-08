@@ -2,6 +2,7 @@ import { authIsConfigured, isAdminRequest } from '../_lib/auth.js';
 import { databaseIsConfigured } from '../_lib/database.js';
 import { listAdminOrders, updateOrderByAdmin } from '../_lib/orders.js';
 import { isSameOrigin, json, methodNotAllowed, readJson } from '../_lib/http.js';
+import { sendOrderNotification } from '../_lib/order-notifications.js';
 
 export async function fetch(request) {
   if (!['GET', 'PATCH'].includes(request.method)) return methodNotAllowed(['GET', 'PATCH']);
@@ -14,7 +15,9 @@ export async function fetch(request) {
     }
     if (!isSameOrigin(request)) return json({ message: '요청 출처를 확인할 수 없습니다.' }, 403);
     const body = await readJson(request, 16_384);
-    return json({ order: await updateOrderByAdmin(body) }, 200, { Vary: 'Cookie' });
+    const order = await updateOrderByAdmin(body);
+    await sendOrderNotification(order, 'admin-status');
+    return json({ order }, 200, { Vary: 'Cookie' });
   } catch (error) {
     const status = Number(error.status) || 500;
     return json({
@@ -23,4 +26,3 @@ export async function fetch(request) {
     }, status, { Vary: 'Cookie' });
   }
 }
-

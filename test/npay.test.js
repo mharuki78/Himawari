@@ -13,10 +13,10 @@ import {
   npayProductId,
   npayPublicConfiguration,
 } from '../api/_lib/npay.js';
-import { fetchNpayOrder as orderHandler, fetchNpayProductInformation as productInfoHandler } from '../api/_lib/npay-handlers.js';
+import { fetchNpayConfig as configHandler, fetchNpayOrder as orderHandler, fetchNpayProductInformation as productInfoHandler } from '../api/_lib/npay-handlers.js';
 import { publicProduct, seedCatalog } from '../api/_lib/products.js';
 
-const ENV_KEYS = ['NPAY_SHOP_ID', 'NPAY_CERTI_KEY', 'NPAY_BUTTON_KEY', 'NPAY_ACCOUNT_ID', 'NPAY_ENV', 'VERCEL_ENV'];
+const ENV_KEYS = ['NPAY_SHOP_ID', 'NPAY_CERTI_KEY', 'NPAY_BUTTON_KEY', 'NPAY_ACCOUNT_ID', 'NPAY_ENV', 'NPAY_PUBLIC_ENABLED', 'NPAY_REVIEW_TOKEN', 'VERCEL_ENV'];
 
 function withEnv(values, work) {
   const previous = Object.fromEntries(ENV_KEYS.map((key) => [key, process.env[key]]));
@@ -49,6 +49,7 @@ test('공개 설정은 버튼 SDK 정보만 제공하고 상점 인증키를 노
     NPAY_BUTTON_KEY: 'browser-button-key',
     NPAY_ACCOUNT_ID: 'common-account-id',
     NPAY_ENV: 'production',
+    NPAY_PUBLIC_ENABLED: 'true',
   }, () => {
     const visible = npayPublicConfiguration();
     assert.equal(visible.enabled, true);
@@ -57,6 +58,42 @@ test('공개 설정은 버튼 SDK 정보만 제공하고 상점 인증키를 노
     assert.equal(visible.trackingConfigured, true);
     assert.equal(JSON.stringify(visible).includes('server-only-certificate'), false);
     assert.equal(JSON.stringify(visible).includes('himawari-shop'), false);
+  });
+});
+
+test('최종 승인 전 운영 화면에는 Npay 설정을 노출하지 않고 검수 화면만 Sandbox를 사용한다', async () => {
+  await withEnv({
+    NPAY_SHOP_ID: 'himawari-shop',
+    NPAY_CERTI_KEY: 'server-only-certificate',
+    NPAY_BUTTON_KEY: 'browser-button-key',
+    NPAY_ENV: 'production',
+    NPAY_PUBLIC_ENABLED: 'false',
+  }, () => {
+    const production = npayPublicConfiguration();
+    const review = npayPublicConfiguration({ review: true });
+    assert.equal(production.enabled, false);
+    assert.equal(production.buttonKey, '');
+    assert.equal(review.enabled, true);
+    assert.equal(review.mode, 'test');
+    assert.match(review.sdkUrl, /^https:\/\/test-pay\.naver\.com\//);
+  });
+});
+
+test('검수 토큰이 맞는 요청에만 Sandbox 공개 설정을 반환한다', async () => {
+  await withEnv({
+    NPAY_SHOP_ID: 'himawari-shop',
+    NPAY_CERTI_KEY: 'server-only-certificate',
+    NPAY_BUTTON_KEY: 'browser-button-key',
+    NPAY_ENV: 'production',
+    NPAY_PUBLIC_ENABLED: 'false',
+    NPAY_REVIEW_TOKEN: 'review-secret-1234567890',
+  }, async () => {
+    const hidden = await (await configHandler(sameOriginRequest('/api/npay/config'))).json();
+    const visible = await (await configHandler(sameOriginRequest('/api/npay/config?reviewToken=review-secret-1234567890'))).json();
+    assert.equal(hidden.enabled, false);
+    assert.equal(visible.enabled, true);
+    assert.equal(visible.mode, 'test');
+    assert.equal(visible.review, true);
   });
 });
 
@@ -127,6 +164,7 @@ test('주문 API는 브라우저 가격 대신 서버 상품 가격으로 네이
     NPAY_CERTI_KEY: 'server-certificate',
     NPAY_BUTTON_KEY: 'button-key',
     NPAY_ENV: 'test',
+    NPAY_PUBLIC_ENABLED: 'true',
   }, async () => {
     globalThis.fetch = async (_url, options) => {
       registeredXml = options.body;

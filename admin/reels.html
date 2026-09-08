@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="theme-color" content="#4F6B58">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <title>영상 관리 — Himawari</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="reel-admin.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#admin-main">본문으로 바로가기</a>
+    <header class="admin-header admin-header--console">
+      <a class="admin-brand" href="../index.html" aria-label="Himawari 공개 사이트 홈">HIMAWARI</a>
+      <nav class="admin-nav" aria-label="관리자 메뉴"><a href="inquiries.html">문의 관리</a><a href="products.html">제품 관리</a><a href="orders.html">주문 관리</a><a href="reviews.html">리뷰·재입고</a><a href="promotions.html">프로모션</a><a href="reels.html" aria-current="page">영상 관리</a></nav>
+      <a class="admin-header__site" href="../index.html#reels">영상 영역 보기 <span aria-hidden="true">↗</span></a>
+    </header>
+    <main id="admin-main" class="admin-main admin-main--reels">
+      <section class="initial-state" data-initial-view aria-live="polite"><span class="loader" aria-hidden="true"></span><p>관리자 세션과 영상 목록을 확인하고 있습니다.</p></section>
+      <section class="login-view" data-login-view hidden aria-label="영상 관리자 로그인">
+        <div class="login-copy"><p class="eyebrow">Administrator only</p><h1>영상 관리</h1><p>기존 관리자 비밀번호로 로그인하면 첫 화면 하단 영상을 직접 등록하고 정렬할 수 있습니다.</p></div>
+        <form class="login-form" data-login-form novalidate>
+          <div class="form-field"><label for="admin-password">관리자 비밀번호</label><div class="secret-control"><input id="admin-password" name="password" type="password" autocomplete="current-password" maxlength="256" required><button type="button" data-password-toggle aria-pressed="false">표시</button></div><p class="field-error" id="admin-password-error"></p></div>
+          <button class="button button--primary" type="submit"><span data-login-label>관리자 로그인</span><span aria-hidden="true">→</span></button><p class="form-status" data-login-status role="status" aria-live="polite"></p>
+        </form>
+      </section>
+      <section class="board-view" data-board-view hidden>
+        <div class="board-head"><div><p class="eyebrow">Home reels</p><h1 id="board-title" tabindex="-1">영상 관리</h1><p>MP4·WebM 영상을 최대 12개까지 올리고, 공개 여부와 노출 순서를 바로 관리합니다.</p></div><button class="button button--quiet" type="button" data-logout>로그아웃</button></div>
+        <p class="board-status" data-board-status role="status" aria-live="polite"></p>
+        <div class="reel-admin-layout">
+          <form class="promotion-panel reel-upload" data-reel-form novalidate>
+            <div class="promotion-panel__head"><div><p class="eyebrow">Add reel</p><h2>새 영상 등록</h2></div><span class="admin-count" data-reel-count>0 / 12</span></div>
+            <div class="admin-field"><label for="reel-name">관리용 영상명</label><input id="reel-name" name="name" maxlength="80" required placeholder="예: No.0422 등굣길 영상"><p class="field-error" data-error="name"></p></div>
+            <div class="admin-field"><label for="reel-label">화면 라벨</label><input id="reel-label" name="label" maxlength="80" required placeholder="예: 09 · No.0422"><p class="field-error" data-error="label"></p></div>
+            <div class="admin-field"><label for="reel-caption">화면 문구</label><input id="reel-caption" name="caption" maxlength="140" required placeholder="예: 등굣길의 가벼운 시작."><p class="field-error" data-error="caption"></p></div>
+            <div class="admin-field"><label for="reel-video">영상 파일 <span class="field-meta">MP4·WebM, 최대 50MB</span></label><input id="reel-video" name="video" type="file" accept="video/mp4,video/webm" required><p class="file-summary" data-video-summary>선택된 파일 없음</p><p class="field-error" data-error="video"></p></div>
+            <div class="admin-field"><label for="reel-poster">포스터 이미지 <span class="field-meta">선택, 최대 4MB</span></label><input id="reel-poster" name="poster" type="file" accept="image/jpeg,image/png,image/webp,image/avif"><p class="file-summary" data-poster-summary>선택된 파일 없음</p><p class="field-error" data-error="poster"></p></div>
+            <label class="admin-switch"><input type="checkbox" name="enabled" checked><span>등록 즉시 공개</span></label>
+            <div class="upload-progress" data-progress hidden><div class="upload-progress__bar"><span data-progress-bar></span></div><p data-progress-label>업로드 준비 중</p></div>
+            <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+            <button class="button button--primary" type="submit"><span data-submit-label>영상 등록</span><span aria-hidden="true">↑</span></button>
+          </form>
+          <section class="promotion-panel reel-list-panel" aria-labelledby="reel-list-title">
+            <div class="promotion-panel__head"><div><p class="eyebrow">Display order</p><h2 id="reel-list-title">등록된 영상</h2><p>위·아래 버튼으로 홈 노출 순서를 바꿀 수 있습니다.</p></div></div>
+            <div class="reel-admin-list" data-reel-list></div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -4,13 +4,13 @@ import test from 'node:test';
 
 import { fetch as productsHandler } from '../api/products.js';
 import { publicProduct, seedCatalog } from '../api/_lib/products.js';
-import { renderCatalogPage, renderProductNotFoundPage, renderProductPage } from '../api/_lib/storefront.js';
+import { renderCatalogPage, renderNpayReviewPage, renderProductNotFoundPage, renderProductPage } from '../api/_lib/storefront.js';
 import { groupProductFamilies } from '../assets/catalog-tools.js';
 
 const products = seedCatalog().products.map(publicProduct);
 
 test('모든 HTML 페이지와 상품 템플릿이 공통 파비콘을 선언한다', async () => {
-  const rootFiles = ['404.html', 'about.html', 'account.html', 'checkout.html', 'contact.html', 'finder.html', 'game.html', 'index.html', 'privacy.html', 'terms.html'];
+  const rootFiles = ['404.html', 'about.html', 'account.html', 'checkout.html', 'contact.html', 'finder.html', 'game.html', 'guest-order.html', 'index.html', 'privacy.html', 'terms.html'];
   const nestedFiles = await Promise.all(['admin', 'story', 'templates'].map(async (directory) => {
     const files = await readdir(new URL(`../${directory}/`, import.meta.url));
     return files.filter((file) => file.endsWith('.html')).map((file) => `${directory}/${file}`);
@@ -26,7 +26,7 @@ test('모든 HTML 페이지와 상품 템플릿이 공통 파비콘을 선언한
 });
 
 test('모든 공개 페이지가 동일한 6개 주요 메뉴를 제공한다', async () => {
-  const rootFiles = ['404.html', 'about.html', 'account.html', 'checkout.html', 'contact.html', 'finder.html', 'game.html', 'index.html', 'privacy.html', 'terms.html'];
+  const rootFiles = ['404.html', 'about.html', 'account.html', 'checkout.html', 'contact.html', 'finder.html', 'game.html', 'guest-order.html', 'index.html', 'privacy.html', 'terms.html'];
   const storyFiles = (await readdir(new URL('../story/', import.meta.url)))
     .filter((file) => file.endsWith('.html') && file !== 'admin.html')
     .map((file) => `story/${file}`);
@@ -140,7 +140,7 @@ test('운영 사이트맵은 현재 제품과 이야기 목록을 XML로 동적 
 
   assert.equal(response.status, 200);
   assert.match(response.headers.get('content-type') || '', /^application\/xml/);
-  assert.equal((sitemap.match(/<url>/g) || []).length, 69);
+  assert.equal((sitemap.match(/<url>/g) || []).length, 73);
   for (const product of products) {
     assert.equal(sitemap.includes(`https://allaboutbag.com/product.html?id=${encodeURIComponent(product.id)}`), true);
   }
@@ -194,6 +194,18 @@ test('전체 제품 페이지는 대표 상품과 묶인 제품군 카드에 Npa
 
   assert.equal((html.match(/data-npay-cards/g) || []).length, 2);
   assert.equal((html.match(/data-server-rendered-product/g) || []).length, groupProductFamilies(products).length);
+});
+
+test('네이버페이 검수 페이지는 전체 상품과 테스트 주문·찜·장바구니 UI를 제공한다', async () => {
+  const template = await readFile(new URL('../templates/npay-review.html', import.meta.url), 'utf8');
+  const html = renderNpayReviewPage(template, products, 'review-token-example');
+
+  assert.equal((html.match(/data-npay-card-section/g) || []).length, products.length);
+  assert.equal((html.match(/data-review-cart-add/g) || []).length, products.length);
+  assert.match(html, /data-npay-review-token="review-token-example"/);
+  assert.match(html, /연동 버전 v2\.1/);
+  assert.match(html, /data-npay-cart-section/);
+  assert.doesNotMatch(html, /SERVER_REVIEW_PRODUCTS/);
 });
 
 test('제품 상세 구조화 데이터는 배송·반품·제품군 정보를 포함하고 모바일 빠른 구매를 제공한다', async () => {

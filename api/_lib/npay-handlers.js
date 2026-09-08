@@ -8,7 +8,9 @@ import {
   naverWishlistResult,
   npayConfiguration,
   npayProductId,
+  npayPublicIsOpen,
   npayPublicConfiguration,
+  npayReviewTokenIsValid,
   parseRequestedProductIds,
   productPageUrl,
   readNaverInflowCode,
@@ -42,7 +44,8 @@ function validateItems(input, products) {
   });
 }
 
-function backUrlFor(input, items) {
+function backUrlFor(input, items, reviewToken = '') {
+  if (reviewToken) return `${SITE_ORIGIN}/npay-review/${encodeURIComponent(reviewToken)}`;
   if (input?.context === 'product' && items.length === 1) {
     return `${SITE_ORIGIN}/product.html?id=${encodeURIComponent(items[0].product.id)}`;
   }
@@ -62,7 +65,8 @@ function xmlResponse(body, status = 200) {
 
 export async function fetchNpayConfig(request) {
   if (request.method !== 'GET') return methodNotAllowed(['GET']);
-  return json(npayPublicConfiguration());
+  const review = npayReviewTokenIsValid(new URL(request.url).searchParams.get('reviewToken'));
+  return json(npayPublicConfiguration({ review }));
 }
 
 export async function fetchNpayOrder(request) {
@@ -70,14 +74,17 @@ export async function fetchNpayOrder(request) {
   if (!isSameOrigin(request)) return json({ message: '현재 쇼핑몰에서 시작한 요청만 허용됩니다.' }, 403);
 
   try {
-    const config = npayConfiguration();
-    if (!config.enabled) return json({ message: '네이버페이 설정을 확인하고 있습니다.' }, 503);
     const input = await readJson(request, 32_768);
+    const reviewToken = String(input?.reviewToken || '').trim();
+    const review = npayReviewTokenIsValid(reviewToken);
+    if (!review && !npayPublicIsOpen()) return json({ message: '네이버페이 정식 오픈 전 검수 중입니다.' }, 403);
+    const config = npayConfiguration({ mode: review ? 'test' : undefined });
+    if (!config.enabled) return json({ message: '네이버페이 설정을 확인하고 있습니다.' }, 503);
     const items = validateItems(input, await currentProducts());
     const body = buildOrderXml({
       config,
       items,
-      backUrl: backUrlFor(input, items),
+      backUrl: backUrlFor(input, items, review ? reviewToken : ''),
       naverInflowCode: readNaverInflowCode(request),
     });
     const response = await globalThis.fetch(config.orderRegistrationUrl, {
@@ -119,9 +126,12 @@ export async function fetchNpayWishlist(request) {
   if (!isSameOrigin(request)) return json({ message: '현재 쇼핑몰에서 시작한 요청만 허용됩니다.' }, 403);
 
   try {
-    const config = npayConfiguration();
-    if (!config.enabled) return json({ message: '네이버페이 설정을 확인하고 있습니다.' }, 503);
     const input = await readJson(request, 8_192);
+    const reviewToken = String(input?.reviewToken || '').trim();
+    const review = npayReviewTokenIsValid(reviewToken);
+    if (!review && !npayPublicIsOpen()) return json({ message: '네이버페이 정식 오픈 전 검수 중입니다.' }, 403);
+    const config = npayConfiguration({ mode: review ? 'test' : undefined });
+    if (!config.enabled) return json({ message: '네이버페이 설정을 확인하고 있습니다.' }, 503);
     const product = (await currentProducts()).find((item) => item.id === String(input?.productId || '').trim());
     if (!product || !product.image || !Number.isInteger(product.price) || product.price < 1) {
       return json({ message: '찜할 상품을 확인해 주세요.' }, 400);

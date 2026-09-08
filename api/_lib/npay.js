@@ -1,4 +1,4 @@
-import { createHash } from 'node:crypto';
+import { createHash, timingSafeEqual } from 'node:crypto';
 
 import {
   productStoreIsConfigured,
@@ -55,8 +55,25 @@ export function npayMode() {
   return process.env.VERCEL_ENV === 'production' ? 'production' : 'test';
 }
 
-export function npayConfiguration() {
-  const mode = npayMode();
+function enabledFlag(value) {
+  return ['1', 'true', 'yes', 'on'].includes(clean(value).toLowerCase());
+}
+
+export function npayPublicIsOpen() {
+  return enabledFlag(process.env.NPAY_PUBLIC_ENABLED);
+}
+
+export function npayReviewTokenIsValid(value) {
+  const expected = clean(process.env.NPAY_REVIEW_TOKEN);
+  const received = clean(value);
+  if (!expected || !received) return false;
+  const expectedBuffer = Buffer.from(expected);
+  const receivedBuffer = Buffer.from(received);
+  return expectedBuffer.length === receivedBuffer.length && timingSafeEqual(expectedBuffer, receivedBuffer);
+}
+
+export function npayConfiguration({ mode: requestedMode } = {}) {
+  const mode = requestedMode === 'test' || requestedMode === 'production' ? requestedMode : npayMode();
   const shopId = clean(process.env.NPAY_SHOP_ID);
   const certiKey = clean(process.env.NPAY_CERTI_KEY);
   const buttonKey = clean(process.env.NPAY_BUTTON_KEY);
@@ -72,14 +89,16 @@ export function npayConfiguration() {
   };
 }
 
-export function npayPublicConfiguration() {
-  const config = npayConfiguration();
+export function npayPublicConfiguration({ review = false } = {}) {
+  const config = npayConfiguration({ mode: review ? 'test' : undefined });
+  const visible = review || npayPublicIsOpen();
   return {
-    enabled: config.enabled,
+    enabled: Boolean(config.enabled && visible),
     mode: config.mode,
-    buttonKey: config.enabled ? config.buttonKey : '',
+    buttonKey: config.enabled && visible ? config.buttonKey : '',
     sdkUrl: config.sdkUrl,
     trackingConfigured: Boolean(config.accountId),
+    review,
   };
 }
 

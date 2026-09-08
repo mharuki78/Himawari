@@ -3,12 +3,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:admin": "esbuild admin/product-admin.source.js --bundle --format=esm --platform=browser --target=es2022 --outfile=admin/product-admin.js",
+    "build:admin": "esbuild admin/product-admin.source.js --bundle --format=esm --platform=browser --target=es2022 --outfile=admin/product-admin.js && esbuild admin/reel-admin.source.js --bundle --format=esm --platform=browser --target=es2022 --outfile=admin/reel-admin.js",
     "test": "node --test",
     "design": "npx -p @google/design.md designmd lint DESIGN.md",
     "secrets": "node scripts/generate-admin-secrets.mjs",
     "db:migrate": "node scripts/migrate-members.mjs",
-    "smoke:members": "node scripts/smoke-members.mjs"
+    "smoke:members": "node scripts/smoke-members.mjs",
+    "smoke:storefront": "node scripts/smoke-storefront.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",

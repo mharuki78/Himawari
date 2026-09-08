@@ -165,3 +165,20 @@
 @media (forced-colors: active) {
   .order-status { forced-color-adjust: auto; }
 }
+
+.order-field--postal { position: relative; }
+.address-search { min-height: 38px; margin-top: .55rem; padding: 0 .85rem; border: 1px solid var(--order-line); border-radius: var(--radius-pill, 999px); background: var(--snow, #fff); color: var(--order-ink); font: inherit; font-size: .68rem; font-weight: 720; cursor: pointer; }
+.address-search:hover { border-color: var(--order-accent); background: var(--sky-tint, #eef5ea); }
+.guest-order-main { width: min(100%, 82rem); min-height: 72vh; margin: 0 auto; padding: clamp(5rem, 10vw, 9rem) var(--page-pad, 5vw); }
+.guest-order-grid { display: grid; grid-template-columns: minmax(19rem, .7fr) minmax(24rem, 1.3fr); gap: clamp(1rem, 4vw, 4rem); align-items: start; margin-top: clamp(3rem, 7vw, 6rem); }
+.guest-order-form { display: grid; gap: 1rem; }
+.guest-order-form .order-primary-link { width: 100%; margin-top: .5rem; }
+.guest-order-result { min-height: 27rem; }
+.guest-order-number { display: block; margin-bottom: 1rem; font-size: clamp(1.1rem, 2vw, 1.5rem); overflow-wrap: anywhere; }
+.guest-order-items { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--order-line); }
+.guest-order-items li { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: .9rem 0; border-bottom: 1px solid var(--order-line); font-size: .72rem; }
+.guest-order-totals { margin: 1.2rem 0; }
+.guest-order-totals > div { display: grid; grid-template-columns: 8rem 1fr; gap: 1rem; padding: .45rem 0; font-size: .72rem; }
+.guest-order-totals dd { margin: 0; overflow-wrap: anywhere; }
+.guest-order-result > .order-danger-link, .guest-order-result > .order-secondary-link { margin-top: .6rem; margin-right: .5rem; }
+@media (max-width: 760px) { .guest-order-grid { grid-template-columns: 1fr; } .guest-order-result { min-height: 18rem; } }

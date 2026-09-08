@@ -150,10 +150,35 @@ document.querySelectorAll('[data-ambient-film]').forEach((film) => {
   respectMotionPreference();
 });
 
-const reelShowcase = document.querySelector('[data-reel-showcase]');
+function renderManagedReels(rail, items) {
+  if (!Array.isArray(items) || !items.length) return;
+  const cards = items.map((item, index) => {
+    const card = document.createElement('article');
+    card.className = `reel-card${index === Math.min(2, items.length - 1) ? ' is-active' : ''}`;
+    card.dataset.reelCard = '';
+    card.dataset.reelName = String(item.name || item.label || 'Himawari 영상');
+    if (index === Math.min(2, items.length - 1)) { card.dataset.reelInitial = ''; card.setAttribute('aria-current', 'true'); }
+    const media = document.createElement('div'); media.className = 'reel-card__media';
+    if (item.posterUrl) media.style.backgroundImage = `url(${JSON.stringify(String(item.posterUrl)).slice(1, -1)})`;
+    const video = document.createElement('video'); video.muted = true; video.loop = true; video.playsInline = true; video.preload = 'none'; video.dataset.reelVideo = ''; video.dataset.reelSrc = String(item.videoUrl || ''); video.poster = String(item.posterUrl || ''); video.setAttribute('aria-label', `${card.dataset.reelName} 재생`);
+    const playing = document.createElement('span'); playing.className = 'reel-card__playing'; playing.setAttribute('aria-hidden', 'true'); playing.textContent = 'Now playing';
+    const select = document.createElement('button'); select.className = 'reel-card__select'; select.type = 'button'; select.dataset.reelSelect = ''; select.setAttribute('aria-label', `${card.dataset.reelName}을 가운데에서 재생`);
+    const selectText = document.createElement('span'); selectText.textContent = '이 영상 보기'; const arrow = document.createElement('span'); arrow.setAttribute('aria-hidden', 'true'); arrow.textContent = '→'; select.append(selectText, arrow); media.append(video, playing, select);
+    const caption = document.createElement('div'); caption.className = 'reel-card__caption'; const label = document.createElement('p'); label.textContent = String(item.label || 'Himawari'); const title = document.createElement('h3'); title.textContent = String(item.caption || 'Himawari의 디테일.'); caption.append(label, title); card.append(media, caption); return card;
+  });
+  rail.replaceChildren(...cards);
+}
 
-if (reelShowcase) {
+async function initReelShowcase() {
+  const reelShowcase = document.querySelector('[data-reel-showcase]');
+  if (!reelShowcase) return;
   const reelRail = reelShowcase.querySelector('[data-reel-rail]');
+  try {
+    const response = await fetch('/api/reels', { headers: { Accept: 'application/json' } });
+    if (response.ok) renderManagedReels(reelRail, (await response.json()).items);
+  } catch {
+    // 배포 전 기본 영상 마크업을 그대로 사용합니다.
+  }
   const reelCards = [...reelShowcase.querySelectorAll('[data-reel-card]')];
   const reelVideos = reelCards.map((card) => card.querySelector('[data-reel-video]'));
   const previousReel = reelShowcase.querySelector('[data-reel-prev]');
@@ -325,6 +350,8 @@ if (reelShowcase) {
     setActiveReel(initialReelIndex);
   });
 }
+
+initReelShowcase();
 
 const year = document.querySelector('#year');
 if (year) year.textContent = new Date().getFullYear();

@@ -10,6 +10,13 @@ import {
   classifyProductImagePath,
   productStoreIsConfigured,
 } from '../_lib/products.js';
+import {
+  MAX_REEL_POSTER_SIZE,
+  MAX_REEL_VIDEO_SIZE,
+  REEL_POSTER_TYPES,
+  REEL_VIDEO_TYPES,
+  classifyReelPath,
+} from '../_lib/reels.js';
 
 export async function fetch(request) {
   if (request.method !== 'POST') return methodNotAllowed(['POST']);
@@ -37,15 +44,17 @@ export async function fetch(request) {
           throw new Error('업로드 정보를 확인할 수 없습니다.');
         }
         const requestId = typeof payload.requestId === 'string' ? payload.requestId : '';
-        const kind = payload.kind === 'main' || payload.kind === 'gallery' ? payload.kind : '';
-        const pathRole = classifyProductImagePath(pathname, requestId);
+        const allowedKinds = new Set(['main', 'gallery', 'reel-video', 'reel-poster']);
+        const kind = allowedKinds.has(payload.kind) ? payload.kind : '';
+        const isReel = kind.startsWith('reel-');
+        const pathRole = isReel ? classifyReelPath(pathname, requestId) : classifyProductImagePath(pathname, requestId);
         const roleMatches = kind ? pathRole === kind : pathRole === 'legacy';
         if (!REQUEST_ID_PATTERN.test(requestId) || !roleMatches) {
           throw new Error('업로드 경로를 확인할 수 없습니다.');
         }
         return {
-          allowedContentTypes: [...IMAGE_TYPES],
-          maximumSizeInBytes: kind === 'main' ? MAX_MAIN_IMAGE_SIZE : MAX_GALLERY_IMAGE_SIZE,
+          allowedContentTypes: isReel ? [...(kind === 'reel-video' ? REEL_VIDEO_TYPES : REEL_POSTER_TYPES)] : [...IMAGE_TYPES],
+          maximumSizeInBytes: kind === 'reel-video' ? MAX_REEL_VIDEO_SIZE : kind === 'reel-poster' ? MAX_REEL_POSTER_SIZE : kind === 'main' ? MAX_MAIN_IMAGE_SIZE : MAX_GALLERY_IMAGE_SIZE,
           addRandomSuffix: true,
           allowOverwrite: false,
           cacheControlMaxAge: 31_536_000,
