@@ -9,17 +9,19 @@ function initializeSiteInsights() {
     window.va('event', { name: String(name).slice(0, 100), data: safeData });
   };
 
-  [
-    { src: '/_vercel/insights/script.js', name: 'vercel-analytics' },
-    { src: '/_vercel/speed-insights/script.js', name: 'vercel-speed-insights' },
-  ].forEach(({ src, name }) => {
+  function appendInsightScript(src, name) {
     if (document.querySelector(`script[data-site-insight="${name}"]`)) return;
     const script = document.createElement('script');
     script.src = src;
     script.defer = true;
     script.dataset.siteInsight = name;
     document.head.append(script);
-  });
+  }
+
+  appendInsightScript('/_vercel/speed-insights/script.js', 'vercel-speed-insights');
+  fetch('/_vercel/insights/script.js', { method: 'HEAD', credentials: 'same-origin' })
+    .then((response) => { if (response.ok) appendInsightScript('/_vercel/insights/script.js', 'vercel-analytics'); })
+    .catch(() => {});
 
   document.addEventListener('click', (event) => {
     const target = event.target.closest?.('a,button');
