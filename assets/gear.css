@@ -332,12 +332,12 @@ html {
 }
 
 .journal::before {
-  background: url("himawari-collection-v2.webp") center / cover no-repeat;
+  background: url("journal-0514-silver.webp") 56% center / cover no-repeat;
 }
 
 .journal::after {
   z-index: -1;
-  background: color-mix(in srgb, var(--ink) 84%, transparent);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--ink) 92%, transparent) 0 28%, color-mix(in srgb, var(--ink) 82%, transparent) 64%, color-mix(in srgb, var(--ink) 74%, transparent) 100%);
 }
 
 .founder-quote::before {
@@ -1018,7 +1018,8 @@ html {
 
   .intro::before { background-position: 64% 42%; }
   .intro::after { background: color-mix(in srgb, var(--ink) 78%, transparent); }
-  .journal::after { background: color-mix(in srgb, var(--ink) 88%, transparent); }
+  .journal::before { background-position: 55% center; }
+  .journal::after { background: color-mix(in srgb, var(--ink) 86%, transparent); }
   .founder-quote::before { background-position: 66% 38%; }
   .founder-quote::after,
   .founder-promise::after { background: color-mix(in srgb, var(--ink) 74%, transparent); }
