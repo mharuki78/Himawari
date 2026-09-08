@@ -1,5 +1,41 @@
 [
   {
+    "id": "small-frame-backpack-fit-guide",
+    "title": "체구에 맞는 백팩 고르는 법: 등판 길이·폭·수납량 확인하기",
+    "date": "2026-09-09",
+    "summary": "키만 보지 않고 등판 길이와 폭, 평소 짐을 넣은 부피로 내 몸에 어울리는 백팩 비율을 찾는 방법입니다.",
+    "description": "체구에 맞는 백팩을 고를 때 등판 길이와 폭, 평소 짐을 넣은 부피와 어깨끈 조절 범위를 차례로 확인하는 실용적인 구매 가이드입니다.",
+    "tags": ["백팩 크기", "착용 비율", "구매 가이드"],
+    "image": "../assets/story/small-frame-backpack-fit-guide.webp",
+    "imageAlt": "현관 거울 앞에서 분홍·민트 Himawari No.0422 백팩 비율을 확인하는 성인 여성의 뒷모습",
+    "url": "small-frame-backpack-fit-guide.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "autumn-commute-backpack-packing",
+    "title": "가을 환절기 출근 백팩 준비법: 겉옷·우산·전자기기 나누기",
+    "date": "2026-09-09",
+    "summary": "일교차가 큰 가을 출근길에 겉옷과 우산, 노트북을 찾기 쉽고 서로 간섭하지 않게 나누는 수납법입니다.",
+    "description": "일교차가 큰 가을 출근길에 얇은 겉옷과 우산, 노트북과 작은 소지품을 찾기 쉽고 서로 간섭하지 않게 나누는 백팩 수납법입니다.",
+    "tags": ["가을 출근", "환절기 수납", "직장인 백팩"],
+    "image": "../assets/story/autumn-commute-backpack-packing.webp",
+    "imageAlt": "가을 아침 현관에서 회색 Himawari No.1884 백팩에 노트북과 얇은 겉옷을 나눠 담는 모습",
+    "url": "autumn-commute-backpack-packing.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "backpack-odor-airing-guide",
+    "title": "백팩 냄새와 눅눅함 줄이는 법: 매일 5분 환기 루틴",
+    "date": "2026-09-09",
+    "summary": "향으로 덮기 전에 냄새의 원인을 비우고 포켓을 열어 가방 안쪽을 말리는 매일 5분 관리법입니다.",
+    "description": "백팩 속 냄새와 눅눅함이 신경 쓰일 때 내용물을 비우고 원인을 확인한 뒤 포켓을 열어 말리는 매일 5분 환기 관리법입니다.",
+    "tags": ["백팩 환기", "가방 냄새", "습기 관리"],
+    "image": "../assets/story/backpack-odor-airing-guide.webp",
+    "imageAlt": "창가의 나무 벤치 위에서 크림·하늘·분홍 Himawari No.1027 백팩의 지퍼를 열어 환기하는 모습",
+    "url": "backpack-odor-airing-guide.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "light-backpack-stain-care",
     "title": "밝은색 백팩 얼룩 관리법: 번지기 전에 확인할 6단계",
     "date": "2026-09-08",

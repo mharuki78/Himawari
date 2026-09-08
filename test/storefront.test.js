@@ -86,9 +86,9 @@ test('최신 이야기 3편은 독립 페이지·대표 이미지·검색 메타
   const sitemap = await readFile(new URL('../sitemap.xml', import.meta.url), 'utf8');
   const feed = await readFile(new URL('../feed.xml', import.meta.url), 'utf8');
   const slugs = [
-    'light-backpack-stain-care',
-    'backpack-compartment-layout-guide',
-    'commute-business-trip-backpack-guide',
+    'small-frame-backpack-fit-guide',
+    'autumn-commute-backpack-packing',
+    'backpack-odor-airing-guide',
   ];
 
   assert.deepEqual(posts.slice(0, 3).map((post) => post.id), slugs);
@@ -98,7 +98,7 @@ test('최신 이야기 3편은 독립 페이지·대표 이미지·검색 메타
     const html = await readFile(new URL(`../story/${slug}.html`, import.meta.url), 'utf8');
     const imagePath = post.image.replace('../', '');
 
-    assert.equal(post.date, '2026-09-08');
+    assert.equal(post.date, '2026-09-09');
     await access(new URL(`../${imagePath}`, import.meta.url));
     assert.match(html, new RegExp(`<link rel="canonical" href="https://allaboutbag\\.com/story/${slug}\\.html">`));
     assert.match(html, new RegExp(`<meta property="og:image" content="https://allaboutbag\\.com/assets/story/${slug}\\.webp">`));
@@ -141,11 +141,11 @@ test('운영 사이트맵은 현재 제품과 이야기 목록을 XML로 동적 
 
   assert.equal(response.status, 200);
   assert.match(response.headers.get('content-type') || '', /^application\/xml/);
-  assert.equal((sitemap.match(/<url>/g) || []).length, 73);
+  assert.equal((sitemap.match(/<url>/g) || []).length, 76);
   for (const product of products) {
     assert.equal(sitemap.includes(`https://allaboutbag.com/product.html?id=${encodeURIComponent(product.id)}`), true);
   }
-  assert.equal(sitemap.includes('https://allaboutbag.com/story/light-backpack-stain-care.html'), true);
+  assert.equal(sitemap.includes('https://allaboutbag.com/story/small-frame-backpack-fit-guide.html'), true);
 });
 
 test('개별 제품 원본 HTML에 이름·가격·이미지·구매정보를 렌더링한다', async () => {
