@@ -22,3 +22,5 @@
 .guidance-links { display: flex; gap: 24px; flex-wrap: wrap; }
 .guidance-links a { min-height: 44px; display: inline-flex; align-items: center; text-decoration: underline; }
 @media(max-width:640px){.commerce-selects,.product-spec-list{grid-template-columns:1fr}.commerce-main{padding:40px 20px}.commerce-main h1{font-size:2rem}}
+
+.npay-review-notice{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:16px 24px;background:var(--moss);color:var(--ink)}.npay-review-notice a{min-height:44px;display:inline-flex;align-items:center;text-decoration:underline}

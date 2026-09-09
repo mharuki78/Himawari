@@ -45,7 +45,8 @@ function validateItems(input, products) {
   });
 }
 
-function backUrlFor(input, items) {
+function backUrlFor(input, items, request, review) {
+  if(review){const origin=new URL(request.url).origin;return input?.context==='product'&&items.length===1?`${origin}/npay-review-product.html?id=${encodeURIComponent(items[0].product.id)}`:`${origin}/npay-review-products.html`;}
   if (input?.context === 'product' && items.length === 1) {
     return `${SITE_ORIGIN}/product.html?id=${encodeURIComponent(items[0].product.id)}`;
   }
@@ -85,7 +86,7 @@ export async function fetchNpayOrder(request) {
     const body = buildOrderXml({
       config,
       items,
-      backUrl: backUrlFor(input, items),
+      backUrl: backUrlFor(input, items, request, review),
       naverInflowCode: readNaverInflowCode(request),
     });
     const response = await globalThis.fetch(config.orderRegistrationUrl, {

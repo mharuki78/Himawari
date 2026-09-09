@@ -205,6 +205,7 @@ export async function initializeNpay({ cartItems = [] } = {}) {
 
   try {
     config = await requestJson('/api/npay/config');
+    if (config.review && !/^\/npay-review-(?:products|product)\.html$/.test(location.pathname)) config = { ...config, enabled: false };
     if (!config.enabled) return;
     await loadSdk(config.sdkUrl);
     createProductButton();

@@ -1,5 +1,5 @@
 function initializeSiteInsights() {
-  if (window.location.pathname.endsWith('/support.html')) return;
+  if (window.location.pathname.endsWith('/support.html') || window.location.pathname.startsWith('/npay-review')) return;
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);
   };

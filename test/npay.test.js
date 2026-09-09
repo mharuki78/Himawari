@@ -131,8 +131,8 @@ test('검수 세션의 상세 주문은 공개 오픈 전에도 Sandbox 등록 U
       }));
       assert.equal(response.status, 200);
       assert.match(registrationUrl, /^https:\/\/test-api\.pay\.naver\.com\//);
-      assert.match(registeredXml, new RegExp(`<backUrl>https://himawari\\.co\\.kr/product\\.html\\?id=${product.id}</backUrl>`));
-      assert.doesNotMatch(registeredXml, /npay-review/);
+      assert.match(registeredXml, new RegExp(`<backUrl>https://himawari\\.co\\.kr/npay-review-product\\.html\\?id=${product.id}</backUrl>`));
+
     } finally {
       globalThis.fetch = originalFetch;
     }

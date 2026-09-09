@@ -197,21 +197,34 @@ test('전체 제품 페이지는 Npay 버튼 없이 대표 상품과 묶인 제�
   assert.equal((html.match(/data-server-rendered-product/g) || []).length, groupProductFamilies(products).length);
 });
 
-test('네이버페이 검수 링크는 비공개 세션을 만든 뒤 실제 상품 상세페이지로 이동한다', async () => {
+test('네이버페이 검수는 비공개 세션에서 전체 상품 목록과 모든 상세페이지를 제공한다', async () => {
   const previous = process.env.NPAY_REVIEW_TOKEN;
   process.env.NPAY_REVIEW_TOKEN = 'review-token-example';
   try {
     const entry = await storefrontHandler(new Request('https://himawari.co.kr/api/storefront?page=npay-review&token=review-token-example'));
     const cookie = entry.headers.get('set-cookie') || '';
     assert.equal(entry.status, 302);
-    assert.match(entry.headers.get('location') || '', /^https:\/\/himawari\.co\.kr\/product\.html\?id=/);
+    assert.equal(entry.headers.get('location'), 'https://himawari.co.kr/npay-review-products.html');
     assert.match(cookie, /__Host-himawari_npay_review=/);
     assert.match(cookie, /HttpOnly/);
     assert.match(cookie, /Secure/);
     assert.equal(entry.headers.get('x-robots-tag'), 'noindex, nofollow, noarchive');
 
-    const productId = new URL(entry.headers.get('location')).searchParams.get('id');
-    const detail = await storefrontHandler(new Request(`https://himawari.co.kr/api/storefront?page=product&id=${encodeURIComponent(productId)}`, {
+    for (const page of ['npay-review-catalog', 'npay-review-product']) {
+      const denied = await storefrontHandler(new Request(`https://himawari.co.kr/api/storefront?page=${page}&id=${products[0].id}`));
+      assert.equal(denied.status, 404);
+      assert.match(denied.headers.get('cache-control'), /no-store/);
+    }
+    const invalid = await storefrontHandler(new Request('https://himawari.co.kr/api/storefront?page=npay-review&token=wrong'));
+    assert.equal(invalid.status, 404);
+    const catalog = await storefrontHandler(new Request('https://himawari.co.kr/api/storefront?page=npay-review-catalog', { headers: { Cookie: cookie.split(';')[0] } }));
+    assert.equal(catalog.status, 200);
+    assert.match(catalog.headers.get('cache-control'), /no-store/);
+    const catalogHtml = await catalog.text();
+    assert.equal((catalogHtml.match(/data-review-product=/g) || []).length, products.length);
+    for (const product of products) {
+    assert.ok(catalogHtml.includes(`data-review-product="${product.id}"`));
+    const detail = await storefrontHandler(new Request(`https://himawari.co.kr/api/storefront?page=npay-review-product&id=${encodeURIComponent(product.id)}`, {
       headers: { Cookie: cookie.split(';')[0] },
     }));
     const html = await detail.text();
@@ -220,7 +233,8 @@ test('네이버페이 검수 링크는 비공개 세션을 만든 뒤 실제 상
     assert.equal(detail.headers.get('x-robots-tag'), 'noindex, nofollow, noarchive');
     assert.match(html, /class="product-detail-page"/);
     assert.match(html, /data-npay-product data-product-id=/);
-    assert.doesNotMatch(html, /테스트 상품 검수|npay-review-products/);
+    assert.match(html, /npay-review-products\.html/);
+    }
   } finally {
     if (previous === undefined) delete process.env.NPAY_REVIEW_TOKEN;
     else process.env.NPAY_REVIEW_TOKEN = previous;
