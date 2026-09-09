@@ -150,6 +150,72 @@ document.querySelectorAll('[data-ambient-film]').forEach((film) => {
   respectMotionPreference();
 });
 
+function initializeJournalPencil() {
+  const journal = document.querySelector('.journal');
+  if (!journal) return;
+  const desktopMouse = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 821px)');
+  const pencil = document.createElement('span');
+  pencil.className = 'journal-pencil';
+  pencil.setAttribute('aria-hidden', 'true');
+  pencil.innerHTML = '<svg viewBox="0 0 16 56" fill="none" focusable="false" aria-hidden="true"><path d="M3 9h10v33L8 54 3 42V9Z" fill="var(--moss)" stroke="var(--harbor)" stroke-width="1.3" stroke-linejoin="round"/><path d="M3 9V5a5 5 0 0 1 10 0v4" fill="var(--cream)" stroke="var(--harbor)" stroke-width="1.3"/><path d="M3 9h10v5H3z" fill="var(--cream)" stroke="var(--harbor)" stroke-width="1.3"/><path d="M6 15v25M10 15v25" stroke="var(--harbor)" stroke-opacity=".45"/><path d="m3 42 5 12 5-12-3 2-2-2-2 2-3-2Z" fill="var(--cream)" stroke="var(--harbor)" stroke-width="1.3" stroke-linejoin="round"/><path d="m6 49 2 5 2-5H6Z" fill="var(--harbor)"/></svg>';
+  document.body.append(pencil);
+  let frame = 0;
+  let visible = false;
+  let x = 0, y = 0, targetX = 0, targetY = 0;
+  let angle = -25, targetAngle = -25;
+
+  function hide() {
+    visible = false;
+    pencil.classList.remove('is-visible', 'is-over-link');
+    cancelAnimationFrame(frame);
+    frame = 0;
+  }
+
+  function draw() {
+    frame = 0;
+    x += (targetX - x) * .22;
+    y += (targetY - y) * .22;
+    angle += (targetAngle - angle) * .18;
+    pencil.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${angle}deg)`;
+    if (visible && Math.abs(targetX - x) + Math.abs(targetY - y) + Math.abs(targetAngle - angle) > .15) {
+      frame = requestAnimationFrame(draw);
+    }
+  }
+
+  journal.addEventListener('pointermove', (event) => {
+    if (event.pointerType !== 'mouse' || !desktopMouse.matches || reducedMotion.matches || document.hidden) {
+      hide();
+      return;
+    }
+    const bounds = journal.getBoundingClientRect();
+    const nextX = Math.max(24, Math.min(window.innerWidth - 40, event.clientX + 24));
+    const nextY = Math.max(bounds.top + 28, 28, Math.min(bounds.bottom - 64, window.innerHeight - 64, event.clientY - 24));
+    targetAngle = -25 + Math.max(-14, Math.min(14, (nextX - targetX) * .3));
+    targetX = nextX;
+    targetY = nextY;
+    if (!visible) {
+      x = targetX;
+      y = targetY;
+      angle = targetAngle;
+    }
+    visible = true;
+    pencil.classList.add('is-visible');
+    pencil.classList.toggle('is-over-link', Boolean(event.target.closest('a, button, input, textarea, select, [contenteditable="true"]')));
+    if (!frame) frame = requestAnimationFrame(draw);
+  }, { passive: true });
+  journal.addEventListener('pointerleave', hide);
+  journal.addEventListener('pointerdown', hide);
+  window.addEventListener('scroll', hide, { passive: true, capture: true });
+  window.addEventListener('resize', hide, { passive: true });
+  window.addEventListener('blur', hide);
+  document.addEventListener('visibilitychange', hide);
+  document.addEventListener('keydown', hide);
+  reducedMotion.addEventListener('change', hide);
+  desktopMouse.addEventListener('change', hide);
+}
+
+initializeJournalPencil();
+
 function initializeBagJourney() {
   const journey = document.querySelector('[data-bag-journey]');
   const section = journey?.closest('.intro');
