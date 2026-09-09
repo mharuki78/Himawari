@@ -1,5 +1,6 @@
 import { fetchProducts, priceFormatter, safeHttpsUrl } from "../products.js";
 import { groupProductFamilies, productCategory } from "./catalog-tools.js";
+import { SPEC_FIELDS } from './product-specs.js';
 
 const form = document.querySelector("[data-finder-form]");
 const results = document.querySelector("[data-finder-results]");
@@ -56,6 +57,7 @@ function card(product, rank, variantCount) {
 
 function renderCompare(items) {
   const rows = [
+    ...SPEC_FIELDS.slice(0, 6).map(([key, label]) => [label, item => item.product.specs?.[key] || '미확인 · 구매 전 문의']),
     ["모델", (item) => item.product.model],
     ["가격", (item) => priceFormatter.format(item.product.price)],
     [

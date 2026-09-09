@@ -1,3 +1,4 @@
+import { normalizeSpecs, normalizeRelatedIds } from '../../assets/product-specs.js';
 import {
   BlobNotFoundError,
   BlobPreconditionFailedError,
@@ -116,6 +117,8 @@ function normalizeProduct(product, index = 0) {
     options,
     stock,
     soldOut: stock === 0,
+    specs: normalizeSpecs(product.specs),
+    relatedProductIds: normalizeRelatedIds(product.relatedProductIds),
   };
 }
 
@@ -140,6 +143,8 @@ function validateProductFields(input) {
     ? null
     : Number(suppliedDiscountRate);
   const value = {
+    specs: normalizeSpecs(input.specs),
+    relatedProductIds: normalizeRelatedIds(input.relatedProductIds),
     name: singleLine(input.name),
     model: singleLine(input.model),
     naverPrice: Number(suppliedNaverPrice),
@@ -220,7 +225,7 @@ export function validateProductInput(input) {
 }
 
 export function validateProductUpdateInput(input, currentProduct = null) {
-  const fields = validateProductFields(input);
+  const fields = validateProductFields({ ...input, specs: input.specs ?? currentProduct?.specs, relatedProductIds: input.relatedProductIds ?? currentProduct?.relatedProductIds });
   const replaceMainImage = input.replaceMainImage === true;
   const replaceGallery = input.replaceGallery === true;
   const value = {
@@ -301,6 +306,8 @@ export function updateProductRecord(product, value, media) {
   const current = normalizeProduct(product);
   return normalizeProduct({
     ...current,
+    specs: value.specs ?? current.specs,
+    relatedProductIds: value.relatedProductIds ?? current.relatedProductIds,
     name: value.name,
     model: value.model,
     naverPrice: value.naverPrice,

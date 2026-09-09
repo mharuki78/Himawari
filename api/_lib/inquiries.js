@@ -55,6 +55,11 @@ export async function storeInquiry(value) {
     email: value.email,
     subject: value.subject,
     message: value.message,
+    serviceType: value.serviceType || 'product',
+    orderNumber: value.orderNumber || '',
+    productId: value.productId || '',
+    attachment: value.attachment || null,
+    status: 'received',
     retention: 'until-admin-deletes',
   };
 
@@ -90,7 +95,7 @@ export async function listInquiries(cursor) {
   const records = await Promise.allSettled(page.blobs.map(readInquiry));
   const items = records
     .filter((result) => result.status === 'fulfilled' && result.value)
-    .map((result) => result.value);
+    .map((result) => { const { attachment, ...record } = result.value; return { ...record, hasAttachment: Boolean(attachment) }; });
 
   return { items, hasMore: page.hasMore, nextCursor: page.cursor || null };
 }
@@ -102,4 +107,29 @@ export async function deleteInquiry(pathname, etag) {
   await del(pathname, { ifMatch: etag });
 }
 
+export async function updateInquiryStatus(pathname, etag, status) {
+  if (!PATH_PATTERN.test(pathname || '') || !etag || !['received', 'reviewing', 'waiting_customer', 'resolved'].includes(status)) throw Object.assign(new Error('문의 상태를 확인해 주세요.'), { status: 400 });
+  const result = await get(pathname, { access: 'private', useCache: false });
+  if (!result || result.statusCode !== 200) throw Object.assign(new Error('문의를 찾을 수 없습니다.'), { status: 404 });
+  const record = JSON.parse(await new Response(result.stream).text());
+  await put(pathname, JSON.stringify({ ...record, status, updatedAt: new Date().toISOString() }), { access: 'private', addRandomSuffix: false, allowOverwrite: true, ifMatch: etag, contentType: 'application/json; charset=utf-8', cacheControlMaxAge: 60 });
+  return { ok: true };
+}
+
+export async function readInquiryAttachment(pathname) {
+  if (!PATH_PATTERN.test(pathname || '')) throw Object.assign(new Error('문의 경로를 확인해 주세요.'), { status: 400 });
+  const result = await get(pathname, { access: 'private', useCache: false });
+  if (!result || result.statusCode !== 200) throw Object.assign(new Error('문의를 찾을 수 없습니다.'), { status: 404 });
+  const record = JSON.parse(await new Response(result.stream).text());
+  return { attachment: record.attachment || null };
+}
+
 export { BlobPreconditionFailedError };
+
+export async function readInquiryStatus(requestId) {
+  if (!REQUEST_ID_PATTERN.test(requestId || '')) throw Object.assign(new Error('접수 확인 링크를 확인해 주세요.'), {status:404});
+  const result = await get(PREFIX + requestId + '.json', { access:'private',useCache:false });
+  if (!result || result.statusCode!==200) throw Object.assign(new Error('접수 확인 링크가 만료되었거나 문의가 삭제되었습니다.'), {status:404});
+  const record=JSON.parse(await new Response(result.stream).text());
+  return {status:record.status||'received',createdAt:record.createdAt,updatedAt:record.updatedAt||record.createdAt};
+}

@@ -61,3 +61,12 @@ export async function consumeCouponClaim(couponId, token, orderId) {
 }
 
 export async function releaseCouponClaim(orderId) { await ensureSchema(); await database().query('UPDATE coupon_claims SET used_at=NULL,order_id=NULL WHERE order_id=$1', [orderId]); }
+
+export { ensureSchema as ensureCouponSchema };
+// The assertion aborts the enclosing order transaction when the claim is invalid.
+export function couponClaimStatement(couponId, token, orderId) {
+  if (!token || String(token).length < 30) throw Object.assign(new Error('쿠폰을 다시 받은 뒤 주문해 주세요.'), {status:409});
+  return { text: `WITH claimed AS (UPDATE coupon_claims SET used_at=COALESCE(used_at,now()),order_id=$1
+    WHERE token_hash=$2 AND coupon_id=$3 AND (used_at IS NULL OR order_id=$1) AND expires_at>now() RETURNING id)
+    SELECT 1/count(*)::integer AS claim_verified FROM claimed`, values:[orderId,hash(token),couponId] };
+}

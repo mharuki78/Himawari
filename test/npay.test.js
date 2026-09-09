@@ -34,10 +34,10 @@ function withEnv(values, work) {
 }
 
 function sameOriginRequest(path, body) {
-  return new Request(`https://allaboutbag.com${path}`, {
+  return new Request(`https://himawari.co.kr${path}`, {
     method: body === undefined ? 'GET' : 'POST',
     headers: body === undefined ? {} : {
-      Origin: 'https://allaboutbag.com',
+      Origin: 'https://himawari.co.kr',
       'Content-Type': 'application/json',
     },
     ...(body === undefined ? {} : { body: JSON.stringify(body) }),
@@ -92,7 +92,7 @@ test('검수 진입 쿠키가 맞는 요청에만 Sandbox 공개 설정을 반�
   }, async () => {
     const hidden = await (await configHandler(sameOriginRequest('/api/npay/config'))).json();
     const cookie = npayReviewSessionCookie('review-secret-1234567890');
-    const reviewRequest = new Request('https://allaboutbag.com/api/npay/config', {
+    const reviewRequest = new Request('https://himawari.co.kr/api/npay/config', {
       headers: { Cookie: cookie.split(';')[0] },
     });
     const visible = await (await configHandler(reviewRequest)).json();
@@ -124,14 +124,14 @@ test('검수 세션의 상세 주문은 공개 오픈 전에도 Sandbox 등록 U
     };
     try {
       const cookie = npayReviewSessionCookie('review-secret-1234567890').split(';')[0];
-      const response = await orderHandler(new Request('https://allaboutbag.com/api/npay/order', {
+      const response = await orderHandler(new Request('https://himawari.co.kr/api/npay/order', {
         method: 'POST',
-        headers: { Origin: 'https://allaboutbag.com', 'Content-Type': 'application/json', Cookie: cookie },
+        headers: { Origin: 'https://himawari.co.kr', 'Content-Type': 'application/json', Cookie: cookie },
         body: JSON.stringify({ context: 'product', items: [{ productId: product.id, quantity: 1 }] }),
       }));
       assert.equal(response.status, 200);
       assert.match(registrationUrl, /^https:\/\/test-api\.pay\.naver\.com\//);
-      assert.match(registeredXml, new RegExp(`<backUrl>https://allaboutbag\\.com/product\\.html\\?id=${product.id}</backUrl>`));
+      assert.match(registeredXml, new RegExp(`<backUrl>https://himawari\\.co\\.kr/product\\.html\\?id=${product.id}</backUrl>`));
       assert.doesNotMatch(registeredXml, /npay-review/);
     } finally {
       globalThis.fetch = originalFetch;
@@ -145,7 +145,7 @@ test('주문 XML은 현재 카탈로그 가격과 확정 배송 정책을 사용
   const body = buildOrderXml({
     config,
     items: [{ product, quantity: 2 }],
-    backUrl: 'https://allaboutbag.com/products.html',
+    backUrl: 'https://himawari.co.kr/products.html',
     naverInflowCode: 'naver&amp-test',
   });
 
@@ -181,7 +181,7 @@ test('옵션 상품 XML은 옵션 관리코드와 옵션별 재고를 제공한�
   const order = buildOrderXml({
     config: { shopId: 'shop-id', certiKey: 'cert-key' },
     items: [{ product, option, quantity: 2 }],
-    backUrl: 'https://allaboutbag.com/product.html',
+    backUrl: 'https://himawari.co.kr/product.html',
   });
   assert.match(order, /<option><quantity>2<\/quantity>/);
   assert.match(order, /<selectedItem><type>SELECT<\/type><name>색상<\/name>/);
@@ -246,7 +246,7 @@ test('주문 API는 외부 사이트에서 보낸 요청을 거부한다', async
     NPAY_CERTI_KEY: 'server-certificate',
     NPAY_BUTTON_KEY: 'button-key',
   }, async () => {
-    const response = await orderHandler(new Request('https://allaboutbag.com/api/npay/order', {
+    const response = await orderHandler(new Request('https://himawari.co.kr/api/npay/order', {
       method: 'POST',
       headers: { Origin: 'https://attacker.example', 'Content-Type': 'application/json' },
       body: JSON.stringify({ items: [] }),

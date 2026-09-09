@@ -1,3 +1,4 @@
+import { createSpecEditor } from './spec-editor.js';
 import { upload } from '@vercel/blob/client';
 
 import { HttpError, bindPasswordToggle, fetchJson } from './admin-client.js';
@@ -30,6 +31,7 @@ const listTitle = $('#product-list-title');
 const bulkDownload = $('[data-bulk-download]');
 const bulkFile = $('[data-bulk-file]');
 const productForm = $('[data-product-form]');
+const specEditor = createSpecEditor(productForm);
 const formSummary = $('[data-form-summary]');
 const formStatus = $('[data-form-status]');
 const editorEyebrow = $('[data-editor-eyebrow]');
@@ -238,6 +240,7 @@ function beginEdit(product, trigger) {
   field('naverDiscountRate').value = product.naverDiscountRate === null || product.naverDiscountRate === undefined ? '' : String(product.naverDiscountRate);
   field('tagline').value = product.tagline;
   field('description').value = product.description;
+  specEditor.fill(product);
   field('highlights').value = product.highlights.join('\n');
   field('url').value = product.url;
   loadInventory(product);
@@ -886,6 +889,7 @@ productForm.addEventListener('submit', async (event) => {
     if (uploadEntries.length && !uploadsComplete) await uploadImages(uploadEntries);
     formStatus.textContent = '제품 정보를 저장하고 있습니다.';
     const commonPayload = {
+      ...specEditor.read(),
       requestId,
       name: values.name,
       model: values.model,

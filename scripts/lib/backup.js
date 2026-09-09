@@ -1,0 +1,6 @@
+import { createCipheriv,createDecipheriv,randomBytes } from 'node:crypto';
+const MAGIC=Buffer.from('HMWBACK1');
+function key(value){const bytes=Buffer.from(value||'','base64');if(bytes.length!==32)throw Error('BACKUP_ENCRYPTION_KEY must contain 32 random bytes encoded as base64.');return bytes;}
+export function encryptBackup(bytes,value){const iv=randomBytes(12);const cipher=createCipheriv('aes-256-gcm',key(value),iv);cipher.setAAD(MAGIC);const body=Buffer.concat([cipher.update(bytes),cipher.final()]);return Buffer.concat([MAGIC,iv,cipher.getAuthTag(),body]);}
+export function decryptBackup(bytes,value){if(bytes.length<36||!bytes.subarray(0,8).equals(MAGIC))throw Error('Unsupported backup format.');const cipher=createDecipheriv('aes-256-gcm',key(value),bytes.subarray(8,20));cipher.setAAD(MAGIC);cipher.setAuthTag(bytes.subarray(20,36));return Buffer.concat([cipher.update(bytes.subarray(36)),cipher.final()]);}
+export function assertSeparateTarget(source,target){const a=new URL(source),b=new URL(target);const host=url=>url.hostname.toLowerCase().replace('-pooler.','.');if(!['postgres:','postgresql:'].includes(b.protocol)||host(a)===host(b))throw Error('Restore requires a separate database host or isolated branch, never the production host.');return true;}

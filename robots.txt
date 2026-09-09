@@ -3,4 +3,4 @@ Allow: /
 Disallow: /story/admin.html
 Disallow: /admin/
 
-Sitemap: https://allaboutbag.com/sitemap.xml
+Sitemap: https://himawari.co.kr/sitemap.xml

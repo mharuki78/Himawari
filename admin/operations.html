@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="theme-color" content="#4F6B58">
+    <title>운영 현황 — Himawari</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="operations.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#admin-main">본문으로 바로가기</a>
+    <header class="admin-header admin-header--console">
+      <a class="admin-brand" href="../index.html" aria-label="Himawari 공개 사이트 홈">HIMAWARI</a>
+      <nav class="admin-nav" aria-label="관리자 메뉴"><a href="inquiries.html">문의 관리</a><a href="products.html">제품 관리</a><a href="operations.html" aria-current="page">운영 현황</a><a href="reviews.html">리뷰·재입고</a><a href="promotions.html">프로모션</a><a href="reels.html">영상 관리</a></nav>
+      <a class="admin-header__site" href="../account.html#orders">회원 주문 화면 보기 <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="admin-main" class="admin-main admin-main--orders">
+      <section class="initial-state" data-initial-view aria-live="polite"><span class="loader" aria-hidden="true"></span><p>관리자 세션과 주문 목록을 확인하고 있습니다.</p></section>
+
+      <section class="login-view" data-login-view hidden aria-label="운영 현황자 로그인">
+        <div class="login-copy"><p class="eyebrow">Administrator only</p><h1 id="login-title">운영 현황</h1><p>관리자 인증 후 주문·취소·반품 요청과 배송 상태를 확인할 수 있습니다.</p></div>
+        <form class="login-form" data-login-form novalidate>
+          <div class="form-field"><label for="admin-password">관리자 비밀번호</label><div class="secret-control"><input id="admin-password" name="password" type="password" autocomplete="current-password" maxlength="256" required aria-describedby="admin-password-error" autofocus><button type="button" data-password-toggle aria-pressed="false" aria-label="비밀번호 표시">표시</button></div><p class="field-error" id="admin-password-error"></p></div>
+          <button class="button button--primary login-submit" type="submit"><span data-login-label>관리자 로그인</span><span aria-hidden="true">→</span></button>
+          <p class="form-status" data-login-status role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="board-view" data-board-view hidden><div class="board-head"><div><p class="eyebrow">Store operations</p><h1 tabindex="-1" data-title>운영 현황</h1><p>주문 대기·재고·발송 오류와 변경 이력을 확인합니다.</p></div><button class="button button--quiet" data-logout>로그아웃</button></div><button class="button button--quiet" data-refresh>새로고침</button><p role="status" data-status></p><div data-summary></div></section></main></body></html>

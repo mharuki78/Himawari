@@ -24,8 +24,8 @@ function safePath(value) {
   const path = singleLine(value, 500);
   if (!path) return '';
   try {
-    const url = new URL(path, 'https://allaboutbag.com');
-    if (url.origin !== 'https://allaboutbag.com') return '';
+    const url = new URL(path, 'https://himawari.co.kr');
+    if (url.origin !== 'https://himawari.co.kr') return '';
     return `${url.pathname}${url.search}${url.hash}`;
   } catch {
     return '';

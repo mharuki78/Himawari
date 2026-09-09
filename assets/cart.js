@@ -256,7 +256,7 @@
     optionId = String(optionId == null ? '' : optionId).trim();
     optionLabel = String(optionLabel == null ? '' : optionLabel).trim();
     stock = stock === '' || stock === null || stock === undefined ? null : Math.max(0, num(stock));
-    if (!name) return false;
+    if (!name || stock === 0) return false;
     var hit = null;
     var added = false;
     for (var i = 0; i < cart.length; i++) {

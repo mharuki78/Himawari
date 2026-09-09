@@ -1,0 +1,24 @@
+.commerce-main { max-width: 1120px; margin: auto; padding: 64px 24px; }
+.commerce-main h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.2; margin-bottom: 24px; }
+.commerce-main h2 { margin: 36px 0 16px; }
+.commerce-main p { max-width: 70ch; }
+.commerce-selects { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; margin: 28px 0; }
+.commerce-selects label, .commerce-form label { display: grid; gap: 8px; font-weight: 600; }
+.commerce-main select, .commerce-main input, .commerce-main textarea { width: 100%; min-height: 48px; border: 1px solid var(--fog); border-radius: 12px; background: var(--snow); padding: 12px; color: var(--ink); font: inherit; }
+.commerce-main textarea { resize: none; min-height: 160px; }
+.commerce-main button { min-height: 44px; padding: 12px 20px; border-radius: 24px; background: var(--moss); color: var(--ink); cursor: pointer; }
+.commerce-main button:hover { filter: brightness(.95); }
+.commerce-main button:disabled { opacity: .6; cursor: wait; }
+.commerce-table { overflow-x: auto; margin: 24px 0; }
+.commerce-table table { width: 100%; min-width: 560px; border-collapse: collapse; background: var(--snow); }
+.commerce-table th, .commerce-table td { border: 1px solid var(--fog); padding: 16px; text-align: left; vertical-align: top; }
+.commerce-table caption { text-align: left; padding: 12px 0; }
+.commerce-form { display: grid; gap: 20px; max-width: 720px; }
+.commerce-form .consent { display: flex; align-items: flex-start; font-weight: 400; }
+.commerce-form .consent input { width: 20px; min-height: 20px; }
+.product-spec-list { margin: 24px 0; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 32px; }
+.product-spec-list > div { padding: 16px 0; border-bottom: 1px solid var(--fog); }
+.product-spec-list dt { font-weight: 700; }.product-spec-list dd { margin: 6px 0 0; }
+.guidance-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.guidance-links a { min-height: 44px; display: inline-flex; align-items: center; text-decoration: underline; }
+@media(max-width:640px){.commerce-selects,.product-spec-list{grid-template-columns:1fr}.commerce-main{padding:40px 20px}.commerce-main h1{font-size:2rem}}

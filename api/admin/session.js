@@ -1,5 +1,6 @@
-import { authIsConfigured, clearSessionCookies, createSessionCookie, isAdminRequest, verifyAdminPassword } from '../_lib/auth.js';
+import { authIsConfigured, clearSessionCookies, createSessionCookie, isAdminRequest, adminForPassword } from '../_lib/auth.js';
 import { clientIp, isSameOrigin, json, methodNotAllowed, readJson } from '../_lib/http.js';
+import { claimLoginAttempt, clearLoginAttempts } from '../_lib/login-throttle.js';
 
 const failures = new Map();
 const WINDOW_MS = 15 * 60 * 1000;
@@ -41,16 +42,19 @@ export async function fetch(request) {
   }
 
   try {
+    if (!await claimLoginAttempt(ip)) return json({ message: '로그인 시도가 많았습니다. 15분 뒤 다시 시도해 주세요.' }, 429, { 'Retry-After': '900' });
     const input = await readJson(request, 2_048);
     const password = typeof input.password === 'string' ? input.password : '';
-    if (!password || password.length > 256 || !verifyAdminPassword(password)) {
+    const principal = password && password.length <= 256 ? adminForPassword(password) : null;
+    if (!principal) {
       failures.set(ip, { count: state.count + 1, resetAt: state.resetAt });
       await new Promise((resolve) => setTimeout(resolve, 450));
       return json({ message: '관리자 비밀번호를 확인해 주세요.' }, 401, { Vary: 'Cookie' });
     }
 
     failures.delete(ip);
-    return setCookieResponse({ ok: true, expiresIn: 8 * 60 * 60 }, 200, [createSessionCookie(request)]);
+    await clearLoginAttempts(ip);
+    return setCookieResponse({ ok: true, role: principal.role, expiresIn: 8 * 60 * 60 }, 200, [createSessionCookie(request, principal)]);
   } catch (error) {
     const status = Number(error.status) || 500;
     return json({ message: status < 500 ? error.message : '로그인 처리 중 문제가 발생했습니다.' }, status);

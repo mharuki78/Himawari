@@ -127,7 +127,7 @@ function catalogSchema(products, origin) {
   };
 }
 
-export function renderCatalogPage(template, products, origin = 'https://allaboutbag.com', collection = null) {
+export function renderCatalogPage(template, products, origin = 'https://himawari.co.kr', collection = null) {
   const featured = products.find((product) => product.featured === true) || products[0];
   const remaining = groupProductFamilies(products)
     .filter((family) => !family.variants.includes(featured))
@@ -145,8 +145,8 @@ export function renderCatalogPage(template, products, origin = 'https://allabout
       .replace('<body class="products-page">', `<body class="products-page" data-collection="${escapeHtml(collection.key)}">`)
       .replace('<title>제품 — Himawari</title>', `<title>${escapeHtml(collection.title)} — Himawari</title>`)
       .replace('content="학생가방부터 비즈니스와 여행 백팩까지, Himawari의 전체 제품을 만나보세요."', `content="${escapeHtml(collection.description)}"`)
-      .replace('href="https://allaboutbag.com/products.html"', `href="${canonical}"`)
-      .replace('content="https://allaboutbag.com/products.html"', `content="${canonical}"`)
+      .replace('href="https://himawari.co.kr/products.html"', `href="${canonical}"`)
+      .replace('content="https://himawari.co.kr/products.html"', `content="${canonical}"`)
       .replace('<span class="headline-line">도시의 움직임을 위한</span><span class="headline-line accent-word">정제된 백팩.</span>', `<span class="headline-line">${escapeHtml(collection.line1)}</span><span class="headline-line accent-word">${escapeHtml(collection.line2)}</span>`)
       .replace('<span>Current collection</span>', `<span>${escapeHtml(collection.title)}</span>`);
   }
@@ -208,7 +208,7 @@ function productVariantSchema(product, origin, groupId) {
   };
 }
 
-export function renderProductPage(template, product, origin = 'https://allaboutbag.com', reviewData = null, familyProducts = [product]) {
+export function renderProductPage(template, product, origin = 'https://himawari.co.kr', reviewData = null, familyProducts = [product]) {
   const canonical = `${origin}/product.html?id=${encodeURIComponent(product.id)}`;
   const description = String(product.description || product.tagline || '').slice(0, 160);
   const mainImage = safeHttpsUrl(product.image);

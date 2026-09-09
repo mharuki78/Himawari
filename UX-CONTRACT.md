@@ -2,7 +2,7 @@
 
 ## Product context
 
-- Audience: 공개 고객과 단일 Himawari 관리자
+- Audience: 공개 고객과 Himawari 운영자·선택적 담당자
 - Primary jobs: 고객은 제품을 검색·비교해 고르고 내부 주문서에서 결제 대기 주문을 접수하며 취소·반품, 구매 확인 리뷰와 재입고 알림을 요청한다. 관리자는 제품·문의·리뷰와 함께 주문·배송·취소·환불·재고 상태를 권한 안에서 관리한다.
 - Target market(s): 대한민국
 - Active locales: `ko-KR`
@@ -112,7 +112,7 @@
 
 - Route document title policy: `{페이지} — Himawari`; private routes never include names, email, subjects, or message text in the title.
 - Public product detail title: `{제품명} — Himawari`; its canonical query contains only the public product ID.
-- Route error / 403 behavior: unauthenticated API returns 401 and UI returns to login; configured-but-unauthorized roles do not exist in this version.
+- Route error / 403 behavior: unauthenticated API returns 401 and UI returns to login; 유효한 세션의 권한 부족은 403으로 표시하고 재로그인을 반복하지 않는다.
 - Responsive table strategy: desktop split list/detail; below 900px list and detail stack, table keeps horizontal scrolling rather than hiding columns.
 - Home motion strategy: the actual No.0422 `Carry study` card uses a short section-local desktop shift and becomes static in mobile/reduced-motion layouts; the game invitation preview runs only while visible.
 - Reel navigation: the centered reel remains the only loaded/playing item and exposes its current playback position through a labeled progress bar; reduced motion keeps the poster and a zero-motion status surface.
@@ -140,7 +140,7 @@
 - Delete failure: confirmation dialog remains open with retry and cancel.
 - Product image upload: browser-to-Blob direct upload with a 15-minute role-scoped token; representative image maximum 8MB and each detail image maximum 15MB; determinate progress and explicit cancellation. Partial uploads are cleaned up when the session remains valid.
 - Product catalog writes: conditional ETag write prevents a stale administrator from overwriting a concurrent create, edit, or delete. Edit preserves existing images unless a replacement file was selected. Conflict keeps form or delete context and requests a refresh.
-- Order create: member session is optional; authenticated orders store the member ID and guest orders store no member ID. A client request UUID is unique and reused after uncertain completion; the server snapshots the derived self-store price and recalculates the selected active coupon and shipping. Guest orders have no public list/read endpoint.
+- Order create: member session is optional; authenticated orders store the member ID and guest orders store no member ID. A client request UUID is unique and reused after uncertain completion; the server snapshots the derived self-store price and recalculates the selected active coupon and shipping. Guest orders are read only after order number, email and phone verification; there is no public order list.
 - Game reward: only the public active-coupon response is eligible. The browser stores a coupon preference in guarded localStorage; checkout ignores missing, inactive or ineligible preferences and the order API remains the final pricing authority.
 - Order updates: revision-checked pessimistic transitions; customer requests cannot complete cancellation/refund, and admin cancellation/refund completion requires a confirmation dialog.
 
@@ -155,7 +155,7 @@
 
 ## Permission and privacy UI
 
-- Public clients may create only; list, detail and delete require a valid server-verified administrator session.
+- Public clients may create inquiries and read processing status with an expiring signed receipt. Inquiry content, attachments, lists and deletion require an authorized administrator.
 - UI hiding is not authorization. Every admin API request verifies the signed HttpOnly cookie.
 - Public form states that inquiry data is retained until the administrator deletes it and requires consent.
 - Admin deletion is irreversible and offers no false Undo.
@@ -170,3 +170,14 @@
 - Accessibility: keyboard-only form/login/detail/delete flow, dialog Escape/cancel, visible focus, associated errors
 - CRUD evidence: API unit/integration tests with a mocked private Blob adapter and browser workflow where environment variables are available
 - Remaining release risk: Korean operational privacy/terms copy has no documented legal-professional review. Customer-service email and fixed shipping/return operating values were confirmed by the user on 2026-09-03.
+
+## 2026-09-09 판매·운영 확장
+
+- 기존 admin/admin.css 및 admin/admin-client.js의 입력·상태·오류 처리를 재사용한다. 한국어, KRW, Asia/Seoul.
+- 조회는 읽기 전용. 저장 중 중복 제출 차단, 완료/실패를 role=status로 알린다. 오류 시 입력 유지.
+- 목록과 상세는 자연스러운 문서 스크롤. 표만 가로 스크롤. 빈 상태와 재시도 제공.
+- 로그인은 기존 비밀번호 방식. 추가 인증 없음. 서버에서 매 요청 권한 검증.
+- 제품 실측 정보는 assets/product-specs.js가 항목 정의와 정규화를 소유한다. 미입력은 미확인으로 표시.
+- 주문의 결제 상태와 운영 상태를 혼동하지 않는다. 결제사가 없는 동안 실제 결제·환불을 성공으로 표시하지 않는다.
+- 상품/주문/문의 데이터의 백업은 비공개 암호화 보관. 공개 엔드포인트로 원본 다운로드를 제공하지 않는다.
+- 브랜드 페이지는 기존 styles.css/gear.css를 유지한다. 비교표는 네이티브 표, 선택은 네이티브 select로 제공한다.

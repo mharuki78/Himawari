@@ -100,13 +100,13 @@ test('최신 이야기 3편은 독립 페이지·대표 이미지·검색 메타
 
     assert.equal(post.date, '2026-09-09');
     await access(new URL(`../${imagePath}`, import.meta.url));
-    assert.match(html, new RegExp(`<link rel="canonical" href="https://allaboutbag\\.com/story/${slug}\\.html">`));
-    assert.match(html, new RegExp(`<meta property="og:image" content="https://allaboutbag\\.com/assets/story/${slug}\\.webp">`));
+    assert.match(html, new RegExp(`<link rel="canonical" href="https://himawari\\.co\\.kr/story/${slug}\\.html">`));
+    assert.match(html, new RegExp(`<meta property="og:image" content="https://himawari\\.co\\.kr/assets/story/${slug}\\.webp">`));
     assert.match(html, /"@type":"BlogPosting"/);
     assert.match(html, /class="story-related"/);
     assert.match(html, /class="story-faq"/);
-    assert.equal(sitemap.includes(`https://allaboutbag.com/story/${slug}.html`), true);
-    assert.equal(feed.includes(`https://allaboutbag.com/story/${slug}.html`), true);
+    assert.equal(sitemap.includes(`https://himawari.co.kr/story/${slug}.html`), true);
+    assert.equal(feed.includes(`https://himawari.co.kr/story/${slug}.html`), true);
   }
 });
 
@@ -128,7 +128,7 @@ test('사이트맵은 모든 공개 제품 상세페이지를 포함한다', asy
 
   for (const product of products) {
     assert.equal(
-      sitemap.includes(`https://allaboutbag.com/product.html?id=${encodeURIComponent(product.id)}`),
+      sitemap.includes(`https://himawari.co.kr/product.html?id=${encodeURIComponent(product.id)}`),
       true,
       `${product.id}: sitemap product URL`,
     );
@@ -136,16 +136,16 @@ test('사이트맵은 모든 공개 제품 상세페이지를 포함한다', asy
 });
 
 test('운영 사이트맵은 현재 제품과 이야기 목록을 XML로 동적 제공한다', async () => {
-  const response = await productsHandler(new Request('https://allaboutbag.com/api/products?route=sitemap'));
+  const response = await productsHandler(new Request('https://himawari.co.kr/api/products?route=sitemap'));
   const sitemap = await response.text();
 
   assert.equal(response.status, 200);
   assert.match(response.headers.get('content-type') || '', /^application\/xml/);
-  assert.equal((sitemap.match(/<url>/g) || []).length, 76);
+  assert.equal((sitemap.match(/<url>/g) || []).length, 78);
   for (const product of products) {
-    assert.equal(sitemap.includes(`https://allaboutbag.com/product.html?id=${encodeURIComponent(product.id)}`), true);
+    assert.equal(sitemap.includes(`https://himawari.co.kr/product.html?id=${encodeURIComponent(product.id)}`), true);
   }
-  assert.equal(sitemap.includes('https://allaboutbag.com/story/small-frame-backpack-fit-guide.html'), true);
+  assert.equal(sitemap.includes('https://himawari.co.kr/story/small-frame-backpack-fit-guide.html'), true);
 });
 
 test('개별 제품 원본 HTML에 이름·가격·이미지·구매정보를 렌더링한다', async () => {
@@ -201,17 +201,17 @@ test('네이버페이 검수 링크는 비공개 세션을 만든 뒤 실제 상
   const previous = process.env.NPAY_REVIEW_TOKEN;
   process.env.NPAY_REVIEW_TOKEN = 'review-token-example';
   try {
-    const entry = await storefrontHandler(new Request('https://allaboutbag.com/api/storefront?page=npay-review&token=review-token-example'));
+    const entry = await storefrontHandler(new Request('https://himawari.co.kr/api/storefront?page=npay-review&token=review-token-example'));
     const cookie = entry.headers.get('set-cookie') || '';
     assert.equal(entry.status, 302);
-    assert.match(entry.headers.get('location') || '', /^https:\/\/allaboutbag\.com\/product\.html\?id=/);
+    assert.match(entry.headers.get('location') || '', /^https:\/\/himawari\.co\.kr\/product\.html\?id=/);
     assert.match(cookie, /__Host-himawari_npay_review=/);
     assert.match(cookie, /HttpOnly/);
     assert.match(cookie, /Secure/);
     assert.equal(entry.headers.get('x-robots-tag'), 'noindex, nofollow, noarchive');
 
     const productId = new URL(entry.headers.get('location')).searchParams.get('id');
-    const detail = await storefrontHandler(new Request(`https://allaboutbag.com/api/storefront?page=product&id=${encodeURIComponent(productId)}`, {
+    const detail = await storefrontHandler(new Request(`https://himawari.co.kr/api/storefront?page=product&id=${encodeURIComponent(productId)}`, {
       headers: { Cookie: cookie.split(';')[0] },
     }));
     const html = await detail.text();
@@ -230,7 +230,7 @@ test('네이버페이 검수 링크는 비공개 세션을 만든 뒤 실제 상
 test('제품 상세 구조화 데이터는 배송·반품·제품군 정보를 포함하고 모바일 빠른 구매를 제공한다', async () => {
   const template = await readFile(new URL('../templates/product.html', import.meta.url), 'utf8');
   const family = products.filter((product) => product.model === products[0].model);
-  const html = renderProductPage(template, products[0], 'https://allaboutbag.com', null, family);
+  const html = renderProductPage(template, products[0], 'https://himawari.co.kr', null, family);
   assert.match(html, /OfferShippingDetails/);
   assert.match(html, /MerchantReturnPolicy/);
   assert.match(html, /ProductGroup/);

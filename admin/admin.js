@@ -1,3 +1,4 @@
+import { showSupportDetail } from './support-detail.js';
 import { HttpError, bindPasswordToggle, fetchJson } from './admin-client.js';
 
 (() => {
@@ -141,6 +142,7 @@ import { HttpError, bindPasswordToggle, fetchJson } from './admin-client.js';
     detailName.textContent = inquiry.name;
     detailEmail.textContent = inquiry.email;
     detailMessage.textContent = inquiry.message;
+    showSupportDetail(detailContent, inquiry, () => loadItems({ reset: true }));
     detailEmpty.hidden = true;
     detailContent.hidden = false;
     if (window.matchMedia('(max-width: 900px)').matches) detailSubject.scrollIntoView({ block: 'start' });

@@ -4792,6 +4792,59 @@ var require_throttleit = __commonJS({
   }
 });
 
+// assets/product-specs.js
+var SPEC_FIELDS = Object.freeze([
+  ["dimensions", "\uC678\uBD80 \uD06C\uAE30 (\uAC00\uB85C \xD7 \uC138\uB85C \xD7 \uD3ED, cm)"],
+  ["weight", "\uBB34\uAC8C (g)"],
+  ["capacity", "\uC6A9\uB7C9 (L)"],
+  ["laptopCompartment", "\uB178\uD2B8\uBD81 \uC218\uB0A9\uCE78 \uC2E4\uCE21 (\uAC00\uB85C \xD7 \uC138\uB85C \xD7 \uB450\uAED8, cm)"],
+  ["material", "\uAC89\uAC10\xB7\uC548\uAC10 \uC18C\uC7AC"],
+  ["waterResistance", "\uC0DD\uD65C\uBC29\uC218 \uBC94\uC704"],
+  ["care", "\uC138\uD0C1\xB7\uBCF4\uAD00\xB7\uAD00\uB9AC \uBC29\uBC95"],
+  ["warranty", "A/S \uBC94\uC704\xB7\uBE44\uC6A9 \uC548\uB0B4"],
+  ["measurementNote", "\uCE21\uC815 \uC870\uAC74\xB7\uC624\uCC28 \uC548\uB0B4"]
+]);
+function normalizeSpecs(input = {}) {
+  return Object.fromEntries(SPEC_FIELDS.map(([key]) => [key, String(input?.[key] || "").replace(/[\u0000-\u001f\u007f]+/g, " ").trim().slice(0, 600)]));
+}
+function normalizeRelatedIds(value) {
+  return [...new Set((Array.isArray(value) ? value : []).filter((x) => typeof x === "string" && /^[a-zA-Z0-9_-]{1,100}$/.test(x)))].slice(0, 8);
+}
+
+// admin/spec-editor.js
+function createSpecEditor(form) {
+  const panel = document.createElement("fieldset");
+  panel.className = "admin-spec-editor";
+  const legend = document.createElement("legend");
+  legend.textContent = "\uC2E4\uCE21\xB7\uC18C\uC7AC\xB7\uAD00\uB9AC \uC548\uB0B4";
+  panel.append(legend);
+  const help = document.createElement("p");
+  help.textContent = "\uC2E4\uC81C \uD655\uC778\uD55C \uAC12\uB9CC \uC785\uB825\uD574 \uC8FC\uC138\uC694. \uBE48 \uD56D\uBAA9\uC740 \uACE0\uAC1D\uC5D0\uAC8C \uBBF8\uD655\uC778\uC73C\uB85C \uC548\uB0B4\uD569\uB2C8\uB2E4. \uC0C9\uC0C1\xB7\uD06C\uAE30 \uC635\uC158\uBCC4\uB85C \uAC01\uAC01 \uC800\uC7A5\uB429\uB2C8\uB2E4.";
+  panel.append(help);
+  for (const [key, label] of [...SPEC_FIELDS, ["relatedProductIds", "\uD638\uD658 \uAD6C\uC131\uD488 \uC0C1\uD488 ID (\uC27C\uD45C\uB85C \uAD6C\uBD84)"]]) {
+    const row = document.createElement("div");
+    row.className = "form-field";
+    const title = document.createElement("label");
+    title.htmlFor = `spec-${key}`;
+    title.textContent = label;
+    const input = document.createElement("input");
+    input.type = "text";
+    input.id = `spec-${key}`;
+    input.name = `spec-${key}`;
+    input.maxLength = 600;
+    row.append(title, input);
+    panel.append(row);
+  }
+  form.insertBefore(panel, form.querySelector(".product-form-actions"));
+  return {
+    read: () => ({ specs: normalizeSpecs(Object.fromEntries(SPEC_FIELDS.map(([key]) => [key, form.elements.namedItem(`spec-${key}`).value]))), relatedProductIds: normalizeRelatedIds(form.elements.namedItem("spec-relatedProductIds").value.split(",").map((x) => x.trim())) }),
+    fill(product) {
+      for (const [key] of SPEC_FIELDS) form.elements.namedItem(`spec-${key}`).value = product.specs?.[key] || "";
+      form.elements.namedItem("spec-relatedProductIds").value = (product.relatedProductIds || []).join(", ");
+    }
+  };
+}
+
 // node_modules/is-node-process/lib/index.mjs
 function isNodeProcess() {
   if (typeof navigator !== "undefined" && navigator.product === "ReactNative") {
@@ -6559,6 +6612,7 @@ var listTitle = $("#product-list-title");
 var bulkDownload = $("[data-bulk-download]");
 var bulkFile = $("[data-bulk-file]");
 var productForm = $("[data-product-form]");
+var specEditor = createSpecEditor(productForm);
 var formSummary = $("[data-form-summary]");
 var formStatus = $("[data-form-status]");
 var editorEyebrow = $("[data-editor-eyebrow]");
@@ -6758,6 +6812,7 @@ function beginEdit(product, trigger) {
   field("naverDiscountRate").value = product.naverDiscountRate === null || product.naverDiscountRate === void 0 ? "" : String(product.naverDiscountRate);
   field("tagline").value = product.tagline;
   field("description").value = product.description;
+  specEditor.fill(product);
   field("highlights").value = product.highlights.join("\n");
   field("url").value = product.url;
   loadInventory(product);
@@ -7408,6 +7463,7 @@ productForm.addEventListener("submit", async (event) => {
     if (uploadEntries.length && !uploadsComplete) await uploadImages(uploadEntries);
     formStatus.textContent = "\uC81C\uD488 \uC815\uBCF4\uB97C \uC800\uC7A5\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
     const commonPayload = {
+      ...specEditor.read(),
       requestId,
       name: values.name,
       model: values.model,

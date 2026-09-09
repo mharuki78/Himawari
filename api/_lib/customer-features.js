@@ -211,7 +211,7 @@ export async function notifyRestockSubscribers(product) {
         from: process.env.RESTOCK_FROM_EMAIL,
         to: [subscription.email],
         subject: `[Himawari] ${product.model} 재입고 안내`,
-        html: `<p>기다리신 <strong>${html(line(product.name, 200))}</strong> 상품이 다시 주문 가능합니다.</p><p><a href="https://allaboutbag.com/product.html?id=${encodeURIComponent(product.id)}">제품 확인하기</a></p><p><a href="https://allaboutbag.com/api/restock?token=${encodeURIComponent(unsubscribeToken)}">재입고 알림 해지</a></p>`,
+        html: `<p>기다리신 <strong>${html(line(product.name, 200))}</strong> 상품이 다시 주문 가능합니다.</p><p><a href="https://himawari.co.kr/product.html?id=${encodeURIComponent(product.id)}">제품 확인하기</a></p><p><a href="https://himawari.co.kr/api/restock?token=${encodeURIComponent(unsubscribeToken)}">재입고 알림 해지</a></p>`,
       }),
     });
     if (!response.ok) continue;

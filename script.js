@@ -1,4 +1,5 @@
 function initializeSiteInsights() {
+  if (window.location.pathname.endsWith('/support.html')) return;
   window.va = window.va || function () {
     (window.vaq = window.vaq || []).push(arguments);
   };
@@ -26,12 +27,13 @@ function initializeSiteInsights() {
   document.addEventListener('click', (event) => {
     const target = event.target.closest?.('a,button');
     if (!target) return;
-    if (target.matches('[data-cart-add]')) window.himawariTrack('Add to cart', { productId: target.dataset.productId || 'unknown' });
+
     if (target.matches('.direct-buy-link,[data-direct-buy],[data-closing-buy],[data-sticky-buy]')) window.himawariTrack('Begin checkout', { destination: 'internal-order' });
     if (target.closest('.store-product-card,.featured-product') && target.matches('a[href*="product.html"]')) window.himawariTrack('Select product', { href: target.getAttribute('href') || '' });
     if (target.matches('[data-wishlist-toggle]')) window.himawariTrack('Wishlist', { productId: target.dataset.productId || 'unknown' });
   });
 
+  document.addEventListener('himawari:cart-added', event => window.himawariTrack('Add to cart', { productId: event.detail?.productId || 'unknown' }));
   const productId = new URLSearchParams(window.location.search).get('id');
   if (/\/product(?:\.html)?$/.test(window.location.pathname) && productId) window.himawariTrack('View product', { productId });
   if (/\/checkout(?:\.html)?$/.test(window.location.pathname)) window.himawariTrack('View checkout');

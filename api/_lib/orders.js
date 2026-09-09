@@ -1,10 +1,11 @@
+import { CONFIRM_ORDER_SQL, CANCEL_ORDER_SQL } from './order-transactions.js';
 import { randomUUID } from 'node:crypto';
 
 import { database } from './database.js';
 import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalog } from './products.js';
 import { activeCoupons, readPromotions } from './promotions.js';
 import { applyInventoryReservations } from './inventory.js';
-import { consumeCouponClaim, releaseCouponClaim } from './coupon-claims.js';
+import { ensureCouponSchema, couponClaimStatement } from './coupon-claims.js';
 
 export const SHIPPING_FEE = 3_500;
 export const FREE_SHIPPING_THRESHOLD = 100_000;
@@ -407,10 +408,14 @@ export async function createOrder(member, input) {
   ];
 
   try {
-    if (coupon) await consumeCouponClaim(coupon.id, fields.value.couponToken, id);
+    if (coupon) {
+      await ensureCouponSchema();
+      const claim=couponClaimStatement(coupon.id, fields.value.couponToken, id);
+      queries.unshift(sql.query(claim.text,claim.values));
+    }
     await sql.transaction(queries);
   } catch (error) {
-    if (coupon) await releaseCouponClaim(id).catch(() => {});
+    if (coupon && error?.code === '22012') throw Object.assign(new Error('이미 사용했거나 만료된 쿠폰입니다. 쿠폰을 다시 확인해 주세요.'), {status:409,fieldErrors:{couponId:'사용 가능한 쿠폰을 다시 확인해 주세요.'}});
     if (error?.code === '23505') {
       const duplicate = await readExistingOrder(fields.value.requestId, fields.value.email);
       if (duplicate) return { order: duplicate, duplicate: true };
@@ -583,30 +588,19 @@ export async function updateOrderByAdmin(input) {
       if (!product || (product.options?.length && !option)) throw Object.assign(new Error('현재 카탈로그에서 주문 상품 또는 옵션을 찾을 수 없습니다.'), { status: 409 });
       return { productId: item.product_id, optionId: item.option_id || '', baseStock: stock === null ? null : Number(stock) };
     });
-    changed = await database().query(
-      `WITH locked AS (SELECT pg_advisory_xact_lock(hashtext('himawari_inventory'))),
-       limits AS (SELECT * FROM jsonb_to_recordset($8::jsonb) AS x("productId" text, "optionId" text, "baseStock" integer)),
-       used AS (SELECT product_id, option_id, SUM(quantity)::integer AS quantity FROM inventory_reservations WHERE active=true AND order_id<>$9 GROUP BY product_id, option_id),
-       stock_ok AS (SELECT NOT EXISTS (
-         SELECT 1 FROM order_items oi JOIN limits l ON l."productId"=oi.product_id AND l."optionId"=COALESCE(oi.option_id,'')
-         LEFT JOIN used u ON u.product_id=oi.product_id AND u.option_id=COALESCE(oi.option_id,'') CROSS JOIN locked
-         WHERE oi.order_id=$9 AND l."baseStock" IS NOT NULL AND oi.quantity+COALESCE(u.quantity,0)>l."baseStock"
-       ) AS ok),
-       updated AS (UPDATE orders SET status=$1, tracking_number=$2, revision=revision+1, updated_at=now() WHERE order_number=$3 AND revision=$4 AND status=$5 AND (SELECT ok FROM stock_ok) RETURNING id),
-       reserved AS (INSERT INTO inventory_reservations (order_item_id,order_id,product_id,option_id,quantity,active)
-         SELECT oi.id,oi.order_id,oi.product_id,COALESCE(oi.option_id,''),oi.quantity,true FROM order_items oi JOIN updated u ON u.id=oi.order_id
-         ON CONFLICT (order_item_id) DO UPDATE SET active=true,quantity=EXCLUDED.quantity,updated_at=now() RETURNING order_id),
-       event AS (INSERT INTO order_events (id,order_id,actor,from_status,to_status,note) SELECT $6,id,'admin',$5,$1,$7 FROM updated RETURNING order_id)
-       SELECT order_id FROM event`,
+    const [,confirmedRows] = await database().transaction([
+      database().query("SELECT pg_advisory_xact_lock(hashtext('himawari_inventory'))"),
+      database().query(
+      CONFIRM_ORDER_SQL,
       [targetStatus, trackingNumber || null, number, expectedRevision, current.status, eventId, eventNote, JSON.stringify(limits), current.id],
-    );
+    ),
+    ], { isolationLevel: 'ReadCommitted' });
+    changed=confirmedRows;
     if (!changed[0]) throw Object.assign(new Error('재고가 부족하거나 주문 상태가 변경되었습니다. 제품 재고와 주문 목록을 새로고침해 주세요.'), { status: 409 });
   } else if (statusChanged && ['cancelled', 'refunded'].includes(targetStatus)) {
+    await ensureCouponSchema();
     changed = await database().query(
-      `WITH updated AS (UPDATE orders SET status=$1,tracking_number=$2,revision=revision+1,updated_at=now() WHERE order_number=$3 AND revision=$4 AND status=$5 RETURNING id),
-       released AS (UPDATE inventory_reservations r SET active=false,updated_at=now() FROM updated u WHERE r.order_id=u.id AND r.active=true RETURNING r.order_id),
-       event AS (INSERT INTO order_events (id,order_id,actor,from_status,to_status,note) SELECT $6,id,'admin',$5,$1,$7 FROM updated RETURNING order_id)
-       SELECT order_id FROM event`,
+      CANCEL_ORDER_SQL,
       [targetStatus, trackingNumber || null, number, expectedRevision, current.status, eventId, eventNote],
     );
   } else changed = await database().query(

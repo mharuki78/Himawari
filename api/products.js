@@ -7,7 +7,7 @@ import { publicReels, readReelsConfig } from './_lib/reels.js';
 import storyPosts from '../story/posts.json' with { type: 'json' };
 import { database, databaseIsConfigured } from './_lib/database.js';
 
-const SITE_ORIGIN = 'https://allaboutbag.com';
+const SITE_ORIGIN = 'https://himawari.co.kr';
 const SITEMAP_PAGES = [
   ['/', '2026-09-08'],
   ['/about.html', '2026-08-29'],
@@ -17,6 +17,8 @@ const SITEMAP_PAGES = [
   ['/collections/travel', '2026-09-08'],
   ['/collections/daily', '2026-09-08'],
   ['/finder.html', '2026-09-07'],
+  ['/compare.html', '2026-09-09'],
+  ['/care.html', '2026-09-09'],
   ['/contact.html', '2026-08-29'],
   ['/game.html', '2026-09-06'],
   ['/privacy.html', '2026-09-03'],

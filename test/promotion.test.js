@@ -34,7 +34,7 @@ test('저장소가 없으면 공개 API는 비활성 기본값을 제공한다',
   const previous = process.env.BLOB_READ_WRITE_TOKEN;
   delete process.env.BLOB_READ_WRITE_TOKEN;
   try {
-    const response = await promotionsHandler(new Request('https://allaboutbag.com/api/products?route=promotions'));
+    const response = await promotionsHandler(new Request('https://himawari.co.kr/api/products?route=promotions'));
     const payload = await response.json();
     assert.equal(response.status, 200);
     assert.equal(payload.popup.enabled, true);

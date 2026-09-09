@@ -8,7 +8,7 @@ import {
 } from './products.js';
 import { applyInventoryReservations } from './inventory.js';
 
-const SITE_ORIGIN = 'https://allaboutbag.com';
+const SITE_ORIGIN = 'https://himawari.co.kr';
 const SHIPPING_GROUP_ID = 'HIMAWARI_DELIVERY';
 const SHIPPING_FEE = 3_500;
 const FREE_SHIPPING_THRESHOLD = 100_000;

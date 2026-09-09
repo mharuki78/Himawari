@@ -107,14 +107,14 @@ test('고객 요청과 관리자 상태 전이를 단계별로 제한한다', ()
 test('회원 주문 목록은 로그인 없는 요청을 거부한다', async () => {
   delete process.env.DATABASE_URL;
   process.env.MEMBER_SESSION_SECRET = 'test-secret-that-is-longer-than-thirty-two-characters';
-  const response = await ordersHandler(request('https://allaboutbag.com/api/orders'));
+  const response = await ordersHandler(request('https://himawari.co.kr/api/orders'));
   assert.equal(response.status, 401);
 });
 
 test('비회원도 주문 생성 경로에 접근하며 입력 검증을 받는다', async () => {
   delete process.env.DATABASE_URL;
   process.env.MEMBER_SESSION_SECRET = 'test-secret-that-is-longer-than-thirty-two-characters';
-  const response = await ordersHandler(request('https://allaboutbag.com/api/orders', 'POST', {
+  const response = await ordersHandler(request('https://himawari.co.kr/api/orders', 'POST', {
     requestId: '9b3571c6-66cb-4f30-85a7-79ca7486054e',
     items: [],
   }));
@@ -128,6 +128,6 @@ test('관리자 주문 API는 DB나 관리자 인증이 없으면 데이터를 �
   delete process.env.DATABASE_URL;
   delete process.env.ADMIN_PASSWORD_HASH;
   delete process.env.ADMIN_SESSION_SECRET;
-  const response = await adminOrdersHandler(request('https://allaboutbag.com/api/admin/orders'));
+  const response = await adminOrdersHandler(request('https://himawari.co.kr/api/admin/orders'));
   assert.equal(response.status, 503);
 });

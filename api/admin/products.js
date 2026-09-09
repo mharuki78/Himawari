@@ -1,3 +1,4 @@
+import { auditedAdminRequest } from '../_lib/admin-audit.js';
 import { authIsConfigured, isAdminRequest } from '../_lib/auth.js';
 import { isSameOrigin, json, methodNotAllowed, readJson } from '../_lib/http.js';
 import {
@@ -180,7 +181,7 @@ async function fetchBulkProducts(request) {
   }
 }
 
-export async function fetch(request) {
+async function handleRequest(request) {
   const route = new URL(request.url).searchParams.get('route');
   if (route === 'promotions') return fetchPromotions(request);
   if (route === 'reviews') return fetchReviews(request);
@@ -289,3 +290,5 @@ export async function fetch(request) {
     return json({ message: status < 500 ? error.message : '제품 관리 작업을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요.' }, status, { Vary: 'Cookie' });
   }
 }
+
+export async function fetch(request) { return auditedAdminRequest(request, handleRequest); }

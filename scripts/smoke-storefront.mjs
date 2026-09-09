@@ -1,4 +1,4 @@
-const base = String(process.env.SMOKE_BASE_URL || 'https://allaboutbag.com').replace(/\/$/, '');
+const base = String(process.env.SMOKE_BASE_URL || 'https://himawari.co.kr').replace(/\/$/, '');
 const routes = ['/', '/products.html', '/collections/school', '/collections/business', '/collections/travel', '/collections/daily', '/sitemap.xml', '/google-merchant-feed.xml', '/api/reels', '/api/health'];
 let failed = false;
 for (const route of routes) {

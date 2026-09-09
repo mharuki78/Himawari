@@ -1,4 +1,5 @@
 import { fetchProducts, priceFormatter, safeHttpsUrl } from './products.js';
+import { renderProductGuidance } from './assets/product-guidance.js';
 
 const main = document.querySelector('.product-detail-main');
 const loadingState = document.querySelector('[data-loading-state]');
@@ -415,6 +416,7 @@ async function loadProduct() {
       return;
     }
     renderProduct(product);
+    renderProductGuidance(product, products);
   } catch {
     renderUnavailable();
   }
