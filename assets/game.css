@@ -1,11 +1,4 @@
 .game-page {
-  --pixel-cream: #fff4d1;
-  --pixel-ink: #27261f;
-  --pixel-moss: #50682f;
-  --pixel-moss-light: #839d42;
-  --pixel-honey: #e5a52f;
-  --pixel-wood: #87552f;
-  --pixel-pink: #f09aa5;
   background: var(--cream);
 }
 
@@ -104,30 +97,10 @@
 @keyframes footstep-fade { 0% { opacity: .82; } 70% { opacity: .5; } 100% { opacity: 0; } }
 .collectible { position: absolute; width: clamp(3rem, 14cqw, 4.7rem); aspect-ratio: 1; transform: translate(-50%, -50%); will-change: top; }
 .collectible::before { position: absolute; top: 50%; left: 50%; width: 4px; height: 4px; background: var(--pixel-honey); box-shadow: -1.8rem -.2rem 0 var(--pixel-cream), 1.7rem .3rem 0 var(--pixel-cream), -.9rem 1.65rem 0 var(--pixel-honey), .8rem -1.55rem 0 var(--pixel-honey); content: ""; opacity: .82; transform: translate(-50%, -50%); animation: item-sparkle .7s steps(2, jump-none) infinite; }
-.collectible__sprite { position: absolute; z-index: 1; image-rendering: pixelated; filter: drop-shadow(4px 5px 0 rgb(39 38 31 / .55)); animation: item-hover .5s steps(2, jump-none) infinite; }
-.collectible__sprite::before, .collectible__sprite::after { position: absolute; content: ""; image-rendering: pixelated; }
+.collectible__sprite { animation: item-hover .5s steps(2, jump-none) infinite; }
 @keyframes item-hover { 50% { margin-top: -4px; } }
 @keyframes item-sparkle { 50% { opacity: .28; transform: translate(-50%, -50%) rotate(90deg); } }
-.collectible[data-kind="book"] .collectible__sprite { inset: 18% 14%; border: 3px solid var(--pixel-ink); background: var(--pixel-pink); box-shadow: inset 7px 0 0 var(--pixel-cream), 4px 4px 0 var(--pixel-ink); }
-.collectible[data-kind="book"] .collectible__sprite::before { top: 8px; right: 5px; width: 45%; height: 3px; background: var(--pixel-cream); box-shadow: 0 8px 0 var(--pixel-cream), 0 16px 0 var(--pixel-cream); }
-.collectible[data-kind="book"] .collectible__sprite::after { top: 0; bottom: 0; left: 7px; width: 3px; background: var(--pixel-ink); }
-.collectible[data-kind="laptop"] .collectible__sprite { inset: 15% 12% 29%; border: 4px solid var(--pixel-ink); background: #61726d; box-shadow: inset 0 0 0 4px #aab5a3; }
-.collectible[data-kind="laptop"] .collectible__sprite::before { right: -7px; bottom: -11px; left: -7px; height: 8px; border: 3px solid var(--pixel-ink); background: #c7c2a7; box-shadow: 3px 3px 0 var(--pixel-ink); }
-.collectible[data-kind="laptop"] .collectible__sprite::after { top: 7px; left: 8px; width: 8px; height: 5px; background: var(--pixel-cream); }
-.collectible[data-kind="bottle"] .collectible__sprite { inset: 16% 30% 12%; border: 3px solid var(--pixel-ink); background: #6f965f; box-shadow: inset 6px 0 0 #a7bd77, 4px 4px 0 var(--pixel-ink); }
-.collectible[data-kind="bottle"] .collectible__sprite::before { top: -10px; left: 50%; width: 14px; height: 10px; border: 3px solid var(--pixel-ink); border-bottom: 0; background: var(--pixel-honey); transform: translateX(-50%); }
-.collectible[data-kind="bottle"] .collectible__sprite::after { top: 13px; right: 5px; width: 4px; height: 17px; background: var(--pixel-cream); }
-.collectible[data-kind="pencil"] .collectible__sprite { inset: 7% 39% 15%; border: 3px solid var(--pixel-ink); background: var(--pixel-honey); box-shadow: inset 5px 0 0 #f2c967, 4px 4px 0 var(--pixel-ink); transform: rotate(38deg); }
-.collectible[data-kind="pencil"] .collectible__sprite::before { bottom: -11px; left: -3px; width: 100%; height: 9px; border: 3px solid var(--pixel-ink); border-top: 0; background: #c28a57; }
-.collectible[data-kind="pencil"] .collectible__sprite::after { top: -9px; left: -3px; width: 100%; height: 8px; border: 3px solid var(--pixel-ink); border-bottom: 0; background: var(--pixel-pink); }
 .collectible[data-kind="weight"]::before, .collectible[data-kind="ink"]::before { background: #cf5c43; box-shadow: -1.8rem -.2rem 0 #ffb08b, 1.7rem .3rem 0 #ffb08b, -.9rem 1.65rem 0 #cf5c43, .8rem -1.55rem 0 #cf5c43; }
-.collectible[data-kind="weight"] .collectible__sprite { top: 43%; right: 13%; left: 13%; height: 12px; border: 3px solid var(--pixel-ink); background: #78786c; box-shadow: 3px 4px 0 rgb(39 38 31 / .58); }
-.collectible[data-kind="weight"] .collectible__sprite::before, .collectible[data-kind="weight"] .collectible__sprite::after { top: 50%; width: 14px; height: 34px; border: 3px solid var(--pixel-ink); background: #4c4c47; transform: translateY(-50%); }
-.collectible[data-kind="weight"] .collectible__sprite::before { left: -7px; }
-.collectible[data-kind="weight"] .collectible__sprite::after { right: -7px; }
-.collectible[data-kind="ink"] .collectible__sprite { inset: 28% 26% 14%; border: 4px solid var(--pixel-ink); background: #34333c; box-shadow: inset 6px 0 0 #555363, 4px 4px 0 var(--pixel-ink); }
-.collectible[data-kind="ink"] .collectible__sprite::before { top: -15px; left: 50%; width: 18px; height: 15px; border: 3px solid var(--pixel-ink); border-bottom: 0; background: #706450; transform: translateX(-50%); }
-.collectible[data-kind="ink"] .collectible__sprite::after { right: -10px; bottom: 5px; width: 7px; height: 11px; background: #313765; box-shadow: 4px 8px 0 #313765; }
 .collectible.is-collected { animation: collect-pop .25s steps(3, jump-none) forwards; }
 .collectible.is-smashed { animation: hazard-smash .3s steps(4, jump-none) forwards; }
 @keyframes collect-pop { to { opacity: 0; transform: translate(-50%, -50%) scale(1.7) rotate(12deg); } }

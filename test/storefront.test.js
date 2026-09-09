@@ -270,7 +270,7 @@ test('내부 주문서는 PG 미연결 경계와 앱 소유 검증을 명확히 
 test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 제공한다', async () => {
   const html = await readFile(new URL('../game.html', import.meta.url), 'utf8');
   const gameJs = await readFile(new URL('../assets/game.js', import.meta.url), 'utf8');
-  const gameCss = await readFile(new URL('../assets/game.css', import.meta.url), 'utf8');
+  const gameCss = (await Promise.all(['game.css', 'game-items.css'].map((file) => readFile(new URL('../assets/' + file, import.meta.url), 'utf8')))).join('\n');
   const checkoutJs = await readFile(new URL('../assets/checkout.js', import.meta.url), 'utf8');
 
   await access(new URL('../assets/game-pixel-school-world.png', import.meta.url));

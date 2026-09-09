@@ -1465,18 +1465,20 @@ html {
 .game-invite__product > img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; image-rendering: pixelated; }
 .game-invite__preview { position: absolute; inset: 0 0 2.45rem; overflow: hidden; pointer-events: none; }
 .game-invite__product .game-invite__player { position: absolute; z-index: 3; bottom: 4%; left: 50%; width: 17cqi; height: auto; aspect-ratio: auto; object-fit: contain; transform: translateX(-50%); transform-origin: 50% 100%; image-rendering: pixelated; filter: drop-shadow(4px 5px 0 rgb(31 52 40 / .26)); }
-.game-invite__item { position: absolute; z-index: 2; top: 7%; width: 7cqi; height: 7cqi; min-width: 20px; min-height: 20px; border: max(2px, .7cqi) solid var(--ink); background: var(--accent-on-dark); box-shadow: max(2px, .7cqi) max(2px, .7cqi) 0 rgb(31 52 40 / .28); opacity: 0; }
-.game-invite__item--book { left: 20%; background: #d88f78; }
-.game-invite__item--bottle { left: 49%; width: 5cqi; border-radius: 42% 42% 18% 18%; background: #91b9ab; }
-.game-invite__item--pencil { left: 75%; width: 2.5cqi; background: #e4bd62; }
+.game-invite__item { position: absolute; z-index: 2; top: 7%; width: clamp(48px, 13cqi, 76px); height: clamp(48px, 13cqi, 76px); opacity: 0; }
+.game-invite__item--laptop { left: 16%; --item-x: 16cqi; }
+.game-invite__item--book { left: 36%; }
+.game-invite__item--bottle { left: 55%; }
+.game-invite__item--pencil { left: 73%; }
 .game-invite__spark { position: absolute; z-index: 4; bottom: 20%; left: 50%; width: 1.4cqi; height: 1.4cqi; background: #fff2b7; opacity: 0; }
 .game-invite__spark--two { margin: 0 0 3cqi 6cqi; background: var(--accent-on-dark); }
 
 .game-invite.is-previewing .game-invite__player { animation: game-preview-walk 1.05s steps(2, end) infinite; }
-.game-invite.is-previewing .game-invite__item { animation: game-preview-catch 3.6s cubic-bezier(.4, 0, .2, 1) infinite; }
-.game-invite.is-previewing .game-invite__item--bottle { animation-delay: 1.15s; }
-.game-invite.is-previewing .game-invite__item--pencil { animation-delay: 2.3s; }
-.game-invite.is-previewing .game-invite__spark { animation: game-preview-spark 3.6s steps(2, end) infinite; }
+.game-invite.is-previewing .game-invite__item { animation: game-preview-catch 4.8s cubic-bezier(.4, 0, .2, 1) infinite; }
+.game-invite.is-previewing .game-invite__item--book { animation-delay: 1.2s; }
+.game-invite.is-previewing .game-invite__item--bottle { animation-delay: 2.4s; }
+.game-invite.is-previewing .game-invite__item--pencil { animation-delay: 3.6s; }
+.game-invite.is-previewing .game-invite__spark { animation: game-preview-spark 4.8s steps(2, end) infinite; }
 .game-invite.is-previewing .game-invite__spark--two { animation-delay: .16s; }
 
 @keyframes game-preview-walk {
@@ -1488,9 +1490,9 @@ html {
   68% { opacity: 1; transform: translate3d(0, 54cqi, 0) rotate(8deg) scale(1); }
   82%, 100% { opacity: 0; transform: translate3d(calc(50cqi - var(--item-x, 0px)), 65cqi, 0) rotate(0) scale(.2); }
 }
-.game-invite__item--book { --item-x: 20cqi; }
-.game-invite__item--bottle { --item-x: 49cqi; }
-.game-invite__item--pencil { --item-x: 75cqi; }
+.game-invite__item--book { --item-x: 36cqi; }
+.game-invite__item--bottle { --item-x: 55cqi; }
+.game-invite__item--pencil { --item-x: 73cqi; }
 @keyframes game-preview-spark {
   0%, 68%, 82%, 100% { opacity: 0; transform: scale(.3); }
   72%, 78% { opacity: 1; transform: scale(1); }
