@@ -402,9 +402,39 @@ function showListState(container, message) {
   container.replaceChildren(state);
 }
 
+function updateBagJourney(products) {
+  const card = document.querySelector('[data-bag-journey]');
+  if (!card) return;
+  const image = card.querySelector('img');
+  const label = card.querySelector('.bag-journey__label');
+  if (!image || !label) return;
+  const candidates = products.filter((product) => !product.soldOut && safeHttpsUrl(product.image));
+  let previousId;
+  try { previousId = sessionStorage.getItem('himawari:bag-journey'); } catch {}
+  const alternatives = candidates.filter((product) => product.id !== previousId);
+  const pool = alternatives.length ? alternatives : candidates;
+  const product = pool[Math.floor(Math.random() * pool.length)];
+  if (!product) return;
+
+  // Commit the image, label and destination together after the photo is ready.
+  const preview = new Image();
+  preview.onload = () => {
+    image.src = preview.src;
+    image.alt = product.name;
+    label.textContent = `Carry study · ${product.model}`;
+    card.href = detailHref(product);
+    card.setAttribute('aria-label', `${product.name} 제품 상세 보기`);
+    card.dataset.productId = product.id;
+    try { sessionStorage.setItem('himawari:bag-journey', product.id); } catch {}
+  };
+  preview.onerror = () => {}; // Keep the working static card if the photo is unavailable.
+  preview.src = safeHttpsUrl(product.image);
+}
+
 async function loadProducts() {
   try {
     const products = await fetchProducts();
+    updateBagJourney(products);
     const families = groupProductFamilies(products);
     productLists.forEach((container) => {
       const limit = Number.parseInt(container.dataset.productLimit || '', 10);
