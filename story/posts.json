@@ -1,11 +1,63 @@
 [
   {
+    "id": "cafe-backpack-placement-guide",
+    "title": "카페에서 백팩 어디에 둘까요? 자리 잡기부터 떠나기까지",
+    "date": "2026-09-10",
+    "summary": "카페에서 통로와 음료를 피해 가방을 두고, 자리를 떠날 때 소지품을 확인하는 작은 사용 습관입니다.",
+    "description": "카페에서 통로와 음료를 피해 가방을 두고, 자리를 떠날 때 소지품을 확인하는 작은 사용 습관입니다.",
+    "tags": [
+      "카페 백팩",
+      "가방 놓는 위치",
+      "일상 사용"
+    ],
+    "image": "../assets/story/cafe-backpack-placement-guide.webp",
+    "imageAlt": "카페 벽 쪽 나무 벤치에 놓인 검정 Himawari No.0422 백팩 연출 이미지",
+    "url": "cafe-backpack-placement-guide.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "switch-bags-without-forgetting-items",
+    "title": "백팩을 바꿔 드는 날: 소지품을 빠뜨리지 않는 이동 순서",
+    "date": "2026-09-10",
+    "summary": "가방 속 물건을 줄이는 정리와 달리, 두 가방 사이에서 필수품이 누락되지 않도록 확인하는 방법입니다.",
+    "description": "가방 속 물건을 줄이는 정리와 달리, 두 가방 사이에서 필수품이 누락되지 않도록 확인하는 방법입니다.",
+    "tags": [
+      "가방 교체",
+      "소지품 확인",
+      "외출 준비"
+    ],
+    "image": "../assets/game-0422-black.jpg",
+    "imageAlt": "원형 파우치와 캐릭터 장식이 달린 검정 Himawari No.0422 제품 사진",
+    "url": "switch-bags-without-forgetting-items.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "backpack-repair-inquiry-photo-guide",
+    "title": "백팩 수선 문의 전 준비할 사진: 전체·위치·가까이 3장",
+    "date": "2026-09-10",
+    "summary": "손상 위치를 알아보기 쉽게 촬영하고 증상과 구매 정보를 정리해, 가방 수선 상담을 준비하는 방법입니다.",
+    "description": "손상 위치를 알아보기 쉽게 촬영하고 증상과 구매 정보를 정리해, 가방 수선 상담을 준비하는 방법입니다.",
+    "tags": [
+      "가방 수선 문의",
+      "제품 사진",
+      "사용 후 관리"
+    ],
+    "image": "../assets/game-0422-black.jpg",
+    "imageAlt": "앞주머니와 지퍼 위치를 확인할 수 있는 검정 Himawari No.0422 제품 사진",
+    "url": "backpack-repair-inquiry-photo-guide.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "small-frame-backpack-fit-guide",
     "title": "체구에 맞는 백팩 고르는 법: 등판 길이·폭·수납량 확인하기",
     "date": "2026-09-09",
     "summary": "키만 보지 않고 등판 길이와 폭, 평소 짐을 넣은 부피로 내 몸에 어울리는 백팩 비율을 찾는 방법입니다.",
     "description": "체구에 맞는 백팩을 고를 때 등판 길이와 폭, 평소 짐을 넣은 부피와 어깨끈 조절 범위를 차례로 확인하는 실용적인 구매 가이드입니다.",
-    "tags": ["백팩 크기", "착용 비율", "구매 가이드"],
+    "tags": [
+      "백팩 크기",
+      "착용 비율",
+      "구매 가이드"
+    ],
     "image": "../assets/story/small-frame-backpack-fit-guide.webp",
     "imageAlt": "현관 거울 앞에서 분홍·민트 Himawari No.0422 백팩 비율을 확인하는 성인 여성의 뒷모습",
     "url": "small-frame-backpack-fit-guide.html",
@@ -17,7 +69,11 @@
     "date": "2026-09-09",
     "summary": "일교차가 큰 가을 출근길에 겉옷과 우산, 노트북을 찾기 쉽고 서로 간섭하지 않게 나누는 수납법입니다.",
     "description": "일교차가 큰 가을 출근길에 얇은 겉옷과 우산, 노트북과 작은 소지품을 찾기 쉽고 서로 간섭하지 않게 나누는 백팩 수납법입니다.",
-    "tags": ["가을 출근", "환절기 수납", "직장인 백팩"],
+    "tags": [
+      "가을 출근",
+      "환절기 수납",
+      "직장인 백팩"
+    ],
     "image": "../assets/story/autumn-commute-backpack-packing.webp",
     "imageAlt": "가을 아침 현관에서 회색 Himawari No.1884 백팩에 노트북과 얇은 겉옷을 나눠 담는 모습",
     "url": "autumn-commute-backpack-packing.html",
@@ -29,7 +85,11 @@
     "date": "2026-09-09",
     "summary": "향으로 덮기 전에 냄새의 원인을 비우고 포켓을 열어 가방 안쪽을 말리는 매일 5분 관리법입니다.",
     "description": "백팩 속 냄새와 눅눅함이 신경 쓰일 때 내용물을 비우고 원인을 확인한 뒤 포켓을 열어 말리는 매일 5분 환기 관리법입니다.",
-    "tags": ["백팩 환기", "가방 냄새", "습기 관리"],
+    "tags": [
+      "백팩 환기",
+      "가방 냄새",
+      "습기 관리"
+    ],
     "image": "../assets/story/backpack-odor-airing-guide.webp",
     "imageAlt": "창가의 나무 벤치 위에서 크림·하늘·분홍 Himawari No.1027 백팩의 지퍼를 열어 환기하는 모습",
     "url": "backpack-odor-airing-guide.html",
@@ -41,7 +101,11 @@
     "date": "2026-09-08",
     "summary": "밝은색 백팩에 작은 얼룩이 생겼을 때 소재와 오염을 확인하고 부분 세척하는 안전한 순서입니다.",
     "description": "밝은색 백팩에 얼룩이 생겼을 때 관리 표시를 확인하고 마른 오염부터 제거한 뒤 부분 세척하는 안전한 응급 관리 순서입니다.",
-    "tags": ["밝은색 백팩", "가방 얼룩", "부분 세척"],
+    "tags": [
+      "밝은색 백팩",
+      "가방 얼룩",
+      "부분 세척"
+    ],
     "image": "../assets/story/light-backpack-stain-care.webp",
     "imageAlt": "민트색 Himawari 0422 백팩의 표면을 흰 천으로 부드럽게 눌러 닦는 모습",
     "url": "light-backpack-stain-care.html",
@@ -53,7 +117,11 @@
     "date": "2026-09-08",
     "summary": "포켓 개수보다 매일 들고 다니는 물건과 꺼내는 순서에 맞는 수납 구조를 고르는 방법입니다.",
     "description": "백팩 수납칸이 많을수록 좋은지 고민할 때 매일 들고 다니는 물건과 꺼내는 순서를 기준으로 필요한 수납 구조를 고르는 방법입니다.",
-    "tags": ["백팩 수납칸", "가방 포켓", "구매 가이드"],
+    "tags": [
+      "백팩 수납칸",
+      "가방 포켓",
+      "구매 가이드"
+    ],
     "image": "../assets/story/backpack-compartment-layout-guide.webp",
     "imageAlt": "검은색 Himawari 1027 백팩과 노트, 파우치, 물병을 용도별로 펼쳐 둔 모습",
     "url": "backpack-compartment-layout-guide.html",
@@ -65,7 +133,11 @@
     "date": "2026-09-08",
     "summary": "평일 출근부터 짧은 출장까지 한 백팩으로 이어가기 위한 노트북·서류·캐리어 점검표입니다.",
     "description": "평일 출근과 1박 출장을 한 가방으로 준비할 때 노트북 수납, 서류 접근, 캐리어 결합과 여분 공간을 확인하는 백팩 선택법입니다.",
-    "tags": ["출장 백팩", "직장인 가방", "노트북 백팩"],
+    "tags": [
+      "출장 백팩",
+      "직장인 가방",
+      "노트북 백팩"
+    ],
     "image": "../assets/story/commute-business-trip-backpack-guide.webp",
     "imageAlt": "도시 사무실 창가에서 검은색 Himawari 1884 백팩과 캐리어, 노트북을 준비한 모습",
     "url": "commute-business-trip-backpack-guide.html",
@@ -77,7 +149,11 @@
     "date": "2026-09-07",
     "summary": "교과서와 노트, A4 서류를 크기와 무게, 꺼내는 순서에 맞춰 반듯하게 유지하는 백팩 수납법입니다.",
     "description": "교과서와 노트, A4 서류가 백팩 안에서 구겨지거나 모서리가 접히지 않도록 크기·순서·고정 위치를 정하는 수납법입니다.",
-    "tags": ["책가방 수납", "서류 정리", "학생 백팩"],
+    "tags": [
+      "책가방 수납",
+      "서류 정리",
+      "학생 백팩"
+    ],
     "image": "../assets/story/books-documents-backpack-packing.webp",
     "imageAlt": "Himawari 1027 백팩 옆에 교과서와 A4 파일, 노트를 반듯하게 나누어 둔 모습",
     "url": "books-documents-backpack-packing.html",
@@ -89,7 +165,11 @@
     "date": "2026-09-07",
     "summary": "가방 안쪽의 먼지와 부스러기를 마른 상태부터 정리하고, 필요한 곳만 조심스럽게 관리하는 순서입니다.",
     "description": "백팩 안쪽에 쌓인 먼지와 부스러기를 비우고 안감 손상을 줄이며 부분 오염을 정리하는 단계별 관리법입니다.",
-    "tags": ["백팩 안감", "가방 청소", "관리 루틴"],
+    "tags": [
+      "백팩 안감",
+      "가방 청소",
+      "관리 루틴"
+    ],
     "image": "../assets/story/backpack-lining-cleaning-guide.webp",
     "imageAlt": "열어 둔 Himawari 0422 백팩 안감을 부드러운 솔로 정리하는 모습",
     "url": "backpack-lining-cleaning-guide.html",
@@ -101,7 +181,11 @@
     "date": "2026-09-07",
     "summary": "승차부터 하차까지 좌석과 선반, 환승 동선에 맞춰 필요한 물건을 빠르게 찾도록 짐을 나누는 방법입니다.",
     "description": "기차 여행에서 좌석, 선반과 환승 동선을 고려해 백팩의 크기와 짐 위치를 정하고 필요한 물건을 빠르게 꺼내는 준비법입니다.",
-    "tags": ["기차 여행", "여행 백팩", "짐싸기"],
+    "tags": [
+      "기차 여행",
+      "여행 백팩",
+      "짐싸기"
+    ],
     "image": "../assets/story/train-travel-backpack-guide.webp",
     "imageAlt": "아침 햇살이 드는 기차 좌석에 Himawari 1884 백팩과 여행 소지품을 정리한 모습",
     "url": "train-travel-backpack-guide.html",
@@ -113,7 +197,11 @@
     "date": "2026-09-06",
     "summary": "자주 입는 옷과 사용하는 장소, 관리 습관을 기준으로 매일 들기 좋은 백팩 색상을 좁히는 방법입니다.",
     "description": "백팩 색상을 고를 때 자주 입는 옷, 사용하는 장소, 관리 습관과 계절을 기준으로 오래 들기 좋은 색을 좁히는 방법을 소개합니다.",
-    "tags": ["백팩 색상", "가방 선택", "데일리 백팩"],
+    "tags": [
+      "백팩 색상",
+      "가방 선택",
+      "데일리 백팩"
+    ],
     "image": "../assets/story/backpack-color-selection-guide.webp",
     "imageAlt": "분홍색과 민트색 Himawari 백팩을 흰색·회색·청색 옷과 함께 놓고 색 조합을 살피는 모습",
     "url": "backpack-color-selection-guide.html",
@@ -125,7 +213,11 @@
     "date": "2026-09-06",
     "summary": "충전기, 케이블과 보조배터리를 종류와 사용 순서별로 나눠 빠르게 찾고 눌림을 줄이는 백팩 정리법입니다.",
     "description": "충전기, 케이블, 보조배터리와 이어폰을 백팩 안에서 엉키거나 눌리지 않게 종류와 사용 순서별로 나누는 수납 방법입니다.",
-    "tags": ["케이블 수납", "충전기 파우치", "백팩 정리"],
+    "tags": [
+      "케이블 수납",
+      "충전기 파우치",
+      "백팩 정리"
+    ],
     "image": "../assets/story/backpack-cable-organizer-guide.webp",
     "imageAlt": "크림색과 하늘색 Himawari 백팩 옆에 충전기와 케이블, 이어폰을 종류별로 정리한 모습",
     "url": "backpack-cable-organizer-guide.html",
@@ -137,7 +229,11 @@
     "date": "2026-09-06",
     "summary": "자전거로 이동하기 전 백팩의 착용 균형과 끈, 내용물, 날씨를 차례로 확인하는 실용적인 점검표입니다.",
     "description": "자전거 출퇴근용 백팩을 고르고 챙길 때 몸에 맞는 크기, 끈 정리, 내부 물건 고정, 날씨와 안전 장비를 확인하는 순서입니다.",
-    "tags": ["자전거 출퇴근", "출근 백팩", "착용 점검"],
+    "tags": [
+      "자전거 출퇴근",
+      "출근 백팩",
+      "착용 점검"
+    ],
     "image": "../assets/story/bicycle-commute-backpack-guide.webp",
     "imageAlt": "회색 Himawari 백팩과 자전거 헬멧, 장갑, 전조등을 현관에 준비한 모습",
     "url": "bicycle-commute-backpack-guide.html",
@@ -149,7 +245,11 @@
     "date": "2026-09-05",
     "summary": "노트북의 실제 치수와 수납칸 입구, 내부 고정, 바닥 여유를 차례로 확인하는 구매 전 점검표입니다.",
     "description": "노트북 백팩을 고를 때 화면 크기만 보지 않고 기기 전체 치수, 수납칸 입구, 바닥 여유와 다른 소지품의 분리 여부를 확인하는 방법입니다.",
-    "tags": ["노트북 백팩", "노트북 수납", "직장인 가방"],
+    "tags": [
+      "노트북 백팩",
+      "노트북 수납",
+      "직장인 가방"
+    ],
     "image": "../assets/story/laptop-backpack-compartment-checklist.webp",
     "imageAlt": "회색 Himawari 백팩의 노트북 수납칸에 기기를 넣어 크기를 확인하는 모습",
     "url": "laptop-backpack-compartment-checklist.html",
@@ -161,7 +261,11 @@
     "date": "2026-09-05",
     "summary": "지퍼 레일의 먼지, 원단 끼임, 버클과 금속 장식의 상태를 차례로 확인하는 백팩 부자재 관리법입니다.",
     "description": "백팩 지퍼, 버클과 금속 부자재를 사용할 때 먼지를 제거하고 정렬 상태를 확인하는 순서, 억지로 당기지 말아야 할 상황을 정리했습니다.",
-    "tags": ["백팩 지퍼 관리", "가방 버클", "가방 부자재"],
+    "tags": [
+      "백팩 지퍼 관리",
+      "가방 버클",
+      "가방 부자재"
+    ],
     "image": "../assets/story/backpack-zipper-hardware-care.webp",
     "imageAlt": "파스텔 Himawari 백팩의 앞 지퍼를 부드러운 마른 솔로 정리하는 모습",
     "url": "backpack-zipper-hardware-care.html",
@@ -173,7 +277,11 @@
     "date": "2026-09-05",
     "summary": "항공사와 공항 규정을 확인한 뒤 전자기기, 액체류, 여행서류와 기내 물품을 찾기 쉽게 나누는 짐싸기 순서입니다.",
     "description": "기내 반입 백팩을 준비할 때 항공사 규정을 먼저 확인하고 전자기기, 액체류, 여행서류와 기내 물품을 다섯 구역으로 나누는 방법입니다.",
-    "tags": ["기내 반입 백팩", "여행 짐싸기", "휴대 수하물"],
+    "tags": [
+      "기내 반입 백팩",
+      "여행 짐싸기",
+      "휴대 수하물"
+    ],
     "image": "../assets/story/airplane-carry-on-backpack-packing.webp",
     "imageAlt": "공항 대기 공간에서 은색 Himawari 백팩과 기내 준비물을 구역별로 펼친 모습",
     "url": "airplane-carry-on-backpack-packing.html",
@@ -185,7 +293,11 @@
     "date": "2026-09-04",
     "summary": "세탁 전에 관리 표시와 오염 범위를 확인하고, 눈에 띄지 않는 곳에서 시험한 뒤 표면만 천천히 닦는 순서를 정리했습니다.",
     "description": "나일론·폴리에스터 백팩의 표면을 관리할 때 확인할 관리 표시, 부분 세척, 자연 건조 순서와 피해야 할 행동을 안내합니다.",
-    "tags": ["백팩 소재", "가방 세척", "백팩 관리"],
+    "tags": [
+      "백팩 소재",
+      "가방 세척",
+      "백팩 관리"
+    ],
     "image": "../assets/story/backpack-fabric-care.webp",
     "imageAlt": "나무 작업대 위 올리브색 백팩의 안쪽 원단을 손으로 살피는 모습",
     "url": "backpack-fabric-care-guide.html",
@@ -197,7 +309,11 @@
     "date": "2026-09-04",
     "summary": "혼잡한 이동에서 부피를 줄이고 자주 쓰는 물건을 빠르게 꺼낼 수 있도록 가방의 폭, 수납 위치와 여닫는 순서를 점검합니다.",
     "description": "지하철 출퇴근용 백팩을 고를 때 확인할 가방 폭, 수납칸, 개폐 방식과 이동 중 정리 습관을 실용적인 점검표로 소개합니다.",
-    "tags": ["출퇴근 백팩", "지하철 가방", "직장인 백팩"],
+    "tags": [
+      "출퇴근 백팩",
+      "지하철 가방",
+      "직장인 백팩"
+    ],
     "image": "../assets/story/subway-commute-backpack.webp",
     "imageAlt": "밝은 지하철 승강장에서 검정 백팩을 메고 서 있는 출근자",
     "url": "subway-commute-backpack-guide.html",
@@ -209,7 +325,11 @@
     "date": "2026-09-04",
     "summary": "겉옷, 물병, 작은 소지품과 바로 꺼낼 물건을 네 구역으로 나눠 당일 일정에 필요한 만큼만 담는 방법입니다.",
     "description": "당일치기 나들이 백팩을 가볍게 꾸리는 방법입니다. 일정 확인부터 4구역 수납, 귀가 후 비우기까지 단계별 체크리스트를 확인하세요.",
-    "tags": ["당일치기 짐싸기", "나들이 백팩", "가방 수납"],
+    "tags": [
+      "당일치기 짐싸기",
+      "나들이 백팩",
+      "가방 수납"
+    ],
     "image": "../assets/story/day-trip-backpack-packing.webp",
     "imageAlt": "샌드색 백팩과 물병, 얇은 겉옷, 파우치를 가지런히 펼친 모습",
     "url": "day-trip-backpack-packing-guide.html",
@@ -221,7 +341,11 @@
     "date": "2026-09-03",
     "summary": "평소 짐을 넣은 상태에서 양쪽 어깨끈을 조금씩 맞추고, 걸으며 흔들림과 좌우 균형을 확인하는 순서를 정리했습니다.",
     "description": "백팩 어깨끈을 몸과 짐에 맞게 조절하는 5단계 방법입니다. 끈을 풀고 양쪽 길이를 맞춘 뒤 걷기 테스트와 계절별 재조정까지 확인하세요.",
-    "tags": ["백팩 어깨끈", "백팩 착용법", "가방 조절"],
+    "tags": [
+      "백팩 어깨끈",
+      "백팩 착용법",
+      "가방 조절"
+    ],
     "image": "../assets/story/backpack-strap-adjustment.webp",
     "imageAlt": "올리브색 백팩을 멘 사람이 양쪽 어깨끈 길이를 조절하는 모습",
     "url": "backpack-strap-adjustment-guide.html",
@@ -233,7 +357,11 @@
     "date": "2026-09-03",
     "summary": "물병의 지름과 높이, 포켓의 깊이와 입구, 전자기기와의 분리 위치를 확인해 일상에서 쓰기 좋은 물병 수납을 고르는 방법입니다.",
     "description": "물병 수납 백팩을 고를 때 확인할 크기, 포켓 깊이, 고정력과 분리 수납 기준을 소개합니다. 물병과 전자기기를 함께 챙길 때의 점검표도 확인하세요.",
-    "tags": ["물병 수납", "백팩 포켓", "가방 수납"],
+    "tags": [
+      "물병 수납",
+      "백팩 포켓",
+      "가방 수납"
+    ],
     "image": "../assets/story/backpack-bottle-pocket.webp",
     "imageAlt": "샌드색 백팩과 닫힌 물병, 노트와 파우치를 나란히 둔 모습",
     "url": "backpack-bottle-pocket-guide.html",
@@ -245,7 +373,11 @@
     "date": "2026-09-03",
     "summary": "가방을 완전히 비우고 말린 뒤 깨끗한 종이나 천으로 형태를 가볍게 받쳐, 눌리지 않는 선반에 보관하는 순서를 담았습니다.",
     "description": "백팩 모양이 무너지지 않도록 보관하는 방법을 안내합니다. 내용물 비우기, 완전 건조, 부드러운 충전재 사용과 선반 배치까지 순서대로 확인하세요.",
-    "tags": ["백팩 보관", "가방 형태", "가방 관리"],
+    "tags": [
+      "백팩 보관",
+      "가방 형태",
+      "가방 관리"
+    ],
     "image": "../assets/story/backpack-shape-storage.webp",
     "imageAlt": "깨끗한 종이로 형태를 받쳐 열린 옷장 선반에 세워 둔 검정 백팩",
     "url": "backpack-shape-storage-guide.html",
@@ -257,7 +389,11 @@
     "date": "2026-09-02",
     "summary": "가방 속 물건을 매일 비우고 용도별로 다시 담는 짧은 루틴으로, 필요한 짐만 남기는 방법을 정리했습니다.",
     "description": "무거워진 백팩을 가볍게 정리하는 매일 수납 루틴을 소개합니다. 전부 꺼내기, 오늘 쓸 물건 고르기, 자주 쓰는 순서대로 배치하는 체크리스트를 확인하세요.",
-    "tags": ["백팩 정리", "가방 수납", "데일리 루틴"],
+    "tags": [
+      "백팩 정리",
+      "가방 수납",
+      "데일리 루틴"
+    ],
     "image": "../assets/story/backpack-packing-routine.webp",
     "imageAlt": "올리브색 백팩과 매일 휴대하는 소지품을 정리한 모습",
     "url": "daily-backpack-packing-routine.html",
@@ -269,7 +405,11 @@
     "date": "2026-09-02",
     "summary": "젖은 백팩의 내용물을 꺼내고 물기를 닦은 뒤 통풍이 되는 곳에서 말리는 순서와 소재별 주의점을 담았습니다.",
     "description": "비에 젖은 백팩을 관리하는 순서를 안내합니다. 내용물 분리, 표면 물기 제거, 자연 건조, 완전히 마른 뒤 보관까지 소재를 상하지 않게 살피는 방법입니다.",
-    "tags": ["백팩 관리", "비 오는 날", "가방 건조"],
+    "tags": [
+      "백팩 관리",
+      "비 오는 날",
+      "가방 건조"
+    ],
     "image": "../assets/story/rainy-day-backpack-care.webp",
     "imageAlt": "비 오는 창가에서 수건 위에 펼쳐 말리는 베이지색 백팩",
     "url": "rainy-day-backpack-care.html",
@@ -281,7 +421,11 @@
     "date": "2026-09-02",
     "summary": "일정과 날씨를 기준으로 옷·세면도구·전자기기를 나누고, 짧은 여행 짐을 찾기 쉽게 담는 순서를 소개합니다.",
     "description": "1박 2일 여행 백팩 짐싸기 체크리스트입니다. 일정별 필수품을 고르고 파우치로 나눈 뒤 무게와 사용 순서를 고려해 담는 방법을 확인하세요.",
-    "tags": ["여행 백팩", "짐싸기", "1박 2일"],
+    "tags": [
+      "여행 백팩",
+      "짐싸기",
+      "1박 2일"
+    ],
     "image": "../assets/story/overnight-backpack-packing.webp",
     "imageAlt": "검정과 올리브색 백팩 옆에 1박 2일 여행 짐을 펼쳐 둔 모습",
     "url": "overnight-trip-backpack-checklist.html",
