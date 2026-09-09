@@ -445,6 +445,8 @@ async function loadProducts() {
           .filter((product) => Number.isFinite(product.curatedRank))
           .sort((first, second) => first.curatedRank - second.curatedRank)
           .slice(0, Number.isFinite(limit) ? limit : 5);
+      } else if (mode === 'all-families') {
+        visibleProducts = [...families].sort((first, second) => Number(second.key === '1884') - Number(first.key === '1884'));
       } else if (mode === 'featured-families') {
         visibleProducts = families.filter((family) => !family.representative.featured).slice(0, Number.isFinite(limit) ? limit : 7);
       } else if (mode === 'catalog') {
