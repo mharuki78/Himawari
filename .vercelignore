@@ -1,1 +1,8 @@
 assets/raw.mp4
+.env
+.env.*
+node_modules/
+test-artifacts/
+backups/
+*.hmwbackup
+Himawari*.zip
