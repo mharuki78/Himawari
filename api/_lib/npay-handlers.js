@@ -95,9 +95,17 @@ export async function fetchNpayOrder(request) {
       body,
       signal: AbortSignal.timeout(10_000),
     });
-    const result = naverOrderResult(await response.text());
-    if (!response.ok || !result.ok) {
-      console.error('npay_order_registration_failed', { status: response.status, code: result.code });
+      const responseText = await response.text();
+      const result = naverOrderResult(responseText);
+      if (!response.ok || !result.ok) {
+        console.error('npay_order_registration_failed', {
+          status: response.status, code: result.code,
+          contentType: response.headers.get('content-type'),
+          format: /^\s*</.test(responseText) ? 'markup' : /^\s*[{[]/.test(responseText) ? 'json' : 'text',
+          length: responseText.length,
+          title: responseText.match(/<title[^>]*>([^<]{0,120})<\/title>/i)?.[1] || '',
+          prefix: responseText.startsWith('SUCCESS:') ? 'SUCCESS' : responseText.startsWith('FAIL:') ? 'FAIL' : 'other',
+        });
       return json({ message: '네이버페이 주문서를 열지 못했습니다. 잠시 후 다시 시도해 주세요.', code: result.code }, 502);
     }
     return json({ key: result.key, merchantNo: result.merchantNo });
