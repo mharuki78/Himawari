@@ -320,11 +320,6 @@ function renderProduct(product) {
       document.querySelector('[data-option-picker]')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       document.querySelector('[data-product-option]')?.focus({ preventScroll: true });
     });
-    sticky.querySelector('[data-sticky-npay]')?.addEventListener('click', () => {
-      const npay = document.querySelector('[data-npay-product-section]');
-      npay?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      npay?.querySelector('a,button')?.focus({ preventScroll: true });
-    });
     const footer = document.querySelector('.site-footer');
     if (footer && 'IntersectionObserver' in window) {
       new IntersectionObserver(([entry]) => sticky.classList.toggle('is-hidden', entry.isIntersecting), { threshold: 0.05 }).observe(footer);

@@ -27,7 +27,8 @@
     <link rel="stylesheet" href="assets/member.css">
     <script src="script.js" defer></script>
     <script src="product-detail.js" type="module"></script>
-  <link rel="stylesheet" href="/assets/commerce.css"></head>
+  <link rel="stylesheet" href="/assets/commerce.css"><script src="https://wcs.naver.net/wcslog.js"></script><script src="/assets/naver-inflow.js"></script>
+</head>
   <body class="product-detail-page">
     <a class="skip-link" href="#main">본문으로 바로가기</a>
     <div class="announcement-bar"><a href="products.html">Himawari 전체 컬렉션 보기</a></div>
@@ -177,7 +178,6 @@
       <div><span data-sticky-model>Himawari</span><strong data-sticky-price></strong></div>
       <button type="button" data-sticky-option hidden>옵션 선택</button>
       <a data-sticky-buy href="checkout.html">구매하기</a>
-      <button type="button" data-sticky-npay hidden>Npay</button>
     </aside>
 
     <footer class="site-footer">
@@ -189,5 +189,6 @@
     </footer>
     <script src="assets/cart.js" defer></script>
     <script src="assets/member.js" defer></script>
-  </body>
+  <script>if(window.wcs_do) window.wcs_do();</script>
+</body>
 </html>

@@ -15,6 +15,7 @@ import {
   parseRequestedProductIds,
   productPageUrl,
   readNaverInflowCode,
+  readNaverSaClickId,
 } from './npay.js';
 
 function validateItems(input, products) {
@@ -88,6 +89,7 @@ export async function fetchNpayOrder(request) {
       items,
       backUrl: backUrlFor(input, items, request, review),
       naverInflowCode: readNaverInflowCode(request),
+      saClickId: readNaverSaClickId(request),
     });
     const response = await globalThis.fetch(config.orderRegistrationUrl, {
       method: 'POST',

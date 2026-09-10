@@ -7,7 +7,6 @@ const pending = new Map();
 
 function revealProductNpay(section) {
   section.hidden = false;
-  document.querySelector('[data-sticky-npay]')?.removeAttribute('hidden');
 }
 
 function setStatus(section, message, isError = false) {
@@ -99,7 +98,7 @@ async function registerWishlist(productId, section) {
 async function createProductButton() {
   const section = document.querySelector('[data-npay-product-section]');
   const container = section?.querySelector('[data-npay-product]');
-  if (!section || !container || !config || !window.Npay?.order?.create || container.dataset.npayReady === 'true') return;
+  if (!section || !container || !config?.enabled || !window.Npay?.order?.create || container.dataset.npayReady === 'true') return;
   if (sdkBlockedMessage) {
     revealProductNpay(section);
     setStatus(section, sdkBlockedMessage, true);
@@ -144,7 +143,7 @@ async function createProductButton() {
 async function syncCartButton() {
   const section = document.querySelector('[data-npay-cart-section]');
   const container = section?.querySelector('[data-npay-cart]');
-  if (!section || !container || !config || !window.Npay?.order?.create) return;
+  if (!section || !container || !config?.enabled || !window.Npay?.order?.create) return;
   if (sdkBlockedMessage) {
     section.hidden = false;
     setStatus(section, sdkBlockedMessage, true);

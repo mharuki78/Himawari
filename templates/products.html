@@ -29,7 +29,8 @@
     <script src="products.js" type="module"></script>
     <!-- SERVER_CATALOG_SCHEMA -->
     <script type="application/ld+json" data-catalog-schema>{"@context":"https://schema.org","@type":"ItemList","name":"Himawari 전체 제품","numberOfItems":34}</script>
-  <link rel="stylesheet" href="/assets/commerce.css"></head>
+  <link rel="stylesheet" href="/assets/commerce.css"><script src="https://wcs.naver.net/wcslog.js"></script><script src="/assets/naver-inflow.js"></script>
+</head>
   <body class="products-page">
     <a class="skip-link" href="#main">본문으로 바로가기</a>
     <div class="announcement-bar"><a href="products.html">새로운 Himawari 백팩 컬렉션을 만나보세요</a></div>
@@ -105,5 +106,6 @@
     </footer>
     <script src="assets/cart.js" defer></script>
     <script src="assets/member.js" defer></script>
-  </body>
+  <script>if(window.wcs_do) window.wcs_do();</script>
+</body>
 </html>

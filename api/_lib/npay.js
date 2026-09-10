@@ -139,7 +139,7 @@ export function npayProductId(product) {
 }
 
 export function productPageUrl(product) {
-  return `${SITE_ORIGIN}/product.html?id=${encodeURIComponent(product.id)}`;
+  return `https://allaboutbag.com/product.html?id=${encodeURIComponent(product.id)}`;
 }
 
 export function npayOptionManageCode(product, option) {
@@ -189,11 +189,9 @@ function productXml(product, quantity, includeAvailability = false, selectedOpti
   return `<product><id>${xml(id)}</id><merchantProductId>${xml(id)}</merchantProductId><name>${xml(name)}</name><basePrice>${price}</basePrice><taxType>TAX</taxType><infoUrl>${xml(productPageUrl(product))}</infoUrl><imageUrl>${xml(image)}</imageUrl>${availability}${shippingPolicyXml()}</product>`;
 }
 
-export function buildOrderXml({ config, items, backUrl, naverInflowCode = '' }) {
+export function buildOrderXml({ config, items, backUrl, naverInflowCode = '', saClickId = '' }) {
   const products = items.map(({ product, quantity, option }) => productXml(product, quantity, false, option)).join('');
-  const interfaceXml = clean(naverInflowCode)
-    ? `<interface><naverInflowCode>${xml(clean(naverInflowCode).slice(0, 300))}</naverInflowCode></interface>`
-    : '';
+  const interfaceXml = `<interface><naverInflowCode>${xml(clean(naverInflowCode).slice(0, 300))}</naverInflowCode><saClickId>${xml(clean(saClickId).slice(0, 300))}</saClickId></interface>`;
   return `<?xml version="1.0" encoding="utf-8"?><order><merchantId>${xml(config.shopId)}</merchantId><certiKey>${xml(config.certiKey)}</certiKey><backUrl>${xml(backUrl)}</backUrl>${interfaceXml}${products}</order>`;
 }
 
@@ -223,6 +221,10 @@ export function readNaverInflowCode(request) {
     }
   }
   return '';
+}
+
+export function readNaverSaClickId(request) {
+  return cookieValue(request, 'NVADID').slice(0, 300);
 }
 
 export function naverOrderResult(value) {

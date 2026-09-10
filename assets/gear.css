@@ -533,7 +533,7 @@ html {
 .npay-purchase { min-width: 200px; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid color-mix(in srgb, var(--ink) 24%, transparent); }
 .npay-purchase[hidden] { display: none; }
 .npay-purchase__label { margin: 0 0 .55rem; font-size: .65rem; font-weight: 720; letter-spacing: .08em; }
-.npay-button-container { width: 100%; min-width: 200px; height: 150px; overflow: hidden; }
+.npay-button-container { width: 100%; min-width: 200px; min-height: 150px; height: auto; overflow: visible; }
 .npay-status { min-height: 1.2em; margin: .45rem 0 0; color: var(--moss); font-size: .65rem; line-height: 1.6; }
 .npay-status.is-error { color: var(--danger, #9A352F); }
 .product-description { border-top: 1px solid var(--ink); }
