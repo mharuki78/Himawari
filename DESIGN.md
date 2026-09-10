@@ -134,6 +134,8 @@ No.0422 쿠폰 게임의 공식 이름은 `HIMAWARI BAG QUEST — 0422 등굣길
 
 ### Iconography
 
+제품 상세의 크기·소재 안내는 흰 면, 최대 1120px 콘텐츠 폭, 큰 제목과 실제 제품 사진을 사용한다. `assets/product-guidance.js`와 `assets/product-guidance.css`가 전체 제품의 공통 소유자다. 확인된 사양만 정의 목록에 표시하고 미등록 항목은 한 개의 네이티브 details로 묶어 문의로 연결한다. 데스크톱의 사진·사양 2열은 700px 이하에서 1열로 바뀐다. 기존 `styles.css`의 snow·cream·ink·harbor·color-fog 토큰을 사용하며 숫자나 수납 가능 여부를 추정하지 않는다.
+
 별도 아이콘 라이브러리를 쓰지 않는다. 이동 방향을 나타내는 단순 화살표만 텍스트와 함께 사용한다.
 
 ### Motion
