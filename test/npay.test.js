@@ -212,6 +212,10 @@ test('네이버 주문 등록 응답은 성공 키와 가맹점 번호를 엄격
     merchantNo: 'MERCHANT99',
   });
   assert.deepEqual(naverOrderResult('FAIL:[E101]잘못된 상품'), { ok: false, code: 'E101' });
+  assert.deepEqual(naverOrderResult('SUCCESS:aB-cD_0123:12345'), { ok: true, key: 'aB-cD_0123', merchantNo: '12345' });
+  for (const value of ['SUCCESS:a/b:12345', 'SUCCESS:key:12345:extra', 'SUCCESS:<script>:12345']) {
+    assert.equal(naverOrderResult(value).ok, false);
+  }
 });
 
 test('주문 API는 브라우저 가격 대신 서버 상품 가격으로 네이버에 등록한다', async () => {

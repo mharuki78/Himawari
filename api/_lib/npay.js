@@ -229,7 +229,8 @@ export function readNaverSaClickId(request) {
 
 export function naverOrderResult(value) {
   const text = clean(value);
-  const success = text.match(/^SUCCESS:([A-Za-z0-9]{1,64}):([A-Za-z0-9]{1,64})$/);
+  // Npay keys are opaque URL tokens and may contain base64url '-' and '_'.
+  const success = text.match(/^SUCCESS:([A-Za-z0-9_-]{1,128}):([A-Za-z0-9]{1,64})$/);
   if (success) return { ok: true, key: success[1], merchantNo: success[2] };
   const failure = text.match(/^FAIL:\[?([^\]\s:]+)\]?/);
   return { ok: false, code: failure?.[1] || 'NPAY_ORDER_FAILED' };
