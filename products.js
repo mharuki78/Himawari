@@ -332,7 +332,7 @@ function createProductCard(product, { family = null } = {}) {
     summary.dataset.variantSummary = '';
     summary.textContent = `${family.variants.length}가지 중 ${productVariantLabel(product)} 선택`;
     variants.append(summary);
-    family.variants.slice(0, 6).forEach((variant) => {
+    family.variants.forEach((variant) => {
       const button = document.createElement('button');
       const selected = variant.id === product.id;
       button.type = 'button';
