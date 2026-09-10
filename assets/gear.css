@@ -617,7 +617,7 @@ html {
   grid-row: 1;
   min-width: 0;
   overflow: hidden;
-  background: var(--ink) url("campaign-film-poster.jpg") center / cover no-repeat;
+  background: var(--ink) url("campaign-1027-mint-poster.jpg") center / cover no-repeat;
 }
 
 .feature-film__video {
