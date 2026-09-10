@@ -864,6 +864,10 @@ html {
   white-space: nowrap;
 }
 .footer-brand p { max-width: 30ch; opacity: .68; }
+.footer-brand .footer-brand__tagline { max-width: 38ch; margin-top: 1rem; opacity: .85; line-height: 1.8; }
+.footer-brand__tagline span { display: block; }
+.footer-brand__tagline [lang="en"] { font-size: .8rem; letter-spacing: -.01em; text-wrap: balance; }
+.footer-brand__translation { margin-top: .5rem; font-size: .7rem; word-break: keep-all; }
 .site-footer nav { display: grid; grid-template-columns: repeat(2, auto); gap: .8rem 3rem; }
 .footer-contact { opacity: .78; }
 .copyright { padding-top: 1.25rem; border-top: 1px solid color-mix(in srgb, var(--cream) 24%, transparent); }
