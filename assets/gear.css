@@ -1194,7 +1194,7 @@ html {
 .review-list { display: grid; gap: 1rem; }
 .review-card { display: grid; gap: .7rem; padding: 1.2rem; border: 1px solid var(--color-fog); border-radius: var(--radius-soft); background: var(--snow); }
 .review-card > div:first-child { display: flex; justify-content: space-between; color: #9a6d1d; }
-.review-card > div:first-child strong { padding: .2rem .55rem; border-radius: 999px; background: var(--color-sky-wash); color: var(--moss); font-size: .58rem; }
+.review-card > div:first-child strong { padding: .2rem .55rem; border-radius: 999px; background: var(--color-sky-wash); color: var(--color-ink); font-size: .7rem; }
 .review-card h3, .review-card p { margin: 0; }
 .review-card p { white-space: pre-wrap; line-height: 1.75; }
 .review-card small { color: var(--slate); }
