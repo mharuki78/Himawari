@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="assets/cart.css">
     <link rel="stylesheet" href="assets/member.css">
     <link rel="stylesheet" href="assets/product-guidance.css">
+    <link rel="stylesheet" href="assets/purchase-bar.css">
     <script src="script.js" defer></script>
     <script src="product-detail.js" type="module"></script>
   <link rel="stylesheet" href="/assets/commerce.css"><script src="https://wcs.naver.net/wcslog.js"></script><script src="/assets/naver-inflow.js"></script>
@@ -81,11 +82,7 @@
               <button class="wishlist-button" type="button" data-detail-wishlist data-wishlist-toggle aria-pressed="false"><span data-wishlist-label>관심상품 저장</span></button>
               <a class="direct-buy-link" data-direct-buy href="checkout.html"><span>바로 구매하기</span><span aria-hidden="true">→</span></a>
             </div>
-            <section class="npay-purchase" data-npay-product-section aria-labelledby="npay-product-title" hidden>
-              <p id="npay-product-title" class="npay-purchase__label">Npay로 구매</p>
-              <div id="npay-product-button" class="npay-button-container" data-npay-product></div>
-              <p class="npay-status" data-npay-status role="status" aria-live="polite"></p>
-            </section>
+
             <form class="restock-form" data-restock-form hidden novalidate>
               <strong>재입고 알림 받기</strong>
               <input type="email" name="email" aria-label="재입고 알림 이메일" placeholder="email@example.com" autocomplete="email" required>
@@ -179,6 +176,11 @@
       <div><span data-sticky-model>Himawari</span><strong data-sticky-price></strong></div>
       <button type="button" data-sticky-option hidden>옵션 선택</button>
       <a data-sticky-buy href="checkout.html">구매하기</a>
+            <section class="npay-purchase" data-npay-product-section aria-labelledby="npay-product-title" hidden>
+              <p id="npay-product-title" class="npay-purchase__label">Npay로 구매</p>
+              <div id="npay-product-button" class="npay-button-container" data-npay-product></div>
+              <p class="npay-status" data-npay-status role="status" aria-live="polite"></p>
+            </section>
     </aside>
 
     <footer class="site-footer">

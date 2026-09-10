@@ -118,10 +118,10 @@ async function createProductButton() {
       colorTheme: 'green',
       enable: container.dataset.soldOut !== 'true',
       components: {
-        wishlist: true,
+        wishlist: !section.closest('[data-mobile-purchase]'),
         talkTalk: false,
-        benefitMessage: true,
-        benefitCoachMark: true,
+        benefitMessage: !section.closest('[data-mobile-purchase]'),
+        benefitCoachMark: !section.closest('[data-mobile-purchase]'),
       },
       onBuyClick: () => {
         const optionId = container.dataset.optionId || '';

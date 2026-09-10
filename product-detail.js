@@ -317,10 +317,9 @@ function renderProduct(product) {
       document.querySelector('[data-option-picker]')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       document.querySelector('[data-product-option]')?.focus({ preventScroll: true });
     });
-    const footer = document.querySelector('.site-footer');
-    if (footer && 'IntersectionObserver' in window) {
-      new IntersectionObserver(([entry]) => sticky.classList.toggle('is-hidden', entry.isIntersecting), { threshold: 0.05 }).observe(footer);
-    }
+    const updateBarSpace = () => document.body.style.setProperty('--purchase-bar-height', sticky.getBoundingClientRect().height + 'px');
+    updateBarSpace();
+    if ('ResizeObserver' in window) new ResizeObserver(updateBarSpace).observe(sticky);
   }
   document.querySelector('[data-closing-title]').textContent = `${product.model}, 오래 곁에 둘 선택.`;
   renderDescription(product.description || product.tagline);
