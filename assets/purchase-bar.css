@@ -12,7 +12,7 @@
 .mobile-purchase-bar > div > strong { font-size: 17px; }
 .mobile-purchase-bar > a, .mobile-purchase-bar > button {
   display: inline-flex; justify-content: center; align-items: center; min-height: 46px;
-  padding: 10px 24px; border: 0; border-radius: 999px; background: var(--moss);
+  padding: 10px 24px; border: 0; border-radius: 999px; background: var(--harbor);
   color: var(--snow); font: inherit; font-size: 14px; font-weight: 700; text-decoration: none; cursor: pointer;
 }
 .mobile-purchase-bar > [hidden] { display: none; }
@@ -26,3 +26,8 @@
   .mobile-purchase-bar:not([hidden]) { width: calc(100% - 20px); bottom: max(10px, env(safe-area-inset-bottom)); padding: 10px 12px; gap: 8px; }
   .mobile-purchase-bar > a, .mobile-purchase-bar > button { padding: 10px 18px; }
 }
+
+.mobile-purchase-bar > a:hover, .mobile-purchase-bar > button:hover { background: var(--ink); }
+.mobile-purchase-bar > a:focus-visible, .mobile-purchase-bar > button:focus-visible { outline: 3px solid var(--harbor); outline-offset: 3px; }
+.product-detail-actions .direct-buy-link { background: var(--harbor); border-color: var(--harbor); color: var(--snow); }
+.product-detail-actions .direct-buy-link:hover { background: var(--ink); border-color: var(--ink); color: var(--snow); }
