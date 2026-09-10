@@ -1,3 +1,5 @@
+import { reviewGroupKey } from './assets/review-groups.js';
+import { createReviewCard } from './assets/review-card.js';
 import { fetchProducts, priceFormatter, safeHttpsUrl } from './products.js';
 import { renderProductGuidance } from './assets/product-guidance.js';
 
@@ -163,38 +165,33 @@ function setupCustomerFeatures(product) {
 
   const list = document.querySelector('[data-review-list]');
   const summary = document.querySelector('[data-review-summary]');
+  let reviewOffset = 0;
+  const moreReviews = document.createElement('button');
+  moreReviews.type = 'button';
+  moreReviews.textContent = '리뷰 더 보기';
+  moreReviews.hidden = true;
+  list?.after(moreReviews);
   const loadReviews = async () => {
     if (!list) return;
+    moreReviews.disabled = true;
     try {
-      const response = await fetch(`/api/reviews?productId=${encodeURIComponent(product.id)}`, { cache: 'no-store' });
+      const response = await fetch(`/api/reviews?productId=${encodeURIComponent(product.id)}&offset=${reviewOffset}&group=${encodeURIComponent(reviewGroupKey(product.name, product.model))}`, { cache: 'no-store' });
       if (!response.ok) throw new Error();
       const payload = await response.json();
-      list.replaceChildren();
-      (payload.reviews || []).forEach((review) => {
-        const article = document.createElement('article');
-        article.className = 'review-card';
-        const head = document.createElement('div');
-        const stars = document.createElement('span');
-        stars.textContent = `${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}`;
-        stars.setAttribute('aria-label', `5점 중 ${review.rating}점`);
-        const verified = document.createElement('strong');
-        verified.textContent = review.verified ? '구매 확인' : '';
-        head.append(stars, verified);
-        const title = document.createElement('h3');
-        title.textContent = review.title || '사용 후기';
-        const content = document.createElement('p');
-        content.textContent = review.content;
-        const byline = document.createElement('small');
-        byline.textContent = `${review.reviewerName} · ${new Date(review.createdAt).toLocaleDateString('ko-KR')}`;
-        article.append(head, title, content, byline);
-        const media = safeHttpsUrl(review.mediaUrl);
-        if (media) article.append(createProductImage(media, `${review.reviewerName} 구매 후기 사진`));
-        list.append(article);
-      });
+      if (reviewOffset === 0) list.replaceChildren();
+      (payload.reviews || []).forEach((review) => list.append(createReviewCard(review)));
       if (!payload.reviews?.length) list.textContent = '아직 공개된 리뷰가 없습니다. 첫 사용 기록을 남겨주세요.';
-      summary.textContent = payload.aggregate?.count ? `평균 ${payload.aggregate.ratingValue}점 · 구매 확인 리뷰 ${payload.aggregate.count}개` : '배송 완료 주문만 리뷰를 남길 수 있습니다.';
-    } catch { list.textContent = '리뷰를 불러오지 못했습니다.'; summary.textContent = ''; }
+      summary.textContent = payload.aggregate?.count ? `평균 ${payload.aggregate.ratingValue}점 · 리뷰 ${payload.aggregate.count}개${payload.aggregate.naverCount ? ` (네이버 ${payload.aggregate.naverCount}개 포함)` : ''}` : '배송 완료 주문만 리뷰를 남길 수 있습니다.';
+      moreReviews.hidden = payload.nextOffset == null;
+      reviewOffset = payload.nextOffset ?? reviewOffset;
+      moreReviews.textContent = '리뷰 더 보기';
+    } catch {
+      if (reviewOffset === 0) list.textContent = '리뷰를 불러오지 못했습니다.';
+      moreReviews.hidden = false;
+      moreReviews.textContent = '리뷰 다시 불러오기';
+    } finally { moreReviews.disabled = false; }
   };
+  moreReviews.addEventListener('click', loadReviews);
   loadReviews();
 
   const reviewForm = document.querySelector('[data-review-form]');

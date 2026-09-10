@@ -19,6 +19,7 @@ const SITEMAP_PAGES = [
   ['/finder.html', '2026-09-07'],
   ['/compare.html', '2026-09-09'],
   ['/care.html', '2026-09-09'],
+  ['/reviews.html', '2026-09-10'],
   ['/contact.html', '2026-08-29'],
   ['/game.html', '2026-09-06'],
   ['/privacy.html', '2026-09-03'],
@@ -117,7 +118,10 @@ async function fetchMerchantFeed(request) {
 async function fetchReviews(request) {
   if (!['GET', 'POST'].includes(request.method)) return methodNotAllowed(['GET', 'POST']);
   try {
-    if (request.method === 'GET') return json(await listPublishedReviews(new URL(request.url).searchParams.get('productId')));
+    if (request.method === 'GET') {
+      const params = new URL(request.url).searchParams;
+      return json(await listPublishedReviews(params.get('productId'), params.get('offset'), false, params.get('group') || ''));
+    }
     if (!isSameOrigin(request)) return json({ message: '요청 출처를 확인할 수 없습니다.' }, 403);
     return json(await createVerifiedReview(await request.formData()), 201);
   } catch (error) {

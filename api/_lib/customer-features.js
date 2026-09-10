@@ -53,6 +53,14 @@ export async function ensureCustomerFeatureSchema() {
         UNIQUE(order_id, product_id)
       )`,
       tx`CREATE INDEX IF NOT EXISTS product_reviews_public_idx ON product_reviews(product_id, status, created_at DESC)`,
+      tx`ALTER TABLE product_reviews ALTER COLUMN order_id DROP NOT NULL`,
+      tx`ALTER TABLE product_reviews ADD COLUMN IF NOT EXISTS source text NOT NULL DEFAULT 'himawari'`,
+      tx`ALTER TABLE product_reviews ADD COLUMN IF NOT EXISTS source_review_id text`,
+      tx`ALTER TABLE product_reviews ADD COLUMN IF NOT EXISTS source_url text`,
+      tx`ALTER TABLE product_reviews ADD COLUMN IF NOT EXISTS source_product_name text`,
+      tx`ALTER TABLE product_reviews ADD COLUMN IF NOT EXISTS review_group_key text`,
+      tx`ALTER TABLE product_reviews ADD COLUMN IF NOT EXISTS media_urls jsonb NOT NULL DEFAULT '[]'::jsonb`,
+      tx`CREATE UNIQUE INDEX IF NOT EXISTS product_reviews_source_idx ON product_reviews(source, source_review_id) WHERE source_review_id IS NOT NULL`,
       tx`CREATE TABLE IF NOT EXISTS restock_subscriptions (
         id text PRIMARY KEY,
         product_id text NOT NULL,
@@ -70,18 +78,25 @@ export async function ensureCustomerFeatureSchema() {
   return schemaPromise;
 }
 
-export async function listPublishedReviews(productId) {
+export async function listPublishedReviews(productId, offset = 0, nativeOnly = false, requestedGroup = '') {
   await ensureCustomerFeatureSchema();
   const safeId = line(productId, 120);
+  const pageOffset = Math.max(0, Math.min(1_000_000, Math.trunc(Number(offset) || 0)));
+  const groupKey = !nativeOnly && /^[A-Z0-9-]{1,30}$/.test(requestedGroup) ? requestedGroup : '';
+  const predicate = `status = 'published' ${nativeOnly ? "AND source = 'himawari'" : ''} AND ($1 = '' OR product_id = $1 OR (source = 'naver' AND $2 <> '' AND review_group_key = $2))`;
   const rows = await database().query(
-    `SELECT id, reviewer_name, rating, title, content, media_url, verified, created_at
-       FROM product_reviews WHERE product_id = $1 AND status = 'published'
-      ORDER BY created_at DESC LIMIT 50`,
-    [safeId],
+    `SELECT id, reviewer_name, rating, title, content, media_url, verified, created_at, source, source_url, source_product_name, media_urls
+       FROM product_reviews WHERE ${predicate}
+      ORDER BY created_at DESC, id DESC LIMIT 20 OFFSET $3`,
+    [safeId, groupKey, pageOffset],
   );
-  const reviews = rows.map((row) => ({ id: row.id, reviewerName: row.reviewer_name, rating: Number(row.rating), title: row.title || '', content: row.content, mediaUrl: row.media_url || '', verified: row.verified === true, createdAt: new Date(row.created_at).toISOString() }));
-  const ratingValue = reviews.length ? reviews.reduce((sum, item) => sum + item.rating, 0) / reviews.length : 0;
-  return { reviews, aggregate: { count: reviews.length, ratingValue: Math.round(ratingValue * 10) / 10 } };
+  const reviews = rows.map((row) => ({ id: row.id, reviewerName: row.reviewer_name, rating: Number(row.rating), title: row.title || '', content: row.content, mediaUrl: row.media_url || '', mediaUrls: row.media_urls || [], sourceProductName: row.source_product_name || '', verified: row.source === 'himawari' && row.verified === true, source: row.source, sourceUrl: row.source_url || '', createdAt: new Date(row.created_at).toISOString() }));
+  const [aggregate] = await database().query(
+    `SELECT count(*) AS count, coalesce(round(avg(rating), 1), 0) AS rating_value,
+      count(*) FILTER (WHERE source = 'naver') AS naver_count
+      FROM product_reviews WHERE ${predicate}`, [safeId, groupKey],
+  );
+  return { reviews, nextOffset: pageOffset + reviews.length < Number(aggregate.count) ? pageOffset + reviews.length : null, aggregate: { count: Number(aggregate.count), ratingValue: Number(aggregate.rating_value), naverCount: Number(aggregate.naver_count) } };
 }
 
 async function verifiedOrder(productId, orderNumber, email) {
@@ -177,9 +192,9 @@ export async function unsubscribeRestock(token) {
 export async function listAdminReviews(status = '') {
   await ensureCustomerFeatureSchema();
   const safeStatus = ['pending', 'published', 'rejected'].includes(status) ? status : '';
-  const rows = await database().query(`SELECT * FROM product_reviews${safeStatus ? ' WHERE status=$1' : ''} ORDER BY created_at DESC LIMIT 200`, safeStatus ? [safeStatus] : []);
+  const rows = await database().query(`SELECT * FROM product_reviews${safeStatus ? ' WHERE status=$1' : ''} ORDER BY created_at DESC LIMIT 1000`, safeStatus ? [safeStatus] : []);
   const restock = await database().query(`SELECT product_id, option_id, COUNT(*)::integer AS count FROM restock_subscriptions WHERE status='active' GROUP BY product_id, option_id ORDER BY count DESC`);
-  return { reviews: rows.map((row) => ({ id: row.id, productId: row.product_id, reviewerName: row.reviewer_name, rating: Number(row.rating), title: row.title || '', content: row.content, mediaUrl: row.media_url || '', status: row.status, createdAt: new Date(row.created_at).toISOString() })), restock: restock.map((row) => ({ productId: row.product_id, optionId: row.option_id, count: Number(row.count) })) };
+  return { reviews: rows.map((row) => ({ id: row.id, productId: row.product_id, source: row.source, sourceProductName: row.source_product_name || '', reviewerName: row.reviewer_name, rating: Number(row.rating), title: row.title || '', content: row.content, mediaUrl: row.media_url || row.media_urls?.[0] || '', status: row.status, createdAt: new Date(row.created_at).toISOString() })), restock: restock.map((row) => ({ productId: row.product_id, optionId: row.option_id, count: Number(row.count) })) };
 }
 
 export async function moderateReview(input) {

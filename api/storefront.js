@@ -88,7 +88,7 @@ export async function fetch(request) {
       const source = await template('templates/product.html');
       if (!product) return (page === 'npay-review-product' ? privateHtml : html)(renderProductNotFoundPage(source), 404);
       let reviewData = null;
-      try { reviewData = await listPublishedReviews(product.id); } catch {}
+      try { reviewData = await listPublishedReviews(product.id, 0, true); } catch {}
       const familyProducts = products.filter((item) => productFamilyKey(item) === productFamilyKey(product));
       const body = renderProductPage(source, product, origin, reviewData, familyProducts);
       if(page==='npay-review-product')return privateHtml(reviewProductPage(body));

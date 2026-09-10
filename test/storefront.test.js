@@ -138,7 +138,8 @@ test('운영 사이트맵은 현재 제품과 이야기 목록을 XML로 동적 
   assert.equal(response.status, 200);
   assert.match(response.headers.get('content-type') || '', /^application\/xml/);
   const stories = JSON.parse(await readFile(new URL('../story/posts.json', import.meta.url), 'utf8'));
-  assert.equal((sitemap.match(/<url>/g) || []).length, 15 + products.length + stories.length);
+  assert.equal((sitemap.match(/<url>/g) || []).length, 16 + products.length + stories.length);
+  assert.equal(sitemap.includes('https://himawari.co.kr/reviews.html'), true);
   for (const product of products) {
     assert.equal(sitemap.includes(`https://himawari.co.kr/product.html?id=${encodeURIComponent(product.id)}`), true);
   }
