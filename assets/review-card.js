@@ -7,7 +7,7 @@ export function createReviewCard(review) {
   stars.textContent = `${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}`;
   stars.setAttribute('aria-label', `5점 중 ${rating}점`);
   const badge = document.createElement('strong');
-  badge.textContent = review.source === 'naver' ? '네이버 스마트스토어' : review.verified ? '구매 확인' : '';
+  badge.textContent = review.source === 'naver' ? '네이버 스마트스토어' : review.source === 'coupang' ? '쿠팡 리뷰' : review.verified ? '구매 확인' : '';
   head.append(stars, badge);
   const title = document.createElement('h3');
   title.textContent = review.title || '사용 후기';
@@ -20,6 +20,11 @@ export function createReviewCard(review) {
     const product = document.createElement('small');
     product.textContent = `구매 상품 · ${review.sourceProductName}`;
     article.append(product);
+  }
+  if (review.source === 'coupang' && review.sourceSeller) {
+    const seller = document.createElement('small');
+    seller.textContent = `구매 당시 판매자 · ${review.sourceSeller}`;
+    article.append(seller);
   }
   const gallery = document.createElement('div');
   gallery.className = 'review-media';
@@ -45,12 +50,12 @@ export function createReviewCard(review) {
   if (gallery.childElementCount) article.append(gallery);
   try {
     const url = new URL(review.sourceUrl);
-    if (review.source === 'naver' && url.protocol === 'https:' && url.hostname === 'smartstore.naver.com') {
+    if (url.protocol === 'https:' && ((review.source === 'naver' && url.hostname === 'smartstore.naver.com') || (review.source === 'coupang' && url.hostname === 'www.coupang.com' && /^\/vp\/products\/\d+$/.test(url.pathname)))) {
       const link = document.createElement('a');
       link.href = url.href;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
-      link.textContent = '네이버에서 리뷰 보기 ↗';
+      link.textContent = review.source === 'coupang' ? '쿠팡에서 리뷰 보기 ↗' : '네이버에서 리뷰 보기 ↗';
       article.append(link);
     }
   } catch {}

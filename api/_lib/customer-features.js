@@ -58,6 +58,7 @@ export async function ensureCustomerFeatureSchema() {
       tx`ALTER TABLE product_reviews ADD COLUMN IF NOT EXISTS source_review_id text`,
       tx`ALTER TABLE product_reviews ADD COLUMN IF NOT EXISTS source_url text`,
       tx`ALTER TABLE product_reviews ADD COLUMN IF NOT EXISTS source_product_name text`,
+      tx`ALTER TABLE product_reviews ADD COLUMN IF NOT EXISTS source_seller text`,
       tx`ALTER TABLE product_reviews ADD COLUMN IF NOT EXISTS review_group_key text`,
       tx`ALTER TABLE product_reviews ADD COLUMN IF NOT EXISTS media_urls jsonb NOT NULL DEFAULT '[]'::jsonb`,
       tx`CREATE UNIQUE INDEX IF NOT EXISTS product_reviews_source_idx ON product_reviews(source, source_review_id) WHERE source_review_id IS NOT NULL`,
@@ -83,20 +84,21 @@ export async function listPublishedReviews(productId, offset = 0, nativeOnly = f
   const safeId = line(productId, 120);
   const pageOffset = Math.max(0, Math.min(1_000_000, Math.trunc(Number(offset) || 0)));
   const groupKey = !nativeOnly && /^[A-Z0-9-]{1,30}$/.test(requestedGroup) ? requestedGroup : '';
-  const predicate = `status = 'published' ${nativeOnly ? "AND source = 'himawari'" : ''} AND ($1 = '' OR product_id = $1 OR (source = 'naver' AND $2 <> '' AND review_group_key = $2))`;
+  const predicate = `status = 'published' ${nativeOnly ? "AND source = 'himawari'" : ''} AND ($1 = '' OR product_id = $1 OR (source IN ('naver', 'coupang') AND $2 <> '' AND review_group_key = $2))`;
   const rows = await database().query(
-    `SELECT id, reviewer_name, rating, title, content, media_url, verified, created_at, source, source_url, source_product_name, media_urls
+    `SELECT id, reviewer_name, rating, title, content, media_url, verified, created_at, source, source_url, source_product_name, source_seller, media_urls
        FROM product_reviews WHERE ${predicate}
       ORDER BY created_at DESC, id DESC LIMIT 20 OFFSET $3`,
     [safeId, groupKey, pageOffset],
   );
-  const reviews = rows.map((row) => ({ id: row.id, reviewerName: row.reviewer_name, rating: Number(row.rating), title: row.title || '', content: row.content, mediaUrl: row.media_url || '', mediaUrls: row.media_urls || [], sourceProductName: row.source_product_name || '', verified: row.source === 'himawari' && row.verified === true, source: row.source, sourceUrl: row.source_url || '', createdAt: new Date(row.created_at).toISOString() }));
+  const reviews = rows.map((row) => ({ id: row.id, reviewerName: row.reviewer_name, rating: Number(row.rating), title: row.title || '', content: row.content, mediaUrl: row.media_url || '', mediaUrls: row.media_urls || [], sourceProductName: row.source_product_name || '', sourceSeller: row.source_seller || '', verified: row.source === 'himawari' && row.verified === true, source: row.source, sourceUrl: row.source_url || '', createdAt: new Date(row.created_at).toISOString() }));
   const [aggregate] = await database().query(
     `SELECT count(*) AS count, coalesce(round(avg(rating), 1), 0) AS rating_value,
-      count(*) FILTER (WHERE source = 'naver') AS naver_count
+      count(*) FILTER (WHERE source = 'naver') AS naver_count,
+      count(*) FILTER (WHERE source = 'coupang') AS coupang_count
       FROM product_reviews WHERE ${predicate}`, [safeId, groupKey],
   );
-  return { reviews, nextOffset: pageOffset + reviews.length < Number(aggregate.count) ? pageOffset + reviews.length : null, aggregate: { count: Number(aggregate.count), ratingValue: Number(aggregate.rating_value), naverCount: Number(aggregate.naver_count) } };
+  return { reviews, nextOffset: pageOffset + reviews.length < Number(aggregate.count) ? pageOffset + reviews.length : null, aggregate: { count: Number(aggregate.count), ratingValue: Number(aggregate.rating_value), naverCount: Number(aggregate.naver_count), coupangCount: Number(aggregate.coupang_count) } };
 }
 
 async function verifiedOrder(productId, orderNumber, email) {

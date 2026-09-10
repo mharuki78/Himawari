@@ -181,7 +181,11 @@ function setupCustomerFeatures(product) {
       if (reviewOffset === 0) list.replaceChildren();
       (payload.reviews || []).forEach((review) => list.append(createReviewCard(review)));
       if (!payload.reviews?.length) list.textContent = '아직 공개된 리뷰가 없습니다. 첫 사용 기록을 남겨주세요.';
-      summary.textContent = payload.aggregate?.count ? `평균 ${payload.aggregate.ratingValue}점 · 리뷰 ${payload.aggregate.count}개${payload.aggregate.naverCount ? ` (네이버 ${payload.aggregate.naverCount}개 포함)` : ''}` : '배송 완료 주문만 리뷰를 남길 수 있습니다.';
+      const externalSources = [
+        payload.aggregate?.naverCount ? `네이버 ${payload.aggregate.naverCount}개` : '',
+        payload.aggregate?.coupangCount ? `쿠팡 ${payload.aggregate.coupangCount}개` : '',
+      ].filter(Boolean).join(' · ');
+      summary.textContent = payload.aggregate?.count ? `평균 ${payload.aggregate.ratingValue}점 · 리뷰 ${payload.aggregate.count}개${externalSources ? ` (${externalSources} 포함)` : ''}` : '배송 완료 주문만 리뷰를 남길 수 있습니다.';
       moreReviews.hidden = payload.nextOffset == null;
       reviewOffset = payload.nextOffset ?? reviewOffset;
       moreReviews.textContent = '리뷰 더 보기';

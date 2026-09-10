@@ -51,7 +51,7 @@ function render(payload) {
     heading.textContent = `${review.productId} · ${"★".repeat(review.rating)} · ${review.reviewerName}`;
     const meta = document.createElement("p");
     meta.className = "field-help";
-    meta.textContent = `${review.source === 'naver' ? '네이버 스마트스토어 · ' : ''}${review.status} · ${new Date(review.createdAt).toLocaleString("ko-KR")}${review.sourceProductName ? ` · ${review.sourceProductName}` : ''}`;
+    meta.textContent = `${review.source === 'naver' ? '네이버 스마트스토어 · ' : review.source === 'coupang' ? '쿠팡 · ' : ''}${review.status} · ${new Date(review.createdAt).toLocaleString("ko-KR")}${review.sourceProductName ? ` · ${review.sourceProductName}` : ''}`;
     const title = document.createElement("strong");
     title.textContent = review.title || "사용 후기";
     const copy = document.createElement("p");
