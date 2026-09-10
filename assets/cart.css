@@ -194,6 +194,10 @@ html.rdcart-locked, body.rdcart-locked { overflow: hidden; }
 }
 
 /* ───────── 움직임을 줄여 달라는 설정 존중 ───────── */
+@media (max-width: 760px) {
+  .product-detail-page .rdcart-btn--float { bottom: calc(100px + env(safe-area-inset-bottom, 0px)); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .rdcart__panel, .rdcart__back, .rdcart-btn, .rdcart-btn__count, .rdcart__act {
     transition: none !important;
