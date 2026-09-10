@@ -323,7 +323,7 @@ function markFormError(message) {
 function validStoreUrl(value) {
   try {
     const url = new URL(value);
-    return url.protocol === 'https:' && url.hostname === 'smartstore.naver.com';
+    return url.protocol === 'https:' && (url.hostname === 'smartstore.naver.com' || (url.hostname === 'www.coupang.com' && /^\/vp\/products\/\d+$/.test(url.pathname)));
   } catch {
     return false;
   }
@@ -410,7 +410,7 @@ function validateForm() {
   if (values.tagline.length < 5 || values.tagline.length > 120) errors.tagline = '한 줄 소개는 5~120자로 입력해 주세요.';
   if (values.description.length < 20 || values.description.length > 3_000) errors.description = '상세 설명은 20~3,000자로 입력해 주세요.';
   if (!values.highlights.length || values.highlights.length > 8 || values.highlights.some((item) => item.length > 100)) errors.highlights = '제품 포인트를 줄마다 입력해 주세요. 최대 8개까지 가능합니다.';
-  if (!validStoreUrl(values.url)) errors.url = '네이버 스마트스토어 제품 주소를 입력해 주세요.';
+  if (!validStoreUrl(values.url)) errors.url = '네이버 스마트스토어 또는 쿠팡 제품 주소를 입력해 주세요.';
   if (hasOptionsInput.checked) {
     if (!values.optionName || values.optionName.length > 20) errors.optionName = '옵션명을 1~20자로 입력해 주세요.';
     const labels = values.options.map((option) => option.label);
@@ -591,7 +591,7 @@ function renderRows() {
     const sitePrice = document.createElement('strong');
     sitePrice.textContent = priceFormatter.format(product.price);
     const naverPrice = document.createElement('span');
-    naverPrice.textContent = `네이버 할인가 ${priceFormatter.format(product.naverPrice)}`;
+    naverPrice.textContent = `${product.url?.startsWith('https://www.coupang.com/') ? '쿠팡 등록 상품' : '네이버 등록 상품'}`;
     const stock = document.createElement('span');
     stock.textContent = product.stock === null ? '재고 제한 없음' : (product.soldOut ? '품절' : `재고 ${product.stock}개`);
     price.append(sitePrice, naverPrice, stock);

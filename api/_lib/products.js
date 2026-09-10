@@ -165,7 +165,7 @@ function validateProductFields(input) {
 
   if (value.name.length < 2 || value.name.length > 160) fieldErrors.name = '제품명은 2~160자로 입력해 주세요.';
   if (!value.model || value.model.length > 50) fieldErrors.model = '모델명은 50자 이내로 입력해 주세요.';
-  if (!Number.isInteger(value.naverPrice) || value.naverPrice < 1 || value.naverPrice > 10_000_000) fieldErrors.price = '네이버 할인가는 1원 이상 1,000만원 이하의 숫자로 입력해 주세요.';
+  if (!Number.isInteger(value.naverPrice) || value.naverPrice < 1 || value.naverPrice > 10_000_000) fieldErrors.price = '판매가는 1원 이상 1,000만원 이하의 숫자로 입력해 주세요.';
   if (value.naverDiscountRate !== null && (!Number.isInteger(value.naverDiscountRate) || value.naverDiscountRate < 0 || value.naverDiscountRate > 99)) {
     fieldErrors.naverDiscountRate = '네이버 할인율은 0~99 사이의 정수로 입력해 주세요.';
   }
@@ -176,9 +176,9 @@ function validateProductFields(input) {
   }
   try {
     const storeUrl = new URL(value.url);
-    if (storeUrl.hostname !== 'smartstore.naver.com') throw new Error();
+    if (storeUrl.hostname !== 'smartstore.naver.com' && !(storeUrl.hostname === 'www.coupang.com' && /^\/vp\/products\/\d+$/.test(storeUrl.pathname))) throw new Error();
   } catch {
-    fieldErrors.url = '네이버 스마트스토어 제품 주소를 입력해 주세요.';
+    fieldErrors.url = '네이버 스마트스토어 또는 쿠팡 제품 주소를 입력해 주세요.';
   }
   if (value.options.length > 30) fieldErrors.options = '옵션은 최대 30개까지 등록할 수 있습니다.';
   if (value.options.length) {

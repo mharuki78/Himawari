@@ -52,7 +52,9 @@ export function groupProductFamilies(products) {
       return;
     }
     current.variants.push(product);
-    if (product.featured || (!current.representative.featured && product.price < current.representative.price)) {
+    const imported = product.url?.startsWith('https://www.coupang.com/');
+    const currentImported = current.representative.url?.startsWith('https://www.coupang.com/');
+    if ((!imported && currentImported) || (imported === currentImported && (product.featured || (!current.representative.featured && product.price < current.representative.price)))) {
       current.representative = product;
     }
   });

@@ -6887,7 +6887,7 @@ function markFormError(message2) {
 function validStoreUrl(value) {
   try {
     const url = new URL(value);
-    return url.protocol === "https:" && url.hostname === "smartstore.naver.com";
+    return url.protocol === "https:" && (url.hostname === "smartstore.naver.com" || url.hostname === "www.coupang.com" && /^\/vp\/products\/\d+$/.test(url.pathname));
   } catch {
     return false;
   }
@@ -6965,7 +6965,7 @@ function validateForm() {
   if (values.tagline.length < 5 || values.tagline.length > 120) errors.tagline = "\uD55C \uC904 \uC18C\uAC1C\uB294 5~120\uC790\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
   if (values.description.length < 20 || values.description.length > 3e3) errors.description = "\uC0C1\uC138 \uC124\uBA85\uC740 20~3,000\uC790\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
   if (!values.highlights.length || values.highlights.length > 8 || values.highlights.some((item) => item.length > 100)) errors.highlights = "\uC81C\uD488 \uD3EC\uC778\uD2B8\uB97C \uC904\uB9C8\uB2E4 \uC785\uB825\uD574 \uC8FC\uC138\uC694. \uCD5C\uB300 8\uAC1C\uAE4C\uC9C0 \uAC00\uB2A5\uD569\uB2C8\uB2E4.";
-  if (!validStoreUrl(values.url)) errors.url = "\uB124\uC774\uBC84 \uC2A4\uB9C8\uD2B8\uC2A4\uD1A0\uC5B4 \uC81C\uD488 \uC8FC\uC18C\uB97C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
+  if (!validStoreUrl(values.url)) errors.url = "\uB124\uC774\uBC84 \uC2A4\uB9C8\uD2B8\uC2A4\uD1A0\uC5B4 \uB610\uB294 \uCFE0\uD321 \uC81C\uD488 \uC8FC\uC18C\uB97C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
   if (hasOptionsInput.checked) {
     if (!values.optionName || values.optionName.length > 20) errors.optionName = "\uC635\uC158\uBA85\uC744 1~20\uC790\uB85C \uC785\uB825\uD574 \uC8FC\uC138\uC694.";
     const labels = values.options.map((option) => option.label);
@@ -7129,7 +7129,7 @@ function renderRows() {
     const sitePrice = document.createElement("strong");
     sitePrice.textContent = priceFormatter.format(product.price);
     const naverPrice = document.createElement("span");
-    naverPrice.textContent = `\uB124\uC774\uBC84 \uD560\uC778\uAC00 ${priceFormatter.format(product.naverPrice)}`;
+    naverPrice.textContent = `${product.url?.startsWith("https://www.coupang.com/") ? "\uCFE0\uD321 \uB4F1\uB85D \uC0C1\uD488" : "\uB124\uC774\uBC84 \uB4F1\uB85D \uC0C1\uD488"}`;
     const stock = document.createElement("span");
     stock.textContent = product.stock === null ? "\uC7AC\uACE0 \uC81C\uD55C \uC5C6\uC74C" : product.soldOut ? "\uD488\uC808" : `\uC7AC\uACE0 ${product.stock}\uAC1C`;
     price.append(sitePrice, naverPrice, stock);

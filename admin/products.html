@@ -125,9 +125,9 @@
                   <p class="field-error" id="product-model-error"></p>
                 </div>
                 <div class="admin-field">
-                  <label for="product-price">네이버 할인가 <span aria-hidden="true">*</span></label>
-                  <input id="product-price" name="price" type="number" inputmode="numeric" min="1" max="10000000" step="100" placeholder="132000" required aria-describedby="product-price-help product-price-error">
-                  <p class="field-help" id="product-price-help">네이버에서 할인 적용 후 실제 표시되는 금액을 입력하세요. 자사몰도 이 금액으로 판매됩니다.</p>
+                  <label for="product-price">판매가 <span aria-hidden="true">*</span></label>
+                  <input id="product-price" name="price" type="number" inputmode="numeric" min="1" max="10000000" step="1" placeholder="132000" required aria-describedby="product-price-help product-price-error">
+                  <p class="field-help" id="product-price-help">자사몰에서 판매할 금액을 입력하세요. 가져온 상품은 원본에 표시된 판매가를 기준으로 등록됩니다.</p>
                   <p class="field-error" id="product-price-error"></p>
                 </div>
                 <div class="admin-field">
@@ -159,7 +159,7 @@
               </div>
 
               <div class="admin-field">
-                <label for="product-url">네이버 스마트스토어 주소 <span aria-hidden="true">*</span></label>
+                <label for="product-url">원본 상품 주소 (네이버·쿠팡) <span aria-hidden="true">*</span></label>
                 <input id="product-url" name="url" type="url" inputmode="url" autocomplete="url" placeholder="https://smartstore.naver.com/..." required aria-describedby="product-url-error">
                 <p class="field-error" id="product-url-error"></p>
               </div>
