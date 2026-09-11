@@ -1,3 +1,5 @@
+import { productFamilyKey, productVariantLabel } from './assets/catalog-tools.js';
+import { purchaseQuantity, purchaseLimit } from './assets/purchase-quantity.js';
 import { reviewGroupKey } from './assets/review-groups.js';
 import { createReviewCard } from './assets/review-card.js';
 import { fetchProducts, priceFormatter, safeHttpsUrl } from './products.js';
@@ -49,7 +51,7 @@ function renderDescription(value) {
   }));
 }
 
-function configureInventory(product, cart, buyLinks, npayProduct) {
+function configureInventory(product, cart, buyLinks, npayProduct, products) {
   const picker = document.querySelector('[data-option-picker]');
   const select = document.querySelector('[data-product-option]');
   const stockStatus = document.querySelector('[data-stock-status]');
@@ -58,10 +60,23 @@ function configureInventory(product, cart, buyLinks, npayProduct) {
   const options = Array.isArray(product.options) ? product.options : [];
   const sticky = document.querySelector('[data-mobile-purchase]');
   const stickyBuy = sticky?.querySelector('[data-sticky-buy]');
-  const stickyOption = sticky?.querySelector('[data-sticky-option]');
+  const stickySelect = sticky?.querySelector('[data-sticky-select]');
+  const minus = sticky?.querySelector('[data-quantity-minus]');
+  const plus = sticky?.querySelector('[data-quantity-plus]');
+  const quantityOutput = sticky?.querySelector('[data-purchase-quantity]');
+  let selectedOption = null;
+  let quantity = purchaseQuantity(new URLSearchParams(location.search).get('quantity'), product.stock);
   const restockForm = document.querySelector('[data-restock-form]');
   const setBuyState = (option = null) => {
+    selectedOption = option;
+    const available = option ? option.stock : product.stock;
+    quantity = purchaseQuantity(quantity, available);
     const unavailable = product.soldOut || (option && option.stock < 1);
+    if (quantityOutput) quantityOutput.value = String(quantity);
+    if (minus) minus.disabled = unavailable || quantity <= 1;
+    if (plus) plus.disabled = unavailable || quantity >= purchaseLimit(available);
+    if (sticky) sticky.querySelector('[data-sticky-price]').textContent = priceFormatter.format(product.price * quantity);
+    cart.dataset.quantity = String(quantity);
     const needsOption = options.length > 0 && !option;
     cart.disabled = unavailable || needsOption;
     cart.dataset.optionId = option?.id || '';
@@ -70,7 +85,7 @@ function configureInventory(product, cart, buyLinks, npayProduct) {
     buyLinks.forEach((link) => {
       const enabled = !unavailable && !needsOption;
       if (enabled) {
-        link.href = `checkout.html?product=${encodeURIComponent(product.id)}${option ? `&option=${encodeURIComponent(option.id)}` : ''}`;
+        link.href = `checkout.html?product=${encodeURIComponent(product.id)}${option ? `&option=${encodeURIComponent(option.id)}` : ''}&quantity=${quantity}`;
         link.removeAttribute('aria-disabled');
       } else {
         link.removeAttribute('href');
@@ -80,26 +95,51 @@ function configureInventory(product, cart, buyLinks, npayProduct) {
     if (stickyBuy) {
       const enabled = !unavailable && !needsOption;
       if (enabled) {
-        stickyBuy.href = `checkout.html?product=${encodeURIComponent(product.id)}${option ? `&option=${encodeURIComponent(option.id)}` : ''}`;
+        stickyBuy.href = `checkout.html?product=${encodeURIComponent(product.id)}${option ? `&option=${encodeURIComponent(option.id)}` : ''}&quantity=${quantity}`;
         stickyBuy.removeAttribute('aria-disabled');
       } else {
         stickyBuy.removeAttribute('href');
         stickyBuy.setAttribute('aria-disabled', 'true');
       }
     }
-    if (stickyOption) stickyOption.hidden = !needsOption;
+    if (stickySelect && options.length) stickySelect.value = option?.id || '';
     if (restockForm) {
       restockForm.hidden = !unavailable;
       restockForm.dataset.optionId = option?.id || '';
     }
     if (npayProduct) {
+      npayProduct.dataset.quantity = String(quantity);
+      npayProduct.dataset.stock = available === null ? '' : String(available);
       npayProduct.dataset.optionId = option?.id || '';
       npayProduct.dataset.hasOptions = options.length ? 'true' : 'false';
       npayProduct.dataset.soldOut = unavailable ? 'true' : 'false';
     }
   };
 
+  minus?.addEventListener('click', () => { quantity -= 1; setBuyState(selectedOption); });
+  plus?.addEventListener('click', () => { quantity += 1; setBuyState(selectedOption); });
   if (!options.length) {
+    if (stickySelect) {
+      const variants = products.filter(p => productFamilyKey(p) === productFamilyKey(product));
+      stickySelect.replaceChildren(...variants.map(p => {
+        const item = document.createElement('option');
+        item.value = p.id;
+        item.textContent = (p.name.includes('SET') ? 'SET · ' : '') + productVariantLabel(p) + (p.soldOut ? ' · 품절' : ' · ' + priceFormatter.format(p.price));
+        item.disabled = p.soldOut && p.id !== product.id;
+        return item;
+      }));
+      stickySelect.value = product.id;
+      stickySelect.disabled = variants.length < 2;
+      sticky.querySelector('[data-purchase-help]').textContent = variants.length > 1 ? '색상·구성 변경 시 해당 상품으로 이동합니다.' : '현재 상품의 단일 옵션입니다.';
+      stickySelect.addEventListener('change', () => {
+        const variant = variants.find(p => p.id === stickySelect.value);
+        if (!variant || variant.id === product.id) return;
+        const url = new URL(location.href);
+        url.searchParams.set('id', variant.id);
+        url.searchParams.set('quantity', String(purchaseQuantity(quantity, variant.stock)));
+        location.assign(url.href);
+      });
+    }
     picker.hidden = true;
     const badge = document.createElement('span');
     badge.className = `product-stock-badge${product.soldOut ? ' is-sold-out' : ''}`;
@@ -123,6 +163,14 @@ function configureInventory(product, cart, buyLinks, npayProduct) {
     item.disabled = option.stock < 1;
     select.append(item);
   });
+  if (stickySelect) {
+    stickySelect.replaceChildren(...[...select.options].map(item => item.cloneNode(true)));
+    stickySelect.addEventListener('change', () => {
+      select.value = stickySelect.value;
+      select.dispatchEvent(new Event('change'));
+    });
+    sticky.querySelector('[data-purchase-help]').textContent = '옵션과 수량은 구매하기와 Npay에 동일하게 적용됩니다.';
+  }
   select.addEventListener('change', () => {
     const option = options.find((item) => item.id === select.value) || null;
     optionError.textContent = '';
@@ -268,7 +316,7 @@ function configureProductHotspots(product) {
   visual.append(root);
 }
 
-function renderProduct(product) {
+function renderProduct(product, products) {
   const canonicalUrl = `${location.origin}${location.pathname}?id=${encodeURIComponent(product.id)}`;
   const description = String(product.description || product.tagline || '').slice(0, 160);
   document.title = `${product.name} — Himawari`;
@@ -310,17 +358,14 @@ function renderProduct(product) {
   });
   const npayProduct = document.querySelector('[data-npay-product]');
   if (npayProduct) npayProduct.dataset.productId = product.id;
-  configureInventory(product, cart, buyLinks, npayProduct);
+  configureInventory(product, cart, buyLinks, npayProduct, products);
   setupCustomerFeatures(product);
   const sticky = document.querySelector('[data-mobile-purchase]');
   if (sticky) {
     sticky.hidden = false;
     sticky.querySelector('[data-sticky-model]').textContent = product.model;
-    sticky.querySelector('[data-sticky-price]').textContent = priceFormatter.format(product.price);
-    sticky.querySelector('[data-sticky-option]')?.addEventListener('click', () => {
-      document.querySelector('[data-option-picker]')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      document.querySelector('[data-product-option]')?.focus({ preventScroll: true });
-    });
+
+
     const updateBarSpace = () => document.body.style.setProperty('--purchase-bar-height', sticky.getBoundingClientRect().height + 'px');
     updateBarSpace();
     if ('ResizeObserver' in window) new ResizeObserver(updateBarSpace).observe(sticky);
@@ -410,7 +455,7 @@ async function loadProduct() {
       renderNotFound();
       return;
     }
-    renderProduct(product);
+    renderProduct(product, products);
     renderProductGuidance(product, products);
   } catch {
     renderUnavailable();

@@ -1,3 +1,4 @@
+import { purchaseQuantity } from './purchase-quantity.js';
 (function () {
   'use strict';
 
@@ -281,7 +282,7 @@
         var selectedOption = (productPayload.product.options || []).find(function (option) { return option.id === optionId; });
         if ((productPayload.product.options || []).length && !selectedOption) throw Object.assign(new Error('주문할 옵션을 다시 선택해 주세요.'), { status: 400 });
         if ((selectedOption ? selectedOption.stock : productPayload.product.stock) === 0) throw Object.assign(new Error('선택한 상품이 품절되었습니다.'), { status: 409 });
-        items = [{ productId: productPayload.product.id, optionId: optionId, optionLabel: selectedOption ? selectedOption.label : '', stock: selectedOption ? selectedOption.stock : productPayload.product.stock, quantity: 1, product: productPayload.product }];
+        items = [{ productId: productPayload.product.id, optionId: optionId, optionLabel: selectedOption ? selectedOption.label : '', stock: selectedOption ? selectedOption.stock : productPayload.product.stock, quantity: purchaseQuantity(new URLSearchParams(location.search).get('quantity'), selectedOption ? selectedOption.stock : productPayload.product.stock), product: productPayload.product }];
         cartOrder = false;
       } else {
         var checkoutIntent = null;

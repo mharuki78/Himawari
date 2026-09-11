@@ -1,3 +1,4 @@
+import { purchaseQuantity } from './purchase-quantity.js';
 let initialized = false;
 let currentCartItems = [];
 let config = null;
@@ -127,10 +128,12 @@ async function createProductButton() {
         const optionId = container.dataset.optionId || '';
         if (container.dataset.hasOptions === 'true' && !optionId) {
           setStatus(section, '주문할 옵션을 먼저 선택해 주세요.', true);
-          document.querySelector('[data-product-option]')?.focus();
+          document.querySelector('[data-sticky-select]')?.focus();
           return false;
         }
-        return registerOrder([{ productId, optionId, quantity: 1 }], 'product', section);
+        if (container.dataset.soldOut === 'true') { setStatus(section, '선택한 상품이 품절되었습니다.', true); return false; }
+        const stock = container.dataset.stock === '' ? null : Number(container.dataset.stock);
+        return registerOrder([{ productId, optionId, quantity: purchaseQuantity(container.dataset.quantity, stock) }], 'product', section);
       },
       onWishlistClick: () => registerWishlist(productId, section),
     });

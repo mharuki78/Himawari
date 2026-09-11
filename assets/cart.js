@@ -250,25 +250,26 @@
   }
 
   /* ───────── 동작 ───────── */
-  function add(name, price, url, id, optionId, optionLabel, stock) {
+  function add(name, price, url, id, optionId, optionLabel, stock, quantity) {
     name = String(name == null ? '' : name).trim();
     id = String(id == null ? '' : id).trim();
     optionId = String(optionId == null ? '' : optionId).trim();
     optionLabel = String(optionLabel == null ? '' : optionLabel).trim();
     stock = stock === '' || stock === null || stock === undefined ? null : Math.max(0, num(stock));
     if (!name || stock === 0) return false;
+    quantity = Math.min(MAX_Q, stock === null ? MAX_Q : stock, Math.max(1, Math.floor(Number(quantity) || 1)));
     var hit = null;
     var added = false;
     for (var i = 0; i < cart.length; i++) {
       if ((id && cart[i].id === id && cart[i].optionId === optionId) || (!id && cart[i].name === name)) { hit = cart[i]; break; }
     }
     if (hit) {
-      if (hit.q < MAX_Q && (hit.stock === null || hit.q < hit.stock)) { hit.q++; added = true; }
+      if (hit.q + quantity <= MAX_Q && (stock === null || hit.q + quantity <= stock)) { hit.q += quantity; added = true; }
       if (id) hit.id = id;
       if (url) hit.url = url;
       if (price) hit.price = price;
     } else {
-      cart.push({ id: id, name: name, price: num(price), q: 1, url: String(url || ''), optionId: optionId, optionLabel: optionLabel, stock: stock });
+      cart.push({ id: id, name: name, price: num(price), q: quantity, url: String(url || ''), optionId: optionId, optionLabel: optionLabel, stock: stock });
       added = true;
     }
     if (added) { save(); paint(); }
@@ -402,7 +403,7 @@
       if (!b) return;
       ev.preventDefault();
       if (b.dataset && b.dataset.rdcartBusy) return;
-      var added = add(b.getAttribute('data-name'), b.getAttribute('data-price'), b.getAttribute('data-url'), b.getAttribute('data-product-id'), b.getAttribute('data-option-id'), b.getAttribute('data-option-label'), b.getAttribute('data-stock'));
+      var added = add(b.getAttribute('data-name'), b.getAttribute('data-price'), b.getAttribute('data-url'), b.getAttribute('data-product-id'), b.getAttribute('data-option-id'), b.getAttribute('data-option-label'), b.getAttribute('data-stock'), b.getAttribute('data-quantity'));
       var was = b.textContent;
       var wasLabel = b.getAttribute('aria-label');
       b.dataset.rdcartBusy = '1';

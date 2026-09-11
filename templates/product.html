@@ -174,7 +174,11 @@
 
     <aside class="mobile-purchase-bar" data-mobile-purchase hidden aria-label="빠른 구매">
       <div><span data-sticky-model>Himawari</span><strong data-sticky-price></strong></div>
-      <button type="button" data-sticky-option hidden>옵션 선택</button>
+      <div class="purchase-controls" data-purchase-controls>
+        <label class="purchase-option">옵션 선택<select data-sticky-select aria-describedby="purchase-selection-help"></select></label>
+        <div class="purchase-quantity"><span id="purchase-quantity-label">수량</span><div class="purchase-stepper" role="group" aria-labelledby="purchase-quantity-label"><button type="button" data-quantity-minus disabled aria-label="수량 줄이기">−</button><output data-purchase-quantity aria-live="polite">1</output><button type="button" data-quantity-plus disabled aria-label="수량 늘리기">+</button></div></div>
+        <p id="purchase-selection-help" data-purchase-help></p>
+      </div>
       <a data-sticky-buy href="checkout.html">구매하기</a>
             <section class="npay-purchase" data-npay-product-section aria-labelledby="npay-product-title" hidden>
               <p id="npay-product-title" class="npay-purchase__label">Npay로 구매</p>

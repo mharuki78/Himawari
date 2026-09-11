@@ -31,3 +31,19 @@
 .mobile-purchase-bar > a:focus-visible, .mobile-purchase-bar > button:focus-visible { outline: 3px solid var(--harbor); outline-offset: 3px; }
 .product-detail-actions .direct-buy-link { background: var(--harbor); border-color: var(--harbor); color: var(--snow); }
 .product-detail-actions .direct-buy-link:hover { background: var(--ink); border-color: var(--ink); color: var(--snow); }
+
+/* The native select shares the product option state; the stepper uses checkout limits. */
+.mobile-purchase-bar > .purchase-controls { order: 3; flex: 0 0 100%; display: grid; grid-template-columns: minmax(0, 1fr) 120px; gap: 5px 12px; min-width: 0; }
+.mobile-purchase-bar > .npay-purchase { order: 4; }
+.purchase-option { display: grid; gap: 5px; min-width: 0; font-size: 12px; font-weight: 650; }
+.purchase-option select { width: 100%; min-width: 0; min-height: 42px; padding: 8px 10px; border: 1px solid var(--color-fog); border-radius: 10px; background: var(--snow); color: var(--ink); font: inherit; font-size: 14px; cursor: pointer; }
+.purchase-option select:disabled { cursor: default; color: var(--harbor); background: var(--ivory); }
+.purchase-quantity { display: grid; gap: 5px; font-size: 12px; font-weight: 650; }
+.purchase-stepper { display: grid; grid-template-columns: 38px 1fr 38px; align-items: center; border: 1px solid var(--color-fog); border-radius: 10px; overflow: hidden; }
+.purchase-stepper button { min-height: 40px; padding: 0; border: 0; background: var(--snow); color: var(--harbor); font: inherit; font-size: 20px; cursor: pointer; }
+.purchase-stepper button:hover:not(:disabled) { background: var(--ivory); }
+.purchase-stepper button:disabled { opacity: .4; cursor: default; }
+.purchase-stepper output { text-align: center; font-size: 14px; font-variant-numeric: tabular-nums; }
+.purchase-option select:focus-visible, .purchase-stepper button:focus-visible { outline: 2px solid var(--harbor); outline-offset: -3px; }
+.purchase-controls > p { grid-column: 1 / -1; margin: 0; font-size: 11px; line-height: 1.45; color: var(--harbor); }
+@media (max-width: 360px) { .mobile-purchase-bar > .purchase-controls { grid-template-columns: minmax(0, 1fr) 104px; gap: 5px 8px; } .purchase-stepper { grid-template-columns: 32px 1fr 32px; } }
