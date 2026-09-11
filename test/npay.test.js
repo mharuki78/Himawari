@@ -48,16 +48,16 @@ function sameOriginRequest(path, body) {
 
 test('유입 쿠키 두 종류를 XML로 전달하며 누락 시 빈 필드를 유지한다', () => {
   const product = publicProduct(seedCatalog().products[0]);
-  const request = new Request('https://allaboutbag.com', { headers: { cookie: 'NA_CO=inflow%26code; NVADID=click%3D123' } });
-  const args = { config: { shopId: 'shop', certiKey: 'cert' }, items: [{ product, quantity: 1 }], backUrl: 'https://allaboutbag.com' };
+  const request = new Request('https://himawari.co.kr', { headers: { cookie: 'NA_CO=inflow%26code; NVADID=click%3D123' } });
+  const args = { config: { shopId: 'shop', certiKey: 'cert' }, items: [{ product, quantity: 1 }], backUrl: 'https://himawari.co.kr' };
   const body = buildOrderXml({ ...args, naverInflowCode: readNaverInflowCode(request), saClickId: readNaverSaClickId(request) });
   assert.match(body, /<naverInflowCode>inflow&amp;code<\/naverInflowCode>/);
   assert.match(body, /<saClickId>click=123<\/saClickId>/);
   assert.match(buildOrderXml(args), /<naverInflowCode><\/naverInflowCode><saClickId><\/saClickId>/);
-  assert.equal(readNaverSaClickId(new Request('https://allaboutbag.com')), '');
+  assert.equal(readNaverSaClickId(new Request('https://himawari.co.kr')), '');
   for (const xml of [body, buildProductInformationXml([product])]) {
-    assert.match(xml, /<infoUrl>https:\/\/allaboutbag\.com\/product\.html\?id=/);
-    assert.doesNotMatch(xml, /<infoUrl>https:\/\/himawari/);
+    assert.match(xml, /<infoUrl>https:\/\/himawari\.co\.kr\/product\.html\?id=/);
+    assert.doesNotMatch(xml, /<infoUrl>https:\/\/allaboutbag/);
   }
 });
 

@@ -142,7 +142,7 @@ export function npayProductId(product) {
 }
 
 export function productPageUrl(product) {
-  return `https://allaboutbag.com/product.html?id=${encodeURIComponent(product.id)}`;
+  return `${SITE_ORIGIN}/product.html?id=${encodeURIComponent(product.id)}`;
 }
 
 export function npayOptionManageCode(product, option) {
