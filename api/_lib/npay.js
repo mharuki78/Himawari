@@ -65,6 +65,8 @@ export function npayPublicIsOpen() {
 }
 
 export function npayReviewTokenIsValid(value) {
+  // Old review cookies must never select Sandbox after the public launch.
+  if (npayPublicIsOpen()) return false;
   const expected = clean(process.env.NPAY_REVIEW_TOKEN);
   const received = clean(value);
   if (!expected || !received) return false;
@@ -114,6 +116,7 @@ export function npayConfiguration({ mode: requestedMode } = {}) {
 }
 
 export function npayPublicConfiguration({ review = false } = {}) {
+  review = review && !npayPublicIsOpen();
   const config = npayConfiguration({ mode: review ? 'test' : undefined });
   const visible = review || npayPublicIsOpen();
   return {

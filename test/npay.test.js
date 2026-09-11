@@ -287,3 +287,28 @@ test('Npay 공개 경로는 기존 주문 함수 하나로 통합해 Hobby 함�
   const apiFunctions = files.filter((file) => file.endsWith('.js') && !file.replaceAll('\\', '/').startsWith('_lib/'));
   assert.equal(apiFunctions.length, 12);
 });
+
+test('정식 오픈 후 이전 검수 쿠키와 토큰도 운영 설정과 주문 등록을 사용한다', async () => {
+  const originalFetch = globalThis.fetch;
+  const product = publicProduct(seedCatalog().products[0]);
+  await withEnv({ NPAY_SHOP_ID: 'shop', NPAY_CERTI_KEY: 'cert', NPAY_BUTTON_KEY: 'button', NPAY_ENV: 'production', NPAY_PUBLIC_ENABLED: 'true', NPAY_REVIEW_TOKEN: 'old-review-token' }, async () => {
+    const cookie = '__Host-himawari_npay_review=old-review-token';
+    const response = await configHandler(new Request('https://himawari.co.kr/api/npay/config?reviewToken=old-review-token', { headers: { Cookie: cookie } }));
+    const config = await response.json();
+    assert.equal(config.enabled, true);
+    assert.equal(config.review, false);
+    assert.equal(config.mode, 'production');
+    assert.match(config.sdkUrl, /^https:\/\/npay-order\.pstatic\.net\//);
+    assert.equal(npayPublicConfiguration({ review: true }).review, false);
+    let urlUsed = '';
+    globalThis.fetch = async (url) => { urlUsed = String(url); return new Response('SUCCESS:ORDER123:MERCHANT123'); };
+    try {
+      const order = await orderHandler(new Request('https://himawari.co.kr/api/npay/order', {
+        method: 'POST', headers: { Origin: 'https://himawari.co.kr', Cookie: cookie, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reviewToken: 'old-review-token', context: 'product', items: [{ productId: product.id, quantity: 1 }] }),
+      }));
+      assert.equal(order.status, 200);
+      assert.match(urlUsed, /^https:\/\/api\.pay\.naver\.com\//);
+    } finally { globalThis.fetch = originalFetch; }
+  });
+});

@@ -53,3 +53,7 @@
 - 국가법령정보센터 전자상거래법 시행령 제6조: https://www.law.go.kr/LSW/lsInfoP.do?chrClsCd=010202&efYd=20230425&joNo=000600&lsiSeq=250469&urlMode=lsInfoP
 - 네이버페이 주문형 가입 절차 및 연동 설명: https://help.admin.pay.naver.com/faq/content.help?faqId=979
 - 네이버페이 주문형 쇼핑몰 URL 안내: https://help.admin.pay.naver.com/faq/content.help?faqId=6114
+
+## Npay 정식 오픈 (2026-09-11)
+
+사용자가 네이버페이센터 최종 승인 완료를 확인하고 전 상품 공개를 요청했다. 운영 환경에서 NPAY_PUBLIC_ENABLED=true, NPAY_ENV=production을 사용한다. 회원 로그인 여부와 무관하게 판매 상품 상세의 공식 Npay 버튼과 상품이 담긴 비회원 장바구니 버튼을 표시한다. 품절 및 필수 옵션 검증은 유지한다. 과거 검수 쿠키·토큰은 공개 오픈 이후 Sandbox를 선택하지 못한다. 가맹점 상품 정보 URL은 승인 검수에 사용한 allaboutbag.com 설정을 유지한다.
