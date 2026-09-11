@@ -62,7 +62,7 @@ test('주문서 필수 배송정보와 약관 동의를 검증한다', () => {
     requestId: '9b3571c6-66cb-4f30-85a7-79ca7486054e',
     recipientName: '남 영선',
     email: 'ORDER@example.com',
-    phone: '010-5337-3981',
+    phone: '010-8447-6271',
     postalCode: '15000',
     addressLine1: '경기도 시흥시 배곧4로 32-29',
     addressLine2: '파크뷰 206호',

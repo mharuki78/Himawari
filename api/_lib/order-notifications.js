@@ -24,9 +24,9 @@ export function orderNotificationPayload(order) {
   return {
     from: process.env.ORDER_FROM_EMAIL || process.env.RESTOCK_FROM_EMAIL,
     to: [order.recipient.email], ...(process.env.ORDER_REPLY_TO ? { reply_to: process.env.ORDER_REPLY_TO } : {}),
-    text: ['주문 상태: ' + order.statusLabel, '주문번호: ' + order.orderNumber, ...(order.items || []).map(item => item.name + (item.optionLabel ? ' · ' + item.optionLabel : '') + ' × ' + Number(item.quantity)), '총 주문금액: ' + Number(order.total || 0).toLocaleString('ko-KR') + '원', ...(needsDeposit ? ['무통장입금: ' + bankTransfer.bank + ' ' + bankTransfer.account, '예금주: ' + bankTransfer.holder, '받는 분 이름으로 입금해 주세요. 입금 확인 후 배송을 준비합니다.'] : []), '주문 확인: ' + orderUrl, '고객센터: golf4484@naver.com / 010-5337-3981'].join('\n'),
+    text: ['주문 상태: ' + order.statusLabel, '주문번호: ' + order.orderNumber, ...(order.items || []).map(item => item.name + (item.optionLabel ? ' · ' + item.optionLabel : '') + ' × ' + Number(item.quantity)), '총 주문금액: ' + Number(order.total || 0).toLocaleString('ko-KR') + '원', ...(needsDeposit ? ['무통장입금: ' + bankTransfer.bank + ' ' + bankTransfer.account, '예금주: ' + bankTransfer.holder, '받는 분 이름으로 입금해 주세요. 입금 확인 후 배송을 준비합니다.'] : []), '주문 확인: ' + orderUrl, '고객센터: golf4484@naver.com / 010-8447-6271'].join('\n'),
     subject: `[Himawari] ${order.orderNumber} · ${order.statusLabel}`,
-    html: `<div style="font-family:Arial,sans-serif;line-height:1.7;color:#223229;max-width:620px"><h1 style="font-size:24px">주문 상태: ${html(order.statusLabel)}</h1><p>주문번호 <strong>${html(order.orderNumber)}</strong></p><ul>${lines}</ul><p>총 주문금액 <strong>${Number(order.total || 0).toLocaleString('ko-KR')}원</strong></p>${deposit}${tracking}<p><a href="${html(orderUrl)}">주문 확인하기</a></p><hr><p style="font-size:12px">히마와리 코리아 · golf4484@naver.com · 010-5337-3981</p></div>`,
+    html: `<div style="font-family:Arial,sans-serif;line-height:1.7;color:#223229;max-width:620px"><h1 style="font-size:24px">주문 상태: ${html(order.statusLabel)}</h1><p>주문번호 <strong>${html(order.orderNumber)}</strong></p><ul>${lines}</ul><p>총 주문금액 <strong>${Number(order.total || 0).toLocaleString('ko-KR')}원</strong></p>${deposit}${tracking}<p><a href="${html(orderUrl)}">주문 확인하기</a></p><hr><p style="font-size:12px">히마와리 코리아 · golf4484@naver.com · 010-8447-6271</p></div>`,
   };
 }
 async function deliver(row) {

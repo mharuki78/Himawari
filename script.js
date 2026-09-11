@@ -607,8 +607,8 @@ if (footerBusiness && !footerBusiness.querySelector('a[href^="tel:"]')) {
   const detail = document.createElement('dd');
   const phone = document.createElement('a');
   term.textContent = '고객센터';
-  phone.href = 'tel:+821053373981';
-  phone.textContent = '010-5337-3981';
+  phone.href = 'tel:+821084476271';
+  phone.textContent = '010-8447-6271';
   detail.append(phone);
   item.append(term, detail);
   footerBusiness.append(item);
