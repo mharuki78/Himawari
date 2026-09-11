@@ -47,3 +47,25 @@
 .purchase-option select:focus-visible, .purchase-stepper button:focus-visible { outline: 2px solid var(--harbor); outline-offset: -3px; }
 .purchase-controls > p { grid-column: 1 / -1; margin: 0; font-size: 11px; line-height: 1.45; color: var(--harbor); }
 @media (max-width: 360px) { .mobile-purchase-bar > .purchase-controls { grid-template-columns: minmax(0, 1fr) 104px; gap: 5px 8px; } .purchase-stepper { grid-template-columns: 32px 1fr 32px; } }
+
+/* Compact fixed purchase bar: selection above, purchase actions side by side. */
+.mobile-purchase-bar:not([hidden]) { display: grid; grid-template-columns: 104px minmax(0, 1fr); width: min(580px, calc(100% - 24px)); gap: 8px 12px; padding: 10px 12px; border-radius: 16px; }
+.mobile-purchase-bar > div:first-child { gap: 0; min-width: 0; line-height: 1.4; }
+.mobile-purchase-bar > div:first-child > span { font-size: 11px; }
+.mobile-purchase-bar > div:first-child > strong { font-size: 16px; line-height: 1.5; }
+.mobile-purchase-bar > .purchase-controls { order: initial; grid-column: 2; grid-row: 1; grid-template-columns: minmax(0, 1fr) 100px; gap: 4px 8px; }
+.mobile-purchase-bar .purchase-option, .mobile-purchase-bar .purchase-quantity { gap: 3px; font-size: 11px; line-height: 1.3; }
+.mobile-purchase-bar .purchase-option select { min-height: 38px; padding: 6px 8px; font-size: 13px; }
+.mobile-purchase-bar .purchase-stepper { grid-template-columns: 30px 1fr 30px; }
+.mobile-purchase-bar .purchase-stepper button { min-height: 36px; }
+.mobile-purchase-bar .purchase-controls > p { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.mobile-purchase-bar > a { grid-column: 1; grid-row: 2; min-height: 40px; padding: 8px 12px; font-size: 13px; }
+.mobile-purchase-bar > .npay-purchase { order: initial; grid-column: 2; grid-row: 2; min-width: 0; }
+.mobile-purchase-bar .npay-button-container { min-height: 40px; margin: 0; max-width: none; }
+.mobile-purchase-bar .npay-status { margin: 4px 0 0; }
+@media (max-width: 480px) {
+  .mobile-purchase-bar:not([hidden]) { grid-template-columns: 88px minmax(0, 1fr); gap: 6px 8px; bottom: max(8px, env(safe-area-inset-bottom)); padding: 8px 10px; }
+  .mobile-purchase-bar > div:first-child { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 8px; }
+  .mobile-purchase-bar > .purchase-controls { grid-column: 1 / -1; grid-row: 2; }
+  .mobile-purchase-bar > a, .mobile-purchase-bar > .npay-purchase { grid-row: 3; }
+}
