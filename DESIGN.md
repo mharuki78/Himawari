@@ -182,3 +182,4 @@ Homepage section alignment is owned by assets/home-layout.css, scoped to .home-l
 
 Contact page layout is scoped in assets/contact-layout.css: a compact left introduction, white right inquiry panel, paired name/email fields on desktop, full-width message and consent, and a single column on mobile. Existing validation and submission behavior remain authoritative.
 Contact introduction includes the existing No.1027 campaign photograph beneath its copy, filling the left column with a cropped lifestyle scene and a small model caption. The form retains an opaque white surface.
+Game landing layout uses assets/game-layout.css for compact headings, aligned introduction/rules, and a No.0422 product photograph between hero and play sections. Game console internals, controls, timing and coupon behavior stay unchanged.
