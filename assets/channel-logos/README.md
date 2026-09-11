@@ -1,0 +1,1 @@
+Brand marks: Instagram, YouTube and NAVER SVGs sourced from https://github.com/simple-icons/simple-icons (CC0). Marks identify destination platforms; all trademarks belong to their owners. NAVER mark accompanies the Smart Store name and merchant URL.

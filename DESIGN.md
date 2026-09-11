@@ -173,3 +173,5 @@ No.0422 쿠폰 게임의 공식 이름은 `HIMAWARI BAG QUEST — 0422 등굣길
 주문서 첫 화면에 공식 Npay 버튼과 무통장입금 선택을 표시한다. 무통장입금을 선택하면 기존 배송정보 폼이 열리고 첫 입력에 포커스를 이동한다. 기존 orders.css의 토큰과 820px 단일 열 기준을 유지한다. 계좌 안내는 주문 전과 완료 화면에 동일하게 표시한다.
 
 Fixed purchase bar compact layout: maximum width 580px; desktop uses two rows and mobile three compact rows. General buy and official Npay buttons share a row. Option help remains available to assistive technology; selection and quantity controls retain their labels and keyboard behavior.
+
+Contact channel cards use three equal white cards on desktop and one column on mobile, with platform logos, channel handles, and a clear external-link affordance. Brand colors are limited to platform marks.

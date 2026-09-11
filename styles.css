@@ -437,3 +437,24 @@ p { max-width: 40ch; text-wrap: pretty; }
   .contact-form--light button,
   .contact-action { box-shadow: none; }
 }
+
+/* Contact channels: recognizable brand marks, clear destinations, compact cards. */
+.contact-channels .section-head { margin-bottom: 2rem; }
+.contact-channels .display-title { max-width: none; font-size: clamp(2rem, 3.8vw, 3.5rem); line-height: 1.2; }
+.channel-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.channel-card { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(24px, 2.5vw, 36px); border: 1px solid var(--color-fog); border-radius: var(--radius-card); background: var(--snow); color: var(--ink); text-decoration: none; box-shadow: var(--shadow-card); }
+.channel-card:hover { border-color: var(--harbor); background: var(--color-sage-wash); }
+.channel-card:focus-visible { outline: 3px solid var(--harbor); outline-offset: 4px; }
+.channel-card__top { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 26px; }
+.channel-card__logo { width: 56px; height: 56px; display: grid; place-items: center; border-radius: 16px; background: var(--ivory); }
+.channel-card__logo img { width: 30px; height: 30px; object-fit: contain; }
+.channel-card__arrow { font-size: 25px; color: var(--harbor); }
+.channel-card__name { font-size: clamp(20px, 2vw, 26px); font-weight: 750; letter-spacing: -.035em; line-height: 1.3; }
+.channel-card__address { margin-top: 8px; font-size: 13px; color: var(--harbor); overflow-wrap: anywhere; }
+.channel-card__description { margin: 20px 0 28px; font-size: 14px; line-height: 1.7; }
+.channel-card__action { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--color-fog); width: 100%; font-size: 13px; font-weight: 700; display: flex; justify-content: space-between; }
+@media (max-width: 760px) { .channel-cards { grid-template-columns: 1fr; gap: 14px; } .channel-card { padding: 24px; } .channel-card__top { margin-bottom: 18px; } .channel-card__description { margin: 14px 0 20px; } }
+
+.contact-channels { padding-bottom: 3rem; }
+#contact-channels-title { scroll-margin-top: 140px; }
+.contact-support-links { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--page-pad) 4rem; font-size: 14px; line-height: 1.8; }
