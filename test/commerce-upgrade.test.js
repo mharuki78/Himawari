@@ -53,3 +53,15 @@ test('주문 안내는 HTML을 이스케이프하고 비회원 대표 주소로 
  const payload=orderNotificationPayload({orderNumber:'HMW-test',recipient:{email:'customer@example.test'},statusLabel:'결제 대기',items:[{name:'<img src=x>',quantity:1}],isGuest:true,total:100});
  assert.ok(payload.html.includes('&lt;img src=x&gt;'));assert.ok(payload.html.includes('https://himawari.co.kr/guest-order.html'));assert.ok(!payload.html.includes('결제 완료'));
 });
+
+test('무통장입금 대기 메일에만 계좌와 예금주를 안내한다',()=>{
+ const order={orderNumber:'HMW-mail-test',paymentMethod:'bank_transfer',status:'payment_pending',statusLabel:'입금 대기',recipient:{email:'customer@example.test'},items:[{name:'가방',optionLabel:'블랙',quantity:2}],isGuest:true,total:123520};
+ const pending=orderNotificationPayload(order);
+ assert.deepEqual(pending.to,['customer@example.test']);
+ assert.match(pending.html,/302-2049-2431-81/);
+ assert.match(pending.text,/남영선\(히마와리 코리아\)/);
+ assert.match(pending.html,/guest-order.html\?order=HMW-mail-test/);
+ assert.match(pending.text,/123,520원/);
+ assert.doesNotMatch(orderNotificationPayload({...order,status:'cancelled'}).html,/302-2049-2431-81/);
+ assert.doesNotMatch(orderNotificationPayload({...order,status:'confirmed'}).text,/302-2049-2431-81/);
+});
