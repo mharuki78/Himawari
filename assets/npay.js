@@ -18,7 +18,7 @@ function setStatus(section, message, isError = false) {
 
 function buttonErrorMessage(error) {
   if (/origin verification failed/i.test(String(error?.message || ''))) {
-    sdkBlockedMessage = '네이버페이 Sandbox에 검수 도메인을 확인하고 있습니다.';
+    sdkBlockedMessage = '네이버페이 연결을 확인하고 있습니다. 잠시 후 다시 이용해 주세요.';
     return sdkBlockedMessage;
   }
   return '네이버페이 버튼을 준비하지 못했습니다. 잠시 후 다시 시도해 주세요.';
