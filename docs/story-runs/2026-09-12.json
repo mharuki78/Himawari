@@ -1,0 +1,44 @@
+{
+  "date": "2026-09-12",
+  "automationId": "himawari-3",
+  "posts": [
+    {
+      "id": "weekend-sketch-backpack-guide",
+      "title": "주말 드로잉 백팩: 한 장을 그리러 나가는 가벼운 준비",
+      "url": "https://himawari.co.kr/story/weekend-sketch-backpack-guide.html",
+      "productId": "coupang-11bd051a162f120b",
+      "model": "No.9004",
+      "image": "assets/story/weekend-sketch-backpack-guide.webp",
+      "imageKind": "generated",
+      "reference": "backups/coupang/2026-09-10T08-11-36.118Z/coupang-11bd051a162f120b.jpg"
+    },
+    {
+      "id": "backpack-pouch-identification-guide",
+      "title": "백팩 속 비슷한 파우치, 열어보지 않고 구분하는 법",
+      "url": "https://himawari.co.kr/story/backpack-pouch-identification-guide.html",
+      "productId": "coupang-3d4fbf39120dea6f",
+      "model": "No.1010",
+      "image": "assets/story/backpack-pouch-identification-guide.webp",
+      "imageKind": "original",
+      "reference": "backups/coupang/2026-09-10T08-03-11.192Z/coupang-3d4fbf39120dea6f.jpg"
+    },
+    {
+      "id": "backpack-parcel-packing-guide",
+      "title": "백팩을 택배로 보낼 때: 가방과 상자 사이의 여유 만들기",
+      "url": "https://himawari.co.kr/story/backpack-parcel-packing-guide.html",
+      "productId": "coupang-c5708abbb7659109",
+      "model": "No.1089",
+      "image": "assets/story/backpack-parcel-packing-guide.webp",
+      "imageKind": "original",
+      "reference": "backups/coupang/2026-09-10T08-03-11.192Z/coupang-c5708abbb7659109.jpg"
+    }
+  ],
+  "generation": {
+    "tool": "built-in image_gen",
+    "source": "C:/Users/UserK/.codex/generated_images/01a08495-edb2-74e2-b203-1f9e52e791cd/exec-f8f677fb-5251-4afb-b5f6-0e3800468aca.png",
+    "prompt": "Use the exact No.9004 lavender/coral reference backpack, preserving logo, shape, colors, pockets and zippers. Entire closed bag on a light wood table beside a small sketchbook, pencils and plain pencil case; soft daylight, horizontal 3:2, no people or added text."
+  },
+  "topicsReviewed": 35,
+  "overlapReview": "Reviewed all 35 titles, summaries and article bodies. New focus: dry drawing tools for a single sketch outing (not general day-trip packing); exterior identification of similar pouches (not sorting cables or reducing contents); parcel preparation for sending the bag itself (not long-term storage or the legacy packaging-development story). Three distinct models and images.",
+  "completionReceipt": "backups/story-runs/2026-09-12.deployment.json"
+}
