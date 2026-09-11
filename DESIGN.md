@@ -177,3 +177,5 @@ Fixed purchase bar compact layout: maximum width 580px; desktop uses two rows an
 Contact channel cards use three equal white cards on desktop and one column on mobile, with platform logos, channel handles, and a clear external-link affordance. Brand colors are limited to platform marks.
 
 Home About section uses a single left reading column (eyebrow, heading, lead, supporting copy), a right-aligned product card, and three principles beneath. Desktop text and product share the same row group. Mobile stacks content with a right-aligned card; the card does not float or rotate in this layout.
+
+Homepage section alignment is owned by assets/home-layout.css, scoped to .home-layout: 1160px content rail, left-aligned section headings, 32–52px heading scale, balanced image/copy columns, contained featured imagery, and compact full product names with existing purchase controls. Campaign, journal, game, reels and inquiry use the same spacing rhythm; mobile stacks columns without removing content or actions.
