@@ -175,3 +175,5 @@ No.0422 쿠폰 게임의 공식 이름은 `HIMAWARI BAG QUEST — 0422 등굣길
 Fixed purchase bar compact layout: maximum width 580px; desktop uses two rows and mobile three compact rows. General buy and official Npay buttons share a row. Option help remains available to assistive technology; selection and quantity controls retain their labels and keyboard behavior.
 
 Contact channel cards use three equal white cards on desktop and one column on mobile, with platform logos, channel handles, and a clear external-link affordance. Brand colors are limited to platform marks.
+
+Home About section uses a single left reading column (eyebrow, heading, lead, supporting copy), a right-aligned product card, and three principles beneath. Desktop text and product share the same row group. Mobile stacks content with a right-aligned card; the card does not float or rotate in this layout.

@@ -1585,3 +1585,30 @@ html {
   .journal-pencil, .journal-pencil-trail { display: none; }
   .journal.is-pencil-active, .journal.is-pencil-active * { cursor: auto; }
 }
+
+/* Home brand introduction: one reading column with the product alongside it. */
+.intro--aligned { min-height: auto; padding-block: clamp(64px, 7vw, 100px); scroll-margin-top: 90px; }
+.intro--aligned > .section-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 300px); column-gap: clamp(40px, 7vw, 100px); align-items: start; max-width: 1160px; }
+.intro--aligned .kicker { grid-column: 1; margin: 0 0 20px; }
+.intro--aligned .display-title { grid-column: 1; max-width: none; margin: 0; font-size: clamp(36px, 4.5vw, 64px); line-height: 1.16; letter-spacing: -.045em; text-shadow: none; }
+.intro--aligned .accent-word { text-shadow: none; }
+.intro--aligned .intro-grid { grid-column: 1; display: grid; grid-template-columns: 1fr; gap: 18px; margin: 28px 0 0; }
+.intro--aligned .intro-lede { max-width: none; font-size: clamp(18px, 1.6vw, 22px); line-height: 1.65; font-weight: 500; }
+.intro--aligned .intro-lede br { display: none; }
+.intro--aligned .body-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 580px; font-size: 14px; line-height: 1.85; }
+.intro--aligned .body-copy p { margin: 0; }
+.intro--aligned .bag-journey { grid-column: 2; grid-row: 1 / span 3; align-self: center; justify-self: end; width: 100%; max-width: 300px; margin: 0; padding: 16px; transform: none; opacity: 1; }
+.intro--aligned .bag-journey__label { font-size: 10px; }
+.intro--aligned .bag-journey__action { font-size: 12px; }
+.intro--aligned .principles { grid-column: 1 / -1; width: 100%; margin: 40px 0 0; gap: 24px; }
+.intro--aligned .principles > div { padding: 20px 0 0; }
+.intro--aligned .principles dd { max-width: none; opacity: 1; }
+@media (max-width: 760px) {
+  .intro--aligned > .section-inner { grid-template-columns: minmax(0, 1fr); }
+  .intro--aligned .display-title { font-size: clamp(32px, 7.5vw, 48px); }
+  .intro--aligned .body-copy { gap: 16px; }
+  .intro--aligned .bag-journey { grid-column: 1; grid-row: auto; width: min(100%, 260px); margin-top: 28px; justify-self: end; }
+  .intro--aligned .principles { grid-column: 1; gap: 0; margin-top: 32px; }
+  .intro--aligned .principles > div { padding: 16px 0; }
+}
+@media (max-width: 480px) { .intro--aligned .body-copy { grid-template-columns: 1fr; gap: 12px; } }
