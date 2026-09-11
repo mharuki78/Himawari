@@ -1,4 +1,6 @@
 import { purchaseQuantity } from './purchase-quantity.js';
+import { initializeCheckoutNpay } from './npay.js';
+import { bankTransfer, bankTransferReady } from './bank-transfer.js';
 (function () {
   'use strict';
 
@@ -263,6 +265,16 @@ import { purchaseQuantity } from './purchase-quantity.js';
     return values;
   }
 
+  document.querySelectorAll('[data-bank-account]').forEach(function (node) { node.textContent = [bankTransfer.bank, bankTransfer.account, bankTransfer.holder && '예금주 ' + bankTransfer.holder].filter(Boolean).join(' · '); });
+  var bankButton = document.querySelector('[data-bank-select]');
+  bankButton.disabled = !bankTransferReady();
+  document.querySelector('[data-bank-availability]').textContent = bankTransferReady() ? '' : '입금 계좌를 준비하고 있습니다. Npay로 구매해 주세요.';
+  bankButton.addEventListener('click', function () {
+    form.hidden = false;
+    bankButton.setAttribute('aria-expanded', 'true');
+    field('recipientName').focus();
+  });
+
   async function load() {
     showOnly(loading);
     try {
@@ -316,6 +328,7 @@ import { purchaseQuantity } from './purchase-quantity.js';
       }
       renderItems();
       showOnly(workspace);
+      initializeCheckoutNpay(() => items.map(item => ({ productId: item.productId, optionId: item.optionId || '', quantity: item.quantity })), () => { dirty = false; });
     } catch (error) {
       failureMessage.textContent = error.message;
       showOnly(failure);
@@ -336,7 +349,7 @@ import { purchaseQuantity } from './purchase-quantity.js';
 
   form.addEventListener('submit', async function (event) {
     event.preventDefault();
-    if (submitButton.disabled) return;
+    if (submitButton.disabled || !bankTransferReady() || form.hidden) return;
     var values = validate();
     if (!values) return;
     submitButton.disabled = true;
@@ -349,6 +362,7 @@ import { purchaseQuantity } from './purchase-quantity.js';
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           requestId: requestId,
+          paymentMethod: 'bank_transfer',
           items: items.map(function (item) { return { productId: item.productId, optionId: item.optionId || '', quantity: item.quantity }; }),
           recipientName: values.recipientName,
           email: values.email,
@@ -391,7 +405,7 @@ import { purchaseQuantity } from './purchase-quantity.js';
     } finally {
       submitButton.disabled = false;
       submitButton.removeAttribute('aria-busy');
-      submitLabel.textContent = '결제 대기로 주문 접수';
+      submitLabel.textContent = '무통장입금 주문 접수';
     }
   });
 

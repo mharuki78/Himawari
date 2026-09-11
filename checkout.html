@@ -35,7 +35,7 @@
       <nav class="checkout-breadcrumb" aria-label="주문 경로"><ol><li><a href="products.html">제품</a></li><li aria-current="page">주문서</li></ol></nav>
       <header class="checkout-heading">
         <div><p class="kicker">Himawari order</p><h1>선택한 가방을<br><span class="accent-word">주문합니다.</span></h1></div>
-        <p>상품과 배송 정보를 한 번 더 확인해 주세요. 지금은 PG 결제 연결 전이므로 주문은 <strong>결제 대기</strong> 상태로 안전하게 접수됩니다.</p>
+        <p>Npay 또는 무통장입금으로 구매할 수 있습니다. 결제 방법을 선택한 뒤 주문을 이어가세요.</p>
       </header>
 
       <section class="order-page-state" data-checkout-loading role="status" aria-live="polite">
@@ -49,7 +49,12 @@
       </section>
 
       <div class="checkout-workspace" data-checkout-content hidden>
-        <form class="checkout-form" data-checkout-form novalidate>
+        <section class="checkout-section checkout-methods" aria-labelledby="purchase-method-title">
+            <div class="checkout-section__head"><p class="kicker">Payment</p><h2 id="purchase-method-title">구매 방법을 선택하세요.</h2></div>
+            <div data-npay-checkout-section><h3>Npay 구매</h3><p>네이버 주문서에서 배송지와 결제 수단을 선택합니다.</p><div id="npay-checkout-button"></div><p data-npay-status role="status">Npay 버튼을 준비하고 있습니다.</p></div>
+            <div><h3>무통장입금</h3><p>배송정보를 입력하고 주문을 접수한 뒤 입금합니다.</p><button type="button" class="order-primary-link" data-bank-select disabled aria-expanded="false">무통장입금으로 주문하기 →</button><p data-bank-availability role="status"></p></div>
+          </section>
+        <form class="checkout-form" data-checkout-form novalidate hidden>
           <aside class="checkout-member-note" data-checkout-guest-note hidden aria-labelledby="checkout-guest-title">
             <div><p class="kicker">Guest order</p><h2 id="checkout-guest-title">비회원으로 주문합니다.</h2><p>회원가입 없이 주문을 접수할 수 있습니다. 로그인하면 장바구니와 주문 내역을 계정에서 이어서 볼 수 있습니다.</p></div>
             <button type="button" class="order-secondary-link" data-member-open>간편 로그인</button>
@@ -109,9 +114,9 @@
           </section>
 
           <section class="checkout-section" aria-labelledby="payment-title">
-            <div class="checkout-section__head"><p class="kicker">Payment</p><h2 id="payment-title">결제 상태</h2></div>
+            <div class="checkout-section__head"><p class="kicker">Payment</p><h2 id="payment-title">무통장입금 안내</h2></div>
             <div class="payment-pending-card">
-              <span aria-hidden="true">—</span><div><strong>PG 결제 연결 준비 중</strong><p>이 단계에서는 결제가 실행되지 않습니다. 주문은 결제 대기로 접수되며, 결제 완료로 표시하거나 출고하지 않습니다.</p></div>
+              <span aria-hidden="true">—</span><div><strong data-bank-account></strong><p>주문 접수 후 총 주문금액을 받는 분 이름으로 입금해 주세요. 입금자명이 다르면 주문번호와 입금자명을 고객센터에 알려주세요. 입금 확인 후 배송을 준비합니다.</p></div>
             </div>
           </section>
 
@@ -126,7 +131,7 @@
           <p class="checkout-submit-status" data-checkout-submit-status role="status" aria-live="polite"></p>
           <div class="checkout-submit-bar">
             <a href="products.html" class="order-secondary-link">제품 더 보기</a>
-            <button type="submit" class="order-primary-link"><span data-order-submit-label>결제 대기로 주문 접수</span><span aria-hidden="true">→</span></button>
+            <button type="submit" class="order-primary-link"><span data-order-submit-label>무통장입금 주문 접수</span><span aria-hidden="true">→</span></button>
           </div>
         </form>
 
@@ -145,8 +150,8 @@
 
       <section class="order-complete" data-order-complete hidden aria-labelledby="order-complete-title">
         <p class="kicker">Order received</p><h1 id="order-complete-title" tabindex="-1">주문을 접수했습니다.</h1>
-        <p>아직 결제는 이루어지지 않았습니다. 결제 수단 연결 전까지 주문은 <strong>결제 대기</strong>로 보관됩니다. 비회원도 주문번호와 주문 정보로 상태를 확인할 수 있습니다.</p>
-        <dl><div><dt>주문번호</dt><dd data-complete-number></dd></div><div><dt>주문금액</dt><dd data-complete-total></dd></div><div><dt>현재 상태</dt><dd>결제 대기</dd></div></dl>
+        <p>아래 계좌로 총 주문금액을 입금해 주세요. 입금 확인 전에는 <strong>입금 대기</strong>로 표시됩니다. 비회원도 주문번호와 주문 정보로 상태를 확인할 수 있습니다.</p><p data-bank-account></p><p>입금자명은 받는 분 이름으로 적어주세요.</p>
+        <dl><div><dt>주문번호</dt><dd data-complete-number></dd></div><div><dt>주문금액</dt><dd data-complete-total></dd></div><div><dt>현재 상태</dt><dd>입금 대기</dd></div></dl>
         <div><a class="order-primary-link" href="account.html#orders" data-member-order-link>내 주문 확인 <span aria-hidden="true">→</span></a><a class="order-primary-link" href="guest-order.html" data-guest-order-link hidden>비회원 주문 조회 <span aria-hidden="true">→</span></a><a class="order-secondary-link" href="products.html">제품 더 보기</a></div>
       </section>
     </main>

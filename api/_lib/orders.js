@@ -1,3 +1,4 @@
+import { bankTransferReady } from '../../assets/bank-transfer.js';
 import { CONFIRM_ORDER_SQL, CANCEL_ORDER_SQL } from './order-transactions.js';
 import { randomUUID } from 'node:crypto';
 
@@ -250,7 +251,7 @@ function mapOrderRow(row, items = [], events = [], includeAdminNotes = false) {
   return {
     orderNumber: row.order_number,
     status,
-    statusLabel: ORDER_STATUS[status].label,
+    statusLabel: status === 'payment_pending' && row.payment_method === 'bank_transfer' ? '입금 대기' : ORDER_STATUS[status].label,
     paymentMethod: row.payment_method,
     isGuest: !row.user_id,
     subtotal: Number(row.subtotal),
@@ -324,12 +325,14 @@ async function readOrderById(id) {
 }
 
 export async function createOrder(member, input) {
+  if (input?.paymentMethod && input.paymentMethod !== 'bank_transfer') throw Object.assign(new Error('결제 방법을 다시 선택해 주세요.'), { status: 400 });
   const fields = validateOrderFields(input);
   const itemInput = validateOrderItems(input?.items);
   const fieldErrors = { ...fields.fieldErrors, ...itemInput.fieldErrors };
   if (Object.keys(fieldErrors).length) {
     throw Object.assign(new Error('주문서 내용을 확인해 주세요.'), { status: 400, fieldErrors });
   }
+  if (!bankTransferReady()) throw Object.assign(new Error('무통장입금 계좌를 준비하고 있습니다. Npay로 구매해 주세요.'), { status: 503 });
   await ensureOrderSchema();
 
   const existing = await readExistingOrder(fields.value.requestId, fields.value.email);
@@ -387,14 +390,14 @@ export async function createOrder(member, input) {
     sql`INSERT INTO orders (
       id, order_number, request_id, user_id, member_email, recipient_name, email, phone,
       postal_code, address_line1, address_line2, delivery_note, subtotal, coupon_id, coupon_label,
-      discount_amount, shipping_fee, total,
+      discount_amount, shipping_fee, total, payment_method,
       terms_agreed_at, privacy_agreed_at, retention_until
     ) VALUES (
       ${id}, ${number}, ${fields.value.requestId}, ${member?.id || null}, ${member?.email || null},
       ${fields.value.recipientName}, ${fields.value.email}, ${fields.value.phone},
       ${fields.value.postalCode}, ${fields.value.addressLine1}, ${fields.value.addressLine2 || null},
       ${fields.value.deliveryNote || null}, ${totals.subtotal}, ${coupon?.id || null}, ${coupon?.label || null},
-      ${totals.discountAmount}, ${totals.shippingFee}, ${totals.total},
+      ${totals.discountAmount}, ${totals.shippingFee}, ${totals.total}, 'bank_transfer',
       ${now.toISOString()}, ${now.toISOString()}, ${retentionUntil.toISOString()}
     )`,
     ...items.map((item) => sql`INSERT INTO order_items (
@@ -404,7 +407,7 @@ export async function createOrder(member, input) {
       ${item.quantity}, ${item.unitPrice * item.quantity}, ${item.image || null}
     )`),
     sql`INSERT INTO order_events (id, order_id, actor, from_status, to_status, note)
-      VALUES (${randomUUID()}, ${id}, ${member ? 'member' : 'system'}, ${null}, 'payment_pending', ${member ? '회원 주문 접수 · PG 결제 연결 전' : '비회원 주문 접수 · PG 결제 연결 전'})`,
+      VALUES (${randomUUID()}, ${id}, ${member ? 'member' : 'system'}, ${null}, 'payment_pending', ${member ? '회원 무통장입금 주문 접수 · 입금 확인 대기' : '비회원 무통장입금 주문 접수 · 입금 확인 대기'})`,
   ];
 
   try {

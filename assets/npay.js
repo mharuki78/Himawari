@@ -220,3 +220,29 @@ export async function initializeNpay({ cartItems = [] } = {}) {
     }
   }
 }
+
+export async function initializeCheckoutNpay(getItems, onNavigate = () => {}) {
+  const section = document.querySelector('[data-npay-checkout-section]');
+  const container = section?.querySelector('#npay-checkout-button');
+  if (!container || container.dataset.npayReady === 'true') return;
+  container.dataset.npayReady = 'true';
+  try {
+    const checkoutConfig = await requestJson('/api/npay/config');
+    if (!checkoutConfig.enabled || checkoutConfig.review) throw new Error('현재 Npay 구매를 이용할 수 없습니다.');
+    await loadSdk(checkoutConfig.sdkUrl);
+    await window.Npay.order.create({
+      buttonKey: checkoutConfig.buttonKey, containerId: container.id,
+      orderRegistrationVersion: '2.1', type: 'template', colorTheme: 'green', enable: true,
+      components: { wishlist: false, talkTalk: false, benefitMessage: false, benefitCoachMark: false },
+      onBuyClick: async () => {
+        const result = await registerOrder(getItems(), 'cart', section);
+        if (result) onNavigate();
+        return result;
+      },
+    });
+    setStatus(section, '배송비와 혜택은 네이버 주문서에서 최종 확인해 주세요. 자사몰 쿠폰은 무통장입금 주문에 적용됩니다.');
+  } catch (error) {
+    delete container.dataset.npayReady;
+    setStatus(section, error.message || 'Npay 버튼을 불러오지 못했습니다. 페이지를 새로고침해 주세요.', true);
+  }
+}

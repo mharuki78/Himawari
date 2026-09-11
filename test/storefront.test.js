@@ -267,15 +267,15 @@ test('공개 사이트는 분석·성능 측정, 브랜드 404와 기본 보안 
   assert.equal(globalHeaders.some((header) => header.key === 'X-Frame-Options'), true);
 });
 
-test('내부 주문서는 PG 미연결 경계와 앱 소유 검증을 명확히 표시한다', async () => {
+test('내부 주문서는 Npay와 무통장입금 선택 및 앱 소유 검증을 표시한다', async () => {
   const html = await readFile(new URL('../checkout.html', import.meta.url), 'utf8');
 
   assert.match(html, /data-checkout-form novalidate/);
   assert.match(html, /data-checkout-guest-note/);
   assert.match(html, /회원가입 없이 주문을 접수할 수 있습니다/);
   assert.doesNotMatch(html, /data-checkout-login/);
-  assert.match(html, /결제 대기로 주문 접수/);
-  assert.match(html, /PG 결제 연결 준비 중/);
+  assert.match(html, /무통장입금 주문 접수/);
+  assert.match(html, /data-npay-checkout-section/);
   assert.doesNotMatch(html, /네이버페이 구매|카카오페이|결제 완료로 주문/);
 });
 
