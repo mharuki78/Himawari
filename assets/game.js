@@ -931,8 +931,20 @@
   pauseButton.addEventListener('click', function () {
     setPause(!state.paused, state.paused ? '게임을 계속합니다.' : '게임을 잠시 멈췄습니다.');
   });
-  jumpButton.addEventListener('click', jumpPlayer);
-  fireButton.addEventListener('click', fireSlingshot);
+  // Secondary touch pointers may never generate click while the joystick is held.
+  function bindAction(button, action) {
+    button.addEventListener('pointerdown', function (event) {
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      event.preventDefault();
+      action();
+    });
+    button.addEventListener('click', function (event) {
+      // Preserve keyboard/assistive activation without firing twice after a tap.
+      if (event.detail === 0) action();
+    });
+  }
+  bindAction(jumpButton, jumpPlayer);
+  bindAction(fireButton, fireSlingshot);
   document.addEventListener('keydown', function (event) {
     if (state.phase !== 'catch' || event.isComposing) return;
     var key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
