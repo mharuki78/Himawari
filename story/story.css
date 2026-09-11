@@ -94,3 +94,7 @@
   .story-list-card:hover { background: inherit; }
   .story-list-card:hover .story-list-image { transform: none; }
 }
+
+/* Preserve full product photos used in the September 11 editorial posts. */
+:is(.story-list-image, .story-post-visual img)[src$="backpack-review-reading-guide.webp"],
+:is(.story-list-image, .story-post-visual img)[src$="backpack-keyring-placement-guide.webp"] { object-fit: contain; background: #fff; }
