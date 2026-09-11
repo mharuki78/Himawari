@@ -31,6 +31,8 @@
   var soundLabel = root.querySelector('[data-game-sound-label]');
   var exitButton = root.querySelector('[data-game-exit]');
   var moveButtons = Array.from(root.querySelectorAll('[data-game-move]'));
+  var joystick = root.querySelector('[data-game-joystick]');
+  var stickPointer = null, stickX = 0, stickY = 0;
   var jumpButton = root.querySelector('[data-game-jump]');
   var fireButton = root.querySelector('[data-game-fire]');
   var packingItems = root.querySelector('[data-packing-items]');
@@ -251,6 +253,8 @@
 
   function updateControllerState() {
     var active = state.phase === 'catch';
+    joystick.setAttribute('aria-disabled', String(!active || state.paused));
+    if (!active || state.paused) resetStick();
     moveButtons.forEach(function (button) {
       button.disabled = !active;
       button.classList.toggle('is-pressed', active && state.directions.has(button.dataset.gameMove));
@@ -384,6 +388,7 @@
     state.lastFrame = 0;
     state.lastFootstep = 0;
     state.directions.clear();
+    resetStick();
     state.packFinishing = false;
     state.objects.forEach(function (object) { object.element.remove(); });
     state.objects = [];
@@ -407,6 +412,7 @@
     if (state.phase !== 'catch') return;
     state.paused = paused;
     state.directions.clear();
+    resetStick();
     player.classList.remove('is-walking');
     player.style.setProperty('--player-lean', '0deg');
     catchStage.classList.remove('is-moving');
@@ -496,10 +502,10 @@
     state.lastFrame = now;
 
     if (!state.paused && !document.hidden) {
-      var dx = (state.directions.has('right') ? 1 : 0) - (state.directions.has('left') ? 1 : 0);
-      var dy = (state.directions.has('down') ? 1 : 0) - (state.directions.has('up') ? 1 : 0);
+      var dx = (state.directions.has('right') ? 1 : 0) - (state.directions.has('left') ? 1 : 0) + stickX;
+      var dy = (state.directions.has('down') ? 1 : 0) - (state.directions.has('up') ? 1 : 0) + stickY;
       if (dx || dy) {
-        var length = Math.sqrt(dx * dx + dy * dy) || 1;
+        var length = Math.max(1, Math.sqrt(dx * dx + dy * dy));
         var moveX = dx / length;
         var moveY = dy / length;
         state.playerX = Math.max(10, Math.min(90, state.playerX + moveX * 39 * delta));
@@ -889,9 +895,39 @@
       button.addEventListener(eventName, function () { releaseDirection(direction, button); });
     });
   });
-  root.querySelector('.d-pad').addEventListener('touchmove', function (event) {
-    event.preventDefault();
-  }, { passive: false });
+  function resetStick() {
+    var previous = stickPointer;
+    stickPointer = null; stickX = 0; stickY = 0;
+    joystick.style.setProperty('--stick-x', '0px');
+    joystick.style.setProperty('--stick-y', '0px');
+    if (previous !== null && joystick.hasPointerCapture(previous)) joystick.releasePointerCapture(previous);
+  }
+  function moveStick(event) {
+    var rect = joystick.getBoundingClientRect();
+    var radius = rect.width * .3;
+    var x = event.clientX - rect.left - rect.width / 2;
+    var y = event.clientY - rect.top - rect.height / 2;
+    var distance = Math.hypot(x, y), limit = Math.min(1, radius / (distance || 1));
+    x *= limit; y *= limit;
+    var magnitude = Math.hypot(x, y) / radius;
+    var speed = Math.max(0, (magnitude - .15) / .85);
+    stickX = magnitude ? x / radius / magnitude * speed : 0;
+    stickY = magnitude ? y / radius / magnitude * speed : 0;
+    joystick.style.setProperty('--stick-x', x + 'px');
+    joystick.style.setProperty('--stick-y', y + 'px');
+  }
+  joystick.addEventListener('pointerdown', function (event) {
+    if (state.phase !== 'catch' || state.paused || stickPointer !== null || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    event.preventDefault(); stickPointer = event.pointerId;
+    joystick.setPointerCapture(event.pointerId); moveStick(event);
+  });
+  joystick.addEventListener('pointermove', function (event) {
+    if (event.pointerId !== stickPointer) return;
+    event.preventDefault(); moveStick(event);
+  });
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(function (name) {
+    joystick.addEventListener(name, function (event) { if (event.pointerId === stickPointer) resetStick(); });
+  });
   pauseButton.addEventListener('click', function () {
     setPause(!state.paused, state.paused ? '게임을 계속합니다.' : '게임을 잠시 멈췄습니다.');
   });
@@ -926,7 +962,7 @@
     if (document.hidden && state.phase === 'catch' && !state.paused) setPause(true, '화면을 벗어나 게임이 자동으로 멈췄습니다.');
   });
   window.addEventListener('blur', function () {
-    if (state.phase === 'catch' && !state.paused) setPause(true, '게임이 자동으로 멈췄습니다. 계속하려면 가운데 재생 버튼을 누르세요.');
+    if (state.phase === 'catch' && !state.paused) setPause(true, '게임이 자동으로 멈췄습니다. 계속하려면 일시정지 버튼을 누르세요.');
   });
   window.addEventListener('pagehide', stopMusic);
 

@@ -62,7 +62,7 @@
         <div class="section-inner">
           <div class="game-workshop__head">
             <div><p class="kicker">Two stage adventure</p><h2 id="workshop-title"><span>캠퍼스 등굣길을 걷고</span><span>오늘의 가방을 완성하세요.</span></h2></div>
-            <p>방향키로 움직이고, 점프로 위험물을 넘거나 새총으로 아령을 부수세요. 화면을 벗어나면 게임은 자동으로 멈춥니다.</p>
+            <p>조이스틱을 밀어 움직이고, 점프로 위험물을 넘거나 새총으로 아령을 부수세요. 화면을 벗어나면 게임은 자동으로 멈춥니다.</p>
           </div>
 
           <section class="game-rules" aria-labelledby="game-rules-title">
@@ -71,7 +71,7 @@
               <h3 id="game-rules-title">세 가지만 기억하세요.</h3>
             </div>
             <ol>
-              <li><span aria-hidden="true">01</span><div><strong>35초 동안 모으기</strong><p>방향키로 움직여 책·노트북·물병·필통을 모으세요.</p></div></li>
+              <li><span aria-hidden="true">01</span><div><strong>35초 동안 모으기</strong><p>조이스틱을 밀어 책·노트북·물병·필통을 모으세요.</p></div></li>
               <li><span aria-hidden="true">02</span><div><strong>점프하고 새총 쏘기</strong><p>점프로 위험물을 넘고, 새총으로 아령을 부수면 보너스 점수를 받아요.</p></div></li>
               <li><span aria-hidden="true">03</span><div><strong>가방 정리하고 쿠폰 받기</strong><p>모은 물건을 알맞은 수납칸에 넣으면 점수에 맞는 활성 쿠폰이 저장됩니다.</p></div></li>
             </ol>
@@ -142,14 +142,8 @@
             </div>
 
             <div class="game-controller" aria-label="게임 조작기">
-              <div class="d-pad" aria-label="캐릭터 이동">
-                <button type="button" class="d-pad__up" data-game-move="up" aria-label="위로 이동"><span aria-hidden="true">▲</span></button>
-                <button type="button" class="d-pad__left" data-game-move="left" aria-label="왼쪽으로 이동"><span aria-hidden="true">◀</span></button>
-                <button type="button" class="d-pad__center" data-game-pause aria-pressed="false" aria-label="게임 잠시 멈춤"><span aria-hidden="true">Ⅱ</span></button>
-                <button type="button" class="d-pad__right" data-game-move="right" aria-label="오른쪽으로 이동"><span aria-hidden="true">▶</span></button>
-                <button type="button" class="d-pad__down" data-game-move="down" aria-label="아래로 이동"><span aria-hidden="true">▼</span></button>
-              </div>
-              <div class="controller-copy"><strong>MOVE &amp; ACTION</strong><span>이동 화살표 · WASD</span><span>점프 Space · 새총 F/J</span><button class="sound-toggle" type="button" data-game-sound aria-pressed="true"><span aria-hidden="true">♪</span><b>BGM <span data-game-sound-label>ON</span></b></button></div>
+              <div class="game-joystick" data-game-joystick role="group" tabindex="0" aria-label="이동 조이스틱 — 밀어서 이동, 손을 떼면 정지. 키보드 방향키도 사용할 수 있습니다." aria-disabled="true"><span class="game-joystick__knob" aria-hidden="true"></span></div>
+              <div class="controller-copy"><button class="joystick-pause" type="button" data-game-pause aria-label="게임 잠시 멈춤" aria-pressed="false" disabled><span>Ⅱ</span></button><strong>MOVE &amp; ACTION</strong><span>이동 조이스틱 · 방향키</span><span>점프 Space · 새총 F/J</span><button class="sound-toggle" type="button" data-game-sound aria-pressed="true"><span aria-hidden="true">♪</span><b>BGM <span data-game-sound-label>ON</span></b></button></div>
               <div class="controller-actions" aria-label="점프와 새총 조작">
                 <button class="controller-action controller-action--jump" type="button" data-game-jump aria-label="점프해서 위험물 피하기" disabled><span aria-hidden="true">A</span><b>JUMP</b></button>
                 <button class="controller-action controller-action--fire" type="button" data-game-fire aria-label="새총을 쏴서 아령 부수기" disabled><span aria-hidden="true">B</span><b>SHOT</b></button>

@@ -264,3 +264,11 @@ body.game-round-active .game-console:not([data-phase="intro"]) .game-announcer {
 @media (forced-colors: active) {
   .game-console, .game-hero__preview, .game-primary, .game-secondary, .d-pad, .packing-bag { box-shadow: none; filter: none; }
 }
+
+.game-joystick { position: relative; width: 126px; height: 126px; border: 3px solid var(--pixel-ink); border-radius: 50%; background: #b3a477; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; }
+.game-joystick::before { content: ''; position: absolute; inset: 14px; border: 1px solid var(--pixel-ink); border-radius: 50%; opacity: .25; }
+.game-joystick__knob { position: absolute; width: 56px; height: 56px; left: calc(50% - 28px); top: calc(50% - 28px); border: 3px solid var(--pixel-ink); border-radius: 50%; background: var(--pixel-moss); box-shadow: 0 4px 0 var(--pixel-ink); transform: translate(var(--stick-x, 0px), var(--stick-y, 0px)); pointer-events: none; }
+.game-joystick[aria-disabled="true"] { opacity: .45; cursor: default; }
+.game-joystick:focus-visible { outline: 3px solid var(--pixel-cream); outline-offset: 3px; }
+.joystick-pause { min-width: 44px; min-height: 44px; border: 2px solid var(--pixel-ink); background: var(--pixel-moss); color: var(--pixel-cream); font-size: 18px; touch-action: manipulation; }
+@media (max-width: 480px) { .game-joystick { width: 112px; height: 112px; } .game-controller { grid-template-columns: 112px minmax(44px, 1fr) 6.2rem; } }
