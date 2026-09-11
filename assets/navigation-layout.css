@@ -1,0 +1,53 @@
+/* Product, finder and brand tabs share the compact editorial scale. */
+.catalog-page .catalog-hero { width: min(100%, 1160px); min-height: 0; padding: 48px var(--page-pad); grid-template-columns: minmax(0, 1fr) 180px; gap: 32px; }
+.catalog-page .catalog-hero h1 { max-width: none; font-size: clamp(32px, 3.8vw, 50px); line-height: 1.2; text-shadow: none; }
+.catalog-page .catalog-index strong { font-size: 56px; }
+.catalog-page .catalog-hero-copy > p:last-child { font-size: 16px; margin-top: 20px; }
+.catalog-page .catalog-products { padding-top: 24px; }
+.catalog-page .catalog-controls { margin-block: 24px; }
+.finder-page .finder-main { padding-top: 0; }
+.finder-page .finder-hero, .finder-page .finder-form, .finder-page .finder-results { max-width: 1016px; }
+.finder-page .finder-hero { padding: 48px 0 32px; }
+.finder-page .finder-hero h1 { max-width: none; font-size: clamp(32px, 3.8vw, 50px); line-height: 1.2; }
+.finder-page .finder-hero > p:last-child { font-size: 16px; }
+.finder-page .accent-word { text-shadow: none; }
+.finder-page .finder-form { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; padding-bottom: 48px; }
+.finder-page .finder-form fieldset { min-width: 0; padding: 20px; }
+.finder-page .finder-form legend { font-size: 17px; }
+.finder-page .finder-choices { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.finder-page .finder-choices label span { font-size: 14px; }
+.finder-page .finder-choices input:checked + span { background: var(--harbor); color: var(--snow); border-color: var(--harbor); }
+.finder-page .finder-submit, .finder-page .finder-status { grid-column: 1 / -1; }
+.finder-page .finder-results > h2 { font-size: 34px; }
+.finder-page .finder-card img { aspect-ratio: 1; object-fit: contain; }
+.about-page .about-hero { width: min(100%, 1160px); min-height: 0; padding: 48px var(--page-pad); grid-template-columns: minmax(0, 1fr) 340px; gap: 48px; }
+.about-page .about-hero-copy h1, .about-page .display-title, .about-page .founder-promise h2 { max-width: none; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.25; text-shadow: none; }
+.about-page .accent-word { text-shadow: none; }
+.about-page .founder-portrait { width: 100%; margin: 0; min-height: 0; height: 440px; }
+.about-page .founder-portrait-image { width: 100%; height: 100%; object-fit: cover; }
+.about-page .portrait-mark { display: none; }
+.about-page .section { padding-block: 56px; }
+.about-page .section-inner { max-width: 1016px; }
+.about-page .story-layout { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 48px; }
+.about-page .story-body { font-size: 16px; line-height: 1.85; }
+.about-page .story-lede { font-size: 20px; line-height: 1.7; }
+.about-page .founder-quote { min-height: 0; }
+.about-page .founder-quote blockquote { max-width: 900px; margin-inline: auto; font-size: 30px; }
+.about-page .founder-quote blockquote p { font-size: clamp(24px, 3vw, 36px); line-height: 1.5; }
+.about-page .section-head { display: block; margin-bottom: 28px; }
+.about-page .timeline-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
+.about-page .timeline-list li { display: block; padding: 24px 0; }
+.about-page .timeline-list h3 { margin-top: 12px; font-size: 24px; line-height: 1.4; }
+.about-page .timeline-list p { margin-top: 12px; font-size: 15px; }
+.about-page .founder-promise { min-height: 0; padding-block: 72px; }
+@media (max-width: 760px) {
+ .catalog-page .catalog-hero { grid-template-columns: minmax(0, 1fr); padding-block: 36px; gap: 24px; }
+ .catalog-page .catalog-index { display: flex; align-items: baseline; gap: 16px; }
+ .catalog-page .catalog-index strong { font-size: 32px; }
+ .finder-page .finder-form { grid-template-columns: minmax(0, 1fr); }
+ .about-page .about-hero, .about-page .story-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+ .about-page .about-hero { padding-block: 36px; }
+ .about-page .founder-portrait { max-width: 340px; justify-self: end; height: 380px; }
+ .about-page .timeline-list { grid-template-columns: minmax(0, 1fr); }
+}
+.catalog-page .catalog-index { min-height: 0; padding: 24px; gap: 12px; }
