@@ -71,3 +71,18 @@
 .home-layout .reel-showcase > .section-inner { width: calc(100% - 2 * var(--page-pad)); }
 
 .home-layout .product-grid:focus-visible { outline: 2px solid var(--harbor); outline-offset: 4px; }
+
+/* Distinguish the four brand promises with readable titles and soft color panels. */
+.home-layout .trust-strip { background: #e2e9df; color: #253b30; gap: 2px; }
+.home-layout .trust-item { min-height: 120px; padding: 24px 16px; border: 0; }
+.home-layout .trust-item:nth-child(1) { background: #e7edda; }
+.home-layout .trust-item:nth-child(2) { background: #d8e7df; }
+.home-layout .trust-item:nth-child(3) { background: #efe7d8; }
+.home-layout .trust-item:nth-child(4) { background: #dfe7ed; }
+.home-layout .trust-item strong { display: block; font-size: 22px; font-weight: 750; line-height: 1.4; letter-spacing: -.025em; }
+.home-layout .trust-item span { margin-top: 8px; font-size: 14px; line-height: 1.6; color: #3f5046; opacity: 1; }
+@media (max-width: 760px) {
+ .home-layout .trust-item { min-height: 112px; padding: 20px 12px; }
+ .home-layout .trust-item strong { font-size: 18px; }
+ .home-layout .trust-item span { font-size: 13px; }
+}
