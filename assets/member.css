@@ -257,3 +257,16 @@ body .site-footer { grid-template-columns: minmax(240px,1fr) minmax(160px,.65fr)
  .site-footer .footer-business { grid-template-columns: minmax(0,1fr); gap: 12px; }
  .site-footer .footer-contact { width: 100%; max-width: 340px; }
 }
+
+/* Login has a short heading and equal, comfortably sized provider actions. */
+.member-dialog[data-member-view="login"] { width: min(400px,calc(100vw - 32px)); }
+.member-dialog[data-member-view="login"] .member-panel { padding: 24px; }
+.member-dialog[data-member-view="login"] .member-panel > header { border: 0; padding-bottom: 0; }
+.member-dialog[data-member-view="login"] .member-panel > header h2 { font-size: 26px; }
+.member-dialog[data-member-view="login"] .member-signed-out > p { margin: 18px 0 24px; font-size: 14px; line-height: 1.75; color: var(--ink); }
+.member-dialog[data-member-view="login"] .member-provider-list { gap: 12px; }
+.member-dialog[data-member-view="login"] .member-provider { grid-template-columns: 52px minmax(0,1fr) 16px; gap: 10px; min-height: 52px; padding: 12px 14px; }
+.member-dialog[data-member-view="login"] .member-provider span { font-size: 14px; }
+.member-dialog[data-member-view="login"] .member-provider strong { font-size: 10px; letter-spacing: .03em; }
+.member-dialog[data-member-view="login"] .member-signed-out > small { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--color-fog); font-size: 12px; line-height: 1.8; opacity: 1; color: #59625d; }
+.member-dialog[data-member-view="login"] .member-dialog-status:not(:empty) { padding: 10px 12px; margin-top: 16px; border-radius: 10px; background: var(--cream); color: var(--harbor); font-size: 12px; }

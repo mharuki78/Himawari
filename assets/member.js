@@ -207,7 +207,7 @@
           '<button type="button" data-member-close aria-label="회원 창 닫기">닫기</button></header>' +
         '<p class="member-dialog-status" data-member-dialog-status role="status" aria-live="polite"></p>' +
         '<section class="member-signed-out" data-member-signed-out>' +
-          '<p>간편 로그인하면 장바구니와 관심상품을 다른 방문에도 이어서 볼 수 있습니다.</p>' +
+          '<p>마음에 둔 가방과 장바구니를<br>로그인하고 이어서 만나보세요.</p>' +
           '<div class="member-provider-list">' +
             '<a class="member-provider member-provider--naver" data-provider="naver"><strong>NAVER</strong><span>네이버로 계속하기</span><b aria-hidden="true">→</b></a>' +
             '<a class="member-provider member-provider--google" data-provider="google"><strong>GOOGLE</strong><span>Google로 계속하기</span><b aria-hidden="true">→</b></a>' +
@@ -254,7 +254,8 @@
     document.querySelectorAll('.member-nav-trigger').forEach(function (button) {
       button.textContent = displayMember ? '마이페이지 · 관심상품 ' + state.wishlist.size + '개' : '로그인 · 관심상품';
     });
-    dialog.querySelector('#member-dialog-title').textContent = state.authenticated ? '나의 히마와리' : '반가워요, 히마와리입니다';
+    dialog.dataset.memberView = state.authenticated ? 'account' : 'login';
+    dialog.querySelector('#member-dialog-title').textContent = state.authenticated ? '나의 히마와리' : '간편 로그인';
     signedOut.hidden = state.authenticated;
     signedIn.hidden = !state.authenticated;
     if (state.authenticated && state.user) {
