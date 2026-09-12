@@ -518,12 +518,16 @@ function setupCatalog(container, families) {
     });
   }
 
-  const render = ({ focusGrid = false } = {}) => {
+  const render = ({ append = false } = {}) => {
     const filtered = filterAndSortFamilies(families, state);
     const visible = filtered.slice(0, state.shown);
     const fragment = document.createDocumentFragment();
-    visible.forEach((family) => fragment.append(createProductCard(family.representative, { family })));
-    container.replaceChildren(fragment);
+    const previousCount = append ? container.children.length : 0;
+    const scrollPosition = { left: window.scrollX, top: window.scrollY };
+    const listScrollLeft = container.scrollLeft;
+    visible.slice(previousCount).forEach((family) => fragment.append(createProductCard(family.representative, { family })));
+    if (append) container.append(fragment);
+    else container.replaceChildren(fragment);
     container.setAttribute('aria-busy', 'false');
     if (count) count.textContent = `${filtered.length}개 제품군`;
     if (empty) empty.hidden = filtered.length > 0;
@@ -542,7 +546,12 @@ function setupCatalog(container, families) {
     state.sort !== 'featured' ? url.searchParams.set('sort', state.sort) : url.searchParams.delete('sort');
     history.replaceState(null, '', url);
     window.himawariReveal?.(container);
-    if (focusGrid) container.querySelector('article a')?.focus();
+    if (append) {
+      // Continue keyboard navigation at the new products without moving the viewport.
+      container.children[previousCount]?.querySelector('a')?.focus({ preventScroll: true });
+      container.scrollLeft = listScrollLeft;
+      window.scrollTo({ ...scrollPosition, behavior: 'instant' });
+    }
   };
 
   let inputTimer;
@@ -571,7 +580,7 @@ function setupCatalog(container, families) {
   });
   more?.addEventListener('click', () => {
     state = { ...state, shown: state.shown + 12 };
-    render({ focusGrid: true });
+    render({ append: true });
   });
   form?.addEventListener('reset', () => {
     requestAnimationFrame(() => {
