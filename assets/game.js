@@ -67,6 +67,9 @@
   };
   var state = {
     phase: 'intro',
+    journeyElapsed: 0,
+    arriving: false,
+    arrivalElapsed: 0,
     score: 0,
     time: CATCH_SECONDS,
     lives: 3,
@@ -291,7 +294,7 @@
   }
 
   function jumpPlayer() {
-    if (state.phase !== 'catch' || state.paused) return;
+    if (state.phase !== 'catch' || state.paused || state.arriving) return;
     var now = performance.now();
     if (now < state.jumpCooldownUntil) return;
     state.jumpUntil = now + JUMP_DURATION_MS;
@@ -321,7 +324,7 @@
   }
 
   function fireSlingshot() {
-    if (state.phase !== 'catch' || state.paused) return;
+    if (state.phase !== 'catch' || state.paused || state.arriving) return;
     var now = performance.now();
     if (now < state.fireCooldownUntil) return;
     state.fireCooldownUntil = now + SHOT_COOLDOWN_MS;
@@ -447,7 +450,7 @@
   }
 
   function spawnItem() {
-    if (state.phase !== 'catch' || state.paused || document.hidden || state.objects.length >= 7) return;
+    if (state.phase !== 'catch' || state.paused || state.arriving || document.hidden || state.objects.length >= 7) return;
     var pool = Math.random() < .78 ? goodItems : hazards;
     createCollectible(pool[Math.floor(Math.random() * pool.length)]);
   }
@@ -496,12 +499,42 @@
     removeObject(object, true);
   }
 
+  function renderJourney() {
+    var progress = Math.min(1, state.journeyElapsed / CATCH_SECONDS);
+    catchStage.style.setProperty('--journey-zoom', reducedMotion ? '1.04' : (1.08 + progress * .65).toFixed(4));
+    catchStage.style.setProperty('--journey-pan', reducedMotion ? '0%' : (progress * 8).toFixed(3) + '%');
+    var approach = Math.max(0, (progress - .68) / .32);
+    catchStage.style.setProperty('--gate-opacity', approach > 0 ? '1' : '0');
+    catchStage.style.setProperty('--gate-scale', (.3 + approach * .7).toFixed(3));
+    catchStage.style.setProperty('--gate-top', (8 + approach * 32).toFixed(3) + '%');
+    root.querySelector('[data-journey-status]').textContent = state.arriving ? '정문 통과 중' : (progress > .85 ? '정문이 보여요!' : Math.round(progress * 100) + '% 도착');
+  }
+
   function updateWorld(now) {
     if (state.phase !== 'catch') return;
     var delta = state.lastFrame ? Math.min(.035, (now - state.lastFrame) / 1000) : 0;
     state.lastFrame = now;
 
+    if (state.arriving) {
+      if (!state.paused && !document.hidden) {
+        state.arrivalElapsed += delta;
+        var crossing = Math.min(1, state.arrivalElapsed / 2);
+        state.playerX += (50 - state.playerX) * Math.min(1, delta * 5);
+        state.playerY = state.arrivalStartY + (28 - state.arrivalStartY) * crossing;
+        renderPlayer();
+        player.classList.toggle('is-walking', !reducedMotion);
+        catchStage.style.setProperty('--gate-top', (40 + crossing * 40) + '%');
+        if (crossing >= 1) { completeCatch(); return; }
+      }
+      state.animationFrame = window.requestAnimationFrame(updateWorld);
+      return;
+    }
     if (!state.paused && !document.hidden) {
+      state.journeyElapsed = Math.min(CATCH_SECONDS, state.journeyElapsed + delta);
+      renderJourney();
+      var secondsLeft = Math.ceil(CATCH_SECONDS - state.journeyElapsed);
+      if (state.time !== secondsLeft) { state.time = secondsLeft; renderHud(); }
+      if (secondsLeft <= 0) { finishCatch(); return; }
       var dx = (state.directions.has('right') ? 1 : 0) - (state.directions.has('left') ? 1 : 0) + stickX;
       var dy = (state.directions.has('down') ? 1 : 0) - (state.directions.has('up') ? 1 : 0) + stickY;
       if (dx || dy) {
@@ -552,7 +585,7 @@
       });
     }
 
-    state.animationFrame = window.requestAnimationFrame(updateWorld);
+    if (state.phase === 'catch') state.animationFrame = window.requestAnimationFrame(updateWorld);
   }
 
   function runClock(seconds, onComplete) {
@@ -575,6 +608,10 @@
     clearRound();
     startMusic();
     catchLayer.replaceChildren();
+    state.journeyElapsed = 0;
+    state.arriving = false;
+    state.arrivalElapsed = 0;
+    renderJourney();
     state.score = 0;
     state.lives = 3;
     state.caught = [];
@@ -601,13 +638,31 @@
     createCollectible(goodItems[2]);
     createCollectible(hazards[0]);
     state.spawnTimer = window.setInterval(spawnItem, reducedMotion ? 1300 : 680);
-    runClock(CATCH_SECONDS, finishCatch);
+    state.time = CATCH_SECONDS;
+    renderHud();
     state.animationFrame = window.requestAnimationFrame(updateWorld);
   }
 
   function finishCatch() {
     if (state.phase !== 'catch') return;
+    if (state.lives > 0 && !state.arriving) {
+      clearRound();
+      state.arriving = true;
+      state.arrivalElapsed = 0;
+      state.arrivalStartY = state.playerY;
+      state.journeyElapsed = CATCH_SECONDS;
+      renderJourney();
+      announce('히마와리 학교에 도착했습니다. 정문을 통과합니다.');
+      showToast('HIMAWARI SCHOOL · 도착!');
+      state.animationFrame = window.requestAnimationFrame(updateWorld);
+      return;
+    }
+    completeCatch();
+  }
+
+  function completeCatch() {
     clearRound();
+    state.arriving = false;
     var uniqueIds = Array.from(new Set(state.caught.map(function (item) { return item.id; })));
     goodItems.forEach(function (item) {
       if (uniqueIds.length < 3 && !uniqueIds.includes(item.id)) uniqueIds.push(item.id);
@@ -848,7 +903,7 @@
   }
 
   function pressDirection(direction, button) {
-    if (state.phase !== 'catch' || state.paused) return;
+    if (state.phase !== 'catch' || state.paused || state.arriving) return;
     state.directions.add(direction);
     if (button) button.classList.add('is-pressed');
   }
@@ -917,7 +972,7 @@
     joystick.style.setProperty('--stick-y', y + 'px');
   }
   joystick.addEventListener('pointerdown', function (event) {
-    if (state.phase !== 'catch' || state.paused || stickPointer !== null || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    if (state.phase !== 'catch' || state.paused || state.arriving || stickPointer !== null || (event.pointerType === 'mouse' && event.button !== 0)) return;
     event.preventDefault(); stickPointer = event.pointerId;
     joystick.setPointerCapture(event.pointerId); moveStick(event);
   });
