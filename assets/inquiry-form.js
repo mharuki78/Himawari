@@ -2,6 +2,27 @@
   const forms = [...document.querySelectorAll('[data-inquiry-form]')];
   if (!forms.length) return;
 
+  const photo = document.querySelector('.inquiry-product-photo');
+  if (photo) {
+    const choices = [
+      { src: '/assets/campaign-1027.webp', model: '1027', alt: '히마와리 No.1027 배색 백팩 착용 모습' },
+      { src: '/assets/campaign-0422-pink.webp', model: '0422', alt: '히마와리 No.0422 핑크 백팩 착용 모습' },
+      { src: '/assets/campaign-1884-gray.webp', model: '1884', alt: '히마와리 No.1884 그레이 백팩 착용 모습' },
+    ];
+    let previous;
+    try { previous = sessionStorage.getItem('himawari-inquiry-photo'); } catch (_) {}
+    const available = choices.filter(item => item.model !== previous);
+    const selected = available[Math.floor(Math.random() * available.length)];
+    const preview = new Image();
+    preview.onload = () => {
+      photo.querySelector('img').src = selected.src;
+      photo.querySelector('img').alt = selected.alt;
+      photo.querySelector('figcaption').textContent = 'HIMAWARI · No.' + selected.model;
+      try { sessionStorage.setItem('himawari-inquiry-photo', selected.model); } catch (_) {}
+    };
+    preview.src = selected.src;
+  }
+
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const cartInquiryKey = 'himawari-cart-inquiry';
 
