@@ -8,6 +8,57 @@
   var cartSyncReady = false;
   var cartSyncTimer = 0;
 
+  var STORE_LINKS = [
+    { name: '네이버 스마트스토어', url: 'https://smartstore.naver.com/baegot', icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#03c75a" d="M3 3h6l6 9V3h6v18h-6l-6-9v9H3z"/></svg>' },
+    { name: '쿠팡', url: 'https://shop.coupang.com/A01305526/468030?platform=p&source=brandstore_sdp_atf_topbadge&pid=8645626896&viid=92097411930&brandId=0', icon: '<img src="/assets/channel-logos/coupang.png" alt="">' },
+    { name: '무신사', url: 'https://www.musinsa.com/brand/himawari?gf=A', icon: '<img src="/assets/channel-logos/musinsa.svg" alt="">' }
+  ];
+
+  function storeLink(store, footer) {
+    var link = document.createElement('a');
+    link.href = store.url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.className = footer ? 'footer-store-link' : 'store-picker__link';
+    link.setAttribute('aria-label', store.name + ' himawarikorea — 새 탭에서 열림');
+    link.innerHTML = '<span class="store-brand-logo">' + store.icon + '</span><span>' + (footer ? 'himawarikorea' : store.name) + '</span><span aria-hidden="true">↗</span>';
+    return link;
+  }
+
+  function buildStoreLinks() {
+    document.querySelectorAll('.header-store').forEach(function (original, index) {
+      var wrapper = document.createElement('div');
+      wrapper.className = 'store-picker';
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = original.className;
+      button.textContent = '스토어 ⌄';
+      button.setAttribute('aria-expanded', 'false');
+      var panel = document.createElement('nav');
+      panel.id = 'store-picker-' + index;
+      panel.className = 'store-picker__panel';
+      panel.setAttribute('aria-label', '공식 스토어 선택');
+      panel.hidden = true;
+      button.setAttribute('aria-controls', panel.id);
+      STORE_LINKS.forEach(function (store) { panel.appendChild(storeLink(store, false)); });
+      function close() { panel.hidden = true; button.setAttribute('aria-expanded', 'false'); }
+      button.addEventListener('click', function () {
+        panel.hidden = !panel.hidden;
+        button.setAttribute('aria-expanded', String(!panel.hidden));
+      });
+      wrapper.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') { close(); button.focus(); }
+      });
+      wrapper.addEventListener('focusout', function (event) { if (!wrapper.contains(event.relatedTarget)) close(); });
+      document.addEventListener('click', function (event) { if (!wrapper.contains(event.target)) close(); });
+      original.replaceWith(wrapper);
+      wrapper.append(button, panel);
+    });
+    document.querySelectorAll('.footer-contact').forEach(function (group) {
+      STORE_LINKS.forEach(function (store) { group.appendChild(storeLink(store, true)); });
+    });
+  }
+
   var SOCIAL_LINKS = {
     instagram: {
       label: '@himawari.korea',
@@ -456,6 +507,7 @@
   function init() {
     buildFooterSocialLinks();
     buildHeaderActions();
+    buildStoreLinks();
     buildDialog();
     bindAccountDeletion();
     document.addEventListener('click', function (event) {

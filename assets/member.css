@@ -162,3 +162,17 @@
   .account-product,
   .terms-business { box-shadow: none; }
 }
+
+/* Shared official store disclosure and footer destinations. */
+.store-picker { position: relative; }
+.store-picker > .header-store { cursor: pointer; font-family: inherit; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.store-picker__panel { position: absolute; top: calc(100% + 12px); right: 0; width: min(300px, calc(100vw - 32px)); padding: 8px; border: 1px solid var(--color-fog); border-radius: 18px; background: var(--snow); color: var(--ink); box-shadow: 0 12px 36px #21212126; }
+.store-picker__panel[hidden] { display: none; }
+.store-picker__link { display: grid; grid-template-columns: 72px 1fr auto; gap: 12px; align-items: center; min-height: 58px; padding: 10px; border-radius: 10px; font-size: 13px; }
+.store-picker__link:hover { background: var(--cream); }
+.store-brand-logo { display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 32px; padding: 6px; border-radius: 6px; background: #fff; flex-shrink: 0; }
+.store-brand-logo img { width: 100%; height: auto; max-height: 22px; object-fit: contain; }
+.store-brand-logo svg { width: 22px; height: 22px; }
+.footer-contact .footer-store-link { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; }
+.footer-store-link > span:last-child { font-size: 12px; }
+.store-picker button:focus-visible, .store-picker__link:focus-visible, .footer-store-link:focus-visible { outline: 2px solid var(--harbor); outline-offset: 3px; }
