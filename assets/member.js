@@ -1,6 +1,14 @@
 (function () {
   'use strict';
 
+  // Display hint only: never used to authorize requests or reveal member data.
+  var MEMBER_HINT_KEY = 'himawari-member-display';
+  function memberHint() {
+    try { return Number(localStorage.getItem(MEMBER_HINT_KEY)) > Date.now(); } catch (_) { return false; }
+  }
+  function rememberMember(authenticated) {
+    try { if (authenticated) localStorage.setItem(MEMBER_HINT_KEY, String(Date.now() + 86400000)); else localStorage.removeItem(MEMBER_HINT_KEY); } catch (_) {}
+  }
   var WISHLIST_KEY = 'himawari-wishlist';
   var CART_OWNER_KEY = 'himawari-cart-owner';
   var state = { ready: false, authenticated: false, user: null, providers: {}, wishlist: new Set(), wishlistItems: [] };
@@ -171,7 +179,7 @@
       trigger.type = 'button';
       trigger.className = 'member-trigger';
       trigger.dataset.memberOpen = '';
-      trigger.textContent = '로그인';
+      trigger.textContent = memberHint() ? 'MY' : '로그인';
       trigger.setAttribute('aria-haspopup', 'dialog');
       store.replaceWith(wrap);
       wrap.append(trigger, store);
@@ -209,7 +217,8 @@
         '<section class="member-signed-in" data-member-signed-in hidden>' +
           '<div class="member-profile"><span class="member-profile-image" data-profile-image aria-hidden="true">H</span>' +
             '<div><strong data-profile-name>Himawari 회원</strong><small data-profile-email></small></div></div>' +
-          '<a class="member-account-link" href="/account.html"><span>관심상품과 계정 관리</span><b data-account-count>0개</b><i aria-hidden="true">→</i></a>' +
+          '<a class="member-account-link" href="/account.html"><span>마이페이지</span><b data-account-count>0개</b><i aria-hidden="true">→</i></a>' +
+          '<a class="member-orders-link" href="/account.html#orders">주문 내역 보기 <span aria-hidden="true">→</span></a>' +
           '<button class="member-logout" type="button" data-member-logout>로그아웃</button>' +
         '</section>' +
       '</div>';
@@ -237,13 +246,15 @@
   }
 
   function renderMemberState() {
+    var displayMember = state.ready ? state.authenticated : memberHint();
     document.querySelectorAll('.member-trigger').forEach(function (button) {
-      button.textContent = state.authenticated ? 'MY' : '로그인';
-      button.setAttribute('aria-label', state.authenticated ? '회원 메뉴 열기' : '로그인 메뉴 열기');
+      button.textContent = displayMember ? 'MY' : '로그인';
+      button.setAttribute('aria-label', displayMember ? '회원 메뉴 열기' : '로그인 메뉴 열기');
     });
     document.querySelectorAll('.member-nav-trigger').forEach(function (button) {
-      button.textContent = state.authenticated ? '마이페이지 · 관심상품 ' + state.wishlist.size + '개' : '로그인 · 관심상품';
+      button.textContent = displayMember ? '마이페이지 · 관심상품 ' + state.wishlist.size + '개' : '로그인 · 관심상품';
     });
+    dialog.querySelector('#member-dialog-title').textContent = state.authenticated ? '나의 히마와리' : '반가워요, 히마와리입니다';
     signedOut.hidden = state.authenticated;
     signedIn.hidden = !state.authenticated;
     if (state.authenticated && state.user) {
@@ -420,6 +431,11 @@
       state.authenticated = session.authenticated === true;
       state.user = session.user || null;
       state.providers = session.providers || {};
+      state.ready = true;
+      rememberMember(state.authenticated);
+      renderMemberState();
+      renderAccountWishlist();
+      document.dispatchEvent(new CustomEvent('himawari:member-ready', { detail: { authenticated: state.authenticated } }));
       if (state.authenticated) {
         var remote = await request('/api/member/wishlist');
         (remote.items || []).forEach(function (item) { state.wishlist.add(item.productId); });
@@ -431,10 +447,8 @@
       state.providers = state.providers || {};
       dialogStatus.textContent = error.status === 503 ? '회원 기능을 준비하고 있습니다.' : '';
     }
-    state.ready = true;
     renderMemberState();
     renderAccountWishlist();
-    document.dispatchEvent(new CustomEvent('himawari:member-ready', { detail: { authenticated: state.authenticated } }));
   }
 
   async function logout() {
@@ -443,6 +457,7 @@
     dialogStatus.textContent = '로그아웃 중입니다.';
     try {
       await request('/api/auth/logout', { method: 'POST' });
+      rememberMember(false);
       state.authenticated = false;
       state.user = null;
       state.wishlist = new Set();
@@ -473,6 +488,7 @@
           method: 'DELETE', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ confirmation: confirmation }),
         });
+        rememberMember(false);
         state.authenticated = false;
         state.user = null;
         state.wishlist = new Set();
@@ -510,6 +526,7 @@
     buildHeaderActions();
     buildStoreLinks();
     buildDialog();
+    renderMemberState();
     bindAccountDeletion();
     document.addEventListener('click', function (event) {
       var open = event.target.closest && event.target.closest('[data-member-open]');
