@@ -1,4 +1,4 @@
-import { CATALOG_CATEGORIES, filterAndSortFamilies, groupProductFamilies, productVariantLabel } from './assets/catalog-tools.js';
+import { CATALOG_CATEGORIES, productCategory, filterAndSortFamilies, groupProductFamilies, productVariantLabel } from './assets/catalog-tools.js';
 
 const productLists = document.querySelectorAll('[data-products]');
 const featuredProductSlots = document.querySelectorAll('[data-featured-product]');
@@ -470,8 +470,9 @@ async function loadProducts() {
       container.setAttribute('aria-busy', 'false');
       window.himawariReveal?.(container);
     });
+    const collectionProducts = document.body.dataset.collection ? products.filter(product => productCategory(product) === document.body.dataset.collection) : products;
     featuredProductSlots.forEach((container) => {
-      const featuredProduct = products.find((product) => product.featured === true);
+      const featuredProduct = collectionProducts.find((product) => product.featured === true) || collectionProducts[0];
       if (!featuredProduct) {
         showListState(container, '대표 제품이 등록되지 않았습니다.');
         return;
@@ -481,7 +482,7 @@ async function loadProducts() {
       window.himawariReveal?.(container);
     });
     document.querySelectorAll('[data-product-count]').forEach((element) => {
-      element.textContent = String(products.length);
+      element.textContent = String(collectionProducts.length);
     });
   } catch {
     [...productLists, ...featuredProductSlots].forEach((container) => {
@@ -500,9 +501,10 @@ function setupCatalog(container, families) {
   const more = document.querySelector('[data-catalog-more]');
   const empty = document.querySelector('[data-catalog-empty]');
   const params = new URLSearchParams(location.search);
+  const initialCategory = params.get('category') || document.body.dataset.collection || location.pathname.match(/^\/collections\/([^/]+)/)?.[1];
   let state = {
     query: params.get('q') || '',
-    category: CATALOG_CATEGORIES.some((item) => item.id === (document.body.dataset.collection || params.get('category'))) ? (document.body.dataset.collection || params.get('category')) : 'all',
+    category: CATALOG_CATEGORIES.some((item) => item.id === initialCategory) ? initialCategory : 'all',
     sort: ['featured', 'price-low', 'price-high', 'name'].includes(params.get('sort')) ? params.get('sort') : 'featured',
     shown: 12,
   };
@@ -542,7 +544,8 @@ function setupCatalog(container, families) {
     });
     const url = new URL(location.href);
     state.query ? url.searchParams.set('q', state.query) : url.searchParams.delete('q');
-    if (!document.body.dataset.collection) state.category !== 'all' ? url.searchParams.set('category', state.category) : url.searchParams.delete('category');
+    if (document.body.dataset.collection || state.category !== 'all') url.searchParams.set('category', state.category);
+    else url.searchParams.delete('category');
     state.sort !== 'featured' ? url.searchParams.set('sort', state.sort) : url.searchParams.delete('sort');
     history.replaceState(null, '', url);
     window.himawariReveal?.(container);

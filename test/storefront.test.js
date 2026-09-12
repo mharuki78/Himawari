@@ -382,3 +382,12 @@ test('공개·주문·관리 화면은 quiet sage 디자인 토큰을 공유한�
   assert.match(admin, /--harbor:\s*#4f6b58/);
   assert.match(admin, /--moss:\s*#d9e8d3/);
 });
+
+ test('collection pages retain category metadata with the current multi-class template', async () => {
+  const template = await readFile(new URL('../templates/products.html', import.meta.url), 'utf8');
+  for (const key of ['school', 'business', 'travel', 'daily']) {
+    const output = renderCatalogPage(template, products, 'https://himawari.co.kr', { key, title: key, description: key, line1: key, line2: key });
+    assert.match(output, new RegExp('<body[^>]*data-collection="' + key + '"'));
+    assert.match(output, /class="products-page catalog-page home-layout"/);
+  }
+});

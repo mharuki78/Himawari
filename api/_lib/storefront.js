@@ -142,7 +142,7 @@ export function renderCatalogPage(template, products, origin = 'https://himawari
   if (collection) {
     const canonical = `${origin}/collections/${collection.key}`;
     output = output
-      .replace('<body class="products-page">', `<body class="products-page" data-collection="${escapeHtml(collection.key)}">`)
+      .replace(/<body\b([^>]*)>/, `<body$1 data-collection="${escapeHtml(collection.key)}">`)
       .replace('<title>제품 — Himawari</title>', `<title>${escapeHtml(collection.title)} — Himawari</title>`)
       .replace('content="학생가방부터 비즈니스와 여행 백팩까지, Himawari의 전체 제품을 만나보세요."', `content="${escapeHtml(collection.description)}"`)
       .replace('href="https://himawari.co.kr/products.html"', `href="${canonical}"`)
