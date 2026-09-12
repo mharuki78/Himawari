@@ -42,7 +42,8 @@
 .contact-page .channel-cards { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 .contact-page .channel-card { grid-column: span 2; }
 .contact-page .channel-card--instagram, .contact-page .channel-card--youtube { grid-column: span 3; }
-.channel-card__wordmark { width: 88px; font-size: 15px; font-weight: 800; letter-spacing: -.04em; }
+.channel-card__wordmark { width: 132px; padding: 12px; background: #fff; }
+.channel-card__wordmark img { width: 108px; height: auto; max-height: 32px; object-fit: contain; }
 @media (max-width: 760px) {
  .contact-page .channel-cards { grid-template-columns: minmax(0, 1fr); }
  .contact-page .channel-card { grid-column: auto; }
