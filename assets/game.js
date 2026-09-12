@@ -8,7 +8,7 @@
   var SOUND_STORAGE_KEY = 'himawari-game-sound-v1';
   var CATCH_SECONDS = 35;
   var PACK_SECONDS = 22;
-  var PACK_TRANSFER_MS = 720;
+  var PACK_TRANSFER_MS = 2200;
   var JUMP_DURATION_MS = 620;
   var JUMP_COOLDOWN_MS = 820;
   var SHOT_COOLDOWN_MS = 340;
@@ -40,7 +40,9 @@
   var jumpButton = root.querySelector('[data-game-jump]');
   var fireButton = root.querySelector('[data-game-fire]');
   var packingItems = root.querySelector('[data-packing-items]');
-  var packingZones = root.querySelector('[data-packing-zones]');
+  var packingBag = root.querySelector('.packing-bag');
+  var packStatus = root.querySelector('[data-pack-status]');
+  var packCount = root.querySelector('[data-pack-count]');
   var finalScore = root.querySelector('[data-final-score]');
   var rewardOutput = root.querySelector('[data-game-reward]');
   var walletOutput = root.querySelector('[data-game-wallet]');
@@ -82,6 +84,7 @@
     packed: new Set(),
     selectedItem: '',
     packFinishing: false,
+    packBusy: false,
     paused: false,
     directions: new Set(),
     objects: [],
@@ -393,6 +396,9 @@
     state.directions.clear();
     resetStick();
     state.packFinishing = false;
+    state.packBusy = false;
+    packingBag.classList.remove('is-packing');
+    packingBag.removeAttribute('data-pocket');
     state.objects.forEach(function (object) { object.element.remove(); });
     state.objects = [];
     state.projectiles.forEach(function (projectile) { projectile.element.remove(); });
@@ -608,7 +614,7 @@
     renderHud();
     window.clearInterval(state.clockTimer);
     state.clockTimer = window.setInterval(function () {
-      if (document.hidden || state.paused) return;
+      if (document.hidden || state.paused || (state.phase === 'pack' && state.packBusy)) return;
       state.time -= 1;
       renderHud();
       if (state.time <= 0) {
@@ -688,122 +694,76 @@
     });
     state.packed = new Set();
     state.selectedItem = '';
+    packingItems.replaceChildren();
+    packingBag.classList.remove('has-bottle');
+    packStatus.textContent = '어떤 물건부터 넣을까요?';
     renderPackingBoard();
     showPanel('pack');
-    announce('학교에 도착했습니다. 모은 물건을 고른 뒤 알맞은 수납칸을 눌러 주세요.');
+    announce('학교에 도착했습니다. 물건을 누르면 가방이 열리고 알맞은 수납부에 들어갑니다.');
     runClock(PACK_SECONDS, finishGame);
   }
 
   function renderPackingBoard() {
-    packingItems.replaceChildren();
-    state.packItems.forEach(function (item) {
+    if (!packingItems.children.length) state.packItems.forEach(function (item) {
       var button = document.createElement('button');
-      var name = document.createElement('strong');
-      var hint = document.createElement('span');
       button.type = 'button';
       button.dataset.packItem = item.id;
-      button.dataset.kind = item.id;
-      button.setAttribute('aria-pressed', String(state.selectedItem === item.id));
-      button.disabled = state.packed.has(item.id);
-      name.textContent = item.label;
-      hint.textContent = state.packed.has(item.id) ? '정리 완료 ✓' : item.code;
-      button.append(name, hint);
-      button.addEventListener('click', function () {
-        if (button.disabled || state.phase !== 'pack') return;
-        state.selectedItem = item.id;
-        renderPackingBoard();
-        announce(item.label + '을 선택했습니다. 알맞은 수납칸을 고르세요.');
-      });
+      button.innerHTML = '<svg viewBox="0 0 100 100" aria-hidden="true"><use href="#pack-icon-' + item.id + '"></use></svg><strong>' + item.label + '</strong><span></span>';
+      button.addEventListener('click', function () { packItem(item); });
       packingItems.append(button);
     });
-
-    packingZones.replaceChildren();
-    zones.forEach(function (zone) {
-      var button = document.createElement('button');
-      var name = document.createElement('strong');
-      var detail = document.createElement('span');
-      button.type = 'button';
-      button.dataset.packZone = zone.id;
-      button.disabled = state.packFinishing;
-      name.textContent = zone.label;
-      detail.textContent = zone.detail;
-      button.append(name, detail);
-      button.addEventListener('click', function () { placeSelectedItem(zone, button); });
-      packingZones.append(button);
+    Array.from(packingItems.children).forEach(function (button) {
+      var item = state.packItems.find(function (entry) { return entry.id === button.dataset.packItem; });
+      var packed = state.packed.has(item.id);
+      button.disabled = packed || state.packBusy || state.packFinishing;
+      button.classList.toggle('is-packed', packed);
+      button.classList.toggle('is-packing', state.packBusy && state.selectedItem === item.id);
+      button.setAttribute('aria-label', item.label + (packed ? ' 정리 완료' : ' 가방에 넣기'));
+      button.querySelector('span').textContent = packed ? '정리 완료 ✓' : (state.packBusy && state.selectedItem === item.id ? '넣는 중…' : zones.find(function (zone) { return zone.id === item.zone; }).label);
     });
+    packCount.textContent = state.packed.size + ' / ' + state.packItems.length;
+    packingBag.setAttribute('aria-busy', String(state.packBusy));
   }
 
-  function animatePackedItem(item, zoneButton) {
-    var bag = root.querySelector('.packing-bag');
-    if (!bag) return 0;
-
-    bag.classList.remove('is-receiving');
-    void bag.offsetWidth;
-    bag.classList.add('is-receiving');
-    window.clearTimeout(state.packEffectTimer);
-    state.packEffectTimer = window.setTimeout(function () {
-      bag.classList.remove('is-receiving');
-      state.packEffectTimer = 0;
-    }, PACK_TRANSFER_MS);
-    if (reducedMotion) return 0;
-
-    var itemButton = packingItems.querySelector('[data-pack-item="' + item.id + '"]');
-    var itemRect = itemButton?.getBoundingClientRect();
-    var itemIsVisible = itemRect && itemRect.bottom > 0 && itemRect.top < window.innerHeight;
-    var sourceRect = (itemIsVisible ? itemButton : zoneButton)?.getBoundingClientRect();
-    if (!sourceRect) return 0;
-
-    var bagRect = bag.getBoundingClientRect();
-    var transfer = document.createElement('span');
-    var sprite = document.createElement('span');
-    transfer.className = 'collectible pack-transfer';
-    transfer.dataset.kind = item.id;
-    transfer.setAttribute('aria-hidden', 'true');
-    sprite.className = 'collectible__sprite';
-    transfer.style.setProperty('--pack-start-x', (sourceRect.left + sourceRect.width / 2) + 'px');
-    transfer.style.setProperty('--pack-start-y', (sourceRect.top + sourceRect.height / 2) + 'px');
-    transfer.style.setProperty('--pack-end-x', (bagRect.left + bagRect.width * .5) + 'px');
-    transfer.style.setProperty('--pack-end-y', (bagRect.top + bagRect.height * .52) + 'px');
-    transfer.append(sprite);
-    document.body.append(transfer);
-    window.setTimeout(function () { transfer.remove(); }, PACK_TRANSFER_MS);
-    return PACK_TRANSFER_MS;
-  }
-
-  function placeSelectedItem(zone, zoneButton) {
-    if (state.phase !== 'pack' || state.packFinishing) return;
-    if (!state.selectedItem) {
-      announce('먼저 아래에서 정리할 물건을 선택해 주세요.');
-      return;
-    }
-    var item = state.packItems.find(function (entry) { return entry.id === state.selectedItem; });
-    if (!item || state.packed.has(item.id)) return;
-    if (item.zone === zone.id) {
-      var transferDuration = animatePackedItem(item, zoneButton);
+  function packItem(item) {
+    if (state.phase !== 'pack' || state.packBusy || state.packFinishing || state.packed.has(item.id)) return;
+    state.packBusy = true;
+    state.selectedItem = item.id;
+    var zone = zones.find(function (entry) { return entry.id === item.zone; });
+    packingBag.dataset.pocket = item.zone;
+    packingBag.querySelector('[data-insert-main]').setAttribute('href', item.id === 'laptop' ? '#pack-stowed-laptop' : '#pack-icon-' + item.id);
+    packingBag.classList.add('is-packing');
+    packStatus.textContent = zone.label + '을 열어 ' + item.label + '을 넣고 있어요.';
+    announce(packStatus.textContent);
+    renderPackingBoard();
+    state.packCompletionTimer = window.setTimeout(function () {
+      state.packCompletionTimer = 0;
+      if (state.phase !== 'pack') return;
       state.packed.add(item.id);
+      state.packBusy = false;
       state.selectedItem = '';
-      state.packFinishing = state.packed.size === state.packItems.length;
+      packingBag.classList.remove('is-packing');
+      packingBag.removeAttribute('data-pocket');
+      if (item.id === 'bottle') packingBag.classList.add('has-bottle');
       setScore(150);
       playEffect('pack');
-      announce(item.label + '을 ' + zone.label + '에 정리했습니다. 150점 추가.');
+      packStatus.textContent = item.label + ' 정리 완료 · +150';
+      announce(packStatus.textContent);
+      state.packFinishing = state.packed.size === state.packItems.length;
       renderPackingBoard();
       if (state.packFinishing) {
         window.clearInterval(state.clockTimer);
         state.clockTimer = 0;
-        if (!transferDuration) {
-          finishGame();
-          return;
-        }
-        announce(item.label + '이 가방에 들어갔습니다. 마지막 정리를 확인하고 있습니다.');
+        packStatus.textContent = '오늘의 가방이 완성됐어요!';
         state.packCompletionTimer = window.setTimeout(function () {
           state.packCompletionTimer = 0;
           finishGame();
-        }, transferDuration);
+        }, 700);
+      } else {
+        var next = packingItems.querySelector('button:not(:disabled)');
+        if (next && packingItems.contains(document.activeElement)) next.focus({ preventScroll: true });
       }
-      return;
-    }
-    setScore(-40);
-    announce(item.label + '은 ' + zone.label + '이 아닙니다. 다른 수납칸을 골라 보세요.');
+    }, reducedMotion ? 250 : PACK_TRANSFER_MS);
   }
 
   function readStoredReward() {

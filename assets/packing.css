@@ -1,0 +1,63 @@
+/* Product-led packing stage: one bag, visible openings, one-tap item actions. */
+.game-panel--pack .pixel-room { padding: clamp(16px, 3cqw, 28px); background: #f3f7ef; color: #263b30; background-image: none; display: flex; flex-direction: column; gap: 12px; }
+.game-panel--pack .pack-dialog { padding: 0 52px 4px 0; border: 0; box-shadow: none; background: none; }
+.game-panel--pack .pack-dialog .game-step { color: #587361; font: 750 10px/1.4 sans-serif; letter-spacing: .12em; margin: 0 0 8px; }
+.game-panel--pack .pack-dialog h3 { font-weight: 750; font-family: inherit; font-size: clamp(22px, 4cqw, 32px); line-height: 1.2; margin: 0 0 8px; letter-spacing: -.04em; }
+.game-panel--pack .pack-dialog p:last-child { margin: 0; font-size: 13px; line-height: 1.55; }
+.game-panel--pack .packing-board { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(200px, .75fr); align-items: center; gap: 24px; margin: 0; }
+.game-panel--pack .packing-bag { align-self: stretch; display: flex; flex-direction: column; justify-content: center; min-height: 0; border: 1px solid #e0e7de; border-radius: 24px; box-shadow: none; background: #fff; overflow: hidden; padding: 8px 10px 16px; }
+.game-panel--pack .packing-bag::after { display: none; }
+.packing-model { display: block; width: 100%; height: min(52dvh, 490px); min-height: 220px; overflow: visible; }
+.game-panel--pack .packing-bag figcaption { position: static; display: grid; gap: 5px; padding: 4px; border: 0; background: none; font-family: inherit; }
+.packing-bag figcaption span { font-size: 10px; color: #63746b; letter-spacing: .1em; }
+.packing-bag figcaption strong { font-size: 13px; line-height: 1.5; font-weight: 650; min-height: 20px; }
+.game-panel--pack .packing-items { margin: 0; min-width: 0; }
+.game-panel--pack .packing-items-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.game-panel--pack .packing-items h4 { margin: 0; font-size: 15px; letter-spacing: 0; }
+.packing-items-heading > span { color: #587361; font-size: 13px; }
+.game-panel--pack [data-packing-items] { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.game-panel--pack [data-packing-items] button { display: grid; justify-items: center; align-content: center; gap: 6px; min-height: 130px; padding: 12px 6px; border: 1px solid #c8d5c8; border-radius: 16px; box-shadow: none; background: #fff; color: #263b30; font-family: inherit; cursor: pointer; }
+[data-packing-items] button svg { width: 52px; height: 52px; }
+.game-panel--pack [data-packing-items] button strong { font-size: 14px; }
+.game-panel--pack [data-packing-items] button span { font-size: 11px; line-height: 1.4; }
+.game-panel--pack [data-packing-items] button:hover:not(:disabled) { background: #e3efe0; border-color: #4f6b58; transform: translateY(-2px); }
+.game-panel--pack [data-packing-items] button:focus-visible { outline: 3px solid #3e6b52; outline-offset: 3px; }
+.game-panel--pack [data-packing-items] button:disabled { opacity: .55; cursor: default; }
+.game-panel--pack [data-packing-items] button.is-packed { background: #e3efe0; border-color: #84a28a; opacity: 1; }
+.game-panel--pack [data-packing-items] button.is-packing { border-color: #4f6b58; opacity: 1; }
+.pack-hint { font-size: 11px; line-height: 1.6; margin: 12px 0 0; color: #587361; }
+.bag-lid, .bag-top-open, .bag-front-open, .bag-side-open, .packing-insert, .bag-side-stored { opacity: 0; pointer-events: none; }
+.packing-bag.has-bottle .bag-side-stored { opacity: 1; }
+.packing-bag.is-packing:is([data-pocket="main"], [data-pocket="laptop"]) .bag-photo { animation: body-open 2.2s linear both; }
+.packing-bag.is-packing:is([data-pocket="main"], [data-pocket="laptop"]) .bag-lid { animation: lid-open 2.2s ease-in-out both; }
+.packing-bag.is-packing:is([data-pocket="main"], [data-pocket="laptop"]) .bag-top-open,
+.packing-bag.is-packing[data-pocket="front"] .bag-front-open,
+.packing-bag.is-packing[data-pocket="side"] .bag-side-open { animation: pocket-open 2.2s ease both; }
+.packing-bag.is-packing:is([data-pocket="main"], [data-pocket="laptop"]) .packing-insert--top,
+.packing-bag.is-packing[data-pocket="front"] .packing-insert--front,
+.packing-bag.is-packing[data-pocket="side"] .packing-insert--side { opacity: 1; }
+.packing-bag.is-packing .packing-object { animation: item-insert 2.2s cubic-bezier(.4,0,.3,1) both; }
+@keyframes pocket-open { 0%, 5%, 100% { opacity: 0; } 18%, 82% { opacity: 1; } }
+@keyframes lid-open { 0%, 100% { opacity: 0; transform: translateY(0); } 8% { opacity: 1; transform: translateY(0); } 23%, 78% { opacity: 1; transform: translateY(-14px); } 95% { opacity: 1; transform: translateY(0); } }
+@keyframes body-open { 0%, 7%, 96%, 100% { clip-path: inset(0); } 8%, 95% { clip-path: url(#pack-body-clip); } }
+@keyframes item-insert { 0%, 16% { opacity: 0; transform: translateY(-20px); } 28% { opacity: 1; transform: translateY(0); } 72%, 100% { opacity: 1; transform: translateY(185px); } }
+@media (max-width: 620px) {
+  .game-panel--pack .pixel-room { padding: 16px; gap: 10px; }
+  .game-panel--pack .packing-board { display: flex; flex-direction: column; gap: 12px; align-items: stretch; }
+  .game-panel--pack .packing-bag { flex: 1; padding: 2px 6px 8px; min-height: 230px; border-radius: 18px; }
+  .packing-model { height: min(41dvh, 345px); min-height: 180px; }
+  .game-panel--pack [data-packing-items] { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+  .game-panel--pack [data-packing-items] button { min-height: 100px; padding: 8px 3px; border-radius: 12px; gap: 3px; }
+  [data-packing-items] button svg { width: 38px; height: 38px; }
+  .game-panel--pack [data-packing-items] button strong { font-size: 12px; }
+  .game-panel--pack [data-packing-items] button span { font-size: 10px; }
+  .game-panel--pack .packing-items-heading { margin-bottom: 7px; }
+  .pack-hint { margin-top: 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .packing-bag.is-packing .packing-object, .packing-bag.is-packing .bag-lid, .packing-bag.is-packing .bag-photo { animation: none; }
+  .packing-bag.is-packing .packing-insert { opacity: 0; }
+  .game-panel--pack [data-packing-items] button:hover:not(:disabled) { transform: none; }
+}
+
+body.game-round-active .game-console[data-phase="pack"] { touch-action: pan-y; }

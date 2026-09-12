@@ -188,3 +188,7 @@ Product, finder and brand tabs share assets/navigation-layout.css: compact headi
 Mobile home and catalog product lists use a contained horizontal swipe rail with 88% width cards, a visible next-card edge, scroll snapping and keyboard-focusable scrolling. This supersedes the previous mobile vertical product list; desktop remains a grid.
 
 Game controls: use a fixed analog joystick with a 15% dead zone, diagonal movement and release/cancel reset. Keep keyboard controls and separate pause, jump and shot buttons. Mobile joystick is 112px; action targets remain visible at 320px.
+
+
+### Game packing stage (2026-09-12)
+The packing stage uses the actual No.0422 front product photograph on a white surface over the sage canvas. Layered SVG openings and clipped item motion illustrate top, front and side storage. Each collected-item button automatically runs one complete opening/insertion/closing sequence; it awards 150 points only after completion. Input is locked and the packing clock pauses during this sequence. Reduced motion uses a brief completion state. This replaces the character preview and manual zone-selection interaction; coupon issuance remains in the existing game result flow.

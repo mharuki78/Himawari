@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="assets/cart.css">
     <link rel="stylesheet" href="assets/member.css">
     <link rel="stylesheet" href="assets/game.css">
+    <link rel="stylesheet" href="assets/packing.css">
     <link rel="stylesheet" href="assets/game-layout.css">
     <script src="script.js" defer></script>
     <script src="assets/game.js" defer></script>
@@ -116,15 +117,39 @@
 
                 <section class="game-panel game-panel--pack" data-game-panel="pack" aria-labelledby="pack-title" hidden>
                   <div class="pixel-room">
-                    <div class="pack-dialog"><p class="game-step">SCHOOL LOCKER · STAGE 02</p><h3 id="pack-title">등교 준비를 완성하세요.</h3><p>아래 물건을 먼저 고른 뒤 알맞은 수납칸을 누르세요.</p></div>
+                    <div class="pack-dialog"><p class="game-step">HIMAWARI · PACK YOUR DAY</p><h3 id="pack-title">가방 속, 나의 하루.</h3><p>물건을 누르면 수납부가 열리고 가방 안으로 들어가요.</p></div>
                     <div class="packing-board">
-                      <figure class="packing-bag">
-                        <img src="assets/game-pixel-player.png" width="256" height="384" alt="No.0422 가방을 멘 픽셀 캐릭터">
-                        <figcaption>NO.0422 / BAG MAP</figcaption>
+                      <figure class="packing-bag" aria-label="No.0422 정면 가방 수납 연출">
+                        <svg class="packing-model" viewBox="60 -45 480 650" role="img" aria-label="히마와리 블랙 책가방. 상단, 앞주머니, 옆 포켓이 열립니다.">
+                          <defs>
+                            <clipPath id="pack-lid-clip"><rect width="600" height="155"/></clipPath>
+                            <clipPath id="pack-body-clip"><rect y="155" width="600" height="450"/></clipPath>
+                            <clipPath id="pack-top-entry"><rect x="100" y="-100" width="400" height="264"/></clipPath>
+                            <clipPath id="pack-front-entry"><rect x="120" y="150" width="360" height="190"/></clipPath>
+                            <clipPath id="pack-side-entry"><rect x="440" y="180" width="90" height="210"/></clipPath>
+                            <linearGradient id="pack-lining" x2="0" y2="1"><stop stop-color="#060b0d"/><stop offset="1" stop-color="#454e53"/></linearGradient>
+                            <linearGradient id="pack-metal" x2="1" y2="1"><stop stop-color="#e5eaee"/><stop offset=".5" stop-color="#b6c3ce"/><stop offset="1" stop-color="#8797a7"/></linearGradient>
+                            <symbol id="pack-icon-laptop" viewBox="0 0 100 100"><rect x="8" y="12" width="84" height="62" rx="6" fill="url(#pack-metal)" stroke="#667785" stroke-width="2"/><rect x="13" y="17" width="74" height="49" rx="3" fill="#d9e9ed"/><path d="M13 57 42 31 60 48 87 25V66H13Z" fill="#81aaa4"/><path d="M8 76H92L99 86Q100 91 92 91H8Q0 91 1 86Z" fill="#cbd4dc" stroke="#667785" stroke-width="2"/><path d="M40 77H60L64 83H36Z" fill="#9caebb"/></symbol>
+                            <symbol id="pack-stowed-laptop" viewBox="0 0 100 100"><rect x="13" y="5" width="74" height="89" rx="5" fill="url(#pack-metal)" stroke="#647581" stroke-width="2"/><path d="M18 8V90H82" fill="none" stroke="#f2f6f9" stroke-width="2"/><circle cx="50" cy="48" r="7" fill="#e9eff2"/><path d="M82 14V82" stroke="#7e909f"/></symbol>
+                            <symbol id="pack-icon-book" viewBox="0 0 100 100"><path d="M22 10H78Q85 10 85 18V86H22Q12 86 12 78V20Q12 10 22 10" fill="#668f86" stroke="#355e54" stroke-width="2"/><path d="M24 12V74" stroke="#a5c7b5" stroke-width="3"/><path d="M22 75H82V87H22Q10 81 22 75" fill="#f5efd9" stroke="#355e54" stroke-width="2"/><path d="M27 80H76M35 35H69M35 42H60" stroke="#e8eee0" stroke-width="3"/><text x="36" y="59" fill="#fff7da" font-size="10" font-family="sans-serif">MY DAY</text></symbol>
+                            <symbol id="pack-icon-pencil" viewBox="0 0 100 100"><rect x="7" y="28" width="86" height="47" rx="12" fill="#cc916b" stroke="#98603e" stroke-width="2"/><path d="M13 39H87" stroke="#f4d4a9" stroke-width="3"/><path d="M19 34V48" stroke="#5e554b" stroke-width="3"/><rect x="63" y="51" width="20" height="12" rx="2" fill="#ede0c8"/><path d="M12 65H88" stroke="#ac724e" stroke-dasharray="2 3"/></symbol>
+                            <symbol id="pack-icon-bottle" viewBox="0 0 100 100"><rect x="38" y="5" width="24" height="14" rx="4" fill="#3d6c67"/><path d="M37 20Q25 27 25 40V85Q25 94 35 94H65Q75 94 75 85V40Q75 27 63 20Z" fill="#b6dcd5" stroke="#527d79" stroke-width="2"/><path d="M28 49H72V82Q72 90 64 90H36Q28 90 28 82Z" fill="#7db5ae"/><path d="M35 33V78" stroke="#e5f7f0" stroke-width="5" stroke-linecap="round"/><circle cx="54" cy="66" r="10" fill="#e3eee2"/></symbol>
+                          </defs>
+                          <image class="bag-photo" href="assets/game-0422-black.jpg" width="600" height="600"/>
+                          <g class="bag-top-open"><ellipse cx="300" cy="156" rx="148" ry="29" fill="url(#pack-lining)" stroke="#626c72" stroke-width="3"/><path d="M180 156Q300 127 420 156" fill="none" stroke="#88959b" stroke-width="2" stroke-dasharray="3 3"/></g>
+                          <image class="bag-lid" href="assets/game-0422-black.jpg" width="600" height="600" clip-path="url(#pack-lid-clip)"/>
+                          <g class="bag-front-open"><ellipse cx="300" cy="337" rx="128" ry="15" fill="url(#pack-lining)" stroke="#70797c" stroke-width="2"/><path d="M175 341Q300 376 425 341L425 366Q300 398 175 366Z" fill="#30363b" stroke="#454d53" stroke-width="2"/></g>
+                          <g class="bag-side-open"><ellipse cx="475" cy="388" rx="32" ry="13" fill="#0d161b" stroke="#697478" stroke-width="3"/></g>
+                          <g class="packing-insert packing-insert--top" clip-path="url(#pack-top-entry)"><g class="packing-object"><use data-insert-main width="120" height="120" x="240" y="10"/></g></g>
+                          <g class="packing-insert packing-insert--front" clip-path="url(#pack-front-entry)"><g class="packing-object"><use href="#pack-icon-pencil" width="108" height="108" x="246" y="207"/></g></g>
+                          <g class="packing-insert packing-insert--side" clip-path="url(#pack-side-entry)"><g class="packing-object"><use href="#pack-icon-bottle" width="90" height="120" x="430" y="235"/></g></g>
+                          <g class="bag-top-open"><path d="M152 159Q300 194 448 159L444 174Q300 207 156 174Z" fill="#2c3237" stroke="#596267" stroke-width="2"/></g>
+                          <g class="bag-side-stored"><use href="#pack-icon-bottle" x="435" y="319" width="80" height="108"/><path d="M445 390Q475 405 505 390L498 452Q475 462 452 452Z" fill="#2b3237" stroke="#596167" stroke-width="2"/><path d="M449 401 499 410M451 414 497 424M454 430 494 438" stroke="#465056"/></g>
+                        </svg>
+                        <figcaption><span>HIMAWARI No.0422</span><strong data-pack-status aria-live="polite">어떤 물건부터 넣을까요?</strong></figcaption>
                       </figure>
-                      <section class="packing-zones" aria-labelledby="packing-zones-title"><h4 id="packing-zones-title">수납칸 선택</h4><div data-packing-zones></div></section>
+                      <section class="packing-items" aria-labelledby="packing-items-title"><div class="packing-items-heading"><h4 id="packing-items-title">오늘 챙길 물건</h4><span data-pack-count>0 / 4</span></div><div data-packing-items></div><p class="pack-hint">한 번 누르면 열고, 넣고, 닫기까지.</p></section>
                     </div>
-                    <section class="packing-items" aria-labelledby="packing-items-title"><h4 id="packing-items-title">모은 물건</h4><div data-packing-items></div></section>
                   </div>
                 </section>
 

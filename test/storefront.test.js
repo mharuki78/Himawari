@@ -282,19 +282,19 @@ test('내부 주문서는 Npay와 무통장입금 선택 및 앱 소유 검증�
 test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 제공한다', async () => {
   const html = await readFile(new URL('../game.html', import.meta.url), 'utf8');
   const gameJs = await readFile(new URL('../assets/game.js', import.meta.url), 'utf8');
-  const gameCss = (await Promise.all(['game.css', 'game-items.css'].map((file) => readFile(new URL('../assets/' + file, import.meta.url), 'utf8')))).join('\n');
+  const gameCss = (await Promise.all(['game.css', 'game-items.css', 'packing.css'].map((file) => readFile(new URL('../assets/' + file, import.meta.url), 'utf8')))).join('\n');
   const checkoutJs = await readFile(new URL('../assets/checkout.js', import.meta.url), 'utf8');
 
-  await access(new URL('../assets/game-pixel-school-world.png', import.meta.url));
+  await access(new URL('../assets/game-campus-spring.png', import.meta.url));
   await access(new URL('../assets/game-pixel-player.png', import.meta.url));
   assert.match(html, /<title>HIMAWARI BAG QUEST — 0422 등굣길 어드벤처<\/title>/);
   assert.match(html, /등굣길 퀘스트 시작/);
   assert.match(html, /data-game-panel="catch"/);
   assert.match(html, /data-game-panel="pack"/);
   assert.match(html, /data-game-panel="result"/);
-  assert.match(html, /assets\/game-pixel-school-world\.png/);
+  assert.match(html, /assets\/game-campus-spring\.png/);
   assert.match(html, /assets\/game-pixel-player\.png/);
-  assert.match(html, /data-game-move="up"/);
+  assert.match(html, /data-game-joystick/);
   assert.match(html, /data-game-jump/);
   assert.match(html, /data-game-fire/);
   assert.match(html, /점프로 위험물을 넘고, 새총으로 아령을 부수면/);
@@ -316,15 +316,15 @@ test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 �
   assert.match(gameJs, /AudioContext/);
   assert.match(gameJs, /function playMusicStep/);
   assert.match(gameJs, /function setGameViewport/);
-  assert.match(gameJs, /function animatePackedItem/);
+  assert.match(gameJs, /function packItem/);
   assert.match(gameJs, /function jumpPlayer/);
   assert.match(gameJs, /function fireSlingshot/);
   assert.match(gameJs, /object\.item\.id === 'weight'/);
   assert.match(gameJs, /key === 'f' \|\| key === 'j'/);
   assert.match(gameJs, /PACK_TRANSFER_MS/);
-  assert.match(gameJs, /마지막 정리를 확인하고 있습니다/);
+  assert.match(gameJs, /오늘의 가방이 완성됐어요/);
   assert.match(gameJs, /state\.phase === 'intro'/);
-  assert.match(gameJs, /touchmove/);
+  assert.match(gameJs, /pointermove/);
   assert.doesNotMatch(gameJs, /sprite\.textContent\s*=\s*item\.code/);
   assert.match(gameJs, /--player-flip/);
   assert.match(gameCss, /\.pixel-player\.is-walking/);
@@ -335,9 +335,9 @@ test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 �
   assert.match(gameCss, /\.pixel-player\.is-jumping/);
   assert.match(gameCss, /\.slingshot-shot/);
   assert.match(gameCss, /width: clamp\(3\.2rem, 17cqw, 5\.4rem\)/);
-  assert.match(gameCss, /@keyframes pack-transfer-flight/);
-  assert.match(gameCss, /\.packing-bag\.is-receiving/);
-  assert.match(gameCss, /\.pack-transfer \{ display: none; \}/);
+  assert.match(gameCss, /@keyframes item-insert/);
+  assert.match(gameCss, /\.packing-bag\.is-packing/);
+  assert.match(gameCss, /\.packing-bag\.is-packing \.packing-insert/);
   assert.match(gameCss, /\.collectible\[data-kind="laptop"\] \.collectible__sprite::before/);
   assert.match(gameCss, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(checkoutJs, /himawari-game-coupon-v1/);
