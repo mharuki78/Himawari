@@ -63,9 +63,9 @@
 .game-secondary { padding: .7rem .9rem; background: var(--pixel-cream); box-shadow: 4px 4px 0 var(--pixel-ink); color: var(--pixel-ink); font-size: .72rem; font-weight: 850; }
 .game-secondary:hover, .game-secondary:focus-visible { background: #f0c95b; }
 
-.adventure-stage { --world-x: 0%; --world-y: 0%; position: absolute; inset: 0; overflow: hidden; background: #273c2e; isolation: isolate; }
+.adventure-stage { --route-offset: 0px; position: absolute; inset: 0; overflow: hidden; background: #273c2e; isolation: isolate; }
 .adventure-stage::after { position: absolute; z-index: 5; inset: 0; pointer-events: none; content: ""; box-shadow: inset 0 0 0 2px rgb(255 255 255 / .13), inset 0 -4rem 7rem rgb(35 40 20 / .16); }
-.adventure-world { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; transform: translate3d(var(--world-x), var(--world-y), 0) scale(1.08); transform-origin: center; will-change: transform; }
+.adventure-world { position: absolute; top: 0; left: 0; width: 100%; height: auto; min-height: 100%; max-width: none; image-rendering: auto; transform: translate3d(0, var(--route-offset), 0); will-change: transform; pointer-events: none; }
 .quest-ribbon { position: absolute; z-index: 4; top: .7rem; left: .7rem; display: grid; padding: .35rem .48rem; border: 3px solid var(--pixel-ink); background: rgb(255 244 209 / .93); box-shadow: 3px 3px 0 var(--pixel-ink); font: 850 .52rem/1.2 ui-monospace, SFMono-Regular, Consolas, monospace; }
 .quest-ribbon span { font-size: .45rem; }
 .game-exit { position: absolute; z-index: 9; top: calc(4.5rem + .65rem); right: .65rem; display: grid; width: 44px; padding: 0; place-items: center; background: rgb(255 244 209 / .94); box-shadow: 3px 3px 0 var(--pixel-ink); color: var(--pixel-ink); font: 900 1.2rem/1 ui-monospace, SFMono-Regular, Consolas, monospace; }
@@ -256,7 +256,6 @@ body.game-round-active .game-console:not([data-phase="intro"]) .game-announcer {
   .controller-action { width: 2.9rem; padding-inline: .15rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .adventure-world { transform: scale(1.04); }
   .pixel-player.is-walking, .pixel-player.is-hit, .pixel-player.is-jumping, .adventure-stage.is-moving .player-shadow, .adventure-stage.is-jumping .player-shadow, .collectible::before, .collectible__sprite, .collectible.is-collected, .collectible.is-smashed, .game-toast.is-visible, .pixel-confetti, .footstep, .packing-bag.is-receiving img, .packing-bag.is-receiving::after { animation: none; }
   .pack-transfer { display: none; }
   .footstep { display: none; }
@@ -273,11 +272,6 @@ body.game-round-active .game-console:not([data-phase="intro"]) .game-announcer {
 .joystick-pause { min-width: 44px; min-height: 44px; border: 2px solid var(--pixel-ink); background: var(--pixel-moss); color: var(--pixel-cream); font-size: 18px; touch-action: manipulation; }
 @media (max-width: 480px) { .game-joystick { width: 112px; height: 112px; } .game-controller { grid-template-columns: 112px minmax(44px, 1fr) 6.2rem; } }
 
-/* Time-driven approach to the school; the foreground gate passes the player. */
-.adventure-world { transform: translate3d(var(--world-x), calc(var(--world-y) + var(--journey-pan, 0%)), 0) scale(var(--journey-zoom, 1.08)); transform-origin: 50% 20%; }
-.school-gate { position: absolute; z-index: 4; top: var(--gate-top, 8%); left: 50%; width: 82%; height: 38%; opacity: var(--gate-opacity, 0); transform: translate(-50%, -15%) scale(var(--gate-scale, .3)); transform-origin: 50% 0; pointer-events: none; }
-.school-gate > span { position: absolute; inset: 0 0 auto; padding: 10px 4px; border: 4px solid #342f22; background: #e5d5a7; box-shadow: 0 5px 0 #897851; color: #293d2a; text-align: center; font: 900 clamp(10px, 3cqw, 18px)/1.2 ui-monospace, monospace; letter-spacing: .04em; }
-.school-gate small { display: block; margin-top: 4px; font-size: .7em; }
-.school-gate i { position: absolute; top: 58px; bottom: 0; left: 0; width: 9%; border: 3px solid #554d37; background: repeating-linear-gradient(0deg, #b9ac88 0 17px, #8f8468 17px 20px); box-shadow: 5px 0 0 #554d37; }
-.school-gate i:last-child { left: auto; right: 0; }
-@media (prefers-reduced-motion: reduce) { .adventure-world { transform: scale(1.04); } }
+/* New campus art is a complete map, including its entrance and school. */
+.game-hero__preview > img:first-child { object-position: center top; }
+.intro-scene > img:first-child, .result-scene > img:first-child { object-position: center 7%; }

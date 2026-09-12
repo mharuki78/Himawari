@@ -23,6 +23,10 @@
   var announcer = root.querySelector('[data-game-announcer]');
   var catchStage = root.querySelector('[data-catch-stage]');
   var catchLayer = root.querySelector('[data-catch-layer]');
+  var worldImage = root.querySelector('.adventure-world');
+  var journeyStatus = root.querySelector('[data-journey-status]');
+  var routeMetrics = { height: 0, mapHeight: 0 };
+  var ARRIVAL_SECONDS = 2;
   var playerShadow = root.querySelector('[data-player-shadow]');
   var player = root.querySelector('[data-catch-player]');
   var gameToast = root.querySelector('[data-game-toast]');
@@ -287,10 +291,6 @@
     player.style.top = state.playerY + '%';
     playerShadow.style.left = state.playerX + '%';
     playerShadow.style.top = (state.playerY + 5.8) + '%';
-    if (!reducedMotion) {
-      catchStage.style.setProperty('--world-x', ((50 - state.playerX) * .07).toFixed(2) + '%');
-      catchStage.style.setProperty('--world-y', ((56 - state.playerY) * .06).toFixed(2) + '%');
-    }
   }
 
   function jumpPlayer() {
@@ -499,38 +499,53 @@
     removeObject(object, true);
   }
 
+  // One fixed-scale map moves down as the player walks north. No zoom or lateral camera motion.
+  function routeOffset(height, mapHeight, progress) {
+    var start = Math.min(0, height - mapHeight);
+    // Gate threshold is painted at 20% of the map, within the same artwork.
+    var end = Math.max(start, Math.min(0, height * .82 - mapHeight * .20));
+    return start + (end - start) * Math.max(0, Math.min(1, progress));
+  }
+
+  function measureRoute() {
+    if (!catchStage.clientHeight || !worldImage.naturalWidth) return;
+    routeMetrics.height = catchStage.clientHeight;
+    routeMetrics.mapHeight = Math.max(catchStage.clientHeight, catchStage.clientWidth * worldImage.naturalHeight / worldImage.naturalWidth);
+    renderJourney();
+  }
+
   function renderJourney() {
+    var elapsed = state.journeyElapsed + (state.arriving ? state.arrivalElapsed : 0);
+    var travel = elapsed / (CATCH_SECONDS + ARRIVAL_SECONDS);
+    if (reducedMotion) travel = state.arriving ? 1 : 0;
+    catchStage.style.setProperty('--route-offset', routeOffset(routeMetrics.height, routeMetrics.mapHeight, travel).toFixed(2) + 'px');
     var progress = Math.min(1, state.journeyElapsed / CATCH_SECONDS);
-    catchStage.style.setProperty('--journey-zoom', reducedMotion ? '1.04' : (1.08 + progress * .65).toFixed(4));
-    catchStage.style.setProperty('--journey-pan', reducedMotion ? '0%' : (progress * 8).toFixed(3) + '%');
-    var approach = Math.max(0, (progress - .68) / .32);
-    catchStage.style.setProperty('--gate-opacity', approach > 0 ? '1' : '0');
-    catchStage.style.setProperty('--gate-scale', (.3 + approach * .7).toFixed(3));
-    catchStage.style.setProperty('--gate-top', (8 + approach * 32).toFixed(3) + '%');
-    root.querySelector('[data-journey-status]').textContent = state.arriving ? '정문 통과 중' : (progress > .85 ? '정문이 보여요!' : Math.round(progress * 100) + '% 도착');
+    var label = state.arriving ? '정문 통과 중' : (progress > .85 ? '학교가 보여요!' : Math.round(progress * 100) + '% 도착');
+    if (journeyStatus.textContent !== label) journeyStatus.textContent = label;
   }
 
   function updateWorld(now) {
     if (state.phase !== 'catch') return;
-    var delta = state.lastFrame ? Math.min(.035, (now - state.lastFrame) / 1000) : 0;
+    var elapsedDelta = state.lastFrame ? Math.max(0, (now - state.lastFrame) / 1000) : 0;
+    var delta = Math.min(.035, elapsedDelta);
     state.lastFrame = now;
 
     if (state.arriving) {
       if (!state.paused && !document.hidden) {
-        state.arrivalElapsed += delta;
-        var crossing = Math.min(1, state.arrivalElapsed / 2);
+        state.arrivalElapsed = Math.min(ARRIVAL_SECONDS, state.arrivalElapsed + elapsedDelta);
+        var crossing = Math.min(1, state.arrivalElapsed / ARRIVAL_SECONDS);
         state.playerX += (50 - state.playerX) * Math.min(1, delta * 5);
         state.playerY = state.arrivalStartY + (28 - state.arrivalStartY) * crossing;
         renderPlayer();
         player.classList.toggle('is-walking', !reducedMotion);
-        catchStage.style.setProperty('--gate-top', (40 + crossing * 40) + '%');
+        renderJourney();
         if (crossing >= 1) { completeCatch(); return; }
       }
       state.animationFrame = window.requestAnimationFrame(updateWorld);
       return;
     }
     if (!state.paused && !document.hidden) {
-      state.journeyElapsed = Math.min(CATCH_SECONDS, state.journeyElapsed + delta);
+      state.journeyElapsed = Math.min(CATCH_SECONDS, state.journeyElapsed + elapsedDelta);
       renderJourney();
       var secondsLeft = Math.ceil(CATCH_SECONDS - state.journeyElapsed);
       if (state.time !== secondsLeft) { state.time = secondsLeft; renderHud(); }
@@ -632,6 +647,7 @@
     renderPlayer();
     player.classList.remove('is-hit', 'is-walking');
     showPanel('catch');
+    measureRoute();
     announce('1단계 시작. 상하좌우로 움직여 필요한 물건을 모으고 위험한 물건은 피하세요.');
     showToast('QUEST START!');
     createCollectible(goodItems[0]);
@@ -1033,6 +1049,9 @@
   });
   window.addEventListener('pagehide', stopMusic);
 
+  worldImage.addEventListener('load', measureRoute);
+  if (typeof ResizeObserver !== 'undefined') new ResizeObserver(measureRoute).observe(catchStage);
+  else window.addEventListener('resize', measureRoute);
   showPanel('intro');
   renderPlayer();
   updateSoundControl();
