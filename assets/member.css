@@ -278,3 +278,48 @@ body .site-footer { grid-template-columns: minmax(240px,1fr) minmax(160px,.65fr)
 .site-footer .footer-social-link--youtube .footer-social-icon { color: #ff0000; }
 .site-footer .footer-social-link--youtube .footer-social-icon__play { fill: #fff; }
 .site-footer .footer-social-link > span:last-child { font-size: 12px; }
+
+/* Clear, consistent header actions in both signed-in and signed-out states. */
+.header-actions .member-trigger,
+.header-actions .store-picker > .header-store {
+  min-height: 44px;
+  height: 44px;
+  padding: 0 18px;
+  border: 1px solid #4f6b58;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+  box-shadow: none;
+  transition: background-color .18s ease, border-color .18s ease, color .18s ease;
+}
+.header-actions .member-trigger {
+  min-width: 78px;
+  background: #fff;
+  color: #354c3d;
+}
+.header-actions .member-trigger:hover {
+  background: #e6eee5;
+  border-color: #354c3d;
+  color: #263c2e;
+}
+.header-actions .store-picker > .header-store {
+  min-width: 96px;
+  background: #3d5947;
+  border-color: #3d5947;
+  color: #fff;
+}
+.header-actions .store-picker > .header-store:hover,
+.header-actions .store-picker > .header-store[aria-expanded="true"] {
+  background: #293f31;
+  border-color: #293f31;
+  color: #fff;
+}
+.header-actions .member-trigger:focus-visible,
+.header-actions .store-picker > .header-store:focus-visible {
+  outline: 2px solid #354c3d;
+  outline-offset: 4px;
+}
