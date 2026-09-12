@@ -1,0 +1,35 @@
+/* A shared reading layout for policy documents. */
+.legal-page .privacy-main { width: min(100%, 920px); padding: 56px 28px 64px; margin: 0 auto; }
+.legal-page .privacy-main > .kicker { font-size: 11px; color: var(--harbor); letter-spacing: .16em; margin-bottom: 14px; }
+.legal-page .privacy-main h1 { max-width: none; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.3; font-weight: 750; margin: 0 0 20px; text-shadow: none; letter-spacing: -.035em; }
+.legal-page .privacy-lead { max-width: 760px; margin: 0 0 28px; font-size: 15px; line-height: 1.9; color: #59625d; }
+.legal-page .privacy-section { padding: 28px 0; border-top: 1px solid var(--color-fog); scroll-margin-top: 110px; }
+.legal-page .privacy-section h2 { font-size: 21px; line-height: 1.5; margin: 0 0 16px; font-weight: 700; color: var(--harbor); text-shadow: none; }
+.legal-page .privacy-section p, .legal-page .privacy-section li { max-width: none; font-size: 15px; line-height: 1.95; word-break: keep-all; overflow-wrap: anywhere; color: var(--ink); }
+.legal-page .privacy-section p { margin: 12px 0 0; }
+.legal-page .privacy-section ul, .legal-page .privacy-section ol { display: grid; gap: 10px; padding-left: 22px; margin: 0; }
+.legal-page .privacy-section li::marker { color: var(--harbor); font-weight: 650; }
+.legal-toc { margin-bottom: 28px; padding: 0 20px; border: 1px solid var(--color-fog); border-radius: 16px; background: white; }
+.legal-toc summary { min-height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px; font-weight: 700; cursor: pointer; list-style: none; }
+.legal-toc summary::-webkit-details-marker { display: none; }
+.legal-toc[open] summary > span { transform: rotate(45deg); }
+.legal-toc nav { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 4px 20px; padding: 12px 0 20px; border-top: 1px solid var(--color-fog); }
+.legal-toc a { display: flex; align-items: center; min-height: 44px; padding: 6px 0; font-size: 13px; line-height: 1.6; }
+.legal-toc a:hover { color: var(--harbor); text-decoration: underline; }
+.legal-toc :focus-visible { outline: 2px solid var(--harbor); outline-offset: 3px; }
+.legal-page .terms-business { padding: 24px; margin-bottom: 24px; box-shadow: none; border-radius: 16px; }
+.legal-page .terms-business h2 { font-size: 20px; margin: 0 0 16px; }
+.legal-page .terms-business dl { border-color: var(--color-fog); }
+.legal-page .terms-business dl > div { grid-template-columns: 110px minmax(0,1fr); gap: 16px; padding: 10px 0; border-color: var(--color-fog); }
+.legal-page .terms-business dt, .legal-page .terms-business dd { font-size: 13px; line-height: 1.8; }
+.legal-page .terms-source { margin-top: 24px; border-color: var(--color-fog); font-size: 13px; }
+@media(max-width:600px) {
+ .legal-page .privacy-main { padding: 32px 22px 44px; }
+ .legal-page .privacy-section { padding: 24px 0; }
+ .legal-page .privacy-section h2 { font-size: 19px; }
+ .legal-page .privacy-section p, .legal-page .privacy-section li, .legal-page .privacy-lead { font-size: 14px; line-height: 1.9; }
+ .legal-toc nav { grid-template-columns: minmax(0,1fr); }
+ .legal-page .terms-business { padding: 18px; }
+ .legal-page .terms-business dl > div { grid-template-columns: 84px minmax(0,1fr); gap: 10px; }
+}
+@media print { .legal-toc { display: none; } .legal-page .privacy-main { width: 100%; padding: 0; } }
