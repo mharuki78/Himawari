@@ -4,7 +4,7 @@ let requestId = `${String(9_999_999_999_999-Date.now()).padStart(13,'0')}-${cryp
 const params = new URLSearchParams(location.search);
 form.elements.productId.value = params.get('product') || '';
 form.elements.orderNumber.value = params.get('order') || '';
-if (['product','order','repair','partnership'].includes(params.get('type'))) form.elements.serviceType.value = params.get('type');
+if (['product','order','repair','partnership','other'].includes(params.get('type'))) form.elements.serviceType.value = params.get('type');
 form.addEventListener('submit', async event => {
   event.preventDefault(); const button=form.querySelector('button[type="submit"]'); if(button.disabled)return;
   for(const input of form.querySelectorAll('[aria-invalid]'))input.removeAttribute('aria-invalid');

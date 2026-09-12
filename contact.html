@@ -51,6 +51,14 @@
           <form class="contact-form contact-form--light" data-inquiry-form novalidate>
             <div class="field"><label for="contact-name">이름</label><input id="contact-name" name="name" type="text" autocomplete="name" maxlength="60" required placeholder="성함을 입력해 주세요" aria-describedby="contact-name-error"><p class="field-error" id="contact-name-error"></p></div>
             <div class="field"><label for="contact-email">이메일</label><input id="contact-email" name="email" type="email" autocomplete="email" maxlength="160" required placeholder="name@example.com" aria-describedby="contact-email-error"><p class="field-error" id="contact-email-error"></p></div>
+            <div class="field"><label for="contact-service-type">문의 종류</label><select id="contact-service-type" name="serviceType" required aria-describedby="contact-service-type-error">
+              <option value="">문의 종류를 선택해 주세요</option>
+              <option value="product">제품·수납 문의</option>
+              <option value="order">자사몰 주문·배송 문의</option>
+              <option value="repair">수선·A/S 문의</option>
+              <option value="partnership">도매·입점·협업 문의</option>
+              <option value="other">기타 문의</option>
+            </select><p class="field-error" id="contact-service-type-error"></p></div>
             <div class="field"><label for="contact-subject">문의 제목</label><input id="contact-subject" name="subject" type="text" autocomplete="off" maxlength="120" required placeholder="문의 제목을 입력해 주세요" aria-describedby="contact-subject-error"><p class="field-error" id="contact-subject-error"></p></div>
             <div class="field"><label for="contact-message">문의 내용</label><textarea class="resize-none" id="contact-message" name="message" rows="7" maxlength="4000" required placeholder="제품, 협업, 입점 등 문의 내용을 남겨주세요" aria-describedby="contact-message-error"></textarea><p class="field-error" id="contact-message-error"></p></div>
             <div class="inquiry-honeypot" aria-hidden="true"><label for="contact-website">웹사이트</label><input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>

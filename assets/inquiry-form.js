@@ -34,6 +34,7 @@
     const controls = {
       name: form.elements.namedItem('name'),
       email: form.elements.namedItem('email'),
+      serviceType: form.elements.namedItem('serviceType'),
       subject: form.elements.namedItem('subject'),
       message: form.elements.namedItem('message'),
       consent: form.elements.namedItem('consent'),
@@ -46,6 +47,7 @@
     let pending = false;
 
     if (cartInquiry) {
+      if (controls.serviceType) controls.serviceType.value = 'order';
       if (!controls.subject.value) controls.subject.value = '장바구니 주문 문의';
       if (!controls.message.value) {
         controls.message.value = `다음 제품의 주문을 문의합니다.\n\n${cartInquiry.text}\n\n배송 및 구매 방법을 안내해 주세요.`;
@@ -75,6 +77,7 @@
       if (name === 'name' && typeof value === 'string' && value.length > 60) message = '이름은 60자 이내로 입력해 주세요.';
       if (name === 'email' && !value) message = '답변을 받을 이메일을 입력해 주세요.';
       if (name === 'email' && value && !emailPattern.test(value)) message = '이메일 주소 형식을 확인해 주세요.';
+      if (name === 'serviceType' && !['product', 'order', 'repair', 'partnership', 'other'].includes(value)) message = '문의 종류를 선택해 주세요.';
       if (name === 'subject' && !value) message = '문의 제목을 입력해 주세요.';
       if (name === 'subject' && typeof value === 'string' && value.length > 120) message = '문의 제목은 120자 이내로 입력해 주세요.';
       if (name === 'message' && !value) message = '문의 내용을 입력해 주세요.';
@@ -92,7 +95,7 @@
       control.addEventListener('input', () => {
         if (control.getAttribute('aria-invalid') === 'true') validate(name);
       });
-      if (control.type === 'checkbox') {
+      if (control.type === 'checkbox' || control.tagName === 'SELECT') {
         control.addEventListener('change', () => validate(name));
       }
     });
@@ -101,7 +104,7 @@
       event.preventDefault();
       if (pending) return;
 
-      const fieldNames = ['name', 'email', 'subject', 'message', 'consent'];
+      const fieldNames = ['name', 'email', 'serviceType', 'subject', 'message', 'consent'];
       const valid = fieldNames.map(validate).every(Boolean);
       if (!valid) {
         status.textContent = '입력 내용을 확인해 주세요.';
@@ -126,6 +129,7 @@
             requestId,
             name: controls.name.value,
             email: controls.email.value,
+            serviceType: controls.serviceType?.value || 'product',
             subject: controls.subject.value,
             message: controls.message.value,
             consent: controls.consent.checked,

@@ -2,7 +2,7 @@ import { fetchJson } from './admin-client.js';
 export function showSupportDetail(parent, inquiry, onSaved) {
   parent.querySelector('[data-support-detail]')?.remove();
   const section = document.createElement('section'); section.dataset.supportDetail = '';
-  const info = document.createElement('p'); info.textContent = `문의 종류: ${{ product:'제품', order:'주문', repair:'수선·A/S', partnership:'도매·협업' }[inquiry.serviceType] || '일반'}${inquiry.orderNumber ? ` · 확인된 주문: ${inquiry.orderNumber}` : ''}${inquiry.productId ? ` · 제품: ${inquiry.productId}` : ''}`;
+  const info = document.createElement('p'); info.textContent = `문의 종류: ${{ product:'제품', order:'주문', repair:'수선·A/S', partnership:'도매·입점·협업', other:'기타 문의' }[inquiry.serviceType] || '일반'}${inquiry.orderNumber ? ` · 확인된 주문: ${inquiry.orderNumber}` : ''}${inquiry.productId ? ` · 제품: ${inquiry.productId}` : ''}`;
   const label = document.createElement('label'); label.textContent = '문의 처리 상태';
   const select = document.createElement('select');
   for (const [id, name] of Object.entries({received:'접수', reviewing:'확인 중', waiting_customer:'고객 회신 대기', resolved:'처리 완료'})) select.append(new Option(name,id));

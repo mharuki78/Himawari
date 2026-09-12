@@ -458,3 +458,6 @@ p { max-width: 40ch; text-wrap: pretty; }
 .contact-channels { padding-bottom: 3rem; }
 #contact-channels-title { scroll-margin-top: 140px; }
 .contact-support-links { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--page-pad) 4rem; font-size: 14px; line-height: 1.8; }
+
+.contact-form .field select { width: 100%; min-height: 48px; padding: .85rem 1rem; font: inherit; border: 1px solid var(--color-fog); border-radius: var(--radius-soft); background: var(--snow); color: var(--ink); }
+.contact-form .field select:focus-visible { outline: 2px solid var(--harbor); outline-offset: 2px; }

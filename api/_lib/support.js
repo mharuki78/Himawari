@@ -14,7 +14,7 @@ export function validateSupportAttachment(input) {
 }
 
 export async function supportContext(request, input) {
-  const type = ['product', 'order', 'repair', 'partnership'].includes(input.serviceType) ? input.serviceType : 'product';
+  const type = ['product', 'order', 'repair', 'partnership', 'other'].includes(input.serviceType) ? input.serviceType : 'product';
   let orderNumber = '';
   if (input.orderNumber) {
     const member = await getMember(request);
