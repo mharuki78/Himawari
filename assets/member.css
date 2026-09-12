@@ -270,3 +270,11 @@ body .site-footer { grid-template-columns: minmax(240px,1fr) minmax(160px,.65fr)
 .member-dialog[data-member-view="login"] .member-provider strong { font-size: 10px; letter-spacing: .03em; }
 .member-dialog[data-member-view="login"] .member-signed-out > small { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--color-fog); font-size: 12px; line-height: 1.8; opacity: 1; color: #59625d; }
 .member-dialog[data-member-view="login"] .member-dialog-status:not(:empty) { padding: 10px 12px; margin-top: 16px; border-radius: 10px; background: var(--cream); color: var(--harbor); font-size: 12px; }
+
+.site-footer .footer-social-link { display: grid; grid-template-columns: 72px minmax(0,1fr) 16px; gap: 12px; width: 100%; min-height: 44px; }
+.site-footer .footer-social-link .store-brand-logo { width: 72px; height: 32px; }
+.site-footer .footer-social-link .footer-social-icon { width: 22px; height: 22px; }
+.site-footer .footer-social-link--instagram .footer-social-icon { color: #e4405f; }
+.site-footer .footer-social-link--youtube .footer-social-icon { color: #ff0000; }
+.site-footer .footer-social-link--youtube .footer-social-icon__play { fill: #fff; }
+.site-footer .footer-social-link > span:last-child { font-size: 12px; }

@@ -87,7 +87,7 @@
     link.classList.add('footer-social-link', 'footer-social-link--' + network);
     link.dataset.socialIcon = network;
     link.setAttribute('aria-label', network === 'instagram' ? 'Himawari 인스타그램 — 새 탭에서 열림' : 'Himawari 유튜브 — 새 탭에서 열림');
-    link.innerHTML = social.icon + '<span>' + social.label + '</span>';
+    link.innerHTML = '<span class="store-brand-logo">' + social.icon + '</span><span>' + social.label + '</span><span aria-hidden="true">↗</span>';
   }
 
   function buildFooterSocialLinks() {
