@@ -38,9 +38,9 @@
 .contact-brand-photo img { display: block; width: 100%; height: 340px; object-fit: cover; object-position: 50% 55%; }
 .contact-brand-photo figcaption { position: absolute; bottom: 14px; left: 14px; padding: 8px 12px; border-radius: 20px; background: var(--cream); color: var(--harbor); font-size: 10px; font-weight: 650; letter-spacing: .12em; }
 @media (max-width: 760px) { .contact-brand-photo img { height: 260px; object-position: 50% 57%; } }
-/* Social channels share the first row; stores form a second row. */
+/* Two social channels followed by four stores in balanced pairs. */
 .contact-page .channel-cards { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-.contact-page .channel-card { grid-column: span 2; }
+.contact-page .channel-card { grid-column: span 3; }
 .contact-page .channel-card--instagram, .contact-page .channel-card--youtube { grid-column: span 3; }
 .channel-card__wordmark { width: 132px; padding: 12px; background: #fff; }
 .channel-card__wordmark img { width: 108px; height: auto; max-height: 32px; object-fit: contain; }

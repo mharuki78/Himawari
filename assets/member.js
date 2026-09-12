@@ -11,7 +11,8 @@
   var STORE_LINKS = [
     { name: '네이버 스마트스토어', url: 'https://smartstore.naver.com/baegot', icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#03c75a" d="M3 3h6l6 9V3h6v18h-6l-6-9v9H3z"/></svg>' },
     { name: '쿠팡', url: 'https://shop.coupang.com/A01305526/468030?platform=p&source=brandstore_sdp_atf_topbadge&pid=8645626896&viid=92097411930&brandId=0', icon: '<img src="/assets/channel-logos/coupang.png" alt="">' },
-    { name: '무신사', url: 'https://www.musinsa.com/brand/himawari?gf=A', icon: '<img src="/assets/channel-logos/musinsa.svg" alt="">' }
+    { name: '무신사', url: 'https://www.musinsa.com/brand/himawari?gf=A', icon: '<img src="/assets/channel-logos/musinsa.svg" alt="">' },
+    { name: 'ABLY', url: 'https://mobile.a-bly.com/markets/67207', icon: '<img src="/assets/channel-logos/ably.svg" alt="">' }
   ];
 
   function storeLink(store, footer) {
