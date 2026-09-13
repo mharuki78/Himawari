@@ -1,0 +1,45 @@
+{
+  "date": "2026-09-13",
+  "automationId": "himawari-3",
+  "recoveredAt": "2026-09-14",
+  "posts": [
+    {
+      "id": "library-return-backpack",
+      "title": "도서관 가는 백팩: 빌린 책을 반납하는 날의 준비",
+      "url": "https://himawari.co.kr/story/library-return-backpack.html",
+      "productId": "coupang-3d4fbf39120dea6f",
+      "model": "No.1010",
+      "image": "assets/story/library-return-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/coupang/2026-09-10T08-03-11.192Z/coupang-3d4fbf39120dea6f.jpg"
+    },
+    {
+      "id": "shared-family-backpack",
+      "title": "가족과 백팩을 함께 쓸 때: 다음 사람에게 넘기는 작은 약속",
+      "url": "https://himawari.co.kr/story/shared-family-backpack.html",
+      "productId": "coupang-c5708abbb7659109",
+      "model": "No.1089",
+      "image": "assets/story/shared-family-backpack.webp",
+      "imageKind": "original",
+      "reference": "backups/coupang/2026-09-10T08-03-11.192Z/coupang-c5708abbb7659109.jpg"
+    },
+    {
+      "id": "backpack-receipt-envelope",
+      "title": "백팩 앞주머니에 쌓이는 영수증, 작은 봉투 하나로 정리하기",
+      "url": "https://himawari.co.kr/story/backpack-receipt-envelope.html",
+      "productId": "store-13326274540",
+      "model": "No.0422",
+      "image": "assets/story/backpack-receipt-envelope.webp",
+      "imageKind": "original",
+      "reference": "assets/game-0422-black.jpg"
+    }
+  ],
+  "generation": {
+    "tool": "built-in image_gen",
+    "source": "C:/Users/UserK/.codex/generated_images/01a08495-edb2-74e2-b203-1f9e52e791cd/exec-f84ea8d2-b86f-4722-8041-8fce4bff8c45.png",
+    "prompt": "Reference No.1010 khaki backpack with exact shape, black handles, straps, buckles and white Himawari logo; closed bag beside two plain books and a blank bookmark on a library table, horizontal 3:2, natural daylight, no people or capacity claims."
+  },
+  "topicsReviewed": 38,
+  "overlapReview": "Compared existing titles, summaries and article content. These six recovery topics cover library return workflow, shared ownership handover, receipt intake, used exercise kit return, lunch-container orientation and private identification records; no product specifications or testimonials invented.",
+  "completionReceipt": "backups/story-runs/2026-09-13.deployment.json"
+}

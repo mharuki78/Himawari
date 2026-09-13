@@ -1,0 +1,45 @@
+{
+  "date": "2026-09-14",
+  "automationId": "himawari-3",
+  "recoveredAt": "2026-09-14",
+  "posts": [
+    {
+      "id": "after-work-exercise-backpack",
+      "title": "퇴근 후 운동하는 날: 갈아입을 옷보다 먼저 정할 가방 동선",
+      "url": "https://himawari.co.kr/story/after-work-exercise-backpack.html",
+      "productId": "coupang-c5708abbb7659109",
+      "model": "No.1089",
+      "image": "assets/story/after-work-exercise-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/coupang/2026-09-10T08-03-11.192Z/coupang-c5708abbb7659109.jpg"
+    },
+    {
+      "id": "lunch-container-backpack",
+      "title": "도시락을 백팩에 넣기 전: 용기의 바닥과 꺼내는 방향 확인하기",
+      "url": "https://himawari.co.kr/story/lunch-container-backpack.html",
+      "productId": "coupang-3d4fbf39120dea6f",
+      "model": "No.1010",
+      "image": "assets/story/lunch-container-backpack.webp",
+      "imageKind": "original",
+      "reference": "backups/coupang/2026-09-10T08-03-11.192Z/coupang-3d4fbf39120dea6f.jpg"
+    },
+    {
+      "id": "backpack-identification-record",
+      "title": "내 백팩을 설명할 수 있나요? 분실에 대비한 세 장의 기록",
+      "url": "https://himawari.co.kr/story/backpack-identification-record.html",
+      "productId": "store-13326274540",
+      "model": "No.0422",
+      "image": "assets/story/backpack-identification-record.webp",
+      "imageKind": "original",
+      "reference": "assets/game-0422-black.jpg"
+    }
+  ],
+  "generation": {
+    "tool": "built-in image_gen",
+    "source": "C:/Users/UserK/.codex/generated_images/01a08495-edb2-74e2-b203-1f9e52e791cd/exec-c7b576bf-f6a2-46a1-9072-e264324644e2.png",
+    "prompt": "Reference No.1089 mint backpack with exact shape, double handles, circular Himawari logo and pockets; closed bag on bench beside folded towel and separate shoe pouch, horizontal 3:2, daylight, no people or capacity claims."
+  },
+  "topicsReviewed": 41,
+  "overlapReview": "Compared existing titles, summaries and article content. These six recovery topics cover library return workflow, shared ownership handover, receipt intake, used exercise kit return, lunch-container orientation and private identification records; no product specifications or testimonials invented.",
+  "completionReceipt": "backups/story-runs/2026-09-14.deployment.json"
+}
