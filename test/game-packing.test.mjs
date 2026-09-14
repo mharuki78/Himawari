@@ -52,3 +52,29 @@ test('all four item types require their matching compartment',()=>{
   c.matchPackingZone(zone);assert.equal(timers.length,1);timers[0].fn();assert.equal(c.state.packed.has(id),true);
  }
 });
+
+
+test('compartment first supports every pair, clears selection, and keeps the bottle stored',()=>{
+ for(const [id,zone] of [['book','main'],['laptop','laptop'],['bottle','side'],['pencil','front']]){
+  const {c,timers,classes}=setup();
+  vm.runInContext(src.slice(src.indexOf('  function selectPackingItem('),src.indexOf('  function packItem(')),c);
+  const item={id,zone,label:id};c.state.packItems=[item,{id:'spare'}];c.zones=[{id:zone,label:zone}];
+  c.matchPackingZone(zone);assert.equal(c.state.selectedZone,zone);assert.equal(timers.length,0);
+  c.selectPackingItem(item);assert.equal(timers.length,1);timers[0].fn();
+  assert.equal(c.state.selectedZone,'');assert.equal(c.state.selectedItem,'');assert.equal(c.state.score,150);
+  if(id==='bottle') assert.equal(classes.has('has-bottle'),true);
+  c.matchPackingZone(zone);c.selectPackingItem(item);assert.equal(timers.length,1);
+ }
+});
+
+test('completed pairs are removed from both sets of selectable buttons',()=>{
+ const {c,item}=setup();c.state.packed.add(item.id);
+ function button(dataset){return {dataset,classList:{toggle(){}},setAttribute(){},querySelector:()=>({textContent:''})};}
+ const done=button({packItem:'laptop'}), remaining=button({packItem:'book'});
+ const zone=button({packZone:'laptop'}), open=button({packZone:'main'});
+ c.packingItems.children=[done,remaining];c.packCount={};c.packingBag.setAttribute=()=>{};
+ c.packingBag.querySelectorAll=()=>[zone,open];
+ vm.runInContext(src.slice(src.indexOf('  function renderPackingBoard('),src.indexOf('  function selectPackingItem(')),c);
+ c.renderPackingBoard();assert.equal(done.hidden,true);assert.equal(zone.hidden,true);
+ assert.equal(remaining.hidden,false);assert.equal(open.hidden,false);assert.equal(c.packCount.textContent,'1 / 2');
+});
