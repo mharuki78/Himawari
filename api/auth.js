@@ -34,6 +34,7 @@ export function fetch(request) {
     if (request.method !== 'GET') return methodNotAllowed(['GET']);
     return startOAuth(request);
   }
+  if (route === 'callback-kakao') return completeOAuth(request, 'kakao');
   if (route === 'callback-google') return completeOAuth(request, 'google');
   if (route === 'callback-naver') return completeOAuth(request, 'naver');
   if (route === 'session') return session(request);

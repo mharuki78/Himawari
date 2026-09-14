@@ -1,3 +1,4 @@
+import { assistant } from './_lib/assistant.js';
 import { createSupportReceipt, readSupportReceipt } from './_lib/support-receipt.js';
 import { clientIp, blobIsConfigured, isSameOrigin, json, methodNotAllowed, readJson } from './_lib/http.js';
 import { storeInquiry, validateInquiry, readInquiryStatus } from './_lib/inquiries.js';
@@ -22,6 +23,7 @@ function allowed(ip) {
 }
 
 export async function fetch(request) {
+  if (new URL(request.url).searchParams.get('route') === 'assistant') return assistant(request);
   if (request.method !== 'POST') return methodNotAllowed(['POST']);
   if (!isSameOrigin(request)) return json({ message: '요청 출처를 확인할 수 없습니다.' }, 403);
   if (!blobIsConfigured()) return json({ message: '문의 저장 기능을 준비하고 있습니다. 잠시 후 다시 시도해 주세요.' }, 503);

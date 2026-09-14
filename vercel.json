@@ -19,6 +19,14 @@
   ],
   "rewrites": [
     {
+      "source": "/api/auth/callback/kakao",
+      "destination": "/api/auth?route=callback-kakao"
+    },
+    {
+      "source": "/api/assistant",
+      "destination": "/api/inquiries?route=assistant"
+    },
+    {
       "source": "/npay-review-products.html",
       "destination": "/api/storefront?page=npay-review-catalog"
     },

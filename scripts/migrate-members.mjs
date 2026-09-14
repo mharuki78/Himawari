@@ -15,7 +15,7 @@ await sql.transaction((tx) => [
     last_login_at timestamptz
   )`,
   tx`CREATE TABLE IF NOT EXISTS oauth_accounts (
-    provider text NOT NULL CHECK (provider IN ('naver', 'google')),
+    provider text NOT NULL CHECK (provider IN ('naver', 'google', 'kakao')),
     provider_user_id text NOT NULL,
     user_id text NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     email text,

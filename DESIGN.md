@@ -192,3 +192,6 @@ Game controls: use a fixed analog joystick with a 15% dead zone, diagonal moveme
 
 ### Game packing stage (2026-09-12)
 The packing stage uses a reference-matched No.0422 pixel-art sprite on a white surface over the sage canvas. Layered SVG openings and clipped item motion illustrate top, front and side storage. Select a collected item, then activate a labeled button directly on the matching bag compartment. Incorrect matches retain selection and announce retry without points. A correct match runs one complete opening/insertion/closing sequence; it awards 150 points only after completion. Input is locked and the packing clock pauses during this sequence. Reduced motion uses a brief completion state. This replaces the character preview and manual zone-selection interaction; coupon issuance remains in the existing game result flow.
+
+### Support assistant
+Public pages load a compact right-side support launcher via member.js. White panel, deep-grove header, readable messages, explicit guide/AI labeling and private-inquiry escalation. Hide during active game play; preserve cart controls. OAuth reuses existing member state and cookie sessions. Kakao stays visibly pending until external configuration is complete.

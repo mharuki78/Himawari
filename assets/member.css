@@ -323,3 +323,5 @@ body .site-footer { grid-template-columns: minmax(240px,1fr) minmax(160px,.65fr)
   outline: 2px solid #354c3d;
   outline-offset: 4px;
 }
+
+.member-provider--kakao { background: #fee500; color: #191919; border-color: #fee500; }

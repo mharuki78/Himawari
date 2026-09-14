@@ -54,7 +54,7 @@ test('설정된 네이버 로그인은 공식 인증 주소와 PKCE와 분리된
   process.env.NAVER_CLIENT_SECRET = 'naver-secret';
   delete process.env.GOOGLE_CLIENT_ID;
   delete process.env.GOOGLE_CLIENT_SECRET;
-  assert.deepEqual(providerStatus(), { naver: true, google: false });
+  assert.deepEqual(providerStatus(), { naver: true, google: false, kakao: false });
   const response = startOAuth(new Request('https://himawari.co.kr/api/auth/start?provider=naver&returnTo=%2Fproducts.html'));
   assert.equal(response.status, 302);
   const location = new URL(response.headers.get('location'));

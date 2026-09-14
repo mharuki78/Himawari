@@ -10,7 +10,7 @@ import {
 } from './member-auth.js';
 import { redirect } from './http.js';
 
-const PROVIDERS = new Set(['naver', 'google']);
+const PROVIDERS = new Set(['naver', 'google', 'kakao']);
 
 function applicationOrigin(request) {
   try {
@@ -84,6 +84,9 @@ export function startOAuth(request) {
       redirect_uri: redirectUri,
       state,
     });
+  } else if (provider === 'kakao') {
+    authorization = new URL('https://kauth.kakao.com/oauth/authorize');
+    authorization.search = new URLSearchParams({response_type: 'code', client_id: process.env.KAKAO_CLIENT_ID, redirect_uri: redirectUri, state});
   } else {
     authorization = new URL('https://accounts.google.com/o/oauth2/v2/auth');
     authorization.search = new URLSearchParams({
@@ -142,6 +145,20 @@ async function naverProfile(request, code, state) {
   };
 }
 
+async function kakaoProfile(request, code) {
+  const token = await postForm('https://kauth.kakao.com/oauth/token', {
+    grant_type: 'authorization_code', client_id: process.env.KAKAO_CLIENT_ID,
+    client_secret: process.env.KAKAO_CLIENT_SECRET, redirect_uri: callbackUrl(request, 'kakao'), code,
+  });
+  const profile = await getJson('https://kapi.kakao.com/v2/user/me', token.access_token);
+  if (!profile.id) throw new Error('Kakao profile is missing an id.');
+  const account = profile.kakao_account || {};
+  return { provider: 'kakao', providerUserId: String(profile.id),
+    email: account.is_email_valid && account.is_email_verified ? String(account.email || '') : '',
+    displayName: String(account.profile?.nickname || '카카오 회원'),
+    avatarUrl: String(account.profile?.profile_image_url || '') };
+}
+
 export async function completeOAuth(request, provider) {
   const url = new URL(request.url);
   const providedState = url.searchParams.get('state') || '';
@@ -159,7 +176,7 @@ export async function completeOAuth(request, provider) {
   try {
     const profile = provider === 'google'
       ? await googleProfile(request, code, state.verifier)
-      : await naverProfile(request, code, providedState);
+      : provider === 'kakao' ? await kakaoProfile(request, code) : await naverProfile(request, code, providedState);
     const user = await upsertOAuthUser(profile);
     const sessionCookie = await createMemberSession(request, user.id);
     return redirect(statusUrl(request, state.returnTo, 'success'), 302, [...cleared, sessionCookie]);

@@ -209,7 +209,8 @@
         '<section class="member-signed-out" data-member-signed-out>' +
           '<p>마음에 둔 가방과 장바구니를<br>로그인하고 이어서 만나보세요.</p>' +
           '<div class="member-provider-list">' +
-            '<a class="member-provider member-provider--naver" data-provider="naver"><strong>NAVER</strong><span>네이버로 계속하기</span><b aria-hidden="true">→</b></a>' +
+            '<a class="member-provider member-provider--naver" data-provider="naver"><strong>NAVER</strong><span>네이버로 가입·로그인</span><b aria-hidden="true">→</b></a>' +
+            '<a class="member-provider member-provider--kakao" data-provider="kakao"><strong>●</strong><span>카카오로 가입·로그인</span><b aria-hidden="true">→</b></a>' +
             '<a class="member-provider member-provider--google" data-provider="google"><strong>GOOGLE</strong><span>Google로 계속하기</span><b aria-hidden="true">→</b></a>' +
           '</div>' +
           '<small>로그인을 계속하면 <a href="/privacy.html">개인정보 처리 안내</a>를 확인한 것으로 봅니다. Himawari가 별도 비밀번호를 저장하지 않습니다.</small>' +
@@ -260,7 +261,7 @@
     signedIn.hidden = !state.authenticated;
     if (state.authenticated && state.user) {
       profileName.textContent = state.user.displayName || 'Himawari 회원';
-      profileEmail.textContent = state.user.email || (state.user.provider === 'naver' ? '네이버 로그인' : 'Google 로그인');
+      profileEmail.textContent = state.user.email || (state.user.provider === 'naver' ? '네이버 로그인' : state.user.provider === 'kakao' ? '카카오 로그인' : 'Google 로그인');
       accountCount.textContent = state.wishlist.size + '개';
       var profileImage = dialog.querySelector('[data-profile-image]');
       var image = safeImage(state.user.avatarUrl);
@@ -270,6 +271,7 @@
     dialog.querySelectorAll('[data-provider]').forEach(function (link) {
       var provider = link.dataset.provider;
       var enabled = state.providers[provider] === true;
+      if (provider === 'kakao') link.querySelector('span').textContent = enabled ? '카카오로 가입·로그인' : '카카오 가입·로그인 준비 중';
       link.href = enabled ? providerHref(provider) : '#';
       link.classList.toggle('is-disabled', !enabled);
       link.setAttribute('aria-disabled', enabled ? 'false' : 'true');
@@ -523,6 +525,9 @@
   }
 
   function init() {
+    if (!location.pathname.startsWith('/admin/')) {
+      var assistant = document.createElement('script'); assistant.src = '/assets/assistant.js'; assistant.defer = true; document.head.appendChild(assistant);
+    }
     buildFooterSocialLinks();
     buildHeaderActions();
     buildStoreLinks();
