@@ -24,3 +24,12 @@ API: https://developers.openai.com/api/reference/cli/resources/responses/methods
 
 ## Verification
 Auth and assistant tests: 8 passed. Local browser verifies guide delivery and mobile interaction. Actual Naver provider redirect verified; Kakao and paid AI cannot be tested without user accounts.
+
+
+## 2026-09-14: Catalog-aware product consultation
+
+AI replies are enabled by default in production. Product questions read the same managed catalog as the storefront, retrieve up to 18 candidates using use case, model, color and budget, and provide registered descriptions/specifications to the model. Sold-out products are excluded. Model-selected IDs are resolved back to catalog-owned image, name, price and detail links (at most three cards); seed fallback never presents a stale price. General care advice is distinguished from registered model-specific care instructions.
+
+The browser keeps up to three recent product questions and last suggested IDs in memory for follow-ups. The server filters contact/order data from this context. Account identity changes clear it. Authenticated order lookup still bypasses AI; no order result or account profile is sent. Ordinary service questions retain the existing verified policy guidance and API failure fallback.
+
+Validation: `node --test test/assistant*.test.mjs` (pass explicit paths on Windows).
