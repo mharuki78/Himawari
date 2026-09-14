@@ -55,7 +55,7 @@ test('care follow-ups retain the referenced product even if it is sold out',asyn
 test('general bag questions use expertise without forcing shopping cards',async()=>{
  const env={...process.env}, original=globalThis.fetch;let count=0;
  process.env.SUPPORT_AI_ENABLED='true';process.env.SUPPORT_AI_MODEL='test';process.env.OPENAI_API_KEY='test';delete process.env.PRODUCT_BLOB_READ_WRITE_TOKEN;
- globalThis.fetch=async(url,init)=>{count++;const sent=JSON.parse(init.body);assert.match(sent.instructions,/일반 가방 지식은 직접 설명/);assert.match(sent.instructions,/불필요한 구매 권유/);return Response.json({output:[{type:'message',content:[{type:'output_text',text:JSON.stringify({answer:'먼저 양쪽 끈을 같은 길이로 조절해 보세요.',productIds:[]})}]}]});};
+ globalThis.fetch=async(url,init)=>{count++;const sent=JSON.parse(init.body);assert.match(sent.instructions,/일반 가방 지식은 직접 설명/);assert.match(sent.instructions,/불필요한 구매 권유/);return Response.json({output:[{type:'message',content:[{type:'output_text',text:sent.instructions.includes('JSON 객체')?JSON.stringify({answer:'먼저 양쪽 끈을 같은 길이로 조절해 보세요.',productIds:[]}):'먼저 양쪽 끈을 같은 길이로 조절해 보세요.'}]}]});};
  try {
   for(const message of ['지퍼가 뻑뻑해','나일론과 폴리에스터 차이','편하게 메는 법','맨날 한쪽만 내려와']){
    const req=new Request('https://himawari.co.kr/api/assistant',{method:'POST',headers:{origin:'https://himawari.co.kr','content-type':'application/json'},body:JSON.stringify({message})});
