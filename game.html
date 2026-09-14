@@ -117,16 +117,16 @@
 
                 <section class="game-panel game-panel--pack" data-game-panel="pack" aria-labelledby="pack-title" hidden>
                   <div class="pixel-room">
-                    <div class="pack-dialog"><p class="game-step">HIMAWARI · PACK YOUR DAY</p><h3 id="pack-title">가방 속, 나의 하루.</h3><p>물건을 누르면 수납부가 열리고 가방 안으로 들어가요.</p></div>
+                    <div class="pack-dialog"><p class="game-step">HIMAWARI · PACK YOUR DAY</p><h3 id="pack-title">가방 속, 나의 하루.</h3><p>물건을 고르고, 가방의 알맞은 부위를 눌러 짝을 맞춰보세요.</p></div>
                     <div class="packing-board">
                       <figure class="packing-bag" aria-label="No.0422 정면 가방 수납 연출">
-                        <svg class="packing-model" viewBox="60 -190 480 800" role="img" aria-label="히마와리 블랙 책가방. 상단, 앞주머니, 옆 포켓이 열립니다.">
+                        <svg class="packing-model" viewBox="60 -190 480 800" role="group" aria-label="히마와리 블랙 책가방. 상단, 앞주머니, 옆 포켓이 열립니다.">
                           <defs>
                             <clipPath id="pack-lid-clip"><rect width="600" height="155"/></clipPath>
                             <clipPath id="pack-body-clip"><rect y="155" width="600" height="450"/></clipPath>
                             <clipPath id="pack-top-entry"><rect x="100" y="-220" width="400" height="384"/></clipPath>
-                            <clipPath id="pack-front-entry"><rect x="120" y="150" width="360" height="190"/></clipPath>
-                            <clipPath id="pack-side-entry"><rect x="440" y="180" width="90" height="210"/></clipPath>
+                            <clipPath id="pack-front-entry"><rect x="120" y="100" width="360" height="240"/></clipPath>
+                            <clipPath id="pack-side-entry"><rect x="420" y="130" width="110" height="260"/></clipPath>
                             <linearGradient id="pack-lining" x2="0" y2="1"><stop stop-color="#060b0d"/><stop offset="1" stop-color="#454e53"/></linearGradient>
                             <linearGradient id="pack-metal" x2="1" y2="1"><stop stop-color="#e5eaee"/><stop offset=".5" stop-color="#b6c3ce"/><stop offset="1" stop-color="#8797a7"/></linearGradient>
                             <symbol id="pack-icon-laptop" viewBox="0 0 100 100"><rect x="8" y="12" width="84" height="62" rx="6" fill="url(#pack-metal)" stroke="#667785" stroke-width="2"/><rect x="13" y="17" width="74" height="49" rx="3" fill="#d9e9ed"/><path d="M13 57 42 31 60 48 87 25V66H13Z" fill="#81aaa4"/><path d="M8 76H92L99 86Q100 91 92 91H8Q0 91 1 86Z" fill="#cbd4dc" stroke="#667785" stroke-width="2"/><path d="M40 77H60L64 83H36Z" fill="#9caebb"/></symbol>
@@ -141,14 +141,20 @@
                           <g class="bag-front-open"><ellipse cx="300" cy="337" rx="128" ry="15" fill="url(#pack-lining)" stroke="#70797c" stroke-width="2"/><path d="M175 341Q300 376 425 341L425 366Q300 398 175 366Z" fill="#30363b" stroke="#454d53" stroke-width="2"/></g>
                           <g class="bag-side-open"><ellipse cx="475" cy="388" rx="32" ry="13" fill="#0d161b" stroke="#697478" stroke-width="3"/></g>
                           <g class="packing-insert packing-insert--top" clip-path="url(#pack-top-entry)"><g class="packing-object"><use data-insert-main width="300" height="300" x="150" y="-145"/></g></g>
-                          <g class="packing-insert packing-insert--front" clip-path="url(#pack-front-entry)"><g class="packing-object"><use href="#pack-icon-pencil" width="108" height="108" x="246" y="207"/></g></g>
-                          <g class="packing-insert packing-insert--side" clip-path="url(#pack-side-entry)"><g class="packing-object"><use href="#pack-icon-bottle" width="90" height="120" x="430" y="235"/></g></g>
+                          <g class="packing-insert packing-insert--front" clip-path="url(#pack-front-entry)"><g class="packing-object"><use href="#pack-icon-pencil" width="205" height="205" x="198" y="125"/></g></g>
+                          <g class="packing-insert packing-insert--side" clip-path="url(#pack-side-entry)"><g class="packing-object"><use href="#pack-icon-bottle" width="170" height="205" x="390" y="165"/></g></g>
                           <g class="bag-top-open"><path d="M152 159Q300 194 448 159L444 174Q300 207 156 174Z" fill="#2c3237" stroke="#596267" stroke-width="2"/></g>
-                          <g class="bag-side-stored"><use href="#pack-icon-bottle" x="435" y="319" width="80" height="108"/><path d="M445 390Q475 405 505 390L498 452Q475 462 452 452Z" fill="#2b3237" stroke="#596167" stroke-width="2"/><path d="M449 401 499 410M451 414 497 424M454 430 494 438" stroke="#465056"/></g>
+                          <g class="bag-side-stored"><use href="#pack-icon-bottle" x="390" y="240" width="170" height="205"/><path d="M445 390Q475 405 505 390L498 452Q475 462 452 452Z" fill="#2b3237" stroke="#596167" stroke-width="2"/><path d="M449 401 499 410M451 414 497 424M454 430 494 438" stroke="#465056"/></g>
+                          <g class="packing-hotspots" aria-label="가방 수납 부위">
+                            <foreignObject x="270" y="45" width="200" height="108"><button xmlns="http://www.w3.org/1999/xhtml" type="button" data-pack-zone="laptop" aria-label="가방 노트북 수납">노트북 수납<span aria-hidden="true">＋</span></button></foreignObject>
+                            <foreignObject x="110" y="190" width="200" height="108"><button xmlns="http://www.w3.org/1999/xhtml" type="button" data-pack-zone="main" aria-label="가방 메인 수납">메인 수납<span aria-hidden="true">＋</span></button></foreignObject>
+                            <foreignObject x="130" y="415" width="200" height="108"><button xmlns="http://www.w3.org/1999/xhtml" type="button" data-pack-zone="front" aria-label="가방 앞 수납">앞 수납<span aria-hidden="true">＋</span></button></foreignObject>
+                            <foreignObject x="330" y="300" width="200" height="108"><button xmlns="http://www.w3.org/1999/xhtml" type="button" data-pack-zone="side" aria-label="가방 옆 포켓">옆 포켓<span aria-hidden="true">＋</span></button></foreignObject>
+                          </g>
                         </svg>
                         <figcaption><span>HIMAWARI No.0422</span><strong data-pack-status aria-live="polite">어떤 물건부터 넣을까요?</strong></figcaption>
                       </figure>
-                      <section class="packing-items" aria-labelledby="packing-items-title"><div class="packing-items-heading"><h4 id="packing-items-title">오늘 챙길 물건</h4><span data-pack-count>0 / 4</span></div><div data-packing-items></div><p class="pack-hint">한 번 누르면 열고, 넣고, 닫기까지.</p></section>
+                      <section class="packing-items" aria-labelledby="packing-items-title"><div class="packing-items-heading"><h4 id="packing-items-title">오늘 챙길 물건</h4><span data-pack-count>0 / 4</span></div><div data-packing-items></div><p class="pack-hint">물건 선택 → 가방 부위 선택 → 짝 맞추기</p></section>
                     </div>
                   </div>
                 </section>

@@ -699,7 +699,7 @@
     packStatus.textContent = '어떤 물건부터 넣을까요?';
     renderPackingBoard();
     showPanel('pack');
-    announce('학교에 도착했습니다. 물건을 누르면 가방이 열리고 알맞은 수납부에 들어갑니다.');
+    announce('학교에 도착했습니다. 물건을 고른 뒤 가방의 알맞은 수납 부위를 눌러 짝을 맞추세요.');
     runClock(PACK_SECONDS, finishGame);
   }
 
@@ -709,7 +709,7 @@
       button.type = 'button';
       button.dataset.packItem = item.id;
       button.innerHTML = '<svg viewBox="0 0 100 100" aria-hidden="true"><use href="#pack-icon-' + item.id + '"></use></svg><strong>' + item.label + '</strong><span></span>';
-      button.addEventListener('click', function () { packItem(item); });
+      button.addEventListener('click', function () { selectPackingItem(item); });
       packingItems.append(button);
     });
     Array.from(packingItems.children).forEach(function (button) {
@@ -718,11 +718,39 @@
       button.disabled = packed || state.packBusy || state.packFinishing;
       button.classList.toggle('is-packed', packed);
       button.classList.toggle('is-packing', state.packBusy && state.selectedItem === item.id);
-      button.setAttribute('aria-label', item.label + (packed ? ' 정리 완료' : ' 가방에 넣기'));
-      button.querySelector('span').textContent = packed ? '정리 완료 ✓' : (state.packBusy && state.selectedItem === item.id ? '넣는 중…' : zones.find(function (zone) { return zone.id === item.zone; }).label);
+      button.classList.toggle('is-selected', !packed && state.selectedItem === item.id);
+      button.setAttribute('aria-pressed', String(!packed && state.selectedItem === item.id));
+      button.setAttribute('aria-label', item.label + (packed ? ' 정리 완료' : ' 선택'));
+      button.querySelector('span').textContent = packed ? '정리 완료 ✓' : (state.packBusy && state.selectedItem === item.id ? '넣는 중…' : state.selectedItem === item.id ? '선택됨 · 부위를 누르세요' : '선택하기');
     });
     packCount.textContent = state.packed.size + ' / ' + state.packItems.length;
     packingBag.setAttribute('aria-busy', String(state.packBusy));
+    packingBag.querySelectorAll('[data-pack-zone]').forEach(function (button) {
+      button.disabled = state.packBusy || state.packFinishing;
+      button.onclick = function () { matchPackingZone(button.dataset.packZone); };
+    });
+  }
+
+  function selectPackingItem(item) {
+    if (state.phase !== 'pack' || state.packBusy || state.packFinishing || state.packed.has(item.id)) return;
+    state.selectedItem = item.id;
+    packStatus.textContent = item.label + ' 선택 · 가방의 알맞은 부위를 눌러주세요.';
+    announce(packStatus.textContent);
+    renderPackingBoard();
+  }
+
+  function matchPackingZone(zoneId) {
+    if (state.phase !== 'pack' || state.packBusy || state.packFinishing) return;
+    var item = state.packItems.find(function (entry) { return entry.id === state.selectedItem; });
+    if (!item) {
+      packStatus.textContent = '먼저 챙길 물건을 선택해 주세요.';
+    } else if (item.zone !== zoneId) {
+      packStatus.textContent = '다른 수납부예요. ' + item.label + '에 맞는 부위를 다시 골라보세요.';
+    } else {
+      packItem(item);
+      return;
+    }
+    announce(packStatus.textContent);
   }
 
   function packItem(item) {

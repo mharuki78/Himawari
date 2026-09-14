@@ -32,3 +32,23 @@ test('packing clock does not consume time during insertion',()=>{
  vm.createContext(c);vm.runInContext(src.slice(src.indexOf('  function runClock('),src.indexOf('  function startCatch(')),c);
  c.runClock(22,()=>{});tick();assert.equal(c.state.time,22);c.state.packBusy=false;tick();assert.equal(c.state.time,21);
 });
+
+function matchingSetup(){
+ const {c,item,timers}=setup();
+ vm.runInContext(src.slice(src.indexOf('  function selectPackingItem('),src.indexOf('  function packItem(')),c);
+ return {c,item,timers};
+}
+test('selection and wrong pocket never award points; correct pocket starts insertion once',()=>{
+ const {c,item,timers}=matchingSetup(); c.matchPackingZone('front');assert.equal(timers.length,0);
+ c.selectPackingItem(item);assert.equal(timers.length,0);assert.equal(c.state.selectedItem,'laptop');
+ c.matchPackingZone('front');assert.equal(timers.length,0);assert.equal(c.state.score,0);
+ c.matchPackingZone('laptop');c.matchPackingZone('laptop');assert.equal(timers.length,1);
+ timers[0].fn();assert.equal(c.state.score,150);
+});
+test('all four item types require their matching compartment',()=>{
+ for(const [id,zone] of [['book','main'],['laptop','laptop'],['bottle','side'],['pencil','front']]){
+  const {c,timers}=matchingSetup();const item={id,zone,label:id};c.state.packItems=[item,{id:'spare'}];c.zones=[{id:zone,label:zone}];
+  c.selectPackingItem(item);c.matchPackingZone('wrong');assert.equal(timers.length,0);
+  c.matchPackingZone(zone);assert.equal(timers.length,1);timers[0].fn();assert.equal(c.state.packed.has(id),true);
+ }
+});

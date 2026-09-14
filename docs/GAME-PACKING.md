@@ -15,3 +15,9 @@
 - Built-in image_gen style-transfer, reference `assets/game-0422-black.jpg`; source `C:/Users/UserK/.codex/generated_images/01a08495-edb2-74e2-b203-1f9e52e791cd/exec-e334a644-459e-4867-97d2-90df450acefc.png`.
 - Prompt: Create a high-quality crisp 16-bit pixel-art sprite of this exact No.0422 black Himawari backpack, square front view on white, same silhouette and placement, top loop, shoulder straps, double zipper, rectangular front pocket, round left pouch, smiling right charm, brand patch; stepped charcoal highlights, no photographic texture, no person.
 - Verified desktop laptop and 390px mobile book insertion screenshots; laptop completes +150 once, mobile has no horizontal overflow. Game packing/journey tests: 9 passed.
+
+## Matching restored (September 14)
+- Item selection no longer inserts automatically. Four native buttons over the SVG bag select main/laptop/front/side storage; keyboard and touch supported. Selection is exposed through aria-pressed.
+- Wrong or missing selection announces guidance without points; correct match uses existing guarded insertion and delayed scoring.
+- Pencil insertion enlarged 108 to 205 units; bottle 90x120 to 170x205, including stored bottle; masks and travel adjusted.
+- Seven packing tests pass, including all four mappings, no-selection/wrong-match and duplicate matching. Desktop bottle wrong/right tested; 390px mobile pencil/front tested, targets 47px high and no horizontal overflow.
