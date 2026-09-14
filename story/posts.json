@@ -1,5 +1,53 @@
 [
   {
+    "id": "backpack-locker-clearance",
+    "title": "사물함에 백팩을 넣을 때: 문이 닫히는 공간까지 재어보세요",
+    "date": "2026-09-15",
+    "summary": "사물함 안쪽 크기뿐 아니라 입구와 경첩, 잠금장치의 돌출부를 확인해 가방을 무리 없이 넣고 꺼내는 방법입니다.",
+    "description": "사물함 안쪽 크기뿐 아니라 입구와 경첩, 잠금장치의 돌출부를 확인해 가방을 무리 없이 넣고 꺼내는 방법입니다.",
+    "tags": [
+      "사물함",
+      "백팩 크기",
+      "보관 동선"
+    ],
+    "image": "../assets/story/backpack-locker-clearance.webp",
+    "imageAlt": "열린 크림색 사물함 옆 벤치에 놓인 카키색 Himawari No.1010 백팩 연출 이미지",
+    "url": "backpack-locker-clearance.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "backpack-glasses-case-place",
+    "title": "백팩 속 안경집의 자리: 찾기 쉬우면서 눌리지 않게",
+    "date": "2026-09-15",
+    "summary": "안경을 옷이나 책 사이에 끼워 넣는 대신, 크기에 맞는 케이스와 가방 안의 압력을 함께 살펴봅니다.",
+    "description": "안경을 옷이나 책 사이에 끼워 넣는 대신, 크기에 맞는 케이스와 가방 안의 압력을 함께 살펴봅니다.",
+    "tags": [
+      "안경집",
+      "작은 소지품",
+      "백팩 수납"
+    ],
+    "image": "../assets/story/backpack-glasses-case-place.webp",
+    "imageAlt": "검정 Himawari No.0422 백팩 실제 제품 사진",
+    "url": "backpack-glasses-case-place.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "backpack-shopping-return-space",
+    "title": "퇴근길 장을 보는 날: 백팩을 더 채우기 전에 나눌 짐",
+    "date": "2026-09-15",
+    "summary": "출근 짐이 든 백팩에 구매한 물건을 모두 넣기보다, 돌아올 때 생길 부피와 별도 가방의 역할을 미리 정합니다.",
+    "description": "출근 짐이 든 백팩에 구매한 물건을 모두 넣기보다, 돌아올 때 생길 부피와 별도 가방의 역할을 미리 정합니다.",
+    "tags": [
+      "퇴근길 장보기",
+      "돌아오는 짐",
+      "보조 가방"
+    ],
+    "image": "../assets/story/backpack-shopping-return-space.webp",
+    "imageAlt": "밝은 민트색 Himawari No.1089 백팩 실제 제품 사진",
+    "url": "backpack-shopping-return-space.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "after-work-exercise-backpack",
     "title": "퇴근 후 운동하는 날: 갈아입을 옷보다 먼저 정할 가방 동선",
     "date": "2026-09-14",

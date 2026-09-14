@@ -110,3 +110,7 @@
 /* Keep the full September 12 product reference photos visible. */
 :is(.story-list-image, .story-post-visual img)[src$="lunch-container-backpack.webp"],
 :is(.story-list-image, .story-post-visual img)[src$="backpack-identification-record.webp"] { object-fit: contain; background: #fff; }
+
+/* Keep the full September 15 product reference photos visible. */
+:is(.story-list-image, .story-post-visual img)[src$="backpack-glasses-case-place.webp"],
+:is(.story-list-image, .story-post-visual img)[src$="backpack-shopping-return-space.webp"] { object-fit: contain; background: #fff; }
