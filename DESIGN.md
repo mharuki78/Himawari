@@ -195,3 +195,5 @@ The packing stage uses a reference-matched No.0422 pixel-art sprite on a white s
 
 ### Support assistant
 Public pages load a compact right-side support launcher via member.js. White panel, deep-grove header, readable messages, explicit guide/AI labeling and private-inquiry escalation. Hide during active game play; preserve cart controls. OAuth reuses existing member state and cookie sessions. Kakao stays visibly pending until external configuration is complete.
+
+Support assistant refresh (2026-09-14): user-requested automatic AI, transparent pre-send notice, no checkbox. Butter yellow #fff9df conversation canvas, #f6e6a6 header, dark sage #345841 action color, white answer bubbles. Inherited Korean sans typography: title 17px, body 15px, utility 12px. Desktop 440px x up to 720px; mobile fixed inset panel above launcher, dynamic viewport-aware. Compact horizontal quick prompts, conversation owns remaining height. Server-owned order answers never pass to AI; errors retain basic guidance.
