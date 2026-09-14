@@ -44,3 +44,10 @@ test('AI receives actual product facts and returns only catalog-backed cards',as
   assert.match(sent.instructions,/1884/);assert.doesNotMatch(sent.instructions,/test@example.com/);assert.equal(sent.store,false);
  }finally{globalThis.fetch=original;for(const key of ['SUPPORT_AI_ENABLED','SUPPORT_AI_MODEL','OPENAI_API_KEY','PRODUCT_BLOB_READ_WRITE_TOKEN']){if(env[key]===undefined)delete process.env[key];else process.env[key]=env[key];}}
 });
+
+test('care follow-ups retain the referenced product even if it is sold out',async()=>{
+ const p={...products[0],id:'owned',soldOut:true,stock:0};
+ const context=await loadProductContext('그 가방 관리',async()=>({catalog:{products:[...products,p]},persisted:true}),['owned']);
+ assert.equal(context.candidates[0].id,'owned');
+ assert.ok(!chooseCandidates([p],'가방 추천').length);
+});

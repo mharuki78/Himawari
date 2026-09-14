@@ -18,10 +18,11 @@ const groups = [
  [/큰|크게|대용량|넉넉/, /대용량|50L|넉넉/],
 ];
 export function chooseCandidates(products, question) {
+ const care=/관리|세탁|얼룩|보관/.test(question.split('\n').at(-1));
  const models = question.match(/\b\d{4}[a-z]?\b/gi) || [];
  const max = question.match(/(\d+(?:\.\d+)?)\s*만\s*원?\s*(?:이하|미만|까지|이내)/);
  const budget = max ? Number(max[1])*10000 : Infinity;
- const ranked = products.filter(p=>p.id && p.name && !p.soldOut && p.stock!==0 && (p.price<=budget || !p.price)).map((p,index)=>{
+ const ranked = products.filter(p=>p.id && p.name && (care || (!p.soldOut && p.stock!==0)) && (p.price<=budget || !p.price)).map((p,index)=>{
   const text = [p.name,p.tagline,p.description,...(p.highlights||[])].join(' ');
   let score=0;
   for(const [intent,match] of groups) if(intent.test(question)&&match.test(text)) score+=10;
@@ -33,9 +34,13 @@ export function chooseCandidates(products, question) {
  const counts=new Map();return ranked.filter(({p})=>{const key=p.model||p.name.match(/No\.([\w]+)/i)?.[1]||p.id;const n=counts.get(key)||0;counts.set(key,n+1);return n<3;}).slice(0,18).map(({p})=>p);
 }
 export const careGuidance = '공식 관리 이야기의 일반적인 부분 관리: 먼저 안쪽 취급 표시를 확인한다. 마른 부드러운 천으로 먼지를 털고, 물을 사용할 수 있는 소재일 때만 눈에 띄지 않는 부위에 소량의 물을 묻힌 흰 천으로 시험한 뒤 얼룩을 가볍게 닦는다. 세게 문지르거나 통째로 물에 담그지 않는다. 젖으면 내용물을 비우고 형태를 잡아 통풍되는 그늘에서 충분히 말린다. 열풍·직사광선을 피한다. 소재별 세탁 허용 여부는 등록된 specs.care가 우선이며 없으면 세탁기·건조기·표백제 사용이 가능하다고 단정하지 않는다. 방수라는 상품명만으로 완전 방수나 침수 안전을 보장하지 않는다.';
-export async function loadProductContext(question, reader=readProductCatalog) {
+export async function loadProductContext(question, reader=readProductCatalog, preferredIds=[]) {
  const {catalog,persisted}=await reader();
- const candidates=chooseCandidates(catalog.products,question);
+ let candidates=chooseCandidates(catalog.products,question);
+ if(/관리|세탁|얼룩|보관/.test(question.split('\n').at(-1))) {
+  const selected=catalog.products.filter(p=>preferredIds.includes(p.id));
+  candidates=[...selected,...candidates.filter(p=>!preferredIds.includes(p.id))].slice(0,18);
+ }
  return {candidates, current:persisted, facts:candidates.map(p=>({id:p.id,name:p.name,price:persisted?p.price:undefined,description:p.description?.slice(0,900),highlights:p.highlights,specs:p.specs}))};
 }
 export function productCards(ids, context) {
