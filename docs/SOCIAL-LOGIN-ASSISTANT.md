@@ -33,3 +33,6 @@ AI replies are enabled by default in production. Product questions read the same
 The browser keeps up to three recent product questions and last suggested IDs in memory for follow-ups. The server filters contact/order data from this context. Account identity changes clear it. Authenticated order lookup still bypasses AI; no order result or account profile is sent. Ordinary service questions retain the existing verified policy guidance and API failure fallback.
 
 Validation: `node --test test/assistant*.test.mjs` (pass explicit paths on Windows).
+
+
+General consultation now includes bag construction/materials, fit and strap adjustment, packing and laptop fit checks, zipper/hardware troubleshooting, cleaning and storage. General knowledge is allowed and must be distinguished from verified model-specific facts. Unrecognized wording also reaches the expert prompt rather than an automatic contact-only answer. Informational answers do not require product cards or sales recommendations. Private orders and published service policies keep their previous authoritative paths.

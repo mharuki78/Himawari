@@ -51,3 +51,15 @@ test('care follow-ups retain the referenced product even if it is sold out',asyn
  assert.equal(context.candidates[0].id,'owned');
  assert.ok(!chooseCandidates([p],'가방 추천').length);
 });
+
+test('general bag questions use expertise without forcing shopping cards',async()=>{
+ const env={...process.env}, original=globalThis.fetch;let count=0;
+ process.env.SUPPORT_AI_ENABLED='true';process.env.SUPPORT_AI_MODEL='test';process.env.OPENAI_API_KEY='test';delete process.env.PRODUCT_BLOB_READ_WRITE_TOKEN;
+ globalThis.fetch=async(url,init)=>{count++;const sent=JSON.parse(init.body);assert.match(sent.instructions,/일반 가방 지식은 직접 설명/);assert.match(sent.instructions,/불필요한 구매 권유/);return Response.json({output:[{type:'message',content:[{type:'output_text',text:JSON.stringify({answer:'먼저 양쪽 끈을 같은 길이로 조절해 보세요.',productIds:[]})}]}]});};
+ try {
+  for(const message of ['지퍼가 뻑뻑해','나일론과 폴리에스터 차이','편하게 메는 법','맨날 한쪽만 내려와']){
+   const req=new Request('https://himawari.co.kr/api/assistant',{method:'POST',headers:{origin:'https://himawari.co.kr','content-type':'application/json'},body:JSON.stringify({message})});
+   const result=await (await assistant(req)).json();assert.equal(result.mode,'ai');assert.deepEqual(result.products,[]);
+  }assert.equal(count,4);
+ }finally{globalThis.fetch=original;for(const key of ['SUPPORT_AI_ENABLED','SUPPORT_AI_MODEL','OPENAI_API_KEY','PRODUCT_BLOB_READ_WRITE_TOKEN']){if(env[key]===undefined)delete process.env[key];else process.env[key]=env[key];}}
+});
