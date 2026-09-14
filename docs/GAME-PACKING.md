@@ -8,3 +8,10 @@
 - General `node --test` discovery also picked up four backup mail helpers that failed. Formal suite was rerun against `test/` only. No backup files are part of this change.
 - Premium static audit reports 184 existing repository findings, including five game controls it cannot associate with external JS handlers. Changed item controls are bound in game.js and verified in browser. Audit output: backups/packing-ui-audit.json (local only).
 - Browser: desktop and 390×844 layout; laptop/book, front-pocket and side-pocket states. Isolated visual fixture shortened approach and extended packing time, with all four items and no real coupon service. Production timing and coupon endpoint remain unchanged.
+
+## September 14 pixel-art revision
+- Packing-only photo layers replaced with `assets/game-0422-pixel.png`. Marketing product photo stays photographic.
+- Laptop/book insertion viewport enlarged from 120 to 300 SVG units (2.5x); visible width about 220 units against the roughly 380-unit bag body. Top travel 340 units completely clears the 164-unit mouth mask. Room above bag prevents clipping before insertion.
+- Built-in image_gen style-transfer, reference `assets/game-0422-black.jpg`; source `C:/Users/UserK/.codex/generated_images/01a08495-edb2-74e2-b203-1f9e52e791cd/exec-e334a644-459e-4867-97d2-90df450acefc.png`.
+- Prompt: Create a high-quality crisp 16-bit pixel-art sprite of this exact No.0422 black Himawari backpack, square front view on white, same silhouette and placement, top loop, shoulder straps, double zipper, rectangular front pocket, round left pouch, smiling right charm, brand patch; stepped charcoal highlights, no photographic texture, no person.
+- Verified desktop laptop and 390px mobile book insertion screenshots; laptop completes +150 once, mobile has no horizontal overflow. Game packing/journey tests: 9 passed.

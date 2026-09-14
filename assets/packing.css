@@ -61,3 +61,8 @@
 }
 
 body.game-round-active .game-console[data-phase="pack"] { touch-action: pan-y; }
+
+/* No.0422 pixel sprite and bag-relative item scale. */
+.bag-photo, .bag-lid { image-rendering: pixelated; }
+.packing-insert--top { --insert-travel: 340px; }
+@keyframes item-insert { 0%, 16% { opacity: 0; transform: translateY(-20px); } 28% { opacity: 1; transform: translateY(0); } 72%, 100% { opacity: 1; transform: translateY(var(--insert-travel, 185px)); } }
