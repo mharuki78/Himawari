@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { memberDeliveryAnswer, isOrderQuestion } from '../api/_lib/assistant-orders.js';
+import { assistant } from '../api/_lib/assistant.js';
+const request=new Request('https://himawari.co.kr/api/assistant?userId=other');
+test('delivery intent keeps general fees separate',()=>{for(const q of ['내 배송 조회','내 주문 언제 와','택배 어디야','배송 상태'])assert.ok(isOrderQuestion(q));assert.equal(isOrderQuestion('배송비 얼마'),false);});
+test('anonymous users cannot read orders',async()=>{const a=await memberDeliveryAnswer(request,{memberReader:async()=>null,orderReader:()=>assert.fail('must not read')});assert.match(a.answer,/로그인 후/);});
+test('only session identity is passed; response excludes recipient and internal notes',async()=>{let received;const a=await memberDeliveryAnswer(request,{memberReader:async()=>({id:'owner'}),orderReader:async(id)=>{received=id;return {items:[{orderNumber:'HMW-1',createdAt:'2026-09-14T00:00:00Z',statusLabel:'배송 중',delivery:{carrier:'로젠택배',trackingNumber:'123456'},recipient:{phone:'SECRET-PHONE'},events:[{note:'SECRET-NOTE'}]}]};}});assert.equal(received,'owner');assert.match(a.answer,/배송 중/);assert.match(a.answer,/123456/);assert.doesNotMatch(JSON.stringify(a),/SECRET/);assert.equal(a.mode,'orders');});
+test('empty orders and unavailable database are not fabricated shipping states',async()=>{let a=await memberDeliveryAnswer(request,{memberReader:async()=>({id:'owner'}),orderReader:async()=>({items:[]})});assert.match(a.answer,/주문이 없습니다/);a=await memberDeliveryAnswer(request,{memberReader:async()=>{throw Error('private database detail')}});assert.match(a.answer,/불러오지 못했습니다/);assert.doesNotMatch(a.answer,/private database/);});
+test('private order request bypasses AI and response cannot be cached',async()=>{const r=await assistant(new Request(request.url,{method:'POST',headers:{origin:'https://himawari.co.kr','content-type':'application/json'},body:JSON.stringify({message:'내 배송 조회',userId:'other',aiConsent:true})}));assert.match(r.headers.get('cache-control'),/no-store/);const a=await r.json();assert.equal(a.mode,'orders');assert.match(a.answer,/로그인 후/);});

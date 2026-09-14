@@ -1,8 +1,9 @@
+import { isOrderQuestion, memberDeliveryAnswer } from './assistant-orders.js';
 import { json, readJson, isSameOrigin, clientIp, methodNotAllowed } from './http.js';
 const limits = new Map();
 export const knowledge = [
  {pattern:/배송비|무료배송|택배비/,answer:'기본 배송비는 3,500원이며 상품 구매금액 100,000원 이상은 무료배송입니다. 도서·산간 추가 비용은 주문 화면에서 확인해 주세요.',link:'/terms.html#article-13'},
- {pattern:/배송|출고|언제|택배|송장/,answer:'통상 로젠택배를 이용하며 결제 완료 후 영업일 기준 2일 이내 출고합니다. 지연이 예상되면 별도로 안내합니다. 개별 주문의 현재 배송 상태는 이 상담에서 조회할 수 없습니다. 구매한 곳의 주문 내역을 확인하거나 비공개 문의를 남겨 주세요.',link:'/account.html'},
+ {pattern:/배송|출고|언제|택배|송장/,answer:'통상 로젠택배를 이용하며 결제 완료 후 영업일 기준 2일 이내 출고합니다. 지연이 예상되면 별도로 안내합니다. 로그인 후 내 배송 조회를 누르면 홈페이지에 저장된 본인 주문의 배송 단계와 송장번호를 확인할 수 있습니다. 외부 구매처 주문은 해당 구매처에서 확인해 주세요.',link:'/account.html'},
  {pattern:/교환|반품|환불|취소/,answer:'교환·반품·취소는 구매처와 주문 상태에 따라 확인이 필요합니다. 구매한 스토어의 주문 내역에서 신청하거나 비공개 문의를 남겨 주세요. 이 상담에서는 신청 접수나 환불 처리를 대신하지 않습니다.',link:'/support.html'},
  {pattern:/수선|수리|as|a\/s|불량|고장/i,answer:'제품명, 구매처, 주문번호와 문제가 생긴 부분의 사진을 비공개 수선 문의에 남겨 주세요. 수선 가능 여부·비용·기간은 상태 확인 후 안내합니다. 상담 전 제품을 임의로 발송하지 말아 주세요.',link:'/support.html'},
  {pattern:/세탁|관리|얼룩|방수|소재/,answer:'제품 안쪽 취급 표시와 해당 제품 상세페이지의 소재·관리 안내를 먼저 확인해 주세요. 소재를 확인하기 어려우면 세탁 전에 문의해 주세요.',link:'/care.html'},
@@ -27,6 +28,7 @@ export async function assistant(request) {
   const body=await readJson(request,5000);const message=typeof body.message==='string'?body.message.trim():'';
   if(!message||message.length>800) return json({message:'문의 내용을 800자 이내로 입력해 주세요.'},400);
   if(/\b01[016789][ -]?\d{3,4}[ -]?\d{4}\b|[\w.+-]+@[\w.-]+\.[a-z]{2,}|\b\d{6}-?\d{7}\b/i.test(message))return json({answer:'전화번호·이메일 등 개인정보는 이 대화에 남기지 말고 비공개 문의를 이용해 주세요.',link:'/contact.html',mode:'guide'});
+  if(isOrderQuestion(message)) return json(await memberDeliveryAnswer(request));
   const entry=supportAnswer(message);
   if(process.env.SUPPORT_AI_ENABLED==='true'&&process.env.OPENAI_API_KEY&&process.env.SUPPORT_AI_MODEL&&body.aiConsent===true&&knowledge.includes(entry)) {
    try {
