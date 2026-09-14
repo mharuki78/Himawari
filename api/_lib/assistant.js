@@ -29,6 +29,7 @@ export async function assistant(request) {
   if(!message||message.length>800) return json({message:'문의 내용을 800자 이내로 입력해 주세요.'},400);
   if(/\b01[016789][ -]?\d{3,4}[ -]?\d{4}\b|[\w.+-]+@[\w.-]+\.[a-z]{2,}|\b\d{6}-?\d{7}\b/i.test(message))return json({answer:'전화번호·이메일 등 개인정보는 이 대화에 남기지 말고 비공개 문의를 이용해 주세요.',link:'/contact.html',mode:'guide'});
   if(isOrderQuestion(message)) return json(await memberDeliveryAnswer(request));
+  if(/HMW-|HIM-|주문번호|송장번호|주소는|제 이름|이름은/i.test(message)) return json({answer:'주문 정보와 개인정보는 AI에 전달하지 않습니다. 내 배송 조회 또는 비공개 문의를 이용해 주세요.',link:'/account.html#orders',mode:'guide'});
   const entry=supportAnswer(message);
   if(process.env.SUPPORT_AI_ENABLED==='true'&&process.env.OPENAI_API_KEY&&process.env.SUPPORT_AI_MODEL&&body.aiConsent===true&&knowledge.includes(entry)) {
    try {
