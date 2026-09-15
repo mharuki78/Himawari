@@ -1,3 +1,4 @@
+import { SPEC_FIELDS } from '../../assets/product-specs.js';
 import { groupProductFamilies, productColor, productFamilyKey } from '../../assets/catalog-tools.js';
 
 const KRW = new Intl.NumberFormat('ko-KR', {
@@ -111,10 +112,11 @@ function catalogSchema(products, origin) {
       item: {
         '@type': 'Product',
         name: product.name,
-        sku: product.model,
+        sku: product.id,
+        model: product.model,
         image: safeHttpsUrl(product.image),
         description: product.description || product.tagline,
-        brand: { '@type': 'Brand', name: 'Himawari' },
+        brand: { '@type': 'Brand', name: 'Himawari', alternateName: '히마와리' },
         offers: {
           '@type': 'Offer',
           priceCurrency: 'KRW',
@@ -191,6 +193,16 @@ function productOffer(product, origin) {
   };
 }
 
+function productSearchDescription(product) {
+  return [product.name, product.description || product.tagline].filter(Boolean).join('. ').slice(0, 300);
+}
+
+function renderCrawlableSpecs(product) {
+  const known = SPEC_FIELDS.filter(([key]) => String(product.specs?.[key] || '').trim());
+  const rows = known.map(([key, label]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(product.specs[key])}</dd></div>`).join('');
+  return `<section class="product-guidance" data-product-guidance id="product-specifications" aria-labelledby="product-guidance-title"><div class="product-guidance__inner"><header class="product-guidance__header"><p class="product-guidance__eyebrow">크기와 소재</p><h2 id="product-guidance-title">내 하루에 맞는 크기.</h2></header><div class="product-guidance__content">${known.length ? `<dl class="product-guidance__specs">${rows}</dl>` : '<p>이 제품의 상세 실측 정보는 아직 등록되지 않았습니다. 필요한 크기와 소재는 구매 전 문의해 주세요.</p>'}<nav class="product-guidance__links" aria-label="제품 사양 도움말"><a href="support.html?product=${encodeURIComponent(product.id)}">제품·수선 문의 ↗</a><a href="compare.html?products=${encodeURIComponent(product.id)}">다른 제품과 비교 ↗</a><a href="care.html">관리 방법 보기 ↗</a></nav></div></div></section>`;
+}
+
 function productVariantSchema(product, origin, groupId) {
   const canonical = `${origin}/product.html?id=${encodeURIComponent(product.id)}`;
   return {
@@ -198,10 +210,12 @@ function productVariantSchema(product, origin, groupId) {
     '@id': `${canonical}#product`,
     url: canonical,
     name: product.name,
-    sku: product.model,
+    sku: product.id,
+        model: product.model,
     image: safeHttpsUrl(product.image) || undefined,
-    description: String(product.description || product.tagline || '').slice(0, 160),
-    brand: { '@type': 'Brand', name: 'Himawari' },
+    description: productSearchDescription(product),
+    additionalProperty: SPEC_FIELDS.filter(([key]) => product.specs?.[key]).map(([key, name]) => ({ '@type': 'PropertyValue', name, value: String(product.specs[key]) })),
+    brand: { '@type': 'Brand', name: 'Himawari', alternateName: '히마와리' },
     color: productColor(product) || undefined,
     isVariantOf: { '@id': groupId },
     offers: productOffer(product, origin),
@@ -210,7 +224,7 @@ function productVariantSchema(product, origin, groupId) {
 
 export function renderProductPage(template, product, origin = 'https://himawari.co.kr', reviewData = null, familyProducts = [product]) {
   const canonical = `${origin}/product.html?id=${encodeURIComponent(product.id)}`;
-  const description = String(product.description || product.tagline || '').slice(0, 160);
+  const description = productSearchDescription(product);
   const mainImage = safeHttpsUrl(product.image);
   const storeUrl = safeHttpsUrl(product.url) || 'https://smartstore.naver.com/baegot';
   const familyKey = productFamilyKey(product);
@@ -278,6 +292,7 @@ export function renderProductPage(template, product, origin = 'https://himawari.
   if (!(Array.isArray(product.gallery) && product.gallery.length)) {
     html = html.replace('<section class="product-gallery section" data-gallery-section', '<section class="product-gallery section" data-gallery-section hidden');
   }
+  html = html.replace('<section class="product-highlights section"', `${renderCrawlableSpecs(product)}\n<section class="product-highlights section"`);
   return html;
 }
 

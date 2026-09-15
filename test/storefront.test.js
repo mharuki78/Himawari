@@ -391,3 +391,20 @@ test('공개·주문·관리 화면은 quiet sage 디자인 토큰을 공유한�
     assert.match(output, /class="products-page catalog-page home-layout"/);
   }
 });
+
+test('product specs are crawlable without JavaScript and schema uses distinct variant IDs', async () => {
+  const template = await readFile(new URL('../templates/product.html', import.meta.url), 'utf8');
+  const product = { ...products[0], specs: { dimensions: '30 × 42 × 15', material: '<test> 원단' } };
+  const html = renderProductPage(template, product);
+  assert.match(html, /data-product-guidance/);
+  assert.match(html, /<dd>30 × 42 × 15<\/dd>/);
+  assert.match(html, /<dd>&lt;test&gt; 원단<\/dd>/);
+  const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => JSON.parse(m[1]));
+  const item = schemas.flatMap(s => s['@graph'] || []).find(s => s['@type'] === 'Product' && s.sku === product.id);
+  assert.equal(item.model, product.model);
+  assert.equal(item.brand.alternateName, '히마와리');
+  assert.equal(item.additionalProperty.length, 2);
+  assert.ok(item.description.includes(product.name));
+  const empty = renderProductPage(template, { ...product, specs: {} });
+  assert.match(empty, /상세 실측 정보는 아직 등록되지 않았습니다/);
+});
