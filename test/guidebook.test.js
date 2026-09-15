@@ -7,7 +7,10 @@ test('guidebook matching separates sizes, sets and incomplete dimensions', () =>
   assert.equal(matchGuidebookSpecs({ model: 'No.124S' }).dimensions, '22 × 33 × 14 cm');
   assert.equal(matchGuidebookSpecs({ model: 'No.1240' }), null);
   assert.equal(matchGuidebookSpecs({ model: 'No.1884', id: 'store-13641866477' }).dimensions, '28 × 40 × 17 cm');
-  assert.equal(matchGuidebookSpecs({ model: 'No.0514' }).dimensions, undefined);
+  assert.equal(matchGuidebookSpecs({ model: 'No.0514' }).dimensions, '30 × 45 × 15 cm');
+  assert.equal(matchGuidebookSpecs({ model: 'No.1884' }).dimensions, '30 × 45 × 20 cm');
+  assert.equal(matchGuidebookSpecs({ model: 'No.0514', id: 'store-13326396058' }).dimensions, undefined);
+  assert.equal(matchGuidebookSpecs({ model: 'No.0514', id: 'store-13326396058' }).weight, '350 g');
   assert.match(matchGuidebookSpecs({ model: 'No.0422', name: 'No.0422+체스트벨트 SET' }).measurementNote, /체스트벨트는 포함하지 않습니다/);
   assert.match(matchGuidebookSpecs({ model: 'No.0422' }).laptopCompartment, /두께 미기재/);
 });
