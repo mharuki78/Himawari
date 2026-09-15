@@ -1,10 +1,10 @@
 export const SPEC_FIELDS = Object.freeze([
   ['dimensions', '외부 크기 (가로 × 세로 × 폭, cm)'],
   ['weight', '무게 (g)'], ['capacity', '용량 (L)'],
-  ['laptopCompartment', '노트북 수납칸 실측 (가로 × 세로 × 두께, cm)'],
+  ['laptopCompartment', '노트북 수납칸 크기 (cm)'],
   ['material', '겉감·안감 소재'], ['waterResistance', '생활방수 범위'],
   ['care', '세탁·보관·관리 방법'], ['warranty', 'A/S 범위·비용 안내'],
-  ['measurementNote', '측정 조건·오차 안내'],
+  ['measurementNote', '사양 출처·측정 안내'],
 ]);
 
 export function normalizeSpecs(input = {}) {

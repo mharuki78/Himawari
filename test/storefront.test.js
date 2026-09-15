@@ -26,15 +26,15 @@ test('모든 HTML 페이지와 상품 템플릿이 공통 파비콘을 선언한
   }
 });
 
-test('모든 공개 페이지가 동일한 6개 주요 메뉴를 제공한다', async () => {
+test('모든 공개 페이지가 동일한 7개 주요 메뉴를 제공한다', async () => {
   const rootFiles = ['404.html', 'about.html', 'account.html', 'checkout.html', 'contact.html', 'finder.html', 'game.html', 'guest-order.html', 'index.html', 'privacy.html', 'terms.html'];
   const storyFiles = (await readdir(new URL('../story/', import.meta.url)))
     .filter((file) => file.endsWith('.html') && file !== 'admin.html')
     .map((file) => `story/${file}`);
   const templateFiles = ['templates/product.html', 'templates/products.html'];
   const htmlFiles = [...rootFiles, ...storyFiles, ...templateFiles];
-  const expectedLabels = ['제품', '가방 찾기', '브랜드', '이야기', '게임', '연락하기'];
-  const expectedHrefs = ['/products.html', '/finder.html', '/about.html', '/story/', '/game.html', '/contact.html'];
+  const expectedLabels = ['제품', '가방 찾기', '가이드북', '브랜드', '이야기', '게임', '연락하기'];
+  const expectedHrefs = ['/products.html', '/finder.html', '/assets/guides/himawari-guidebook-2026.pdf', '/about.html', '/story/', '/game.html', '/contact.html'];
 
   for (const file of htmlFiles) {
     const html = await readFile(new URL(`../${file}`, import.meta.url), 'utf8');
