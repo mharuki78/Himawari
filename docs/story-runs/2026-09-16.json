@@ -1,0 +1,44 @@
+{
+  "date": "2026-09-16",
+  "automationId": "himawari-3",
+  "posts": [
+    {
+      "id": "new-backpack-first-check",
+      "title": "새 백팩을 받은 날: 처음 메기 전에 확인할 것들",
+      "url": "https://himawari.co.kr/story/new-backpack-first-check.html",
+      "productId": "store-11070925709",
+      "model": "No.1027",
+      "image": "assets/story/new-backpack-first-check.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-16/reference-1027.jpg"
+    },
+    {
+      "id": "backpack-specification-table-reading",
+      "title": "백팩 사양표 읽기: 세 숫자와 무게가 알려주는 것",
+      "url": "https://himawari.co.kr/story/backpack-specification-table-reading.html",
+      "productId": "store-13326303755",
+      "model": "No.1884",
+      "image": "assets/story/backpack-specification-table-reading.webp",
+      "imageKind": "original",
+      "reference": "backups/story-2026-09-16/reference-1884.jpg"
+    },
+    {
+      "id": "backpack-knitwear-contact-check",
+      "title": "니트 위에 백팩을 멜 때: 맞닿는 자리를 살펴보세요",
+      "url": "https://himawari.co.kr/story/backpack-knitwear-contact-check.html",
+      "productId": "store-13308483411",
+      "model": "No.1230",
+      "image": "assets/story/backpack-knitwear-contact-check.webp",
+      "imageKind": "original",
+      "reference": "backups/story-2026-09-16/reference-1230.jpg"
+    }
+  ],
+  "generation": {
+    "tool": "built-in image_gen",
+    "source": "C:/Users/UserK/.codex/generated_images/01a08495-edb2-74e2-b203-1f9e52e791cd/exec-be3e20d9-865a-4172-b0eb-e1bd71a9a78b.png",
+    "prompt": "Create exactly one photorealistic editorial product photograph for a Korean Himawari bag journal article about checking a newly received bag before use. Reference image 1 is the actual No.1027 lavender backpack: preserve the exact lavender front zipper pocket and upper sides, pale icy blue central front panel, side pocket and base trim, ivory twin webbing handles, matching straps, metal zipper pulls, and the attached ivory rectangular mini pouch at the front right. Preserve the small original Himawari logo and all product proportions and pocket placement. Extract only this bag from the reference; do not include the person. Stand the complete closed bag upright on a clean pale wood table in soft natural window light, plain warm off-white studio background with a hint of a softly blurred window shadow. No packaging, no extra accessories, no text overlays or badges, no people or hands. Front three-quarter view similar to the visible reference angle; whole bag visible with generous breathing room. Landscape 3:2, realistic textile details, natural shadows, refined quiet editorial photography. Do not invent openings, logos, attachments or contents.\n"
+  },
+  "topicsReviewed": 47,
+  "overlapReview": "Reviewed 47 titles, summaries, headings and searched full article bodies; saved the full corpus and overlap passages in existing-post-review.json. New arrival focuses on delivered option/components before first use, distinct from shipping/repair. Specification article explains interpreting units, external vs internal dimensions and limits of volume calculations, distinct from laptop-fit checks. Knitwear focuses on garment contact and snagging rather than general strap length or fabric cleaning. Three distinct models/photos.",
+  "completionReceipt": "backups/story-runs/2026-09-16.deployment.json"
+}

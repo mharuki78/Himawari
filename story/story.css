@@ -114,3 +114,7 @@
 /* Keep the full September 15 product reference photos visible. */
 :is(.story-list-image, .story-post-visual img)[src$="backpack-glasses-case-place.webp"],
 :is(.story-list-image, .story-post-visual img)[src$="backpack-shopping-return-space.webp"] { object-fit: contain; background: #fff; }
+
+/* Keep the full September 16 product reference photos visible. */
+:is(.story-list-image, .story-post-visual img)[src$="backpack-specification-table-reading.webp"],
+:is(.story-list-image, .story-post-visual img)[src$="backpack-knitwear-contact-check.webp"] { object-fit: contain; background: #fff; }

@@ -1,5 +1,53 @@
 [
   {
+    "id": "new-backpack-first-check",
+    "title": "새 백팩을 받은 날: 처음 메기 전에 확인할 것들",
+    "date": "2026-09-16",
+    "summary": "포장을 푼 뒤 주문한 옵션과 구성품을 대조하고, 빈 가방의 상태를 확인한 다음 첫 사용을 준비하는 순서입니다.",
+    "description": "포장을 푼 뒤 주문한 옵션과 구성품을 대조하고, 빈 가방의 상태를 확인한 다음 첫 사용을 준비하는 순서입니다.",
+    "tags": [
+      "첫 사용",
+      "구성품 확인",
+      "새 백팩"
+    ],
+    "image": "../assets/story/new-backpack-first-check.webp",
+    "imageAlt": "밝은 나무 테이블에 세운 라벤더색 Himawari No.1027 백팩과 아이보리 파우치의 AI 연출 이미지",
+    "url": "new-backpack-first-check.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "backpack-specification-table-reading",
+    "title": "백팩 사양표 읽기: 세 숫자와 무게가 알려주는 것",
+    "date": "2026-09-16",
+    "summary": "가로·세로·폭의 순서와 빈 가방 무게, 외부 치수와 포켓 치수를 구분해 제품 정보를 읽는 방법입니다.",
+    "description": "가로·세로·폭의 순서와 빈 가방 무게, 외부 치수와 포켓 치수를 구분해 제품 정보를 읽는 방법입니다.",
+    "tags": [
+      "제품 사양",
+      "가이드북",
+      "크기 비교"
+    ],
+    "image": "../assets/story/backpack-specification-table-reading.webp",
+    "imageAlt": "검정 Himawari No.1884 백팩의 착용 모습과 원단·내부 수납을 함께 보여주는 공식 제품 사진",
+    "url": "backpack-specification-table-reading.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "backpack-knitwear-contact-check",
+    "title": "니트 위에 백팩을 멜 때: 맞닿는 자리를 살펴보세요",
+    "date": "2026-09-16",
+    "summary": "옷의 짜임과 백팩의 끈·등판·장식이 만나는 곳을 확인하고, 걸림이나 반복되는 쓸림을 줄이는 사용 습관입니다.",
+    "description": "옷의 짜임과 백팩의 끈·등판·장식이 만나는 곳을 확인하고, 걸림이나 반복되는 쓸림을 줄이는 사용 습관입니다.",
+    "tags": [
+      "니트",
+      "착용 습관",
+      "접촉 부위"
+    ],
+    "image": "../assets/story/backpack-knitwear-contact-check.webp",
+    "imageAlt": "그레이 Himawari No.1230 백팩을 멘 모델의 공식 제품 사진",
+    "url": "backpack-knitwear-contact-check.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "backpack-locker-clearance",
     "title": "사물함에 백팩을 넣을 때: 문이 닫히는 공간까지 재어보세요",
     "date": "2026-09-15",
