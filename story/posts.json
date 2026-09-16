@@ -1,5 +1,53 @@
 [
   {
+    "id": "backpack-top-handle-moving",
+    "title": "백팩을 손으로 옮길 때: 손잡이를 잡기 전 잠깐의 확인",
+    "date": "2026-09-17",
+    "summary": "의자에서 바닥으로, 등에서 손으로. 백팩을 짧게 옮길 때 내용물과 손잡이, 내려놓을 자리를 함께 살펴보세요.",
+    "description": "의자에서 바닥으로, 등에서 손으로. 백팩을 짧게 옮길 때 내용물과 손잡이, 내려놓을 자리를 함께 살펴보세요.",
+    "tags": [
+      "백팩 손잡이",
+      "일상 사용",
+      "가방 옮기기"
+    ],
+    "image": "../assets/story/backpack-top-handle-moving.webp",
+    "imageAlt": "밝은 나무 벤치 위에 놓인 히마와리 0422 블랙 백팩의 AI 연출 이미지",
+    "url": "backpack-top-handle-moving.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "exhibition-backpack-visit",
+    "title": "전시회 가는 날의 백팩: 입구에서 서두르지 않는 준비",
+    "date": "2026-09-17",
+    "summary": "관람 중 필요한 것과 맡길 것을 나누고, 방문할 전시의 가방 안내를 먼저 확인하는 작은 준비입니다.",
+    "description": "관람 중 필요한 것과 맡길 것을 나누고, 방문할 전시의 가방 안내를 먼저 확인하는 작은 준비입니다.",
+    "tags": [
+      "전시회 가방",
+      "주말 외출",
+      "관람 준비"
+    ],
+    "image": "../assets/story/exhibition-backpack-visit.webp",
+    "imageAlt": "히마와리 0514 실버 스트링 백팩을 착용한 모델",
+    "url": "exhibition-backpack-visit.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "backpack-pen-ink-prevention",
+    "title": "백팩 속 필기구: 잉크가 묻기 전에 확인할 세 가지",
+    "date": "2026-09-17",
+    "summary": "펜촉, 뚜껑, 필통의 안쪽을 확인하세요. 필기구를 담는 작은 습관으로 가방 안의 원치 않는 얼룩을 줄여 봅니다.",
+    "description": "펜촉, 뚜껑, 필통의 안쪽을 확인하세요. 필기구를 담는 작은 습관으로 가방 안의 원치 않는 얼룩을 줄여 봅니다.",
+    "tags": [
+      "필기구 수납",
+      "잉크 얼룩 예방",
+      "책가방 관리"
+    ],
+    "image": "../assets/story/backpack-pen-ink-prevention.webp",
+    "imageAlt": "히마와리 1088M 블랙 백팩 착용 사진과 체스트벨트 세트 안내",
+    "url": "backpack-pen-ink-prevention.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "new-backpack-first-check",
     "title": "새 백팩을 받은 날: 처음 메기 전에 확인할 것들",
     "date": "2026-09-16",

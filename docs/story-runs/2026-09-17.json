@@ -1,0 +1,44 @@
+{
+  "date": "2026-09-17",
+  "automationId": "himawari-3",
+  "posts": [
+    {
+      "id": "backpack-top-handle-moving",
+      "title": "백팩을 손으로 옮길 때: 손잡이를 잡기 전 잠깐의 확인",
+      "url": "https://himawari.co.kr/story/backpack-top-handle-moving.html",
+      "productId": "store-13326274540",
+      "model": "No.0422",
+      "image": "assets/story/backpack-top-handle-moving.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-17/reference-0422.jpg"
+    },
+    {
+      "id": "exhibition-backpack-visit",
+      "title": "전시회 가는 날의 백팩: 입구에서 서두르지 않는 준비",
+      "url": "https://himawari.co.kr/story/exhibition-backpack-visit.html",
+      "productId": "store-11788400997",
+      "model": "No.0514",
+      "image": "assets/story/exhibition-backpack-visit.webp",
+      "imageKind": "original",
+      "reference": "backups/story-2026-09-17/reference-0514.jpg"
+    },
+    {
+      "id": "backpack-pen-ink-prevention",
+      "title": "백팩 속 필기구: 잉크가 묻기 전에 확인할 세 가지",
+      "url": "https://himawari.co.kr/story/backpack-pen-ink-prevention.html",
+      "productId": "store-13725149652",
+      "model": "No.1088M",
+      "image": "assets/story/backpack-pen-ink-prevention.webp",
+      "imageKind": "original",
+      "reference": "backups/story-2026-09-17/reference-1088.jpg"
+    }
+  ],
+  "generation": {
+    "tool": "built-in image_gen",
+    "source": "C:/Users/UserK/.codex/generated_images/01a08495-edb2-74e2-b203-1f9e52e791cd/exec-8946d245-3038-4bbf-bce5-46065a0c4ae1.png",
+    "prompt": "Use case: photorealistic-natural. Asset type: Korean Himawari bag journal editorial photograph, landscape 3:2. Use image 1 as exact product reference: the black Himawari No.0422 backpack with rounded top, top carry handle, front zip pocket, round black pouch with brown tab, black smiling character charm, small rectangular lower logo. Preserve its exact structure, proportions, materials and black color. Show this same backpack standing fully visible on a clean pale oak entryway bench in a softly lit home, handle unobstructed and shoulder straps resting neatly behind it. Quiet warm cream wall, soft morning daylight, tasteful realistic editorial photography, product the clear focus. No people, no extra bags, no captions, no invented pockets or labels. Do not alter product design.\n"
+  },
+  "topicsReviewed": 50,
+  "overlapReview": "Reviewed all 50 titles and summaries, extracted all article bodies, and searched related passages for handles, exhibition visits and ink. Handle article focuses on short-distance lifting, distinct from long-term storage or strap fit. Exhibition article focuses on venue preparation and movement without inventing venue rules. Pen article focuses on preventing ink transfer, distinct from general lining cleaning. Three different models and images.",
+  "completionReceipt": "backups/story-runs/2026-09-17.deployment.json"
+}
