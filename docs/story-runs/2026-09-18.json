@@ -1,0 +1,44 @@
+{
+  "date": "2026-09-18",
+  "automationId": "himawari-3",
+  "posts": [
+    {
+      "id": "backpack-entryway-reset",
+      "title": "집에 돌아온 뒤 백팩을 두는 자리: 내일을 위한 3분 정리",
+      "url": "https://himawari.co.kr/story/backpack-entryway-reset.html",
+      "productId": "store-13326274540",
+      "model": "No.0422",
+      "image": "assets/story/backpack-entryway-reset.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-18/reference-0422.jpg"
+    },
+    {
+      "id": "backpack-weather-layering",
+      "title": "비 예보가 있는 날의 백팩: 준비물보다 먼저 확인할 것",
+      "url": "https://himawari.co.kr/story/backpack-weather-layering.html",
+      "productId": "store-13326303755",
+      "model": "No.1884L",
+      "image": "assets/story/backpack-weather-layering.webp",
+      "imageKind": "original",
+      "reference": "backups/story-2026-09-18/reference-1884.jpg"
+    },
+    {
+      "id": "backpack-coffee-carry",
+      "title": "카페에서 백팩과 음료를 함께 둘 때: 넘어짐을 줄이는 자리",
+      "url": "https://himawari.co.kr/story/backpack-coffee-carry.html",
+      "productId": "store-13725149652",
+      "model": "No.1088M",
+      "image": "assets/story/backpack-coffee-carry.webp",
+      "imageKind": "original",
+      "reference": "backups/story-2026-09-18/reference-1088.jpg"
+    }
+  ],
+  "generation": {
+    "tool": "built-in image_gen",
+    "source": "C:/Users/UserK/.codex/generated_images/01a08495-edb2-74e2-b203-1f9e52e791cd/exec-0939ddad-1a0b-4651-b909-ca9b7e98aabc.png",
+    "prompt": "Use case: product-mockup. Asset type: editorial image for Korean Himawari bag journal, landscape 3:2. Use image 1 as exact reference for the black Himawari No.0422 backpack. Preserve exact product design, rounded top, top handle, front pockets, circular pouch, charms, logo, proportions and black fabric. Show the same backpack placed upright beside a neat entryway tray with keys and a folded notebook, warm natural daylight, calm minimal home interior, realistic product photography, no people, no extra bags, no text, no watermark. The backpack must remain the clear focus and must not gain or lose pockets or accessories.\n"
+  },
+  "topicsReviewed": 53,
+  "overlapReview": "Reviewed 47 titles, summaries, headings and searched full article bodies; saved the full corpus and overlap passages in existing-post-review.json. New arrival focuses on delivered option/components before first use, distinct from shipping/repair. Specification article explains interpreting units, external vs internal dimensions and limits of volume calculations, distinct from laptop-fit checks. Knitwear focuses on garment contact and snagging rather than general strap length or fabric cleaning. Three distinct models/photos.",
+  "completionReceipt": "backups/story-runs/2026-09-18.deployment.json"
+}

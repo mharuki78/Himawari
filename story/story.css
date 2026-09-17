@@ -122,3 +122,7 @@
 /* Keep the full September 17 product reference photos visible. */
 :is(.story-list-image, .story-post-visual img)[src$="exhibition-backpack-visit.webp"],
 :is(.story-list-image, .story-post-visual img)[src$="backpack-pen-ink-prevention.webp"] { object-fit: contain; background: #fff; }
+
+/* Keep the full September 16 product reference photos visible. */
+:is(.story-list-image, .story-post-visual img)[src$="backpack-weather-layering.webp"],
+:is(.story-list-image, .story-post-visual img)[src$="backpack-coffee-carry.webp"] { object-fit: contain; background: #fff; }
