@@ -19,8 +19,9 @@
       "productId": "store-13326303755",
       "model": "No.1884L",
       "image": "assets/story/backpack-weather-layering.webp",
-      "imageKind": "original",
-      "reference": "backups/story-2026-09-18/reference-1884.jpg"
+      "imageKind": "generated-from-reference",
+      "reference": "backups/story-2026-09-18/reference-1884.jpg",
+      "generatedSource": "C:/Users/UserK/.codex/generated_images/01a08495-edb2-74e2-b203-1f9e52e791cd/exec-05f584a9-5516-444a-9f28-f6a76df2036c.png"
     },
     {
       "id": "backpack-coffee-carry",
@@ -29,14 +30,15 @@
       "productId": "store-13725149652",
       "model": "No.1088M",
       "image": "assets/story/backpack-coffee-carry.webp",
-      "imageKind": "original",
-      "reference": "backups/story-2026-09-18/reference-1088.jpg"
+      "imageKind": "generated-from-reference",
+      "reference": "backups/story-2026-09-18/reference-1088.jpg",
+      "generatedSource": "C:/Users/UserK/.codex/generated_images/01a08495-edb2-74e2-b203-1f9e52e791cd/exec-0f2a5276-1a28-4588-a205-12cc5eeda153.png"
     }
   ],
   "generation": {
     "tool": "built-in image_gen",
-    "source": "C:/Users/UserK/.codex/generated_images/01a08495-edb2-74e2-b203-1f9e52e791cd/exec-0939ddad-1a0b-4651-b909-ca9b7e98aabc.png",
-    "prompt": "Use case: product-mockup. Asset type: editorial image for Korean Himawari bag journal, landscape 3:2. Use image 1 as exact reference for the black Himawari No.0422 backpack. Preserve exact product design, rounded top, top handle, front pockets, circular pouch, charms, logo, proportions and black fabric. Show the same backpack placed upright beside a neat entryway tray with keys and a folded notebook, warm natural daylight, calm minimal home interior, realistic product photography, no people, no extra bags, no text, no watermark. The backpack must remain the clear focus and must not gain or lose pockets or accessories.\n"
+    "source": "C:/Users/UserK/.codex/generated_images/01a08495-edb2-74e2-b203-1f9e52e791cd/exec-99547a84-007a-4018-8b84-3a73bb802e18.png",
+    "prompt": "2026-09-18 보강 발행에서 0422, 1884, 1088M의 실제 제품 원본을 각각 참조하여 새 AI 연출 사진 3장을 생성했습니다. 각 원본과 프롬프트는 backups/story-2026-09-18/에 보관합니다."
   },
   "topicsReviewed": 53,
   "overlapReview": "Reviewed 47 titles, summaries, headings and searched full article bodies; saved the full corpus and overlap passages in existing-post-review.json. New arrival focuses on delivered option/components before first use, distinct from shipping/repair. Specification article explains interpreting units, external vs internal dimensions and limits of volume calculations, distinct from laptop-fit checks. Knitwear focuses on garment contact and snagging rather than general strap length or fabric cleaning. Three distinct models/photos.",
