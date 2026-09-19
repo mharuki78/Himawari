@@ -1,5 +1,53 @@
 [
   {
+    "id": "workshop-backpack-finished-piece",
+    "title": "공방 수업 가는 날의 백팩: 완성품이 돌아올 자리까지",
+    "date": "2026-09-19",
+    "summary": "출발할 때의 도구보다 수업을 마친 뒤 작품의 모양과 상태를 먼저 생각해 보세요. 포장과 귀가 동선을 함께 준비하는 공방 가방 이야기입니다.",
+    "description": "출발할 때의 도구보다 수업을 마친 뒤 작품의 모양과 상태를 먼저 생각해 보세요. 포장과 귀가 동선을 함께 준비하는 공방 가방 이야기입니다.",
+    "tags": [
+      "공방 수업",
+      "작품 운반",
+      "주말 백팩"
+    ],
+    "image": "../assets/story/workshop-backpack-finished-piece.webp",
+    "imageAlt": "제본 공방 작업대에 놓인 회색 히마와리 No.1230 백팩과 작은 천 표지 노트의 AI 연출 이미지",
+    "url": "workshop-backpack-finished-piece.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "headphone-case-backpack-space",
+    "title": "헤드폰을 백팩에 넣을 때: 접는 방향보다 케이스의 자리",
+    "date": "2026-09-19",
+    "summary": "헤드폰을 억지로 접거나 책 사이에 끼우지 않도록, 케이스를 포함한 크기와 꺼내는 동작을 확인하는 수납 방법입니다.",
+    "description": "헤드폰을 억지로 접거나 책 사이에 끼우지 않도록, 케이스를 포함한 크기와 꺼내는 동작을 확인하는 수납 방법입니다.",
+    "tags": [
+      "헤드폰",
+      "전자기기 수납",
+      "가방 속 자리"
+    ],
+    "image": "../assets/story/headphone-case-backpack-space.webp",
+    "imageAlt": "은색 히마와리 No.0514 백팩을 착용한 모델의 기존 제품 사진",
+    "url": "headphone-case-backpack-space.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "interview-backpack-rehearsal",
+    "title": "면접 가는 날의 백팩: 서류를 꺼내는 순간까지 준비하기",
+    "date": "2026-09-19",
+    "summary": "면접 안내에 맞는 준비물을 챙긴 뒤 접수·대기·입실 순서로 가방을 한 번 열어보세요. 익숙한 동작을 만드는 전날 준비입니다.",
+    "description": "면접 안내에 맞는 준비물을 챙긴 뒤 접수·대기·입실 순서로 가방을 한 번 열어보세요. 익숙한 동작을 만드는 전날 준비입니다.",
+    "tags": [
+      "면접 준비",
+      "출근 가방",
+      "서류 수납"
+    ],
+    "image": "../assets/story/interview-backpack-rehearsal.webp",
+    "imageAlt": "검정 히마와리 No.1884 백팩 착용 모습과 제품 세부 사진",
+    "url": "interview-backpack-rehearsal.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "backpack-entryway-reset",
     "title": "집에 돌아온 뒤 백팩을 두는 자리: 내일을 위한 3분 정리",
     "date": "2026-09-18",

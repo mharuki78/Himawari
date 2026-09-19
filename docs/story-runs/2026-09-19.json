@@ -1,0 +1,44 @@
+{
+  "date": "2026-09-19",
+  "automationId": "himawari-3",
+  "posts": [
+    {
+      "id": "workshop-backpack-finished-piece",
+      "title": "공방 수업 가는 날의 백팩: 완성품이 돌아올 자리까지",
+      "url": "https://himawari.co.kr/story/workshop-backpack-finished-piece.html",
+      "productId": "store-13308483411",
+      "model": "No.1230",
+      "image": "assets/story/workshop-backpack-finished-piece.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-19/reference-1230.jpg"
+    },
+    {
+      "id": "headphone-case-backpack-space",
+      "title": "헤드폰을 백팩에 넣을 때: 접는 방향보다 케이스의 자리",
+      "url": "https://himawari.co.kr/story/headphone-case-backpack-space.html",
+      "productId": "store-11788400997",
+      "model": "No.0514",
+      "image": "assets/story/headphone-case-backpack-space.webp",
+      "imageKind": "original",
+      "reference": "backups/story-2026-09-19/reference-0514.jpg"
+    },
+    {
+      "id": "interview-backpack-rehearsal",
+      "title": "면접 가는 날의 백팩: 서류를 꺼내는 순간까지 준비하기",
+      "url": "https://himawari.co.kr/story/interview-backpack-rehearsal.html",
+      "productId": "store-13326303755",
+      "model": "No.1884L",
+      "image": "assets/story/interview-backpack-rehearsal.webp",
+      "imageKind": "original",
+      "reference": "backups/story-2026-09-19/reference-1884.jpg"
+    }
+  ],
+  "generation": {
+    "tool": "built-in image_gen",
+    "source": "backups/story-2026-09-19/generated-1230.png",
+    "prompt": "Use case: photorealistic-natural. Asset type: Himawari Korean journal hero, landscape 3:2. Input image is the actual gray Himawari No.1230 backpack product reference; preserve exactly its gray fabric, rounded silhouette, black zippers, two separate upper front pocket flaps with black mesh, lower gray panel with small black triangular Himawari logo, side pockets and black top handle. Create a refined natural editorial photograph of that same backpack standing on a clean pale oak workbench at a bookbinding workshop, beside a finished small handmade linen-covered notebook with no text and a folded sheet of wrapping paper. Background softly blurred shelves of papers, warm daylight from side window, tactile material details, believable restrained shadows. Bag fully visible and dominant, front three-quarter angle close to reference. No person, no extra bags, no collage, no promotional text, no invented pockets or logos, no tools touching the bag. The notebook remains outside the closed bag; do not imply measured capacity. Preserve the real bag design faithfully.\n"
+  },
+  "topicsReviewed": 56,
+  "overlapReview": "Reviewed existing titles, summaries and article bodies. Workshop article focuses on finished objects, drying and packaging rather than drawing tools or shopping space; headphone article focuses on hinge directions and case clearance rather than cable organization; interview article focuses on reception and seated rehearsal rather than everyday office bag selection. No new performance claims; three distinct product models and hero images.",
+  "completionReceipt": "backups/story-runs/2026-09-19.deployment.json"
+}

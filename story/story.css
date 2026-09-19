@@ -126,3 +126,7 @@
 /* Keep the full September 16 product reference photos visible. */
 :is(.story-list-image, .story-post-visual img)[src$="backpack-weather-layering.webp"],
 :is(.story-list-image, .story-post-visual img)[src$="backpack-coffee-carry.webp"] { object-fit: contain; background: #fff; }
+
+/* Keep the full September 19 product reference photos visible. */
+:is(.story-list-image, .story-post-visual img)[src$="headphone-case-backpack-space.webp"],
+:is(.story-list-image, .story-post-visual img)[src$="interview-backpack-rehearsal.webp"] { object-fit: contain; background: #fff; }
