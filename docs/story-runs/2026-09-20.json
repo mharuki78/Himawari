@@ -1,0 +1,44 @@
+{
+  "date": "2026-09-20",
+  "automationId": "himawari-3",
+  "posts": [
+    {
+      "id": "knitting-project-backpack",
+      "title": "손뜨개와 함께 나가는 백팩: 실 끝이 엉키지 않는 준비",
+      "url": "https://himawari.co.kr/story/knitting-project-backpack.html",
+      "productId": "store-11070925709",
+      "model": "No.1027",
+      "image": "assets/story/knitting-project-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-20/reference-1027.jpg"
+    },
+    {
+      "id": "ereader-backpack-reading-break",
+      "title": "전자책 리더기를 챙기는 날: 짧은 독서를 위한 가방 속 자리",
+      "url": "https://himawari.co.kr/story/ereader-backpack-reading-break.html",
+      "productId": "store-13326274540",
+      "model": "No.0422",
+      "image": "assets/story/ereader-backpack-reading-break.webp",
+      "imageKind": "original",
+      "reference": "backups/story-2026-09-20/reference-0422.jpg"
+    },
+    {
+      "id": "cosmetic-pouch-backpack-check",
+      "title": "백팩 속 화장품 파우치: 뚜껑·펌프·브러시를 나눠 챙기기",
+      "url": "https://himawari.co.kr/story/cosmetic-pouch-backpack-check.html",
+      "productId": "store-13725149652",
+      "model": "No.1088M",
+      "image": "assets/story/cosmetic-pouch-backpack-check.webp",
+      "imageKind": "original",
+      "reference": "backups/story-2026-09-20/reference-1088.jpg"
+    }
+  ],
+  "generation": {
+    "tool": "built-in image_gen",
+    "source": "backups/story-2026-09-20/generated-1027.png",
+    "prompt": "Use case: photorealistic-natural. Korean Himawari journal hero, landscape 3:2. Reference image is actual No.1027 backpack, preserve product exactly: pale blue upper front and sides, lavender front zip pocket and upper side accents, cream bottom trim and two cream top carry handles with round rivets, subtle Himawari front wordmark, cream rectangular hanging zip pouch on right front. Show the same backpack, fully visible front three-quarter view, standing beside a small closed natural canvas knitting project pouch on a light wooden side table in a calm home sitting room. Two soft oat-colored balls of yarn and a neatly folded small unfinished cream knitted swatch lie beside the pouch, no needles piercing bag, no thread coming from bag. Soft morning window daylight, tactile real fabric, quiet editorial composition, gentle shadows, no people, no extra backpacks, no text overlay, no fictional pockets or exaggerated size. Preserve color blocking, proportions, logos and hardware from reference. This is a styled scene not a capacity demonstration.\n"
+  },
+  "topicsReviewed": 59,
+  "overlapReview": "Reviewed the existing 59 titles, summaries and saved body corpus, with targeted searches for knitting, e-readers and cosmetics. No prior knitting or e-reader articles; cosmetics previously appeared only as brief examples in general cleaning and compartment articles. New articles respectively cover connected yarn and needle ends, e-reader contact surfaces and reading transitions, and closure types plus used cosmetic tools. Three distinct product models; one newly generated reference-based image.",
+  "completionReceipt": "backups/story-runs/2026-09-20.deployment.json"
+}

@@ -1,5 +1,53 @@
 [
   {
+    "id": "knitting-project-backpack",
+    "title": "손뜨개와 함께 나가는 백팩: 실 끝이 엉키지 않는 준비",
+    "date": "2026-09-20",
+    "summary": "작업 중인 뜨개 한 개를 도구와 함께 담고, 실 끝과 바늘 끝이 가방에 걸리지 않도록 준비하는 취미 외출 수납법입니다.",
+    "description": "작업 중인 뜨개 한 개를 도구와 함께 담고, 실 끝과 바늘 끝이 가방에 걸리지 않도록 준비하는 취미 외출 수납법입니다.",
+    "tags": [
+      "손뜨개",
+      "취미 가방",
+      "도구 수납"
+    ],
+    "image": "../assets/story/knitting-project-backpack.webp",
+    "imageAlt": "라벤더와 하늘색 히마와리 No.1027 백팩 옆에 실뭉치와 뜨개 작업물을 놓은 AI 연출 이미지",
+    "url": "knitting-project-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "ereader-backpack-reading-break",
+    "title": "전자책 리더기를 챙기는 날: 짧은 독서를 위한 가방 속 자리",
+    "date": "2026-09-20",
+    "summary": "가벼운 리더기도 화면과 돌출된 소품이 만나는 위치를 살펴야 합니다. 커버를 포함한 크기와 읽고 되담는 순서로 자리를 정해보세요.",
+    "description": "가벼운 리더기도 화면과 돌출된 소품이 만나는 위치를 살펴야 합니다. 커버를 포함한 크기와 읽고 되담는 순서로 자리를 정해보세요.",
+    "tags": [
+      "전자책 리더기",
+      "독서",
+      "기기 수납"
+    ],
+    "image": "../assets/story/ereader-backpack-reading-break.webp",
+    "imageAlt": "원형 파우치와 검정 장식이 달린 히마와리 No.0422 검정 백팩 정면 제품 사진",
+    "url": "ereader-backpack-reading-break.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "cosmetic-pouch-backpack-check",
+    "title": "백팩 속 화장품 파우치: 뚜껑·펌프·브러시를 나눠 챙기기",
+    "date": "2026-09-20",
+    "summary": "화장품을 한 파우치에 넣기 전에 용기별 닫힘과 묻어나는 부분을 확인하세요. 사용 후 되담는 순간까지 생각한 일상 수납법입니다.",
+    "description": "화장품을 한 파우치에 넣기 전에 용기별 닫힘과 묻어나는 부분을 확인하세요. 사용 후 되담는 순간까지 생각한 일상 수납법입니다.",
+    "tags": [
+      "화장품 파우치",
+      "일상 수납",
+      "가방 관리"
+    ],
+    "image": "../assets/story/cosmetic-pouch-backpack-check.webp",
+    "imageAlt": "검정과 흰색 배색의 히마와리 No.1088M 착용 모습과 체스트벨트 세트 안내가 있는 기존 제품 사진",
+    "url": "cosmetic-pouch-backpack-check.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "workshop-backpack-finished-piece",
     "title": "공방 수업 가는 날의 백팩: 완성품이 돌아올 자리까지",
     "date": "2026-09-19",
