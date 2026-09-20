@@ -1,0 +1,44 @@
+{
+  "date": "2026-09-21",
+  "automationId": "himawari-3",
+  "posts": [
+    {
+      "id": "picnic-mat-backpack-return",
+      "title": "돗자리와 백팩을 챙긴 날: 돌아오는 짐은 따로 준비하세요",
+      "url": "https://himawari.co.kr/story/picnic-mat-backpack-return.html",
+      "productId": "store-11788400997",
+      "model": "No.0514",
+      "image": "assets/story/picnic-mat-backpack-return.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-21/reference-0514.jpg"
+    },
+    {
+      "id": "board-game-backpack-packing",
+      "title": "작은 보드게임을 백팩에 담을 때: 상자보다 구성품부터",
+      "url": "https://himawari.co.kr/story/board-game-backpack-packing.html",
+      "productId": "store-13326303755",
+      "model": "No.1884L",
+      "image": "assets/story/board-game-backpack-packing.webp",
+      "imageKind": "original",
+      "reference": "backups/story-2026-09-21/reference-1884.jpg"
+    },
+    {
+      "id": "child-spare-clothes-backpack",
+      "title": "아이와 외출하는 백팩: 갈아입을 옷을 한 번에 꺼내도록",
+      "url": "https://himawari.co.kr/story/child-spare-clothes-backpack.html",
+      "productId": "store-11070925709",
+      "model": "No.1027",
+      "image": "assets/story/child-spare-clothes-backpack.webp",
+      "imageKind": "original",
+      "reference": "backups/story-2026-09-21/reference-1027.jpg"
+    }
+  ],
+  "generation": {
+    "tool": "built-in image_gen",
+    "source": "backups/story-2026-09-21/generated-0514.png",
+    "prompt": "Use case: photorealistic-natural. Landscape 3:2 editorial product photograph for Himawari journal. Image 1 is the actual silver Himawari No.0514 product reference; faithfully preserve its metallic silver nylon fabric with natural creases, black drawstrings and top handle, gathered drawstring opening, horizontal front zip compartment, silver side pockets, triangular black Himawari logo at lower front right, original silhouette and proportions. Place exactly this backpack upright on a clean pale wooden park picnic table next to a small neatly folded muted sage picnic mat in its simple fabric sleeve. Quiet green park background softly out of focus, delicate early autumn daylight, realistic silver highlights without mirror shine. Front three-quarter view, entire bag visible with generous breathing room, backpack dominant. No people, no other bags, no food or drinks, no added pockets, no text overlays or fake signage. Mat remains outside bag; no capacity demonstration. Keep authentic logo text and product details from the reference.\n"
+  },
+  "topicsReviewed": 62,
+  "overlapReview": "Compared all 62 titles, summaries and saved article bodies with the previous corpus; only the three September 20 bodies were new and were reviewed in the preceding run. Targeted searches found no earlier articles about picnic mats, board-game pieces or child spare-clothes handover. Mat article follows clean-to-used transitions rather than generic day-trip packing; board-game article uses component-specific cases; spare-clothes article uses caregiver questions and handover rather than sharing a bag. Three distinct product models and images.",
+  "completionReceipt": "backups/story-runs/2026-09-21.deployment.json"
+}

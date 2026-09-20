@@ -134,3 +134,7 @@
 /* Keep the full September 20 product reference photos visible. */
 :is(.story-list-image, .story-post-visual img)[src$="ereader-backpack-reading-break.webp"],
 :is(.story-list-image, .story-post-visual img)[src$="cosmetic-pouch-backpack-check.webp"] { object-fit: contain; background: #fff; }
+
+/* Keep the full September 21 product reference photos visible. */
+:is(.story-list-image, .story-post-visual img)[src$="board-game-backpack-packing.webp"],
+:is(.story-list-image, .story-post-visual img)[src$="child-spare-clothes-backpack.webp"] { object-fit: contain; background: #fff; }

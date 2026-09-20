@@ -1,5 +1,53 @@
 [
   {
+    "id": "picnic-mat-backpack-return",
+    "title": "돗자리와 백팩을 챙긴 날: 돌아오는 짐은 따로 준비하세요",
+    "date": "2026-09-21",
+    "summary": "공원에 갈 때는 작게 접혔던 돗자리도 사용 후에는 흙과 물기가 남을 수 있습니다. 깨끗한 짐과 되담을 짐을 나누는 외출 준비입니다.",
+    "description": "공원에 갈 때는 작게 접혔던 돗자리도 사용 후에는 흙과 물기가 남을 수 있습니다. 깨끗한 짐과 되담을 짐을 나누는 외출 준비입니다.",
+    "tags": [
+      "공원 외출",
+      "돗자리",
+      "귀가 준비"
+    ],
+    "image": "../assets/story/picnic-mat-backpack-return.webp",
+    "imageAlt": "공원 나무 테이블에 놓인 은색 히마와리 No.0514와 접힌 돗자리의 AI 연출 이미지",
+    "url": "picnic-mat-backpack-return.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "board-game-backpack-packing",
+    "title": "작은 보드게임을 백팩에 담을 때: 상자보다 구성품부터",
+    "date": "2026-09-21",
+    "summary": "카드와 주사위, 작은 말이 흩어지지 않도록 준비하고 모임이 끝난 뒤 빠짐없이 회수하는 가방 수납 방법입니다.",
+    "description": "카드와 주사위, 작은 말이 흩어지지 않도록 준비하고 모임이 끝난 뒤 빠짐없이 회수하는 가방 수납 방법입니다.",
+    "tags": [
+      "보드게임",
+      "모임 준비",
+      "작은 물건"
+    ],
+    "image": "../assets/story/board-game-backpack-packing.webp",
+    "imageAlt": "검정 히마와리 No.1884 백팩 착용 모습과 세부 구성의 기존 제품 사진",
+    "url": "board-game-backpack-packing.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "child-spare-clothes-backpack",
+    "title": "아이와 외출하는 백팩: 갈아입을 옷을 한 번에 꺼내도록",
+    "date": "2026-09-21",
+    "summary": "여벌 옷을 옷 종류별로 흩어 넣지 않고 한 번에 갈아입을 묶음으로 준비하세요. 사용한 옷이 돌아올 자리와 보호자 간 공유 방법도 함께 살펴봅니다.",
+    "description": "여벌 옷을 옷 종류별로 흩어 넣지 않고 한 번에 갈아입을 묶음으로 준비하세요. 사용한 옷이 돌아올 자리와 보호자 간 공유 방법도 함께 살펴봅니다.",
+    "tags": [
+      "아이와 외출",
+      "여벌 옷",
+      "가족 나들이"
+    ],
+    "image": "../assets/story/child-spare-clothes-backpack.webp",
+    "imageAlt": "라벤더와 하늘색 히마와리 No.1027 백팩을 착용한 기존 제품 사진",
+    "url": "child-spare-clothes-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "knitting-project-backpack",
     "title": "손뜨개와 함께 나가는 백팩: 실 끝이 엉키지 않는 준비",
     "date": "2026-09-20",
