@@ -18,9 +18,15 @@
       "url": "https://himawari.co.kr/story/board-game-backpack-packing.html",
       "productId": "store-13326303755",
       "model": "No.1884L",
-      "image": "assets/story/board-game-backpack-packing.webp",
-      "imageKind": "original",
-      "reference": "backups/story-2026-09-21/reference-1884.jpg"
+      "image": "assets/story/board-game-backpack-packing-generated-v2.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-16/reference-1884.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-21/board-game-backpack-packing-generated.png",
+        "prompt": "Use case: photorealistic-natural. Landscape 3:2 Himawari editorial product photo. Reference is actual product identity, preserve exactly: black rectangular Himawari No.1884 backpack, paired top carry handles with riveted attachment tabs, upper central small rectangular Himawari patch and broad horizontal front zip pocket. Do not reproduce collage, water droplets, charging phone, model or overlay lettering from reference. Scene: a warm contemporary living room table beside two small closed unbranded board-game boxes, a tidy wooden tray with a few wooden playing pieces and dice; bag and game boxes remain separate. Entire bag fully visible and dominant at a front three-quarter angle, authentic fabric and stitching, restrained natural lighting and believable shadows, elegant spacious framing. Preserve actual bag logo, silhouette, colors, pockets and hardware. No invented features, no text overlays, no extra backpacks. Props remain outside the closed bag; this is styled photography not a capacity demonstration.",
+        "generatedAt": "2026-09-21"
+      }
     },
     {
       "id": "child-spare-clothes-backpack",
@@ -28,9 +34,15 @@
       "url": "https://himawari.co.kr/story/child-spare-clothes-backpack.html",
       "productId": "store-11070925709",
       "model": "No.1027",
-      "image": "assets/story/child-spare-clothes-backpack.webp",
-      "imageKind": "original",
-      "reference": "backups/story-2026-09-21/reference-1027.jpg"
+      "image": "assets/story/child-spare-clothes-backpack-generated-v2.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-16/reference-1027.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-21/child-spare-clothes-backpack-generated.png",
+        "prompt": "Use case: photorealistic-natural. Landscape 3:2 Himawari editorial product photo. Reference is actual product identity, preserve exactly: pale blue upper front and sides, lavender front zip pocket and upper side accents, cream bottom trim and two cream top carry handles with round rivets, subtle Himawari front wordmark, cream rectangular hanging zip pouch on right front. Scene: a bright family home's pale oak bench beside a neatly folded small child's cream shirt, sage trousers and socks and one closed cotton packing pouch; a calm domestic preparation scene, no people. Entire bag fully visible and dominant at a front three-quarter angle, authentic fabric and stitching, restrained natural lighting and believable shadows, elegant spacious framing. Preserve actual bag logo, silhouette, colors, pockets and hardware. No invented features, no text overlays, no extra backpacks. Props remain outside the closed bag; this is styled photography not a capacity demonstration.",
+        "generatedAt": "2026-09-21"
+      }
     }
   ],
   "generation": {
@@ -40,5 +52,7 @@
   },
   "topicsReviewed": 62,
   "overlapReview": "Compared all 62 titles, summaries and saved article bodies with the previous corpus; only the three September 20 bodies were new and were reviewed in the preceding run. Targeted searches found no earlier articles about picnic mats, board-game pieces or child spare-clothes handover. Mat article follows clean-to-used transitions rather than generic day-trip packing; board-game article uses component-specific cases; spare-clothes article uses caregiver questions and handover rather than sharing a bag. Three distinct product models and images.",
-  "completionReceipt": "backups/story-runs/2026-09-21.deployment.json"
+  "completionReceipt": "backups/story-runs/2026-09-21.deployment.json",
+  "expectedGeneratedImages": 3,
+  "imageRevision": "2026-09-21: replaced both reused photos with newly generated product-reference images at user request."
 }

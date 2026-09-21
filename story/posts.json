@@ -26,8 +26,8 @@
       "모임 준비",
       "작은 물건"
     ],
-    "image": "../assets/story/board-game-backpack-packing.webp",
-    "imageAlt": "검정 히마와리 No.1884 백팩 착용 모습과 세부 구성의 기존 제품 사진",
+    "image": "../assets/story/board-game-backpack-packing-generated-v2.webp",
+    "imageAlt": "보드게임 상자와 함께 놓인 검정 히마와리 No.1884L 백팩의 AI 연출 이미지",
     "url": "board-game-backpack-packing.html",
     "author": "히마와리 편집팀"
   },
@@ -42,8 +42,8 @@
       "여벌 옷",
       "가족 나들이"
     ],
-    "image": "../assets/story/child-spare-clothes-backpack.webp",
-    "imageAlt": "라벤더와 하늘색 히마와리 No.1027 백팩을 착용한 기존 제품 사진",
+    "image": "../assets/story/child-spare-clothes-backpack-generated-v2.webp",
+    "imageAlt": "아이의 여벌 옷과 함께 놓인 히마와리 No.1027 백팩의 AI 연출 이미지",
     "url": "child-spare-clothes-backpack.html",
     "author": "히마와리 편집팀"
   },
@@ -74,8 +74,8 @@
       "독서",
       "기기 수납"
     ],
-    "image": "../assets/story/ereader-backpack-reading-break.webp",
-    "imageAlt": "원형 파우치와 검정 장식이 달린 히마와리 No.0422 검정 백팩 정면 제품 사진",
+    "image": "../assets/story/ereader-backpack-reading-break-generated-v2.webp",
+    "imageAlt": "전자책과 함께 놓인 검정 히마와리 No.0422 백팩의 AI 연출 이미지",
     "url": "ereader-backpack-reading-break.html",
     "author": "히마와리 편집팀"
   },
@@ -90,8 +90,8 @@
       "일상 수납",
       "가방 관리"
     ],
-    "image": "../assets/story/cosmetic-pouch-backpack-check.webp",
-    "imageAlt": "검정과 흰색 배색의 히마와리 No.1088M 착용 모습과 체스트벨트 세트 안내가 있는 기존 제품 사진",
+    "image": "../assets/story/cosmetic-pouch-backpack-check-generated-v2.webp",
+    "imageAlt": "화장품 파우치와 함께 놓인 히마와리 No.1088M 백팩의 AI 연출 이미지",
     "url": "cosmetic-pouch-backpack-check.html",
     "author": "히마와리 편집팀"
   },

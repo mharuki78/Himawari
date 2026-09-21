@@ -18,9 +18,15 @@
       "url": "https://himawari.co.kr/story/ereader-backpack-reading-break.html",
       "productId": "store-13326274540",
       "model": "No.0422",
-      "image": "assets/story/ereader-backpack-reading-break.webp",
-      "imageKind": "original",
-      "reference": "backups/story-2026-09-20/reference-0422.jpg"
+      "image": "assets/story/ereader-backpack-reading-break-generated-v2.webp",
+      "imageKind": "generated",
+      "reference": "assets/game-0422-black.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-20/ereader-backpack-reading-break-generated.png",
+        "prompt": "Use case: photorealistic-natural. Landscape 3:2 Himawari editorial product photo. Reference is actual product identity, preserve exactly: black rounded backpack, two upper hanging attachments: round black logo pouch with brown clip on viewer left and black scalloped square smile-face charm on viewer right, front flap pocket, lower right black rectangular Himawari label. Scene: a calm bright reading nook, standing on a light oak desk beside a closed e-reader in a plain gray protective cover and a small folded linen cloth. Entire bag fully visible and dominant at a front three-quarter angle, authentic fabric and stitching, restrained natural lighting and believable shadows, elegant spacious framing. Preserve actual bag logo, silhouette, colors, pockets and hardware. No invented features, no text overlays, no extra backpacks. Props remain outside the closed bag; this is styled photography not a capacity demonstration.",
+        "generatedAt": "2026-09-21"
+      }
     },
     {
       "id": "cosmetic-pouch-backpack-check",
@@ -28,9 +34,15 @@
       "url": "https://himawari.co.kr/story/cosmetic-pouch-backpack-check.html",
       "productId": "store-13725149652",
       "model": "No.1088M",
-      "image": "assets/story/cosmetic-pouch-backpack-check.webp",
-      "imageKind": "original",
-      "reference": "backups/story-2026-09-20/reference-1088.jpg"
+      "image": "assets/story/cosmetic-pouch-backpack-check-generated-v2.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-17/reference-1088.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-20/cosmetic-pouch-backpack-check-generated.png",
+        "prompt": "Use case: photorealistic-natural. Landscape 3:2 Himawari editorial product photo. Reference is actual product identity, preserve exactly: black backpack with off-white bottom panel, two vertical black front straps with cream buckles, oval front Himawari logo patch, top handles. Do not reproduce the circular chest-strap inset, SET lettering or collage of the source. Scene: a clean pale wood dressing table beside one closed pale peach cosmetic pouch and two simple capped unbranded cosmetic containers, soft morning light. Entire bag fully visible and dominant at a front three-quarter angle, authentic fabric and stitching, restrained natural lighting and believable shadows, elegant spacious framing. Preserve actual bag logo, silhouette, colors, pockets and hardware. No invented features, no text overlays, no extra backpacks. Props remain outside the closed bag; this is styled photography not a capacity demonstration.",
+        "generatedAt": "2026-09-21"
+      }
     }
   ],
   "generation": {
@@ -40,5 +52,7 @@
   },
   "topicsReviewed": 59,
   "overlapReview": "Reviewed the existing 59 titles, summaries and saved body corpus, with targeted searches for knitting, e-readers and cosmetics. No prior knitting or e-reader articles; cosmetics previously appeared only as brief examples in general cleaning and compartment articles. New articles respectively cover connected yarn and needle ends, e-reader contact surfaces and reading transitions, and closure types plus used cosmetic tools. Three distinct product models; one newly generated reference-based image.",
-  "completionReceipt": "backups/story-runs/2026-09-20.deployment.json"
+  "completionReceipt": "backups/story-runs/2026-09-20.deployment.json",
+  "expectedGeneratedImages": 3,
+  "imageRevision": "2026-09-21: replaced both reused photos with newly generated product-reference images at user request."
 }

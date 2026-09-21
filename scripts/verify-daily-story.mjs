@@ -18,7 +18,9 @@ assert.equal(run.date, date);
 assert.equal(run.posts.length, 3);
 assert.equal(new Set(run.posts.map(p => p.image)).size, 3, 'Images must differ');
 assert.equal(new Set(run.posts.map(p => p.model)).size, 3, 'Product models must differ');
-assert.equal(run.posts.filter(p => p.imageKind === 'generated').length, 1, 'Exactly one new generated image');
+const expectedGeneratedImages = date >= '2026-09-20' ? 3 : 1;
+const generated = run.posts.filter(p => p.imageKind === 'generated').length;
+assert.equal(generated, expectedGeneratedImages, `Expected ${expectedGeneratedImages} new generated images`);
 const files = ['story/posts.json', 'sitemap.xml', 'feed.xml', manifestPath];
 const rewrites = JSON.parse(read('vercel.json')).rewrites || [];
 for (const post of posts) {
@@ -67,4 +69,4 @@ if (process.argv.includes('--published')) {
   }
   execFileSync('git', ['merge-base', '--is-ancestor', receipt.commit, 'origin/main'], { cwd: root });
 }
-console.log(JSON.stringify({ date, posts: posts.map(p => p.url), images: 3, generated: 1, stage: process.argv.includes('--published') ? 'published' : 'prepared' }, null, 2));
+console.log(JSON.stringify({ date, posts: posts.map(p => p.url), images: 3, generated, stage: process.argv.includes('--published') ? 'published' : 'prepared' }, null, 2));
