@@ -104,6 +104,18 @@
         group.appendChild(youtube);
       }
       decorateSocialLink(youtube, 'youtube');
+      [
+        { name: '네이버 블로그', url: 'https://blog.naver.com/himawari_korea' },
+        { name: '네이버 플레이스', url: 'https://naver.me/5T0fcIue' }
+      ].forEach(function (channel) {
+        var link = group.querySelector('a[href="' + channel.url + '"]');
+        if (!link) { link = document.createElement('a'); link.href = channel.url; group.appendChild(link); }
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.className = 'footer-social-link';
+        link.setAttribute('aria-label', 'Himawari ' + channel.name + ' — 새 탭에서 열림');
+        link.innerHTML = '<span class="store-brand-logo">' + STORE_LINKS[0].icon + '</span><span>' + channel.name + '</span><span aria-hidden="true">↗</span>';
+      });
     });
   }
 

@@ -1,18 +1,41 @@
-# Himawari
+# 히마와리 Himawari
 
-오래 곁에 둘 수 있는 백팩을 만드는 Himawari입니다.
+히마와리 코리아 공식 홈페이지입니다. 학생·직장인·여행자를 위한 백팩과 데일리 가방을 소개합니다.
 
 ## 파는 것
 
-학생, 직장인과 여행자를 위한 패션 백팩을 소개하고 스마트스토어에서 판매합니다.
+공식 홈페이지에서 제품의 크기·무게·겉감·안감과 색상 옵션을 비교하고 구매할 수 있습니다. 공식 네이버 스마트스토어도 운영합니다. 가격·재고·배송 및 반품 조건은 각 제품과 주문 페이지의 현재 표시를 확인해 주세요.
 
 ## 페이지 안내
 
 - [홈](https://himawari.co.kr/): 브랜드 소개와 대표 제품
-- [내 소개](https://himawari.co.kr/about.html): Himawari를 시작한 이유와 약속
-- [제품](https://himawari.co.kr/products.html): 제품 목록과 구매 링크
+- [브랜드 소개](https://himawari.co.kr/about.html): Himawari를 시작한 이유와 약속
+- [제품](https://himawari.co.kr/products.html): 모델·색상별 제품 목록, 상세 사양과 구매 링크
+- [가방 찾기](https://himawari.co.kr/finder.html): 용도별 가방 선택
+- [제품 비교](https://himawari.co.kr/compare.html): 최대 세 제품의 크기·무게·소재 비교
+- [제품 가이드북](https://himawari.co.kr/guidebook.html): 모델별 목차가 있는 가이드북
+- [자주 묻는 질문](https://himawari.co.kr/#faq): 가방 선택·노트북 수납·소재·관리·A/S 안내
+- [관리·A/S 안내](https://himawari.co.kr/care.html): 부분 관리·건조·보관 방법, A/S 범위와 비용은 당사 문의
+- [제품·수선 문의](https://himawari.co.kr/support.html): 제품과 수선에 관한 비공개 문의
 - [이야기](https://himawari.co.kr/story/): 백팩을 고르고 오래 쓰는 방법
 - [연락하기](https://himawari.co.kr/contact.html): 이메일, Instagram과 스마트스토어 연락 채널
+- [이야기 RSS](https://himawari.co.kr/feed.xml): 새 글 제목·요약·발행일과 원문 주소
+- [사이트맵](https://himawari.co.kr/sitemap.xml): 공개 페이지와 제품 상세 주소
+
+## 제품 정보 확인
+
+같은 모델도 일반형·미니형, 색상에 따라 사양이 다를 수 있으므로 해당 옵션 상세페이지를 우선합니다. 노트북 호환은 화면 인치보다 본체와 수납칸의 실제 치수를 비교합니다. 미기재 사양이나 IP 등급은 추정하지 않습니다. 상품 후기에는 동일 모델의 다른 색상 후기가 포함될 수 있으므로 원문 출처와 구매 옵션을 확인합니다.
+
+## 공식 채널
+
+- [네이버 블로그](https://blog.naver.com/himawari_korea)
+- [네이버 플레이스](https://map.naver.com/p/entry/place/2023285629)
+
+- [네이버 스마트스토어](https://smartstore.naver.com/baegot)
+- [Instagram](https://www.instagram.com/himawari.korea/)
+- [YouTube](https://www.youtube.com/@himawarikorea)
+- [무신사](https://www.musinsa.com/brand/himawari?gf=A)
+- [ABLY](https://mobile.a-bly.com/markets/67207)
 
 ## 이야기(블로그)
 
