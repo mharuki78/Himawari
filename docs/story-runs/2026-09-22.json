@@ -1,0 +1,58 @@
+{
+  "date": "2026-09-22",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "dog-walk-backpack-routine",
+      "title": "반려견과 산책할 때, 백팩은 멈춰서 여는 순서부터",
+      "url": "https://himawari.co.kr/story/dog-walk-backpack-routine.html",
+      "productId": "coupang-e733b49430ffbe4d",
+      "model": "No.0423",
+      "image": "assets/story/dog-walk-backpack-routine.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-22/reference-0423.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-22/generated-0423.png",
+        "prompt": "Use case: photorealistic-natural. Create a landscape 3:2 premium Himawari editorial photograph. Use the attached actual No.0423 reference as exact product identity: black backpack, distinctive large ochre dog-face shaped upper front pouch with a dark brown hanging ear on its right, dark brown nose at left, two black vertical eyes, lower black rectangular zip pocket with square white outlined Himawari label, black side mesh pockets. Preserve every feature, logo, proportions, fabric and color exactly; no redesigned pockets. Show the entire backpack upright on a clean wooden entryway bench, with one neatly coiled muted sage dog leash and a small roll of unused dog waste bags placed separately beside it. Soft morning light from side window, small green plant far behind, realistic fabric, calm uncluttered warm apartment setting. No people, no dogs, no text overlays. Objects remain outside the bag, not a capacity or waterproof demonstration. Front view with very slight perspective, bag large and clearly readable, ample margin all around.",
+        "generatedAt": "2026-09-22"
+      }
+    },
+    {
+      "id": "camera-in-everyday-backpack",
+      "title": "평소 백팩에 카메라를 넣고 싶다면: 가방보다 보호 케이스부터",
+      "url": "https://himawari.co.kr/story/camera-in-everyday-backpack.html",
+      "productId": "coupang-be3846b95efc0237",
+      "model": "No.8029",
+      "image": "assets/story/camera-in-everyday-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-22/reference-8029.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-22/generated-8029.png",
+        "prompt": "Use case: photorealistic-natural. Create a landscape 3:2 premium Himawari editorial photograph using attached real No.8029 product reference. Preserve exact rectangular backpack, ivory body and straps, mint edge trim/handle/zipper, gray-green upper large front zipped pocket with cream Himawari patch, coral lower large front pocket, small ivory lower pocket with gray-green flap and mint snap; preserve exact seams, logo, pockets, proportions and colors. Entire backpack upright on a light oak desk beside a separate closed small charcoal padded camera case and compact unbranded camera with lens cap. Objects stay outside, no claimed fit or protection. Quiet home photography preparation scene, warm neutral wall, soft natural daylight with believable shadows, carefully composed front three-quarter view very near front, product dominant and fully visible. No people, no extra bags, no text overlays, no collage, no new product features.",
+        "generatedAt": "2026-09-22"
+      }
+    },
+    {
+      "id": "reading-backpack-product-photos",
+      "title": "백팩 상세 사진, 정면 한 장 다음에 봐야 할 것들",
+      "url": "https://himawari.co.kr/story/reading-backpack-product-photos.html",
+      "productId": "store-13725149652",
+      "model": "No.1088M",
+      "image": "assets/story/reading-backpack-product-photos.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-22/reference-1088M.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-22/generated-1088M.png",
+        "prompt": "Use case: photorealistic-natural. Create a landscape 3:2 premium Himawari editorial product photograph. Use the attached actual Himawari No.1088M black backpack identity from the model-worn product reference. Isolate only the actual backpack: black fabric rectangular roll/flap top with small oval white-outlined Himawari logo centered on upper flap, twin black vertical straps with cream buckles, cream lower base panel and cream top handle, side pocket and black shoulder straps. Preserve its exact geometry, construction, materials, color blocks and logo; do not substitute another model. Show the entire bag upright alone in a refined photography studio on matte warm gray floor against seamless pale neutral background. Soft directional daylight reveals fabric, seams, depth and natural shadow; front three-quarter angle so face and one side are clearly visible. Remove all people, inset circles, chest-belt promotional graphics, Korean lettering and plus signs from reference. No invented accessories or features, no extra bags, no text overlays. Full bag with ample breathing room, realistic scale and proportions.",
+        "generatedAt": "2026-09-22"
+      }
+    }
+  ],
+  "topicsReviewed": 65,
+  "overlapReview": "Reviewed all 65 titles, summaries and headings, searched full extracted bodies and compared draft similarity across the entire corpus. Read adjacent specification, repair-photo, color, day-trip and bottle articles. New focuses: managing bag access while handling a leash; camera-specific protective case and protruding lens; interpreting front/side/interior/wearing images and option identity. No repeated passages apart from general care/verification principles. Each article has its own task and distinct product.",
+  "completionReceipt": "backups/story-runs/2026-09-22.deployment.json"
+}

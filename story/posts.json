@@ -1,5 +1,53 @@
 [
   {
+    "id": "dog-walk-backpack-routine",
+    "title": "반려견과 산책할 때, 백팩은 멈춰서 여는 순서부터",
+    "date": "2026-09-22",
+    "summary": "리드줄을 잡은 손으로 가방까지 뒤지지 않도록, 산책 전 준비와 잠깐 멈추는 순간의 순서를 정리합니다.",
+    "description": "리드줄을 잡은 손으로 가방까지 뒤지지 않도록, 산책 전 준비와 잠깐 멈추는 순간의 순서를 정리합니다.",
+    "tags": [
+      "반려견 산책",
+      "백팩 사용",
+      "외출 준비"
+    ],
+    "image": "../assets/story/dog-walk-backpack-routine.webp",
+    "imageAlt": "현관 벤치 위 강아지 얼굴 포켓이 있는 검정 Himawari No.0423과 따로 놓인 리드줄·배변봉투의 AI 연출 사진",
+    "url": "dog-walk-backpack-routine.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "camera-in-everyday-backpack",
+    "title": "평소 백팩에 카메라를 넣고 싶다면: 가방보다 보호 케이스부터",
+    "date": "2026-09-22",
+    "summary": "작은 카메라 하나를 일상 백팩에 더하는 날, 보호 케이스와 렌즈 돌출부부터 확인하고 꺼내는 동작까지 점검해보세요.",
+    "description": "작은 카메라 하나를 일상 백팩에 더하는 날, 보호 케이스와 렌즈 돌출부부터 확인하고 꺼내는 동작까지 점검해보세요.",
+    "tags": [
+      "카메라 휴대",
+      "보호 케이스",
+      "백팩 수납"
+    ],
+    "image": "../assets/story/camera-in-everyday-backpack.webp",
+    "imageAlt": "민트·아이보리·코랄 배색 Himawari No.8029 옆에 카메라와 닫힌 보호 케이스를 따로 놓은 AI 연출 사진",
+    "url": "camera-in-everyday-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "reading-backpack-product-photos",
+    "title": "백팩 상세 사진, 정면 한 장 다음에 봐야 할 것들",
+    "date": "2026-09-22",
+    "summary": "정면·옆면·내부·착용 사진은 각각 다른 정보를 보여줍니다. 온라인에서 가방을 고를 때 사진으로 확인할 것과 따로 물어볼 것을 나눠봅니다.",
+    "description": "정면·옆면·내부·착용 사진은 각각 다른 정보를 보여줍니다. 온라인에서 가방을 고를 때 사진으로 확인할 것과 따로 물어볼 것을 나눠봅니다.",
+    "tags": [
+      "제품 사진",
+      "온라인 가방 선택",
+      "상세페이지"
+    ],
+    "image": "../assets/story/reading-backpack-product-photos.webp",
+    "imageAlt": "검정과 아이보리 배색 Himawari No.1088M의 정면과 옆면을 함께 보여주는 스튜디오 AI 연출 사진",
+    "url": "reading-backpack-product-photos.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "picnic-mat-backpack-return",
     "title": "돗자리와 백팩을 챙긴 날: 돌아오는 짐은 따로 준비하세요",
     "date": "2026-09-21",
