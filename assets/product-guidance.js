@@ -1,4 +1,4 @@
-import { SPEC_FIELDS } from './product-specs.js';
+import { PUBLIC_SPEC_FIELDS as SPEC_FIELDS } from './product-specs.js';
 
 function node(tag, className, text) {
   const el = document.createElement(tag);

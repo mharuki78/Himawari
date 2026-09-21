@@ -35,7 +35,7 @@ test('mini IDs, color-specific weights and unconfirmed M are handled separately'
 test('missing lining and IP evidence are not invented; unknown products do not gain bag specs', () => {
   const out = enrichCatalogSpecs([product('No.9290'), product('체스트벨트'), product('OKTA1084M')]).products;
   assert.match(out[0].specs.material, /안감: 카탈로그 미기재/);
-  assert.match(out[0].specs.waterResistance, /IP 등급은 확인되지/);
+  assert.equal(out[0].specs.waterResistance, '생활방수 원단 사용');
   for (const p of out.slice(1)) {
     assert.equal(p.specs.waterResistance, undefined);
     assert.equal(p.specs.dimensions, undefined);

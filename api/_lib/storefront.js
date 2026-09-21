@@ -1,4 +1,4 @@
-import { SPEC_FIELDS } from '../../assets/product-specs.js';
+import { PUBLIC_SPEC_FIELDS as SPEC_FIELDS } from '../../assets/product-specs.js';
 import { groupProductFamilies, productColor, productFamilyKey } from '../../assets/catalog-tools.js';
 
 const KRW = new Intl.NumberFormat('ko-KR', {

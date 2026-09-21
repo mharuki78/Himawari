@@ -7,6 +7,8 @@ export const SPEC_FIELDS = Object.freeze([
   ['measurementNote', '사양 출처·측정 안내'],
 ]);
 
+export const PUBLIC_SPEC_FIELDS = Object.freeze(SPEC_FIELDS.filter(([key]) => key !== 'measurementNote'));
+
 export function normalizeSpecs(input = {}) {
   return Object.fromEntries(SPEC_FIELDS.map(([key]) => [key, String(input?.[key] || '').replace(/[\u0000-\u001f\u007f]+/g, ' ').trim().slice(0, 600)]));
 }

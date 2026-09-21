@@ -1,5 +1,5 @@
 import { fetchProducts, priceFormatter } from '../products.js';
-import { SPEC_FIELDS } from './product-specs.js';
+import { PUBLIC_SPEC_FIELDS as SPEC_FIELDS } from './product-specs.js';
 
 const status = document.querySelector('[data-compare-status]');
 const controls = document.querySelector('[data-compare-selects]');
