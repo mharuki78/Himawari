@@ -31,17 +31,29 @@ function createHomeStoryCard(post) {
   time.textContent = storyDate(post.date);
 
   const copy = document.createElement('div');
+  copy.className = 'journal-card__copy';
   const title = document.createElement('h3');
   title.textContent = String(post.title || '(제목 없음)');
   const summary = document.createElement('p');
   summary.textContent = String(post.summary || 'Himawari의 새로운 이야기를 만나보세요.');
-  copy.append(title, summary);
+  copy.append(time, title, summary);
 
   const arrow = document.createElement('span');
   arrow.setAttribute('aria-hidden', 'true');
   arrow.textContent = '↗';
 
-  link.append(time, copy, arrow);
+  if (post.image) {
+    const image = document.createElement('img');
+    image.className = 'journal-card__image';
+    image.src = new URL(String(post.image), new URL('story/', document.baseURI)).href;
+    image.alt = String(post.imageAlt || '');
+    image.width = 600;
+    image.height = 400;
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    link.append(image);
+  }
+  link.append(copy, arrow);
   article.append(link);
   return article;
 }

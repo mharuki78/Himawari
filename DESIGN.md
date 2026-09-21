@@ -199,3 +199,11 @@ Public pages load a compact right-side support launcher via member.js. White pan
 Support assistant refresh (2026-09-14): user-requested automatic AI, transparent pre-send notice, no checkbox. Butter yellow #fff9df conversation canvas, #f6e6a6 header, dark sage #345841 action color, white answer bubbles. Inherited Korean sans typography: title 17px, body 15px, utility 12px. Desktop 440px x up to 720px; mobile fixed inset panel above launcher, dynamic viewport-aware. Compact horizontal quick prompts, conversation owns remaining height. Server-owned order answers never pass to AI; errors retain basic guidance.
 
 Comparison page: assets/compare.css and assets/compare.js own three photo selection slots and an inline, searchable photo gallery. Reuse catalog images, shared sage tokens, native buttons and existing comparison fields. Duplicate choices are disabled; Escape closes the picker and restores focus. Mobile retains three compact slots with a two-column picker and a contained scrolling comparison table.
+
+
+### Public interface refinement (2026-09-21)
+Preserve the sage identity, real product assets, existing 18/24px radii, campaign films and factual copy. Desktop navigation is 14px with 44px targets (12px in the compact desktop band). Content renders immediately rather than repeating scroll-triggered entrance animations. UI press feedback is 140ms and panel motion 220ms, with keyboard and reduced-motion exceptions. Native select fonts inherit the Korean type stack.
+
+Home journal cards now use each post's existing image and alternative text from story/posts.json, in a 3:2 photo layout with three desktop columns and one mobile column. Product footers align to the card bottom. Contact introduction and form share a row height; mobile inputs are at least 16px. Support and cart launchers share a bottom baseline and sit above product purchase controls; mobile navigation hides them while open. Store selection and login, cart, checkout, game and support data flows remain unchanged.
+
+The detector's legacy palette/radius advisories are contextual: official platform logos, user-requested yellow assistant, and incumbent sage card shapes stay intentional. Existing editorial labels are preserved in this refinement rather than changing approved copy.

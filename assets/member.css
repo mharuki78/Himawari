@@ -325,3 +325,12 @@ body .site-footer { grid-template-columns: minmax(240px,1fr) minmax(160px,.65fr)
 }
 
 .member-provider--kakao { background: #fee500; color: #191919; border-color: #fee500; }
+
+/* Stable header controls and usable dialog close targets. */
+.header-actions .member-trigger, .header-actions .store-picker > .header-store { font-weight: 650; }
+.member-panel > header button { min-width: 44px; width: 44px; height: 44px; padding: 0; flex-shrink: 0; }
+.member-dialog { max-height: calc(100dvh - 32px); overflow-y: auto; box-shadow: none; }
+.store-picker__panel { transform-origin: top right; }
+@media(min-width:821px) and (max-width:1100px) {
+  .header-actions .member-trigger, .header-actions .store-picker > .header-store { min-width: 0; padding-inline: 12px; font-size: 12px; }
+}

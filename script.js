@@ -107,19 +107,8 @@ function setupReveals(root = document) {
   const revealItems = root.querySelectorAll('.reveal:not([data-reveal-ready])');
   revealItems.forEach((item) => item.setAttribute('data-reveal-ready', 'true'));
 
-  if (reducedMotion.matches || !('IntersectionObserver' in window)) {
-    revealItems.forEach((item) => item.classList.add('is-visible'));
-    return;
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.12 });
-  revealItems.forEach((item) => observer.observe(item));
+  // Reading and shopping content stays visible immediately, including keyboard navigation.
+  revealItems.forEach((item) => item.classList.add('is-visible'));
 }
 
 window.himawariReveal = setupReveals;

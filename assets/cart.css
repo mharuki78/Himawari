@@ -46,9 +46,9 @@ html.rdcart-locked, body.rdcart-locked { overflow: hidden; }
   background: var(--color-deep-harbor, #4F6B58); color: #fff;
   font-family: var(--cart-font);
   font-size: 11px; font-weight: 800; line-height: 1;
-  transform: scale(0); transition: transform .25s cubic-bezier(.2, .8, .3, 1);
+  opacity: 0; transform: scale(.9); transition: opacity 160ms ease, transform 160ms var(--ease-ui);
 }
-.rdcart-btn--has .rdcart-btn__count { transform: scale(1); }
+.rdcart-btn--has .rdcart-btn__count { opacity: 1; transform: scale(1); }
 
 /* 담기 버튼의 "담았습니다" 순간 (참가자 버튼 스타일은 건드리지 않습니다) */
 .rdcart-added { opacity: .68; }
@@ -68,7 +68,7 @@ html.rdcart-locked, body.rdcart-locked { overflow: hidden; }
 .rdcart__back {
   position: absolute; inset: 0;
   background: color-mix(in srgb, var(--cart-ink) 58%, transparent);
-  opacity: 0; transition: opacity .32s ease;
+  opacity: 0; transition: opacity var(--motion-panel) ease;
 }
 .rdcart--open .rdcart__back { opacity: 1; }
 
@@ -80,7 +80,7 @@ html.rdcart-locked, body.rdcart-locked { overflow: hidden; }
   border-left: 1px solid var(--cart-line);
   border-radius: 28px 0 0 28px;
   transform: translateX(100%);
-  transition: transform .38s cubic-bezier(.2, .8, .3, 1);
+  transition: transform var(--motion-panel) var(--ease-ui);
 }
 .rdcart--open .rdcart__panel { transform: none; }
 

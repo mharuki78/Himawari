@@ -16,7 +16,7 @@
 .story-index-page .story-list-card:hover .story-list-image { transform: none; filter: none; }
 .story-index-page .story-list-card time { padding: 0; font-size: 12px; letter-spacing: 0; }
 .story-index-page .story-list-card h3 { max-width: none; font-size: 22px; font-weight: 650; line-height: 1.4; letter-spacing: -.025em; }
-.story-index-page .story-list-card .story-summary { max-width: none; margin: 0; font-size: 14px; line-height: 1.7; opacity: .85; }
+.story-index-page .story-list-card .story-summary { max-width: none; margin: 0; font-size: 15px; line-height: 1.75; opacity: 1; color: var(--color-slate); }
 .story-index-page .story-tags { margin: 0; gap: 6px; }
 .story-index-page .story-list-card .story-arrow { align-self: end; margin-top: auto; color: var(--harbor); }
 .story-index-page .story-list-card > a:focus-visible { outline: 3px solid var(--harbor); outline-offset: -4px; border-radius: 24px; }
