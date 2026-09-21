@@ -1724,3 +1724,16 @@ html {
 .store-product-card .wishlist-button.is-selected { background: #ead49c; color: #49350c; border-color: #a18644; }
 .store-product-card .store-product-footer > :is(p,strong,span) { text-align: center; width: 100%; }
 .store-product-card .product-price-block { width: 100%; justify-content: center; align-items: center; text-align: center; }
+.store-product-card .product-variants button {
+  position: relative;
+  padding-inline: 20px;
+  gap: 0;
+}
+.store-product-card .product-variants .product-variant-check {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  pointer-events: none;
+}
