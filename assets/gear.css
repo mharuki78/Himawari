@@ -855,12 +855,15 @@ html {
 
 .footer-brand strong {
   display: block;
-  width: min(7.8rem, 100%);
-  height: 3rem;
+  width: min(148px, 100%);
+  height: auto;
+  aspect-ratio: 16 / 7;
   overflow: hidden;
-  background: transparent url("himawari-logo-hq.png") center / 100% auto no-repeat;
+  background: var(--snow);
+  -webkit-mask: url("himawari-logo-hq.png") center / contain no-repeat;
+  mask: url("himawari-logo-hq.png") center / contain no-repeat;
   color: transparent;
-  filter: brightness(0) invert(1);
+  filter: none;
   font-size: 0;
   white-space: nowrap;
 }
@@ -1112,6 +1115,8 @@ html {
     width: auto;
     height: auto;
     background: none;
+    -webkit-mask: none;
+    mask: none;
     color: CanvasText;
     filter: none;
     font-size: .82rem;
