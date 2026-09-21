@@ -29,7 +29,7 @@
 
 .mobile-purchase-bar > a:hover, .mobile-purchase-bar > button:hover { background: var(--ink); }
 .mobile-purchase-bar > a:focus-visible, .mobile-purchase-bar > button:focus-visible { outline: 3px solid var(--harbor); outline-offset: 3px; }
-.product-detail-actions .direct-buy-link { background: var(--harbor); border-color: var(--harbor); color: var(--snow); }
+.product-detail-actions .direct-buy-link { background: var(--color-charcoal); border-color: var(--color-charcoal); color: var(--snow); }
 .product-detail-actions .direct-buy-link:hover { background: var(--ink); border-color: var(--ink); color: var(--snow); }
 
 /* The native select shares the product option state; the stepper uses checkout limits. */

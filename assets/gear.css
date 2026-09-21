@@ -1663,3 +1663,19 @@ html {
 @media(max-width:820px) {
   body:has(.site-nav.is-open) .support-assistant, body:has(.site-nav.is-open) .rdcart-btn--float { visibility: hidden; }
 }
+.direct-buy-link,
+.featured-product .featured-direct-buy-link,
+.product-detail-actions .direct-buy-link {
+  background: var(--color-charcoal);
+  border-color: var(--color-charcoal);
+  color: var(--snow);
+  font-weight: 700;
+  box-shadow: 0 3px 0 rgb(0 0 0 / .24);
+}
+.direct-buy-link:hover,
+.featured-product .featured-direct-buy-link:hover,
+.product-detail-actions .direct-buy-link:hover {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--snow);
+}
