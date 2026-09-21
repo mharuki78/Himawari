@@ -1723,3 +1723,4 @@ html {
 .store-product-card .wishlist-button:hover { background: #f8e8bd; color: #574015; }
 .store-product-card .wishlist-button.is-selected { background: #ead49c; color: #49350c; border-color: #a18644; }
 .store-product-card .store-product-footer > :is(p,strong,span) { text-align: center; width: 100%; }
+.store-product-card .product-price-block { width: 100%; justify-content: center; align-items: center; text-align: center; }
