@@ -1,0 +1,370 @@
+{
+  "source": "Himawari+OKTA catalogue RMB_ 20260914.pdf",
+  "edition": "2026-09-14",
+  "care": "취급표시를 먼저 확인하고 부드러운 천으로 부분 관리하세요. 물에 담그는 세탁·세탁기·건조기·표백제는 피하세요. 젖으면 내용물을 비우고 그늘에서 완전히 말린 뒤 형태를 잡아 통풍되는 곳에 보관하세요.",
+  "models": {
+    "No.0403": {
+      "page": 22,
+      "catalogModel": "0403",
+      "specs": {
+        "dimensions": "28 × 40 × 17 cm",
+        "weight": "900 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.0422": {
+      "page": 54,
+      "catalogModel": "0422",
+      "specs": {
+        "dimensions": "30 × 40 × 15 cm",
+        "weight": "440 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요.",
+        "laptopCompartment": "가로 × 세로: 28 × 25.5 cm · 두께 미기재"
+      }
+    },
+    "No.0423": {
+      "page": 9,
+      "catalogModel": "0423",
+      "specs": {
+        "dimensions": "32 × 42 × 13 cm",
+        "weight": "650 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.0513": {
+      "page": 17,
+      "catalogModel": "0513",
+      "specs": {
+        "dimensions": "30 × 43 × 15 cm",
+        "weight": "450 g",
+        "material": "겉감: 나일론 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.0514": {
+      "page": 19,
+      "catalogModel": "0514",
+      "specs": {
+        "dimensions": "30 × 43 × 15 cm",
+        "weight": "450 g",
+        "material": "겉감: 나일론 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.0514S": {
+      "page": 18,
+      "catalogModel": "0514S",
+      "specs": {
+        "dimensions": "27 × 36 × 14 cm",
+        "weight": "350 g",
+        "material": "겉감: 나일론 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.0515": {
+      "page": 4,
+      "catalogModel": "0515",
+      "specs": {
+        "dimensions": "35 × 46 × 18 cm",
+        "weight": "850 g",
+        "material": "겉감: 나일론 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.1010": {
+      "page": 50,
+      "catalogModel": "1010",
+      "specs": {
+        "dimensions": "33 × 45 × 15 cm",
+        "weight": "750 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요.",
+        "laptopCompartment": "가로 × 세로: 30 × 29.5 cm · 두께 미기재"
+      }
+    },
+    "No.1027": {
+      "page": 28,
+      "catalogModel": "1027",
+      "specs": {
+        "dimensions": "28 × 40 × 17 cm",
+        "weight": "800 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.1084H": {
+      "page": 26,
+      "catalogModel": "H1084",
+      "specs": {
+        "dimensions": "28.5 × 39 × 12 cm",
+        "weight": "550 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요.",
+        "laptopCompartment": "가로 × 세로: 27 × 27 cm · 두께 미기재"
+      }
+    },
+    "No.1088M": {
+      "page": 27,
+      "catalogModel": "1088M",
+      "specs": {
+        "dimensions": "28 × 41.5 × 14 cm",
+        "weight": "600 g",
+        "material": "겉감: 나일론 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.1089": {
+      "page": 12,
+      "catalogModel": "1089",
+      "specs": {
+        "dimensions": "29.5 × 42 × 12 cm",
+        "weight": "700 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.1111": {
+      "page": 6,
+      "catalogModel": "1111",
+      "specs": {
+        "dimensions": "43 × 47 × 24 cm",
+        "weight": "950 g",
+        "material": "겉감: 나일론 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.1208": {
+      "page": 30,
+      "catalogModel": "1208",
+      "specs": {
+        "dimensions": "29 × 40 × 17 cm",
+        "weight": "800 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.1211": {
+      "page": 56,
+      "catalogModel": "1211",
+      "specs": {
+        "dimensions": "26 × 40 × 17 cm",
+        "weight": "750 g",
+        "material": "겉감: 나일론 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.1223": {
+      "page": 29,
+      "catalogModel": "1223",
+      "specs": {
+        "dimensions": "29 × 40 × 14 cm",
+        "weight": "550 g",
+        "material": "겉감: 나일론 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.1230": {
+      "page": 15,
+      "catalogModel": "1230",
+      "specs": {
+        "dimensions": "32 × 40 × 18 cm",
+        "weight": "400 g",
+        "material": "겉감: 나일론 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요.",
+        "laptopCompartment": "가로 × 세로: 27 × 27 cm · 두께 미기재"
+      }
+    },
+    "No.124": {
+      "page": 35,
+      "catalogModel": "124",
+      "specs": {
+        "dimensions": "28 × 40 × 17 cm",
+        "weight": "800 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.124S": {
+      "page": 34,
+      "catalogModel": "124S",
+      "specs": {
+        "dimensions": "22 × 33 × 14 cm",
+        "weight": "500 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.1682": {
+      "page": 39,
+      "catalogModel": "1682",
+      "specs": {
+        "dimensions": "30 × 50 × 14 cm",
+        "weight": "800 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.1884": {
+      "page": 31,
+      "catalogModel": "1884 대형(1884L)",
+      "specs": {
+        "dimensions": "30 × 45 × 20 cm",
+        "weight": "1050 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.188L": {
+      "page": 57,
+      "catalogModel": "188L",
+      "specs": {
+        "dimensions": "28 × 39 × 15 cm",
+        "weight": "680 g",
+        "material": "겉감: 나일론 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요.",
+        "laptopCompartment": "가로 × 세로: 25.5 × 25.5 cm · 두께 미기재"
+      }
+    },
+    "No.194L": {
+      "page": 44,
+      "catalogModel": "194L",
+      "specs": {
+        "dimensions": "28 × 39 × 15 cm",
+        "weight": "700 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.200": {
+      "page": 51,
+      "catalogModel": "200",
+      "specs": {
+        "dimensions": "28 × 39 × 15 cm",
+        "weight": "680 g",
+        "material": "겉감: 나일론 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요.",
+        "laptopCompartment": "가로 × 세로: 25.5 × 25.5 cm · 두께 미기재"
+      }
+    },
+    "No.2301": {
+      "page": 38,
+      "catalogModel": "2301",
+      "specs": {
+        "dimensions": "28 × 42 × 17 cm",
+        "weight": "1100 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.2505": {
+      "page": 5,
+      "catalogModel": "2505",
+      "specs": {
+        "dimensions": "30 × 43 × 14 cm",
+        "weight": "600 g",
+        "material": "겉감: 나일론 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.2513": {
+      "page": 11,
+      "catalogModel": "2513",
+      "specs": {
+        "dimensions": "36.5 × 28 × 2 cm",
+        "weight": "356 g",
+        "material": "겉감: 나일론 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.8029": {
+      "page": 45,
+      "catalogModel": "8029",
+      "specs": {
+        "dimensions": "27 × 39 × 14 cm",
+        "weight": "500 g",
+        "material": "겉감: 나일론 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.9001": {
+      "page": 62,
+      "catalogModel": "9001",
+      "specs": {
+        "dimensions": "28 × 40 × 17 cm",
+        "weight": "740 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요.",
+        "laptopCompartment": "가로 × 세로: 26 × 27.5 cm · 두께 미기재"
+      }
+    },
+    "No.9004": {
+      "page": 49,
+      "catalogModel": "9004",
+      "specs": {
+        "dimensions": "28 × 40 × 17 cm",
+        "weight": "750 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요.",
+        "laptopCompartment": "가로 × 세로: 26 × 27.5 cm · 두께 미기재"
+      }
+    },
+    "No.9007": {
+      "page": 10,
+      "catalogModel": "9007",
+      "specs": {
+        "dimensions": "28 × 40 × 17 cm",
+        "weight": "600 g",
+        "material": "겉감: 폴리에스터 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.9018": {
+      "page": 40,
+      "catalogModel": "9018",
+      "specs": {
+        "dimensions": "28 × 40 × 17 cm",
+        "weight": "800 g",
+        "material": "겉감: 나일론 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.9290": {
+      "page": 42,
+      "catalogModel": "9290",
+      "specs": {
+        "dimensions": "30 × 42 × 18 cm",
+        "weight": "950 g",
+        "material": "겉감: 폴리에스터 / 안감: 카탈로그 미기재 · 당사 문의",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    },
+    "No.9291": {
+      "page": 7,
+      "catalogModel": "9291",
+      "specs": {
+        "dimensions": "31 × 45 × 15 cm",
+        "weight": "1100 g",
+        "material": "겉감: 나일론 / 안감: 폴리에스터",
+        "waterResistance": "생활방수 원단 사용(카탈로그 표기). 완제품의 방수 범위·IP 등급은 확인되지 않았습니다. 지퍼·봉제선으로 물이 들어갈 수 있으므로 장시간 비 노출과 침수는 피하세요."
+      }
+    }
+  },
+  "productOverrides": {
+    "store-13326396058": "No.0514S",
+    "store-13641866477": "No.1884M_UNCONFIRMED"
+  },
+  "ipReview": {
+    "catalogModel": "9015",
+    "page": 2,
+    "catalogClaim": "IPX4 및 IPX4 반사 지퍼 표기",
+    "testReportAvailable": false,
+    "currentlySold": false
+  },
+  "pending": [
+    "No.9290 안감: 원문 공란",
+    "No.1884 블랙M: 기존 가이드북 유지, 새 카탈로그 1884S와 동일 제품인지 미확인"
+  ]
+}

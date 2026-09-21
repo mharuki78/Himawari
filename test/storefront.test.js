@@ -371,7 +371,7 @@ test('공개·주문·관리 화면은 quiet sage 디자인 토큰을 공유한�
   const orders = await readFile(new URL('../assets/orders.css', import.meta.url), 'utf8');
   const admin = await readFile(new URL('../admin/admin.css', import.meta.url), 'utf8');
 
-  assert.match(styles, /--color-sage-canvas:\s*#F3F7EF/);
+  assert.match(styles, /--color-sage-canvas:\s*#FAFCF8/);
   assert.match(styles, /--color-deep-grove:\s*#4F6B58/);
   assert.match(styles, /--color-sage-pop:\s*#D9E8D3/);
   assert.match(styles, /--radius-card:\s*24px/);
