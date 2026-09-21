@@ -34,7 +34,7 @@ test('모든 공개 페이지가 동일한 7개 주요 메뉴를 제공한다', 
   const templateFiles = ['templates/product.html', 'templates/products.html'];
   const htmlFiles = [...rootFiles, ...storyFiles, ...templateFiles];
   const expectedLabels = ['제품', '가방 찾기', '가이드북', '브랜드', '이야기', '게임', '연락하기'];
-  const expectedHrefs = ['/products.html', '/finder.html', '/assets/guides/himawari-guidebook-2026.pdf', '/about.html', '/story/', '/game.html', '/contact.html'];
+  const expectedHrefs = ['/products.html', '/finder.html', '/guidebook.html', '/about.html', '/story/', '/game.html', '/contact.html'];
 
   for (const file of htmlFiles) {
     const html = await readFile(new URL(`../${file}`, import.meta.url), 'utf8');

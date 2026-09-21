@@ -49,7 +49,7 @@ function syncSiteNavigation() {
   const navigationItems = [
     { label: '제품', href: '/products.html', active: /\/(?:products|product)(?:\.html|\/|$)/.test(currentPath) || currentPath.includes('/templates/product') },
     { label: '가방 찾기', href: '/finder.html', active: /\/finder(?:\.html|\/|$)/.test(currentPath) },
-    { label: '가이드북', href: '/assets/guides/himawari-guidebook-2026.pdf', external: true },
+    { label: '가이드북', href: '/guidebook.html', active: currentPath === '/guidebook.html' },
     { label: '브랜드', href: '/about.html', active: /\/about(?:\.html|\/|$)/.test(currentPath) },
     { label: '이야기', href: '/story/', active: currentPath === '/story' || currentPath.startsWith('/story/') },
     { label: '게임', href: '/game.html', active: /\/game(?:\.html|\/|$)/.test(currentPath) },
