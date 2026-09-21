@@ -125,6 +125,37 @@
     });
   }
 
+  function organizeFooter() {
+    document.querySelectorAll('.site-footer').forEach(function (footer) {
+      var contact = footer.querySelector('.footer-contact');
+      if (!contact || footer.classList.contains('footer-organized')) return;
+      var brand = footer.querySelector('.footer-brand');
+      var menu = footer.querySelector('nav');
+      var inquiry = contact.querySelector('a[href="contact.html"], a[href="/contact.html"]');
+      if (brand && inquiry) { inquiry.className = 'footer-inquiry'; inquiry.textContent = '문의 남기기 ↗'; brand.appendChild(inquiry); }
+      function heading(parent, text) { var h = document.createElement('h2'); h.className = 'footer-group-title'; h.textContent = text; parent.prepend(h); }
+      if (menu) { menu.classList.add('footer-menu'); heading(menu, '둘러보기'); }
+      var channels = document.createElement('div'); channels.className = 'footer-link-group';
+      var shops = document.createElement('div'); shops.className = 'footer-link-group';
+      heading(channels, '브랜드 채널'); heading(shops, '공식 구매처');
+      ['instagram.com', 'youtube.com', 'blog.naver.com', 'naver.me'].forEach(function (domain) {
+        var link = contact.querySelector('a[href*="' + domain + '"]');
+        if (link) { channels.appendChild(link); }
+      });
+      channels.querySelectorAll('a').forEach(function (link) {
+        var label = link.children[1];
+        if (label && link.href.includes('instagram.com')) label.textContent = '인스타그램';
+        if (label && link.href.includes('youtube.com')) label.textContent = '유튜브';
+      });
+      contact.querySelectorAll('.footer-store-link').forEach(function (link, index) {
+        if (link.children[1]) link.children[1].textContent = STORE_LINKS[index].name;
+        shops.appendChild(link);
+      });
+      contact.replaceChildren(channels, shops);
+      footer.classList.add('footer-organized');
+    });
+  }
+
   function safeImage(value) {
     try {
       var url = new URL(value);
@@ -543,6 +574,7 @@
     buildFooterSocialLinks();
     buildHeaderActions();
     buildStoreLinks();
+    organizeFooter();
     buildDialog();
     renderMemberState();
     bindAccountDeletion();
