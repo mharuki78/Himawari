@@ -1743,11 +1743,9 @@ html {
   gap: 0;
 }
 .store-product-card .product-variants .product-variant-check {
-  position: absolute;
-  left: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 12px;
+  position: static;
+  transform: none;
+  display: none;
   pointer-events: none;
 }
 .site-header .brand { width: clamp(5.3rem, 6.6vw, 6.8rem); height: 3.15rem; }
@@ -1760,4 +1758,41 @@ html {
 @media(max-width:820px) {
   .site-header .brand { width: 5rem; height: 2.75rem; }
   .site-nav a:focus-visible { background: var(--nav-tint); color: var(--color-charcoal); }
+}
+
+/* Option selection: keep the icon in the text flow, never over the label. */
+.store-product-card .product-variants button[data-product-variant] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 10px 14px;
+  white-space: nowrap;
+  line-height: 1.4;
+  box-shadow: none;
+}
+.store-product-card .product-variants button[aria-pressed="true"] .product-variant-check {
+  display: inline-block;
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #675180;
+  position: relative;
+}
+.store-product-card .product-variants .product-variant-check::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 3px;
+  width: 4px;
+  height: 6px;
+  border: solid #fff;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+.store-product-card .product-variants button:focus-visible {
+  outline: 2px solid #675180;
+  outline-offset: 3px;
 }

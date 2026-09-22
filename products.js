@@ -305,8 +305,6 @@ function selectProductCardVariant(article, product, family) {
     const selected = button.dataset.productVariant === product.id;
     button.classList.toggle('is-selected', selected);
     button.setAttribute('aria-pressed', String(selected));
-    const check = button.querySelector('[data-variant-check]');
-    if (check) check.textContent = selected ? '✓' : '';
   });
   const status = body?.querySelector('[data-variant-status]');
   if (status) status.textContent = `${selectedLabel} 옵션이 선택되었습니다. 상세 보기를 누르면 선택한 제품 페이지로 이동합니다.`;
@@ -363,7 +361,6 @@ function createProductCard(product, { family = null } = {}) {
       check.className = 'product-variant-check';
       check.dataset.variantCheck = '';
       check.setAttribute('aria-hidden', 'true');
-      check.textContent = selected ? '✓' : '';
       button.append(check, productVariantLabel(variant));
       button.addEventListener('click', () => selectProductCardVariant(article, variant, family));
       if (preview.includes(variant)) variants.append(button);
