@@ -28,3 +28,7 @@
 - JavaScript 구문 검사 및 git diff --check 통과.
 
 로컬 검증/배포 기록: Git 제외 `backups/site-improvements-2026-09-22/`. 브라우저 캡처: `output/playwright/`.
+
+## 운영 확인 보완
+
+공개 사이트에서 기존 Manrope Google Fonts 요청이 CSP에 차단되는 현상을 확인. 이미 사용 중인 폰트의 stylesheet/fonts 도메인만 style-src/font-src에 명시적으로 허용. script-src, 로그인·주문·결제 설정은 변경하지 않음.
