@@ -147,7 +147,7 @@ html {
   position: relative;
   min-height: 0;
   overflow: hidden;
-  background: var(--ink) url("hero-products-motion-poster.png") center / cover no-repeat;
+  background: #111 url("hero-9007-poster.jpg") center / contain no-repeat;
 }
 
 .home-film-hero__media::after {
@@ -162,15 +162,23 @@ html {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 
-.home-film-hero__toggle {
+.home-film-hero__controls {
   position: absolute;
   z-index: 1;
   right: 1rem;
   bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: .5rem;
+  max-width: calc(100% - 2rem);
+}
+
+.home-film-hero__toggle {
   min-height: 44px;
   padding: .72rem .9rem;
   border: 1px solid var(--cream);

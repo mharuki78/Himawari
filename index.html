@@ -55,10 +55,13 @@
     <main id="main">
       <section class="home-film-hero" id="home" aria-labelledby="hero-title">
         <div class="home-film-hero__media" data-ambient-film>
-          <video class="home-film-hero__video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-products-motion-poster.png" aria-label="Himawari No.1884 백팩을 착용한 직장인이 도심을 걷는 모습" data-ambient-video>
-            <source src="assets/hero-products-motion.mp4" type="video/mp4">
+          <video class="home-film-hero__video" autoplay loop playsinline preload="metadata" poster="assets/hero-9007-poster.jpg" aria-label="Himawari No.9007 백팩 캠페인 영상" data-ambient-video>
+            <source src="assets/hero-9007-campaign.mp4" type="video/mp4">
           </video>
-          <button class="home-film-hero__toggle" type="button" data-ambient-toggle aria-pressed="true">영상 일시정지</button>
+          <div class="home-film-hero__controls">
+            <button class="home-film-hero__toggle" type="button" data-ambient-sound aria-pressed="true">소리 끄기</button>
+            <button class="home-film-hero__toggle" type="button" data-ambient-toggle aria-pressed="true">영상 일시정지</button>
+          </div>
         </div>
         <div class="home-film-hero__copy">
           <span class="home-film-hero__kicker">Himawari · The Collection</span>

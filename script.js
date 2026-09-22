@@ -117,7 +117,46 @@ setupReveals();
 document.querySelectorAll('[data-ambient-film]').forEach((film) => {
   const video = film.querySelector('[data-ambient-video]');
   const toggle = film.querySelector('[data-ambient-toggle]');
+  const sound = film.querySelector('[data-ambient-sound]');
   if (!video || !toggle) return;
+  let awaitingSoundGesture = false;
+
+  function updateSoundControl() {
+    if (!sound) return;
+    sound.textContent = video.muted ? '소리 켜기' : '소리 끄기';
+    sound.setAttribute('aria-pressed', String(!video.muted));
+  }
+
+  function startFilm() {
+    return video.play().catch((error) => {
+      if (sound && !video.muted && error.name === 'NotAllowedError') {
+        video.muted = true;
+        awaitingSoundGesture = true;
+        updateSoundControl();
+        return video.play().catch(updateFilmControl);
+      }
+      updateFilmControl();
+    });
+  }
+
+  if (sound) {
+    sound.addEventListener('click', () => {
+      awaitingSoundGesture = false;
+      video.muted = !video.muted;
+      updateSoundControl();
+      if (!video.muted && video.paused) startFilm();
+    });
+    const enableSoundOnGesture = (event) => {
+      if (!awaitingSoundGesture || event.target.closest?.('button, a, input, select, textarea')) return;
+      awaitingSoundGesture = false;
+      video.muted = false;
+      updateSoundControl();
+      startFilm();
+    };
+    document.addEventListener('click', enableSoundOnGesture);
+    video.addEventListener('volumechange', updateSoundControl);
+    updateSoundControl();
+  }
 
   function updateFilmControl() {
     const isPlaying = !video.paused;
@@ -134,11 +173,12 @@ document.querySelectorAll('[data-ambient-film]').forEach((film) => {
     }
 
     video.setAttribute('autoplay', '');
-    video.play().catch(updateFilmControl);
+    startFilm();
   }
 
   toggle.addEventListener('click', () => {
-    if (video.paused) video.play().catch(updateFilmControl);
+    awaitingSoundGesture = false;
+    if (video.paused) startFilm();
     else video.pause();
   });
   video.addEventListener('play', updateFilmControl);
