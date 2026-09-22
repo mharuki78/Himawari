@@ -1,5 +1,53 @@
 [
   {
+    "id": "hotel-backpack-day-reset",
+    "title": "숙소에 도착한 백팩, 내일의 외출 가방으로 다시 꾸리기",
+    "date": "2026-09-23",
+    "summary": "여행지에 도착한 뒤에도 이동 짐을 그대로 메고 나가지 않도록, 숙소에 둘 것과 다음 외출에 필요한 것을 나누는 방법입니다.",
+    "description": "여행지에 도착한 뒤에도 이동 짐을 그대로 메고 나가지 않도록, 숙소에 둘 것과 다음 외출에 필요한 것을 나누는 방법입니다.",
+    "tags": [
+      "여행",
+      "숙소 정리",
+      "백팩"
+    ],
+    "image": "../assets/story/hotel-backpack-day-reset.webp",
+    "imageAlt": "호텔 짐 받침대 위 그린·퍼플 Himawari No.1111과 따로 놓인 정리 주머니의 AI 연출 사진",
+    "url": "hotel-backpack-day-reset.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "hotdesk-backpack-workflow",
+    "title": "공유 오피스의 백팩: 자리를 옮겨도 준비물이 따라오도록",
+    "date": "2026-09-23",
+    "summary": "고정 좌석 없이 일하는 날, 책상에 펼칠 것과 가방에 남길 것을 정하고 이동 전에 빠짐없이 회수하는 순서를 만듭니다.",
+    "description": "고정 좌석 없이 일하는 날, 책상에 펼칠 것과 가방에 남길 것을 정하고 이동 전에 빠짐없이 회수하는 순서를 만듭니다.",
+    "tags": [
+      "출근",
+      "공유 오피스",
+      "백팩 정리"
+    ],
+    "image": "../assets/story/hotdesk-backpack-workflow.webp",
+    "imageAlt": "공유 오피스 책상 위 검정 Himawari No.9007과 노트·마우스·슬리브의 AI 연출 사진",
+    "url": "hotdesk-backpack-workflow.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "backpack-clothing-color-transfer",
+    "title": "밝은 옷과 백팩을 함께 쓸 때: 색이 묻기 전에 살펴볼 자리",
+    "date": "2026-09-23",
+    "summary": "가방과 옷이 맞닿는 어깨·등·허리 주변을 살피고, 습기와 반복되는 마찰이 있는 날의 사용 및 보관 습관을 정리합니다.",
+    "description": "가방과 옷이 맞닿는 어깨·등·허리 주변을 살피고, 습기와 반복되는 마찰이 있는 날의 사용 및 보관 습관을 정리합니다.",
+    "tags": [
+      "가방 관리",
+      "옷차림",
+      "이염"
+    ],
+    "image": "../assets/story/backpack-clothing-color-transfer.webp",
+    "imageAlt": "옷장 앞 라벤더 Himawari No.9291과 따로 걸린 아이보리 셔츠의 AI 연출 사진",
+    "url": "backpack-clothing-color-transfer.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "dog-walk-backpack-routine",
     "title": "반려견과 산책할 때, 백팩은 멈춰서 여는 순서부터",
     "date": "2026-09-22",
