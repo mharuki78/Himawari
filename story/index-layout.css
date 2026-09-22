@@ -32,3 +32,24 @@
  .story-index-page .story-list-hero-copy .kicker { grid-column: 1 / -1; margin: 0; }
  .story-index-page .story-list-hero-copy > p:last-child { margin: 0; }
 }
+.story-index-page .story-discovery { margin: 0 0 28px; padding: 22px; border: 1px solid var(--color-fog); border-radius: 24px; background: var(--snow); text-align: center; }
+.story-index-page .story-discovery[hidden] { display: none; }
+.story-index-page .story-search-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; }
+.story-index-page .story-search-row label { font-size: 14px; font-weight: 700; }
+.story-index-page .story-search-row input { flex: 1; min-width: 160px; min-height: 48px; padding: 10px 16px; border: 1px solid var(--color-fog); border-radius: 18px; background: var(--color-sage-wash); color: var(--ink); font: inherit; font-size: 16px; caret-color: var(--color-forest-focus); }
+.story-index-page .story-search-row input::placeholder { color: var(--color-slate); }
+.story-index-page :is(.story-discovery button, .story-empty-reset) { min-height: 44px; padding: 10px 18px; border: 1px solid var(--color-fog); border-radius: 999px; background: var(--color-sage-wash); color: var(--ink); font: inherit; font-size: 14px; font-weight: 650; cursor: pointer; }
+.story-index-page :is(.story-discovery button, .story-empty-reset):hover { background: var(--color-sage-tint); border-color: var(--harbor); }
+.story-index-page .story-category-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
+.story-index-page .story-category-filters button[aria-pressed="true"] { background: var(--color-sage-pop); color: var(--ink); border-color: var(--color-forest-focus); }
+.story-index-page .story-results-status { margin: 14px auto 0; max-width: none; font-size: 14px; line-height: 1.6; color: var(--ink); }
+.story-index-page .story-list-state { text-align: center; }
+.story-index-page .story-empty-reset { display: block; margin: 18px auto 0; }
+.story-index-page :is(.story-discovery, .story-list-state) :focus-visible { outline: 3px solid var(--color-forest-focus); outline-offset: 3px; }
+.story-index-page .story-discovery ::selection { background: var(--color-sage-mid); color: var(--ink); }
+@media (max-width: 600px) {
+  .story-index-page .story-discovery { padding: 18px 16px; }
+  .story-index-page .story-search-row label { width: 100%; }
+  .story-index-page .story-search-row input { flex-basis: 100%; }
+  .story-index-page .story-category-filters button { padding-inline: 14px; }
+}

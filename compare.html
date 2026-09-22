@@ -42,7 +42,6 @@
       <a class="header-store" href="https://smartstore.naver.com/baegot" target="_blank" rel="noopener noreferrer">스토어 ↗</a>
     </header>
 <main id="main" class="commerce-main compare-page">
-<p class="kicker">FIND YOUR FIT · 가방 비교</p>
 <h1>나에게 맞는 가방,<br>나란히 비교하세요.</h1>
 <p>사진을 눌러 최대 3개의 가방을 골라보세요. 가격부터 수납까지 나란히 확인할 수 있어요.</p>
 <div class="commerce-selects" data-compare-selects>
@@ -51,12 +50,15 @@
 <div class="picker-heading"><h2 id="picker-title">어떤 가방을 비교할까요?</h2><button type="button" data-picker-close>선택 닫기 ×</button></div>
 <div class="picker-search"><label for="product-search">제품명 · 모델 검색</label><div><input id="product-search" type="search" placeholder="예: 0422, 노트북, 블랙"><button type="button" data-search-clear hidden>지우기</button></div></div>
 <p data-picker-count role="status"></p><div class="picker-grid" data-picker-grid></div>
+<div class="picker-variants" data-picker-variants hidden></div>
 </section>
 <p data-compare-status role="status" aria-live="polite">
 </p>
 <button type="button" data-compare-retry>제품 새로고침</button>
+<label class="compare-difference-toggle"><input type="checkbox" data-compare-differences disabled> 다른 항목만 보기 <span>제품을 2개 이상 선택해 주세요.</span></label>
 <div class="commerce-table" data-compare-output tabindex="0" role="region" aria-label="제품 비교표, 가로로 스크롤할 수 있습니다">
 </div>
+<section class="compare-suggestions" data-compare-suggestions hidden aria-label="함께 비교할 가방"></section>
 <p>
 <a href="support.html">실측·호환 여부 문의하기 →</a>
 </p>

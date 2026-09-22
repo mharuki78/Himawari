@@ -42,6 +42,13 @@ export function productVariantLabel(product) {
   return suffix || productColor(product) || String(product?.model || '기본');
 }
 
+export function productVariantKind(product) {
+  const label = productVariantLabel(product);
+  if (/set|세트|체스트벨트|구성|\+/i.test(label)) return '구성';
+  if (/(?:[가-힣\s\d])(XL|[SML])$|^(XL|[SML])$|미니|라지|대형|소형/i.test(label)) return '크기';
+  return '색상';
+}
+
 export function groupProductFamilies(products) {
   const families = new Map();
   (Array.isArray(products) ? products : []).forEach((product) => {

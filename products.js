@@ -1,4 +1,5 @@
-import { CATALOG_CATEGORIES, productCategory, filterAndSortFamilies, groupProductFamilies, productVariantLabel } from './assets/catalog-tools.js';
+import { CATALOG_CATEGORIES, productCategory, filterAndSortFamilies, groupProductFamilies, productVariantLabel, productVariantKind } from './assets/catalog-tools.js';
+import { initCompareTray, createCompareButton } from './assets/compare-store.js';
 
 const productLists = document.querySelectorAll('[data-products]');
 const featuredProductSlots = document.querySelectorAll('[data-featured-product]');
@@ -216,12 +217,13 @@ function createPriceBlock(product) {
   return block;
 }
 
-function createProductFooter(product) {
+function createProductFooter(product, compact = false) {
   const footer = document.createElement('div');
   footer.className = 'store-product-footer';
   const actions = document.createElement('div');
   actions.className = 'store-product-actions';
-  actions.append(createDetailLink(product), createCartButton(product), createWishlistButton(product), createDirectBuyLink(product));
+  if (compact) actions.append(createDetailLink(product), createCompareButton(product));
+  else actions.append(createDetailLink(product), createCartButton(product), createWishlistButton(product), createDirectBuyLink(product));
   footer.append(createPriceBlock(product), actions);
   return footer;
 }
@@ -292,7 +294,9 @@ function selectProductCardVariant(article, product, family) {
   if (label) label.textContent = product.model;
   heading?.replaceWith(productNameHeading(product));
   if (tagline) tagline.textContent = product.tagline || '일상에 자연스럽게 맞는 가방입니다.';
-  footer?.replaceWith(createProductFooter(product));
+  footer?.replaceWith(createProductFooter(product, true));
+  const saved = article.querySelector('.card-wishlist');
+  if (saved) { const replacement = createWishlistButton(product); decorateCardWishlist(replacement); saved.replaceWith(replacement); }
 
   const selectedLabel = productVariantLabel(product);
   const summary = body?.querySelector('[data-variant-summary]');
@@ -309,9 +313,19 @@ function selectProductCardVariant(article, product, family) {
 
 }
 
+function decorateCardWishlist(button) {
+  button.classList.add('card-wishlist');
+  button.querySelector('[data-wishlist-label]')?.classList.add('sr-only');
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24'); svg.setAttribute('aria-hidden', 'true');
+  const path = document.createElementNS(svg.namespaceURI, 'path');
+  path.setAttribute('d', 'M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z');
+  svg.append(path); button.append(svg);
+}
+
 function createProductCard(product, { family = null } = {}) {
   const article = document.createElement('article');
-  article.className = 'store-product-card card reveal';
+  article.className = 'store-product-card card reveal is-compact';
   article.dataset.selectedProductId = product.id;
   const body = document.createElement('div');
   body.className = 'store-product-body';
@@ -321,7 +335,7 @@ function createProductCard(product, { family = null } = {}) {
   const tagline = document.createElement('p');
   tagline.className = 'product-tagline';
   tagline.textContent = product.tagline || '일상에 자연스럽게 맞는 가방입니다.';
-  const footer = createProductFooter(product);
+  const footer = createProductFooter(product, true);
   body.append(label, productNameHeading(product), tagline, footer);
   if (family?.variants?.length > 1) {
     const variants = document.createElement('div');
@@ -332,6 +346,11 @@ function createProductCard(product, { family = null } = {}) {
     summary.dataset.variantSummary = '';
     summary.textContent = `${family.variants.length}가지 중 ${productVariantLabel(product)} 선택`;
     variants.append(summary);
+    const groups = new Map();
+    const expanded = document.createElement('details'); expanded.className = 'product-variants-more';
+    const moreLabel = document.createElement('summary'); moreLabel.textContent = `전체 옵션 ${family.variants.length}가지`;
+    expanded.append(moreLabel);
+    const preview = family.variants.filter(v => productVariantKind(v) === '색상').slice(0, 3);
     family.variants.forEach((variant) => {
       const button = document.createElement('button');
       const selected = variant.id === product.id;
@@ -347,8 +366,18 @@ function createProductCard(product, { family = null } = {}) {
       check.textContent = selected ? '✓' : '';
       button.append(check, productVariantLabel(variant));
       button.addEventListener('click', () => selectProductCardVariant(article, variant, family));
-      variants.append(button);
+      if (preview.includes(variant)) variants.append(button);
+      else {
+        const kind = productVariantKind(variant);
+        if (!groups.has(kind)) {
+          const group = document.createElement('div'); group.className = 'variant-kind';
+          const title = document.createElement('span'); title.textContent = kind; group.append(title);
+          groups.set(kind, group); expanded.append(group);
+        }
+        groups.get(kind).append(button);
+      }
     });
+    if (groups.size) variants.append(expanded);
     const status = document.createElement('span');
     status.className = 'sr-only';
     status.dataset.variantStatus = '';
@@ -357,7 +386,8 @@ function createProductCard(product, { family = null } = {}) {
     variants.append(status);
     body.insertBefore(variants, footer);
   }
-  article.append(createProductMedia(product, 'store-product-media'), body);
+  const wish = createWishlistButton(product); decorateCardWishlist(wish);
+  article.append(createProductMedia(product, 'store-product-media'), wish, body);
   return article;
 }
 
@@ -434,6 +464,7 @@ function updateBagJourney(products) {
 async function loadProducts() {
   try {
     const products = await fetchProducts();
+    initCompareTray(products);
     updateBagJourney(products);
     const families = groupProductFamilies(products);
     productLists.forEach((container) => {

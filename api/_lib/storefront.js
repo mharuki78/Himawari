@@ -1,5 +1,6 @@
 import { PUBLIC_SPEC_FIELDS as SPEC_FIELDS } from '../../assets/product-specs.js';
 import { groupProductFamilies, productColor, productFamilyKey } from '../../assets/catalog-tools.js';
+import { productPurchaseFacts, productEvidenceHighlights } from '../../assets/product-facts.js';
 
 const KRW = new Intl.NumberFormat('ko-KR', {
   style: 'currency',
@@ -72,13 +73,13 @@ function productPrice(product) {
 }
 
 function renderProductCard(product) {
-  return `<article class="store-product-card card reveal is-visible" data-server-rendered-product>
+  return `<article class="store-product-card card reveal is-visible is-compact" data-server-rendered-product>
     ${productImage(product, 'store-product-media')}
     <div class="store-product-body">
       <p class="card-label">${escapeHtml(product.model || 'Himawari')}</p>
       <h3><a href="${detailHref(product)}">${escapeHtml(product.name)}</a></h3>
       <p class="product-tagline">${escapeHtml(product.tagline || '일상에 자연스럽게 맞는 가방입니다.')}</p>
-      <div class="store-product-footer">${productPrice(product)}${productActions(product)}</div>
+      <div class="store-product-footer">${productPrice(product)}<div class="store-product-actions"><a class="detail-link" href="${detailHref(product)}">상세 보기 <span aria-hidden="true">→</span></a><a class="compare-add" href="compare.html?products=${encodeURIComponent(product.id)}">제품 비교</a></div></div>
     </div>
   </article>`;
 }
@@ -132,7 +133,7 @@ function catalogSchema(products, origin) {
 export function renderCatalogPage(template, products, origin = 'https://himawari.co.kr', collection = null) {
   const featured = products.find((product) => product.featured === true) || products[0];
   const remaining = groupProductFamilies(products)
-    .filter((family) => !family.variants.includes(featured))
+    .filter((family) => !template.includes('SERVER_FEATURED_PRODUCT') || !family.variants.includes(featured))
     .map((family) => family.representative);
   const schema = JSON.stringify(catalogSchema(products, origin)).replaceAll('<', '\\u003c');
   let output = template
@@ -149,7 +150,7 @@ export function renderCatalogPage(template, products, origin = 'https://himawari
       .replace('content="학생가방부터 비즈니스와 여행 백팩까지, Himawari의 전체 제품을 만나보세요."', `content="${escapeHtml(collection.description)}"`)
       .replace('href="https://himawari.co.kr/products.html"', `href="${canonical}"`)
       .replace('content="https://himawari.co.kr/products.html"', `content="${canonical}"`)
-      .replace('<span class="headline-line">도시의 움직임을 위한</span><span class="headline-line accent-word">정제된 백팩.</span>', `<span class="headline-line">${escapeHtml(collection.line1)}</span><span class="headline-line accent-word">${escapeHtml(collection.line2)}</span>`)
+      .replace('나의 하루에 맞는 가방.', escapeHtml(collection.title))
       .replace('<span>Current collection</span>', `<span>${escapeHtml(collection.title)}</span>`);
   }
   return output;
@@ -165,8 +166,8 @@ function renderDescription(value) {
 }
 
 function renderHighlights(product) {
-  return (Array.isArray(product.highlights) ? product.highlights : [])
-    .map((highlight, index) => `<li><span>${String(index + 1).padStart(2, '0')}</span><p>${escapeHtml(highlight)}</p></li>`)
+  return productEvidenceHighlights(product)
+    .map(({ label, value }) => `<li><span>${escapeHtml(label)}</span><p>${escapeHtml(value)}</p></li>`)
     .join('');
 }
 
@@ -263,6 +264,8 @@ export function renderProductPage(template, product, origin = 'https://himawari.
     .replace('data-name>제품 상세<', `data-name>${escapeHtml(product.name)}<`)
     .replace('data-tagline></p>', `data-tagline>${escapeHtml(product.tagline)}</p>`)
     .replace('data-price></strong>', `data-price>${KRW.format(product.price)}</strong>`)
+    .replace('data-purchase-facts></dl>', `data-purchase-facts>${productPurchaseFacts(product).map(({ label, value }) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl>`)
+    .replace('data-quick-review>리뷰 보기<', `data-quick-review>${reviewData?.aggregate?.count ? `${escapeHtml(reviewData.aggregate.ratingValue)}점 · 리뷰 ${escapeHtml(reviewData.aggregate.count)}개` : '리뷰 보기'}<`)
     .replace('data-naver-discount hidden></span>', Number.isInteger(product.naverDiscountRate) && product.naverDiscountRate > 0
       ? `data-naver-discount>네이버 ${product.naverDiscountRate}% 할인</span>`
       : 'data-naver-discount hidden></span>')
@@ -286,13 +289,15 @@ export function renderProductPage(template, product, origin = 'https://himawari.
 
   html = html.replace('data-npay-product></div>', `data-npay-product data-product-id="${escapeHtml(product.id)}"></div>`);
 
-  if (!(Array.isArray(product.highlights) && product.highlights.length)) {
+  if (!productEvidenceHighlights(product).length) {
     html = html.replace('<section class="product-highlights section" data-highlights-section', '<section class="product-highlights section" data-highlights-section hidden');
   }
   if (!(Array.isArray(product.gallery) && product.gallery.length)) {
     html = html.replace('<section class="product-gallery section" data-gallery-section', '<section class="product-gallery section" data-gallery-section hidden');
   }
   html = html.replace('<section class="product-highlights section"', `${renderCrawlableSpecs(product)}\n<section class="product-highlights section"`);
+  // <base href="/"> keeps shared assets working; fragment links must retain this product.
+  html = html.replace(/href="#([^"]+)"/g, (_, fragment) => `href="${detailHref(product)}#${escapeHtml(fragment)}"`);
   return html;
 }
 

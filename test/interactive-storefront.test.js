@@ -20,16 +20,13 @@ test('홈 화면의 제품 여정·게임 미리보기·릴스 진행 표시가 
   assert.ok(journalImage.byteLength > 50_000);
 });
 
-test('제품 옵션·상세 포인트·장바구니 성공 피드백이 접근 가능한 상태를 유지한다', async () => {
+test('제품 옵션과 장바구니 성공 피드백이 접근 가능한 상태를 유지한다', async () => {
   const products = await readFile(new URL('../products.js', import.meta.url), 'utf8');
-  const detail = await readFile(new URL('../product-detail.js', import.meta.url), 'utf8');
   const cart = await readFile(new URL('../assets/cart.js', import.meta.url), 'utf8');
   const css = await readFile(new URL('../assets/gear.css', import.meta.url), 'utf8');
 
   assert.match(products, /function transitionProductCardMedia\(article, product\)/);
   assert.match(products, /article\.setAttribute\('aria-busy', 'true'\)/);
-  assert.match(detail, /function configureProductHotspots\(product\)/);
-  assert.match(detail, /button\.setAttribute\('aria-pressed'/);
   assert.match(cart, /himawari:cart-added/);
   assert.match(cart, /if \(b\.dataset && b\.dataset\.rdcartBusy\) return;[\s\S]+var added = add\(/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]+\.rdcart-flight/);

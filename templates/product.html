@@ -30,7 +30,7 @@
     <script src="script.js" defer></script>
     <script src="product-detail.js" type="module"></script>
   <link rel="stylesheet" href="/assets/commerce.css"><script src="https://wcs.naver.net/wcslog.js"></script><script src="/assets/naver-inflow.js"></script>
-</head>
+<link rel="stylesheet" href="/assets/shopping-refinements.css"></head>
   <body class="product-detail-page">
     <a class="skip-link" href="#main">본문으로 바로가기</a>
     <div class="announcement-bar"><a href="products.html">Himawari 전체 컬렉션 보기</a></div>
@@ -72,6 +72,14 @@
               <span class="product-discount-badge" data-naver-discount hidden></span>
               <strong class="product-detail-price" data-price></strong>
             </div>
+            <dl class="purchase-facts" data-purchase-facts></dl>
+            <div class="purchase-reassurance">
+              <a href="#product-reviews" data-quick-review>리뷰 보기</a>
+              <p>배송비 3,500원 · 10만원 이상 무료배송</p>
+              <p>결제 완료 후 영업일 기준 2일 이내 출고</p>
+              <a href="#product-shipping">배송·교환·반품 안내</a>
+            </div>
+            <div data-detail-compare></div>
             <section class="product-option-picker" id="product-options" data-option-picker hidden aria-labelledby="product-option-label">
               <label id="product-option-label" for="product-option-select">옵션 선택</label>
               <select id="product-option-select" data-product-option aria-describedby="product-option-help product-option-error"></select>
@@ -95,11 +103,11 @@
           </div>
         </div>
 
+        <nav class="product-section-nav" aria-label="제품 상세 바로가기"><a href="#product-specifications">크기·소재</a><a href="#product-photos">상세 사진</a><a href="#product-reviews">구매 리뷰</a><a href="#product-shipping">배송·반품</a></nav>
         <section class="product-description section" aria-labelledby="product-description-title">
           <div class="section-inner product-description-grid">
             <div class="product-description-heading reveal">
-              <p class="kicker">Form and function</p>
-              <h2 id="product-description-title" class="display-title"><span class="headline-line">하루의 움직임에 맞춘</span><span class="headline-line accent-word">구조와 균형.</span></h2>
+              <h2 id="product-description-title" class="display-title">이 가방을 살펴보세요.</h2>
             </div>
             <div class="product-description-body reveal" data-description></div>
           </div>
@@ -108,14 +116,13 @@
         <section class="product-highlights section" data-highlights-section aria-labelledby="product-highlights-title">
           <div class="section-inner product-highlights-grid">
             <div>
-              <p class="kicker">Details that matter</p>
-              <h2 id="product-highlights-title">제품을 이루는<br>구체적인 포인트.</h2>
+              <h2 id="product-highlights-title">소재와 수납.</h2>
             </div>
             <ol data-highlights></ol>
           </div>
         </section>
 
-        <section class="product-gallery section" data-gallery-section aria-labelledby="product-gallery-title">
+        <section class="product-gallery section" id="product-photos" data-gallery-section aria-labelledby="product-gallery-title">
           <div class="section-inner">
             <div class="product-gallery-head">
               <div>
@@ -128,7 +135,7 @@
           </div>
         </section>
 
-        <section class="commerce-guide section" aria-labelledby="commerce-guide-title">
+        <section class="commerce-guide section" id="product-shipping" aria-labelledby="commerce-guide-title">
           <div class="section-inner commerce-guide-grid">
             <div>
               <p class="kicker">Order information</p>
@@ -143,7 +150,7 @@
           </div>
         </section>
 
-        <section class="product-reviews section" aria-labelledby="product-reviews-title">
+        <section class="product-reviews section" id="product-reviews" aria-labelledby="product-reviews-title">
           <div class="section-inner product-reviews-grid">
             <div><p class="kicker">Customer reviews</p><h2 id="product-reviews-title">실제 구매자의<br>사용 기록.</h2><p data-review-summary>공개된 리뷰를 불러오고 있습니다.</p></div>
             <div>

@@ -4,6 +4,8 @@ import { reviewGroupKey } from './assets/review-groups.js';
 import { createReviewCard } from './assets/review-card.js';
 import { fetchProducts, priceFormatter, safeHttpsUrl } from './products.js';
 import { renderProductGuidance } from './assets/product-guidance.js';
+import { initCompareTray, createCompareButton } from './assets/compare-store.js';
+import { productPurchaseFacts, productEvidenceHighlights } from './assets/product-facts.js';
 
 const main = document.querySelector('.product-detail-main');
 const loadingState = document.querySelector('[data-loading-state]');
@@ -234,6 +236,8 @@ function setupCustomerFeatures(product) {
         payload.aggregate?.coupangCount ? `쿠팡 ${payload.aggregate.coupangCount}개` : '',
       ].filter(Boolean).join(' · ');
       summary.textContent = payload.aggregate?.count ? `평균 ${payload.aggregate.ratingValue}점 · 리뷰 ${payload.aggregate.count}개${externalSources ? ` (${externalSources} 포함)` : ''}` : '배송 완료 주문만 리뷰를 남길 수 있습니다.';
+      const quickReview = document.querySelector('[data-quick-review]');
+      if (quickReview) quickReview.textContent = payload.aggregate?.count ? `${payload.aggregate.ratingValue}점 · 리뷰 ${payload.aggregate.count}개` : '리뷰 살펴보기';
       moreReviews.hidden = payload.nextOffset == null;
       reviewOffset = payload.nextOffset ?? reviewOffset;
       moreReviews.textContent = '리뷰 더 보기';
@@ -274,49 +278,11 @@ function setupCustomerFeatures(product) {
   });
 }
 
-function configureProductHotspots(product) {
-  const visual = document.querySelector('.product-detail-visual');
-  visual?.querySelector('[data-product-hotspots]')?.remove();
-  const points = Array.isArray(product.highlights)
-    ? product.highlights.map((point) => String(point || '').trim()).filter(Boolean).slice(0, 3)
-    : [];
-  if (!visual || !points.length) return;
-
-  const root = document.createElement('div');
-  root.className = 'product-hotspots';
-  root.dataset.productHotspots = '';
-  const controls = document.createElement('div');
-  controls.className = 'product-hotspot-controls';
-  const panel = document.createElement('p');
-  panel.className = 'product-hotspot-panel';
-  panel.id = `product-hotspot-panel-${String(product.id).replace(/[^a-z0-9_-]/gi, '')}`;
-  panel.setAttribute('role', 'status');
-  panel.setAttribute('aria-live', 'polite');
-
-  const activate = (index) => {
-    const buttons = [...controls.querySelectorAll('.product-hotspot')];
-    buttons.forEach((button, buttonIndex) => button.setAttribute('aria-pressed', String(buttonIndex === index)));
-    panel.textContent = `${String(index + 1).padStart(2, '0')} · ${points[index]}`;
-  };
-
-  points.forEach((point, index) => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = `product-hotspot product-hotspot--${index + 1}`;
-    button.textContent = String(index + 1).padStart(2, '0');
-    button.setAttribute('aria-label', `제품 포인트 ${index + 1}: ${point}`);
-    button.setAttribute('aria-controls', panel.id);
-    button.setAttribute('aria-pressed', String(index === 0));
-    button.addEventListener('click', () => activate(index));
-    button.addEventListener('focus', () => activate(index));
-    controls.append(button);
-  });
-  activate(0);
-  root.append(controls, panel);
-  visual.append(root);
-}
-
 function renderProduct(product, products) {
+  document.querySelectorAll('a[href^="#"], .product-section-nav a, .purchase-reassurance a').forEach(link => {
+    const fragment = new URL(link.getAttribute('href'), location.href).hash;
+    if (fragment) link.href = `${location.pathname}${location.search}${fragment}`;
+  });
   const canonicalUrl = `${location.origin}${location.pathname}?id=${encodeURIComponent(product.id)}`;
   const description = String(product.description || product.tagline || '').slice(0, 160);
   document.title = `${product.name} — Himawari`;
@@ -332,6 +298,13 @@ function renderProduct(product, products) {
   document.querySelector('[data-name]').textContent = product.name;
   document.querySelector('[data-tagline]').textContent = product.tagline;
   document.querySelector('[data-price]').textContent = priceFormatter.format(product.price);
+  const facts = document.querySelector('[data-purchase-facts]');
+  facts?.replaceChildren(...productPurchaseFacts(product).map(({ label, value }) => {
+    const row = document.createElement('div'); const dt = document.createElement('dt'); const dd = document.createElement('dd');
+    dt.textContent = label; dd.textContent = value; row.append(dt, dd); return row;
+  }));
+  initCompareTray(products);
+  document.querySelector('[data-detail-compare]')?.replaceChildren(createCompareButton(product));
   const discountRate = document.querySelector('[data-naver-discount]');
   discountRate.hidden = !(Number.isInteger(product.naverDiscountRate) && product.naverDiscountRate > 0);
   discountRate.textContent = discountRate.hidden ? '' : `네이버 ${product.naverDiscountRate}% 할인`;
@@ -376,17 +349,17 @@ function renderProduct(product, products) {
   const highlightsSection = document.querySelector('[data-highlights-section]');
   const highlights = document.querySelector('[data-highlights]');
   highlights.replaceChildren();
-  product.highlights.forEach((highlight, index) => {
+  const evidence = productEvidenceHighlights(product);
+  evidence.forEach(({ label, value }) => {
     const item = document.createElement('li');
     const number = document.createElement('span');
-    number.textContent = String(index + 1).padStart(2, '0');
+    number.textContent = label;
     const copy = document.createElement('p');
-    copy.textContent = highlight;
+    copy.textContent = value;
     item.append(number, copy);
     highlights.append(item);
   });
-  highlightsSection.hidden = product.highlights.length === 0;
-  configureProductHotspots(product);
+  highlightsSection.hidden = evidence.length === 0;
 
   const gallerySection = document.querySelector('[data-gallery-section]');
   const gallery = document.querySelector('[data-gallery]');
@@ -395,6 +368,8 @@ function renderProduct(product, products) {
     gallery.append(createProductImage(url, `${product.name} 상세 이미지 ${index + 1}`, { longform: true }));
   });
   gallerySection.hidden = product.gallery.length === 0;
+  const photoLink = document.querySelector('.product-section-nav a[href$="#product-photos"]');
+  if (photoLink) photoLink.hidden = product.gallery.length === 0;
 
   loadingState.hidden = true;
   notFound.hidden = true;
@@ -432,16 +407,6 @@ function renderUnavailable() {
   document.querySelector('[data-state-title]').focus?.();
 }
 
-function enhanceServerRenderedHotspots() {
-  if (content?.hidden) return;
-  const highlights = [...document.querySelectorAll('[data-highlights] li p')].map((node) => node.textContent);
-  if (!highlights.length) return;
-  configureProductHotspots({
-    id: new URLSearchParams(location.search).get('id') || 'product',
-    highlights,
-  });
-}
-
 async function loadProduct() {
   const id = new URLSearchParams(location.search).get('id');
   if (!id) {
@@ -462,5 +427,4 @@ async function loadProduct() {
   }
 }
 
-enhanceServerRenderedHotspots();
 loadProduct();

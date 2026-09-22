@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build:admin": "esbuild admin/product-admin.source.js --bundle --format=esm --platform=browser --target=es2022 --outfile=admin/product-admin.js && esbuild admin/reel-admin.source.js --bundle --format=esm --platform=browser --target=es2022 --outfile=admin/reel-admin.js",
-    "test": "node --test",
+    "test": "node --test \"test/*.test.js\" \"test/*.test.mjs\"",
     "design": "npx -p @google/design.md designmd lint DESIGN.md",
     "secrets": "node scripts/generate-admin-secrets.mjs",
     "db:migrate": "node scripts/migrate-members.mjs",

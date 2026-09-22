@@ -1,0 +1,45 @@
+.finder-page .finder-hero h1 { margin-top: 0; letter-spacing: -.03em; }
+.finder-page .finder-hero .finder-method { max-width: 65ch; margin-top: 1rem; font-size: .875rem; color: var(--harbor, #4f6b58); line-height: 1.75; }
+.finder-page .finder-form legend { font-size: 1.125rem; }
+.finder-page .finder-choices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.finder-page .finder-choices label span { font-size: .9375rem; line-height: 1.5; }
+.finder-page .finder-choices input:checked + span { color: var(--snow, #fff); background: var(--harbor, #4f6b58); border-color: var(--harbor, #4f6b58); box-shadow: none; }
+.finder-page .finder-help, .finder-page .finder-laptop-note { margin: 1rem 0 0; font-size: .875rem; line-height: 1.7; color: var(--harbor, #4f6b58); }
+.finder-page .finder-laptop-note { grid-column: 1 / -1; max-width: 72ch; }
+.finder-page .finder-actions, .finder-page .finder-status { grid-column: 1 / -1; }
+.finder-page .finder-actions, .finder-page .finder-recovery { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
+.finder-page .finder-reset, .finder-page .finder-adjust { min-height: 48px; padding: .75rem 1.125rem; border: 1px solid var(--harbor, #4f6b58); border-radius: var(--radius-pill, 999px); background: transparent; color: var(--harbor, #4f6b58); font: inherit; font-size: .9375rem; font-weight: 650; cursor: pointer; }
+.finder-page .finder-submit:hover, .finder-page .finder-submit:active { background: var(--color-deep-wave, #3e6b52); }
+.finder-page .finder-reset:hover, .finder-page .finder-adjust:hover { background: var(--color-sky-tint, #eef5ea); }
+.finder-page .finder-submit:disabled { opacity: .6; cursor: progress; }
+.finder-page :is(.finder-submit, .finder-reset, .finder-adjust, .finder-card a, .finder-compare):focus-visible { outline: 3px solid var(--harbor, #4f6b58); outline-offset: 4px; }
+.finder-page .finder-results { scroll-margin-top: 7rem; }
+.finder-page .finder-results > h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); letter-spacing: -.03em; margin-bottom: 1rem; }
+.finder-page .finder-summary { max-width: 65ch; margin: 0 0 1.5rem; line-height: 1.75; }
+.finder-page .finder-recovery { margin-bottom: 2rem; }
+.finder-page [hidden] { display: none !important; }
+.finder-page .finder-card { border-radius: var(--radius-soft, 16px); box-shadow: none; }
+.finder-page .finder-card > .finder-card__media { display: grid; padding: 0; background: var(--color-sky-wash, #f3f7ef); aspect-ratio: 4 / 3; }
+.finder-page .finder-card__media img { width: 100%; height: 100%; max-height: 24rem; object-fit: contain; aspect-ratio: 4 / 3; }
+.finder-page .finder-image-fallback { align-self: center; padding: 1.5rem; text-align: center; font-size: .875rem; }
+.finder-page .finder-card > .finder-card__body { gap: .875rem; padding: 1.25rem; }
+.finder-page .finder-card h3 { font-size: 1.25rem; }
+.finder-page .finder-card__name { font-size: .9375rem; line-height: 1.65; }
+.finder-page .finder-card__price { font-size: 1.125rem; font-variant-numeric: tabular-nums; }
+.finder-page .finder-card__variants { font-size: .875rem; line-height: 1.6; color: var(--harbor, #4f6b58); }
+.finder-page .finder-card__reasons { margin: 0; padding: .875rem 0 .875rem 1.25rem; border-block: 1px solid var(--color-fog, #d0d5dd); font-size: .9375rem; line-height: 1.7; }
+.finder-page .finder-card__check { font-size: .875rem; line-height: 1.7; color: var(--harbor, #4f6b58); }
+.finder-page .finder-card a { font-size: .9375rem; min-height: 48px; }
+.finder-page .finder-card a:hover { background: var(--color-deep-wave, #3e6b52); }
+.finder-page .finder-compare { scrollbar-color: var(--harbor, #4f6b58) var(--color-sky-tint, #eef5ea); }
+.finder-page .finder-compare th, .finder-page .finder-compare td { font-size: .875rem; line-height: 1.65; }
+.finder-page .finder-compare caption { font-size: 1rem; }
+@media (max-width: 900px) {
+  .finder-page .finder-result-grid { grid-template-columns: 1fr; }
+  .finder-page .finder-card { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .finder-page .finder-card { display: block; }
+  .finder-page .finder-actions > *, .finder-page .finder-recovery > * { width: 100%; }
+  .finder-page .finder-card__media img { max-height: 20rem; }
+}

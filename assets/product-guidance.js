@@ -1,4 +1,5 @@
 import { PUBLIC_SPEC_FIELDS as SPEC_FIELDS } from './product-specs.js';
+import { parseExternalDimensions } from './product-facts.js';
 
 function node(tag, className, text) {
   const el = document.createElement(tag);
@@ -30,6 +31,23 @@ export function renderProductGuidance(product, products = []) {
   image.loading = 'lazy'; image.decoding = 'async'; image.width = 640; image.height = 640;
   image.addEventListener('error', () => { image.hidden = true; }, { once: true });
   figure.append(image, node('figcaption', '', product.model || 'Himawari'));
+  const size = parseExternalDimensions(product.specs?.dimensions);
+  if (size) {
+    const [width, height, depth] = size;
+    const diagram = node('div', 'product-size-reference');
+    diagram.setAttribute('role', 'img');
+    diagram.setAttribute('aria-label', `외부 크기 가로 ${width}, 세로 ${height}, 폭 ${depth}cm. A4 용지 가로 21, 세로 29.7cm와 크기만 비교한 도식이며 실제 수납 여부를 보장하지 않습니다.`);
+    const canvas = node('div', 'product-size-reference__canvas');
+    const scale = 200 / Math.max(height, 29.7, width, 21);
+    const outline = node('div', 'product-size-reference__bag', '외부 크기');
+    outline.style.width = `${width * scale}px`; outline.style.height = `${height * scale}px`;
+    const paper = node('div', 'product-size-reference__paper', 'A4');
+    paper.style.width = `${21 * scale}px`; paper.style.height = `${29.7 * scale}px`;
+    canvas.append(outline, paper);
+    diagram.append(node('strong', '', `${width} × ${height} × ${depth} cm`), canvas,
+      node('p', '', '외부 크기와 A4(21 × 29.7cm) 비교 도식. 가방 형태를 단순화했으며 실제 수납 여부와는 다릅니다.'));
+    figure.append(diagram);
+  }
   const content = node('div', 'product-guidance__content');
   const known = SPEC_FIELDS.filter(([key]) => String(product.specs?.[key] || '').trim());
   const missing = SPEC_FIELDS.filter(([key]) => !String(product.specs?.[key] || '').trim());
@@ -73,4 +91,35 @@ export function renderProductGuidance(product, products = []) {
     group.append(list); inner.append(group);
   }
   section.replaceChildren(inner);
+  loadRelatedStories(product, section);
+}
+
+async function loadRelatedStories(product, section) {
+  try {
+    const response = await fetch('/story/posts.json');
+    if (!response.ok) return;
+    const posts = await response.json();
+    const model = String(product.model || '').toLowerCase().replace(/\s/g, '');
+    if (!model || model === 'himawari') return;
+    const related = posts.filter(post => {
+      const models = [post.title, post.summary, post.imageAlt, ...(post.tags || [])].join(' ').match(/No\.?\s*\d{3,5}[a-z]?/gi) || [];
+      return models.some(value => value.toLowerCase().replace(/\s/g, '') === model);
+    }).slice(0, 3);
+    if (!related.length) return;
+    const group = node('section', 'product-related-stories');
+    group.setAttribute('aria-label', '이 모델과 함께 읽는 이야기');
+    group.append(node('h3', '', '이 모델과 함께 읽는 이야기'));
+    const list = node('div', 'product-related-stories__list');
+    for (const post of related) {
+      if (!/^[a-z0-9-]+$/.test(post.id)) continue;
+      const link = node('a'); link.href = `/story/${post.id}.html`;
+      const image = node('img');
+      const imageUrl = new URL(post.image || '', `${location.origin}/story/`);
+      if (imageUrl.origin === location.origin && imageUrl.pathname.startsWith('/assets/')) image.src = imageUrl.href;
+      image.alt = post.imageAlt || post.title; image.loading = 'lazy';
+      image.addEventListener('error', () => { image.hidden = true; }, { once: true });
+      link.append(image, node('strong', '', post.title), node('span', '', '이야기 읽기')); list.append(link);
+    }
+    group.append(list); section.querySelector('.product-guidance__inner')?.append(group);
+  } catch { /* The product's purchase and specification information remains usable. */ }
 }

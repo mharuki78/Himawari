@@ -57,7 +57,18 @@
             <p class="kicker">All stories</p>
             <h2 id="archive-title"><span class="headline-line">시간이 쌓일수록 깊어지는</span><span class="headline-line accent-word">Himawari의 이야기.</span></h2>
           </div>
-          <ul class="story-index-list" id="story-list" data-story-index aria-live="polite" aria-busy="true">
+          <form class="story-discovery" data-story-filters role="search" aria-label="이야기 찾기" hidden>
+            <div class="story-search-row"><label for="story-search">이야기 검색</label><input id="story-search" type="search" placeholder="제목, 관심 주제 검색" autocomplete="off"><button type="reset">조건 초기화</button></div>
+            <div class="story-category-filters" role="group" aria-label="이야기 주제">
+              <button type="button" data-story-category="all" aria-pressed="true">전체</button>
+              <button type="button" data-story-category="commute" aria-pressed="false">출근</button>
+              <button type="button" data-story-category="school" aria-pressed="false">통학</button>
+              <button type="button" data-story-category="travel" aria-pressed="false">여행·외출</button>
+              <button type="button" data-story-category="care" aria-pressed="false">관리</button>
+            </div>
+            <p class="story-results-status" data-story-results role="status" aria-live="polite"></p>
+          </form>
+          <ul class="story-index-list" id="story-list" data-story-index aria-busy="true">
             <li class="story-list-state">이야기를 불러오는 중입니다.</li>
           </ul>
           <a class="story-admin-link" href="admin.html">이야기 관리 <span aria-hidden="true">→</span></a>
