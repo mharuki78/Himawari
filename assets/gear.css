@@ -194,10 +194,27 @@ html {
 
 .home-film-hero__copy {
   display: flex;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   min-width: 0;
   flex-direction: column;
   justify-content: center;
   padding: clamp(3.5rem, 8vh, 7rem) var(--page-pad);
+}
+
+.home-film-hero__copy::before {
+  position: absolute;
+  z-index: -1;
+  inset: -8px;
+  background:
+    linear-gradient(90deg, var(--ink) 0%, color-mix(in srgb, var(--ink) 86%, transparent) 100%),
+    url("hero-9007-poster.jpg") 66% 44% / cover no-repeat;
+  content: "";
+  filter: blur(3px);
+  opacity: .76;
+  transform: scale(1.035);
+  pointer-events: none;
 }
 
 .home-film-hero__kicker {
@@ -1020,6 +1037,13 @@ html {
     align-items: center;
     padding: 3.25rem var(--page-pad) 4rem;
     text-align: center;
+  }
+  .home-film-hero__copy::before {
+    background-image:
+      linear-gradient(0deg, var(--ink) 0%, color-mix(in srgb, var(--ink) 86%, transparent) 100%),
+      url("hero-9007-poster.jpg");
+    background-position: center, 68% 44%;
+    background-size: cover, cover;
   }
   .home-film-hero h1 { max-width: 13ch; font-size: clamp(2.55rem, 11.5vw, 3.8rem); }
   .home-film-hero__copy > p { max-width: 31ch; }
