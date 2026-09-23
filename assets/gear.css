@@ -199,9 +199,9 @@ html {
   flex-direction: column;
   justify-content: center;
   padding: clamp(3.5rem, 8vh, 7rem) var(--page-pad);
-  background-color: var(--ink);
+  background-color: var(--harbor);
   background-image:
-    linear-gradient(90deg, var(--ink) 0%, color-mix(in srgb, var(--ink) 74%, transparent) 100%),
+    linear-gradient(90deg, var(--harbor) 0%, color-mix(in srgb, var(--harbor) 72%, transparent) 100%),
     url("hero-9007-backdrop.webp");
   background-position: center, 66% 44%;
   background-size: cover, cover;
@@ -1031,7 +1031,7 @@ html {
   }
   .home-film-hero__copy {
     background-image:
-      linear-gradient(0deg, var(--ink) 0%, color-mix(in srgb, var(--ink) 74%, transparent) 100%),
+      linear-gradient(0deg, var(--harbor) 0%, color-mix(in srgb, var(--harbor) 72%, transparent) 100%),
       url("hero-9007-backdrop.webp");
     background-position: center, 68% 44%;
     background-size: cover, cover;
