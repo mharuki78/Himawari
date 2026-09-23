@@ -1,5 +1,53 @@
 [
   {
+    "id": "school-sports-day-backpack",
+    "title": "학교 체육행사 날의 백팩: 운동장에 나가기 전부터 돌아올 때까지",
+    "date": "2026-09-24",
+    "summary": "교실과 운동장을 오가는 날, 평소 수업 준비물과 활동용 물건을 나누고 사용한 물건이 돌아올 자리까지 정해봅니다.",
+    "description": "교실과 운동장을 오가는 날, 평소 수업 준비물과 활동용 물건을 나누고 사용한 물건이 돌아올 자리까지 정해봅니다.",
+    "tags": [
+      "통학",
+      "학교 행사",
+      "가방 수납"
+    ],
+    "image": "../assets/story/school-sports-day-backpack.webp",
+    "imageAlt": "학교 운동장 옆 벤치에 놓인 검정·아이보리 Himawari No.1088M 백팩과 별도의 수건·물병 AI 연출 사진",
+    "url": "school-sports-day-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "intercity-bus-backpack-stop",
+    "title": "시외버스 여행의 백팩: 탑승·휴게소·하차를 나눠 준비하기",
+    "date": "2026-09-24",
+    "summary": "버스를 타기 전부터 휴게소 정차와 하차까지, 손에 둘 물건과 가방에 둘 물건을 구분해 이동 중 뒤적이는 일을 줄입니다.",
+    "description": "버스를 타기 전부터 휴게소 정차와 하차까지, 손에 둘 물건과 가방에 둘 물건을 구분해 이동 중 뒤적이는 일을 줄입니다.",
+    "tags": [
+      "시외버스",
+      "여행",
+      "백팩 동선"
+    ],
+    "image": "../assets/story/intercity-bus-backpack-stop.webp",
+    "imageAlt": "시외버스 터미널 대기 공간의 나무 벤치에 놓인 검정 Himawari No.1884 백팩 AI 연출 사진",
+    "url": "intercity-bus-backpack-stop.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "concert-backpack-entry-flow",
+    "title": "공연 가는 날의 작은 백팩: 입장 줄에서 귀가까지",
+    "date": "2026-09-24",
+    "summary": "공연장 반입 규정을 먼저 확인하고, 입장 확인·보관·귀가 때 필요한 소지품을 작은 백팩 안에서 찾기 쉽게 나눕니다.",
+    "description": "공연장 반입 규정을 먼저 확인하고, 입장 확인·보관·귀가 때 필요한 소지품을 작은 백팩 안에서 찾기 쉽게 나눕니다.",
+    "tags": [
+      "공연",
+      "외출",
+      "미니 백팩"
+    ],
+    "image": "../assets/story/concert-backpack-entry-flow.webp",
+    "imageAlt": "야외 공연장으로 걸어가는 사람이 은색 Himawari No.0514 Mini 백팩을 멘 AI 착용 연출 사진",
+    "url": "concert-backpack-entry-flow.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "hotel-backpack-day-reset",
     "title": "숙소에 도착한 백팩, 내일의 외출 가방으로 다시 꾸리기",
     "date": "2026-09-23",
