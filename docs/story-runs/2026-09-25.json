@@ -1,0 +1,58 @@
+{
+  "date": "2026-09-25",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "swimming-pool-backpack-wet-dry",
+      "title": "수영장 가는 날의 백팩: 마른 준비와 젖은 귀가를 따로 생각하기",
+      "url": "https://himawari.co.kr/story/swimming-pool-backpack-wet-dry.html",
+      "productId": "store-13685201448",
+      "model": "No.0515",
+      "image": "assets/story/swimming-pool-backpack-wet-dry.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-25/reference-0515.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-25/generated-0515.png",
+        "prompt": "Create a premium photorealistic landscape 3:2 editorial photograph using the attached actual Himawari No.0515 silver backpack as exact product reference. Preserve its metallic silver soft drawstring-like upper body, distinctive gathered silver top handle, broad silver shoulder straps, black drawcord, large rectangular front silver pocket with black Himawari wordmark, attached small padded silver zip pouch hanging on the right front, side pockets, black lower tabs and true seams/proportions. Remove original model. Place the entire upright bag on a dry pale wood bench in a modern indoor swimming pool lobby, folded clean towel and sealed empty pouch beside it, blue pool visible softly in background but bag stays dry. Front three-quarter view, no wet-performance demonstration, no text overlays, no added bags or fabricated features. Faithful logo and product design.",
+        "generatedAt": "2026-09-25"
+      }
+    },
+    {
+      "id": "campus-lecture-change-backpack",
+      "title": "대학 강의실을 옮겨 다니는 날: 백팩 속 자리도 시간표대로",
+      "url": "https://himawari.co.kr/story/campus-lecture-change-backpack.html",
+      "productId": "coupang-4861cd80cf7fce0c",
+      "model": "No.9290",
+      "image": "assets/story/campus-lecture-change-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-25/reference-9290.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-25/generated-9290.png",
+        "prompt": "Create a premium photorealistic landscape 3:2 editorial lifestyle photograph based on attached exact Himawari No.9290 black backpack. Preserve its rounded black rectangular body, white rectangular Himawari wordmark label centered high, broad front pocket with single long white horizontal zipper and white zipper pull, white side compression buckles, black top carry loop and side pockets; do not alter seams or add pockets. Show an adult Korean university student wearing it from a rear three-quarter angle walking across a quiet tree-lined campus courtyard between lecture buildings, with the entire backpack clearly visible at plausible scale based on reference, neat casual cream top and charcoal pants, soft late-morning light. Different person and outdoor campus setting from recent silver concert image. No text overlay, no other bags, no fake feature demonstration. This is an AI-staged editorial scene, not customer evidence.",
+        "generatedAt": "2026-09-25"
+      }
+    },
+    {
+      "id": "travel-souvenir-backpack-packing",
+      "title": "여행 기념품을 백팩에 담기 전: 작은 물건도 포장부터 살펴보세요",
+      "url": "https://himawari.co.kr/story/travel-souvenir-backpack-packing.html",
+      "productId": "store-13308483411",
+      "model": "No.1230",
+      "image": "assets/story/travel-souvenir-backpack-packing.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-25/reference-1230.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-25/generated-1230.png",
+        "prompt": "Create a premium photorealistic landscape 3:2 editorial product photograph from attached actual Himawari No.1230 gray backpack reference. Preserve mid-gray rounded body, darker gray trim, two distinct front pockets: narrow horizontal zipper across upper front with small flap pocket on left, larger rectangular dark-gray-flap front pocket on right, small black triangular Himawari logo patch low on front, slim side pockets, top loop and accurate gray straps/proportions. Remove model. Entire upright backpack on a tidy hotel desk beside two small separately wrapped flat souvenir items and paper bag, no items implied to fit inside, soft warm afternoon window light. Show clear front three-quarter view, calm travel editorial scene, no new badges, no text overlay, no extra bags or invented product features.",
+        "generatedAt": "2026-09-25"
+      }
+    }
+  ],
+  "topicsReviewed": 74,
+  "overlapReview": "Reviewed 74 existing titles, summaries, and full story bodies. Distinct scopes: wet/dry transitions for swimming, lecture-to-lecture campus movement, and carrying newly purchased travel souvenirs. Existing rain care, school, hotel and travel posts cover different triggers and steps.",
+  "completionReceipt": "backups/story-runs/2026-09-25.deployment.json"
+}

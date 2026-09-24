@@ -1,5 +1,53 @@
 [
   {
+    "id": "swimming-pool-backpack-wet-dry",
+    "title": "수영장 가는 날의 백팩: 마른 준비와 젖은 귀가를 따로 생각하기",
+    "date": "2026-09-25",
+    "summary": "수영장에 갈 때는 출발할 때의 깨끗한 짐보다 돌아올 젖은 물건의 자리를 먼저 정해두면 정리가 쉬워집니다.",
+    "description": "수영장에 갈 때는 출발할 때의 깨끗한 짐보다 돌아올 젖은 물건의 자리를 먼저 정해두면 정리가 쉬워집니다.",
+    "tags": [
+      "수영장",
+      "젖은 짐 분리",
+      "백팩 관리"
+    ],
+    "image": "../assets/story/swimming-pool-backpack-wet-dry.webp",
+    "imageAlt": "수영장 로비의 마른 나무 벤치에 놓인 은색 Himawari No.0515와 별도의 수건·주머니 AI 연출 사진",
+    "url": "swimming-pool-backpack-wet-dry.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "campus-lecture-change-backpack",
+    "title": "대학 강의실을 옮겨 다니는 날: 백팩 속 자리도 시간표대로",
+    "date": "2026-09-25",
+    "summary": "수업마다 필요한 자료가 다른 날, 강의실 이동과 공강을 기준으로 꺼낼 순서를 정하면 가방을 매번 뒤집지 않아도 됩니다.",
+    "description": "수업마다 필요한 자료가 다른 날, 강의실 이동과 공강을 기준으로 꺼낼 순서를 정하면 가방을 매번 뒤집지 않아도 됩니다.",
+    "tags": [
+      "캠퍼스",
+      "강의실 이동",
+      "백팩 정리"
+    ],
+    "image": "../assets/story/campus-lecture-change-backpack.webp",
+    "imageAlt": "대학 캠퍼스 길을 걷는 사람이 검정 Himawari No.9290 백팩을 멘 AI 착용 연출 사진",
+    "url": "campus-lecture-change-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "travel-souvenir-backpack-packing",
+    "title": "여행 기념품을 백팩에 담기 전: 작은 물건도 포장부터 살펴보세요",
+    "date": "2026-09-25",
+    "summary": "여행지에서 산 기념품은 크기만 맞으면 끝이 아닙니다. 모서리·눌림·흔들림을 살피고 기존 짐과 나눠 귀가하는 방법입니다.",
+    "description": "여행지에서 산 기념품은 크기만 맞으면 끝이 아닙니다. 모서리·눌림·흔들림을 살피고 기존 짐과 나눠 귀가하는 방법입니다.",
+    "tags": [
+      "여행",
+      "기념품",
+      "가방 수납"
+    ],
+    "image": "../assets/story/travel-souvenir-backpack-packing.webp",
+    "imageAlt": "숙소 책상 위 회색 Himawari No.1230 백팩과 따로 포장된 작은 기념품의 AI 연출 사진",
+    "url": "travel-souvenir-backpack-packing.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "school-sports-day-backpack",
     "title": "학교 체육행사 날의 백팩: 운동장에 나가기 전부터 돌아올 때까지",
     "date": "2026-09-24",
