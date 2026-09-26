@@ -1,5 +1,53 @@
 [
   {
+    "id": "evening-walk-backpack-visibility",
+    "title": "해 질 무렵 걷는 날: 백팩과 별도 반사 소품 점검하기",
+    "date": "2026-09-27",
+    "summary": "어두워지는 시간에 걸어서 이동할 때 백팩에 가려지는 소품과 늘어진 끈을 확인하고, 손에 둘 물건을 줄이는 준비입니다.",
+    "description": "어두워지는 시간에 걸어서 이동할 때 백팩에 가려지는 소품과 늘어진 끈을 확인하고, 손에 둘 물건을 줄이는 준비입니다.",
+    "tags": [
+      "저녁 이동",
+      "반사 소품",
+      "백팩 점검"
+    ],
+    "image": "../assets/story/evening-walk-backpack-visibility.webp",
+    "imageAlt": "저녁 무렵 현관 콘솔 위 네이비 Himawari No.9007 백팩과 별도 반사 밴드 AI 연출 사진",
+    "url": "evening-walk-backpack-visibility.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "secondhand-backpack-in-person-check",
+    "title": "중고 백팩을 직접 볼 때: 사진 다음에 확인할 순서",
+    "date": "2026-09-27",
+    "summary": "중고 가방 직거래에서 사진만으로 알기 어려운 지퍼·끈·안감·냄새를 실물 상태와 판매 조건에 따라 확인하는 방법입니다.",
+    "description": "중고 가방 직거래에서 사진만으로 알기 어려운 지퍼·끈·안감·냄새를 실물 상태와 판매 조건에 따라 확인하는 방법입니다.",
+    "tags": [
+      "중고 가방",
+      "실물 점검",
+      "백팩 선택"
+    ],
+    "image": "../assets/story/secondhand-backpack-in-person-check.webp",
+    "imageAlt": "점검표 옆 밝은 테이블에 놓인 회색 Himawari No.1884 백팩 AI 연출 사진",
+    "url": "secondhand-backpack-in-person-check.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "hotel-checkout-day-backpack",
+    "title": "숙소 체크아웃 후 남은 하루: 백팩과 맡길 짐 나누기",
+    "date": "2026-09-27",
+    "summary": "숙소에서 나와 귀가할 때까지 시간이 남는 날, 보관할 짐과 계속 메고 다닐 물건을 구분해 다시 찾는 순간까지 준비합니다.",
+    "description": "숙소에서 나와 귀가할 때까지 시간이 남는 날, 보관할 짐과 계속 메고 다닐 물건을 구분해 다시 찾는 순간까지 준비합니다.",
+    "tags": [
+      "숙소 체크아웃",
+      "여행 동선",
+      "백팩 정리"
+    ],
+    "image": "../assets/story/hotel-checkout-day-backpack.webp",
+    "imageAlt": "밝은 숙소 로비에서 회색 Himawari No.1230 백팩을 메고 나서는 인물의 측면 AI 연출 사진",
+    "url": "hotel-checkout-day-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "moving-day-essentials-backpack",
     "title": "이사 당일 백팩: 상자에 넣지 않을 물건의 자리",
     "date": "2026-09-26",

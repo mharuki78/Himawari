@@ -1,0 +1,58 @@
+{
+  "date": "2026-09-27",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "evening-walk-backpack-visibility",
+      "title": "해 질 무렵 걷는 날: 백팩과 별도 반사 소품 점검하기",
+      "url": "https://himawari.co.kr/story/evening-walk-backpack-visibility.html",
+      "productId": "coupang-a6358466ba8a7f61",
+      "model": "No.9007",
+      "image": "assets/story/evening-walk-backpack-visibility.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-27/reference-9007.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-27/generated-9007.png",
+        "prompt": "Make a photorealistic premium editorial photograph, landscape 3:2, using the attached real Himawari No.9007 navy backpack as the exact product reference. Preserve navy rectangular backpack body, small white Himawari wordmark at the front center, two short navy top tote handles, two long padded navy shoulder straps, front lower zip pocket with white zipper tape and red pull, red lower accent panel, the red-and-navy miniature cap charm hanging on front left, white side drawcords, precise overall silhouette and scale. Show entire bag upright on a clean apartment entryway console at blue-hour early evening. A separate plain reflective armband and compact flashlight rest on the console nearby, clearly unattached props; the bag itself has no built-in reflective performance. Warm interior light and cool dusk window background, bag clearly visible and sharp. No people, no changed branding, no added pockets, no text overlays.",
+        "generatedAt": "2026-09-27"
+      }
+    },
+    {
+      "id": "secondhand-backpack-in-person-check",
+      "title": "중고 백팩을 직접 볼 때: 사진 다음에 확인할 순서",
+      "url": "https://himawari.co.kr/story/secondhand-backpack-in-person-check.html",
+      "productId": "coupang-330775bdb18b62bf",
+      "model": "No.1884",
+      "image": "assets/story/secondhand-backpack-in-person-check.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-27/reference-1884.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-27/generated-1884.png",
+        "prompt": "Create a premium photorealistic landscape 3:2 editorial image based on attached genuine Himawari No.1884 gray backpack. Preserve exact charcoal gray upright rectangular bag body, two dark rounded top handles, broad top opening, twin back shoulder straps, small centered black rectangular Himawari logo patch, front lower zip compartment with black zipper, side pocket structure and dimensions. The circular Korean marketing sticker in the source is a removable graphic overlay, not a physical bag detail: omit it. Place the bag upright on a clean well-lit table with an open blank inspection checklist and a neutral pencil nearby, in a tasteful independent resale studio. The product looks normal and clean; do not invent wear or defects. Front three-quarter view that shows handles and zipper, no people, no other bags, no altered logo, no typography or text overlays.",
+        "generatedAt": "2026-09-27"
+      }
+    },
+    {
+      "id": "hotel-checkout-day-backpack",
+      "title": "숙소 체크아웃 후 남은 하루: 백팩과 맡길 짐 나누기",
+      "url": "https://himawari.co.kr/story/hotel-checkout-day-backpack.html",
+      "productId": "store-13308483411",
+      "model": "No.1230",
+      "image": "assets/story/hotel-checkout-day-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-27/reference-1230.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-27/generated-1230.png",
+        "prompt": "Create a photorealistic premium editorial photograph, landscape 3:2, based on the attached authentic Himawari No.1230 gray backpack worn in the source photograph. Preserve gray soft dome-top backpack body and size relative to a person, black trim, two distinct front vertical compartments with short black top zippers and structured flap-like sides, small triangular black Himawari label centered low on the front, gray top loop and dark straps. Show an adult Korean traveler from a side-back three-quarter view wearing the bag while leaving a bright calm hotel lobby after checkout. Clothing simple cream cardigan and neutral trousers; different human than source, no claim of a real customer. Bag should be fully visible and prominent. One small closed suitcase farther behind may suggest checkout, but no branding and no other bag. Soft morning daylight, premium lifestyle editorial, no added pockets, no altered color or logo, no text.",
+        "generatedAt": "2026-09-27"
+      }
+    }
+  ],
+  "topicsReviewed": 80,
+  "overlapReview": "Reviewed 80 existing titles, summaries, and full story bodies. Distinct scopes: walking home after dusk with separate visibility accessories, in-person inspection of an individual secondhand backpack, and splitting luggage after hotel checkout. Existing cycling, product-photo, hotel-arrival, and travel posts address different triggers and tasks.",
+  "completionReceipt": "backups/story-runs/2026-09-27.deployment.json"
+}
