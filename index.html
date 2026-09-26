@@ -5,6 +5,18 @@
     <meta name="naver-site-verification" content="bf602bb829e2ce53aa6ba3c3aaec3f100a8680e6" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      // A fresh visit to the homepage should start at its hero, even if the browser
+      // previously restored a scroll position near the game section.
+      if (!location.hash) {
+        const navigation = performance.getEntriesByType('navigation')[0];
+        if (navigation?.type !== 'back_forward') {
+          history.scrollRestoration = 'manual';
+          addEventListener('pageshow', () => scrollTo(0, 0), { once: true });
+          addEventListener('pagehide', () => { history.scrollRestoration = 'auto'; }, { once: true });
+        }
+      }
+    </script>
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
