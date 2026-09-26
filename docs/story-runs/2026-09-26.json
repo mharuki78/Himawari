@@ -1,0 +1,58 @@
+{
+  "date": "2026-09-26",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "moving-day-essentials-backpack",
+      "title": "이사 당일 백팩: 상자에 넣지 않을 물건의 자리",
+      "url": "https://himawari.co.kr/story/moving-day-essentials-backpack.html",
+      "productId": "coupang-3d4fbf39120dea6f",
+      "model": "No.1010",
+      "image": "assets/story/moving-day-essentials-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-26/reference-1010.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-26/generated-1010.png",
+        "prompt": "Create a premium photorealistic landscape 3:2 editorial photograph using attached actual Himawari No.1010 khaki backpack as exact product reference. Preserve its pale sage-khaki rectangular body with black outline trim, two black upright tote handles joined at top, black straps and buckles on the front pouch, broad flap front pouch with a small centered white rectangular Himawari label, black side zippers, side pockets, black base and true stitching/proportions. Entire bag upright on a clean wooden hall console in a nearly empty new apartment, a few closed moving cartons and folded paper checklist in soft background. Gentle morning light. No people, no text overlays, no keys or valuables visibly on display, no extra bags, no altered branding or features. Front three-quarter view.",
+        "generatedAt": "2026-09-26"
+      }
+    },
+    {
+      "id": "child-clinic-visit-backpack",
+      "title": "아이와 진료 예약이 있는 날: 가방은 접수부터 귀가까지",
+      "url": "https://himawari.co.kr/story/child-clinic-visit-backpack.html",
+      "productId": "store-13326577567",
+      "model": "No.1208",
+      "image": "assets/story/child-clinic-visit-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-26/reference-1208.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-26/generated-1208.png",
+        "prompt": "Create a premium photorealistic landscape 3:2 editorial product photograph from attached actual Himawari No.1208 ivory diaper backpack reference. Preserve ivory rectangular upright backpack, small centered black Himawari brand tab near top, two slim top handles, vertical twin curved black zippers on the front, side pockets, simple black trim and true proportions. Remove the reference model and stroller entirely. Place the whole upright bag on a clean upholstered bench in a quiet bright family clinic waiting area, with a closed neutral document folder and a plain small baby-care pouch separate beside it. Avoid medical devices, patients, clinic logos and readable text. Warm natural daylight, front three-quarter view. No invented pockets or features, no claims about capacity or hygiene performance, no other bags.",
+        "generatedAt": "2026-09-26"
+      }
+    },
+    {
+      "id": "volunteer-garden-backpack",
+      "title": "동네 정원 봉사 가는 날: 작업 전후 가방을 나누는 방법",
+      "url": "https://himawari.co.kr/story/volunteer-garden-backpack.html",
+      "productId": "store-13685218117",
+      "model": "No.1089",
+      "image": "assets/story/volunteer-garden-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-26/reference-1089.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-26/generated-1089.png",
+        "prompt": "Create a premium photorealistic landscape 3:2 editorial product photograph using attached actual Himawari No.1089 pink backpack as exact product reference. Preserve soft pale pink rectangular body, two pink tote handles on top, round white Himawari logo patch high on front, broad front zip pocket with white zipper pull, side drawstring pockets, black-free pink straps and exact seams/proportions. Remove reference model. Place whole upright backpack on a dry wooden table at an outdoor community garden volunteer meeting point, beside a separate pair of clean work gloves and a folded blank schedule sheet, flowering beds softly in background. Clear front three-quarter view, warm daylight, uncluttered, no text overlay, no fake capacity/performance claims, no invented logos or pockets, no other bags.",
+        "generatedAt": "2026-09-26"
+      }
+    }
+  ],
+  "topicsReviewed": 77,
+  "overlapReview": "Reviewed 77 existing titles, summaries, and full story bodies. Distinct scopes: essential items outside moving boxes, clinic visit bag logistics with a child, and separating clean and used items during community garden volunteering.",
+  "completionReceipt": "backups/story-runs/2026-09-26.deployment.json"
+}

@@ -1,5 +1,53 @@
 [
   {
+    "id": "moving-day-essentials-backpack",
+    "title": "이사 당일 백팩: 상자에 넣지 않을 물건의 자리",
+    "date": "2026-09-26",
+    "summary": "이삿짐 상자가 먼저 떠난 뒤에도 필요한 열쇠와 서류, 충전 도구를 한 가방에서 찾을 수 있게 정리하는 순서입니다.",
+    "description": "이삿짐 상자가 먼저 떠난 뒤에도 필요한 열쇠와 서류, 충전 도구를 한 가방에서 찾을 수 있게 정리하는 순서입니다.",
+    "tags": [
+      "이사 당일",
+      "필수품",
+      "백팩 정리"
+    ],
+    "image": "../assets/story/moving-day-essentials-backpack.webp",
+    "imageAlt": "이사 상자가 놓인 새집 콘솔 위 카키색 Himawari No.1010 백팩 AI 연출 사진",
+    "url": "moving-day-essentials-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "child-clinic-visit-backpack",
+    "title": "아이와 진료 예약이 있는 날: 가방은 접수부터 귀가까지",
+    "date": "2026-09-26",
+    "summary": "아이와 병원에 갈 때 접수에 필요한 물건과 대기 중 쓸 물건을 나눠 두고, 귀가 후 다시 정리하는 가방 동선입니다.",
+    "description": "아이와 병원에 갈 때 접수에 필요한 물건과 대기 중 쓸 물건을 나눠 두고, 귀가 후 다시 정리하는 가방 동선입니다.",
+    "tags": [
+      "아이와 외출",
+      "진료 예약",
+      "가방 정리"
+    ],
+    "image": "../assets/story/child-clinic-visit-backpack.webp",
+    "imageAlt": "밝은 진료 대기 공간 벤치 위 아이보리 Himawari No.1208 가방과 별도 파일 AI 연출 사진",
+    "url": "child-clinic-visit-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "volunteer-garden-backpack",
+    "title": "동네 정원 봉사 가는 날: 작업 전후 가방을 나누는 방법",
+    "date": "2026-09-26",
+    "summary": "동네 정원 봉사에서 개인 소지품과 작업 도구를 섞지 않고, 흙 묻은 물건을 귀가 전에 분리하는 가방 사용법입니다.",
+    "description": "동네 정원 봉사에서 개인 소지품과 작업 도구를 섞지 않고, 흙 묻은 물건을 귀가 전에 분리하는 가방 사용법입니다.",
+    "tags": [
+      "정원 봉사",
+      "야외 활동",
+      "가방 정리"
+    ],
+    "image": "../assets/story/volunteer-garden-backpack.webp",
+    "imageAlt": "동네 정원 작업대 위 분홍색 Himawari No.1089 가방과 분리된 원예 장갑 AI 연출 사진",
+    "url": "volunteer-garden-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "swimming-pool-backpack-wet-dry",
     "title": "수영장 가는 날의 백팩: 마른 준비와 젖은 귀가를 따로 생각하기",
     "date": "2026-09-25",
