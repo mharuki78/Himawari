@@ -1,5 +1,53 @@
 [
   {
+    "id": "flea-market-seller-backpack",
+    "title": "동네 플리마켓 판매자 가방: 진열대와 백팩의 역할 나누기",
+    "date": "2026-09-28",
+    "summary": "플리마켓에 직접 참여하는 날, 판매 물건은 진열대에 두고 개인 소지품과 운영에 필요한 작은 물건만 백팩에 남기는 방법입니다.",
+    "description": "플리마켓에 직접 참여하는 날, 판매 물건은 진열대에 두고 개인 소지품과 운영에 필요한 작은 물건만 백팩에 남기는 방법입니다.",
+    "tags": [
+      "플리마켓",
+      "판매자 준비",
+      "백팩 정리"
+    ],
+    "image": "../assets/story/flea-market-seller-backpack.webp",
+    "imageAlt": "동네 플리마켓 판매대 위 오렌지색 Himawari No.124 백팩과 별도 진열 소품 AI 연출 사진",
+    "url": "flea-market-seller-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "laundry-dropoff-backpack-after-work",
+    "title": "퇴근길 세탁소에 들르는 날: 맡길 옷은 백팩 밖으로",
+    "date": "2026-09-28",
+    "summary": "세탁소에 옷을 맡기는 퇴근길, 맡길 옷과 평소 소지품을 분리하고 접수표를 잃어버리지 않는 가방 동선입니다.",
+    "description": "세탁소에 옷을 맡기는 퇴근길, 맡길 옷과 평소 소지품을 분리하고 접수표를 잃어버리지 않는 가방 동선입니다.",
+    "tags": [
+      "퇴근길",
+      "세탁소 방문",
+      "가방 동선"
+    ],
+    "image": "../assets/story/laundry-dropoff-backpack-after-work.webp",
+    "imageAlt": "세탁소 앞을 지나며 연두색 Himawari No.1088M 백팩을 메고 별도 코트를 든 인물의 AI 연출 사진",
+    "url": "laundry-dropoff-backpack-after-work.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "backpack-donation-handover-guide",
+    "title": "쓰던 백팩을 기부하기 전: 받는 곳의 기준부터 확인하기",
+    "date": "2026-09-28",
+    "summary": "가방을 기부하거나 무상으로 넘길 때 받을 곳의 기준을 확인하고 개인 물건·이름표를 비운 뒤 상태를 솔직하게 전달하는 순서입니다.",
+    "description": "가방을 기부하거나 무상으로 넘길 때 받을 곳의 기준을 확인하고 개인 물건·이름표를 비운 뒤 상태를 솔직하게 전달하는 순서입니다.",
+    "tags": [
+      "가방 기부",
+      "개인정보 정리",
+      "백팩 인계"
+    ],
+    "image": "../assets/story/backpack-donation-handover-guide.webp",
+    "imageAlt": "빈 기부용 상자와 목록표 옆 테이블에 놓인 민트색 Himawari No.0422 백팩 AI 연출 사진",
+    "url": "backpack-donation-handover-guide.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "evening-walk-backpack-visibility",
     "title": "해 질 무렵 걷는 날: 백팩과 별도 반사 소품 점검하기",
     "date": "2026-09-27",

@@ -1,0 +1,58 @@
+{
+  "date": "2026-09-28",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "flea-market-seller-backpack",
+      "title": "동네 플리마켓 판매자 가방: 진열대와 백팩의 역할 나누기",
+      "url": "https://himawari.co.kr/story/flea-market-seller-backpack.html",
+      "productId": "coupang-9e8b28e0fab8e07a",
+      "model": "No.124",
+      "image": "assets/story/flea-market-seller-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-28/reference-124.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-28/generated-124.png",
+        "prompt": "Create a premium photorealistic landscape 3:2 editorial product photograph from the attached genuine Himawari No.124 orange backpack. Maintain exact muted orange rectangular body, black shoulder straps behind, two rounded orange tote handles with small black joining tab, small centered black rectangular Himawari patch, broad lower front zip pocket with black zipper, side zipper pulls, and tan bottom strip. Bag upright on a simple seller's table at a neighborhood outdoor flea market before opening, with a few neatly wrapped small handmade items on a separate tray in soft background, not inside bag. Daylight, front three-quarter angle, entire bag clearly visible and proportion accurate. No people, no branding changes, no added pockets or logo, no readable text overlays.",
+        "generatedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "laundry-dropoff-backpack-after-work",
+      "title": "퇴근길 세탁소에 들르는 날: 맡길 옷은 백팩 밖으로",
+      "url": "https://himawari.co.kr/story/laundry-dropoff-backpack-after-work.html",
+      "productId": "store-13308752642",
+      "model": "No.1088M",
+      "image": "assets/story/laundry-dropoff-backpack-after-work.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-28/reference-1088M.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-28/generated-1088M.png",
+        "prompt": "Make a photorealistic premium landscape 3:2 lifestyle editorial image using attached authentic Himawari No.1088M green backpack as exact reference. Preserve pastel mint-green rectangular backpack shape, soft pink bottom trim, two narrow long pink front straps with adjustable buckles falling vertically, twin pink top grab handles, mint shoulder straps, white zipper pulls and front lower horizontal zip pocket, true overall scale relative to an adult. Show an adult Korean woman in neutral workday clothing from rear-side three-quarter view wearing the bag as she walks on a bright quiet street toward a neighborhood laundry storefront. A coat in a separate plain garment sleeve is carried in one hand, not stuffed into backpack. Bag is prominent and fully visible, clothing and model are fictional AI staging. No extra bags, no changed logo/color/features, no text overlays.",
+        "generatedAt": "2026-09-28"
+      }
+    },
+    {
+      "id": "backpack-donation-handover-guide",
+      "title": "쓰던 백팩을 기부하기 전: 받는 곳의 기준부터 확인하기",
+      "url": "https://himawari.co.kr/story/backpack-donation-handover-guide.html",
+      "productId": "store-11070824181",
+      "model": "No.0422",
+      "image": "assets/story/backpack-donation-handover-guide.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-28/reference-0422.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-28/generated-0422.png",
+        "prompt": "Create a premium photorealistic landscape 3:2 editorial photo using attached real Himawari No.0422 mint backpack as exact product reference. Preserve pale mint pastel rounded rectangular body, white shoulder straps behind, two small front hanging accessories (round mint Himawari pouch with yellow mark and slim mint character charm), the lower large front zip pocket and small white rectangular brand label on it, side pocket, true shape and size. Entire bag upright on a clean wooden tabletop at home beside an empty unmarked donation box and a folded blank paper inventory sheet; bag visibly empty and in good condition. Gentle morning daylight, front three-quarter view, no people, no invented branding or pockets, no readable text overlays. Editorial image illustrates checking an owned bag before giving it to someone else, not a used-condition guarantee.",
+        "generatedAt": "2026-09-28"
+      }
+    }
+  ],
+  "topicsReviewed": 83,
+  "overlapReview": "Reviewed 83 existing titles, summaries, and full story bodies. Distinct scopes: seller-side flea market setup and closing, keeping a coat separate on a laundry drop-off commute, and recipient criteria/privacy when donating a used bag. Existing shopping, receipt, parcel and secondhand-buyer posts address different triggers and steps.",
+  "completionReceipt": "backups/story-runs/2026-09-28.deployment.json"
+}
