@@ -1,5 +1,53 @@
 [
   {
+    "id": "flower-bouquet-backpack-day",
+    "title": "꽃다발을 선물하러 가는 날: 백팩과 꽃은 따로 들기",
+    "date": "2026-09-29",
+    "summary": "꽃집에서 약속 장소까지 이동할 때 꽃다발은 손에, 개인 물건은 백팩에 두고 물기와 눌림을 살피는 준비입니다.",
+    "description": "꽃집에서 약속 장소까지 이동할 때 꽃다발은 손에, 개인 물건은 백팩에 두고 물기와 눌림을 살피는 준비입니다.",
+    "tags": [
+      "꽃다발 선물",
+      "외출 준비",
+      "백팩 사용"
+    ],
+    "image": "../assets/story/flower-bouquet-backpack-day.webp",
+    "imageAlt": "꽃집 나무 벤치에 놓인 베이지색 Himawari No.0403 백팩과 가방 밖에 놓인 꽃다발의 AI 연출 사진",
+    "url": "flower-bouquet-backpack-day.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "long-hair-backpack-strap-routine",
+    "title": "긴 머리와 백팩 어깨끈: 메고 벗는 순서를 조금 바꾸기",
+    "date": "2026-09-29",
+    "summary": "긴 머리가 어깨끈 아래에 눌리거나 여밈에 걸릴 때, 가방을 메기 전과 벗은 뒤의 작은 동작을 살펴봅니다.",
+    "description": "긴 머리가 어깨끈 아래에 눌리거나 여밈에 걸릴 때, 가방을 메기 전과 벗은 뒤의 작은 동작을 살펴봅니다.",
+    "tags": [
+      "긴 머리",
+      "백팩 착용",
+      "어깨끈"
+    ],
+    "image": "../assets/story/long-hair-backpack-strap-routine.webp",
+    "imageAlt": "가을 길에서 긴 머리를 들어 올리며 Himawari No.0513 스카이 백팩의 어깨끈을 확인하는 성인 인물의 AI 착용 연출 사진",
+    "url": "long-hair-backpack-strap-routine.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "public-office-documents-backpack",
+    "title": "주민센터에서 서류를 받는 날: 가방 속 종이의 앞뒤를 정하기",
+    "date": "2026-09-29",
+    "summary": "행정 서류를 발급받으러 갈 때 방문처의 안내를 먼저 확인하고, 받은 종이가 구겨지거나 밖으로 드러나지 않게 되담는 동선입니다.",
+    "description": "행정 서류를 발급받으러 갈 때 방문처의 안내를 먼저 확인하고, 받은 종이가 구겨지거나 밖으로 드러나지 않게 되담는 동선입니다.",
+    "tags": [
+      "주민센터 방문",
+      "서류 정리",
+      "개인정보"
+    ],
+    "image": "../assets/story/public-office-documents-backpack.webp",
+    "imageAlt": "공공 서비스 대기 공간의 의자 옆에 놓인 카키색 Himawari No.1884 백팩과 닫힌 서류 파일의 AI 연출 사진",
+    "url": "public-office-documents-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "flea-market-seller-backpack",
     "title": "동네 플리마켓 판매자 가방: 진열대와 백팩의 역할 나누기",
     "date": "2026-09-28",

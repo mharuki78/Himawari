@@ -1,0 +1,64 @@
+{
+  "date": "2026-09-29",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "flower-bouquet-backpack-day",
+      "title": "꽃다발을 선물하러 가는 날: 백팩과 꽃은 따로 들기",
+      "url": "https://himawari.co.kr/story/flower-bouquet-backpack-day.html",
+      "productId": "store-13308523903",
+      "model": "No.0403",
+      "image": "assets/story/flower-bouquet-backpack-day.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-29/reference-0403.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-29/generated-0403.png",
+        "prompt": "Use case: photorealistic-natural. Asset type: horizontal 3:2 hero photo for a Korean bag-care editorial article. Input image: the genuine Himawari No.0403 beige backpack reference, which defines the exact product. Create a calm candid scene in a neighborhood flower shop: the beige and black No.0403 backpack standing upright on a clean low wooden bench beside a freshly wrapped bouquet that remains outside the bag, with a little empty space between the flowers and bag. Preserve the actual beige rectangular silhouette and size, two short black top handles, black shoulder straps, tall narrow beige front pouch with black zip and dark piping, small black Himawari patch at lower front, and side profile. Soft late-morning natural light, refined documentary photography, entire bag clear and dominant. Do not change the bag's color, logo, handles, pockets, zipper or dimensions; no extra products, no people, no readable signage or added text. The scene is AI staging, not an actual customer photo.",
+        "generatedAt": "2026-09-29",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13308523903",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260211_281/1770774598923VUxxR_JPEG/20746952034287940_427742899.jpg"
+      }
+    },
+    {
+      "id": "long-hair-backpack-strap-routine",
+      "title": "긴 머리와 백팩 어깨끈: 메고 벗는 순서를 조금 바꾸기",
+      "url": "https://himawari.co.kr/story/long-hair-backpack-strap-routine.html",
+      "productId": "store-13312570673",
+      "model": "No.0513",
+      "image": "assets/story/long-hair-backpack-strap-routine.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-29/reference-0513.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-29/generated-0513.png",
+        "prompt": "Use case: photorealistic-natural. Asset type: 3:2 horizontal editorial hero photo about wearing a backpack with long hair. Input image is a genuine Himawari No.0513 sky color backpack and defines the exact object. Show a fictional adult woman in a simple cream top from a rear three-quarter view, pausing on a quiet tree-lined city sidewalk as she lifts her long hair clear of the shoulder straps before setting the straps comfortably. Bag fully visible and prominent. Preserve the reference backpack exactly: softly rectangular drawstring body, light gray fabric center, pale lavender gathered top and side pockets, dark navy lower band, thin black drawcords hanging down the front, white triangular Himawari label on lower right, two dark shoulder straps, realistic adult-to-bag proportions. Natural autumn daylight, tasteful candid editorial photography. No change to bag color, cut, pockets, drawstring, logo or straps; no added accessories, no legible text, no false customer-testimonial look. This is an AI-staged illustration, not an actual customer's fit photo.",
+        "generatedAt": "2026-09-29",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13312570673",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260416_279/1776311593691l3vHW_JPEG/596354370083117_582164802.jpg"
+      }
+    },
+    {
+      "id": "public-office-documents-backpack",
+      "title": "주민센터에서 서류를 받는 날: 가방 속 종이의 앞뒤를 정하기",
+      "url": "https://himawari.co.kr/story/public-office-documents-backpack.html",
+      "productId": "store-13326303754",
+      "model": "No.1884",
+      "image": "assets/story/public-office-documents-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-29/reference-1884.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-29/generated-1884.png",
+        "prompt": "Use case: photorealistic-natural. Asset type: horizontal 3:2 Korean editorial article hero about visiting a local administrative office with private paper documents. Input image is the authentic Himawari No.1884 khaki backpack composite, defining the exact product. Show the actual dark olive-khaki rectangular backpack upright beside an adult's chair in a calm contemporary public-service waiting area, with one closed plain opaque document folder resting separately on the chair. Bag is large and clearly visible, natural front three-quarter view, soft window daylight, discreet premium documentary photography. Preserve the same olive fabric, broad flat front lower horizontal zip pocket, small centered black Himawari patch above it, twin short olive handles, dark shoulder straps, top zipper and side seams, accurate shape and scale. Avoid visible personal data, signs, text, people, invented logo, invented pockets or bag features; do not imply the bag protects documents from damage or loss. Fictional AI illustration only.",
+        "generatedAt": "2026-09-29",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13326303754",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260708_26/1783479881442IJMDp_JPEG/128389886240827058_66176657.jpg"
+      }
+    }
+  ],
+  "topicsReviewed": 86,
+  "overlapReview": "Reviewed 86 existing titles, summaries and complete story bodies. The new topics address a hand-carried fresh bouquet, long hair caught under shoulder straps, and privacy-aware handling of freshly issued civic documents. These differ from earlier souvenir packing, shoulder-strap fit, interview documents and child clinic visits in trigger, purpose and sequence.",
+  "completionReceipt": "backups/story-runs/2026-09-29.deployment.json"
+}
