@@ -26,13 +26,13 @@ test('모든 HTML 페이지와 상품 템플릿이 공통 파비콘을 선언한
   }
 });
 
-test('모든 공개 페이지가 동일한 7개 주요 메뉴를 제공한다', async () => {
+test('공개 페이지의 기존 메뉴와 공통 LookBook 메뉴 연결을 유지한다', async () => {
   const rootFiles = ['404.html', 'about.html', 'account.html', 'checkout.html', 'contact.html', 'finder.html', 'game.html', 'guest-order.html', 'index.html', 'privacy.html', 'terms.html'];
   const storyFiles = (await readdir(new URL('../story/', import.meta.url)))
     .filter((file) => file.endsWith('.html') && file !== 'admin.html')
     .map((file) => `story/${file}`);
   const templateFiles = ['templates/product.html', 'templates/products.html'];
-  const htmlFiles = [...rootFiles, ...storyFiles, ...templateFiles];
+  const htmlFiles = [...rootFiles, ...storyFiles, ...templateFiles, 'lookbook/index.html'];
   const expectedLabels = ['제품', '가방 찾기', '가이드북', '브랜드', '이야기', '게임', '연락하기'];
   const expectedHrefs = ['/products.html', '/finder.html', '/guidebook.html', '/about.html', '/story/', '/game.html', '/contact.html'];
 
@@ -41,9 +41,15 @@ test('모든 공개 페이지가 동일한 7개 주요 메뉴를 제공한다', 
     const navigation = html.match(/<nav class="site-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || '';
     const links = [...navigation.matchAll(/<a href="([^"]+)"([^>]*)>([^<]+)<\/a>/g)];
 
-    assert.deepEqual(links.map((link) => link[3]), expectedLabels, `${file}: 메뉴 이름과 순서`);
-    assert.deepEqual(links.map((link) => link[1]), expectedHrefs, `${file}: 메뉴 링크`);
+    const legacyLinks = links.filter(link => link[1] !== '/lookbook/');
+    assert.deepEqual(legacyLinks.map((link) => link[3]), expectedLabels, `${file}: 기존 메뉴 이름과 순서`);
+    assert.deepEqual(legacyLinks.map((link) => link[1]), expectedHrefs, `${file}: 기존 메뉴 링크`);
+    // Published story files retain their verified content; shared navigation adds LookBook.
+    assert.match(html, /src="(?:\.\.\/|\/)?script\.js"/);
+    if (file === 'index.html' || file === 'lookbook/index.html') assert.equal(links.filter(link => link[1] === '/lookbook/').length, 1);
   }
+  const script = await readFile(new URL('../script.js', import.meta.url), 'utf8');
+  assert.match(script, /label: 'LookBook', href: '\/lookbook\/'/);
 });
 
 test('홈 첫 화면은 No.9007 캠페인 영상과 릴스 8개를 제공한다', async () => {
@@ -138,7 +144,10 @@ test('운영 사이트맵은 현재 제품과 이야기 목록을 XML로 동적 
   assert.equal(response.status, 200);
   assert.match(response.headers.get('content-type') || '', /^application\/xml/);
   const stories = JSON.parse(await readFile(new URL('../story/posts.json', import.meta.url), 'utf8'));
-  assert.equal((sitemap.match(/<url>/g) || []).length, 16 + products.length + stories.length);
+  assert.equal((sitemap.match(/<url>/g) || []).length, 17 + products.length + stories.length);
+  const lookbook = JSON.parse(await readFile(new URL('../lookbook/entries.json', import.meta.url), 'utf8'));
+  const lookbookDate = lookbook.map(entry => entry.date).sort().at(-1);
+  assert.ok(sitemap.includes(`<loc>https://himawari.co.kr/lookbook/</loc><lastmod>${lookbookDate}</lastmod>`));
   assert.equal(sitemap.includes('https://himawari.co.kr/reviews.html'), true);
   for (const product of products) {
     assert.equal(sitemap.includes(`https://himawari.co.kr/product.html?id=${encodeURIComponent(product.id)}`), true);

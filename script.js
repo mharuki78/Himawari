@@ -52,6 +52,7 @@ function syncSiteNavigation() {
     { label: '가이드북', href: '/guidebook.html', active: currentPath === '/guidebook.html' },
     { label: '브랜드', href: '/about.html', active: /\/about(?:\.html|\/|$)/.test(currentPath) },
     { label: '이야기', href: '/story/', active: currentPath === '/story' || currentPath.startsWith('/story/') },
+    { label: 'LookBook', href: '/lookbook/', active: currentPath === '/lookbook' || currentPath.startsWith('/lookbook/') },
     { label: '게임', href: '/game.html', active: /\/game(?:\.html|\/|$)/.test(currentPath) },
     { label: '연락하기', href: '/contact.html', active: /\/contact(?:\.html|\/|$)/.test(currentPath) },
   ];
@@ -625,6 +626,12 @@ const year = document.querySelector('#year');
 if (year) year.textContent = new Date().getFullYear();
 
 const footerNavigation = document.querySelector('.site-footer nav[aria-label="푸터 메뉴"]');
+if (footerNavigation && !footerNavigation.querySelector('a[href="/lookbook/"]')) {
+  const lookbookLink = document.createElement('a');
+  lookbookLink.href = '/lookbook/';
+  lookbookLink.textContent = 'LookBook';
+  footerNavigation.append(lookbookLink);
+}
 if (footerNavigation && !footerNavigation.querySelector('a[href$="terms.html"]')) {
   const termsLink = document.createElement('a');
   termsLink.href = '/terms.html';

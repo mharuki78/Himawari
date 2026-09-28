@@ -1,0 +1,47 @@
+[
+  {
+    "id": "2026-09-28-city-1884",
+    "date": "2026-09-28",
+    "category": "city",
+    "title": "도시의 아침을 걷다",
+    "model": "1884",
+    "color": "카키",
+    "productId": "store-13326303754",
+    "scene": "따뜻한 벽돌 건물 사이, 리넨 재킷과 함께한 아침 산책.",
+    "alt": "카키색 No.1884 백팩을 멘 중년 남성이 벽돌 건물 앞에 선 AI 착용 연출",
+    "image": "/assets/lookbook/2026-09-28-city-1884.webp",
+    "thumbnail": "/assets/lookbook/2026-09-28-city-1884-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-09-28-travel-1027",
+    "date": "2026-09-28",
+    "category": "travel",
+    "title": "바람을 따라, 바다로",
+    "model": "1027",
+    "color": "라벤더",
+    "productId": "store-11070925709",
+    "scene": "가벼운 셔츠와 데님, 바다가 보이는 산책로에서.",
+    "alt": "라벤더색 No.1027 백팩을 멘 곱슬머리 여성이 바닷가 산책로를 걷는 AI 착용 연출",
+    "image": "/assets/lookbook/2026-09-28-travel-1027.webp",
+    "thumbnail": "/assets/lookbook/2026-09-28-travel-1027-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-09-28-everyday-9007",
+    "date": "2026-09-28",
+    "category": "everyday",
+    "title": "서점에 들르는 오후",
+    "model": "9007",
+    "color": "베이지",
+    "productId": "coupang-42bfd784b3247c8b",
+    "scene": "짙은 남색 셔츠에 베이지 가방, 책 한 권을 고르는 느긋한 오후.",
+    "alt": "베이지색 No.9007 백팩을 멘 단발머리 여성이 책을 들고 서점 앞에 선 AI 착용 연출",
+    "image": "/assets/lookbook/2026-09-28-everyday-9007.webp",
+    "thumbnail": "/assets/lookbook/2026-09-28-everyday-9007-640.webp",
+    "width": 1024,
+    "height": 1536
+  }
+]

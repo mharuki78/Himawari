@@ -5,6 +5,7 @@ import { publicPromotions, readPromotions } from './_lib/promotions.js';
 import { applyInventoryReservations } from './_lib/inventory.js';
 import { publicReels, readReelsConfig } from './_lib/reels.js';
 import storyPosts from '../story/posts.json' with { type: 'json' };
+import lookbookEntries from '../lookbook/entries.json' with { type: 'json' };
 import { database, databaseIsConfigured } from './_lib/database.js';
 
 const SITE_ORIGIN = 'https://himawari.co.kr';
@@ -25,6 +26,7 @@ const SITEMAP_PAGES = [
   ['/privacy.html', '2026-09-03'],
   ['/terms.html', '2026-09-03'],
   ['/story/', '2026-09-08'],
+  ['/lookbook/', lookbookEntries.map(entry => entry.date).sort().at(-1) || ''],
 ];
 
 function sitemapUrl(path, lastmod = '') {

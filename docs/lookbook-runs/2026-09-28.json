@@ -1,0 +1,62 @@
+{
+  "date": "2026-09-28",
+  "expectedCount": 3,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-09-28/deployment.json",
+  "entries": [
+    {
+      "id": "2026-09-28-city-1884",
+      "model": "1884",
+      "productId": "store-13326303754",
+      "image": "/assets/lookbook/2026-09-28-city-1884.webp",
+      "reference": "backups/lookbook-2026-09-28/reference-1884.jpg",
+      "generatedSource": "backups/lookbook-2026-09-28/generated-1884.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        30,
+        45,
+        20
+      ],
+      "dimensionsSource": "2026 Himawari catalog page 31; live catalog checked 2026-09-28",
+      "prompt": "Portrait 2:3 fashion lookbook photograph, 1024x1536. Use attached genuine Himawari No.1884 KHAKI bag as strict product reference only; source is a collage, produce ONE clean photographic scene with NO collage, water drops, USB cable, logos in background or typography overlays. Exact dark olive khaki 30cm wide x45cm tall x20cm deep backpack, rectangular doctor-bag top, two matching rounded tote handles, small centered black Himawari EST.2010 patch, large front horizontal black zipper pocket, side pockets, accurate stitching and black feet. Preserve logo spelling and all physical features. Fictional East Asian man about 55 years old with silver salt-and-pepper hair wearing a relaxed stone linen blazer and charcoal trousers, standing by warm brick architecture in a quiet city morning. Rear three-quarter view with head gently turned; both straps worn naturally, bag is clearly visible, centered and sharp, occupies about half frame height at physically plausible scale on 177cm adult. Natural candid premium magazine photography, warm sun, realistic skin and fabric, no other bags.",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260708_26/1783479881442IJMDp_JPEG/128389886240827058_66176657.jpg"
+    },
+    {
+      "id": "2026-09-28-travel-1027",
+      "model": "1027",
+      "productId": "store-11070925709",
+      "image": "/assets/lookbook/2026-09-28-travel-1027.webp",
+      "reference": "backups/lookbook-2026-09-28/reference-1027.jpg",
+      "generatedSource": "backups/lookbook-2026-09-28/generated-1027.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026 Himawari catalog page 28; live catalog checked 2026-09-28",
+      "prompt": "Portrait 2:3 premium photographic fashion lookbook, 1024x1536. Strictly preserve authentic attached Himawari No.1027 LAVENDER product: 28cm wide x40cm high x17cm deep rectangular backpack, pale blue upper front/side panels, lavender lower front zipper pocket and side accents, cream bottom strip, cream twin top handles with small round fasteners, original subtle Himawari mark, cream rectangular detachable zip pouch hanging at front right as reference, correct straps and proportions. A fictional adult Black woman around 26 with natural curly hair, off-white shirt and relaxed denim walks beside a quiet seaside timber promenade under clear pale-blue sky, softly blurred sea behind. Rear-side three-quarter portrait, bag fully visible and prominent, natural walking pose, eyes looking out to sea. Bag about 40cm tall on 165cm adult, do not enlarge it. Entire shot is a single coherent realistic editorial photograph, not a collage. Product exact, no added logos or text, no false waterproof claim, no other bags. Do not copy reference person's identity.",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260210_108/1770707978865U4o9A_JPEG/43528032995650075_718147852.jpg"
+    },
+    {
+      "id": "2026-09-28-everyday-9007",
+      "model": "9007",
+      "productId": "coupang-42bfd784b3247c8b",
+      "image": "/assets/lookbook/2026-09-28-everyday-9007.webp",
+      "reference": "backups/lookbook-2026-09-28/reference-9007.jpg",
+      "generatedSource": "backups/lookbook-2026-09-28/generated-9007.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026 Himawari catalog page 10; live catalog checked 2026-09-28",
+      "prompt": "Portrait 2:3 premium photographic Himawari lookbook, 1024x1536. Attached actual No.9007 BEIGE backpack must remain exact: beige rectangular body 28x40x17cm, beige twin round short tote handles, matching padded shoulder straps, centered white Himawari embroidered wordmark, white front horizontal zipper with coral-pink pull, coral-pink bottom strip, miniature beige cap-shaped charm with coral-pink visor hanging on upper front left, white side cords and pink pulls. Correct brand spelling and all small features, no substitutes. Fictional East Asian adult woman about 35 with short dark bob, indigo relaxed overshirt and cream trousers, standing outside a leafy independent bookshop with warm wood window frames and books visible behind. Rear-side three-quarter view, one hand holding a closed book, bag fully visible and prominent on both shoulders at true 40cm scale for 168cm adult. Midday diffused daylight, refined street-style fashion editorial with realistic material, no readable storefront lettering, no text overlays, no other bags.",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-42bfd784b3247c8b/main-GORqso7CScHtD1TDA6lu5fnlyuxlsj.jpg"
+    }
+  ]
+}
