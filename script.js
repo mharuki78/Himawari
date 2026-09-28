@@ -104,12 +104,40 @@ document.addEventListener('keydown', (event) => {
 });
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-function setupReveals(root = document) {
-  const revealItems = root.querySelectorAll('.reveal:not([data-reveal-ready])');
-  revealItems.forEach((item) => item.setAttribute('data-reveal-ready', 'true'));
+const motionPage = document.body.matches('.home-layout, .about-page, .story-index-page, .lookbook-page');
+const canReveal = motionPage && !reducedMotion.matches && 'IntersectionObserver' in window;
+const revealObserver = canReveal ? new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('is-visible');
+    observer.unobserve(entry.target);
+  });
+}, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 }) : null;
 
-  // Reading and shopping content stays visible immediately, including keyboard navigation.
-  revealItems.forEach((item) => item.classList.add('is-visible'));
+if (canReveal) {
+  document.querySelectorAll('.lookbook-card, .home-layout .feature-film').forEach((item) => {
+    item.dataset.motionReveal = '';
+  });
+  document.querySelector('.about-page .founder-portrait')?.setAttribute('data-motion-kind', 'image');
+}
+
+function setupReveals(root = document) {
+  const revealItems = root.querySelectorAll('.reveal:not([data-reveal-ready]), [data-motion-reveal]:not([data-reveal-ready])');
+  revealItems.forEach((item, index) => {
+    item.setAttribute('data-reveal-ready', 'true');
+    if (!canReveal) {
+      item.classList.add('is-visible');
+      return;
+    }
+    item.style.setProperty('--motion-delay', `${Math.min(index % 3, 2) * 65}ms`);
+    const bounds = item.getBoundingClientRect();
+    if (bounds.top < window.innerHeight * .9 || bounds.bottom <= 0) {
+      item.classList.add('is-visible');
+    } else {
+      revealObserver.observe(item);
+    }
+  });
+  if (canReveal) document.documentElement.classList.add('motion-ready');
 }
 
 window.himawariReveal = setupReveals;
