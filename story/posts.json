@@ -1,5 +1,53 @@
 [
   {
+    "id": "photo-studio-backpack-check",
+    "title": "사진관에 증명사진 찍으러 가는 날: 가방은 촬영 전 어디에 둘까",
+    "date": "2026-09-30",
+    "summary": "예약한 사진관의 복장·촬영 안내를 확인하고, 대기부터 촬영까지 가방과 작은 소지품을 차분히 정리하는 순서입니다.",
+    "description": "예약한 사진관의 복장·촬영 안내를 확인하고, 대기부터 촬영까지 가방과 작은 소지품을 차분히 정리하는 순서입니다.",
+    "tags": [
+      "사진관 방문",
+      "촬영 준비",
+      "가방 동선"
+    ],
+    "image": "../assets/story/photo-studio-backpack-check.webp",
+    "imageAlt": "사진관 대기 공간에 들어서는 성인 인물이 착용한 라벤더색 Himawari No.9291 백팩의 AI 연출 사진",
+    "url": "photo-studio-backpack-check.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "wedding-guest-backpack-flow",
+    "title": "결혼식 하객의 백팩: 접수대부터 식사 자리까지",
+    "date": "2026-09-30",
+    "summary": "예식장에 가방을 들고 갈 때 안내된 보관 위치를 확인하고 초대장·겉옷·귀중품을 분리해 움직이는 동선입니다.",
+    "description": "예식장에 가방을 들고 갈 때 안내된 보관 위치를 확인하고 초대장·겉옷·귀중품을 분리해 움직이는 동선입니다.",
+    "tags": [
+      "결혼식 하객",
+      "예식장 이동",
+      "백팩 보관"
+    ],
+    "image": "../assets/story/wedding-guest-backpack-flow.webp",
+    "imageAlt": "가상의 예식장 로비 선반 위 검은색 Himawari No.1027 백팩과 별도로 놓인 초대장 봉투의 AI 연출 사진",
+    "url": "wedding-guest-backpack-flow.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "bakery-paper-bag-backpack",
+    "title": "빵집에 들른 아침: 갓 산 빵과 백팩은 어떻게 들고 갈까",
+    "date": "2026-09-30",
+    "summary": "빵집 포장 안내에 따라 따뜻한 빵을 받은 뒤 종이봉투와 개인 소지품을 분리하고 눌림·부스러기를 살피는 귀가 동선입니다.",
+    "description": "빵집 포장 안내에 따라 따뜻한 빵을 받은 뒤 종이봉투와 개인 소지품을 분리하고 눌림·부스러기를 살피는 귀가 동선입니다.",
+    "tags": [
+      "동네 빵집",
+      "종이봉투",
+      "가방 관리"
+    ],
+    "image": "../assets/story/bakery-paper-bag-backpack.webp",
+    "imageAlt": "동네 빵집 앞 벤치의 회색 Himawari No.1230 백팩과 별도로 놓인 종이봉투의 AI 연출 사진",
+    "url": "bakery-paper-bag-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "flower-bouquet-backpack-day",
     "title": "꽃다발을 선물하러 가는 날: 백팩과 꽃은 따로 들기",
     "date": "2026-09-29",

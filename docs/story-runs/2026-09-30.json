@@ -1,0 +1,64 @@
+{
+  "date": "2026-09-30",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "photo-studio-backpack-check",
+      "title": "사진관에 증명사진 찍으러 가는 날: 가방은 촬영 전 어디에 둘까",
+      "url": "https://himawari.co.kr/story/photo-studio-backpack-check.html",
+      "productId": "store-13408069845",
+      "model": "No.9291",
+      "image": "assets/story/photo-studio-backpack-check.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-30/reference-9291.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-30/generated-9291.png",
+        "prompt": "Use case: photorealistic-natural. Asset type: horizontal 3:2 editorial hero photograph for a Korean article about visiting a portrait studio with a backpack. Input image: the authentic Himawari No.9291 lavender backpack product photo; use this as the exact physical product reference, not as a style suggestion. Scene: a fictional Korean adult man in his thirties, seen from a side/rear three-quarter angle entering a quiet neighborhood portrait studio waiting area, carrying the backpack on both shoulders before setting it aside for a photograph. Keep the entire backpack large, clear, and prominent. Preserve its lavender rectangular body and realistic 31 x 45 x 15 cm adult-to-bag scale, paired vertical zip compartments, large front mesh pocket, small attached front accessory pouch, lower horizontal pouch with cord detail, silver-gray zips and straps, side mesh pocket, and small Himawari patches exactly as visible in the reference. Natural diffused studio daylight; calm documentary composition, no camera pointed at the person. No invented brand, missing or extra pockets, distorted straps, readable background text, customer testimonial impression, or visible other products. The person and scene are fictional AI staging, not actual customer photography.",
+        "generatedAt": "2026-09-30",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13408069845",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260416_30/1776315459037ny7Nf_JPEG/108348427949227048_692471493.jpg"
+      }
+    },
+    {
+      "id": "wedding-guest-backpack-flow",
+      "title": "결혼식 하객의 백팩: 접수대부터 식사 자리까지",
+      "url": "https://himawari.co.kr/story/wedding-guest-backpack-flow.html",
+      "productId": "store-13326224847",
+      "model": "No.1027",
+      "image": "assets/story/wedding-guest-backpack-flow.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-30/reference-1027.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-30/generated-1027.png",
+        "prompt": "Use case: photorealistic-natural. Asset type: horizontal 3:2 editorial hero photograph for a Korean article about organizing a backpack while attending a wedding. Input image: genuine Himawari No.1027 black backpack product reference, defining the exact item. Scene: a calm wedding venue foyer before the ceremony, with the black backpack standing upright on a simple clean luggage shelf and a plain unmarked invitation envelope placed separately nearby. Photograph the entire backpack prominently from a front three-quarter view in soft warm daylight. Preserve the actual 28 x 40 x 17 cm rectangular black body, two short top carry handles, black shoulder straps, front horizontal zip pocket, attached narrow vertical pouch at the right front with white Himawari mark, small white Himawari mark on the upper front, and its real seams and zipper layout. Keep adult-scale proportions. No person is necessary. No altered or invented product features, no other bags, no readable signs, no claim that the venue provides storage, no customer testimonial framing. This is fictional AI staging, not a real event photograph.",
+        "generatedAt": "2026-09-30",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13326224847",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260210_201/1770709035243OicU2_JPEG/18070600097326153_1285571532.jpg"
+      }
+    },
+    {
+      "id": "bakery-paper-bag-backpack",
+      "title": "빵집에 들른 아침: 갓 산 빵과 백팩은 어떻게 들고 갈까",
+      "url": "https://himawari.co.kr/story/bakery-paper-bag-backpack.html",
+      "productId": "store-13308483411",
+      "model": "No.1230",
+      "image": "assets/story/bakery-paper-bag-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-09-30/reference-1230.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-09-30/generated-1230.png",
+        "prompt": "Use case: photorealistic-natural. Asset type: horizontal 3:2 editorial hero photograph for a Korean article about walking home from a neighborhood bakery with freshly purchased bread. Input image: genuine Himawari No.1230 gray backpack; reproduce this exact item. Scene: outside a small neighborhood bakery in morning light, the gray backpack upright on a clean bench, and a closed plain paper bakery bag holding bread set separately beside it. Give the backpack visual priority and show the whole front and one side, with soft background blur. Preserve its realistic 32 x 40 x 18 cm adult-scale softly rounded gray body, dark arching top trim, two distinct dark front pocket panels including the left flap and right horizontal zipper, the dark triangular Himawari badge at lower front right, gray side pocket, dark shoulder straps and top loop. No people, no legible shop lettering, no invented logos or pockets, no food inside the backpack, no claim of thermal or food-safe properties. The scene is fictional AI staging, not customer photography.",
+        "generatedAt": "2026-09-30",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13308483411",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260326_238/1774503626907819SG_JPEG/29145858851779990_764507912.jpg"
+      }
+    }
+  ],
+  "topicsReviewed": 89,
+  "overlapReview": "Reviewed all existing titles, summaries and complete story bodies. The new subjects are portrait-studio arrival and photo handoff, wedding venue movement and storage, and bakery packaging and crumbs. These have distinct triggers, handling sequences and practical advice from earlier interview, concert, bouquet and shopping articles.",
+  "completionReceipt": "backups/story-runs/2026-09-30.deployment.json"
+}
