@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-29",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-09-29/deployment.json",
+  "entries": [
+    {
+      "id": "2026-09-29-everyday-1230",
+      "model": "1230",
+      "productId": "store-13308483411",
+      "image": "/assets/lookbook/2026-09-29-everyday-1230.webp",
+      "reference": "backups/lookbook-2026-09-29/reference-1230.jpg",
+      "generatedSource": "backups/lookbook-2026-09-29/generated-1230.png",
+      "imageKind": "generated",
+      "dimensionsCm": [32, 40, 18],
+      "dimensionsSource": "2026 Himawari manufacturer catalog page 15; live product catalog checked 2026-09-29",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260326_238/1774503626907819SG_JPEG/29145858851779990_764507912.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13308483411",
+      "prompt": "Portrait 2:3, 1024x1536 premium editorial photograph. Exact genuine Himawari No.1230 GRAY backpack from reference: 32x40x18cm softly rounded gray body, black piping, two separate black front zippered pouch pockets, center seam, gray side pockets, black triangular Himawari patch low right, black shoulder straps and small top handle. Fictional South Asian man around 48, olive overshirt and tan trousers, walking inside glass botanical conservatory, rear three-quarter mid-thigh view, both straps worn, accurate human-relative scale, soft morning light, one coherent photograph, no other bags or copied reference person.",
+      "fidelityReviewed": true
+    },
+    {
+      "id": "2026-09-29-travel-1089",
+      "model": "1089",
+      "productId": "store-13685218117",
+      "image": "/assets/lookbook/2026-09-29-travel-1089.webp",
+      "reference": "backups/lookbook-2026-09-29/reference-1089.jpg",
+      "generatedSource": "backups/lookbook-2026-09-29/generated-1089.png",
+      "imageKind": "generated",
+      "dimensionsCm": [29.5, 42, 12],
+      "dimensionsSource": "2026 Himawari manufacturer catalog page 12; live product catalog checked 2026-09-29",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260728_177/1785204907093Rb8GH_JPEG/32449486153229195_959631206.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13685218117",
+      "prompt": "Portrait 2:3, 1024x1536 premium editorial photograph. Exact genuine Himawari No.1089 PINK backpack from reference: 29.5x42x12cm pale blush rectangular body, two upright pink top handles, pink shoulder straps, centered white circular Himawari patch, broad flat lower front pocket with white cord zipper pulls, pink side pockets with white drawcords. Fictional adult Black woman in her early 30s with short natural curls, faded indigo denim jacket and rust wide trousers, at a quiet rural rail platform with autumn hills, rear three-quarter view, both straps worn, accurate scale, soft overcast light, one coherent photograph, no other bags or copied reference person.",
+      "fidelityReviewed": true
+    }
+  ]
+}
