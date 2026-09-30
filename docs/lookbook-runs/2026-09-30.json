@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-30",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-09-30/deployment.json",
+  "entries": [
+    {
+      "id": "2026-09-30-everyday-1208",
+      "model": "1208",
+      "productId": "store-13326577567",
+      "image": "/assets/lookbook/2026-09-30-everyday-1208.webp",
+      "reference": "backups/lookbook-2026-09-30/reference-13326577567.jpg",
+      "generatedSource": "backups/lookbook-2026-09-30/generated-1208.png",
+      "imageKind": "generated",
+      "dimensionsCm": [29, 40, 17],
+      "dimensionsSource": "2026 Himawari manufacturer catalog page 30; products.json catalog record; live Smart Store request returned HTTP 429 on 2026-09-30",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260327_177/17745877470621bKeS_JPEG/3728478673959279_1633863399.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13326577567",
+      "prompt": "Portrait 2:3, 1024x1536 editorial outdoor photograph. Exact genuine Himawari No.1208 IVORY backpack from the original product reference, 29x40x17cm: warm ivory rounded rectangular body, black piping and zippers, two slim curved upright front zip pockets, handles, side pockets, small black central badge and backpack straps. Fictional adult Korean man about 47, salt-and-pepper hair, navy utility jacket and olive trousers, front three-quarter side view, wearing both straps while walking near a small neighborhood playground with sunlit early-autumn trees. Bag prominent and unobstructed at believable human-relative scale. No stroller, children, other bags, extra pockets, changed logo, text or customer-review implication.",
+      "fidelityReviewed": true
+    },
+    {
+      "id": "2026-09-30-city-0514s",
+      "model": "0514S",
+      "productId": "store-13326396058",
+      "image": "/assets/lookbook/2026-09-30-city-0514s.webp",
+      "reference": "backups/lookbook-2026-09-30/reference-13326396058.jpg",
+      "generatedSource": "backups/lookbook-2026-09-30/generated-0514S.png",
+      "imageKind": "generated",
+      "dimensionsCm": [27, 36, 14],
+      "dimensionsSource": "2026 Himawari manufacturer catalog page 18; products.json and catalog override record; live Smart Store request returned HTTP 429 on 2026-09-30",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260211_152/17707744461046CCJC_JPEG/104907218390027692_404109632.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13326396058",
+      "prompt": "Portrait 2:3, 1024x1536 natural editorial street photograph. Exact genuine Himawari No.0514S SILVER MINI backpack from original product reference, 27x36x14cm: metallic silver softly gathered drawstring top, silver shoulder straps, broad silver rectangular front pocket with upper horizontal seam, fine black drawcords, black triangular Himawari badge low right and original seams and side pockets. Fictional adult woman in early 60s with medium-brown skin and short silver-gray curls, plum wool coat, walking beside a city art gallery at blue-hour with warm window light, rear three-quarter view with both straps worn. Bag visible and realistically small. No other bags, text, changed construction or customer-review implication.",
+      "fidelityReviewed": true
+    }
+  ]
+}

@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-09-30-everyday-1208",
+    "date": "2026-09-30",
+    "category": "everyday",
+    "title": "동네 공원을 지나는 오후",
+    "model": "1208",
+    "color": "아이보리",
+    "productId": "store-13326577567",
+    "scene": "가을 동네 공원에서, 네이비 재킷과 아이보리 백팩.",
+    "alt": "아이보리색 No.1208 백팩을 멘 중년 남성이 가을 공원을 걷는 AI 착용 연출",
+    "image": "/assets/lookbook/2026-09-30-everyday-1208.webp",
+    "thumbnail": "/assets/lookbook/2026-09-30-everyday-1208-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-09-30-city-0514s",
+    "date": "2026-09-30",
+    "category": "city",
+    "title": "갤러리 불빛 아래",
+    "model": "0514S",
+    "color": "실버",
+    "productId": "store-13326396058",
+    "scene": "해 질 무렵 갤러리 거리에서, 플럼색 코트와 실버 미니 백팩.",
+    "alt": "실버 No.0514S 미니 백팩을 멘 은발 여성이 갤러리 거리를 걷는 AI 착용 연출",
+    "image": "/assets/lookbook/2026-09-30-city-0514s.webp",
+    "thumbnail": "/assets/lookbook/2026-09-30-city-0514s-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-09-29-everyday-1230",
     "date": "2026-09-29",
     "category": "everyday",
