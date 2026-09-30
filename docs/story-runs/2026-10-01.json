@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-01",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "spare-shoes-backpack-separation",
+      "title": "갈아 신을 운동화가 있는 날: 밑창과 평소 짐을 분리하기",
+      "url": "https://himawari.co.kr/story/spare-shoes-backpack-separation.html",
+      "productId": "store-13513526834",
+      "model": "No.1111",
+      "image": "assets/story/spare-shoes-backpack-separation.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-01/reference-1111.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-01/generated-1111.png",
+        "prompt": "Use case: photorealistic-natural. Asset type: horizontal 3:2 editorial hero photo for a Korean article about separating spare shoes from daily backpack belongings. The reference image is the exact authentic Himawari No.1111 GREEN backpack product, not a style suggestion. Create one realistic adult-scale product scene in a clean apartment entryway: the backpack standing upright, closed and unobstructed on a wooden bench; beside it, a separate plain zipped washable shoe pouch and a pair of clean walking shoes outside the backpack. No person. Preserve the actual 43 × 47 × 24 cm broad green bag, vivid purple front flap and side accents, triangular Himawari badge, two black vertical straps with buckles over the front, lower purple horizontal pocket flap, large symmetrical green side pockets, dark shoulder straps and hardware. Show the whole front and one side in soft autumn daylight. No extra logos, no imaginary pockets, no shoes inside the bag, no capacity claim, no text or customer testimonial. This is AI-staged photography based on the real product.",
+        "generatedAt": "2026-10-01",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13513526834",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260511_282/1778476837383QWJQU_JPEG/8477290463441894_476336728.jpg"
+      }
+    },
+    {
+      "id": "post-office-parcel-backpack-route",
+      "title": "우체국에 작은 소포를 부치러 갈 때: 상자와 백팩의 역할 나누기",
+      "url": "https://himawari.co.kr/story/post-office-parcel-backpack-route.html",
+      "productId": "store-13326274547",
+      "model": "No.0422",
+      "image": "assets/story/post-office-parcel-backpack-route.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-01/reference-0422.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-01/generated-0422.png",
+        "prompt": "Use case: photorealistic-natural. Asset type: horizontal 3:2 editorial hero photo for a Korean article about visiting a postal counter with a small parcel while keeping personal belongings in a backpack. The attached source image is the exact authentic Himawari No.0422 BLUE product reference; copy the bag, not the reference person. One editorial scene at a generic unbranded postal-service waiting counter: the backpack standing upright and prominently in full view on a clean bench, with a separate small plain sealed parcel on the counter nearby, no address label or readable personal information. Preserve the actual 30 × 40 × 15 cm navy rounded-top backpack with a vivid blue circular Himawari accessory pouch, blue cartoon-like charm near the upper front, bright green rectangular lower front pocket with small black Himawari label, red side pocket, thin yellow accent, black straps and top loop. Exactly the same unusual color-blocking and pocket arrangement; no other bags. Warm natural light, restrained real-world texture, no fake post office brand or claims about service rules, no text overlay, no customer testimonial. AI-staged photo.",
+        "generatedAt": "2026-10-01",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13326274547",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260330_75/17748467055316cbOy_JPEG/932098654912450_478698910.jpg"
+      }
+    },
+    {
+      "id": "cooking-class-apron-backpack",
+      "title": "요리 수업 가는 날의 백팩: 앞치마와 돌아올 용기 자리",
+      "url": "https://himawari.co.kr/story/cooking-class-apron-backpack.html",
+      "productId": "store-13685201448",
+      "model": "No.0515",
+      "image": "assets/story/cooking-class-apron-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-01/reference-0515.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-01/generated-0515.png",
+        "prompt": "Use case: photorealistic-natural. Asset type: horizontal 3:2 editorial hero photo for a Korean article about preparing for a cooking class with a backpack. The source image is the exact authentic Himawari No.0515 SILVER backpack product reference. Compose one quiet clean cooking-studio entry cubby scene before class, with the backpack upright and fully visible on a dry shelf away from food preparation, a folded plain apron and closed empty reusable container placed separately beside it. No person or food. Preserve the actual 35 × 46 × 18 cm large metallic silver bag, softly gathered top with ruffled handle, black drawcords, black triangular lower hardware, prominent broad rectangular silver front pocket with small black Himawari lettering, attached quilted silver accessory pouch hanging on the right front, silver side pockets, silver shoulder straps, black base tabs and original seams. Natural morning light, believable scale and editorial detail. No changed logo or compartments, no other brand, no unsupported hygiene or carrying claim, no text overlay or customer testimonial. AI-staged image based on genuine product.",
+        "generatedAt": "2026-10-01",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13685201448",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260728_237/1785203739585y5VOY_JPEG/130548331178797772_1520188927.jpg"
+      }
+    }
+  ],
+  "topicsReviewed": 92,
+  "overlapReview": "Reviewed all 92 existing titles, summaries, and complete story bodies. The new subjects are spare shoes and their contact surfaces, post-office parcel handoff while carrying personal belongings, and preparation plus return from a cooking class. Each has a distinct place, object, and sequence compared with exercise, backpack shipping, workshop, and daily packing articles.",
+  "completionReceipt": "backups/story-runs/2026-10-01.deployment.json"
+}

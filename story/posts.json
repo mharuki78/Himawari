@@ -1,5 +1,53 @@
 [
   {
+    "id": "spare-shoes-backpack-separation",
+    "title": "갈아 신을 운동화가 있는 날: 밑창과 평소 짐을 분리하기",
+    "date": "2026-10-01",
+    "summary": "여분의 운동화를 챙길 때 밑창·끈·신발주머니를 살피고, 가방 안의 평소 물건과 돌아올 신발의 자리를 미리 나누는 방법입니다.",
+    "description": "여분의 운동화를 챙길 때 밑창·끈·신발주머니를 살피고, 가방 안의 평소 물건과 돌아올 신발의 자리를 미리 나누는 방법입니다.",
+    "tags": [
+      "여분 운동화",
+      "신발주머니",
+      "백팩 수납"
+    ],
+    "image": "../assets/story/spare-shoes-backpack-separation.webp",
+    "imageAlt": "현관 벤치의 그린색 Himawari No.1111 백팩과 밖에 따로 놓인 운동화·신발주머니 AI 연출 사진",
+    "url": "spare-shoes-backpack-separation.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "post-office-parcel-backpack-route",
+    "title": "우체국에 작은 소포를 부치러 갈 때: 상자와 백팩의 역할 나누기",
+    "date": "2026-10-01",
+    "summary": "접수할 소포는 별도로 들고 개인 물건은 백팩에 남겨, 포장 확인부터 접수증 보관까지 순서를 간단히 만드는 방법입니다.",
+    "description": "접수할 소포는 별도로 들고 개인 물건은 백팩에 남겨, 포장 확인부터 접수증 보관까지 순서를 간단히 만드는 방법입니다.",
+    "tags": [
+      "우체국 방문",
+      "소포 접수",
+      "개인 소지품"
+    ],
+    "image": "../assets/story/post-office-parcel-backpack-route.webp",
+    "imageAlt": "우편 서비스 대기 공간의 블루색 Himawari No.0422 백팩과 밖에 놓인 작은 소포 AI 연출 사진",
+    "url": "post-office-parcel-backpack-route.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "cooking-class-apron-backpack",
+    "title": "요리 수업 가는 날의 백팩: 앞치마와 돌아올 용기 자리",
+    "date": "2026-10-01",
+    "summary": "요리 수업 전 안내된 준비물을 확인하고, 개인 소지품·앞치마·수업 뒤 가져올 물건의 자리를 각각 나눠 두는 방법입니다.",
+    "description": "요리 수업 전 안내된 준비물을 확인하고, 개인 소지품·앞치마·수업 뒤 가져올 물건의 자리를 각각 나눠 두는 방법입니다.",
+    "tags": [
+      "요리 수업",
+      "앞치마",
+      "가방 동선"
+    ],
+    "image": "../assets/story/cooking-class-apron-backpack.webp",
+    "imageAlt": "요리 수업 입구 선반의 실버 Himawari No.0515 백팩과 밖에 놓인 앞치마·닫힌 용기 AI 연출 사진",
+    "url": "cooking-class-apron-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "photo-studio-backpack-check",
     "title": "사진관에 증명사진 찍으러 가는 날: 가방은 촬영 전 어디에 둘까",
     "date": "2026-09-30",
