@@ -8,7 +8,8 @@ import {
   fetchNpayWishlist,
 } from './_lib/npay-handlers.js';
 import { sendOrderNotification } from './_lib/order-notifications.js';
-import { claimCoupon } from './_lib/coupon-claims.js';
+import { claimCoupon, claimRhythmCoupon, couponIdentity } from './_lib/coupon-claims.js';
+import { startRhythmSession } from './_lib/rhythm-session.js';
 
 const NPAY_ROUTES = {
   'npay-config': fetchNpayConfig,
@@ -20,6 +21,17 @@ const NPAY_ROUTES = {
 export async function fetch(request) {
   const route = new URL(request.url).searchParams.get('route');
   if (NPAY_ROUTES[route]) return NPAY_ROUTES[route](request);
+  if (route === 'rhythm-start' || route === 'rhythm-finish') {
+    if (request.method !== 'POST') return methodNotAllowed(['POST']);
+    try {
+      if (!isSameOrigin(request)) return json({ message: '요청 출처를 확인할 수 없습니다.' }, 403);
+      if (route === 'rhythm-start') {
+        const identity = couponIdentity(request);
+        return json(startRhythmSession(identity.id), 201, identity.cookie ? { 'Set-Cookie': identity.cookie } : {});
+      }
+      return json(await claimRhythmCoupon(request, await readJson(request, 65_536)), 200);
+    } catch (error) { return json({ message: Number(error.status) < 500 ? error.message : '게임 기록을 저장하지 못했습니다. 잠시 후 다시 시도해 주세요.' }, Number(error.status) || 500); }
+  }
   if (route === 'coupon-claim') {
     if (request.method !== 'POST') return methodNotAllowed(['POST']);
     try {

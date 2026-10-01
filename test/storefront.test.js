@@ -144,7 +144,8 @@ test('운영 사이트맵은 현재 제품과 이야기 목록을 XML로 동적 
   assert.equal(response.status, 200);
   assert.match(response.headers.get('content-type') || '', /^application\/xml/);
   const stories = JSON.parse(await readFile(new URL('../story/posts.json', import.meta.url), 'utf8'));
-  assert.equal((sitemap.match(/<url>/g) || []).length, 17 + products.length + stories.length);
+  assert.equal((sitemap.match(/<url>/g) || []).length, 18 + products.length + stories.length);
+  assert.ok(sitemap.includes('<loc>https://himawari.co.kr/rhythm.html</loc>'));
   const lookbook = JSON.parse(await readFile(new URL('../lookbook/entries.json', import.meta.url), 'utf8'));
   const lookbookDate = lookbook.map(entry => entry.date).sort().at(-1);
   assert.ok(sitemap.includes(`<loc>https://himawari.co.kr/lookbook/</loc><lastmod>${lookbookDate}</lastmod>`));

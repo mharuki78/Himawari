@@ -53,7 +53,7 @@ function syncSiteNavigation() {
     { label: '브랜드', href: '/about.html', active: /\/about(?:\.html|\/|$)/.test(currentPath) },
     { label: '이야기', href: '/story/', active: currentPath === '/story' || currentPath.startsWith('/story/') },
     { label: 'LookBook', href: '/lookbook/', active: currentPath === '/lookbook' || currentPath.startsWith('/lookbook/') },
-    { label: '게임', href: '/game.html', active: /\/game(?:\.html|\/|$)/.test(currentPath) },
+    { label: '게임', href: '/game.html', active: /\/(?:game|rhythm)(?:\.html|\/|$)/.test(currentPath) },
     { label: '연락하기', href: '/contact.html', active: /\/contact(?:\.html|\/|$)/.test(currentPath) },
   ];
 

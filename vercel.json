@@ -19,6 +19,14 @@
   ],
   "rewrites": [
     {
+      "source": "/api/games/rhythm/start",
+      "destination": "/api/orders?route=rhythm-start"
+    },
+    {
+      "source": "/api/games/rhythm/finish",
+      "destination": "/api/orders?route=rhythm-finish"
+    },
+    {
       "source": "/api/auth/callback/kakao",
       "destination": "/api/auth?route=callback-kakao"
     },

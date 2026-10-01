@@ -23,6 +23,7 @@ const SITEMAP_PAGES = [
   ['/reviews.html', '2026-09-10'],
   ['/contact.html', '2026-08-29'],
   ['/game.html', '2026-09-06'],
+  ['/rhythm.html', '2026-10-01'],
   ['/privacy.html', '2026-09-03'],
   ['/terms.html', '2026-09-03'],
   ['/story/', '2026-09-08'],

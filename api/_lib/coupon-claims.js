@@ -1,6 +1,8 @@
 import { createHash, createHmac, randomBytes, randomUUID, timingSafeEqual } from 'node:crypto';
 import { database } from './database.js';
 import { activeCoupons, readPromotions } from './promotions.js';
+import { eligibleTiers } from '../../assets/rhythm-core.mjs';
+import { verifyRhythmSession, rhythmCouponToken } from './rhythm-session.js';
 
 const COOKIE = '__Host-himawari_coupon';
 let schemaPromise;
@@ -10,6 +12,7 @@ function sign(value) { return createHmac('sha256', secret()).update(value).diges
 function cookieValue(request) { const raw = request.headers.get('cookie') || ''; const match = raw.match(/(?:^|;\s*)(?:__Host-himawari_coupon|himawari_coupon)=([^;]+)/); return match ? decodeURIComponent(match[1]) : ''; }
 function validOwner(raw) { const [id, signature] = String(raw).split('.'); if (!/^[a-f0-9]{32}$/.test(id || '') || !signature) return ''; const expected = sign(id); try { return timingSafeEqual(Buffer.from(signature), Buffer.from(expected)) ? id : ''; } catch { return ''; } }
 function owner(request) { const existing = validOwner(cookieValue(request)); if (existing) return { id: existing, cookie: '' }; const id = randomBytes(16).toString('hex'); const secure = new URL(request.url).protocol === 'https:' ? '; Secure' : ''; return { id, cookie: `${secure ? COOKIE : 'himawari_coupon'}=${id}.${sign(id)}; Path=/; HttpOnly; SameSite=Lax; Max-Age=31536000${secure}` }; }
+export { owner as couponIdentity };
 
 async function ensureSchema() {
   if (!schemaPromise) schemaPromise = database()`CREATE TABLE IF NOT EXISTS coupon_claims (
@@ -46,6 +49,33 @@ export async function claimCoupon(request, input) {
   );
   if (!rows[0]) throw Object.assign(new Error('이 이벤트 쿠폰은 이미 사용했습니다.'), { status: 409 });
   return { coupon, token, expiresAt: new Date(rows[0].expires_at).toISOString(), cookie: identity.cookie };
+}
+
+// The daily reward only upgrades. Deterministic tokens make uncertain retries safe.
+export const RHYTHM_CLAIM_SQL = `INSERT INTO coupon_claims (id,owner_hash,campaign,coupon_id,token_hash,expires_at)
+  VALUES ($1,$2,$3,$4,$5,$6)
+  ON CONFLICT (owner_hash,campaign) DO UPDATE SET coupon_id=EXCLUDED.coupon_id,token_hash=EXCLUDED.token_hash,expires_at=EXCLUDED.expires_at
+  WHERE coupon_claims.used_at IS NULL AND
+    (CASE EXCLUDED.coupon_id WHEN 'discount-20' THEN 4 WHEN 'discount-15' THEN 3 WHEN 'discount-10' THEN 2 ELSE 1 END) >=
+    (CASE coupon_claims.coupon_id WHEN 'discount-20' THEN 4 WHEN 'discount-15' THEN 3 WHEN 'discount-10' THEN 2 ELSE 1 END)
+  RETURNING coupon_id,expires_at,used_at`;
+
+export async function claimRhythmCoupon(request, input) {
+  const identity = owner(request);
+  const { result, campaign } = verifyRhythmSession(identity.id, input);
+  const promotion = await readPromotions();
+  const available = activeCoupons(promotion.config);
+  const coupon = eligibleTiers(result.score).map(id => available.find(c => c.id === id)).find(Boolean);
+  if (!coupon) return { result, coupon: null, message: result.score < 5000 ? '5,000점부터 쿠폰에 도전할 수 있어요.' : '현재 점수에 해당하는 활성 쿠폰이 없습니다.' };
+  await ensureSchema();
+  const token = rhythmCouponToken(identity.id, campaign, coupon.id);
+  const expiresAt = coupon.expiresAt && new Date(coupon.expiresAt) < new Date(Date.now() + 30 * 86400000) ? coupon.expiresAt : new Date(Date.now() + 30 * 86400000).toISOString();
+  const rows = await database().query(RHYTHM_CLAIM_SQL, [randomUUID(), hash(identity.id), campaign, coupon.id, hash(token), expiresAt]);
+  const row = rows[0] || (await database().query('SELECT coupon_id,expires_at,used_at FROM coupon_claims WHERE owner_hash=$1 AND campaign=$2', [hash(identity.id), campaign]))[0];
+  if (!row || row.used_at) throw Object.assign(new Error('오늘 받은 리듬게임 쿠폰을 이미 사용했습니다. 다음 날 다시 도전해 주세요.'), { status: 409 });
+  const selected = available.find(c => c.id === row.coupon_id);
+  if (!selected) return { result, coupon: null, message: '이전에 획득한 쿠폰의 이벤트가 종료되었습니다.' };
+  return { result, coupon: selected, token: rhythmCouponToken(identity.id, campaign, selected.id), expiresAt: new Date(row.expires_at).toISOString(), retained: selected.id !== coupon.id };
 }
 
 export async function consumeCouponClaim(couponId, token, orderId) {
