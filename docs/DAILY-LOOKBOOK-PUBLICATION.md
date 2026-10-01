@@ -16,7 +16,7 @@ Review at least the last 14 published days and current story images. Rotate actu
 
 Read the imagegen skill. Obtain live product catalog and actual catalog/original product photos; view each source directly, verify model, color and published width/height/depth. Record exact source URL and catalog reference. Use built-in imagegen with local referenced_image_paths. Preserve logo, shape, pockets, colors, straps, charms and human-relative scale. Fictional adult models only. Generate one new 2:3 portrait per entry (1024×1536); 2–3 new photos total per day, independent of story images. Save originals and generated files under the backup directory. View generated output and reject material product distortion or incorrect anatomy before approval. Set fidelityReviewed only after this review. If imagegen or originals are unavailable, report incomplete instead of substituting old stock images or a different brand.
 
-Optimize each approved photo to WebP full 1024×1536 and thumbnail 640×960, retaining detail; target full <300KB, thumbnail <120KB. Use descriptive Korean alt text including AI 착용 연출. The page visibly labels AI staged imagery; do not describe it as actual customer wear or measured sizing.
+Optimize each approved photo to WebP full 1024×1536 and thumbnail 640×960, retaining detail; target full <300KB, thumbnail <120KB. Use descriptive Korean alt text including AI 착용 연출. The image viewer visibly labels AI staged imagery; do not describe it as actual customer wear or measured sizing. User requested on 2026-10-02 to remove the repeated disclosure paragraph above the gallery; keep the viewer disclosure and descriptive alt text without restoring that top paragraph.
 
 ## Data and static page
 

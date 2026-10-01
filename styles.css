@@ -41,6 +41,8 @@
   --shadow-pop: 0 7px 0 rgb(207 226 201 / .9);
   --shadow-pop-small: 0 5px 0 rgb(207 226 201 / .9);
   --shadow-card: 0 3px 0 rgb(79 107 88 / .1);
+  --shadow-header-control: 0 3px 0 #a7b5a5, 0 6px 12px rgb(43 65 47 / .12);
+  --shadow-header-pressed: 0 1px 0 #a7b5a5, 0 2px 5px rgb(43 65 47 / .12);
   --page-pad: clamp(1.25rem, 5vw, 5.5rem);
   --section-space: max(15vh, 8rem);
   --max-width: 88rem;

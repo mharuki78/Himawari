@@ -293,8 +293,8 @@ body .site-footer { grid-template-columns: minmax(240px,1fr) minmax(160px,.65fr)
   line-height: 1;
   letter-spacing: 0;
   white-space: nowrap;
-  box-shadow: none;
-  transition: background-color .18s ease, border-color .18s ease, color .18s ease;
+  box-shadow: var(--shadow-header-control);
+  transition: background-color .18s ease, border-color .18s ease, color .18s ease, box-shadow .18s ease;
 }
 .header-actions .member-trigger {
   min-width: 78px;
@@ -323,6 +323,8 @@ body .site-footer { grid-template-columns: minmax(240px,1fr) minmax(160px,.65fr)
   outline: 2px solid #354c3d;
   outline-offset: 4px;
 }
+.header-actions .member-trigger:active,
+.header-actions .store-picker > .header-store:active { box-shadow: var(--shadow-header-pressed); }
 
 .member-provider--kakao { background: #fee500; color: #191919; border-color: #fee500; }
 

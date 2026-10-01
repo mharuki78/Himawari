@@ -24,17 +24,17 @@ html.rdcart-locked, body.rdcart-locked { overflow: hidden; }
   position: relative;
   display: inline-grid; place-items: center;
   width: 46px; height: 46px; padding: 0;
-  border: 1px solid var(--cart-accent); border-radius: var(--cart-radius);
+  border: 1px solid #6f886d; border-radius: var(--cart-radius);
   background: var(--cart-accent); color: var(--color-charcoal, #212121);
-  box-shadow: var(--shadow-pop-small, 0 5px 0 rgb(207 226 201 / .9));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / .65), 0 4px 0 #8fa58a, 0 8px 18px rgb(32 54 37 / .24);
   font: inherit; cursor: pointer;
   transition: transform .2s ease, box-shadow .2s ease;
 }
 .rdcart-btn--float {
   position: fixed; right: 16px; bottom: 16px; z-index: var(--cart-z-trigger);
 }
-.rdcart-btn:active { background: var(--cart-accent); }
-@media (hover: hover) { .rdcart-btn:hover { background: var(--cart-accent); } }
+@media (hover: hover) { .rdcart-btn:hover { background: var(--cart-accent); border-color: #3e6043; box-shadow: inset 0 1px 0 rgb(255 255 255 / .65), 0 4px 0 #788f75, 0 9px 20px rgb(32 54 37 / .3); } }
+.rdcart-btn:active { background: var(--cart-accent); box-shadow: inset 0 1px 0 rgb(255 255 255 / .65), 0 1px 0 #8fa58a, 0 3px 8px rgb(32 54 37 / .2); }
 .rdcart-btn:focus-visible { outline: 2px solid var(--color-deep-wave, #3E6B52); outline-offset: 3px; }
 .rdcart-btn svg { display: block; }
 
