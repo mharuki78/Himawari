@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-01",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-01/deployment.json",
+  "entries": [
+    {
+      "id": "2026-10-01-everyday-0403",
+      "model": "0403",
+      "productId": "store-13308523903",
+      "image": "/assets/lookbook/2026-10-01-everyday-0403.webp",
+      "reference": "backups/lookbook-2026-10-01/reference-13308523903.jpg",
+      "generatedSource": "backups/lookbook-2026-10-01/generated-0403.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-01; 2026-09-14 제조사 카탈로그 22페이지의 0403 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다. 외부 크기는 백팩 기준이며 숄더백은 별도 23 × 18 cm로 표기됩니다. 900 g의 구성품 포함 여부는 미기재입니다.",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260211_281/1770774598923VUxxR_JPEG/20746952034287940_427742899.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13308523903",
+      "prompt": "Create one photorealistic editorial lifestyle photograph, portrait 2:3, 1024x1536 pixels. Use the supplied original catalog photo solely as the exact product reference; invent a clearly different fictional adult person and location. Product: genuine Himawari No.0403 beige backpack, measured exterior width 28 cm, height 40 cm, depth 17 cm. Preserve the exact pale warm beige rectangular body, black bottom panel and piping, paired short black top handles, black backpack straps, top-front black tab and metal clasp connecting to the detachable long rounded-rectangle beige front pouch with black edging and a vertical left-side zipper, the small round black snap near the pouch top and original black square Himawari logo near its lower right, and the visible broad flat beige side accessory/pocket panel, all proportions and attachment details. Copy the actual logo from reference without redesign. No extra pockets, charms, printed motifs or different brand. Scene: fictional adult East Asian woman about 36 with medium warm skin and dark wavy hair loosely tied into a high bun, teal blue cotton overshirt and cream trousers, sitting sideways on a low backless wooden stool just inside a bright ceramic studio, looking toward shelves of handmade earth-colored pottery. She wears the backpack with both shoulder straps, completely visible at a natural 40 cm high scale on her back; it must not rest behind furniture or be obscured by hair or arms. Three-quarter rear/side angle at seated eye level, crop from head to below knees, relaxed plausible anatomy, gently turned face in profile, window sidelight, tactile clay and wood, quiet editorial mood. Actual backpack is the crisp hero and can occupy roughly one quarter of the image height. No pottery tools in hands, children, other bags, text overlay, watermark, invented features, exaggerated product size or testimonial implication. The person and studio are fictional AI staging.",
+      "fidelityReviewed": true
+    },
+    {
+      "id": "2026-10-01-travel-1223",
+      "model": "1223",
+      "productId": "store-13326074553",
+      "image": "/assets/lookbook/2026-10-01-travel-1223.webp",
+      "reference": "backups/lookbook-2026-10-01/reference-13326074553.jpg",
+      "generatedSource": "backups/lookbook-2026-10-01/generated-1223.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        29,
+        40,
+        14
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-01; 2026-09-14 제조사 카탈로그 29페이지의 1223 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260211_155/1770774832275FXD6k_JPEG/9310800270407694_948731888.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13326074553",
+      "prompt": "Create one photorealistic travel fashion editorial photograph, portrait 2:3, 1024x1536 pixels. Use the supplied original product photo as a strict reference for the genuine Himawari No.1223 BLACK backpack. Its confirmed exterior is width 29 cm, height 40 cm, depth 14 cm. Preserve its soft squared rectangular black nylon body and flat subtly rounded top corners, single black webbing top carry handle, main perimeter zipper, large raised rounded-rectangle lower-front zip compartment with its zipper on the left, one smaller straight horizontal zipper across the upper part of that compartment with pull on the left, centered black rectangular Himawari logo patch below the small zipper, original black seams and slim side slip pockets. All fabric, zippers, handles and straps are black. Copy the original logo, no bright trim, added flaps, extra compartments, ornaments or invented features. Add plausible black shoulder straps from the existing backpack carry method, without changing its visible product construction. Scene: a fictional adult Latin American man about 25, medium tan skin, short straight dark hair, rust-and-brown checked overshirt, charcoal straight trousers and plain off-white sneakers, standing on a wooden mountain overlook in crisp early-autumn daylight, quietly looking at layered mountain ridges and a pale sky. Full-body rear three-quarter view with slight face profile, both straps worn, hands comfortably by his sides, no hiking equipment. One adult only. Backpack unobstructed, sharply rendered with visible pocket details and realistically 40 cm high relative to an approximately 178 cm adult. Person fills about 85 percent of frame height so the bag is readable; bag sits on mid-back above hips and must not become oversized. Distinct wide environmental composition, subtle rust grasses, diffuse daylight, clean natural color, realistic anatomy and perspective. No city buildings, park playground, railway, coast, greenhouses, text overlay, watermarks, other bags or implication of an actual customer photo. This is fictional AI staging.",
+      "fidelityReviewed": true
+    }
+  ]
+}

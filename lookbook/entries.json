@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-01-everyday-0403",
+    "date": "2026-10-01",
+    "category": "everyday",
+    "title": "흙빛 그릇이 놓인 공방에서",
+    "model": "0403",
+    "color": "베이지",
+    "productId": "store-13308523903",
+    "scene": "햇빛이 들어오는 도예 공방에서, 청록색 셔츠와 베이지 백팩.",
+    "alt": "베이지색 No.0403 백팩을 멘 성인 여성이 도예 공방의 스툴에 앉아 그릇을 바라보는 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-01-everyday-0403.webp",
+    "thumbnail": "/assets/lookbook/2026-10-01-everyday-0403-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-10-01-travel-1223",
+    "date": "2026-10-01",
+    "category": "travel",
+    "title": "산 능선을 바라보는 쉼표",
+    "model": "1223",
+    "color": "블랙",
+    "productId": "store-13326074553",
+    "scene": "가을 산 전망대에서, 녹갈색 체크 셔츠와 블랙 백팩.",
+    "alt": "블랙 No.1223 백팩을 멘 젊은 성인 남성이 산 전망대에서 능선을 바라보는 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-01-travel-1223.webp",
+    "thumbnail": "/assets/lookbook/2026-10-01-travel-1223-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-09-30-everyday-1208",
     "date": "2026-09-30",
     "category": "everyday",
