@@ -84,7 +84,7 @@ components:
 
 ## Shapes
 
-제품·주문·회원·콘텐츠 카드는 24px, 입력과 작은 패널은 18px, 주요 버튼과 배지는 완전한 pill을 사용한다. 제품 상세의 반분 화면은 바깥 모서리만 둥글게 연결하고 내부 접합선은 유지한다. 픽셀 게임 내부의 버튼·대화상자는 도트 세계의 시각 문법을 위해 각진 형태를 유지하되 게임기 외곽과 규칙 패널만 브랜드 반경을 사용한다.
+제품·주문·회원·콘텐츠 카드는 24px, 입력과 작은 패널은 18px, 주요 버튼과 배지는 완전한 pill을 사용한다. 제품 상세의 반분 화면은 바깥 모서리만 둥글게 연결하고 내부 접합선은 유지한다. 픽셀 게임의 캐릭터·배경·아이템은 도트 세계를 유지하되 시작·HUD·조작·일시정지·결과 화면은 브랜드의 읽기 쉬운 글자와 둥근 면을 사용한다.
 
 ## Components
 
@@ -104,7 +104,11 @@ components:
 
 제품 가격에는 현재 판매가와 확인된 네이버 할인율만 표시하며 별도의 가격 동일 문구는 반복하지 않는다. 확인된 네이버 할인율은 `sage-tint` 바탕과 딥 그로브 글자의 pill 라벨로 표시한다. 주문 쿠폰은 한 장만 고르는 라디오 카드이며, 관리자 프로모션 화면은 네 종류의 고정 쿠폰에 활성화·최소 주문금액·최대 할인금액·종료 일시를 설정한다. 첫 화면 프로모션은 native `<dialog>`를 사용하고 동일 저장 버전에서 닫은 팝업은 브라우저에 다시 강제로 띄우지 않는다.
 
-No.0422 쿠폰 게임의 공식 이름은 `HIMAWARI BAG QUEST — 0422 등굣길 어드벤처`다. 실제 검정 0422 제품의 둥근 상단·앞포켓·지퍼·키링 실루엣을 보존한 픽셀 캐릭터와, 석재 담장·벽돌 교문·황금빛 가로수가 이어지는 세로형 16비트 학교 등굣길을 사용한다. 게임기 바로 위에는 수집·회피·수납의 세 단계와 점수별 쿠폰 기준을 한눈에 읽는 각진 규칙 패널을 둔다. 게임을 시작하면 모바일과 데스크톱 모두 게임판·HUD·조작·상태 안내를 하나의 `100dvh` 세션에 묶고 문서 위치를 고정해 상하가 잘리거나 단계 전환 중 화면이 튀지 않게 하며, 언제든 시작 화면으로 나갈 수 있는 44px 닫기 버튼을 제공한다. 캐릭터는 화살표·WASD로 상하좌우 이동하고 모바일은 같은 기능의 방향 패드를 쓴다. Space 또는 JUMP 버튼으로 약 0.6초 점프해 위험물을 넘으면 회피 점수를 받고, F/J 또는 SHOT 버튼으로 현재 바라보는 방향에 새총을 발사해 아령을 부수면 파괴 점수를 받는다. 가운데 방향 패드 버튼은 일시정지를 유지한다. 수집 단계와 모은 물건을 수납칸에 넣는 정리 단계를 한 판으로 이어 보여준다. 2단계에서 정답 수납칸을 고르면 해당 물건의 픽셀 실루엣이 선택 위치에서 가방 중앙으로 날아가 작아지고, 가방과 픽셀 불꽃이 짧게 반응한 뒤 정리 완료 상태를 표시한다. 마지막 물건도 이 동작이 끝난 뒤 결과로 전환하며 모션 감소 설정에서는 이동 없이 즉시 처리한다. 낙하 아이템은 `BOOK`, `PC` 같은 문자 타일을 쓰지 않고 책·노트북·물병·필통·아령·잉크병의 픽셀 실루엣과 색으로 구분한다. 플레이 캐릭터는 아이템보다 시야를 과도하게 가리지 않는 약 17cqw 폭으로 표시하되 충돌 범위는 기존의 관대한 판정을 유지한다. 이동 중에는 방향 전환, 보폭에 맞춘 상하 움직임, 기울기, 지면 그림자, 발걸음 픽셀, 미세한 배경 시차를 함께 보여주되 모션 감소 설정에서는 장식 애니메이션을 제거한다. 생명·단계·점수·시간 HUD는 고정폭 숫자와 단단한 픽셀 테두리로 표현하며, 쿠폰 저장·주문서 자동 적용 계약은 기존 흐름을 유지한다. 픽셀 장면 안에서는 브랜드 크림·먹색·짙은 녹색을 주조색으로 유지하고 앤티크 골드·버건디·가을빛을 장면 한정 보조색으로 허용한다.
+No.0422 게임의 공식 이름은 `HIMAWARI BAG QUEST — 0422 등굣길 어드벤처`다. 실제 0422 블랙 백팩을 멘 픽셀 캐릭터와 기존 학교 등굣길·물건 그림은 보존한다. 시작 화면은 PACK THE BEAT과 같은 큰 영문 제목, 짧은 한국어 설명과 한 개의 시작 버튼으로 구성하며 제품 소개는 조작 안내 다음에 둔다. `assets/game-layout.css`가 게임 화면의 표현을 소유하고, 기존 `styles.css`의 cream·harbor·snow 토큰을 소비한다. 게임 전용 짙은 세이지 `#294c40`와 제목 강조 `#72957b`는 리듬게임과 같은 지역 팔레트이며 전역 토큰을 변경하지 않는다.
+
+게임은 native `<dialog>`에서 시작해 배경 포커스를 막고, 한 뷰포트 안에 제목·소리·일시정지·닫기, 생명·단계·점수·시간, 게임판과 조작기를 묶는다. 세 장의 실제 게임 이미지 로드가 완료되어야 시작을 활성화하며 실패 시 인라인 안내와 재시도를 제공한다. 픽셀 세계 밖의 HUD·버튼·일시정지·결과 화면은 세이지 면과 읽기 쉬운 한국어 글자를 사용하고 두꺼운 도트 테두리·오프셋 그림자는 제거한다. 결과는 최종 점수와 현재 활성 쿠폰 상태를 표시한다. 쿠폰 이벤트가 비활성일 때는 준비 중으로 안내하며 발급을 요청하지 않는다.
+
+PC에서는 게임판 클릭 지점으로 걷고 누른 채 드래그하면 목적지가 따라간다. 모바일 터치 드래그는 손가락 시작 위치와 캐릭터의 차이를 보존해 인물이 손가락 아래로 순간 이동하지 않으며, 손을 떼면 멈춘다. 짧은 탭 이동도 제공한다. 방향키·WASD·조이스틱 조작과 기존 이동 속도·경계·충돌·점수는 유지한다. 키보드와 조이스틱은 이전 목적지를 취소한다. 일시정지·화면 이탈·포인터 취소·회전·단계 전환·다시 시작에서 입력을 초기화한다. Space/점프와 F·J/새총 버튼은 유지하며 모바일 이동과 동시 터치를 지원한다. 수납 단계는 물건과 맞는 수납칸을 차례로 누르며 기존 SVG 열기·삽입·닫기, 한 번의 150점 추가와 모션 감소 처리를 유지한다. 닫기와 Escape는 시작 화면의 버튼으로 포커스를 돌려준다.
 
 데스크톱은 딥 그로브 공지 바 아래 밝은 상품 내비게이션을 두고, 여섯 개 메뉴는 흰 면·포그 선·세이지 단색 오프셋을 가진 작은 `luggage tag`형 pill 버튼으로 표현한다. 현재 메뉴는 딥 그로브 면과 세이지 오프셋으로 명확히 구분하되 헤더의 주 구매 행동보다 시각적 우선순위가 높아지지 않게 한다. 모바일은 가운데 로고와 좌우 메뉴·스토어 행동을 두고, 메뉴가 열리면 헤더 아래 전체 딥 그로브 면에서 각 항목을 44px 이상 높이의 둥근 태그형 행 버튼으로 보여준다.
 
@@ -182,12 +186,12 @@ Homepage section alignment is owned by assets/home-layout.css, scoped to .home-l
 
 Contact page layout is scoped in assets/contact-layout.css: a compact left introduction, white right inquiry panel, paired name/email fields on desktop, full-width message and consent, and a single column on mobile. Existing validation and submission behavior remain authoritative.
 Contact introduction includes the existing No.1027 campaign photograph beneath its copy, filling the left column with a cropped lifestyle scene and a small model caption. The form retains an opaque white surface.
-Game landing layout uses assets/game-layout.css for compact headings, aligned introduction/rules, and a No.0422 product photograph between hero and play sections. Game console internals, controls, timing and coupon behavior stay unchanged.
+Game landing and session layout are owned by assets/game-layout.css: a sage lobby matching PACK THE BEAT, direct mouse/touch movement, a native modal game session and readable pause/result screens. The real No.0422 photo follows the guide. Gameplay timing, scoring, packing and coupon rules stay authoritative in assets/game.js.
 Journal index uses story/index-layout.css scoped to story-index-page: compact left headings and a 3/2/1-column photographic card grid. Existing post images, full titles, summaries, tags, dates and destination links remain intact; article reading pages are unchanged.
 Product, finder and brand tabs share assets/navigation-layout.css: compact headings and aligned content rails; catalog reuses home-layout product proportions; finder questions use a 2-column desktop grid with dark selected options; brand uses an image/copy split and compact timeline. Mobile stacks content. Catalog and recommendation data logic remains unchanged.
 Mobile home and catalog product lists use a contained horizontal swipe rail with 88% width cards, a visible next-card edge, scroll snapping and keyboard-focusable scrolling. This supersedes the previous mobile vertical product list; desktop remains a grid.
 
-Game controls: use a fixed analog joystick with a 15% dead zone, diagonal movement and release/cancel reset. Keep keyboard controls and separate pause, jump and shot buttons. Mobile joystick is 112px; action targets remain visible at 320px.
+Game controls: direct click/tap and drag are primary; retain the analog joystick with its 15% dead zone as an alternative. The compact joystick is 74px, landscape 52px, with release/cancel reset and diagonal movement. Keyboard controls and separate pause, jump and shot buttons remain; all action targets are at least 44px and visible at 320px.
 
 
 ### Game packing stage (2026-09-12)

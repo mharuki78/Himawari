@@ -298,7 +298,7 @@ test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 �
   await access(new URL('../assets/game-campus-spring.png', import.meta.url));
   await access(new URL('../assets/game-pixel-player.png', import.meta.url));
   assert.match(html, /<title>HIMAWARI BAG QUEST — 0422 등굣길 어드벤처<\/title>/);
-  assert.match(html, /등굣길 퀘스트 시작/);
+  assert.match(html, /등굣길 모험 시작하기/);
   assert.match(html, /data-game-panel="catch"/);
   assert.match(html, /data-game-panel="pack"/);
   assert.match(html, /data-game-panel="result"/);
@@ -307,14 +307,14 @@ test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 �
   assert.match(html, /data-game-joystick/);
   assert.match(html, /data-game-jump/);
   assert.match(html, /data-game-fire/);
-  assert.match(html, /점프로 위험물을 넘고, 새총으로 아령을 부수면/);
+  assert.match(html, /위험물은 점프로 피하세요\. 새총으로 아령을 부수면/);
   assert.match(html, /data-game-lives/);
   assert.match(html, /data-player-shadow/);
   assert.match(html, /data-game-sound/);
   assert.match(html, /data-game-exit/);
-  assert.match(html, /id="game-rules-title"/);
-  assert.match(html, /35초 동안 모으기/);
-  assert.match(html, /2,100점 20%/);
+  assert.match(html, /id="workshop-title"/);
+  assert.match(html, /35초의 등굣길/);
+  assert.match(html, /<dialog class="game-console"/);
   assert.match(html, /product\.html\?id=store-13326274540/);
   assert.match(gameJs, /var REWARD_STORAGE_KEY = 'himawari-game-coupon-v1'/);
   assert.match(gameJs, /'shipping-free'/);

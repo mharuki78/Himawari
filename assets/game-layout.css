@@ -1,31 +1,164 @@
-.game-page .game-main { padding-top: 0; }
-.game-page .game-hero { width: min(100%, 1160px); margin: 0 auto; min-height: 0; padding: 56px var(--page-pad); grid-template-columns: minmax(0, 1fr) 260px; gap: 64px; }
-.game-page .game-hero__copy h1 { font-size: clamp(32px, 3.8vw, 50px); line-height: 1.2; }
-.game-page .game-hero__copy h1 .accent-word { text-shadow: none; margin-top: 10px; }
-.game-page .game-hero__copy > p:not(.kicker) { max-width: 480px; font-size: 16px; line-height: 1.8; margin-top: 24px; }
-.game-page .game-hero__preview { width: 260px; }
-.game-product-story { width: min(calc(100% - 2 * var(--page-pad)), 1016px); margin: 0 auto 56px; padding: 24px 40px; display: grid; grid-template-columns: 220px minmax(0, 1fr); align-items: center; gap: 48px; border: 1px solid var(--color-fog); border-radius: 24px; background: var(--snow); }
-.game-product-story img { display: block; width: 220px; height: 220px; object-fit: contain; }
-.game-product-story h2 { margin: 0; font-size: clamp(26px, 2.6vw, 34px); line-height: 1.3; color: var(--harbor); }
-.game-product-story p:not(.kicker) { margin: 16px 0; font-size: 15px; line-height: 1.7; }
-.game-product-story a { display: inline-flex; align-items: center; min-height: 44px; gap: 24px; color: var(--harbor); font-size: 14px; font-weight: 650; text-decoration: underline; text-underline-offset: 5px; }
-.game-page .game-workshop { padding-block: 56px; scroll-margin-top: 84px; }
-.game-page .game-workshop > .section-inner { max-width: 1016px; }
-.game-page .game-workshop__head { display: block; margin-bottom: 28px; }
-.game-page .game-workshop__head h2 { font-size: clamp(30px, 3.4vw, 44px); line-height: 1.25; }
-.game-page .game-workshop__head h2 span:last-child { text-shadow: none; }
-.game-page .game-workshop__head > p { max-width: 620px; margin-top: 20px; font-size: 15px; line-height: 1.7; }
-.game-page .game-rules { width: 100%; margin-bottom: 32px; }
-.game-page .game-rules__title { display: block; }
-.game-page .game-rules__title h3 { font-size: 24px; }
-.game-page .game-rules li strong { font-size: 14px; }
-.game-page .game-rules li p { font-size: 13px; opacity: 1; }
-@media (max-width: 760px) {
- .game-page .game-hero { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-block: 36px; }
- .game-page .game-hero__preview { width: 220px; }
- .game-product-story { padding: 24px; grid-template-columns: minmax(0, 1fr); gap: 20px; margin-bottom: 36px; }
- .game-product-story img { width: 200px; height: 200px; margin: 0 auto; }
- .game-page .game-workshop__head { padding-inline: 0; }
- .game-page .game-workshop { padding-inline: var(--page-pad); }
+/* BAG QUEST presentation; storefront tokens stay authoritative. */
+.game-page { --quest-ink:#294c40; --quest-muted:#627565; color:var(--quest-ink); background:var(--cream); }
+.game-page .game-main { padding:0; }
+.game-choice { display:flex; flex-wrap:wrap; gap:8px; padding:28px 5vw 0; font-size:12px; }
+.game-choice a { display:inline-flex; align-items:center; min-height:44px; padding:10px 18px; border:1px solid #bfd4ba; border-radius:99px; color:var(--quest-ink); text-decoration:none; font-weight:650; }
+.game-choice a[aria-current] { background:var(--quest-ink); border-color:var(--quest-ink); color:var(--cream); }
+.game-choice b { margin-left:8px; padding:3px 5px; border-radius:3px; background:#dfc783; color:var(--quest-ink); font-size:9px; }
+.game-page .game-hero { width:min(100%,1280px); min-height:0; margin:0 auto; padding:40px 5vw 64px; display:grid; grid-template-columns:1fr 1fr; gap:6vw; align-items:center; }
+.game-page .game-hero__copy .kicker { display:flex; align-items:center; gap:10px; margin:0 0 26px; color:var(--quest-ink); font-size:11px; letter-spacing:.1em; }
+.quest-dot { width:8px; height:8px; background:var(--harbor); border-radius:50%; box-shadow:0 0 0 5px #d9e8d3; }
+.game-page .game-hero__copy h1 { margin:0; color:var(--quest-ink); font-size:clamp(64px,7.5vw,100px); line-height:.91; font-weight:800; letter-spacing:-.065em; }
+.game-page .game-hero__copy h1 span { color:#72957b; }
+.game-page .game-hero__copy p.quest-tagline { margin:24px 0 18px; font-size:clamp(20px,2vw,25px); font-weight:750; line-height:1.4; }
+.game-page .game-hero__copy p.quest-description { max-width:420px; margin:0 0 24px; color:var(--quest-muted); font-size:15px; line-height:1.9; }
+.quest-launch { max-width:380px; }
+.quest-launch-button { display:flex; align-items:center; justify-content:space-between; gap:20px; width:100%; min-height:60px; padding:18px 24px; border:0; border-radius:14px; background:var(--quest-ink); color:var(--snow); font-family:inherit; font-size:16px; font-weight:700; line-height:1.4; cursor:pointer; transition:background 140ms,transform 140ms; }
+.quest-launch-button:hover { background:var(--harbor); }
+.quest-launch-button:active { transform:scale(.98); }
+.quest-launch-button:disabled { background:var(--color-fog); color:var(--quest-muted); cursor:wait; }
+.quest-launch-button > span { font-size:23px; }
+.quest-input-hint { margin:12px 0 8px; font-size:12px; color:var(--quest-muted); }
+.quest-loading { display:flex; align-items:center; flex-wrap:wrap; gap:8px; min-height:22px; font-size:11px; color:var(--quest-muted); }
+.quest-loading progress { width:50px; height:5px; accent-color:var(--moss); }
+.quest-loading button { min-height:44px; padding:8px 12px; border:1px solid var(--quest-muted); border-radius:8px; background:var(--snow); color:var(--quest-ink); font:inherit; cursor:pointer; }
+.quest-event-status { margin:12px 0 0; font-size:11px; line-height:1.6; color:var(--quest-muted); }
+.game-page .game-hero__preview { position:relative; justify-self:stretch; width:100%; max-width:520px; height:clamp(430px,40vw,520px); overflow:hidden; margin:0; border:0; border-radius:32px; background:#d9e8d3; box-shadow:none; }
+.game-page .game-hero__preview > img:first-child { width:100%; height:100%; object-fit:cover; object-position:50% 17%; image-rendering:pixelated; }
+.game-page .game-hero__player { width:18%; max-width:94px; top:auto; bottom:82px; left:50%; transform:translateX(-50%); }
+.game-page .game-hero__preview figcaption { position:absolute; inset:auto 0 0; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; padding:20px 24px; border:0; background:var(--quest-ink); color:var(--cream); font:inherit; }
+.game-page .game-hero__preview figcaption span { font-size:10px; letter-spacing:.1em; }
+.game-page .game-hero__preview figcaption strong { font-size:14px; }
+.game-page .game-workshop { padding:64px 5vw; background:var(--snow); color:var(--quest-ink); }
+.game-page .game-workshop > .section-inner { max-width:1152px; }
+.game-page .game-workshop__head { display:block; margin:0 0 36px; }
+.game-page .game-workshop__head .kicker { color:var(--quest-muted); }
+.game-page .game-workshop__head h2 { margin:0; font-size:clamp(28px,3vw,40px); font-weight:750; line-height:1.3; }
+.game-page .game-workshop__head > p:not(.kicker) { max-width:none; margin:12px 0 0; font-size:14px; line-height:1.7; }
+.quest-guide { display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin:0; padding:0; list-style:none; }
+.quest-guide li { padding:24px 0; border-top:1px solid var(--color-fog); }
+.quest-guide li > span { font-size:11px; letter-spacing:.1em; color:var(--quest-muted); }
+.quest-guide h3 { margin:18px 0 12px; font-size:21px; font-weight:750; }
+.quest-guide p { max-width:32ch; margin:0; font-size:14px; line-height:1.8; color:var(--quest-muted); }
+.quest-key-guide { margin:24px 0 0; font-size:12px; line-height:2.3; color:var(--quest-muted); }
+.quest-key-guide kbd { padding:3px 6px; border:1px solid var(--color-fog); border-radius:4px; background:var(--cream); font:inherit; }
+.game-page .game-wallet { grid-template-columns:1fr 1fr; gap:24px; align-items:center; margin-top:52px; padding-top:32px; border-color:var(--color-fog); }
+.game-page .game-wallet .kicker { color:var(--quest-muted); }
+.game-page .game-wallet h2 { font-size:26px; font-weight:750; }
+.game-page .game-wallet p { max-width:48ch; margin:12px 0 0; font-size:13px; line-height:1.8; }
+.game-page .game-wallet > a { grid-column:2; width:fit-content; border-color:var(--color-fog); color:var(--quest-ink); font-size:13px; }
+.game-product-story { width:min(90%,1152px); margin:64px auto; display:grid; grid-template-columns:1fr 1fr; gap:6vw; align-items:center; }
+.game-product-story img { display:block; width:100%; max-height:390px; object-fit:contain; border-radius:24px; background:var(--snow); }
+.game-product-story .kicker { color:var(--quest-muted); }
+.game-product-story h2 { margin:0; font-size:clamp(28px,3vw,40px); line-height:1.3; font-weight:750; }
+.game-product-story p:not(.kicker) { margin:20px 0; font-size:14px; line-height:1.8; color:var(--quest-muted); }
+.game-product-story a { display:inline-flex; align-items:center; gap:24px; min-height:44px; font-size:14px; font-weight:650; text-underline-offset:5px; }
+
+/* Native dialog owns focus, background inertness and Escape. */
+.game-page dialog.game-console:not([open]) { display:none; }
+.game-page dialog.game-console[open],body.game-round-active dialog.game-console:not([data-phase="intro"]) { position:fixed; inset:0; display:grid; grid-template-rows:auto minmax(0,1fr) auto auto; width:min(100%,900px); max-width:100%; height:100dvh; max-height:100dvh; margin:auto; padding:0; border:0; border-radius:0; background:var(--cream); color:var(--quest-ink); box-shadow:none; overflow:hidden; touch-action:auto; }
+.game-console::backdrop { background:#20382fe6; }
+.quest-session-tools { position:relative; z-index:9; display:flex; align-items:center; gap:6px; min-height:calc(58px + env(safe-area-inset-top)); padding:calc(6px + env(safe-area-inset-top)) 12px 6px 20px; background:var(--cream); }
+.quest-session-tools > strong { margin-right:auto; font-size:14px; font-weight:800; letter-spacing:-.02em; }
+.quest-session-tools > strong span { margin-left:8px; font-size:11px; font-weight:500; color:var(--quest-muted); }
+.game-page .quest-session-tools :is(.sound-toggle,.joystick-pause,.game-exit) { position:static; display:inline-flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; width:auto; height:44px; margin:0; padding:8px 10px; border:0; border-radius:10px; background:transparent; color:var(--quest-ink); box-shadow:none; font:inherit; transform:none; }
+.quest-session-tools .sound-toggle b { font-size:10px; }
+.game-page .quest-session-tools .sound-toggle > span { font-size:20px; color:inherit; }
+.game-page .quest-session-tools .game-exit { font-size:28px; }
+.game-page .quest-session-tools :is(.sound-toggle,.joystick-pause,.game-exit):hover { background:#d9e8d3; }
+.game-page .quest-session-tools button:disabled { opacity:.35; cursor:default; }
+.game-page .game-console[data-phase="result"] .game-hud { display:none; }
+.game-page .game-console .game-screen-frame { display:grid; grid-template-rows:auto minmax(0,1fr); min-height:0; border:0; border-radius:0; }
+.game-page .game-hud { grid-template-columns:repeat(4,1fr); min-height:54px; border:0; background:var(--quest-ink); color:var(--cream); font-family:inherit; text-shadow:none; }
+.game-page .game-hud > div { display:grid; padding:6px 4px 9px; border:0; }
+.game-page .game-hud span { font-size:9px; font-weight:500; letter-spacing:.08em; opacity:.75; }
+.game-page .game-hud strong { margin-top:5px; font-size:18px; font-weight:700; font-variant-numeric:tabular-nums; }
+.game-page .game-hud__life strong { color:#edc4b5; font-size:16px; }
+.game-page .game-console .pixel-screen { min-height:0; height:100%; background:var(--cream); }
+.game-page .quest-ribbon { top:12px; left:12px; display:flex; align-items:center; gap:10px; padding:9px 12px; border:0; border-radius:8px; background:var(--cream); box-shadow:none; color:var(--quest-ink); font-family:inherit; font-size:11px; line-height:1.2; pointer-events:none; }
+.game-page .quest-ribbon span { font:inherit; font-weight:400; }
+.game-page .game-toast { border:0; border-radius:8px; padding:10px 16px; background:var(--cream); box-shadow:none; color:var(--quest-ink); font-family:inherit; font-size:13px; font-weight:750; }
+.game-page .adventure-stage { cursor:crosshair; touch-action:none; user-select:none; -webkit-user-select:none; }
+.game-page .adventure-stage.is-dragging { cursor:grabbing; }
+.quest-destination { position:absolute; z-index:2; width:24px; height:24px; border:2px solid white; outline:2px solid var(--quest-ink); border-radius:50%; transform:translate(-50%,-50%); pointer-events:none; }
+.game-page .game-console .game-controller { grid-template-columns:80px minmax(0,1fr) auto; gap:16px; min-height:0; padding:10px 20px; border:0; background:var(--cream); }
+.game-page .game-joystick { width:74px; height:74px; min-width:74px; border:1px solid #bfd4ba; background:#d9e8d3; box-shadow:none; }
+.game-page .game-joystick__knob { width:38px; height:38px; left:calc(50% - 19px); top:calc(50% - 19px); border:0; background:var(--harbor); box-shadow:none; }
+.game-page .controller-copy { display:grid; justify-self:start; gap:5px; font-family:inherit; }
+.game-page .controller-copy > strong { display:block; font-size:13px; letter-spacing:0; }
+.game-page .controller-copy > span { display:block; font-size:11px; opacity:1; color:var(--quest-muted); }
+.quest-help-touch { display:none; }
+.game-page .controller-actions { gap:8px; transform:none; }
+.game-page .controller-action { width:66px; height:64px; border:0; border-radius:14px; background:#d9e8d3; color:var(--quest-ink); box-shadow:none; font-family:inherit; }
+.game-page .controller-action span { font-size:23px; }
+.game-page .controller-action b { font-size:11px; letter-spacing:0; }
+.game-page .controller-action:hover,.game-page .controller-action.is-active { background:var(--harbor); color:white; }
+.game-page .controller-action:active { transform:scale(.94); box-shadow:none; }
+.game-page .game-console .game-announcer { min-height:calc(30px + env(safe-area-inset-bottom)); margin:0; padding:6px 12px calc(6px + env(safe-area-inset-bottom)); background:var(--cream); color:var(--quest-muted); font-family:inherit; font-size:11px; line-height:1.6; }
+body.game-page.game-round-active .game-console .game-screen-frame { border:0; }
+body.game-page.game-round-active .game-console[data-phase="catch"] .game-controller { padding:10px 20px; }
+body.game-page.game-round-active .game-console .game-announcer { background:var(--cream); color:var(--quest-muted); min-height:calc(30px + env(safe-area-inset-bottom)); padding:6px 12px calc(6px + env(safe-area-inset-bottom)); }
+.quest-pause-panel { position:absolute; z-index:15; inset:58px 0 30px; display:grid; place-items:center; padding:24px; background:var(--cream); overflow:auto; }
+.quest-pause-panel > div { width:min(100%,360px); text-align:center; }
+.quest-pause-panel .kicker { color:var(--quest-muted); font-size:10px; }
+.quest-pause-panel h2 { font-size:28px; }
+.quest-pause-panel p { font-size:14px; }
+.game-page :is(.game-primary,.game-secondary) { min-height:48px; padding:14px 20px; border:0; border-radius:12px; background:var(--quest-ink); color:white; box-shadow:none; font-family:inherit; font-size:14px; font-weight:650; line-height:1.4; }
+.game-page .game-secondary { background:#d9e8d3; color:var(--quest-ink); }
+.game-page :is(.game-primary,.game-secondary):hover { background:var(--harbor); color:white; }
+.game-page :is(.game-primary,.game-secondary):active { transform:scale(.98); box-shadow:none; }
+.quest-pause-panel .game-primary { width:100%; justify-content:center; }
+.quest-pause-panel .game-secondary { margin-top:12px; }
+.game-page .result-scene { display:none; }
+.game-page .game-panel--result { display:grid; align-items:center; padding:28px; overflow:auto; background:var(--cream); }
+.game-page .result-dialog { position:static; width:min(100%,420px); max-width:none; margin:auto; padding:0; border:0; background:transparent; color:var(--quest-ink); box-shadow:none; transform:none; }
+.game-page .result-dialog::before,.game-page .result-dialog::after { display:none; }
+.game-page .result-dialog .game-step { font-family:inherit; font-size:11px; font-weight:650; color:var(--quest-muted); }
+.game-page .result-dialog h3 { font-family:inherit; font-size:clamp(25px,5cqw,34px); font-weight:750; line-height:1.3; }
+.game-page .game-final-score { display:grid; gap:20px; margin:28px 0; padding:0; border:0; font-family:inherit; }
+.game-page .game-final-score span { font-size:11px; color:var(--quest-muted); }
+.game-page .game-final-score strong { font-size:clamp(60px,14cqw,88px); line-height:1; letter-spacing:-.05em; font-variant-numeric:tabular-nums; }
+.game-page .game-reward { min-height:0; margin:0 0 26px; padding:18px; border:0; border-radius:12px; background:#d9e8d3; }
+.game-page .game-reward strong { font-size:16px; }
+.game-page .game-reward p { font-size:13px; line-height:1.7; }
+.game-page .game-result-actions { display:grid; gap:12px; }
+.game-page .game-result-actions :is(.game-primary,.game-secondary) { margin:0; }
+.game-page [hidden] { display:none !important; }
+.game-page :is(button,a,[tabindex]):focus-visible { outline:3px solid var(--forest-focus,#3e6b52); outline-offset:4px; }
+.game-page .adventure-stage:focus-visible { outline-offset:-4px; }
+.game-page .is-paused :is(.pixel-player,.player-shadow,.collectible,.collectible__sprite) { animation-play-state:paused; }
+@media (max-width:760px) {
+  .game-choice { padding:20px 5vw 0; font-size:10px; gap:6px; }
+  .game-choice a { padding:10px 12px; }
+  .game-page .game-hero { grid-template-columns:1fr; gap:32px; padding-top:36px; }
+  .game-page .game-hero__copy h1 { font-size:clamp(68px,16vw,92px); }
+  .game-page .game-hero__copy .kicker { margin-bottom:22px; }
+  .game-page .game-hero__preview { max-width:none; height:420px; border-radius:24px; }
+  .quest-launch { max-width:none; }
+  .game-page .game-workshop { padding-block:48px; }
+  .quest-guide { grid-template-columns:1fr; gap:8px; }
+  .quest-guide li { padding:22px 0; }
+  .quest-guide p { max-width:none; }
+  .game-page .game-wallet { grid-template-columns:1fr; gap:12px; }
+  .game-page .game-wallet > a { grid-column:auto; }
+  .game-product-story { grid-template-columns:1fr; gap:32px; margin-block:48px; }
+  .game-page .game-console .game-controller,body.game-page.game-round-active .game-console[data-phase="catch"] .game-controller { gap:10px; padding:8px 12px; }
+  .game-page .controller-copy > strong { display:none; }
+  .game-page .controller-copy > span { font-size:11px; line-height:1.7; max-width:14ch; }
+  .quest-help-pointer { display:none; }
+  .quest-help-touch { display:block; word-break:keep-all; }
+  .game-page .controller-action { width:56px; height:60px; }
 }
-.game-choice{display:flex;flex-wrap:wrap;gap:10px;padding:24px 5vw 0;font-size:12px;position:relative;z-index:1}.game-choice a{border:1px solid #bfd4ba;padding:12px 16px;border-radius:99px;color:#294c40;text-decoration:none;font-weight:650}.game-choice a[aria-current]{background:#4f6b58;color:#f3f7ef}.game-choice b{font-size:9px;color:#294c40;background:#dfc783;padding:3px 5px;margin-left:6px;border-radius:4px}
+@media (max-width:360px) { .game-page .controller-copy { display:none; } .game-page .game-console .game-controller { grid-template-columns:1fr auto; } .quest-session-tools > strong span { display:none; } }
+@media (max-height:500px) and (orientation:landscape) {
+  .quest-session-tools { min-height:44px; padding-block:0; }
+  .game-page .game-hud { min-height:42px; }
+  .game-page .game-hud > div { padding:3px; }
+  .game-page .game-hud strong { margin-top:2px; font-size:15px; }
+  body.game-page.game-round-active .game-console[data-phase="catch"] .game-controller { padding-block:4px; }
+  .game-page .game-joystick { width:52px; height:52px; min-width:52px; }
+  .game-page .controller-action { height:44px; width:62px; display:flex; gap:8px; }
+  body.game-page.game-round-active .game-console .game-announcer { min-height:24px; padding-block:3px; }
+  .quest-pause-panel { inset:44px 0 24px; }
+}
+@media (prefers-reduced-motion:reduce) { .game-page button { transition:none; } }

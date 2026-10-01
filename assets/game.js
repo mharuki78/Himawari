@@ -1,3 +1,5 @@
+import { pointInStage, dragTarget, walkToward } from './game-pointer.mjs';
+
 (function () {
   'use strict';
 
@@ -34,6 +36,12 @@
   var soundButton = root.querySelector('[data-game-sound]');
   var soundLabel = root.querySelector('[data-game-sound-label]');
   var exitButton = root.querySelector('[data-game-exit]');
+  var startButton = root.querySelector('[data-game-start]');
+  var pausePanel = root.querySelector('[data-game-pause-panel]');
+  var destination = root.querySelector('[data-game-destination]');
+  var stagePointer = null;
+  var assetsReady = false;
+  var loadAttempt = 0;
   var moveButtons = Array.from(root.querySelectorAll('[data-game-move]'));
   var joystick = root.querySelector('[data-game-joystick]');
   var stickPointer = null, stickX = 0, stickY = 0;
@@ -92,6 +100,7 @@
     projectiles: [],
     playerX: 50,
     playerY: 76,
+    pointerTarget: null,
     facing: 'up',
     footstepSide: 1,
     lastFootstep: 0,
@@ -126,6 +135,8 @@
 
     document.documentElement.classList.toggle('game-round-active', active);
     document.body.classList.toggle('game-round-active', active);
+    if (active && !consoleElement.open) consoleElement.showModal();
+    if (!active && consoleElement.open) consoleElement.close();
 
     if (!active && state.viewportLocked) {
       var restoreY = state.lockedScrollY;
@@ -274,14 +285,17 @@
     pauseButton.setAttribute('aria-pressed', String(active && state.paused));
     pauseButton.setAttribute('aria-label', state.paused ? '게임 계속하기' : '게임 잠시 멈춤');
     pauseButton.querySelector('span').textContent = state.paused ? '▶' : 'Ⅱ';
-    jumpButton.disabled = !active;
-    fireButton.disabled = !active;
+    jumpButton.disabled = !active || state.paused || state.arriving;
+    fireButton.disabled = !active || state.paused || state.arriving;
+    pausePanel.hidden = !active || !state.paused;
+    consoleElement.classList.toggle('is-paused', active && state.paused);
     jumpButton.classList.toggle('is-active', active && performance.now() < state.jumpUntil);
     jumpButton.setAttribute('aria-pressed', String(active && performance.now() < state.jumpUntil));
     fireButton.classList.toggle('is-active', active && performance.now() < state.fireCooldownUntil);
   }
 
   function showPanel(name) {
+    resetStagePointer();
     panels.forEach(function (panel) { panel.hidden = panel.dataset.gamePanel !== name; });
     state.phase = name;
     consoleElement.dataset.phase = name;
@@ -396,6 +410,7 @@
     state.lastFootstep = 0;
     state.directions.clear();
     resetStick();
+    resetStagePointer();
     state.packFinishing = false;
     state.packBusy = false;
     packingBag.classList.remove('is-packing');
@@ -423,14 +438,20 @@
     state.paused = paused;
     state.directions.clear();
     resetStick();
+    resetStagePointer();
     player.classList.remove('is-walking');
     player.style.setProperty('--player-lean', '0deg');
     catchStage.classList.remove('is-moving');
     updateControllerState();
     if (message) announce(message);
     showToast(paused ? 'PAUSE' : 'GO!');
-    if (paused) stopMusic();
-    else startMusic();
+    if (paused) {
+      stopMusic();
+      pausePanel.querySelector('[data-game-resume]').focus({ preventScroll: true });
+    } else {
+      startMusic();
+      catchStage.focus({ preventScroll: true });
+    }
   }
 
   function createCollectible(item) {
@@ -559,6 +580,12 @@
       if (secondsLeft <= 0) { finishCatch(); return; }
       var dx = (state.directions.has('right') ? 1 : 0) - (state.directions.has('left') ? 1 : 0) + stickX;
       var dy = (state.directions.has('down') ? 1 : 0) - (state.directions.has('up') ? 1 : 0) + stickY;
+      if (state.pointerTarget && !dx && !dy) {
+        var walk = walkToward(state.playerX, state.playerY, state.pointerTarget, delta);
+        dx = delta ? walk.dx / (39 * delta) : 0;
+        dy = delta ? walk.dy / (39 * delta) : 0;
+        if (walk.arrived) { state.pointerTarget = null; destination.hidden = true; }
+      }
       if (dx || dy) {
         var length = Math.max(1, Math.sqrt(dx * dx + dy * dy));
         var moveX = dx / length;
@@ -627,6 +654,7 @@
   }
 
   function startCatch() {
+    if (!assetsReady) return;
     clearRound();
     startMusic();
     catchLayer.replaceChildren();
@@ -656,6 +684,7 @@
     player.classList.remove('is-hit', 'is-walking');
     showPanel('catch');
     measureRoute();
+    catchStage.focus({ preventScroll: true });
     announce('1단계 시작. 상하좌우로 움직여 필요한 물건을 모으고 위험한 물건은 피하세요.');
     showToast('QUEST START!');
     createCollectible(goodItems[0]);
@@ -702,6 +731,7 @@
     packStatus.textContent = '어떤 물건부터 넣을까요?';
     renderPackingBoard();
     showPanel('pack');
+    packingItems.querySelector('button')?.focus({ preventScroll: true });
     announce('학교에 도착했습니다. 물건과 가방의 알맞은 수납 부위를 순서에 상관없이 눌러 짝을 맞추세요.');
     runClock(PACK_SECONDS, finishGame);
   }
@@ -921,6 +951,7 @@
 
   function pressDirection(direction, button) {
     if (state.phase !== 'catch' || state.paused || state.arriving) return;
+    resetStagePointer();
     state.directions.add(direction);
     if (button) button.classList.add('is-pressed');
   }
@@ -940,9 +971,12 @@
     root.querySelector('[data-game-start]')?.focus();
   }
 
-  root.querySelector('[data-game-start]').addEventListener('click', startCatch);
+  startButton.addEventListener('click', startCatch);
   root.querySelector('[data-game-restart]').addEventListener('click', startCatch);
   exitButton.addEventListener('click', exitGame);
+  consoleElement.addEventListener('cancel', function (event) { event.preventDefault(); exitGame(); });
+  root.querySelector('[data-game-resume]').addEventListener('click', function () { setPause(false, '게임을 계속합니다.'); });
+  root.querySelector('[data-game-pause-exit]').addEventListener('click', exitGame);
   soundButton.addEventListener('click', function () {
     if (!AudioContextType) return;
     state.soundEnabled = !state.soundEnabled;
@@ -990,7 +1024,7 @@
   }
   joystick.addEventListener('pointerdown', function (event) {
     if (state.phase !== 'catch' || state.paused || state.arriving || stickPointer !== null || (event.pointerType === 'mouse' && event.button !== 0)) return;
-    event.preventDefault(); stickPointer = event.pointerId;
+    event.preventDefault(); resetStagePointer(); stickPointer = event.pointerId;
     joystick.setPointerCapture(event.pointerId); moveStick(event);
   });
   joystick.addEventListener('pointermove', function (event) {
@@ -1000,6 +1034,55 @@
   ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(function (name) {
     joystick.addEventListener(name, function (event) { if (event.pointerId === stickPointer) resetStick(); });
   });
+  function resetStagePointer() {
+    var previous = stagePointer;
+    stagePointer = null;
+    state.pointerTarget = null;
+    destination.hidden = true;
+    catchStage.classList.remove('is-dragging');
+    if (previous && catchStage.hasPointerCapture(previous.id)) catchStage.releasePointerCapture(previous.id);
+  }
+
+  function setStageTarget(target) {
+    if (!target) return;
+    state.pointerTarget = target;
+    destination.style.left = target.x + '%';
+    destination.style.top = target.y + '%';
+    destination.hidden = false;
+  }
+
+  catchStage.addEventListener('pointerdown', function (event) {
+    if (state.phase !== 'catch' || state.paused || state.arriving || stagePointer || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    event.preventDefault();
+    resetStagePointer(); resetStick(); state.directions.clear();
+    stagePointer = { id: event.pointerId, type: event.pointerType, clientX: event.clientX, clientY: event.clientY, playerX: state.playerX, playerY: state.playerY, dragged: false };
+    catchStage.setPointerCapture(event.pointerId);
+    catchStage.focus({ preventScroll: true });
+    if (event.pointerType === 'mouse') setStageTarget(pointInStage(catchStage.getBoundingClientRect(), event.clientX, event.clientY));
+    catchStage.classList.add('is-dragging');
+  });
+  catchStage.addEventListener('pointermove', function (event) {
+    if (!stagePointer || event.pointerId !== stagePointer.id) return;
+    event.preventDefault();
+    var rect = catchStage.getBoundingClientRect();
+    if (Math.hypot(event.clientX - stagePointer.clientX, event.clientY - stagePointer.clientY) >= 8) stagePointer.dragged = true;
+    if (stagePointer.type === 'mouse') setStageTarget(pointInStage(rect, event.clientX, event.clientY));
+    else if (stagePointer.dragged) setStageTarget(dragTarget(rect, stagePointer, event.clientX, event.clientY));
+  });
+  catchStage.addEventListener('pointerup', function (event) {
+    if (!stagePointer || event.pointerId !== stagePointer.id) return;
+    event.preventDefault();
+    var previous = stagePointer;
+    var target = previous.type === 'mouse' ? pointInStage(catchStage.getBoundingClientRect(), event.clientX, event.clientY)
+      : !previous.dragged ? pointInStage(catchStage.getBoundingClientRect(), event.clientX, event.clientY) : null;
+    resetStagePointer();
+    // Click/tap is an alternative to dragging. Touch drag stops on release.
+    if (target) setStageTarget(target);
+  });
+  ['pointercancel', 'lostpointercapture'].forEach(function (name) {
+    catchStage.addEventListener(name, function (event) { if (stagePointer && stagePointer.id === event.pointerId) resetStagePointer(); });
+  });
+  window.addEventListener('resize', resetStagePointer);
   pauseButton.addEventListener('click', function () {
     setPause(!state.paused, state.paused ? '게임을 계속합니다.' : '게임을 잠시 멈췄습니다.');
   });
@@ -1050,11 +1133,56 @@
   });
   window.addEventListener('pagehide', stopMusic);
 
+  function loadGameImage(src) {
+    return new Promise(function (resolve, reject) {
+      var image = new Image();
+      var timer = window.setTimeout(function () { finish(new Error('이미지 시간 초과')); }, 15000);
+      function finish(error) {
+        window.clearTimeout(timer); image.onload = null; image.onerror = null;
+        if (error) reject(error); else resolve();
+      }
+      image.onload = function () { if (image.naturalWidth) finish(); else finish(new Error('빈 이미지')); };
+      image.onerror = function () { finish(new Error('이미지 불러오기 실패')); };
+      image.src = src;
+    });
+  }
+
+  async function prepareGame() {
+    var attempt = ++loadAttempt, completed = 0;
+    var loading = root.querySelector('[data-game-loading]');
+    var status = root.querySelector('[data-game-load-status]');
+    var progress = root.querySelector('[data-game-load-progress]');
+    var retry = root.querySelector('[data-game-load-retry]');
+    assetsReady = false; startButton.disabled = true; retry.hidden = true;
+    loading.setAttribute('aria-busy', 'true'); progress.value = 0;
+    status.textContent = '등굣길을 준비합니다. 0 / 3';
+    var results = await Promise.allSettled(['assets/game-campus-spring.png', 'assets/game-pixel-player.png', 'assets/game-0422-pixel.png'].map(async function (src) {
+      await loadGameImage(src);
+      if (attempt !== loadAttempt) return;
+      completed += 1; progress.value = completed;
+      status.textContent = '등굣길을 준비합니다. ' + completed + ' / 3';
+    }));
+    if (attempt !== loadAttempt) return;
+    loading.setAttribute('aria-busy', 'false');
+    assetsReady = results.every(function (result) { return result.status === 'fulfilled'; });
+    startButton.disabled = !assetsReady;
+    progress.hidden = assetsReady;
+    status.textContent = assetsReady ? '준비 완료 · 약 1분의 작은 모험' : '게임 이미지를 불러오지 못했어요. 연결을 확인하고 다시 시도해 주세요.';
+    retry.hidden = assetsReady;
+  }
+  root.querySelector('[data-game-load-retry]').addEventListener('click', prepareGame);
+
   worldImage.addEventListener('load', measureRoute);
   if (typeof ResizeObserver !== 'undefined') new ResizeObserver(measureRoute).observe(catchStage);
   else window.addEventListener('resize', measureRoute);
   showPanel('intro');
   renderPlayer();
   updateSoundControl();
-  loadCoupons();
+  prepareGame();
+  loadCoupons().then(function () {
+    var status = root.querySelector('[data-game-event-status]');
+    status.textContent = state.couponLoadFailed ? '쿠폰 정보를 확인하지 못했어요. 게임은 즐길 수 있습니다.'
+      : state.activeCoupons.length ? '이벤트 진행 중 · 완주 후 점수에 맞는 활성 쿠폰에 도전하세요.'
+      : '쿠폰 이벤트 준비 중 · 게임은 바로 즐길 수 있어요.';
+  });
 })();

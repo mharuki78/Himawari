@@ -21,3 +21,17 @@
 - Wrong or missing selection announces guidance without points; correct match uses existing guarded insertion and delayed scoring.
 - Pencil insertion enlarged 108 to 205 units; bottle 90x120 to 170x205, including stored bottle; masks and travel adjusted.
 - Seven packing tests pass, including all four mappings, no-selection/wrong-match and duplicate matching. Desktop bottle wrong/right tested; 390px mobile pencil/front tested, targets 47px high and no horizontal overflow.
+
+
+## BAG QUEST interface and direct input (2026-10-01)
+
+- User requested the clean PACK THE BEAT presentation and mouse/finger control. `assets/game-layout.css` now owns the lobby, native modal session, HUD, pause and result presentation. Existing map, character, item sprites, SVG compartments and marketing photograph remain.
+- PC click walks to a destination; dragging changes that destination. Mobile drag keeps the initial finger/character offset and stops on release. A short tap also sets a destination. Keyboard and the compact joystick remain alternatives. Pointer movement uses the original 39 percentage units/second and existing collision bounds; no teleport or bonus speed.
+- Cancel, lost capture, resize, pause, exit and phase transitions reset the pointer. Keyboard/joystick override a pending destination. A second finger can jump or fire while moving. Native dialog traps focus; Escape/close returns to the lobby launch button. Packing receives focus on its first item.
+- Image loading uses the three actual game assets, counts successful loads, blocks premature start and offers retry on failure. Coupons remain on hold per the user's decision; no promotion settings or server scoring rules changed.
+- Formal suite: 177 passed. Geometry tests cover boundaries, finger offset, constant speed, diagonal normalization, frame cap, arrival and zero-time frames. Existing journey/packing tests still pass.
+- Local browser: 1280px PC click/drag, keyboard interruption, jump/fire, pause/time freeze, Escape/focus return; Chrome touch events at 390×844 test offset, drag/release, tap, cancellation and a second-finger jump. 320×568 and 844×390 keep actions visible. Failed image load/retry, reduced motion, resize and automatic pause pass.
+- Natural 35-second approach and packing completed in browser without altered timers or test globals: three correct items added 450 points, an incorrect compartment added none, result/restart reset correctly, and zero coupon claims were sent. Screenshots and reports are in ignored `backups/bagquest-2026-10-01/` and `output/playwright/`.
+- Strict premium static audit: 301 repository findings. The 11 in game.html are external-handler detection false positives (shared menu, retry, sound, close, SVG compartment buttons, restart, resume and exit). Actual handlers are bound in script.js/game.js and covered by browser flows. No changed stylesheet findings. Backups and older unrelated routes are included by the repository-wide audit configuration.
+
+Design reconciliation: the old pixel borders, inline console and joystick-only guidance in DESIGN.md were superseded by the user's clean-interface/direct-input request. The game-specific prose was updated; shared palette, storefront components and commerce contracts were preserved.
