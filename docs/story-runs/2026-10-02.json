@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-02",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "paper-map-backpack-walking",
+      "title": "종이 지도를 들고 걷는 날: 백팩에서 펼치고 다시 접는 순서",
+      "url": "https://himawari.co.kr/story/paper-map-backpack-walking.html",
+      "productId": "coupang-a347a4139d7ffdaf",
+      "model": "No.0423",
+      "image": "assets/story/paper-map-backpack-walking.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-02/reference-0423.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-02/generated-0423.png",
+        "prompt": "Use case: photorealistic-natural. Asset type: one landscape 3:2 Korean blog hero photo. The attached photo is the exact authentic Himawari No.0423 green accessory variant backpack, not a stylistic suggestion. A fictional Korean adult woman in her late fifties with short salt-and-pepper hair, navy cotton jacket and beige trousers pauses beside a quiet riverside walking-path bench to look at a small folded paper map. Rear-side three-quarter view, backpack worn on both shoulders and fully visible prominently; map held in front of her, away from the bag. Preserve the actual 32 × 42 × 13 cm backpack scale. Its main body is BLACK, rounded arch top, large cream oval face-shaped upper-front pouch with exactly two thin black vertical marks and a red circular cheek at left, vivid green long oval accessory on the right of that cream pouch, broad black lower-front pocket with upper flap and zipper pulls at left, small outlined white square Himawari label at lower right, black mesh side pocket and black shoulder straps. Preserve all logos, pocket geometry, straps, colors, accessories and seams. Diffused autumn morning daylight, crisp bag detail, subtle riverside backdrop. No substitute brand or bag, invented pockets, text overlay, watermarks, readable map labels or customer-review implication. Fictional AI wearing scene based on genuine product.",
+        "generatedAt": "2026-10-02",
+        "catalogUrl": "https://www.coupang.com/vp/products/9520244217",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-a347a4139d7ffdaf/main-dWHRRSTeJsYZGXJEE3yircNZfTtDRH.jpg"
+      }
+    },
+    {
+      "id": "choir-rehearsal-score-backpack",
+      "title": "합창 연습 가는 날의 백팩: 악보는 두께보다 펼칠 순서",
+      "url": "https://himawari.co.kr/story/choir-rehearsal-score-backpack.html",
+      "productId": "store-13313756862",
+      "model": "No.1223",
+      "image": "assets/story/choir-rehearsal-score-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-02/reference-1223.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-02/generated-1223.png",
+        "prompt": "Use case: photorealistic-natural. Asset type: one landscape 3:2 editorial hero photo for a Korean article about preparing sheet music for a choir rehearsal. The attached authentic Himawari No.1223 white backpack image defines the exact product; do not reproduce the reference person. In an empty modest music rehearsal room, the whole backpack stands upright on a clean wooden chair beside a separate closed thin dark music folder and a pencil on a table. No people. Preserve the actual 29 × 40 × 14 cm white/light gray rectangular bag, black upper and side zipper trim, black top loop, wide white shoulder straps with black buckles behind, prominent rounded-rectangle lower front compartment outlined in black, horizontal black zipper and dangling black pull on the smaller pocket across it, centered small black rectangular Himawari badge, white side pockets and exact seams. Soft window light; restrained natural texture; bag photographed from front three-quarter angle. No extra bags, changed logo, missing or added pockets, readable music or copied sheet music, text overlay, watermarks, claim that the shown folder has measured fit, or customer testimonial. AI staged photo based on the real product.",
+        "generatedAt": "2026-10-02",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13313756862",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260330_110/1774843091752lRdub_JPEG/60885435181830789_147192211.jpg"
+      }
+    },
+    {
+      "id": "backpack-key-pouch-doorstep",
+      "title": "집 앞에서 열쇠를 찾는 백팩: 문을 열기 전후의 작은 순서",
+      "url": "https://himawari.co.kr/story/backpack-key-pouch-doorstep.html",
+      "productId": "store-13326577567",
+      "model": "No.1208",
+      "image": "assets/story/backpack-key-pouch-doorstep.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-02/reference-1208.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-02/generated-1208.png",
+        "prompt": "Use case: photorealistic-natural. Asset type: one landscape 3:2 editorial blog hero photo about finding keys before opening a front door. The attached authentic Himawari No.1208 ivory backpack photo defines the exact product; exclude the reference woman and stroller. Show the whole bag standing upright on a simple clean wooden entryway bench inside a quiet apartment; beside it, a small plain closed key pouch and one ordinary key lying separately on the bench. Preserve actual 29 × 40 × 17 cm ivory rectangular body, two ivory top handles attached with small dark studs, black top loop and shoulder straps, centered small black Himawari badge near upper front, two distinctive symmetric curving vertical black front zippers that form a narrow central strip, ivory side pockets with small black strap tabs, original hardware and stitching. Front three-quarter composition, warm natural side light, realistic proportions. No people, stroller, door numbers, addresses, additional brands, invented key leash or product feature, changed pockets, text overlay, watermark, or review framing. Fictional AI staging using the exact genuine bag.",
+        "generatedAt": "2026-10-02",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13326577567",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260327_177/17745877470621bKeS_JPEG/3728478673959279_1633863399.jpg"
+      }
+    }
+  ],
+  "topicsReviewed": 95,
+  "overlapReview": "All 95 existing titles, summaries and full bodies were checked for textual overlap. Titles and summaries were reviewed editorially; relevant full bodies were compared. Rejected glasses-case topic because it exists. New cores: folded map orientation; choir score edition and rehearsal sequence; key pouch return after unlocking. General storage advice is linked as related reading.",
+  "completionReceipt": "backups/story-runs/2026-10-02.deployment.json"
+}

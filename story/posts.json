@@ -1,5 +1,53 @@
 [
   {
+    "id": "paper-map-backpack-walking",
+    "title": "종이 지도를 들고 걷는 날: 백팩에서 펼치고 다시 접는 순서",
+    "date": "2026-10-02",
+    "summary": "안내소에서 받은 접이식 지도를 걸으며 들여다보기보다, 다음 갈림길을 확인하고 접힌 면을 정해 백팩에 되담는 작은 습관입니다.",
+    "description": "안내소에서 받은 접이식 지도를 걸으며 들여다보기보다, 다음 갈림길을 확인하고 접힌 면을 정해 백팩에 되담는 작은 습관입니다.",
+    "tags": [
+      "종이 지도",
+      "걷는 동선",
+      "백팩 소지품"
+    ],
+    "image": "../assets/story/paper-map-backpack-walking.webp",
+    "imageAlt": "강변 산책길에서 종이 지도를 보는 성인 여성이 착용한 Himawari No.0423 백팩의 AI 착용 연출 사진",
+    "url": "paper-map-backpack-walking.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "choir-rehearsal-score-backpack",
+    "title": "합창 연습 가는 날의 백팩: 악보는 두께보다 펼칠 순서",
+    "date": "2026-10-02",
+    "summary": "악보를 곡 순서로 묶고 연필·메모를 따로 준비해, 연습 중 페이지를 찾고 마친 뒤 빠짐없이 되담는 방법입니다.",
+    "description": "악보를 곡 순서로 묶고 연필·메모를 따로 준비해, 연습 중 페이지를 찾고 마친 뒤 빠짐없이 되담는 방법입니다.",
+    "tags": [
+      "합창 연습",
+      "악보 파일",
+      "취미 가방"
+    ],
+    "image": "../assets/story/choir-rehearsal-score-backpack.webp",
+    "imageAlt": "음악 연습실 의자 위 화이트 Himawari No.1223 백팩과 따로 놓인 닫힌 악보 파일·연필의 AI 연출 사진",
+    "url": "choir-rehearsal-score-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "backpack-key-pouch-doorstep",
+    "title": "집 앞에서 열쇠를 찾는 백팩: 문을 열기 전후의 작은 순서",
+    "date": "2026-10-02",
+    "summary": "열쇠 묶음을 다른 소품과 구분하고, 문을 연 뒤에도 가방에 되돌려 두는 자리를 정해 귀가와 다음 외출을 잇습니다.",
+    "description": "열쇠 묶음을 다른 소품과 구분하고, 문을 연 뒤에도 가방에 되돌려 두는 자리를 정해 귀가와 다음 외출을 잇습니다.",
+    "tags": [
+      "열쇠 파우치",
+      "귀가 습관",
+      "작은 소지품"
+    ],
+    "image": "../assets/story/backpack-key-pouch-doorstep.webp",
+    "imageAlt": "현관 벤치 위 아이보리 Himawari No.1208 백팩과 밖에 따로 놓인 작은 열쇠 파우치·열쇠의 AI 연출 사진",
+    "url": "backpack-key-pouch-doorstep.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "spare-shoes-backpack-separation",
     "title": "갈아 신을 운동화가 있는 날: 밑창과 평소 짐을 분리하기",
     "date": "2026-10-01",
