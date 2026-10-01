@@ -18,6 +18,11 @@
     }
   ],
   "rewrites": [
+    { "source": "/api/kakaopay/config", "destination": "/api/orders?route=kakaopay-config" },
+    { "source": "/api/kakaopay/ready", "destination": "/api/orders?route=kakaopay-ready" },
+    { "source": "/api/kakaopay/finish", "destination": "/api/orders?route=kakaopay-finish" },
+    { "source": "/api/kakaopay/status", "destination": "/api/orders?route=kakaopay-status" },
+    { "source": "/api/kakaopay/abandon", "destination": "/api/orders?route=kakaopay-abandon" },
     {
       "source": "/api/games/rhythm/start",
       "destination": "/api/orders?route=rhythm-start"

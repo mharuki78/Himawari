@@ -7,6 +7,7 @@ import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalo
 import { activeCoupons, readPromotions } from './promotions.js';
 import { applyInventoryReservations } from './inventory.js';
 import { ensureCouponSchema, couponClaimStatement } from './coupon-claims.js';
+import { kakaopayConfig } from './kakaopay-client.js';
 
 export const SHIPPING_FEE = 3_500;
 export const FREE_SHIPPING_THRESHOLD = 100_000;
@@ -253,6 +254,7 @@ function mapOrderRow(row, items = [], events = [], includeAdminNotes = false) {
     status,
     statusLabel: status === 'payment_pending' && row.payment_method === 'bank_transfer' ? '입금 대기' : ORDER_STATUS[status].label,
     paymentMethod: row.payment_method,
+    paymentLabel: row.payment_method === 'kakaopay' ? '카카오페이' : (row.payment_method === 'bank_transfer' ? '무통장입금' : '결제 대기'),
     isGuest: !row.user_id,
     subtotal: Number(row.subtotal),
     coupon: row.coupon_id ? { id: row.coupon_id, label: row.coupon_label || row.coupon_id } : null,
@@ -311,32 +313,36 @@ async function hydrateOrders(rows, includeAdminNotes = false) {
   return rows.map((row) => mapOrderRow(row, itemMap.get(row.id), eventMap.get(row.id), includeAdminNotes));
 }
 
-async function readExistingOrder(requestId, email) {
+async function readExistingOrder(requestId, email, userId = null) {
   const rows = await database().query(
-    'SELECT * FROM orders WHERE request_id = $1 AND email = $2 LIMIT 1',
-    [requestId, email],
+    'SELECT * FROM orders WHERE request_id = $1 AND email = $2 AND user_id IS NOT DISTINCT FROM $3 LIMIT 1',
+    [requestId, email, userId],
   );
   return (await hydrateOrders(rows))[0] || null;
 }
 
-async function readOrderById(id) {
+export async function readOrderById(id) {
   const rows = await database().query('SELECT * FROM orders WHERE id = $1 LIMIT 1', [id]);
   return (await hydrateOrders(rows))[0] || null;
 }
 
-export async function createOrder(member, input) {
-  if (input?.paymentMethod && input.paymentMethod !== 'bank_transfer') throw Object.assign(new Error('결제 방법을 다시 선택해 주세요.'), { status: 400 });
+export async function createOrder(member, input, { paymentMethod = 'bank_transfer' } = {}) {
+  if (!['bank_transfer','kakaopay'].includes(paymentMethod) || (input?.paymentMethod && input.paymentMethod !== paymentMethod)) throw Object.assign(new Error('결제 방법을 다시 선택해 주세요.'), { status: 400 });
   const fields = validateOrderFields(input);
   const itemInput = validateOrderItems(input?.items);
   const fieldErrors = { ...fields.fieldErrors, ...itemInput.fieldErrors };
   if (Object.keys(fieldErrors).length) {
     throw Object.assign(new Error('주문서 내용을 확인해 주세요.'), { status: 400, fieldErrors });
   }
-  if (!bankTransferReady()) throw Object.assign(new Error('무통장입금 계좌를 준비하고 있습니다. Npay로 구매해 주세요.'), { status: 503 });
+  if (paymentMethod === 'kakaopay' && !kakaopayConfig().enabled) throw Object.assign(new Error('카카오페이 결제 연결을 준비하고 있습니다.'), {status:503});
+  if (paymentMethod === 'bank_transfer' && !bankTransferReady()) throw Object.assign(new Error('무통장입금 계좌를 준비하고 있습니다. Npay로 구매해 주세요.'), { status: 503 });
   await ensureOrderSchema();
 
-  const existing = await readExistingOrder(fields.value.requestId, fields.value.email);
-  if (existing) return { order: existing, duplicate: true };
+  const existing = await readExistingOrder(fields.value.requestId, fields.value.email, member?.id || null);
+  if (existing) {
+    if (existing.paymentMethod !== paymentMethod || existing.isGuest !== !member) throw Object.assign(new Error('다른 결제 방법으로 접수된 주문입니다. 주문서를 새로고침해 주세요.'), {status:409});
+    return { order: existing, duplicate: true };
+  }
 
   const catalog = await currentCatalog();
   const byId = new Map(catalog.map((product) => [product.id, product]));
@@ -397,7 +403,7 @@ export async function createOrder(member, input) {
       ${fields.value.recipientName}, ${fields.value.email}, ${fields.value.phone},
       ${fields.value.postalCode}, ${fields.value.addressLine1}, ${fields.value.addressLine2 || null},
       ${fields.value.deliveryNote || null}, ${totals.subtotal}, ${coupon?.id || null}, ${coupon?.label || null},
-      ${totals.discountAmount}, ${totals.shippingFee}, ${totals.total}, 'bank_transfer',
+      ${totals.discountAmount}, ${totals.shippingFee}, ${totals.total}, ${paymentMethod},
       ${now.toISOString()}, ${now.toISOString()}, ${retentionUntil.toISOString()}
     )`,
     ...items.map((item) => sql`INSERT INTO order_items (
@@ -407,7 +413,7 @@ export async function createOrder(member, input) {
       ${item.quantity}, ${item.unitPrice * item.quantity}, ${item.image || null}
     )`),
     sql`INSERT INTO order_events (id, order_id, actor, from_status, to_status, note)
-      VALUES (${randomUUID()}, ${id}, ${member ? 'member' : 'system'}, ${null}, 'payment_pending', ${member ? '회원 무통장입금 주문 접수 · 입금 확인 대기' : '비회원 무통장입금 주문 접수 · 입금 확인 대기'})`,
+      VALUES (${randomUUID()}, ${id}, ${member ? 'member' : 'system'}, ${null}, 'payment_pending', ${paymentMethod === 'kakaopay' ? '카카오페이 결제 준비 · 승인 대기' : (member ? '회원 무통장입금 주문 접수 · 입금 확인 대기' : '비회원 무통장입금 주문 접수 · 입금 확인 대기')})`,
   ];
 
   try {
@@ -420,8 +426,8 @@ export async function createOrder(member, input) {
   } catch (error) {
     if (coupon && error?.code === '22012') throw Object.assign(new Error('이미 사용했거나 만료된 쿠폰입니다. 쿠폰을 다시 확인해 주세요.'), {status:409,fieldErrors:{couponId:'사용 가능한 쿠폰을 다시 확인해 주세요.'}});
     if (error?.code === '23505') {
-      const duplicate = await readExistingOrder(fields.value.requestId, fields.value.email);
-      if (duplicate) return { order: duplicate, duplicate: true };
+      const duplicate = await readExistingOrder(fields.value.requestId, fields.value.email, member?.id || null);
+      if (duplicate && duplicate.paymentMethod===paymentMethod) return { order: duplicate, duplicate: true };
       throw Object.assign(new Error('이미 사용된 주문 요청입니다. 주문서를 새로고침한 뒤 다시 시도해 주세요.'), { status: 409 });
     }
     throw error;
@@ -544,6 +550,20 @@ export async function listAdminOrders({ page = 1, status = '' } = {}) {
   return { items: await hydrateOrders(rows, true), page: safePage, pageSize: ORDER_PAGE_SIZE, total, pageCount: Math.max(1, Math.ceil(total / ORDER_PAGE_SIZE)) };
 }
 
+export async function inventoryLimitsForOrder(id) {
+  const catalog = productStoreIsConfigured() ? (await readProductCatalog()).catalog : seedCatalog();
+  const byId = new Map(catalog.products.map(publicProduct).map(product => [product.id,product]));
+  const items = await database().query('SELECT product_id,option_id,quantity FROM order_items WHERE order_id=$1',[id]);
+  if (!items.length) throw Object.assign(new Error('주문 상품을 찾을 수 없습니다.'),{status:409});
+  return items.map(item => {
+    const product = byId.get(item.product_id);
+    const option = product?.options?.find(entry => entry.id === (item.option_id || ''));
+    if (!product || (product.options?.length && !option)) throw Object.assign(new Error('주문 상품 또는 옵션을 확인할 수 없습니다.'),{status:409});
+    const stock = option ? option.stock : product.stock;
+    return {productId:item.product_id,optionId:item.option_id || '',baseStock:stock == null ? null : Number(stock)};
+  });
+}
+
 export async function updateOrderByAdmin(input) {
   await ensureOrderSchema();
   const number = cleanLine(input?.orderNumber, 80);
@@ -579,6 +599,10 @@ export async function updateOrderByAdmin(input) {
   const eventNote = note || (statusChanged ? `관리자가 주문 상태를 ${ORDER_STATUS[targetStatus].label}(으)로 변경했습니다.` : '관리자가 배송 정보를 변경했습니다.');
   const eventId = randomUUID();
   let changed;
+  if (current.payment_method === 'kakaopay') {
+    const { prepareKakaopayAdminChange } = await import('./kakaopay.js');
+    await prepareKakaopayAdminChange(current, targetStatus);
+  }
   if (statusChanged && targetStatus === 'confirmed') {
     const catalog = productStoreIsConfigured() ? (await readProductCatalog()).catalog : seedCatalog();
     const products = catalog.products.map(publicProduct);

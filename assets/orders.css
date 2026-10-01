@@ -63,6 +63,17 @@
 .order-secondary-link:hover, .order-secondary-link:active { border-color: var(--order-accent); background: var(--color-sky-tint, #EEF5EA); color: var(--color-deep-harbor, #4F6B58); }
 .order-primary-link:focus-visible, .order-secondary-link:focus-visible, .order-danger-link:focus-visible { outline: 2px solid var(--color-deep-wave, #3E6B52); outline-offset: 3px; }
 .order-primary-link:disabled, .order-secondary-link:disabled, .order-danger-link:disabled { opacity: .45; cursor: not-allowed; }
+.kakaopay-button { background:#fee500; border-color:#fee500; color:#191919; box-shadow:none; }
+.kakaopay-button:hover, .kakaopay-button:active { background:#f5db00; border-color:#f5db00; color:#191919; }
+.payment-result { max-width:42rem; margin:3rem auto; padding:2rem; border:1px solid var(--order-line); border-radius:24px; background:#fff; }
+.payment-result h1 { font-size:clamp(1.7rem,5vw,2.6rem); line-height:1.3; letter-spacing:-.04em; }
+.payment-result p { line-height:1.8; }
+.payment-result dl > div { display:flex; justify-content:space-between; gap:1rem; padding:1rem 0; border-top:1px solid var(--order-line); }
+.payment-result dd { margin:0; overflow-wrap:anywhere; }
+.payment-result__actions { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.5rem; }
+.payment-result [hidden], .payment-pending-card[hidden] { display:none; }
+.payment-return-page .site-header { position:relative; color:var(--order-ink); }
+.payment-result h1:focus { outline:none; box-shadow:none; }
 
 .checkout-summary { position: sticky; top: 7rem; padding: 1.25rem; border: 1px solid var(--order-line); border-radius: var(--radius-card, 24px); background: var(--snow, #fff); box-shadow: var(--shadow-card, 0 3px 0 rgb(79 107 88 / .1)); }
 .checkout-summary__head { display: grid; grid-template-columns: 1fr auto; gap: .4rem 1rem; align-items: end; padding-bottom: 1.2rem; border-bottom: 1px solid var(--order-ink); }

@@ -160,6 +160,7 @@ function selectOrder(order, trigger) {
   document.querySelector('[data-detail-total]').textContent = priceFormatter.format(order.total);
   const recipient = document.querySelector('[data-detail-recipient]');
   recipient.replaceChildren(
+    definitionRow('결제 방법', order.paymentLabel || order.paymentMethod),
     definitionRow('받는 분', order.recipient.name), definitionRow('연락처', order.recipient.phone), definitionRow('이메일', order.recipient.email),
     definitionRow('배송지', `(${order.recipient.postalCode}) ${order.recipient.addressLine1}${order.recipient.addressLine2 ? ` ${order.recipient.addressLine2}` : ''}`),
     definitionRow('배송 요청사항', order.recipient.deliveryNote || '없음'), definitionRow('배송', order.delivery.trackingNumber ? `${order.delivery.carrier} ${order.delivery.trackingNumber}` : `${order.delivery.carrier} · 운송장 등록 전`)
@@ -279,11 +280,12 @@ updateForm.addEventListener('submit', async (event) => {
   if (payload.status === 'cancelled' || payload.status === 'refunded') {
     pendingUpdate = payload;
     const refund = payload.status === 'refunded';
-    confirmTitle.textContent = refund ? '실제 환불 처리를 완료했나요?' : '주문 취소를 완료할까요?';
-    confirmDescription.textContent = refund
+    const kakao = selected.paymentMethod === 'kakaopay';
+    confirmTitle.textContent = kakao ? '카카오페이 결제를 취소할까요?' : (refund ? '실제 환불 처리를 완료했나요?' : '주문 취소를 완료할까요?');
+    confirmDescription.textContent = kakao ? `${selected.orderNumber} 주문의 결제 전액을 카카오페이에서 취소합니다. 실제 취소 결과가 확인되어야 주문 상태와 재고를 변경합니다.` : refund
       ? `${selected.orderNumber} 주문의 대금을 실제 결제수단에서 환불한 경우에만 완료로 변경하세요. 이 사이트는 PG와 자동으로 연동되지 않습니다.`
       : `${selected.orderNumber} 주문을 취소 완료로 변경합니다. 이미 대금을 받았다면 별도 환불 처리도 확인해야 합니다.`;
-    confirmLabel.textContent = refund ? '환불 완료 기록' : '취소 완료 기록';
+    confirmLabel.textContent = kakao ? '카카오페이 취소 요청' : (refund ? '환불 완료 기록' : '취소 완료 기록');
     confirmError.textContent = '';
     confirmDialog.showModal();
     confirmCancel.focus();

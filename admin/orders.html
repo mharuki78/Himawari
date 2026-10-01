@@ -37,7 +37,7 @@
 
       <section class="board-view order-board" data-board-view hidden aria-label="주문 목록과 상세 관리">
         <div class="board-head"><div><p class="eyebrow">Order register</p><h1 id="board-title" tabindex="-1">주문 관리</h1><p>자사몰에서 접수한 주문과 고객의 취소·반품 요청을 처리합니다.</p></div><button class="button button--quiet" type="button" data-logout>로그아웃</button></div>
-        <div class="inventory-note"><div><span>조회 주문</span><strong data-order-total>—</strong></div><p>자사몰 주문은 ‘주문 확인’ 시 옵션 재고를 예약하고, 취소·환불 완료 시 자동 복원합니다. Npay 주문 자동 수집은 네이버 주문관리 API의 등록 고정 IP 연결 전까지 Npay 센터에서 별도로 확인하세요.</p></div>
+        <div class="inventory-note"><div><span>조회 주문</span><strong data-order-total>—</strong></div><p>무통장입금 주문은 ‘주문 확인’ 시, 카카오페이는 승인 직전에 재고를 예약합니다. 취소·환불 완료 시 자동 복원합니다. Npay 주문 자동 수집은 네이버 주문관리 API의 등록 고정 IP 연결 전까지 Npay 센터에서 별도로 확인하세요.</p></div>
         <div class="board-status" data-board-status role="status" aria-live="polite"></div>
 
         <div class="order-toolbar">
@@ -65,7 +65,7 @@
               <section class="order-detail-section" aria-labelledby="detail-events-title"><h3 id="detail-events-title">처리 이력</h3><ol class="order-event-list" data-detail-events></ol></section>
               <form class="order-update-form" data-order-update-form novalidate>
                 <h3>주문 상태 변경</h3>
-                <p class="order-update-help">상태 변경은 고객 주문 내역에 즉시 반영됩니다. 취소·환불 완료는 실제 처리를 확인한 뒤 저장하세요.</p>
+                <p class="order-update-help">카카오페이는 실제 결제 취소 결과가 확인되어야 취소·환불 완료로 저장됩니다. 무통장입금은 실제 환불을 확인한 뒤 기록하세요.</p>
                 <div class="admin-field"><label for="order-status">변경할 상태</label><select id="order-status" name="status" data-order-status required aria-describedby="order-status-error"></select><p class="field-error" id="order-status-error"></p></div>
                 <div class="admin-field"><label for="tracking-number">로젠택배 운송장 번호</label><input id="tracking-number" name="trackingNumber" type="text" inputmode="numeric" autocomplete="off" maxlength="50" aria-describedby="tracking-number-help tracking-number-error"><p class="field-help" id="tracking-number-help">배송 중으로 변경할 때는 운송장 번호가 필수입니다.</p><p class="field-error" id="tracking-number-error"></p></div>
                 <div class="admin-field"><label for="order-note">관리자 내부 메모</label><textarea class="admin-textarea resize-none" id="order-note" name="note" rows="4" maxlength="1000" aria-describedby="order-note-help"></textarea><p class="field-help" id="order-note-help">관리자 처리 이력에만 보관되며 고객에게 공개하지 않습니다.</p></div>

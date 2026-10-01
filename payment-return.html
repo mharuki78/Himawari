@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
+  <title>카카오페이 결제 확인 — Himawari</title>
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="assets/cart.css"><link rel="stylesheet" href="assets/orders.css">
+</head>
+<body class="payment-return-page">
+  <header class="site-header"><a class="brand" href="index.html" aria-label="히마와리 홈페이지">HIMAWARI</a></header>
+  <main class="checkout-main">
+    <section class="payment-result" aria-labelledby="payment-result-title">
+      <p class="kicker">Himawari · Payment</p>
+      <h1 id="payment-result-title" tabindex="-1">결제 결과를 확인하고 있습니다.</h1>
+      <p data-payment-message role="status" aria-live="polite">카카오페이 승인 결과와 주문금액을 확인하고 있습니다. 창을 잠시 열어 두세요.</p>
+      <dl data-payment-receipt hidden><div><dt>주문번호</dt><dd data-payment-number></dd></div><div><dt>주문금액</dt><dd data-payment-total></dd></div></dl>
+      <div class="payment-result__actions">
+        <button class="order-primary-link" type="button" data-payment-retry hidden>결제 결과 다시 확인</button>
+        <a class="order-primary-link" href="guest-order.html" data-payment-order hidden>주문 내역 확인 →</a>
+        <a class="order-secondary-link" href="products.html">제품 더 보기 →</a>
+        <a class="order-secondary-link" href="contact.html" data-payment-help hidden>고객센터 문의</a>
+      </div>
+    </section>
+  </main>
+  <script src="assets/cart.js" defer></script>
+  <script src="assets/payment-return.js" type="module"></script>
+</body>
+</html>

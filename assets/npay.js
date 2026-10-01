@@ -240,7 +240,7 @@ export async function initializeCheckoutNpay(getItems, onNavigate = () => {}) {
         return result;
       },
     });
-    setStatus(section, '배송비와 혜택은 네이버 주문서에서 최종 확인해 주세요. 자사몰 쿠폰은 무통장입금 주문에 적용됩니다.');
+    setStatus(section, '배송비와 혜택은 네이버 주문서에서 최종 확인해 주세요. 자사몰 쿠폰은 Npay 주문에 적용되지 않습니다.');
   } catch (error) {
     delete container.dataset.npayReady;
     setStatus(section, error.message || 'Npay 버튼을 불러오지 못했습니다. 페이지를 새로고침해 주세요.', true);

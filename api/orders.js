@@ -10,6 +10,7 @@ import {
 import { sendOrderNotification } from './_lib/order-notifications.js';
 import { claimCoupon, claimRhythmCoupon, couponIdentity } from './_lib/coupon-claims.js';
 import { startRhythmSession } from './_lib/rhythm-session.js';
+import { fetchKakaopay } from './_lib/kakaopay-handlers.js';
 
 const NPAY_ROUTES = {
   'npay-config': fetchNpayConfig,
@@ -20,6 +21,7 @@ const NPAY_ROUTES = {
 
 export async function fetch(request) {
   const route = new URL(request.url).searchParams.get('route');
+  if (route?.startsWith('kakaopay-')) return fetchKakaopay(request,route);
   if (NPAY_ROUTES[route]) return NPAY_ROUTES[route](request);
   if (route === 'rhythm-start' || route === 'rhythm-finish') {
     if (request.method !== 'POST') return methodNotAllowed(['POST']);

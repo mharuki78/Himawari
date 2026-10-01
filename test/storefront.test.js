@@ -277,7 +277,7 @@ test('공개 사이트는 분석·성능 측정, 브랜드 404와 기본 보안 
   assert.equal(globalHeaders.some((header) => header.key === 'X-Frame-Options'), true);
 });
 
-test('내부 주문서는 Npay와 무통장입금 선택 및 앱 소유 검증을 표시한다', async () => {
+test('내부 주문서는 구매 방법과 인증키 준비 후 공개되는 카카오페이를 표시한다', async () => {
   const html = await readFile(new URL('../checkout.html', import.meta.url), 'utf8');
 
   assert.match(html, /data-checkout-form novalidate/);
@@ -286,7 +286,9 @@ test('내부 주문서는 Npay와 무통장입금 선택 및 앱 소유 검증�
   assert.doesNotMatch(html, /data-checkout-login/);
   assert.match(html, /무통장입금 주문 접수/);
   assert.match(html, /data-npay-checkout-section/);
-  assert.doesNotMatch(html, /네이버페이 구매|카카오페이|결제 완료로 주문/);
+  assert.match(html, /data-kakaopay-section hidden/);
+  assert.match(html, /data-kakaopay-select disabled/);
+  assert.doesNotMatch(html, /결제 완료로 주문/);
 });
 
 test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 제공한다', async () => {

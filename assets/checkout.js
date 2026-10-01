@@ -39,6 +39,23 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
   var preferredGameCouponId = '';
   var couponTokens = {};
   var couponRequests = {};
+  var paymentMethod = 'bank_transfer';
+  var kakaopayEnabled = false;
+  var kakaopayButton = document.querySelector('[data-kakaopay-select]');
+
+  function selectPayment(method) {
+    paymentMethod = method;
+    var kakao = method === 'kakaopay';
+    form.hidden = false;
+    document.querySelector('#payment-title').textContent = kakao ? '카카오페이 결제 안내' : '무통장입금 안내';
+    document.querySelector('[data-bank-instructions]').hidden = kakao;
+    document.querySelector('[data-kakaopay-instructions]').hidden = !kakao;
+    submitLabel.textContent = kakao ? '카카오페이로 결제하기' : '무통장입금 주문 접수';
+    submitButton.classList.toggle('kakaopay-button', kakao);
+    bankButton.setAttribute('aria-expanded', String(!kakao));
+    kakaopayButton.setAttribute('aria-expanded', String(kakao));
+    field('recipientName').focus();
+  }
 
   function readCouponWallet() { try { return JSON.parse(localStorage.getItem('himawari-coupon-wallet-v1')) || {}; } catch (error) { return {}; } }
   function saveCouponWallet() { try { localStorage.setItem('himawari-coupon-wallet-v1', JSON.stringify(couponTokens)); } catch (error) {} }
@@ -270,15 +287,18 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
   bankButton.disabled = !bankTransferReady();
   document.querySelector('[data-bank-availability]').textContent = bankTransferReady() ? '' : '입금 계좌를 준비하고 있습니다. Npay로 구매해 주세요.';
   bankButton.addEventListener('click', function () {
-    form.hidden = false;
-    bankButton.setAttribute('aria-expanded', 'true');
-    field('recipientName').focus();
+    selectPayment('bank_transfer');
   });
+  kakaopayButton.addEventListener('click', function () { if (kakaopayEnabled) selectPayment('kakaopay'); });
 
   async function load() {
     showOnly(loading);
     try {
       var session = await request('/api/auth/session');
+      var payConfig = await request('/api/kakaopay/config').catch(function () { return {enabled:false}; });
+      kakaopayEnabled = payConfig.enabled === true;
+      document.querySelector('[data-kakaopay-section]').hidden = !kakaopayEnabled;
+      kakaopayButton.disabled = !kakaopayEnabled;
       var promotionPayload = await request('/api/promotions').catch(function () { return { coupons: [] }; });
       coupons = Array.isArray(promotionPayload.coupons) ? promotionPayload.coupons : [];
       var gameReward = readGameReward();
@@ -349,20 +369,20 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
 
   form.addEventListener('submit', async function (event) {
     event.preventDefault();
-    if (submitButton.disabled || !bankTransferReady() || form.hidden) return;
+    if (submitButton.disabled || (paymentMethod === 'kakaopay' ? !kakaopayEnabled : !bankTransferReady()) || form.hidden) return;
     var values = validate();
     if (!values) return;
     submitButton.disabled = true;
     submitButton.setAttribute('aria-busy', 'true');
-    submitLabel.textContent = '주문 접수 중';
+    submitLabel.textContent = paymentMethod === 'kakaopay' ? '결제창 준비 중' : '주문 접수 중';
     submitStatus.textContent = '상품 가격과 배송비를 서버에서 다시 확인하고 있습니다.';
     try {
-      var payload = await request('/api/orders', {
+      var payload = await request(paymentMethod === 'kakaopay' ? '/api/kakaopay/ready' : '/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           requestId: requestId,
-          paymentMethod: 'bank_transfer',
+          paymentMethod: paymentMethod,
           items: items.map(function (item) { return { productId: item.productId, optionId: item.optionId || '', quantity: item.quantity }; }),
           recipientName: values.recipientName,
           email: values.email,
@@ -377,6 +397,13 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
           privacyConsent: values.privacyConsent
         })
       });
+      if (paymentMethod === 'kakaopay') {
+        try { sessionStorage.setItem('himawari-kakaopay-checkout',JSON.stringify({orderId:payload.orderId,state:payload.state,cartOrder:cartOrder,memberOrder:memberOrder,items:items.map(function (item) { return {productId:item.productId,optionId:item.optionId || '',quantity:item.quantity}; }),createdAt:Date.now()})); } catch (error) {}
+        dirty = false;
+        var redirect = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ? payload.mobile : payload.pc;
+        location.assign(redirect);
+        return;
+      }
       var order = payload.order;
       window.himawariTrack?.('Order submitted', { itemCount: items.length, total: Number(order.total || 0), paymentState: 'pending' });
       submitted = true;
@@ -405,7 +432,7 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
     } finally {
       submitButton.disabled = false;
       submitButton.removeAttribute('aria-busy');
-      submitLabel.textContent = '무통장입금 주문 접수';
+      submitLabel.textContent = paymentMethod === 'kakaopay' ? '카카오페이로 결제하기' : '무통장입금 주문 접수';
     }
   });
 

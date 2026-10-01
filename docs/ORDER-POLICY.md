@@ -46,3 +46,7 @@
 ## 주문 이메일 (2026-09-11)
 
 Resend Vercel Marketplace 무료 플랜을 사용한다. 발신 주소는 Himawari <orders@mail.himawari.co.kr>, 답장 주소는 golf4484@naver.com이며 수신자는 주문서에 입력한 이메일이다. 무통장입금 대기 메일에는 은행·계좌번호·예금주와 입금 안내를 추가한다. 취소·확인 후 메일에는 입금 요청을 넣지 않는다. 발송 실패는 order_notifications에 기록되며 운영 화면의 재시도 기능으로 재처리한다. 발신 DNS는 후이즈에서 mail.himawari.co.kr의 DKIM과 send.mail의 SPF/MX로 인증한다.
+
+## 2026-10-01 카카오페이 연동 추가
+
+카카오페이 단건 결제 경로를 구현했다. 활성화 조건과 승인·재고·취소 처리는 [KAKAOPAY-PAYMENT.md](KAKAOPAY-PAYMENT.md)를 따른다. 키와 운영 권한 검증 전에는 고객 버튼을 공개하지 않으며, 기존 무통장입금 운영 규칙은 유지한다. 카카오페이 취소·환불은 실제 PG 전액 취소 확인 후에만 완료 처리한다.
