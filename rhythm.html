@@ -9,6 +9,7 @@
   <link rel="icon" href="/favicon.ico"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="assets/gear.css"><link rel="stylesheet" href="assets/rhythm.css">
+  <link rel="stylesheet" href="assets/rhythm-scenes.css">
   <script src="script.js" defer></script><script type="module" src="assets/rhythm.mjs"></script>
 </head>
 <body class="rhythm-page">
@@ -32,6 +33,7 @@
           <button class="rhythm-primary" type="button" data-start>리듬에 맞춰 시작하기 <span aria-hidden="true">↗</span></button>
           <div class="rhythm-launch-secondary"><button type="button" data-practice>먼저 12초 연습하기</button><span>108 BPM · 약 55초 · 한 손 플레이</span></div>
           <p class="rhythm-service" data-service role="status"></p>
+          <p class="rhythm-difficulty-note">연속 탭과 엇박이 갈수록 촘촘해져요.<br>PERFECT ±45ms · GOOD ±100ms<br>지퍼는 끝까지 · 빈 박자 연타는 점수 차감</p>
         </div>
         <noscript>게임을 하려면 브라우저에서 JavaScript를 켜 주세요.</noscript>
       </div>
@@ -73,11 +75,11 @@
       <header class="rhythm-hud"><div><span id="play-title">PACK THE BEAT</span><strong data-scene-label>출근 준비</strong></div><div class="rhythm-hud__score"><span>SCORE</span><strong data-score>00000</strong></div><button type="button" data-sound aria-label="게임 소리 끄기" aria-pressed="true">♫</button><button type="button" data-pause aria-label="게임 잠시 멈추기">Ⅱ</button></header>
       <div class="rhythm-track-progress" role="progressbar" aria-label="곡 진행" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-track-progress></span></div>
       <div class="rhythm-stage" data-stage data-scene="0">
-        <svg class="rhythm-world" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <g class="world-city"><path d="M0 500V165H140V500M175 500V80H310V500M350 500V210H470V500M550 500V125H690V500M735 500V55H870V500M910 500V245H1000" fill="#c8dbce"/><path d="M198 140H286M198 195H286M198 250H286M573 180H667M573 235H667M758 115H848M758 170H848M758 225H848" stroke="#eff5ea" stroke-width="18"/><path d="M0 504H1000M50 550H950M140 605H860" stroke="#b7cdbb" stroke-width="2"/><path d="M70 500V380M55 380H85M934 500V345M919 345H949" stroke="#83a38c" stroke-width="5"/></g>
-          <g class="world-walk"><path d="M0 500Q150 310 300 430T660 410T1000 430V700H0Z" fill="#c3d8b5"/><path d="M110 520V260M880 500V215" stroke="#829d7c" stroke-width="15"/><ellipse cx="110" cy="280" rx="115" ry="170" fill="#adc89f"/><ellipse cx="880" cy="235" rx="135" ry="190" fill="#adc89f"/><path d="M410 510Q300 590 450 700H650Q480 600 575 510Z" fill="#e8edce"/><path d="M735 485H825M735 505H825M750 505V535M810 505V535" stroke="#698a72" stroke-width="9"/></g>
-          <g class="world-travel"><circle cx="780" cy="180" r="60" fill="#e6cb82"/><path d="M0 420 150 210 350 450 540 190 750 435 930 270 1000 390V700H0Z" fill="#b2cacc"/><path d="M0 520 210 345 430 550 650 310 910 520 1000 455V700H0Z" fill="#8faeab"/><path d="M0 590Q260 545 500 600T1000 585V700H0Z" fill="#c7d9cd"/><path d="M50 595H300M750 640H960" stroke="#e9f0df" stroke-width="3"/></g>
-        </svg>
+        <div class="rhythm-photos" aria-hidden="true">
+          <img data-photo="0" src="assets/hero-poster.jpg" width="1280" height="720" alt="">
+          <img data-photo="1" src="assets/lookbook/2026-09-28-city-1884.webp" width="1024" height="1536" alt="">
+          <img data-photo="2" src="assets/campaign-1884-gray.webp" width="1295" height="1214" alt="">
+        </div>
         <div class="rhythm-lane" aria-hidden="true"></div><div class="rhythm-beat-rings" aria-hidden="true"><i></i><i></i></div>
         <div class="rhythm-combo" aria-hidden="true"><strong data-combo>0</strong><span>COMBO</span></div>
         <div class="rhythm-chapter" data-chapter aria-hidden="true"><span>WORK</span><strong>오늘의 출근 준비</strong></div>
@@ -85,11 +87,12 @@
         <div class="rhythm-bag" data-bag aria-hidden="true"><img src="assets/rhythm-1884.webp" width="640" height="640" alt=""><span class="rhythm-zip-track"><i data-zip-progress></i></span></div>
         <div class="rhythm-notes" data-notes aria-hidden="true"></div><div class="rhythm-feedback" data-feedback aria-hidden="true"><strong></strong><span></span></div>
         <div class="rhythm-countdown" data-countdown aria-live="off"></div>
+        <p class="rhythm-scene-credit" data-scene-credit>No.1884 · 블랙 · 제품 착용 연출 / AI 이미지 포함</p>
         <p class="rhythm-practice-label" data-practice-label hidden>12초 연습 · 쿠폰 점수에 포함되지 않아요</p>
       </div>
       <div class="rhythm-controls"><p data-cue>물건이 표시선에 닿을 때 톡!</p><button class="rhythm-tap" type="button" data-tap aria-label="담기. 물건은 짧게, 지퍼는 길게 누르고 끝에서 놓으세요."><span>담기</span><small>SPACE / ENTER</small><i aria-hidden="true"></i></button><div><span data-time>55초</span><span>108 BPM</span></div></div>
       <section class="rhythm-overlay" data-pause-panel hidden aria-labelledby="pause-title"><p class="rhythm-eyebrow">TAKE A BREATH</p><h2 id="pause-title" tabindex="-1">잠깐, 쉬어가요.</h2><p>준비되면 같은 박자에서 이어집니다.</p><button class="rhythm-primary" type="button" data-resume>이어서 플레이 ▶</button><button class="rhythm-text-button" type="button" data-leave>시작 화면으로 나가기</button></section>
-      <section class="rhythm-overlay rhythm-result" data-result hidden aria-labelledby="result-title"><p class="rhythm-eyebrow" data-result-eyebrow>YOUR DAY, WELL PACKED.</p><h2 id="result-title" tabindex="-1">오늘의 리듬을 담았어요.</h2><div class="rhythm-result-score"><span data-rank>A</span><strong data-final-score>00000</strong><small>/ 10,000</small></div><dl class="rhythm-result-stats"><div><dt>PERFECT</dt><dd data-perfect>0</dd></div><div><dt>GOOD</dt><dd data-good>0</dd></div><div><dt>MISS</dt><dd data-miss>0</dd></div><div><dt>MAX COMBO</dt><dd data-max-combo>0</dd></div></dl><div class="rhythm-coupon" data-reward role="status"><strong>쿠폰을 확인하고 있습니다.</strong><p>플레이 기록을 확인하는 중이에요.</p></div><button class="rhythm-text-button" type="button" data-claim-retry hidden>쿠폰 확인 다시 시도</button><div class="rhythm-result-actions"><button class="rhythm-primary" type="button" data-again>한 번 더 플레이 ↗</button><a href="product.html?id=store-13326303755">1884 살펴보기 →</a><button type="button" data-leave>시작 화면으로</button></div></section>
+      <section class="rhythm-overlay rhythm-result" data-result hidden aria-labelledby="result-title"><p class="rhythm-eyebrow" data-result-eyebrow>YOUR DAY, WELL PACKED.</p><h2 id="result-title" tabindex="-1">오늘의 리듬을 담았어요.</h2><div class="rhythm-result-score"><span data-rank>A</span><strong data-final-score>00000</strong><small>/ 10,000</small></div><dl class="rhythm-result-stats"><div><dt>PERFECT</dt><dd data-perfect>0</dd></div><div><dt>GOOD</dt><dd data-good>0</dd></div><div><dt>MISS</dt><dd data-miss>0</dd></div><div><dt>MAX COMBO</dt><dd data-max-combo>0</dd></div></dl><p class="rhythm-empty-taps" data-empty-taps></p><div class="rhythm-coupon" data-reward role="status"><strong>쿠폰을 확인하고 있습니다.</strong><p>플레이 기록을 확인하는 중이에요.</p></div><button class="rhythm-text-button" type="button" data-claim-retry hidden>쿠폰 확인 다시 시도</button><div class="rhythm-result-actions"><button class="rhythm-primary" type="button" data-again>한 번 더 플레이 ↗</button><a href="product.html?id=store-13326303755">1884 살펴보기 →</a><button type="button" data-leave>시작 화면으로</button></div></section>
     </div>
   </dialog>
   <dialog class="rhythm-settings" id="rhythm-settings" aria-labelledby="settings-title"><h2 id="settings-title">내 박자에 맞추기</h2><p>소리를 듣고 탭하세요. 블루투스 이어폰은 소리가 늦게 들릴 수 있어요.</p><button class="rhythm-primary" type="button" data-calibrate>박자 듣고 8번 탭하기 ♫</button><p data-calibration-status role="status">아래 슬라이더로 직접 조정할 수도 있습니다.</p><label for="rhythm-offset">입력 타이밍 보정 <output data-offset-value>0 ms</output></label><input id="rhythm-offset" type="range" min="-150" max="150" step="5" value="0"><p class="rhythm-settings__note">늦게 들린다면 음수 방향으로 조정하세요. 노트와 판정이 함께 보정됩니다.</p><button class="rhythm-text-button" type="button" data-settings-close>저장하고 닫기</button></dialog>

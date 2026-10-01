@@ -1,4 +1,4 @@
-import { Round, BEAT, DURATION, APPROACH, WINDOW } from './rhythm-core.mjs';
+import { Round, VERSION, BEAT, DURATION, APPROACH, WINDOW } from './rhythm-core.mjs';
 
 const $ = selector => document.querySelector(selector);
 const dialog = $('#rhythm-game'), settings = $('#rhythm-settings'), stage = $('[data-stage]');
@@ -6,7 +6,7 @@ const AudioType = window.AudioContext || window.webkitAudioContext;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const PREF = 'himawari-rhythm-v1', REWARD = 'himawari-game-coupon-v1', WALLET = 'himawari-coupon-wallet-v1';
 const labels = {book:'책',laptop:'노트북',headphones:'이어폰',bottle:'물병',camera:'카메라',glasses:'선글라스',passport:'여권',zip:'지퍼'};
-const scenes = [{name:'출근 준비',word:'WORK',line:'오늘의 출근 준비'},{name:'주말 산책',word:'WALK',line:'가벼운 주말 산책'},{name:'여행 출발',word:'WANDER',line:'새로운 곳으로 출발'}];
+const scenes = [{name:'출근 준비',word:'WORK',line:'오늘의 출근 준비',color:'블랙'},{name:'주말 산책',word:'WALK',line:'가벼운 주말 산책',color:'카키'},{name:'여행 출발',word:'WANDER',line:'새로운 곳으로 출발',color:'그레이'}];
 const rank = {'shipping-free':1,'discount-10':2,'discount-15':3,'discount-20':4};
 function read(key, fallback=null) { try {return JSON.parse(localStorage.getItem(key)) ?? fallback;} catch {return fallback;} }
 function write(key,value) {try {localStorage.setItem(key,JSON.stringify(value));return true;} catch {return false;} }
@@ -28,6 +28,12 @@ async function request(url,body,timeout=10000) {
 }
 function loading(progress, message) { $('[data-load-bar]').style.transform=`scaleX(${progress/100})`;$('[data-load-percent]').textContent=`${Math.round(progress)}%`;$('[data-load-bar]').parentElement.setAttribute('aria-valuenow',String(Math.round(progress)));if($('[data-load-label]').textContent!==message)$('[data-load-label]').textContent=message; }
 function loadingFocus(active){for(const node of document.querySelectorAll('.site-header,.announcement-bar,#main,.rhythm-footer,[data-settings],.skip-link'))node.inert=active;}
+async function decodeScene(image) {
+  if(image.complete&&!image.naturalWidth)image.src=image.getAttribute('src');
+  let timer;
+  try {await Promise.race([image.decode(),new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error('제품 사진을 불러오지 못했어요. 다시 시도해 주세요.')),15000);})]);}
+  finally{clearTimeout(timer);}
+}
 async function load() {
   ready=false;$('[data-ready]').hidden=true;$('[data-loader]').hidden=false;$('[data-loader]').classList.remove('is-ready','has-error');$('[data-load-retry]').hidden=true;
   loading(0,'가방과 음악을 불러옵니다.');
@@ -35,7 +41,10 @@ async function load() {
   try {
     if(!AudioType)throw new Error('이 브라우저는 게임 소리를 지원하지 않습니다. 최신 Chrome 또는 Safari로 열어 주세요.');
     context ||= new AudioType();if(!gain){gain=context.createGain();gain.connect(context.destination);}soundControl();
-    await $('.rhythm-display__bag').decode();loading(25,'가방 준비 완료. 오늘의 음악을 불러옵니다.');
+    const images=[$('.rhythm-display__bag'),...document.querySelectorAll('.rhythm-photos img')];let loaded=0;
+    const imageResults=await Promise.allSettled(images.map(async image=>{await decodeScene(image);loaded++;loading(loaded/images.length*25,`가방과 제품 장면을 준비합니다. ${loaded} / ${images.length}`);}));
+    if(imageResults.some(result=>result.status==='rejected'))throw new Error('제품 사진을 불러오지 못했어요. 연결을 확인하고 다시 시도해 주세요.');
+    loading(25,'가방 준비 완료. 오늘의 음악을 불러옵니다.');
     const response=await fetch('assets/rhythm-pocket-day.mp3',{signal:AbortSignal.timeout(20000)});
     if(!response.ok)throw new Error('음악을 불러오지 못했습니다. 연결을 확인하고 다시 시도해 주세요.');
     const total=Number(response.headers.get('content-length'))||0;let received=0;const chunks=[];
@@ -61,6 +70,7 @@ async function start(isPractice=false) {
   try {
     await context.resume();if(context.state!=='running')throw new Error('소리를 시작하지 못했습니다. 화면을 다시 눌러 주세요.');
     session=isPractice?null:await request('/api/games/rhythm/start',{});
+    if(session&&session.version!==VERSION)throw new Error('게임이 업데이트됐어요. 페이지를 새로고침한 뒤 다시 시작해 주세요.');
     if(own!==epoch)return;
     practice=isPractice;round=new Round(session?.seed??1884);events=[];elapsed=0;finishInput=null;resetVisuals();
     if(practice){round.notes=round.notes.filter(n=>n.at+n.duration+WINDOW<12_000);round.units=round.notes.reduce((sum,n)=>sum+(n.duration?2:1),0);}
@@ -88,7 +98,7 @@ function showFeedback(time) {
     if(hit.grade!=='miss'&&hit.part==='head'&&hit.item!=='zip'){
       const node=noteElements.get(hit.id);if(node){noteElements.delete(hit.id);const y=stage.clientHeight*.58-node.clientHeight/2;if(reduced){node.remove();}else{node.animate([{transform:`translateY(${y}px) scale(1)`,opacity:1},{transform:`translateY(${y+80}px) scale(.35)`,opacity:0}],{duration:220,easing:'cubic-bezier(.23,1,.32,1)'}).finished.then(()=>node.remove()).catch(()=>node.remove());}}
     }
-    const panel=$('[data-feedback]');panel.dataset.grade=hit.grade;panel.querySelector('strong').textContent=hit.grade.toUpperCase();panel.querySelector('span').textContent=hit.grade==='miss'?'다음 박자를 잡아요':Math.abs(hit.delta)<=65?'딱 맞는 박자!':hit.delta<0?'조금 빨라요':'조금 늦어요';panel.classList.add('is-visible');feedbackUntil=time+420;
+    const panel=$('[data-feedback]');panel.dataset.grade=hit.grade;panel.querySelector('strong').textContent=hit.grade.toUpperCase();panel.querySelector('span').textContent=hit.part==='empty'?'빈 박자는 쉬어가요 · 점수 차감':hit.grade==='miss'?'다음 박자를 잡아요':hit.grade==='perfect'?'딱 맞는 박자!':hit.delta<0?'조금 빨라요':'조금 늦어요';panel.classList.add('is-visible');feedbackUntil=time+420;
   }
   $('[data-score]').textContent=String(round.score).padStart(5,'0');$('[data-combo]').textContent=String(round.combo);$('[data-combo]').parentElement.classList.toggle('is-active',round.combo>=3);
 }
@@ -96,7 +106,7 @@ function tick() {
   if(phase!=='playing')return;const raw=currentTime(),time=raw+offset,limit=practice?12_000:DURATION;
   round.advance(time);showFeedback(raw);
   const beat=Math.floor(raw/BEAT);if(beat!==previousBeat){previousBeat=beat;stage.classList.add('on-beat');}if(raw%BEAT>180)stage.classList.remove('on-beat');
-  const scene=Math.min(2,Math.max(0,Math.floor((raw/BEAT-4)/32)));if(scene!==previousScene){previousScene=scene;stage.dataset.scene=String(scene);$('[data-scene-label]').textContent=scenes[scene].name;$('[data-chapter] span').textContent=scenes[scene].word;$('[data-chapter] strong').textContent=scenes[scene].line;}
+  const scene=Math.min(2,Math.max(0,Math.floor((raw/BEAT-4)/32)));if(scene!==previousScene){previousScene=scene;stage.dataset.scene=String(scene);$('[data-scene-label]').textContent=scenes[scene].name;$('[data-chapter] span').textContent=scenes[scene].word;$('[data-chapter] strong').textContent=scenes[scene].line;$('[data-scene-credit]').textContent=`No.1884 · ${scenes[scene].color} · 제품 착용 연출 / AI 이미지 포함`;}
   const progress=Math.min(100,raw/limit*100);$('[data-track-progress]').style.transform=`scaleX(${progress/100})`;$('[data-track-progress]').parentElement.setAttribute('aria-valuenow',progress.toFixed(2));$('[data-time]').textContent=`${Math.max(0,Math.ceil((limit-raw)/1000))}초`;
   $('[data-countdown]').textContent=raw<4*BEAT?String(Math.max(1,4-Math.floor(raw/BEAT))):'';
   const h=stage.clientHeight,target=h*.58,speed=(target+90)/APPROACH;
@@ -120,6 +130,7 @@ async function resume() {if(phase!=='paused')return;try{await context.resume();$
 function leave() {++epoch;finishPending=false;cancelAnimationFrame(frame);stopMusic();phase='lobby';resetVisuals();dialog.close();$('[data-start]').focus({preventScroll:true});$('[data-service]').textContent='준비됐어요. 내 박자에 맞춰 다시 도전하세요.';wallet();}
 function renderResult(result) {
   $('[data-final-score]').textContent=String(result.score).padStart(5,'0');$('[data-rank]').textContent=result.score>=9200?'S':result.score>=8000?'A':result.score>=6500?'B':result.score>=5000?'C':'D';
+  $('[data-empty-taps]').textContent=`박자 밖 탭 ${result.empty}회 · 헛박은 점수가 줄어요`;
   for(const name of ['perfect','good','miss'])$(`[data-${name}]`).textContent=String(result[name]);$('[data-max-combo]').textContent=String(result.maxCombo);
 }
 function saveCoupon(payload) {

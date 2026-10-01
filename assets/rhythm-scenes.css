@@ -1,0 +1,38 @@
+/* Product photographs replace the flat illustrated worlds without obscuring input. */
+.rhythm-photos { position:absolute; inset:0; pointer-events:none; }
+.rhythm-photos img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 600ms ease; }
+.rhythm-photos img[data-photo="0"] { object-position:42% 50%; }
+.rhythm-photos img[data-photo="1"] { object-position:58% 48%; }
+.rhythm-photos img[data-photo="2"] { object-position:65% 45%; }
+.rhythm-stage[data-scene="0"] [data-photo="0"],
+.rhythm-stage[data-scene="1"] [data-photo="1"],
+.rhythm-stage[data-scene="2"] [data-photo="2"] { opacity:1; }
+.rhythm-stage::before { content:''; position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(90deg,#f3f7ef38,#f3f7efb8 40%,#f3f7efcc 50%,#f3f7efb8 60%,#f3f7ef25),linear-gradient(0deg,#f3f7eff2,transparent 35%); }
+.rhythm-lane { z-index:1; background:#f3f7efbf; border-color:#4f6b5866; }
+.rhythm-combo,.rhythm-chapter { z-index:2; }
+.rhythm-combo { padding:10px 14px; border-radius:12px; background:#f3f7efed; }
+.rhythm-chapter { padding:10px 14px; border-radius:12px; background:#f3f7efed; color:var(--r-ink); bottom:10%; }
+.rhythm-feedback { left:18%; top:32%; max-width:30cqw; padding:8px 10px; border-radius:12px; background:#f3f7efed; }
+.rhythm-feedback strong { font-size:clamp(16px,3cqw,28px); }
+.rhythm-feedback span { display:block; max-width:12ch; white-space:normal; font-size:9px; line-height:1.5; }
+.rhythm-practice-label { z-index:2; top:12px; left:12px; width:auto; max-width:calc(100% - 24px); margin:0; padding:5px 8px; border-radius:6px; background:#f3f7efed; }
+.rhythm-scene-credit { position:absolute; z-index:2; right:20px; bottom:12px; margin:0; padding:5px 8px; background:#f3f7efed; border-radius:6px; color:var(--r-ink); font-size:10px; line-height:1.5; pointer-events:none; }
+.rhythm-note { --note-size:clamp(26px,12cqh,72px); width:var(--note-size); height:var(--note-size); margin-left:calc(var(--note-size) / -2); border-radius:clamp(8px,3cqh,20px); }
+.rhythm-note svg { width:84%; height:84%; }
+.rhythm-difficulty-note { margin-top:12px; color:var(--r-muted); font-size:12px; line-height:1.8; }
+@media(max-width:760px) {
+  .rhythm-note { --note-size:clamp(26px,12cqh,62px); }
+  .rhythm-chapter { right:12px; padding:8px 10px; bottom:9%; }
+  .rhythm-scene-credit { right:12px; bottom:10px; font-size:9px; }
+}
+@media(max-height:500px) and (orientation:landscape) {
+  .rhythm-chapter { bottom:36px; }
+  .rhythm-combo { top:10px; }
+  .rhythm-combo strong { font-size:26px; }
+  .rhythm-feedback { top:34%; padding:5px 10px; }
+  .rhythm-feedback strong { font-size:20px; }
+  .rhythm-practice-label { top:auto; bottom:12px; max-width:42%; }
+}
+@media(prefers-reduced-motion:reduce) { .rhythm-photos img { transition:none; } }
+
+.rhythm-result .rhythm-empty-taps { margin:-6px 0 16px; font-size:11px; color:var(--r-muted); }

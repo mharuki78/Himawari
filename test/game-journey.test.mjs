@@ -54,3 +54,10 @@ test('low frame rates do not slow down the journey clock',()=>{
   for(let n=1;n<=351;n++) c.updateWorld(n*100);
   assert.equal(state.time,0);assert.equal(state.arriving,true);
 });
+
+test('a fatal collision prevents other objects in that frame from changing the result',()=>{
+ const {c,state}=setup();const calls=[];
+ state.objects=[{item:{id:'weight',hazard:true}},{item:{id:'book'}}].map(o=>({...o,x:50,y:76,speed:0,element:{style:{}}}));
+ c.resolveCollision=o=>{calls.push(o.item.id);state.phase='result';state.objects=[];};
+ c.updateWorld(35);assert.deepEqual(calls,['weight']);assert.equal(state.phase,'result');
+});

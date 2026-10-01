@@ -1,4 +1,5 @@
 import { pointInStage, dragTarget, walkToward } from './game-pointer.mjs';
+import { campusDifficulty, campusResultTitle, PACK_SECONDS, WRONG_POCKET_SECONDS } from './game-difficulty.mjs';
 
 (function () {
   'use strict';
@@ -9,7 +10,6 @@ import { pointInStage, dragTarget, walkToward } from './game-pointer.mjs';
   var REWARD_STORAGE_KEY = 'himawari-game-coupon-v1';
   var SOUND_STORAGE_KEY = 'himawari-game-sound-v1';
   var CATCH_SECONDS = 35;
-  var PACK_SECONDS = 22;
   var PACK_TRANSFER_MS = 2200;
   var JUMP_DURATION_MS = 620;
   var JUMP_COOLDOWN_MS = 820;
@@ -390,7 +390,7 @@ import { pointInStage, dragTarget, walkToward } from './game-pointer.mjs';
   }
 
   function clearRound() {
-    window.clearInterval(state.spawnTimer);
+    window.clearTimeout(state.spawnTimer);
     window.clearInterval(state.clockTimer);
     window.cancelAnimationFrame(state.animationFrame);
     window.clearTimeout(state.toastTimer);
@@ -470,7 +470,7 @@ import { pointInStage, dragTarget, walkToward } from './game-pointer.mjs';
       element: element,
       x: 16 + Math.random() * 68,
       y: reducedMotion ? 25 + Math.random() * 48 : 12,
-      speed: reducedMotion ? 0 : 7.5 + Math.random() * 4.5
+      speed: campusDifficulty(state.journeyElapsed, reducedMotion).fallSpeed + (reducedMotion ? 0 : Math.random() * 4)
     };
     element.style.left = object.x + '%';
     element.style.top = object.y + '%';
@@ -478,9 +478,18 @@ import { pointInStage, dragTarget, walkToward } from './game-pointer.mjs';
   }
 
   function spawnItem() {
-    if (state.phase !== 'catch' || state.paused || state.arriving || document.hidden || state.objects.length >= 7) return;
-    var pool = Math.random() < .78 ? goodItems : hazards;
+    var difficulty = campusDifficulty(state.journeyElapsed, reducedMotion);
+    if (state.phase !== 'catch' || state.paused || state.arriving || document.hidden || state.objects.length >= difficulty.maxObjects) return;
+    var hazardsOnScreen = state.objects.filter(function (object) { return object.item.hazard; }).length;
+    var pool = hazardsOnScreen >= 5 || Math.random() < difficulty.goodChance ? goodItems : hazards;
     createCollectible(pool[Math.floor(Math.random() * pool.length)]);
+  }
+
+  function scheduleSpawn() {
+    state.spawnTimer = window.setTimeout(function () {
+      spawnItem();
+      if (state.phase === 'catch' && !state.arriving) scheduleSpawn();
+    }, campusDifficulty(state.journeyElapsed, reducedMotion).spawnInterval);
   }
 
   function removeObject(object, collected, effectClass) {
@@ -624,9 +633,12 @@ import { pointInStage, dragTarget, walkToward } from './game-pointer.mjs';
       });
 
       state.objects.slice().forEach(function (object) {
+        if (state.phase !== 'catch' || state.arriving) return;
         object.y += object.speed * delta;
         object.element.style.top = object.y + '%';
-        if (Math.abs(object.x - state.playerX) < 8 && Math.abs(object.y - state.playerY) < 7.5) {
+        var pickupX = object.item.hazard ? 8 : 6;
+        var pickupY = object.item.hazard ? 7.5 : 6;
+        if (Math.abs(object.x - state.playerX) < pickupX && Math.abs(object.y - state.playerY) < pickupY) {
           resolveCollision(object, now);
         } else if (object.y > 97) {
           removeObject(object, false);
@@ -690,7 +702,7 @@ import { pointInStage, dragTarget, walkToward } from './game-pointer.mjs';
     createCollectible(goodItems[0]);
     createCollectible(goodItems[2]);
     createCollectible(hazards[0]);
-    state.spawnTimer = window.setInterval(spawnItem, reducedMotion ? 1300 : 680);
+    scheduleSpawn();
     state.time = CATCH_SECONDS;
     renderHud();
     state.animationFrame = window.requestAnimationFrame(updateWorld);
@@ -717,13 +729,14 @@ import { pointInStage, dragTarget, walkToward } from './game-pointer.mjs';
     clearRound();
     state.arriving = false;
     var uniqueIds = Array.from(new Set(state.caught.map(function (item) { return item.id; })));
-    goodItems.forEach(function (item) {
-      if (uniqueIds.length < 3 && !uniqueIds.includes(item.id)) uniqueIds.push(item.id);
-    });
     state.packItems = uniqueIds.slice(0, 4).map(function (id) {
       return goodItems.find(function (item) { return item.id === id; });
     });
     state.packed = new Set();
+    if (state.lives <= 0 || !state.packItems.length) {
+      finishGame();
+      return;
+    }
     state.selectedItem = '';
     state.selectedZone = '';
     packingItems.replaceChildren();
@@ -786,7 +799,12 @@ import { pointInStage, dragTarget, walkToward } from './game-pointer.mjs';
       var zone = zones.find(function (entry) { return entry.id === zoneId; });
       packStatus.textContent = (zone ? zone.label : '수납 부위') + ' 선택 · 여기에 맞는 물건을 골라주세요.';
     } else if (item.zone !== zoneId) {
-      packStatus.textContent = '다른 수납부예요. ' + item.label + '에 맞는 부위를 다시 골라보세요.';
+      state.selectedZone = '';
+      state.time = Math.max(0, state.time - WRONG_POCKET_SECONDS);
+      renderHud();
+      showToast('WRONG POCKET · -' + WRONG_POCKET_SECONDS + '초');
+      packStatus.textContent = '맞지 않는 수납칸이에요. 2초가 줄었어요. ' + item.label + '의 부위를 다시 골라주세요.';
+      if (state.time === 0) { finishGame(); return; }
     } else {
       packItem(item);
       return;
@@ -914,6 +932,7 @@ import { pointInStage, dragTarget, walkToward } from './game-pointer.mjs';
     clearRound();
     state.paused = false;
     showPanel('result');
+    root.querySelector('#result-title').textContent = campusResultTitle(state);
     finalScore.textContent = padScore(state.score);
     rewardOutput.replaceChildren();
     var strong = document.createElement('strong');

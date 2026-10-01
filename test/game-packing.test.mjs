@@ -2,11 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFileSync} from 'node:fs';
+import { PACK_SECONDS, WRONG_POCKET_SECONDS } from '../assets/game-difficulty.mjs';
 const src=readFileSync(new URL('../assets/game.js',import.meta.url),'utf8');
 function setup(reduced=false){
   const timers=[]; const attrs={}; const classes=new Set();
   const item={id:'laptop',label:'노트북',zone:'laptop'};
-  const c={state:{phase:'pack',packed:new Set(),packItems:[item,{id:'book'}],packBusy:false,packFinishing:false,score:0},zones:[{id:'laptop',label:'노트북 수납'}],packingBag:{dataset:{},classList:{add:k=>classes.add(k),remove:k=>classes.delete(k)},removeAttribute(){},querySelector:()=>({setAttribute:(k,v)=>attrs[k]=v})},packStatus:{textContent:''},packingItems:{querySelector:()=>null},document:{activeElement:null},window:{setTimeout(fn,ms){timers.push({fn,ms});return timers.length;},clearInterval(){}},PACK_TRANSFER_MS:2200,reducedMotion:reduced,announce(){},renderPackingBoard(){},setScore(n){c.state.score+=n;},playEffect(){},finishGame(){c.state.phase='result';}};
+  const c={state:{phase:'pack',time:PACK_SECONDS,packed:new Set(),packItems:[item,{id:'book'}],packBusy:false,packFinishing:false,score:0},zones:[{id:'laptop',label:'노트북 수납'}],packingBag:{dataset:{},classList:{add:k=>classes.add(k),remove:k=>classes.delete(k)},removeAttribute(){},querySelector:()=>({setAttribute:(k,v)=>attrs[k]=v})},packStatus:{textContent:''},packingItems:{querySelector:()=>null},document:{activeElement:null},window:{setTimeout(fn,ms){timers.push({fn,ms});return timers.length;},clearInterval(){}},PACK_TRANSFER_MS:2200,WRONG_POCKET_SECONDS,reducedMotion:reduced,announce(){},showToast(){},renderHud(){},renderPackingBoard(){},setScore(n){c.state.score+=n;},playEffect(){},finishGame(){c.state.phase='result';}};
   vm.createContext(c);vm.runInContext(src.slice(src.indexOf('  function packItem('),src.indexOf('  function readStoredReward(')),c);
   return {c,item,timers,classes,attrs};
 }
@@ -30,7 +31,23 @@ test('packing clock does not consume time during insertion',()=>{
  let tick;
  const c={state:{phase:'pack',packBusy:true},document:{hidden:false},renderHud(){},window:{clearInterval(){},setInterval(fn){tick=fn;return 1;}}};
  vm.createContext(c);vm.runInContext(src.slice(src.indexOf('  function runClock('),src.indexOf('  function startCatch(')),c);
- c.runClock(22,()=>{});tick();assert.equal(c.state.time,22);c.state.packBusy=false;tick();assert.equal(c.state.time,21);
+ c.runClock(PACK_SECONDS,()=>{});tick();assert.equal(c.state.time,PACK_SECONDS);c.state.packBusy=false;tick();assert.equal(c.state.time,PACK_SECONDS-1);
+});
+
+function arrivalSetup(caught,lives=3){
+ const c={state:{caught,lives,phase:'catch'},goodItems:[{id:'book'},{id:'laptop'},{id:'bottle'},{id:'pencil'}],clearRound(){},packingItems:{replaceChildren(){},querySelector(){return null;}},packingBag:{classList:{remove(){}}},packStatus:{},renderPackingBoard(){},showPanel(phase){c.state.phase=phase;},announce(){},runClock(seconds){c.seconds=seconds;},finishGame(){c.state.phase='result';},PACK_SECONDS};
+ vm.createContext(c);vm.runInContext(src.slice(src.indexOf('  function completeCatch('),src.indexOf('  function renderPackingBoard(')),c);return c;
+}
+
+test('packing only includes collected types; duplicates do not generate free bonus items',()=>{
+ const c=arrivalSetup([{id:'book'},{id:'book'}]);c.completeCatch();
+ assert.equal(c.state.phase,'pack');assert.deepEqual(Array.from(c.state.packItems,item=>item.id),['book']);assert.equal(c.seconds,12);
+});
+
+test('empty collection and loss of all lives end without a packing bonus stage',()=>{
+ for(const [items,lives] of [[[],3],[[{id:'book'}],0]]){
+  const c=arrivalSetup(items,lives);c.completeCatch();assert.equal(c.state.phase,'result');assert.equal(c.seconds,undefined);assert.equal(c.state.packed.size,0);
+ }
 });
 
 function matchingSetup(){
@@ -51,6 +68,21 @@ test('all four item types require their matching compartment',()=>{
   c.selectPackingItem(item);c.matchPackingZone('wrong');assert.equal(timers.length,0);
   c.matchPackingZone(zone);assert.equal(timers.length,1);timers[0].fn();assert.equal(c.state.packed.has(id),true);
  }
+});
+
+test('only a wrong pair costs time; selecting a compartment alone is free',()=>{
+ const {c,item,timers}=matchingSetup();
+ c.matchPackingZone('front');assert.equal(c.state.time,12);
+ c.selectPackingItem(item);assert.equal(c.state.time,10);assert.equal(c.state.selectedZone,'');assert.equal(timers.length,0);
+ c.matchPackingZone('laptop');assert.equal(c.state.time,10);assert.equal(timers.length,1);
+ c.matchPackingZone('front');assert.equal(c.state.time,10); // Insertion owns the controls.
+});
+
+test('wrong pocket at the time limit ends the round without negative time or points',()=>{
+ const {c,item,timers}=matchingSetup();c.state.time=1;
+ c.selectPackingItem(item);c.matchPackingZone('front');
+ assert.equal(c.state.time,0);assert.equal(c.state.phase,'result');assert.equal(c.state.score,0);assert.equal(timers.length,0);
+ c.matchPackingZone('front');assert.equal(c.state.time,0);
 });
 
 
