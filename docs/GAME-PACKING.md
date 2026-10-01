@@ -35,3 +35,10 @@
 - Strict premium static audit: 301 repository findings. The 11 in game.html are external-handler detection false positives (shared menu, retry, sound, close, SVG compartment buttons, restart, resume and exit). Actual handlers are bound in script.js/game.js and covered by browser flows. No changed stylesheet findings. Backups and older unrelated routes are included by the repository-wide audit configuration.
 
 Design reconciliation: the old pixel borders, inline console and joystick-only guidance in DESIGN.md were superseded by the user's clean-interface/direct-input request. The game-specific prose was updated; shared palette, storefront components and commerce contracts were preserved.
+
+## Compact game titles and BAG QUEST loader (2026-10-01)
+
+- Both game lobby titles now follow the catalog/menu title scale: 32–50px, mobile maximum 44px. Taglines use 18–20px and body copy 14px. Narrow rhythm reward rows wrap into two columns so the 320px layout stays within the screen.
+- BAG QUEST has a separate full-screen native loading dialog, with a sage background, stitched backpack drawing and progress based on the three decoded game images. Cached images have a brief 600ms minimum presentation and 250ms exit; reduced motion skips both and stops the drawing animation. The start button stays disabled until all three images succeed.
+- The loading dialog contains keyboard focus and keeps background controls inert. Failure preserves actual partial progress, focuses retry and leaves a home link available. Successful retry closes the loader and returns focus to start. JavaScript-disabled pages retain the existing explanatory message because the dialog starts closed.
+- Validation: 177 tests passed; design lint has zero errors and 15 pre-existing token warnings. Browser checks passed for delayed images, 503 failure/retry, focus, Escape, reduced motion, 1280px/390px/320px typography, 844×390 loader fit, mouse movement/pause/exit and touch drag/release. No page exceptions or coupon claims. Reports and screenshots are saved under ignored `backups/game-loading-2026-10-01/` and `output/playwright/`.

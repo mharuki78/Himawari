@@ -1141,7 +1141,11 @@ import { pointInStage, dragTarget, walkToward } from './game-pointer.mjs';
         window.clearTimeout(timer); image.onload = null; image.onerror = null;
         if (error) reject(error); else resolve();
       }
-      image.onload = function () { if (image.naturalWidth) finish(); else finish(new Error('빈 이미지')); };
+      image.onload = function () {
+        if (!image.naturalWidth) { finish(new Error('빈 이미지')); return; }
+        if (image.decode) image.decode().then(function () { finish(); }, finish);
+        else finish();
+      };
       image.onerror = function () { finish(new Error('이미지 불러오기 실패')); };
       image.src = src;
     });
@@ -1149,28 +1153,45 @@ import { pointInStage, dragTarget, walkToward } from './game-pointer.mjs';
 
   async function prepareGame() {
     var attempt = ++loadAttempt, completed = 0;
-    var loading = root.querySelector('[data-game-loading]');
-    var status = root.querySelector('[data-game-load-status]');
-    var progress = root.querySelector('[data-game-load-progress]');
-    var retry = root.querySelector('[data-game-load-retry]');
+    var loading = document.querySelector('[data-game-loading]');
+    var status = loading.querySelector('[data-game-load-status]');
+    var progress = loading.querySelector('[data-game-load-progress]');
+    var percent = loading.querySelector('[data-game-load-percent]');
+    var retry = loading.querySelector('[data-game-load-retry]');
+    var retrying = loading.classList.contains('has-error');
+    var startedAt = performance.now();
     assetsReady = false; startButton.disabled = true; retry.hidden = true;
-    loading.setAttribute('aria-busy', 'true'); progress.value = 0;
-    status.textContent = '등굣길을 준비합니다. 0 / 3';
+    loading.classList.remove('is-ready', 'has-error');
+    loading.setAttribute('aria-busy', 'true'); progress.value = 0; percent.textContent = '0%';
+    status.textContent = '등굣길과 가방을 준비합니다.';
+    if (!loading.open) loading.showModal();
+    loading.focus({ preventScroll: true });
     var results = await Promise.allSettled(['assets/game-campus-spring.png', 'assets/game-pixel-player.png', 'assets/game-0422-pixel.png'].map(async function (src) {
       await loadGameImage(src);
       if (attempt !== loadAttempt) return;
       completed += 1; progress.value = completed;
-      status.textContent = '등굣길을 준비합니다. ' + completed + ' / 3';
+      percent.textContent = Math.round(completed / 3 * 100) + '%';
     }));
+    // Give cached assets a brief, readable transition; never simulate progress.
+    if (!reducedMotion) await new Promise(function (resolve) { window.setTimeout(resolve, Math.max(0, 600 - (performance.now() - startedAt))); });
     if (attempt !== loadAttempt) return;
     loading.setAttribute('aria-busy', 'false');
     assetsReady = results.every(function (result) { return result.status === 'fulfilled'; });
     startButton.disabled = !assetsReady;
-    progress.hidden = assetsReady;
     status.textContent = assetsReady ? '준비 완료 · 약 1분의 작은 모험' : '게임 이미지를 불러오지 못했어요. 연결을 확인하고 다시 시도해 주세요.';
-    retry.hidden = assetsReady;
+    if (assetsReady) {
+      loading.classList.add('is-ready');
+      window.setTimeout(function () {
+        if (attempt !== loadAttempt) return;
+        loading.close();
+        if (retrying) startButton.focus({ preventScroll: true });
+      }, reducedMotion ? 0 : 250);
+    } else {
+      loading.classList.add('has-error'); retry.hidden = false; retry.focus();
+    }
   }
-  root.querySelector('[data-game-load-retry]').addEventListener('click', prepareGame);
+  document.querySelector('[data-game-load-retry]').addEventListener('click', prepareGame);
+  document.querySelector('[data-game-loading]').addEventListener('cancel', function (event) { event.preventDefault(); });
 
   worldImage.addEventListener('load', measureRoute);
   if (typeof ResizeObserver !== 'undefined') new ResizeObserver(measureRoute).observe(catchStage);

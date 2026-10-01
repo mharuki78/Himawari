@@ -52,7 +52,6 @@
           <div class="quest-launch">
             <button type="button" class="quest-launch-button" data-game-start disabled>등굣길 모험 시작하기 <span aria-hidden="true">↗</span></button>
             <p class="quest-input-hint">PC는 클릭·드래그 / 모바일은 터치·드래그</p>
-            <div class="quest-loading" data-game-loading aria-busy="true"><progress max="3" value="0" data-game-load-progress aria-label="게임 이미지 준비"></progress><span data-game-load-status role="status">등굣길을 준비합니다. 0 / 3</span><button type="button" data-game-load-retry hidden>다시 불러오기</button></div>
             <p class="quest-event-status" data-game-event-status role="status">쿠폰 이벤트 준비 중 · 게임은 바로 즐길 수 있어요.</p>
           </div>
           <noscript>게임을 하려면 브라우저에서 JavaScript를 켜 주세요.</noscript>
@@ -179,6 +178,19 @@
         <div><p class="kicker">Meet No.0422</p><h2 id="game-product-title">게임 속 0422,<br>당신의 하루에도.</h2><p>캐릭터가 메고 있는 가방, 히마와리 No.0422.<br>실제 제품 사진과 다양한 색상을 살펴보세요.<br>게임의 물건 크기와 수납 동작은 재미를 위한 연출입니다.</p><a href="product.html?id=store-13326274540">No.0422 자세히 보기 <span aria-hidden="true">→</span></a></div>
       </section>
     </main>
+
+    <dialog class="quest-loader" data-game-loading aria-labelledby="quest-load-title" aria-describedby="quest-load-status" aria-busy="true" tabindex="-1">
+      <p class="quest-loader__brand">HIMAWARI PLAY / No.0422</p>
+      <div class="quest-loader__body">
+        <svg class="quest-loader__stitch" viewBox="0 0 120 150" aria-hidden="true"><path d="M42 28V18Q60 4 78 18V28M22 51Q22 28 44 28H76Q98 28 98 51V130Q98 142 86 142H34Q22 142 22 130ZM22 66H98M37 86H83V120Q83 127 76 127H44Q37 127 37 120ZM37 95H83M51 49H69M22 81H12V120H22M98 81H108V120H98"/></svg>
+        <h2 id="quest-load-title">BAG QUEST.</h2>
+        <p id="quest-load-status" data-game-load-status role="status">등굣길과 가방을 준비합니다.</p>
+        <progress max="3" value="0" data-game-load-progress aria-label="게임 이미지 준비"></progress>
+        <span class="quest-loader__percent" data-game-load-percent aria-hidden="true">0%</span>
+        <button type="button" data-game-load-retry hidden>다시 불러오기</button>
+      </div>
+      <div class="quest-loader__footer"><span>COLLECT. PACK. GO.</span><a href="index.html">홈으로 돌아가기</a></div>
+    </dialog>
 
     <footer class="site-footer">
       <div class="footer-brand"><strong>HIMAWARI</strong><p class="footer-brand__tagline"><span lang="en">Himawari—a brand inspired by Van Gogh’s soul.</span><span class="footer-brand__translation">고흐의 감성을 담아, 일상에 색을 더하는 히마와리.</span></p></div>
