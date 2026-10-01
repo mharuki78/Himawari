@@ -68,6 +68,7 @@
 .game-page .quest-session-tools :is(.sound-toggle,.joystick-pause,.game-exit):hover { background:#d9e8d3; }
 .game-page .quest-session-tools button:disabled { opacity:.35; cursor:default; }
 .game-page .game-console[data-phase="result"] .game-hud { display:none; }
+body.game-page .game-console[data-phase="result"] .game-screen-frame { grid-template-rows:minmax(0,1fr); }
 .game-page .game-console .game-screen-frame { display:grid; grid-template-rows:auto minmax(0,1fr); min-height:0; border:0; border-radius:0; }
 .game-page .game-hud { grid-template-columns:repeat(4,1fr); min-height:54px; border:0; background:var(--quest-ink); color:var(--cream); font-family:inherit; text-shadow:none; }
 .game-page .game-hud > div { display:grid; padding:6px 4px 9px; border:0; }
