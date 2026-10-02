@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-03",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "table-tennis-paddle-backpack",
+      "title": "탁구 모임 가는 날, 라켓은 케이스째 백팩에",
+      "url": "https://himawari.co.kr/story/table-tennis-paddle-backpack.html",
+      "productId": "coupang-a6358466ba8a7f61",
+      "model": "No.9007",
+      "image": "assets/story/table-tennis-paddle-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-03/reference-9007.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-03/generated-9007.png",
+        "prompt": "Use case: photorealistic-natural. Asset: landscape 1536x1024 editorial hero for a Korean article about carrying a table-tennis paddle to a local club. Reference image is the exact authentic Himawari No.9007 navy backpack; preserve it, not a generic bag. Whole upright backpack on a clean wooden changing-area bench, next to a separate CLOSED plain charcoal paddle-shaped zipped case and a small closed translucent box holding two white table-tennis balls. Soft defocused table-tennis room in distance, no people. Actual bag 28x40x17 cm. Preserve deep navy body, red base strip, two navy rounded top handles with pale keeper, cream zipper trim, navy lower-front zipped pocket with red zipper pull, central white Himawari lettering, two vertical studded handle tabs, and the distinctive navy-and-red miniature cap-shaped charm hanging at upper left. Match seams, hardware, shoulder straps and proportions. Front three-quarter view, warm diffused daylight, crisp real fabric. No open case, exposed paddle inside bag, invented sports compartments, changed accessory, duplicate bags, overlay text, watermark, testimonial or measured-fit claim. AI staging based on real product.",
+        "generatedAt": "2026-10-03",
+        "catalogUrl": "https://www.coupang.com/vp/products/9593416918",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-a6358466ba8a7f61/main-wjiu1Oqi3xFYplyfIs6n7vxEFhYcS1.jpg"
+      },
+      "dimensionsCm": "28 × 40 × 17 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 10페이지의 9007 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Navy body, red base, white zipper, studded handle tabs, centered Himawari lettering, navy/red cap charm and shoulder straps retained. Paddle case closed separately beside bag; no fit assertion. Bag fully visible on a bench by table-tennis area."
+    },
+    {
+      "id": "vocabulary-cards-backpack-practice",
+      "title": "백팩 속 단어 카드, 오늘 다시 볼 묶음만 남기기",
+      "url": "https://himawari.co.kr/story/vocabulary-cards-backpack-practice.html",
+      "productId": "coupang-eb0e638e682ff1ab",
+      "model": "No.8029",
+      "image": "assets/story/vocabulary-cards-backpack-practice.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-03/reference-8029.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-03/generated-8029.png",
+        "prompt": "Use case: photorealistic-natural. Asset: landscape 1536x1024 Korean editorial blog hero about separating vocabulary flashcards into practice and revisit piles. The reference is the exact genuine Himawari No.8029 Blue Lime variant; its actual body is orange with blue edging, lime upper front pocket, blue lower front pocket and orange small center pocket with lime flap and orange round snap. Preserve all those colors rather than changing them to suit the name. Whole upright bag on a light birch desk beside two small stacks of blank unprinted index cards, one plain closed card case and a pencil. No people. Actual size 27x39x14 cm. Preserve orange shoulder straps and top loop, large lime zipped rounded rectangle upper pouch and white rectangular SUN FLOWER/Himawari patch at its lower right, blue lower zip pouch with exactly the orange-and-lime small flap pocket centered over it, original pulls, blue side pocket, seams and shape. Relaxed home-study setting, side window light, front three-quarter product angle. No readable vocabulary, other brands, added pockets, bag interior claim, watermark, overlay text or customer review implication. Fictional AI product staging.",
+        "generatedAt": "2026-10-03",
+        "catalogUrl": "https://www.coupang.com/vp/products/9296044021",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-eb0e638e682ff1ab/main-X8E6kQWRAUeugdc7MtlNbAsILE8FIy.jpg"
+      },
+      "dimensionsCm": "27 × 39 × 14 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 45페이지의 8029 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Orange body and straps, blue edging/lower pocket/side pockets, lime upper pouch with white logo patch, orange small pocket with lime flap and round snap retained. Two blank card stacks and closed case outside bag; no generated false vocabulary or fit claim."
+    },
+    {
+      "id": "video-call-backpack-background",
+      "title": "화상 모임 화면에 백팩이 보인다면",
+      "url": "https://himawari.co.kr/story/video-call-backpack-background.html",
+      "productId": "store-11788400997",
+      "model": "No.0514",
+      "image": "assets/story/video-call-backpack-background.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-03/reference-0514.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-03/generated-0514.png",
+        "prompt": "Use case: photorealistic-natural. Asset: landscape 1536x1024 editorial hero for a Korean article about checking whether personal bag tags appear in a video-call background. Authentic reference Himawari No.0514 full-size silver drawstring backpack defines the product; do NOT reproduce its reference woman. Empty calm home-work corner: the whole bag sits upright on a plain small side stool next to the desk, facing the camera, with a closed laptop at the far opposite side of the desk and a leafy plant softly behind. No people, visible names, tags, lanyards, screens or invented accessories. Actual size 30x43x15 cm, full-size not Mini. Preserve reflective silver crinkled nylon, gathered drawstring top, long thin black drawcord loop, black top loop, wide silver shoulder straps, broad silver lower front zipped pouch with black zipper pull and small black shield-shaped Himawari patch near its lower right, silver side pockets and exact original seams. Show whole bag with natural soft light and restrained reflections, front three-quarter angle, realistic stool-relative size. No new pockets, changed logos, duplicate bag, watermark, overlay text, customer testimonial or measured-fit assertion. Fictional AI staged photo using real product.",
+        "generatedAt": "2026-10-03",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/11788400997",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260828_147/1787879951207YvXT4_JPEG/37480638312887197_339724870.jpg"
+      },
+      "dimensionsCm": "30 × 43 × 15 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 19페이지의 0514 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Reflective silver drawstring body, black top loop and long drawcord, broad front pouch and black shield logo, silver shoulder straps and side pockets retained. Full size scale relative to desk and stool, excludes reference person. No personal data on scene."
+    }
+  ],
+  "topicsReviewed": 98,
+  "overlapReview": "Reviewed every existing title and summary, compared all 98 full bodies for textual overlap and searched the full corpus for the new topics. Compared relevant sports, card-game, document, choir and camera bodies. Distinct new cores: paddle case including protruding handle plus ball container; preserving next-review state of vocabulary cards; personal bag tags in video-call framing. No changed-place rewrite of a past packing article. General paper handling is linked as related reading.",
+  "completionReceipt": "backups/story-runs/2026-10-03.deployment.json"
+}

@@ -1,5 +1,53 @@
 [
   {
+    "id": "table-tennis-paddle-backpack",
+    "title": "탁구 모임 가는 날, 라켓은 케이스째 백팩에",
+    "date": "2026-10-03",
+    "summary": "라켓 손잡이까지 덮이는 케이스를 기준으로 수납을 확인하고, 공과 평소 소지품을 분리해 탁구대 옆에 짐이 흩어지지 않게 준비합니다.",
+    "description": "라켓 손잡이까지 덮이는 케이스를 기준으로 수납을 확인하고, 공과 평소 소지품을 분리해 탁구대 옆에 짐이 흩어지지 않게 준비합니다.",
+    "tags": [
+      "탁구 모임",
+      "라켓 케이스",
+      "취미 가방"
+    ],
+    "image": "../assets/story/table-tennis-paddle-backpack.webp",
+    "imageAlt": "네이비 Himawari No.9007 백팩과 닫힌 탁구 라켓 케이스·공 보관함이 벤치에 놓인 AI 연출 사진",
+    "url": "table-tennis-paddle-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "vocabulary-cards-backpack-practice",
+    "title": "백팩 속 단어 카드, 오늘 다시 볼 묶음만 남기기",
+    "date": "2026-10-03",
+    "summary": "연습한 단어 카드를 원래 더미에 바로 섞지 않고, 다음에 다시 볼 카드가 구분된 상태로 가방에 되담는 짧은 공부 준비입니다.",
+    "description": "연습한 단어 카드를 원래 더미에 바로 섞지 않고, 다음에 다시 볼 카드가 구분된 상태로 가방에 되담는 짧은 공부 준비입니다.",
+    "tags": [
+      "단어 카드",
+      "공부 준비",
+      "카드 정리"
+    ],
+    "image": "../assets/story/vocabulary-cards-backpack-practice.webp",
+    "imageAlt": "블루라임 Himawari No.8029 백팩 옆에 두 묶음의 작은 카드와 닫힌 카드 케이스를 놓은 AI 연출 사진",
+    "url": "vocabulary-cards-backpack-practice.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "video-call-backpack-background",
+    "title": "화상 모임 화면에 백팩이 보인다면",
+    "date": "2026-10-03",
+    "summary": "카메라 뒤에 놓인 백팩의 이름표와 출입증이 화면에 들어오는지 확인하고, 모임 중 꺼낼 물건은 미리 분리하는 책상 주변 점검입니다.",
+    "description": "카메라 뒤에 놓인 백팩의 이름표와 출입증이 화면에 들어오는지 확인하고, 모임 중 꺼낼 물건은 미리 분리하는 책상 주변 점검입니다.",
+    "tags": [
+      "화상 모임",
+      "카메라 배경",
+      "가방 이름표"
+    ],
+    "image": "../assets/story/video-call-backpack-background.webp",
+    "imageAlt": "닫힌 노트북 옆의 낮은 스툴에 놓인 실버 Himawari No.0514 스트링 백팩의 AI 연출 사진",
+    "url": "video-call-backpack-background.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "paper-map-backpack-walking",
     "title": "종이 지도를 들고 걷는 날: 백팩에서 펼치고 다시 접는 순서",
     "date": "2026-10-02",
