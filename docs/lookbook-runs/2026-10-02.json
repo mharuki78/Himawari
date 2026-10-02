@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-02",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-02/deployment.json",
+  "entries": [
+    {
+      "id": "2026-10-02-city-1084h",
+      "model": "1084H",
+      "productId": "coupang-ba33ab8f40e76a95",
+      "image": "/assets/lookbook/2026-10-02-city-1084h.webp",
+      "reference": "backups/lookbook-2026-10-02/reference-coupang-ba33ab8f40e76a95.jpg",
+      "generatedSource": "backups/lookbook-2026-10-02/generated-1084H.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        28.5,
+        39,
+        12
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-02; 2026-09-14 제조사 카탈로그 26페이지의 H1084 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-ba33ab8f40e76a95/main-DsF2CqdsrdjUsWSgJcu5XydYRcPngM.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8249897457",
+      "prompt": "Use case: photorealistic-natural. Generate one portrait 2:3 editorial lifestyle photograph, exactly 1024 by 1536 pixels. Input image is the strict product reference, genuine Himawari No.1084H MINT backpack, not a style suggestion. Confirmed width 28.5 cm, height 39 cm, depth 12 cm. Preserve the softly squared mint blue-green body, dusty pink base trim and two slim dusty pink top handles with tan leather grip; tan circular stitched logo patch in the upper center containing the original mint Himawari mark; single large mint lower front compartment with straight broad flap across its top, tan leather zipper pull on the left; main zipper and tan side pull; mint padded straps with dusty pink lower webbing and original side construction. Copy original logo and exact fabric geometry. No new pockets, ornaments, buckles or different brand. Fictional adult East Asian woman about 29, pale olive skin, short black pixie haircut, coral-red lightweight jacket, off-white wide straight trousers, white low sneakers. She stands at a quiet modern city tram stop, waiting beside a pale concrete platform with a blurred teal tram in the distance; no readable signage. Three-quarter rear view, head turned gently in profile, both backpack shoulder straps worn, arms relaxed at sides. Frame from head to mid-shin, person fills most of frame, actual backpack fully unobstructed at natural 39 cm high scale on mid-back, crisp front-pocket detail. Soft autumn morning light, architectural lines and understated urban background, realistic anatomy, tactile cloth. No other bag, child, stock-photo collage, text overlay, watermark, exaggerated size or real customer implication. Fictional AI wearing staging.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct visual review: mint body, pink handles/base/webbing, tan circle logo and pull tabs, straight front flap, geometry and natural adult scale retained; plausible anatomy."
+    },
+    {
+      "id": "2026-10-02-travel-1010",
+      "model": "1010",
+      "productId": "coupang-3d4fbf39120dea6f",
+      "image": "/assets/lookbook/2026-10-02-travel-1010.webp",
+      "reference": "backups/lookbook-2026-10-02/reference-coupang-3d4fbf39120dea6f.jpg",
+      "generatedSource": "backups/lookbook-2026-10-02/generated-1010.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        33,
+        45,
+        15
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-02; 2026-09-14 제조사 카탈로그 50페이지의 1010 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-3d4fbf39120dea6f/main-7eLzz0VGYkIX3KVApCVQWErMCnTqwM.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8653683145",
+      "prompt": "Use case: photorealistic-natural. Generate one portrait 2:3 editorial travel photograph exactly 1024 by 1536 pixels. Input image is a strict authentic product reference for Himawari No.1010 KHAKI backpack. Confirmed width 33 cm, height 45 cm, depth 15 cm. Preserve pale muted olive khaki squared body, gently rounded upper corners, black edge piping and base, paired broad black top webbing handles with black leather grip and black adjuster loops at each side, original black shoulder straps, large lower khaki pocket with rounded flap, two distinct black vertical leather buckle straps on the flap, centered white rectangular Himawari EST.2010 label with black border, original small black side tabs. Copy the logo and all construction exactly; no extra zippers, invented charms, chest belt or alternate brand. Fictional adult Black man about 57, medium dark skin, close cropped salt-and-pepper hair, neat short grey beard, thin dark glasses, sky-blue cotton shirt and sand chinos. He is seated sideways on a backless white bench on the sheltered outer deck of a passenger ferry, quietly viewing an industrial harbor with soft distant cranes and water beyond the rail. Camera at seated eye level from rear three-quarter angle, wider environment visible, body from head to lower shins. He wears both straps so the entire 45 cm high backpack is clearly visible against his back, not caught behind the bench, naturally scaled for a 182 cm adult. Shoulders relaxed, hands on knees, anatomically plausible seated pose. Soft overcast maritime daylight, uncluttered deck, crisp authentic fabric and buckle detail. No mountains, train station, coast boardwalk, other bag, child, extra fingers, text overlay, watermark or actual customer implication. Fictional AI wearing staging.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct visual review: khaki body, black piping/handles/straps, white logo, rounded flap with two buckle straps and side tabs retained; natural seated adult scale and anatomy."
+    }
+  ]
+}
