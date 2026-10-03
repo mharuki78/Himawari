@@ -1,7 +1,7 @@
 {
   "date": "2026-10-03",
   "automationId": "himawari-3",
-  "expectedGeneratedImages": 3,
+  "expectedGeneratedImages": 6,
   "posts": [
     {
       "id": "table-tennis-paddle-backpack",
@@ -68,9 +68,95 @@
       "dimensionsSource": "2026-09-14 제조사 카탈로그 19페이지의 0514 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
       "fidelityReviewed": true,
       "fidelityReview": "Reflective silver drawstring body, black top loop and long drawcord, broad front pouch and black shield logo, silver shoulder straps and side pockets retained. Full size scale relative to desk and stool, excludes reference person. No personal data on scene."
+    },
+    {
+      "id": "laptop-pouch-meeting-room",
+      "title": "손잡이를 분리한 노트북 파우치, 다시 들기 전에",
+      "url": "https://himawari.co.kr/story/laptop-pouch-meeting-room.html",
+      "productId": "coupang-6c09e607c31fa331",
+      "model": "No.2513",
+      "image": "assets/story/laptop-pouch-meeting-room.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-03/afternoon/reference-2513.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-03/afternoon/generated-2513.png",
+        "prompt": "Use case: photorealistic-natural. Landscape 1536x1024 editorial photograph for a Korean story about checking the detachable handle clips of a laptop pouch. Reference is the exact genuine Himawari No.2513 mint pouch, not a backpack. Preserve mint diamond-quilted flat rectangular 36.5x28x2 cm body, black bound edge and top zipper, large central black Himawari lettering, one black-and-mint woven rope handle arched above attached at both silver swivel clips and top rings, long two knotted black/mint cord zipper pulls with silver beads at left, and small lower silver ring visible in the reference. Do not invent a long shoulder strap. Entire pouch upright resting on a light oak meeting table, front slightly angled view. Both existing top clips attached and visually clear; handle is slack, no carrying person. A closed plain graphite laptop rests separately at far right, no fit claim. Bright modern empty meeting room, soft afternoon window light, authentic textile and metal detail. No new pockets, extra handles, added labels, other brands, watermark or overlay text. Fictional AI product staging; preserve original logo, colors, hardware and proportions.",
+        "generatedAt": "2026-10-03",
+        "catalogUrl": "https://www.coupang.com/vp/products/9268264534",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6c09e607c31fa331/main-6gVCtxywyhvmUsVIGgVwZKV6MYXaHZ.jpg"
+      },
+      "dimensionsCm": "36.5 × 28 × 2 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 11페이지의 2513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly compared original and generated photo. Mint diamond quilt, black central Himawari wordmark and binding, patterned rope handle, both silver clips/rings, dual knotted left zipper pulls with beads and bottom ring preserved. Flat pouch profile and plausible scale beside separate closed laptop; no invented long strap or internal fit claim."
+    },
+    {
+      "id": "wireless-mouse-backpack-case",
+      "title": "백팩 속 마우스, 버튼이 눌리지 않게 되담기",
+      "url": "https://himawari.co.kr/story/wireless-mouse-backpack-case.html",
+      "productId": "coupang-08039b2ac81db358",
+      "model": "No.194L",
+      "image": "assets/story/wireless-mouse-backpack-case.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-03/afternoon/reference-194L.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-03/afternoon/generated-194L.png",
+        "prompt": "Use case: photorealistic-natural. Landscape 1536x1024 editorial hero about packing a portable computer mouse so its buttons are not pressed by surrounding belongings. Exact genuine reference Himawari No.194L lavender backpack, 28x39x15 cm, upright on a clean home office side table. Preserve lavender rectangular body, paired lavender handles with beige snap keeper, silver upper handle rings and beige stitched rectangular anchor tabs, large lower front lavender flap pocket with exactly two beige vertical buckle straps, rectangular pale Himawari logo patch at flap center, lavender shoulder straps and side pockets. Show whole bag front three-quarter, not cropped. Beside the bag a plain dark open shaped mouse case containing a single unbranded matte white wireless mouse resting naturally right way up, and a tiny loose black USB receiver in a separate recessed compartment of the case. Receiver is separate from laptop; no claim of built-in bag case. Closed blank notebook behind. Warm desk lamp plus gentle daylight, real fabric and hardware. No added bag compartments, new charms, people, readable screen text, watermark or overlay typography. AI staging using real product; preserve logo and bag geometry.",
+        "generatedAt": "2026-10-03",
+        "catalogUrl": "https://www.coupang.com/vp/products/8732967408",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-08039b2ac81db358/main-mkrOsxkr3orTIBRMVe620YMpIMn39j.jpg"
+      },
+      "dimensionsCm": "28 × 39 × 15 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 44페이지의 194L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Original lavender body, beige handle anchors and keeper, silver rings, two beige buckle straps on the flap, central pale Himawari logo, side pockets and lavender straps retained. Mouse/receiver are visibly separate staged accessories in an external open case; no added bag compartment."
+    },
+    {
+      "id": "backpack-pin-badge-check",
+      "title": "백팩에 배지를 달기 전, 뒷면부터 살펴보세요",
+      "url": "https://himawari.co.kr/story/backpack-pin-badge-check.html",
+      "productId": "coupang-89f32d8ebba306ec",
+      "model": "No.124S",
+      "image": "assets/story/backpack-pin-badge-check.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-03/afternoon/reference-124S.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-03/afternoon/generated-124S.png",
+        "prompt": "Use case: photorealistic-natural. Landscape 1536x1024 editorial photograph for a Korean story about checking pin badges before attaching them to a backpack. Reference is exact authentic Himawari No.124S Yellow variant, actually pale cream-yellow body with tan-brown bottom strip and black hardware. Preserve whole 22x33x14 cm rectangular compact bag, two cream handles with black keeper and exactly two black rivets per front anchor, centered black rectangular Himawari patch, single wide front zip pocket with black horizontal zipper and pull at left, cream side pockets and black shoulder straps visible behind. Upright front three-quarter on a low craft-room shelf beside a shallow pale tray holding two small enamel pin badges, one simple green leaf shape and one orange circle, both backs secured and no visible sharp pin. They are separate loose accessories, NOT attached to or supplied with the bag. Soft quiet craft corner with blurred corkboard behind, afternoon natural light. Preserve product color, seams, original logos and size. No pierced fabric, added bag decorations, new pockets, overlay text, watermark, people or other brands. Fictional AI staged photograph.",
+        "generatedAt": "2026-10-03",
+        "catalogUrl": "https://www.coupang.com/vp/products/8645627102",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-89f32d8ebba306ec/main-RZbO1NbGDv0opC3TEzfRgp5JrIzNtG.jpg"
+      },
+      "dimensionsCm": "22 × 33 × 14 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 34페이지의 124S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Pale yellow variant with tan base, original black logo patch, front zip and pulls, double rivets at handle anchors, black handle keeper/straps and cream side pockets retained. Leaf and circle badges remain in a separate tray with backs shown; bag unpierced, no supplied accessory assertion."
     }
   ],
-  "topicsReviewed": 98,
-  "overlapReview": "Reviewed every existing title and summary, compared all 98 full bodies for textual overlap and searched the full corpus for the new topics. Compared relevant sports, card-game, document, choir and camera bodies. Distinct new cores: paddle case including protruding handle plus ball container; preserving next-review state of vocabulary cards; personal bag tags in video-call framing. No changed-place rewrite of a past packing article. General paper handling is linked as related reading.",
-  "completionReceipt": "backups/story-runs/2026-10-03.deployment.json"
+  "topicsReviewed": 101,
+  "overlapReview": "Reviewed all 101 existing titles, summaries and full bodies including morning three. Examined hotdesk workflow and laptop-compartment article for overlap. New cores: reconnecting detachable pouch handle at both clips, distinct from shared-office retrieval; mouse button/wheel clearance inside a case, distinct from cable organization and receiver retrieval; pin badge backing and puncture placement, distinct from keyring positioning. Actual model-specific shapes and catalog dimensions checked. No reworded same-topic publication.",
+  "completionReceipt": "backups/story-runs/2026-10-03.deployment.json",
+  "expectedCount": 6,
+  "editions": {
+    "morning": {
+      "postIds": [
+        "table-tennis-paddle-backpack",
+        "vocabulary-cards-backpack-practice",
+        "video-call-backpack-background"
+      ],
+      "stage": "published",
+      "receipt": "backups/story-2026-10-03/morning/deployment.json"
+    },
+    "afternoon": {
+      "postIds": [
+        "laptop-pouch-meeting-room",
+        "wireless-mouse-backpack-case",
+        "backpack-pin-badge-check"
+      ],
+      "stage": "prepared"
+    }
+  }
 }

@@ -1,5 +1,53 @@
 [
   {
+    "id": "laptop-pouch-meeting-room",
+    "title": "손잡이를 분리한 노트북 파우치, 다시 들기 전에",
+    "date": "2026-10-03",
+    "summary": "분리형 손잡이를 쓰는 노트북 파우치는 다시 연결한 양쪽 고리부터 확인합니다. No.2513의 원본 사진에서 보이는 연결부를 살펴보는 사용 전 준비입니다.",
+    "description": "분리형 손잡이를 쓰는 노트북 파우치는 다시 연결한 양쪽 고리부터 확인합니다. No.2513의 원본 사진에서 보이는 연결부를 살펴보는 사용 전 준비입니다.",
+    "tags": [
+      "노트북 파우치",
+      "분리형 손잡이",
+      "연결 고리"
+    ],
+    "image": "../assets/story/laptop-pouch-meeting-room.webp",
+    "imageAlt": "민트 Himawari No.2513 노트북 파우치의 양쪽 손잡이 고리와 닫힌 노트북을 함께 보여주는 AI 연출 사진",
+    "url": "laptop-pouch-meeting-room.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "wireless-mouse-backpack-case",
+    "title": "백팩 속 마우스, 버튼이 눌리지 않게 되담기",
+    "date": "2026-10-03",
+    "summary": "노트북을 닫은 뒤 마우스의 전원과 수신기를 확인하고, 케이스를 닫았을 때 버튼과 휠이 눌리지 않는지 살펴보는 정리 순서입니다.",
+    "description": "노트북을 닫은 뒤 마우스의 전원과 수신기를 확인하고, 케이스를 닫았을 때 버튼과 휠이 눌리지 않는지 살펴보는 정리 순서입니다.",
+    "tags": [
+      "휴대용 마우스",
+      "버튼과 휠",
+      "기기 케이스"
+    ],
+    "image": "../assets/story/wireless-mouse-backpack-case.webp",
+    "imageAlt": "라벤더 Himawari No.194L 백팩 옆에 마우스와 작은 USB 수신기를 케이스에 놓은 AI 연출 사진",
+    "url": "wireless-mouse-backpack-case.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "backpack-pin-badge-check",
+    "title": "백팩에 배지를 달기 전, 뒷면부터 살펴보세요",
+    "date": "2026-10-03",
+    "summary": "핀 배지의 고정 장치와 가방 안쪽을 확인하고, 원단에 구멍을 남기고 싶지 않을 때는 다른 자리를 고르는 장식 준비입니다.",
+    "description": "핀 배지의 고정 장치와 가방 안쪽을 확인하고, 원단에 구멍을 남기고 싶지 않을 때는 다른 자리를 고르는 장식 준비입니다.",
+    "tags": [
+      "핀 배지",
+      "가방 장식",
+      "안쪽 확인"
+    ],
+    "image": "../assets/story/backpack-pin-badge-check.webp",
+    "imageAlt": "옐로우 Himawari No.124S 백팩과 별도 접시에 놓인 잎 모양·원형 핀 배지의 AI 연출 사진",
+    "url": "backpack-pin-badge-check.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "table-tennis-paddle-backpack",
     "title": "탁구 모임 가는 날, 라켓은 케이스째 백팩에",
     "date": "2026-10-03",
