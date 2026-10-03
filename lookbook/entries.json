@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-03-everyday-0422",
+    "model": "0422",
+    "productId": "coupang-d688e9b1291f7997",
+    "category": "everyday",
+    "color": "옐로우",
+    "title": "시장에서 고르는 가을빛",
+    "scene": "동네 시장 골목에서, 짙은 카디건과 노란 백팩.",
+    "alt": "옐로우 No.0422 백팩을 멘 중년 성인 여성이 시장의 채소 가판대를 둘러보는 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-03-everyday-0422.webp",
+    "thumbnail": "/assets/lookbook/2026-10-03-everyday-0422-640.webp",
+    "width": 1024,
+    "height": 1536,
+    "date": "2026-10-03"
+  },
+  {
+    "id": "2026-10-03-city-1682",
+    "model": "1682",
+    "productId": "coupang-00860ebfcbb609f9",
+    "category": "city",
+    "color": "그레이",
+    "title": "넓은 광장을 가로질러",
+    "scene": "콘크리트 건축물 사이 도시 광장에서, 인디고 재킷과 그레이 롤업 백팩.",
+    "alt": "그레이 No.1682 롤업 백팩을 멘 젊은 성인 남성이 도시 광장을 걷는 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-03-city-1682.webp",
+    "thumbnail": "/assets/lookbook/2026-10-03-city-1682-640.webp",
+    "width": 1024,
+    "height": 1536,
+    "date": "2026-10-03"
+  },
+  {
     "id": "2026-10-02-city-1084h",
     "date": "2026-10-02",
     "category": "city",

@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-03",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-03/deployment.json",
+  "entries": [
+    {
+      "id": "2026-10-03-everyday-0422",
+      "model": "0422",
+      "productId": "coupang-d688e9b1291f7997",
+      "image": "/assets/lookbook/2026-10-03-everyday-0422.webp",
+      "reference": "backups/lookbook-2026-10-03/reference-coupang-d688e9b1291f7997.jpg",
+      "generatedSource": "backups/lookbook-2026-10-03/generated-0422.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        30,
+        40,
+        15
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-03; 2026-09-14 제조사 카탈로그 54페이지의 0422 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-d688e9b1291f7997/main-toYqM2Jib7V2z2Jan06Jky9asr0qrf.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8645626896",
+      "prompt": "Use case: photorealistic-natural. Generate one 2:3 portrait editorial lifestyle photograph, exactly 1024 by 1536 pixels. Input image is strict authentic product reference for genuine Himawari No.0422 YELLOW backpack, verified 30 cm width x 40 cm height x 15 cm depth. Copy mustard yellow rounded backpack body and yellow shoulder straps, black piping around the curved main zipper, black loop handle, two main zipper pulls, two black front vertical attachment loops with D rings. Preserve TWO removable mustard yellow pouches hanging at upper front: the left circular pouch with small red Himawari EST.2010 embroidered logo and its black zip, and the right scalloped square pouch with its exact original white-eyed smiling face. Preserve straight yellow lower-front pocket flap, black zip pull, and small black rectangular Himawari sewn label at its lower-right corner. The large circular Korean safety-test badge on the reference lower pocket is a promotional image overlay, NOT a physical bag component: omit only that advertising overlay from the scene. No invented decorative logo or extra pocket. Scene: fictional adult Korean woman about 49 with softly waved short dark hair with a few grey strands, wearing a charcoal cardigan, muted wine long skirt, tan loafers. She is browsing a quiet neighborhood outdoor vegetable market, both shoulder straps worn, body angled to the stall and looking down toward a wooden crate of pumpkins; hands relaxed with one hand hovering naturally above a pumpkin. Three-quarter rear medium framing from head to below knees, legible backpack unobstructed at realistic 40 cm high scale. Warm early-autumn daylight, softly blurred neutral awnings and produce stalls, candid editorial texture, realistic anatomy. No readable shop signs, safety badge, printed caption, watermark, child, extra fingers, other backpack, customer-testimonial implication. Fictional AI wearing staging.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct visual inspection of reference and new output: yellow curved body, black edge zipper, paired black D-ring attachments, original round logo pouch and scalloped smile pouch, yellow lower flap and black logo patch retained. Advertising safety badge omitted as overlay, not a physical feature. Both straps worn; hand and adult posture plausible; 40 cm bag natural relative to torso."
+    },
+    {
+      "id": "2026-10-03-city-1682",
+      "model": "1682",
+      "productId": "coupang-00860ebfcbb609f9",
+      "image": "/assets/lookbook/2026-10-03-city-1682.webp",
+      "reference": "backups/lookbook-2026-10-03/reference-coupang-00860ebfcbb609f9.jpg",
+      "generatedSource": "backups/lookbook-2026-10-03/generated-1682.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        30,
+        50,
+        14
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-03; 2026-09-14 제조사 카탈로그 39페이지의 1682 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-00860ebfcbb609f9/main-rCV6RzlGBvwZvBZtCPx6rcOOl2mgYF.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8653683058",
+      "prompt": "Use case: photorealistic-natural. Generate one 2:3 portrait architectural lifestyle photograph exactly 1024 by 1536 pixels. Input image is the strict genuine product reference for Himawari No.1682 GREY roll-top backpack, verified 30 cm width x 50 cm height x 14 cm depth. Copy actual pale heather grey tall rectangular fabric body, broad black folded roll-top across its full width, two evenly spaced long black vertical webbing straps with two original black plastic buckles, small black top loop, black edging of upper curved compartment, centered small black Himawari wordmark, twin small black zipper pulls hanging below the curved compartment, black base panel, side slip pocket seam and small dark side patch, and black shoulder straps. Keep the same proportions, construction and materials. No new front pouches, patches, white label, chest harness or different brand. Fictional adult South Asian man about 26, medium brown skin, short curly black hair, clean-shaven, dark indigo denim jacket over an ivory tee, ochre straight chinos and low black sneakers. He is walking across a broad quiet modern city plaza between pale sculptural concrete buildings, one natural step forward and head in profile. Full-body rear three-quarter viewpoint from a little farther away, actual bag fully visible worn on both shoulders and naturally 50 cm tall against a 180 cm adult back; bag starts below shoulders and ends around upper hips, not cartoon oversized. Long low architectural shadows, generous space around the person, crisp textile and buckle detail, subtle overcast autumn light. No market, station, ferry, mountain, repeated model, child, impossible anatomy, other bag, readable signage, text overlay or watermark. Fictional AI wearing staging.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct visual inspection of reference and new output: heather grey rectangular body, broad black roll-top, two black buckle straps, black curved edging, central wordmark, twin zipper pulls, side pocket seam/patch and black base retained. Natural adult scale and plausible full-body walking pose; shoulder straps and backpack visible."
+    }
+  ]
+}
