@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-04",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "binoculars-backpack-birdwatching",
+      "title": "탐조 산책의 백팩: 쌍안경 덮개와 끈을 함께 챙기기",
+      "url": "https://himawari.co.kr/story/binoculars-backpack-birdwatching.html",
+      "productId": "coupang-66513184481d2764",
+      "model": "No.9018",
+      "image": "assets/story/binoculars-backpack-birdwatching.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-04/reference-9018.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-04/generated-9018.png",
+        "prompt": "Use case: photorealistic-natural. Landscape 1536x1024 editorial photograph for a Korean article about preparing small binoculars before a birdwatching walk. Input image is the strict genuine Himawari No.9018 beige-black backpack reference, actual 28 cm width x 40 cm height x 17 cm depth. Preserve cream beige upright rectangular body and shoulder straps, twin beige top handles with original beige snap keeper, exactly two black rectangular lower handle anchor tabs and black upper rings, front horizontal beige zip with long black pull at left, broad beige rounded flap pouch below with exactly two black vertical buckled straps and long ends, small central white Himawari EST.2010 patch in black border, beige side pockets and original seams. No added pouches, straps or decor. Whole bag upright on a smooth wooden bench in a quiet birdwatching shelter, front three-quarter view. Beside it compact unbranded black binoculars with both objective lens caps attached, short neck strap neatly gathered, and a closed small padded case kept separately. In the distance softly blurred reeds and still water, cool early-autumn morning light, realistic nylon texture, correct bag scale. Binoculars and case are separately staged accessories, not supplied with the bag; no claim of internal fit, impact resistance or waterproofing. No birds close up, people, readable guide text, watermark, typography or other brands. Fictional AI product staging based on actual reference.",
+        "generatedAt": "2026-10-04",
+        "catalogUrl": "https://www.coupang.com/vp/products/9312624854",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-66513184481d2764/main-eT2o0pKD0snvdHsL3egiSWaqR92QF6.jpg"
+      },
+      "dimensionsCm": "28 × 40 × 17 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 40페이지의 9018 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly inspected original and new output. Beige body/handles/straps, beige snap keeper, two black handle anchor tabs/rings, upper horizontal zip with black pull, large lower flap with two black buckled straps, white black-bordered Himawari patch and beige side pockets retained. Whole bag realistically scaled beside capped black binoculars and separate closed case. No inferred bag protection or fitted interior."
+    },
+    {
+      "id": "folding-phone-stand-backpack",
+      "title": "접이식 휴대폰 거치대, 펼친 채 백팩에 넣지 않도록",
+      "url": "https://himawari.co.kr/story/folding-phone-stand-backpack.html",
+      "productId": "coupang-61a4938317496a47",
+      "model": "No.0423",
+      "image": "assets/story/folding-phone-stand-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-04/reference-0423.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-04/generated-0423.png",
+        "prompt": "Use case: photorealistic-natural. Landscape 1536x1024 editorial still life about folding a small phone stand before returning it to a backpack. Strict actual Himawari No.0423 navy variant reference: black rounded fabric backpack body, pale mint attached horizontal oval face pouch at upper front, exactly two short black vertical eye marks, round navy nose at left, large long navy oval ear flap down the right side, original black lower rounded zip pouch, short black horizontal flap detail across its upper part, small black square Himawari patch with thin white border at lower right, original black cord zipper pulls and mesh side pockets with horizontal black straps. Preserve original dog-face design exactly, black/navy/mint colors, actual 32x42x13 cm bag size and all compartments. Whole bag upright on a pale grey side table in a calm shared study room, front three-quarter view. At left on the table a small unbranded matte metal folding phone stand fully collapsed, with its hinge and rubber pads visible, a plain dark phone face down separately and a simple cloth pouch beside it. Soft window light, subtle concrete wall and out-of-focus chair, authentic textile, restrained photography. No phone inside the stand, no invented electronic charging function, no added bag decorations, no extra mascot ears/eyes, people, readable screens, captions or watermark. Phone stand is a separate staged accessory, not a supplied feature or proof of internal fit. Fictional AI product staging.",
+        "generatedAt": "2026-10-04",
+        "catalogUrl": "https://www.coupang.com/vp/products/9520244217",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-61a4938317496a47/main-X4phpDNFAnMfBOariDUdo2Fnv8bqGf.jpg"
+      },
+      "dimensionsCm": "32 × 42 × 13 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 9페이지의 0423 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct comparison: black rounded body, actual mint dog-face pouch with two black vertical eyes, navy left nose and single navy right ear, lower black zip pouch with upper flap and white-bordered black Himawari patch, mesh side pockets/webbing and cord pulls preserved. Separate phone and fully folded stand with pouch on table; no accessory attached to bag or invented charging/fit claim."
+    },
+    {
+      "id": "seed-packets-backpack-exchange",
+      "title": "씨앗 나눔 가는 날의 백팩: 봉투의 이름도 함께 가져가기",
+      "url": "https://himawari.co.kr/story/seed-packets-backpack-exchange.html",
+      "productId": "coupang-4861cd80cf7fce0c",
+      "model": "No.9290",
+      "image": "assets/story/seed-packets-backpack-exchange.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-04/reference-9290.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-04/generated-9290.png",
+        "prompt": "Use case: photorealistic-natural. Landscape 1536x1024 editorial photograph for a Korean article about keeping original seed packets identifiable while carrying them to a seed exchange. Exact genuine Himawari No.9290 BLACK backpack reference, verified actual 30x42x18 cm. Preserve black rounded tall body, black top handle and padded shoulder straps, original white central rectangular Himawari patch, broad black lower front zip pouch with bright white horizontal chunky zipper and single white pull at left, white/silver main zipper pulls, exactly the original pairs of white side adjustment buckle hardware and black webbing, black side slip pockets and seams. Do not add a seed pocket or gardening tools to the bag. Entire bag upright front three-quarter on a plain potting-room shelf, never on soil. Beside it a shallow open cardboard box containing three original-size plain kraft seed envelopes with simple blank pale labels and folded closed tops, each packet visibly separate, and a closed clear small document sleeve nearby. No scattered seeds, seedlings or loose dirt. Background softly blurred empty terracotta pots, soft morning light, realistic textile and paper textures, authentic product proportions. Envelope labeling is intentionally unreadable, no invented variety names or planting instructions. Seed packets and sleeve are separately staged props, not included with bag and not proof of moisture protection or fit. No person, other branding, overlay typography or watermark. Fictional AI product staging using actual reference.",
+        "generatedAt": "2026-10-04",
+        "catalogUrl": "https://www.coupang.com/vp/products/8732967324",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4861cd80cf7fce0c/main-yXSjjIlJ9Fo5IBOAANpwjCu50SK8rJ.jpg"
+      },
+      "dimensionsCm": "30 × 42 × 18 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 42페이지의 9290 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct comparison: black rounded body, shoulder straps/loop, original white central logo patch, large lower front pocket with white horizontal chunky zip and left pull, white main pulls and original upper/lower pairs of white side hardware retained. Whole bag beside separate closed blank seed envelopes and clear document sleeve. No added pocket, printed cultivar, loose dirt, internal fit or moisture-proof claim."
+    }
+  ],
+  "topicsReviewed": 104,
+  "overlapReview": "Reviewed all 104 existing titles and summaries; compared all full bodies (133798 characters) for textual overlap and searched the full corpus for binoculars, birdwatching, phone stands, seed packets and sowing, with zero exact-topic matches. Read camera-in-everyday-backpack and volunteer-garden-backpack plus pouch and pen guides in full. Distinct cores: keeping removable binocular caps with the instrument and gathering the neck strap; folding stand hinges and checking projecting supports/pads after separating the phone; retaining seed variety/date identification through packet handover rather than gardening tool/dirty glove logistics. Source-supported moisture notes are supplementary, not the core. No reworded existing topic. Three distinct real models are 9018, 0423, 9290.",
+  "completionReceipt": "backups/story-runs/2026-10-04.deployment.json",
+  "expectedCount": 3,
+  "editions": {
+    "morning": {
+      "postIds": [
+        "binoculars-backpack-birdwatching",
+        "folding-phone-stand-backpack",
+        "seed-packets-backpack-exchange"
+      ],
+      "stage": "prepared"
+    }
+  }
+}

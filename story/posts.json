@@ -1,5 +1,53 @@
 [
   {
+    "id": "binoculars-backpack-birdwatching",
+    "title": "탐조 산책의 백팩: 쌍안경 덮개와 끈을 함께 챙기기",
+    "date": "2026-10-04",
+    "summary": "작은 쌍안경을 들고 나가는 날, 렌즈 덮개를 둘 자리와 다시 담는 순서를 미리 정해보세요.",
+    "description": "작은 쌍안경을 들고 나가는 날, 렌즈 덮개를 둘 자리와 다시 담는 순서를 미리 정해보세요.",
+    "tags": [
+      "탐조 산책",
+      "쌍안경",
+      "소품 정리"
+    ],
+    "image": "../assets/story/binoculars-backpack-birdwatching.webp",
+    "imageAlt": "물가 관찰대의 나무 벤치에 놓인 히마와리 No.9018 베이지블랙 백팩과 별도 쌍안경·케이스의 AI 연출 사진",
+    "url": "binoculars-backpack-birdwatching.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "folding-phone-stand-backpack",
+    "title": "접이식 휴대폰 거치대, 펼친 채 백팩에 넣지 않도록",
+    "date": "2026-10-04",
+    "summary": "책상에서 쓰던 거치대를 챙길 때는 접힌 상태와 받침 부분을 확인하세요. 가방 안에서 다른 물건에 걸리지 않게 정리하는 방법입니다.",
+    "description": "책상에서 쓰던 거치대를 챙길 때는 접힌 상태와 받침 부분을 확인하세요. 가방 안에서 다른 물건에 걸리지 않게 정리하는 방법입니다.",
+    "tags": [
+      "휴대폰 거치대",
+      "책상 소품",
+      "일상 백팩"
+    ],
+    "image": "../assets/story/folding-phone-stand-backpack.webp",
+    "imageAlt": "공용 학습실 테이블의 히마와리 No.0423 네이비 백팩과 접힌 휴대폰 거치대·별도 휴대전화의 AI 연출 사진",
+    "url": "folding-phone-stand-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "seed-packets-backpack-exchange",
+    "title": "씨앗 나눔 가는 날의 백팩: 봉투의 이름도 함께 가져가기",
+    "date": "2026-10-04",
+    "summary": "씨앗 봉투를 바꿔 담기 전에 품종과 날짜 표시를 남겨두세요. 작은 봉투 여러 개를 이동할 때 섞이지 않게 준비하는 방법입니다.",
+    "description": "씨앗 봉투를 바꿔 담기 전에 품종과 날짜 표시를 남겨두세요. 작은 봉투 여러 개를 이동할 때 섞이지 않게 준비하는 방법입니다.",
+    "tags": [
+      "씨앗 나눔",
+      "봉투 표시",
+      "동네 모임"
+    ],
+    "image": "../assets/story/seed-packets-backpack-exchange.webp",
+    "imageAlt": "화분이 놓인 실내 선반의 히마와리 No.9290 블랙 백팩과 닫힌 씨앗 봉투·별도 서류 슬리브의 AI 연출 사진",
+    "url": "seed-packets-backpack-exchange.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "laptop-pouch-meeting-room",
     "title": "손잡이를 분리한 노트북 파우치, 다시 들기 전에",
     "date": "2026-10-03",
