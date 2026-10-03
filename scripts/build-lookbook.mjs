@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import assert from 'node:assert/strict';
+import { validateLookbookCount } from './lib/publication-schedule.mjs';
 
 export const root = path.resolve(import.meta.dirname, '..');
 export const koreanDate = (now = new Date()) => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Seoul' }).format(now);
@@ -27,7 +28,7 @@ export function validateEntries(entries, { today = koreanDate(), checkFiles = tr
     assert.equal(entry.width, 1024); assert.equal(entry.height, 1536);
     dates.set(entry.date, (dates.get(entry.date) || 0) + 1);
   }
-  for (const [date, count] of dates) assert.ok(count >= 2 && count <= 3, `${date}: expected 2–3 photos`);
+  for (const [date, count] of dates) validateLookbookCount(date, count);
   return [...entries].sort((a, b) => b.date.localeCompare(a.date));
 }
 const icon = kind => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">${({ expand: '<path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6"/>', arrow: '<path d="M5 12h14m-6-6 6 6-6 6"/>', close: '<path d="m6 6 12 12M18 6 6 18"/>', prev: '<path d="m14 6-6 6 6 6"/>', next: '<path d="m10 6 6 6-6 6"/>' })[kind]}</svg>`;

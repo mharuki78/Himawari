@@ -1,5 +1,13 @@
 # LookBook daily publication
 
+## Temporary second edition: October 3–7, 2026
+
+User authorized on 2026-10-03: publish twice each Korean day through October 7 inclusive. This section overrides the normal daily maximum below only for publication dates 2026-10-03 through 2026-10-07. Publish 2 new photos at 09:00 and 2 more at 17:00 (4 total). Check only missing stages at 09:30 and 17:30. The already completed October 3 morning edition counts. Resume the normal morning-only 2–3 photos/day on October 8. Historical four-photo days in this authorized window remain valid after October 7.
+
+Never skip the afternoon edition just because morning photos exist. Use four distinct product models across the day and vary both new scenes against the morning edition and the last 14 days. At afternoon start preserve the morning manifest and receipt under the date's backup `morning/`, set the same daily manifest's expectedCount to 4 before generating, retain its existing two approved records, and append only two new records. Store new drafts, references, prompts and progress under `afternoon/`; record morning and afternoon entryIds/stages in editions. Reference and generatedSource paths may be nested within the same dated backup. Do not regenerate morning photos. Final receipt entryIds and verification cover all four. The same build, tests, preparation verification, production browser checks, exact READY commit proof and `--published` verification remain required. A partial or extra afternoon count is incomplete. Notify only the new photo count and LookBook URL.
+
+An unrelated verified publication may advance shared files after a receipt. A receipt mismatch alone never authorizes image regeneration. Reconcile existing entries and approved sources, then refresh a receipt only with actual browser and matching production deployment evidence.
+
 ## Scope and schedule
 
 User authorized on 2026-09-28: add a LookBook menu and publish 2–3 newly generated photos each day showing real Himawari products worn by diverse people in varied places. Website publication and deployment are authorized; do not ask for confirmation each day. Use the current thread's model. This is separate from daily story publishing and Tuesday reviews; do not change those schedules.

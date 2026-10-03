@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
+import { validateStoryCount } from './lib/publication-schedule.mjs';
 
 // Run from any directory. A failed or partial publication must exit nonzero.
 const root = path.resolve(import.meta.dirname, '..');
@@ -10,15 +11,16 @@ const date = process.argv[2] || new Intl.DateTimeFormat('sv-SE', { timeZone: 'As
 assert.match(date, /^\d{4}-\d{2}-\d{2}$/);
 const all = JSON.parse(read('story/posts.json'));
 const posts = all.filter(post => post.date === date);
-assert.equal(posts.length, 3, `${date}: expected exactly 3 posts, found ${posts.length}`);
 assert.equal(new Set(all.map(p => p.id)).size, all.length, 'Duplicate post IDs');
 const manifestPath = `docs/story-runs/${date}.json`;
 const run = JSON.parse(read(manifestPath));
 assert.equal(run.date, date);
-assert.equal(run.posts.length, 3);
-assert.equal(new Set(run.posts.map(p => p.image)).size, 3, 'Images must differ');
-assert.equal(new Set(run.posts.map(p => p.model)).size, 3, 'Product models must differ');
-const expectedGeneratedImages = date >= '2026-09-20' ? 3 : 1;
+const expectedCount = run.expectedCount ?? 3;
+validateStoryCount(date, posts.length, expectedCount);
+assert.equal(run.posts.length, expectedCount);
+assert.equal(new Set(run.posts.map(p => p.image)).size, expectedCount, 'Images must differ');
+assert.equal(new Set(run.posts.map(p => p.model)).size, expectedCount, 'Product models must differ');
+const expectedGeneratedImages = date >= '2026-09-20' ? expectedCount : 1;
 const generated = run.posts.filter(p => p.imageKind === 'generated').length;
 assert.equal(generated, expectedGeneratedImages, `Expected ${expectedGeneratedImages} new generated images`);
 const files = ['story/posts.json', 'sitemap.xml', 'feed.xml', manifestPath];
@@ -59,7 +61,7 @@ if (process.argv.includes('--published')) {
   assert.equal(receipt.target, 'production');
   assert.match(receipt.deploymentUrl, /^https:\/\/[^/]+\.vercel\.app\/?$/);
   assert.match(receipt.commit, /^[a-f0-9]{40}$/);
-  assert.equal(receipt.verifiedUrls.length, 3);
+  assert.equal(receipt.verifiedUrls.length, expectedCount);
   for (const post of run.posts) assert.ok(receipt.verifiedUrls.includes(post.url));
   assert.equal(receipt.homepageVerified, true);
   assert.equal(receipt.mobileVerified, true);
@@ -69,4 +71,4 @@ if (process.argv.includes('--published')) {
   }
   execFileSync('git', ['merge-base', '--is-ancestor', receipt.commit, 'origin/main'], { cwd: root });
 }
-console.log(JSON.stringify({ date, posts: posts.map(p => p.url), images: 3, generated, stage: process.argv.includes('--published') ? 'published' : 'prepared' }, null, 2));
+console.log(JSON.stringify({ date, posts: posts.map(p => p.url), images: expectedCount, generated, stage: process.argv.includes('--published') ? 'published' : 'prepared' }, null, 2));
