@@ -1,6 +1,6 @@
 {
   "date": "2026-10-03",
-  "expectedCount": 2,
+  "expectedCount": 4,
   "stage": "prepared",
   "completionReceipt": "backups/lookbook-2026-10-03/deployment.json",
   "entries": [
@@ -43,6 +43,63 @@
       "prompt": "Use case: photorealistic-natural. Generate one 2:3 portrait architectural lifestyle photograph exactly 1024 by 1536 pixels. Input image is the strict genuine product reference for Himawari No.1682 GREY roll-top backpack, verified 30 cm width x 50 cm height x 14 cm depth. Copy actual pale heather grey tall rectangular fabric body, broad black folded roll-top across its full width, two evenly spaced long black vertical webbing straps with two original black plastic buckles, small black top loop, black edging of upper curved compartment, centered small black Himawari wordmark, twin small black zipper pulls hanging below the curved compartment, black base panel, side slip pocket seam and small dark side patch, and black shoulder straps. Keep the same proportions, construction and materials. No new front pouches, patches, white label, chest harness or different brand. Fictional adult South Asian man about 26, medium brown skin, short curly black hair, clean-shaven, dark indigo denim jacket over an ivory tee, ochre straight chinos and low black sneakers. He is walking across a broad quiet modern city plaza between pale sculptural concrete buildings, one natural step forward and head in profile. Full-body rear three-quarter viewpoint from a little farther away, actual bag fully visible worn on both shoulders and naturally 50 cm tall against a 180 cm adult back; bag starts below shoulders and ends around upper hips, not cartoon oversized. Long low architectural shadows, generous space around the person, crisp textile and buckle detail, subtle overcast autumn light. No market, station, ferry, mountain, repeated model, child, impossible anatomy, other bag, readable signage, text overlay or watermark. Fictional AI wearing staging.",
       "fidelityReviewed": true,
       "fidelityReview": "Direct visual inspection of reference and new output: heather grey rectangular body, broad black roll-top, two black buckle straps, black curved edging, central wordmark, twin zipper pulls, side pocket seam/patch and black base retained. Natural adult scale and plausible full-body walking pose; shoulder straps and backpack visible."
+    },
+    {
+      "id": "2026-10-03-travel-1111",
+      "model": "1111",
+      "productId": "coupang-24ab5bb3a4b1aa6a",
+      "image": "/assets/lookbook/2026-10-03-travel-1111.webp",
+      "reference": "backups/lookbook-2026-10-03/afternoon/reference-coupang-24ab5bb3a4b1aa6a.jpg",
+      "generatedSource": "backups/lookbook-2026-10-03/afternoon/generated-1111.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        43,
+        47,
+        24
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-03; 2026-09-14 제조사 카탈로그 6페이지의 1111 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-24ab5bb3a4b1aa6a/main-f0dyKBH0fS6ojaxTysQQFI3zjVuCWl.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9555753427",
+      "prompt": "Use case: photorealistic-natural. Generate one portrait editorial travel photograph exactly 1024x1536 pixels. Input is strict authentic reference for genuine Himawari No.1111 BROWN backpack, verified actual 43 cm width x 47 cm height x 24 cm depth. This is a broad bag: retain reference proportions, not a narrow hiking pack. Preserve dark chocolate nylon body, sand-tan central panel on large curved top flap, original black inverted triangular Himawari EST.2010 patch centered on that tan panel, gathered front underneath flap, EXACTLY two long black vertical webbing straps and black plastic buckles, two substantial brown side zipped pouches with tan upper panels, black vertical zippers and ring-shaped pulls, and wide lower central pocket with tan flap over brown body. Black top loop and actual shoulder straps remain. No invented chest belt, waist belt, equipment loops, extra pockets or camping items attached to bag. Fictional adult Black man about 63, tall 184 cm with broad shoulders, close-cropped silver hair and short silver beard, cream windbreaker, dark teal walking trousers and low charcoal walking shoes. Standing still on a quiet gravel path of a wooded campground, examining a small folded paper map held naturally with both hands at chest height, map has no readable writing. Full body rear three-quarter view with a visible profile and the entire bag unobstructed on BOTH shoulders. Realistic wide 43x47 cm bag against adult torso, ends near hips, not enlarged to thigh length. A distant small muted canvas tent and pine trunks softly blurred beyond, mild early-autumn daylight with cool forest tones, no mountain lookout, harbor, train station or market. Plausible anatomy and cloth textures. No other bag, readable signage, overlay caption, watermark or customer-photo claim. Fictional AI wearing staging using real product.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly compared reference and generated portrait. Broad chocolate body and sand-tan top center/flap, inverted triangular black logo patch, two black buckle straps with long tails, large zipped side pouches with tan panels and ring pulls, tan lower flap and black top loop preserved. Worn on both shoulders with plausible adult proportions, silver-haired fictional adult anatomy and map-holding hand natural. Fully visible bag in a full-body forest/camp scene; no added outdoor harness or equipment."
+    },
+    {
+      "id": "2026-10-03-city-1211",
+      "model": "1211",
+      "productId": "coupang-6c251867ca1551fd",
+      "image": "/assets/lookbook/2026-10-03-city-1211.webp",
+      "reference": "backups/lookbook-2026-10-03/afternoon/reference-coupang-6c251867ca1551fd.jpg",
+      "generatedSource": "backups/lookbook-2026-10-03/afternoon/generated-1211.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        26,
+        40,
+        17
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-03; 2026-09-14 제조사 카탈로그 56페이지의 1211 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6c251867ca1551fd/main-jhsPfpFhbBScsrdVj0Awrz69HbFmWE.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8645626825",
+      "prompt": "Use case: photorealistic-natural. Generate one 2:3 portrait editorial city photograph exactly 1024x1536 pixels. Input is strict authentic reference Himawari No.1211 PINK backpack, verified 26 cm width x 40 cm height x 17 cm depth. Preserve dusty rose pink rectangular rounded-top body and two pink top handles, black handle keeper, exactly two black rivets per front handle tab, original white embroidered Himawari EST.2010 wordmark in upper middle front, small black vertical Himawari tag to its right, black main zippers with original pulls at the upper center and sides, large matching pink lower front rounded rectangle zip pouch with black edging and TWO black rounded pulls at its top center, pink side pockets and horizontal black side attachment bands, pink padded shoulder straps with actual black webbing and buckle hardware. Do not add stroller attachments, new compartments or charms. Fictional adult fair-skinned European woman about 29 with freckles, shoulder-length wavy copper-red hair loosely tucked to one side, a navy soft overshirt, light grey straight trousers and dark burgundy flat shoes. Seated sideways on a low BACKLESS stone bench outside an independent record shop, both shoulder straps naturally worn, body gently turned toward the glass window displaying softly blurred vinyl sleeves, face relaxed in profile. Hands rest naturally on her thighs. Medium rear three-quarter composition from head to below knees; backpack unobstructed and fully visible, actual 40 cm high scale on a 170 cm adult torso, not oversized. Black zipper shapes, handles and white logo remain crisp. Shop has quiet blue-grey painted window frames, a subtle reflected sky, clean sidewalk, no legible album text or other brand logos, no books or produce stalls. Diffused autumn daylight, editorial natural texture and correct seated anatomy. No extra straps, added bag decor, child, overlay text, watermark or testimonial implication. Fictional AI wearing staging based on real product.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly compared original dusty-pink bag and output. Paired pink handles with black keeper, exactly two dark rivets per anchor, centered white Himawari embroidery and right-side black tag, original top/side zip pulls, rounded large front pouch with paired black ring pulls and black edging, side pockets and horizontal bands preserved. Both pink straps and existing black buckles legible, no added charms. Natural seated fictional adult on a backless stone bench with unobstructed whole backpack; realistic torso-relative scale."
     }
-  ]
+  ],
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-10-03-everyday-0422",
+        "2026-10-03-city-1682"
+      ],
+      "stage": "published",
+      "receipt": "backups/lookbook-2026-10-03/morning/deployment.json"
+    },
+    "afternoon": {
+      "entryIds": [
+        "2026-10-03-travel-1111",
+        "2026-10-03-city-1211"
+      ],
+      "stage": "prepared"
+    }
+  }
 }

@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-03-travel-1111",
+    "date": "2026-10-03",
+    "category": "travel",
+    "model": "1111",
+    "color": "브라운",
+    "productId": "coupang-24ab5bb3a4b1aa6a",
+    "title": "숲길에서 펼쳐 보는 지도",
+    "scene": "조용한 숲속 야영장 길에서, 크림색 재킷과 브라운 백팩.",
+    "alt": "브라운 No.1111 백팩을 멘 은발의 중장년 성인 남성이 숲속 야영장 길에서 작은 종이 지도를 보는 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-03-travel-1111.webp",
+    "thumbnail": "/assets/lookbook/2026-10-03-travel-1111-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-10-03-city-1211",
+    "date": "2026-10-03",
+    "category": "city",
+    "model": "1211",
+    "color": "핑크",
+    "productId": "coupang-6c251867ca1551fd",
+    "title": "음반 가게 앞의 짧은 쉼",
+    "scene": "음반 가게 유리창 앞 낮은 벤치에서, 네이비 셔츠와 핑크 백팩.",
+    "alt": "핑크 No.1211 백팩을 멘 붉은 곱슬머리 성인 여성이 음반 가게 앞의 등받이 없는 벤치에 앉은 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-03-city-1211.webp",
+    "thumbnail": "/assets/lookbook/2026-10-03-city-1211-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-10-03-everyday-0422",
     "model": "0422",
     "productId": "coupang-d688e9b1291f7997",
