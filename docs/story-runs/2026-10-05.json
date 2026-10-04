@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-05",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "business-cards-backpack-context",
+      "title": "백팩 속 명함, 어디서 만났는지도 함께 남기기",
+      "url": "https://himawari.co.kr/story/business-cards-backpack-context.html",
+      "productId": "coupang-08039b2ac81db358",
+      "model": "No.194L",
+      "image": "assets/story/business-cards-backpack-context.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-05/reference-194L.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-05/generated-194L.png",
+        "prompt": "Use case: photorealistic-natural. Landscape 1536x1024 editorial still life for Korean article about pairing newly received business cards with short contextual notes. Input is strict actual Himawari No.194L reference, actual width28 height39 depth15cm. Preserve exactly lavender rectangular body, two lavender woven top handles joined by pale gray beige snap keeper, two metal upper handle loops, exactly two pale gray beige rectangular X-stitched handle anchor tabs, lower rounded lavender front flap with pale-bordered rectangular Himawari label at center, two pale gray beige vertical straps with silver studs and buckles and long perforated tails, original long pale zipper pull at left and lavender side pockets and shoulder straps. No black recoloring, no added zip on flap, no extra hardware. Entire bag upright front three-quarter on a light walnut console beside a quiet meeting room doorway; beside it closed small charcoal business-card case, two blank cream cards each with separate small folded plain memo sheet, capped unbranded pencil. Cards and notes intentionally blank with no personal data. Soft warm indoor daylight and blurred simple wall, realistic cloth, correct scale. Separate accessories not included with backpack and not evidence of internal fit. No people, readable company or contact details, overlay text or watermark. AI fictional staging based on real product.",
+        "generatedAt": "2026-10-05",
+        "catalogUrl": "https://www.coupang.com/vp/products/8732967408",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-08039b2ac81db358/main-mkrOsxkr3orTIBRMVe620YMpIMn39j.jpg"
+      },
+      "dimensionsCm": "28 × 39 × 15 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 44페이지의 194L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed genuine original and generated image. Lavender rectangular body and front flap, pale grey-beige snap handle keeper, two metal upper loops and two X-stitched pale anchor tabs, central rectangular Himawari patch, two silver-studded buckled flap straps with perforated tails, side slip pockets/shoulder straps and long side pull match. Bag upright on table with separate blank card/memo props; no fake contact data, extra compartment or fit claim."
+    },
+    {
+      "id": "postcards-backpack-address-check",
+      "title": "여행 엽서를 보내는 날: 백팩에서 꺼내 주소부터 다시 읽기",
+      "url": "https://himawari.co.kr/story/postcards-backpack-address-check.html",
+      "productId": "coupang-7504dfa58ffdf560",
+      "model": "No.1088M",
+      "image": "assets/story/postcards-backpack-address-check.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-05/reference-1088M.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-05/generated-1088M.png",
+        "prompt": "Use case: photorealistic-natural. Landscape 1536x1024 editorial lifestyle photograph for Korean article about checking postcards before mailing on a trip. Strict genuine Himawari No.1088M MINT reference, width28 height41.5 depth14cm. Preserve mint tall rounded-rectangular fabric body, two sage-green vertical woven straps passing over top to join mint top handles with small cream snap keeper, two cream plastic front adjustment buckles, original cream circular central Himawari EST.2010 patch, two cream long main zipper pulls beneath mint top flap, original mint lower front pouch with horizontal zipper and one cream long pull at left, mint side pockets and shoulder straps. Do not add flap buckles, extra pockets, logos or colors. Adult 46-year-old East Asian woman, short straight black bob with a subtle silver streak, terracotta simple wool overshirt over cream cotton top and dark olive trousers, no knit texture. She is standing still on a quiet pale-stone village lane beside a small unmarked dark green public postbox, wearing backpack on BOTH shoulders in rear three-quarter view so bag front facing camera and whole silhouette visible; head to knees composition, posture natural, actual bag proportion on adult back. She holds one closed plain cream postcard-size document sleeve low at her side, no address visible, no mailing action or contents claimed. Pale overcast autumn morning, weathered stone textures, candid travel moment. Person fictional, no imitation of actual customer photo; AI wearing staging. No readable postal markings, text overlay, watermark, crowd, unrelated brands. No actual delivery proof or verified fit claim.",
+        "generatedAt": "2026-10-05",
+        "catalogUrl": "https://www.coupang.com/vp/products/8425000048",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-7504dfa58ffdf560/main-BGdUMi4jMK55stTisVVT5ne075tYM2.jpg"
+      },
+      "dimensionsCm": "28 × 41.5 × 14 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 27페이지의 1088M 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly compared original and output. Mint upright rounded rectangular body, sage front woven straps/handles with cream keeper, two cream buckles, mint top lip with two cream zipper pulls, cream circular Himawari EST.2010 patch, horizontal lower front zip with cream pull and mint side pockets retained. Entire bag seen on both shoulders of adult, realistic approx41.5cm height relative to torso; woman and lane are fictional. Unmarked postbox and blank cream sleeve separate, no customer or actual delivery evidence."
+    },
+    {
+      "id": "hook-loop-band-backpack-lining",
+      "title": "백팩 속 찍찍이 밴드, 열린 갈고리 면부터 정리하기",
+      "url": "https://himawari.co.kr/story/hook-loop-band-backpack-lining.html",
+      "productId": "coupang-eb0e638e682ff1ab",
+      "model": "No.8029",
+      "image": "assets/story/hook-loop-band-backpack-lining.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-05/reference-8029.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-05/generated-8029.png",
+        "prompt": "Use case: photorealistic-natural. Landscape 1536x1024 editorial still life for Korean article about closing an exposed hook-and-loop band before returning it to a bag. Strict actual Himawari No.8029 BLUE LIME product reference, actual width27 height39 depth14cm. Preserve saturated orange rectangular main front body, cobalt-blue outer piping/main zipper and side pockets, orange handle and shoulder straps, large upper lime-green rounded rectangular zip pouch, original square white patch at lower right of upper pouch with repeated small black SUN FLOWER and orange Himawari script matching reference, lower large cobalt-blue rounded zip pouch, central smaller orange patch pocket with lime flap and single orange round snap, all original blue and orange zip pulls, no invented pocket or changed color. Whole backpack upright front three-quarter on a pale grey utility worktable. At its side exactly two short plain black hook-and-loop reusable bands each fully closed into a small flattened loop with no exposed hook end, and a separate small closed charcoal cloth drawstring pouch. No cables, devices, adhesives, scissors, bands attached to bag or demonstrated bag interior. Soft sidelight from workshop window, subdued blurred shelves, realistic fabric and hook-and-loop edge texture, complete bag in frame. Accessories separate and not supplied with bag; no claimed lining protection or internal fit. No people, overlay typography or watermark. Fictional AI staging preserving the reference.",
+        "generatedAt": "2026-10-05",
+        "catalogUrl": "https://www.coupang.com/vp/products/9296044021",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-eb0e638e682ff1ab/main-X8E6kQWRAUeugdc7MtlNbAsILE8FIy.jpg"
+      },
+      "dimensionsCm": "27 × 39 × 14 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 45페이지의 8029 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct comparison confirmed orange main front/handle/straps, cobalt-blue piping/main zip/sides/lower rounded pocket, upper lime zipped pouch with original repeated SUN FLOWER and orange Himawari patch, smaller orange pocket with lime flap/orange snap, ring and cord zipper pulls retained. Two black hook-loop bands fully closed with matching surfaces; separate grey pouch. No band attached to bag or claimed lining fastener/protection."
+    }
+  ],
+  "topicsReviewed": 110,
+  "overlapReview": "Reviewed all 110 titles and summaries and compared all 139782 full-body characters using Korean 7-character grams. Searched the full corpus for business cards, postcards, stamps, hook-and-loop bands and hook surfaces. No existing business-card context or postcard address-check article. Postcards occurred only as souvenir packing; that full article was read, and the new core is pairing recipient details and checking postal markings, not packing souvenirs. Hook-and-loop appeared only as a suggested cable tie; that complete body was read, and the new core is closing the hook surface onto its intended mating surface and avoiding using bag lining as a fastener. Also read knitwear-contact, lining-cleaning, receipt-envelope and post-office-parcel-flow articles in full. Those address clothing contact, cleaning, paper disposal and parcel counter movement; the new articles do not rewrite them. Three distinct actual models: 194L, 1088M, 8029. One fictional adult travel wearing scene begins the new Monday week; two editorial still lifes.",
+  "completionReceipt": "backups/story-runs/2026-10-05.deployment.json",
+  "expectedCount": 3,
+  "editions": {
+    "morning": {
+      "postIds": [
+        "business-cards-backpack-context",
+        "postcards-backpack-address-check",
+        "hook-loop-band-backpack-lining"
+      ],
+      "stage": "prepared"
+    }
+  }
+}

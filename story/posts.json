@@ -1,5 +1,53 @@
 [
   {
+    "id": "business-cards-backpack-context",
+    "title": "백팩 속 명함, 어디서 만났는지도 함께 남기기",
+    "date": "2026-10-05",
+    "summary": "명함을 받은 뒤 이름만으로는 만남을 떠올리기 어려울 때가 있습니다. 짧은 메모를 명함과 짝지어 두는 행사 뒤 정리 방법입니다.",
+    "description": "명함을 받은 뒤 이름만으로는 만남을 떠올리기 어려울 때가 있습니다. 짧은 메모를 명함과 짝지어 두는 행사 뒤 정리 방법입니다.",
+    "tags": [
+      "명함 정리",
+      "행사 준비",
+      "백팩 일상"
+    ],
+    "image": "../assets/story/business-cards-backpack-context.webp",
+    "imageAlt": "작은 행사장 옆 테이블의 히마와리 No.194L 라벤더 백팩과 명함집·별도 메모지의 AI 연출 사진",
+    "url": "business-cards-backpack-context.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "postcards-backpack-address-check",
+    "title": "여행 엽서를 보내는 날: 백팩에서 꺼내 주소부터 다시 읽기",
+    "date": "2026-10-05",
+    "summary": "여행지에서 쓴 엽서를 보내기 전, 받는 사람 정보와 우편요금 표시를 확인하고 아직 쓰지 않은 엽서와 구분해 둡니다.",
+    "description": "여행지에서 쓴 엽서를 보내기 전, 받는 사람 정보와 우편요금 표시를 확인하고 아직 쓰지 않은 엽서와 구분해 둡니다.",
+    "tags": [
+      "여행 엽서",
+      "발송 전 확인",
+      "백팩 여행"
+    ],
+    "image": "../assets/story/postcards-backpack-address-check.webp",
+    "imageAlt": "돌담길의 우편함 앞에서 히마와리 No.1088M 민트 백팩을 멘 성인이 엽서용 파일을 들고 있는 AI 착용 연출 사진",
+    "url": "postcards-backpack-address-check.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "hook-loop-band-backpack-lining",
+    "title": "백팩 속 찍찍이 밴드, 열린 갈고리 면부터 정리하기",
+    "date": "2026-10-05",
+    "summary": "작은 찍찍이 밴드를 사용하고 백팩에 되담을 때, 붙이는 두 면이 어디를 향하는지 먼저 살펴보세요. 안감에 붙여 고정하기보다 밴드 자체를 닫는 준비입니다.",
+    "description": "작은 찍찍이 밴드를 사용하고 백팩에 되담을 때, 붙이는 두 면이 어디를 향하는지 먼저 살펴보세요. 안감에 붙여 고정하기보다 밴드 자체를 닫는 준비입니다.",
+    "tags": [
+      "소품 정리",
+      "찍찍이 밴드",
+      "백팩 안감"
+    ],
+    "image": "../assets/story/hook-loop-band-backpack-lining.webp",
+    "imageAlt": "작업대의 히마와리 No.8029 블루라임 백팩 옆에 닫아 둔 검정 찍찍이 밴드와 천주머니가 있는 AI 연출 사진",
+    "url": "hook-loop-band-backpack-lining.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "watercolour-brush-backpack-return",
     "title": "수채화 붓을 백팩에 되담을 때: 물기와 붓끝부터",
     "date": "2026-10-04",
