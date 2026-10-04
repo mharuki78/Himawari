@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-04",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-04/deployment.json",
+  "entries": [
+    {
+      "id": "2026-10-04-everyday-9004",
+      "model": "9004",
+      "productId": "coupang-07ec396be4fa6753",
+      "image": "/assets/lookbook/2026-10-04-everyday-9004.webp",
+      "reference": "backups/lookbook-2026-10-04/reference-coupang-07ec396be4fa6753.jpg",
+      "generatedSource": "backups/lookbook-2026-10-04/generated-9004.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-04; 2026-09-14 제조사 카탈로그 49페이지의 9004 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-07ec396be4fa6753/main-2WLPROfkFWHazRkvzHqfOSxbcr4qPH.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8732967405",
+      "prompt": "Use case: photorealistic-natural. Generate one portrait 1024x1536 editorial lifestyle photograph for Himawari LookBook. Input image 1 is the exact product reference, not an edit target. Show a fictional 38-year-old East Asian man with a shaved head and thin black round glasses, ochre knit sweater, loose black trousers, wearing this exact mint-and-gray No.9004 backpack on BOTH shoulders. He pauses beside a large window in a quiet community music hall corridor with broad warm wooden acoustic walls. Rear three-quarter view, head to knees, profile subtly visible, bag fully unobstructed, natural posture, relaxed hands at sides. Soft window daylight, realistic textile detail, restrained editorial color, no studio cutout. Product dimensions WIDTH28 HEIGHT40 DEPTH17cm; scale its 40cm height naturally from upper back to lower back of adult, never oversized. Preserve exact pale mint rounded rectangular body and mint side pockets, two top handles with beige snap keeper and two silver rivets at each front handle attachment. Preserve gray diamond patch with original mint mark on upper front, large gray horizontal zipped lower pocket with single long mint zipper tab, small white rectangular Himawari label at lower right of gray pocket, silver hardware, mint padded shoulder straps, original seams and geometry from reference. No added chest or waist belts, no extra decorations, no replacement logo, no altered pockets or colors. Anatomically correct adult, realistic wearing straps; avoid bag merging into sweater, cropped bag, artificial skin, captions, watermarks, additional brand logos.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly compared generated1024x1536 with original. Mint-gray palette, gray diamond mint mark, two silver rivets on each handle anchor, beige snap handle keeper, gray zipped front pocket, long mint pull and lower-right white Himawari label match. Mint side pocket, main silver pulls and padded straps preserved. Realistic40cm torso scale, plausible adult profile and wearing both shoulder straps; bag fully visible. Head-to-knees composition and window/music-hall wood setting appropriate. No material distortion or extra harness."
+    },
+    {
+      "id": "2026-10-04-city-2301",
+      "model": "2301",
+      "productId": "coupang-c75f72bf26deba5f",
+      "image": "/assets/lookbook/2026-10-04-city-2301.webp",
+      "reference": "backups/lookbook-2026-10-04/reference-coupang-c75f72bf26deba5f.jpg",
+      "generatedSource": "backups/lookbook-2026-10-04/generated-2301.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        28,
+        42,
+        17
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-04; 2026-09-14 제조사 카탈로그 38페이지의 2301 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-c75f72bf26deba5f/main-X6lFrqCjAhVFZPDpyvXClAUs5yGZxa.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8645626927",
+      "prompt": "Use case: photorealistic-natural. Generate one full-body portrait 1024x1536 editorial lifestyle photograph for Himawari LookBook. Input image 1 is the exact navy No.2301 product reference, not an edit target. Show a fictional 55-year-old Hispanic woman with medium olive skin and a long silver-gray braid, wearing a light stone-gray coat, sage-green trousers and dark loafers, walking naturally through a wide covered urban pedestrian passage beside a muted abstract painted mural with no text. Wear this exact backpack on BOTH shoulders. Rear three-quarter full-body composition including shoes and profile, one relaxed walking step, hands clear of bag, entire backpack legible in upper center of photo; braid drapes in front of shoulder so does not obscure bag. Diffuse bright daylight, natural wrinkles and fabric detail, candid street photograph. Exact product WIDTH28 HEIGHT42 DEPTH17cm with plausible 42cm torso scale. Preserve deep navy tall rounded rectangular body, black padded shoulder straps and black top loop, protruding upper navy rounded rectangular zip-front compartment with black edge zipper and small black original Himawari patch near its top center. Preserve separate lower navy pocket with black mesh front and horizontal black zipper on its top edge, original black long pulls, side mesh pockets, two black side compression straps and buckles at upper and lower sides, main zipper shape and all original seams. No invented chest strap, waist belt, extra hardware or decorations. Do not simplify mesh to solid fabric or change pocket geometry. Adult anatomy and bag wearing must be plausible; no cloned people, cropped feet, added brand marks, captions, watermarks or performance claims.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly compared generated1024x1536 with original. Deep navy rectangular body, upper protruding zipped compartment with original black Himawari patch, lower black mesh front pocket, long black pulls, upper/lower side buckles and black shoulder straps/top loop preserved. Natural42cm height on adult torso, coat and hands anatomically plausible, both straps worn, full body and shoes included. Braid falls to shoulder clear of bag. Mural without text, new adult identity and walking composition appropriate. No material product distortion or invented harness."
+    }
+  ],
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-10-04-everyday-9004",
+        "2026-10-04-city-2301"
+      ],
+      "stage": "prepared"
+    }
+  }
+}

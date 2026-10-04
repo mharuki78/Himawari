@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-04-everyday-9004",
+    "date": "2026-10-04",
+    "category": "everyday",
+    "title": "음악회관 창가의 잠깐",
+    "model": "9004",
+    "color": "민트 그레이",
+    "productId": "coupang-07ec396be4fa6753",
+    "alt": "황토색 니트를 입고 음악회관 창가에 선 성인 남성의 히마와리 No.9004 민트 그레이 백팩 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-04-everyday-9004.webp",
+    "thumbnail": "/assets/lookbook/2026-10-04-everyday-9004-640.webp",
+    "width": 1024,
+    "height": 1536,
+    "scene": "황토색 니트를 입은 남성이 음악회관의 나무 벽과 창 사이에서 잠시 걸음을 멈춘 장면입니다."
+  },
+  {
+    "id": "2026-10-04-city-2301",
+    "date": "2026-10-04",
+    "category": "city",
+    "title": "벽화 통로를 지나",
+    "model": "2301",
+    "color": "네이비",
+    "productId": "coupang-c75f72bf26deba5f",
+    "alt": "밝은 회색 코트와 세이지색 바지를 입고 벽화 통로를 걷는 성인 여성의 히마와리 No.2301 네이비 백팩 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-04-city-2301.webp",
+    "thumbnail": "/assets/lookbook/2026-10-04-city-2301-640.webp",
+    "width": 1024,
+    "height": 1536,
+    "scene": "은회색 머리를 길게 땋은 여성이 도심의 지붕 있는 보행 통로를 걷는 장면입니다."
+  },
+  {
     "id": "2026-10-03-travel-1111",
     "date": "2026-10-03",
     "category": "travel",
