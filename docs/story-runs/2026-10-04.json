@@ -1,7 +1,7 @@
 {
   "date": "2026-10-04",
   "automationId": "himawari-3",
-  "expectedGeneratedImages": 3,
+  "expectedGeneratedImages": 6,
   "posts": [
     {
       "id": "binoculars-backpack-birdwatching",
@@ -68,18 +68,99 @@
       "dimensionsSource": "2026-09-14 제조사 카탈로그 42페이지의 9290 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
       "fidelityReview": "Direct comparison: black rounded body, shoulder straps/loop, original white central logo patch, large lower front pocket with white horizontal chunky zip and left pull, white main pulls and original upper/lower pairs of white side hardware retained. Whole bag beside separate closed blank seed envelopes and clear document sleeve. No added pocket, printed cultivar, loose dirt, internal fit or moisture-proof claim."
+    },
+    {
+      "id": "watercolour-brush-backpack-return",
+      "title": "수채화 붓을 백팩에 되담을 때: 물기와 붓끝부터",
+      "url": "https://himawari.co.kr/story/watercolour-brush-backpack-return.html",
+      "productId": "coupang-b8f7115d45d4c5f4",
+      "model": "No.200",
+      "image": "assets/story/watercolour-brush-backpack-return.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-04/afternoon/reference-200.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-04/afternoon/generated-200-v2.png",
+        "prompt": "Use case: photorealistic-natural. Landscape1536x1024 editorial photograph, fictional AI wearing scene for article about returning watercolor brushes. Exact input product reference Himawari No.200 BLACK backpack, dimensions28width39height15depth cm. Fictional70-year-old East Asian woman with short white hair, moss-green cardigan and dark linen trousers, sitting on a backless garden terrace stool beside a clean table, rear three-quarter view wearing backpack on both shoulders. Entire bag fully visible with natural39cm torso scale; profile and one relaxed hand resting beside table visible. On separate table two dry watercolor brushes lie horizontally on clean white folded cloth beside a closed unbranded palette and a closed brush case. No water container near bag. Soft autumn overcast light, textured quiet garden background, realistic adult anatomy. Preserve original black rounded rectangular body, paired short top handles with black snap keeper, two broad gray-black rectangular front handle attachment straps with dark loops, two matching black main zipper pulls, central round black original Himawari white-letter patch, large curved-top lower flap front pocket with ONE broad vertical gray-black strap, original dark buckle and single round snap near strap bottom, matching original side pockets/shoulder straps/seams. No added harness, extra pocket or logo. Brushes and cases are separately staged props, not supplied and no internal-fit claim. No captions/watermarks/extra brands.",
+        "generatedAt": "2026-10-04",
+        "catalogUrl": "https://www.coupang.com/vp/products/8732967418",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-b8f7115d45d4c5f4/main-8oZzWrORYaCFTOsIJLwkMdYSmEMT0Y.jpg",
+        "revision": {
+          "target": "backups/story-2026-10-04/afternoon/generated-200.png",
+          "source": "C:/Himawari/backups/story-2026-10-04/afternoon/generated-200-v2.png",
+          "tool": "built-in image_gen",
+          "reason": "Corrected invented small model number on circular patch against actual original; final directly rechecked."
+        }
+      },
+      "dimensionsCm": "28 × 39 × 15 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 51페이지의 200 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/output comparison including final logo correction: black body, circular black white Himawari patch, gray-black anchors/loops, twin upper pulls, one wide vertical strap and dark buckle/snap on rounded front flap, side pockets and paired handles retained. Fictional adult rear three-quarter wearing scale proportionate to catalog39cm height. Brushes lie separately dry on cloth; no accessory fit or protective claim. First unapproved render had invented tiny model number; final patch has original brand/subline appearance without invented model number."
+    },
+    {
+      "id": "portable-radio-backpack-antenna",
+      "title": "휴대용 라디오를 백팩에 넣기 전: 안테나부터 제자리로",
+      "url": "https://himawari.co.kr/story/portable-radio-backpack-antenna.html",
+      "productId": "coupang-50c5b38af3fd50b0",
+      "model": "No.9001",
+      "image": "assets/story/portable-radio-backpack-antenna.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-04/afternoon/reference-9001.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-04/afternoon/generated-9001.png",
+        "prompt": "Use case: photorealistic-natural. Landscape1536x1024 editorial still life of exact input Himawari No.9001 BLACK backpack, verified28width40height17depth cm. Whole bag upright in front three-quarter view on a cool blue-gray window ledge beside a small unbranded dark portable radio. Radio is switched off with telescopic antenna fully collapsed and resting flat along its top, separate short gathered wrist strap and CLOSED plain case next to it. No legible dial text, Sony brand, cables attached to bag or carrying claim. Preserve original black rounded rectangular body and padded straps, two black top handles with keeper, two brass/gold rivets at each front handle attachment, original black rectangular stitched Himawari white-letter label on upper front, large lower front zip pocket with light cream/gold horizontal zipper and long brown leather pull at left, main light zipper edging and brown right-side accent pull, black side pockets/seams. Correct40cm size relative to palm-size radio. Subtle blue wall and hazy apartment rooftops beyond window, quiet afternoon diffuse light, realistic textile and wood grain, no people/captions/watermark. Radio/case separate staging accessories, not included and no fit/protective performance claim.",
+        "generatedAt": "2026-10-04",
+        "catalogUrl": "https://www.coupang.com/vp/products/8732967323",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-50c5b38af3fd50b0/main-IP2dPnR2XhTnmDiJlgnYuywyR0JCKl.jpg"
+      },
+      "dimensionsCm": "28 × 40 × 17 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 62페이지의 9001 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/output comparison: black body/padded straps/handles/keeper, two gold rivets on each handle tab, original black rectangular white-letter label, cream/gold main and front zips, brown long left pull/right side accent, side pockets retained. Whole40cm bag beside separate palm-size radio, antenna collapsed flat, closed case. No internal fit, accessory inclusion or protection claim."
+    },
+    {
+      "id": "used-batteries-backpack-dropoff",
+      "title": "다 쓴 건전지, 백팩에 넣기 전에 종류부터 확인하기",
+      "url": "https://himawari.co.kr/story/used-batteries-backpack-dropoff.html",
+      "productId": "coupang-4efcb6a5f2ae7b88",
+      "model": "No.188L",
+      "image": "assets/story/used-batteries-backpack-dropoff.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-04/afternoon/reference-188L.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-04/afternoon/generated-188L.png",
+        "prompt": "Use case: photorealistic-natural. Landscape1536x1024 editorial still life using exact reference Himawari No.188L gray-and-beige backpack28width39height15depth cm. Entire bag upright on clean pale oak entryway shelf, front three-quarter view. Beside bag an OPEN small nonconductive clear plastic container containing THREE undamaged plain AA-size cylindrical batteries, each individually separated in its own clear bag and both end contacts covered with small black electrical tape, labels intentionally generic and unreadable; CLOSED lid beside container. No lithium pouch cells, bulging batteries, loose coins, exposed contacts or damage. Preserve original gray rounded rectangular body, gray padded straps/two handles with beige snap keeper, two beige rectangular front handle anchors with silver rings, two beige zipper pulls at top, large rounded gray front flap pocket with original cream rectangular Himawari patch and TWO beige vertical straps with top silver round snaps and lower silver buckles plus ends, gray side slip pockets and original stitching. Do not change flap, straps, logo shape, color or add protective equipment. Actual39cm height scale relative to AA batteries and shelf; warm quiet indoor afternoon light, subtle blurred entryway slippers/background. No people, captions, watermark, readable invented labels or other brands. Container/batteries are separate props outside bag, not proof of internal fit, fire resistance or supplied accessories.",
+        "generatedAt": "2026-10-04",
+        "catalogUrl": "https://www.coupang.com/vp/products/8732967336",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4efcb6a5f2ae7b88/main-KZMCgZUTl375uHZt7Ao3P1nrh1NIB9.jpg"
+      },
+      "dimensionsCm": "28 × 39 × 15 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 57페이지의 188L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/output comparison: gray body/straps/handles, beige snap keeper/handle tabs/silver loops/twin upper pulls, original cream rectangular Himawari patch with red detail, large gray flap with two beige snap and silver buckle straps, gray side pockets retained. Whole39cm bag on shelf; separate nonconductive container shows three separated AA-size cells with end tapes, no loose metal, damage or exposed contacts. Props outside bag, no internal fit/fire protection claim."
     }
   ],
-  "topicsReviewed": 104,
-  "overlapReview": "Reviewed all 104 existing titles and summaries; compared all full bodies (133798 characters) for textual overlap and searched the full corpus for binoculars, birdwatching, phone stands, seed packets and sowing, with zero exact-topic matches. Read camera-in-everyday-backpack and volunteer-garden-backpack plus pouch and pen guides in full. Distinct cores: keeping removable binocular caps with the instrument and gathering the neck strap; folding stand hinges and checking projecting supports/pads after separating the phone; retaining seed variety/date identification through packet handover rather than gardening tool/dirty glove logistics. Source-supported moisture notes are supplementary, not the core. No reworded existing topic. Three distinct real models are 9018, 0423, 9290.",
+  "topicsReviewed": 107,
+  "overlapReview": "Compared all 107 existing titles, summaries and full bodies (136712 characters), including this morning. No prior brush, radio or used-battery exact-topic match. Read sketch, knitting, board-game and cable guides for neighboring topics. New cores are brush moisture/bristle shape with post-trip drying, radio antenna and power handling per device manual, and identifying waste-battery chemistry and accepted collection before separating from metal belongings. These are distinct from pencil drawing, cable charging and general packing. Source-supported guidance cites Winsor & Newton, a specific Sony manual, EPA technical precautions and Gapyeong collection guidance without treating US disposal rules as Korean law. Three new actual product models 200,9001,188L differ from morning 9018,0423,9290. Reviewed three new full drafts together; no reworded article.",
   "completionReceipt": "backups/story-runs/2026-10-04.deployment.json",
-  "expectedCount": 3,
+  "expectedCount": 6,
   "editions": {
     "morning": {
       "postIds": [
         "binoculars-backpack-birdwatching",
         "folding-phone-stand-backpack",
         "seed-packets-backpack-exchange"
+      ],
+      "stage": "published",
+      "receipt": "backups/story-2026-10-04/morning/deployment.json"
+    },
+    "afternoon": {
+      "postIds": [
+        "watercolour-brush-backpack-return",
+        "portable-radio-backpack-antenna",
+        "used-batteries-backpack-dropoff"
       ],
       "stage": "prepared"
     }

@@ -1,5 +1,53 @@
 [
   {
+    "id": "watercolour-brush-backpack-return",
+    "title": "수채화 붓을 백팩에 되담을 때: 물기와 붓끝부터",
+    "date": "2026-10-04",
+    "summary": "그림을 마친 붓은 필통에 바로 넣기 전에 물기와 붓끝 모양을 살펴보세요. 귀가 후 말리는 단계까지 이어지는 수채화 도구 정리입니다.",
+    "description": "그림을 마친 붓은 필통에 바로 넣기 전에 물기와 붓끝 모양을 살펴보세요. 귀가 후 말리는 단계까지 이어지는 수채화 도구 정리입니다.",
+    "tags": [
+      "수채화 붓",
+      "그림 산책",
+      "도구 관리"
+    ],
+    "image": "../assets/story/watercolour-brush-backpack-return.webp",
+    "imageAlt": "검정 히마와리 No.200 백팩을 멘 성인 여성이 정원 테이블에서 수채화 도구를 정리하는 AI 착용 연출 사진",
+    "url": "watercolour-brush-backpack-return.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "portable-radio-backpack-antenna",
+    "title": "휴대용 라디오를 백팩에 넣기 전: 안테나부터 제자리로",
+    "date": "2026-10-04",
+    "summary": "라디오를 듣고 자리를 옮길 때, 길게 뽑은 안테나와 전원 상태를 먼저 확인하세요. 작은 기기를 가방에 되담기 전의 정리 순서입니다.",
+    "description": "라디오를 듣고 자리를 옮길 때, 길게 뽑은 안테나와 전원 상태를 먼저 확인하세요. 작은 기기를 가방에 되담기 전의 정리 순서입니다.",
+    "tags": [
+      "휴대용 라디오",
+      "안테나",
+      "외출 소품"
+    ],
+    "image": "../assets/story/portable-radio-backpack-antenna.webp",
+    "imageAlt": "창가 선반의 검정 히마와리 No.9001 백팩과 안테나가 접힌 별도 휴대용 라디오의 AI 연출 사진",
+    "url": "portable-radio-backpack-antenna.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "used-batteries-backpack-dropoff",
+    "title": "다 쓴 건전지, 백팩에 넣기 전에 종류부터 확인하기",
+    "date": "2026-10-04",
+    "summary": "폐건전지를 수거 장소에 가져갈 때는 겉모양보다 표시된 종류와 배출 안내를 먼저 확인하세요. 개인 소지품과 섞지 않고 이동을 준비하는 방법입니다.",
+    "description": "폐건전지를 수거 장소에 가져갈 때는 겉모양보다 표시된 종류와 배출 안내를 먼저 확인하세요. 개인 소지품과 섞지 않고 이동을 준비하는 방법입니다.",
+    "tags": [
+      "폐건전지",
+      "분리배출",
+      "외출 준비"
+    ],
+    "image": "../assets/story/used-batteries-backpack-dropoff.webp",
+    "imageAlt": "현관 선반의 그레이 베이지 히마와리 No.188L 백팩과 별도 용기에 구분한 건전지의 AI 연출 사진",
+    "url": "used-batteries-backpack-dropoff.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "binoculars-backpack-birdwatching",
     "title": "탐조 산책의 백팩: 쌍안경 덮개와 끈을 함께 챙기기",
     "date": "2026-10-04",
