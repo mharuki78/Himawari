@@ -1,6 +1,6 @@
 {
   "date": "2026-10-04",
-  "expectedCount": 2,
+  "expectedCount": 4,
   "stage": "prepared",
   "completionReceipt": "backups/lookbook-2026-10-04/deployment.json",
   "entries": [
@@ -43,6 +43,46 @@
       "prompt": "Use case: photorealistic-natural. Generate one full-body portrait 1024x1536 editorial lifestyle photograph for Himawari LookBook. Input image 1 is the exact navy No.2301 product reference, not an edit target. Show a fictional 55-year-old Hispanic woman with medium olive skin and a long silver-gray braid, wearing a light stone-gray coat, sage-green trousers and dark loafers, walking naturally through a wide covered urban pedestrian passage beside a muted abstract painted mural with no text. Wear this exact backpack on BOTH shoulders. Rear three-quarter full-body composition including shoes and profile, one relaxed walking step, hands clear of bag, entire backpack legible in upper center of photo; braid drapes in front of shoulder so does not obscure bag. Diffuse bright daylight, natural wrinkles and fabric detail, candid street photograph. Exact product WIDTH28 HEIGHT42 DEPTH17cm with plausible 42cm torso scale. Preserve deep navy tall rounded rectangular body, black padded shoulder straps and black top loop, protruding upper navy rounded rectangular zip-front compartment with black edge zipper and small black original Himawari patch near its top center. Preserve separate lower navy pocket with black mesh front and horizontal black zipper on its top edge, original black long pulls, side mesh pockets, two black side compression straps and buckles at upper and lower sides, main zipper shape and all original seams. No invented chest strap, waist belt, extra hardware or decorations. Do not simplify mesh to solid fabric or change pocket geometry. Adult anatomy and bag wearing must be plausible; no cloned people, cropped feet, added brand marks, captions, watermarks or performance claims.",
       "fidelityReviewed": true,
       "fidelityReview": "Directly compared generated1024x1536 with original. Deep navy rectangular body, upper protruding zipped compartment with original black Himawari patch, lower black mesh front pocket, long black pulls, upper/lower side buckles and black shoulder straps/top loop preserved. Natural42cm height on adult torso, coat and hands anatomically plausible, both straps worn, full body and shoes included. Braid falls to shoulder clear of bag. Mural without text, new adult identity and walking composition appropriate. No material product distortion or invented harness."
+    },
+    {
+      "id": "2026-10-04-travel-124s",
+      "model": "124S",
+      "productId": "coupang-89f32d8ebba306ec",
+      "image": "/assets/lookbook/2026-10-04-travel-124s.webp",
+      "reference": "backups/lookbook-2026-10-04/afternoon/reference-coupang-89f32d8ebba306ec.jpg",
+      "generatedSource": "backups/lookbook-2026-10-04/afternoon/generated-124S.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        22,
+        33,
+        14
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-04; 2026-09-14 제조사 카탈로그 34페이지의 124S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-89f32d8ebba306ec/main-RZbO1NbGDv0opC3TEzfRgp5JrIzNtG.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8645627102",
+      "prompt": "Use case: photorealistic-natural. Portrait1024x1536 full-body candid editorial photograph for Himawari LookBook. Input image1 is product reference only. Fictional28-year-old South Asian adult woman, warm brown skin, curly dark hair in a low bun, dark teal jacket, cream wide-leg trousers, rust-orange thin scarf and dark brown flat shoes. Seated naturally on a narrow BACKLESS airport waiting-area bench beside tall glass windows, BOTH shoulder straps of exact reference Himawari No.124S pale-yellow and brown small backpack worn. Rear three-quarter full body view with profile and shoes visible, hands relaxed on lap, adult legs anatomically correct. Bag entire front facing camera unobstructed above seat, not trapped behind backrest. Minimal unbranded compact wheeled suitcase beside bench, distant blurred airport architecture/apron without airline logos or readable signs. Cool diffuse daylight. Exact bag WIDTH22 HEIGHT33 DEPTH14cm: visibly small adult backpack naturally spanning only upper/middle back, do not enlarge to full torso. Preserve pale creamy yellow rounded rectangular body and matching side pockets/top paired handles, black snap keeper, two black round rivets on each front handle attachment, original black rectangular Himawari white-letter logo, large lower front pale-yellow zipper pouch with BLACK horizontal zipper and black pull hanging at left, brown base panel across bottom, main black zipper/pulls at sides and original seams. No extra chest/waist belts, decorative accessories, invented product numbers, caption, watermark or other branding. Preserve reference product exactly, real textile and natural adult face/skin, no fit/performance claims.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly compared original and1024x1536 generated output. Pale yellow33cm compact adult bag, brown base, paired handles/black keeper/two black round rivets per front anchor, original black Himawari white-wordmark rectangular patch, black front zip and left pull, yellow side pockets/main zipper pulls retained. Plausible both-straps wearing, seated full body adult with correctly formed legs/hands/shoes, bag unobstructed above narrow backless bench. No invented numbers, harness or accessories attached to bag; suitcase is separate scene prop."
+    },
+    {
+      "id": "2026-10-04-everyday-9291",
+      "model": "9291",
+      "productId": "store-13408069845",
+      "image": "/assets/lookbook/2026-10-04-everyday-9291.webp",
+      "reference": "backups/lookbook-2026-10-04/afternoon/reference-store-13408069845.jpg",
+      "generatedSource": "backups/lookbook-2026-10-04/afternoon/generated-9291.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        31,
+        45,
+        15
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-04; 2026-09-14 제조사 카탈로그 7페이지의 9291 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260416_30/1776315459037ny7Nf_JPEG/108348427949227048_692471493.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13408069845",
+      "prompt": "Use case: photorealistic-natural. Portrait1024x1536 editorial lifestyle photo for Himawari LookBook. Image1 is exact product reference: use ONLY backpack design/colors/hardware from it, not source person, pose, clothing or lockers. Fictional62-year-old Middle Eastern adult man with salt-and-pepper curly hair and neatly trimmed gray beard, burgundy overshirt over charcoal tee, cream chinos. Standing naturally beside a neighborhood bakery entrance with pale checker tiles and bread behind glass, no readable shop text. Rear-side three-quarter composition head to knees, clear adult profile, hands relaxed away from bag, BOTH shoulder straps worn. Exact lavender Himawari No.9291 backpack fully visible in near-center. Warm late-afternoon diffuse street light, ordinary fabric/skin texture, no staged grin. Product WIDTH31 HEIGHT45 DEPTH15cm, natural45cm full-back scale for adult man, not mini or huge. Preserve lavender rounded tall rectangular body, matching padded straps/top carry handle, gray zipper edging and long gray main zipper tabs. Upper separate rounded zipped compartment has small gray rectangular original Himawari white wordmark near top; front horizontal LAVENDER zipper with lavender oval pull, large gray mesh panel below, original horizontal gray band across mesh bottom; original small lavender hanging pouch with gray edge and tiny original label attached at lower-right front mesh. Preserve separate lower lavender zip pocket with lavender horizontal zip and oval pull, original gray elastic cord laced into large loops over its front, side gray mesh pocket and gray horizontal compression strap with plastic buckle. Keep ALL original pouch/cord/pockets/hardware shapes and exact lavender/gray colors; do not invent chest harness or replace mesh with fabric. Adult anatomy plausible. No added captions/watermark/other brand, no source-person identity replication or performance claims.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly compared original reference and new1024x1536 output. Lavender45cm body with gray edge/main zipper tabs, original gray white-letter Himawari upper label, separate upper rounded zip pocket with lavender horizontal zip/pull, gray mesh front/gray lower horizontal band and attached lavender gray-edged small pouch, lower lavender zip pocket with original gray elastic large loops, gray side mesh and compression strap/buckle retained. Realistic full-back adult scale, plausible salt-and-pepper adult man/hand profile with both padded straps. Original reference person not reproduced; only exact bag reused. Whole bag legible with no new harness or replacement pockets."
     }
   ],
   "editions": {
@@ -50,6 +90,14 @@
       "entryIds": [
         "2026-10-04-everyday-9004",
         "2026-10-04-city-2301"
+      ],
+      "stage": "published",
+      "receipt": "backups/lookbook-2026-10-04/morning/deployment.json"
+    },
+    "afternoon": {
+      "entryIds": [
+        "2026-10-04-travel-124s",
+        "2026-10-04-everyday-9291"
       ],
       "stage": "prepared"
     }

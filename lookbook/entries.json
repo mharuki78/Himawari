@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-04-travel-124s",
+    "date": "2026-10-04",
+    "category": "travel",
+    "model": "124S",
+    "color": "옐로우 브라운",
+    "productId": "coupang-89f32d8ebba306ec",
+    "title": "공항 창가에서 기다리며",
+    "scene": "넓은 공항 대기 공간의 등받이 없는 벤치에서, 청록색 재킷과 옐로우 브라운 미니 백팩.",
+    "alt": "연한 옐로우 브라운 No.124S 백팩을 멘 성인 여성이 공항 창가 벤치에 앉아 기다리는 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-04-travel-124s.webp",
+    "thumbnail": "/assets/lookbook/2026-10-04-travel-124s-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-10-04-everyday-9291",
+    "date": "2026-10-04",
+    "category": "everyday",
+    "model": "9291",
+    "color": "라벤더",
+    "productId": "store-13408069845",
+    "title": "동네 빵집 앞의 오후",
+    "scene": "작은 빵집의 타일 입구 앞에서, 버건디색 오버셔츠와 라벤더 백팩.",
+    "alt": "라벤더 No.9291 백팩을 멘 회색 수염의 성인 남성이 동네 빵집 앞에 선 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-04-everyday-9291.webp",
+    "thumbnail": "/assets/lookbook/2026-10-04-everyday-9291-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-10-04-everyday-9004",
     "date": "2026-10-04",
     "category": "everyday",
