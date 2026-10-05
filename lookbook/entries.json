@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-05-city-124",
+    "date": "2026-10-05",
+    "category": "city",
+    "model": "124",
+    "color": "오렌지",
+    "productId": "coupang-9e8b28e0fab8e07a",
+    "title": "타일 계단참의 잠깐",
+    "scene": "남색 재킷의 남성이 밝은 타일로 마감된 도심 보행 통로의 계단참에서 잠시 걸음을 멈춘 장면입니다.",
+    "alt": "남색 재킷을 입고 타일 계단참에 선 성인 남성의 히마와리 No.124 오렌지 백팩 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-05-city-124.webp",
+    "thumbnail": "/assets/lookbook/2026-10-05-city-124-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-10-05-everyday-0423",
+    "date": "2026-10-05",
+    "category": "everyday",
+    "model": "0423",
+    "color": "브라운",
+    "productId": "coupang-e733b49430ffbe4d",
+    "title": "도서관에 들르는 길",
+    "scene": "민트색 셔츠와 남색 바지를 입은 여성이 도서관의 외부 반납 창구 옆을 걷는 장면입니다.",
+    "alt": "민트색 셔츠와 남색 바지를 입고 도서관 옆을 걷는 성인 여성의 히마와리 No.0423 브라운 백팩 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-05-everyday-0423.webp",
+    "thumbnail": "/assets/lookbook/2026-10-05-everyday-0423-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-10-05-everyday-2505",
     "date": "2026-10-05",
     "category": "everyday",

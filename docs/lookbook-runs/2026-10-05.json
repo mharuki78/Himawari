@@ -1,6 +1,6 @@
 {
   "date": "2026-10-05",
-  "expectedCount": 2,
+  "expectedCount": 4,
   "stage": "prepared",
   "completionReceipt": "backups/lookbook-2026-10-05/deployment.json",
   "entries": [
@@ -43,6 +43,46 @@
       "prompt": "Use case: photorealistic-natural. Create one FULL BODY portrait 1024x1536 editorial lifestyle photograph for Himawari LookBook. Input image 1 shows the EXACT No.0513 SKY backpack on a model. Use ONLY its backpack as the reference; replace the person, clothing and entire scene with a fictional 60-year-old European man with wispy short white hair, brick-red cotton jacket, natural linen trousers and dark walking shoes, walking over a broad riverside wooden footbridge with simple wood rails and autumn reeds. Rear three-quarter view showing profile and both shoes, natural small walking step, both hands free and away from backpack. BOTH shoulder straps worn properly. Bag legible unobstructed in upper center, soft overcast autumn daylight, subtle realistic skin and fabric. Actual dimensions WIDTH30 HEIGHT43 DEPTH15cm; maintain believable 43cm height from upper back to waist on adult. Preserve reference light cool gray/sky upper body, lavender purple gathered drawstring collar and lavender rim of side pockets, very dark navy bottom panel and lower halves of side pockets, black shoulder straps, light gray top carry loop. Preserve TWO thin black flecked drawstrings through top cord lock hanging down bag front and forming loose loop near lower front; broad pale gray shallow flap pocket across lower front with original slim zipper/pull near its left side; small white triangular patch with navy border and original Himawari mark on bottom panel lower right. Original seams and soft drawstring silhouette; no top flap, buckles, chest or waist belts or added charms. Do not copy reference young woman, pink hoodie, building or hat. No captions, watermark, additional brand marks, distorted anatomy or oversized backpack.",
       "fidelityReviewed": true,
       "fidelityReview": "Directly viewed generated1024x1536 and original wearing reference. Light cool gray upper body, lavender gathered collar and pocket rims, navy base/side lower panels, flecked thin drawstrings with front loop, light carry handle, shallow front pocket, left zipper pulls and original triangular label preserved. Plausible adult43cm height and two shoulder straps. Walking full-body man and hands anatomically coherent, distinct bridge scene."
+    },
+    {
+      "id": "2026-10-05-city-124",
+      "model": "124",
+      "productId": "coupang-9e8b28e0fab8e07a",
+      "image": "/assets/lookbook/2026-10-05-city-124.webp",
+      "reference": "backups/lookbook-2026-10-05/afternoon/reference-coupang-9e8b28e0fab8e07a.jpg",
+      "generatedSource": "backups/lookbook-2026-10-05/afternoon/generated-124.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-05; 2026-09-14 제조사 카탈로그 35페이지의 124 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-9e8b28e0fab8e07a/main-wpAadi227TDPkjv9fuXx8jOOQVqiSn.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8645627102",
+      "prompt": "Use case: photorealistic-natural. Portrait1024x1536 editorial lifestyle photograph for Himawari LookBook. Input1 is exact actual No.124 ORANGE backpack reference. Fictional28-year-old Southeast Asian adult man with short straight black hair and subtle oval glasses, navy lightweight cotton jacket over ivory tee, charcoal trousers, standing still on a broad city pedestrian passage stair landing beside pale aqua glazed tiles and brushed steel handrail. Rear three-quarter HEAD TO KNEES framing, clear side profile, hands hanging relaxed away from bag, entire backpack unobstructed near center; both black padded shoulder straps correctly worn. Diffuse skylight and subtle tile reflections, quiet no crowd or readable signage, natural adult anatomy and ordinary textile. Bag exact WIDTH28 HEIGHT40 DEPTH17cm, full-sized adult backpack from upper back to waist, not mini124S. Preserve saturated burnt-orange rectangular rounded body, paired orange short top handles with BLACK snap keeper, each orange front handle anchor has TWO black round rivets, original small BLACK rectangular Himawari white-letter stitched patch centered upper front, large lower orange front zip pouch with BLACK horizontal zip and one long BLACK pull hanging left, narrow COGNAC BROWN base panel, orange side slip pockets, black padded shoulder straps, original black main zip pulls and original seams. No added flap, buckles, harness or extra logo. Do not recolor body tan/red, lose brown bottom or enlarge bag. No captions/watermark/other brands. Fictional adult AI wearing staging, not customer photograph or fit trial.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed genuine original and generated1024x1536 output. Saturated orange rounded rectangular40cm full-size body, orange paired handles with black keeper, two black rivets on each front anchor, original black rectangular Himawari label, lower orange pocket with black horizontal zip/long left pull, cognac brown bottom panel, orange side pockets, original main pulls and black padded shoulder straps retained. Both straps worn, plausible40cm adult upper-back-to-waist scale. Entire bag unobstructed. Young adult profile/glasses and relaxed fingers anatomically coherent, tiled stair landing scene distinct; no added harness or flap."
+    },
+    {
+      "id": "2026-10-05-everyday-0423",
+      "model": "0423",
+      "productId": "coupang-e733b49430ffbe4d",
+      "image": "/assets/lookbook/2026-10-05-everyday-0423.webp",
+      "reference": "backups/lookbook-2026-10-05/afternoon/reference-coupang-e733b49430ffbe4d.jpg",
+      "generatedSource": "backups/lookbook-2026-10-05/afternoon/generated-0423.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        32,
+        42,
+        13
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-05; 2026-09-14 제조사 카탈로그 9페이지의 0423 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e733b49430ffbe4d/main-brJHq1r30m8drE0LSnC7wTdrj4N74r.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9520244217",
+      "prompt": "Use case: photorealistic-natural. Portrait1024x1536 FULL BODY editorial candid photograph for Himawari LookBook. Input1 is exact genuine No.0423 BROWN color variant backpack reference; its MAIN BODY IS BLACK with tan/brown DOG-FACE attached upper pouch. Fictional47-year-old Latin American adult woman with shoulder-length wavy dark hair and a natural few gray streaks, mint-green plain cotton overshirt, dark navy straight trousers and burgundy loafers. Walking one small natural step beside a public library exterior book-return window framed by offwhite concrete and a muted blue mosaic strip, no readable text. Rear three-quarter full body including feet and relaxed hands, slight face profile, BOTH black shoulder straps worn, complete backpack front toward camera legible unobstructed. Mild afternoon shade, natural skin/textile, realistic anatomy. Bag actual WIDTH32 HEIGHT42 DEPTH13cm correct adult torso scale, black rounded tall main body with main black zip and subtle top loop, LARGE original TAN oval dog-head zipper pouch across upper front, brown oval nose on LEFT, exactly TWO slim black vertical eye marks near center, ONE original long dark BROWN oval fabric ear hanging down RIGHT. Preserve ear attached to pouch not added toy. Separate large BLACK lower front rounded zip pouch with horizontal zip and black pull plus original thin black-and-white flecked long cord pull, original white-bordered BLACK square Himawari white-letter logo lower RIGHT of front pouch, black mesh side pockets, side black horizontal webbing straps and original seams/hardware. Preserve reference logo/face/ear and all pocket shapes; do not turn bag brown, add dog ears, extra charms, chest belt or waist harness. No animal, captions, watermark or other brands; no customer identity or claimed performance. Fictional adult AI wearing styling; product pouch is preserved original component.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct comparison original and1024x1536 output: black rounded42cm main backpack body and top loop, actual tan oval dog-face upper zip pouch with left brown oval nose, two narrow black vertical eyes and ONE attached right long brown fabric ear, lower black zip pouch with black and white flecked cord pull and original white-bordered square Himawari patch at lower right, side mesh pockets and horizontal black webbing/buckles preserved. Correct42cm bag scale on adult woman with both black straps; full walking body, hands and loafers anatomically coherent. Library return window and blue tile scene fictional, no extra ear/charm or brown recoloring of main body."
     }
   ],
   "editions": {
@@ -50,6 +90,14 @@
       "entryIds": [
         "2026-10-05-everyday-2505",
         "2026-10-05-travel-0513"
+      ],
+      "stage": "published",
+      "receipt": "backups/lookbook-2026-10-05/morning/deployment.json"
+    },
+    "afternoon": {
+      "entryIds": [
+        "2026-10-05-city-124",
+        "2026-10-05-everyday-0423"
       ],
       "stage": "prepared"
     }
