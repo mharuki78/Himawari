@@ -1,7 +1,7 @@
 {
   "date": "2026-10-05",
   "automationId": "himawari-3",
-  "expectedGeneratedImages": 3,
+  "expectedGeneratedImages": 6,
   "posts": [
     {
       "id": "business-cards-backpack-context",
@@ -68,18 +68,93 @@
       "dimensionsSource": "2026-09-14 제조사 카탈로그 45페이지의 8029 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
       "fidelityReviewed": true,
       "fidelityReview": "Direct comparison confirmed orange main front/handle/straps, cobalt-blue piping/main zip/sides/lower rounded pocket, upper lime zipped pouch with original repeated SUN FLOWER and orange Himawari patch, smaller orange pocket with lime flap/orange snap, ring and cord zipper pulls retained. Two black hook-loop bands fully closed with matching surfaces; separate grey pouch. No band attached to bag or claimed lining fastener/protection."
+    },
+    {
+      "id": "stamp-notebook-backpack-drying",
+      "title": "스탬프 기록장을 백팩에 넣기 전: 찍은 페이지는 잠깐 펼쳐두기",
+      "url": "https://himawari.co.kr/story/stamp-notebook-backpack-drying.html",
+      "productId": "coupang-a9f5747c919c919c",
+      "model": "No.124S",
+      "image": "assets/story/stamp-notebook-backpack-drying.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-05/afternoon/reference-124S.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-05/afternoon/generated-124S.png",
+        "prompt": "Photorealistic editorial still life, landscape1536x1024. STRICT genuine Himawari No.124S IVORY backpack reference, width22 height33 depth14cm. Whole mini backpack upright front three-quarter at left on light birch visitor-center desk. Preserve actual ivory rounded rectangular fabric body, two ivory woven top handles with BLACK snap keeper, two ivory handle anchor tabs each with TWO black round rivets, original BLACK rectangular Himawari white-letter stitched patch upper front, lower protruding ivory horizontal zipper pocket with BLACK zipper and long black pull left, black main zip pulls, ivory side pockets and shoulder straps, narrow ochre-cognac bottom panel. NO flap or buckles. At right separate OPEN small cream travel notebook with ONE generic abstract circular ink stamp, no letters or destination logo, and CLOSED small plain dark inkpad beside notebook. Stamp not on bag; no wet inkpad touching bag. Realistic33cm bag scale against small notebook. Quiet visitor center interior soft afternoon daylight, subtle blurred pale walls and wood, no people, overlays, watermarks or extra brands. Notebook and inkpad separate staged props, not supplied or proof of internal fit. Exact reference logo/pockets/colors/shape retained.",
+        "generatedAt": "2026-10-05",
+        "catalogUrl": "https://www.coupang.com/vp/products/8645627102",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-a9f5747c919c919c/main-TJRUxbOoesUwhj5ZYJDSLhvoEVDkqU.jpg"
+      },
+      "dimensionsCm": "22 × 33 × 14 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 34페이지의 124S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed genuine original and generated image: ivory rounded rectangular body, twin top handles/black snap keeper, two ivory anchors each with two black rivets, original black rectangular Himawari label, black front horizontal zip/long black pull, ivory side pockets and ochre-cognac bottom strip retained. Entire mini bag visible with plausible 33cm scale against small notebook; generic round stamp has no official text or destination and closed separate inkpad stays clear of bag."
+    },
+    {
+      "id": "embroidery-hoop-backpack-break",
+      "title": "손자수를 쉬어갈 때: 수틀에서 천을 꺼내 백팩에 정리하기",
+      "url": "https://himawari.co.kr/story/embroidery-hoop-backpack-break.html",
+      "productId": "coupang-4861cd80cf7fce0c",
+      "model": "No.9290",
+      "image": "assets/story/embroidery-hoop-backpack-break.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-05/afternoon/reference-9290.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-05/afternoon/generated-9290.png",
+        "prompt": "Photorealistic editorial still life, landscape1536x1024. STRICT genuine Himawari No.9290 BLACK backpack reference, width30 height42 depth18cm. Whole bag upright front three-quarter left on pale linen-covered sewing worktable. Preserve original tall rounded black body with layered rounded-top main zips and black top loop/shoulder straps, original WHITE rectangular stitched Himawari black-letter upper front logo, large rounded rectangular lower black pouch with horizontal WHITE zipper and ONE white pull left, exactly TWO white plastic compression buckles PER SIDE upper and lower with black webbing, black slip side pockets and seams. No added belt/flap/extra logo. Beside it an EMPTY small wooden embroidery hoop18cm diameter with INNER and OUTER rings separated, visible small brass screw on outer ring; separate flat unfolded offwhite linen square with a few delicate green leaf embroidery stitches, no hoop clamping fabric or backpack, CLOSED small needle case. No exposed needles. Sewing room quiet side window, softly blurred neutral background, natural fabrics and actual42cm proportion. No people, captions, watermark or extra brands. Props separately placed outside bag, not evidence of internal fit or included accessories.",
+        "generatedAt": "2026-10-05",
+        "catalogUrl": "https://www.coupang.com/vp/products/8732967324",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4861cd80cf7fce0c/main-yXSjjIlJ9Fo5IBOAANpwjCu50SK8rJ.jpg"
+      },
+      "dimensionsCm": "30 × 42 × 18 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 42페이지의 9290 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly compared original and output: black tall rounded body with layered main zips, black top loop and shoulder straps, white rectangular original Himawari patch, lower large black zipped pocket with white horizontal zip and single white pull at left, two white compression buckles on each side with black webbing and slip side pockets preserved. Two separate empty wooden hoop rings and flat embroidered linen beside bag, closed needle case, no exposed needle, hoop on bag or internal-fit claim."
+    },
+    {
+      "id": "memory-card-backpack-shot-status",
+      "title": "촬영을 마친 메모리카드, 백팩 속 빈 카드와 구분해두기",
+      "url": "https://himawari.co.kr/story/memory-card-backpack-shot-status.html",
+      "productId": "coupang-66513184481d2764",
+      "model": "No.9018",
+      "image": "assets/story/memory-card-backpack-shot-status.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-05/afternoon/reference-9018.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-05/afternoon/generated-9018.png",
+        "prompt": "Photorealistic editorial still life landscape1536x1024. STRICT actual Himawari No.9018 BEIGEBLACK reference, width28 height40 depth17cm. Entire bag upright front three-quarter on walnut photo-sorting desk. Preserve sand-beige rounded rectangular body, paired short beige top handles with beige woven keeper and BLACK snap, original TWO black rectangular X-stitched front handle anchors with black plastic loops, horizontal beige zip above front flap with long BLACK pull left, broad lower curved beige flap with original WHITE rectangular Himawari EST2010 patch outlined BLACK at center, TWO black vertical flap straps each with top round BLACK snap, lower black buckle and long perforated tail/keeper, original beige slip side pockets and shoulder straps/main pulls. No changed logo/hardware/extra pocket. Beside bag TWO small CLOSED memory-card cases, one transparent with ONE palm-small generic full-size SD card inside and one charcoal opaque; separate blank small paper memo cards beside each case, no stickers on memory card. Laptop screen OFF blurred far background, no camera necessary. Correct40cm bag height and standard postage-stamp-size SD card. Diffuse late afternoon studio light, walnut grain, calm neutral editorial photograph, no people/text overlay/watermarks/extra brands. Cases and cards separately staged outside backpack, no test of internal fit or data protection.",
+        "generatedAt": "2026-10-05",
+        "catalogUrl": "https://www.coupang.com/vp/products/9312624854",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-66513184481d2764/main-eT2o0pKD0snvdHsL3egiSWaqR92QF6.jpg"
+      },
+      "dimensionsCm": "28 × 40 × 17 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 40페이지의 9018 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct comparison confirmed beige rounded rectangular body, paired beige top handles and beige keeper with black snap, two black X-stitched anchor tabs/plastic loops, horizontal upper front zipper with black pull, lower beige curved flap with white black-bordered Himawari EST2010 patch, exactly two black snap/buckle straps with perforated tails and keepers, beige side pockets and shoulder straps. Two closed separate card cases with small SD card visible inside clear case and blank separate memo slips; laptop off. No added pocket or data protection claim."
     }
   ],
-  "topicsReviewed": 110,
-  "overlapReview": "Reviewed all 110 titles and summaries and compared all 139782 full-body characters using Korean 7-character grams. Searched the full corpus for business cards, postcards, stamps, hook-and-loop bands and hook surfaces. No existing business-card context or postcard address-check article. Postcards occurred only as souvenir packing; that full article was read, and the new core is pairing recipient details and checking postal markings, not packing souvenirs. Hook-and-loop appeared only as a suggested cable tie; that complete body was read, and the new core is closing the hook surface onto its intended mating surface and avoiding using bag lining as a fastener. Also read knitwear-contact, lining-cleaning, receipt-envelope and post-office-parcel-flow articles in full. Those address clothing contact, cleaning, paper disposal and parcel counter movement; the new articles do not rewrite them. Three distinct actual models: 194L, 1088M, 8029. One fictional adult travel wearing scene begins the new Monday week; two editorial still lifes.",
+  "topicsReviewed": 113,
+  "overlapReview": "Reviewed all 113 titles and summaries, extracted all full bodies, searched full corpus and read the complete pen-ink, knitting-project, camera-in-everyday-backpack, travel-souvenir and vocabulary-card bodies. New stamp article concerns fresh imprint drying and personal visit journal rather than postal address or souvenir packing. Hand embroidery article concerns hoop tension and long-pause fabric removal rather than knitting loops/yarn. Memory card article concerns access lamp, shot-status distinction and backup confirmation rather than camera/lens fit. Compared all full bodies using normalized Korean 7-character grams; closest lexical overlaps do not share these cores. Three new actual models 124S, 9290, 9018 are different from morning 194L, 1088M, 8029. Morning already includes one fictional adult travel wearing scene; afternoon uses three distinct editorial still lifes.",
   "completionReceipt": "backups/story-runs/2026-10-05.deployment.json",
-  "expectedCount": 3,
+  "expectedCount": 6,
   "editions": {
     "morning": {
       "postIds": [
         "business-cards-backpack-context",
         "postcards-backpack-address-check",
         "hook-loop-band-backpack-lining"
+      ],
+      "stage": "published",
+      "receipt": "backups/story-2026-10-05/morning/deployment.json"
+    },
+    "afternoon": {
+      "postIds": [
+        "stamp-notebook-backpack-drying",
+        "embroidery-hoop-backpack-break",
+        "memory-card-backpack-shot-status"
       ],
       "stage": "prepared"
     }
