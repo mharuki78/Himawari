@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-05-everyday-2505",
+    "date": "2026-10-05",
+    "category": "everyday",
+    "title": "운동장 벤치의 쉬는 시간",
+    "model": "2505",
+    "color": "블랙",
+    "productId": "coupang-e16e6315910fdd6b",
+    "scene": "짧은 곱슬머리의 여성이 동네 운동장 가장자리의 등받이 없는 벤치에 앉아 쉬는 장면입니다.",
+    "alt": "남색 데님 셔츠와 밝은 회색 바지를 입고 운동장 벤치에 앉은 성인 여성의 히마와리 No.2505 블랙 백팩 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-05-everyday-2505.webp",
+    "thumbnail": "/assets/lookbook/2026-10-05-everyday-2505-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-10-05-travel-0513",
+    "date": "2026-10-05",
+    "category": "travel",
+    "title": "강변 나무다리를 건너",
+    "model": "0513",
+    "color": "스카이",
+    "productId": "store-13312570673",
+    "scene": "흰머리의 남성이 벽돌색 재킷과 밝은 바지를 입고 강변 나무 보행교를 걷는 장면입니다.",
+    "alt": "벽돌색 재킷을 입고 강변 나무다리를 걷는 성인 남성의 히마와리 No.0513 스카이 백팩 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-05-travel-0513.webp",
+    "thumbnail": "/assets/lookbook/2026-10-05-travel-0513-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-10-04-travel-124s",
     "date": "2026-10-04",
     "category": "travel",

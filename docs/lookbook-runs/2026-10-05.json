@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-05",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-05/deployment.json",
+  "entries": [
+    {
+      "id": "2026-10-05-everyday-2505",
+      "model": "2505",
+      "productId": "coupang-e16e6315910fdd6b",
+      "image": "/assets/lookbook/2026-10-05-everyday-2505.webp",
+      "reference": "backups/lookbook-2026-10-05/reference-coupang-e16e6315910fdd6b.jpg",
+      "generatedSource": "backups/lookbook-2026-10-05/generated-2505.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        30,
+        43,
+        14
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-05; 2026-09-14 제조사 카탈로그 5페이지의 2505 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e16e6315910fdd6b/main-rgxtYpMoAPOljowvNuFsQn7QcDh936.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9593404917",
+      "prompt": "Use case: photorealistic-natural. Create one portrait 1024x1536 editorial lifestyle photograph for Himawari LookBook. Input image 1 is the exact No.2505 BLACK backpack product reference. A fictional 34-year-old Black woman with short natural curls wears a navy denim overshirt, pale gray trousers and brown sneakers, sitting sideways on a simple backless bench at the edge of a quiet community sports court. Rear three-quarter FULL BODY view including feet, relaxed seated posture, both hands resting naturally on thighs, entire backpack fully visible above the bench, face in soft profile. She wears the exact reference backpack on BOTH shoulders. Morning daylight, lightly worn green court and subtle white lines in the distance, no sports branding, natural skin and fabric detail. Backpack WIDTH30 HEIGHT43 DEPTH14cm: plausible adult torso scale, base near waist, never huge. Preserve black tall oval rounded body, two long CREAM webbing strips down the front continuing into two cream top handles joined by cream keeper with black snap, cream cross-box stitches on strips, small white original Himawari wordmark centered between strips in upper front, black side pockets, black zippers along rounded main opening, horizontal seam at bottom panel, black shoulder straps. Do not add any front zipper pocket, charm, flap, chest belt or waist belt. Exact reference product identity and proportions, anatomically correct woman and realistic seated clothing folds. No captions, watermark, added logos, merged hands or cropped bag.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed generated1024x1536 and product reference. Black oval body, cream full-length webbing and twin handles with snap keeper, centered white Himawari wordmark, black side pockets and rounded zipper geometry preserved. Plausible adult torso scale and two wearing straps, full seated body, shoes and bench, natural hands and anatomy. No invented front pocket."
+    },
+    {
+      "id": "2026-10-05-travel-0513",
+      "model": "0513",
+      "productId": "store-13312570673",
+      "image": "/assets/lookbook/2026-10-05-travel-0513.webp",
+      "reference": "backups/lookbook-2026-10-05/reference-store-13312570673.jpg",
+      "generatedSource": "backups/lookbook-2026-10-05/generated-0513.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        30,
+        43,
+        15
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-05; 2026-09-14 제조사 카탈로그 17페이지의 0513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260416_279/1776311593691l3vHW_JPEG/596354370083117_582164802.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13312570673",
+      "prompt": "Use case: photorealistic-natural. Create one FULL BODY portrait 1024x1536 editorial lifestyle photograph for Himawari LookBook. Input image 1 shows the EXACT No.0513 SKY backpack on a model. Use ONLY its backpack as the reference; replace the person, clothing and entire scene with a fictional 60-year-old European man with wispy short white hair, brick-red cotton jacket, natural linen trousers and dark walking shoes, walking over a broad riverside wooden footbridge with simple wood rails and autumn reeds. Rear three-quarter view showing profile and both shoes, natural small walking step, both hands free and away from backpack. BOTH shoulder straps worn properly. Bag legible unobstructed in upper center, soft overcast autumn daylight, subtle realistic skin and fabric. Actual dimensions WIDTH30 HEIGHT43 DEPTH15cm; maintain believable 43cm height from upper back to waist on adult. Preserve reference light cool gray/sky upper body, lavender purple gathered drawstring collar and lavender rim of side pockets, very dark navy bottom panel and lower halves of side pockets, black shoulder straps, light gray top carry loop. Preserve TWO thin black flecked drawstrings through top cord lock hanging down bag front and forming loose loop near lower front; broad pale gray shallow flap pocket across lower front with original slim zipper/pull near its left side; small white triangular patch with navy border and original Himawari mark on bottom panel lower right. Original seams and soft drawstring silhouette; no top flap, buckles, chest or waist belts or added charms. Do not copy reference young woman, pink hoodie, building or hat. No captions, watermark, additional brand marks, distorted anatomy or oversized backpack.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed generated1024x1536 and original wearing reference. Light cool gray upper body, lavender gathered collar and pocket rims, navy base/side lower panels, flecked thin drawstrings with front loop, light carry handle, shallow front pocket, left zipper pulls and original triangular label preserved. Plausible adult43cm height and two shoulder straps. Walking full-body man and hands anatomically coherent, distinct bridge scene."
+    }
+  ],
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-10-05-everyday-2505",
+        "2026-10-05-travel-0513"
+      ],
+      "stage": "prepared"
+    }
+  }
+}
