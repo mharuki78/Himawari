@@ -1,5 +1,53 @@
 [
   {
+    "id": "rolltop-backpack-closing-room",
+    "title": "롤업 백팩을 닫기 전: 맨 위 짐과 접히는 자리 살피기",
+    "date": "2026-10-06",
+    "summary": "접어서 여미는 입구는 물건을 담은 뒤에도 움직일 자리가 필요합니다. No.1682의 닫힌 형태를 보며 출발 전 확인할 순서를 정리합니다.",
+    "description": "접어서 여미는 입구는 물건을 담은 뒤에도 움직일 자리가 필요합니다. No.1682의 닫힌 형태를 보며 출발 전 확인할 순서를 정리합니다.",
+    "tags": [
+      "롤업 백팩",
+      "입구 여유",
+      "출발 전 확인"
+    ],
+    "image": "../assets/story/rolltop-backpack-closing-room.webp",
+    "imageAlt": "작은 작업실 출입문 앞에서 히마와리 No.1682 그레이 롤업 백팩을 양쪽 어깨에 멘 성인의 AI 착용 연출 사진",
+    "url": "rolltop-backpack-closing-room.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "colour-pencil-swatch-backpack",
+    "title": "색연필을 챙기는 날: 오늘 쓸 종이에 작은 색상표 만들기",
+    "date": "2026-10-06",
+    "summary": "색연필 몸통 색만 보고 고르기보다, 가져갈 종이에 직접 칠한 표를 함께 준비해보세요. 번호와 종이를 짝지어 두는 그림 도구 기록입니다.",
+    "description": "색연필 몸통 색만 보고 고르기보다, 가져갈 종이에 직접 칠한 표를 함께 준비해보세요. 번호와 종이를 짝지어 두는 그림 도구 기록입니다.",
+    "tags": [
+      "색연필",
+      "색상표",
+      "그림 준비"
+    ],
+    "image": "../assets/story/colour-pencil-swatch-backpack.webp",
+    "imageAlt": "그림 수업 작업대의 히마와리 No.1084H 블랙 백팩 옆에 색연필과 작은 색상표가 놓인 AI 연출 사진",
+    "url": "colour-pencil-swatch-backpack.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "photo-print-backpack-file-index",
+    "title": "인화 사진을 가져가는 날: 파일 이름은 별도 목록에 남기기",
+    "date": "2026-10-06",
+    "summary": "종이 사진을 다시 인화하거나 함께 볼 사람에게 설명할 수 있도록, 사진 순서와 원본 파일을 대조한 목록을 따로 준비합니다.",
+    "description": "종이 사진을 다시 인화하거나 함께 볼 사람에게 설명할 수 있도록, 사진 순서와 원본 파일을 대조한 목록을 따로 준비합니다.",
+    "tags": [
+      "인화 사진",
+      "사진 목록",
+      "백팩 기록"
+    ],
+    "image": "../assets/story/photo-print-backpack-file-index.webp",
+    "imageAlt": "히마와리 No.188L 그레이 백팩 옆에 풍경 인화 사진용 봉투와 별도 목록지가 놓인 AI 연출 사진",
+    "url": "photo-print-backpack-file-index.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "stamp-notebook-backpack-drying",
     "title": "스탬프 기록장을 백팩에 넣기 전: 찍은 페이지는 잠깐 펼쳐두기",
     "date": "2026-10-05",

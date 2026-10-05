@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-06",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "rolltop-backpack-closing-room",
+      "title": "롤업 백팩을 닫기 전: 맨 위 짐과 접히는 자리 살피기",
+      "url": "https://himawari.co.kr/story/rolltop-backpack-closing-room.html",
+      "productId": "coupang-00860ebfcbb609f9",
+      "model": "No.1682",
+      "image": "assets/story/rolltop-backpack-closing-room.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-06/reference-1682.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-06/generated-1682.png",
+        "prompt": "Use case: photorealistic-natural. Landscape1536x1024 editorial lifestyle photo for Korean article about leaving room to close a rolltop backpack. Image1 is strict product reference for actual Himawari No.1682 GREY, width30 height50 depth14cm. Preserve light heather grey tall rectangular body, broad BLACK rolled upper lip spanning width, exactly TWO black vertical front webbing straps with black plastic buckles attached over top roll; original small black Himawari wordmark centered on grey upper front; large inverted-U black zipper running down upper sides and across front beneath wordmark, TWO original long black rubber pulls together at center; grey lower body, original slant-topped grey right side slip pocket and small outlined dark square fitting on left side; BLACK bottom panel/top carry loop/shoulder straps. Bag CLOSED in original rolled configuration, no demonstration of interior, extra compartments, colors or exaggerated capacity. Fictional62-year-old East Asian adult man, short salt-pepper hair, plain navy cotton overshirt, tan straight trousers. Standing still outside a small neighborhood woodworking studio with muted pale terracotta wall and light oak door, BOTH shoulder straps worn; rear three-quarter view with full bag front facing camera and entire bag visible, head-to-knees framing, realistic50cm bag scale relative to adult back. Hands empty relaxed at sides, no tools in hand. Soft autumn daylight, realistic woven fabric. Person fictional; AI wearing staging, no customer claim. No crowd, text overlay, watermark or other branding.",
+        "generatedAt": "2026-10-06",
+        "catalogUrl": "https://www.coupang.com/vp/products/8653683058",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-00860ebfcbb609f9/main-rCV6RzlGBvwZvBZtCPx6rcOOl2mgYF.jpg"
+      },
+      "dimensionsCm": "30 × 50 × 14 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 39페이지의 1682 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed product original and generated output. Heather-grey tall body, black broad rolled upper lip, two black vertical buckle straps, small centered black Himawari wordmark, inverted-U zipper with original paired black center pulls, black lower panel/top loop/shoulder straps, grey slanted side pocket and left square fitting retained. Whole closed bag on both shoulders of fictional older East Asian adult; human-relative large50cm scale plausible. Hands and posture natural; no opened interior, invented fold count or fit/capacity/waterproof evidence."
+    },
+    {
+      "id": "colour-pencil-swatch-backpack",
+      "title": "색연필을 챙기는 날: 오늘 쓸 종이에 작은 색상표 만들기",
+      "url": "https://himawari.co.kr/story/colour-pencil-swatch-backpack.html",
+      "productId": "coupang-0e826ef077da6066",
+      "model": "No.1084H",
+      "image": "assets/story/colour-pencil-swatch-backpack.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-06/reference-1084H.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-06/generated-1084H.png",
+        "prompt": "Use case: photorealistic-natural. Landscape1536x1024 editorial still life for article about making a colored-pencil swatch chart on the paper being used. Strict actual Himawari No.1084H BLACK reference width28.5 height39 depth12cm. Preserve ALL-BLACK rounded rectangular fabric body, TWO black top webbing handles with small black snap keeper; each handle ends in a stitched rectangular black tab; original central circular black embossed Himawari patch with subtle lettering, wide flat black rectangular flap covering upper edge of large lower front pocket; original single narrow long black pull with silver round rivet at lower pocket LEFT and matching original side main-zip pull RIGHT, black straps. Do not invent front buckles, white logos, tan trim or extra pockets. Whole closed bag upright front three-quarter on pale maple art-class worktable; beside it simple open unbranded grey pencil tin holding SIX colored pencils, a small cream drawing-paper card with TWO neat rows of six subtle colored swatch rectangles (blue,green,ochre,rust,violet,brown), a matching blank cream sketchpad. Chart intentionally no readable numbers or text. Bag39cm tall, papercard15cm wide. Soft cool studio daylight, plain sage-grey wall, realistic pencil marks and textile, no person/overlay/watermark. All stationery props separate, not included or proof of fit. Fictional AI staging.",
+        "generatedAt": "2026-10-06",
+        "catalogUrl": "https://www.coupang.com/vp/products/8249897457",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-0e826ef077da6066/main-4piWseuhI78tGTdz5OI9X5byjfm3SM.jpg"
+      },
+      "dimensionsCm": "28.5 × 39 × 12 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 26페이지의 H1084 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly compared original and generated output. All-black rounded rectangular fabric body, two webbing handles with snap keeper and stitched anchor rectangles, original circular black embossed Himawari patch, wide lower-pocket flap, original left long black pull/silver rivet and right main pull retained. Complete closed bag; separate tin and blank-number swatch card show two rows of six pencil textures and different pressures; no fitted accessory or new bag feature."
+    },
+    {
+      "id": "photo-print-backpack-file-index",
+      "title": "인화 사진을 가져가는 날: 파일 이름은 별도 목록에 남기기",
+      "url": "https://himawari.co.kr/story/photo-print-backpack-file-index.html",
+      "productId": "coupang-4efcb6a5f2ae7b88",
+      "model": "No.188L",
+      "image": "assets/story/photo-print-backpack-file-index.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-06/reference-188L.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-06/generated-188L.png",
+        "prompt": "Use case: photorealistic-natural. Landscape1536x1024 editorial still life for article matching printed photos with a separate file inventory. Strict genuine Himawari No.188L GREY reference width28 height39 depth15cm. Preserve warm grey fabric rectangular body with rounded corners, two short GREY webbing top handles joined by small pale TAN snap keeper; TWO silver metal handle loops and TWO pale TAN rectangular X-stitched upper anchor tabs; paired long pale TAN main zipper pulls just below top lip at center; large GREY lower front flap with original cream rectangle Himawari decorative label centered; TWO pale TAN vertical buckled straps on front flap with silver round studs and silver rectangular buckles and long perforated tails; original grey side slip pockets and padded straps, no black body recoloring or added zipped flap. Whole backpack front three-quarter upright on dark walnut living-room console against soft muted taupe wall. Beside bag a small closed plain photo-safe cream envelope, two separate plain cream sleeve enclosures with short blank index tabs, and one plain small blank inventory sheet. One sleeve showing a generic unrecognizable small autumn-tree landscape print, no people; all photos fictional. No adhesive label on photo face, tape, paperclips/rubber bands, actual readable filenames or personal data. Soft lateral window light, realistic fabric and paper grain, restrained warm tones. Accessories separate not product contents/fit/storage guarantee. No person/overlay/watermark. AI fictional staging based on real product.",
+        "generatedAt": "2026-10-06",
+        "catalogUrl": "https://www.coupang.com/vp/products/8732967336",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4efcb6a5f2ae7b88/main-KZMCgZUTl375uHZt7Ao3P1nrh1NIB9.jpg"
+      },
+      "dimensionsCm": "28 × 39 × 15 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 57페이지의 188L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct comparison confirmed warm-grey body/handles/side pocket and padded straps, tan snap keeper, paired tan top zipper pulls, two silver upper loops with tan X-stitched tabs, original cream rectangular decorative Himawari label, lower flap with two tan perforated long straps/silver studs/buckles. Separate enclosures, closed envelope and blank inventory sheet; fictional landscape photograph has no personal data, tape, clips or rubber bands. No archive-safe bag or internal-fit claim."
+    }
+  ],
+  "topicsReviewed": 116,
+  "overlapReview": "Reviewed all116 prior titles/summaries and compared146270 full-body characters. No prior rolltop/swatch/file-index core; read complete product-photo/specification, sketch, photo-studio, camera, memory-card and shape-storage articles. New rolltop core is top cargo interference and closure clearance, not general strap adjustment or photograph buying advice. Swatch core connects tool identifiers to paper and pressure tests, not another drawing packing list. Print core maps physical photograph to file via enclosure numbering without marking print, not recording card status or picture-taking. Three distinct actual product models1682/1084H/188L; one fictional East Asian older adult studio arrival wearing scene, two still lifes.",
+  "completionReceipt": "backups/story-runs/2026-10-06.deployment.json",
+  "expectedCount": 3,
+  "editions": {
+    "morning": {
+      "postIds": [
+        "rolltop-backpack-closing-room",
+        "colour-pencil-swatch-backpack",
+        "photo-print-backpack-file-index"
+      ],
+      "stage": "prepared"
+    }
+  }
+}
