@@ -1,7 +1,7 @@
 {
   "date": "2026-10-06",
   "automationId": "himawari-3",
-  "expectedGeneratedImages": 3,
+  "expectedGeneratedImages": 6,
   "posts": [
     {
       "id": "rolltop-backpack-closing-room",
@@ -68,12 +68,78 @@
       "dimensionsSource": "2026-09-14 제조사 카탈로그 57페이지의 188L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
       "fidelityReview": "Direct comparison confirmed warm-grey body/handles/side pocket and padded straps, tan snap keeper, paired tan top zipper pulls, two silver upper loops with tan X-stitched tabs, original cream rectangular decorative Himawari label, lower flap with two tan perforated long straps/silver studs/buckles. Separate enclosures, closed envelope and blank inventory sheet; fictional landscape photograph has no personal data, tape, clips or rubber bands. No archive-safe bag or internal-fit claim."
+    },
+    {
+      "id": "origami-paper-starting-face",
+      "title": "종이접기 모임에 가는 날: 첫 면과 방향을 한 장에 남기기",
+      "url": "https://himawari.co.kr/story/origami-paper-starting-face.html",
+      "productId": "store-12986327631",
+      "model": "No.2513",
+      "image": "assets/story/origami-paper-starting-face.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-06/afternoon/reference-2513.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-06/afternoon/generated-2513.png",
+        "prompt": "Landscape1536x1024 photoreal editorial still life. Strict product reference image1: genuine Himawari No.2513 BLACK laptop pouch width36.5 height28 depth2cm. Use ONLY reference main closed product, no reference model person or collage. Preserve black slightly lustrous quilted fabric with vertical curving hourglass/leaf loop stitching, landscape rounded rectangular slim shape, large black embroidered Himawari centered across front, original silver rings at upper corners, original BLACK AND WHITE flecked rope handle curved above pouch and knotted rope tails with dark beads hanging LEFT edge. Original black zipper edge, no shoulder straps/pockets/buckles added. Whole closed pouch standing gently upright on light ash craft table, slight frontal three-quarter showing slim2cm side. Beside it a stack of separate15cm square origami sheets muted sage on one side cream reverse, ONE single partly folded triangular sheet and one separate small cream practice notebook with simple tiny square orientation sketches, NO readable text. Pouch36.5cm width relative15cm sheets. Soft diffuse afternoon light, pale warm grey wall, no hands/person. Realistic quilt and paper, restrained composition. Accessories separate not product contents or proof of fit. No overlay/watermark. AI fictional scene.",
+        "generatedAt": "2026-10-06T07:11:15.936Z",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/12986327631",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260420_222/1776672718551bbtgo_JPEG/31205936622607670_209756021.jpg"
+      },
+      "dimensionsCm": "36.5 × 28 × 2 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 11페이지의 2513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/generated visual inspection: black landscape slim quilted pouch; loop stitching, black embroidered Himawari, flecked rope handle with silver upper rings and beaded left rope tails retained. Full bag shown; origami15cm paper scales plausibly vs36.5cm width. No invented straps or pockets. Black sheen/light is scene lighting. Fictional staging and no fit claim."
+    },
+    {
+      "id": "conversation-club-question-notes",
+      "title": "회화 모임 뒤 노트 한쪽: 들은 표현과 남은 질문 구분하기",
+      "url": "https://himawari.co.kr/story/conversation-club-question-notes.html",
+      "productId": "coupang-e733b49430ffbe4d",
+      "model": "No.0423",
+      "image": "assets/story/conversation-club-question-notes.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-06/afternoon/reference-0423.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-06/afternoon/generated-0423.png",
+        "prompt": "Landscape1536x1024 photoreal editorial still life. Strict actual Himawari No.0423 BROWN reference width32 height42 depth13cm. Preserve BLACK rounded dome backpack body, huge tan ochre horizontally oval DOG FACE upper front zipper pocket with one dark brown oval nose on LEFT and two narrow BLACK vertical eye marks at center; exactly ONE floppy dark BROWN fabric ear hanging on RIGHT of face. Preserve black lower front rectangular pouch with broad flat flap at top and original curved zipper track, small original black-white square Himawari patch LOWER RIGHT, original long black zipper pulls at lower-left, black mesh side pockets and side straps. All details/logo as reference, no invented second ear or colored body. Entire closed bag upright front slight three-quarter on low pale birch shelf in fictional language-club reading room. Beside it separate open small cream notebook with two sparse columns of short faint illegible pencil strokes and small question marks, capped navy pen, closed unbranded muted teal paperback. No printed language claims or readable dialogue, no people/customer identity. Bag42cm tall, notebook18cm tall. Cool window light, distant muted blue-grey wall and simple empty chair out of focus. Props separate not included/proof of fit. No overlay/watermark. AI scene.",
+        "generatedAt": "2026-10-06T07:11:15.936Z",
+        "catalogUrl": "https://www.coupang.com/vp/products/9520244217",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e733b49430ffbe4d/main-brJHq1r30m8drE0LSnC7wTdrj4N74r.jpg"
+      },
+      "dimensionsCm": "32 × 42 × 13 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 9페이지의 0423 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/generated visual inspection: black dome body, tan dog-face upper pocket, single brown right ear, brown left nose and two black eye marks retained; lower black flap/zip and square Himawari patch lower-right, black mesh sides and side straps retained. Full bag42cm shown with smaller separate notebook. No extra ear or colored body. No customer/learning claim."
+    },
+    {
+      "id": "recipe-class-notebook-amounts",
+      "title": "요리 수업 노트를 챙길 때: 원래 분량과 바꾼 분량을 따로 쓰기",
+      "url": "https://himawari.co.kr/story/recipe-class-notebook-amounts.html",
+      "productId": "coupang-3d4fbf39120dea6f",
+      "model": "No.1010",
+      "image": "assets/story/recipe-class-notebook-amounts.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-06/afternoon/reference-1010.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-06/afternoon/generated-1010.png",
+        "prompt": "Landscape1536x1024 photoreal editorial still life. Strict genuine Himawari No.1010 KHAKI reference width33 height45 depth15cm. Preserve pale sage-khaki tall rectangular textile body, black zipper piping around top and sides, TWO original black webbing top handles joined black snap keeper, handle anchors with black X stitching and TWO dark metal oval adjuster rings. Original large lower khaki front flap with centered cream rectangular Himawari label bordered black; exactly TWO BLACK faux-leather vertical front straps with dark rectangular buckles, round fasteners and punched holes, khaki side pockets, original black mesh shoulder straps behind, black bottom piping. No tan straps, extra pockets or recoloring. Whole closed bag upright front three-quarter on a plain dark slate-grey bench along edge of fictional cooking-class room, away from food prep surface. Beside bag one separate open cream class notebook with two distinct columns of sparse faint illegible pencil strokes, one capped burgundy pen and one closed plain document folder. No food/knife/stove/ingredients/hands/people, no readable recipes or medical/nutrition claims. Bag45cm tall vs notebook21cm. Warm natural late-afternoon window light, pale muted apricot wall, realistic woven fabric. Props separate not included or carrying test. No overlay/watermark. AI fictional scene.",
+        "generatedAt": "2026-10-06T07:11:15.936Z",
+        "catalogUrl": "https://www.coupang.com/vp/products/8653683145",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-3d4fbf39120dea6f/main-7eLzz0VGYkIX3KVApCVQWErMCnTqwM.jpg"
+      },
+      "dimensionsCm": "33 × 45 × 15 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 50페이지의 1010 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/generated visual inspection: sage-khaki tall rectangular body, paired black handles with keeper and dark adjuster rings/X stitched anchors; khaki lower flap with rectangular Himawari label, exactly two black buckled/perforated front straps, black edge zipper and mesh straps retained. Entire45cm bag plausible vs21cm notebook. Caption AI; no food/transport result. Small faint notebook text is fictional and unreadable."
     }
   ],
-  "topicsReviewed": 116,
+  "topicsReviewed": 119,
   "overlapReview": "Reviewed all116 prior titles/summaries and compared146270 full-body characters. No prior rolltop/swatch/file-index core; read complete product-photo/specification, sketch, photo-studio, camera, memory-card and shape-storage articles. New rolltop core is top cargo interference and closure clearance, not general strap adjustment or photograph buying advice. Swatch core connects tool identifiers to paper and pressure tests, not another drawing packing list. Print core maps physical photograph to file via enclosure numbering without marking print, not recording card status or picture-taking. Three distinct actual product models1682/1084H/188L; one fictional East Asian older adult studio arrival wearing scene, two still lifes.",
   "completionReceipt": "backups/story-runs/2026-10-06.deployment.json",
-  "expectedCount": 3,
+  "expectedCount": 6,
   "editions": {
     "morning": {
       "postIds": [
@@ -81,7 +147,99 @@
         "colour-pencil-swatch-backpack",
         "photo-print-backpack-file-index"
       ],
+      "stage": "published",
+      "receipt": "backups/story-2026-10-06/morning/deployment.json"
+    },
+    "afternoon": {
+      "postIds": [
+        "origami-paper-starting-face",
+        "conversation-club-question-notes",
+        "recipe-class-notebook-amounts"
+      ],
       "stage": "prepared"
     }
+  },
+  "stage": "prepared",
+  "afternoonOverlapReview": {
+    "existingCount": 119,
+    "bodyChars": 149393,
+    "results": [
+      {
+        "id": "origami-paper-starting-face",
+        "closest": [
+          {
+            "id": "laptop-pouch-meeting-room",
+            "overlap": 0.012672811059907835
+          },
+          {
+            "id": "swimming-pool-backpack-wet-dry",
+            "overlap": 0.009216589861751152
+          },
+          {
+            "id": "postcards-backpack-address-check",
+            "overlap": 0.0069124423963133645
+          },
+          {
+            "id": "backpack-for-office-workers",
+            "overlap": 0.0069124423963133645
+          },
+          {
+            "id": "photo-studio-backpack-check",
+            "overlap": 0.00576036866359447
+          }
+        ]
+      },
+      {
+        "id": "conversation-club-question-notes",
+        "closest": [
+          {
+            "id": "folding-phone-stand-backpack",
+            "overlap": 0.0234192037470726
+          },
+          {
+            "id": "paper-map-backpack-walking",
+            "overlap": 0.01288056206088993
+          },
+          {
+            "id": "colour-pencil-swatch-backpack",
+            "overlap": 0.00936768149882904
+          },
+          {
+            "id": "photo-print-backpack-file-index",
+            "overlap": 0.00819672131147541
+          },
+          {
+            "id": "dog-walk-backpack-routine",
+            "overlap": 0.00819672131147541
+          }
+        ]
+      },
+      {
+        "id": "recipe-class-notebook-amounts",
+        "closest": [
+          {
+            "id": "embroidery-hoop-backpack-break",
+            "overlap": 0.01818181818181818
+          },
+          {
+            "id": "colour-pencil-swatch-backpack",
+            "overlap": 0.01575757575757576
+          },
+          {
+            "id": "photo-print-backpack-file-index",
+            "overlap": 0.01090909090909091
+          },
+          {
+            "id": "laptop-pouch-meeting-room",
+            "overlap": 0.01090909090909091
+          },
+          {
+            "id": "business-cards-backpack-context",
+            "overlap": 0.009696969696969697
+          }
+        ]
+      }
+    ],
+    "review": "Reviewed all119 titles/summaries and extracted all149393 body characters for comparison. Read closest complete vocabulary-card, board-game, workshop, sketch articles. Rejected puzzle-count theme because existing board-game core already covers contents count. New origami core records starting face and rotations at steps; conversation core separates heard expression, personal variant and unresolved language question, rather than card rehearsal state; recipe core preserves baseline vs actual quantities and uncertainty, rather than apron packing. Three distinct real models2513/0423/1010; 2513 expands laptop-pouch range. No learning efficacy, recipe quantities, invented bag capabilities/customer claims."
   }
 }
