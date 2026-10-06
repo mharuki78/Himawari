@@ -1,5 +1,53 @@
 [
   {
+    "id": "knitting-pattern-repeat-notes",
+    "title": "뜨개 도안 옆 작은 표: 전체 단수와 반복 구간을 따로 세기",
+    "date": "2026-10-07",
+    "summary": "같은 구간을 여러 번 뜨는 도안이라면 전체 몇 단째인지, 반복의 어디까지 왔는지 나눠 적어 보세요. 중단한 자리에서 다시 시작할 때 읽을 수 있는 진행표를 만듭니다.",
+    "description": "같은 구간을 여러 번 뜨는 도안이라면 전체 몇 단째인지, 반복의 어디까지 왔는지 나눠 적어 보세요. 중단한 자리에서 다시 시작할 때 읽을 수 있는 진행표를 만듭니다.",
+    "tags": [
+      "뜨개 도안",
+      "진행표",
+      "취미 모임"
+    ],
+    "image": "../assets/story/knitting-pattern-repeat-notes.webp",
+    "imageAlt": "검정 Himawari No.200 백팩 옆에 뜨개 노트와 실 바구니를 놓은 AI 연출 사진",
+    "url": "knitting-pattern-repeat-notes.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "board-game-rule-sheet-sources",
+    "title": "보드게임 모임의 규칙표: 설명서와 우리 모임의 약속 구분하기",
+    "date": "2026-10-07",
+    "summary": "지난번에 어떻게 했는지 의견이 갈릴 때 펼쳐 볼 작은 규칙표를 만듭니다. 설명서의 페이지와 모임에서 합의한 약속을 따로 적고, 확인이 끝나지 않은 질문은 남겨 둡니다.",
+    "description": "지난번에 어떻게 했는지 의견이 갈릴 때 펼쳐 볼 작은 규칙표를 만듭니다. 설명서의 페이지와 모임에서 합의한 약속을 따로 적고, 확인이 끝나지 않은 질문은 남겨 둡니다.",
+    "tags": [
+      "보드게임 모임",
+      "규칙표",
+      "취미 기록"
+    ],
+    "image": "../assets/story/board-game-rule-sheet-sources.webp",
+    "imageAlt": "검정과 흰색 장식의 Himawari No.9290 백팩과 무지 게임 카드·규칙 메모를 놓은 AI 연출 사진",
+    "url": "board-game-rule-sheet-sources.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "stargazing-notebook-date-time-place",
+    "title": "별 보기 모임의 첫 줄: 날짜·시각·장소를 함께 남기기",
+    "date": "2026-10-07",
+    "summary": "별을 본 기억에 날짜와 장소를 붙여 작은 관측 노트를 시작해 보세요. 자정을 넘긴 기록과 나중에 정리한 메모도 구분해, 다음 모임에서 당시 상황을 다시 읽을 수 있게 합니다.",
+    "description": "별을 본 기억에 날짜와 장소를 붙여 작은 관측 노트를 시작해 보세요. 자정을 넘긴 기록과 나중에 정리한 메모도 구분해, 다음 모임에서 당시 상황을 다시 읽을 수 있게 합니다.",
+    "tags": [
+      "별 보기 모임",
+      "관측 노트",
+      "날짜 기록"
+    ],
+    "image": "../assets/story/stargazing-notebook-date-time-place.webp",
+    "imageAlt": "검정 Himawari No.9001 백팩과 빈 관측 노트를 창가 책상에 놓은 AI 연출 사진",
+    "url": "stargazing-notebook-date-time-place.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "origami-paper-starting-face",
     "title": "종이접기 모임에 가는 날: 첫 면과 방향을 한 장에 남기기",
     "date": "2026-10-06",

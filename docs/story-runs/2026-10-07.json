@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-07",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "knitting-pattern-repeat-notes",
+      "title": "뜨개 도안 옆 작은 표: 전체 단수와 반복 구간을 따로 세기",
+      "url": "https://himawari.co.kr/story/knitting-pattern-repeat-notes.html",
+      "productId": "coupang-b8f7115d45d4c5f4",
+      "model": "No.200",
+      "image": "assets/story/knitting-pattern-repeat-notes.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-07/reference-200.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-07/generated-200.png",
+        "prompt": "Use case: photorealistic-natural. New landscape1536x1024 editorial still-life photograph for knitting pattern progress notes. Image1 strict actual Himawari No.200 BLACK product reference; external width28 height39 depth15cm. Preserve all-black rounded rectangular39cm fabric body, TWO short BLACK carry handles with snap keeper, two BLACK upper X-stitched rectangular anchor tabs and original BLACK rectangular metal loops, original centered circular BLACK patch with white Himawari EST2020 lettering, paired long BLACK main zipper pulls together above patch. Large lower BLACK flap pocket with exactly ONE central narrow BLACK vertical strap with original black buckle and small round stud. Black side slip pockets and padded shoulder straps. No tan trim, white fabric patch, second front buckle, extra compartments or charms. Entire closed bag upright front three-quarter on low pale ash-wood bench in quiet knitting studio with warm oatmeal wall. On adjacent separate stool, small linen basket with TWO muted teal yarn balls and folded unfinished plain knitting, a cream open progress notebook with a simple two-column grid of small check marks WITHOUT readable text, one short plain pencil beside it. Accessories separate, no fitting into bag. Bag dominant and unobstructed, whole handles/base included, realistic fabric and wool textures. Soft diffuse side daylight, subdued teal/oatmeal accents, no person, graphic overlay, watermark, unrelated logos or exaggerated capacity. Fictional AI staging.",
+        "generatedAt": "2026-10-07",
+        "catalogUrl": "https://www.coupang.com/vp/products/8732967418",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-b8f7115d45d4c5f4/main-8oZzWrORYaCFTOsIJLwkMdYSmEMT0Y.jpg"
+      },
+      "dimensionsCm": "28 × 39 × 15 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 51페이지의 200 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/generated comparison: black rectangular39cm body, twin short black handles and keeper, original X-stitched black anchor tabs/black rectangular loops, circular black white-Himawari patch, paired black top pulls, single central black strap/buckle/stud on curved lower flap, black side pockets/padded straps retained. Whole closed bag clear and plausible relative to small notebook and yarn basket; no capacity/fit claim. Separate teal knitting, two-column check notebook are fictional props."
+    },
+    {
+      "id": "board-game-rule-sheet-sources",
+      "title": "보드게임 모임의 규칙표: 설명서와 우리 모임의 약속 구분하기",
+      "url": "https://himawari.co.kr/story/board-game-rule-sheet-sources.html",
+      "productId": "coupang-4861cd80cf7fce0c",
+      "model": "No.9290",
+      "image": "assets/story/board-game-rule-sheet-sources.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-07/reference-9290.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-07/generated-9290.png",
+        "prompt": "Use case: photorealistic-natural. New landscape1536x1024 editorial still life for board-game meeting rule-sheet source notes. Image1 is strict genuine Himawari No.9290 BLACK WHITE product reference, external width30 height42 depth18cm. Preserve rounded arched BLACK woven backpack with one black webbing top carry loop, original WHITE rectangular Himawari wordmark label centered upperfront, broad lower BLACK zip pocket with original WHITE horizontal zipper and WHITE teardrop pull at left, exactly FOUR WHITE PLASTIC side compression buckles (two each side) on BLACK webbing, original small WHITE main zipper pulls left, black side pockets/padded shoulder straps. Do not recolor white hardware as silver, add tan accents or leather patches. Whole CLOSED backpack upright on round charcoal grey community-room table, bag occupies right55percent with front and left side visible, surrounding space clean. Left foreground a small generic closed plain ochre game box, SIX unbranded wooden cylindrical game pieces in two colors, four stacked blank-backed sage cards, one cream rule-note sheet with two simple columns and no readable text. No copyrighted board game artwork/logos, dice numeric correctness issue, opened bag or implied capacity. Muted slate wall and soft broad morning window light, realistic textile/paper/wood, natural editorial photograph, no people, captions or watermark. Fictional staging with props separately placed.",
+        "generatedAt": "2026-10-07",
+        "catalogUrl": "https://www.coupang.com/vp/products/8732967324",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4861cd80cf7fce0c/main-yXSjjIlJ9Fo5IBOAANpwjCu50SK8rJ.jpg"
+      },
+      "dimensionsCm": "30 × 42 × 18 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 42페이지의 9290 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/generated comparison: arched black body, original white rectangular Himawari patch, white lower horizontal zipper/left pull, all four original white plastic side buckles on black webbing, top loop and padded shoulder straps, black side pockets retained. Original primary zipper arrangement visible; no tan trim/extra product decoration. Bag42cm proportional to separate small plain game box, generic wood pieces/cards and two-column note. No real game/IP/customer or inside-fit assertion."
+    },
+    {
+      "id": "stargazing-notebook-date-time-place",
+      "title": "별 보기 모임의 첫 줄: 날짜·시각·장소를 함께 남기기",
+      "url": "https://himawari.co.kr/story/stargazing-notebook-date-time-place.html",
+      "productId": "coupang-50c5b38af3fd50b0",
+      "model": "No.9001",
+      "image": "assets/story/stargazing-notebook-date-time-place.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-07/reference-9001.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-07/generated-9001.png",
+        "prompt": "Use case: photorealistic-natural. New landscape1536x1024 editorial still-life photograph for stargazing journal dates/time/location. Strict actual Himawari No.9001 BLACK with BROWN trim reference Image1, external width28 height40 depth17cm. Preserve rounded rectangular BLACK doctor-bag body, TWO short BLACK top handles with BLACK anchor tabs and TWO GOLD rivets per tab, original upperfront BLACK rectangular patch with white Himawari wordmark and original small fine lettering, wide lower front BLACK zipper pocket with original GOLD horizontal zipper and long cognac TAN pull at left with small original rivet/hole; GOLD main zipper and original tan rectangular pull on side. Black side pockets and padded straps. Closed upper mouth, no tan body recoloring, invented buckles/extra compartments or new logos. Entire bag upright at left on walnut window-side writing desk, original front clearly visible, bag base/handles fully framed. Separate open cream notebook at right with faint horizontal lines and short blank column headers, plain pencil resting beside it, no readable text or personal data. Large window in background with soft BLUE dusk gradient and indistinct trees, no spectacular stars/constellations/moon or false astronomical event. Gentle warm interior side light preserving visible bag fabric, calm unoccupied room. Accurate40cm bag scale versus small notebook. No person, telescope/claimed equipment fit, overlay or watermark. Fictional AI staging, no real observation result.",
+        "generatedAt": "2026-10-07",
+        "catalogUrl": "https://www.coupang.com/vp/products/8732967323",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-50c5b38af3fd50b0/main-IP2dPnR2XhTnmDiJlgnYuywyR0JCKl.jpg"
+      },
+      "dimensionsCm": "28 × 40 × 17 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 62페이지의 9001 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/generated comparison: black rounded rectangular closed doctor-bag body, twin black handles/anchors with two gold rivets each, black rectangular white Himawari label, gold front and main zippers, cognac long lower left pull and original side rectangular brown tab, black side pocket/shoulder straps retained. Notebook is blank except correct generic DATE/TIME/LOCATION headings; books/sky are fictional styling, no actual astronomical object/event/equipment fit. Entire40cm bag clear under warm light."
+    }
+  ],
+  "topicsReviewed": 122,
+  "overlapReview": "All122 existing titles, summaries and full article bodies extracted and compared; closest relevant full texts directly reviewed. Knitting article addresses independent overall/repeat-row counters and reversal of progress marks, whereas previous knitting article covers supplies and one-project packing. Board-game article distinguishes rulebook sources, agreed house rules and unresolved questions, whereas prior article counts/protects game components. Stargazing article addresses local/UT date conventions and midnight turnover; no prior astronomy topic found. October6 articles on photo file inventory, language questions and cooking notes reviewed; new core actions and examples are distinct. All3 new drafts use different real models and newly generated still-life imagery; product features limited to verified references/dimensions.",
+  "completionReceipt": "backups/story-runs/2026-10-07.deployment.json",
+  "expectedCount": 3,
+  "editions": {
+    "morning": {
+      "postIds": [
+        "knitting-pattern-repeat-notes",
+        "board-game-rule-sheet-sources",
+        "stargazing-notebook-date-time-place"
+      ],
+      "stage": "prepared"
+    }
+  }
+}
