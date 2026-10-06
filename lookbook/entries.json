@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-06-city-2513",
+    "date": "2026-10-06",
+    "category": "city",
+    "model": "2513",
+    "color": "블랙",
+    "productId": "store-12986327631",
+    "title": "작은 영화관의 오후",
+    "scene": "벽돌색 니트와 남색 바지를 입은 남성이 작은 영화관의 유리 출입구 앞에 서 있는 장면입니다.",
+    "alt": "벽돌색 니트를 입고 영화관 출입구에 선 성인 남성의 히마와리 No.2513 블랙 파우치 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-06-city-2513.webp",
+    "thumbnail": "/assets/lookbook/2026-10-06-city-2513-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-10-06-travel-9018",
+    "date": "2026-10-06",
+    "category": "travel",
+    "model": "9018",
+    "color": "베이지블랙",
+    "productId": "coupang-66513184481d2764",
+    "title": "돌담 사이 박물관 산책",
+    "scene": "짧은 머리의 여성이 남색 코트와 회색 바지를 입고 돌담이 있는 박물관 안뜰을 천천히 걷는 장면입니다.",
+    "alt": "남색 코트를 입고 박물관 돌담 안뜰을 걷는 성인 여성의 히마와리 No.9018 베이지블랙 백팩 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-06-travel-9018.webp",
+    "thumbnail": "/assets/lookbook/2026-10-06-travel-9018-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-10-06-city-0515",
     "date": "2026-10-06",
     "category": "city",

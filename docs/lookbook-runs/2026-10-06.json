@@ -1,6 +1,6 @@
 {
   "date": "2026-10-06",
-  "expectedCount": 2,
+  "expectedCount": 4,
   "stage": "prepared",
   "completionReceipt": "backups/lookbook-2026-10-06/deployment.json",
   "entries": [
@@ -43,6 +43,46 @@
       "prompt": "Use case: photorealistic-natural. Create ONE portrait1024x1536 editorial lifestyle photograph for Himawari LookBook. Input1 is the exact genuine No.194L LAVENDER product reference. Fictional55-year-old East Asian adult man with short salt-and-pepper hair and clean-shaven face, deep teal plain cotton sweatshirt, cream straight trousers and simple white canvas shoes. Sitting quietly on a BACKLESS wooden bench in a neighborhood laundromat, muted terracotta floor tiles, two plain round glass-front washing machines softly out of focus at left, offwhite plaster and a broad frosted window at right; no visible readable interface, brand or sign. SIDE/REAR THREE-QUARTER seated composition head to feet, face profile and both shoes visible, hands resting naturally on knees, BOTH lavender padded shoulder straps worn, full entire backpack clear above bench unobstructed; not operating machines. Soft window light, authentic ordinary fabric and anatomically correct seated limbs/fingers. Actual bag WIDTH28 HEIGHT39 DEPTH15cm, compact adult torso scale39cm from upper back to near waist, not oversized. Preserve lavender rectangular rounded body, lavender twin short carry handles with GRAY-BEIGE snap keeper, original metal oval handle loops with two gray-beige rectangular X-stitched anchor tabs high front, lavender side pockets and padded straps, lavender large lower rounded flap pocket, original centered white rectangular Himawari patch edged gray-beige, TWO gray-beige perforated vertical lower-front straps each with round silver top stud and metal buckle, original lavender main zipper with gray-beige long pull hanging LEFT, original seams/hardware/color proportions. No extra charms, harness, top flap, changed logo or tan main body. Do not recolor beige trim golden brown. Full product fidelity to reference. No captions, watermark, other brands or testimonials. Fictional adult AI wearing styling, no claimed customer or measured fit.",
       "fidelityReviewed": true,
       "fidelityReview": "Direct comparison original and generated1024x1536: lavender39cm rectangular rounded body, twin lavender handles with gray-beige snap keeper, two metal handle loops with gray-beige X-stitched tabs, gray-beige original long main pull left, original centered bordered white Himawari patch on lavender lower flap, exactly two gray-beige perforated straps with silver studs/buckles, lavender side pockets/padded wearing straps preserved. Correct compact39cm scale on seated adult man; two shoulder straps, hand on knee and seated legs/shoes coherent. No extra logo/charm/harness."
+    },
+    {
+      "id": "2026-10-06-city-2513",
+      "model": "2513",
+      "productId": "store-12986327631",
+      "image": "/assets/lookbook/2026-10-06-city-2513.webp",
+      "reference": "backups/lookbook-2026-10-06/afternoon/reference-2513.jpg",
+      "generatedSource": "backups/lookbook-2026-10-06/afternoon/generated-2513.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        36.5,
+        28,
+        2
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-06; 2026-09-14 제조사 카탈로그 11페이지의 2513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260420_222/1776672718551bbtgo_JPEG/31205936622607670_209756021.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/12986327631",
+      "prompt": "Use case: photorealistic-natural. ONE portrait 1024x1536 editorial photograph for Himawari LookBook. Image1 is genuine No.2513 BLACK pouch product reference; preserve ONLY exact product and supported carry method, invent new adult and scene. Fictional 23-year-old Black adult man with short tightly curled hair, brick-red plain knit sweater, navy straight trousers, plain black shoes. Quiet independent cinema entrance vestibule with dark burgundy painted wall, large glass door and pale terrazzo floor, late afternoon soft window light; no posters, readable signage or other brands. FRONT/SIDE THREE-QUARTER FULL BODY head to shoes, face visible, bag outer logo face fully visible at side hip. Exact original black-white flecked ROPE HANDLE worn on ONE shoulder as demonstrated by original wearing photo; near hand lightly holds rope at chest, other arm relaxed, no invented long straps. Pouch actual WIDTH36.5 HEIGHT28 DEPTH2cm, slim LANDSCAPE rounded rectangle at hip, realistic scale. Preserve black nylon vertical interlocking hourglass/oval quilt stitch pattern, original large black embroidered Himawari wordmark centered, black edge zipper, silver upper-corner attachment rings/clips, black-white flecked thick rope curved handle, original double knotted bead-ended rope tails at left edge. Keep pouch slim and closed. No backpack shoulder harness, new pocket, charm, tan trim, changed logo or thick bag. Anatomically sound hands and limbs, everyday candid editorial photograph with natural skin texture. Do not copy source woman, white studio or collage. No text overlay, watermark or testimonial. Fictional adult AI wearing scene, no customer photograph or fit measurement.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/output comparison: black slim landscape rounded pouch, hourglass-loop vertical quilt stitches, large centered black embroidered Himawari, black-white flecked rope on one shoulder supported by source wearing photograph, silver top attachment rings, knotted beaded twin tails left and black edge zipper preserved. 36.5x28x2cm plausible adult hip scale, closed slim profile. New young adult man has coherent hands/limbs and full shoes."
+    },
+    {
+      "id": "2026-10-06-travel-9018",
+      "model": "9018",
+      "productId": "coupang-66513184481d2764",
+      "image": "/assets/lookbook/2026-10-06-travel-9018.webp",
+      "reference": "backups/lookbook-2026-10-06/afternoon/reference-9018.jpg",
+      "generatedSource": "backups/lookbook-2026-10-06/afternoon/generated-9018.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-06; 2026-09-14 제조사 카탈로그 40페이지의 9018 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-66513184481d2764/main-eT2o0pKD0snvdHsL3egiSWaqR92QF6.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9312624854",
+      "prompt": "Use case: photorealistic-natural. ONE portrait 1024x1536 full-body editorial photograph for Himawari LookBook. Image1 is genuine No.9018 BEIGE BLACK backpack; use exact product reference unchanged. Fictional 47-year-old Latina adult woman with short dark bob with a few silver streaks, navy knee-length wool coat, gray straight trousers, flat dark leather ankle boots. Walking slowly through a quiet historic museum courtyard with pale rough limestone walls, low stone arch doorway and stone paving, soft overcast autumn daylight, no visible artwork, readable signs or branded objects. REAR THREE-QUARTER WALKING FULL BODY including head and boots, small face profile, both hands relaxed clear of bag, BOTH original beige padded shoulder straps on shoulders, entire outer backpack unobstructed. Actual WIDTH28 HEIGHT40 DEPTH17cm compact rectangular adult backpack ending near waist, correct modest proportions. Preserve exact beige nylon rounded rectangular body, matching beige twin carry handles with beige snap keeper and black snap, two original black oval handle rings with BLACK rectangular X-stitched anchor tabs, horizontal beige front zipper with black pull on left, original large beige rounded lower flap pocket and TWO BLACK perforated vertical straps with black top round studs and black metal buckles, original centered WHITE Himawari EST2020 rectangular patch with BLACK border, beige side pockets and beige wearing straps. Preserve original small black main zipper pulls at side, black hardware and seam placement. No gold hardware, extra pouch/charm, changed logo, top flap, chest/waist harness or beige-colored buckle straps. Natural fabric grain, correct walking limbs/hands and believable 40cm body-relative scale. No overlay text, watermark, other brand or customer review. Fictional adult AI wearing styling, no claimed measured fit.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/output comparison: beige 40cm rounded rectangular backpack, twin beige carry handles with beige keeper/black snap, two black oval handle rings and X-stitched tabs, beige front horizontal zip with black pull left, large beige lower rounded flap, white Himawari patch with black border, exactly two black perforated buckle straps/studs, beige side pockets and wearing straps preserved. Both straps worn, plausible compact 40cm torso scale; walking woman hands/legs/boots coherent."
     }
   ],
   "editions": {
@@ -50,6 +90,14 @@
       "entryIds": [
         "2026-10-06-city-0515",
         "2026-10-06-everyday-194l"
+      ],
+      "stage": "published",
+      "receipt": "backups/lookbook-2026-10-06/morning/deployment.json"
+    },
+    "afternoon": {
+      "entryIds": [
+        "2026-10-06-city-2513",
+        "2026-10-06-travel-9018"
       ],
       "stage": "prepared"
     }
