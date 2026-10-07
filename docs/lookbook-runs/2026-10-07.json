@@ -1,6 +1,6 @@
 {
   "date": "2026-10-07",
-  "expectedCount": 2,
+  "expectedCount": 4,
   "stage": "prepared",
   "completionReceipt": "backups/lookbook-2026-10-07/deployment.json",
   "entries": [
@@ -55,6 +55,62 @@
       "prompt": "Use case: photorealistic-natural. Create ONE1024x1536 portrait full-body editorial lifestyle photograph for Himawari LookBook. Input1 is genuine No.8029 BLUE-LIME exact backpack product reference. Fictional29-year-old Black ADULT woman, shoulder-length natural curls kept away from bag, muted ochre cropped plain jacket, charcoal wide-leg trousers, plain white sneakers. Walking unhurriedly along a broad paved path beside a low pale stone wall, rectangular coastal salt evaporation ponds in distance, muted blue-gray sky, quiet soft daylight, no sign or real named location. Rear three-quarter walking composition showing face profile and BOTH shoes, hands relaxed away from bag, BOTH original orange padded shoulder straps worn naturally. Actual bag width27 height39 depth14cm, compact39cm adult torso scale on168cm woman. Preserve exact bright orange main front body/backing framed by royal BLUE main zipper/piping and blue side body/pockets, large LIME GREEN rounded rectangular UPPER front zip pocket with ONE lime zipper pull upper LEFT, original white square fabric logo label at upper pocket LOWER RIGHT with small black SUN FLOWER lines and orange script Himawari mark, large royal BLUE LOWER front zip pocket with the original small orange rectangular patch pocket centered on it topped by LIME flap and exactly ONE orange circular snap centered, orange top carry handle and original orange padded shoulder straps/mesh. Original blue oval/ring main pull and orange oval/ring lower zip pull hang left; original orange side zipper tab right. Keep exact seam layout, proportions, colors, original logo and pocket geometry. No extra charms, chest or waist belt, white circular logo, invented print, tan trim, or changed color blocking. Natural jacket texture and anatomically coherent walking limbs/fingers. No captions, watermark or other brands. Fictional adult AI wearing styling, no customer photograph or fit test claim.",
       "fidelityReviewed": true,
       "fidelityReview": "Direct comparison of genuine blue-lime front reference and generated1024x1536: orange main panel framed by royal blue zipper/body, lime upper rounded zip pocket with left lime pull and original white SUN FLOWER/Himawari square patch lower right, blue lower rounded zip pocket with orange central patch pocket/lime flap and one orange snap, blue side pockets and left blue/orange zipper rings, orange carry handle/padded straps preserved. Plausible39cm adult back scale. Adult woman walking anatomy, hands and shoes coherent; bag not obscured by curls. No new charm or harness."
+    },
+    {
+      "id": "2026-10-07-everyday-0514",
+      "model": "0514",
+      "productId": "store-11788400997",
+      "image": "/assets/lookbook/2026-10-07-everyday-0514.webp",
+      "reference": "backups/lookbook-2026-10-07/afternoon/reference-0514.jpg",
+      "generatedSource": "backups/lookbook-2026-10-07/afternoon/generated-0514.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        30,
+        43,
+        15
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-07; 2026-09-14 제조사 카탈로그 19페이지의 0514 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260828_147/1787879951207YvXT4_JPEG/37480638312887197_339724870.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/11788400997",
+      "prompt": "Use case: photorealistic-natural. Asset: Himawari LookBook, ONE portrait1024x1536 full-body editorial photograph. Image1 genuine No.0514 SILVER backpack wearing reference: reference ONLY exact bag, replace its original person completely. Fictional72-year-old East Asian ADULT woman, short straight silver-gray bob clear of bag, pale sky-blue long sleeve cotton shirt, rust wide-leg trousers, simple charcoal flat shoes. Seated upright sideways on a BACKLESS pale wood bench in a quiet fictional indoor botanical conservatory, broad green leaves, pale terracotta pots and frosted glass roof, soft diffuse daylight. Rear three-quarter full-body seated profile; both feet visible on floor, relaxed hands on lap away from bag. BOTH original metallic silver padded shoulder straps worn. Actual bag width30 height43 depth15cm, full43cm adult backpack scale on162cm woman, not36cm mini. Preserve exact metallic silver gathered drawstring top, black short carry loop, long original thin BLACK drawcord loops hanging vertically down front, original silver side pockets, broad silver rectangular lower front zip pocket with original upper horizontal zipper/seam rows, original black long front pull at LEFT, original small BLACK downward triangular Himawari white wordmark badge LOWER RIGHT. Keep silver crinkled nylon texture, original seams and rounded base, original silver padded straps with their black adjusters. No buckle flap, tan trim, new patches, removed original drawstrings, handbag carry, charms or harness. Bag unobstructed between shoulders and backless bench; correct seated adult anatomy. No captions or watermark, fictional adult AI wearing scene, not customer or measured fit claim.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original and final portrait review: metallic silver gathered drawstring top, black carry loop and long thin front drawcord loops, wide silver lower rectangular zip pocket with original horizontal seam/zip rows and left black long pull, original black downward triangle white Himawari logo lower-right, silver side pockets, original silver shoulder straps and adjusters preserved. Both straps worn and entire bag clear above backless bench;43cm full-size variant dimensions from current catalog. Fictional older adult woman seated hands, knees, both feet coherent. First square1254x1254 rejected for aspect; built-in canvas edit preserved person/product and produced1024x1536. No capacity/customer/fit claims.",
+      "framingCorrection": {
+        "model": "0514",
+        "rejectedSource": "backups/lookbook-2026-10-07/afternoon/rejected-0514-square.png",
+        "rejectedDimensions": [
+          1254,
+          1254
+        ],
+        "reason": "Required2:3 portrait; product fidelity acceptable but canvas not approved.",
+        "editTool": "built-in image_gen",
+        "editPrompt": "Edit image1 into a VERTICAL PORTRAIT canvas, exactly 1024 pixels WIDE by 1536 pixels TALL, width:height=2:3, NOT square. Preserve entire existing fictional older adult woman, pose, clothing, hands, both shoes, bench and identical genuine silver No.0514 backpack with its logo, drawstrings, pocket, seams and metallic straps. Change only framing/canvas: extend conservatory glass roof and plants above and floor below to make a tall portrait photograph; trim excess empty space on sides as needed. Keep original face, anatomy and bag intact and naturally scaled. All of woman and whole bag must remain inside portrait image. No new person, product details, text, watermark or changed color. Output one 1024x1536 portrait image.",
+        "approvedSource": "backups/lookbook-2026-10-07/afternoon/generated-0514.png",
+        "approvedDimensions": [
+          1024,
+          1536
+        ]
+      }
+    },
+    {
+      "id": "2026-10-07-city-188l",
+      "model": "188L",
+      "productId": "coupang-4efcb6a5f2ae7b88",
+      "image": "/assets/lookbook/2026-10-07-city-188l.webp",
+      "reference": "backups/lookbook-2026-10-07/afternoon/reference-188L.jpg",
+      "generatedSource": "backups/lookbook-2026-10-07/afternoon/generated-188L.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        28,
+        39,
+        15
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-07; 2026-09-14 제조사 카탈로그 57페이지의 188L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4efcb6a5f2ae7b88/main-KZMCgZUTl375uHZt7Ao3P1nrh1NIB9.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8732967336",
+      "prompt": "VERTICAL PORTRAIT CANVAS: exactly 1024 pixels WIDE and 1536 pixels TALL, width:height 2:3. Use case: photorealistic-natural. Asset: Himawari LookBook, ONE1024x1536 portrait full-body natural editorial photo. Image1 strict original Himawari No.188L GREY BEIGE backpack product reference. Fictional46-year-old South Asian ADULT man, short dark curly hair with gray temples, neatly trimmed salt-and-pepper beard, plain olive overshirt over ivory tee, dark indigo straight jeans, brown plain shoes. Walking slowly on a wide pedestrian overpass, muted burnt-orange geometric metal railing, distant neutral city roofs and blue-gray sky; fictional unnamed place with no signs. Rear three-quarter FULL BODY showing face profile and both shoes, hands relaxed clear of bag, BOTH original gray padded shoulder straps worn. Medium compact bag width28 height39 depth15cm on173cm adult man. Preserve original gray rounded rectangular closed body, twin short GRAY fabric handles joined BEIGE snap keeper, TWO original silver oval attachment rings with BEIGE long rectangular X-stitched tabs on upper front, original paired beige main top zipper pulls centered, gray LARGE LOWER front pocket with original wide rounded gray FLAP, cream rectangular stitched original Himawari label with small red banner at flap center, exactly TWO vertical BEIGE perforated buckle straps with SILVER rectangular buckles and SILVER circular studs at flap top, original gray side slip pockets, gray padded shoulder straps and gray lower adjustment webbing. Original side tall seam and base stitching, accurate neutral gray fabric/tan hardware colors. No white circle logo, extra compartments/charms/chest belt, removed buckles, new labels or incorrect bag shape. Natural fabrics and anatomically coherent walking limbs/hands. No caption/watermark/customer endorsement, fictional adult AI styling, no fit-test claims.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/final portrait comparison: gray rounded rectangular closed body, twin gray short handles joined beige keeper, two silver oval attachment rings/beige X-stitched tabs, paired beige top zipper pulls, original wide gray lower front flap with cream Himawari/red-banner rectangular label, exactly two beige perforated buckle straps with silver rectangular buckles/top circular studs, gray side slip pockets and padded shoulder straps preserved. Plausible39cm compact bag on adult torso, both straps worn; coherent walking hands/legs/both shoes. No added harness or charms."
     }
   ],
   "editions": {
@@ -62,6 +118,14 @@
       "entryIds": [
         "2026-10-07-everyday-1088m",
         "2026-10-07-travel-8029"
+      ],
+      "stage": "published",
+      "receipt": "backups/lookbook-2026-10-07/morning/deployment.json"
+    },
+    "afternoon": {
+      "entryIds": [
+        "2026-10-07-everyday-0514",
+        "2026-10-07-city-188l"
       ],
       "stage": "prepared"
     }

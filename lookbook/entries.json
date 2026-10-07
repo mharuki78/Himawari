@@ -1,5 +1,35 @@
 [
   {
+    "model": "0514",
+    "category": "everyday",
+    "title": "초록 잎 사이 잠깐의 쉼",
+    "color": "실버",
+    "scene": "실내 식물원 벤치에서, 하늘색 셔츠와 러스트색 바지에 실버 스트링 백팩.",
+    "alt": "실버 No.0514 스트링 백팩을 양쪽 어깨에 멘 70대 성인 여성이 실내 식물원 벤치에 앉아 있는 AI 착용 연출",
+    "id": "2026-10-07-everyday-0514",
+    "date": "2026-10-07",
+    "productId": "store-11788400997",
+    "image": "/assets/lookbook/2026-10-07-everyday-0514.webp",
+    "thumbnail": "/assets/lookbook/2026-10-07-everyday-0514-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "model": "188L",
+    "category": "city",
+    "title": "보행교를 건너는 오후",
+    "color": "그레이 베이지",
+    "scene": "주황색 난간의 보행교에서, 올리브색 셔츠와 짙은 청바지에 그레이·베이지 백팩.",
+    "alt": "그레이와 베이지색 No.188L 백팩을 양쪽 어깨에 멘 40대 성인 남성이 보행교를 걷는 AI 착용 연출",
+    "id": "2026-10-07-city-188l",
+    "date": "2026-10-07",
+    "productId": "coupang-4efcb6a5f2ae7b88",
+    "image": "/assets/lookbook/2026-10-07-city-188l.webp",
+    "thumbnail": "/assets/lookbook/2026-10-07-city-188l-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-10-07-everyday-1088m",
     "date": "2026-10-07",
     "category": "everyday",
