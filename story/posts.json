@@ -1,5 +1,53 @@
 [
   {
+    "id": "film-club-spoiler-notes",
+    "title": "영화 모임에 가져갈 메모: 결말 이야기는 접힌 면 안쪽에",
+    "date": "2026-10-08",
+    "summary": "아직 영화를 보지 않은 사람도 함께 앉는 모임이라면, 공개할 이야기와 결말이 담긴 메모를 나눠 준비해보세요. 대화 범위를 먼저 정하고 종이를 펼치는 순서를 만듭니다.",
+    "description": "아직 영화를 보지 않은 사람도 함께 앉는 모임이라면, 공개할 이야기와 결말이 담긴 메모를 나눠 준비해보세요. 대화 범위를 먼저 정하고 종이를 펼치는 순서를 만듭니다.",
+    "tags": [
+      "영화 모임",
+      "스포일러 메모",
+      "취미 외출"
+    ],
+    "image": "../assets/story/film-club-spoiler-notes.webp",
+    "imageAlt": "검정과 아이보리 손잡이의 Himawari No.2505 백팩 옆에 접은 영화 모임 메모를 놓은 AI 연출 사진",
+    "url": "film-club-spoiler-notes.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "crossword-pause-pencil-marks",
+    "title": "십자말풀이 책을 챙길 때: 확정한 글자와 후보를 다른 자리에",
+    "date": "2026-10-08",
+    "summary": "잠깐 풀다가 멈춘 퍼즐은 빈칸보다 남겨 둔 글자가 더 헷갈릴 수 있습니다. 확정하지 못한 답은 칸 밖에 적고, 다음에 볼 단서 번호를 남겨 이어 풀 준비를 합니다.",
+    "description": "잠깐 풀다가 멈춘 퍼즐은 빈칸보다 남겨 둔 글자가 더 헷갈릴 수 있습니다. 확정하지 못한 답은 칸 밖에 적고, 다음에 볼 단서 번호를 남겨 이어 풀 준비를 합니다.",
+    "tags": [
+      "십자말풀이",
+      "쉬는 시간",
+      "퍼즐 책"
+    ],
+    "image": "../assets/story/crossword-pause-pencil-marks.webp",
+    "imageAlt": "민트색 Himawari No.1089 백팩과 빈 퍼즐 격자·연필을 창가 테이블에 놓은 AI 연출 사진",
+    "url": "crossword-pause-pencil-marks.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "reading-notebook-quote-response",
+    "title": "독서 모임의 노트 두 칸: 책의 문장 옆에 내 생각 남기기",
+    "date": "2026-10-08",
+    "summary": "마음에 남은 문장과 그 문장을 읽고 떠올린 생각을 같은 줄에 섞지 않습니다. 책에서 찾을 위치와 나의 감상을 나누어, 다음 모임에서 다시 펼쳐볼 독서 메모를 만듭니다.",
+    "description": "마음에 남은 문장과 그 문장을 읽고 떠올린 생각을 같은 줄에 섞지 않습니다. 책에서 찾을 위치와 나의 감상을 나누어, 다음 모임에서 다시 펼쳐볼 독서 메모를 만듭니다.",
+    "tags": [
+      "독서 모임",
+      "인용 메모",
+      "책과 노트"
+    ],
+    "image": "../assets/story/reading-notebook-quote-response.webp",
+    "imageAlt": "빨강과 갈색 바닥의 Himawari No.124 백팩 옆에 무지 책과 두 칸 노트를 놓은 AI 연출 사진",
+    "url": "reading-notebook-quote-response.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "fabric-book-cover-closing-check",
     "title": "천 북커버를 챙길 때: 표지를 끼운 뒤 책이 닫히는지 확인하기",
     "date": "2026-10-07",

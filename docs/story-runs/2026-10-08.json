@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-08",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "film-club-spoiler-notes",
+      "title": "영화 모임에 가져갈 메모: 결말 이야기는 접힌 면 안쪽에",
+      "url": "https://himawari.co.kr/story/film-club-spoiler-notes.html",
+      "productId": "coupang-e16e6315910fdd6b",
+      "model": "No.2505",
+      "image": "assets/story/film-club-spoiler-notes.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-08/reference-2505.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-08/generated-2505.png",
+        "prompt": "Use case: photorealistic-natural. ONE WIDE LANDSCAPE 1536 pixels wide1024 tall editorial still-life for film club folded spoiler notes. Image1 strict genuine Himawari No.2505 BLACK/IVORY reference, width30 height43 depth14cm. Preserve rounded arched BLACK nylon body, TWO continuous wide IVORY cream vertical webbing handle bands running down original front to BLACK base seam, original ivory twin carry handles joined ivory snap keeper with BLACK snap, visible original X stitches at upper bands, SMALL original white Himawari wordmark directly on black center between bands, original black arched main zipper with black metal oval/ring pulls left, black side pockets and black original padded shoulder straps/lower webbing. NO front added pocket, leather patches, buckles or charms. Entire CLOSED backpack upright front three-quarter on charcoal upholstered bench beside low round dark wood table in unoccupied quiet film club foyer with terracotta wall, soft warm afternoon daylight. On separate table one neatly folded CREAM note sheet, face visible completely blank, one small closed slate pencil case. No film poster, actual movie/IP artwork, screen, readable prop text, people, captions or watermark. Entire bag handles/base frame, realistic43cm bag scale relative small table props, unobstructed original front details. Fictional AI staging, no capacity claim.",
+        "generatedAt": "2026-10-08",
+        "catalogUrl": "https://www.coupang.com/vp/products/9593404917",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e16e6315910fdd6b/main-rgxtYpMoAPOljowvNuFsQn7QcDh936.jpg"
+      },
+      "dimensionsCm": [
+        30,
+        43,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 5페이지의 2505 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct review of actual original and generated landscape: rounded black nylon body, two continuous wide ivory front webbing bands through matching short handles/keeper with black snap, original X stitches, small white Himawari wordmark directly on black front, arched main black zipper/left original metal ring pulls, black side pockets/straps and base seam preserved. Full43cm bag clear with no added front pocket or trim. Folded blank note and closed pencilcase separately placed; no movie content or capacity/fit claim."
+    },
+    {
+      "id": "crossword-pause-pencil-marks",
+      "title": "십자말풀이 책을 챙길 때: 확정한 글자와 후보를 다른 자리에",
+      "url": "https://himawari.co.kr/story/crossword-pause-pencil-marks.html",
+      "productId": "coupang-c5708abbb7659109",
+      "model": "No.1089",
+      "image": "assets/story/crossword-pause-pencil-marks.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-08/reference-1089.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-08/generated-1089.png",
+        "prompt": "Use case: photorealistic-natural. ONE WIDE1536x1024 landscape editorial still-life for pausing a crossword. Image1 genuine No.1089 MINT backpack exactreference, width29.5 height42 depth12cm. Preserve original pale muted mint rounded rectangular thin body, TWO MINT webbing front vertical handle anchor strips/twin mint loop handles joined original mint keeper, original large WHITE CIRCULAR logo patch with thin mint double outline and lightmint Himawari wordmark highcenter, large lowerfront MINT rectangular zip pocket with broad horizontal mint cover flap and original long BLACK patterned cord zipperpull at LEFT, mint side pockets with original BLACK elastic drawcord loops and stops, original mint main zipper, original lower mint corner anchor tabs and mint padded straps. No tan/leather trim, buckle straps, new logo or extra charms. Whole CLOSED bag upright rightside on pale stone window ledge in quiet reading nook with dusty blue background wall, soft cool overcast daylight. Separate little ashwood table foregroundleft with thin open unbranded cream puzzle book showing a SIMPLE EMPTY crossword-style grid with a few shaded cells and no text/numbers, small yellow pencil and white eraser beside book not inserted into bag. Whole bag clear, handles/base included. Grid is fictional styling not solvable puzzle. No people/captions/watermark/claimed fit or capacity. Natural mint fabric texture and pale paper, photorealistic.",
+        "generatedAt": "2026-10-08",
+        "catalogUrl": "https://www.coupang.com/vp/products/9593404958",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-c5708abbb7659109/main-1Z4TUwNZSJ85spShrKFWoNrVC3NHKt.jpg"
+      },
+      "dimensionsCm": [
+        29.5,
+        42,
+        12
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 12페이지의 1089 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct review: pale mint rounded rectangular thin body, twin mint loop handles/vertical anchor webbing and keeper, original white circular double-outline Himawari patch, broad lower front mint rectangular pocket/flap with long black patterned left cord pull, original mint side pockets and black drawcord loops/stops, main zipper/side anchor tabs and mint padded strap retained. Entire42cm bag framed; crossword grid is empty fictional prop, book/eraser/pencil separated. No asserted solvable puzzle or internal fit."
+    },
+    {
+      "id": "reading-notebook-quote-response",
+      "title": "독서 모임의 노트 두 칸: 책의 문장 옆에 내 생각 남기기",
+      "url": "https://himawari.co.kr/story/reading-notebook-quote-response.html",
+      "productId": "coupang-4158ce76fc3ec1fc",
+      "model": "No.124",
+      "image": "assets/story/reading-notebook-quote-response.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-08/reference-124.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-08/generated-124.png",
+        "prompt": "Use case: photorealistic-natural. ONE WIDE LANDSCAPE1536x1024 editorial photo for reading notebook separating quote and response. Image1 strict genuine Himawari No.124 RED backpack, actual width28 height40 depth17cm. Preserve RED rounded rectangular closed body, TWO RED short top carryhandles joined BLACK snapkeeper, exactly TWO BLACK circular rivets per red square Xstitched handleanchortab, original BLACK rectangular badge with WHITE Himawari mark centeredupperfront, wide RED lowerfront zip pocket with BLACK horizontal zipper and long BLACK originalpull at LEFT, original COGNAC BROWN base strip, RED side slip pockets, black padded straps and black main zipperpulls at side. Do not add whitecirclelogo/tan handles/charms/buckles. Entire bag upright at left on warm oak community readingtable, front threequarter shows original details. On right one small CLOSED cream cloth book blank unbrandedcover, open cream notebook with simple TWO-COLUMN faint ruled layout and NO readable text, slim teal pencil beside it. Olive-green softbackground wall with diffuse morning side daylight, calm unoccupied room. All props separate from CLOSED bag, no inside-fit or equipment claims; accurate40cm scale. No people, readable actual literature/IP, captions/watermark. Fictional AI staging.",
+        "generatedAt": "2026-10-08",
+        "catalogUrl": "https://www.coupang.com/vp/products/8645627102",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4158ce76fc3ec1fc/main-wUOs42WS677IiCgY0SQtnbXRWewTpY.jpg"
+      },
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 35페이지의 124 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct review: red rounded rectangular closed body, twin red handles joined black keeper, exactly two black circular rivets per red Xstitched handleanchor, original black rectangular white Himawari patch, black lower front zipper/left longpull and side main original black pulls, cognac brown base strip, red side pockets/black padded straps preserved. Entire40cm bag visible; book blank and open lined notebook separated, no actual quotation or interior capacity claim."
+    }
+  ],
+  "topicsReviewed": 128,
+  "overlapReview": "All128 existing titles, summaries and complete bodies extracted and compared. Existing library return, ereader, book cover, conversation notes, vocabulary cards and board-game rules full texts reviewed. Film article addresses spoiler exposure on paper and participant-agreed disclosure boundaries; no previous film topic. Crossword article distinguishes provisional grid letters from confirmed entries and records a next clue; no prior puzzle topic. Reading article distinguishes exact quotations, paraphrases and personal responses with edition/page provenance, unlike reader storage, library return or language correction. Three distinct original-backed product models selected by least-recent rotation; No.2505 first story use, No.1089 lastSep26, No.124 lastSep28. October5,6,7 each have a wearing scene (3days thisweek), so thisThursday set is three new varied still-lifes. No customer, performance or interior-capacity claims.",
+  "completionReceipt": "backups/story-runs/2026-10-08.deployment.json",
+  "expectedCount": 3,
+  "editions": {
+    "morning": {
+      "postIds": [
+        "film-club-spoiler-notes",
+        "crossword-pause-pencil-marks",
+        "reading-notebook-quote-response"
+      ],
+      "stage": "prepared"
+    }
+  }
+}
