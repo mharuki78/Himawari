@@ -1,5 +1,53 @@
 [
   {
+    "id": "fabric-book-cover-closing-check",
+    "title": "천 북커버를 챙길 때: 표지를 끼운 뒤 책이 닫히는지 확인하기",
+    "date": "2026-10-07",
+    "summary": "같은 크기의 책이라도 표지와 두께에 따라 북커버가 맞는 모습은 달라집니다. 날개를 끼운 뒤 닫고 펼쳐보며 확인할 자리를 살펴봅니다.",
+    "description": "같은 크기의 책이라도 표지와 두께에 따라 북커버가 맞는 모습은 달라집니다. 날개를 끼운 뒤 닫고 펼쳐보며 확인할 자리를 살펴봅니다.",
+    "tags": [
+      "북커버",
+      "책 표지",
+      "독서 외출"
+    ],
+    "image": "../assets/story/fabric-book-cover-closing-check.webp",
+    "imageAlt": "라벤더와 코랄색 Himawari No.9004 백팩 옆에 천 북커버와 책을 놓은 AI 연출 사진",
+    "url": "fabric-book-cover-closing-check.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "reading-script-turn-cues",
+    "title": "낭독 모임의 대본 한 장: 내 차례를 찾는 시작 신호 표시하기",
+    "date": "2026-10-07",
+    "summary": "자기 문장만 표시하면 앞사람이 어디까지 읽었는지 놓칠 수 있습니다. 직전 문장의 끝과 쉼 표시를 살펴 대본에서 차례를 찾는 연습입니다.",
+    "description": "자기 문장만 표시하면 앞사람이 어디까지 읽었는지 놓칠 수 있습니다. 직전 문장의 끝과 쉼 표시를 살펴 대본에서 차례를 찾는 연습입니다.",
+    "tags": [
+      "낭독 모임",
+      "대본 표시",
+      "취미 연습"
+    ],
+    "image": "../assets/story/reading-script-turn-cues.webp",
+    "imageAlt": "핑크 Himawari No.2301 백팩 옆에 낭독 연습용 종이를 놓은 AI 연출 사진",
+    "url": "reading-script-turn-cues.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "collage-unfinished-layout-packing",
+    "title": "콜라주 작업을 멈출 때: 붙이기 전 종이 배치부터 남기기",
+    "date": "2026-10-07",
+    "summary": "오려놓은 조각을 아직 붙이지 않았다면 귀가 준비 전에 배치 사진을 남겨보세요. 바탕 종이와 조각을 나눠 정리하고 다음 작업에서 다시 놓는 순서를 만듭니다.",
+    "description": "오려놓은 조각을 아직 붙이지 않았다면 귀가 준비 전에 배치 사진을 남겨보세요. 바탕 종이와 조각을 나눠 정리하고 다음 작업에서 다시 놓는 순서를 만듭니다.",
+    "tags": [
+      "종이 콜라주",
+      "미완성 작업",
+      "작업 정리"
+    ],
+    "image": "../assets/story/collage-unfinished-layout-packing.webp",
+    "imageAlt": "네이비 Himawari No.1211 백팩 옆 별도 작업판에 종이 조각을 놓은 AI 연출 사진",
+    "url": "collage-unfinished-layout-packing.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "knitting-pattern-repeat-notes",
     "title": "뜨개 도안 옆 작은 표: 전체 단수와 반복 구간을 따로 세기",
     "date": "2026-10-07",

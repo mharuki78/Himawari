@@ -1,7 +1,7 @@
 {
   "date": "2026-10-07",
   "automationId": "himawari-3",
-  "expectedGeneratedImages": 3,
+  "expectedGeneratedImages": 6,
   "posts": [
     {
       "id": "knitting-pattern-repeat-notes",
@@ -68,12 +68,78 @@
       "dimensionsSource": "2026-09-14 제조사 카탈로그 62페이지의 9001 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
       "fidelityReview": "Direct original/generated comparison: black rounded rectangular closed doctor-bag body, twin black handles/anchors with two gold rivets each, black rectangular white Himawari label, gold front and main zippers, cognac long lower left pull and original side rectangular brown tab, black side pocket/shoulder straps retained. Notebook is blank except correct generic DATE/TIME/LOCATION headings; books/sky are fictional styling, no actual astronomical object/event/equipment fit. Entire40cm bag clear under warm light."
+    },
+    {
+      "id": "fabric-book-cover-closing-check",
+      "title": "천 북커버를 챙길 때: 표지를 끼운 뒤 책이 닫히는지 확인하기",
+      "url": "https://himawari.co.kr/story/fabric-book-cover-closing-check.html",
+      "productId": "coupang-11bd051a162f120b",
+      "model": "No.9004",
+      "image": "assets/story/fabric-book-cover-closing-check.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-07/afternoon/reference-9004.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-07/afternoon/generated-9004.png",
+        "prompt": "Use case: photorealistic-natural. ONE landscape1536x1024 editorial still life for cloth book-cover closing check. Image1 strict genuine Himawari No.9004 LAVENDER CORAL reference, width28 height40 depth17cm. Preserve lavender closed doctor-bag body, TWO lavender tubular carry handles joined beige snap keeper, lavender X-stitched handle anchors with TWO original silver rivets each, original small beige diamond emblem high front with lavender lowercase n-shaped mark, large CORAL lower front horizontal zip pocket with beige long LEFT zipper pull, original small white rectangular Himawari fabric label LOWER RIGHT of coral pocket, beige base strip, silver main zipper with original beige pulls RIGHT side, lavender side pocket and padded shoulder straps. Exact original structure/color/material; no white circular logo, tan handle, new buckles or charms. Full closed bag upright at RIGHT on dark muted teal reading nook sideboard, whole base and handles shown unobstructed. LEFT on separate low pale wood stool: a small partly open plain paperback wearing a loose oatmeal cloth book cover, inner fabric flaps visible at cover edges, plain closed unbranded book beside it. No readable book text/artwork or forced-fit demonstration. Cool diffuse window light, muted ivory wall and plain chair softly out of focus. Bag40cm tall versus20cm book, realistic fabric/paper textures. No person/captions/watermark, fictional AI arrangement; props outside bag.",
+        "generatedAt": "2026-10-07T07:12:15.485Z",
+        "catalogUrl": "https://www.coupang.com/vp/products/8732967405",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-11bd051a162f120b/main-5wbrlVTXbbG7fKLHymvuoqynDsrcy9.jpg"
+      },
+      "dimensionsCm": "28 × 40 × 17 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 49페이지의 9004 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/generated comparison: lavender closed doctor-bag body, twin lavender tubular handles with beige snap keeper, X-stitched anchors with two silver studs each, beige diamond lavender n emblem, coral lower zipper pocket with left beige pull and lower-right white fabric label, beige base strip, lavender side pocket and padded straps retained. Entire40cm bag proportionate to separately staged20cm cloth-covered book. No fitting/customer claim."
+    },
+    {
+      "id": "reading-script-turn-cues",
+      "title": "낭독 모임의 대본 한 장: 내 차례를 찾는 시작 신호 표시하기",
+      "url": "https://himawari.co.kr/story/reading-script-turn-cues.html",
+      "productId": "coupang-c059501520294ef4",
+      "model": "No.2301",
+      "image": "assets/story/reading-script-turn-cues.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-07/afternoon/reference-2301.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-07/afternoon/generated-2301.png",
+        "prompt": "Use case: photorealistic-natural. ONE landscape1536x1024 editorial still life for reading-circle script turn cues. Image1 strict actual Himawari No.2301 PINK backpack reference, width28 height42 depth17cm. Preserve dusty pink rectangular box-shaped tall body, BLACK zipper tracks/piping around original parallel main compartments, BLACK top webbing carry handle and BLACK padded shoulder straps, original large dusty pink upper rounded rectangle zip front pocket with small BLACK rectangular Himawari white-wordmark patch high center, lower dusty pink rounded zip pocket with original BLACK MESH covering lower front, exactly TWO black side compression buckles on LEFT side visible plus matching original right side arrangement, black mesh side pocket, black base/pull tabs. No tan trim, white buckles, original mesh removed or new pockets. Entire closed bag upright front three-quarter at LEFT on low matte burgundy bench at side of quiet fictional rehearsal reading room. RIGHT on adjacent separate round pale oak table: three cream practice sheets with faint short illegible lines and sparse muted turquoise underline marks, one capped graphite pencil; generic fictional text no real script/copyright/page quote, no actual participant data. A plain empty chair and warm gray wall softly out of focus. Bag42cm versus21cm sheets, natural daylight and realistic woven fabric. No people, overlays or watermark, fictional AI staging not product capacity proof.",
+        "generatedAt": "2026-10-07T07:12:15.485Z",
+        "catalogUrl": "https://www.coupang.com/vp/products/8645626927",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-c059501520294ef4/main-y9Q3UwGI7flhDRwYMKBG8MfJqldI8i.jpg"
+      },
+      "dimensionsCm": "28 × 42 × 17 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 38페이지의 2301 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/generated comparison: dusty pink rectangular tall body, black carry loop and padded straps, original parallel black main zipper tracks, upper rounded pink pocket with black white-Himawari label, lower original black mesh panel, two visible left black side compression buckles and black side pocket retained.42cm bag and separate cream sheets plausible relative scale. Generic fictional reading notes; no real script/customer or fitting claim."
+    },
+    {
+      "id": "collage-unfinished-layout-packing",
+      "title": "콜라주 작업을 멈출 때: 붙이기 전 종이 배치부터 남기기",
+      "url": "https://himawari.co.kr/story/collage-unfinished-layout-packing.html",
+      "productId": "coupang-01bab6bcd7cd5306",
+      "model": "No.1211",
+      "image": "assets/story/collage-unfinished-layout-packing.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-07/afternoon/reference-1211.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-07/afternoon/generated-1211.png",
+        "prompt": "Use case: photorealistic-natural. ONE landscape1536x1024 editorial still life for unfinished paper collage layout. Image1 exact genuine Himawari No.1211 NAVY bag reference, width26 height40 depth17cm. Preserve deep NAVY rounded rectangular closed doctor-bag body, TWO navy padded short carry handles with navy rectangular anchors and TWO dark metal studs per tab, original small white Himawari EST2010 wordmark high CENTER printed on body, navy large LOWER rounded zip front pocket with BLACK zipper and TWO original SILVER oval ring zipper pulls meeting upper center, navy side pockets with original short black horizontal band, original main top black zipper/pulls, original navy shoulder straps behind with BLACK quick-release upper buckles visible. No tan trim, extra brand patch, charms, changed original harness or diaper accessories. Entire closed bag upright front slight three-quarter at RIGHT on clean low warm-gray cabinet in fictional paper craft studio. LEFT on separate plain wooden worktable: small flat cream support board with SIX loose unprinted paper shapes in terracotta, muted sage and sand loosely overlapping, TWO closed plain small paper envelopes beside board. No scissors/glue/wet materials/real art/text. Bag40cm versus24cm support board, warm soft side window light and slate-blue background, tactile paper and matte navy fabric. All props outside bag, not product components or fitting demonstration. No people/captions/watermark, AI fictional staging.",
+        "generatedAt": "2026-10-07T07:12:15.485Z",
+        "catalogUrl": "https://www.coupang.com/vp/products/8645626825",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-01bab6bcd7cd5306/main-1kn80rPMgZL0c4zCnLdjQI5HlXCByK.jpg"
+      },
+      "dimensionsCm": "26 × 40 × 17 cm",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 56페이지의 1211 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/generated comparison: navy rounded rectangular doctor-bag body, twin navy handles with original black keeper, two dark studs per anchor, white Himawari EST2010 printed logo and original small side fabric label, navy lower zip pocket with black zipper and two silver oval-ring pulls at center, original navy shoulder harness and black upper quick-release buckles, side pocket black bands retained.40cm bag beside separate small collage board and paper envelopes; no capacity or actual artwork claim."
     }
   ],
-  "topicsReviewed": 122,
+  "topicsReviewed": 125,
   "overlapReview": "All122 existing titles, summaries and full article bodies extracted and compared; closest relevant full texts directly reviewed. Knitting article addresses independent overall/repeat-row counters and reversal of progress marks, whereas previous knitting article covers supplies and one-project packing. Board-game article distinguishes rulebook sources, agreed house rules and unresolved questions, whereas prior article counts/protects game components. Stargazing article addresses local/UT date conventions and midnight turnover; no prior astronomy topic found. October6 articles on photo file inventory, language questions and cooking notes reviewed; new core actions and examples are distinct. All3 new drafts use different real models and newly generated still-life imagery; product features limited to verified references/dimensions.",
   "completionReceipt": "backups/story-runs/2026-10-07.deployment.json",
-  "expectedCount": 3,
+  "expectedCount": 6,
   "editions": {
     "morning": {
       "postIds": [
@@ -81,7 +147,99 @@
         "board-game-rule-sheet-sources",
         "stargazing-notebook-date-time-place"
       ],
+      "stage": "published",
+      "receipt": "backups/story-2026-10-07/morning/deployment.json"
+    },
+    "afternoon": {
+      "postIds": [
+        "fabric-book-cover-closing-check",
+        "reading-script-turn-cues",
+        "collage-unfinished-layout-packing"
+      ],
       "stage": "prepared"
     }
+  },
+  "stage": "prepared",
+  "afternoonOverlapReview": {
+    "existingCount": 125,
+    "bodyChars": 156510,
+    "results": [
+      {
+        "id": "fabric-book-cover-closing-check",
+        "closest": [
+          {
+            "id": "table-tennis-paddle-backpack",
+            "overlap": 0.023479188900747065
+          },
+          {
+            "id": "backpack-strap-adjustment-guide",
+            "overlap": 0.013874066168623266
+          },
+          {
+            "id": "memory-card-backpack-shot-status",
+            "overlap": 0.012806830309498399
+          },
+          {
+            "id": "portable-radio-backpack-antenna",
+            "overlap": 0.012806830309498399
+          },
+          {
+            "id": "stargazing-notebook-date-time-place",
+            "overlap": 0.011739594450373533
+          }
+        ]
+      },
+      {
+        "id": "reading-script-turn-cues",
+        "closest": [
+          {
+            "id": "origami-paper-starting-face",
+            "overlap": 0.006437768240343348
+          },
+          {
+            "id": "conversation-club-question-notes",
+            "overlap": 0.006437768240343348
+          },
+          {
+            "id": "postcards-backpack-address-check",
+            "overlap": 0.006437768240343348
+          },
+          {
+            "id": "portable-radio-backpack-antenna",
+            "overlap": 0.00536480686695279
+          },
+          {
+            "id": "ereader-backpack-reading-break",
+            "overlap": 0.00536480686695279
+          }
+        ]
+      },
+      {
+        "id": "collage-unfinished-layout-packing",
+        "closest": [
+          {
+            "id": "workshop-backpack-finished-piece",
+            "overlap": 0.011917659804983749
+          },
+          {
+            "id": "portable-radio-backpack-antenna",
+            "overlap": 0.010834236186348862
+          },
+          {
+            "id": "binoculars-backpack-birdwatching",
+            "overlap": 0.010834236186348862
+          },
+          {
+            "id": "stargazing-notebook-date-time-place",
+            "overlap": 0.009750812567713976
+          },
+          {
+            "id": "memory-card-backpack-shot-status",
+            "overlap": 0.009750812567713976
+          }
+        ]
+      }
+    ],
+    "review": "Extracted all125 titles, summaries and full article bodies for comparison, searched all text for scarf/reading script/collage and directly read relevant closest articles. Rejected scarf topic because keyring positioning and top-handle actions overlapped. Cloth book-cover core checks inserted flaps/spine slack and open/closed movement, distinct from paper corner packing and library returns. Reading script core uses previous spoken ending as cue and agrees direction-line reading, distinct from choir score order and general language notes. Collage core records unglued spatial arrangement and separates layered fragments for reconstruction, distinct from finished craft transport and origami starting face. All3 new subjects and different real9004/2301/1211 models versus morning200/9290/9001. Edited prose with Humanizer: direct actions, no invented testimony, model capability or customer claim. October5/6 each contained story adult wearing image; this run uses3 new still lifes with distinct colors/settings."
   }
 }
