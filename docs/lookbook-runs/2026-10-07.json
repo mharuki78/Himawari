@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-07",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-07/deployment.json",
+  "entries": [
+    {
+      "id": "2026-10-07-everyday-1088m",
+      "model": "1088M",
+      "productId": "store-13308752642",
+      "image": "/assets/lookbook/2026-10-07-everyday-1088m.webp",
+      "reference": "backups/lookbook-2026-10-07/reference-store-13308752642.jpg",
+      "generatedSource": "backups/lookbook-2026-10-07/generated-1088M.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        28,
+        41.5,
+        14
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-07; 2026-09-14 제조사 카탈로그 27페이지의 1088M 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260326_100/17745078126890NcU7_JPEG/593205736606817_1806444046.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13308752642",
+      "prompt": "Use case: photorealistic-natural. Create ONE 1024x1536 portrait full-body editorial photo for Himawari LookBook. Input1 is genuine No.1088M GREEN bag wearing photo; reference ONLY the BAG, never copy its original person. Input2 is a cropped genuine catalog GREEN front product view showing exact structure and logo. Fictional34-year-old Middle Eastern ADULT man, short dark hair and neatly trimmed short moustache, cream long-sleeve knitted polo, dark plum straight trousers, plain gray shoes. Standing still in a quiet sunlit public gymnasium corridor, pale apricot wall, muted mint door and warm wooden floor, soft diagonal daylight; no readable signs. Rear three-quarter full-body with profile and both shoes visible, hands relaxed beside hips clear of bag, BOTH mint padded shoulder straps worn. Exact bag width28 height41.5 depth14cm, plausible medium41.5cm adult back height on176cm adult man. Preserve original light green/mint nylon rounded rectangular body, dusty pink twin short top carry handles joined by cream snap keeper, exactly TWO dusty pink front vertical webbing straps with cream white rectangular adjuster buckles and X stitching, original pale circular Himawari patch with pink border/wordmark centered high between straps, mint top arched zipper with TWO cream long paddle pulls with subtle pink details, mint large LOWER FRONT ZIP POCKET with rounded/sloped corners and ONE cream long zipper pull at LEFT, mint side slip pockets, original pink base strip and mint padded straps with pink lower webbing and cream adjusters. Green lighting consistent with originals; keep pocket seams, proportions, logo placement. No extra pouch, charms, belts, buckles, sports equipment or new logos. Natural skin/knit texture, correct hands and adult anatomy. No captions or watermark. Fictional adult AI styling, no customer testimonial or measured fit claim.",
+      "fidelityReviewed": true,
+      "additionalReferences": [
+        {
+          "path": "backups/lookbook-2026-10-07/reference-1088M-green-front.jpg",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/0f9c0244-4411-4c8a-b3f8-d4f9b9af0567/gallery-1-GyaD4FukiYnMfvSftvSZtwb4qeuZiM.jpg",
+          "crop": [
+            590,
+            3330,
+            845,
+            3630
+          ]
+        }
+      ],
+      "fidelityReview": "Direct review of original wearing reference, genuine catalog green front crop and generated1024x1536: green/mint rounded rectangle, dusty pink twin handles with cream keeper, exactly two pink vertical X-stitched straps with cream adjusters, pale pink-bordered original circular mark centered high, paired cream top pulls and single left cream lower zipper pull, matching green side pockets and pink base preserved. Both mint padded wearing straps; plausible41.5cm adult torso scale. Adult man full standing anatomy and visible hands/shoes coherent; original wearing model replaced. No extra charm or harness."
+    },
+    {
+      "id": "2026-10-07-travel-8029",
+      "model": "8029",
+      "productId": "coupang-eb0e638e682ff1ab",
+      "image": "/assets/lookbook/2026-10-07-travel-8029.webp",
+      "reference": "backups/lookbook-2026-10-07/reference-coupang-eb0e638e682ff1ab.jpg",
+      "generatedSource": "backups/lookbook-2026-10-07/generated-8029.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        27,
+        39,
+        14
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-07; 2026-09-14 제조사 카탈로그 45페이지의 8029 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-eb0e638e682ff1ab/main-X8E6kQWRAUeugdc7MtlNbAsILE8FIy.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9296044021",
+      "prompt": "Use case: photorealistic-natural. Create ONE1024x1536 portrait full-body editorial lifestyle photograph for Himawari LookBook. Input1 is genuine No.8029 BLUE-LIME exact backpack product reference. Fictional29-year-old Black ADULT woman, shoulder-length natural curls kept away from bag, muted ochre cropped plain jacket, charcoal wide-leg trousers, plain white sneakers. Walking unhurriedly along a broad paved path beside a low pale stone wall, rectangular coastal salt evaporation ponds in distance, muted blue-gray sky, quiet soft daylight, no sign or real named location. Rear three-quarter walking composition showing face profile and BOTH shoes, hands relaxed away from bag, BOTH original orange padded shoulder straps worn naturally. Actual bag width27 height39 depth14cm, compact39cm adult torso scale on168cm woman. Preserve exact bright orange main front body/backing framed by royal BLUE main zipper/piping and blue side body/pockets, large LIME GREEN rounded rectangular UPPER front zip pocket with ONE lime zipper pull upper LEFT, original white square fabric logo label at upper pocket LOWER RIGHT with small black SUN FLOWER lines and orange script Himawari mark, large royal BLUE LOWER front zip pocket with the original small orange rectangular patch pocket centered on it topped by LIME flap and exactly ONE orange circular snap centered, orange top carry handle and original orange padded shoulder straps/mesh. Original blue oval/ring main pull and orange oval/ring lower zip pull hang left; original orange side zipper tab right. Keep exact seam layout, proportions, colors, original logo and pocket geometry. No extra charms, chest or waist belt, white circular logo, invented print, tan trim, or changed color blocking. Natural jacket texture and anatomically coherent walking limbs/fingers. No captions, watermark or other brands. Fictional adult AI wearing styling, no customer photograph or fit test claim.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct comparison of genuine blue-lime front reference and generated1024x1536: orange main panel framed by royal blue zipper/body, lime upper rounded zip pocket with left lime pull and original white SUN FLOWER/Himawari square patch lower right, blue lower rounded zip pocket with orange central patch pocket/lime flap and one orange snap, blue side pockets and left blue/orange zipper rings, orange carry handle/padded straps preserved. Plausible39cm adult back scale. Adult woman walking anatomy, hands and shoes coherent; bag not obscured by curls. No new charm or harness."
+    }
+  ],
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-10-07-everyday-1088m",
+        "2026-10-07-travel-8029"
+      ],
+      "stage": "prepared"
+    }
+  }
+}

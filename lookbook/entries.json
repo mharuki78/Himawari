@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-07-everyday-1088m",
+    "date": "2026-10-07",
+    "category": "everyday",
+    "model": "1088M",
+    "color": "그린",
+    "productId": "store-13308752642",
+    "title": "체육관 복도에 드는 햇빛",
+    "scene": "크림색 니트 폴로와 짙은 자주색 바지를 입은 남성이 햇빛이 드는 체육관 복도에 서 있는 장면입니다.",
+    "alt": "크림색 니트 폴로를 입고 체육관 복도에 선 성인 남성의 히마와리 No.1088M 그린 백팩 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-07-everyday-1088m.webp",
+    "thumbnail": "/assets/lookbook/2026-10-07-everyday-1088m-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-10-07-travel-8029",
+    "date": "2026-10-07",
+    "category": "travel",
+    "model": "8029",
+    "color": "블루라임",
+    "productId": "coupang-eb0e638e682ff1ab",
+    "title": "낮은 돌담과 염전 길",
+    "scene": "차분한 황토색 재킷과 짙은 회색 바지를 입은 여성이 낮은 돌담과 염전이 보이는 길을 걷는 장면입니다.",
+    "alt": "황토색 재킷을 입고 염전 옆 길을 걷는 성인 여성의 히마와리 No.8029 블루라임 백팩 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-07-travel-8029.webp",
+    "thumbnail": "/assets/lookbook/2026-10-07-travel-8029-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-10-06-city-2513",
     "date": "2026-10-06",
     "category": "city",
