@@ -349,6 +349,9 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
       renderItems();
       showOnly(workspace);
       initializeCheckoutNpay(() => items.map(item => ({ productId: item.productId, optionId: item.optionId || '', quantity: item.quantity })), () => { dirty = false; });
+      var requestedPayment = new URLSearchParams(location.search).get('payment');
+      if (requestedPayment === 'kakaopay' && kakaopayEnabled) selectPayment('kakaopay');
+      if (requestedPayment === 'bank_transfer' && bankTransferReady()) selectPayment('bank_transfer');
     } catch (error) {
       failureMessage.textContent = error.message;
       showOnly(failure);

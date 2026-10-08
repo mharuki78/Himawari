@@ -1,5 +1,6 @@
 import { productFamilyKey, productVariantLabel } from './assets/catalog-tools.js';
 import { purchaseQuantity, purchaseLimit } from './assets/purchase-quantity.js';
+import { bankTransferReady } from './assets/bank-transfer.js';
 import { reviewGroupKey } from './assets/review-groups.js';
 import { createReviewCard } from './assets/review-card.js';
 import { fetchProducts, priceFormatter, safeHttpsUrl } from './products.js';
@@ -61,7 +62,6 @@ function configureInventory(product, cart, buyLinks, npayProduct, products) {
   const optionError = document.querySelector('[data-option-error]');
   const options = Array.isArray(product.options) ? product.options : [];
   const sticky = document.querySelector('[data-mobile-purchase]');
-  const stickyBuy = sticky?.querySelector('[data-sticky-buy]');
   const stickySelect = sticky?.querySelector('[data-sticky-select]');
   const minus = sticky?.querySelector('[data-quantity-minus]');
   const plus = sticky?.querySelector('[data-quantity-plus]');
@@ -87,23 +87,14 @@ function configureInventory(product, cart, buyLinks, npayProduct, products) {
     buyLinks.forEach((link) => {
       const enabled = !unavailable && !needsOption;
       if (enabled) {
-        link.href = `checkout.html?product=${encodeURIComponent(product.id)}${option ? `&option=${encodeURIComponent(option.id)}` : ''}&quantity=${quantity}`;
+        const payment = link.dataset.stickyPayment;
+        link.href = `checkout.html?product=${encodeURIComponent(product.id)}${option ? `&option=${encodeURIComponent(option.id)}` : ''}&quantity=${quantity}${payment ? `&payment=${payment}` : ''}`;
         link.removeAttribute('aria-disabled');
       } else {
         link.removeAttribute('href');
         link.setAttribute('aria-disabled', 'true');
       }
     });
-    if (stickyBuy) {
-      const enabled = !unavailable && !needsOption;
-      if (enabled) {
-        stickyBuy.href = `checkout.html?product=${encodeURIComponent(product.id)}${option ? `&option=${encodeURIComponent(option.id)}` : ''}&quantity=${quantity}`;
-        stickyBuy.removeAttribute('aria-disabled');
-      } else {
-        stickyBuy.removeAttribute('href');
-        stickyBuy.setAttribute('aria-disabled', 'true');
-      }
-    }
     if (stickySelect && options.length) stickySelect.value = option?.id || '';
     if (restockForm) {
       restockForm.hidden = !unavailable;
@@ -171,7 +162,7 @@ function configureInventory(product, cart, buyLinks, npayProduct, products) {
       select.value = stickySelect.value;
       select.dispatchEvent(new Event('change'));
     });
-    sticky.querySelector('[data-purchase-help]').textContent = '옵션과 수량은 구매하기와 Npay에 동일하게 적용됩니다.';
+    sticky.querySelector('[data-purchase-help]').textContent = '선택한 옵션과 수량은 모든 결제수단에 동일하게 적용됩니다.';
   }
   select.addEventListener('change', () => {
     const option = options.find((item) => item.id === select.value) || null;
@@ -322,8 +313,8 @@ function renderProduct(product, products) {
   wishlist.dataset.productId = product.id;
   wishlist.setAttribute('aria-label', `${product.name} 관심상품 저장`);
 
-  const buyLinks = [document.querySelector('[data-direct-buy]'), document.querySelector('[data-closing-buy]')];
-  buyLinks.forEach((link) => {
+  const directBuyLinks = [document.querySelector('[data-direct-buy]'), document.querySelector('[data-closing-buy]')];
+  directBuyLinks.forEach((link) => {
     link.href = `checkout.html?product=${encodeURIComponent(product.id)}`;
     link.removeAttribute('target');
     link.removeAttribute('rel');
@@ -331,7 +322,8 @@ function renderProduct(product, products) {
   });
   const npayProduct = document.querySelector('[data-npay-product]');
   if (npayProduct) npayProduct.dataset.productId = product.id;
-  configureInventory(product, cart, buyLinks, npayProduct, products);
+  const paymentLinks = [...document.querySelectorAll('[data-sticky-payment]')];
+  configureInventory(product, cart, [...directBuyLinks, ...paymentLinks], npayProduct, products);
   setupCustomerFeatures(product);
   const sticky = document.querySelector('[data-mobile-purchase]');
   if (sticky) {
@@ -342,6 +334,11 @@ function renderProduct(product, products) {
     const updateBarSpace = () => document.body.style.setProperty('--purchase-bar-height', sticky.getBoundingClientRect().height + 'px');
     updateBarSpace();
     if ('ResizeObserver' in window) new ResizeObserver(updateBarSpace).observe(sticky);
+    sticky.querySelector('[data-sticky-payment="bank_transfer"]').hidden = !bankTransferReady();
+    fetch('/api/kakaopay/config', { cache: 'no-store' })
+      .then(response => response.ok ? response.json() : { enabled: false })
+      .then(config => { sticky.querySelector('[data-sticky-payment="kakaopay"]').hidden = config.enabled !== true; })
+      .catch(() => {});
   }
   document.querySelector('[data-closing-title]').textContent = `${product.model}, 오래 곁에 둘 선택.`;
   renderDescription(product.description || product.tagline);
