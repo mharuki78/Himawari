@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-09",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "presentation-opening-closing-cards",
+      "title": "짧은 발표를 앞둔 백팩: 시작과 마무리 문장부터 챙기기",
+      "url": "https://himawari.co.kr/story/presentation-opening-closing-cards.html",
+      "productId": "store-13326303755",
+      "model": "No.1884",
+      "image": "assets/story/presentation-opening-closing-cards.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-09/reference-1884.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-09/generated-1884.png",
+        "prompt": "Use case: photorealistic-natural. ONE WIDE LANDSCAPE 1536x1024 editorial still-life for practising the opening and closing of a short presentation. Image 1 is strict genuine Himawari No.1884 BLACK backpack reference; isolate only the bag, do NOT reproduce the model or collage. Catalogue exterior width30 height45 depth20cm (1884L). Preserve original solid black tall rectangular fabric body with slightly rounded top corners, TWO original black narrow carry handles, original TWO diagonal black round rivets on EACH rectangular handle-anchor tab, original small black rectangular Himawari EST.2010 badge upper front centre, large broad lower-front rectangular BLACK pocket with original horizontal zipper near its top and long black original pull at LEFT, black side slip pockets, original black main zipper/black side pulls and black padded shoulder straps. No white trim, leather base, new buckles, charms, USB leads, devices or added feature. Entire CLOSED bag upright left on low light-oak bench next to round white meeting table, front three-quarter, handles and base fully framed, realistic45cm scale. On separate table three small cream blank cue cards laid separately and one closed slim blue notebook, not inside bag. Empty quiet meeting room with muted teal partition in distance, soft morning sidelight, honest fabric texture. No people, readable presentation text, captions, logos beyond original small bag badge, watermark, internal fit or performance claims. Fictional AI staging.",
+        "generatedAt": "2026-10-09",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13326303755",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260708_79/1783479884744eVyuv_JPEG/117612733821439951_1379023069.jpg"
+      },
+      "dimensionsCm": [
+        30,
+        45,
+        20
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 31페이지의 1884 대형(1884L) 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct comparison of genuine reference and generated image: tall black rectangular45cm body, twin narrow black carry handles, two original dark circular rivets on each anchor tab, small rectangular original Himawari badge, broad lower front horizontal black zipper pocket with original left pull, black side pockets/main zipper/padded straps preserved. Whole closed bag visible with no USB cord or invented device; cue cards and notebook separately placed. No interior-fit claim."
+    },
+    {
+      "id": "handwriting-one-change-practice",
+      "title": "손글씨 연습지를 챙길 때: 다음 줄에서 고칠 한 자리",
+      "url": "https://himawari.co.kr/story/handwriting-one-change-practice.html",
+      "productId": "store-13312570674",
+      "model": "No.0513",
+      "image": "assets/story/handwriting-one-change-practice.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-09/reference-0513.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-09/generated-0513.png",
+        "prompt": "Use case: photorealistic-natural. ONE WIDE LANDSCAPE 1536x1024 editorial still-life for a handwriting-practice break. Image1 strict genuine Himawari No.0513 PINK/CHARCOAL reference. Isolate BAG ONLY, no model identity or outfit. Exterior width30 height43 depth15cm. Preserve exact pale dusty pink soft drawstring body and original charcoal dark upper rim, pink front flap panel and broad CHARCOAL lowerfront/base panel, ORIGINAL pale pink triangular logo patch on dark front with tiny dark Himawari mark, original pink side pockets with CHARCOAL gathered drawstring borders and original black loops/stoppers, original dark carry loop, grey/dark original shoulder straps, black original main/front drawcords. Preserve visible original cord attachment points and fabric seams; do not turn it into rectangular zip backpack. Do not invent compartments, leather trim, badges, charms or buckles. Entire CLOSED bag upright on pale timber studio bench, slightly side-front like reference so triangle and gathered pocket cord remain clearly visible, full handle/base with natural soft body not stretched. Beside it on separate low writing table a single cream practice sheet with faint ruled lines and just a few SIMPLE dark short vertical/horizontal practice strokes (no readable words), capped slim pen and a small blank paper marker. Warm plaster wall, cool diffuse window daylight, soft lilac accent in background, accurate43cm scale. No people, captions, watermark, advertised handwriting result, equipment or capacity claims. Fictional AI staging.",
+        "generatedAt": "2026-10-09",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13312570674",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260416_231/1776311499142kYlwk_JPEG/110444334792441177_3490121.jpg",
+        "edits": [
+          {
+            "tool": "built-in image_gen",
+            "source": "backups/story-2026-10-09/generated-0513-draft.png",
+            "prompt": "Use case: precise-object-edit. Edit this one existing editorial photo minimally: remove all readable lettering ONLY from the two book spines at far left below the vase. Make those same pale cream and pale lilac book spines completely blank, retaining the same shape, material and light. Preserve everything else pixel-faithfully: entire genuine Himawari No.0513 dusty pink/charcoal drawstring backpack, triangular original bag logo and text, grey straps, black cords/stoppers, front flap, gathered side pockets, handles, bag silhouette and scale; tabletop, practice sheet with strokes, capped pen, paper marker, flowers, wall, shadows, framing. Do NOT remove or alter the original Himawari bag logo. No new text, no watermark. Same1536x1024 landscape.",
+            "result": "backups/story-2026-10-09/generated-0513.png",
+            "review": "Background book-spine lettering removed; product and original logo preserved and directly reviewed."
+          }
+        ]
+      },
+      "dimensionsCm": [
+        30,
+        43,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 17페이지의 0513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct comparison after background-only lettering removal: dusty pink soft drawstring43cm body, dark charcoal upper rim and lowerfront/base panel, pink front flap, original pale triangular Himawari patch, pink side gathered pockets with dark edges and black cord loops/stoppers, grey shoulder straps and top carry loop preserved. Entire closed bag with accurate silhouette visible. Only background book spines lettering removed; original bag logo intact; practice strokes fictional and separate from bag."
+    },
+    {
+      "id": "neighbourhood-walk-repeated-shapes",
+      "title": "동네 산책의 작은 주제: 같은 모양을 세 번 찾아보기",
+      "url": "https://himawari.co.kr/story/neighbourhood-walk-repeated-shapes.html",
+      "productId": "store-13308523903",
+      "model": "No.0403",
+      "image": "assets/story/neighbourhood-walk-repeated-shapes.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-09/reference-0403.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-09/generated-0403.png",
+        "prompt": "Use case: photorealistic-natural. ONE WIDE LANDSCAPE 1536x1024 editorial still-life for noticing repeated circles on a neighbourhood walk. Image1 strict genuine Himawari No.0403 BEIGE/BLACK reference. Isolate BAG ONLY; no person identity. Exterior BACKPACK width28 height40 depth17cm. Preserve original beige softly rectangular body, BLACK twin top handles with original black anchor patches, original BLACK upper middle attachment strap and hardware connecting original small beige rounded rectangular FRONT pouch, original pouch black perimeter zipper/piping with original long black left zipperpull, original small black circular snap centre-upper pouch, original lower black rectangular white Himawari EST2010 pouch badge, beige side slip pockets, black base panel and original black shoulder straps. Preserve actual attached pouch and main bag silhouette, NO extra pouches, logos, buckle straps or floral prints. Closed complete bag upright right on matte pale stone bench in sheltered empty courtyard, frontal three-quarter like source, handle/base all visible. To left on separate little wood ledge an open small cream observation notebook with THREE simple empty circles drawn across page, graphite pencil beside it. Quiet background has one circular window edge and one small circular unlettered wall inset, soft overcast daylight, soft eucalyptus shadows; no specific real venue or signage. Accurate40cm scale, notebook kept separate, no claimed fit/strap transformation. No people, captions, readable prop text, watermark. Fictional AI staging.",
+        "generatedAt": "2026-10-09",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13308523903",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260211_281/1770774598923VUxxR_JPEG/20746952034287940_427742899.jpg"
+      },
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 22페이지의 0403 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다. 외부 크기는 백팩 기준이며 숄더백은 별도 23 × 18 cm로 표기됩니다. 900 g의 구성품 포함 여부는 미기재입니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct comparison: beige40cm rectangular main bag, twin black top carry handles/anchor patches, black centre upper attachment hardware, original attached beige front rounded rectangular pouch with black perimeter zipper/left pull, upper black circular snap and lower rectangular Himawari badge, beige side slip pockets, black base and padded straps preserved. Full bag visible, notebook kept separate; courtyard and circles fictional; no internal-fit or transformation claim."
+    }
+  ],
+  "topicsReviewed": 131,
+  "overlapReview": "All131 existing titles, summaries and complete article bodies extracted and compared against new drafts with six-character phrase overlap and topic keyword scans. Related reading-script, hotdesk, video-call, colour-pencil, sketch-walk, map-walk and stargazing bodies directly reviewed. Presentation focuses on a speakers purpose and opening/closing structure, rather than turn-taking cues or equipment transport. Handwriting focuses on one self-chosen revision between practice lines, rather than colour identification or language corrections. Shape walk compares the role and setting of repeated forms, rather than map handling, drawings or observation time metadata. No.1884,0513,0403 selected from least recently used models, each last usedSep29. Wearing scenes already appear onOct5,6,7 thisweek; todays three scenes are different empty still-life settings. Product originals and recorded manufacturer exterior dimensions constrain image prompts; no interior-fit, customer testimony, clinical or performance claims.",
+  "completionReceipt": "backups/story-runs/2026-10-09.deployment.json",
+  "expectedCount": 3,
+  "editions": {
+    "morning": {
+      "postIds": [
+        "presentation-opening-closing-cards",
+        "handwriting-one-change-practice",
+        "neighbourhood-walk-repeated-shapes"
+      ],
+      "stage": "prepared"
+    }
+  }
+}

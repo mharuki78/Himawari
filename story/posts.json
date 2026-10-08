@@ -1,5 +1,53 @@
 [
   {
+    "id": "presentation-opening-closing-cards",
+    "title": "짧은 발표를 앞둔 백팩: 시작과 마무리 문장부터 챙기기",
+    "date": "2026-10-09",
+    "summary": "말할 내용을 모두 적기 전에 첫 문장과 마지막 문장을 소리 내어 읽어보세요. 듣는 사람에게 건넬 요점 하나를 정하고, 발표 자리에서 펼칠 작은 메모를 준비합니다.",
+    "description": "말할 내용을 모두 적기 전에 첫 문장과 마지막 문장을 소리 내어 읽어보세요. 듣는 사람에게 건넬 요점 하나를 정하고, 발표 자리에서 펼칠 작은 메모를 준비합니다.",
+    "tags": [
+      "짧은 발표",
+      "발표 메모",
+      "모임 준비"
+    ],
+    "image": "../assets/story/presentation-opening-closing-cards.webp",
+    "imageAlt": "검정 Himawari No.1884 백팩 옆 회의 테이블에 빈 발표 메모 카드 세 장과 파란 노트를 놓은 AI 연출 사진",
+    "url": "presentation-opening-closing-cards.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "handwriting-one-change-practice",
+    "title": "손글씨 연습지를 챙길 때: 다음 줄에서 고칠 한 자리",
+    "date": "2026-10-09",
+    "summary": "연습한 종이를 버리기 전에 다시 볼 자리 하나를 골라보세요. 글자 모양과 간격을 한꺼번에 바꾸기보다, 다음 줄에서 확인할 작은 목표를 정하는 손글씨 외출 준비입니다.",
+    "description": "연습한 종이를 버리기 전에 다시 볼 자리 하나를 골라보세요. 글자 모양과 간격을 한꺼번에 바꾸기보다, 다음 줄에서 확인할 작은 목표를 정하는 손글씨 외출 준비입니다.",
+    "tags": [
+      "손글씨 연습",
+      "연습지",
+      "취미 외출"
+    ],
+    "image": "../assets/story/handwriting-one-change-practice.webp",
+    "imageAlt": "핑크와 짙은 회색의 Himawari No.0513 스트링 백팩 옆에 획 연습지와 뚜껑을 닫은 펜을 놓은 AI 연출 사진",
+    "url": "handwriting-one-change-practice.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "neighbourhood-walk-repeated-shapes",
+    "title": "동네 산책의 작은 주제: 같은 모양을 세 번 찾아보기",
+    "date": "2026-10-09",
+    "summary": "늘 걷던 길에서 오늘은 둥근 모양 하나를 찾아보세요. 비슷한 형태가 쓰인 서로 다른 자리를 비교하며, 목적지 목록과는 다른 산책의 주제를 만듭니다.",
+    "description": "늘 걷던 길에서 오늘은 둥근 모양 하나를 찾아보세요. 비슷한 형태가 쓰인 서로 다른 자리를 비교하며, 목적지 목록과는 다른 산책의 주제를 만듭니다.",
+    "tags": [
+      "동네 산책",
+      "모양 관찰",
+      "작은 기록"
+    ],
+    "image": "../assets/story/neighbourhood-walk-repeated-shapes.webp",
+    "imageAlt": "베이지 Himawari No.0403 백팩과 앞면 작은 가방 옆에 원 세 개를 그린 노트를 놓은 AI 연출 사진",
+    "url": "neighbourhood-walk-repeated-shapes.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "film-club-spoiler-notes",
     "title": "영화 모임에 가져갈 메모: 결말 이야기는 접힌 면 안쪽에",
     "date": "2026-10-08",
