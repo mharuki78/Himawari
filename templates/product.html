@@ -30,7 +30,7 @@
     <script src="script.js" defer></script>
     <script src="product-detail.js?v=20261008-payments" type="module"></script>
   <link rel="stylesheet" href="/assets/commerce.css"><script src="https://wcs.naver.net/wcslog.js"></script><script src="/assets/naver-inflow.js"></script>
-<link rel="stylesheet" href="/assets/shopping-refinements.css"></head>
+<link rel="stylesheet" href="/assets/shopping-refinements.css?v=20261008-actions"></head>
   <body class="product-detail-page">
     <a class="skip-link" href="#main">본문으로 바로가기</a>
     <div class="announcement-bar"><a href="products.html">Himawari 전체 컬렉션 보기</a></div>
@@ -79,7 +79,6 @@
               <p>결제 완료 후 영업일 기준 2일 이내 출고</p>
               <a href="#product-shipping">배송·교환·반품 안내</a>
             </div>
-            <div data-detail-compare></div>
             <section class="product-option-picker" id="product-options" data-option-picker hidden aria-labelledby="product-option-label">
               <label id="product-option-label" for="product-option-select">옵션 선택</label>
               <select id="product-option-select" data-product-option aria-describedby="product-option-help product-option-error"></select>
@@ -88,8 +87,11 @@
             </section>
             <div class="product-detail-actions">
               <button class="buy-link" type="button" data-detail-cart><span>장바구니 담기</span><span aria-hidden="true">+</span></button>
-              <button class="wishlist-button" type="button" data-detail-wishlist data-wishlist-toggle aria-pressed="false"><span data-wishlist-label>관심상품 저장</span></button>
               <a class="direct-buy-link" data-direct-buy href="checkout.html"><span>바로 구매하기</span><span aria-hidden="true">→</span></a>
+            </div>
+            <div class="product-detail-tools">
+              <button class="wishlist-button" type="button" data-detail-wishlist data-wishlist-toggle aria-pressed="false"><span data-wishlist-label>관심상품 저장</span></button>
+              <div data-detail-compare></div>
             </div>
 
             <form class="restock-form" data-restock-form hidden novalidate>
