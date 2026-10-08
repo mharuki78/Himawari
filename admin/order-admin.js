@@ -114,6 +114,9 @@ function renderRows() {
     if (selected?.orderNumber === order.orderNumber) button.setAttribute('aria-current', 'true');
     button.addEventListener('click', () => selectOrder(order, button));
     action.append(button);
+    [identity, customer, amount, state, action].forEach((cell, index) => {
+      cell.dataset.label = ['주문', '고객', '주문금액', '상태', '확인'][index];
+    });
     row.append(identity, customer, amount, state, action);
     rows.append(row);
   });
