@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-08",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-08/deployment.json",
+  "entries": [
+    {
+      "id": "2026-10-08-everyday-200",
+      "model": "200",
+      "productId": "coupang-b8f7115d45d4c5f4",
+      "image": "/assets/lookbook/2026-10-08-everyday-200.webp",
+      "reference": "backups/lookbook-2026-10-08/reference-coupang-b8f7115d45d4c5f4.jpg",
+      "generatedSource": "backups/lookbook-2026-10-08/generated-200.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        28,
+        39,
+        15
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-08; 2026-09-14 제조사 카탈로그 51페이지의 200 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-b8f7115d45d4c5f4/main-8oZzWrORYaCFTOsIJLwkMdYSmEMT0Y.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8732967418",
+      "prompt": "Use case: photorealistic-natural. Create ONE1024x1536 portrait full-body editorial photo for Himawari LookBook. Image1 reference is exact genuine No.200 BLACK backpack, width28 height39 depth15cm. Fictional52-year-old South Asian ADULT woman with short silver-gray pixie hair, teal long-sleeve plain linen shirt, brick-red straight cropped trousers, plain dark slip-on shoes. Seated relaxed on a low backless round timber stool beside an unoccupied small flower shop entrance, buckets of muted cream and pink flowers in background, pale canvas awning, warm soft autumn morning light. Rear three-quarter seated composition with face profile and BOTH shoes visible; whole BAG clearly visible on back worn with BOTH original black padded shoulder straps, free of hair/clothes/hands or stool interference. Preserve original BLACK rounded rectangular nylon body, two BLACK top carry handles joined BLACK snap keeper, exactly TWO BLACK front vertical X-stitched handle anchor tabs with original BLACK rectangular adjusters, paired long BLACK main zip paddle pulls centered high, original small BLACK CIRCULAR logo patch centered upperfront with small white Himawari mark, lowerfront large rounded flap pocket with ONE central BLACK vertical X-stitched strap with black rectangular adjuster and BLACK circular snap near bottom. Original black side slip pockets and black side seams/base, original padded back straps and lower webbing. Bag is medium39cm adult back scale on160cm adult woman; NOT oversized or mini. No white trims, new charms, added pockets or chest/waist belt. Natural cloth and skin textures, coherent adult seated legs/hands, no captions, watermark, readable shop sign or other brands. Fictional AI wearing styling, no real customer or measured-fit claim.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/generated comparison: black rounded rectangular39cm body, joined twin top carry handles/black keeper, two X-stitched front anchor strips with black adjusters, two top paddle pulls, black circular original white Himawari patch, rounded lower flap with one central black strap/adjuster/snap, side pockets and padded black straps preserved. Seated fictional adult woman anatomy and hands/shoes coherent, full bag unobstructed and plausible torso scale. No added trim, charms or harness."
+    },
+    {
+      "id": "2026-10-08-travel-9290",
+      "model": "9290",
+      "productId": "coupang-4861cd80cf7fce0c",
+      "image": "/assets/lookbook/2026-10-08-travel-9290.webp",
+      "reference": "backups/lookbook-2026-10-08/reference-coupang-4861cd80cf7fce0c.jpg",
+      "generatedSource": "backups/lookbook-2026-10-08/generated-9290.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        30,
+        42,
+        18
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-08; 2026-09-14 제조사 카탈로그 42페이지의 9290 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4861cd80cf7fce0c/main-yXSjjIlJ9Fo5IBOAANpwjCu50SK8rJ.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8732967324",
+      "prompt": "Use case: photorealistic-natural. Create ONE1024x1536 portrait full-body editorial lifestyle photo. Image1 strict original genuine No.9290 BLACK backpack, width30 height42 depth18cm. Fictional26-year-old East Asian ADULT man, long dark hair tied in compact high bun away from bag, ivory knit sweater with narrow muted brown horizontal stripes, sage-green straight trousers, dark-brown walking shoes. Walking slowly on wide pale stone towpath beside quiet canal LOCK GATES and low weathered red-brick wall, water visible beyond, soft cool autumn morning light, no actual named place, no readable signs. Rear-side three-quarter walking composition, face profile and BOTH shoes visible, hands relaxed clear of bag, BOTH original black padded shoulder straps worn. Preserve exact BLACK rounded arched nylon body with original multiple arched black main compartment zipper seams, black carry loop, original WHITE RECTANGULAR fabric Himawari patch centered upper front with BLACK wordmark, large BLACK lower front rectangular pocket with thick WHITE horizontal zipper and single WHITE long pull hanging at LEFT, original WHITE side compression buckles at both upper sides, WHITE rectangular lower side adjusters with BLACK webbing, black side slip pockets, original WHITE oval main zip pulls hanging left, black padded shoulder straps. Original42cm bag scale naturally medium on176cm adult man, all front pockets/white trim visible. No round logo, invented charms or extra belts, no altered zipper or buckles. Natural knit/nylon texture, correct adult walking anatomy/hands. No captions, watermark, extra brands, fake customer testimonial or measured fit claim.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/generated comparison: black rounded arched42cm body and multiple main zipper seams, white rectangular black Himawari mark, large black front pocket/white thick horizontal zip with left white pull, paired upper white side compression buckles, lower white adjusters and black webbing, side pockets, black carry loop/padded straps and left white main pulls preserved. Fictional adult man coherent walking limbs and hands, hair clear of bag, plausible adult torso scale. No extra charm or harness."
+    }
+  ],
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-10-08-everyday-200",
+        "2026-10-08-travel-9290"
+      ],
+      "stage": "prepared"
+    }
+  }
+}

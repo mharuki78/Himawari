@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-08-everyday-200",
+    "date": "2026-10-08",
+    "category": "everyday",
+    "model": "200",
+    "color": "블랙",
+    "productId": "coupang-b8f7115d45d4c5f4",
+    "title": "꽃집 앞 낮은 스툴에서",
+    "scene": "짧은 은회색 머리의 여성이 청록색 셔츠와 벽돌색 바지를 입고 꽃집 앞 등받이 없는 스툴에 앉아 쉬는 장면입니다.",
+    "alt": "청록색 셔츠와 벽돌색 바지를 입고 꽃집 앞 스툴에 앉은 50대 성인 여성의 히마와리 No.200 블랙 백팩 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-08-everyday-200.webp",
+    "thumbnail": "/assets/lookbook/2026-10-08-everyday-200-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-10-08-travel-9290",
+    "date": "2026-10-08",
+    "category": "travel",
+    "model": "9290",
+    "color": "블랙",
+    "productId": "coupang-4861cd80cf7fce0c",
+    "title": "운하 수문 옆 돌길",
+    "scene": "긴 머리를 묶은 남성이 아이보리 줄무늬 니트와 세이지색 바지를 입고 운하 수문 옆 돌길을 걷는 장면입니다.",
+    "alt": "아이보리 줄무늬 니트와 세이지색 바지를 입고 운하 수문 옆 돌길을 걷는 20대 성인 남성의 히마와리 No.9290 블랙 백팩 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-08-travel-9290.webp",
+    "thumbnail": "/assets/lookbook/2026-10-08-travel-9290-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "model": "0514",
     "category": "everyday",
     "title": "초록 잎 사이 잠깐의 쉼",
