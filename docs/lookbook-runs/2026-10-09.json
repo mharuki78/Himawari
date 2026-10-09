@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-09",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-09/deployment.json",
+  "entries": [
+    {
+      "id": "2026-10-09-city-9001",
+      "model": "9001",
+      "productId": "coupang-50c5b38af3fd50b0",
+      "image": "/assets/lookbook/2026-10-09-city-9001.webp",
+      "reference": "backups/lookbook-2026-10-09/reference-coupang-50c5b38af3fd50b0.jpg",
+      "generatedSource": "backups/lookbook-2026-10-09/generated-9001.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-09; 2026-09-14 제조사 카탈로그 62페이지의 9001 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-50c5b38af3fd50b0/main-IP2dPnR2XhTnmDiJlgnYuywyR0JCKl.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8732967323",
+      "prompt": "Use case: photorealistic-natural. Asset: ONE 1024x1536 portrait full-body editorial wearing photograph for Himawari LookBook. Image 1 is strict exact genuine No.9001 BLACK backpack reference; width28 height40 depth17cm. Scene: covered urban bicycle parking with slim pale blue steel canopy posts and a few softly blurred stationary bicycles in distant racks, no riders or traffic. Fictional 62-year-old Black ADULT man with closely shaved head, short neat white beard and thin neutral eyeglasses; deep plum corduroy overshirt, light charcoal straight trousers, off-white simple trainers. Standing relaxed after approaching his parked bicycle, hands naturally hanging unobstructed at sides, one small head turn shows face profile. Straight-rear with slight three-quarter camera angle at torso height; BOTH shoes and entire bag clearly framed, bag front almost square to camera, worn on BOTH original black padded shoulder straps. Exact bag preservation: BLACK fabric softly rectangular doctor-style closed top, TWO BLACK narrow rounded carry handles with original snap keeper, EACH original black rectangular handle anchor tab has exactly TWO diagonal small GOLD round rivets, central original BLACK rectangular Himawari white-letter label below handles, large BLACK lowerfront rectangular pocket with horizontal CREAM/GOLD zipper and ONE original long TAN/BROWN paddle pull hanging LEFT, original TAN rectangular main zipper pull at RIGHT side, black side slip pockets and black base, gold-toned top zipper, black padded straps and lower black webbing. No cream handle trim, circular logo, new buckles, chest harness, charms or added pockets. Realistic40cm adult back scale on176cm man; never inflated mini or oversized. Quiet cool early-autumn daylight with soft lateral shadows, natural corduroy and nylon textures, physically coherent anatomy/hands. No captions, watermark, readable bicycle brands/signage, real-customer or measured-fit claim. Fictional AI staged wearing image.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/generated comparison: black closed doctor-style rectangular40cm body, two black carry handles/keeper, two gold circular rivets on each anchor tab, original rectangular black white-letter Himawari label, large lower black front pocket with cream/gold horizontal zipper and left tan paddle pull, tan right main zipper pull, black side pockets/base and two padded shoulder straps preserved. Entire bag unobstructed on fictional adult male at plausible torso scale; hands/legs/shoes anatomically coherent, original structure without added charms or harness."
+    },
+    {
+      "id": "2026-10-09-travel-9007",
+      "model": "9007",
+      "productId": "coupang-6a9c162aa87d45d8",
+      "image": "/assets/lookbook/2026-10-09-travel-9007.webp",
+      "reference": "backups/lookbook-2026-10-09/reference-coupang-6a9c162aa87d45d8.jpg",
+      "generatedSource": "backups/lookbook-2026-10-09/generated-9007.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-09; 2026-09-14 제조사 카탈로그 10페이지의 9007 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6a9c162aa87d45d8/main-gEPqA6TaQKDNYePvYMbKNAxX6kP8yW.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9593416918",
+      "prompt": "Use case: photorealistic-natural. Asset: ONE 1024x1536 portrait full-body editorial lifestyle wearing photo for Himawari LookBook. Image 1 strict exact genuine Himawari No.9007 MINT/CORAL backpack reference, width28 height40 depth17cm. Scene: broad sheltered pedestrian concourse at a small intercity bus terminal, pale concrete canopy with long horizontal roof lines, softly blurred stationary unbranded cream bus in far background beyond barrier, muted terracotta floor, no moving vehicle or readable signs. Fictional 33-year-old North African ADULT woman with dark curly hair tied compactly high, cinnamon-colored fine-knit cardigan, navy pleated midi skirt and plain dark brown ankle boots. Walking slowly along sheltered concourse, rear-side three-quarter view with face profile and BOTH boots visible; natural relaxed hands kept away from bag. Entire closed backpack visible worn on BOTH original mint padded shoulder straps, plausible40cm height on165cm adult. Preserve exact bright mint soft rectangular doctor-style body, TWO mint carry handles joined original small CREAM snap keeper, each mint long front handle anchor strip has ONE original SILVER round rivet, original small white embroidered Himawari wordmark centered high, original small vertical white fabric side tag on RIGHT front, lower broad MINT front zipper pocket with thick CREAM horizontal zipper and single original CORAL long left pull, narrow CORAL base strip, original cream main zipper and coral/cream side pulls, mint side pockets. Preserve the original miniature MINT baseball-cap charm attached upper LEFT with original CORAL visor and coral round button plus thin cream attachment cord, and tiny original decorative H mark on cap; exact original size about one-third bag width, no new charms. No black panels, changed logo, buckles or chest belt. Autumn diffused warm light, honest cloth/skin texture, coherent walking anatomy/skirt/hands. Bag unobstructed by hair, fabric or arms. No captions, watermark, extra brands, real customer or measured-fit claim. Fictional AI wearing staging.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/generated comparison: mint closed40cm rectangular body, mint carry handles/cream keeper and shoulder straps, one silver rivet per long front anchor strip, original white Himawari wordmark and vertical right fabric tag, lower mint front pocket with cream horizontal zipper/left coral pull, coral base band, cream main/side zippers and mint side pockets preserved. Original mint miniature cap with coral visor/button, cream cord and small decorative H mark remains at upper left with proper relative size. Fictional adult female walking limbs/hands/boots/skirt coherent, hair clear of bag, plausible adult torso scale."
+    }
+  ],
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-10-09-city-9001",
+        "2026-10-09-travel-9007"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "compositionReview": {
+    "rangeStart": "2026-09-25",
+    "rangeEnd": "2026-10-09",
+    "lookbookPhotos": 33,
+    "storyPhotos": 60,
+    "review": "Directly reviewed four contact sheets of all 33 existing LookBook photos and 60 recent story photos. No.9001 has not appeared in LookBook; No.9007 last appeared Sep28 in beige at a bookshop. Today black No.9001 at covered bicycle parking and mint/coral No.9007 at a bus-terminal concourse vary setting, age, gender, appearance, color, clothing and standing/walking framing from prior flower-shop seated woman and canal-walking man. Source photos directly viewed, exact published 28×40×17cm manufacturer exterior measurements and logos, original zipper pulls/rivets/mini cap charm constrain prompts. Fictional adults only; no performance, customer or measured-fit claims."
+  }
+}
