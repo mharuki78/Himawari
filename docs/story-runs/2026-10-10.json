@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-10",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "book-exchange-edition-condition",
+      "title": "책 교환 모임에 가는 날: 판본과 표시한 페이지부터 확인하기",
+      "url": "https://himawari.co.kr/story/book-exchange-edition-condition.html",
+      "productId": "store-11070925709",
+      "model": "No.1027",
+      "image": "assets/story/book-exchange-edition-condition.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-10/reference-1027.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-10/generated-1027.png",
+        "prompt": "Use case: product-mockup. Asset: ONE new 1536x1024 landscape photorealistic editorial photograph for Korean Himawari story. Image 1 is strict genuine No.1027 product reference ONLY; reproduce bag details, do NOT reproduce any reference person. Scene: a quiet book exchange room before anyone arrives, a low pale oak bench beside a cobalt blue wall; upright bag on left half, two closed unbranded plain hardcover books and one paperback opened gently to an unprinted front-matter page on adjacent empty table on right. No ink marks or readable book words. Entire closed backpack unobstructed and fully in frame, front slightly three-quarter but almost straight-on; product occupies about half image height with realistic published exterior width 28 height 40 depth 17 cm relative to furnishings and props. Exact soft rectangular doctor-top backpack with LAVENDER lower front body/pocket, icy very pale blue upper-front panel and side pockets, very pale blue base strip, TWO CREAM rounded carry handles joined original keeper, long cream anchor tabs with one circular silver rivet per tab, original tiny grey Himawari wordmark centered upper front; broad lavender lowerfront pocket with horizontal lavender zipper and lavender left ring/paddle pull. Preserve original narrow CREAM rectangular rounded-corner attached accessory pouch hanging vertically at FRONT RIGHT from original silver clip, cream zipper/piping and original small grey wordmark. Original silver main zipper and pale blue shoulder straps. No removal or doubling of attached pouch, no chest belt, no extra logo. Soft autumn window daylight, natural nylon/fabric texture, realistic shadow and depth, candid quiet room composition. No human, no hands, no model, no captions, no watermark, no extra brands, no customer testimony or measured-fit inference. Show props OUTSIDE bag; never visible interior contents. Preserve all exact original product marks, logo, colors, pockets, handle, pulls, charm and relative dimensions.",
+        "generatedAt": "2026-10-10",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/11070925709",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260210_108/1770707978865U4o9A_JPEG/43528032995650075_718147852.jpg"
+      },
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 28페이지의 1027 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct source/generated comparison: lavender front body/pocket, very pale blue upper panel, side pockets/base and straps, cream twin handles/keeper/long anchor tabs with one silver rivet each, original central grey Himawari mark, left lavender front zip pull, original cream accessory pouch suspended from right handle anchor preserved. Full closed bag in frame, books outside; no person copied from product reference or interior-fit depiction."
+    },
+    {
+      "id": "photo-selection-one-purpose",
+      "title": "사진 모임에서 한 장 고를 때: 남기고 싶은 장면부터",
+      "url": "https://himawari.co.kr/story/photo-selection-one-purpose.html",
+      "productId": "coupang-6df96140584b67f7",
+      "model": "No.9291",
+      "image": "assets/story/photo-selection-one-purpose.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-10/reference-9291.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-10/generated-9291.png",
+        "prompt": "Use case: product-mockup. Asset: ONE new 1536x1024 landscape photorealistic editorial photograph for Korean Himawari story. Image 1 is strict genuine No.9291 product reference ONLY; reproduce bag details, do NOT reproduce any reference person. Scene: an empty photography-club work table of dark walnut with a soft warm terracotta plaster wall behind. Upright bag on right, six small original fictional photographic prints of the SAME simple unbranded yellow ceramic mug near a window, different framing or light, on left, with no people in prints and no readable captions. A couple of prints selected separately, no printed diagram. Entire closed backpack unobstructed and fully in frame, front slightly three-quarter but almost straight-on; product occupies about half image height with realistic published exterior width 31 height 45 depth 15 cm relative to furnishings and props. Exact rounded-top structured SKY BLUE/GREY backpack, soft grey-blue fabric, matching thick top carry handle, original pale grey-blue rectangular white-letter Himawari logo patch upper center. Preserve original upperfront pocket horizontal light grey-blue zipper with oval left pull; large grey-blue fine MESH front section with original white Himawari wordmark visible behind/through mesh; broad grey horizontal webbing across lower mesh with original plastic side buckles extending left and right. Original matching small flap accessory pouch clipped at RIGHT FRONT to original grey D ring/carabiner, grey rectangular white-letter logo patch on pouch. Separate lowerfront grey-blue zip pocket with oval left zipper pull and original short grey elastic zigzag lacing across its lower center. Original matching side mesh pockets and main curved double zipper with silver/grey pulls at right. No inventing chest harness, swapped logo or removed buckle, mesh, lacing or pouch. Soft autumn window daylight, natural nylon/fabric texture, realistic shadow and depth, candid quiet room composition. No human, no hands, no model, no captions, no watermark, no extra brands, no customer testimony or measured-fit inference. Show props OUTSIDE bag; never visible interior contents. Preserve all exact original product marks, logo, colors, pockets, handle, pulls, charm and relative dimensions.",
+        "generatedAt": "2026-10-10",
+        "catalogUrl": "https://www.coupang.com/vp/products/9520244278",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6df96140584b67f7/main-OakvznfepoDdmNdGfSa7fQ1f37cFmx.jpg"
+      },
+      "dimensionsCm": [
+        31,
+        45,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 7페이지의 9291 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct source/generated comparison: subdued blue-grey rounded body, carry handle, original rectangular upper logo patch, front mesh and large white Himawari lettering, horizontal webbing with side buckles, right clipped logo pouch/carabiner, lower zip pocket with original short lacing and oval pulls, side mesh preserved. Six fictional cup prints outside; none represents a real photographer, customer or bag capacity proof."
+    },
+    {
+      "id": "tea-meeting-brewing-timer",
+      "title": "차 모임에 가져갈 작은 타이머: 우리는 시간의 시작 맞추기",
+      "url": "https://himawari.co.kr/story/tea-meeting-brewing-timer.html",
+      "productId": "store-13308483411",
+      "model": "No.1230",
+      "image": "assets/story/tea-meeting-brewing-timer.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-10/reference-1230.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-10/generated-1230.png",
+        "prompt": "Use case: product-mockup. Asset: ONE new 1536x1024 landscape photorealistic editorial photograph for Korean Himawari story. Image 1 is strict genuine No.1230 product reference ONLY; reproduce bag details, do NOT reproduce any reference person. Scene: an empty tea gathering space, upright bag on a dry ivory stool at left, completely separate from a pale green tea table at right with a small plain white teapot, cup and saucer, plain stainless strainer on a rest and a small unbranded mechanical dial timer. Generous visible dry gap between stool and tea table; no splashing or steam touching bag, no readable numbers needed. Entire closed backpack unobstructed and fully in frame, front slightly three-quarter but almost straight-on; product occupies about half image height with realistic published exterior width 32 height 40 depth 18 cm relative to furnishings and props. Exact GREY backpack with softly rounded upper dome and black main zipper edging arching around front, black slim fabric carry loop and original black shoulder straps. TWO deep grey front pouch pockets side by side, each has original BLACK rounded-bottom flap, horizontal black zip along flap upper edge and original little black ring/pull, lower-right grey front pocket has the original BLACK triangular badge with WHITE tiny Himawari wordmark. Preserve original dark vertical center strip between two front pouches, grey side slip pockets and grey base. Do not change triangular logo to rectangle or add bright trims, straps, accessories or pockets. Soft autumn window daylight, natural nylon/fabric texture, realistic shadow and depth, candid quiet room composition. No human, no hands, no model, no captions, no watermark, no extra brands, no customer testimony or measured-fit inference. Show props OUTSIDE bag; never visible interior contents. Preserve all exact original product marks, logo, colors, pockets, handle, pulls, charm and relative dimensions.",
+        "generatedAt": "2026-10-10",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13308483411",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260326_238/1774503626907819SG_JPEG/29145858851779990_764507912.jpg"
+      },
+      "dimensionsCm": [
+        32,
+        40,
+        18
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 15페이지의 1230 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct source/generated comparison: grey rounded upper body with black arching main zipper edge, original black carry loop/shoulder straps, two grey front pouches with black rounded flaps and horizontal zips/pulls, center dark strip, black triangular white-letter Himawari badge lower right and side slip pockets preserved. Entire bag visible on dry stool clearly separated from tea table; no person or interior-fit claim."
+    }
+  ],
+  "topicsReviewed": 134,
+  "overlapReview": "Reviewed all 134 existing titles, summaries and complete body texts via saved corpus, heading/topic inventory, and full bodies of closest semantic references. Today: book exchange edition/condition disclosure differs from borrowed-book return and reading quote/response notes; photo selection by purpose/framing differs from print-file indexing, memory-card status and shape-hunting walks; tea brewing timer start signal and alarm action differ from cafe bag placement and recipe quantity records. Each new article has a distinct core purpose; no paraphrased older article, unverified product features, customer testimony or measured internal-fit claim. Oct 5/6/7 already included wearing scenes this week; today uses three new still lifes with different actual models last used Sep 30. Full-draft Korean 5-gram comparison is supplementary to editorial semantic review.",
+  "completionReceipt": "backups/story-runs/2026-10-10.deployment.json",
+  "expectedCount": 3,
+  "editions": {
+    "morning": {
+      "postIds": [
+        "book-exchange-edition-condition",
+        "photo-selection-one-purpose",
+        "tea-meeting-brewing-timer"
+      ],
+      "stage": "prepared"
+    }
+  }
+}
