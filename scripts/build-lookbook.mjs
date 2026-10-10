@@ -54,15 +54,15 @@ export function buildLookbook() {
   header = header.replace('<a href="/game.html">', '<a href="/lookbook/" aria-current="page">LookBook</a><a href="/game.html">');
   let footer = shell.match(/    <footer class="site-footer">[\s\S]*?<\/footer>/)[0].replaceAll('../', '/');
   footer = footer.replace('href="index.html" aria-current="page"', 'href="/story/"').replace('<a href="/contact.html">연락하기</a></nav>', '<a href="/lookbook/" aria-current="page">LookBook</a><a href="/contact.html">연락하기</a></nav>');
-  const schema = JSON.stringify({ '@context': 'https://schema.org', '@type': 'ImageGallery', name: 'Himawari LookBook', url: 'https://himawari.co.kr/lookbook/', description: '다양한 일상 속 히마와리 가방. 실제 제품을 참조한 AI 착용 연출 사진.', dateModified: entries[0].date, image: entries.slice(0, 3).map(e => `https://himawari.co.kr${e.image}`) }).replaceAll('<', '\\u003c');
+  const schema = JSON.stringify({ '@context': 'https://schema.org', '@type': 'ImageGallery', name: 'Himawari LookBook', url: 'https://himawari.co.kr/lookbook/', description: '히마와리 가방을 여러 옷차림에 매치한 사진. 실제 제품을 참고한 AI 착용 연출입니다.', dateModified: entries[0].date, image: entries.slice(0, 3).map(e => `https://himawari.co.kr${e.image}`) }).replaceAll('<', '\\u003c');
   const html = `<!doctype html>
 <html lang="ko"><head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LookBook — Himawari</title>
-  <meta name="description" content="도시에서, 여행에서, 평범한 오후에. 다양한 사람과 장소에서 만나는 히마와리 가방의 매일 새로운 장면.">
+  <meta name="description" content="히마와리 가방을 여러 옷차림에 매치한 LookBook입니다. 일상과 여행 코디를 실제 제품을 참고한 AI 착용 사진으로 둘러보세요.">
   <meta name="theme-color" content="#F3F7EF"><link rel="canonical" href="https://himawari.co.kr/lookbook/">
   <meta property="og:type" content="website"><meta property="og:title" content="LookBook — Himawari">
-  <meta property="og:description" content="가방과 함께하는, 서로 다른 하루. 히마와리의 매일 새로운 착용 연출.">
+  <meta property="og:description" content="히마와리 가방을 여러 옷차림에 매치해 봤어요. 실제 제품을 참고한 AI 착용 사진으로 일상과 여행 코디를 둘러보세요.">
   <meta property="og:url" content="https://himawari.co.kr/lookbook/"><meta property="og:image" content="https://himawari.co.kr${entries[0].image}">
   <link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -74,7 +74,7 @@ export function buildLookbook() {
 </head><body class="lookbook-page"><a class="skip-link" href="#main">본문으로 바로가기</a>
 ${header}
 <main id="main" class="lookbook-main">
-  <div class="lookbook-intro"><h1>LookBook</h1><p>가방과 함께하는, 서로 다른 하루.<br>도시에서, 여행에서, 평범한 오후에.</p></div>
+  <div class="lookbook-intro"><h1>LookBook</h1><p>여러 옷차림에 히마와리 가방을 매치해 봤어요.<br>사진을 보며 마음에 드는 코디를 찾아보세요.</p></div>
   <div class="lookbook-toolbar" data-lookbook-toolbar hidden><div class="lookbook-filters" role="group" aria-label="장면 선택">
     <button type="button" data-lookbook-filter="all" aria-pressed="true">전체</button>${Object.entries(labels).map(([key, label]) => `<button type="button" data-lookbook-filter="${key}" aria-pressed="false">${label}</button>`).join('')}
   </div><p class="lookbook-status" data-lookbook-status role="status" aria-live="polite"></p></div>
