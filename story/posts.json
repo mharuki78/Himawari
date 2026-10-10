@@ -1,5 +1,53 @@
 [
   {
+    "id": "sewing-needles-end-of-session",
+    "title": "바느질을 마치면 바늘부터 챙겨주세요",
+    "date": "2026-10-11",
+    "summary": "천을 접고 가방을 닫기 전에 쓰던 바늘과 시침핀을 확인해보세요. 시작할 때 꺼낸 도구를 세어두고, 작업대와 천을 살핀 뒤 바늘집에 되담는 작은 정리 습관입니다.",
+    "description": "천을 접고 가방을 닫기 전에 쓰던 바늘과 시침핀을 확인해보세요. 시작할 때 꺼낸 도구를 세어두고, 작업대와 천을 살핀 뒤 바늘집에 되담는 작은 정리 습관입니다.",
+    "tags": [
+      "바느질",
+      "도구 정리",
+      "No.0422"
+    ],
+    "image": "../assets/story/sewing-needles-end-of-session.webp",
+    "imageAlt": "남색 몸체에 초록 앞주머니와 빨간 옆주머니가 있는 Himawari No.0422 백팩 옆으로 천과 닫힌 바늘집을 놓은 AI 연출 사진",
+    "url": "sewing-needles-end-of-session.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "return-borrowed-containers",
+    "title": "빌린 용기를 돌려주는 날",
+    "date": "2026-10-11",
+    "summary": "음식을 나눠 받고 남은 용기, 어느 뚜껑과 한 세트였는지 기억나나요? 빈 용기의 본체와 뚜껑을 맞춰보고, 돌려줄 사람별로 나누어 외출 전에 챙겨두세요.",
+    "description": "음식을 나눠 받고 남은 용기, 어느 뚜껑과 한 세트였는지 기억나나요? 빈 용기의 본체와 뚜껑을 맞춰보고, 돌려줄 사람별로 나누어 외출 전에 챙겨두세요.",
+    "tags": [
+      "일상 외출",
+      "용기 돌려주기",
+      "No.0515"
+    ],
+    "image": "../assets/story/return-borrowed-containers.webp",
+    "imageAlt": "실버 Himawari No.0515 백팩 옆에 파란 뚜껑의 사각 용기와 크림색 뚜껑의 원형 빈 용기를 둔 AI 연출 사진",
+    "url": "return-borrowed-containers.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "sound-walk-test-recording",
+    "title": "산책길의 소리를 담기 전에",
+    "date": "2026-10-11",
+    "summary": "바람에 흔들리는 나뭇잎이나 자갈 밟는 소리를 녹음하고 싶다면 짧게 담고 먼저 들어보세요. 화면에 녹음 표시가 뜨는지와 실제로 원하는 소리가 들리는지는 따로 확인할 수 있습니다.",
+    "description": "바람에 흔들리는 나뭇잎이나 자갈 밟는 소리를 녹음하고 싶다면 짧게 담고 먼저 들어보세요. 화면에 녹음 표시가 뜨는지와 실제로 원하는 소리가 들리는지는 따로 확인할 수 있습니다.",
+    "tags": [
+      "소리 산책",
+      "녹음 준비",
+      "No.1223"
+    ],
+    "image": "../assets/story/sound-walk-test-recording.webp",
+    "imageAlt": "화이트 Himawari No.1223 백팩과 가방 밖에 놓인 휴대전화·헤드폰이 가을 공원의 벤치에 있는 AI 연출 사진",
+    "url": "sound-walk-test-recording.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "book-exchange-edition-condition",
     "title": "책 교환 모임에 가는 날: 판본과 표시한 페이지부터 확인하기",
     "date": "2026-10-10",

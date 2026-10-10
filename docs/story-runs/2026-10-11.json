@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-11",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "sewing-needles-end-of-session",
+      "title": "바느질을 마치면 바늘부터 챙겨주세요",
+      "url": "https://himawari.co.kr/story/sewing-needles-end-of-session.html",
+      "productId": "store-13326274547",
+      "model": "No.0422",
+      "image": "assets/story/sewing-needles-end-of-session.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-11/reference-0422.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-11/generated-0422.png",
+        "prompt": "Use case: product-mockup. Asset type: Himawari Korean editorial blog hero, landscape 1536x1024. Input image 1 is an exact PRODUCT reference only; exclude the child/person entirely. Create one photorealistic adult sewing-class still life. Reproduce the complete closed Himawari No.0422 bag at its verified exterior proportions: width 30cm, height 40cm, depth 15cm. Navy rounded rectangular body and shoulder straps/top loop; green square front zip pocket with narrow yellow left edge, small original black rectangular Himawari patch near lower right, red right side pocket. Preserve BOTH original blue accessories: round blue Himawari zip pouch hanging on left black webbing, and blue bear-shaped smiling decoration on the right webbing. Keep upper paired main zip pulls, two black vertical webbing/hardware paths and all color blocking exactly as reference. Bag stands on a plain wooden stool next to, but apart from, a sewing table. On table: folded ochre cotton with a short stitched seam, spool of cream thread, and a small CLOSED hard needle case with opaque lid. No loose needles or pins. Three-quarter front view shows bag fully with no cropping, dominates about 55 percent of image height. Soft afternoon window light, tactile fabrics, real modest community-room setting. No people, no model reference person, no extra text or watermarks. Existing product logos and decorations unchanged; do not add pockets, straps, accessories or claims. Tools outside bag; no interior fit demonstration. New scene, not a catalog-photo reuse.",
+        "generatedAt": "2026-10-11",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13326274547",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260330_75/17748467055316cbOy_JPEG/932098654912450_478698910.jpg"
+      },
+      "dimensionsCm": {
+        "width": 30,
+        "height": 40,
+        "depth": 15
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 54페이지의 0422 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed original and generated image. Navy rounded body, green front pocket with yellow edge, red right pocket, original small black Himawari patch, upper zip pulls, two black webbing paths, original blue round pouch and smiling bear decoration preserved. No reference child reproduced. Bag exterior proportions consistent with 30x40x15cm reference, entirely visible, closed needle case and cloth outside on adjacent worktable; no internal capacity claim."
+    },
+    {
+      "id": "return-borrowed-containers",
+      "title": "빌린 용기를 돌려주는 날",
+      "url": "https://himawari.co.kr/story/return-borrowed-containers.html",
+      "productId": "store-13685201448",
+      "model": "No.0515",
+      "image": "assets/story/return-borrowed-containers.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-11/reference-0515.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-11/generated-0515.png",
+        "prompt": "Use case: product-mockup. Asset type: Himawari Korean blog hero, landscape 1536x1024. Input image 1 is an exact PRODUCT reference only; remove and do not reproduce its woman. Generate a new natural still life at a quiet home entryway console. The entire CLOSED silver metallic Himawari No.0515 backpack stands on dry pale wooden surface. Verified exterior proportions width35 height46 depth18cm. Preserve original shiny silver fabric, gathered drawstring mouth with black cords/toggles, gathered padded silver top carry handle, wide silver shoulder straps with dark edges, large front silver zip pocket with small original black Himawari EST.2010 print, original silver oval quilted clip-on zip pouch on the front-right black carabiner, side gathered pockets, black bottom edging with the two small black buckle fittings. Three-quarter frontal orientation to see the front and right side, all bag visible. Next to bag place TWO modest clean EMPTY plastic food-storage containers with exactly matching lids closed: one transparent rectangular container with blue lid, one transparent round container with cream lid. A folded unmarked cotton cloth lies beside them. Containers remain outside and clearly smaller than bag; no claim they fit inside. Window daylight, mild shadows, ordinary calm home, realistic silver wrinkles, no CGI gloss. No people, no child, no unrelated accessories, no text added, no watermark. Preserve shape/ratio/branding/pockets/straps and original pouch exactly.",
+        "generatedAt": "2026-10-11",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13685201448",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260728_237/1785203739585y5VOY_JPEG/130548331178797772_1520188927.jpg"
+      },
+      "dimensionsCm": {
+        "width": 35,
+        "height": 46,
+        "depth": 18
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 4페이지의 0515 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed source and output. Metallic silver gathered drawstring mouth, black cords/toggles, gathered top handle, silver dark-edged straps, front logo/zip pocket, clipped oval quilted silver pouch, gathered side pockets and bottom black edging/two buckle fittings preserved. No source woman reproduced. Exterior proportions consistent with 35x46x18cm. Two empty containers closed with respective lids outside bag; no fitted interior or real customer claim."
+    },
+    {
+      "id": "sound-walk-test-recording",
+      "title": "산책길의 소리를 담기 전에",
+      "url": "https://himawari.co.kr/story/sound-walk-test-recording.html",
+      "productId": "store-13313756862",
+      "model": "No.1223",
+      "image": "assets/story/sound-walk-test-recording.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-11/reference-1223.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-11/generated-1223.png",
+        "prompt": "Use case: product-mockup. Asset type: Korean Himawari story hero, landscape 1536x1024. Input image1 is an exact PRODUCT reference; do not reproduce the woman or any person. Produce new photorealistic still life beside a quiet park path. Complete closed Himawari No.1223 white/off-white backpack sits on a clean dry broad wooden bench; verified exterior width29 height40 depth14cm. Match original plain near-rectangular white body with softly squared top, black carry loop, white shoulder straps with black hardware, black piping along outer/main zipper, visible original side main zip pulls on left. Preserve large rounded-rectangle front pocket edged in black with a horizontal black zip across its upper part and the small original rectangular dark Himawari logo centered below; original white side slip pockets and black side buckles, original black lower zipper hardware. Use exact reference construction, no added pockets/drawstrings/pouches. A smartphone with a blank dark nonlegible screen lies on a separate small cotton pad beside the bag, with a pair of understated dark headphones next to it. They remain outside bag. Bench backs onto soft-focus reeds and trees on a quiet autumn morning, no people, no shops, no identifiable houses. Eye-level three-quarter frontal view, bag entirely visible occupies half image height, natural off-white texture and soft light. Preserve logo, shape, color, straps, pockets, seams, proportions. No extra text, no watermarks, no fake testimonials, no interior capacity demonstration.",
+        "generatedAt": "2026-10-11",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13313756862",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260330_110/1774843091752lRdub_JPEG/60885435181830789_147192211.jpg"
+      },
+      "dimensionsCm": {
+        "width": 29,
+        "height": 40,
+        "depth": 14
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 29페이지의 1223 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct source and output comparison. Off-white softly squared body, black carry loop and outer zip piping, white straps with dark fittings, left main zip pulls, black-edged rounded front pocket with horizontal zip and central dark logo patch, white side pockets/buckles/lower zipper hardware retained. No reference woman reproduced. Exterior proportions consistent with 29x40x14cm; full closed bag on dry bench, phone/headphones outside, no internal fit claim."
+    }
+  ],
+  "topicsReviewed": 137,
+  "overlapReview": "Reviewed inventory of all 137 existing titles and summaries; saved full 171047-character article corpus and headings. Compared complete draft bodies to the full corpus with Korean 5-grams and read closest semantic articles in full. New needle/pin end-of-session accounting differs from releasing fabric from embroidery hoops; borrowed empty-container owner/lid matching differs from food-filled lunch-container placement; short audio test/playback and handling-noise adjustment differs from shape-hunting walks, photo file indexing and observation time records. No rewritten older article, fabricated customer story, unsupported specifications or internal fit claim. Oct 5/6/7 already supplied three wearing days this week; today uses three new still lifes of distinct actual models, last used Oct 1/1/2.",
+  "completionReceipt": "backups/story-runs/2026-10-11.deployment.json",
+  "expectedCount": 3,
+  "editions": {
+    "morning": {
+      "postIds": [
+        "sewing-needles-end-of-session",
+        "return-borrowed-containers",
+        "sound-walk-test-recording"
+      ],
+      "stage": "prepared"
+    }
+  }
+}
