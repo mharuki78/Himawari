@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-10-city-1884",
+    "date": "2026-10-10",
+    "category": "city",
+    "title": "문화공간 계단에 앉아",
+    "model": "1884",
+    "color": "라이트그레이",
+    "productId": "coupang-686f8c96ea4c0598",
+    "scene": "파프리카색 셔츠와 크림색 바지를 입은 40대 성인 여성이 문화공간의 넓은 나무 계단에 앉아 쉬는 장면.",
+    "alt": "파프리카색 셔츠와 크림색 바지를 입고 문화공간 나무 계단에 앉은 40대 성인 여성의 히마와리 No.1884 라이트그레이 백팩 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-10-city-1884.webp",
+    "thumbnail": "/assets/lookbook/2026-10-10-city-1884-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-10-10-travel-1089",
+    "date": "2026-10-10",
+    "category": "travel",
+    "title": "대나무 길로 이어지는 걸음",
+    "model": "1089",
+    "color": "블루",
+    "productId": "coupang-5984791b8c6c5fb2",
+    "scene": "황금빛 니트와 짙은 초록 바지를 입은 20대 성인 남성이 대나무와 낮은 담장 사이의 마른 돌길을 걷는 장면.",
+    "alt": "황금빛 니트와 짙은 초록 바지를 입고 대나무 길을 걷는 20대 성인 남성의 히마와리 No.1089 블루 백팩 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-10-travel-1089.webp",
+    "thumbnail": "/assets/lookbook/2026-10-10-travel-1089-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "model": "9001",
     "category": "city",
     "productId": "coupang-50c5b38af3fd50b0",

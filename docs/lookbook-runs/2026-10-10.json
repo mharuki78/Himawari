@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-10",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-10/deployment.json",
+  "entries": [
+    {
+      "id": "2026-10-10-city-1884",
+      "model": "1884",
+      "productId": "coupang-686f8c96ea4c0598",
+      "image": "/assets/lookbook/2026-10-10-city-1884.webp",
+      "reference": "backups/lookbook-2026-10-10/reference-coupang-686f8c96ea4c0598.jpg",
+      "generatedSource": "backups/lookbook-2026-10-10/generated-1884.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        30,
+        45,
+        20
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-10; 2026-09-14 제조사 카탈로그 31페이지의 1884 대형(1884L) 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-686f8c96ea4c0598/main-wJuYO2kJQoXHwODIKpnosMWjdjRTWD.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8653683037",
+      "prompt": "Use case: photorealistic-natural. Asset: ONE new1024x1536 portrait (2:3) photorealistic Korean Himawari LookBook editorial wearing photograph. Input Image1 is STRICT genuine product reference only; reproduce that exact bag, no invented alternative. Scene/subject/composition: A quiet indoor community arts atrium, broad warm wooden amphitheater steps, tall frosted windows with soft blue daylight, pale lime-plaster walls. Fictional East Asian adult woman about 40, average build and approximately170cm tall, short dark pixie haircut, small silver round glasses, paprika-red long-sleeve button-up shirt, cream straight trousers and grey suede sneakers. Seated upright sideways on the very front edge of a wide low wooden step, both feet naturally supported, two hands relaxed visibly on lap away from bag. Camera sees her back from a mild three-quarter angle and small facial profile, she looks into atrium not at camera. NO backrest. Entire backpack floats against her back on TWO original padded shoulder straps and is clear of the wooden step; no compression or cut-off lower pocket. Full seated body including head, hands, legs and shoes visible in portrait. Bag is the main focus, subtle environment stays believable. Product invariants: Exact LIGHT GREY No.1884L45cm tall doctor-top rectangular backpack, light grey body and bottom base, original grey padded shoulder straps with dark mesh underside. Two slim rounded light grey fabric carry handles joined by ORIGINAL small BLACK keeper. Front handle anchors are short grey stitched X boxes with TWO circular BLACK rivets per anchor, not one gold rivet. Original small BLACK rectangular patch centered upper front with tiny WHITE Himawari/EST2010 lettering. Original large plain lightgrey lower front pouch with broad HORIZONTAL BLACK zipper at its upper front and original black ring/long black paddle zipper pull at left. Original black/dark-grey main zipper and hanging long pulls at top/side, original grey side slip pockets with narrow BLACK elastic bands across upper pocket edge. Preserve rectangular proportions, curve of top, seams, base and small black base feet if visible. No extra pouches, cap charms, buckles, chest harness, trims, straps or logos. Scale: published exterior width×height×depth 30×45×20cm; preserve actual bag length relative to adult torso, no enlarged or miniature bag. Show a CLOSED bag, no contents visible, no measured-fit or capacity demonstration. Natural fabric and skin texture, realistic daylight/shadows, subtle candid documentary composition, no studio mannequin. No extra people, no captions, watermark, readable scene text or other brand logos. Fictional adult model only, never a real customer, celebrity or source person. Preserve human anatomy, actual original logo, pockets, handles, straps, colors, pulls and relative dimensions. Output exactly1024×1536.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/generated comparison: lightgrey45cm rectangular doctor-top body, two slim grey carry handles with black keeper, two black circular rivets on each X-stitched front anchor box, original black rectangular white-letter Himawari patch, large lower grey front pouch with horizontal black zip/left black ring and long paddle pull, original main zip/pulls, side slip pockets with black upper band, padded grey shoulder straps with dark underside, seams/base and small black bottom feet preserved. Entire bag legible and uncompressed on both shoulders of fictional40s seated female, hands/legs/shoes coherent, plausible adult torso scale; source has no person, no measured-fit or performance depiction."
+    },
+    {
+      "id": "2026-10-10-travel-1089",
+      "model": "1089",
+      "productId": "coupang-5984791b8c6c5fb2",
+      "image": "/assets/lookbook/2026-10-10-travel-1089.webp",
+      "reference": "backups/lookbook-2026-10-10/reference-coupang-5984791b8c6c5fb2.jpg",
+      "generatedSource": "backups/lookbook-2026-10-10/generated-1089.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        29.5,
+        42,
+        12
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-10; 2026-09-14 제조사 카탈로그 12페이지의 1089 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-5984791b8c6c5fb2/main-eLSgNwsdKSc9Fgpg6vgF9FXMvc3jNr.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9593404958",
+      "prompt": "Use case: photorealistic-natural. Asset: ONE new1024x1536 portrait (2:3) photorealistic Korean Himawari LookBook editorial wearing photograph. Input Image1 is STRICT genuine product reference only; reproduce that exact bag, no invented alternative. Scene/subject/composition: A quiet autumn daytime travel walkway: level dry stone path between tall green bamboo and a low aged pale plaster wall, no rail station or recognizable landmark. Fictional adult man in his late20s, medium brown skin, slim average build, approximately178cm tall, short dark loose curls and subtle short beard; saffron-gold crewneck knit sweater, dark forest-green straight trousers and simple white canvas shoes. Walking away in a natural relaxed step, camera at waist height viewing full body from a mild rear three-quarter angle. He looks forward down path not into camera. Both arms, hands, legs and shoes anatomically clear. No hat, headphones, additional bag, umbrella or props. Entire backpack unobstructed on TWO original shoulder straps, hair above bag. Bag stays central and readable with bamboo depth behind. Product invariants: Exact very PALE ICY BLUE No.1089 body (actual catalog color blue is extremely light, NOT saturated/navy), softly rectangular42cm tall body with gently rounded corners and thin darker-grey main zipper piping. TWO paleblue woven webbing carry handles from TWO long vertical woven front anchor strips, joined original pale keeper at top. Original WHITE round sewn logo patch high centered front with faint palegrey Himawari text and circular border, not a black rectangle. Original large square paleblue lowerfront pouch with broad soft fabric top overhang/lip, original LEFT-side vertical pale zipper with gold-toned pull and long cream/white narrow zigzag fabric pull. Original curved main zip with gold-toned pull at right, original right side boxy zip pouch with pale zip and long cream pull, original other side pocket. Preserve paleblue base binding and low strap/tab at right edge. Original lightblue shoulder straps. Do not add rivets, dark contrast trims, mesh, front horizontal black zip, charms or logos. Scale: published exterior width×height×depth 29.5×42×12cm; preserve actual bag length relative to adult torso, no enlarged or miniature bag. Show a CLOSED bag, no contents visible, no measured-fit or capacity demonstration. Natural fabric and skin texture, realistic daylight/shadows, subtle candid documentary composition, no studio mannequin. No extra people, no captions, watermark, readable scene text or other brand logos. Fictional adult model only, never a real customer, celebrity or source person. Preserve human anatomy, actual original logo, pockets, handles, straps, colors, pulls and relative dimensions. Output exactly1024×1536.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/generated comparison: actual very pale icy-blue42cm rounded rectangular body, woven twin handles/keeper and long front anchor strips, original white circular faint-Himawari logo patch, square lower front pouch with soft overhang/lip, left vertical pale zipper with gold-toned pull/long cream strip, curved darker-grey main zip piping/right gold pull, original side boxy pouches and pale zip/pull, right lower strap/tab and base binding preserved. Both original blue shoulder straps support unobscured bag on fictional late20s walking male; coherent hands/fingers/arms/legs/feet and plausible torso scale. No invented rivets, dark trims, charms or internal contents."
+    }
+  ],
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-10-10-city-1884",
+        "2026-10-10-travel-1089"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "compositionReview": {
+    "rangeStart": "2026-09-26",
+    "rangeEnd": "2026-10-10",
+    "lookbookPhotos": 35,
+    "storyPhotos": 60,
+    "review": "Directly reviewed four contact sheets of all35 current LookBook photos and60 story photos within the last14 days, including current morning stories. No.1884 last worn Sep28 in khaki on a mature male outside brick building; today lightgrey on a40s female seated on broad indoor arts-atrium wooden steps. No.1089 last worn Sep29 in pink on a female at rural rail platform; today actual pale blue on a20s male walking a dry bamboo/plaster-wall stone path. Two scenes vary product color, adult age, gender, appearance, clothes, activity, setting, framing and seated/walking pose. Source photos directly viewed and exact manufacturer exterior dimensions validated; No.1884L45cm and No.1089 42cm adult-relative scale constrain prompts. No source person copied, invented features, customer testimonials, performance or measured-fit claims."
+  }
+}
