@@ -1,5 +1,53 @@
 [
   {
+    "id": "coat-fitting-backpack-off",
+    "title": "코트를 입어볼 때는 백팩을 먼저 내려놓으세요",
+    "date": "2026-10-12",
+    "summary": "백팩을 멘 채 코트를 걸치면 어깨와 등 부분이 어떻게 떨어지는지 보기 어렵습니다. 평소 입는 옷 위에 코트를 입어보고, 마음에 드는 크기를 고른 뒤 가방과도 함께 살펴보세요.",
+    "description": "백팩을 멘 채 코트를 걸치면 어깨와 등 부분이 어떻게 떨어지는지 보기 어렵습니다. 평소 입는 옷 위에 코트를 입어보고, 마음에 드는 크기를 고른 뒤 가방과도 함께 살펴보세요.",
+    "tags": [
+      "코트 고르기",
+      "가을 외출",
+      "No.9007"
+    ],
+    "image": "../assets/story/coat-fitting-backpack-off.webp",
+    "imageAlt": "회색 코트가 걸린 옷가게에서 검정 Himawari No.9007 백팩을 메고 서 있는 성인 여성의 뒷모습을 표현한 AI 착용 연출 사진",
+    "url": "coat-fitting-backpack-off.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "gloves-keep-pair-together",
+    "title": "장갑을 벗으면 한 쌍으로 모아두세요",
+    "date": "2026-10-12",
+    "summary": "계산대에서 벗은 장갑 하나는 코트 주머니에, 다른 하나는 가방에 넣은 적 있나요? 벗는 자리에서 두 짝을 모아두면 다시 낄 때 찾을 곳도 하나가 됩니다.",
+    "description": "계산대에서 벗은 장갑 하나는 코트 주머니에, 다른 하나는 가방에 넣은 적 있나요? 벗는 자리에서 두 짝을 모아두면 다시 낄 때 찾을 곳도 하나가 됩니다.",
+    "tags": [
+      "장갑 챙기기",
+      "겨울 준비",
+      "No.0514"
+    ],
+    "image": "../assets/story/gloves-keep-pair-together.webp",
+    "imageAlt": "현관의 나무 벤치에 실버 미니 Himawari No.0514 백팩과 나란히 놓인 와인색 니트 장갑 한 쌍을 표현한 AI 연출 사진",
+    "url": "gloves-keep-pair-together.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "furniture-trip-room-measurements",
+    "title": "가구 보러 가기 전, 방 치수를 한 장에",
+    "date": "2026-10-12",
+    "summary": "매장에서 마음에 드는 책상이나 서랍장을 발견했을 때, 방에 놓을 자리가 떠오르나요? 출발 전에 간단한 평면도를 그리고 치수와 문·창문 위치를 적어 가져가세요.",
+    "description": "매장에서 마음에 드는 책상이나 서랍장을 발견했을 때, 방에 놓을 자리가 떠오르나요? 출발 전에 간단한 평면도를 그리고 치수와 문·창문 위치를 적어 가져가세요.",
+    "tags": [
+      "가구 보러 가기",
+      "치수 메모",
+      "No.1111"
+    ],
+    "image": "../assets/story/furniture-trip-room-measurements.webp",
+    "imageAlt": "나무 의자에 놓인 초록·보라 배색의 Himawari No.1111 백팩과 옆 탁자의 줄자·방 모양 메모를 표현한 AI 연출 사진",
+    "url": "furniture-trip-room-measurements.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "sewing-needles-end-of-session",
     "title": "바느질을 마치면 바늘부터 챙겨주세요",
     "date": "2026-10-11",

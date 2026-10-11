@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-12",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "coat-fitting-backpack-off",
+      "title": "코트를 입어볼 때는 백팩을 먼저 내려놓으세요",
+      "url": "https://himawari.co.kr/story/coat-fitting-backpack-off.html",
+      "productId": "coupang-7067b802d2a5407c",
+      "model": "No.9007",
+      "image": "assets/story/coat-fitting-backpack-off.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-12/reference-9007.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-12/generated-9007.png",
+        "prompt": "Use case: photorealistic-natural. Asset type: Korean Himawari editorial blog hero, landscape1536x1024. Input Image1 is strict genuine PRODUCT reference only. Generate ONE new photo. A fictional adult East Asian woman around45 with short straight black bob, average build about165cm tall, muted sage cotton shirt, straight dark blue jeans and understated brown ankle boots stands in an ordinary small clothing shop, viewed from rear-left three-quarter angle. Full body head to both shoes, arms relaxed by sides, looking towards a single grey wool coat on an uncluttered rack a step away. NO mirror or reflection. She has just arrived, bag still worn on both original straps before trying on coat. Bag front fully readable and dominates focus. Pale plaster wall and wooden floor, only a few neutral coats on rack, soft window daylight. Product invariants: Exact BLACK Himawari No.9007: softly squared doctor-mouth rectangular body with twin rounded padded black carry handles joined by the original short WHITE webbing keeper. Black padded shoulder straps, two long black vertical front handle anchor tapes, each with one WHITE circular rivet. Original white Himawari lettering directly centered on upper front body, not a patch. Large lower black rectangular front pocket with wide WHITE horizontal zip band across upper edge and the original white left pull. Original BLACK miniature baseball-cap-shaped zip pouch hangs at upper LEFT from WHITE clip and white loop, with curved black brim, black crown/top button and tiny original red H emblem; reproduce as small cap pouch, not a normal full-size hat. White side zipper bands/pulls, small original white woven label near upper right front anchor. Preserve all original seams, side pockets, dark base, hardware, handles, straps and exact color blocking. No extra pouches, chest belt or decoration. Verified exterior width x height x depth 28x40x17cm. Preserve true product proportions and adult-relative scale where applicable. Closed bag, all props OUTSIDE, no interior capacity proof. No source person copied, no real customer, celebrity, child or identifiable person. Credible human anatomy where present, natural fabric/skin textures, no CGI gloss, new scene not stock-photo reuse. No extra text, brand logos, watermarks, claims, labels, invented pockets or hardware. Output exactly1536x1024.",
+        "generatedAt": "2026-10-12",
+        "catalogUrl": "https://www.coupang.com/vp/products/9593416918",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-7067b802d2a5407c/main-iEE4YsD1hT4vpoZCEzurS7KuI4fKIl.jpg"
+      },
+      "dimensionsCm": {
+        "width": 28,
+        "height": 40,
+        "depth": 17
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 10페이지의 9007 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed original9007 and generated9007: black doctor-mouth body, twin handles/white keeper, two white rivets, centered white Himawari, white front/side zip bands, upper-left black miniature cap pouch with white attachment and red H all preserved. Fictional adult woman shown rear-left, whole head/body/shoes, both straps; plausible 28x40x17cm scale, ordinary clothing shop, no mirror/anatomy issue. Arrival scene, not actual coat fit evidence."
+    },
+    {
+      "id": "gloves-keep-pair-together",
+      "title": "장갑을 벗으면 한 쌍으로 모아두세요",
+      "url": "https://himawari.co.kr/story/gloves-keep-pair-together.html",
+      "productId": "store-13326396058",
+      "model": "No.0514",
+      "image": "assets/story/gloves-keep-pair-together.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-12/reference-0514.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-12/generated-0514.png",
+        "prompt": "Use case: product-mockup. Asset type: Korean Himawari editorial blog hero, landscape1536x1024. Input Image1 is strict genuine PRODUCT reference only. Generate ONE new photo. A new photorealistic quiet home-entryway still life: the entire closed SILVER MINI No.0514S/0514Mini bag stands on a low pale wooden bench, gentle three-quarter frontal view. Beside it, TWO matching dark red adult knit gloves placed together palm-to-palm with cuffs aligned, on a folded cream scarf. Gloves have correct five-finger shapes, no extra glove. Everything dry and clean. Coat hooks and pale wall out of focus, soft morning window light. No people; never reproduce the woman from reference. Bag occupies around60 percent of image height, all outlines and base visible. Product invariants: Exact silver MINI drawstring bag in Image1: crinkled metallic silver fabric, gathered upper mouth with thin BLACK drawcord loop hanging down front, short gathered SILVER top handle, narrow SILVER shoulder straps. Large silver rectangular lower front zip pocket with original near-horizontal zipper line and BLACK pull at LEFT, lower-right small BLACK triangular Himawari logo patch with white lettering. Silver gathered side slip pockets and original black lower side buckle hardware/black piping near base. No detachable quilted oval pouch, no added tassels, cap pouch or chest belt. Retain subtle reflective silver wrinkles and original seams, straps, pulls, logo position and shape. Verified exterior width x height x depth 27x36x14cm. Preserve true product proportions and adult-relative scale where applicable. Closed bag, all props OUTSIDE, no interior capacity proof. No source person copied, no real customer, celebrity, child or identifiable person. Credible human anatomy where present, natural fabric/skin textures, no CGI gloss, new scene not stock-photo reuse. No extra text, brand logos, watermarks, claims, labels, invented pockets or hardware. Output exactly1536x1024.",
+        "generatedAt": "2026-10-12",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13326396058",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260211_152/17707744461046CCJC_JPEG/104907218390027692_404109632.jpg"
+      },
+      "dimensionsCm": {
+        "width": 27,
+        "height": 36,
+        "depth": 14
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 18페이지의 0514S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed original0514, generated0514 and enlarged original handle crop; downloaded full product detail image as additional source. Silver crinkled mini body, gathered mouth, thin black drawcord, silver shoulder straps, black top carry loop, rectangular lower front zip pocket/left black pull, lower-right black triangle logo, gathered side pockets retained. Original enlarged photograph confirms BLACK carry loop; original prompt incorrectly called it silver, but output follows the actual reference and is approved without regeneration. Mini0514S exterior27x36x14cm distinguished from full-size0514. Matching dry adult red knit glove pair on scarf outside, no source woman copied or internal capacity claim."
+    },
+    {
+      "id": "furniture-trip-room-measurements",
+      "title": "가구 보러 가기 전, 방 치수를 한 장에",
+      "url": "https://himawari.co.kr/story/furniture-trip-room-measurements.html",
+      "productId": "store-13513526834",
+      "model": "No.1111",
+      "image": "assets/story/furniture-trip-room-measurements.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-12/reference-1111.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-12/generated-1111.png",
+        "prompt": "Use case: product-mockup. Asset type: Korean Himawari editorial blog hero, landscape1536x1024. Input Image1 is strict genuine PRODUCT reference only. Generate ONE new photo. New natural still life in a modest lived-in room before a furniture-shopping visit: the complete closed green/purple Himawari No.1111 backpack stands on a clean wooden chair beside an uncluttered small table. On table, separate from bag, a CLOSED neutral blue tape-measure housing and open small notebook showing only faint blank grid and simple rectangular room outline, no words, numbers or claim of verified measurements. Soft focus room corner/baseboard behind, side-window daylight. Mild elevated three-quarter FRONT view shows entire front and both large side pockets, straps hanging naturally behind chair within frame. Bag broad47cm high by43cm wide, not narrow. No people and never reproduce reference young man. Product invariants: Exact GREEN No.1111: large broad dark green fabric rucksack body, purple triangular central flap panel with original small BLACK triangular Himawari logo patch and tiny white lettering, green flap side wings. TWO long BLACK vertical flap closure webbing straps with original large BLACK quick-release buckles, purple horizontal lower front pocket flap between straps. TWO large elongated protruding GREEN side zip pouches, each edged with PURPLE band beside BLACK zipper track and original dark ring pulls. Green/black padded shoulder straps, top black carry loop, original rounded green base, original seams and dangling black strap tails. Preserve exact original body width, flap, side pouch volume, buckles, all logo/color/hardware locations; no additional hip/chest belt or accessories. Verified exterior width x height x depth 43x47x24cm. Preserve true product proportions and adult-relative scale where applicable. Closed bag, all props OUTSIDE, no interior capacity proof. No source person copied, no real customer, celebrity, child or identifiable person. Credible human anatomy where present, natural fabric/skin textures, no CGI gloss, new scene not stock-photo reuse. No extra text, brand logos, watermarks, claims, labels, invented pockets or hardware. Output exactly1536x1024.",
+        "generatedAt": "2026-10-12",
+        "catalogUrl": "https://smartstore.naver.com/baegot/products/13513526834",
+        "originalUrl": "https://shop-phinf.pstatic.net/20260511_282/1778476837383QWJQU_JPEG/8477290463441894_476336728.jpg"
+      },
+      "dimensionsCm": {
+        "width": 43,
+        "height": 47,
+        "depth": 24
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 6페이지의 1111 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed original1111 and generated1111: broad green rucksack, purple central flap triangle with black logo, green wings, two black strap/buckle closures, purple lower front pocket flap, elongated green side zip pouches with purple trim and ring pulls, green/black straps and black handle preserved. Plausible exterior43x47x24cm proportions on wooden chair. Tape measure/notebook outside bag, plain diagram with no asserted dimensions, no source man copied, no internal fit claim."
+    }
+  ],
+  "topicsReviewed": 140,
+  "overlapReview": "Reviewed all 140 existing titles, summaries, full saved bodies and headings (174254 body characters). Compared complete new bodies with Korean 5-grams, and read nearest articles in full. Coat fitting without backpack pressure differs from knitwear abrasion, fabric dye transfer and after-work clothing changes. Pairing gloves immediately when removed differs from dirty garden work-glove return and matching borrowed containers to owners/lids. A room plan with measured segments, fixed features and furniture operating space differs from backpack fit in a locker or laptop compartment. No rewritten older article, fabricated customer experience, unsupported feature or internal fit claim. Three distinct actual products last used Oct3/Oct3/Oct1. Monday Oct12 starts a new week with one fictional adult wearing scene and two still lifes. All captions and alt text identify AI scenes; mini option 0514S dimensions distinguished from full-size 0514.",
+  "completionReceipt": "backups/story-runs/2026-10-12.deployment.json",
+  "expectedCount": 3,
+  "editions": {
+    "morning": {
+      "postIds": [
+        "coat-fitting-backpack-off",
+        "gloves-keep-pair-together",
+        "furniture-trip-room-measurements"
+      ],
+      "stage": "prepared"
+    }
+  }
+}
