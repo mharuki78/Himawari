@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-11",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-11/deployment.json",
+  "entries": [
+    {
+      "id": "2026-10-11-city-1027",
+      "model": "1027",
+      "productId": "store-13326224847",
+      "image": "/assets/lookbook/2026-10-11-city-1027.webp",
+      "reference": "backups/lookbook-2026-10-11/reference-store-13326224847.jpg",
+      "generatedSource": "backups/lookbook-2026-10-11/generated-1027.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-11; 2026-09-14 제조사 카탈로그 28페이지의 1027 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260210_201/1770709035243OicU2_JPEG/18070600097326153_1285571532.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13326224847",
+      "prompt": "Use case: photorealistic-natural. Asset: ONE new 1024x1536 portrait, 2:3, for Korean Himawari LookBook. Input Image1 is a strict genuine PRODUCT reference only; reproduce this exact bag and never the source person. Scene/subject/composition: A quiet ordinary city street corner at a pedestrian crossing, dry level pale concrete sidewalk, narrow white crossing stripes beyond curb, plain small buildings softly out of focus. No readable signs or signal lamps in frame, no cars close to subject, no crowd. Fictional adult East Asian woman about55, average build approximately162cm tall, short wavy dark hair with a few grey strands, no glasses, loose pale-blue long-sleeve cotton overshirt over white tee, beige ankle-length straight trousers and understated dark loafers. Standing still back from the curb, relaxed shoulders, looking across the street with only a small facial profile. Both hands naturally relaxed at sides, no extra carried objects. Full body from head to both shoes visible. Camera from a mild rear-left angle slightly above waist, exact front of backpack fully visible on her back and not obscured by elbows/hair. Clear separation of bag and pale-blue shirt. Product invariants: Exact BLACK No.1027: tall softly rectangular charcoal-black fabric body with rounded top, black padded shoulder straps, TWO narrow black webbing carry handles joined by black keeper, long vertical front handle-anchor tabs with one circular BLACK rivet each. Small original WHITE Himawari EST.2010 lettering directly on upper central body, NOT a patch. Large black square lower front pocket with original upper horizontal zipper and BLACK OVAL ring zipper pull on left. Original LONG NARROW BLACK clip-on ZIP POUCH attached at FRONT RIGHT just below handle-anchor fitting, with tiny original white Himawari lettering near its top; rounded-rectangle vertical pouch, NOT round and NOT cream. Preserve original side slip pockets, original dark main zipper/pulls, dark base binding, seams and proportions. No chest belt, no invented logo patch, contrast trim, charms, external straps or pockets. Scale: verified exterior width x height x depth 28x40x17cm; maintain true bag height/width relative to adult torso, no miniature or enlarged bag. Closed bag, no contents, no internal fit/capacity proof. Natural skin/fabric texture and autumn daylight, credible candid photo, no studio mannequin. No extra people, celebrities, customers, captions, watermarks, new logos, readable scene signs or other brand logos. Fictional ADULT only. Correct human anatomy. Preserve original product logo, shape, color, pockets, straps, handles, accessories and proportions. Output exactly 1024x1536.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed original and generated photo. Black rounded rectangular body, twin black webbing handles/keeper, single dark rivet on each long front anchor, tiny original white upper Himawari/EST2010 lettering, lower square pocket with horizontal zip and left oval pull, long narrow rounded black front-right clip-on pouch with white logo, side pockets/base and original two black shoulder straps preserved. No source young man copied; fictional middle-aged woman with consistent arms/hands/legs and both shoes visible. Bag fully readable with plausible 28x40x17cm scale against approximately162cm adult torso. Standing back from curb, no internal contents, actual customer or measured fit claim."
+    },
+    {
+      "id": "2026-10-11-everyday-1208",
+      "model": "1208",
+      "productId": "coupang-6a508e0278ce77c7",
+      "image": "/assets/lookbook/2026-10-11-everyday-1208.webp",
+      "reference": "backups/lookbook-2026-10-11/reference-coupang-6a508e0278ce77c7.jpg",
+      "generatedSource": "backups/lookbook-2026-10-11/generated-1208.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        29,
+        40,
+        17
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-11; 2026-09-14 제조사 카탈로그 30페이지의 1208 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6a508e0278ce77c7/main-1wCnmPgXRW2CCzmKbnOnXIgW1j9CGH.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8646104758",
+      "prompt": "Use case: photorealistic-natural. Asset: ONE new 1024x1536 portrait, 2:3, for Korean Himawari LookBook. Input Image1 is a strict genuine PRODUCT reference only; reproduce this exact bag and never the source person. Scene/subject/composition: An ordinary quiet public park in early autumn, broad level green lawn with a few golden leaves, soft-focus distant trees. A small muted tan cotton picnic blanket lies flat on dry lawn. Fictional adult man around35, medium-deep brown skin, average lean build approximately175cm tall, close-shaved head, subtle short beard, white-and-navy horizontal striped long-sleeve cotton tee, dark grey casual trousers, simple off-white sneakers. Seated upright cross-legged on blanket, relaxed pose facing into open lawn with mild side facial profile. Both hands resting naturally on his own knees, coherent visible fingers/arms/legs, both shoes visible. Viewed from rear-right three-quarter angle, camera near seated shoulder height. Backpack remains worn on TWO original black shoulder straps, fully legible on back, not between man and backrest, no backrest, no pocket compressed by ground, unobscured full bag outline and base. Portrait shows complete seated body, blanket and lawn, bag is main focus with natural torso scale. Product invariants: Exact dark NAVY No.1208: softly rectangular doctor-mouth top 40cm-tall body in deep navy blue woven fabric, TWO curved padded navy carry handles joined at top by original small BLACK keeper. Each front handle anchor is an X-stitched navy rectangular tab with TWO round BLACK rivets. Original small black rounded rectangular logo patch upper center with tiny white Himawari lettering. Lower front consists of TWO distinct side-by-side bulbous navy pouch pockets, whose BLACK zippers curve from central upper gap around each upper outer edge, each with original black ring and slim elongated black paddle pull. Preserve center gap, asymmetric curved openings, exact original outer side pockets/black horizontal upper bands, side main zip pull hardware, padded black shoulder straps with original upper quick-release buckles and seams/base. No white trims, gold rivets, additional detachable pouch, handles, charms, chest belt or extra pockets. Keep both front pouches visible. Scale: verified exterior width x height x depth 29x40x17cm; maintain true bag height/width relative to adult torso, no miniature or enlarged bag. Closed bag, no contents, no internal fit/capacity proof. Natural skin/fabric texture and autumn daylight, credible candid photo, no studio mannequin. No extra people, celebrities, customers, captions, watermarks, new logos, readable scene signs or other brand logos. Fictional ADULT only. Correct human anatomy. Preserve original product logo, shape, color, pockets, straps, handles, accessories and proportions. Output exactly 1024x1536.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/output comparison. Deep navy softly rectangular doctor-mouth body, twin padded navy handles/black keeper, two black rivets per X-stitched anchor, original small dark rectangular white-letter upper logo, two distinct rounded lower front pods with curved black zipper tracks and ring/long paddle pulls, center gap, side pockets/dark bands and main pulls, black shoulder straps with original upper release buckles retained. Entire bag uncompressed on fictional seated adult male, plausible29x40x17cm adult-relative proportions; coherent head/profile/arms/crossed legs with two shoes visible. Natural striped shirt/grass blanket scene, no copied person or performance/capacity claim."
+    }
+  ],
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-10-11-city-1027",
+        "2026-10-11-everyday-1208"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "compositionReview": {
+    "rangeStart": "2026-09-27",
+    "rangeEnd": "2026-10-11",
+    "lookbookPhotos": 37,
+    "storyPhotos": 60,
+    "review": "Directly viewed all four contact sheets: 37 LookBook photos and 60 story photos across the last 14 prior published days plus current morning stories. No.1027 last LookBook Sep28 lavender on younger curly-haired woman walking coastal boardwalk; today black on fictional55-year-old short-haired woman stationary at quiet city crossing. No.1208 last LookBook Sep30 ivory on middle-aged East Asian male walking paved park path; today navy on fictional35-year-old brown-skinned close-shaved man seated cross-legged on lawn blanket. Colors, genders, ages, appearance, clothes, city/everyday settings, camera angles and standing/ground-seated activities varied; neither duplicates current three still-life story photos. Both genuine source photos directly viewed; manufacturer Sep14 catalog pages28/30 confirm exterior dimensions28x40x17 and29x40x17cm. No copied source model or real customer claim; natural short Korean title/scene captions."
+  }
+}
