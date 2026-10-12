@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-13",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "meeting-place-entrance-pin",
+      "title": "약속 장소를 보낼 때, 건물 입구도 함께",
+      "url": "https://himawari.co.kr/story/meeting-place-entrance-pin.html",
+      "productId": "coupang-8f1a698ef69afd63",
+      "model": "No.1208",
+      "image": "assets/story/meeting-place-entrance-pin.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-13/reference-1208.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-13/generated-1208.png",
+        "prompt": "Use case: product-mockup. Asset type: landscape 1536x1024 hero for a Korean everyday blog. Input Image1 is a strict genuine PRODUCT reference. Generate ONE new realistic photograph, no people. Whole closed pale mint Himawari No.1208 standing on a clean low oak entryway shelf against pale grey plaster, at a gentle front three-quarter angle; its entire outline, handles and base visible, bag occupies about60percent image height. Beside it a normal smartphone propped on a small plain stand, screen showing ONLY a minimal fictional grey building plan with two door gaps and one tiny orange location dot, NO real map or words/numbers, no interface brand. Soft window morning light and actual woven fabric texture, quiet lived-in entryway. Product invariants: exact mint doctor-mouth rectangular body, paired rounded mint top handles, black snap keeper on top, each front handle anchor has TWO black rivets, centered black rectangular Himawari patch with original white lettering. TWO large lower front mint bulging pockets, with mirrored inward-curving BLACK zipper tracks from upperouter corners down towards centrebase and black elongated pulls. Original mint side slip pockets, black upper side quick-release hanging straps, black padded shoulder straps and original black clip fittings on straps behind. Preserve all original seams, body shape, hardware, color, rivet count, patch placement and front double-pocket structure. Verified exterior width29 height40 depth17cm, accurate proportions, credible shelf and phone scale. Do not add chest/hipbelt, cap pouch, tassel, decoration or pocket. All props OUTSIDE closed bag, no internal-fit evidence. Not a real meeting, customer, or product-performance test. No CGI shine, extra text, watermarks or logos. Exactly1536x1024.",
+        "generatedAt": "2026-10-12T23:07:47.590Z",
+        "catalogUrl": "https://www.coupang.com/vp/products/8646104758",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-8f1a698ef69afd63/main-xYOdLv3elmRJvQmHsLKYbMydDAYlsv.jpg"
+      },
+      "dimensionsCm": {
+        "width": 29,
+        "height": 40,
+        "depth": 17
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 30페이지의 1208 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly compared generated image with the mint product original: doctor-mouth outline, paired top handles with black keeper, four black front anchor rivets, centered black Himawari patch with white lettering, two mirrored curved black front zippers and long pulls, mint side pockets, rear black shoulder straps and clip hardware retained. Whole bag visible and supported on shelf; 29 x 40 x 17 cm proportions plausible beside ordinary phone. Screen is fictional; props outside closed bag. No fit or real-meeting evidence claimed."
+    },
+    {
+      "id": "printout-file-version-check",
+      "title": "회의 자료를 출력하기 전, 최신 파일인지 확인하세요",
+      "url": "https://himawari.co.kr/story/printout-file-version-check.html",
+      "productId": "coupang-08039b2ac81db358",
+      "model": "No.194L",
+      "image": "assets/story/printout-file-version-check.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-13/reference-194L.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-13/generated-194L.png",
+        "prompt": "Use case: product-mockup. Asset type: Korean editorial blog hero, landscape1536x1024. Input Image1 is strict genuine PRODUCT reference only. Generate ONE new realistic still-life photograph, NO person. Whole closed light LAVENDER Himawari No.194L stands on a wide pale birch meeting-room side desk beside one CLOSED muted grey document folder and a single plain cream printed sheet with a few very faint grey ruled blocks, no readable content or symbols. Gentle three-quarter FRONT view, entire bag and straps within frame, whole base supported; bag around60percent imageheight, white wall and soft out-of-focus empty chairs behind, early morning side-window light. Product invariants: exact softly rectangular lavender fabric body with rounded corners, lavender padded shoulder straps and lavender webbing tails. Two lavender top carry handles joined by original short BEIGE keeper with silver snap. The two front handle straps pass through silver double oblong metal loops over short BEIGE rectangular X-stitched anchors on upperfront. Lower front lavender rounded flap pocket, centre small white/off-white rectangular Himawari patch with BEIGE border/lettering. TWO BEIGE vertical front closure belts with silver studs and traditional silver prong buckles, original punched holes/tails/keepers. Original lavender side slip pockets, dark main zip track along upper sides and beige original zipper pull at left. Preserve original lavender/beige palette, logo locations, every pocket, metal rings, buckles, anchor positions and proportions. Verified exterior width28 height39 depth15cm, believable scale relative to ordinary folder, no claimed internal-fit. All props OUTSIDE, no opened backpack. No added waist/cheststrap or decorative pouch. Natural fabric detail, no invented text or logos, no watermarks, no plastic shine. Exactly1536x1024.",
+        "generatedAt": "2026-10-12T23:08:20.922Z",
+        "catalogUrl": "https://www.coupang.com/vp/products/8732967408",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-08039b2ac81db358/main-mkrOsxkr3orTIBRMVe620YMpIMn39j.jpg"
+      },
+      "dimensionsCm": {
+        "width": 28,
+        "height": 39,
+        "depth": 15
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 44페이지의 194L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly compared generated image with lavender product original: rectangular lavender body, beige keeper and silver snap, paired silver double oblong rings on beige stitched anchors, lower lavender flap pocket with white beige-bordered Himawari patch, two beige buckle belts with original holes/tails and silver prongs/studs, side pockets and beige side zipper pull retained. Entire outline and straps visible; 28 x 39 x 15 cm proportions plausible beside closed folder. No internal document-fit claim."
+    },
+    {
+      "id": "yarn-colour-dye-lot-label",
+      "title": "같은 색 뜨개실을 더 살 때, 라벨도 챙겨가세요",
+      "url": "https://himawari.co.kr/story/yarn-colour-dye-lot-label.html",
+      "productId": "coupang-44c7dfa358a11f16",
+      "model": "No.124S",
+      "image": "assets/story/yarn-colour-dye-lot-label.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-13/reference-124S.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-13/generated-124S.png",
+        "prompt": "Use case: product-mockup. Asset type: landscape1536x1024 Korean craft-outing blog hero. Input Image1 is strict genuine PRODUCT reference only. Generate ONE newly staged natural photo, NO people. Entire closed small Himawari No.124S BEIGE stands on a low clean maple craft worktable in a modest home, beside TWO muted moss green ordinary yarn balls with plain offwhite paper bands and ONE unfolded empty paper band, no words/numbers/brands. Yarn not attached to bag, no knitting needle. Warm diffused window daylight, soft-focus plain wall, gentle elevated three-quarter FRONT view; whole bag outline/handles/base visible, bag around60percent imageheight, ordinary yarnballs around8cm across. Product invariants: exact reference light beige/blush-beige doctor-mouth rounded rectangular body, tan/caramel reinforced bottom strip. TWO rounded beige top handles joined by BLACK short snap keeper; each front handle anchor with TWO BLACK rivets. Centered BLACK rectangular Himawari logo patch with white original lettering, small original BLACK tab directly under right front handleanchor. Broad rectangular beige lower front pocket with ONE BLACK horizontal zipper track along its top and original ring/long BLACK pull on LEFT. Beige side slip pockets, black main zip bands/pulls at upper sides, dark padded shoulder straps behind, original seams and rounded tan base. Verified outside width22 height33 depth14cm: compact actual124S, never enlarge to124fullsize. Preserve color, proportions, hardware, four-rivet count, handle shape, patch and sidepockets. All yarn and labels outside closed bag, no product accessory or capacity claim. No extra pouches, straps, decorations, invented pockets or lettering. No readable label text, no watermark, no CGI gloss. Exactly1536x1024.",
+        "generatedAt": "2026-10-12T23:08:48.403Z",
+        "catalogUrl": "https://www.coupang.com/vp/products/8645627102",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-44c7dfa358a11f16/main-5I6oJ6MXPAItpcljvRRnX0BAcBp1VW.jpg"
+      },
+      "dimensionsCm": {
+        "width": 22,
+        "height": 33,
+        "depth": 14
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 34페이지의 124S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly compared generated image with beige product original: compact doctor-mouth body and caramel base, paired handles with black keeper, four black front anchor rivets, centered black Himawari patch with white lettering, black side tab, rectangular lower front pocket with horizontal black zipper and long pull, beige side pockets and dark rear straps/hardware retained. Whole closed bag visible; 22 x 33 x 14 cm proportions plausible beside yarn balls. Plain blank paper bands are props, not proof of a dye lot or fit."
+    }
+  ],
+  "topicsReviewed": 143,
+  "overlapReview": "Compared complete title, summary and full-body corpus of 143 previous posts (177274 body characters) using normalized Korean 5-grams; reviewed all titles/summaries and manually read thematic neighbours. Meeting entrance and exact waiting location differ from paper-map folding/navigation. Printout version and selective page replacement differ from file protection, workstation collection and presentation wording. Yarn colour/dye-lot matching differs from yarn transport and knitting row-count progress. Nearest and thematic full-body review completed; no matching core topic found. Removed repeated image production notes from body paragraphs; required AI and source information stays in the image captions and source notes. Three genuine distinct models last used in stories Oct2/Oct5/Oct5; yesterday began week with one wearing story, so today uses three new still lifes. Plain concrete Korean copy, no customer testimony or unverified fit/feature claim. Yarn facts attributed to current Lion Brand official FAQ; AI captions and alt text kept.",
+  "completionReceipt": "backups/story-runs/2026-10-13.deployment.json",
+  "expectedCount": 3,
+  "editions": {
+    "morning": {
+      "postIds": [
+        "meeting-place-entrance-pin",
+        "printout-file-version-check",
+        "yarn-colour-dye-lot-label"
+      ],
+      "stage": "prepared"
+    }
+  }
+}
