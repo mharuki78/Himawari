@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-12",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-12/deployment.json",
+  "entries": [
+    {
+      "id": "2026-10-12-everyday-1230",
+      "model": "1230",
+      "productId": "store-13308483411",
+      "image": "/assets/lookbook/2026-10-12-everyday-1230.webp",
+      "reference": "backups/lookbook-2026-10-12/reference-store-13308483411.jpg",
+      "generatedSource": "backups/lookbook-2026-10-12/generated-1230.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        32,
+        40,
+        18
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-12; 2026-09-14 제조사 카탈로그 15페이지의 1230 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260326_238/1774503626907819SG_JPEG/29145858851779990_764507912.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13308483411",
+      "prompt": "Use case: photorealistic-natural. Asset type: ONE new 1024x1536 portrait, 2:3, for Korean Himawari LookBook. Input Image1 is a strict genuine PRODUCT reference only; reproduce this exact bag and never the source person. Scene/subject/composition: Inside an ordinary small ceramics shop, simple wooden shelves with a few plain handmade bowls and cups, pale plaster walls and terracotta floor tiles, soft side-window daylight, no readable labels. Fictional adult woman about28 with dark brown skin, average build approximately168cm tall, tightly curled hair tied in a compact high bun, plain mustard-yellow long-sleeve cotton shirt, cream straight trousers and simple white sneakers. Standing relaxed looking at a bowl on the shelf, both arms naturally at sides, no touching/carrying objects, only a mild side facial profile. Camera from rear-left three-quarter angle, complete body from head to both shoes visible, front of bag fully legible and not obscured by hair or arms. Bag worn normally on both original straps. No source person copied, no additional people or mirror. Product invariants: Exact GREY No.1230 in Image1: medium-grey broad domed rounded-top fabric body with BLACK main zipper edging and BLACK top webbing carry loop. Two separate long grey rectangular lower-front pockets, each capped by a rounded BLACK mesh upper patch and short original horizontal BLACK zipper with dark elongated ring/paddle pull; preserve the vertical central split/gap between pockets. Small original BLACK downward triangular Himawari logo patch with white lettering on the lower-right grey front pocket. Grey shoulder straps with BLACK underside/edges and black adjustment tails. Original tall grey side slip pocket, grey seams/binding/base and original hardware. Preserve exact pocket geometry, mesh texture, zipper position, logo shape/location and full grey-black colors. No added detachable pouch, trim, charm, chest belt or buckles. Scale: verified exterior width x height x depth 32x40x18cm. Keep correct full product proportions and plausible scale relative to adult torso; no giant or miniature bag. Closed bag, no contents or internal capacity proof. Natural skin and fabric texture, credible photograph, no CGI gloss or studio mannequin. No real customers, celebrities, children, captions, watermarks, extra readable text or unrelated brand logos. Fictional ADULT only, correct limbs/hands/feet. Output exactly1024x1536.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed original1230 and new portrait. Mediumgrey domed body, black main zipper rim and carry loop, two tall separate lower front pockets with rounded black mesh caps/short horizontal black zips and elongated ring/paddle pulls, central split, lower-right black triangular white-letter Himawari logo, grey side slip pocket and black-edged grey straps retained. Plausible32x40x18cm adult-relative scale. Fictional young woman with curly high bun, natural side profile/arms/hands and full body/two shoes; no source woman copied. Ceramics shelves visible, no invented customer/feature/fit claim."
+    },
+    {
+      "id": "2026-10-12-travel-0403",
+      "model": "0403",
+      "productId": "coupang-1fad617222b357b4",
+      "image": "/assets/lookbook/2026-10-12-travel-0403.webp",
+      "reference": "backups/lookbook-2026-10-12/reference-coupang-1fad617222b357b4.jpg",
+      "generatedSource": "backups/lookbook-2026-10-12/generated-0403.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-12; 2026-09-14 제조사 카탈로그 22페이지의 0403 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다. 외부 크기는 백팩 기준이며 숄더백은 별도 23 × 18 cm로 표기됩니다. 900 g의 구성품 포함 여부는 미기재입니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-1fad617222b357b4/main-HSq9pgMeGELoDhk9pIXEMb9o6sCQoz.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8562698562",
+      "prompt": "Use case: photorealistic-natural. Asset type: ONE new 1024x1536 portrait, 2:3, for Korean Himawari LookBook. Input Image1 is a strict genuine PRODUCT reference only; reproduce this exact bag and never the source person. Scene/subject/composition: A broad dry level gravel walking path beside a quiet lake in early autumn, low grasses along the path, open water and softly blurred far shore, no boardwalk, stairs, rails, mountain ridge, boat or landmark. Fictional adult East Asian man around65, average build approximately175cm tall, medium-length silver hair tied into a small low ponytail above the jacket collar, clean-shaven, navy cotton casual jacket, beige straight chinos and dark brown walking shoes. Walking slowly along the path in natural mid-step, arms hanging with small natural swing, empty hands. Camera at waist height from rear-right three-quarter angle, full body head to both shoes within frame, exact full front of backpack unobscured. Worn on TWO original BLACK shoulder straps; natural moderate stride and coherent anatomy. Soft lightly overcast afternoon light, natural candid scene. No additional people or source person copied. Product invariants: Exact LIGHT PINK No.0403 in Image1: tall softly rectangular pale blush-pink fabric body, black base band, TWO short black webbing carry handles with black keeper, broad black padded shoulder straps. Large integrated tall pale-pink rectangular front zip pocket with rounded lower corners, original small BLACK square Himawari EST2010 logo near its lower-right region. Original matching pale-pink smaller detachable rounded rectangular zip pouch hanging centrally on upper front via BLACK swivel hook and small black tab; BLACK curved zipper border along its rounded top, single BLACK circular stud below top center, its own BLACK square white-letter Himawari EST2010 logo lower right. This upper pouch overlaps part of integrated front-pocket logo, as in reference. Preserve both distinct layered pockets/logos, original black main zipper side track with long dark pulls, tall pale-pink side slip pockets, original seams and original hardware. No extra charms, contrast color, chest belt, handles or pockets. No invented white logo patches or flattened/merged pocket layers. Scale: verified exterior width x height x depth 28x40x17cm. Keep correct full product proportions and plausible scale relative to adult torso; no giant or miniature bag. Closed bag, no contents or internal capacity proof. Natural skin and fabric texture, credible photograph, no CGI gloss or studio mannequin. No real customers, celebrities, children, captions, watermarks, extra readable text or unrelated brand logos. Fictional ADULT only, correct limbs/hands/feet. Output exactly1024x1536.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed original0403 lightpink and new portrait. Tall pale-pink rectangular body, black base strip, twin black carry handles/keeper and padded shoulder straps, large integrated front pocket with partially covered square Himawari logo, original smaller overlapping detachable pouch with black rounded zip edging/center stud/own lower-right square logo and black swivel hook/tab, tall side slip pocket, main side zipper/pulls preserved. Entire layered front and hardware legible, plausible28x40x17cm adult scale, fictional older man with silver ponytail and coherent arms/hands/midstep legs/two shoes. Broad gravel path by lake, no copied source person, extra chest belt or capacity/performance claim."
+    }
+  ],
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-10-12-everyday-1230",
+        "2026-10-12-travel-0403"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "compositionReview": {
+    "rangeStart": "2026-09-28",
+    "rangeEnd": "2026-10-12",
+    "lookbookPhotos": 39,
+    "storyPhotos": 60,
+    "review": "Directly viewed all four contact sheets covering 39 LookBook photos from prior14days and 60 story images through current morning. No1230 last Sep29 grey on middle-aged male walking greenhouse; today grey on fictional28-year-old dark-skinned woman with compact curly bun standing at ceramics-shop shelves. No0403 last Oct1 beige on seated woman in pottery workshop; today lightpink on fictional65-year-old EastAsian man with silver ponytail walking broad lakeside gravel path. Distinct everyday/travel settings, genders, ages, skin/hair, mustard/cream versus navy/beige outfits and rear-left standing versus rear-right walking compositions. Today morning No9007 coat-shop wearing image and No0514/1111 still lifes are distinct. Both actual sources directly inspected, manufacturer Sep14 pages15/22 provide32x40x18 and28x40x17cm backpack dimensions. Preserve exact grey1230 twin black-mesh-front pockets and lightpink0403 layered detachable pouch; plain Korean visible copy and descriptive AI alt text."
+  }
+}
