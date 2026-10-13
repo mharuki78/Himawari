@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-13",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-13/deployment.json",
+  "entries": [
+    {
+      "id": "2026-10-13-everyday-1223",
+      "model": "1223",
+      "productId": "store-13313756862",
+      "image": "/assets/lookbook/2026-10-13-everyday-1223.webp",
+      "reference": "backups/lookbook-2026-10-13/reference-store-13313756862.jpg",
+      "generatedSource": "backups/lookbook-2026-10-13/generated-1223.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        29,
+        40,
+        14
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-13; 2026-09-14 제조사 카탈로그 29페이지의 1223 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260330_110/1774843091752lRdub_JPEG/60885435181830789_147192211.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13313756862",
+      "prompt": "Use case: photorealistic-natural. Asset type: ONE new 1024x1536 portrait, 2:3, for Korean Himawari LookBook. Input Image1 is a strict genuine PRODUCT reference only; reproduce this exact bag, not its source person. Scene/subject/composition: An ordinary neighborhood square, simple pale stone paving, a small public outdoor chess table with a chessboard and a few pieces visible beside the subject, blurred plain buildings and shrubs, no landmark or readable signage. Fictional Southeast Asian woman about55, average build approximately160cm tall, short straight dark bob with a few grey streaks ending above backpack, brick-red knitted cardigan, navy loose trousers, grey lace-up shoes. Sitting upright comfortably on a simple BACKLESS wooden stool beside the table, hands naturally resting on thighs, no touching chess pieces, both feet naturally on the ground. Camera rear-right three-quarter at seated shoulder height, complete body head to BOTH shoes visible and full front of bag unobscured, backpack worn normally ON BACK on TWO original white/black shoulder straps, never on front of torso. Soft morning light, candid ordinary photograph, no additional people. Do not copy source woman or her front-carry pose. Product invariants: Exact WHITE No.1223 from Image1: softly rectangular tall white/light-offwhite fabric body with rounded corners, short BLACK top webbing carry loop, BLACK main zipper track along upper side edges and long dark pulls. Large lower-front white rectangular pocket with rounded upper corners, original BLACK curved zipper border around its top and sides with twin long dark pulls at lower-left. Within this pocket preserve a separate straight BLACK horizontal zipper near its upper part with one long dark pull at the left. Small original DARK GREY/BLACK rectangular Himawari lettering patch centered below horizontal zipper. Original white side slip pockets and black side clip/tab near pocket top. White shoulder straps with black underside/trim and original BLACK quick-release clip fittings near upper straps, original adjustment tails. Preserve exact white-black color contrast, pocket layering, seams, shape, original logo size and location, hardware. No detachable pouch, buckle belts, charms, extra pocket or chest belt. Scale: verified exterior width x height x depth 29x40x14cm. Preserve full product proportions and plausible scale relative to adult torso; no giant or miniature bag. Closed bag, no contents or internal capacity proof. Natural skin and fabric texture, credible photograph, no CGI gloss or studio mannequin. Fictional ADULT only, correct limbs/hands/feet. No real customers, celebrities, children, captions, watermark, unrelated logos or extra readable text. Output exactly1024x1536.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed actual1223 original and new portrait. White softly rectangular body, black main zip track/top carry loop, rounded lower front pocket outlined by black zip with twin long left pulls, separate horizontal black pocket zip/left pull, centered dark rectangular Himawari patch, white side slip pocket/black clip and white black-edged straps with original quick-release fittings retained. Plausible29x40x14cm scale on adult seated torso. Fictional older woman has short greying bob, coherent seated posture/hands/legs, feet partly overlapped naturally at ground, full body in frame. Red cardigan/navy trousers and chess table beside wooden stool visible. Bag worn on back rather than source front-carry pose. No material product distortion, copied source person, customer or fit claim."
+    },
+    {
+      "id": "2026-10-13-city-1010",
+      "model": "1010",
+      "productId": "coupang-ffc25c3c01be2949",
+      "image": "/assets/lookbook/2026-10-13-city-1010.webp",
+      "reference": "backups/lookbook-2026-10-13/reference-coupang-ffc25c3c01be2949.jpg",
+      "generatedSource": "backups/lookbook-2026-10-13/generated-1010.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        33,
+        45,
+        15
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-13; 2026-09-14 제조사 카탈로그 50페이지의 1010 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-ffc25c3c01be2949/main-VPop07i9BT9PMfgDjhSTPE514psIny.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8653683145",
+      "prompt": "Use case: photorealistic-natural. Asset type: ONE new 1024x1536 portrait, 2:3, for Korean Himawari LookBook. Input Image1 is a strict genuine PRODUCT reference only; reproduce this exact bag, not its source person. Scene/subject/composition: An ordinary covered subway entrance concourse with a level dry tiled floor, pale tiled wall, simple structural column and daylight from an opening ahead. No platform edge, train, stairs, ticket gates, destination text or recognizable place. Fictional East Asian man about22, tall slim approximately186cm, short cropped dark hair, clean-shaven, cream zip-up hoodie with hood DOWN so it does not hide bag handles or front, charcoal straight trousers, white sneakers. Walking with a natural small stride, arms hanging with small swing, EMPTY hands, no phone. Camera rear-left three-quarter at waist height, full body from head to BOTH shoes within frame, whole front of backpack clearly legible and unobscured. Worn on TWO original black padded shoulder straps, not carried by handles. Soft open-shade daylight with natural textures, no additional people or source person copied. Product invariants: Exact GREY No.1010 from Image1: light-grey marl softly rectangular fabric body with rounded upper corners, BLACK narrow base binding and main side zipper edging. TWO BLACK webbing carry handles joined by original black keeper with circular snap. Each front handle anchor passes through paired SILVER double oblong metal rings into BLACK rectangular X-stitched reinforcement tabs. Large lower-front grey pocket with broad grey flap, centered original WHITE rectangular Himawari EST2010 patch with BLACK border. TWO vertical BLACK buckle belts across pocket, original circular black studs above, original belt holes, black prong buckles and two long hanging black tails. Preserve paired buckles, handle rings and X stitching exactly. Tall grey side slip pockets, original black rectangular tabs near lower outer front sides, long black main zipper pull at right, BLACK padded mesh shoulder straps and original adjustment tails. Preserve GREY not khaki, original proportions, logo location, seams and black hardware. No extra waist/chest belt, pouch, charm or invented pocket. Scale: verified exterior width x height x depth 33x45x15cm. Preserve full product proportions and plausible scale relative to adult torso; no giant or miniature bag. Closed bag, no contents or internal capacity proof. Natural skin and fabric texture, credible photograph, no CGI gloss or studio mannequin. Fictional ADULT only, correct limbs/hands/feet. No real customers, celebrities, children, captions, watermark, unrelated logos or extra readable text. Output exactly1024x1536.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed actual1010 grey original and new portrait. Grey marl tall rectangle with black base/main zip edging, twin black handles/snap keeper, paired silver double rings and X-stitched black anchor tabs, grey front flap pocket/centered white black-bordered Himawari patch, paired black buckle belts/studs/holes/tails, grey side slip pockets/black outer tabs and original black padded straps preserved. Plausible33x45x15cm adult-relative scale. Fictional young male has short hair/hood down, coherent two arms/hands and natural walking legs/two white shoes fully framed. Cream hoodie/charcoal trousers, pale tiled covered entrance corridor visible; product fully legible. No extra chest belt, copied customer, capacity or performance claim."
+    }
+  ],
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-10-13-everyday-1223",
+        "2026-10-13-city-1010"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "compositionReview": {
+    "rangeStart": "2026-09-29",
+    "rangeEnd": "2026-10-13",
+    "lookbookPhotos": 38,
+    "storyPhotos": 60,
+    "review": "Directly viewed all four contact sheets covering 38 recent LookBook photos and 60 story photos through current morning. No1223 last used Oct1 black on young male at mountain lookout; today white on fictional55-year-old SoutheastAsian woman with short greying bob, seated beside public chess table, red cardigan/navy trousers, rear-right seated composition. No1010 last used Oct2 khaki on middle-aged male seated on ferry bench; today grey on fictional22-year-old tall EastAsian man, cream hoodie/charcoal trousers, walking level covered subway-entrance concourse, rear-left full-body composition. No chess-table backdrop in reviewed set. Distinct ages, genders, appearances, white/grey products, activities, locations and angles. Current morning story still lifes use No1208 mint/194L lavender/124S beige, distinct products and compositions. Both actual product originals directly viewed; fresh live catalog manufacturer Sep14 pages29/50 verify29x40x14 and33x45x15cm. Preserve1223 white-black pocket zips/center dark logo/white clipped straps and1010 paired black buckle flap/white logo/silver rings/black handles. Visible Korean copy uses short everyday titles and plain haeyo sentences; detailed scene instructions stay private."
+  }
+}
