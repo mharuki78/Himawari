@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-14",
+  "automationId": "himawari-3",
+  "expectedGeneratedImages": 3,
+  "posts": [
+    {
+      "id": "overseas-call-city-date",
+      "title": "해외 친구와 통화 약속을 잡을 때, 도시와 날짜도 함께",
+      "url": "https://himawari.co.kr/story/overseas-call-city-date.html",
+      "productId": "coupang-6829b92b91722561",
+      "model": "No.1088M",
+      "image": "assets/story/overseas-call-city-date.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-14/reference-1088M.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-14/generated-1088M.png",
+        "prompt": "Use case: product-mockup. Asset type: Korean everyday editorial blog hero, exactly1536x1024 landscape. Input Image1 is a strict genuine PRODUCT reference. Create ONE new natural photograph, NO person. Entire closed Himawari No.1088M IVORY upright on a low pale oak home desk, beside a closed slate laptop, a small simple analogue desk clock and a plain open notebook with BLANK pages. Gentle three-quarter FRONT view, full bag outline/base/handle visible, bag about65percent imageheight. Cool diffuse early morning window light from left, pale wall and modest desk lamp softly out of focus. Preserve reference exactly: ivory rounded rectangular main body, pale CORAL-PINK front carry webbing straps joined as top handle by ivory snap keeper; BOTH vertical coral straps cross ivory plastic double adjuster loops at midfront and end at front-pocket top. Upper main zipper and piping PALE BLUE-GREEN, two original ivory long pulls. Small round ivory logo badge with coral rim and original coral Himawari EST2020 lettering centered upperfront. Pale CORAL lower rounded rectangular zip pocket with blue-green horizontal zipper and original ivory long pull at LEFT; coral reinforcement at bottom; original ivory shoulder straps behind, sidepockets and seams. Verified exterior width28 height41.5 depth14cm; preserve tall slim proportions and all colors/hardware/pocket structure. Clock is just a fictional prop, no readable words or city labels. Props outside closed bag, no internal-fit evidence, no extra accessories, no invented logos or pockets, no watermark or CGI gloss.",
+        "generatedAt": "2026-10-13T23:05:15.449Z",
+        "catalogUrl": "https://www.coupang.com/vp/products/8425000048",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6829b92b91722561/main-w7rzS2NFDpBQqJDKqrvCEDAKE9FDmJ.jpg"
+      },
+      "dimensionsCm": {
+        "width": 28,
+        "height": 41.5,
+        "depth": 14
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 27페이지의 1088M 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct visual comparison against original confirms tall ivory rounded rectangular body, coral carry handle and vertical webbing with ivory double adjusters, original round coral-rimmed logo, two ivory main pulls, blue-green main and front zip lines, coral lower pocket/base, side pockets and ivory shoulder straps. Entire bag visible and supported; verified 28 x 41.5 x 14 cm proportions plausible beside laptop and clock. Props outside, no fit/real-call claim."
+    },
+    {
+      "id": "jigsaw-board-finished-size",
+      "title": "직소 퍼즐을 시작하기 전, 완성 크기만큼 자리를 비워두세요",
+      "url": "https://himawari.co.kr/story/jigsaw-board-finished-size.html",
+      "productId": "coupang-e1dc5d1170e93e35",
+      "model": "No.9018",
+      "image": "assets/story/jigsaw-board-finished-size.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-14/reference-9018.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-14/generated-9018.png",
+        "prompt": "Use case: product-mockup. Asset type: landscape1536x1024 Korean hobby blog hero. Input Image1 is strict genuine PRODUCT reference. ONE newly staged realistic still-life photograph, NO people. Entire closed Himawari No.9018 PURPLE multicolor stands on clean floor next to a low maple hobby table, on top a large thin flat rectangular grey puzzle board containing a simple muted geometric jigsaw frame and a few loose puzzle pieces well inside the edges. Gentle FRONT three-quarter composition, full backpack outline/handle/base visible, bag about60percent imageheight. Diffuse side window daylight and natural nylon texture, pale sage wall. Preserve exact product from original: CORAL mainfront, blue-green main zipper surround and base border, YELLOW lower side slip pockets, PURPLE shoulder straps and lower front flap. TWO grey top carry handles joined with short grey snap keeper. Each front handle attaches with original SILVER double oblong ring over GREY rectangular X-stitched anchor. Coral horizontal upperfront ZIP pocket with grey long pull left. LOWER GREY box pocket with PURPLE rounded flap, center original offwhite Himawari EST2020 rectangular patch with grey stitched border, TWO GREY buckle belts with silver snap studs, traditional silver prong buckles, punched holes and original tails. Grey pull/rings on side. Verified exterior width28 height40 depth17cm, accurate body ratios. Preserve every color panel, logo, pocket, seam and hardware. Puzzle board and pieces are separate props outside bag, no capacity claim. No readable text on props, no extra pouches/straps/decorations, no watermarks, no plastic shine.",
+        "generatedAt": "2026-10-13T23:05:46.135Z",
+        "catalogUrl": "https://www.coupang.com/vp/products/9155539894",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e1dc5d1170e93e35/main-l4NT0MOzV2NVeu4uGrf9bLJBdbRr5k.jpg"
+      },
+      "dimensionsCm": {
+        "width": 28,
+        "height": 40,
+        "depth": 17
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 40페이지의 9018 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct visual comparison confirms coral front, blue-green surround and base, yellow side pockets, purple shoulder straps/front flap, paired grey handles with snap keeper, double oblong silver rings on grey X-stitched anchors, horizontal coral front zip, grey box pocket and two grey buckle belts with silver studs/prongs and holes. Original Himawari patch retained. Entire bag visible; 28 x 40 x 17 cm proportions plausible. Puzzle is fictional separate prop, no internal-fit claim."
+    },
+    {
+      "id": "audiobook-narration-speed-check",
+      "title": "오디오북 재생 속도는 익숙한 대목에서 맞춰보세요",
+      "url": "https://himawari.co.kr/story/audiobook-narration-speed-check.html",
+      "productId": "coupang-0d8cb478bf996ce8",
+      "model": "No.8029",
+      "image": "assets/story/audiobook-narration-speed-check.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-14/reference-8029.jpg",
+      "generation": {
+        "tool": "built-in image_gen",
+        "source": "backups/story-2026-10-14/generated-8029.png",
+        "prompt": "Use case: photorealistic-natural. Asset type: landscape1536x1024 editorial wearing photo for Korean audiobook blog. Input Image1 is strict genuine PRODUCT reference, not a person identity. Generate ONE candid photo of an adult woman aged52, about158cm tall, medium olive skin, short curly dark hair with a few grey strands, ordinary slightly stocky build, natural wrinkles. Wearing oatmeal cotton overshirt with sleeves rolled and brick-red loose trousers, plain dark over-ear headphones, she has STOPPED beside an empty wooden bench on a quiet Korean riverside promenade to tap her smartphone. Photographer sees rear three-quarter view from waistheight with complete backpack mainfront visible on her back; her torso turned naturally slightly sideways, no hand covering bag. Waist-to-head plus hips framing with river, reeds and timber railing softly visible. Soft cloudy afternoon light from left,35mm f4 documentary feel, real cotton folds, subtle hair movement, restrained natural color, no beauty retouch. Exact Himawari No.8029 NAVY-BROWN from reference worn on BOTH original navy padded shoulder straps: rounded rectangular deep NAVY body, dark FOREST-GREEN mainzipper rim, top padded green carry handle and GREEN side slip pockets, large raised NAVY upper front zip pocket with navy zipper and navy ring pull onLEFT, upper pocket original WHITE rectangular SUN FLOWER/Himawari word patch towardRIGHT. Large BROWN rounded lower front zipper pocket, original brown zipper/pullLEFT; small central NAVY pocket with FOREST-GREEN rounded flap and single NAVY snap. Preserve all original seams, colors, zipper count, hardware, patch placement and pocket layering. Verified exterior width27 height39 depth14cm, realistic compact size from shoulders to above hips for158cm adult; not oversized. The phone screen unreadable. No cheststrap/waistbelt/extra charm, no added product features. No customer/testimonial implication, no other people, no invented readable words, no watermark, no glossy CGI or malformed hands.",
+        "generatedAt": "2026-10-13T23:06:08.407Z",
+        "catalogUrl": "https://www.coupang.com/vp/products/9296044021",
+        "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-0d8cb478bf996ce8/main-8PtRLshwGhOc4JDgGcyxYvngeNL5zA.jpg"
+      },
+      "dimensionsCm": {
+        "width": 27,
+        "height": 39,
+        "depth": 14
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 45페이지의 8029 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct visual comparison confirms navy main body and padded straps, forest-green rim/top handle/side pockets, raised navy upper zip pocket with original white SUN FLOWER/Himawari patch to right and ring pull left, brown lower zip pocket, small navy pocket with green rounded flap and navy snap, original side zipper hardware. Both shoulder straps worn naturally; 27 x 39 x 14 cm size plausible on middle-aged adult, full bag front visible above hips. Natural hand/phone contact, hair, fabric folds and cloudy light; no invented chest strap or customer/testimonial claim."
+    }
+  ],
+  "topicsReviewed": 146,
+  "overlapReview": "Reviewed all 146 previous titles and summaries, compared complete 179804-character body corpus with normalized Korean 5-grams, and manually read thematic neighbours. International-call appointment timezone and city differs from stargazing timestamps and meeting entrance location; puzzle finished footprint and work-surface preparation differs from crossword candidate marks, board-game component inventory and recording collage layouts; audiobook playback speed and per-book versus per-device default settings differs from physical e-reader packing, quotation notes and recording a pause point. No matching core topic found. Plain concrete Korean editorial suggestions, no personal experience/customer testimony or unverified product feature/fit claims. Specific software/puzzle claims attributed to freshly checked official sources. Three different genuine models last used Oct5; one wearing image on Wed following Mon wearing image provides two days so far this week. Humanizer review removed forced contrast, mechanical triads and repeated production notes from article body.",
+  "completionReceipt": "backups/story-runs/2026-10-14.deployment.json",
+  "expectedCount": 3,
+  "editions": {
+    "morning": {
+      "postIds": [
+        "overseas-call-city-date",
+        "jigsaw-board-finished-size",
+        "audiobook-narration-speed-check"
+      ],
+      "stage": "prepared"
+    }
+  }
+}

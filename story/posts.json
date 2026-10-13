@@ -1,5 +1,53 @@
 [
   {
+    "id": "overseas-call-city-date",
+    "title": "해외 친구와 통화 약속을 잡을 때, 도시와 날짜도 함께",
+    "date": "2026-10-14",
+    "summary": "서로 다른 나라에서 통화할 때는 몇 시인지보다 누구의 시간을 기준으로 했는지부터 확인해보세요. 각자 있는 도시와 통화 날짜를 함께 남겨두면 약속을 다시 읽기 쉽습니다.",
+    "description": "서로 다른 나라에서 통화할 때는 몇 시인지보다 누구의 시간을 기준으로 했는지부터 확인해보세요. 각자 있는 도시와 통화 날짜를 함께 남겨두면 약속을 다시 읽기 쉽습니다.",
+    "tags": [
+      "통화 약속",
+      "시간대",
+      "No.1088M"
+    ],
+    "image": "../assets/story/overseas-call-city-date.webp",
+    "imageAlt": "집 책상 위 아이보리 Himawari No.1088M 백팩과 닫힌 노트북, 작은 시계, 빈 노트를 표현한 AI 연출 사진",
+    "url": "overseas-call-city-date.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "jigsaw-board-finished-size",
+    "title": "직소 퍼즐을 시작하기 전, 완성 크기만큼 자리를 비워두세요",
+    "date": "2026-10-14",
+    "summary": "상자가 놓일 자리와 퍼즐을 다 맞춘 뒤 필요한 자리는 다릅니다. 상자의 완성 크기를 읽고, 조각을 펼칠 공간까지 마련한 뒤 첫 조각을 꺼내보세요.",
+    "description": "상자가 놓일 자리와 퍼즐을 다 맞춘 뒤 필요한 자리는 다릅니다. 상자의 완성 크기를 읽고, 조각을 펼칠 공간까지 마련한 뒤 첫 조각을 꺼내보세요.",
+    "tags": [
+      "직소 퍼즐",
+      "작업판",
+      "No.9018"
+    ],
+    "image": "../assets/story/jigsaw-board-finished-size.webp",
+    "imageAlt": "퍼즐 작업판을 놓은 낮은 나무 테이블 옆에 세워둔 퍼플 Himawari No.9018 백팩을 표현한 AI 연출 사진",
+    "url": "jigsaw-board-finished-size.html",
+    "author": "히마와리 편집팀"
+  },
+  {
+    "id": "audiobook-narration-speed-check",
+    "title": "오디오북 재생 속도는 익숙한 대목에서 맞춰보세요",
+    "date": "2026-10-14",
+    "summary": "재생 속도를 바꿨다면 짧은 대목을 듣고 이야기의 흐름을 따라갈 수 있는지 살펴보세요. 책마다 속도를 따로 정할 수 있는 앱도 있습니다.",
+    "description": "재생 속도를 바꿨다면 짧은 대목을 듣고 이야기의 흐름을 따라갈 수 있는지 살펴보세요. 책마다 속도를 따로 정할 수 있는 앱도 있습니다.",
+    "tags": [
+      "오디오북",
+      "재생 속도",
+      "No.8029"
+    ],
+    "image": "../assets/story/audiobook-narration-speed-check.webp",
+    "imageAlt": "강변 산책길 벤치 옆에 멈춰 헤드폰을 쓴 중년 성인 여성이 네이비브라운 Himawari No.8029 백팩을 메고 휴대전화를 보는 AI 착용 연출 사진",
+    "url": "audiobook-narration-speed-check.html",
+    "author": "히마와리 편집팀"
+  },
+  {
     "id": "meeting-place-entrance-pin",
     "title": "약속 장소를 보낼 때, 건물 입구도 함께",
     "date": "2026-10-13",
