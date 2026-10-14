@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-14",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-14/deployment.json",
+  "entries": [
+    {
+      "id": "2026-10-14-city-1084h",
+      "model": "1084H",
+      "productId": "coupang-988f225068675842",
+      "image": "/assets/lookbook/2026-10-14-city-1084h.webp",
+      "reference": "backups/lookbook-2026-10-14/reference-coupang-988f225068675842.jpg",
+      "generatedSource": "backups/lookbook-2026-10-14/generated-1084H.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        28.5,
+        39,
+        12
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-14; 2026-09-14 제조사 카탈로그 26페이지의 H1084 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-988f225068675842/main-TYNaIxu0fFkpKYtSMPbssYxCb5tCU4.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8249897457",
+      "prompt": "Use case: photorealistic-natural. Asset type: ONE newly generated1024x1536 portrait,2:3, for Korean Himawari LookBook. Input Image1 is a strict genuine PRODUCT reference, not a person identity. Scene/subject/composition: Ordinary quiet neighborhood brick wall beside a simple RED upright mailbox, clean level grey paving and a few leaves, no readable writing or identifying landmarks. Fictional South Asian man aged67, broad average build about174cm tall, medium brown skin, short silver-grey hair and a neatly trimmed white-grey beard. Charcoal crewneck knitted sweater, olive straight cotton trousers, dark tan slip-on shoes. Standing naturally beside the mailbox, holding ONE small plain cream envelope in his left hand at his side, not posting it or touching anything. His right hand hangs naturally relaxed. Camera rear-LEFT three-quarter, full body from head to BOTH shoes visible, complete product front unobscured on his back. Natural soft morning side light,35mm documentary photograph, knit texture and trouser creases, no pose toward camera, no additional people. Product invariants: Exact LIGHT GREY No.1084H: soft narrow rectangular lightgrey body with rounded upper corners and darker GREY bottom binding. TWO GREY webbing top carry handles joined by original TAN keeper. Each front handle ends in a GREY stitched rectangular anchor. Upper centre original round TAN stitched badge with WHITE Himawari lettering. One LARGE LIGHTGREY lower front rectangular pocket with a straight folded-over lightgrey top lip, its original TAN long zipper pull at LEFT under lip. Main zipper BLACK track along rounded top and side edges, original TAN paired long pulls at lowerRIGHT. Original lightgrey upper padded shoulder straps and DARKGREY webbing adjustment tails, original strap buckles, side seams and original narrow grey lower outer tabs. No added bottle pocket, chest strap, cap pouch or buckle belts. Preserve exact logo shape/location, grey-tan palette, stitching, tall slender proportions and pocket arrangement. Worn naturally ON BACK on BOTH original shoulder straps; full bag front and outline unobscured. Verified exterior width x height x depth 28.5x39x12cm. Preserve accurate product proportions and plausible scale relative to adult torso. Closed bag, no contents or capacity proof. Correct limbs, hands, feet and bench/body contact, believable fabric weave and natural skin, restrained camera colors and no CGI gloss. Fictional ADULT only, no customer/testimonial claim, no real source person, celebrity, child, watermark, captions, unrelated brands or accidental readable lettering. Exactly1024x1536.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed original and generated portrait. Light-grey narrow rectangular rounded body, grey bottom binding, twin grey top handles/tan keeper, stitched grey anchors, round tan white-lettered Himawari badge, large lower light-grey pocket with folded top lip/tan left pull, black main zip track and paired tan right pulls, original lightgrey shoulder straps/dark grey adjuster tails retained. No added pockets or chest belt. Plausible28.5x39x12cm scale on older adult torso. Fictional silver-haired bearded man wears charcoal knit/olive trousers, stands naturally holding plain envelope in right hand (opposite prompt hand, immaterial), full body with two shoes and coherent hands visible beside red mailbox. No source person copy, performance or fit claim.",
+      "generatedAt": "2026-10-14T00:04:04.734Z"
+    },
+    {
+      "id": "2026-10-14-travel-1111",
+      "model": "1111",
+      "productId": "store-13513526834",
+      "image": "/assets/lookbook/2026-10-14-travel-1111.webp",
+      "reference": "backups/lookbook-2026-10-14/reference-store-13513526834.jpg",
+      "generatedSource": "backups/lookbook-2026-10-14/generated-1111.png",
+      "imageKind": "generated",
+      "dimensionsCm": [
+        43,
+        47,
+        24
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products on 2026-10-14; 2026-09-14 제조사 카탈로그 6페이지의 1111 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260511_282/1778476837383QWJQU_JPEG/8477290463441894_476336728.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13513526834",
+      "prompt": "Use case: photorealistic-natural. Asset type: ONE newly generated1024x1536 portrait,2:3, for Korean Himawari LookBook. Input Image1 is a strict genuine PRODUCT reference, not a person identity. Scene/subject/composition: Fictional ordinary highway rest-area outdoor terrace beside a simple glass building and grey metal canopy, clean pale paving, small planted grass beds and blurred quiet parking area far behind; no readable signs, recognizable destination, vehicle logos or people. Fictional Black woman aged29, athletic broad-shouldered build about180cm tall, dark skin, short braids gathered in a high bun ABOVE backpack. Cream long-sleeve cotton shirt, navy sleeveless lightly quilted vest, lightgrey loose trousers, plain brown hiking shoes. Sitting upright on a simple BACKLESS grey metal bench with both feet naturally on floor and hands relaxed on thighs, head gently turned toward the terrace, not looking at camera. Camera rear-RIGHT three-quarter at seated shoulder height, complete body head to BOTH shoes visible; whole backpack front and both lower side pouches legible. Diffuse cloudy midday light and soft bounce from paving,50mm f4 candid frame, natural skin, folds and hair detail. Do not copy any human face/body/wardrobe from the product reference. Product invariants: Image1 includes a source person: use ONLY the exact GREEN No.1111 product, NEVER reproduce that person. Preserve broad large deep FOREST-GREEN fabric backpack body, GREEN large top flap with central PURPLE V-shaped triangular panel and original small BLACK inverted-triangle Himawari patch with WHITE lettering. Two original BLACK webbing closure belts with BLACK plastic QUICK-RELEASE buckles over upperfront, short natural hanging adjustment tails. Large lower front GREEN rectangular pocket with broad PURPLE straight horizontal flap/band across its top. Original tall GREEN lower side zip pouches with PURPLE vertical zipper surrounds and BLACK zipper tracks/ring pulls; visible right pouch has original tall rounded outline. GREEN padded shoulder straps with BLACK undersides/trim and original black adjusters, small PURPLE top carry loop as seen in reference. Preserve all visible seams, color panels, logo shape/location, real pouch arrangement and plastic hardware; flap closed, no invented internal structure. Verified width43 height47 depth24cm means a genuinely broad substantial bag, almost square front, not a narrow generic school bag; realistic size on tall broad-shouldered adult. No invented waist/chest belt, charms, extra buckles, logo or pocket. Worn naturally ON BACK on BOTH original shoulder straps; full bag front and outline unobscured. Verified exterior width x height x depth 43x47x24cm. Preserve accurate product proportions and plausible scale relative to adult torso. Closed bag, no contents or capacity proof. Correct limbs, hands, feet and bench/body contact, believable fabric weave and natural skin, restrained camera colors and no CGI gloss. Fictional ADULT only, no customer/testimonial claim, no real source person, celebrity, child, watermark, captions, unrelated brands or accidental readable lettering. Exactly1024x1536.",
+      "fidelityReviewed": true,
+      "fidelityReview": "Directly viewed original product-on-source-person and new fictional adult portrait. Broad forest-green body, green flap with purple V-panel and black triangular white-lettered Himawari patch, two black quick-release buckle straps/tails, green lower front pocket with horizontal purple top, tall green side pouches/purple zipper surrounds/black ring pulls, purple carry loop and green black-edged padded shoulder straps retained. Large43x47x24cm scale plausible on tall broad adult seated torso. New Black woman with braided high bun, cream shirt/navy vest/lightgrey trousers, two brown shoes and coherent sitting legs/hands, full body on backless bench at glass-front rest terrace. Source man and white jacket not copied. No material shape/hardware distortion or invented chest/waist belt; no customer, capacity or performance claim.",
+      "generatedAt": "2026-10-14T00:04:22.558Z"
+    }
+  ],
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-10-14-city-1084h",
+        "2026-10-14-travel-1111"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "compositionReview": {
+    "rangeStart": "2026-09-30",
+    "rangeEnd": "2026-10-14",
+    "lookbookPhotos": 38,
+    "storyPhotos": 60,
+    "review": "Directly viewed four freshly built contact sheets containing38 LookBook and60 story photos through current morning, including new1088M/9018 still lifes and8029 middle-aged woman river scene. No1084H last used Oct2 mint on young EastAsian woman at tram stop; today lightgrey on fictional67-year-old SouthAsian man with silver-grey hair/beard, charcoal knit/olive trousers, holding plain envelope beside red mailbox, rear-left full-body standing. No1111 last used Oct3 brown on older male in forest; today green-purple on fictional29-year-old tall broad-shouldered Black woman with braided high bun, cream shirt/navy vest/lightgrey trousers, seated at rest-area terrace, rear-right full-body. Distinct ages/genders/appearances, slim28.5x39x12cm versus broad43x47x24cm bag, city versus travel, standing versus seated and background. Source1111 person will not be copied. Exact product originals viewed directly, live manufacturer Sep14 pages26/6 dimensions confirmed. Short concrete Korean haeyo descriptions; no customer experience, invented performance, destination claim or repeated top AI paragraph."
+  }
+}
