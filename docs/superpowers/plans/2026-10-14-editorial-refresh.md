@@ -30,4 +30,8 @@
 - [x] Integrate all article JSON, add inline figures, keep canonical URLs/dates and update metadata/feed.
 - [x] Change daily publication docs, verification requirements and existing automation prompt for October 15.
 - [x] Verify all articles, review individual exceptions and run relevant tests and desktop/mobile browser checks.
-- [ ] Commit only this task's files, push, verify exact production deployment and document completion.
+- [x] Commit only this task's files, push, verify exact production deployment and document completion.
+
+## Release evidence
+
+All 149 pages passed `verify-story-editorial.mjs 2026-10-14 --published` after production READY and desktop/mobile checks. Bodies contain 2,470–3,355 characters; every article has two photographs. The release adds 59 catalogue reference photographs and eight newly generated supporting photographs, with AI disclosures. All 216 public image assets and 149 article pages matched the deployed files. The complete test suite passed 216 tests. Detailed deployment, visual review, source provenance and publication receipts are saved under `backups/editorial-refresh-2026-10-14/`. The existing automation preserves its schedule and applies the new standards from October 15.
