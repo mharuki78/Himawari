@@ -106,7 +106,12 @@ test('최신 이야기 3편은 독립 페이지·대표 이미지·검색 메타
     assert.ok(html.includes(`<meta property="og:image" content="https://himawari.co.kr/${imagePath}">`));
     assert.match(html, /"@type":"BlogPosting"/);
     assert.match(html, /class="story-related"/);
-    assert.match(html, /class="story-faq"/);
+    // Magazine articles include FAQ only when there are actual additional questions.
+    const schema = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(match => JSON.parse(match[1]));
+    const faq = schema.find(data => data['@type'] === 'FAQPage');
+    const visibleQuestions = [...html.matchAll(/<summary>(.*?)<\/summary>/g)].map(match => match[1]);
+    assert.deepEqual(visibleQuestions, (faq?.mainEntity || []).map(question => question.name));
+    if (visibleQuestions.length) assert.match(html, /class="story-faq"/);
     assert.equal(sitemap.includes(`https://himawari.co.kr/story/${slug}.html`), true);
     assert.equal(feed.includes(`https://himawari.co.kr/story/${slug}.html`), true);
   }

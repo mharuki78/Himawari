@@ -1,5 +1,17 @@
 # LookBook daily publication
 
+## October 14 approval: varied photography from October 15
+
+Keep the existing photographs. Starting with publication date 2026-10-15, retain 09:00 publication and 09:30 missing-stage recovery, normally two new photos a day. User requests a meaningful change in photographic direction, beyond changing the place, person or clothes. This section overrides older guidance that favors rear full-body views. The product must remain legible and faithful.
+
+Before prompts, review the last 14 days of LookBook and story photographs directly. Compare camera angle, distance, framing, subject share of the frame, product share of the frame, carrying method, action and lighting, as well as place/outfit/person. Plan two distinct approaches for each day: for example a side waist-up activity view and an environmental full-body street view. Do not publish two rear full-body pictures as the whole day's set. Rotate street observations, close wearable details, seated activities, movement, contextual environmental portraits and restrained catalog-style photographs. A new background with the same rear pose is not a different approach.
+
+Hands holding a bag, shoulder carry and front/three-quarter poses are allowed only when that specific product's handles/straps support them and the shape, pockets and logo remain visible. Do not invent straps, carrying modes, product surfaces or hidden construction. Show adults of varied ages, genders and appearances naturally; do not put generation instructions or demographic inventories into public captions. Retain natural short Korean titles/descriptions and existing viewer AI disclosure.
+
+Each manifest entry adds `composition: {approach, angle, framing, activity, setting}` with precise values matching the inspected output, not merely the intended prompt. Use `angle: rear` and `framing: full-body` for that exact combination; use meaningful labels such as side, front-three-quarter, waist-up, close-detail, environmental for other views. Save the 14-day visual comparison, reason the pair differs and direct output review in the date backup. `verify-daily-lookbook.mjs` checks planning fields, differing approach/angle/framing and rejects a whole set of rear full-body photographs on/after October 15. It does not replace visual comparison or fidelity review.
+
+All existing source-photo, verified-dimension, imagegen, optimization, build, test, exact production READY and desktop/mobile interaction verification requirements remain in force. Do not regenerate prior approved photos or change the schedule.
+
 ## Temporary second edition: October 3–7, 2026
 
 User authorized on 2026-10-03: publish twice each Korean day through October 7 inclusive. This section overrides the normal daily maximum below only for publication dates 2026-10-03 through 2026-10-07. Publish 2 new photos at 09:00 and 2 more at 17:00 (4 total). Check only missing stages at 09:30 and 17:30. The already completed October 3 morning edition counts. Resume the normal morning-only 2–3 photos/day on October 8. Historical four-photo days in this authorized window remain valid after October 7.

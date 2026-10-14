@@ -47,6 +47,15 @@
 .story-body ul { margin: 0 0 1.7em; padding-left: 1.35rem; }
 .story-body li { margin-bottom: .55em; }
 .story-body li::marker { color: var(--green); }
+.story-inline-figure { margin: 2.7em 0; }
+.story-inline-figure img { display: block; width: 100%; height: auto; max-height: 560px; object-fit: contain; background: #fff; border-radius: var(--radius-card); }
+.story-inline-figure figcaption, .story-post-visual figcaption { margin: .85rem 0 2rem; font-size: .78rem; line-height: 1.65; color: var(--ink); opacity: .8; overflow-wrap: anywhere; }
+.story-body h3 { margin: 2em 0 .65em; font-size: 1.2rem; line-height: 1.5; }
+.story-body ol { margin: 0 0 1.7em; padding-left: 1.4rem; }
+.story-body blockquote { margin: 2em 0; padding: .1em 0 .1em 1.2em; border-left: 2px solid var(--moss); }
+.story-body table { width: 100%; margin: 2em 0; border-collapse: collapse; table-layout: fixed; font-size: .9rem; line-height: 1.65; overflow-wrap: anywhere; }
+.story-body th, .story-body td { padding: .7em .55em; border-bottom: 1px solid var(--moss); text-align: left; vertical-align: top; }
+.story-body th { font-weight: 650; background: var(--color-sky-wash); }
 .story-faq, .story-sources { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--green); }
 .story-faq > h2, .story-sources > h2 { margin: 0 0 1.5rem; font-size: 1.35rem; font-weight: 450; }
 .story-faq details { padding: 1.1rem 0; border-bottom: 1px solid var(--green); }

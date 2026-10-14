@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { validateStoryCount } from './lib/publication-schedule.mjs';
+import { validateStoryCount, usesMagazineStandard, validateStoryEditorial } from './lib/publication-schedule.mjs';
 
 // Run from any directory. A failed or partial publication must exit nonzero.
 const root = path.resolve(import.meta.dirname, '..');
@@ -20,9 +20,16 @@ validateStoryCount(date, posts.length, expectedCount);
 assert.equal(run.posts.length, expectedCount);
 assert.equal(new Set(run.posts.map(p => p.image)).size, expectedCount, 'Images must differ');
 assert.equal(new Set(run.posts.map(p => p.model)).size, expectedCount, 'Product models must differ');
-const expectedGeneratedImages = date >= '2026-09-20' ? expectedCount : 1;
-const generated = run.posts.filter(p => p.imageKind === 'generated').length;
-assert.equal(generated, expectedGeneratedImages, `Expected ${expectedGeneratedImages} new generated images`);
+const expectedGeneratedImages = usesMagazineStandard(date) ? expectedCount * 2 : date >= '2026-09-20' ? expectedCount : 1;
+const generatedImages = run.posts.flatMap(p => usesMagazineStandard(date) ? (p.images || []).filter(i => i.imageKind === 'generated').map(i => i.image) : p.imageKind === 'generated' ? [p.image] : []);
+const generated = generatedImages.length;
+assert.equal(new Set(generatedImages).size, generated, 'Generated images must differ across posts');
+if (usesMagazineStandard(date)) {
+  assert.ok(generated >= expectedGeneratedImages, `Expected at least ${expectedGeneratedImages} new generated images`);
+  assert.equal(run.expectedGeneratedImages, generated, 'Manifest generated image total differs');
+  assert.equal(new Set(run.posts.map(p=>p.editorialForm)).size, expectedCount, 'Use different editorial forms for the daily articles');
+  assert.equal(new Set(run.posts.map(p=>p.coreQuestion)).size, expectedCount, 'Use different core questions for the daily articles');
+} else assert.equal(generated, expectedGeneratedImages, `Expected ${expectedGeneratedImages} new generated images`);
 const files = ['story/posts.json', 'sitemap.xml', 'feed.xml', manifestPath];
 const rewrites = JSON.parse(read('vercel.json')).rewrites || [];
 for (const post of posts) {
@@ -30,13 +37,24 @@ for (const post of posts) {
   assert.ok(record, `Missing manifest: ${post.id}`);
   const file = `story/${post.url}`;
   const html = read(file);
+  const illustrations = validateStoryEditorial(date, record, html);
+  for (const illustration of illustrations) {
+    assert.ok(fs.statSync(path.join(root, illustration)).size > 1000, `Missing image: ${illustration}`);
+    files.push(illustration);
+  }
+  if (usesMagazineStandard(date)) for (const photo of record.images) {
+    for (const source of [photo.reference, photo.generatedSource].filter(Boolean)) {
+      assert.ok(source.startsWith(`backups/story-${date}/`) && !source.includes('..'), 'Source must belong to this publication backup');
+      assert.ok(fs.statSync(path.join(root, source)).size > 1000, `Missing source: ${source}`);
+    }
+  }
   const asset = path.posix.normalize(`story/${post.image}`);
   assert.equal(record.image, asset);
   assert.ok(fs.statSync(path.join(root, asset)).size > 1000, `Missing image: ${asset}`);
   assert.ok(html.includes(`<h1>${post.title}</h1>`));
   assert.ok(html.includes(`datetime="${date}"`));
   assert.ok(html.includes(`rel="canonical" href="${record.url}"`));
-  assert.ok(read('sitemap.xml').includes(`<loc>${record.url}</loc><lastmod>${date}</lastmod>`));
+  assert.ok(read('sitemap.xml').includes(`<loc>${record.url}</loc><lastmod>${post.dateModified || date}</lastmod>`));
   assert.ok(read('feed.xml').includes(record.url), 'Missing RSS item');
   const structured = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map(m => JSON.parse(m[1]));
   const article = structured.find(data => data['@type'] === 'BlogPosting');
@@ -71,4 +89,4 @@ if (process.argv.includes('--published')) {
   }
   execFileSync('git', ['merge-base', '--is-ancestor', receipt.commit, 'origin/main'], { cwd: root });
 }
-console.log(JSON.stringify({ date, posts: posts.map(p => p.url), images: expectedCount, generated, stage: process.argv.includes('--published') ? 'published' : 'prepared' }, null, 2));
+console.log(JSON.stringify({ date, posts: posts.map(p => p.url), images: run.posts.reduce((n,p)=>n+(p.images?.length || 1),0), generated, stage: process.argv.includes('--published') ? 'published' : 'prepared' }, null, 2));

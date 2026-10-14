@@ -1,0 +1,48 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+import { renderRevision, escapeHtml } from './lib/story-editorial.mjs';
+import { bodyText } from './lib/publication-schedule.mjs';
+const root=path.resolve(import.meta.dirname,'..');
+const date=process.argv[2]; assert.match(date,/^\d{4}-\d{2}-\d{2}$/);
+const base=path.join(root,`backups/editorial-refresh-${date}`);
+const inventory=JSON.parse(fs.readFileSync(path.join(base,'inventory.json')));
+const photos=JSON.parse(fs.readFileSync(path.join(base,'reference-provenance.json')));
+const supplementsPath=path.join(base,'supplement-provenance.json');
+const supplements=fs.existsSync(supplementsPath)?JSON.parse(fs.readFileSync(supplementsPath)):[];
+const duplicateIds=fs.existsSync(path.join(base,'duplicate-photos.json'))?JSON.parse(fs.readFileSync(path.join(base,'duplicate-photos.json'))):[];
+const baseline=JSON.parse(fs.readFileSync(path.join(base,'posts-before.json')));
+const current=JSON.parse(fs.readFileSync(path.join(root,'story/posts.json')));
+assert.deepEqual(current.map(p=>[p.id,p.date,p.url,p.image]),baseline.map(p=>[p.id,p.date,p.url,p.image]),'Story identities changed since backup; reconcile first');
+const partial=process.argv.includes('--partial');
+const revisions=inventory.map((p,i)=>{
+ const file=path.join(base,`batch-${Math.floor(i/25)}/revisions/${p.id}.json`);
+ return fs.existsSync(file)?JSON.parse(fs.readFileSync(file)):null;
+});
+if(!partial)assert.equal(revisions.filter(Boolean).length,inventory.length,'All articles must be revised before final build');
+const records=[];
+const posts=inventory.map((p,i)=>{
+ const revision=revisions[i];if(!revision)return baseline[i];
+ const actual=photos.find(x=>x.productId===p.product.id);assert.ok(actual,`Missing actual product photograph ${p.id}`);
+ const photo=duplicateIds.some(x=>x.id===p.id)?supplements.find(x=>x.productId===p.product.id):actual;
+ assert.ok(photo,`Missing distinct supporting photograph ${p.id}`);
+ const html=renderRevision(p,revision,photo,date);
+ const chars=bodyText(html).length;assert.ok(chars>=2400,`${p.id}: ${chars} characters`);
+ fs.writeFileSync(path.join(root,'story',p.url),html);
+ const sha256=crypto.createHash('sha256').update(html).digest('hex');
+ records.push({id:p.id,url:`https://himawari.co.kr/story/${p.url}`,publishedDate:p.date,title:revision.title,bodyChars:chars,editorialForm:revision.editorialForm,productId:p.product.id,model:p.product.model,referenceAsset:photo.asset,referenceSourceUrl:photo.sourceUrl,supportingKind:photo.kind||'reference',productMappingNote:p.productMappingNote||'Existing publication product mapping retained',sha256});
+ return {...baseline[i],title:revision.title,summary:revision.summary,description:revision.summary,author:'히마와리 편집팀',dateModified:date,editorialForm:revision.editorialForm,images:[baseline[i].image,`../${photo.asset}`]};
+});
+fs.writeFileSync(path.join(root,'story/posts.json'),JSON.stringify(posts,null,2)+'\n');
+let sitemap=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
+for(const record of records){const loc=record.url.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');sitemap=sitemap.replace(new RegExp(`(<loc>${loc}<\\/loc><lastmod>)[^<]+(<\\/lastmod>)`),`$1${date}$2`);}
+fs.writeFileSync(path.join(root,'sitemap.xml'),sitemap);
+const pubDate=date=>new Date(`${date}T00:00:00Z`).toUTCString().replace('GMT','+0900');
+const rss=`<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel>\n    <title>Himawari 이야기</title>\n    <link>https://himawari.co.kr/story/</link>\n    <description>Himawari의 제품과 일상, 여행과 취미를 함께 읽는 이야기.</description>\n    <language>ko</language>\n${posts.map(p=>`    <item>\n      <title>${escapeHtml(p.title)}</title>\n      <link>https://himawari.co.kr/story/${p.url}</link>\n      <description>${escapeHtml(p.summary)}</description>\n      <pubDate>${pubDate(p.date)}</pubDate>\n      <guid isPermaLink="true">https://himawari.co.kr/story/${p.url}</guid>\n    </item>`).join('\n')}\n  </channel>\n</rss>\n`;
+fs.writeFileSync(path.join(root,'feed.xml'),rss);
+fs.mkdirSync(path.join(root,'docs/story-editorial-runs'),{recursive:true});
+const manifest={date,stage:records.length===inventory.length?'prepared':'draft',expectedPosts:inventory.length,completedPosts:records.length,completionReceipt:`backups/editorial-refresh-${date}/deployment.json`,posts:records};
+fs.writeFileSync(path.join(root,`docs/story-editorial-runs/${date}.json`),JSON.stringify(manifest,null,2)+'\n');
+fs.writeFileSync(path.join(base,'progress.json'),JSON.stringify({...JSON.parse(fs.readFileSync(path.join(base,'progress.json'))),stage:manifest.stage,completedPosts:records.length,remaining:records.length===inventory.length?['validation','production']:['rewrite-all','validation','production']},null,2));
+console.log(JSON.stringify({stage:manifest.stage,posts:records.length,expected:inventory.length,minChars:Math.min(...records.map(x=>x.bodyChars))}));
