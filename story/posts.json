@@ -1,5 +1,73 @@
 [
   {
+    "id": "photo-print-surface-comparison",
+    "title": "유광과 무광 인화, 같은 사진을 다른 빛 아래에서",
+    "date": "2026-10-15",
+    "summary": "인화지의 유광과 무광은 사진을 보는 빛과 각도에 따라 다르게 느껴집니다. 같은 파일과 크기로 만든 두 장에서 반사와 색의 인상, 손으로 넘기는 조건을 비교하고 주문 전에 물어볼 내용을 정리합니다.",
+    "description": "인화지의 유광과 무광은 사진을 보는 빛과 각도에 따라 다르게 느껴집니다. 같은 파일과 크기로 만든 두 장에서 반사와 색의 인상, 손으로 넘기는 조건을 비교하고 주문 전에 물어볼 내용을 정리합니다.",
+    "tags": [
+      "사진 인화",
+      "유광과 무광",
+      "No.9007"
+    ],
+    "image": "../assets/story/photo-print-surface-comparison.webp",
+    "imageAlt": "네이비 No.9007 백팩과 같은 해변 사진 두 장을 창가에 배치한 AI 연출 사진",
+    "images": [
+      "../assets/story/photo-print-surface-comparison.webp",
+      "../assets/story/photo-print-surface-comparison-detail.webp",
+      "../assets/story/photo-print-surface-comparison-product.webp"
+    ],
+    "url": "photo-print-surface-comparison.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "동일한 사진의 표면과 관람 조건을 대조하는 비교 에세이"
+  },
+  {
+    "id": "one-artwork-second-look",
+    "title": "다시 본 그림에서 빈 의자가 달라 보일 때",
+    "date": "2026-10-15",
+    "summary": "처음에는 쓸쓸하게 보였던 그림이 다시 보니 다르게 느껴진다면, 화면의 어느 부분이 그 변화를 만들었을까요. 가상의 실내 그림 한 점을 따라 보이는 세부와 해석, 라벨에서 얻은 정보를 구별하고, 그대로 남은 감상까지 말로 옮겨봅니다.",
+    "description": "처음에는 쓸쓸하게 보였던 그림이 다시 보니 다르게 느껴진다면, 화면의 어느 부분이 그 변화를 만들었을까요. 가상의 실내 그림 한 점을 따라 보이는 세부와 해석, 라벨에서 얻은 정보를 구별하고, 그대로 남은 감상까지 말로 옮겨봅니다.",
+    "tags": [
+      "미술 감상",
+      "다시 보기",
+      "작품 라벨",
+      "No.124S"
+    ],
+    "image": "../assets/story/one-artwork-second-look.webp",
+    "imageAlt": "가상의 추상화를 바라보며 베이지 No.124S 백팩을 멘 성인의 AI 착용 연출 사진",
+    "images": [
+      "../assets/story/one-artwork-second-look.webp",
+      "../assets/story/one-artwork-second-look-detail.webp",
+      "../assets/story/one-artwork-second-look-product.webp"
+    ],
+    "url": "one-artwork-second-look.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "관찰 에세이"
+  },
+  {
+    "id": "graphite-pencil-paper-feel",
+    "title": "연필의 H와 B, 선의 촉감이 달라지는 이유",
+    "date": "2026-10-15",
+    "summary": "연필의 H와 B는 심의 경도를 읽는 출발점입니다. 같은 자루라도 끝의 모양과 닿는 면, 종이의 결에 따라 선을 다르게 살펴야 합니다. 손에 있는 종이에서 한 조건씩 바꾸며 진하기와 선의 폭을 구분해봅니다.",
+    "description": "연필의 H와 B는 심의 경도를 읽는 출발점입니다. 같은 자루라도 끝의 모양과 닿는 면, 종이의 결에 따라 선을 다르게 살펴야 합니다. 손에 있는 종이에서 한 조건씩 바꾸며 진하기와 선의 폭을 구분해봅니다.",
+    "tags": [
+      "연필 경도",
+      "종이 질감",
+      "드로잉",
+      "No.2513"
+    ],
+    "image": "../assets/story/graphite-pencil-paper-feel.webp",
+    "imageAlt": "민트 No.2513 가방과 노트·연필을 작업 책상에 둔 AI 연출 사진",
+    "images": [
+      "../assets/story/graphite-pencil-paper-feel.webp",
+      "../assets/story/graphite-pencil-paper-feel-detail.webp",
+      "../assets/story/graphite-pencil-paper-feel-product.webp"
+    ],
+    "url": "graphite-pencil-paper-feel.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "심의 경도와 종이 접촉을 풀어보는 재료 해설"
+  },
+  {
     "id": "overseas-call-city-date",
     "title": "해외 통화 약속에 날짜와 도시를 함께 적는 이유",
     "date": "2026-10-14",
