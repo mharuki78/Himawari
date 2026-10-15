@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-15",
+  "automationId": "himawari-3",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-15/deployment.json",
+  "entries": [
+    {
+      "id": "2026-10-15-everyday-1211",
+      "date": "2026-10-15",
+      "category": "everyday",
+      "title": "꽃집 앞 작은 의자",
+      "model": "1211",
+      "color": "블랙",
+      "productId": "store-13313475536",
+      "scene": "꽃집 앞 의자에 앉아 검정 가방을 무릎에 올렸어요. 두 손으로 손잡이를 잡고 잠시 쉬어요.",
+      "alt": "꽃집 앞 의자에 앉아 두 손으로 무릎 위 검정 No.1211 백팩의 손잡이를 잡은 성인 여성의 AI 착용 연출",
+      "dimensionsCm": [
+        26,
+        40,
+        17
+      ],
+      "composition": {
+        "approach": "intimate seated hand-carry portrait",
+        "angle": "front-left slight three-quarter",
+        "framing": "waist-up",
+        "activity": "seated holding original twin handles with closed bag upright on lap",
+        "setting": "flower-shop exterior in soft window light",
+        "observedFrameShare": "person95percent/bag50percent"
+      },
+      "scenePrompt": "Fictional Korean woman aged58, short naturally wavy black-and-grey bob, visible natural smile lines, pale blue denim overshirt over cream cotton top. Seated on a low wooden stool outside a modest flower shop, loose wrapped flowers and blurred buckets behind, no signage. CLOSED black backpack upright on her lap, front facing camera, BOTH hands gently gripping original TWO top handles, no shoulder carry. Camera front-left three-quarter, close portrait from above head through lap, bag fully visible including bottom edge, waist-up seated framing. Person and bag fill most of image: head approx upper quarter, 40cm bag approx lower45percent of image height, plausible torso scale. Soft overcast window light, restrained documentary photograph, shallow but believable depth, candid looking just past camera. NOT a rear portrait, NOT a full-body shot; shoes out of frame.",
+      "invariants": "Exact No.1211 BLACK exterior width26 height40 depth17cm. Soft rounded-top rectangular black textile body; two original tall BLACK carry handles attached by narrow stitched rectangular anchors; small white Himawari wordmark at upper center; curved black top zip; broad rounded rectangular lower front pocket with two original adjacent metal zipper pulls at upper middle; black side slip-pocket edge on visible side; original black shoulder straps can rest behind the bag but do not invent new straps. Preserve black seams, soft gathers at sides of upper opening, pocket outline and hardware. Source includes a real woman and stroller: copy ONLY product identity, never source woman/pose/stroller/wardrobe.",
+      "reference": "backups/lookbook-2026-10-15/reference-store-13313475536.jpg",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260327_53/1774591677108YLGWg_JPEG/47566029953353167_889905254.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13313475536",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-10-15; 2026-09-14 제조사 카탈로그 56페이지의 1211 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "generatedSource": "backups/lookbook-2026-10-15/generated-1211.png",
+      "image": "/assets/lookbook/2026-10-15-everyday-1211.webp",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "prompt": "Use case: photorealistic-natural. Asset: ONE NEW portrait1024x1536,2:3 photograph for Himawari LookBook. Image1 is strict PRODUCT reference only. Fictional Korean woman aged58, short naturally wavy black-and-grey bob, visible natural smile lines, pale blue denim overshirt over cream cotton top. Seated on a low wooden stool outside a modest flower shop, loose wrapped flowers and blurred buckets behind, no signage. CLOSED black backpack upright on her lap, front facing camera, BOTH hands gently gripping original TWO top handles, no shoulder carry. Camera front-left three-quarter, close portrait from above head through lap, bag fully visible including bottom edge, waist-up seated framing. Person and bag fill most of image: head approx upper quarter, 40cm bag approx lower45percent of image height, plausible torso scale. Soft overcast window light, restrained documentary photograph, shallow but believable depth, candid looking just past camera. NOT a rear portrait, NOT a full-body shot; shoes out of frame. Product invariants: Exact No.1211 BLACK exterior width26 height40 depth17cm. Soft rounded-top rectangular black textile body; two original tall BLACK carry handles attached by narrow stitched rectangular anchors; small white Himawari wordmark at upper center; curved black top zip; broad rounded rectangular lower front pocket with two original adjacent metal zipper pulls at upper middle; black side slip-pocket edge on visible side; original black shoulder straps can rest behind the bag but do not invent new straps. Preserve black seams, soft gathers at sides of upper opening, pocket outline and hardware. Source includes a real woman and stroller: copy ONLY product identity, never source woman/pose/stroller/wardrobe. Correct hands, fingers, contact, limbs and posture. Preserve exact product logo, shape, color, pocket, seams, straps, charm and adult-relative scale. Fictional adult only, no source person identity, no customer experience or capacity/performance demonstration, no inset, collage, captions, watermark, unrelated logos, CGI polish or invented product features. Exactly1024x1536.",
+      "fidelityReview": "Directly viewed original product-on-person and generated photo. Black rounded rectangular soft body, curved top zip, twin tall original black carry handles with stitched rectangular anchors, small white Himawari logo, large lower rounded-front pocket with two adjacent silver/black pulls and side slip-pocket retained. No new carrying strap or extra pocket. Plausible26x40x17cm bag upright on lap with coherent hands gripping original handles; full bag outline and bottom visible. New fictional older Korean woman, wavy greying bob, denim overshirt/cream trousers, natural fingers and stool contact; source young woman/stroller not copied. Actual front-left slight three-quarter close seated crop, head through lap, person about95percent frame height and bag about50percent, flowers/window background. Calm diffuse light. No material shape/logo/color/scale defect.",
+      "generatedAt": "2026-10-15T00:05:50.323Z"
+    },
+    {
+      "id": "2026-10-15-city-1682",
+      "date": "2026-10-15",
+      "category": "city",
+      "title": "도서관을 나서는 길",
+      "model": "1682",
+      "color": "카키",
+      "productId": "coupang-8af93fb01cbb013c",
+      "scene": "파란 재킷을 입고 도서관 앞을 걸어요. 카키 가방은 짧은 손잡이로 들어요.",
+      "alt": "파란 재킷과 크림색 바지를 입고 도서관 앞을 걸으며 카키 No.1682 롤업 백팩을 짧은 손잡이로 든 성인 남성의 AI 착용 연출",
+      "dimensionsCm": [
+        30,
+        50,
+        14
+      ],
+      "composition": {
+        "approach": "environmental walking street photograph",
+        "angle": "front-right slight three-quarter",
+        "framing": "environmental full-body",
+        "activity": "walking with bag hanging naturally from original short top loop",
+        "setting": "broad stone forecourt outside a quiet library",
+        "observedFrameShare": "person85percent/bag25percent"
+      },
+      "scenePrompt": "Fictional South Asian man aged29, medium brown skin, short curly dark hair, clean shaven, cobalt blue lightweight jacket over plain grey tee, cream straight trousers, unbranded white low-top shoes. Walking slowly out onto broad pale stone forecourt of quiet ordinary public library, red brick facade and deep geometric concrete doorway and low stone planter, no readable lettering or recognizable destination. Environmental full-body composition, head through BOTH shoes and ample surrounding architecture in frame. Camera at chest height from FRONT-right three-quarter, 35mm environmental documentary photo, person about70percent of frame height. His left hand naturally carries exact backpack by ORIGINAL short black top carry loop; bag FRONT faces camera, body hanging beside his thigh, completely unobscured, not against back, other arm relaxed mid-step. 50cm bag roughly26percent of frame height, externally verified width30 height50 depth14cm plausible on adult178cm. Gentle late morning sun gives angular pavement shadows, calm subdued colors, natural fabric creases and skin.",
+      "invariants": "Exact No.1682 KHAKI tall rolltop backpack. Olive khaki tall narrow body with BLACK wide folded roll-top band extending beyond sides, two original parallel black vertical closure straps and black sculpted side-release buckle bodies with upper and lower strap-thread slots over upper front. Small dark Himawari wordmark centered on khaki upper front. Black piping outlines rounded rectangular upper-front panel with U-shaped zip, two original long black cord zipper pulls meeting at bottom middle. Lower front plain khaki with original diagonal seam/pocket outline on viewer right, small black side patch on viewer left, BLACK reinforced bottom strip, short black top carry LOOP visible at center behind rolltop and original black shoulder strap ends behind. No extra clips, no added front pockets, no new handle/shoulder/waist/chest belts. Keep original closed rolled silhouette and genuine logo spelling. Do not shorten tall proportions.",
+      "reference": "backups/lookbook-2026-10-15/reference-coupang-8af93fb01cbb013c.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-8af93fb01cbb013c/main-dmPrQ42ZMAohhflhxoOcEjuo82IL7F.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8653683058",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-10-15; 2026-09-14 제조사 카탈로그 39페이지의 1682 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "generatedSource": "backups/lookbook-2026-10-15/generated-1682-v2.png",
+      "image": "/assets/lookbook/2026-10-15-city-1682.webp",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "prompt": "Use case: photorealistic-natural. Asset: ONE NEW portrait1024x1536,2:3 photograph for Himawari LookBook. Image1 is strict PRODUCT reference only. Fictional South Asian man aged29, medium brown skin, short curly dark hair, clean shaven, cobalt blue lightweight jacket over plain grey tee, cream straight trousers, unbranded white low-top shoes. Walking slowly out onto broad pale stone forecourt of quiet ordinary public library, red brick facade and deep geometric concrete doorway and low stone planter, no readable lettering or recognizable destination. Environmental full-body composition, head through BOTH shoes and ample surrounding architecture in frame. Camera at chest height from FRONT-right three-quarter, 35mm environmental documentary photo, person about70percent of frame height. His left hand naturally carries exact backpack by ORIGINAL short black top carry loop; bag FRONT faces camera, body hanging beside his thigh, completely unobscured, not against back, other arm relaxed mid-step. 50cm bag roughly26percent of frame height, externally verified width30 height50 depth14cm plausible on adult178cm. Gentle late morning sun gives angular pavement shadows, calm subdued colors, natural fabric creases and skin. Product invariants: Exact No.1682 KHAKI tall rolltop backpack. Olive khaki tall narrow body with BLACK wide folded roll-top band extending beyond sides, two original parallel black vertical closure straps and black sculpted side-release buckle bodies with upper and lower strap-thread slots over upper front. Small dark Himawari wordmark centered on khaki upper front. Black piping outlines rounded rectangular upper-front panel with U-shaped zip, two original long black cord zipper pulls meeting at bottom middle. Lower front plain khaki with original diagonal seam/pocket outline on viewer right, small black side patch on viewer left, BLACK reinforced bottom strip, short black top carry LOOP visible at center behind rolltop and original black shoulder strap ends behind. No extra clips, no added front pockets, no new handle/shoulder/waist/chest belts. Keep original closed rolled silhouette and genuine logo spelling. Do not shorten tall proportions. Correct hands, fingers, contact, limbs and posture. Preserve exact product logo, shape, color, pocket, seams, straps, charm and adult-relative scale. Fictional adult only, no source person identity, no customer experience or capacity/performance demonstration, no inset, collage, captions, watermark, unrelated logos, CGI polish or invented product features. Exactly1024x1536. Targeted hardware correction: Use case: precise-object-edit. Image1 is the EDIT TARGET, a finished1024x1536 LookBook photo of fictional man holding khaki backpack. Image2 is the EXACT ORIGINAL PRODUCT reference. Change ONLY the TWO small BLACK buckle bodies on the two parallel upper-front roll-top closure straps of the backpack in Image1. Match Image2's original BLACK PLASTIC SIDE-RELEASE BUCKLES precisely: sculpted pinched hourglass/X-shaped side-release body with tapered shoulders and lower rectangular strap-thread slot, upper rectangular strap-thread adjustment section. In Image1 they were incorrectly simple plain rectangular ladder-lock adjusters; replace them with the actual molded side-release bodies from Image2, same small accurate size, vertical position, perspective and black material. Preserve ALL other pixels and the photo's composition as closely as possible: exact fictional man/face/hair/pose/left hand/hand grip, original short top loop, blue jacket/cream trousers/white shoes, library/brick/stone/shadows, exact khaki bag shape/scale/logo/rolled top/straps/zip piping and pulls/pockets/black reinforced bottom unchanged. Do not add straps, alter face, resize bag, change carry method or text. Natural realistic tiny hardware, no enlargement or closeup, no collage, no watermark. Output ONE portrait1024x1536 with same framing.",
+      "fidelityReview": "Directly viewed original and generated photo. Khaki tall30x50x14cm rolltop shape, wide black rolled upper band, twin black closure belts/sculpted side-release buckle bodies with strap-thread slots, small dark Himawari lettering centered, black U-shaped front-panel zip/piping and paired long black pulls at center bottom, lower diagonal seam on viewer right, left side black patch and reinforced black bottom preserved. Closed bag carried by its existing short top loop in left hand; no invented shoulder or chest belt. Original top loop naturally raised by hand, remaining straps behind bag. New fictional adult man with curly black hair, cobalt jacket/cream trousers/two white shoes, plausible hands, stepping legs and pavement shadow. Actual slight front-right three-quarter environmental full-body; person about85percent frame height, bag about25percent, broad stone/brick doorway context. Natural sun and angular shadows. No material product distortion or feature/performance claim. Initial version rejected after independent hardware review; corrected output directly inspected against original: both small molded hourglass/X-shaped black side-release bodies now retained. Person, hands, carry loop, front seams, bag proportions, logo, architecture and full-body framing preserved.",
+      "generatedAt": "2026-10-15T00:09:30.520Z",
+      "correctionPrompt": "Use case: precise-object-edit. Image1 is the EDIT TARGET, a finished1024x1536 LookBook photo of fictional man holding khaki backpack. Image2 is the EXACT ORIGINAL PRODUCT reference. Change ONLY the TWO small BLACK buckle bodies on the two parallel upper-front roll-top closure straps of the backpack in Image1. Match Image2's original BLACK PLASTIC SIDE-RELEASE BUCKLES precisely: sculpted pinched hourglass/X-shaped side-release body with tapered shoulders and lower rectangular strap-thread slot, upper rectangular strap-thread adjustment section. In Image1 they were incorrectly simple plain rectangular ladder-lock adjusters; replace them with the actual molded side-release bodies from Image2, same small accurate size, vertical position, perspective and black material. Preserve ALL other pixels and the photo's composition as closely as possible: exact fictional man/face/hair/pose/left hand/hand grip, original short top loop, blue jacket/cream trousers/white shoes, library/brick/stone/shadows, exact khaki bag shape/scale/logo/rolled top/straps/zip piping and pulls/pockets/black reinforced bottom unchanged. Do not add straps, alter face, resize bag, change carry method or text. Natural realistic tiny hardware, no enlargement or closeup, no collage, no watermark. Output ONE portrait1024x1536 with same framing."
+    }
+  ],
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-10-15-everyday-1211",
+        "2026-10-15-city-1682"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "compositionReview": {
+    "rangeStart": "2026-10-02",
+    "rangeEnd": "2026-10-15",
+    "lookbookPhotos": 36,
+    "storyPhotos": 117,
+    "visualEvidence": [
+      "backups/lookbook-2026-10-15/contact-1.jpg",
+      "backups/lookbook-2026-10-15/contact-2.jpg",
+      "backups/lookbook-2026-10-15/contact-3.jpg",
+      "backups/lookbook-2026-10-15/contact-4.jpg",
+      "backups/lookbook-2026-10-15/contact-5.jpg",
+      "backups/lookbook-2026-10-15/contact-6.jpg",
+      "backups/lookbook-2026-10-15/contact-7.jpg"
+    ],
+    "review": "Directly viewed all153 recent photos on seven contact sheets. Recent36 LookBook pictures overwhelmingly show rear full-body or rear seated views, similar bag/person coverage. Recent117 story images include product still lifes, catalog sources and some upper-body portraits. Today plans a tight frontal seated hand-carry portrait against flowers versus a wide frontal environmental walking hand-carry image among angular stone/brick architecture: different distance, frame share, action, light and crop; neither is rear full-body. 1211 last LookBook Oct3 dusty-pink rear seated outdoors; today black close front lap carry with original twin handles. 1682 last LookBook Oct3 grey rear walking; today khaki front full body original short top loop hand carry. Exact source photographs and live Sep14 catalog dimensions reviewed; no unsupported carry mode."
+  }
+}

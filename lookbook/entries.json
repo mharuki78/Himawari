@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-15-everyday-1211",
+    "date": "2026-10-15",
+    "category": "everyday",
+    "title": "꽃집 앞 작은 의자",
+    "model": "1211",
+    "color": "블랙",
+    "productId": "store-13313475536",
+    "scene": "꽃집 앞 의자에 앉아 검정 가방을 무릎에 올렸어요. 두 손으로 손잡이를 잡고 잠시 쉬어요.",
+    "alt": "꽃집 앞 의자에 앉아 두 손으로 무릎 위 검정 No.1211 백팩의 손잡이를 잡은 성인 여성의 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-15-everyday-1211.webp",
+    "thumbnail": "/assets/lookbook/2026-10-15-everyday-1211-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-10-15-city-1682",
+    "date": "2026-10-15",
+    "category": "city",
+    "title": "도서관을 나서는 길",
+    "model": "1682",
+    "color": "카키",
+    "productId": "coupang-8af93fb01cbb013c",
+    "scene": "파란 재킷을 입고 도서관 앞을 걸어요. 카키 가방은 짧은 손잡이로 들어요.",
+    "alt": "파란 재킷과 크림색 바지를 입고 도서관 앞을 걸으며 카키 No.1682 롤업 백팩을 짧은 손잡이로 든 성인 남성의 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-15-city-1682.webp",
+    "thumbnail": "/assets/lookbook/2026-10-15-city-1682-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-10-14-city-1084h",
     "date": "2026-10-14",
     "category": "city",
