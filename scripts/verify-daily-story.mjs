@@ -60,6 +60,10 @@ for (const post of posts) {
   const article = structured.find(data => data['@type'] === 'BlogPosting');
   assert.equal(article?.datePublished, date);
   assert.equal(article?.headline, post.title);
+  assert.equal(article?.url, record.url, 'Article URL must match the visible page');
+  assert.equal(article?.publisher?.url, 'https://himawari.co.kr/', 'Missing article publisher');
+  assert.ok(article?.author?.url?.startsWith('https://'), 'Missing author identity URL');
+  assert.equal(article?.inLanguage, 'ko-KR', 'Missing article language');
   for (const match of html.matchAll(/(?:href|src)="([^"#]+)"/g)) {
     const href = match[1];
     if (/^(https?:|\/\/|mailto:|tel:|data:)/.test(href)) continue;

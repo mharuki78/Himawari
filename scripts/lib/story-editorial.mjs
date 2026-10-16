@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { updateStorySchema } from './story-schema.mjs';
 export const escapeHtml = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const schemaTag = data => `<script type="application/ld+json">${JSON.stringify(data).replaceAll('<','\\u003c')}</script>`;
 
@@ -40,5 +41,5 @@ export function renderRevision(original, revision, photo, modifiedDate) {
   const sources = `<section class="story-sources" aria-labelledby="sources-title"><h2 id="sources-title">참고 자료</h2><ol><li><a href="${productUrl}">Himawari ${escapeHtml(original.product.model)} 제품 정보</a></li>${[...new Map(sourceLinks.map(m=>[m[1],m])).values()].map(m=>`<li><a href="${escapeHtml(m[1])}">${m[2].replace(/<[^>]+>/g,'')}</a></li>`).join('')}</ol></section>`;
   if(/<section class="story-sources"/.test(html)) html=html.replace(/<section class="story-sources"[\s\S]*?<\/section>/,sources);
   else html=html.replace('<p class="story-cta">',sources+'<p class="story-cta">');
-  return html.replace(/[\t ]+$/gm,'');
+  return updateStorySchema(html.replace(/[\t ]+$/gm,''));
 }

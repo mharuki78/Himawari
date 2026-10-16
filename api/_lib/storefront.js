@@ -188,8 +188,10 @@ function productOffer(product, origin) {
     priceCurrency: 'KRW',
     price: String(product.price),
     availability: product.soldOut ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
-    url: `${origin}/${checkoutHref(product)}`,
-    shippingDetails: { '@type': 'OfferShippingDetails', shippingRate: { '@type': 'MonetaryAmount', value: product.price >= 100000 ? '0' : '3500', currency: 'KRW' }, shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'KR' }, deliveryTime: { '@type': 'ShippingDeliveryTime', handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 2, unitCode: 'DAY' }, transitTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'DAY' } } },
+    url: `${origin}/${detailHref(product)}`,
+    seller: { '@type': 'Organization', name: '히마와리 코리아', url: `${origin}/` },
+    // The page publishes dispatch within two business days, not carrier transit days.
+    shippingDetails: { '@type': 'OfferShippingDetails', shippingRate: { '@type': 'MonetaryAmount', value: product.price >= 100000 ? '0' : '3500', currency: 'KRW' }, shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'KR' }, deliveryTime: { '@type': 'ShippingDeliveryTime', handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 2, unitCode: 'DAY' } } },
     hasMerchantReturnPolicy: { '@type': 'MerchantReturnPolicy', applicableCountry: 'KR', returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow', merchantReturnDays: 7, returnMethod: 'https://schema.org/ReturnByMail', returnFees: 'https://schema.org/ReturnShippingFees', returnShippingFeesAmount: { '@type': 'MonetaryAmount', value: '8000', currency: 'KRW' } },
   };
 }
@@ -212,13 +214,14 @@ function productVariantSchema(product, origin, groupId) {
     url: canonical,
     name: product.name,
     sku: product.id,
-        model: product.model,
+    model: product.model,
     image: safeHttpsUrl(product.image) || undefined,
     description: productSearchDescription(product),
     additionalProperty: SPEC_FIELDS.filter(([key]) => product.specs?.[key]).map(([key, name]) => ({ '@type': 'PropertyValue', name, value: String(product.specs[key]) })),
     brand: { '@type': 'Brand', name: 'Himawari', alternateName: '히마와리' },
     color: productColor(product) || undefined,
-    isVariantOf: { '@id': groupId },
+    size: String(product.specs?.dimensions || '').trim() || undefined,
+    isVariantOf: groupId ? { '@id': groupId } : undefined,
     offers: productOffer(product, origin),
   };
 }
@@ -229,23 +232,37 @@ export function renderProductPage(template, product, origin = 'https://himawari.
   const mainImage = safeHttpsUrl(product.image);
   const storeUrl = safeHttpsUrl(product.url) || 'https://smartstore.naver.com/baegot';
   const familyKey = productFamilyKey(product);
-  const groupId = `${origin}/product.html?family=${encodeURIComponent(familyKey)}#product-group`;
-  const variants = (Array.isArray(familyProducts) ? familyProducts : [product]).filter((item) => productFamilyKey(item) === familyKey);
+  const variants = [product, ...(Array.isArray(familyProducts) ? familyProducts : [])]
+    .filter((item, index, all) => productFamilyKey(item) === familyKey && all.findIndex(candidate => candidate.id === item.id) === index);
+  const variesBy = [
+    ['color', item => productColor(item)],
+    ['size', item => String(item.specs?.dimensions || '').trim()],
+  ].filter(([, value]) => new Set(variants.map(value).filter(Boolean)).size > 1).map(([key]) => `https://schema.org/${key}`);
+  const groupId = variants.length > 1 && variesBy.length ? `${origin}/#product-group-${encodeURIComponent(familyKey)}` : '';
   const selectedSchema = productVariantSchema(product, origin, groupId);
   selectedSchema.image = [mainImage, ...(Array.isArray(product.gallery) ? product.gallery.map(safeHttpsUrl) : [])].filter(Boolean);
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
-      {
+      ...(groupId ? [{
         '@type': 'ProductGroup',
         '@id': groupId,
         name: `${product.model} 제품군`,
         productGroupID: `himawari-${familyKey}`,
-        variesBy: ['https://schema.org/color', 'https://schema.org/size'],
+        brand: { '@type': 'Brand', name: 'Himawari', alternateName: '히마와리' },
+        variesBy,
         hasVariant: variants.map((variant) => ({ '@id': `${origin}/product.html?id=${encodeURIComponent(variant.id)}#product` })),
-      },
-      ...variants.filter((variant) => variant.id !== product.id).map((variant) => productVariantSchema(variant, origin, groupId)),
+      }] : []),
+      ...(groupId ? variants.filter((variant) => variant.id !== product.id).map((variant) => productVariantSchema(variant, origin, groupId)) : []),
       selectedSchema,
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${canonical}#breadcrumb`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: '제품', item: `${origin}/products.html` },
+          { '@type': 'ListItem', position: 2, name: product.model || product.name, item: canonical },
+        ],
+      },
     ],
   };
   if (reviewData?.aggregate?.count > 0) {
