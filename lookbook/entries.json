@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-16-everyday-0422",
+    "date": "2026-10-16",
+    "category": "everyday",
+    "title": "작은 창구 앞에서",
+    "model": "0422",
+    "color": "블루",
+    "productId": "store-13326274547",
+    "scene": "회색 스웨트셔츠에 알록달록한 백팩을 메고 작은 창구 앞에 섰어요.",
+    "alt": "회색 스웨트셔츠를 입고 작은 창구 앞에 서서 블루 No.0422 백팩을 멘 성인 남성을 가까운 뒤쪽 측면에서 촬영한 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-16-everyday-0422.webp",
+    "thumbnail": "/assets/lookbook/2026-10-16-everyday-0422-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-10-16-city-2513",
+    "date": "2026-10-16",
+    "category": "city",
+    "title": "횡단보도를 건너며",
+    "model": "2513",
+    "color": "블랙",
+    "productId": "store-12986327631",
+    "scene": "하늘색 블라우스에 검정 가방을 어깨에 걸쳤어요. 횡단보도를 건너는 모습이에요.",
+    "alt": "하늘색 블라우스와 갈색 바지를 입고 검정 No.2513 가방을 원래의 짧은 로프 끈으로 어깨에 걸친 채 횡단보도를 걷는 성인 여성의 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-16-city-2513.webp",
+    "thumbnail": "/assets/lookbook/2026-10-16-city-2513-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-10-15-everyday-1211",
     "date": "2026-10-15",
     "category": "everyday",

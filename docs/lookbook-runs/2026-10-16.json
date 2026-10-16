@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-16",
+  "automationId": "himawari-3",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-16/deployment.json",
+  "entries": [
+    {
+      "id": "2026-10-16-everyday-0422",
+      "date": "2026-10-16",
+      "category": "everyday",
+      "title": "작은 창구 앞에서",
+      "model": "0422",
+      "color": "블루",
+      "productId": "store-13326274547",
+      "scene": "회색 스웨트셔츠에 알록달록한 백팩을 메고 작은 창구 앞에 섰어요.",
+      "alt": "회색 스웨트셔츠를 입고 작은 창구 앞에 서서 블루 No.0422 백팩을 멘 성인 남성을 가까운 뒤쪽 측면에서 촬영한 AI 착용 연출",
+      "dimensionsCm": [
+        30,
+        40,
+        15
+      ],
+      "composition": {
+        "approach": "close activity portrait",
+        "angle": "rear-side three-quarter at shoulder height",
+        "framing": "head through mid-thigh close portrait",
+        "activity": "standing at a small takeaway window with both original shoulder straps worn",
+        "setting": "quiet concrete wall and wooden service window in diffuse daylight",
+        "observedFrameShare": "person95percent/bag37percent"
+      },
+      "scenePrompt": "Create a NEW fictional ADULT man aged32, dark brown skin, short curly black hair with neat fade, plain light grey sweatshirt and charcoal trousers. He stands naturally beside a small wooden takeaway service window in a quiet concrete wall, holding a small folded blank paper in one relaxed hand near waist, looking toward the window, no eating or drinking. Use a CLOSE documentary portrait from his rear-left side three-quarter, camera shoulder height, head through mid-thigh, not full body. Show his face in subtle side profile and the complete FRONT and visible red SIDE of the backpack without obstruction. Both actual shoulder straps are worn over both shoulders; bag closed. Adult person fills about90percent image height, 40cm bag about40percent of image height and realistic on a175cm adult. Diffuse daylight, quiet grey and warm wood background, natural skin and textile texture, believable hands, no readable sign. Frame the complete bag including loop and bottom.",
+      "invariants": "Exact No.0422 BLUE backpack width30 height40 depth15cm. Rounded tall NAVY blue textile body, NAVY carry loop and shoulder straps, curved top zipper with TWO adjacent silver pulls. Large GREEN lower front rectangular zipper pocket, small BLACK Himawari patch at its lower viewer-right; original little black vertical zip pull on viewer-left of pocket. RED side pocket on visible viewer-right, narrow YELLOW edge on opposite viewer-left. Two original BLACK upper-front tabs/loops support original BLUE round zip coin pouch on viewer-left with small white Himawari wordmark and BLUE scalloped rounded rectangular smiling-face charm on viewer-right with white eyes/smile. Preserve the relative charm placement, short black attachments, seams, colors and logo spelling; no added straps/pockets or changed pocket colors. Source person is a child: copy ONLY exact product, NEVER source person, age, clothing or pose. New subject must clearly be an adult.",
+      "reference": "backups/lookbook-2026-10-16/reference-store-13326274547.jpg",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260330_75/17748467055316cbOy_JPEG/932098654912450_478698910.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13326274547",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-10-16; 2026-09-14 제조사 카탈로그 54페이지의 0422 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "generatedSource": "backups/lookbook-2026-10-16/generated-0422.png",
+      "image": "/assets/lookbook/2026-10-16-everyday-0422.webp",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "prompt": "Use case: photorealistic-natural. ONE NEW portrait 1024x1536,2:3 photograph for Himawari LookBook. Supplied image is strict PRODUCT reference only. Create a NEW fictional ADULT man aged32, dark brown skin, short curly black hair with neat fade, plain light grey sweatshirt and charcoal trousers. He stands naturally beside a small wooden takeaway service window in a quiet concrete wall, holding a small folded blank paper in one relaxed hand near waist, looking toward the window, no eating or drinking. Use a CLOSE documentary portrait from his rear-left side three-quarter, camera shoulder height, head through mid-thigh, not full body. Show his face in subtle side profile and the complete FRONT and visible red SIDE of the backpack without obstruction. Both actual shoulder straps are worn over both shoulders; bag closed. Adult person fills about90percent image height, 40cm bag about40percent of image height and realistic on a175cm adult. Diffuse daylight, quiet grey and warm wood background, natural skin and textile texture, believable hands, no readable sign. Frame the complete bag including loop and bottom. Product invariants: Exact No.0422 BLUE backpack width30 height40 depth15cm. Rounded tall NAVY blue textile body, NAVY carry loop and shoulder straps, curved top zipper with TWO adjacent silver pulls. Large GREEN lower front rectangular zipper pocket, small BLACK Himawari patch at its lower viewer-right; original little black vertical zip pull on viewer-left of pocket. RED side pocket on visible viewer-right, narrow YELLOW edge on opposite viewer-left. Two original BLACK upper-front tabs/loops support original BLUE round zip coin pouch on viewer-left with small white Himawari wordmark and BLUE scalloped rounded rectangular smiling-face charm on viewer-right with white eyes/smile. Preserve the relative charm placement, short black attachments, seams, colors and logo spelling; no added straps/pockets or changed pocket colors. Source person is a child: copy ONLY exact product, NEVER source person, age, clothing or pose. New subject must clearly be an adult. Preserve exact logo/shape/color/pockets/straps/charms and verified adult-relative proportions. Coherent anatomy, natural hands/contact/limbs, fictional ADULT only, no source identity, no customer testimonial or capacity/protection/performance demonstration, no inset/collage/overlaid text/watermark/CGI polish. Output exactly1024x1536.",
+      "fidelityReview": "Directly viewed actual original and full generated output. Rounded NAVY blue40cm tall body, curved top zip with TWO adjacent silver pulls, original loop/paired navy shoulder straps; GREEN lower front pocket with vertical pull and lower-right black Himawari patch; RED visible side pocket and YELLOW opposite edge; TWO black upper attachment tabs carry BLUE round pouch with white Himawari lettering and BLUE scalloped smiling-face charm with white eyes/smile. Product outline, colors, pocket placement, charms and relative30x40x15cm adult scale preserved. Both original straps naturally worn by a clearly adult fictional man, source child not copied. Coherent visible hand/paper, anatomy, shirt creases, bag contact. Actual close rear-left/side three-quarter from shoulder height, head through mid-thigh, person95percent/bag37percent image height, small wood service window and diffuse light. Complete bag visible, no new feature/experience claim or material distortion.",
+      "generatedAt": "2026-10-16T00:37:49.432Z"
+    },
+    {
+      "id": "2026-10-16-city-2513",
+      "date": "2026-10-16",
+      "category": "city",
+      "title": "횡단보도를 건너며",
+      "model": "2513",
+      "color": "블랙",
+      "productId": "store-12986327631",
+      "scene": "하늘색 블라우스에 검정 가방을 어깨에 걸쳤어요. 횡단보도를 건너는 모습이에요.",
+      "alt": "하늘색 블라우스와 갈색 바지를 입고 검정 No.2513 가방을 원래의 짧은 로프 끈으로 어깨에 걸친 채 횡단보도를 걷는 성인 여성의 AI 착용 연출",
+      "dimensionsCm": [
+        36.5,
+        28,
+        2
+      ],
+      "composition": {
+        "approach": "low-angle environmental street photograph",
+        "angle": "front-side three-quarter from knee-level camera",
+        "framing": "environmental full-body",
+        "activity": "walking across a quiet crosswalk with original short rope handle over one shoulder",
+        "setting": "broad city street with pale crosswalk stripes and distant glass buildings",
+        "observedFrameShare": "person92percent/bag18percent"
+      },
+      "scenePrompt": "Create a NEW fictional East Asian ADULT woman aged49, short cropped dark hair, natural facial lines, pale sky-blue loose blouse, brown wide-leg trousers and plain dark flat shoes. She walks calmly across a quiet broad crosswalk, ordinary contemporary glass buildings softly behind. LOW camera at knee height, FRONT-side three-quarter environmental street photograph, head through BOTH shoes and generous white crosswalk stripes in foreground. Person about80percent of image height, realistic36.5cm wide28cm high2cm slim bag approx18percent image height. Exact BLACK laptop bag hangs at her side/hip from its ONE ORIGINAL short black-and-white braided rope shoulder handle, naturally resting over the near shoulder. Turn bag FRONT sufficiently toward camera to see black embroidered Himawari and wave-loop quilting; closed top zipper. One hand may lightly steady original rope at shoulder, other arm natural mid-step, no arms across bag. Preserve exact rope length/proportions as original on-person photo; never lengthen it into a crossbody strap. Natural soft autumn daylight, candid believable walking stance, ordinary city environment, no signage or extra brand. Single coherent photo, not source collage.",
+      "invariants": "Exact No.2513 BLACK horizontal slim rounded rectangular bag width36.5 height28 depth2cm. BLACK face has repeated vertical wavy OVAL/LOOP stitched pattern and large same-black embroidered Himawari wordmark across center. One short thick BLACK-and-WHITE flecked braided rope shoulder handle attached by two original SILVER swivel clips and rings at upper corners; original knotted braided cord tails hang at viewer-left attachment. Preserve black top zipper, slim edges, slight rounded corners, original loop pattern and logo. No extra long crossbody strap, no backpack straps, no second carry handle, no invented pocket, no expanded thickness or displayed contents. Source is composite product/on-person/detail: copy ONLY bag identity and actual supported shoulder carry; do not copy source woman/face/clothing or create collage.",
+      "reference": "backups/lookbook-2026-10-16/reference-store-12986327631.jpg",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260420_222/1776672718551bbtgo_JPEG/31205936622607670_209756021.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/12986327631",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-10-16; 2026-09-14 제조사 카탈로그 11페이지의 2513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "generatedSource": "backups/lookbook-2026-10-16/generated-2513-v2.png",
+      "image": "/assets/lookbook/2026-10-16-city-2513.webp",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "prompt": "Use case: photorealistic-natural. ONE NEW portrait 1024x1536,2:3 photograph for Himawari LookBook. Supplied image is strict PRODUCT reference only. Create a NEW fictional East Asian ADULT woman aged49, short cropped dark hair, natural facial lines, pale sky-blue loose blouse, brown wide-leg trousers and plain dark flat shoes. She walks calmly across a quiet broad crosswalk, ordinary contemporary glass buildings softly behind. LOW camera at knee height, FRONT-side three-quarter environmental street photograph, head through BOTH shoes and generous white crosswalk stripes in foreground. Person about80percent of image height, realistic36.5cm wide28cm high2cm slim bag approx18percent image height. Exact BLACK laptop bag hangs at her side/hip from its ONE ORIGINAL short black-and-white braided rope shoulder handle, naturally resting over the near shoulder. Turn bag FRONT sufficiently toward camera to see black embroidered Himawari and wave-loop quilting; closed top zipper. One hand may lightly steady original rope at shoulder, other arm natural mid-step, no arms across bag. Preserve exact rope length/proportions as original on-person photo; never lengthen it into a crossbody strap. Natural soft autumn daylight, candid believable walking stance, ordinary city environment, no signage or extra brand. Single coherent photo, not source collage. Product invariants: Exact No.2513 BLACK horizontal slim rounded rectangular bag width36.5 height28 depth2cm. BLACK face has repeated vertical wavy OVAL/LOOP stitched pattern and large same-black embroidered Himawari wordmark across center. One short thick BLACK-and-WHITE flecked braided rope shoulder handle attached by two original SILVER swivel clips and rings at upper corners; original knotted braided cord tails hang at viewer-left attachment. Preserve black top zipper, slim edges, slight rounded corners, original loop pattern and logo. No extra long crossbody strap, no backpack straps, no second carry handle, no invented pocket, no expanded thickness or displayed contents. Source is composite product/on-person/detail: copy ONLY bag identity and actual supported shoulder carry; do not copy source woman/face/clothing or create collage. Preserve exact logo/shape/color/pockets/straps/charms and verified adult-relative proportions. Coherent anatomy, natural hands/contact/limbs, fictional ADULT only, no source identity, no customer testimonial or capacity/protection/performance demonstration, no inset/collage/overlaid text/watermark/CGI polish. Output exactly1024x1536. Targeted logo correction: Use case: precise-object-edit. Image1 is the EDIT TARGET: finished1024x1536 portrait of fictional adult woman in sky-blue blouse and brown trousers walking across crosswalk with black bag. Image2 is exact PRODUCT REFERENCE. Correct ONLY the large black-on-black embroidered WORDMARK at CENTER FRONT of the black bag in Image1. The original product in Image2 spells exactly \"Himawari\" (capital H, lowercase i m a w a r i). The target currently has malformed/misspelled letters resembling Himautiori. Replace just those central embroidered letters with the EXACT original Himawari wordmark from Image2: same lettering shape, same-black raised stitched embroidery, same horizontal position and proportional size, natural perspective and lighting on bag. Preserve EVERYTHING ELSE in Image1 as closely as possible: exact fictional woman/face/hair/hands/pose, walking legs/shoes, blouse/trousers, street/crosswalk/buildings, original black bag dimensions/shape, wavy-loop quilting, rope length/blackwhite pattern, all silver clips/rings, cord tassels and zipper. Do not alter carrying method, crop, framing, bag scale or any anatomy. No added text elsewhere, no extra letter/logo, no collage, no watermark. Output ONE1024x1536 portrait with identical composition.",
+      "fidelityReview": "Directly viewed actual composite original and full generated output. BLACK horizontal slim rounded rectangle, repeated vertical loop-wave stitched pattern, same-black Himawari embroidery across center, top closed zipper, original SILVER corner rings/swivelclips, one short black-white braided shoulder rope and original knotted dangling cord tails. No invented extra handle, crossbody belt, pockets or contents.36.5x28x2cm proportions plausible at adult hip, body remains slim. Supported original shoulder carry on a new fictional adult woman, source woman/composite not copied. Coherent hand steadying actual rope, walking legs/two shoes/contact/shadow. Actual low camera/front-side three-quarter environmental full-body on crosswalk, person92percent/bag18percent frame height, glass buildings and stripes foreground. Front logo/quilting/cord remain visible. No material defect, unsupported fit/protection or testimonial claim. Initial output rejected after independent inspection for malformed wordmark. Corrected output directly inspected: original Himawari lettering now clearly spelled and embroidered in same-black thread. Composition/subject/bag/rope/quilting remain preserved.",
+      "generatedAt": "2026-10-16T00:41:37.807Z",
+      "correctionPrompt": "Use case: precise-object-edit. Image1 is the EDIT TARGET: finished1024x1536 portrait of fictional adult woman in sky-blue blouse and brown trousers walking across crosswalk with black bag. Image2 is exact PRODUCT REFERENCE. Correct ONLY the large black-on-black embroidered WORDMARK at CENTER FRONT of the black bag in Image1. The original product in Image2 spells exactly \"Himawari\" (capital H, lowercase i m a w a r i). The target currently has malformed/misspelled letters resembling Himautiori. Replace just those central embroidered letters with the EXACT original Himawari wordmark from Image2: same lettering shape, same-black raised stitched embroidery, same horizontal position and proportional size, natural perspective and lighting on bag. Preserve EVERYTHING ELSE in Image1 as closely as possible: exact fictional woman/face/hair/hands/pose, walking legs/shoes, blouse/trousers, street/crosswalk/buildings, original black bag dimensions/shape, wavy-loop quilting, rope length/blackwhite pattern, all silver clips/rings, cord tassels and zipper. Do not alter carrying method, crop, framing, bag scale or any anatomy. No added text elsewhere, no extra letter/logo, no collage, no watermark. Output ONE1024x1536 portrait with identical composition."
+    }
+  ],
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-10-16-everyday-0422",
+        "2026-10-16-city-2513"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "compositionReview": {
+    "rangeStart": "2026-10-03",
+    "rangeEnd": "2026-10-16",
+    "photosReviewed": 156,
+    "visualEvidence": [
+      "backups/lookbook-2026-10-16/contact-1.jpg",
+      "backups/lookbook-2026-10-16/contact-2.jpg",
+      "backups/lookbook-2026-10-16/contact-3.jpg",
+      "backups/lookbook-2026-10-16/contact-4.jpg",
+      "backups/lookbook-2026-10-16/contact-5.jpg",
+      "backups/lookbook-2026-10-16/contact-6.jpg",
+      "backups/lookbook-2026-10-16/contact-7.jpg"
+    ],
+    "review": "Directly viewed all seven contact sheets of recent LookBook and story photos (156). Older LookBook strongly repeats rear full-body views. Oct15 switched to a close seated frontal1211 lap portrait and frontal environmental1682 hand carry. Today0422 is close standing rear-side activity portrait with cropped legs and larger bag coverage, both original backpack straps;2513 is knee-level front-side environmental walking portrait with the original short braided shoulder loop. These differ in camera height/distance/crop/frame share/gesture/carry/type/context. Source photos were directly inspected and freshly downloaded, actual live catalog dimensions checked.0422 last LookBookOct3 yellow, today blue;2513 last LookBookOct6 black, today shoulder carry low street angle.2513 chosen for supported shoulder-bag construction to avoid two backpack poses. No claimed laptop fit/protection or customer experience."
+  }
+}
