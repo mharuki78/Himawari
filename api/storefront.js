@@ -61,6 +61,7 @@ export async function fetch(request) {
   const requestUrl = new URL(request.url);
   const page = requestUrl.searchParams.get('page');
   const origin = requestUrl.origin;
+  let phase = 'request';
   try {
     if (page === 'npay-review') {
       const token = requestUrl.searchParams.get('token') || '';
@@ -70,7 +71,9 @@ export async function fetch(request) {
     if (['npay-review-catalog', 'npay-review-product'].includes(page) && !npayReviewRequestIsValid(request)) {
       return privateHtml('검수 페이지를 찾을 수 없습니다.', 404);
     }
+    phase = 'catalog';
     const catalog = productStoreIsConfigured() ? (await readProductCatalog()).catalog : seedCatalog();
+    phase = 'inventory';
     const products = await applyInventoryReservations(catalog.products.map(publicProduct));
     if (page === 'npay-review-catalog') return privateHtml(renderNpayReviewCatalog(products));
     if (page === 'catalog') {
@@ -85,17 +88,23 @@ export async function fetch(request) {
     }
     if (page === 'product' || page === 'npay-review-product') {
       const product = products.find((item) => item.id === requestUrl.searchParams.get('id'));
+      phase = 'product-template';
       const source = await template('templates/product.html');
       if (!product) return (page === 'npay-review-product' ? privateHtml : html)(renderProductNotFoundPage(source), 404);
       let reviewData = null;
       try { reviewData = await listPublishedReviews(product.id, 0, true); } catch {}
       const familyProducts = products.filter((item) => productFamilyKey(item) === productFamilyKey(product));
+      phase = 'product-render';
       const body = renderProductPage(source, product, origin, reviewData, familyProducts);
       if(page==='npay-review-product')return privateHtml(reviewProductPage(body));
       return npayReviewRequestIsValid(request) ? privateHtml(body) : html(body);
     }
     return html('페이지를 찾을 수 없습니다.', 404);
-  } catch {
+  } catch (error) {
+    console.error('storefront_render_failed', {
+      phase, name: error?.name, code: error?.code,
+      frames: String(error?.stack || '').split('\n').slice(1, 4),
+    });
     return (String(page).startsWith('npay-review')?privateHtml:html)('제품 페이지를 준비하지 못했습니다. 잠시 후 다시 시도해 주세요.', 500);
   }
 }
