@@ -14,7 +14,7 @@
     },
     {
       "id": "board-game-backpack-packing",
-      "title": "작은 보드게임을 백팩에 담을 때: 상자보다 구성품부터",
+      "title": "보드게임 상자를 담을 백팩, 뚜껑까지 닫힌 모양으로 고르기",
       "url": "https://himawari.co.kr/story/board-game-backpack-packing.html",
       "productId": "store-13326303755",
       "model": "No.1884L",
@@ -26,6 +26,19 @@
         "source": "backups/story-2026-09-21/board-game-backpack-packing-generated.png",
         "prompt": "Use case: photorealistic-natural. Landscape 3:2 Himawari editorial product photo. Reference is actual product identity, preserve exactly: black rectangular Himawari No.1884 backpack, paired top carry handles with riveted attachment tabs, upper central small rectangular Himawari patch and broad horizontal front zip pocket. Do not reproduce collage, water droplets, charging phone, model or overlay lettering from reference. Scene: a warm contemporary living room table beside two small closed unbranded board-game boxes, a tidy wooden tray with a few wooden playing pieces and dice; bag and game boxes remain separate. Entire bag fully visible and dominant at a front three-quarter angle, authentic fabric and stitching, restrained natural lighting and believable shadows, elegant spacious framing. Preserve actual bag logo, silhouette, colors, pockets and hardware. No invented features, no text overlays, no extra backpacks. Props remain outside the closed bag; this is styled photography not a capacity demonstration.",
         "generatedAt": "2026-09-21"
+      },
+      "editorialForm": "상자와 가방의 경계를 따지는 구매 비교문",
+      "coreQuestion": "단단한 게임 상자를 일상 백팩으로 옮길 수 있는지는 어느 부분을 확인해야 할까?",
+      "bodyChars": 2816,
+      "sha256": "a367f97542a6660a468182e1c470480acca0639e0d9430130728f241954c40b2",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "단단한 게임 상자를 일상 백팩으로 옮길 수 있는지는 어느 부분을 확인해야 할까?",
+        "sectionReview": "구성품 분류·보드게임 진행법을 제외하고 단단한 상자의 뚜껑·입구 회전·잡을 여유와 백팩/별도 운반 선택으로 주제를 좁혔다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 2786,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
       }
     },
     {
@@ -54,5 +67,13 @@
   "overlapReview": "Compared all 62 titles, summaries and saved article bodies with the previous corpus; only the three September 20 bodies were new and were reviewed in the preceding run. Targeted searches found no earlier articles about picnic mats, board-game pieces or child spare-clothes handover. Mat article follows clean-to-used transitions rather than generic day-trip packing; board-game article uses component-specific cases; spare-clothes article uses caregiver questions and handover rather than sharing a bag. Three distinct product models and images.",
   "completionReceipt": "backups/story-runs/2026-09-21.deployment.json",
   "expectedGeneratedImages": 3,
-  "imageRevision": "2026-09-21: replaced both reused photos with newly generated product-reference images at user request."
+  "imageRevision": "2026-09-21: replaced both reused photos with newly generated product-reference images at user request.",
+  "editorialRevision": {
+    "date": "2026-10-16",
+    "scope": "가방 중심 주제 정정",
+    "postIds": [
+      "board-game-backpack-packing"
+    ],
+    "imagesPreserved": true
+  }
 }

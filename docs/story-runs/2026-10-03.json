@@ -27,7 +27,7 @@
     },
     {
       "id": "vocabulary-cards-backpack-practice",
-      "title": "백팩 속 단어 카드, 오늘 다시 볼 묶음만 남기기",
+      "title": "대기석에서 여는 백팩, 단어 카드를 한 케이스로 꺼내기",
       "url": "https://himawari.co.kr/story/vocabulary-cards-backpack-practice.html",
       "productId": "coupang-eb0e638e682ff1ab",
       "model": "No.8029",
@@ -45,7 +45,20 @@
       "dimensionsCm": "27 × 39 × 14 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 45페이지의 8029 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Orange body and straps, blue edging/lower pocket/side pockets, lime upper pouch with white logo patch, orange small pocket with lime flap and round snap retained. Two blank card stacks and closed case outside bag; no generated false vocabulary or fit claim."
+      "fidelityReview": "Orange body and straps, blue edging/lower pocket/side pockets, lime upper pouch with white logo patch, orange small pocket with lime flap and round snap retained. Two blank card stacks and closed case outside bag; no generated false vocabulary or fit claim.",
+      "editorialForm": "서로 다른 대기 자리에서 배치를 비교하는 짧은 장면들",
+      "coreQuestion": "앉은 자리에서 작은 카드 케이스만 꺼내고 바로 다시 담으려면 백팩에 어떤 여유가 필요할까?",
+      "bodyChars": 2684,
+      "sha256": "2a17e6d9408cb5015e4d9d281837a4cbd64387a0366d4e10479791da8d5751b1",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "앉은 자리에서 작은 카드 케이스만 꺼내고 바로 다시 담으려면 백팩에 어떤 여유가 필요할까?",
+        "sectionReview": "학습 효과·분류법을 제외하고 대기석에서 백팩을 놓을 면, 케이스에 손이 들어갈 여유, 급히 이동할 때의 복귀를 구체화했다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 2658,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
+      }
     },
     {
       "id": "video-call-backpack-background",
@@ -93,7 +106,7 @@
     },
     {
       "id": "wireless-mouse-backpack-case",
-      "title": "백팩 속 마우스, 버튼이 눌리지 않게 되담기",
+      "title": "마우스 케이스는 백팩에서 기기와 따로 꺼낼 수 있게",
       "url": "https://himawari.co.kr/story/wireless-mouse-backpack-case.html",
       "productId": "coupang-08039b2ac81db358",
       "model": "No.194L",
@@ -111,7 +124,20 @@
       "dimensionsCm": "28 × 39 × 15 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 44페이지의 194L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Original lavender body, beige handle anchors and keeper, silver rings, two beige buckle straps on the flap, central pale Himawari logo, side pockets and lavender straps retained. Mouse/receiver are visibly separate staged accessories in an external open case; no added bag compartment."
+      "fidelityReview": "Original lavender body, beige handle anchors and keeper, silver rings, two beige buckle straps on the flap, central pale Himawari logo, side pockets and lavender straps retained. Mouse/receiver are visibly separate staged accessories in an external open case; no added bag compartment.",
+      "editorialForm": "두 업무 장면으로 비교하는 파우치 선택",
+      "coreQuestion": "마우스를 기기 파우치에 합칠지 백팩의 별도 묶음으로 둘지는 어떤 동작으로 결정할까?",
+      "bodyChars": 2790,
+      "sha256": "f4539de3eb01171d5b5acf26f7202d982826d99d66119be0af3c8a5421abaefc",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "마우스를 기기 파우치에 합칠지 백팩의 별도 묶음으로 둘지는 어떤 동작으로 결정할까?",
+        "sectionReview": "버튼 작동·기기 설정 설명을 제외하고 노트북 파우치에 합치는 선택과 백팩의 별도 접근을 실제 업무 동작으로 비교했다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 2760,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
+      }
     },
     {
       "id": "backpack-pin-badge-check",
@@ -158,5 +184,14 @@
       ],
       "stage": "prepared"
     }
+  },
+  "editorialRevision": {
+    "date": "2026-10-16",
+    "scope": "가방 중심 주제 정정",
+    "postIds": [
+      "vocabulary-cards-backpack-practice",
+      "wireless-mouse-backpack-case"
+    ],
+    "imagesPreserved": true
   }
 }

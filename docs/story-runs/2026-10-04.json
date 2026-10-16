@@ -5,7 +5,7 @@
   "posts": [
     {
       "id": "binoculars-backpack-birdwatching",
-      "title": "탐조 산책의 백팩: 쌍안경 덮개와 끈을 함께 챙기기",
+      "title": "쌍안경을 자주 꺼내는 백팩, 멈춘 자리에서 다시 메기까지",
       "url": "https://himawari.co.kr/story/binoculars-backpack-birdwatching.html",
       "productId": "coupang-66513184481d2764",
       "model": "No.9018",
@@ -23,11 +23,24 @@
       "dimensionsCm": "28 × 40 × 17 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 40페이지의 9018 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Directly inspected original and new output. Beige body/handles/straps, beige snap keeper, two black handle anchor tabs/rings, upper horizontal zip with black pull, large lower flap with two black buckled straps, white black-bordered Himawari patch and beige side pockets retained. Whole bag realistically scaled beside capped black binoculars and separate closed case. No inferred bag protection or fitted interior."
+      "fidelityReview": "Directly inspected original and new output. Beige body/handles/straps, beige snap keeper, two black handle anchor tabs/rings, upper horizontal zip with black pull, large lower flap with two black buckled straps, white black-bordered Himawari patch and beige side pockets retained. Whole bag realistically scaled beside capped black binoculars and separate closed case. No inferred bag protection or fitted interior.",
+      "editorialForm": "반복 사용의 질문에 답하는 현장형 문답",
+      "coreQuestion": "산책 중 쌍안경을 여러 번 꺼낼 때 백팩의 어떤 배치가 반복해서 유지될까?",
+      "bodyChars": 2692,
+      "sha256": "e1b04eaa70423310d98b13d017a2dd843ec32978c24ca19d6cf0ad26f813b06d",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "산책 중 쌍안경을 여러 번 꺼낼 때 백팩의 어떤 배치가 반복해서 유지될까?",
+        "sectionReview": "조류 관찰·쌍안경 조작·덮개 사용법을 배제하고 짧은 멈춤 사이의 백팩 반복 접근, 비어 있는 케이스 자리와 재착용을 다뤘다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 2655,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
+      }
     },
     {
       "id": "folding-phone-stand-backpack",
-      "title": "접이식 휴대폰 거치대, 펼친 채 백팩에 넣지 않도록",
+      "title": "접힌 거치대를 넣는 백팩, 얇은 기기 옆의 두꺼운 모서리",
       "url": "https://himawari.co.kr/story/folding-phone-stand-backpack.html",
       "productId": "coupang-61a4938317496a47",
       "model": "No.0423",
@@ -45,11 +58,24 @@
       "dimensionsCm": "32 × 42 × 13 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 9페이지의 0423 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Direct comparison: black rounded body, actual mint dog-face pouch with two black vertical eyes, navy left nose and single navy right ear, lower black zip pouch with upper flap and white-bordered black Himawari patch, mesh side pockets/webbing and cord pulls preserved. Separate phone and fully folded stand with pouch on table; no accessory attached to bag or invented charging/fit claim."
+      "fidelityReview": "Direct comparison: black rounded body, actual mint dog-face pouch with two black vertical eyes, navy left nose and single navy right ear, lower black zip pouch with upper flap and white-bordered black Himawari patch, mesh side pockets/webbing and cord pulls preserved. Separate phone and fully folded stand with pouch on table; no accessory attached to bag or invented charging/fit claim.",
+      "editorialForm": "두 외형을 비교하는 표와 배치 해설",
+      "coreQuestion": "접힌 거치대와 얇은 기기를 같은 백팩에 넣을 때 두께 차이를 어디에서 나눌까?",
+      "bodyChars": 2561,
+      "sha256": "482369faed27b4e0fbd8fbb0890ba33bc88e46eda0f03f4c202a8a96f8bbcd29",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "접힌 거치대와 얇은 기기를 같은 백팩에 넣을 때 두께 차이를 어디에서 나눌까?",
+        "sectionReview": "거치대 조립·관절 사용법을 제외하고 얇은 기기와 단단한 소품의 외형 비교, 파우치의 접촉과 백팩 접근 빈도를 다뤘다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 2525,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
+      }
     },
     {
       "id": "seed-packets-backpack-exchange",
-      "title": "씨앗 나눔 가는 날의 백팩: 봉투의 이름도 함께 가져가기",
+      "title": "씨앗 나눔 가방, 개인 짐을 펼치지 않는 교환 묶음",
       "url": "https://himawari.co.kr/story/seed-packets-backpack-exchange.html",
       "productId": "coupang-4861cd80cf7fce0c",
       "model": "No.9290",
@@ -67,11 +93,24 @@
       "dimensionsCm": "30 × 42 × 18 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 42페이지의 9290 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Direct comparison: black rounded body, shoulder straps/loop, original white central logo patch, large lower front pocket with white horizontal chunky zip and left pull, white main pulls and original upper/lower pairs of white side hardware retained. Whole bag beside separate closed blank seed envelopes and clear document sleeve. No added pocket, printed cultivar, loose dirt, internal fit or moisture-proof claim."
+      "fidelityReview": "Direct comparison: black rounded body, shoulder straps/loop, original white central logo patch, large lower front pocket with white horizontal chunky zip and left pull, white main pulls and original upper/lower pairs of white side hardware retained. Whole bag beside separate closed blank seed envelopes and clear document sleeve. No added pocket, printed cultivar, loose dirt, internal fit or moisture-proof claim.",
+      "editorialForm": "출발·전달·귀가의 세 경계를 짚는 사용 기록",
+      "coreQuestion": "교환할 봉투만 백팩에서 통째로 꺼내려면 개인 짐과 어떤 경계를 만들어야 할까?",
+      "bodyChars": 2680,
+      "sha256": "29b7295645abbe909d1b10c0c0d527a75a8a7bf20a72912ecaa10684915447bd",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "교환할 봉투만 백팩에서 통째로 꺼내려면 개인 짐과 어떤 경계를 만들어야 할까?",
+        "sectionReview": "씨앗 이름·재배·채종을 가르치지 않고 교환용 봉투 묶음과 개인 짐의 경계, 백팩에서 통째로 꺼내는 동작과 귀가 부피를 다뤘다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 2649,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
+      }
     },
     {
       "id": "watercolour-brush-backpack-return",
-      "title": "수채화 붓을 백팩에 되담을 때: 물기와 붓끝부터",
+      "title": "수채화 수업 뒤의 백팩, 젖은 도구 묶음이 돌아올 자리",
       "url": "https://himawari.co.kr/story/watercolour-brush-backpack-return.html",
       "productId": "coupang-b8f7115d45d4c5f4",
       "model": "No.200",
@@ -95,11 +134,24 @@
       "dimensionsCm": "28 × 39 × 15 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 51페이지의 200 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Direct original/output comparison including final logo correction: black body, circular black white Himawari patch, gray-black anchors/loops, twin upper pulls, one wide vertical strap and dark buckle/snap on rounded front flap, side pockets and paired handles retained. Fictional adult rear three-quarter wearing scale proportionate to catalog39cm height. Brushes lie separately dry on cloth; no accessory fit or protective claim. First unapproved render had invented tiny model number; final patch has original brand/subline appearance without invented model number."
+      "fidelityReview": "Direct original/output comparison including final logo correction: black body, circular black white Himawari patch, gray-black anchors/loops, twin upper pulls, one wide vertical strap and dark buckle/snap on rounded front flap, side pockets and paired handles retained. Fictional adult rear three-quarter wearing scale proportionate to catalog39cm height. Brushes lie separately dry on cloth; no accessory fit or protective claim. First unapproved render had invented tiny model number; final patch has original brand/subline appearance without invented model number.",
+      "editorialForm": "출발 때와 수업 뒤의 가방을 대조하는 현장 메모",
+      "coreQuestion": "수채화 도구의 상태가 바뀐 뒤에도 서류와 개인 소지품을 같은 백팩으로 가져올 수 있을까?",
+      "bodyChars": 2974,
+      "sha256": "99135d037d2d539bfebe2c2345b22238e709c15c460d0b6113897fce858696b6",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "수채화 도구의 상태가 바뀐 뒤에도 서류와 개인 소지품을 같은 백팩으로 가져올 수 있을까?",
+        "sectionReview": "수채화 기술·붓 세척법을 제외하고 가방과 작업대의 경계, 상태가 바뀐 운반 묶음, 별도 가방 선택과 귀가 뒤 비우기를 다뤘다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 2940,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
+      }
     },
     {
       "id": "portable-radio-backpack-antenna",
-      "title": "휴대용 라디오를 백팩에 넣기 전: 안테나부터 제자리로",
+      "title": "라디오를 담는 백팩, 단단한 케이스가 지나갈 길",
       "url": "https://himawari.co.kr/story/portable-radio-backpack-antenna.html",
       "productId": "coupang-50c5b38af3fd50b0",
       "model": "No.9001",
@@ -117,11 +169,24 @@
       "dimensionsCm": "28 × 40 × 17 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 62페이지의 9001 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Direct original/output comparison: black body/padded straps/handles/keeper, two gold rivets on each handle tab, original black rectangular white-letter label, cream/gold main and front zips, brown long left pull/right side accent, side pockets retained. Whole40cm bag beside separate palm-size radio, antenna collapsed flat, closed case. No internal fit, accessory inclusion or protection claim."
+      "fidelityReview": "Direct original/output comparison: black body/padded straps/handles/keeper, two gold rivets on each handle tab, original black rectangular white-letter label, cream/gold main and front zips, brown long left pull/right side accent, side pockets retained. Whole40cm bag beside separate palm-size radio, antenna collapsed flat, closed case. No internal fit, accessory inclusion or protection claim.",
+      "editorialForm": "입구에서 내부 자리까지 따라가는 물건의 이동 해설",
+      "coreQuestion": "라디오 케이스를 백팩에 넣고 꺼낼 때 어느 모서리가 입구와 다른 짐에 닿을까?",
+      "bodyChars": 2585,
+      "sha256": "9b513430f5f95f0d0fc89b5cd22dbded1b34f82f85f62646058c1159ec01c34f",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "라디오 케이스를 백팩에 넣고 꺼낼 때 어느 모서리가 입구와 다른 짐에 닿을까?",
+        "sectionReview": "라디오 조작·수신·안테나 수납법을 가르치지 않고 케이스의 외형, 백팩 입구 경로, 잡을 면과 반복 접근의 조건을 설명했다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 2555,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
+      }
     },
     {
       "id": "used-batteries-backpack-dropoff",
-      "title": "다 쓴 건전지, 백팩에 넣기 전에 종류부터 확인하기",
+      "title": "반납할 물건이 있는 날, 일상 백팩에 남기지 않을 묶음",
       "url": "https://himawari.co.kr/story/used-batteries-backpack-dropoff.html",
       "productId": "coupang-4efcb6a5f2ae7b88",
       "model": "No.188L",
@@ -139,7 +204,20 @@
       "dimensionsCm": "28 × 39 × 15 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 57페이지의 188L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Direct original/output comparison: gray body/straps/handles, beige snap keeper/handle tabs/silver loops/twin upper pulls, original cream rectangular Himawari patch with red detail, large gray flap with two beige snap and silver buckle straps, gray side pockets retained. Whole39cm bag on shelf; separate nonconductive container shows three separated AA-size cells with end tapes, no loose metal, damage or exposed contacts. Props outside bag, no internal fit/fire protection claim."
+      "fidelityReview": "Direct original/output comparison: gray body/straps/handles, beige snap keeper/handle tabs/silver loops/twin upper pulls, original cream rectangular Himawari patch with red detail, large gray flap with two beige snap and silver buckle straps, gray side pockets retained. Whole39cm bag on shelf; separate nonconductive container shows three separated AA-size cells with end tapes, no loose metal, damage or exposed contacts. Props outside bag, no internal fit/fire protection claim.",
+      "editorialForm": "가방에 넣기 전 세 갈래 선택을 따라가는 결정문",
+      "coreQuestion": "별도 반납 물건을 가져가는 날, 일상 백팩과 임시 운반 가방의 역할을 어디에서 나눌까?",
+      "bodyChars": 2863,
+      "sha256": "31b35a35346b3f162e92897f43c88439b3eae67c4f4101821f28fa49ff4b9b6e",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "별도 반납 물건을 가져가는 날, 일상 백팩과 임시 운반 가방의 역할을 어디에서 나눌까?",
+        "sectionReview": "배터리 분류·절연·폐기 규정이나 위험 판정은 다루지 않았다. 각 절은 일상 백팩·별도 운반 가방의 역할과 방문 변경 시 비우기 결정에 초점을 둔다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 2830,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
+      }
     }
   ],
   "topicsReviewed": 107,
@@ -164,5 +242,18 @@
       ],
       "stage": "prepared"
     }
+  },
+  "editorialRevision": {
+    "date": "2026-10-16",
+    "scope": "가방 중심 주제 정정",
+    "postIds": [
+      "binoculars-backpack-birdwatching",
+      "folding-phone-stand-backpack",
+      "seed-packets-backpack-exchange",
+      "watercolour-brush-backpack-return",
+      "portable-radio-backpack-antenna",
+      "used-batteries-backpack-dropoff"
+    ],
+    "imagesPreserved": true
   }
 }

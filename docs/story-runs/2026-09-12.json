@@ -4,13 +4,27 @@
   "posts": [
     {
       "id": "weekend-sketch-backpack-guide",
-      "title": "주말 드로잉 백팩: 한 장을 그리러 나가는 가벼운 준비",
+      "title": "백팩의 은색 부품, 옷의 작은 장식과 맞춰보기",
       "url": "https://himawari.co.kr/story/weekend-sketch-backpack-guide.html",
       "productId": "coupang-11bd051a162f120b",
       "model": "No.9004",
       "image": "assets/story/weekend-sketch-backpack-guide.webp",
       "imageKind": "generated",
-      "reference": "backups/coupang/2026-09-10T08-11-36.118Z/coupang-11bd051a162f120b.jpg"
+      "reference": "backups/coupang/2026-09-10T08-11-36.118Z/coupang-11bd051a162f120b.jpg",
+      "editorialForm": "시계·안경·무장식 차림을 비교하는 디자인 에세이",
+      "coreQuestion": "파스텔 백팩의 은색 부품을 평소 액세서리의 색에 맞출까, 별도의 포인트로 둘까?",
+      "bodyChars": 3105,
+      "sha256": "8a715e7ab646ac6269e8e70533bd1c3c1a1036a46f7de17dece2dd2206764ed7",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered; duplicate question replaced",
+        "coreQuestion": "파스텔 백팩의 은색 부품을 평소 액세서리의 색에 맞출까, 별도의 포인트로 둘까?",
+        "distinctFromExisting": "기존 스케치북·필통의 좌석 추출 문제를 완전히 제거했다. No.9001 글의 제품 자체 지퍼선·거리 관찰과 달리, 시계·안경·귀걸이와 No.9004의 작은 은색 외관을 어느 양·위치로 반복할지 비교한다. No.2505의 넓은 웨빙과 옷 선 비교도 사용하지 않는다. 핵심 선택은 자신의 시계·안경·장신구의 은빛/노란빛/분홍빛과 색을 맞출지, 가방을 별도의 작은 포인트로 둘지이다. 근거리/원거리 부품 관찰을 새 주제로 삼지 않는다.",
+        "sectionReview": "Every major section addresses this bag design and its visual relationship to clothing/accessories. No packing, internal fit or extraction checklist remains.",
+        "titleReview": "Read all 59 revision titles before replacement; examined the adjacent No.9001 detail essay and No.2505 webbing/outfit question.",
+        "visibleTextCharacters": 3079,
+        "humanizerReview": "Removed tutorial residue, formulaic contrast, repeated caveats and empty closers. Concrete visual choices supply the prose."
+      }
     },
     {
       "id": "backpack-pouch-identification-guide",
@@ -40,5 +54,13 @@
   },
   "topicsReviewed": 35,
   "overlapReview": "Reviewed all 35 titles, summaries and article bodies. New focus: dry drawing tools for a single sketch outing (not general day-trip packing); exterior identification of similar pouches (not sorting cables or reducing contents); parcel preparation for sending the bag itself (not long-term storage or the legacy packaging-development story). Three distinct models and images.",
-  "completionReceipt": "backups/story-runs/2026-09-12.deployment.json"
+  "completionReceipt": "backups/story-runs/2026-09-12.deployment.json",
+  "editorialRevision": {
+    "date": "2026-10-16",
+    "scope": "가방 중심 주제 정정",
+    "postIds": [
+      "weekend-sketch-backpack-guide"
+    ],
+    "imagesPreserved": true
+  }
 }

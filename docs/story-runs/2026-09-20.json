@@ -4,13 +4,26 @@
   "posts": [
     {
       "id": "knitting-project-backpack",
-      "title": "손뜨개와 함께 나가는 백팩: 실 끝이 엉키지 않는 준비",
+      "title": "뜨개 작업을 담는 백팩, 실이 지퍼 밖으로 나오지 않게",
       "url": "https://himawari.co.kr/story/knitting-project-backpack.html",
       "productId": "store-11070925709",
       "model": "No.1027",
       "image": "assets/story/knitting-project-backpack.webp",
       "imageKind": "generated",
-      "reference": "backups/story-2026-09-20/reference-1027.jpg"
+      "reference": "backups/story-2026-09-20/reference-1027.jpg",
+      "editorialForm": "실의 경로를 따라가는 접촉 관찰 에세이",
+      "coreQuestion": "뜨개 작업의 실이 백팩 지퍼와 다른 소지품 사이로 이어지지 않게 하려면 어떤 묶음이 필요할까?",
+      "bodyChars": 2827,
+      "sha256": "4f9467abd8a67674d3a27d6c0a4ef5ab2fa2faedcfe67d31f333731bc2750885",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "뜨개 작업의 실이 백팩 지퍼와 다른 소지품 사이로 이어지지 않게 하려면 어떤 묶음이 필요할까?",
+        "sectionReview": "뜨개 작품 선택·코·단수·실 사용 기술을 제외하고 작업 묶음과 백팩 지퍼·개인 소품의 접촉 경로와 통째로 꺼낼 단위를 다뤘다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 2797,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
+      }
     },
     {
       "id": "ereader-backpack-reading-break",
@@ -30,7 +43,7 @@
     },
     {
       "id": "cosmetic-pouch-backpack-check",
-      "title": "백팩 속 화장품 파우치: 뚜껑·펌프·브러시를 나눠 챙기기",
+      "title": "백팩에서 화장품 파우치를 꺼낼 때 남겨둘 손의 공간",
       "url": "https://himawari.co.kr/story/cosmetic-pouch-backpack-check.html",
       "productId": "store-13725149652",
       "model": "No.1088M",
@@ -42,6 +55,19 @@
         "source": "backups/story-2026-09-20/cosmetic-pouch-backpack-check-generated.png",
         "prompt": "Use case: photorealistic-natural. Landscape 3:2 Himawari editorial product photo. Reference is actual product identity, preserve exactly: black backpack with off-white bottom panel, two vertical black front straps with cream buckles, oval front Himawari logo patch, top handles. Do not reproduce the circular chest-strap inset, SET lettering or collage of the source. Scene: a clean pale wood dressing table beside one closed pale peach cosmetic pouch and two simple capped unbranded cosmetic containers, soft morning light. Entire bag fully visible and dominant at a front three-quarter angle, authentic fabric and stitching, restrained natural lighting and believable shadows, elegant spacious framing. Preserve actual bag logo, silhouette, colors, pockets and hardware. No invented features, no text overlays, no extra backpacks. Props remain outside the closed bag; this is styled photography not a capacity demonstration.",
         "generatedAt": "2026-09-21"
+      },
+      "editorialForm": "한 파우치의 밖과 안을 오가는 사용 관찰",
+      "coreQuestion": "화장품 파우치가 백팩에 들어가는 공간과 손으로 꺼낼 공간은 어떻게 함께 남길까?",
+      "bodyChars": 2798,
+      "sha256": "ba50ef913518eb210e93387e4defdba2aa2c6f39995ddfeb9ffad4b1e9707518",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "화장품 파우치가 백팩에 들어가는 공간과 손으로 꺼낼 공간은 어떻게 함께 남길까?",
+        "sectionReview": "용기별 캡·펌프 작동 해설을 제외하고 채워진 파우치의 모양, 손이 들어갈 여유, 밖에서 펼칠 면과 백팩 복귀를 다뤘다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 2769,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
       }
     }
   ],
@@ -54,5 +80,14 @@
   "overlapReview": "Reviewed the existing 59 titles, summaries and saved body corpus, with targeted searches for knitting, e-readers and cosmetics. No prior knitting or e-reader articles; cosmetics previously appeared only as brief examples in general cleaning and compartment articles. New articles respectively cover connected yarn and needle ends, e-reader contact surfaces and reading transitions, and closure types plus used cosmetic tools. Three distinct product models; one newly generated reference-based image.",
   "completionReceipt": "backups/story-runs/2026-09-20.deployment.json",
   "expectedGeneratedImages": 3,
-  "imageRevision": "2026-09-21: replaced both reused photos with newly generated product-reference images at user request."
+  "imageRevision": "2026-09-21: replaced both reused photos with newly generated product-reference images at user request.",
+  "editorialRevision": {
+    "date": "2026-10-16",
+    "scope": "가방 중심 주제 정정",
+    "postIds": [
+      "knitting-project-backpack",
+      "cosmetic-pouch-backpack-check"
+    ],
+    "imagesPreserved": true
+  }
 }

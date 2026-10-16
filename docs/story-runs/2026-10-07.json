@@ -5,7 +5,7 @@
   "posts": [
     {
       "id": "knitting-pattern-repeat-notes",
-      "title": "뜨개 도안 옆 작은 표: 전체 단수와 반복 구간을 따로 세기",
+      "title": "백팩 속 파우치, 몇 개로 나누어야 편할까",
       "url": "https://himawari.co.kr/story/knitting-pattern-repeat-notes.html",
       "productId": "coupang-b8f7115d45d4c5f4",
       "model": "No.200",
@@ -23,11 +23,17 @@
       "dimensionsCm": "28 × 39 × 15 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 51페이지의 200 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Direct original/generated comparison: black rectangular39cm body, twin short black handles and keeper, original X-stitched black anchor tabs/black rectangular loops, circular black white-Himawari patch, paired black top pulls, single central black strap/buckle/stud on curved lower flap, black side pockets/padded straps retained. Whole closed bag clear and plausible relative to small notebook and yarn basket; no capacity/fit claim. Separate teal knitting, two-column check notebook are fictional props."
+      "fidelityReview": "Direct original/generated comparison: black rectangular39cm body, twin short black handles and keeper, original X-stitched black anchor tabs/black rectangular loops, circular black white-Himawari patch, paired black top pulls, single central black strap/buckle/stud on curved lower flap, black side pockets/padded straps retained. Whole closed bag clear and plausible relative to small notebook and yarn basket; no capacity/fit claim. Separate teal knitting, two-column check notebook are fictional props.",
+      "editorialForm": "파우치 분할의 공간과 조작 비용 비교",
+      "coreQuestion": "파우치를 더 나누는 것이 도움이 되는 때와 오히려 번거로운 때를 어떻게 구분할까?",
+      "bodyChars": 2709,
+      "sha256": "dc379bc8915424e02119d99476dac8e1a0460c74ea92641df5f0ec1edfaf75c7",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "제목과 주요 절을 가방의 실제 선택·디자인·조작 질문으로 구성했다. 기존 155개 제목과 가까운 수납·착용 글을 대조해 파우치 분할의 공간과 조작 비용 비교에 집중했다. humanizer 검토로 반복된 부정·출처 유보 문장을 줄이고 세부 비교를 유지했다."
     },
     {
       "id": "board-game-rule-sheet-sources",
-      "title": "보드게임 모임의 규칙표: 설명서와 우리 모임의 약속 구분하기",
+      "title": "백팩 자체 무게와 하루 짐 무게를 나누어 비교하기",
       "url": "https://himawari.co.kr/story/board-game-rule-sheet-sources.html",
       "productId": "coupang-4861cd80cf7fce0c",
       "model": "No.9290",
@@ -45,11 +51,17 @@
       "dimensionsCm": "30 × 42 × 18 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 42페이지의 9290 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Direct original/generated comparison: arched black body, original white rectangular Himawari patch, white lower horizontal zipper/left pull, all four original white plastic side buckles on black webbing, top loop and padded shoulder straps, black side pockets retained. Original primary zipper arrangement visible; no tan trim/extra product decoration. Bag42cm proportional to separate small plain game box, generic wood pieces/cards and two-column note. No real game/IP/customer or inside-fit assertion."
+      "fidelityReview": "Direct original/generated comparison: arched black body, original white rectangular Himawari patch, white lower horizontal zipper/left pull, all four original white plastic side buckles on black webbing, top loop and padded shoulder straps, black side pockets retained. Original primary zipper arrangement visible; no tan trim/extra product decoration. Bag42cm proportional to separate small plain game box, generic wood pieces/cards and two-column note. No real game/IP/customer or inside-fit assertion.",
+      "editorialForm": "빈 가방과 실제 총중량을 분리하는 숫자 해설",
+      "coreQuestion": "백팩의 자체 무게를 실제 하루 운반 무게와 어떻게 연결해 읽을까?",
+      "bodyChars": 2761,
+      "sha256": "9a569e6ad1aa90375b9b553a44b89e26fb0b99e0854dc5a368b860d9752e1fec",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "제목과 주요 절을 가방의 실제 선택·디자인·조작 질문으로 구성했다. 기존 155개 제목과 가까운 수납·착용 글을 대조해 빈 가방과 실제 총중량을 분리하는 숫자 해설에 집중했다. humanizer 검토로 반복된 부정·출처 유보 문장을 줄이고 세부 비교를 유지했다."
     },
     {
       "id": "stargazing-notebook-date-time-place",
-      "title": "별 보기 모임의 첫 줄: 날짜·시각·장소를 함께 남기기",
+      "title": "검정 백팩의 지퍼 선과 작은 장식을 가까이 보기",
       "url": "https://himawari.co.kr/story/stargazing-notebook-date-time-place.html",
       "productId": "coupang-50c5b38af3fd50b0",
       "model": "No.9001",
@@ -67,11 +79,17 @@
       "dimensionsCm": "28 × 40 × 17 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 62페이지의 9001 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Direct original/generated comparison: black rounded rectangular closed doctor-bag body, twin black handles/anchors with two gold rivets each, black rectangular white Himawari label, gold front and main zippers, cognac long lower left pull and original side rectangular brown tab, black side pocket/shoulder straps retained. Notebook is blank except correct generic DATE/TIME/LOCATION headings; books/sky are fictional styling, no actual astronomical object/event/equipment fit. Entire40cm bag clear under warm light."
+      "fidelityReview": "Direct original/generated comparison: black rounded rectangular closed doctor-bag body, twin black handles/anchors with two gold rivets each, black rectangular white Himawari label, gold front and main zippers, cognac long lower left pull and original side rectangular brown tab, black side pocket/shoulder straps retained. Notebook is blank except correct generic DATE/TIME/LOCATION headings; books/sky are fictional styling, no actual astronomical object/event/equipment fit. Entire40cm bag clear under warm light.",
+      "editorialForm": "거리와 색 대비로 읽는 백팩 디테일 관찰",
+      "coreQuestion": "단색 백팩에서 지퍼와 작은 배색을 어떤 거리와 각도로 살펴볼까?",
+      "bodyChars": 2696,
+      "sha256": "cd13c1cb606082926987cead87d69a1454effff57c044dbcb0909ec8608dbc5e",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "제목과 주요 절을 가방의 실제 선택·디자인·조작 질문으로 구성했다. 기존 155개 제목과 가까운 수납·착용 글을 대조해 거리와 색 대비로 읽는 백팩 디테일 관찰에 집중했다. humanizer 검토로 반복된 부정·출처 유보 문장을 줄이고 세부 비교를 유지했다."
     },
     {
       "id": "fabric-book-cover-closing-check",
-      "title": "천 북커버를 챙길 때: 표지를 끼운 뒤 책이 닫히는지 확인하기",
+      "title": "입구를 넓게 여는 백팩은 펼칠 자리도 함께 보기",
       "url": "https://himawari.co.kr/story/fabric-book-cover-closing-check.html",
       "productId": "coupang-11bd051a162f120b",
       "model": "No.9004",
@@ -89,11 +107,17 @@
       "dimensionsCm": "28 × 40 × 17 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 49페이지의 9004 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Direct original/generated comparison: lavender closed doctor-bag body, twin lavender tubular handles with beige snap keeper, X-stitched anchors with two silver studs each, beige diamond lavender n emblem, coral lower zipper pocket with left beige pull and lower-right white fabric label, beige base strip, lavender side pocket and padded straps retained. Entire40cm bag proportionate to separately staged20cm cloth-covered book. No fitting/customer claim."
+      "fidelityReview": "Direct original/generated comparison: lavender closed doctor-bag body, twin lavender tubular handles with beige snap keeper, X-stitched anchors with two silver studs each, beige diamond lavender n emblem, coral lower zipper pocket with left beige pull and lower-right white fabric label, beige base strip, lavender side pocket and padded straps retained. Entire40cm bag proportionate to separately staged20cm cloth-covered book. No fitting/customer claim.",
+      "editorialForm": "가방이 열린 상태에서 차지하는 공간의 관찰",
+      "coreQuestion": "넓게 여는 백팩을 고를 때 본체 밖에 어떤 사용 공간을 남겨야 할까?",
+      "bodyChars": 2726,
+      "sha256": "f802ee04b60522d7c97823a451a927de2318aae2eaab1fd466f23d7c5cde9e9d",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "제목과 주요 절을 가방의 실제 선택·디자인·조작 질문으로 구성했다. 기존 155개 제목과 가까운 수납·착용 글을 대조해 가방이 열린 상태에서 차지하는 공간의 관찰에 집중했다. humanizer 검토로 반복된 부정·출처 유보 문장을 줄이고 세부 비교를 유지했다."
     },
     {
       "id": "reading-script-turn-cues",
-      "title": "낭독 모임의 대본 한 장: 내 차례를 찾는 시작 신호 표시하기",
+      "title": "백팩을 세워 열까, 눕혀 열까",
       "url": "https://himawari.co.kr/story/reading-script-turn-cues.html",
       "productId": "coupang-c059501520294ef4",
       "model": "No.2301",
@@ -111,11 +135,17 @@
       "dimensionsCm": "28 × 42 × 17 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 38페이지의 2301 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Direct original/generated comparison: dusty pink rectangular tall body, black carry loop and padded straps, original parallel black main zipper tracks, upper rounded pink pocket with black white-Himawari label, lower original black mesh panel, two visible left black side compression buckles and black side pocket retained.42cm bag and separate cream sheets plausible relative scale. Generic fictional reading notes; no real script/customer or fitting claim."
+      "fidelityReview": "Direct original/generated comparison: dusty pink rectangular tall body, black carry loop and padded straps, original parallel black main zipper tracks, upper rounded pink pocket with black white-Himawari label, lower original black mesh panel, two visible left black side compression buckles and black side pocket retained.42cm bag and separate cream sheets plausible relative scale. Generic fictional reading notes; no real script/customer or fitting claim.",
+      "editorialForm": "본체 방향을 바꾸었을 때의 접근 비교",
+      "coreQuestion": "백팩을 세워 열 때와 눕혀 열 때 어떤 사용 조건을 나누어 봐야 할까?",
+      "bodyChars": 2615,
+      "sha256": "9a483532266781750495cd137797389a31f7c26d7b3962b98fc2c3567c0c01d6",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "제목과 주요 절을 가방의 실제 선택·디자인·조작 질문으로 구성했다. 기존 155개 제목과 가까운 수납·착용 글을 대조해 본체 방향을 바꾸었을 때의 접근 비교에 집중했다. humanizer 검토로 반복된 부정·출처 유보 문장을 줄이고 세부 비교를 유지했다."
     },
     {
       "id": "collage-unfinished-layout-packing",
-      "title": "콜라주 작업을 멈출 때: 붙이기 전 종이 배치부터 남기기",
+      "title": "여행 백팩과 기저귀가방, 용도 이름을 읽는 순서",
       "url": "https://himawari.co.kr/story/collage-unfinished-layout-packing.html",
       "productId": "coupang-01bab6bcd7cd5306",
       "model": "No.1211",
@@ -133,7 +163,13 @@
       "dimensionsCm": "26 × 40 × 17 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 56페이지의 1211 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Direct original/generated comparison: navy rounded rectangular doctor-bag body, twin navy handles with original black keeper, two dark studs per anchor, white Himawari EST2010 printed logo and original small side fabric label, navy lower zip pocket with black zipper and two silver oval-ring pulls at center, original navy shoulder harness and black upper quick-release buckles, side pocket black bands retained.40cm bag beside separate small collage board and paper envelopes; no capacity or actual artwork claim."
+      "fidelityReview": "Direct original/generated comparison: navy rounded rectangular doctor-bag body, twin navy handles with original black keeper, two dark studs per anchor, white Himawari EST2010 printed logo and original small side fabric label, navy lower zip pocket with black zipper and two silver oval-ring pulls at center, original navy shoulder harness and black upper quick-release buckles, side pocket black bands retained.40cm bag beside separate small collage board and paper envelopes; no capacity or actual artwork claim.",
+      "editorialForm": "상품 용도명을 실제 선택 질문으로 바꾸는 해설",
+      "coreQuestion": "여러 용도로 소개된 백팩을 내 일상에 맞는지 어떻게 판단할까?",
+      "bodyChars": 2724,
+      "sha256": "9a987a135e58fdab2cf02c1eb8a6049537d4e33827501be91d26c3fc387cc9ad",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "제목과 주요 절을 가방의 실제 선택·디자인·조작 질문으로 구성했다. 기존 155개 제목과 가까운 수납·착용 글을 대조해 상품 용도명을 실제 선택 질문으로 바꾸는 해설에 집중했다. humanizer 검토로 반복된 부정·출처 유보 문장을 줄이고 세부 비교를 유지했다."
     }
   ],
   "topicsReviewed": 125,
@@ -241,5 +277,18 @@
       }
     ],
     "review": "Extracted all125 titles, summaries and full article bodies for comparison, searched all text for scarf/reading script/collage and directly read relevant closest articles. Rejected scarf topic because keyring positioning and top-handle actions overlapped. Cloth book-cover core checks inserted flaps/spine slack and open/closed movement, distinct from paper corner packing and library returns. Reading script core uses previous spoken ending as cue and agrees direction-line reading, distinct from choir score order and general language notes. Collage core records unglued spatial arrangement and separates layered fragments for reconstruction, distinct from finished craft transport and origami starting face. All3 new subjects and different real9004/2301/1211 models versus morning200/9290/9001. Edited prose with Humanizer: direct actions, no invented testimony, model capability or customer claim. October5/6 each contained story adult wearing image; this run uses3 new still lifes with distinct colors/settings."
+  },
+  "editorialRevision": {
+    "date": "2026-10-16",
+    "scope": "가방 중심 주제 정정",
+    "postIds": [
+      "knitting-pattern-repeat-notes",
+      "board-game-rule-sheet-sources",
+      "stargazing-notebook-date-time-place",
+      "fabric-book-cover-closing-check",
+      "reading-script-turn-cues",
+      "collage-unfinished-layout-packing"
+    ],
+    "imagesPreserved": true
   }
 }

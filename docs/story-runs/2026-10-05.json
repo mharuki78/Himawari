@@ -5,7 +5,7 @@
   "posts": [
     {
       "id": "business-cards-backpack-context",
-      "title": "백팩 속 명함, 어디서 만났는지도 함께 남기기",
+      "title": "명함을 주고받는 날의 백팩, 두 명함집을 꺼내는 순서",
       "url": "https://himawari.co.kr/story/business-cards-backpack-context.html",
       "productId": "coupang-08039b2ac81db358",
       "model": "No.194L",
@@ -23,11 +23,24 @@
       "dimensionsCm": "28 × 39 × 15 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 44페이지의 194L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Directly viewed genuine original and generated image. Lavender rectangular body and front flap, pale grey-beige snap handle keeper, two metal upper loops and two X-stitched pale anchor tabs, central rectangular Himawari patch, two silver-studded buckled flap straps with perforated tails, side slip pockets/shoulder straps and long side pull match. Bag upright on table with separate blank card/memo props; no fake contact data, extra compartment or fit claim."
+      "fidelityReview": "Directly viewed genuine original and generated image. Lavender rectangular body and front flap, pale grey-beige snap handle keeper, two metal upper loops and two X-stitched pale anchor tabs, central rectangular Himawari patch, two silver-studded buckled flap straps with perforated tails, side slip pockets/shoulder straps and long side pull match. Bag upright on table with separate blank card/memo props; no fake contact data, extra compartment or fit claim.",
+      "editorialForm": "서 있는 자리와 앉은 자리를 오가는 장면 비교",
+      "coreQuestion": "건넬 명함과 받은 명함을 가방 전체를 펼치지 않고 주고받으려면 어떻게 나누어 둘까?",
+      "bodyChars": 2805,
+      "sha256": "9db8224c0de8d9826a8bb716d4fc83b38e85651e4c2c27fb4ad81e6166178571",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "건넬 명함과 받은 명함을 가방 전체를 펼치지 않고 주고받으려면 어떻게 나누어 둘까?",
+        "sectionReview": "행사 업무나 연락처 기록이 아니라, 건넬/받을 명함집의 수납·접근·일시 반출·복귀를 장면별로 비교했다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 2767,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
+      }
     },
     {
       "id": "postcards-backpack-address-check",
-      "title": "여행 엽서를 보내는 날: 백팩에서 꺼내 주소부터 다시 읽기",
+      "title": "여행 백팩의 엽서 파일, 꺼낼 방향을 먼저 정하기",
       "url": "https://himawari.co.kr/story/postcards-backpack-address-check.html",
       "productId": "coupang-7504dfa58ffdf560",
       "model": "No.1088M",
@@ -45,7 +58,20 @@
       "dimensionsCm": "28 × 41.5 × 14 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 27페이지의 1088M 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Directly compared original and output. Mint upright rounded rectangular body, sage front woven straps/handles with cream keeper, two cream buckles, mint top lip with two cream zipper pulls, cream circular Himawari EST.2010 patch, horizontal lower front zip with cream pull and mint side pockets retained. Entire bag seen on both shoulders of adult, realistic approx41.5cm height relative to torso; woman and lane are fictional. Unmarked postbox and blank cream sleeve separate, no customer or actual delivery evidence."
+      "fidelityReview": "Directly compared original and output. Mint upright rounded rectangular body, sage front woven straps/handles with cream keeper, two cream buckles, mint top lip with two cream zipper pulls, cream circular Himawari EST.2010 patch, horizontal lower front zip with cream pull and mint side pockets retained. Entire bag seen on both shoulders of adult, realistic approx41.5cm height relative to torso; woman and lane are fictional. Unmarked postbox and blank cream sleeve separate, no customer or actual delivery evidence.",
+      "editorialForm": "엽서 파일의 방향을 따라가는 공간 관찰",
+      "coreQuestion": "여행 중 엽서 파일을 꺼낼 때 가방 속 다른 물건을 옮기지 않으려면 어느 방향으로 담아야 할까?",
+      "bodyChars": 2797,
+      "sha256": "007ca55272325955a7e7502c5cbed7a0fccd4befc366d249ca8c4dfb3a17b89d",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "여행 중 엽서 파일을 꺼낼 때 가방 속 다른 물건을 옮기지 않으려면 어느 방향으로 담아야 할까?",
+        "sectionReview": "모든 절은 엽서 파일의 수납 방향·주변 접촉·꺼낼 경로·수량 변화에 따른 백팩 재배치를 다룬다. 주소 작성과 우편 제도 설명은 제외했다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 2767,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
+      }
     },
     {
       "id": "hook-loop-band-backpack-lining",
@@ -71,7 +97,7 @@
     },
     {
       "id": "stamp-notebook-backpack-drying",
-      "title": "스탬프 기록장을 백팩에 넣기 전: 찍은 페이지는 잠깐 펼쳐두기",
+      "title": "작은 백팩을 손에 든 채 여닫을 때",
       "url": "https://himawari.co.kr/story/stamp-notebook-backpack-drying.html",
       "productId": "coupang-a9f5747c919c919c",
       "model": "No.124S",
@@ -89,11 +115,17 @@
       "dimensionsCm": "22 × 33 × 14 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 34페이지의 124S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Directly viewed genuine original and generated image: ivory rounded rectangular body, twin top handles/black snap keeper, two ivory anchors each with two black rivets, original black rectangular Himawari label, black front horizontal zip/long black pull, ivory side pockets and ochre-cognac bottom strip retained. Entire mini bag visible with plausible 33cm scale against small notebook; generic round stamp has no official text or destination and closed separate inkpad stays clear of bag."
+      "fidelityReview": "Directly viewed genuine original and generated image: ivory rounded rectangular body, twin top handles/black snap keeper, two ivory anchors each with two black rivets, original black rectangular Himawari label, black front horizontal zip/long black pull, ivory side pockets and ochre-cognac bottom strip retained. Entire mini bag visible with plausible 33cm scale against small notebook; generic round stamp has no official text or destination and closed separate inkpad stays clear of bag.",
+      "editorialForm": "공중에 든 가방과 받쳐 둔 가방의 손동작 비교",
+      "coreQuestion": "작은 백팩을 자주 열 때 어느 순간 두 손이나 받침 면이 필요할까?",
+      "bodyChars": 2715,
+      "sha256": "242194041326574ebe2435a2e511a39335b4266b92a426c095e9e3bbc489ddd9",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "제목과 주요 절을 가방의 실제 선택·디자인·조작 질문으로 구성했다. 기존 155개 제목과 가까운 수납·착용 글을 대조해 공중에 든 가방과 받쳐 둔 가방의 손동작 비교에 집중했다. humanizer 검토로 반복된 부정·출처 유보 문장을 줄이고 세부 비교를 유지했다."
     },
     {
       "id": "embroidery-hoop-backpack-break",
-      "title": "손자수를 쉬어갈 때: 수틀에서 천을 꺼내 백팩에 정리하기",
+      "title": "내려놓고 쓰는 백팩, 바닥과 입구를 함께 고르기",
       "url": "https://himawari.co.kr/story/embroidery-hoop-backpack-break.html",
       "productId": "coupang-4861cd80cf7fce0c",
       "model": "No.9290",
@@ -111,11 +143,17 @@
       "dimensionsCm": "30 × 42 × 18 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 42페이지의 9290 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Directly compared original and output: black tall rounded body with layered main zips, black top loop and shoulder straps, white rectangular original Himawari patch, lower large black zipped pocket with white horizontal zip and single white pull at left, two white compression buckles on each side with black webbing and slip side pockets preserved. Two separate empty wooden hoop rings and flat embroidered linen beside bag, closed needle case, no exposed needle, hoop on bag or internal-fit claim."
+      "fidelityReview": "Directly compared original and output: black tall rounded body with layered main zips, black top loop and shoulder straps, white rectangular original Himawari patch, lower large black zipped pocket with white horizontal zip and single white pull at left, two white compression buckles on each side with black webbing and slip side pockets preserved. Two separate empty wooden hoop rings and flat embroidered linen beside bag, closed needle case, no exposed needle, hoop on bag or internal-fit claim.",
+      "editorialForm": "놓아 둔 가방의 받침 면과 접근 방향 비교",
+      "coreQuestion": "도구를 자주 꺼낼 백팩을 고를 때 바닥 모양과 놓일 위치를 어떻게 함께 볼까?",
+      "bodyChars": 2872,
+      "sha256": "0ffa3fa8f39855acb79a2e57299d3cd0f53a9ebaa187e606943a69863ab1ed1f",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "제목과 주요 절을 가방의 실제 선택·디자인·조작 질문으로 구성했다. 기존 155개 제목과 가까운 수납·착용 글을 대조해 놓아 둔 가방의 받침 면과 접근 방향 비교에 집중했다. humanizer 검토로 반복된 부정·출처 유보 문장을 줄이고 세부 비교를 유지했다."
     },
     {
       "id": "memory-card-backpack-shot-status",
-      "title": "촬영을 마친 메모리카드, 백팩 속 빈 카드와 구분해두기",
+      "title": "백팩 속 메모리카드 케이스를 찾는 단서",
       "url": "https://himawari.co.kr/story/memory-card-backpack-shot-status.html",
       "productId": "coupang-66513184481d2764",
       "model": "No.9018",
@@ -133,7 +171,20 @@
       "dimensionsCm": "28 × 40 × 17 cm",
       "dimensionsSource": "2026-09-14 제조사 카탈로그 40페이지의 9018 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Direct comparison confirmed beige rounded rectangular body, paired beige top handles and beige keeper with black snap, two black X-stitched anchor tabs/plastic loops, horizontal upper front zipper with black pull, lower beige curved flap with white black-bordered Himawari EST2010 patch, exactly two black snap/buckle straps with perforated tails and keepers, beige side pockets and shoulder straps. Two closed separate card cases with small SD card visible inside clear case and blank separate memo slips; laptop off. No added pocket or data protection claim."
+      "fidelityReview": "Direct comparison confirmed beige rounded rectangular body, paired beige top handles and beige keeper with black snap, two black X-stitched anchor tabs/plastic loops, horizontal upper front zipper with black pull, lower beige curved flap with white black-bordered Himawari EST2010 patch, exactly two black snap/buckle straps with perforated tails and keepers, beige side pockets and shoulder straps. Two closed separate card cases with small SD card visible inside clear case and blank separate memo slips; laptop off. No added pocket or data protection claim.",
+      "editorialForm": "세 배치를 비교하는 수납 판단 에세이",
+      "coreQuestion": "작은 메모리카드 케이스를 백팩 깊숙이 떨어뜨리지 않고 찾으려면 어떤 위치가 필요할까?",
+      "bodyChars": 2705,
+      "sha256": "12c0d126a72ab65947ddb984d02dd8a70e284f1cd44ecd8ed29e75fd11f611bc",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "작은 메모리카드 케이스를 백팩 깊숙이 떨어뜨리지 않고 찾으려면 어떤 위치가 필요할까?",
+        "sectionReview": "각 절은 작은 케이스의 포켓 선택, 파우치 접근, 사용 뒤 복귀와 가방 교체를 다룬다. 메모리카드 데이터 관리·백업·포맷 절차는 제외했다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 2658,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
+      }
     }
   ],
   "topicsReviewed": 113,
@@ -158,5 +209,17 @@
       ],
       "stage": "prepared"
     }
+  },
+  "editorialRevision": {
+    "date": "2026-10-16",
+    "scope": "가방 중심 주제 정정",
+    "postIds": [
+      "business-cards-backpack-context",
+      "postcards-backpack-address-check",
+      "stamp-notebook-backpack-drying",
+      "embroidery-hoop-backpack-break",
+      "memory-card-backpack-shot-status"
+    ],
+    "imagesPreserved": true
   }
 }

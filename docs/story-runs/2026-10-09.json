@@ -5,7 +5,7 @@
   "posts": [
     {
       "id": "presentation-opening-closing-cards",
-      "title": "짧은 발표를 앞둔 백팩: 시작과 마무리 문장부터 챙기기",
+      "title": "회의실로 옮길 때 백팩을 손에 들까, 등에 멜까",
       "url": "https://himawari.co.kr/story/presentation-opening-closing-cards.html",
       "productId": "store-13326303755",
       "model": "No.1884",
@@ -27,11 +27,17 @@
       ],
       "dimensionsSource": "2026-09-14 제조사 카탈로그 31페이지의 1884 대형(1884L) 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Direct comparison of genuine reference and generated image: tall black rectangular45cm body, twin narrow black carry handles, two original dark circular rivets on each anchor tab, small rectangular original Himawari badge, broad lower front horizontal black zipper pocket with original left pull, black side pockets/main zipper/padded straps preserved. Whole closed bag visible with no USB cord or invented device; cue cards and notebook separately placed. No interior-fit claim."
+      "fidelityReview": "Direct comparison of genuine reference and generated image: tall black rectangular45cm body, twin narrow black carry handles, two original dark circular rivets on each anchor tab, small rectangular original Himawari badge, broad lower front horizontal black zipper pocket with original left pull, black side pockets/main zipper/padded straps preserved. Whole closed bag visible with no USB cord or invented device; cue cards and notebook separately placed. No interior-fit claim.",
+      "editorialForm": "이동 중 손의 역할을 비교하는 상황별 선택 해설",
+      "coreQuestion": "짧은 업무 이동에서 백팩을 손에 들지 등에 멜지 무엇으로 판단할까?",
+      "bodyChars": 2557,
+      "sha256": "61cf56975a4ac1245764071fb1959aa8b7fe8c6540822f0d064c95b29f2c1bcd",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "제목과 주요 절을 가방의 실제 선택·디자인·조작 질문으로 구성했다. 기존 155개 제목과 가까운 수납·착용 글을 대조해 이동 중 손의 역할을 비교하는 상황별 선택 해설에 집중했다. humanizer 검토로 반복된 부정·출처 유보 문장을 줄이고 세부 비교를 유지했다."
     },
     {
       "id": "handwriting-one-change-practice",
-      "title": "손글씨 연습지를 챙길 때: 다음 줄에서 고칠 한 자리",
+      "title": "주름이 보이는 백팩, 표면의 인상을 고르는 법",
       "url": "https://himawari.co.kr/story/handwriting-one-change-practice.html",
       "productId": "store-13312570674",
       "model": "No.0513",
@@ -62,11 +68,17 @@
       ],
       "dimensionsSource": "2026-09-14 제조사 카탈로그 17페이지의 0513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Direct comparison after background-only lettering removal: dusty pink soft drawstring43cm body, dark charcoal upper rim and lowerfront/base panel, pink front flap, original pale triangular Himawari patch, pink side gathered pockets with dark edges and black cord loops/stoppers, grey shoulder straps and top carry loop preserved. Entire closed bag with accurate silhouette visible. Only background book spines lettering removed; original bag logo intact; practice strokes fictional and separate from bag."
+      "fidelityReview": "Direct comparison after background-only lettering removal: dusty pink soft drawstring43cm body, dark charcoal upper rim and lowerfront/base panel, pink front flap, original pale triangular Himawari patch, pink side gathered pockets with dark edges and black cord loops/stoppers, grey shoulder straps and top carry loop preserved. Entire closed bag with accurate silhouette visible. Only background book spines lettering removed; original bag logo intact; practice strokes fictional and separate from bag.",
+      "editorialForm": "사진과 실제 사용 외관을 나누는 디자인 관찰",
+      "coreQuestion": "백팩 표면의 주름과 광택을 보고 모양 취향을 어떻게 고를까?",
+      "bodyChars": 2831,
+      "sha256": "231913ede8a19aebbb814b1affaee1be1279c064ed0c2700bc785a6471aea11e",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "제목과 주요 절을 가방의 실제 선택·디자인·조작 질문으로 구성했다. 기존 155개 제목과 가까운 수납·착용 글을 대조해 사진과 실제 사용 외관을 나누는 디자인 관찰에 집중했다. humanizer 검토로 반복된 부정·출처 유보 문장을 줄이고 세부 비교를 유지했다."
     },
     {
       "id": "neighbourhood-walk-repeated-shapes",
-      "title": "동네 산책의 작은 주제: 같은 모양을 세 번 찾아보기",
+      "title": "백팩과 작은 가방을 함께 들 날의 역할 나누기",
       "url": "https://himawari.co.kr/story/neighbourhood-walk-repeated-shapes.html",
       "productId": "store-13308523903",
       "model": "No.0403",
@@ -88,7 +100,13 @@
       ],
       "dimensionsSource": "2026-09-14 제조사 카탈로그 22페이지의 0403 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다. 외부 크기는 백팩 기준이며 숄더백은 별도 23 × 18 cm로 표기됩니다. 900 g의 구성품 포함 여부는 미기재입니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Direct comparison: beige40cm rectangular main bag, twin black top carry handles/anchor patches, black centre upper attachment hardware, original attached beige front rounded rectangular pouch with black perimeter zipper/left pull, upper black circular snap and lower rectangular Himawari badge, beige side slip pockets, black base and padded straps preserved. Full bag visible, notebook kept separate; courtyard and circles fictional; no internal-fit or transformation claim."
+      "fidelityReview": "Direct comparison: beige40cm rectangular main bag, twin black top carry handles/anchor patches, black centre upper attachment hardware, original attached beige front rounded rectangular pouch with black perimeter zipper/left pull, upper black circular snap and lower rectangular Himawari badge, beige side slip pockets, black base and padded straps preserved. Full bag visible, notebook kept separate; courtyard and circles fictional; no internal-fit or transformation claim.",
+      "editorialForm": "한 가방과 두 가방의 사용 비용을 비교하는 선택 글",
+      "coreQuestion": "백팩과 작은 가방을 함께 쓸 때 각 가방에 어떤 역할을 맡길까?",
+      "bodyChars": 2634,
+      "sha256": "11c97c7f115c191c020fc1bcab272331a98d7fdca8594a8bf1918fe1429e42b0",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "제목과 주요 절을 가방의 실제 선택·디자인·조작 질문으로 구성했다. 기존 155개 제목과 가까운 수납·착용 글을 대조해 한 가방과 두 가방의 사용 비용을 비교하는 선택 글에 집중했다. humanizer 검토로 반복된 부정·출처 유보 문장을 줄이고 세부 비교를 유지했다."
     }
   ],
   "topicsReviewed": 131,
@@ -104,5 +122,15 @@
       ],
       "stage": "prepared"
     }
+  },
+  "editorialRevision": {
+    "date": "2026-10-16",
+    "scope": "가방 중심 주제 정정",
+    "postIds": [
+      "presentation-opening-closing-cards",
+      "handwriting-one-change-practice",
+      "neighbourhood-walk-repeated-shapes"
+    ],
+    "imagesPreserved": true
   }
 }

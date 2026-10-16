@@ -5,7 +5,7 @@
   "posts": [
     {
       "id": "paper-map-backpack-walking",
-      "title": "종이 지도를 들고 걷는 날: 백팩에서 펼치고 다시 접는 순서",
+      "title": "종이 지도를 보는 산책 백팩, 멈출 때 꺼내고 접어 넣는 자리",
       "url": "https://himawari.co.kr/story/paper-map-backpack-walking.html",
       "productId": "coupang-a347a4139d7ffdaf",
       "model": "No.0423",
@@ -19,11 +19,24 @@
         "generatedAt": "2026-10-02",
         "catalogUrl": "https://www.coupang.com/vp/products/9520244217",
         "originalUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-a347a4139d7ffdaf/main-dWHRRSTeJsYZGXJEE3yircNZfTtDRH.jpg"
+      },
+      "editorialForm": "걷기와 멈춤 사이의 가방 동작을 따라가는 관찰문",
+      "coreQuestion": "지도를 자주 확인하는 산책에서 백팩을 어떻게 놓고 어느 묶음만 꺼내면 될까?",
+      "bodyChars": 2784,
+      "sha256": "034bd1b464c6d376713cc00f4a12b452cfcd1c33e6ef78fa0df43b81338d8d93",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "지도를 자주 확인하는 산책에서 백팩을 어떻게 놓고 어느 묶음만 꺼내면 될까?",
+        "sectionReview": "지도 읽기·방향 찾기 방법을 제외하고 산책의 멈춤마다 가방을 내리고 지도 묶음만 꺼낸 뒤 다시 메는 사용 동작에 집중했다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 2756,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
       }
     },
     {
       "id": "choir-rehearsal-score-backpack",
-      "title": "합창 연습 가는 날의 백팩: 악보는 두께보다 펼칠 순서",
+      "title": "의자 옆 백팩에서 악보 파일을 꺼내는 방향",
       "url": "https://himawari.co.kr/story/choir-rehearsal-score-backpack.html",
       "productId": "store-13313756862",
       "model": "No.1223",
@@ -37,6 +50,19 @@
         "generatedAt": "2026-10-02",
         "catalogUrl": "https://smartstore.naver.com/baegot/products/13313756862",
         "originalUrl": "https://shop-phinf.pstatic.net/20260330_110/1774843091752lRdub_JPEG/60885435181830789_147192211.jpg"
+      },
+      "editorialForm": "작은 의자 주변의 공간을 살피는 배치 해설",
+      "coreQuestion": "큰 악보 파일을 의자 옆 백팩에서 꺼내고 다시 담을 때 어떤 방향과 공간이 필요할까?",
+      "bodyChars": 2834,
+      "sha256": "f4a8d8eeae897b7863cdcbf93ab98a4c048d2963959f5cd9bd0f5a2162cd2913",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "큰 악보 파일을 의자 옆 백팩에서 꺼내고 다시 담을 때 어떤 방향과 공간이 필요할까?",
+        "sectionReview": "악보의 곡 순서·합창 기호·연습 방법을 제외하고 큰 파일을 의자 옆 백팩에서 꺼내는 공간과 복귀 방향을 다뤘다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 2808,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
       }
     },
     {
@@ -60,5 +86,14 @@
   ],
   "topicsReviewed": 95,
   "overlapReview": "All 95 existing titles, summaries and full bodies were checked for textual overlap. Titles and summaries were reviewed editorially; relevant full bodies were compared. Rejected glasses-case topic because it exists. New cores: folded map orientation; choir score edition and rehearsal sequence; key pouch return after unlocking. General storage advice is linked as related reading.",
-  "completionReceipt": "backups/story-runs/2026-10-02.deployment.json"
+  "completionReceipt": "backups/story-runs/2026-10-02.deployment.json",
+  "editorialRevision": {
+    "date": "2026-10-16",
+    "scope": "가방 중심 주제 정정",
+    "postIds": [
+      "paper-map-backpack-walking",
+      "choir-rehearsal-score-backpack"
+    ],
+    "imagesPreserved": true
+  }
 }

@@ -5,7 +5,7 @@
   "posts": [
     {
       "id": "coat-fitting-backpack-off",
-      "title": "코트를 입어볼 때는 백팩을 먼저 내려놓으세요",
+      "title": "겨울 코트 위에 멜 백팩은 어떤 옆모습일까",
       "url": "https://himawari.co.kr/story/coat-fitting-backpack-off.html",
       "productId": "coupang-7067b802d2a5407c",
       "model": "No.9007",
@@ -27,11 +27,17 @@
       },
       "dimensionsSource": "2026-09-14 제조사 카탈로그 10페이지의 9007 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Directly viewed original9007 and generated9007: black doctor-mouth body, twin handles/white keeper, two white rivets, centered white Himawari, white front/side zip bands, upper-left black miniature cap pouch with white attachment and red H all preserved. Fictional adult woman shown rear-left, whole head/body/shoes, both straps; plausible 28x40x17cm scale, ordinary clothing shop, no mirror/anatomy issue. Arrival scene, not actual coat fit evidence."
+      "fidelityReview": "Directly viewed original9007 and generated9007: black doctor-mouth body, twin handles/white keeper, two white rivets, centered white Himawari, white front/side zip bands, upper-left black miniature cap pouch with white attachment and red H all preserved. Fictional adult woman shown rear-left, whole head/body/shoes, both straps; plausible 28x40x17cm scale, ordinary clothing shop, no mirror/anatomy issue. Arrival scene, not actual coat fit evidence.",
+      "editorialForm": "계절 옷차림 속 가방 실루엣 관찰",
+      "coreQuestion": "겨울 코트 위에서 백팩의 높이와 깊이는 어떻게 보이며 어떤 실루엣을 고를 것인가?",
+      "bodyChars": 2569,
+      "sha256": "bf974d8f2a0d3788f1b5a81e51cae3a95e96bb20e258e7bc4118fca32aee03ef",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "코트 자체의 피팅·사이즈 구매법을 제거했다. 겨울 외투 위 백팩의 깊이·높이·배색·실루엣이라는 선택 문제로 범위를 좁혔다."
     },
     {
       "id": "gloves-keep-pair-together",
-      "title": "장갑을 벗으면 한 쌍으로 모아두세요",
+      "title": "장갑 낀 손으로 백팩 여밈을 다룰 수 있을까",
       "url": "https://himawari.co.kr/story/gloves-keep-pair-together.html",
       "productId": "store-13326396058",
       "model": "No.0514",
@@ -53,11 +59,17 @@
       },
       "dimensionsSource": "2026-09-14 제조사 카탈로그 18페이지의 0514S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Directly viewed original0514, generated0514 and enlarged original handle crop; downloaded full product detail image as additional source. Silver crinkled mini body, gathered mouth, thin black drawcord, silver shoulder straps, black top carry loop, rectangular lower front zip pocket/left black pull, lower-right black triangle logo, gathered side pockets retained. Original enlarged photograph confirms BLACK carry loop; original prompt incorrectly called it silver, but output follows the actual reference and is approved without regeneration. Mini0514S exterior27x36x14cm distinguished from full-size0514. Matching dry adult red knit glove pair on scarf outside, no source woman copied or internal capacity claim."
+      "fidelityReview": "Directly viewed original0514, generated0514 and enlarged original handle crop; downloaded full product detail image as additional source. Silver crinkled mini body, gathered mouth, thin black drawcord, silver shoulder straps, black top carry loop, rectangular lower front zip pocket/left black pull, lower-right black triangle logo, gathered side pockets retained. Original enlarged photograph confirms BLACK carry loop; original prompt incorrectly called it silver, but output follows the actual reference and is approved without regeneration. Mini0514S exterior27x36x14cm distinguished from full-size0514. Matching dry adult red knit glove pair on scarf outside, no source woman copied or internal capacity claim.",
+      "editorialForm": "손의 조건에 따라 달라지는 여밈 선택",
+      "coreQuestion": "장갑을 낀 날 자주 쓰는 백팩의 여밈을 어느 방식으로 다룰 것인가?",
+      "bodyChars": 2625,
+      "sha256": "9cdd1816c886536eae425d63c120071c7b5010cf73710cadef6fb9fa1d53f1e2",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "장갑 분실·세탁의 일반 생활 정보를 제거하고 백팩의 스트링·지퍼 조작성과 접근 빈도를 중심으로 설명했다."
     },
     {
       "id": "furniture-trip-room-measurements",
-      "title": "가구 보러 가기 전, 방 치수를 한 장에",
+      "title": "큰 백팩을 적은 짐으로 쓸 때 달라지는 모양",
       "url": "https://himawari.co.kr/story/furniture-trip-room-measurements.html",
       "productId": "store-13513526834",
       "model": "No.1111",
@@ -79,7 +91,13 @@
       },
       "dimensionsSource": "2026-09-14 제조사 카탈로그 6페이지의 1111 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Directly viewed original1111 and generated1111: broad green rucksack, purple central flap triangle with black logo, green wings, two black strap/buckle closures, purple lower front pocket flap, elongated green side zip pouches with purple trim and ring pulls, green/black straps and black handle preserved. Plausible exterior43x47x24cm proportions on wooden chair. Tape measure/notebook outside bag, plain diagram with no asserted dimensions, no source man copied, no internal fit claim."
+      "fidelityReview": "Directly viewed original1111 and generated1111: broad green rucksack, purple central flap triangle with black logo, green wings, two black strap/buckle closures, purple lower front pocket flap, elongated green side zip pouches with purple trim and ring pulls, green/black straps and black handle preserved. Plausible exterior43x47x24cm proportions on wooden chair. Tape measure/notebook outside bag, plain diagram with no asserted dimensions, no source man copied, no internal fit claim.",
+      "editorialForm": "큰 가방을 두 가지 짐 구성으로 비교하는 선택형 글",
+      "coreQuestion": "대용량 백팩을 평소 적은 짐에도 사용할지 무엇을 기준으로 고를까?",
+      "bodyChars": 2637,
+      "sha256": "3d25015cc7cfaa4e60d269b754bee4a3a716d3c2db4f546d1d5dc37f2b9c1184",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "가구 치수와 설치 안내를 삭제하고 대용량 백팩의 적은 짐 사용·외곽·빈 중량·사용 장소의 장단점을 비교했다."
     }
   ],
   "topicsReviewed": 140,
@@ -95,5 +113,15 @@
       ],
       "stage": "prepared"
     }
+  },
+  "editorialRevision": {
+    "date": "2026-10-16",
+    "scope": "가방 중심 주제 정정",
+    "postIds": [
+      "coat-fitting-backpack-off",
+      "gloves-keep-pair-together",
+      "furniture-trip-room-measurements"
+    ],
+    "imagesPreserved": true
   }
 }

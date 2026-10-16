@@ -5,7 +5,7 @@
   "posts": [
     {
       "id": "sewing-needles-end-of-session",
-      "title": "바느질을 마치면 바늘부터 챙겨주세요",
+      "title": "백팩 안감이 날카로운 도구와 닿지 않도록",
       "url": "https://himawari.co.kr/story/sewing-needles-end-of-session.html",
       "productId": "store-13326274547",
       "model": "No.0422",
@@ -27,11 +27,17 @@
       },
       "dimensionsSource": "2026-09-14 제조사 카탈로그 54페이지의 0422 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Directly viewed original and generated image. Navy rounded body, green front pocket with yellow edge, red right pocket, original small black Himawari patch, upper zip pulls, two black webbing paths, original blue round pouch and smiling bear decoration preserved. No reference child reproduced. Bag exterior proportions consistent with 30x40x15cm reference, entirely visible, closed needle case and cloth outside on adjacent worktable; no internal capacity claim."
+      "fidelityReview": "Directly viewed original and generated image. Navy rounded body, green front pocket with yellow edge, red right pocket, original small black Himawari patch, upper zip pulls, two black webbing paths, original blue round pouch and smiling bear decoration preserved. No reference child reproduced. Bag exterior proportions consistent with 30x40x15cm reference, entirely visible, closed needle case and cloth outside on adjacent worktable; no internal capacity claim.",
+      "editorialForm": "가방 안쪽의 접촉 관계를 읽는 사용 해설",
+      "coreQuestion": "도구를 케이스에 넣은 뒤에도 백팩 안감과 닿는 면에서 무엇을 살펴야 할까?",
+      "bodyChars": 2642,
+      "sha256": "c5f492d67ddffc103074dfea74f2ffca7db6cfa3818dd9ae1a3cd801d004470f",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "바느질 작업·바늘 수량 기록의 튜토리얼을 제거하고 도구 케이스와 백팩 안감의 접촉·배치·변화 확인을 중심으로 썼다."
     },
     {
       "id": "return-borrowed-containers",
-      "title": "빌린 용기를 돌려주는 날",
+      "title": "빈 용기를 넣고 뺄 때 확인할 백팩의 폭",
       "url": "https://himawari.co.kr/story/return-borrowed-containers.html",
       "productId": "store-13685201448",
       "model": "No.0515",
@@ -53,11 +59,17 @@
       },
       "dimensionsSource": "2026-09-14 제조사 카탈로그 4페이지의 0515 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Directly viewed source and output. Metallic silver gathered drawstring mouth, black cords/toggles, gathered top handle, silver dark-edged straps, front logo/zip pocket, clipped oval quilted silver pouch, gathered side pockets and bottom black edging/two buckle fittings preserved. No source woman reproduced. Exterior proportions consistent with 35x46x18cm. Two empty containers closed with respective lids outside bag; no fitted interior or real customer claim."
+      "fidelityReview": "Directly viewed source and output. Metallic silver gathered drawstring mouth, black cords/toggles, gathered top handle, silver dark-edged straps, front logo/zip pocket, clipped oval quilted silver pouch, gathered side pockets and bottom black edging/two buckle fittings preserved. No source woman reproduced. Exterior proportions consistent with 35x46x18cm. Two empty containers closed with respective lids outside bag; no fitted interior or real customer claim.",
+      "editorialForm": "단단한 물건과 가방의 치수를 연결하는 해설",
+      "coreQuestion": "단단한 빈 용기 묶음을 구부리지 않고 넣고 꺼낼 백팩 공간은 어떻게 판단할까?",
+      "bodyChars": 2506,
+      "sha256": "4b618afd60fbd0e2878a6cb8d91ee71cefe005fcacdf7e9f32892803b590181e",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "빌린 용기의 주인·뚜껑 매칭·반환 예절을 제거하고 단단한 입체 짐과 백팩 폭·입구·꺼낼 손의 여유에 집중했다."
     },
     {
       "id": "sound-walk-test-recording",
-      "title": "산책길의 소리를 담기 전에",
+      "title": "이어폰 선이 백팩 지퍼 사이에 남지 않도록",
       "url": "https://himawari.co.kr/story/sound-walk-test-recording.html",
       "productId": "store-13313756862",
       "model": "No.1223",
@@ -79,7 +91,13 @@
       },
       "dimensionsSource": "2026-09-14 제조사 카탈로그 29페이지의 1223 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
       "fidelityReviewed": true,
-      "fidelityReview": "Direct source and output comparison. Off-white softly squared body, black carry loop and outer zip piping, white straps with dark fittings, left main zip pulls, black-edged rounded front pocket with horizontal zip and central dark logo patch, white side pockets/buckles/lower zipper hardware retained. No reference woman reproduced. Exterior proportions consistent with 29x40x14cm; full closed bag on dry bench, phone/headphones outside, no internal fit claim."
+      "fidelityReview": "Direct source and output comparison. Off-white softly squared body, black carry loop and outer zip piping, white straps with dark fittings, left main zip pulls, black-edged rounded front pocket with horizontal zip and central dark logo patch, white side pockets/buckles/lower zipper hardware retained. No reference woman reproduced. Exterior proportions consistent with 29x40x14cm; full closed bag on dry bench, phone/headphones outside, no internal fit claim.",
+      "editorialForm": "가방 입구를 가로지르는 선을 따라가는 사용 관찰",
+      "coreQuestion": "기기를 사용한 뒤 선이 백팩 여밈을 지나지 않게 하려면 어떤 순서와 배치가 필요한가?",
+      "bodyChars": 2598,
+      "sha256": "8ca9b564537635ad01b19034b9ea49cb8bf3872a937d70180fd703265dc29f06",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": "시험 녹음과 파일 관리 내용을 제거했다. 가방 입구·지퍼와 케이블의 경계, 실제 기기 묶음의 복귀 동작을 다룬다."
     }
   ],
   "topicsReviewed": 137,
@@ -95,5 +113,15 @@
       ],
       "stage": "prepared"
     }
+  },
+  "editorialRevision": {
+    "date": "2026-10-16",
+    "scope": "가방 중심 주제 정정",
+    "postIds": [
+      "sewing-needles-end-of-session",
+      "return-borrowed-containers",
+      "sound-walk-test-recording"
+    ],
+    "imagesPreserved": true
   }
 }

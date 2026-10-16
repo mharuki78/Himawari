@@ -25,13 +25,26 @@
     },
     {
       "id": "backpack-receipt-envelope",
-      "title": "백팩 앞주머니에 쌓이는 영수증, 작은 봉투 하나로 정리하기",
+      "title": "영수증이 열쇠에 따라 나오는 백팩, 작은 종이의 자리",
       "url": "https://himawari.co.kr/story/backpack-receipt-envelope.html",
       "productId": "store-13326274540",
       "model": "No.0422",
       "image": "assets/story/backpack-receipt-envelope.webp",
       "imageKind": "original",
-      "reference": "assets/game-0422-black.jpg"
+      "reference": "assets/game-0422-black.jpg",
+      "editorialForm": "자주 생기는 두 장면을 풀어보는 포켓 사용 에세이",
+      "coreQuestion": "열쇠와 작은 종이가 같은 백팩 포켓에 있을 때 필요한 종이만 따로 찾으려면 무엇을 바꿀까?",
+      "bodyChars": 3042,
+      "sha256": "38e72a544edbce0aa5938505681f46dab87ddc4e0c6f934b1168d6736eeb433c",
+      "editorialRevision": "2026-10-16",
+      "bagFocusReview": {
+        "verdict": "bag-centered",
+        "coreQuestion": "열쇠와 작은 종이가 같은 백팩 포켓에 있을 때 필요한 종이만 따로 찾으려면 무엇을 바꿀까?",
+        "sectionReview": "영수증 금액 대조·디지털 촬영·증빙 보존법을 제외하고 작은 종이와 열쇠의 동선, 봉투의 깊이·여밈·탈착 단위를 다뤘다.",
+        "distinctFromExisting": "Read all 155 existing titles and the nearest essays on camera cases, e-readers, headphones, laptop pouches, rackets, cable organization, paper corners and compartment choice. The revision retains its specific bag-use decision and removes the unrelated tutorial.",
+        "visibleTextCharacters": 3013,
+        "polishReview": "Removed unnecessary scope narration and imagined performance denials. Reviewed every major section for a concrete bag decision, varied headings and openings, and no fixed FAQ template."
+      }
     }
   ],
   "generation": {
@@ -41,5 +54,13 @@
   },
   "topicsReviewed": 38,
   "overlapReview": "Compared existing titles, summaries and article content. These six recovery topics cover library return workflow, shared ownership handover, receipt intake, used exercise kit return, lunch-container orientation and private identification records; no product specifications or testimonials invented.",
-  "completionReceipt": "backups/story-runs/2026-09-13.deployment.json"
+  "completionReceipt": "backups/story-runs/2026-09-13.deployment.json",
+  "editorialRevision": {
+    "date": "2026-10-16",
+    "scope": "가방 중심 주제 정정",
+    "postIds": [
+      "backpack-receipt-envelope"
+    ],
+    "imagesPreserved": true
+  }
 }
