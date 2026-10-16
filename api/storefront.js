@@ -103,6 +103,7 @@ export async function fetch(request) {
   } catch (error) {
     console.error('storefront_render_failed', {
       phase, name: error?.name, code: error?.code,
+      upstreamStatus: String(error?.message || '').match(/^Vercel Blob: Failed to fetch blob: (\d{3})\b/)?.[1],
       frames: String(error?.stack || '').split('\n').slice(1, 4),
     });
     return (String(page).startsWith('npay-review')?privateHtml:html)('제품 페이지를 준비하지 못했습니다. 잠시 후 다시 시도해 주세요.', 500);
