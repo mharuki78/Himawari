@@ -1,5 +1,71 @@
 [
   {
+    "id": "bag-stitch-lines-reading",
+    "title": "백팩 봉제선 사진, 실 끊김과 원단 주름을 어떻게 구분할까",
+    "date": "2026-10-18",
+    "summary": "봉제선이 흐려 보이거나 가장자리가 울어 보일 때, 사진 한 장으로 마감을 단정하기 어렵습니다. 전체 위치·빛의 방향·실제 실의 연결을 나누어 확인하는 방법을 살펴봅니다.",
+    "description": "봉제선이 흐려 보이거나 가장자리가 울어 보일 때, 사진 한 장으로 마감을 단정하기 어렵습니다. 전체 위치·빛의 방향·실제 실의 연결을 나누어 확인하는 방법을 살펴봅니다.",
+    "tags": [
+      "가방 디자인",
+      "봉제선",
+      "No.9007"
+    ],
+    "image": "../assets/story/bag-stitch-lines-reading.webp",
+    "imageAlt": "No.9007 베이지 백팩의 손잡이와 앞 포켓 봉제선 위치를 보여주는 AI 연출 사진",
+    "images": [
+      "../assets/story/bag-stitch-lines-reading.webp",
+      "../assets/story/bag-stitch-lines-reading-detail.webp",
+      "../assets/story/bag-stitch-lines-reading-product.webp"
+    ],
+    "url": "bag-stitch-lines-reading.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "세 가지 사진 사례를 푸는 관찰형"
+  },
+  {
+    "id": "layered-front-pocket-choices",
+    "title": "포켓 위에 작은 포켓이 있는 백팩, 어디까지 나누어 담을까",
+    "date": "2026-10-18",
+    "summary": "No.8029의 겹쳐진 앞 포켓을 보며 얇은 물건과 두꺼운 물건을 둘 때 달라지는 조건을 비교합니다. 포켓 개수보다 각 입구와 겹친 면을 함께 보는 선택법입니다.",
+    "description": "No.8029의 겹쳐진 앞 포켓을 보며 얇은 물건과 두꺼운 물건을 둘 때 달라지는 조건을 비교합니다. 포켓 개수보다 각 입구와 겹친 면을 함께 보는 선택법입니다.",
+    "tags": [
+      "앞 포켓",
+      "수납 구조",
+      "No.8029"
+    ],
+    "image": "../assets/story/layered-front-pocket-choices.webp",
+    "imageAlt": "성인이 No.8029 백팩을 무릎 앞에 두어 겹친 앞 포켓을 보여주는 AI 착용 연출 사진",
+    "images": [
+      "../assets/story/layered-front-pocket-choices.webp",
+      "../assets/story/layered-front-pocket-choices-detail.webp",
+      "../assets/story/layered-front-pocket-choices-product.webp"
+    ],
+    "url": "layered-front-pocket-choices.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "사용 조건을 나누는 선택형"
+  },
+  {
+    "id": "two-zipper-slider-position",
+    "title": "백팩 지퍼 손잡이가 두 개라면, 닫는 위치는 어디가 좋을까",
+    "date": "2026-10-18",
+    "summary": "마주 보는 두 슬라이더와 손잡이를 구분하고, 가운데에 모을 때와 한쪽에 모을 때의 동작을 비교합니다. No.1211의 실제 앞 포켓 사진에서 시작하는 지퍼 구조 해설입니다.",
+    "description": "마주 보는 두 슬라이더와 손잡이를 구분하고, 가운데에 모을 때와 한쪽에 모을 때의 동작을 비교합니다. No.1211의 실제 앞 포켓 사진에서 시작하는 지퍼 구조 해설입니다.",
+    "tags": [
+      "백팩 지퍼",
+      "사용 동작",
+      "No.1211"
+    ],
+    "image": "../assets/story/two-zipper-slider-position.webp",
+    "imageAlt": "벤치 위 No.1211 네이비 백팩의 앞 지퍼 손잡이 위치를 보여주는 AI 연출 사진",
+    "images": [
+      "../assets/story/two-zipper-slider-position.webp",
+      "../assets/story/two-zipper-slider-position-detail.webp",
+      "../assets/story/two-zipper-slider-position-product.webp"
+    ],
+    "url": "two-zipper-slider-position.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "구조 설명과 동작 비교"
+  },
+  {
     "id": "cooperative-competitive-game-night",
     "title": "블랙 백팩의 아이보리 웨빙, 단색 가방과 다른 코디 기준",
     "date": "2026-10-16",
