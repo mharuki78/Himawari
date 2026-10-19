@@ -326,8 +326,7 @@ p { max-width: 40ch; text-wrap: pretty; }
   }
   .motion-ready .collection .section-head.reveal:not(.is-visible) { transform: translateX(-26px); }
   .motion-ready .journal .section-head.reveal:not(.is-visible) { transform: translateX(26px); }
-  .motion-ready .about-page .founder-portrait.reveal:not(.is-visible),
-  .motion-ready .home-layout .feature-film[data-motion-reveal]:not(.is-visible) {
+  .motion-ready .about-page .founder-portrait.reveal:not(.is-visible) {
     opacity: 1;
     transform: none;
     clip-path: inset(0 0 100% 0);
