@@ -189,7 +189,7 @@ function productOffer(product, origin) {
     price: String(product.price),
     availability: product.soldOut ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
     url: `${origin}/${detailHref(product)}`,
-    seller: { '@type': 'Organization', name: '히마와리 코리아', url: `${origin}/` },
+    seller: { '@type': 'OnlineStore', '@id': `${origin}/#organization`, name: '히마와리 코리아', url: `${origin}/` },
     // The page publishes dispatch within two business days, not carrier transit days.
     shippingDetails: { '@type': 'OfferShippingDetails', shippingRate: { '@type': 'MonetaryAmount', value: product.price >= 100000 ? '0' : '3500', currency: 'KRW' }, shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'KR' }, deliveryTime: { '@type': 'ShippingDeliveryTime', handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 2, unitCode: 'DAY' } } },
     hasMerchantReturnPolicy: { '@type': 'MerchantReturnPolicy', applicableCountry: 'KR', returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow', merchantReturnDays: 7, returnMethod: 'https://schema.org/ReturnByMail', returnFees: 'https://schema.org/ReturnShippingFees', returnShippingFeesAmount: { '@type': 'MonetaryAmount', value: '8000', currency: 'KRW' } },
@@ -241,9 +241,21 @@ export function renderProductPage(template, product, origin = 'https://himawari.
   const groupId = variants.length > 1 && variesBy.length ? `${origin}/#product-group-${encodeURIComponent(familyKey)}` : '';
   const selectedSchema = productVariantSchema(product, origin, groupId);
   selectedSchema.image = [mainImage, ...(Array.isArray(product.gallery) ? product.gallery.map(safeHttpsUrl) : [])].filter(Boolean);
+  selectedSchema.mainEntityOfPage = { '@id': `${canonical}#webpage` };
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': `${canonical}#webpage`,
+        url: canonical,
+        name: product.name,
+        description,
+        inLanguage: 'ko-KR',
+        isPartOf: { '@id': `${origin}/#website` },
+        mainEntity: { '@id': selectedSchema['@id'] },
+        breadcrumb: { '@id': `${canonical}#breadcrumb` },
+      },
       ...(groupId ? [{
         '@type': 'ProductGroup',
         '@id': groupId,

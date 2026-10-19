@@ -22,13 +22,27 @@ test('homepage FAQ schema matches visible, usable answers and real internal link
       await readFile(new URL('../templates/products.html', import.meta.url));
     } else await readFile(new URL('..' + entry.link, import.meta.url));
   }
-  const organization = blocks.find(b => b['@type'] === 'Organization');
+  const organization = blocks.find(b => ['Organization', 'OnlineStore'].includes(b['@type']));
   const page = blocks.find(b => b['@type'] === 'WebPage');
   assert.equal(page.publisher['@id'], organization['@id']);
   assert.ok(section.includes(`datetime="${page.dateModified}"`));
   assert.match(html.match(/<h1[\s\S]*?<\/h1>/)[0], /히마와리 Himawari/);
   const description = html.match(/<meta name="description" content="([^"]+)"/)[1];
   assert.ok(description.length >= 50 && description.length <= 160);
+});
+
+test('homepage identifies the online store with the business contact details shown in its footer', async () => {
+  const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => JSON.parse(m[1]));
+  const store = blocks.find(b => b['@type'] === 'OnlineStore');
+  assert.ok(store, 'Missing OnlineStore business identity');
+  assert.equal(store['@id'], 'https://himawari.co.kr/#organization');
+  assert.equal(store.telephone, '+82-10-8447-6271');
+  assert.equal(store.email, 'nys9980@himawari.co.kr');
+  assert.equal(store.address['@type'], 'PostalAddress');
+  assert.equal(store.address.streetAddress, '경기도 시흥시 배곧4로 32-29, 파크뷰 206호');
+  assert.equal(store.address.addressCountry, 'KR');
+  assert.ok(html.includes(store.address.streetAddress));
 });
 
 test('feed discovery points to a real RSS feed and meaningful product image has alt text', async () => {

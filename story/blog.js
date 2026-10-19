@@ -186,14 +186,28 @@ function setPostMeta(post) {
   const articleData = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
+    '@id': `${canonicalUrl}#article`,
+    url: canonicalUrl,
     headline: title,
     description,
     datePublished: String(post.date || ''),
-    dateModified: String(post.updated || post.date || ''),
+    dateModified: String(post.dateModified || post.updated || post.date || ''),
     mainEntityOfPage: canonicalUrl,
+    inLanguage: 'ko-KR',
+    isPartOf: { '@type': 'Blog', '@id': `${storyBase.href}#blog`, name: 'Himawari 이야기', url: storyBase.href },
+    publisher: {
+      '@type': 'Organization',
+      '@id': `${location.origin}/#organization`,
+      name: 'Himawari',
+      url: `${location.origin}/`,
+      logo: { '@type': 'ImageObject', url: `${location.origin}/assets/himawari-logo-hq.png` },
+    },
     keywords: Array.isArray(post.tags) ? post.tags.map(String).join(', ') : '',
   };
-  if (author) articleData.author = { '@type': 'Person', name: author };
+  if (post.image) articleData.image = [new URL(String(post.image), storyBase).href];
+  if (author) articleData.author = author === '히마와리 편집팀'
+    ? { '@type': 'Organization', name: author, url: `${location.origin}/` }
+    : { '@type': 'Person', name: author };
   addStructuredData(articleData);
 
   const faq = Array.isArray(post.faq) ? post.faq.filter((item) => item?.q && item?.a) : [];

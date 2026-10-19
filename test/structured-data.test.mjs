@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import vm from 'node:vm';
 import { renderProductPage } from '../api/_lib/storefront.js';
 
 const origin = 'https://himawari.co.kr';
@@ -44,6 +45,47 @@ test('상품 텍스트에 script 종료 문자열이 있어도 JSON-LD 밖으로
   const name = '가방 </script><script>alert(1)</script>';
   const graph = parse(renderProductPage(template, { ...black, name }));
   assert.equal(graph.find(n => n.sku === black.id).name, name);
+});
+
+test('상세페이지는 선택한 상품과 탐색경로를 같은 WebPage에 연결한다', () => {
+  const graph = parse(renderProductPage(template, mint, origin, null, [black, mint]));
+  const page = graph.find(n => n['@type'] === 'WebPage');
+  const product = graph.find(n => n.sku === mint.id);
+  assert.ok(page, 'Missing product WebPage');
+  assert.equal(page.url, origin + '/product.html?id=bag-mint');
+  assert.equal(page.mainEntity['@id'], product['@id']);
+  assert.equal(product.mainEntityOfPage['@id'], page['@id']);
+  assert.equal(page.breadcrumb['@id'], graph.find(n => n['@type'] === 'BreadcrumbList')['@id']);
+  assert.equal(product.offers.seller['@id'], origin + '/#organization');
+});
+
+test('이전 이야기 경로도 표시된 사진·편집팀·실제 수정일을 설명한다', () => {
+  const appended = [];
+  const context = {
+    URL,
+    location: new URL(origin + '/story/post.html?id=behind-package-20260829'),
+    document: {
+      querySelector: () => null,
+      createElement: () => ({ setAttribute() {} }),
+      head: { append: element => appended.push(element) },
+    },
+  };
+  vm.createContext(context);
+  vm.runInContext(fs.readFileSync(new URL('../story/blog.js', import.meta.url), 'utf8'), context);
+  context.post = { id: 'behind-package-20260829', url: 'behind-package.html', title: '가방의 포장을 열고 첫 짐을 담는 시간', author: '히마와리 편집팀', date: '2026-08-14', dateModified: '2026-10-14', image: '../assets/story/himawari-package-process.webp', images: ['not-rendered.webp'] };
+  vm.runInContext('setPostMeta(post)', context);
+  const graph = appended.filter(s => s.type === 'application/ld+json').map(s => JSON.parse(s.textContent));
+  const article = graph.find(n => n['@type'] === 'BlogPosting');
+  assert.equal(article.datePublished, '2026-08-14');
+  assert.equal(article.dateModified, '2026-10-14');
+  assert.equal(article['@id'], origin + '/story/behind-package.html#article');
+  assert.equal(article.url, origin + '/story/behind-package.html');
+  assert.equal(article.author['@type'], 'Organization');
+  assert.equal(article.author.url, origin + '/');
+  assert.equal(article.publisher['@id'], origin + '/#organization');
+  assert.equal(article.publisher.logo.url, origin + '/assets/himawari-logo-hq.png');
+  assert.equal(article.inLanguage, 'ko-KR');
+  assert.deepEqual(article.image, [origin + '/assets/story/himawari-package-process.webp']);
 });
 
 test('이야기 보완은 표시된 사진과 발행자 연결을 추가하고 본문·발행일을 보존한다', async () => {
