@@ -16,7 +16,7 @@ const IMAGE_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/avi
 const MAX_MAIN_IMAGE_SIZE = 8 * 1024 * 1024;
 const MAX_GALLERY_IMAGE_SIZE = 15 * 1024 * 1024;
 const MAX_GALLERY_IMAGES = 5;
-let downloadDenialReported = false;
+let catalogReadCache = null;
 
 function productToken() {
   return process.env.PRODUCT_BLOB_READ_WRITE_TOKEN || '';
@@ -431,31 +431,45 @@ export async function readProductCatalog() {
   if (!productStoreIsConfigured()) return { catalog: seedCatalog(), etag: null, persisted: false };
 
   try {
-    const metadata = await head(CATALOG_PATH, { token: productToken() });
+    const token = productToken();
+    const metadata = await head(CATALOG_PATH, { token });
     const etag = normalizeBlobEtag(metadata.etag);
+    // Reuse one immutable body only after this request verifies its current metadata.
+    let entry = catalogReadCache;
+    if (!etag || !entry || entry.token !== token || entry.url !== metadata.url || entry.etag !== etag) {
+      entry = { token, url: metadata.url, etag, promise: readProductCatalogVersion(metadata, etag, token) };
+      if (etag) catalogReadCache = entry;
+    }
+    try {
+      const result = await entry.promise;
+      if (!result.persisted && catalogReadCache === entry) catalogReadCache = null;
+      // Callers may edit a catalog before saving; never expose the cached object.
+      return structuredClone(result);
+    } catch (error) {
+      if (catalogReadCache === entry) catalogReadCache = null;
+      throw error;
+    }
+  } catch (error) {
+    if (error instanceof BlobNotFoundError) return { catalog: seedCatalog(), etag: null, persisted: false };
+    throw error;
+  }
+}
+
+async function readProductCatalogVersion(metadata, etag, token) {
+  try {
     let result = null;
     let snapshot = false;
     const snapshotPath = catalogSnapshotPath(etag);
     if (snapshotPath) {
       try {
-        const snapshotMetadata = await head(snapshotPath, { token: productToken() });
+        const snapshotMetadata = await head(snapshotPath, { token });
         try {
           result = await get(snapshotMetadata.url, {
             access: 'public',
-            token: productToken(),
+            token,
           });
         } catch (error) {
           if (!/^Vercel Blob: Failed to fetch blob: 403\b/.test(String(error?.message || ''))) throw error;
-          if (!downloadDenialReported) {
-            downloadDenialReported = true;
-            try {
-              const diagnostic = await fetch(snapshotMetadata.url, { signal: AbortSignal.timeout(5000) });
-              const body = diagnostic.status === 403 ? (await diagnostic.text()).slice(0, 500).replaceAll(productToken(), '[redacted]') : '(omitted)';
-              console.error('product_catalog_download_diagnostic', { status: diagnostic.status, server: diagnostic.headers.get('server'), requestId: diagnostic.headers.get('x-vercel-id'), cache: diagnostic.headers.get('x-vercel-cache'), error: diagnostic.headers.get('x-vercel-error'), body });
-            } catch (diagnosticError) {
-              console.error('product_catalog_download_diagnostic', { name: diagnosticError?.name });
-            }
-          }
           // A denied snapshot must still pass the live catalog's ETag check below.
           console.warn('product_catalog_snapshot_unavailable', { upstreamStatus: 403 });
         }
@@ -473,7 +487,7 @@ export async function readProductCatalog() {
         versionedUrl.searchParams.set('read', String(attempt));
         result = await get(versionedUrl.href, {
           access: 'public',
-          token: productToken(),
+          token,
         });
         if (result?.statusCode === 200 && normalizeBlobEtag(result.blob.etag) === etag) break;
       }
