@@ -475,6 +475,10 @@ async function loadProducts() {
           .slice(0, Number.isFinite(limit) ? limit : 5);
       } else if (mode === 'all-families') {
         visibleProducts = [...families].sort((first, second) => Number(second.key === '1884') - Number(first.key === '1884'));
+        if (visibleProducts.length && container.dataset.productPageSize) {
+          setupHomeProducts(container, visibleProducts);
+          return;
+        }
       } else if (mode === 'featured-families') {
         visibleProducts = families.filter((family) => !family.representative.featured).slice(0, Number.isFinite(limit) ? limit : 7);
       } else if (mode === 'catalog') {
@@ -518,6 +522,36 @@ async function loadProducts() {
       showListState(container, '제품 정보를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.');
     });
   }
+}
+
+function setupHomeProducts(container, families) {
+  const tools = document.querySelector('[data-home-products-tools]');
+  const more = tools?.querySelector('[data-home-products-more]');
+  const status = tools?.querySelector('[data-home-products-status]');
+  const pageSize = Number.parseInt(container.dataset.productPageSize, 10);
+  if (!more || !status || !Number.isInteger(pageSize) || pageSize < 1) return;
+  let shown = 0;
+  container.replaceChildren();
+  function revealNext(focusNew = false) {
+    const batch = families.slice(shown, shown + pageSize);
+    const fragment = document.createDocumentFragment();
+    const cards = batch.map(family => createProductCard(family.representative, { family }));
+    cards.forEach(card => fragment.append(card));
+    container.append(fragment);
+    shown += batch.length;
+    container.setAttribute('aria-busy', 'false');
+    status.textContent = `${families.length}개 제품군 중 ${shown}개 표시`;
+    more.hidden = shown >= families.length;
+    more.textContent = `제품 더 보기 (${families.length - shown}개 남음)`;
+    window.himawariReveal?.(container);
+    if (focusNew) {
+      cards[0]?.querySelector('.detail-link')?.focus({ preventScroll: true });
+      cards[0]?.scrollIntoView({ block: 'nearest', inline: 'start', behavior: 'instant' });
+    }
+  }
+  revealNext();
+  tools.hidden = false;
+  more.addEventListener('click', () => revealNext(true));
 }
 
 function setupCatalog(container, families) {

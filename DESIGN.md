@@ -213,3 +213,11 @@ Preserve the sage identity, real product assets, existing 18/24px radii, campaig
 Home journal cards now use each post's existing image and alternative text from story/posts.json, in a 3:2 photo layout with three desktop columns and one mobile column. Product footers align to the card bottom. Contact introduction and form share a row height; mobile inputs are at least 16px. Support and cart launchers share a bottom baseline and sit above product purchase controls; mobile navigation hides them while open. Store selection and login, cart, checkout, game and support data flows remain unchanged.
 
 The detector's legacy palette/radius advisories are contextual: official platform logos, user-requested yellow assistant, and incumbent sage card shapes stay intentional. Existing editorial labels are preserved in this refinement rather than changing approved copy.
+
+### Homepage refinement (2026-10-19)
+
+Preserve the sage identity, official logo, existing photography, campaign footage, copy and menu destinations. General navigation uses transparent surfaces without raised shadows; sage hover and deep-grove current-page states establish hierarchy. Mobile navigation retains readable light text on its dark surface.
+
+The home campaign uses the original 16:9 video without cropping, with a wider media column and compact copy alongside it on desktop. Mobile stacks the same video above left-aligned copy. Video controls remain at least 44px high and use 12px labels. The hero product link reserves horizontal space for the existing support/cart launchers on narrow screens.
+
+The home collection initially renders nine product families. A labeled load-more control appends nine at a time, announces the displayed/total count, then transfers focus to the first new product detail link. Every family remains reachable; the full catalog link and existing product, option, wishlist, comparison and purchase behavior stay intact. The home list's page-size attribute is opt-in and does not alter other catalogs.
