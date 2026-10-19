@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-19-city-9291",
+    "date": "2026-10-19",
+    "category": "city",
+    "title": "벽돌길 모퉁이에서",
+    "model": "9291",
+    "color": "스카이블루",
+    "productId": "coupang-6df96140584b67f7",
+    "scene": "갈색 코트에 스카이블루 백팩을 메었어요. 벽돌길 모퉁이에 선 모습을 가까이 담았어요.",
+    "alt": "갈색 코트를 입은 성인 여성이 스카이블루 No.9291 백팩을 메고 벽돌길에 선 상반신 측면 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-19-city-9291.webp",
+    "thumbnail": "/assets/lookbook/2026-10-19-city-9291-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-10-19-everyday-9004",
+    "date": "2026-10-19",
+    "category": "everyday",
+    "title": "의자에 앉아 잠깐",
+    "model": "9004",
+    "color": "라벤더 코랄",
+    "productId": "coupang-11bd051a162f120b",
+    "scene": "밝은 셔츠에 회색 바지를 입고 나무 의자에 앉았어요. 라벤더색 가방을 무릎 앞에 두고 손잡이를 가볍게 잡았어요.",
+    "alt": "밝은 셔츠와 회색 바지를 입은 성인 남성이 나무 의자에 앉아 라벤더 코랄 No.9004 가방 손잡이를 잡은 앞쪽 전신 AI 착용 연출",
+    "image": "/assets/lookbook/2026-10-19-everyday-9004.webp",
+    "thumbnail": "/assets/lookbook/2026-10-19-everyday-9004-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-10-18-city-124",
     "date": "2026-10-18",
     "category": "city",

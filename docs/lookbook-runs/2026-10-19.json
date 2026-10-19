@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-19",
+  "automationId": "himawari-3",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-19/deployment.json",
+  "entries": [
+    {
+      "model": "9291",
+      "category": "city",
+      "title": "벽돌길 모퉁이에서",
+      "color": "스카이블루",
+      "scene": "갈색 코트에 스카이블루 백팩을 메었어요. 벽돌길 모퉁이에 선 모습을 가까이 담았어요.",
+      "alt": "갈색 코트를 입은 성인 여성이 스카이블루 No.9291 백팩을 메고 벽돌길에 선 상반신 측면 AI 착용 연출",
+      "dimensionsCm": [
+        31,
+        45,
+        15
+      ],
+      "composition": {
+        "approach": "low-angle close wearable portrait",
+        "angle": "side-rear three-quarter from waist height",
+        "framing": "head-to-upper-thigh close portrait",
+        "activity": "standing at a street corner wearing both original shoulder straps",
+        "setting": "red brick corner with pale blue doorway",
+        "observedFrameShare": "person98percent; bag51percent height"
+      },
+      "scenePrompt": "NEW fictional adult East Asian woman aged 44 with chin-length straight black hair, warm brown wool coat and dark trousers, standing still at the corner of a red brick building beside a pale blue plain door. CLOSE head-to-hips editorial portrait, camera slightly LOW at waist height, side-rear three-quarter, body facing left and natural facial profile to left, not looking back at lens. Both ORIGINAL backpack straps worn normally. Full bag FRONT and its visible side unobstructed, entire carry loop and base included, bag about45percent image height, adult head and torso fill85percent image height. Side daylight grazing mesh texture; keep clothes and doorway quiet, natural wrinkles and skin, no props or readable signage.",
+      "invariants": "Exact No.9291 SKY BLUE (muted pale blue-grey) rounded backpack width31 height45 depth15cm. Rounded arched top and small matching carry loop. Upper small grey rectangular Himawari white-wordmark patch. Upper large FRONT MESH pocket with bold white Himawari wordmark visible through mesh, horizontal chunky matching blue-grey zipper near upper edge with oval pull at viewer-left, pale grey horizontal webbing across its lower edge. ORIGINAL small matching rounded flap coin purse hangs at viewer-right by original pale grey clip/hook from webbing loop; purse has small Himawari patch. Separate LOWER rectangular rounded zip pocket, grey cord arranged in an X/loop through four fabric guides across its center. Matching grey side compression buckle straps and side mesh pockets. Preserve exact logos, mesh, loops, pouch shape, clip, pockets and muted blue-grey hue. Do not invent extra pouches or remove original accessory. Shoulder straps naturally connect behind, no chest strap added.",
+      "id": "2026-10-19-city-9291",
+      "date": "2026-10-19",
+      "productId": "coupang-6df96140584b67f7",
+      "reference": "backups/lookbook-2026-10-19/reference-9291.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6df96140584b67f7/main-OakvznfepoDdmNdGfSa7fQ1f37cFmx.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9520244278",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-10-19; 2026-09-14 제조사 카탈로그 7페이지의 9291 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "generatedSource": "backups/lookbook-2026-10-19/generated-9291.png",
+      "image": "/assets/lookbook/2026-10-19-city-9291.webp",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "prompt": "Use case: photorealistic-natural. One NEW1024x1536 portrait2:3 photograph for Himawari LookBook. Supplied reference strictly establishes PRODUCT identity. NEW fictional adult East Asian woman aged 44 with chin-length straight black hair, warm brown wool coat and dark trousers, standing still at the corner of a red brick building beside a pale blue plain door. CLOSE head-to-hips editorial portrait, camera slightly LOW at waist height, side-rear three-quarter, body facing left and natural facial profile to left, not looking back at lens. Both ORIGINAL backpack straps worn normally. Full bag FRONT and its visible side unobstructed, entire carry loop and base included, bag about45percent image height, adult head and torso fill85percent image height. Side daylight grazing mesh texture; keep clothes and doorway quiet, natural wrinkles and skin, no props or readable signage. Product invariants: Exact No.9291 SKY BLUE (muted pale blue-grey) rounded backpack width31 height45 depth15cm. Rounded arched top and small matching carry loop. Upper small grey rectangular Himawari white-wordmark patch. Upper large FRONT MESH pocket with bold white Himawari wordmark visible through mesh, horizontal chunky matching blue-grey zipper near upper edge with oval pull at viewer-left, pale grey horizontal webbing across its lower edge. ORIGINAL small matching rounded flap coin purse hangs at viewer-right by original pale grey clip/hook from webbing loop; purse has small Himawari patch. Separate LOWER rectangular rounded zip pocket, grey cord arranged in an X/loop through four fabric guides across its center. Matching grey side compression buckle straps and side mesh pockets. Preserve exact logos, mesh, loops, pouch shape, clip, pockets and muted blue-grey hue. Do not invent extra pouches or remove original accessory. Shoulder straps naturally connect behind, no chest strap added. Natural realistic fabric and skin, coherent anatomy/hands/ground-contact and believable weight. Fictional adult only. No collage, no overlay text/watermarks, no added features or testimonial. Preserve the product exactly. Output1024x1536.",
+      "fidelityReview": "Direct original/output comparison: rounded blue-grey body, matching carry loop/straps, small upper wordmark patch, upper mesh pocket with white Himawari lettering, horizontal chunky zipper/oval pull, grey lower webbing, original clipped small pouch on right, lower zip pocket with looped crossing cord and four guides, grey compression buckles and mesh sides all retained. Slight low side-rear camera; full head through upper thighs, person nearlyfullheight and bag51percent. Natural adult profile, original shoulder straps in contact, no added chest strap or accessory. Original31x45x15cm plausible on adult; not claimed measured fit.",
+      "generatedAt": "2026-10-19T00:03:46.488Z"
+    },
+    {
+      "model": "9004",
+      "category": "everyday",
+      "title": "의자에 앉아 잠깐",
+      "color": "라벤더 코랄",
+      "scene": "밝은 셔츠에 회색 바지를 입고 나무 의자에 앉았어요. 라벤더색 가방을 무릎 앞에 두고 손잡이를 가볍게 잡았어요.",
+      "alt": "밝은 셔츠와 회색 바지를 입은 성인 남성이 나무 의자에 앉아 라벤더 코랄 No.9004 가방 손잡이를 잡은 앞쪽 전신 AI 착용 연출",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "composition": {
+        "approach": "seated full-figure editorial portrait",
+        "angle": "slightly elevated front three-quarter",
+        "framing": "complete seated figure with shoes and tiled floor",
+        "activity": "sitting holding original handles with bag resting upright against knees",
+        "setting": "quiet covered terrace with wooden chair and tiled floor",
+        "observedFrameShare": "person92percent; bag39percent including handles"
+      },
+      "scenePrompt": "NEW fictional adult man aged 63, dark brown skin, short salt-and-pepper hair, fine natural facial lines, ivory long sleeve casual shirt with sleeves rolled to elbows, medium grey trousers and simple dark brown shoes. He sits naturally on a simple wooden chair on a quiet covered terrace with geometric pale floor tiles. Camera HIGH at about1.9m looking diagonally downward FRONT three-quarter, environment included, complete seated person head through both shoes occupying70percent image height. The exact closed backpack stands UPRIGHT against the FRONT of his knees, supported gently by both hands on its ORIGINAL twin short handles; bag lower edge rests on tiled floor between shoes, its FRONT fully visible. His gaze downward toward bag, relaxed resting moment, no packing or opening. Full40cm bag about25percent image height and realistic relative to seated175cm adult. Diffuse daylight, restrained cream and wood setting, no table props, no plants obscuring bag.",
+      "invariants": "Exact No.9004 LAVENDER CORAL backpack width28 height40 depth17cm. Pale lavender rectangular rounded top body, broad CORAL lower front zipper pocket, slim grey-beige base strip. Twin short lavender arched handles with GREY-BEIGE joining snap tab; handle attachment rectangles have TWO SILVER rivets each with diagonal stitched reinforcement. Upper centered grey-beige DIAMOND patch with pale inverted-U/n shaped emblem. Small WHITE woven Himawari label at lower viewer-right of coral pocket. Pale matching front zipper, silver pull on viewer-left with long grey-beige tab and lavender emblem. Side lavender pockets, original lavender padded backpack straps behind; original silver top zip pulls at sides. Preserve shape, hue, hardware/patch/label and seams, no invented outer pockets, no replacement wordmark at diamond, no changed handle lengths. Do not depict contents or imply tested capacities.",
+      "id": "2026-10-19-everyday-9004",
+      "date": "2026-10-19",
+      "productId": "coupang-11bd051a162f120b",
+      "reference": "backups/lookbook-2026-10-19/reference-9004.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-11bd051a162f120b/main-5wbrlVTXbbG7fKLHymvuoqynDsrcy9.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8732967405",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-10-19; 2026-09-14 제조사 카탈로그 49페이지의 9004 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "generatedSource": "backups/lookbook-2026-10-19/generated-9004.png",
+      "image": "/assets/lookbook/2026-10-19-everyday-9004.webp",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "prompt": "Use case: photorealistic-natural. One NEW1024x1536 portrait2:3 photograph for Himawari LookBook. Supplied reference strictly establishes PRODUCT identity. NEW fictional adult man aged 63, dark brown skin, short salt-and-pepper hair, fine natural facial lines, ivory long sleeve casual shirt with sleeves rolled to elbows, medium grey trousers and simple dark brown shoes. He sits naturally on a simple wooden chair on a quiet covered terrace with geometric pale floor tiles. Camera HIGH at about1.9m looking diagonally downward FRONT three-quarter, environment included, complete seated person head through both shoes occupying70percent image height. The exact closed backpack stands UPRIGHT against the FRONT of his knees, supported gently by both hands on its ORIGINAL twin short handles; bag lower edge rests on tiled floor between shoes, its FRONT fully visible. His gaze downward toward bag, relaxed resting moment, no packing or opening. Full40cm bag about25percent image height and realistic relative to seated175cm adult. Diffuse daylight, restrained cream and wood setting, no table props, no plants obscuring bag. Product invariants: Exact No.9004 LAVENDER CORAL backpack width28 height40 depth17cm. Pale lavender rectangular rounded top body, broad CORAL lower front zipper pocket, slim grey-beige base strip. Twin short lavender arched handles with GREY-BEIGE joining snap tab; handle attachment rectangles have TWO SILVER rivets each with diagonal stitched reinforcement. Upper centered grey-beige DIAMOND patch with pale inverted-U/n shaped emblem. Small WHITE woven Himawari label at lower viewer-right of coral pocket. Pale matching front zipper, silver pull on viewer-left with long grey-beige tab and lavender emblem. Side lavender pockets, original lavender padded backpack straps behind; original silver top zip pulls at sides. Preserve shape, hue, hardware/patch/label and seams, no invented outer pockets, no replacement wordmark at diamond, no changed handle lengths. Do not depict contents or imply tested capacities. Natural realistic fabric and skin, coherent anatomy/hands/ground-contact and believable weight. Fictional adult only. No collage, no overlay text/watermarks, no added features or testimonial. Preserve the product exactly. Output1024x1536.",
+      "fidelityReview": "Direct original/output comparison: lavender rounded rectangular body, coral lower front pocket, grey-beige bottom strip, twin short handles/joining snap, four silver attachment rivets, diamond n-emblem, white lower-right Himawari label, side pockets, silver zips and left long pull tab retained. Adult man seated upright; coherent hands holding original handles, closed bag base on tiled floor before knees, both shoes grounded. Front slightly elevated three-quarter rather than planned strongly overhead angle; full seated body fills92percent and bag39percent incl handles. Bag40cm external size plausible against seated adult. Distinct from9291 wearing close portrait; no new functionality shown.",
+      "generatedAt": "2026-10-19T00:04:27.533Z"
+    }
+  ]
+}
