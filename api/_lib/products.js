@@ -438,10 +438,16 @@ export async function readProductCatalog() {
     if (snapshotPath) {
       try {
         const snapshotMetadata = await head(snapshotPath, { token: productToken() });
-        result = await get(snapshotMetadata.url, {
-          access: 'public',
-          token: productToken(),
-        });
+        try {
+          result = await get(snapshotMetadata.url, {
+            access: 'public',
+            token: productToken(),
+          });
+        } catch (error) {
+          if (!/^Vercel Blob: Failed to fetch blob: 403\b/.test(String(error?.message || ''))) throw error;
+          // A denied snapshot must still pass the live catalog's ETag check below.
+          console.warn('product_catalog_snapshot_unavailable', { upstreamStatus: 403 });
+        }
         snapshot = result?.statusCode === 200;
       } catch (error) {
         if (!(error instanceof BlobNotFoundError)) throw error;

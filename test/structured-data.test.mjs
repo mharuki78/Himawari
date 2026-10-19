@@ -41,6 +41,44 @@ test('상품군은 확인된 색상·실측 차이만 변형 기준으로 선언
   assert.equal(single.find(n => n.sku === black.id).isVariantOf, undefined);
 });
 
+test('제품명에 명시된 추가 색상도 상품군의 필수 색상 값으로 제공한다', () => {
+  for (const color of ['피치', '라벤더', '스카이', '버건디', '코랄']) {
+    const variant = { ...black, id: `bag-${color}`, name: `히마와리 No.2513 ${color}` };
+    const graph = parse(renderProductPage(template, black, origin, null, [black, variant]));
+    assert.equal(graph.find(n => n.sku === variant.id).color, color);
+    assert.deepEqual(graph.find(n => n['@type'] === 'ProductGroup').variesBy, ['https://schema.org/color']);
+  }
+});
+
+test('체스트벨트 세트 구성은 일반 가방의 색상 변형으로 묶지 않는다', () => {
+  const bundle = { ...black, id: 'bag-set', name: '히마와리 No.2513+체스트벨트 SET' };
+  const family = [black, mint, bundle];
+  const graph = parse(renderProductPage(template, black, origin, null, family));
+  assert.deepEqual(graph.find(n => n['@type'] === 'ProductGroup').hasVariant.map(n => n['@id']).sort(), [black, mint].map(p => `${origin}/product.html?id=${p.id}#product`).sort());
+  assert.ok(!graph.some(n => n.sku === bundle.id));
+  const bundleGraph = parse(renderProductPage(template, bundle, origin, null, family));
+  assert.ok(!bundleGraph.some(n => n['@type'] === 'ProductGroup'));
+  assert.equal(bundleGraph.find(n => n.sku === bundle.id).isVariantOf, undefined);
+  assert.equal(bundleGraph.find(n => n['@type'] === 'WebPage').mainEntity['@id'], `${origin}/product.html?id=bag-set#product`);
+});
+
+test('색상이 확인되지 않은 상품에는 임의 색상이나 불완전한 상품군 관계를 만들지 않는다', () => {
+  const unknown = { ...black, id: 'bag-unknown', name: '히마와리 No.2513' };
+  const family = [black, mint, unknown];
+  const graph = parse(renderProductPage(template, black, origin, null, family));
+  const group = graph.find(n => n['@type'] === 'ProductGroup');
+  assert.ok(group.description);
+  for (const reference of group.hasVariant) {
+    const variant = graph.find(n => n['@id'] === reference['@id']);
+    for (const property of group.variesBy) assert.ok(variant[property.split('/').at(-1)]);
+  }
+  assert.ok(!graph.some(n => n.sku === unknown.id));
+  const standalone = parse(renderProductPage(template, unknown, origin, null, family));
+  assert.ok(!standalone.some(n => n['@type'] === 'ProductGroup'));
+  assert.equal(standalone.find(n => n.sku === unknown.id).color, undefined);
+  assert.equal(standalone.find(n => n.sku === unknown.id).isVariantOf, undefined);
+});
+
 test('상품 텍스트에 script 종료 문자열이 있어도 JSON-LD 밖으로 빠져나오지 않는다', () => {
   const name = '가방 </script><script>alert(1)</script>';
   const graph = parse(renderProductPage(template, { ...black, name }));

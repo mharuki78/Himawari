@@ -256,8 +256,9 @@ test('네이버페이 검수는 비공개 세션에서 전체 상품 목록과 �
 
 test('제품 상세 구조화 데이터는 배송·반품·제품군 정보를 포함하고 모바일 빠른 구매를 제공한다', async () => {
   const template = await readFile(new URL('../templates/product.html', import.meta.url), 'utf8');
-  const family = products.filter((product) => product.model === products[0].model);
-  const html = renderProductPage(template, products[0], 'https://himawari.co.kr', null, family);
+  const selected = products.find((product) => product.name.endsWith('블랙'));
+  const family = products.filter((product) => product.model === selected.model);
+  const html = renderProductPage(template, selected, 'https://himawari.co.kr', null, family);
   assert.match(html, /OfferShippingDetails/);
   assert.match(html, /MerchantReturnPolicy/);
   assert.match(html, /ProductGroup/);

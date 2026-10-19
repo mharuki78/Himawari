@@ -1,5 +1,5 @@
 import { PUBLIC_SPEC_FIELDS as SPEC_FIELDS } from '../../assets/product-specs.js';
-import { groupProductFamilies, productColor, productFamilyKey } from '../../assets/catalog-tools.js';
+import { groupProductFamilies, productColor, productFamilyKey, productVariantKind } from '../../assets/catalog-tools.js';
 import { productPurchaseFacts, productEvidenceHighlights } from '../../assets/product-facts.js';
 
 const KRW = new Intl.NumberFormat('ko-KR', {
@@ -232,13 +232,16 @@ export function renderProductPage(template, product, origin = 'https://himawari.
   const mainImage = safeHttpsUrl(product.image);
   const storeUrl = safeHttpsUrl(product.url) || 'https://smartstore.naver.com/baegot';
   const familyKey = productFamilyKey(product);
-  const variants = [product, ...(Array.isArray(familyProducts) ? familyProducts : [])]
-    .filter((item, index, all) => productFamilyKey(item) === familyKey && all.findIndex(candidate => candidate.id === item.id) === index);
-  const variesBy = [
+  const candidates = [product, ...(Array.isArray(familyProducts) ? familyProducts : [])]
+    .filter((item, index, all) => productFamilyKey(item) === familyKey && productVariantKind(item) !== '구성' && all.findIndex(candidate => candidate.id === item.id) === index);
+  const variantProperties = [
     ['color', item => productColor(item)],
     ['size', item => String(item.specs?.dimensions || '').trim()],
-  ].filter(([, value]) => new Set(variants.map(value).filter(Boolean)).size > 1).map(([key]) => `https://schema.org/${key}`);
-  const groupId = variants.length > 1 && variesBy.length ? `${origin}/#product-group-${encodeURIComponent(familyKey)}` : '';
+  ].filter(([, value]) => new Set(candidates.map(value).filter(Boolean)).size > 1);
+  // Every member must provide the attributes declared by variesBy; never guess a color.
+  const variants = candidates.filter(item => variantProperties.every(([, value]) => value(item)));
+  const variesBy = variantProperties.filter(([, value]) => new Set(variants.map(value)).size > 1).map(([key]) => `https://schema.org/${key}`);
+  const groupId = variants.length > 1 && variesBy.length && variants.some(item => item.id === product.id) ? `${origin}/#product-group-${encodeURIComponent(familyKey)}` : '';
   const selectedSchema = productVariantSchema(product, origin, groupId);
   selectedSchema.image = [mainImage, ...(Array.isArray(product.gallery) ? product.gallery.map(safeHttpsUrl) : [])].filter(Boolean);
   selectedSchema.mainEntityOfPage = { '@id': `${canonical}#webpage` };
@@ -260,6 +263,7 @@ export function renderProductPage(template, product, origin = 'https://himawari.
         '@type': 'ProductGroup',
         '@id': groupId,
         name: `${product.model} 제품군`,
+        description: `${product.model} 모델의 상품별 정보와 구매 가능 여부.`,
         productGroupID: `himawari-${familyKey}`,
         brand: { '@type': 'Brand', name: 'Himawari', alternateName: '히마와리' },
         variesBy,
