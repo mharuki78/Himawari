@@ -16,6 +16,7 @@ const IMAGE_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/avi
 const MAX_MAIN_IMAGE_SIZE = 8 * 1024 * 1024;
 const MAX_GALLERY_IMAGE_SIZE = 15 * 1024 * 1024;
 const MAX_GALLERY_IMAGES = 5;
+let downloadDenialReported = false;
 
 function productToken() {
   return process.env.PRODUCT_BLOB_READ_WRITE_TOKEN || '';
@@ -445,6 +446,16 @@ export async function readProductCatalog() {
           });
         } catch (error) {
           if (!/^Vercel Blob: Failed to fetch blob: 403\b/.test(String(error?.message || ''))) throw error;
+          if (process.env.VERCEL && !downloadDenialReported) {
+            downloadDenialReported = true;
+            try {
+              const diagnostic = await fetch(snapshotMetadata.url, { signal: AbortSignal.timeout(5000) });
+              const body = diagnostic.status === 403 ? (await diagnostic.text()).slice(0, 500).replaceAll(productToken(), '[redacted]') : '(omitted)';
+              console.warn('product_catalog_download_diagnostic', { status: diagnostic.status, server: diagnostic.headers.get('server'), body });
+            } catch (diagnosticError) {
+              console.warn('product_catalog_download_diagnostic', { name: diagnosticError?.name });
+            }
+          }
           // A denied snapshot must still pass the live catalog's ETag check below.
           console.warn('product_catalog_snapshot_unavailable', { upstreamStatus: 403 });
         }
