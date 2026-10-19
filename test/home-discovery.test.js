@@ -44,6 +44,10 @@ test('homepage identifies the online store with the business contact details sho
   assert.equal(store.address.addressRegion, '경기도');
   assert.equal(store.address.addressLocality, '시흥시');
   assert.equal(store.address.addressCountry, 'KR');
+  assert.equal(store.address.postalCode, '15010');
+  const poster = html.match(/<video\b[^>]*poster="([^"]+)"/)?.[1];
+  assert.equal(store.image, new URL(poster, 'https://himawari.co.kr/').href);
+  assert.ok((await readFile(new URL('../' + poster, import.meta.url))).byteLength > 0);
   assert.ok(html.includes(store.address.streetAddress));
 });
 

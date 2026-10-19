@@ -26,7 +26,7 @@ for(const record of run.posts){
  const hero=path.posix.normalize(`story/${post.image}`);files.add(hero);
  assert.ok(sitemap.includes(`<loc>${record.url}</loc><lastmod>${date}</lastmod>`));assert.ok(feed.includes(`<title>${escapeHtml(post.title)}</title>`));
  const schema=[...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m=>JSON.parse(m[1]));const article=schema.find(x=>x['@type']==='BlogPosting');
- assert.equal(article.headline,post.title);assert.equal(article.datePublished,post.date);assert.equal(article.dateModified,date);assert.ok(article.image.length>=2);
+ assert.equal(article.headline,post.title);assert.equal(article.datePublished,post.publishedAt||post.date);assert.equal(article.dateModified,post.modifiedAt||date);assert.ok(article.image.length>=2);
  const body=html.match(/<div class="story-body">([\s\S]*?)<\/div>/)[1].replace(/<figure\b[\s\S]*?<\/figure>/g,'');
  for(const match of body.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/g)){const p=match[1].replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();if(p.length<120)continue;assert.ok(!paragraphs.has(p),`Repeated paragraph: ${post.id} and ${paragraphs.get(p)}`);paragraphs.set(p,post.id);}
  for(const match of html.matchAll(/(?:href|src)="([^"#]+)"/g)){

@@ -9,7 +9,7 @@ for (const post of posts) {
   const file = path.resolve(root, 'story', post.url);
   if (!file.startsWith(path.join(root, 'story') + path.sep)) throw new Error('Invalid story path');
   const html = fs.readFileSync(file, 'utf8');
-  const result = updateStorySchema(html);
+  const result = updateStorySchema(html, post);
   if (result !== html) { fs.writeFileSync(file, result); updated++; }
 }
 console.log(JSON.stringify({ stories: posts.length, updated }));

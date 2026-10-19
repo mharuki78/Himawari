@@ -58,7 +58,7 @@ for (const post of posts) {
   assert.ok(read('feed.xml').includes(record.url), 'Missing RSS item');
   const structured = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map(m => JSON.parse(m[1]));
   const article = structured.find(data => data['@type'] === 'BlogPosting');
-  assert.equal(article?.datePublished, date);
+  assert.equal(article?.datePublished, post.publishedAt || date);
   assert.equal(article?.headline, post.title);
   assert.equal(article?.url, record.url, 'Article URL must match the visible page');
   assert.equal(article?.publisher?.url, 'https://himawari.co.kr/', 'Missing article publisher');

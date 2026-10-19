@@ -21,7 +21,7 @@ test('revision keeps identity, publication date and hero while updating article 
  assert.ok(result.includes(`https://himawari.co.kr/story/${original.url}`));
  const schema=[...result.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map(m=>JSON.parse(m[1]));
  const blog=schema.find(x=>x['@type']==='BlogPosting');
- assert.equal(blog.datePublished,original.date);assert.equal(blog.dateModified,'2026-10-14');assert.equal(blog.headline,revision.title);
+ assert.equal(blog.datePublished,original.publishedAt||original.date);assert.equal(blog.dateModified,'2026-10-14');assert.equal(blog.headline,revision.title);
  assert.equal(blog.image.length,2);
  assert.ok(!schema.some(x=>x['@type']==='FAQPage'));
  assert.ok(!result.includes('class="story-faq"'));
@@ -39,4 +39,12 @@ test('rewriting a body retains its existing related-story navigation',async()=>{
  const withRelated={...original,html:original.html.replace(/<p class="story-related">[\s\S]*?<\/p>/g,'').replace(/(<div class="story-body">[\s\S]*?)(<\/div>)/,'$1<p class="story-related">함께 읽기: <a href="jigsaw-board-finished-size.html">작업 공간 살펴보기</a></p>$2')};
  const result=renderRevision(withRelated,revision,photo,'2026-10-14');
  assert.match(result,/<p class="story-related">함께 읽기: <a href="jigsaw-board-finished-size.html">작업 공간 살펴보기<\/a><\/p>/);
+});
+
+test('a new revision preserves verified publication time and discards the previous revision time',async()=>{
+ const {renderRevision}=await load();
+ const publishedAt='2026-10-18T08:42:33+09:00';
+ const result=renderRevision({...original,date:'2026-10-18',publishedAt,modifiedAt:'2026-10-18T08:44:53.219+09:00'},revision,photo,'2026-10-20');
+ const data=[...result.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map(m=>JSON.parse(m[1])).find(x=>x['@type']==='BlogPosting');
+ assert.equal(data.datePublished,publishedAt);assert.equal(data.dateModified,'2026-10-20');
 });

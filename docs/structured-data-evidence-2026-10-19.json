@@ -1,0 +1,3039 @@
+{
+  "auditDate": "2026-10-19",
+  "auditHead": "60f9f08812cbd85a8823d4542b69572655383279",
+  "policy": {
+    "timezone": "Asia/Seoul",
+    "preserveOriginalPublicationCalendarDay": true,
+    "noSyntheticMidnight": true,
+    "noScheduleOrGeneratedAtOrVerificationAtSubstitution": true,
+    "publishedAtMeaning": "Existing first-publication RSS wall-clock declaration.",
+    "modifiedAtMeaning": "Exact READY time of the production content release introducing the current complete article content.",
+    "articleComparison": "Exact complete article includes related-link text. Head JSON-LD, global navigation and footer outside article are not part of this comparison.",
+    "futureRevision": "Remove or replace modifiedAt whenever article content changes; do not carry a timestamp across new content."
+  },
+  "summary": {
+    "stories": 158,
+    "publishedAt": 120,
+    "publishedAtUnverified": 38,
+    "modifiedAt": 158,
+    "modificationReleaseCounts": {
+      "oct14": 2,
+      "oct16": 153,
+      "oct18": 3
+    },
+    "dateModifiedCalendarCorrections": 94,
+    "fullArticleEquivalenceVerified": 158
+  },
+  "sources": {
+    "rss-current": {
+      "kind": "committed-rss",
+      "commit": "60f9f08812cbd85a8823d4542b69572655383279",
+      "path": "feed.xml",
+      "sha256": "fec6050dae4da1763025ddb0bfbe269654ac6ee842664972c7f9562ab5503e6e"
+    },
+    "rss-archive": {
+      "kind": "preserved-rss-before-editorial-refresh",
+      "path": "backups/editorial-refresh-2026-10-14/originals/feed.xml",
+      "sha256": "d6c8caf1c9c4262fb47d08c91c58ccdd3eb398f2da9ac459069cab1e8f0aa557"
+    },
+    "release-oct14": {
+      "kind": "production-content-release",
+      "commit": "4b7ee8739c429c2e5d6bc391251efee4cec5b987",
+      "deploymentId": "dpl_2BEhoG8zYtXq18rWZu8nk2K9yHE2",
+      "state": "READY",
+      "target": "production",
+      "readyAtEpochMs": 1791976034465,
+      "readyAt": "2026-10-14T20:07:14.465+09:00"
+    },
+    "release-oct16": {
+      "kind": "production-content-release",
+      "commit": "53f18b201088c818018dd48540be20beb70dea60",
+      "deploymentId": "dpl_eFiEi3LJj9as3GwyguvYwv4mverg",
+      "state": "READY",
+      "target": "production",
+      "readyAtEpochMs": 1792110295407,
+      "readyAt": "2026-10-16T09:24:55.407+09:00"
+    },
+    "release-oct18": {
+      "kind": "production-content-release",
+      "commit": "2e392ed9769f41654fd0db8f76c297addfda3bac",
+      "deploymentId": "dpl_EbPTt4M5G6pg1KFCJ4ttgCCNhKoy",
+      "state": "READY",
+      "target": "production",
+      "readyAtEpochMs": 1792280693219,
+      "readyAt": "2026-10-18T08:44:53.219+09:00"
+    },
+    "first-publication-feed-2e392ed9769f41654fd0db8f76c297addfda3bac": {
+      "kind": "first-addition-commit-rss",
+      "commit": "2e392ed9769f41654fd0db8f76c297addfda3bac",
+      "path": "feed.xml",
+      "sha256": "fec6050dae4da1763025ddb0bfbe269654ac6ee842664972c7f9562ab5503e6e"
+    },
+    "first-publication-feed-9f48758db0ae61211ad165a72f36a85f4f432760": {
+      "kind": "first-addition-commit-rss",
+      "commit": "9f48758db0ae61211ad165a72f36a85f4f432760",
+      "path": "feed.xml",
+      "sha256": "7b27a9594a5edbd6331d42584159d6276023a607c6ce2d9d4f0b69b78bd0d1d6"
+    },
+    "first-publication-feed-1681cb9cde29bace9f2d44951305d54f6a90fbd5": {
+      "kind": "first-addition-commit-rss",
+      "commit": "1681cb9cde29bace9f2d44951305d54f6a90fbd5",
+      "path": "feed.xml",
+      "sha256": "aac8fb4046f7bdb46021aa9f4f3a33804c39e014439d1670121574f8909ed562"
+    },
+    "first-publication-feed-07d8e53ee9f8b12c52a91d4b4e24fa8995529286": {
+      "kind": "first-addition-commit-rss",
+      "commit": "07d8e53ee9f8b12c52a91d4b4e24fa8995529286",
+      "path": "feed.xml",
+      "sha256": "d6c8caf1c9c4262fb47d08c91c58ccdd3eb398f2da9ac459069cab1e8f0aa557"
+    },
+    "first-publication-feed-d67fa96ce680d406e7d938c1f610e3f02301fc9e": {
+      "kind": "first-addition-commit-rss",
+      "commit": "d67fa96ce680d406e7d938c1f610e3f02301fc9e",
+      "path": "feed.xml",
+      "sha256": "e7bd98c260d271b7ae57feacca0389d33667b8c6bf060c6b264e3d266776ade0"
+    },
+    "first-publication-feed-85cc2340695724208349d1206d99973164cc62e7": {
+      "kind": "first-addition-commit-rss",
+      "commit": "85cc2340695724208349d1206d99973164cc62e7",
+      "path": "feed.xml",
+      "sha256": "3ba874420fc895c4c0a96132b0c34f2055eb419f0b99b18db2077274d847fdac"
+    },
+    "first-publication-feed-122e2a8966f08e5d041e4d57744e1f17da3b4586": {
+      "kind": "first-addition-commit-rss",
+      "commit": "122e2a8966f08e5d041e4d57744e1f17da3b4586",
+      "path": "feed.xml",
+      "sha256": "7703bae1765f43037293fe5e65012e416d9ccf8ae4b0abb28a1e44ef441922b1"
+    },
+    "first-publication-feed-8640bb0b644d581c518acb35f59ddbceac2c795e": {
+      "kind": "first-addition-commit-rss",
+      "commit": "8640bb0b644d581c518acb35f59ddbceac2c795e",
+      "path": "feed.xml",
+      "sha256": "fdc9a2d7a3ff415003ffa574cb6168094099f68adf58fdcddcd385516d3342db"
+    },
+    "first-publication-feed-2265b226df2b7f7730f09ee25632db96d2612b4e": {
+      "kind": "first-addition-commit-rss",
+      "commit": "2265b226df2b7f7730f09ee25632db96d2612b4e",
+      "path": "feed.xml",
+      "sha256": "9bfaf7740fa6fe6b6a3016b8276dbe5ac3f535ecf8c5bd839d3857bef2e3d73e"
+    },
+    "first-publication-feed-3a236e3230d2b7d9ce0dafa86cdd7c4747841be0": {
+      "kind": "first-addition-commit-rss",
+      "commit": "3a236e3230d2b7d9ce0dafa86cdd7c4747841be0",
+      "path": "feed.xml",
+      "sha256": "9748b035dc38a87d9782166cbf0b439171c7c65456033e66f4297ab66df665ff"
+    },
+    "first-publication-feed-9f640066e88f8c808d2104bef7cb2c89af8f09f5": {
+      "kind": "first-addition-commit-rss",
+      "commit": "9f640066e88f8c808d2104bef7cb2c89af8f09f5",
+      "path": "feed.xml",
+      "sha256": "1e86e1775c31e67eb8a4484832accdbfc385aa096532fd28254a728aed115556"
+    },
+    "first-publication-feed-a465a174bf1581b0e93078e9d0a1e702a6725b97": {
+      "kind": "first-addition-commit-rss",
+      "commit": "a465a174bf1581b0e93078e9d0a1e702a6725b97",
+      "path": "feed.xml",
+      "sha256": "0209405cca4dac8fcd2fb9a3971c92f946825540cb6530524de0017f62245a8c"
+    },
+    "first-publication-feed-4610c50e16fb4c7703084d25f2706c3c4efc8520": {
+      "kind": "first-addition-commit-rss",
+      "commit": "4610c50e16fb4c7703084d25f2706c3c4efc8520",
+      "path": "feed.xml",
+      "sha256": "b350a42f83071daa4f3fa8eae21b7d0cf612c4bc4ba47cbc683bd357c14f7ab5"
+    },
+    "first-publication-feed-d57b6f68c421ee2eee42242d85fccac60d525c02": {
+      "kind": "first-addition-commit-rss",
+      "commit": "d57b6f68c421ee2eee42242d85fccac60d525c02",
+      "path": "feed.xml",
+      "sha256": "288cbd6bb75566c4a7c6f816ed2abe039e5511edd2d98f350d9b67e813c1df5b"
+    },
+    "first-publication-feed-dc0076257b1944b89be4bb5df0bb3ed52b57665a": {
+      "kind": "first-addition-commit-rss",
+      "commit": "dc0076257b1944b89be4bb5df0bb3ed52b57665a",
+      "path": "feed.xml",
+      "sha256": "2d10088cd74c4492a083f032cdf0ad38b3273b495fb28312a8328f0ff62dd65e"
+    },
+    "first-publication-feed-39a8426711211d39e9d371817dc7f40d4dd0d087": {
+      "kind": "first-addition-commit-rss",
+      "commit": "39a8426711211d39e9d371817dc7f40d4dd0d087",
+      "path": "feed.xml",
+      "sha256": "5093f454bdd707bd6b05e14a54b8decd8d0a4d6c00d081d1c81e34a0d246bfeb"
+    },
+    "first-publication-feed-17ad30586827cf535e3fe1fe93d693551bb25464": {
+      "kind": "first-addition-commit-rss",
+      "commit": "17ad30586827cf535e3fe1fe93d693551bb25464",
+      "path": "feed.xml",
+      "sha256": "efdaa3664ad7c679212aced4f87995a95b76fdee0661006720aa5f8767a915ad"
+    },
+    "first-publication-feed-81f9ac5f27d02cad4ff83a9067fa1b79c631d764": {
+      "kind": "first-addition-commit-rss",
+      "commit": "81f9ac5f27d02cad4ff83a9067fa1b79c631d764",
+      "path": "feed.xml",
+      "sha256": "452642b2bb8682c41d27fedb0785d939b4a0185c6e40eee5fb9a018ca22be97a"
+    },
+    "first-publication-feed-d33822cfaf2cc1f24c72563f92b613c76939e597": {
+      "kind": "first-addition-commit-rss",
+      "commit": "d33822cfaf2cc1f24c72563f92b613c76939e597",
+      "path": "feed.xml",
+      "sha256": "fcaf61ebfad9fecdba48243e2ba8e5c56a90be459de7b0b1b9bd513760b22c25"
+    },
+    "first-publication-feed-0f39a1f8cd0c04c1813ae39a936cd1bcfe2378b6": {
+      "kind": "first-addition-commit-rss",
+      "commit": "0f39a1f8cd0c04c1813ae39a936cd1bcfe2378b6",
+      "path": "feed.xml",
+      "sha256": "5053369affe1870a567e096cf4830c9482753155368193691604f9c0e15b1d76"
+    },
+    "first-publication-feed-30e625efad9e996955df2f553f4fc43077d32e9e": {
+      "kind": "first-addition-commit-rss",
+      "commit": "30e625efad9e996955df2f553f4fc43077d32e9e",
+      "path": "feed.xml",
+      "sha256": "c08552b9ddf6512f45d53f85b1de3abfdf7d48e7985c5b5dd2ada23f4fd0466d"
+    },
+    "first-publication-feed-df3e6e62fea75bb1b239312abdbb29b31e37a3f9": {
+      "kind": "first-addition-commit-rss",
+      "commit": "df3e6e62fea75bb1b239312abdbb29b31e37a3f9",
+      "path": "feed.xml",
+      "sha256": "fe7944d69f3b9b1c4a984b0c1a527016061fdf1864522380974f460c9ab11337"
+    },
+    "first-publication-feed-2d1a591d9a503933b2dc171fc2946d2b83bdfc31": {
+      "kind": "first-addition-commit-rss",
+      "commit": "2d1a591d9a503933b2dc171fc2946d2b83bdfc31",
+      "path": "feed.xml",
+      "sha256": "4c5879962eb8cdb5038e356ae97d5faa9ef18e9dfb8989a49fd79a373f84f44f"
+    },
+    "first-publication-feed-1e92aa434673a9747124d035d6db69e616706423": {
+      "kind": "first-addition-commit-rss",
+      "commit": "1e92aa434673a9747124d035d6db69e616706423",
+      "path": "feed.xml",
+      "sha256": "f20edc4e4a629aff8985b1a5c2c237b90abe5a7740ac409c700fc5b13d747855"
+    },
+    "first-publication-feed-cbea7ee78bdf58db904c466a38f62d28c0bb2ee8": {
+      "kind": "first-addition-commit-rss",
+      "commit": "cbea7ee78bdf58db904c466a38f62d28c0bb2ee8",
+      "path": "feed.xml",
+      "sha256": "b1f570674ed2a16c11cf862d47f9bc264d56aa49812131a8f8240b29f0c63c9e"
+    },
+    "first-publication-feed-a829903233ac42361ab0b0f2c22618b451ca8a26": {
+      "kind": "first-addition-commit-rss",
+      "commit": "a829903233ac42361ab0b0f2c22618b451ca8a26",
+      "path": "feed.xml",
+      "sha256": "36890e23d2d8250ace6252d44dfd5fb16eef3ab5b87b4feb0fc1c13bbfc9f4e1"
+    },
+    "first-publication-feed-7bf84e4b577bf8a56ad6e018236fe256f64a5b26": {
+      "kind": "first-addition-commit-rss",
+      "commit": "7bf84e4b577bf8a56ad6e018236fe256f64a5b26",
+      "path": "feed.xml",
+      "sha256": "ea073847c531877e8235287a0cd7c7edbbd62157f03ad2b15b40f38d0ef3d915"
+    },
+    "first-publication-feed-c3a2c081d543fc8c89e69c1f141b1171f93130ad": {
+      "kind": "first-addition-commit-rss",
+      "commit": "c3a2c081d543fc8c89e69c1f141b1171f93130ad",
+      "path": "feed.xml",
+      "sha256": "8a10925a8011898086cde7752e6fa4f80bdf204b38e0644615718d451e8dd4c2"
+    },
+    "first-publication-feed-14c8277eb035d002b346cdc6cee46b7c0502c1fe": {
+      "kind": "first-addition-commit-rss",
+      "commit": "14c8277eb035d002b346cdc6cee46b7c0502c1fe",
+      "path": "feed.xml",
+      "sha256": "69629a8986e5e29173e21f9f0237fc6b50e46a5974d6e6a6f1af205ea173f8fe"
+    },
+    "first-publication-feed-17f7b997798a2ef9dadb7b6077ab8b0bfa541dc1": {
+      "kind": "first-addition-commit-rss",
+      "commit": "17f7b997798a2ef9dadb7b6077ab8b0bfa541dc1",
+      "path": "feed.xml",
+      "sha256": "8c2618d805145710d6765c8c0d5b24acb7ad196df7630b16b41a2f9890c0b986"
+    },
+    "first-publication-feed-cb72041d25d0cf7a4783faca1392e37c4fcc0cc3": {
+      "kind": "first-addition-commit-rss",
+      "commit": "cb72041d25d0cf7a4783faca1392e37c4fcc0cc3",
+      "path": "feed.xml",
+      "sha256": "b9ee99cae0cbd9dce42df2def9d8acc5342e48658b9805ff52aa49548e7bb4a8"
+    },
+    "first-publication-feed-239fe1f49bd8ad6882781d7560f0010005d9f326": {
+      "kind": "first-addition-commit-rss",
+      "commit": "239fe1f49bd8ad6882781d7560f0010005d9f326",
+      "path": "feed.xml",
+      "sha256": "ba6c1305abc4f22ea031bee106c285497c598e21188d5b0b24a6fa82514bcf3d"
+    },
+    "first-publication-feed-5242f8aa8a489f36025a3f5c16759436722a31fa": {
+      "kind": "first-addition-commit-rss",
+      "commit": "5242f8aa8a489f36025a3f5c16759436722a31fa",
+      "path": "feed.xml",
+      "sha256": "b42daff175a970d39024577547d69c9b6f56ebba0b9eb8b41df4ac1cfd9a57f2"
+    },
+    "first-publication-feed-87c2e4cc406c089d7f11616962cf52002b31ac0d": {
+      "kind": "first-addition-commit-rss",
+      "commit": "87c2e4cc406c089d7f11616962cf52002b31ac0d",
+      "path": "feed.xml",
+      "sha256": "3522dc86b9a35337e6d5448c9f31ddaebae9e9e803dd05aa102c8fff9075437f"
+    },
+    "first-publication-feed-f495ac3efb4945f1de0d2180ae01eced30f9f908": {
+      "kind": "first-addition-commit-rss",
+      "commit": "f495ac3efb4945f1de0d2180ae01eced30f9f908",
+      "path": "feed.xml",
+      "sha256": "d530816e16d14dd0e591f64292d7af9df05714e6d13422f76c024bcad29c0d51"
+    },
+    "first-publication-feed-07874219d0204ab2cd4d3b0d4eb5e3dd1c77ad12": {
+      "kind": "first-addition-commit-rss",
+      "commit": "07874219d0204ab2cd4d3b0d4eb5e3dd1c77ad12",
+      "path": "feed.xml",
+      "sha256": "bd35166f80e687c071024bad39a1a8b2bc23baf517fe585fdcefe705351b9cb8"
+    },
+    "first-publication-feed-fd12bba7b7b38a669d49405a5c5b430a731bd2b2": {
+      "kind": "first-addition-commit-rss",
+      "commit": "fd12bba7b7b38a669d49405a5c5b430a731bd2b2",
+      "path": "feed.xml",
+      "sha256": "c1458976d0bcaf72566d3294566fa926229718996f12b4c5f9c8a4c580571d48"
+    },
+    "first-publication-feed-326bf6d7c62902cf1f0a801ec7bcba01da4b5b66": {
+      "kind": "first-addition-commit-rss",
+      "commit": "326bf6d7c62902cf1f0a801ec7bcba01da4b5b66",
+      "path": "feed.xml",
+      "sha256": "ebd9bc1b48777ac1541f801056a02174369c458ddce93ad8274b28a70c3cd048"
+    },
+    "first-publication-feed-9647807caf009e3a81c27f55a18dabc070643f31": {
+      "kind": "first-addition-commit-rss",
+      "commit": "9647807caf009e3a81c27f55a18dabc070643f31",
+      "path": "feed.xml",
+      "sha256": "2abcd8d684ada9afd7e479b36af894a1629bb5a32c9a0bbf7c69c1643767fd15"
+    },
+    "first-publication-feed-be8da8ebedf53e544b029e045f27afe262f51133": {
+      "kind": "first-addition-commit-rss",
+      "commit": "be8da8ebedf53e544b029e045f27afe262f51133",
+      "path": "feed.xml",
+      "sha256": "9736beadea20b3269ee4cdd3316408b9acad9ca6f82ee04a8d9b27d6c7b1fa70"
+    }
+  },
+  "posts": [
+    {
+      "id": "bag-stitch-lines-reading",
+      "url": "bag-stitch-lines-reading.html",
+      "publishedDate": "2026-10-18",
+      "publishedAt": "2026-10-18T08:42:33+09:00",
+      "modifiedDate": "2026-10-18",
+      "modifiedAt": "2026-10-18T08:44:53.219+09:00",
+      "publicationSources": [
+        "first-publication-feed-2e392ed9769f41654fd0db8f76c297addfda3bac",
+        "rss-current"
+      ],
+      "modificationSources": [
+        "release-oct18"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "2e392ed9769f41654fd0db8f76c297addfda3bac",
+      "articleSha256": "3f4fc854cee3487e499c25e14cd3ebd054cc419e178fd1817e14dcca8a89f5ba"
+    },
+    {
+      "id": "layered-front-pocket-choices",
+      "url": "layered-front-pocket-choices.html",
+      "publishedDate": "2026-10-18",
+      "publishedAt": "2026-10-18T08:42:33+09:00",
+      "modifiedDate": "2026-10-18",
+      "modifiedAt": "2026-10-18T08:44:53.219+09:00",
+      "publicationSources": [
+        "first-publication-feed-2e392ed9769f41654fd0db8f76c297addfda3bac",
+        "rss-current"
+      ],
+      "modificationSources": [
+        "release-oct18"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "2e392ed9769f41654fd0db8f76c297addfda3bac",
+      "articleSha256": "de614f1350cbcaf721d9aea756613e8876a3fbe4f0a320b5a83f474bffc9d844"
+    },
+    {
+      "id": "two-zipper-slider-position",
+      "url": "two-zipper-slider-position.html",
+      "publishedDate": "2026-10-18",
+      "publishedAt": "2026-10-18T08:42:33+09:00",
+      "modifiedDate": "2026-10-18",
+      "modifiedAt": "2026-10-18T08:44:53.219+09:00",
+      "publicationSources": [
+        "first-publication-feed-2e392ed9769f41654fd0db8f76c297addfda3bac",
+        "rss-current"
+      ],
+      "modificationSources": [
+        "release-oct18"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "2e392ed9769f41654fd0db8f76c297addfda3bac",
+      "articleSha256": "65da3a5d65485207896cf8be366f16379d07c8a92594e1388162a46ec31fe541"
+    },
+    {
+      "id": "cooperative-competitive-game-night",
+      "url": "cooperative-competitive-game-night.html",
+      "publishedDate": "2026-10-16",
+      "publishedAt": "2026-10-16T08:18:46+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-9f48758db0ae61211ad165a72f36a85f4f432760",
+        "rss-current"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "9f48758db0ae61211ad165a72f36a85f4f432760",
+      "articleSha256": "69b36d1a16fbdf70da8ce8efd0321d2370946b2f196348e94498ba82a9a83311"
+    },
+    {
+      "id": "ceramic-clay-glaze-surface",
+      "url": "ceramic-clay-glaze-surface.html",
+      "publishedDate": "2026-10-16",
+      "publishedAt": "2026-10-16T08:18:46+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-9f48758db0ae61211ad165a72f36a85f4f432760",
+        "rss-current"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "9f48758db0ae61211ad165a72f36a85f4f432760",
+      "articleSha256": "eed6e1e6cf53318ebb93abdb736f8f92a6278a09542ecd4df5e41ccc1878c117"
+    },
+    {
+      "id": "plain-twill-fabric-surface",
+      "url": "plain-twill-fabric-surface.html",
+      "publishedDate": "2026-10-16",
+      "publishedAt": "2026-10-16T08:18:46+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-9f48758db0ae61211ad165a72f36a85f4f432760",
+        "rss-current"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "9f48758db0ae61211ad165a72f36a85f4f432760",
+      "articleSha256": "4ee4ca6dd45b7b98f07a8cd011939c51560f6fab8dac2977d36d53529bef88f6"
+    },
+    {
+      "id": "photo-print-surface-comparison",
+      "url": "photo-print-surface-comparison.html",
+      "publishedDate": "2026-10-15",
+      "publishedAt": "2026-10-15T08:12:13+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-1681cb9cde29bace9f2d44951305d54f6a90fbd5",
+        "rss-current"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "1681cb9cde29bace9f2d44951305d54f6a90fbd5",
+      "articleSha256": "f50e61353df11882fee3e1bb19afdf2cffc56da99dd2b7d69dd958fc306abd0a"
+    },
+    {
+      "id": "one-artwork-second-look",
+      "url": "one-artwork-second-look.html",
+      "publishedDate": "2026-10-15",
+      "publishedAt": "2026-10-15T08:12:13+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-1681cb9cde29bace9f2d44951305d54f6a90fbd5",
+        "rss-current"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "1681cb9cde29bace9f2d44951305d54f6a90fbd5",
+      "articleSha256": "06a05a65ce247d6e187e2e9d5e05860bbf7998938e0256725b15abc7b3ee1355"
+    },
+    {
+      "id": "graphite-pencil-paper-feel",
+      "url": "graphite-pencil-paper-feel.html",
+      "publishedDate": "2026-10-15",
+      "publishedAt": "2026-10-15T08:12:13+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-1681cb9cde29bace9f2d44951305d54f6a90fbd5",
+        "rss-current"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "1681cb9cde29bace9f2d44951305d54f6a90fbd5",
+      "articleSha256": "ad7025c794fc74f6f2afac2812835346b6feff323f899a17005031ec9a8ab158"
+    },
+    {
+      "id": "overseas-call-city-date",
+      "url": "overseas-call-city-date.html",
+      "publishedDate": "2026-10-14",
+      "publishedAt": "2026-10-14T08:10:22+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-07d8e53ee9f8b12c52a91d4b4e24fa8995529286",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "07d8e53ee9f8b12c52a91d4b4e24fa8995529286",
+      "articleSha256": "3bd5b9da45f76d4c241f31f8144c0e7ef2527de421010412349d714a215f2709"
+    },
+    {
+      "id": "jigsaw-board-finished-size",
+      "url": "jigsaw-board-finished-size.html",
+      "publishedDate": "2026-10-14",
+      "publishedAt": "2026-10-14T08:10:22+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-07d8e53ee9f8b12c52a91d4b4e24fa8995529286",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "07d8e53ee9f8b12c52a91d4b4e24fa8995529286",
+      "articleSha256": "d6e9dcf33d2cd1256ba2f14d30c3f6476dffe461900546a1390e6c69707de004"
+    },
+    {
+      "id": "audiobook-narration-speed-check",
+      "url": "audiobook-narration-speed-check.html",
+      "publishedDate": "2026-10-14",
+      "publishedAt": "2026-10-14T08:10:22+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-07d8e53ee9f8b12c52a91d4b4e24fa8995529286",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "07d8e53ee9f8b12c52a91d4b4e24fa8995529286",
+      "articleSha256": "f741e9a0937a98b02a7118b5b5d0397e3661ffb80576467d5f7a0f817091d6a3"
+    },
+    {
+      "id": "meeting-place-entrance-pin",
+      "url": "meeting-place-entrance-pin.html",
+      "publishedDate": "2026-10-13",
+      "publishedAt": "2026-10-13T08:12:15+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-d67fa96ce680d406e7d938c1f610e3f02301fc9e",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "d67fa96ce680d406e7d938c1f610e3f02301fc9e",
+      "articleSha256": "cd367aa152abcedc162890b7cf6c1e64945d651886e40171483ec2a43205f843"
+    },
+    {
+      "id": "printout-file-version-check",
+      "url": "printout-file-version-check.html",
+      "publishedDate": "2026-10-13",
+      "publishedAt": "2026-10-13T08:12:15+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-d67fa96ce680d406e7d938c1f610e3f02301fc9e",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "d67fa96ce680d406e7d938c1f610e3f02301fc9e",
+      "articleSha256": "59b595a7249fe06bc9a9ab28b72b261be9ee59acda14c4d7a77c33bba4d8fa6e"
+    },
+    {
+      "id": "yarn-colour-dye-lot-label",
+      "url": "yarn-colour-dye-lot-label.html",
+      "publishedDate": "2026-10-13",
+      "publishedAt": "2026-10-13T08:12:15+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-d67fa96ce680d406e7d938c1f610e3f02301fc9e",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "d67fa96ce680d406e7d938c1f610e3f02301fc9e",
+      "articleSha256": "d5948fb3aff2bfefe92ae1cd5fce4356dc1b544cbc999f5557759756f3867d2a"
+    },
+    {
+      "id": "coat-fitting-backpack-off",
+      "url": "coat-fitting-backpack-off.html",
+      "publishedDate": "2026-10-12",
+      "publishedAt": "2026-10-12T08:10:29+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-85cc2340695724208349d1206d99973164cc62e7",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "85cc2340695724208349d1206d99973164cc62e7",
+      "articleSha256": "7aec4dd21cb4c44fced51e8bec8099091a73c1487c8e4ae5891b24633c79ead6"
+    },
+    {
+      "id": "gloves-keep-pair-together",
+      "url": "gloves-keep-pair-together.html",
+      "publishedDate": "2026-10-12",
+      "publishedAt": "2026-10-12T08:10:29+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-85cc2340695724208349d1206d99973164cc62e7",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "85cc2340695724208349d1206d99973164cc62e7",
+      "articleSha256": "eb00ce99bfc04fa3f3802877e99f7e13bb2abbeaa0a6d105a581d4895a3e467c"
+    },
+    {
+      "id": "furniture-trip-room-measurements",
+      "url": "furniture-trip-room-measurements.html",
+      "publishedDate": "2026-10-12",
+      "publishedAt": "2026-10-12T08:10:29+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-85cc2340695724208349d1206d99973164cc62e7",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "85cc2340695724208349d1206d99973164cc62e7",
+      "articleSha256": "0db2dcbe695f4b1bc677836dbe20915f2e52d1dbf9f3982cc3657a56e5ceeb8a"
+    },
+    {
+      "id": "sewing-needles-end-of-session",
+      "url": "sewing-needles-end-of-session.html",
+      "publishedDate": "2026-10-11",
+      "publishedAt": "2026-10-11T08:10:44+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-122e2a8966f08e5d041e4d57744e1f17da3b4586",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "122e2a8966f08e5d041e4d57744e1f17da3b4586",
+      "articleSha256": "c0b27093533176e85dc487ad06ea2d15099ed71d90e45555bdd774a2562ea169"
+    },
+    {
+      "id": "return-borrowed-containers",
+      "url": "return-borrowed-containers.html",
+      "publishedDate": "2026-10-11",
+      "publishedAt": "2026-10-11T08:10:44+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-122e2a8966f08e5d041e4d57744e1f17da3b4586",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "122e2a8966f08e5d041e4d57744e1f17da3b4586",
+      "articleSha256": "6cfa877712a9f0601ed5621ec6c0c144eed085c1a76481e0fda9e63cde3b2a6b"
+    },
+    {
+      "id": "sound-walk-test-recording",
+      "url": "sound-walk-test-recording.html",
+      "publishedDate": "2026-10-11",
+      "publishedAt": "2026-10-11T08:10:44+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-122e2a8966f08e5d041e4d57744e1f17da3b4586",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "122e2a8966f08e5d041e4d57744e1f17da3b4586",
+      "articleSha256": "ecb62eaefe11a5f7f6159148658056b236bd15dea9f9379e9c3ac799a7fd7340"
+    },
+    {
+      "id": "book-exchange-edition-condition",
+      "url": "book-exchange-edition-condition.html",
+      "publishedDate": "2026-10-10",
+      "publishedAt": "2026-10-10T08:10:58+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-8640bb0b644d581c518acb35f59ddbceac2c795e",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "8640bb0b644d581c518acb35f59ddbceac2c795e",
+      "articleSha256": "bcd05ca8b69d94664dcb65e9e6724d4bbbb3c0bad6a91ac6e2ce4f633dee6288"
+    },
+    {
+      "id": "photo-selection-one-purpose",
+      "url": "photo-selection-one-purpose.html",
+      "publishedDate": "2026-10-10",
+      "publishedAt": "2026-10-10T08:10:58+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-8640bb0b644d581c518acb35f59ddbceac2c795e",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "8640bb0b644d581c518acb35f59ddbceac2c795e",
+      "articleSha256": "95a509f4aae4eed9bc9ac877266231954f5c48d9fca07d6eec1101253d2fb47e"
+    },
+    {
+      "id": "tea-meeting-brewing-timer",
+      "url": "tea-meeting-brewing-timer.html",
+      "publishedDate": "2026-10-10",
+      "publishedAt": "2026-10-10T08:10:58+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-8640bb0b644d581c518acb35f59ddbceac2c795e",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "8640bb0b644d581c518acb35f59ddbceac2c795e",
+      "articleSha256": "e92aab0afa08f9b0f7af8c124ba8cfb3e7ccf3452bd1b3f3a496dcfa629cb63b"
+    },
+    {
+      "id": "presentation-opening-closing-cards",
+      "url": "presentation-opening-closing-cards.html",
+      "publishedDate": "2026-10-09",
+      "publishedAt": "2026-10-09T08:10:21+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-2265b226df2b7f7730f09ee25632db96d2612b4e",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "2265b226df2b7f7730f09ee25632db96d2612b4e",
+      "articleSha256": "b62ffe0f2b841f2c68f58f19e2fb79072b2dae4d50b209420ec4520ee035a54c"
+    },
+    {
+      "id": "handwriting-one-change-practice",
+      "url": "handwriting-one-change-practice.html",
+      "publishedDate": "2026-10-09",
+      "publishedAt": "2026-10-09T08:10:21+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-2265b226df2b7f7730f09ee25632db96d2612b4e",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "2265b226df2b7f7730f09ee25632db96d2612b4e",
+      "articleSha256": "574cf1433576fb88a341545f2802a9b5cebc2f8e004da072dd606be40077575f"
+    },
+    {
+      "id": "neighbourhood-walk-repeated-shapes",
+      "url": "neighbourhood-walk-repeated-shapes.html",
+      "publishedDate": "2026-10-09",
+      "publishedAt": "2026-10-09T08:10:21+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-2265b226df2b7f7730f09ee25632db96d2612b4e",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "2265b226df2b7f7730f09ee25632db96d2612b4e",
+      "articleSha256": "2be381175cb6c3fa0ac0820a1992d0a1acb711f3df401e5f9e26d0e473aa6c27"
+    },
+    {
+      "id": "film-club-spoiler-notes",
+      "url": "film-club-spoiler-notes.html",
+      "publishedDate": "2026-10-08",
+      "publishedAt": "2026-10-08T08:07:37+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-3a236e3230d2b7d9ce0dafa86cdd7c4747841be0",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "3a236e3230d2b7d9ce0dafa86cdd7c4747841be0",
+      "articleSha256": "e51c2698b4e8c89f7521473897e8cc56d83739d9c4ad6a04ed9736247eeb2294"
+    },
+    {
+      "id": "crossword-pause-pencil-marks",
+      "url": "crossword-pause-pencil-marks.html",
+      "publishedDate": "2026-10-08",
+      "publishedAt": "2026-10-08T08:07:37+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-3a236e3230d2b7d9ce0dafa86cdd7c4747841be0",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "3a236e3230d2b7d9ce0dafa86cdd7c4747841be0",
+      "articleSha256": "722ca756bb5f8c43c687ac71a61bc833ca9a3e55da925da3aaaf3f1d4ce4f81e"
+    },
+    {
+      "id": "reading-notebook-quote-response",
+      "url": "reading-notebook-quote-response.html",
+      "publishedDate": "2026-10-08",
+      "publishedAt": "2026-10-08T08:07:37+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-3a236e3230d2b7d9ce0dafa86cdd7c4747841be0",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "3a236e3230d2b7d9ce0dafa86cdd7c4747841be0",
+      "articleSha256": "e29bd0f356c4020bf6c98411433f0d6e674538495e1e0b9fae5303652c6ab8df"
+    },
+    {
+      "id": "fabric-book-cover-closing-check",
+      "url": "fabric-book-cover-closing-check.html",
+      "publishedDate": "2026-10-07",
+      "publishedAt": "2026-10-07T16:12:15+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-9f640066e88f8c808d2104bef7cb2c89af8f09f5",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "9f640066e88f8c808d2104bef7cb2c89af8f09f5",
+      "articleSha256": "8bd61ab42bd325bd2b5317a05feab81e51ddda3e5556812c78b3d42da5548195"
+    },
+    {
+      "id": "reading-script-turn-cues",
+      "url": "reading-script-turn-cues.html",
+      "publishedDate": "2026-10-07",
+      "publishedAt": "2026-10-07T16:12:15+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-9f640066e88f8c808d2104bef7cb2c89af8f09f5",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "9f640066e88f8c808d2104bef7cb2c89af8f09f5",
+      "articleSha256": "87af4a6b37e73fde2cf1f62ec788500fdaf6d6a0b7d84d87bcfa8ea21dcd9cf8"
+    },
+    {
+      "id": "collage-unfinished-layout-packing",
+      "url": "collage-unfinished-layout-packing.html",
+      "publishedDate": "2026-10-07",
+      "publishedAt": "2026-10-07T16:12:15+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-9f640066e88f8c808d2104bef7cb2c89af8f09f5",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "9f640066e88f8c808d2104bef7cb2c89af8f09f5",
+      "articleSha256": "e14af4cc983358a11c9d487f9c035239565e1aee22789cc468bb70b6a4691dbc"
+    },
+    {
+      "id": "knitting-pattern-repeat-notes",
+      "url": "knitting-pattern-repeat-notes.html",
+      "publishedDate": "2026-10-07",
+      "publishedAt": "2026-10-07T08:10:07+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-a465a174bf1581b0e93078e9d0a1e702a6725b97",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "a465a174bf1581b0e93078e9d0a1e702a6725b97",
+      "articleSha256": "bfc151d42b0d258b433907698c7d98ffc35ce8e3e3e494158726f0ebed6fc068"
+    },
+    {
+      "id": "board-game-rule-sheet-sources",
+      "url": "board-game-rule-sheet-sources.html",
+      "publishedDate": "2026-10-07",
+      "publishedAt": "2026-10-07T08:10:07+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-a465a174bf1581b0e93078e9d0a1e702a6725b97",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "a465a174bf1581b0e93078e9d0a1e702a6725b97",
+      "articleSha256": "606d19da5a8b4701604c74250bc112c643ccc896d3a14fc852c75ff3e5574cfb"
+    },
+    {
+      "id": "stargazing-notebook-date-time-place",
+      "url": "stargazing-notebook-date-time-place.html",
+      "publishedDate": "2026-10-07",
+      "publishedAt": "2026-10-07T08:10:07+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-a465a174bf1581b0e93078e9d0a1e702a6725b97",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "a465a174bf1581b0e93078e9d0a1e702a6725b97",
+      "articleSha256": "21efd4ef6c2e53b791ca0ff598e71e21cb5f2240837028f623a7c9f58983e730"
+    },
+    {
+      "id": "origami-paper-starting-face",
+      "url": "origami-paper-starting-face.html",
+      "publishedDate": "2026-10-06",
+      "publishedAt": "2026-10-06T16:11:15+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-4610c50e16fb4c7703084d25f2706c3c4efc8520",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "4610c50e16fb4c7703084d25f2706c3c4efc8520",
+      "articleSha256": "06b222ac82a103c55b6acab012dc544c2cbaef106a11c885d626eef34eafb63f"
+    },
+    {
+      "id": "conversation-club-question-notes",
+      "url": "conversation-club-question-notes.html",
+      "publishedDate": "2026-10-06",
+      "publishedAt": "2026-10-06T16:11:15+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-4610c50e16fb4c7703084d25f2706c3c4efc8520",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "4610c50e16fb4c7703084d25f2706c3c4efc8520",
+      "articleSha256": "cb8bcd3a082a0b407cbdf2785119735a7582a70bbd1b244cfb5c9bfb35197f37"
+    },
+    {
+      "id": "recipe-class-notebook-amounts",
+      "url": "recipe-class-notebook-amounts.html",
+      "publishedDate": "2026-10-06",
+      "publishedAt": "2026-10-06T16:11:15+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-4610c50e16fb4c7703084d25f2706c3c4efc8520",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "4610c50e16fb4c7703084d25f2706c3c4efc8520",
+      "articleSha256": "baf4eff57c59ed4cb37f1dbf0569bd9d9468c46d3ff8c6f2dd82b85e4f8a3b86"
+    },
+    {
+      "id": "rolltop-backpack-closing-room",
+      "url": "rolltop-backpack-closing-room.html",
+      "publishedDate": "2026-10-06",
+      "publishedAt": "2026-10-06T08:09:17+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-d57b6f68c421ee2eee42242d85fccac60d525c02",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "d57b6f68c421ee2eee42242d85fccac60d525c02",
+      "articleSha256": "c83083934951a88fea443cda7ebc289e126e1f98997a6225ba13d19a02279569"
+    },
+    {
+      "id": "colour-pencil-swatch-backpack",
+      "url": "colour-pencil-swatch-backpack.html",
+      "publishedDate": "2026-10-06",
+      "publishedAt": "2026-10-06T08:09:17+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-d57b6f68c421ee2eee42242d85fccac60d525c02",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "d57b6f68c421ee2eee42242d85fccac60d525c02",
+      "articleSha256": "bf5eb8aa4405582c3a628fc116244cb959de04a9da4cfc30ff510ba6bb46fd8d"
+    },
+    {
+      "id": "photo-print-backpack-file-index",
+      "url": "photo-print-backpack-file-index.html",
+      "publishedDate": "2026-10-06",
+      "publishedAt": "2026-10-06T08:09:17+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-d57b6f68c421ee2eee42242d85fccac60d525c02",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "d57b6f68c421ee2eee42242d85fccac60d525c02",
+      "articleSha256": "688fc2e644ff61cab3756fdd01016d042462ae3fce8e508fa298e44e677a231e"
+    },
+    {
+      "id": "stamp-notebook-backpack-drying",
+      "url": "stamp-notebook-backpack-drying.html",
+      "publishedDate": "2026-10-05",
+      "publishedAt": "2026-10-05T16:14:27+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-dc0076257b1944b89be4bb5df0bb3ed52b57665a",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "dc0076257b1944b89be4bb5df0bb3ed52b57665a",
+      "articleSha256": "2645ef5931ede5844fe9aef5c8665e9071c9f090355862a2e48ba50f5adff51c"
+    },
+    {
+      "id": "embroidery-hoop-backpack-break",
+      "url": "embroidery-hoop-backpack-break.html",
+      "publishedDate": "2026-10-05",
+      "publishedAt": "2026-10-05T16:14:27+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-dc0076257b1944b89be4bb5df0bb3ed52b57665a",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "dc0076257b1944b89be4bb5df0bb3ed52b57665a",
+      "articleSha256": "ddb50c52b113aea948bd2a686714a4bb7526e0f01d54a23e3b8936a89baebf38"
+    },
+    {
+      "id": "memory-card-backpack-shot-status",
+      "url": "memory-card-backpack-shot-status.html",
+      "publishedDate": "2026-10-05",
+      "publishedAt": "2026-10-05T16:14:27+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-dc0076257b1944b89be4bb5df0bb3ed52b57665a",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "dc0076257b1944b89be4bb5df0bb3ed52b57665a",
+      "articleSha256": "b8adcfa1e6a589fa7676ebfced5a986af96fa909131607af1ea2dc3f1ad584da"
+    },
+    {
+      "id": "business-cards-backpack-context",
+      "url": "business-cards-backpack-context.html",
+      "publishedDate": "2026-10-05",
+      "publishedAt": "2026-10-05T08:13:51+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-39a8426711211d39e9d371817dc7f40d4dd0d087",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "39a8426711211d39e9d371817dc7f40d4dd0d087",
+      "articleSha256": "e9881d5bd08a1d1f270ff845272f693c0b965d9f2097ea71567b095cbdc477e5"
+    },
+    {
+      "id": "postcards-backpack-address-check",
+      "url": "postcards-backpack-address-check.html",
+      "publishedDate": "2026-10-05",
+      "publishedAt": "2026-10-05T08:13:51+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-39a8426711211d39e9d371817dc7f40d4dd0d087",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "39a8426711211d39e9d371817dc7f40d4dd0d087",
+      "articleSha256": "30c2f811a7970d13a1c42a7c12ea784d3763e58d9e2681ceef2816de001db344"
+    },
+    {
+      "id": "hook-loop-band-backpack-lining",
+      "url": "hook-loop-band-backpack-lining.html",
+      "publishedDate": "2026-10-05",
+      "publishedAt": "2026-10-05T08:13:51+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-39a8426711211d39e9d371817dc7f40d4dd0d087",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "39a8426711211d39e9d371817dc7f40d4dd0d087",
+      "articleSha256": "d8107cae791d4e9972322726f4f4ee8fd50e1893015434ef7115be2d92356d43"
+    },
+    {
+      "id": "watercolour-brush-backpack-return",
+      "url": "watercolour-brush-backpack-return.html",
+      "publishedDate": "2026-10-04",
+      "publishedAt": "2026-10-04T16:15:45+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-17ad30586827cf535e3fe1fe93d693551bb25464",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "17ad30586827cf535e3fe1fe93d693551bb25464",
+      "articleSha256": "a9fb51166811f7e8d56469d479dcb764782942a549d3b28a7d3c05f261c08b00"
+    },
+    {
+      "id": "portable-radio-backpack-antenna",
+      "url": "portable-radio-backpack-antenna.html",
+      "publishedDate": "2026-10-04",
+      "publishedAt": "2026-10-04T16:15:45+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-17ad30586827cf535e3fe1fe93d693551bb25464",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "17ad30586827cf535e3fe1fe93d693551bb25464",
+      "articleSha256": "cc61ad46c6b67bae38c41616ed80392e4e6657caab664a67b7f1942a645d1689"
+    },
+    {
+      "id": "used-batteries-backpack-dropoff",
+      "url": "used-batteries-backpack-dropoff.html",
+      "publishedDate": "2026-10-04",
+      "publishedAt": "2026-10-04T16:15:45+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-17ad30586827cf535e3fe1fe93d693551bb25464",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "17ad30586827cf535e3fe1fe93d693551bb25464",
+      "articleSha256": "9d06a3f84fb7a99ceae364dfd92456354d957d4a24791001e943fe6edeb40976"
+    },
+    {
+      "id": "binoculars-backpack-birdwatching",
+      "url": "binoculars-backpack-birdwatching.html",
+      "publishedDate": "2026-10-04",
+      "publishedAt": "2026-10-04T08:09:57+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-81f9ac5f27d02cad4ff83a9067fa1b79c631d764",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "81f9ac5f27d02cad4ff83a9067fa1b79c631d764",
+      "articleSha256": "639b39d8c8fd43a43fa27507648a581bb64153f5537b9dc88384ecd8b22bf363"
+    },
+    {
+      "id": "folding-phone-stand-backpack",
+      "url": "folding-phone-stand-backpack.html",
+      "publishedDate": "2026-10-04",
+      "publishedAt": "2026-10-04T08:09:57+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-81f9ac5f27d02cad4ff83a9067fa1b79c631d764",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "81f9ac5f27d02cad4ff83a9067fa1b79c631d764",
+      "articleSha256": "09616a20ba7218268efe4c1d9c3239c8d25b39e4df0d0cb470a6829d1a68fe84"
+    },
+    {
+      "id": "seed-packets-backpack-exchange",
+      "url": "seed-packets-backpack-exchange.html",
+      "publishedDate": "2026-10-04",
+      "publishedAt": "2026-10-04T08:09:57+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-81f9ac5f27d02cad4ff83a9067fa1b79c631d764",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "81f9ac5f27d02cad4ff83a9067fa1b79c631d764",
+      "articleSha256": "21b45b813de74531e38be82f4575645782734f18f76c5a2715cf922cc7903386"
+    },
+    {
+      "id": "laptop-pouch-meeting-room",
+      "url": "laptop-pouch-meeting-room.html",
+      "publishedDate": "2026-10-03",
+      "publishedAt": "2026-10-03T16:12:06+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-d33822cfaf2cc1f24c72563f92b613c76939e597",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "d33822cfaf2cc1f24c72563f92b613c76939e597",
+      "articleSha256": "66632246764239db2214344277453d7b4e61576d6e67a37a22eeebf3c3325549"
+    },
+    {
+      "id": "wireless-mouse-backpack-case",
+      "url": "wireless-mouse-backpack-case.html",
+      "publishedDate": "2026-10-03",
+      "publishedAt": "2026-10-03T16:12:06+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-d33822cfaf2cc1f24c72563f92b613c76939e597",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "d33822cfaf2cc1f24c72563f92b613c76939e597",
+      "articleSha256": "cfd9f46e8737581f7258c7137d205fce5a6b840efa23e22b2262fc2fd02efc50"
+    },
+    {
+      "id": "backpack-pin-badge-check",
+      "url": "backpack-pin-badge-check.html",
+      "publishedDate": "2026-10-03",
+      "publishedAt": "2026-10-03T16:12:06+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-d33822cfaf2cc1f24c72563f92b613c76939e597",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "d33822cfaf2cc1f24c72563f92b613c76939e597",
+      "articleSha256": "927b315e9dc424406da596de2e84d0b3c0f9207ab32e880cbe2203804c22e32a"
+    },
+    {
+      "id": "table-tennis-paddle-backpack",
+      "url": "table-tennis-paddle-backpack.html",
+      "publishedDate": "2026-10-03",
+      "publishedAt": "2026-10-03T08:10:11+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-0f39a1f8cd0c04c1813ae39a936cd1bcfe2378b6",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "0f39a1f8cd0c04c1813ae39a936cd1bcfe2378b6",
+      "articleSha256": "91d772c07a6deb4dbbb57842d1d4b330e787d3faff6f01ba5514c99963478117"
+    },
+    {
+      "id": "vocabulary-cards-backpack-practice",
+      "url": "vocabulary-cards-backpack-practice.html",
+      "publishedDate": "2026-10-03",
+      "publishedAt": "2026-10-03T08:10:11+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-0f39a1f8cd0c04c1813ae39a936cd1bcfe2378b6",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "0f39a1f8cd0c04c1813ae39a936cd1bcfe2378b6",
+      "articleSha256": "8c7dc58a6682cbd35b3d26fd0452c5618ed7151821997896f1af4ed73db5a841"
+    },
+    {
+      "id": "video-call-backpack-background",
+      "url": "video-call-backpack-background.html",
+      "publishedDate": "2026-10-03",
+      "publishedAt": "2026-10-03T08:10:11+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-0f39a1f8cd0c04c1813ae39a936cd1bcfe2378b6",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "0f39a1f8cd0c04c1813ae39a936cd1bcfe2378b6",
+      "articleSha256": "513deed7721c058b84629583e136860b395460a56f8c8c320f78279713c1ae0f"
+    },
+    {
+      "id": "paper-map-backpack-walking",
+      "url": "paper-map-backpack-walking.html",
+      "publishedDate": "2026-10-02",
+      "publishedAt": "2026-10-02T08:11:00+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-30e625efad9e996955df2f553f4fc43077d32e9e",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "30e625efad9e996955df2f553f4fc43077d32e9e",
+      "articleSha256": "16fc8d77b22ac85f6e7400a20a6c22ae0b7ecd658316c4695ac42944cdb389ef"
+    },
+    {
+      "id": "choir-rehearsal-score-backpack",
+      "url": "choir-rehearsal-score-backpack.html",
+      "publishedDate": "2026-10-02",
+      "publishedAt": "2026-10-02T08:11:00+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-30e625efad9e996955df2f553f4fc43077d32e9e",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "30e625efad9e996955df2f553f4fc43077d32e9e",
+      "articleSha256": "1a4f02cc3a50d161c73856aa4d0a26533579a29d6d6d56f34b9203ee67167c68"
+    },
+    {
+      "id": "backpack-key-pouch-doorstep",
+      "url": "backpack-key-pouch-doorstep.html",
+      "publishedDate": "2026-10-02",
+      "publishedAt": "2026-10-02T08:11:00+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-30e625efad9e996955df2f553f4fc43077d32e9e",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "30e625efad9e996955df2f553f4fc43077d32e9e",
+      "articleSha256": "25a90f2f3b8abe4bf1b1f4fd9374416dce19536ffac86e0f17665e2c6244915d"
+    },
+    {
+      "id": "spare-shoes-backpack-separation",
+      "url": "spare-shoes-backpack-separation.html",
+      "publishedDate": "2026-10-01",
+      "publishedAt": "2026-10-01T08:09:25+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-df3e6e62fea75bb1b239312abdbb29b31e37a3f9",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "df3e6e62fea75bb1b239312abdbb29b31e37a3f9",
+      "articleSha256": "699643681b8cf725b7ddfc4d720576d01f2df7db354b551a12d6db96da21e940"
+    },
+    {
+      "id": "post-office-parcel-backpack-route",
+      "url": "post-office-parcel-backpack-route.html",
+      "publishedDate": "2026-10-01",
+      "publishedAt": "2026-10-01T08:09:25+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-df3e6e62fea75bb1b239312abdbb29b31e37a3f9",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "df3e6e62fea75bb1b239312abdbb29b31e37a3f9",
+      "articleSha256": "2bf7945fcbee7c66725a2d59e41a7434b3d40f35779704660b5caf6de4715873"
+    },
+    {
+      "id": "cooking-class-apron-backpack",
+      "url": "cooking-class-apron-backpack.html",
+      "publishedDate": "2026-10-01",
+      "publishedAt": "2026-10-01T08:09:25+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-df3e6e62fea75bb1b239312abdbb29b31e37a3f9",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "df3e6e62fea75bb1b239312abdbb29b31e37a3f9",
+      "articleSha256": "6179e71bdcc62d947a3f545f9781de4abb5c5f0fb44a68797887c22633e0a69f"
+    },
+    {
+      "id": "photo-studio-backpack-check",
+      "url": "photo-studio-backpack-check.html",
+      "publishedDate": "2026-09-30",
+      "publishedAt": "2026-09-30T08:09:06+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-2d1a591d9a503933b2dc171fc2946d2b83bdfc31",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "2d1a591d9a503933b2dc171fc2946d2b83bdfc31",
+      "articleSha256": "18255cc0d0bca1457990c1a77cb63210153af7d98753751d3310f2f1ba96f6fc"
+    },
+    {
+      "id": "wedding-guest-backpack-flow",
+      "url": "wedding-guest-backpack-flow.html",
+      "publishedDate": "2026-09-30",
+      "publishedAt": "2026-09-30T08:09:06+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-2d1a591d9a503933b2dc171fc2946d2b83bdfc31",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "2d1a591d9a503933b2dc171fc2946d2b83bdfc31",
+      "articleSha256": "47becefddf508dea11e30c6e073e0f345fe96dd92a12bb80b6cf2da94220ad1d"
+    },
+    {
+      "id": "bakery-paper-bag-backpack",
+      "url": "bakery-paper-bag-backpack.html",
+      "publishedDate": "2026-09-30",
+      "publishedAt": "2026-09-30T08:09:06+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-2d1a591d9a503933b2dc171fc2946d2b83bdfc31",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "2d1a591d9a503933b2dc171fc2946d2b83bdfc31",
+      "articleSha256": "bae5c221b2188d07f34d30083fb3fe0c01e9562a2dac8dbca229fa6310f161e4"
+    },
+    {
+      "id": "flower-bouquet-backpack-day",
+      "url": "flower-bouquet-backpack-day.html",
+      "publishedDate": "2026-09-29",
+      "publishedAt": "2026-09-29T08:10:23+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-1e92aa434673a9747124d035d6db69e616706423",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "1e92aa434673a9747124d035d6db69e616706423",
+      "articleSha256": "cbf0776b34f0e11b51434e9980dc07485f419dcb62dd61bbb94a133d447362ce"
+    },
+    {
+      "id": "long-hair-backpack-strap-routine",
+      "url": "long-hair-backpack-strap-routine.html",
+      "publishedDate": "2026-09-29",
+      "publishedAt": "2026-09-29T08:10:23+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-1e92aa434673a9747124d035d6db69e616706423",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "1e92aa434673a9747124d035d6db69e616706423",
+      "articleSha256": "ea74dc710f2bc5d6cb11fbe84b2c2565a5e09a706d4f045b14cf49ed4565c60e"
+    },
+    {
+      "id": "public-office-documents-backpack",
+      "url": "public-office-documents-backpack.html",
+      "publishedDate": "2026-09-29",
+      "publishedAt": "2026-09-29T08:10:23+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-1e92aa434673a9747124d035d6db69e616706423",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "1e92aa434673a9747124d035d6db69e616706423",
+      "articleSha256": "abe2f106c29ac6b275eacab422c15c57f0b6475848d890e26a52728f98f628f5"
+    },
+    {
+      "id": "flea-market-seller-backpack",
+      "url": "flea-market-seller-backpack.html",
+      "publishedDate": "2026-09-28",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Original RSS timestamp KST calendar day conflicts with the preserved publication date; excluded.",
+      "firstAdditionCommit": "c4c29ba4a5da85da390d2a6df187d1d8a1852c18",
+      "articleSha256": "c35b05fc666d401cfefde1ebbc08e4fbe1619569d11f579b2565872102aeafc4"
+    },
+    {
+      "id": "laundry-dropoff-backpack-after-work",
+      "url": "laundry-dropoff-backpack-after-work.html",
+      "publishedDate": "2026-09-28",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Original RSS timestamp KST calendar day conflicts with the preserved publication date; excluded.",
+      "firstAdditionCommit": "c4c29ba4a5da85da390d2a6df187d1d8a1852c18",
+      "articleSha256": "69ae202dcb702de9f52297483dc03257ee88cb996c3ece254f9b8e3b3eee2c7b"
+    },
+    {
+      "id": "backpack-donation-handover-guide",
+      "url": "backpack-donation-handover-guide.html",
+      "publishedDate": "2026-09-28",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Original RSS timestamp KST calendar day conflicts with the preserved publication date; excluded.",
+      "firstAdditionCommit": "c4c29ba4a5da85da390d2a6df187d1d8a1852c18",
+      "articleSha256": "654ae0f6c189add33f295e26bcf1bfa13244cec781cf3f1fa6945f5529bc11bb"
+    },
+    {
+      "id": "evening-walk-backpack-visibility",
+      "url": "evening-walk-backpack-visibility.html",
+      "publishedDate": "2026-09-27",
+      "publishedAt": "2026-09-27T08:06:38+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-cbea7ee78bdf58db904c466a38f62d28c0bb2ee8",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "cbea7ee78bdf58db904c466a38f62d28c0bb2ee8",
+      "articleSha256": "31ab196faf27f8b0c2106bbee5d07c08080e39c70d580dd7e19b89d465c6c433"
+    },
+    {
+      "id": "secondhand-backpack-in-person-check",
+      "url": "secondhand-backpack-in-person-check.html",
+      "publishedDate": "2026-09-27",
+      "publishedAt": "2026-09-27T08:06:38+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-cbea7ee78bdf58db904c466a38f62d28c0bb2ee8",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "cbea7ee78bdf58db904c466a38f62d28c0bb2ee8",
+      "articleSha256": "7623d6083933fb48a6943ba6ee3b8fe93f9cbd245a76836dea4c1dfd11b4c156"
+    },
+    {
+      "id": "hotel-checkout-day-backpack",
+      "url": "hotel-checkout-day-backpack.html",
+      "publishedDate": "2026-09-27",
+      "publishedAt": "2026-09-27T08:06:38+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-cbea7ee78bdf58db904c466a38f62d28c0bb2ee8",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "cbea7ee78bdf58db904c466a38f62d28c0bb2ee8",
+      "articleSha256": "929576a1e7195ba503385b71488856c2b620e2d9dd3d91fa196e69b809e73c19"
+    },
+    {
+      "id": "moving-day-essentials-backpack",
+      "url": "moving-day-essentials-backpack.html",
+      "publishedDate": "2026-09-26",
+      "publishedAt": "2026-09-26T10:17:02+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-a829903233ac42361ab0b0f2c22618b451ca8a26",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "a829903233ac42361ab0b0f2c22618b451ca8a26",
+      "articleSha256": "4c717052af68720b16c64a3633259a7e275a7ee230499aa3909a730e0cfb17c4"
+    },
+    {
+      "id": "child-clinic-visit-backpack",
+      "url": "child-clinic-visit-backpack.html",
+      "publishedDate": "2026-09-26",
+      "publishedAt": "2026-09-26T10:17:02+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-a829903233ac42361ab0b0f2c22618b451ca8a26",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "a829903233ac42361ab0b0f2c22618b451ca8a26",
+      "articleSha256": "802bcbd06d59ec1e225cedfb7b81a88b61b10296d3df5c017716572ec03090f9"
+    },
+    {
+      "id": "volunteer-garden-backpack",
+      "url": "volunteer-garden-backpack.html",
+      "publishedDate": "2026-09-26",
+      "publishedAt": "2026-09-26T10:17:02+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-a829903233ac42361ab0b0f2c22618b451ca8a26",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "a829903233ac42361ab0b0f2c22618b451ca8a26",
+      "articleSha256": "b822aa5216f19649b6b397920c46b3456fb57f94d00b0b08f35cde450132b3df"
+    },
+    {
+      "id": "swimming-pool-backpack-wet-dry",
+      "url": "swimming-pool-backpack-wet-dry.html",
+      "publishedDate": "2026-09-25",
+      "publishedAt": "2026-09-25T08:05:39+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-7bf84e4b577bf8a56ad6e018236fe256f64a5b26",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "7bf84e4b577bf8a56ad6e018236fe256f64a5b26",
+      "articleSha256": "b789f3c723060013de435d1c0c77a85a7bc3548b65e97c7ed10db8e4a3a9d7bf"
+    },
+    {
+      "id": "campus-lecture-change-backpack",
+      "url": "campus-lecture-change-backpack.html",
+      "publishedDate": "2026-09-25",
+      "publishedAt": "2026-09-25T08:05:39+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-7bf84e4b577bf8a56ad6e018236fe256f64a5b26",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "7bf84e4b577bf8a56ad6e018236fe256f64a5b26",
+      "articleSha256": "7644be3ea458d1a7037c1cd73b9d8150da2732b6772905a2db73a8258984b886"
+    },
+    {
+      "id": "travel-souvenir-backpack-packing",
+      "url": "travel-souvenir-backpack-packing.html",
+      "publishedDate": "2026-09-25",
+      "publishedAt": "2026-09-25T08:05:39+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-7bf84e4b577bf8a56ad6e018236fe256f64a5b26",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "7bf84e4b577bf8a56ad6e018236fe256f64a5b26",
+      "articleSha256": "ceffc25f95feb8cdb1162b9e2db02b0ad776268b3f1d452173c76ec8fafb5b4b"
+    },
+    {
+      "id": "school-sports-day-backpack",
+      "url": "school-sports-day-backpack.html",
+      "publishedDate": "2026-09-24",
+      "publishedAt": "2026-09-24T08:08:34+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-c3a2c081d543fc8c89e69c1f141b1171f93130ad",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "c3a2c081d543fc8c89e69c1f141b1171f93130ad",
+      "articleSha256": "6a14a67404defd006a2a22883152d4e44a313fe989309bce425e40a98f05ecc7"
+    },
+    {
+      "id": "intercity-bus-backpack-stop",
+      "url": "intercity-bus-backpack-stop.html",
+      "publishedDate": "2026-09-24",
+      "publishedAt": "2026-09-24T08:08:34+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-c3a2c081d543fc8c89e69c1f141b1171f93130ad",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "c3a2c081d543fc8c89e69c1f141b1171f93130ad",
+      "articleSha256": "3b6c30e4ef3108647b60dc8f50864825c8881fa7bff7c4a0e10f4340d435bf72"
+    },
+    {
+      "id": "concert-backpack-entry-flow",
+      "url": "concert-backpack-entry-flow.html",
+      "publishedDate": "2026-09-24",
+      "publishedAt": "2026-09-24T08:08:34+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-c3a2c081d543fc8c89e69c1f141b1171f93130ad",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "c3a2c081d543fc8c89e69c1f141b1171f93130ad",
+      "articleSha256": "7cffac98e02a67b36be12a171866ae04ababc487d539f0690e470a0b63fb52db"
+    },
+    {
+      "id": "hotel-backpack-day-reset",
+      "url": "hotel-backpack-day-reset.html",
+      "publishedDate": "2026-09-23",
+      "publishedAt": "2026-09-23T08:15:16+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-14c8277eb035d002b346cdc6cee46b7c0502c1fe",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "14c8277eb035d002b346cdc6cee46b7c0502c1fe",
+      "articleSha256": "9e9f2b9688c8acc2dc43277e1ea2dd5ef46151fa0df317f50055860e93a099da"
+    },
+    {
+      "id": "hotdesk-backpack-workflow",
+      "url": "hotdesk-backpack-workflow.html",
+      "publishedDate": "2026-09-23",
+      "publishedAt": "2026-09-23T08:15:16+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-14c8277eb035d002b346cdc6cee46b7c0502c1fe",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "14c8277eb035d002b346cdc6cee46b7c0502c1fe",
+      "articleSha256": "bbbcd392f9ced62a6741d8d730f81274359a1ca02d9954e9eb9a4e14bf28ee5f"
+    },
+    {
+      "id": "backpack-clothing-color-transfer",
+      "url": "backpack-clothing-color-transfer.html",
+      "publishedDate": "2026-09-23",
+      "publishedAt": "2026-09-23T08:15:16+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-14c8277eb035d002b346cdc6cee46b7c0502c1fe",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "14c8277eb035d002b346cdc6cee46b7c0502c1fe",
+      "articleSha256": "4263975c1d13274aa1b116b53f2c3989eae3e99618d64df32430f5c1ce343e87"
+    },
+    {
+      "id": "dog-walk-backpack-routine",
+      "url": "dog-walk-backpack-routine.html",
+      "publishedDate": "2026-09-22",
+      "publishedAt": "2026-09-22T08:13:39+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-17f7b997798a2ef9dadb7b6077ab8b0bfa541dc1",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "17f7b997798a2ef9dadb7b6077ab8b0bfa541dc1",
+      "articleSha256": "b91d78416744f15ab5b7b2b1da99798158dae0cb5fef9b837d352861bfc5f837"
+    },
+    {
+      "id": "camera-in-everyday-backpack",
+      "url": "camera-in-everyday-backpack.html",
+      "publishedDate": "2026-09-22",
+      "publishedAt": "2026-09-22T08:13:39+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-17f7b997798a2ef9dadb7b6077ab8b0bfa541dc1",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "17f7b997798a2ef9dadb7b6077ab8b0bfa541dc1",
+      "articleSha256": "ed0a2ec9ac9bdf7966eca9d016dc0adba68bfb68173116168a920aaf20d1060a"
+    },
+    {
+      "id": "reading-backpack-product-photos",
+      "url": "reading-backpack-product-photos.html",
+      "publishedDate": "2026-09-22",
+      "publishedAt": "2026-09-22T08:13:39+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-17f7b997798a2ef9dadb7b6077ab8b0bfa541dc1",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "17f7b997798a2ef9dadb7b6077ab8b0bfa541dc1",
+      "articleSha256": "f8114602dfc8aa65def0c8969ee4eced60eff8c7f26c62ed45dfdce6071b07c1"
+    },
+    {
+      "id": "picnic-mat-backpack-return",
+      "url": "picnic-mat-backpack-return.html",
+      "publishedDate": "2026-09-21",
+      "publishedAt": "2026-09-21T08:05:28+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-cb72041d25d0cf7a4783faca1392e37c4fcc0cc3",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "cb72041d25d0cf7a4783faca1392e37c4fcc0cc3",
+      "articleSha256": "90511f4e8eb617be12d3f8b4f19261a60530439f24cdf89de697f4f0363e9171"
+    },
+    {
+      "id": "board-game-backpack-packing",
+      "url": "board-game-backpack-packing.html",
+      "publishedDate": "2026-09-21",
+      "publishedAt": "2026-09-21T08:05:28+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-cb72041d25d0cf7a4783faca1392e37c4fcc0cc3",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "cb72041d25d0cf7a4783faca1392e37c4fcc0cc3",
+      "articleSha256": "0256929bb9c3ac15b67146667e2b6260a8c828dfdd9f2409b33cab2c60f4c709"
+    },
+    {
+      "id": "child-spare-clothes-backpack",
+      "url": "child-spare-clothes-backpack.html",
+      "publishedDate": "2026-09-21",
+      "publishedAt": "2026-09-21T08:05:28+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-cb72041d25d0cf7a4783faca1392e37c4fcc0cc3",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "cb72041d25d0cf7a4783faca1392e37c4fcc0cc3",
+      "articleSha256": "754b3422681770baa5561d5e8f959894dd20ddaf9397ea36766203927c64ccfa"
+    },
+    {
+      "id": "knitting-project-backpack",
+      "url": "knitting-project-backpack.html",
+      "publishedDate": "2026-09-20",
+      "publishedAt": "2026-09-20T08:04:40+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-239fe1f49bd8ad6882781d7560f0010005d9f326",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "239fe1f49bd8ad6882781d7560f0010005d9f326",
+      "articleSha256": "12d46c1026cd32c70e16bdda562d2090db50acd917f69ffa5a9a8eba38201fb6"
+    },
+    {
+      "id": "ereader-backpack-reading-break",
+      "url": "ereader-backpack-reading-break.html",
+      "publishedDate": "2026-09-20",
+      "publishedAt": "2026-09-20T08:04:40+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-239fe1f49bd8ad6882781d7560f0010005d9f326",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "239fe1f49bd8ad6882781d7560f0010005d9f326",
+      "articleSha256": "2a9d3d91c38914aaff84919d405fc3215453103b66253bc743cafc9f9539d178"
+    },
+    {
+      "id": "cosmetic-pouch-backpack-check",
+      "url": "cosmetic-pouch-backpack-check.html",
+      "publishedDate": "2026-09-20",
+      "publishedAt": "2026-09-20T08:04:40+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-239fe1f49bd8ad6882781d7560f0010005d9f326",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "239fe1f49bd8ad6882781d7560f0010005d9f326",
+      "articleSha256": "47e0018a6f1dfd056b7be1468dbaaed19774adb9eef14cb72a68486dba63c9db"
+    },
+    {
+      "id": "workshop-backpack-finished-piece",
+      "url": "workshop-backpack-finished-piece.html",
+      "publishedDate": "2026-09-19",
+      "publishedAt": "2026-09-19T19:20:10+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-5242f8aa8a489f36025a3f5c16759436722a31fa",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "5242f8aa8a489f36025a3f5c16759436722a31fa",
+      "articleSha256": "5c4770a12bbc5ca41af45441a4855efc05d3db58c9a0efa0f41cf28426a421c5"
+    },
+    {
+      "id": "headphone-case-backpack-space",
+      "url": "headphone-case-backpack-space.html",
+      "publishedDate": "2026-09-19",
+      "publishedAt": "2026-09-19T19:20:10+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-5242f8aa8a489f36025a3f5c16759436722a31fa",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "5242f8aa8a489f36025a3f5c16759436722a31fa",
+      "articleSha256": "71e50e0f1b33dfaf34d66d91e961936b2103317e6bdc09d79191e2c4aa00ef46"
+    },
+    {
+      "id": "interview-backpack-rehearsal",
+      "url": "interview-backpack-rehearsal.html",
+      "publishedDate": "2026-09-19",
+      "publishedAt": "2026-09-19T19:20:10+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-5242f8aa8a489f36025a3f5c16759436722a31fa",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "5242f8aa8a489f36025a3f5c16759436722a31fa",
+      "articleSha256": "e25df4e4d0985813ca10a8219837f9dc256902971afc38f1d9693cf1e2e67d08"
+    },
+    {
+      "id": "backpack-entryway-reset",
+      "url": "backpack-entryway-reset.html",
+      "publishedDate": "2026-09-18",
+      "publishedAt": "2026-09-18T08:02:42+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-87c2e4cc406c089d7f11616962cf52002b31ac0d",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "87c2e4cc406c089d7f11616962cf52002b31ac0d",
+      "articleSha256": "b2a27209f8c1c61eeb1b1ab9684d627bfe15959cc1497010321f9b296ed3fdf9"
+    },
+    {
+      "id": "backpack-weather-layering",
+      "url": "backpack-weather-layering.html",
+      "publishedDate": "2026-09-18",
+      "publishedAt": "2026-09-18T08:02:42+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-87c2e4cc406c089d7f11616962cf52002b31ac0d",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "87c2e4cc406c089d7f11616962cf52002b31ac0d",
+      "articleSha256": "04b028c9f259aa14903123faaabeefbf7032b45a300cba58d53b09ca3d66a9c3"
+    },
+    {
+      "id": "backpack-coffee-carry",
+      "url": "backpack-coffee-carry.html",
+      "publishedDate": "2026-09-18",
+      "publishedAt": "2026-09-18T08:02:42+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-87c2e4cc406c089d7f11616962cf52002b31ac0d",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "87c2e4cc406c089d7f11616962cf52002b31ac0d",
+      "articleSha256": "711c877f6d43f2e7ae93008a23c4ed9c0eec3aed00f5e204aac594cabbc40be6"
+    },
+    {
+      "id": "backpack-top-handle-moving",
+      "url": "backpack-top-handle-moving.html",
+      "publishedDate": "2026-09-17",
+      "publishedAt": "2026-09-17T08:29:02+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-f495ac3efb4945f1de0d2180ae01eced30f9f908",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "f495ac3efb4945f1de0d2180ae01eced30f9f908",
+      "articleSha256": "cda590f9b9aa4b1b6b81b09d75d4161199f26705863ea3f1e69c02c27c67b4a7"
+    },
+    {
+      "id": "exhibition-backpack-visit",
+      "url": "exhibition-backpack-visit.html",
+      "publishedDate": "2026-09-17",
+      "publishedAt": "2026-09-17T08:29:02+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-f495ac3efb4945f1de0d2180ae01eced30f9f908",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "f495ac3efb4945f1de0d2180ae01eced30f9f908",
+      "articleSha256": "7a6f613d8cfdf00fe2c3eb0d5b5c85b7594a7d890d46d74ce2837f2811137ef5"
+    },
+    {
+      "id": "backpack-pen-ink-prevention",
+      "url": "backpack-pen-ink-prevention.html",
+      "publishedDate": "2026-09-17",
+      "publishedAt": "2026-09-17T08:29:02+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-f495ac3efb4945f1de0d2180ae01eced30f9f908",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "f495ac3efb4945f1de0d2180ae01eced30f9f908",
+      "articleSha256": "5f66483e8cb2a0ef83183a33616f18c0cf58108ed0b3542799fe9883567f90c1"
+    },
+    {
+      "id": "new-backpack-first-check",
+      "url": "new-backpack-first-check.html",
+      "publishedDate": "2026-09-16",
+      "publishedAt": "2026-09-16T08:07:01+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-07874219d0204ab2cd4d3b0d4eb5e3dd1c77ad12",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "07874219d0204ab2cd4d3b0d4eb5e3dd1c77ad12",
+      "articleSha256": "c81c68ddae184ab486b9ccd5a9383949969b4d01d2bdb792acd4f340995347e6"
+    },
+    {
+      "id": "backpack-specification-table-reading",
+      "url": "backpack-specification-table-reading.html",
+      "publishedDate": "2026-09-16",
+      "publishedAt": "2026-09-16T08:07:01+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-07874219d0204ab2cd4d3b0d4eb5e3dd1c77ad12",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "07874219d0204ab2cd4d3b0d4eb5e3dd1c77ad12",
+      "articleSha256": "7a88452ecbfde2fa3ac54929f777edf9790c4df1877afd461d8f773a16186fea"
+    },
+    {
+      "id": "backpack-knitwear-contact-check",
+      "url": "backpack-knitwear-contact-check.html",
+      "publishedDate": "2026-09-16",
+      "publishedAt": "2026-09-16T08:07:01+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-07874219d0204ab2cd4d3b0d4eb5e3dd1c77ad12",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "07874219d0204ab2cd4d3b0d4eb5e3dd1c77ad12",
+      "articleSha256": "e819a0213213bfa11947c84ba44dbde0bd7b630b055fa2dc0ee90dc5627c0c8b"
+    },
+    {
+      "id": "backpack-locker-clearance",
+      "url": "backpack-locker-clearance.html",
+      "publishedDate": "2026-09-15",
+      "publishedAt": "2026-09-15T08:34:51+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-fd12bba7b7b38a669d49405a5c5b430a731bd2b2",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "fd12bba7b7b38a669d49405a5c5b430a731bd2b2",
+      "articleSha256": "55fbdedcfd185c80ec2c90869548e4a4d21f7f5fa3064710987e91af9955939b"
+    },
+    {
+      "id": "backpack-glasses-case-place",
+      "url": "backpack-glasses-case-place.html",
+      "publishedDate": "2026-09-15",
+      "publishedAt": "2026-09-15T08:34:51+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-fd12bba7b7b38a669d49405a5c5b430a731bd2b2",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "fd12bba7b7b38a669d49405a5c5b430a731bd2b2",
+      "articleSha256": "8263ed8ac5559f10f608287733de332c74630ee2344afae656d668ed14cfc66e"
+    },
+    {
+      "id": "backpack-shopping-return-space",
+      "url": "backpack-shopping-return-space.html",
+      "publishedDate": "2026-09-15",
+      "publishedAt": "2026-09-15T08:34:51+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-fd12bba7b7b38a669d49405a5c5b430a731bd2b2",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "fd12bba7b7b38a669d49405a5c5b430a731bd2b2",
+      "articleSha256": "50b43478a250b022987854662eb033a1603e1571dc4782f3bafccd6204e26f0b"
+    },
+    {
+      "id": "after-work-exercise-backpack",
+      "url": "after-work-exercise-backpack.html",
+      "publishedDate": "2026-09-14",
+      "publishedAt": "2026-09-14T08:47:26+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-326bf6d7c62902cf1f0a801ec7bcba01da4b5b66",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "326bf6d7c62902cf1f0a801ec7bcba01da4b5b66",
+      "articleSha256": "ae3b2cfa4e9ea266e3ba2ba183129c712ca8b7139bd9f6a23711c61a1748711d"
+    },
+    {
+      "id": "lunch-container-backpack",
+      "url": "lunch-container-backpack.html",
+      "publishedDate": "2026-09-14",
+      "publishedAt": "2026-09-14T08:47:26+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-326bf6d7c62902cf1f0a801ec7bcba01da4b5b66",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "326bf6d7c62902cf1f0a801ec7bcba01da4b5b66",
+      "articleSha256": "a29fb0fe2449defd55da144b637f888d3a24b6ee1442335dc121bab06a5fdb49"
+    },
+    {
+      "id": "backpack-identification-record",
+      "url": "backpack-identification-record.html",
+      "publishedDate": "2026-09-14",
+      "publishedAt": "2026-09-14T08:47:26+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-326bf6d7c62902cf1f0a801ec7bcba01da4b5b66",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "326bf6d7c62902cf1f0a801ec7bcba01da4b5b66",
+      "articleSha256": "99571181ada7e2806fc51ab3598346d6328ef68c084ebc2d79426dffbb2be1e1"
+    },
+    {
+      "id": "library-return-backpack",
+      "url": "library-return-backpack.html",
+      "publishedDate": "2026-09-13",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Original RSS timestamp KST calendar day conflicts with the preserved publication date; excluded.",
+      "firstAdditionCommit": "326bf6d7c62902cf1f0a801ec7bcba01da4b5b66",
+      "articleSha256": "aec68a1442dba9f7835e40b98b868b753245b75e1cab3980367d86ea74e38785"
+    },
+    {
+      "id": "shared-family-backpack",
+      "url": "shared-family-backpack.html",
+      "publishedDate": "2026-09-13",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Original RSS timestamp KST calendar day conflicts with the preserved publication date; excluded.",
+      "firstAdditionCommit": "326bf6d7c62902cf1f0a801ec7bcba01da4b5b66",
+      "articleSha256": "9e3bf300d0b529bf0567a0e947dbc222c492517161d037a9ca7fb7764fbb67e7"
+    },
+    {
+      "id": "backpack-receipt-envelope",
+      "url": "backpack-receipt-envelope.html",
+      "publishedDate": "2026-09-13",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Original RSS timestamp KST calendar day conflicts with the preserved publication date; excluded.",
+      "firstAdditionCommit": "326bf6d7c62902cf1f0a801ec7bcba01da4b5b66",
+      "articleSha256": "cc516d739186cab06e417d69bd844d0578fe515b759c5f35b904eb61bf182d8d"
+    },
+    {
+      "id": "weekend-sketch-backpack-guide",
+      "url": "weekend-sketch-backpack-guide.html",
+      "publishedDate": "2026-09-12",
+      "publishedAt": "2026-09-12T08:06:29+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-9647807caf009e3a81c27f55a18dabc070643f31",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "9647807caf009e3a81c27f55a18dabc070643f31",
+      "articleSha256": "ae82cb99957d346011b8217e517ffa107b6024e3299a2ee8924e6f96b0e4ad0c"
+    },
+    {
+      "id": "backpack-pouch-identification-guide",
+      "url": "backpack-pouch-identification-guide.html",
+      "publishedDate": "2026-09-12",
+      "publishedAt": "2026-09-12T08:06:29+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-9647807caf009e3a81c27f55a18dabc070643f31",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "9647807caf009e3a81c27f55a18dabc070643f31",
+      "articleSha256": "314a1cb8caefe4620ab38d72501870279e4f8d4e07723ad4a7b74e10401fbc95"
+    },
+    {
+      "id": "backpack-parcel-packing-guide",
+      "url": "backpack-parcel-packing-guide.html",
+      "publishedDate": "2026-09-12",
+      "publishedAt": "2026-09-12T08:06:29+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-9647807caf009e3a81c27f55a18dabc070643f31",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "9647807caf009e3a81c27f55a18dabc070643f31",
+      "articleSha256": "388f88241994e5f57b6327ed21be88c7f2073be352d9d9692dab9c46a01973bc"
+    },
+    {
+      "id": "backpack-gift-recipient-guide",
+      "url": "backpack-gift-recipient-guide.html",
+      "publishedDate": "2026-09-11",
+      "publishedAt": "2026-09-11T09:41:23+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-be8da8ebedf53e544b029e045f27afe262f51133",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "be8da8ebedf53e544b029e045f27afe262f51133",
+      "articleSha256": "cbac57d74e21521a0653139a4d273ee994cd859a23d5b2e8969bf00e269fc781"
+    },
+    {
+      "id": "backpack-review-reading-guide",
+      "url": "backpack-review-reading-guide.html",
+      "publishedDate": "2026-09-11",
+      "publishedAt": "2026-09-11T09:41:23+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-be8da8ebedf53e544b029e045f27afe262f51133",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "be8da8ebedf53e544b029e045f27afe262f51133",
+      "articleSha256": "3c842a096b33397a343c77227d473d12c3f7f0a6b69c6a27a766eefd27e5e7c0"
+    },
+    {
+      "id": "backpack-keyring-placement-guide",
+      "url": "backpack-keyring-placement-guide.html",
+      "publishedDate": "2026-09-11",
+      "publishedAt": "2026-09-11T09:41:23+09:00",
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [
+        "first-publication-feed-be8da8ebedf53e544b029e045f27afe262f51133",
+        "rss-archive"
+      ],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Verified publication declaration from RSS in the exact commit that first added the page; distinct from the later production-ready timestamp.",
+      "firstAdditionCommit": "be8da8ebedf53e544b029e045f27afe262f51133",
+      "articleSha256": "fb99a3d1cd42edfa97037813259ddba997e0344b45e243c981cc7ddc4657b2e1"
+    },
+    {
+      "id": "cafe-backpack-placement-guide",
+      "url": "cafe-backpack-placement-guide.html",
+      "publishedDate": "2026-09-10",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Early feed uses fixed round clock values (08:00/09:00); no actual wall-clock publication evidence verified, so excluded.",
+      "firstAdditionCommit": "9d820d675203a93689b83c6183e4e0b867c0e854",
+      "articleSha256": "199df52065657fb797d87485545695e35e9b66b1bc7521eeaf60433587e815fd"
+    },
+    {
+      "id": "switch-bags-without-forgetting-items",
+      "url": "switch-bags-without-forgetting-items.html",
+      "publishedDate": "2026-09-10",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Early feed uses fixed round clock values (08:00/09:00); no actual wall-clock publication evidence verified, so excluded.",
+      "firstAdditionCommit": "9d820d675203a93689b83c6183e4e0b867c0e854",
+      "articleSha256": "5fbf274ce6991c662d544a24b1749223ce8265ff54fb24ce989d81bf376c078f"
+    },
+    {
+      "id": "backpack-repair-inquiry-photo-guide",
+      "url": "backpack-repair-inquiry-photo-guide.html",
+      "publishedDate": "2026-09-10",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "Early feed uses fixed round clock values (08:00/09:00); no actual wall-clock publication evidence verified, so excluded.",
+      "firstAdditionCommit": "9d820d675203a93689b83c6183e4e0b867c0e854",
+      "articleSha256": "1a9b5ffc1b2279ab80de99c3fb00a04b47470b7c71e66dab93cf4099e6f07952"
+    },
+    {
+      "id": "small-frame-backpack-fit-guide",
+      "url": "small-frame-backpack-fit-guide.html",
+      "publishedDate": "2026-09-09",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "9655ad4dd320aa3c1c5ee9b079f276975a6090da",
+      "articleSha256": "c582b1c44a189954937d704e14d7bc674a4d0b4d4d1cab94a08cfd0c8e868b5f"
+    },
+    {
+      "id": "autumn-commute-backpack-packing",
+      "url": "autumn-commute-backpack-packing.html",
+      "publishedDate": "2026-09-09",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "9655ad4dd320aa3c1c5ee9b079f276975a6090da",
+      "articleSha256": "5ba0634f3b9f09a5e13081b91c55cd7467fe4860d50bfae4da3430102b98f55a"
+    },
+    {
+      "id": "backpack-odor-airing-guide",
+      "url": "backpack-odor-airing-guide.html",
+      "publishedDate": "2026-09-09",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "9655ad4dd320aa3c1c5ee9b079f276975a6090da",
+      "articleSha256": "4168ef5267e82c1a59ef3e109ec3c0e21299cc20b5f2b707ead64905d1a1bc50"
+    },
+    {
+      "id": "light-backpack-stain-care",
+      "url": "light-backpack-stain-care.html",
+      "publishedDate": "2026-09-08",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "e55f43012ad401ed2a7fde4486c622076289f561",
+      "articleSha256": "a347e58ed370f00e7611445b3ef2dcaeb686f521a2963e0cfcac21c85401b666"
+    },
+    {
+      "id": "backpack-compartment-layout-guide",
+      "url": "backpack-compartment-layout-guide.html",
+      "publishedDate": "2026-09-08",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "e55f43012ad401ed2a7fde4486c622076289f561",
+      "articleSha256": "205dd31b283107e967fbe52c562e5de77c7f7bc93de9191e8a98e93453e76e88"
+    },
+    {
+      "id": "commute-business-trip-backpack-guide",
+      "url": "commute-business-trip-backpack-guide.html",
+      "publishedDate": "2026-09-08",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "e55f43012ad401ed2a7fde4486c622076289f561",
+      "articleSha256": "fa3180a98efca68a2b8614138e56f6e9ce2025905898129ba3bd19ae2608c52d"
+    },
+    {
+      "id": "books-documents-backpack-packing",
+      "url": "books-documents-backpack-packing.html",
+      "publishedDate": "2026-09-07",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "7ed75eef0a4d9a1bfe4f9bf7c27cb59ba576a34f",
+      "articleSha256": "1ae6bd52eac83f39d42b17946ffeb13426243078ac445540c70fe2a2c23d4426"
+    },
+    {
+      "id": "backpack-lining-cleaning-guide",
+      "url": "backpack-lining-cleaning-guide.html",
+      "publishedDate": "2026-09-07",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "7ed75eef0a4d9a1bfe4f9bf7c27cb59ba576a34f",
+      "articleSha256": "e9dd039e3be8a5a045077dc5adb1ed2ced5085206062112328084a1d6221c2bc"
+    },
+    {
+      "id": "train-travel-backpack-guide",
+      "url": "train-travel-backpack-guide.html",
+      "publishedDate": "2026-09-07",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "7ed75eef0a4d9a1bfe4f9bf7c27cb59ba576a34f",
+      "articleSha256": "b30f66955c52236621d7d9b3d75a98fcb2c42cb86f910c3422262dcb4a5826d8"
+    },
+    {
+      "id": "backpack-color-selection-guide",
+      "url": "backpack-color-selection-guide.html",
+      "publishedDate": "2026-09-06",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "435af2bb35d8b1b4680f5ef8b33d14ab10b8791b",
+      "articleSha256": "cfe2e350bb761817ab58ef7483aead0fb525a29ea90fe3bcb1b41ff86c3a1339"
+    },
+    {
+      "id": "backpack-cable-organizer-guide",
+      "url": "backpack-cable-organizer-guide.html",
+      "publishedDate": "2026-09-06",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "435af2bb35d8b1b4680f5ef8b33d14ab10b8791b",
+      "articleSha256": "3ef683b4d459d793a9155ea001fb5b50d231624c6049a003fcc7f9d00935ff2e"
+    },
+    {
+      "id": "bicycle-commute-backpack-guide",
+      "url": "bicycle-commute-backpack-guide.html",
+      "publishedDate": "2026-09-06",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "435af2bb35d8b1b4680f5ef8b33d14ab10b8791b",
+      "articleSha256": "f77f674c123580f979cd818679b7911768d78e29b9a6de084856dda67d7b5ab8"
+    },
+    {
+      "id": "laptop-backpack-compartment-checklist",
+      "url": "laptop-backpack-compartment-checklist.html",
+      "publishedDate": "2026-09-05",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "d5ed4fd4ccd0b9bf4290507907c1d95ff78a1474",
+      "articleSha256": "dfade40bf5d52dd6780e4f192cdcdbb1bb001682284c92a91aaf49f31741025f"
+    },
+    {
+      "id": "backpack-zipper-hardware-care",
+      "url": "backpack-zipper-hardware-care.html",
+      "publishedDate": "2026-09-05",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "d5ed4fd4ccd0b9bf4290507907c1d95ff78a1474",
+      "articleSha256": "017416137ba137e1e39ef1ecfa4f4005bca2a0ad946c84b87334918e69ef2cc6"
+    },
+    {
+      "id": "airplane-carry-on-backpack-packing",
+      "url": "airplane-carry-on-backpack-packing.html",
+      "publishedDate": "2026-09-05",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "d5ed4fd4ccd0b9bf4290507907c1d95ff78a1474",
+      "articleSha256": "4ab61c484eacacc110debf53e185510262c126407940d445de373ceb4399954e"
+    },
+    {
+      "id": "backpack-fabric-care-guide",
+      "url": "backpack-fabric-care-guide.html",
+      "publishedDate": "2026-09-04",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "c10f2a8bf61d1b9618b587f0a7f1f7ba02a63960",
+      "articleSha256": "3188cbd02a3c053d6ee88ccf067c7482d1279d19acb6742dbd4769575bbaf7b9"
+    },
+    {
+      "id": "subway-commute-backpack-guide",
+      "url": "subway-commute-backpack-guide.html",
+      "publishedDate": "2026-09-04",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "c10f2a8bf61d1b9618b587f0a7f1f7ba02a63960",
+      "articleSha256": "5f7abd2b00b69efcc3153114ea7f5577d6cb079e1b2644fb645a2910dc76e5eb"
+    },
+    {
+      "id": "day-trip-backpack-packing-guide",
+      "url": "day-trip-backpack-packing-guide.html",
+      "publishedDate": "2026-09-04",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "c10f2a8bf61d1b9618b587f0a7f1f7ba02a63960",
+      "articleSha256": "2e8fa469cf61563e76e95cbbab16be46456bcfef149322d5b57a405f339e5c42"
+    },
+    {
+      "id": "backpack-strap-adjustment-guide",
+      "url": "backpack-strap-adjustment-guide.html",
+      "publishedDate": "2026-09-03",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "2ebc743cced64a45748734c5f1aac61a3aa5e689",
+      "articleSha256": "617628447029563cb1776e0e98a77407b2cf74f78e870484abc0b0faae202fc2"
+    },
+    {
+      "id": "backpack-bottle-pocket-guide",
+      "url": "backpack-bottle-pocket-guide.html",
+      "publishedDate": "2026-09-03",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "2ebc743cced64a45748734c5f1aac61a3aa5e689",
+      "articleSha256": "66659dd649ce71106021377585081ca73de8e88c6693f7fe1b0899e902668c0a"
+    },
+    {
+      "id": "backpack-shape-storage-guide",
+      "url": "backpack-shape-storage-guide.html",
+      "publishedDate": "2026-09-03",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "2ebc743cced64a45748734c5f1aac61a3aa5e689",
+      "articleSha256": "fba82be2f9820655f205147faa27ae0aa415bd4e7e7f106ffae848bf78c82847"
+    },
+    {
+      "id": "daily-backpack-packing-routine",
+      "url": "daily-backpack-packing-routine.html",
+      "publishedDate": "2026-09-02",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "d8f0557e355f6f33bb35b0ac6d92ce7e618aea8d",
+      "articleSha256": "294c9a719420b84690726ab31224f7ab3aff6fa05b0159ab8eafc6b68dcf754d"
+    },
+    {
+      "id": "rainy-day-backpack-care",
+      "url": "rainy-day-backpack-care.html",
+      "publishedDate": "2026-09-02",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "d8f0557e355f6f33bb35b0ac6d92ce7e618aea8d",
+      "articleSha256": "685fe1c7065ffc4cb092f76f2a717b0f9ec9d238cd7542883b189a9fdddff172"
+    },
+    {
+      "id": "overnight-trip-backpack-checklist",
+      "url": "overnight-trip-backpack-checklist.html",
+      "publishedDate": "2026-09-02",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "d8f0557e355f6f33bb35b0ac6d92ce7e618aea8d",
+      "articleSha256": "58acd977a574fe99ba3019efdedd9c07c891e07d3fb932db2050e675ed44e480"
+    },
+    {
+      "id": "how-to-choose-backpack",
+      "url": "how-to-choose-backpack.html",
+      "publishedDate": "2026-08-29",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "077a5ec2cc906cd964ea84f04ae35815cd6d48c1",
+      "articleSha256": "3eb7083021f05620deb4f14e5dea41d320df85e627a48c30e8ea230b07b93b1b"
+    },
+    {
+      "id": "backpack-for-office-workers",
+      "url": "backpack-for-office-workers.html",
+      "publishedDate": "2026-08-29",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "077a5ec2cc906cd964ea84f04ae35815cd6d48c1",
+      "articleSha256": "b94856a05391b13bae24ee9a66f9be475f78ed4585d2af8a3c5553173215cda8"
+    },
+    {
+      "id": "back-to-school-backpack-for-kids",
+      "url": "back-to-school-backpack-for-kids.html",
+      "publishedDate": "2026-08-29",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-16",
+      "modifiedAt": "2026-10-16T09:24:55.407+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct16"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "077a5ec2cc906cd964ea84f04ae35815cd6d48c1",
+      "articleSha256": "d4b569f7b567e7d6a39f44d023cbda158493e4b792aa75e47e2b3616e61d9a53"
+    },
+    {
+      "id": "first-story-20260829",
+      "url": "first-story.html",
+      "publishedDate": "2026-08-20",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-14",
+      "modifiedAt": "2026-10-14T20:07:14.465+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct14"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "8b4e6399aef8a1d93dfb5b65232cbb39b5ca27a2",
+      "articleSha256": "591a5060e75fb4d07ccae92ad7f471d527a567426491b95b42ca7a2244e3659f"
+    },
+    {
+      "id": "behind-package-20260829",
+      "url": "behind-package.html",
+      "publishedDate": "2026-08-14",
+      "publishedAt": null,
+      "modifiedDate": "2026-10-14",
+      "modifiedAt": "2026-10-14T20:07:14.465+09:00",
+      "publicationSources": [],
+      "modificationSources": [
+        "release-oct14"
+      ],
+      "publicationStatus": "No publication timestamp in the first-addition commit feed.",
+      "firstAdditionCommit": "8b4e6399aef8a1d93dfb5b65232cbb39b5ca27a2",
+      "articleSha256": "df007a4321c1897266f4647e78c771bd15bbf806854f5415f912c67d2fa2beb6"
+    }
+  ]
+}

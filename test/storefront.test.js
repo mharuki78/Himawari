@@ -159,6 +159,9 @@ test('운영 사이트맵은 현재 제품과 이야기 목록을 XML로 동적 
     assert.equal(sitemap.includes(`https://himawari.co.kr/product.html?id=${encodeURIComponent(product.id)}`), true);
   }
   assert.equal(sitemap.includes('https://himawari.co.kr/story/small-frame-backpack-fit-guide.html'), true);
+  for (const post of stories) {
+    assert.ok(sitemap.includes(`<loc>https://himawari.co.kr/story/${post.url}</loc><lastmod>${post.dateModified || post.date}</lastmod>`), post.id + ': canonical URL and verified revision date');
+  }
 });
 
 test('개별 제품 원본 HTML에 이름·가격·이미지·구매정보를 렌더링한다', async () => {

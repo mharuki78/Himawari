@@ -154,8 +154,26 @@ test('모든 발행된 이야기에는 발행자·작성자 링크와 본문 사
     assert.equal(article?.author?.url, origin + '/', post.url + ': author');
     assert.equal(article?.inLanguage, 'ko-KR', post.url + ': language');
     assert.equal(article?.url, origin + '/story/' + post.url);
-    assert.equal(article.datePublished, post.date);
-    assert.equal(article.dateModified, post.dateModified || post.date);
+    assert.equal(article.datePublished, post.publishedAt || post.date);
+    assert.equal(article.dateModified, post.modifiedAt || post.dateModified || post.date);
     assert.ok(article.image.length >= 2);
   }
+});
+
+test('확인된 이야기 시각만 반영하고 날짜·시간대가 모순되면 중단한다', async () => {
+  const { updateStorySchema } = await import('../scripts/lib/story-schema.mjs');
+  const data = { '@type': 'BlogPosting', datePublished: '2026-10-18', dateModified: '2026-10-18' };
+  const html = `<link rel="canonical" href="${origin}/story/example.html"><script type="application/ld+json">${JSON.stringify(data)}</script><article><p>원래 본문</p></article>`;
+  const post = { date: '2026-10-18', publishedAt: '2026-10-18T08:42:33+09:00', modifiedAt: '2026-10-18T08:44:53.219+09:00' };
+  const result = updateStorySchema(html, post);
+  const article = parse(result)[0];
+  assert.equal(article.datePublished, post.publishedAt);
+  assert.equal(article.dateModified, post.modifiedAt);
+  assert.equal(result.match(/<article>[\s\S]*<\/article>/)[0], '<article><p>원래 본문</p></article>');
+  assert.equal(updateStorySchema(result, post), result);
+  for (const publishedAt of ['2026-10-18T08:42:33', '2026-10-17T08:42:33+09:00', 'not-a-date']) {
+    assert.throws(() => updateStorySchema(html, { ...post, publishedAt }), /publishedAt/);
+  }
+  assert.throws(() => updateStorySchema(html, { ...post, modifiedAt: '2026-10-18T08:41:00+09:00' }), /before publication/);
+  assert.equal(parse(updateStorySchema(html, { date: post.date }))[0].datePublished, post.date);
 });

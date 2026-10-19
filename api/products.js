@@ -43,7 +43,7 @@ async function fetchSitemap(request) {
     const products = catalog.products.map((product) => sitemapUrl(`/product.html?id=${encodeURIComponent(product.id)}`));
     const stories = storyPosts
       .filter((post) => post && post.id)
-      .map((post) => sitemapUrl(`/story/${encodeURIComponent(post.id)}.html`, post.date));
+      .map((post) => sitemapUrl(`/story/${post.url || encodeURIComponent(post.id) + '.html'}`, post.dateModified || post.date));
     const body = [
       '<?xml version="1.0" encoding="UTF-8"?>',
       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',

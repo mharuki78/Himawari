@@ -31,7 +31,7 @@ export function renderRevision(original, revision, photo, modifiedDate) {
   let hadFaq = false;
   html = html.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, (_,json)=>{
     const data = JSON.parse(json);
-    if (data['@type']==='BlogPosting') return schemaTag({...data,headline:revision.title,description:revision.summary,datePublished:original.date,dateModified:modifiedDate,image:[new URL(original.image,'https://himawari.co.kr/story/').href,`https://himawari.co.kr/${photo.asset}`],author:{'@type':'Organization',name:'히마와리 편집팀'}});
+    if (data['@type']==='BlogPosting') return schemaTag({...data,headline:revision.title,description:revision.summary,datePublished:original.publishedAt||original.date,dateModified:modifiedDate,image:[new URL(original.image,'https://himawari.co.kr/story/').href,`https://himawari.co.kr/${photo.asset}`],author:{'@type':'Organization',name:'히마와리 편집팀'}});
     if (data['@type']==='FAQPage') {hadFaq=true;return faqs.length ? schemaTag({'@context':'https://schema.org','@type':'FAQPage',mainEntity:faqs.map(f=>({'@type':'Question',name:f.question,acceptedAnswer:{'@type':'Answer',text:f.answer}}))}) : '';}
     if (data['@type']==='BreadcrumbList') {data.itemListElement.at(-1).name=revision.title;return schemaTag(data);}
     return schemaTag(data);
