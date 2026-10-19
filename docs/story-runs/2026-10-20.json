@@ -1,7 +1,7 @@
 {
   "date": "2026-10-20",
   "automationId": "himawari-3",
-  "stage": "prepared",
+  "stage": "metadata-verified",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "publicationBaselineCommit": "aac64b2295379848f7fc370f5150545296e7178d",
@@ -9,7 +9,7 @@
   "completionReceipt": "backups/story-runs/2026-10-20.deployment.json",
   "posts": [
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-set-option-reading",
       "title": "백팩의 체스트벨트 SET 표기, 색상 옵션과 어떻게 다를까",
       "url": "https://himawari.co.kr/story/backpack-set-option-reading.html",
@@ -85,10 +85,19 @@
           "alt": "No.1027 실제 제품 사진",
           "caption": "제품 페이지에서 확인한 실제 제품 사진"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-19T23:19:17.389Z",
+        "modifiedAt": "2026-10-19T23:19:17.389Z",
+        "firstDeploymentEvidence": "backups/story-2026-10-20/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-10-20/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-10-20/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-10-20/first-deployment-history.json",
+        "articleSha256": "d748b73b10a4ab62d99a900be08dfabb09b94c11852e23884865165bcddd7a23"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-mesh-by-location",
       "title": "백팩의 메쉬, 앞 포켓과 옆면과 등판에서 하는 일이 다르다",
       "url": "https://himawari.co.kr/story/backpack-mesh-by-location.html",
@@ -166,10 +175,19 @@
           "alt": "No.9291 실제 제품 사진",
           "caption": "제품 페이지에서 확인한 실제 제품 사진"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-19T23:19:17.389Z",
+        "modifiedAt": "2026-10-19T23:19:17.389Z",
+        "firstDeploymentEvidence": "backups/story-2026-10-20/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-10-20/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-10-20/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-10-20/first-deployment-history.json",
+        "articleSha256": "1d5f17b10f44e5901d582870fa979e44268a79214f6f3f1123af29f73c6a0f00"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-loose-strap-ends",
       "title": "백팩 길이를 맞춘 뒤 남는 끈 끝, 내려놓을 때 어디에 둘까",
       "url": "https://himawari.co.kr/story/backpack-loose-strap-ends.html",
@@ -248,7 +266,16 @@
           "alt": "No.1884 실제 제품 사진",
           "caption": "제품 페이지에서 확인한 실제 제품 사진"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-19T23:19:17.389Z",
+        "modifiedAt": "2026-10-19T23:19:17.389Z",
+        "firstDeploymentEvidence": "backups/story-2026-10-20/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-10-20/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-10-20/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-10-20/first-deployment-history.json",
+        "articleSha256": "a26620ceaf22194b05b10ef4a1feaecdfaa23cd62fbc9805f5a7ae1d9904d8c5"
+      }
     }
   ],
   "topicsReviewed": 158,
@@ -260,7 +287,7 @@
         "backpack-mesh-by-location",
         "backpack-loose-strap-ends"
       ],
-      "stage": "prepared"
+      "stage": "metadata-verified"
     }
   }
 }
