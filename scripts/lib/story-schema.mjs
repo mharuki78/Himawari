@@ -1,7 +1,7 @@
 const ORIGIN = 'https://himawari.co.kr';
 const JSON_LD = /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/g;
 
-function verifiedTime(value, date, field) {
+export function verifiedTime(value, date, field) {
   if (value == null) return undefined;
   if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?(?:Z|[+-]\d{2}:\d{2})$/.test(value) || !Number.isFinite(Date.parse(value))) {
     throw new Error(`Invalid ${field}: explicit time and timezone required`);
@@ -33,7 +33,7 @@ export function updateStorySchema(html, post = {}) {
     const enriched = {
       ...data,
       datePublished: publishedAt || data.datePublished,
-      dateModified: modifiedAt || data.dateModified,
+      dateModified: modifiedAt || post.dateModified || post.date || data.dateModified,
       '@id': `${canonical}#article`,
       url: canonical,
       image: images,

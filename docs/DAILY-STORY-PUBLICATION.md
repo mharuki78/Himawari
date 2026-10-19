@@ -2,7 +2,55 @@
 
 ## 구조화 데이터 유지
 
-새 글 작성·기존 글 편집 후 `node scripts/update-story-schema.mjs`를 실행하고 준비 검증을 진행한다. 이 명령은 기존 주소·발행일·수정일·본문·승인된 사진을 유지하며 BlogPosting에 실제 본문 사진, 발행자·로고, 작성자 링크, 언어와 이야기 목록 연결을 반영한다. `renderRevision` 편집 경로에도 같은 처리를 적용한다. 페이지에 없는 사진·허위 작성자·확인되지 않은 발행 시각을 추가하지 않는다. `node --test test/structured-data.test.mjs`로 공통 상품/이야기 구조화 데이터 회귀를 확인한다.
+새 글 작성·기존 글 편집 후 `node scripts/update-story-schema.mjs --date YYYY-MM-DD`를 실행하고 준비 검증을 진행한다. 날짜는 대상 글의 원래 발행일이다. 이 명령은 그 날짜의 글만 처리하며, 기존 주소·본문·승인된 사진을 유지하면서 BlogPosting에 실제 본문 사진, 발행자·로고, 작성자 링크, 언어와 이야기 목록 연결을 반영한다. 확인된 `publishedAt`·`modifiedAt`이 있으면 JSON-LD에 반영하고 RSS의 해당 항목 `pubDate`를 원래 발행 시각에 맞춘다. 대상 밖 RSS 항목은 변경하지 않는다. 날짜 옵션 없이 실행하면 기존처럼 전체 글의 JSON-LD만 보완한다. `renderRevision` 편집 경로에도 같은 스키마 처리를 적용한다. 페이지에 없는 사진·허위 작성자·확인되지 않은 시각을 추가하지 않는다.
+
+## 2026-10-19 추가: 실제 발행·수정 시각을 완료 조건으로 검사
+
+2026-10-19 이후 새로 발행하는 이야기에는 다음 절차를 적용한다. 과거 글의 미확인 시각을 소급 생성하지 않는다. 예약 시각, 이미지 생성 시각, 초안 저장 시각, Git 커밋 시각, 검증 시각을 실제 발행·수정 시각 대신 넣지 않는다. 자정이나 오전 8시를 일괄 지정하지 않는다.
+
+### 첫 발행
+
+1. 새 글을 추가하기 전 `git rev-parse HEAD`의 실제 40자 커밋을 당일 manifest의 `publicationBaselineCommit`에 기록한다. 그 커밋의 Vercel 운영 READY를 확인하고 원본 응답을 `backups/story-YYYY-MM-DD/baseline-deployment.json`에 보존하며 manifest의 `publicationBaselineEvidence`에 이 경로를 기록한다. 이 기준 커밋에는 당일 새 글이 없어야 하며 READY 확인 후 새 파일을 작성한다. Git 최초 추가 시각은 기준 READY 이후인지 확인하는 용도로만 사용하고 발행 시각으로 대체하지 않는다. 재개 실행에서도 원래 기준 커밋·배포 근거를 보존한다.
+2. 글의 원래 한국 발행일은 `story/posts.json`의 `date`에 유지한다. 첫 운영 배포 전에는 시각을 알 수 없으므로 `publishedAt`·`modifiedAt`을 만들지 않는다. manifest의 각 글에 `publicationStatus: "awaiting-first-deployment"`를 기록한다. JSON-LD는 이 단계에서 날짜만 사용하되 BlogPosting·탐색경로·작성자·발행자·로고·실제 본문 사진을 빠짐없이 제공한다.
+3. 날짜별 스키마 갱신과 `node scripts/verify-daily-story.mjs YYYY-MM-DD`를 실행한다. 출력 `metadata: "awaiting-first-deployment"`는 첫 배포 전 준비 상태이며 발행 완료가 아니다. 승인된 글·사진을 커밋하고 push한다.
+4. **실제 첫 Vercel 운영 공개**를 배포 이력에서 확인한다. Vercel `list_deployments`를 해당 프로젝트·팀, `target=production`, `since=원래 baseline READY epoch`로 조회하고 `pagination.next`가 null이 될 때까지 페이지를 모두 보존한다(다음 조회의 `until`은 직전 `next`). READY 항목 중 실제 해당 글이 들어 있는 커밋을 Git에서 확인하고 각 후보의 `get_deployment` 원본 응답도 조회한다. 같은 커밋의 재배포를 포함해 READY epoch가 가장 이른 배포를 선택한다. 그 원본 응답을 `backups/story-YYYY-MM-DD/first-deployment.json`에 저장한다. `id`, `state` 또는 `readyState`, `target: "production"`, `meta.githubCommitSha`, 실제 epoch 밀리초 `ready` 또는 `readyAt`을 보존한다. 첫 콘텐츠 배포가 실패하고 수정 커밋이 먼저 성공한 경우도 이력 전체에서 판단한다. 요약 receipt의 `verifiedAt`이나 임의로 만든 READY 시각을 쓰지 않는다.
+
+   공통 `backups/story-YYYY-MM-DD/first-deployment-history.json`은 `{ "since": 실제_baseline_READY_epoch, "pages": [실제_list_deployments_원본_응답들], "details": [후보_get_deployment_원본_응답들] }` 구조로 저장한다. `pages`와 `details` 안의 제공자 필드를 만들어 쓰지 않는다. 마지막 목록의 `pagination.next: null`로 조회가 끝났음을 확인한다. 각 글의 `publication.firstDeploymentHistoryEvidence`에 이 파일 경로를 기록한다. 재개 시 이 최초 이력·배포를 재사용하며 나중 재배포로 교체하지 않는다.
+5. `publishedAt = new Date(firstDeployment.ready).toISOString()`처럼 실제 READY epoch에서 시간대가 있는 ISO 8601 시각을 얻는다(`readyAt`이 실제 필드이면 그 필드를 사용). 새 글의 최초 `modifiedAt`도 같은 시각이다. 이 시각은 본문이 운영에 처음 공개된 시각이며 초안 작성 시각이 아니다. 한국 날짜가 원래 `date`와 다르면 날짜·회차 정합성을 해결할 때까지 완료 처리하지 않는다. 맞추기 위해 시각을 바꾸지 않는다.
+6. `story/posts.json`에 `publishedAt`, `modifiedAt`, 한국 날짜의 `dateModified`를 저장한다. 각 manifest 글에는 `publicationStatus: "verified"`와 다음 `publication`을 기록한다. 최초 발행에서는 두 근거 파일 경로가 같고, `articleSha256`은 `scripts/lib/story-publication-metadata.mjs`의 `articleHash(html)`로 구한 완전한 `<article>` 해시이다. `publishedAt`·`modifiedAt`은 목록의 값과 같아야 한다.
+
+```json
+{
+  "publication": {
+    "publishedAt": "실제 첫 운영 배포 READY에서 얻은 ISO 시각",
+    "modifiedAt": "실제 본문 배포 READY에서 얻은 ISO 시각",
+    "firstDeploymentEvidence": "backups/story-YYYY-MM-DD/first-deployment.json",
+    "firstDeploymentHistoryEvidence": "backups/story-YYYY-MM-DD/first-deployment-history.json",
+    "modificationDeploymentEvidence": "backups/story-YYYY-MM-DD/first-deployment.json",
+    "modificationDeploymentHistoryEvidence": "backups/story-YYYY-MM-DD/first-deployment-history.json",
+    "articleSha256": "실제 완전한 article의 SHA-256"
+  }
+}
+```
+
+7. 다시 날짜별 스키마 갱신을 실행해 JSON-LD와 RSS를 맞추고 준비 검증에서 `metadata: "verified"`를 확인한다. 시각을 포함한 목록·페이지·RSS·manifest를 커밋하고 push한다. 이 메타데이터 배포의 READY 시각으로 최초 발행·수정 시각을 다시 덮어쓰지 않는다. 본문·사진을 다시 만들지 않는다.
+8. 마지막 메타데이터 커밋의 운영 `READY`, 실제 페이지·이미지·제품 링크, PC·모바일을 확인하고 최종 receipt에 그 커밋과 브라우저 근거를 기록한다. `node scripts/verify-daily-story.mjs YYYY-MM-DD --published`가 성공한 뒤에만 완료로 알린다. 이 명령은 운영 글과 RSS도 직접 요청해 확인한다.
+
+### 본문을 수정할 때
+
+최초 `date`·`publishedAt`·`firstDeploymentEvidence`·`firstDeploymentHistoryEvidence`와 URL·승인 사진을 보존한다. 본문 또는 본문 안 관련 글 링크가 바뀌면 이전 `modifiedAt`과 `publication.modifiedAt`·`modificationDeploymentEvidence`·`modificationDeploymentHistoryEvidence`를 그대로 재사용하지 않는다. 새 수정본 배포 전에는 이를 제거하고 `publicationStatus: "awaiting-content-deployment"`로 기록한다. `dateModified`에는 새 수정본의 한국 날짜만 쓰고 실제 시각은 배포 근거를 얻기 전까지 비운다.
+
+실제 새 본문 배포의 READY 원본 응답을 같은 원래 발행일 backup 아래 별도 파일로 저장한다. 원래 baseline READY부터 수정본 공개까지의 완전한 배포 목록과 후보 상세 응답도 새 이력 파일로 조회·저장하여 `modificationDeploymentHistoryEvidence`에 기록한다. 각 READY 커밋의 완전한 article을 시간 순서대로 비교해 **현재 내용으로 실제 바뀐 배포**를 고른다. 그 뒤 같은 내용을 재배포하거나 메타데이터만 바꾼 배포의 READY 시각으로 수정 시각을 늦추지 않는다. 이전 내용으로 되돌린 경우에는 중간의 다른 내용 배포도 대조하여 실제 되돌린 배포를 수정 근거로 삼는다. 검증기는 이 내용 변화와 수정 배포 시각의 일치도 검사한다.
+
+그 근거로 `modifiedAt`, 한국 날짜의 `dateModified`, 변경된 전체 article 해시와 수정 배포 근거만 갱신한 뒤 `publicationStatus: "verified"`로 바꾸고 스키마·RSS·준비·최종 운영 검증을 진행한다. 기존 글 편집은 새 일일 발행으로 세지 않는다.
+
+### 검증과 재개
+
+준비·완료 검증은 canonical URL·BlogPosting·탐색경로·작성자 URL·발행자 로고·언어·실제 본문 사진 전체를 검사한다. 새 글의 완료 검증은 발행·수정 시각의 시간대, 한국 날짜, 시간 순서, 원본 READY 시각과의 일치, 기준 배포 이후 완전한 이력에서 해당 글의 실제 첫 성공 배포인지, 수정 배포의 완전한 article 내용, 목록·페이지·RSS의 일치를 검사한다. 첫 배포 원본의 목록에는 시각 필드가 아직 없어야 하므로 메타데이터 보완 배포를 첫 배포로 대신 쓸 수 없다. 시각·배포 이력·원본 근거가 빠졌거나 내용이 달라졌으면 실패해야 한다.
+
+중단 후 재개할 때는 이미 기록한 최초 배포와 시각을 사용한다. 빠진 메타데이터·근거·최종 배포·검증만 완료하고 새 글·사진을 중복 생성하지 않는다. 외부 서비스 장애로 READY 근거를 조회하지 못하면 시각 근거 미완료로 보고한다.
+
+관련 회귀 검증: `node --test test/structured-data.test.mjs test/story-publication-metadata.test.mjs`. 전체 작업 후 `npm test`를 실행한다. 과거 시각을 보완한 근거와 미확인 값을 생략하는 기준은 [STRUCTURED-DATA-FACTS.md](STRUCTURED-DATA-FACTS.md)를 참조한다.
 
 ## 2026-10-16 사용자 정정: 모든 이야기는 가방이 중심
 
