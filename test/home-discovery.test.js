@@ -41,6 +41,8 @@ test('homepage identifies the online store with the business contact details sho
   assert.equal(store.email, 'nys9980@himawari.co.kr');
   assert.equal(store.address['@type'], 'PostalAddress');
   assert.equal(store.address.streetAddress, '경기도 시흥시 배곧4로 32-29, 파크뷰 206호');
+  assert.equal(store.address.addressRegion, '경기도');
+  assert.equal(store.address.addressLocality, '시흥시');
   assert.equal(store.address.addressCountry, 'KR');
   assert.ok(html.includes(store.address.streetAddress));
 });

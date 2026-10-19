@@ -3,6 +3,7 @@ import {
   BlobNotFoundError,
   BlobPreconditionFailedError,
   del,
+  get,
   head,
   put,
 } from '@vercel/blob';
@@ -425,22 +426,6 @@ export function createProductRecord(value, existingProducts) {
   });
 }
 
-async function readPublicCatalogBlob(value) {
-  const url = new URL(value);
-  if (url.protocol !== 'https:' || !url.hostname.endsWith('.public.blob.vercel-storage.com')) {
-    throw new Error('공개 제품 저장소 주소를 확인할 수 없습니다.');
-  }
-  // Metadata remains authenticated. Public content uses its ordinary download URL.
-  const response = await fetch(url);
-  if (response.status === 404) return null;
-  if (!response.ok) {
-    throw Object.assign(new Error(`Public product catalog read failed: ${response.status}`), {
-      code: 'PUBLIC_CATALOG_READ_FAILED', upstreamStatus: response.status,
-    });
-  }
-  return { statusCode: response.status, stream: response.body, blob: { etag: response.headers.get('etag') } };
-}
-
 export async function readProductCatalog() {
   if (!productStoreIsConfigured()) return { catalog: seedCatalog(), etag: null, persisted: false };
 
@@ -453,7 +438,10 @@ export async function readProductCatalog() {
     if (snapshotPath) {
       try {
         const snapshotMetadata = await head(snapshotPath, { token: productToken() });
-        result = await readPublicCatalogBlob(snapshotMetadata.url);
+        result = await get(snapshotMetadata.url, {
+          access: 'public',
+          token: productToken(),
+        });
         snapshot = result?.statusCode === 200;
       } catch (error) {
         if (!(error instanceof BlobNotFoundError)) throw error;
@@ -466,7 +454,10 @@ export async function readProductCatalog() {
         const versionedUrl = new URL(metadata.url);
         versionedUrl.searchParams.set('version', etag);
         versionedUrl.searchParams.set('read', String(attempt));
-        result = await readPublicCatalogBlob(versionedUrl.href);
+        result = await get(versionedUrl.href, {
+          access: 'public',
+          token: productToken(),
+        });
         if (result?.statusCode === 200 && normalizeBlobEtag(result.blob.etag) === etag) break;
       }
     }
