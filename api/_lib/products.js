@@ -446,14 +446,14 @@ export async function readProductCatalog() {
           });
         } catch (error) {
           if (!/^Vercel Blob: Failed to fetch blob: 403\b/.test(String(error?.message || ''))) throw error;
-          if (process.env.VERCEL && !downloadDenialReported) {
+          if (!downloadDenialReported) {
             downloadDenialReported = true;
             try {
               const diagnostic = await fetch(snapshotMetadata.url, { signal: AbortSignal.timeout(5000) });
               const body = diagnostic.status === 403 ? (await diagnostic.text()).slice(0, 500).replaceAll(productToken(), '[redacted]') : '(omitted)';
-              console.warn('product_catalog_download_diagnostic', { status: diagnostic.status, server: diagnostic.headers.get('server'), body });
+              console.error('product_catalog_download_diagnostic', { status: diagnostic.status, server: diagnostic.headers.get('server'), requestId: diagnostic.headers.get('x-vercel-id'), cache: diagnostic.headers.get('x-vercel-cache'), error: diagnostic.headers.get('x-vercel-error'), body });
             } catch (diagnosticError) {
-              console.warn('product_catalog_download_diagnostic', { name: diagnosticError?.name });
+              console.error('product_catalog_download_diagnostic', { name: diagnosticError?.name });
             }
           }
           // A denied snapshot must still pass the live catalog's ETag check below.

@@ -16,10 +16,12 @@ const currentCatalog = {
 async function withBlobResponses(options, run) {
   const previousDispatcher = getGlobalDispatcher();
   const previousToken = process.env.PRODUCT_BLOB_READ_WRITE_TOKEN;
+  const previousFetch = globalThis.fetch;
   const agent = new MockAgent();
   agent.disableNetConnect();
   setGlobalDispatcher(agent);
   process.env.PRODUCT_BLOB_READ_WRITE_TOKEN = 'vercel_blob_rw_test_fake_token';
+  globalThis.fetch = async () => new Response('Forbidden', { status: 403 });
   const downloads = [];
   try {
     agent.get('https://vercel.com').intercept({ path: /\/api\/blob\?url=/, method: 'GET' })
@@ -53,6 +55,7 @@ async function withBlobResponses(options, run) {
     return await run({ downloads, agent });
   } finally {
     setGlobalDispatcher(previousDispatcher);
+    globalThis.fetch = previousFetch;
     if (previousToken === undefined) delete process.env.PRODUCT_BLOB_READ_WRITE_TOKEN;
     else process.env.PRODUCT_BLOB_READ_WRITE_TOKEN = previousToken;
     await agent.close();
