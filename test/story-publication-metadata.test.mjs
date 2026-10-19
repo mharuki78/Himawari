@@ -121,6 +121,10 @@ test('first publication requires complete provider history and rejects a later d
   assert.throws(() => validateFirstPublicationHistory(partial), /complete/);
   const missing = cloneInput(); missing.history.details = [];
   assert.throws(() => validateFirstPublicationHistory(missing), /detail/);
+  const completeWithEmptyLastPage = cloneInput();
+  completeWithEmptyLastPage.history.pages[0].result.deployments.pagination.next = entry.created;
+  completeWithEmptyLastPage.history.pages.push({ result: { deployments: { pagination: { count: 0, prev: baseline.ready }, deployments: [] } } });
+  assert.doesNotThrow(() => validateFirstPublicationHistory(completeWithEmptyLastPage), 'The provider omits next on a complete final page');
 });
 
 test('modification time identifies the actual content release, including a later return to previous content', async () => {

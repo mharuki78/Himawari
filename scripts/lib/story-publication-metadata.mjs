@@ -29,7 +29,7 @@ function publicationHistory({ post, baselineDeployment, baselineCommit, history,
   assert.equal(history?.since, baseline.ready, 'Deployment history must start at the original baseline READY');
   assert.ok(history.pages?.length, 'Missing complete deployment history');
   const pages = history.pages.map(raw => raw?.result?.deployments || raw);
-  assert.equal(pages.at(-1).pagination?.next, null, 'Deployment history must be complete');
+  assert.ok(pages.at(-1).pagination && pages.at(-1).pagination.next == null, 'Deployment history must be complete');
   for (let i = 0; i < pages.length; i++) {
     assert.ok(Array.isArray(pages[i].deployments), 'Missing provider deployment listing');
     if (i > 0) {
