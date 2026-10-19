@@ -1,0 +1,266 @@
+{
+  "date": "2026-10-20",
+  "automationId": "himawari-3",
+  "stage": "prepared",
+  "expectedCount": 3,
+  "expectedGeneratedImages": 6,
+  "publicationBaselineCommit": "aac64b2295379848f7fc370f5150545296e7178d",
+  "publicationBaselineEvidence": "backups/story-2026-10-20/baseline-deployment.json",
+  "completionReceipt": "backups/story-runs/2026-10-20.deployment.json",
+  "posts": [
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-set-option-reading",
+      "title": "백팩의 체스트벨트 SET 표기, 색상 옵션과 어떻게 다를까",
+      "url": "https://himawari.co.kr/story/backpack-set-option-reading.html",
+      "productId": "store-13725138516",
+      "model": "No.1027",
+      "image": "assets/story/backpack-set-option-reading.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-20/reference-1027-front.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 28페이지의 1027 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다. 크기·무게는 가방 기준이며 추가 체스트벨트는 제외합니다.",
+      "dimensionsCm": {
+        "width": 28,
+        "height": 40,
+        "depth": 17
+      },
+      "editorialForm": "상품 정보 비교와 해석",
+      "coreQuestion": "백팩의 색상 차이와 체스트벨트 추가 구성을 어떻게 구분하고 같은 조건으로 비교할까?",
+      "bodyChars": 3071,
+      "images": [
+        {
+          "id": "backpack-set-option-reading",
+          "model": "1027",
+          "role": "hero",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-set-option-reading.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-20/reference-1027-front.jpg",
+          "references": [
+            "backups/story-2026-10-20/reference-1027-front.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-20/generated-1.png",
+          "prompt": "Create ONE photorealistic landscape editorial photograph, 1536x1024. Use the attached actual Himawari No.1027 product photo as a strict product reference. Photograph the backpack alone upright on a pale ash wood table in a quiet daylight studio, front three-quarter view, entire bag visible with generous neutral space. Exact external size 28 cm wide, 40 cm high, 17 cm deep. Preserve ivory body, pastel ice blue large rectangular front zip pocket, pale pink base, pink twin top handles with rectangular attachment tabs and round rivets, ivory shoulder straps, pink small hanging long pouch on viewer right, original Himawari mark and all hardware/proportions. The source is a promotional collage: do NOT reproduce the person, overlaid writing, circular black inset, chest belt, graphics, or extra objects. This is a bag construction and option-color illustration, no invented set accessories. Soft side daylight, honest textile detail, no glossy luxury distortion, no caption/watermark.",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260818_98/1787036782613YA6CK_JPEG/121169699272443039_180820011.jpg",
+          "fidelityReviewed": true,
+          "review": "Compared product shape, color, pockets, handles, straps, hardware and logo with actual front and detail references. No unsupported carrying attachment added.",
+          "sha256": "119a7c7a118a09138060dd58360cdf01ff3bbc208e5b9819324bf25082cd7b2b",
+          "alt": "No.1027의 아이보리 본체와 파란 앞 포켓, 분홍 손잡이를 보여주는 AI 연출 사진",
+          "caption": "AI 연출: 가방의 배색과 전체 형태를 살펴보는 사진입니다. 배송 구성품 전체를 펼친 사진은 아닙니다."
+        },
+        {
+          "id": "backpack-set-option-reading",
+          "model": "1027",
+          "role": "detail",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-set-option-reading-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-20/reference-1027-front.jpg",
+          "references": [
+            "backups/story-2026-10-20/reference-1027-front.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-20/generated-2.png",
+          "prompt": "Create ONE photorealistic landscape 1536x1024 editorial detail photo of the EXACT attached Himawari No.1027 backpack, not a new design. Close front upper half on a cream studio plinth, slightly elevated camera, pink twin handles and their pink rectangular riveted tabs in crisp focus, ivory main body, ice blue upper edge of the large front pocket and pink hanging narrow pouch visible. Bag external dimensions 28x40x17 cm, keep exact original proportions, logo, seams, zips, colors, original pouch attachment. Crop into the bag for a materially different detail composition from full product view. Soft neutral daylight, simple warm white background, no person, no new accessories, NO circular promotional inset or superimposed source text, NO chest belt added to front, no fake labels or measurements.",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260818_98/1787036782613YA6CK_JPEG/121169699272443039_180820011.jpg",
+          "fidelityReviewed": true,
+          "review": "Compared product shape, color, pockets, handles, straps, hardware and logo with actual front and detail references. No unsupported carrying attachment added.",
+          "sha256": "5365318efbfc98391b3f006a3e528cd5a7620964f09c3921be8f317219d83830",
+          "alt": "No.1027 손잡이와 앞 포켓의 배색을 가까이 살펴보는 AI 연출 사진",
+          "caption": "AI 연출: 손잡이와 앞 포켓의 색을 가까이 보여줍니다. 세트 포함 품목은 실제 상품 안내로 확인하세요."
+        },
+        {
+          "id": "backpack-set-option-reading",
+          "model": "1027",
+          "role": "actual-product-reference",
+          "imageKind": "reference",
+          "image": "assets/story/backpack-set-option-reading-product.webp",
+          "reference": "backups/story-2026-10-20/reference-1027-front.jpg",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260818_98/1787036782613YA6CK_JPEG/121169699272443039_180820011.jpg",
+          "width": 720,
+          "height": 720,
+          "fidelityReviewed": true,
+          "review": "Actual source inspected. Converted to WebP with original framing and aspect ratio; no semantic edit.",
+          "alt": "No.1027 실제 제품 사진",
+          "caption": "제품 페이지에서 확인한 실제 제품 사진"
+        }
+      ]
+    },
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-mesh-by-location",
+      "title": "백팩의 메쉬, 앞 포켓과 옆면과 등판에서 하는 일이 다르다",
+      "url": "https://himawari.co.kr/story/backpack-mesh-by-location.html",
+      "productId": "store-13408069845",
+      "model": "No.9291",
+      "image": "assets/story/backpack-mesh-by-location.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-20/reference-9291-front.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 7페이지의 9291 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "dimensionsCm": {
+        "width": 31,
+        "height": 45,
+        "depth": 15
+      },
+      "editorialForm": "부위별 구조 해설",
+      "coreQuestion": "같은 백팩에 쓰인 메쉬를 위치와 입구에 따라 어떻게 다르게 읽어야 할까?",
+      "bodyChars": 3042,
+      "images": [
+        {
+          "id": "backpack-mesh-by-location",
+          "model": "9291",
+          "role": "hero",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-mesh-by-location.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-20/reference-9291-front.jpg",
+          "references": [
+            "backups/story-2026-10-20/reference-9291-front.jpg",
+            "backups/story-2026-10-20/reference-9291-crop-16000.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-20/generated-3.png",
+          "prompt": "Create ONE photorealistic 1536x1024 landscape editorial product photograph of EXACT Himawari No.9291 LAVENDER backpack from first reference; second reference only clarifies construction in a DIFFERENT beige color, NEVER change target lavender. Upright on a light grey studio tabletop, frontal view slightly from left showing front and a narrow side. Entire bag, 31 cm wide x45 high x15 deep. Preserve rounded layered shape, pale lavender body, light grey zip trim and webbing, grey mesh large upper-front ZIP pocket with lavender top zipper, small lavender square accessory pouch attached on viewer right, lower opaque front zip pocket with grey crisscross cords, side compression buckle and side mesh pocket, original logo. Do not add external contents, water, measurements or unverified pockets; no floating objects, no source promotional text, no human, no collage. Soft overcast daylight showing mesh vs solid textile texture.",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260416_30/1776315459037ny7Nf_JPEG/108348427949227048_692471493.jpg",
+          "fidelityReviewed": true,
+          "review": "Compared product shape, color, pockets, handles, straps, hardware and logo with actual front and detail references. No unsupported carrying attachment added.",
+          "sha256": "fdd6545417326b44b39140ebf4103361b5140ac36f9a1aab4e05a9f012bed1d4",
+          "alt": "No.9291 라벤더 백팩의 앞 지퍼 메쉬와 옆 메쉬 포켓을 보여주는 AI 연출 사진",
+          "caption": "AI 연출: 앞 지퍼 포켓과 옆 오픈 포켓의 위치를 보여줍니다. 실제 수납 크기를 측정한 사진은 아닙니다."
+        },
+        {
+          "id": "backpack-mesh-by-location",
+          "model": "9291",
+          "role": "detail",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-mesh-by-location-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-20/reference-9291-front.jpg",
+          "references": [
+            "backups/story-2026-10-20/reference-9291-front.jpg",
+            "backups/story-2026-10-20/reference-9291-crop-16000.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-20/generated-4.png",
+          "prompt": "ONE photorealistic landscape 1536x1024 editorial detail photograph. Target the exact LAVENDER Himawari No.9291 backpack in first reference (31x45x15cm); second beige reference is construction-only. Adult East Asian woman age 35, natural navy trousers and off-white knit, standing beside a simple park bench, bag held naturally by its EXISTING top carry handle at her side, camera at hip level, framed from chest to knees. Bag dominates frame, side/front three-quarter view emphasizing the empty grey SIDE MESH OPEN pocket and side compression strap, plus part of front grey mesh ZIP pocket and lower opaque pocket. Preserve all target lavender and grey colors, shape, logo, small clipped pouch, cord and hardware placement. Hand supports actual handle only; no shoulder wearing, no filled pocket, no invented extra handle or changed mesh structure, no printed graphics or watermark. Soft diffused natural daylight. Different framing and role from catalog full front.",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260416_30/1776315459037ny7Nf_JPEG/108348427949227048_692471493.jpg",
+          "fidelityReviewed": true,
+          "review": "Compared product shape, color, pockets, handles, straps, hardware and logo with actual front and detail references. Initial blank brand patch rejected; lettering-only edit inspected and accepted.",
+          "sha256": "cf77be2b9e708b6f144172e77db9d62164e9cf93953d2a87ce747509d82cba33",
+          "alt": "성인이 No.9291 라벤더를 손잡이로 들어 옆 메쉬 포켓이 보이는 AI 사용 연출 사진",
+          "caption": "AI 사용 연출: 손잡이로 들었을 때 보이는 옆 포켓입니다. 가상의 성인 인물이며 고객 사용 사진이 아닙니다."
+        },
+        {
+          "id": "backpack-mesh-by-location",
+          "model": "9291",
+          "role": "actual-product-reference",
+          "imageKind": "reference",
+          "image": "assets/story/backpack-mesh-by-location-product.webp",
+          "reference": "backups/story-2026-10-20/reference-9291-front.jpg",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260416_30/1776315459037ny7Nf_JPEG/108348427949227048_692471493.jpg",
+          "width": 1000,
+          "height": 1000,
+          "fidelityReviewed": true,
+          "review": "Actual source inspected. Converted to WebP with original framing and aspect ratio; no semantic edit.",
+          "alt": "No.9291 실제 제품 사진",
+          "caption": "제품 페이지에서 확인한 실제 제품 사진"
+        }
+      ]
+    },
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-loose-strap-ends",
+      "title": "백팩 길이를 맞춘 뒤 남는 끈 끝, 내려놓을 때 어디에 둘까",
+      "url": "https://himawari.co.kr/story/backpack-loose-strap-ends.html",
+      "productId": "store-13326303755",
+      "model": "No.1884",
+      "image": "assets/story/backpack-loose-strap-ends.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-20/reference-1884-front.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 31페이지의 1884 대형(1884L) 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "dimensionsCm": {
+        "width": 30,
+        "height": 45,
+        "depth": 20
+      },
+      "editorialForm": "사용 동작을 따라가는 관찰",
+      "coreQuestion": "착용 길이를 바꾸지 않으면서 백팩의 남는 끈 끝을 이동과 보관 동작에서 어떻게 다룰까?",
+      "bodyChars": 3084,
+      "images": [
+        {
+          "id": "backpack-loose-strap-ends",
+          "model": "1884",
+          "role": "hero",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-loose-strap-ends.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-20/reference-1884-front.jpg",
+          "references": [
+            "backups/story-2026-10-20/reference-1884-front.jpg",
+            "backups/story-2026-10-20/reference-1884-crop-32000.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-20/generated-5-final.png",
+          "prompt": "Create ONE photorealistic landscape 1536x1024 editorial photograph of a 45-year-old East Asian man WEARING the exact BLACK Himawari No.1884 backpack (30x45x20cm), strict references attached: first target black front, second rear structure in grey (keep BLACK target color). Composition: camera FRONT THREE-QUARTER view of the MAN, framed shoulders to upper thighs. His chest, BOTH actual padded shoulder straps and their lower ends by his ribs/waist are visible. Backpack body sits normally BEHIND his back and only its side edge and original top handles peek from behind his arm/shoulder; this is an explanatory shoulder-strap-wearing photo, not a front catalog view of the bag. At the LOWER END OF EACH PADDED SHOULDER STRAP, put the exact original black rectangular adjustment buckle and plain black webbing tail extending down modestly by his hip, structurally identical to second reference. CRITICAL: no adjustment buckle or hanging webbing attached to the backpack's front, front zipper, side pocket, handle or zipper pull. Only shoulder strap lower ends have adjusters. No chest belt or waist belt, no added strap keepers. Natural grey shirt and charcoal trousers, standing still at quiet office entrance, soft daylight, authentic realistic seams and plain black fabric. No superimposed writing, no collage, no invented pockets.",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260708_79/1783479884744eVyuv_JPEG/117612733821439951_1379023069.jpg",
+          "fidelityReviewed": true,
+          "review": "First rear-quarter attempt rejected: adjuster appeared beside front zipper. Replacement front-quarter adult wearing scene directly inspected against rear product reference: both adjusters sit at padded shoulder-strap ends, with plain free webbing tails; no hardware on bag side. Front logo outside frame.",
+          "sha256": "137f451edb67c509ed03fd9a2bf723ac1feb76678054162a25c9f00f881e9566",
+          "alt": "No.1884 블랙 백팩을 멘 성인과 버클 아래 남는 끈 끝을 보여주는 AI 착용 연출 사진",
+          "caption": "AI 착용 연출: 버클 아래 남는 끈 끝을 살펴보는 장면입니다. 가상의 성인 인물이며 실측 착용이나 고객 후기가 아닙니다."
+        },
+        {
+          "id": "backpack-loose-strap-ends",
+          "model": "1884",
+          "role": "detail",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-loose-strap-ends-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-20/reference-1884-front.jpg",
+          "references": [
+            "backups/story-2026-10-20/reference-1884-front.jpg",
+            "backups/story-2026-10-20/reference-1884-crop-32000.jpg",
+            "backups/story-2026-10-20/reference-1884-crop-24000.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-20/generated-6.png",
+          "prompt": "ONE photorealistic landscape1536x1024 editorial product DETAIL photograph of the exact BLACK Himawari No.1884 backpack 30x45x20cm. Target black from first reference, rear and padded-strap construction from other GREY reference photos, never copy grey color. Backpack resting rear-side-up on a pale natural wood bench. Camera overhead-oblique close crop showing lower half of padded shoulder straps, their sewn attachment and original plain black rectangular adjustment buckles with unmodified black loose webbing ends laid naturally on bench. Webbing tail passes through original adjuster as in actual reference; show no human, no added keeper, band, carabiner, chest belt, tools or strap modifications. Preserve exact bag back panel stitching and strap structure. The detail explains which portion is adjustable versus the loose tail; crisp realistic black textile and stitch detail, soft side light, no overlaid measurements or text, no collage.",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260708_79/1783479884744eVyuv_JPEG/117612733821439951_1379023069.jpg",
+          "fidelityReviewed": true,
+          "review": "Compared product shape, color, pockets, handles, straps, hardware and logo with actual front and detail references. No unsupported carrying attachment added.",
+          "sha256": "3012f2579992ad8f2ae5ff15149eb6fdaf7683dfd1b57256a833e00e243e074c",
+          "alt": "No.1884 어깨끈 조절 버클과 남은 끈 끝을 가까이 보여주는 AI 연출 사진",
+          "caption": "AI 연출: 쿠션 어깨끈, 조절 버클, 끝부분을 구분하는 확대 장면입니다. 끈의 실제 길이를 측정한 사진은 아닙니다."
+        },
+        {
+          "id": "backpack-loose-strap-ends",
+          "model": "1884",
+          "role": "actual-product-reference",
+          "imageKind": "reference",
+          "image": "assets/story/backpack-loose-strap-ends-product.webp",
+          "reference": "backups/story-2026-10-20/reference-1884-front.jpg",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260708_79/1783479884744eVyuv_JPEG/117612733821439951_1379023069.jpg",
+          "width": 1000,
+          "height": 1000,
+          "fidelityReviewed": true,
+          "review": "Actual source inspected. Converted to WebP with original framing and aspect ratio; no semantic edit.",
+          "alt": "No.1884 실제 제품 사진",
+          "caption": "제품 페이지에서 확인한 실제 제품 사진"
+        }
+      ]
+    }
+  ],
+  "topicsReviewed": 158,
+  "overlapReview": "All158 titles, summaries and section maps compared. Full corpus extracted and searched; closest product-photo, review and strap-fit articles read. Set composition, mesh by position and loose webbing remain distinct. See editorial-review.md.",
+  "editions": {
+    "morning": {
+      "postIds": [
+        "backpack-set-option-reading",
+        "backpack-mesh-by-location",
+        "backpack-loose-strap-ends"
+      ],
+      "stage": "prepared"
+    }
+  }
+}

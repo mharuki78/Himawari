@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-set-option-reading",
+    "title": "백팩의 체스트벨트 SET 표기, 색상 옵션과 어떻게 다를까",
+    "date": "2026-10-20",
+    "summary": "같은 모델 번호라도 색상과 세트 구성은 다른 정보입니다. No.1027 체스트벨트 SET의 상품명, 실제 사진, 가방 기준 치수를 나누어 읽고 무엇을 비교해야 하는지 살펴봅니다.",
+    "description": "같은 모델 번호라도 색상과 세트 구성은 다른 정보입니다. No.1027 체스트벨트 SET의 상품명, 실제 사진, 가방 기준 치수를 나누어 읽고 무엇을 비교해야 하는지 살펴봅니다.",
+    "tags": [
+      "세트 구성",
+      "제품 정보",
+      "No.1027"
+    ],
+    "image": "../assets/story/backpack-set-option-reading.webp",
+    "imageAlt": "No.1027의 아이보리 본체와 파란 앞 포켓, 분홍 손잡이를 보여주는 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-set-option-reading.webp",
+      "../assets/story/backpack-set-option-reading-detail.webp",
+      "../assets/story/backpack-set-option-reading-product.webp"
+    ],
+    "url": "backpack-set-option-reading.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "상품 정보 비교와 해석"
+  },
+  {
+    "id": "backpack-mesh-by-location",
+    "title": "백팩의 메쉬, 앞 포켓과 옆면과 등판에서 하는 일이 다르다",
+    "date": "2026-10-20",
+    "summary": "그물 모양 원단이 보인다고 모두 같은 포켓은 아닙니다. No.9291의 실제 상세 사진으로 앞 지퍼 포켓, 옆 오픈 포켓, 등판과 어깨끈의 메쉬를 구별하고 각 위치에서 확인할 부분을 짚습니다.",
+    "description": "그물 모양 원단이 보인다고 모두 같은 포켓은 아닙니다. No.9291의 실제 상세 사진으로 앞 지퍼 포켓, 옆 오픈 포켓, 등판과 어깨끈의 메쉬를 구별하고 각 위치에서 확인할 부분을 짚습니다.",
+    "tags": [
+      "메쉬 구조",
+      "포켓",
+      "No.9291"
+    ],
+    "image": "../assets/story/backpack-mesh-by-location.webp",
+    "imageAlt": "No.9291 라벤더 백팩의 앞 지퍼 메쉬와 옆 메쉬 포켓을 보여주는 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-mesh-by-location.webp",
+      "../assets/story/backpack-mesh-by-location-detail.webp",
+      "../assets/story/backpack-mesh-by-location-product.webp"
+    ],
+    "url": "backpack-mesh-by-location.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "부위별 구조 해설"
+  },
+  {
+    "id": "backpack-loose-strap-ends",
+    "title": "백팩 길이를 맞춘 뒤 남는 끈 끝, 내려놓을 때 어디에 둘까",
+    "date": "2026-10-20",
+    "summary": "몸에 맞는 어깨끈 길이와 버클 아래 남는 끈은 따로 살필 부분입니다. No.1884의 실제 뒷면 구조를 참고해 손으로 옮길 때, 의자 곁에 둘 때, 다시 멜 때의 끈 끝을 다룹니다.",
+    "description": "몸에 맞는 어깨끈 길이와 버클 아래 남는 끈은 따로 살필 부분입니다. No.1884의 실제 뒷면 구조를 참고해 손으로 옮길 때, 의자 곁에 둘 때, 다시 멜 때의 끈 끝을 다룹니다.",
+    "tags": [
+      "어깨끈 끝",
+      "백팩 관리",
+      "No.1884"
+    ],
+    "image": "../assets/story/backpack-loose-strap-ends.webp",
+    "imageAlt": "No.1884 블랙 백팩을 멘 성인과 버클 아래 남는 끈 끝을 보여주는 AI 착용 연출 사진",
+    "images": [
+      "../assets/story/backpack-loose-strap-ends.webp",
+      "../assets/story/backpack-loose-strap-ends-detail.webp",
+      "../assets/story/backpack-loose-strap-ends-product.webp"
+    ],
+    "url": "backpack-loose-strap-ends.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "사용 동작을 따라가는 관찰"
+  },
+  {
     "id": "bag-stitch-lines-reading",
     "title": "백팩 봉제선 사진, 실 끊김과 원단 주름을 어떻게 구분할까",
     "date": "2026-10-18",
