@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
   "automationId": "himawari-3",
-  "stage": "prepared",
+  "stage": "metadata-verified",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "publicationBaselineCommit": "05ec9a021ea451eafc2643929ae864d5b112f3c0",
@@ -14,7 +14,7 @@
   },
   "posts": [
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-handle-connector",
       "title": "백팩 손잡이 두 개를 묶는 밴드, 언제 잠그고 풀까",
       "url": "https://himawari.co.kr/story/backpack-handle-connector.html",
@@ -98,10 +98,19 @@
           "alt": "No.188L 회색 백팩의 실제 정면과 측면 제품 사진",
           "caption": "실제 제품 사진: 두 손잡이와 베이지색 연결 밴드, 앞 포켓의 부품을 확인할 수 있습니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-20T23:13:28.582Z",
+        "modifiedAt": "2026-10-20T23:13:28.582Z",
+        "firstDeploymentEvidence": "backups/story-2026-10-21/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-10-21/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-10-21/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-10-21/first-deployment-history.json",
+        "articleSha256": "9925d8f8200149be3c56600d81bb9eee0441f7eaed1120a84099f0c78e8ae5a2"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-light-lining-visibility",
       "title": "밝은 안감의 백팩인데, 왜 안쪽 물건은 잘 안 보일까",
       "url": "https://himawari.co.kr/story/backpack-light-lining-visibility.html",
@@ -190,10 +199,19 @@
           "alt": "No.1089 핑크 백팩의 밝은 안감과 앞쪽 메쉬 패널을 보여주는 실제 제품 사진",
           "caption": "실제 제품 사진: 제품 상세 원본에서 내부 사진 부분을 잘랐습니다. 밝은 안감과 앞쪽 메쉬 면이 보입니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-20T23:13:28.582Z",
+        "modifiedAt": "2026-10-20T23:13:28.582Z",
+        "firstDeploymentEvidence": "backups/story-2026-10-21/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-10-21/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-10-21/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-10-21/first-deployment-history.json",
+        "articleSha256": "62ea9001cfb835d4930869e0d6e8973834bd0e29b24eef9e3ea9e28fd4595cd8"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-rear-wide-opening",
       "title": "등판에도 큰 입구가 있는 백팩, 어느 쪽부터 열어야 할까",
       "url": "https://himawari.co.kr/story/backpack-rear-wide-opening.html",
@@ -282,7 +300,16 @@
           "alt": "No.1208 아이보리 백팩의 검은 곡선 지퍼와 손잡이를 보여주는 실제 정면 제품 사진",
           "caption": "실제 제품 사진: 제품 상세 원본에서 아이보리 정면 사진을 잘랐습니다. 뒤쪽 개구부는 연결된 원본 상세 사진에서 확인할 수 있습니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-20T23:13:28.582Z",
+        "modifiedAt": "2026-10-20T23:13:28.582Z",
+        "firstDeploymentEvidence": "backups/story-2026-10-21/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-10-21/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-10-21/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-10-21/first-deployment-history.json",
+        "articleSha256": "0fc1d1b653e0a4acd45cd87a765b76f2e14d60bde1dc29321d9511b0e2abf854"
+      }
     }
   ],
   "topicsReviewed": 161,
@@ -294,7 +321,7 @@
         "backpack-light-lining-visibility",
         "backpack-rear-wide-opening"
       ],
-      "stage": "prepared"
+      "stage": "metadata-verified"
     }
   }
 }
