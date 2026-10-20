@@ -1,0 +1,300 @@
+{
+  "date": "2026-10-21",
+  "automationId": "himawari-3",
+  "stage": "prepared",
+  "expectedCount": 3,
+  "expectedGeneratedImages": 6,
+  "publicationBaselineCommit": "05ec9a021ea451eafc2643929ae864d5b112f3c0",
+  "publicationBaselineEvidence": "backups/story-2026-10-21/baseline-deployment.json",
+  "completionReceipt": "backups/story-runs/2026-10-21.deployment.json",
+  "trigger": {
+    "receivedAt": "2026-10-20T22:59:35.436Z",
+    "scheduledAt": "2026-10-21T08:00:00+09:00",
+    "edition": "morning"
+  },
+  "posts": [
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-handle-connector",
+      "title": "백팩 손잡이 두 개를 묶는 밴드, 언제 잠그고 풀까",
+      "url": "https://himawari.co.kr/story/backpack-handle-connector.html",
+      "productId": "coupang-4efcb6a5f2ae7b88",
+      "model": "No.188L",
+      "image": "assets/story/backpack-handle-connector.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-21/reference-188L-front.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 57페이지의 188L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": {
+        "width": 28,
+        "height": 39,
+        "depth": 15
+      },
+      "editorialForm": "상황별 선택과 비교",
+      "coreQuestion": "백팩의 두 손잡이를 묶는 연결 밴드는 어떤 동작에서 잠그고, 어떤 동작 전에 풀어야 할까?",
+      "bodyChars": 2683,
+      "images": [
+        {
+          "id": "backpack-handle-connector",
+          "model": "188L",
+          "role": "hero",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-handle-connector.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-21/reference-188L-front.jpg",
+          "references": [
+            "backups/story-2026-10-21/reference-188L-front.jpg",
+            "backups/story-2026-10-21/reference-188L-crop-4600.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-21/generated-1.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-58aa1001-2996-4cd8-92a0-96040af74127.png",
+          "prompt": "Use case: photorealistic-natural. Create one landscape 1536x1024 editorial photograph. References are actual Himawari No.188L: image1 controls GREY target color, complete bag shape and all hardware; image2 is only the handle connector construction reference in another color, do not use its pink color. Actual external dimensions width28 height39 depth15 cm. A fictional Korean woman about60, in a navy cotton jacket and cream trousers, stands beside a quiet bookshop counter holding the grey backpack by BOTH of its joined grey top handles in one hand at her side. Crop from chest to mid-shin, front three-quarter view, bag occupies about half image height, hand and connector clearly visible, no backpack wearing. Keep exact grey rectangular box shape, two grey handles each with silver rectangular attachment rings and beige stitched X tabs, small beige snap band joining the TWO handles at their center. Front grey flap pouch with two beige straps, silver round snaps and belt buckles, tiny white rectangular vintage Himawari patch/red detail from image1. Main opening CLOSED, beige twin zipper pulls, side pocket and grey padded shoulder straps behind as original. Natural soft window light, honest fabric texture, no text overlay, no fake review. Never lift by just the small snap band, hand wraps both handles. No extra strap, no chest belt, no invented product feature.",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4efcb6a5f2ae7b88/main-KZMCgZUTl375uHZt7Ao3P1nrh1NIB9.jpg",
+          "fidelityReviewed": true,
+          "sha256": "67b076ea4f8118fa040b5d601416dfc72a159d56462f2e5073db870186eaa5af",
+          "review": "Directly compared with actual references: No.188L twin handles/snap band/rectangular rings/beige tabs/front flap; No.1089 pink perimeter/light plain lining/front horizontal-zip mesh; No.1208 black rear panel/lower U opening/ivory sides/black shoulder straps. Staging objects and AI scenes are labeled; actual crops preserve original pixels and exclude unrelated graphic panels.",
+          "alt": "가상의 성인이 No.188L 회색 백팩의 두 손잡이를 함께 잡고 든 AI 사용 연출 사진",
+          "caption": "AI 사용 연출: 가상의 성인이 두 손잡이를 함께 잡은 장면입니다. 실제 고객 사진이나 실측 착용 사진은 아닙니다."
+        },
+        {
+          "id": "backpack-handle-connector",
+          "model": "188L",
+          "role": "detail",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-handle-connector-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-21/reference-188L-front.jpg",
+          "references": [
+            "backups/story-2026-10-21/reference-188L-front.jpg",
+            "backups/story-2026-10-21/reference-188L-crop-4600.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-21/generated-2.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-0dfd20f7-3b0e-4e94-92b8-8a27a27c60e3.png",
+          "prompt": "Use case: product-mockup. One landscape1536x1024 macro editorial product photograph of the TOP of exactly Himawari No.188L GREY backpack on a pale wood desk. Reference1 determines grey color, original complete shape, rings, beige zipper pulls. Reference2 is construction-only macro reference for the beige snap connector around both grey handles; use GREY not pink. Dimensions28x39x15cm external. Elevated oblique close framing focuses on the two fabric handles and beige snap connector fastened around their midpoints. Include some upper grey body and beige tabs with X stitching and silver rectangular rings, main zip closed, front logo may be outside crop. Exactly one narrow beige band with silver circular snap as reference; do not add a padded handle wrap, magnet, lock, extra clasp or fastening point. Soft directional morning light shows the band and independent main zipper as different parts. No hands needed, no loose cargo, no text, no collage, accurate construction and proportions.",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4efcb6a5f2ae7b88/main-KZMCgZUTl375uHZt7Ao3P1nrh1NIB9.jpg",
+          "fidelityReviewed": true,
+          "sha256": "1bba6aff2abb27ae383891bf80e24fbba15e38e7fe46b41841b6c8786dfea971",
+          "review": "Directly compared with actual references: No.188L twin handles/snap band/rectangular rings/beige tabs/front flap; No.1089 pink perimeter/light plain lining/front horizontal-zip mesh; No.1208 black rear panel/lower U opening/ivory sides/black shoulder straps. Staging objects and AI scenes are labeled; actual crops preserve original pixels and exclude unrelated graphic panels.",
+          "alt": "No.188L의 회색 손잡이와 베이지색 스냅 연결 밴드를 가까이 보여주는 AI 연출 사진",
+          "caption": "AI 연출: 손잡이를 모으는 스냅 밴드와 본체 입구의 지퍼를 구분해 보여줍니다."
+        },
+        {
+          "id": "backpack-handle-connector",
+          "model": "188L",
+          "role": "reference",
+          "imageKind": "reference",
+          "image": "assets/story/backpack-handle-connector-product.webp",
+          "width": 1000,
+          "height": 1000,
+          "reference": "backups/story-2026-10-21/reference-188L-front.jpg",
+          "originalSource": "backups/story-2026-10-21/reference-188L-front.jpg",
+          "articleSource": "backups/story-2026-10-21/reference-188L-article.jpg",
+          "crop": null,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4efcb6a5f2ae7b88/main-KZMCgZUTl375uHZt7Ao3P1nrh1NIB9.jpg",
+          "fidelityReviewed": true,
+          "sha256": "f98a88424500a4bb2ce966c5c1f19fbe97e2cc8c8b867a9e826ec90baea33093",
+          "review": "Directly compared with actual references: No.188L twin handles/snap band/rectangular rings/beige tabs/front flap; No.1089 pink perimeter/light plain lining/front horizontal-zip mesh; No.1208 black rear panel/lower U opening/ivory sides/black shoulder straps. Staging objects and AI scenes are labeled; actual crops preserve original pixels and exclude unrelated graphic panels.",
+          "alt": "No.188L 회색 백팩의 실제 정면과 측면 제품 사진",
+          "caption": "실제 제품 사진: 두 손잡이와 베이지색 연결 밴드, 앞 포켓의 부품을 확인할 수 있습니다."
+        }
+      ]
+    },
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-light-lining-visibility",
+      "title": "밝은 안감의 백팩인데, 왜 안쪽 물건은 잘 안 보일까",
+      "url": "https://himawari.co.kr/story/backpack-light-lining-visibility.html",
+      "productId": "store-13685218117",
+      "model": "No.1089",
+      "image": "assets/story/backpack-light-lining-visibility.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-21/reference-1089-front.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 12페이지의 1089 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": {
+        "width": 29.5,
+        "height": 42,
+        "depth": 12
+      },
+      "editorialForm": "관찰과 원리 해설",
+      "coreQuestion": "백팩 안감이 밝다는 사실만으로 수납부 안의 물건을 쉽게 찾을 수 있다고 판단해도 될까?",
+      "bodyChars": 2705,
+      "images": [
+        {
+          "id": "backpack-light-lining-visibility",
+          "model": "1089",
+          "role": "hero",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-light-lining-visibility.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-21/reference-1089-front.jpg",
+          "references": [
+            "backups/story-2026-10-21/reference-1089-front.jpg",
+            "backups/story-2026-10-21/reference-1089-crop-9150.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-21/generated-3.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-6de03396-42c3-44e8-9df6-2ad207053678.png",
+          "prompt": "Use case: product-mockup. One landscape1536x1024 editorial photograph explaining viewing into the exact pink Himawari No.1089 bag. Reference1 controls exterior pink, shape; reference2 controls exact OPEN interior. External29.5wide42high12deep cm. Place bag on a warm grey table, opened towards camera as in reference2 with front panel folded forward and the very light grey silvery lining visible. Camera about45degrees above front, bag fills most of frame; one small plain charcoal fabric pouch rests at bottom as a staging prop only. Keep main back wall plain, no invented laptop sleeve, divider or inner pocket. Front folded flap has the actual light grey mesh panel and single horizontal mesh-pocket zipper near its lower edge. Pink rounded perimeter, pink side drawstring pockets with WHITE cords exactly as reference. Diffuse window light from one side leaves a modest natural shadow at the base, no blacked-out dramatic cavity. Preserve proportions and existing materials. No hands, no text overlay or diagram, no duplicated objects, no invented organizer or test marks. Photograph is an AI explanatory staging, not a fit/capacity test.",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260728_177/1785204907093Rb8GH_JPEG/32449486153229195_959631206.jpg",
+          "fidelityReviewed": true,
+          "sha256": "10feafa54ffa5ac8018733ad8c18fd136bfb75a4a5215eb9275384eeb26dfa0a",
+          "review": "Directly compared with actual references: No.188L twin handles/snap band/rectangular rings/beige tabs/front flap; No.1089 pink perimeter/light plain lining/front horizontal-zip mesh; No.1208 black rear panel/lower U opening/ivory sides/black shoulder straps. Staging objects and AI scenes are labeled; actual crops preserve original pixels and exclude unrelated graphic panels.",
+          "alt": "No.1089 핑크 백팩의 밝은 안감과 짙은 연출용 파우치를 보여주는 AI 연출 사진",
+          "caption": "AI 연출: 밝은 안감과 어두운 물건의 색 차이를 보여줍니다. 파우치는 연출 소품이며 구성품이나 수납 시험 결과가 아닙니다."
+        },
+        {
+          "id": "backpack-light-lining-visibility",
+          "model": "1089",
+          "role": "detail",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-light-lining-visibility-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-21/reference-1089-front.jpg",
+          "references": [
+            "backups/story-2026-10-21/reference-1089-front.jpg",
+            "backups/story-2026-10-21/reference-1089-crop-9150.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-21/generated-4.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-a29f6cb1-33ca-4ef1-b70a-48348c251fae.png",
+          "prompt": "Use case: product-mockup. One landscape1536x1024 close editorial detail photograph inside exactly the pink Himawari No.1089 shown in the two references. Actual external29.5x42x12 cm. Main mouth open, front mesh flap folded down; focus on junction of pale grey silvery polyester side lining, pink zipper rim, and base. Diagonal closer camera view from left upper front instead of full catalogue view. A small closed plain charcoal soft pouch and a small flat pale grey fabric pouch sit near base, both just staging props; one partly overlaps the other to explain occlusion, no dimensional claims. Natural side light gives gentle shadow along lip, light-grey lining remains accurate and empty backwall plain. Preserve actual pink exterior, white cords on pink side pockets if visible, light mesh with horizontal zipper at folded front. Do not add inner compartments, laptop sleeve, transparent panel, lamps, arrows, typography, extra zipper or human. True photoreal fabric detail, not advertising claims.",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260728_177/1785204907093Rb8GH_JPEG/32449486153229195_959631206.jpg",
+          "fidelityReviewed": true,
+          "sha256": "beef83224ce19610e96ab44bde0313ab10976239fbbbc32015f0fa2ea39a7157",
+          "review": "Directly compared with actual references: No.188L twin handles/snap band/rectangular rings/beige tabs/front flap; No.1089 pink perimeter/light plain lining/front horizontal-zip mesh; No.1208 black rear panel/lower U opening/ivory sides/black shoulder straps. Staging objects and AI scenes are labeled; actual crops preserve original pixels and exclude unrelated graphic panels.",
+          "alt": "No.1089 밝은 안감 안에서 두 연출용 파우치가 일부 겹친 모습을 보여주는 AI 연출 사진",
+          "caption": "AI 연출: 안감 색이 밝아도 물건끼리 겹치면 가려지는 부분이 생깁니다. 두 파우치는 설명을 위한 소품입니다."
+        },
+        {
+          "id": "backpack-light-lining-visibility",
+          "model": "1089",
+          "role": "reference",
+          "imageKind": "reference",
+          "image": "assets/story/backpack-light-lining-visibility-product.webp",
+          "width": 900,
+          "height": 885,
+          "reference": "backups/story-2026-10-21/reference-1089-details.jpg",
+          "originalSource": "backups/story-2026-10-21/reference-1089-details.jpg",
+          "articleSource": "backups/story-2026-10-21/reference-1089-article.jpg",
+          "crop": [
+            0,
+            9150,
+            900,
+            10035
+          ],
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/fea6bfb1-27f1-4f8c-b87c-be7b4102991a/gallery-1-7kjoWlZbWlmy1ObSgkDTEBTF71QdUH.jpg",
+          "fidelityReviewed": true,
+          "sha256": "3911e890808abe03bae6a65e5e2bd1c28921db889b819623adc04147dd4358e0",
+          "review": "Directly compared with actual references: No.188L twin handles/snap band/rectangular rings/beige tabs/front flap; No.1089 pink perimeter/light plain lining/front horizontal-zip mesh; No.1208 black rear panel/lower U opening/ivory sides/black shoulder straps. Staging objects and AI scenes are labeled; actual crops preserve original pixels and exclude unrelated graphic panels.",
+          "alt": "No.1089 핑크 백팩의 밝은 안감과 앞쪽 메쉬 패널을 보여주는 실제 제품 사진",
+          "caption": "실제 제품 사진: 제품 상세 원본에서 내부 사진 부분을 잘랐습니다. 밝은 안감과 앞쪽 메쉬 면이 보입니다."
+        }
+      ]
+    },
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-rear-wide-opening",
+      "title": "등판에도 큰 입구가 있는 백팩, 어느 쪽부터 열어야 할까",
+      "url": "https://himawari.co.kr/story/backpack-rear-wide-opening.html",
+      "productId": "store-13326577567",
+      "model": "No.1208",
+      "image": "assets/story/backpack-rear-wide-opening.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-21/reference-1208-front.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 30페이지의 1208 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": {
+        "width": 29,
+        "height": 40,
+        "depth": 17
+      },
+      "editorialForm": "사용 장면을 따른 동작 해설",
+      "coreQuestion": "상단 입구와 등판 쪽 넓은 개구부가 있는 백팩에서 사용자가 구별하고 확인해야 할 개폐 동작은 무엇일까?",
+      "bodyChars": 2792,
+      "images": [
+        {
+          "id": "backpack-rear-wide-opening",
+          "model": "1208",
+          "role": "hero",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-rear-wide-opening.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-21/reference-1208-crop-28000.jpg",
+          "references": [
+            "backups/story-2026-10-21/reference-1208-crop-28000.jpg",
+            "backups/story-2026-10-21/reference-1208-crop-21200.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-21/generated-5.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-8ca9e7b2-4f9c-4fc3-93f3-dbf2179b082a.png",
+          "prompt": "Use case: product-mockup. One landscape1536x1024 editorial photograph of exactly the IVORY Himawari No.1208 backpack shown in reference1. Reference2 supplies rear wide opening construction only (grey version), target IVORY with BLACK rear panel. External29wide40high17deep cm. Set backpack on stable wooden table, rear facing camera at slight three-quarter angle. Main top mouth and rear lower opening BOTH CLOSED. Camera at bag height, full bag prominent with lower U-shaped rear zipper clearly visible, black padded shoulder straps gently laid outward so they do not hide rear panel. Match exact black rear panel, U-shaped lower opening zipper, black padded shoulder straps with upper stroller-style buckles and lower adjustment buckles, ivory side fabric and twin ivory rounded top handles with black connector band. No horizontal luggage trolley band, no chest strap, no invented rear small pocket or USB port. Real original structural placement. Quiet entryway softly out of focus, no people/cargo/text overlay, no collage. Precise product geometry and material texture, clean practical photograph explaining the second entrance.",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260327_177/17745877470621bKeS_JPEG/3728478673959279_1633863399.jpg",
+          "fidelityReviewed": true,
+          "sha256": "d8d48ed1074b47cf39f91701a54b184c19567b410831735695f38515a8550835",
+          "review": "Directly compared with actual references: No.188L twin handles/snap band/rectangular rings/beige tabs/front flap; No.1089 pink perimeter/light plain lining/front horizontal-zip mesh; No.1208 black rear panel/lower U opening/ivory sides/black shoulder straps. Staging objects and AI scenes are labeled; actual crops preserve original pixels and exclude unrelated graphic panels.",
+          "alt": "No.1208 아이보리 백팩의 검은 등판과 닫힌 뒤쪽 넓은 지퍼를 보여주는 AI 연출 사진",
+          "caption": "AI 연출: 위쪽과 뒤쪽 입구가 모두 닫힌 상태의 등판을 보여줍니다. 개구부의 실제 치수를 측정한 사진은 아닙니다."
+        },
+        {
+          "id": "backpack-rear-wide-opening",
+          "model": "1208",
+          "role": "detail",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-rear-wide-opening-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-21/reference-1208-crop-28000.jpg",
+          "references": [
+            "backups/story-2026-10-21/reference-1208-crop-28000.jpg",
+            "backups/story-2026-10-21/reference-1208-crop-21200.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-21/generated-6.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-5e23fadf-1fd0-4a09-96a6-7897a2999da4.png",
+          "prompt": "Use case: photorealistic-natural. One landscape1536x1024 close explanatory photograph of the lower REAR wide opening on exact IVORY Himawari No.1208. External29x40x17cm. First reference exact ivory exterior/black padded rear/straps. Second reference actual open REAR construction at bottom of image: broad U-zipper in black backpanel, lower flap folds forward/down; do NOT confuse with top main mouth in upper image. Camera slightly above rear lower opening, bag supported on stable table. Rear wide opening halfway unzipped and flap gently lowered by one adult hand, other hand stabilizes ivory side; top main mouth remains CLOSED (may be partly out of frame). Inside visible only a plain folded light-grey cloth, no laptop or stuffing demonstration. Preserve black back surface and original grey inner lining, ivory side, black straps and actual zipper path. Exactly one lower rear flap as source, no extra compartments, no luggage band, no mesh added, no front horn-shaped zips on rear, no lock or USB port. Close composition explains opening direction and support hand, not a measured fit test. Natural soft daylight and actual texture, no added writing.",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260327_177/17745877470621bKeS_JPEG/3728478673959279_1633863399.jpg",
+          "fidelityReviewed": true,
+          "sha256": "543082819743ed44a36ba552c0ae049175c5ee19f0c360570f91fee19c340da5",
+          "review": "Directly compared with actual references: No.188L twin handles/snap band/rectangular rings/beige tabs/front flap; No.1089 pink perimeter/light plain lining/front horizontal-zip mesh; No.1208 black rear panel/lower U opening/ivory sides/black shoulder straps. Staging objects and AI scenes are labeled; actual crops preserve original pixels and exclude unrelated graphic panels.",
+          "alt": "No.1208 등판 아래 개구부를 열고 본체를 받치는 손을 보여주는 AI 사용 연출 사진",
+          "caption": "AI 사용 연출: 본체를 받치고 뒤쪽 패널을 펼치는 동작입니다. 안의 천은 설명용 소품이며 실제 구성품이 아닙니다."
+        },
+        {
+          "id": "backpack-rear-wide-opening",
+          "model": "1208",
+          "role": "reference",
+          "imageKind": "reference",
+          "image": "assets/story/backpack-rear-wide-opening-product.webp",
+          "width": 900,
+          "height": 900,
+          "reference": "backups/story-2026-10-21/reference-1208-details.jpg",
+          "originalSource": "backups/story-2026-10-21/reference-1208-details.jpg",
+          "articleSource": "backups/story-2026-10-21/reference-1208-article.jpg",
+          "crop": [
+            0,
+            28000,
+            900,
+            28900
+          ],
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/91ba8ffd-d532-480f-8511-76109638337d/gallery-1-Vk80nSsNMlkksYxW3V3ex3ANEy0sYj.jpg",
+          "fidelityReviewed": true,
+          "sha256": "3f8186325c029c018788319ce209faba59175fd44745b2ee4d43baa6b8b70cbf",
+          "review": "Directly compared with actual references: No.188L twin handles/snap band/rectangular rings/beige tabs/front flap; No.1089 pink perimeter/light plain lining/front horizontal-zip mesh; No.1208 black rear panel/lower U opening/ivory sides/black shoulder straps. Staging objects and AI scenes are labeled; actual crops preserve original pixels and exclude unrelated graphic panels.",
+          "alt": "No.1208 아이보리 백팩의 검은 곡선 지퍼와 손잡이를 보여주는 실제 정면 제품 사진",
+          "caption": "실제 제품 사진: 제품 상세 원본에서 아이보리 정면 사진을 잘랐습니다. 뒤쪽 개구부는 연결된 원본 상세 사진에서 확인할 수 있습니다."
+        }
+      ]
+    }
+  ],
+  "topicsReviewed": 161,
+  "overlapReview": "All161 titles, summaries and section maps compared. Full corpus extracted and searched; closest handle-obstruction, lining-care and bag-orientation bodies read. Paired-handle connector, lining visibility and rear wide opening are distinct. See editorial-review.md.",
+  "editions": {
+    "morning": {
+      "postIds": [
+        "backpack-handle-connector",
+        "backpack-light-lining-visibility",
+        "backpack-rear-wide-opening"
+      ],
+      "stage": "prepared"
+    }
+  }
+}

@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-handle-connector",
+    "title": "백팩 손잡이 두 개를 묶는 밴드, 언제 잠그고 풀까",
+    "date": "2026-10-21",
+    "summary": "손잡이를 묶는 작은 밴드는 주 지퍼와 역할이 다릅니다. No.188L의 연결 밴드를 보며 손에 들 때와 입구를 열 때의 차이를 살펴봅니다.",
+    "description": "손잡이를 묶는 작은 밴드는 주 지퍼와 역할이 다릅니다. No.188L의 연결 밴드를 보며 손에 들 때와 입구를 열 때의 차이를 살펴봅니다.",
+    "tags": [
+      "가방 구조",
+      "손잡이",
+      "No.188L"
+    ],
+    "image": "../assets/story/backpack-handle-connector.webp",
+    "imageAlt": "가상의 성인이 No.188L 회색 백팩의 두 손잡이를 함께 잡고 든 AI 사용 연출 사진",
+    "images": [
+      "../assets/story/backpack-handle-connector.webp",
+      "../assets/story/backpack-handle-connector-detail.webp",
+      "../assets/story/backpack-handle-connector-product.webp"
+    ],
+    "url": "backpack-handle-connector.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "상황별 선택과 비교"
+  },
+  {
+    "id": "backpack-light-lining-visibility",
+    "title": "밝은 안감의 백팩인데, 왜 안쪽 물건은 잘 안 보일까",
+    "date": "2026-10-21",
+    "summary": "안감이 밝아도 입구의 그림자와 물건의 겹침은 남습니다. No.1089의 실제 내부 사진으로 안감 색과 수납 시야를 나누어 살펴봅니다.",
+    "description": "안감이 밝아도 입구의 그림자와 물건의 겹침은 남습니다. No.1089의 실제 내부 사진으로 안감 색과 수납 시야를 나누어 살펴봅니다.",
+    "tags": [
+      "안감",
+      "수납 시야",
+      "No.1089"
+    ],
+    "image": "../assets/story/backpack-light-lining-visibility.webp",
+    "imageAlt": "No.1089 핑크 백팩의 밝은 안감과 짙은 연출용 파우치를 보여주는 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-light-lining-visibility.webp",
+      "../assets/story/backpack-light-lining-visibility-detail.webp",
+      "../assets/story/backpack-light-lining-visibility-product.webp"
+    ],
+    "url": "backpack-light-lining-visibility.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "관찰과 원리 해설"
+  },
+  {
+    "id": "backpack-rear-wide-opening",
+    "title": "등판에도 큰 입구가 있는 백팩, 어느 쪽부터 열어야 할까",
+    "date": "2026-10-21",
+    "summary": "윗입구와 등판 아래 개구부가 함께 보이는 No.1208. 작은 뒷포켓과 넓은 입구를 구별하고, 두 곳을 열고 닫는 순서를 살펴봅니다.",
+    "description": "윗입구와 등판 아래 개구부가 함께 보이는 No.1208. 작은 뒷포켓과 넓은 입구를 구별하고, 두 곳을 열고 닫는 순서를 살펴봅니다.",
+    "tags": [
+      "가방 입구",
+      "등판",
+      "No.1208"
+    ],
+    "image": "../assets/story/backpack-rear-wide-opening.webp",
+    "imageAlt": "No.1208 아이보리 백팩의 검은 등판과 닫힌 뒤쪽 넓은 지퍼를 보여주는 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-rear-wide-opening.webp",
+      "../assets/story/backpack-rear-wide-opening-detail.webp",
+      "../assets/story/backpack-rear-wide-opening-product.webp"
+    ],
+    "url": "backpack-rear-wide-opening.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "사용 장면을 따른 동작 해설"
+  },
+  {
     "id": "backpack-set-option-reading",
     "title": "백팩의 체스트벨트 SET 표기, 색상 옵션과 어떻게 다를까",
     "date": "2026-10-20",
