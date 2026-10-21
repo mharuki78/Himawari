@@ -1,0 +1,284 @@
+{
+  "date": "2026-10-22",
+  "automationId": "himawari-3",
+  "stage": "prepared",
+  "expectedCount": 3,
+  "expectedGeneratedImages": 6,
+  "publicationBaselineCommit": "cd183bf2e9e53f9b6a905e8a08b7e446a060fa5a",
+  "publicationBaselineEvidence": "backups/story-2026-10-22/baseline-deployment.json",
+  "completionReceipt": "backups/story-runs/2026-10-22.deployment.json",
+  "trigger": {
+    "receivedAt": "2026-10-21T22:58:52.904Z",
+    "scheduledAt": "2026-10-22T08:00:00+09:00",
+    "edition": "morning"
+  },
+  "posts": [
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-dimensions-not-litres",
+      "title": "백팩 크기를 곱하면 리터 용량이 될까",
+      "url": "https://himawari.co.kr/story/backpack-dimensions-not-litres.html",
+      "productId": "coupang-11bd051a162f120b",
+      "model": "No.9004",
+      "image": "assets/story/backpack-dimensions-not-litres.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-22/reference-1-front.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 49페이지의 9004 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": {
+        "width": 28,
+        "height": 40,
+        "depth": 17
+      },
+      "editorialForm": "계산 예시를 따른 해설",
+      "coreQuestion": "백팩의 외부 치수를 곱해 리터로 환산한 수치를 제품의 수납 용량으로 써도 될까?",
+      "bodyChars": 2945,
+      "images": [
+        {
+          "id": "backpack-dimensions-not-litres",
+          "model": "9004",
+          "role": "hero",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-dimensions-not-litres.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-22/reference-1-front.jpg",
+          "references": [
+            "backups/story-2026-10-22/reference-1-front.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-22/generated-1.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-f2e94d0b-59cd-4d88-878d-3644e6e956bc.png",
+          "prompt": "Use case: photorealistic-natural. Create ONE landscape1536x1024 editorial photograph of the exact Himawari No.9004 LAVENDER CORAL backpack in the reference. External width28 height40 depth17cm. A fictional Korean man around45 wearing a simple charcoal cotton jacket holds the backpack by BOTH lavender top handles at his side beside a pale oak shop counter. Crop chest to knees, front three-quarter view, bag fills60% of image height and full silhouette, rounded upper corners and projecting coral front pocket remain clear. Preserve lavender rectangular body, coral wide horizontal front zip pouch, narrow beige base trim, beige diamond applique with lavender n-shaped motif, small white Himawari brand patch low right on coral pocket, beige zipper pulls with flower motif, beige connector around two lavender handles, original lavender padded shoulder straps behind. Main zipper closed. Exact original construction, fabric texture and proportions; no added rivets, no extra buckles or seams. Hand holds actual handles, never just connector. Natural side daylight, no text overlays, no customer/test claims, no stress-test weights or diagrams.",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-11bd051a162f120b/main-5wbrlVTXbbG7fKLHymvuoqynDsrcy9.jpg",
+          "fidelityReviewed": true,
+          "review": "Direct comparison of generated output with the actual selected product photograph: original colors, silhouette, pockets, handles, zipper paths, buckle positions and visible logo locations retained. 9004 staged adult is fictional; all captions distinguish AI staging and actual source photographs.",
+          "sha256": "f96d7f0733e45c52ab077e3a40df45e1aa17e132cbd5cb5b18e6e88fa529c65b",
+          "alt": "가상의 성인이 No.9004 라벤더 코랄 백팩을 손에 든 AI 사용 연출 사진",
+          "caption": "AI 사용 연출: 가상의 성인이 가방을 든 장면입니다. 실제 고객 사진이나 용량 측정 사진은 아닙니다."
+        },
+        {
+          "id": "backpack-dimensions-not-litres",
+          "model": "9004",
+          "role": "detail",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-dimensions-not-litres-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-22/reference-1-front.jpg",
+          "references": [
+            "backups/story-2026-10-22/reference-1-front.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-22/generated-2.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-154a84ba-24da-43b0-85ea-d252c116e898.png",
+          "prompt": "Use case: product-mockup. ONE landscape1536x1024 editorial detail photograph of exactly referenced Himawari No.9004 LAVENDER CORAL backpack, external28wide40high17deepcm. Bag upright supported on a plain pale oak table. Camera low front-right three-quarter close view focusing the projecting coral FRONT POCKET, the narrow beige base trim, rounded lower corners and lavender side panel; upper handles partly outside crop. This view explains that the actual curved bag and projecting pocket differ from a perfect solid rectangular box. Match exact lavender woven cloth, coral front horizontal zip pocket, beige flower zipper pulls, small white Himawari patch at lower right front, lavender side open pocket, original seam lines. All zippers closed. NO measuring tape, rulers, scales, dimension arrows, cubes, stuffing, hands, added features, typography or overlays. Soft side daylight with clear honest product contours; preserve exact reference shape and realistic proportions.",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-11bd051a162f120b/main-5wbrlVTXbbG7fKLHymvuoqynDsrcy9.jpg",
+          "fidelityReviewed": true,
+          "review": "Direct comparison of generated output with the actual selected product photograph: original colors, silhouette, pockets, handles, zipper paths, buckle positions and visible logo locations retained. 9004 staged adult is fictional; all captions distinguish AI staging and actual source photographs.",
+          "sha256": "f3d8362c853a67c2bbe2e60bf41a041e23ba03f3cdca678d714b2475640896a9",
+          "alt": "No.9004 앞 포켓의 돌출과 둥근 모서리를 가까이 보여주는 AI 연출 사진",
+          "caption": "AI 연출: 앞 포켓의 돌출과 몸체의 곡선을 보여줍니다. 내부 용량을 측정한 장면은 아닙니다."
+        },
+        {
+          "id": "backpack-dimensions-not-litres",
+          "model": "9004",
+          "role": "reference",
+          "imageKind": "reference",
+          "image": "assets/story/backpack-dimensions-not-litres-product.webp",
+          "width": 1000,
+          "height": 1000,
+          "reference": "backups/story-2026-10-22/reference-1-front.jpg",
+          "originalSource": "backups/story-2026-10-22/reference-1-front.jpg",
+          "articleSource": "backups/story-2026-10-22/reference-1-front.jpg",
+          "crop": null,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-11bd051a162f120b/main-5wbrlVTXbbG7fKLHymvuoqynDsrcy9.jpg",
+          "fidelityReviewed": true,
+          "review": "Actual original product photograph downloaded from current public catalog; full original pixels preserved without altering product or depicted person.",
+          "sha256": "2f44679786d1cad337366ac3a03ebdcf0e9aef8c20dd0536d06fd8f0573c697a",
+          "alt": "No.9004 라벤더 코랄 백팩의 실제 제품 정면 사진",
+          "caption": "실제 제품 사진: 외부 윤곽과 코랄색 앞 포켓이 보입니다. 용량 수치는 제품 정보에 별도 기재되어 있지 않습니다."
+        }
+      ]
+    },
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-side-buckle-opening",
+      "title": "백팩 옆 버클, 가방을 열 때도 잠가 둘까",
+      "url": "https://himawari.co.kr/story/backpack-side-buckle-opening.html",
+      "productId": "coupang-4861cd80cf7fce0c",
+      "model": "No.9290",
+      "image": "assets/story/backpack-side-buckle-opening.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-22/reference-2-front.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 42페이지의 9290 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": {
+        "width": 30,
+        "height": 42,
+        "depth": 18
+      },
+      "editorialForm": "개방 범위에 따른 상황 비교",
+      "coreQuestion": "백팩 옆면의 버클과 벨트가 지퍼 개방 경로에 놓일 때, 어떤 순서로 열고 닫아야 할까?",
+      "bodyChars": 2990,
+      "images": [
+        {
+          "id": "backpack-side-buckle-opening",
+          "model": "9290",
+          "role": "hero",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-side-buckle-opening.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-22/reference-2-front.jpg",
+          "references": [
+            "backups/story-2026-10-22/reference-2-front.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-22/generated-3.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-2f31cb62-722a-43a2-83d4-000909425887.png",
+          "prompt": "Use case: product-mockup. ONE landscape1536x1024 editorial photo of EXACT referenced Himawari No.9290 BLACK backpack, external30wide42high18deepcm, supported upright on a plain grey table with no hands. Camera front three-quarter angle slightly elevated enough to distinguish the TWO curved upper zipper tracks and the UPPER black side webbing with WHITE side-release buckle; show front and left side clearly. Preserve white rectangular Himawari patch on upper black front, white horizontal zip on projecting rectangular black front pocket, black fabric top handle and black padded shoulder straps, upper white side buckles and separate LOWER white ladder-style adjustment loops, black side open pockets exactly as reference. All zippers and upper side buckles CLOSED, original geometry and proportions. Natural indoor daylight, warm off-white wall, no luggage trolley band, chest belt, added compartments or text. Do not use lower adjustment loop as a clip; exact reference hardware.",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4861cd80cf7fce0c/main-yXSjjIlJ9Fo5IBOAANpwjCu50SK8rJ.jpg",
+          "fidelityReviewed": true,
+          "review": "Direct comparison of generated output with the actual selected product photograph: original colors, silhouette, pockets, handles, zipper paths, buckle positions and visible logo locations retained. 9004 staged adult is fictional; all captions distinguish AI staging and actual source photographs.",
+          "sha256": "ec0344a9f45cd5231574ce9c7de9cfc05e84ebd3645c6e4c0c44f75f2c1c417c",
+          "alt": "No.9290 검정 백팩의 윗지퍼와 흰색 옆 버클을 함께 보여주는 AI 연출 사진",
+          "caption": "AI 연출: 윗부분 지퍼와 옆면 벨트가 놓인 위치를 함께 살펴봅니다."
+        },
+        {
+          "id": "backpack-side-buckle-opening",
+          "model": "9290",
+          "role": "detail",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-side-buckle-opening-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-22/reference-2-front.jpg",
+          "references": [
+            "backups/story-2026-10-22/reference-2-front.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-22/generated-4.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-a646dba1-e898-492c-8bdb-03ae36b8adbb.png",
+          "prompt": "Use case: product-mockup. ONE landscape1536x1024 close editorial product photograph of the UPPER SIDE of exact BLACK Himawari No.9290 backpack from reference, external30x42x18cm. Focus original WHITE side-release buckle fastened on short BLACK horizontal side webbing, adjacent black upper curved zipper lines, upper edge of black side pocket; front white zipper only partially at frame edge. Camera close and oblique from front-left side, not the frontal whole-bag hero. Product rests on table. Exact original placement, colors, shape and proportions; do not substitute LOWER white rectangular adjuster for upper white release buckle. Preserve original black woven cloth and white plastic. Gentle neutral light, no person, no hands opening it, no invented loose halves or fastening points, no extra straps, labels, arrows, text or misleading demonstration. This is an explanatory close view, all components closed as original.",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4861cd80cf7fce0c/main-yXSjjIlJ9Fo5IBOAANpwjCu50SK8rJ.jpg",
+          "fidelityReviewed": true,
+          "review": "Direct comparison of generated output with the actual selected product photograph: original colors, silhouette, pockets, handles, zipper paths, buckle positions and visible logo locations retained. 9004 staged adult is fictional; all captions distinguish AI staging and actual source photographs.",
+          "sha256": "c9d9806baf83a3bec5949b950088023484310dfe333e09bb72b0c3e400d0913b",
+          "alt": "No.9290 위쪽 사이드 버클과 곡선 지퍼 선을 가까이 보여주는 AI 연출 사진",
+          "caption": "AI 연출: 위쪽의 결합 버클과 그 옆을 지나는 지퍼 선을 보여줍니다. 부품의 성능 시험 사진은 아닙니다."
+        },
+        {
+          "id": "backpack-side-buckle-opening",
+          "model": "9290",
+          "role": "reference",
+          "imageKind": "reference",
+          "image": "assets/story/backpack-side-buckle-opening-product.webp",
+          "width": 1000,
+          "height": 1000,
+          "reference": "backups/story-2026-10-22/reference-2-front.jpg",
+          "originalSource": "backups/story-2026-10-22/reference-2-front.jpg",
+          "articleSource": "backups/story-2026-10-22/reference-2-front.jpg",
+          "crop": null,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4861cd80cf7fce0c/main-yXSjjIlJ9Fo5IBOAANpwjCu50SK8rJ.jpg",
+          "fidelityReviewed": true,
+          "review": "Actual original product photograph downloaded from current public catalog; full original pixels preserved without altering product or depicted person.",
+          "sha256": "33ca6be4d4d211739fc0061bc25a7d67ad4e8fd1079255fd3953d303dba83efd",
+          "alt": "No.9290 검정 백팩의 흰색 옆 버클과 조절 부품을 보여주는 실제 제품 사진",
+          "caption": "실제 제품 사진: 위쪽의 버클과 아래쪽의 사각 조절 부품이 서로 다른 위치에 있습니다."
+        }
+      ]
+    },
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-left-right-front-pockets",
+      "title": "앞포켓 두 개가 나란한 백팩, 왼쪽은 누구 기준일까",
+      "url": "https://himawari.co.kr/story/backpack-left-right-front-pockets.html",
+      "productId": "store-13308483411",
+      "model": "No.1230",
+      "image": "assets/story/backpack-left-right-front-pockets.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-22/reference-3-front.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 15페이지의 1230 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": {
+        "width": 32,
+        "height": 40,
+        "depth": 18
+      },
+      "editorialForm": "세 장면으로 읽는 위치 관찰",
+      "coreQuestion": "나란한 앞포켓을 구별할 때 가방을 보는 방향이 바뀌어도 유지할 수 있는 위치 기준은 무엇일까?",
+      "bodyChars": 2960,
+      "images": [
+        {
+          "id": "backpack-left-right-front-pockets",
+          "model": "1230",
+          "role": "hero",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-left-right-front-pockets.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-22/reference-3-front.jpg",
+          "references": [
+            "backups/story-2026-10-22/reference-3-front.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-22/generated-5.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-a58884cd-5ad5-4e59-b9f7-f26ec4d8751d.png",
+          "prompt": "Use case: product-mockup. ONE landscape1536x1024 editorial photograph of EXACT GREY Himawari No.1230 backpack shown in reference, bag only, no person from reference. External32wide40high18deepcm. Upright on a light stone bench, frontal eye-level camera symmetrical composition clearly shows TWO side-by-side lower front pockets. Preserve grey round-topped body with black curved main zip piping, two grey long front pocket panels each with small horizontal black zipper across upper grey area and rounded black mesh flap lower part; original black long zipper pulls, black small triangular Himawari patch on lower right pocket panel, grey side open pockets, black top loop and original grey shoulder straps behind. Both front pockets closed, no invented pocket linings or snap mechanism. Soft open shade daylight against quiet pale outdoor wall, true proportions, exact original seams and hardware, no clothes, accessories, text overlays, diagrams or watermark.",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260326_238/1774503626907819SG_JPEG/29145858851779990_764507912.jpg",
+          "fidelityReviewed": true,
+          "review": "Direct comparison of generated output with the actual selected product photograph: original colors, silhouette, pockets, handles, zipper paths, buckle positions and visible logo locations retained. 9004 staged adult is fictional; all captions distinguish AI staging and actual source photographs.",
+          "sha256": "da15dd490adeadb8646ff317f86b761862816d3de9e4f4f238750f1eadea5b77",
+          "alt": "No.1230 그레이 백팩의 나란한 두 앞포켓을 보여주는 AI 연출 사진",
+          "caption": "AI 연출: 나란한 두 앞포켓과 한쪽에 남는 삼각 패치를 보여줍니다."
+        },
+        {
+          "id": "backpack-left-right-front-pockets",
+          "model": "1230",
+          "role": "detail",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-left-right-front-pockets-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-22/reference-3-front.jpg",
+          "references": [
+            "backups/story-2026-10-22/reference-3-front.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-22/generated-6.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-98cf2e65-20cd-43a9-9fdb-65d6c90b4b1a.png",
+          "prompt": "Use case: product-mockup. ONE landscape1536x1024 close detail editorial photo of the TWO ADJACENT FRONT POCKETS of exact GREY Himawari No.1230 backpack in reference. External32x40x18cm. Crop bag upper arch and base partly out, camera at slight front-right oblique angle to show center gap and DIFFERENCE between the two pockets: both grey with upper horizontal black zipper and rounded lower black mesh flap, only original right-front panel has small black triangular Himawari patch near bottom. Keep exact location, original long black zipper tabs and grey fabric/black mesh texture. All pockets CLOSED, body on light stone bench, grey side pocket at edge if visible. Original shapes/proportions; no hand, labels L/R, colored tags, arrows, extra pockets, logos or invented snaps. Natural soft light and factual product staging, not an interior-capacity claim.",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260326_238/1774503626907819SG_JPEG/29145858851779990_764507912.jpg",
+          "fidelityReviewed": true,
+          "review": "Direct comparison of generated output with the actual selected product photograph: original colors, silhouette, pockets, handles, zipper paths, buckle positions and visible logo locations retained. 9004 staged adult is fictional; all captions distinguish AI staging and actual source photographs.",
+          "sha256": "0d1562dfe99e31e5be01ed5d6e6a10d9a85d344461c289134aeeaaab3e705080",
+          "alt": "No.1230 두 앞포켓과 한쪽 삼각 패치를 가까이 보여주는 AI 연출 사진",
+          "caption": "AI 연출: 가방의 방향을 바꾸어도 같은 부위에 남는 패치를 구별 단서로 봅니다."
+        },
+        {
+          "id": "backpack-left-right-front-pockets",
+          "model": "1230",
+          "role": "reference",
+          "imageKind": "reference",
+          "image": "assets/story/backpack-left-right-front-pockets-product.webp",
+          "width": 666,
+          "height": 800,
+          "reference": "backups/story-2026-10-22/reference-3-front.jpg",
+          "originalSource": "backups/story-2026-10-22/reference-3-front.jpg",
+          "articleSource": "backups/story-2026-10-22/reference-3-front.jpg",
+          "crop": null,
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260326_238/1774503626907819SG_JPEG/29145858851779990_764507912.jpg",
+          "fidelityReviewed": true,
+          "review": "Actual original product photograph downloaded from current public catalog; full original pixels preserved without altering product or depicted person.",
+          "sha256": "9137c69394b4a85de11582c09e521bd5d549dfaaf64e7d600ecd7464729dd39a",
+          "alt": "No.1230 그레이 백팩의 앞포켓과 삼각 패치가 보이는 실제 상품 착용 사진",
+          "caption": "실제 상품 사진: 제품 페이지의 원본 착용 사진입니다. 두 앞포켓과 한쪽의 삼각 패치를 확인할 수 있습니다."
+        }
+      ]
+    }
+  ],
+  "topicsReviewed": 164,
+  "overlapReview": "All164 titles, summaries and section maps reviewed; complete corpus extracted and searched. Closest specification, layered-pocket, mesh, identification and zipper articles compared. New worked unit conversion, side-buckle interference and orientation-based paired-pocket reference frames are documented in editorial-review.md.",
+  "editions": {
+    "morning": {
+      "postIds": [
+        "backpack-dimensions-not-litres",
+        "backpack-side-buckle-opening",
+        "backpack-left-right-front-pockets"
+      ],
+      "stage": "prepared"
+    }
+  }
+}

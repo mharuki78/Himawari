@@ -6,3 +6,10 @@ test-artifacts/
 backups/
 *.hmwbackup
 Himawari*.zip
+
+AGENTS.md
+CLAUDE.md
+HIA-RULES.md
+STATE.md
+DECISIONS.md
+logs/
