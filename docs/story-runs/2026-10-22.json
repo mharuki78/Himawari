@@ -1,7 +1,7 @@
 {
   "date": "2026-10-22",
   "automationId": "himawari-3",
-  "stage": "prepared",
+  "stage": "metadata-verified",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "publicationBaselineCommit": "cd183bf2e9e53f9b6a905e8a08b7e446a060fa5a",
@@ -14,7 +14,7 @@
   },
   "posts": [
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-dimensions-not-litres",
       "title": "백팩 크기를 곱하면 리터 용량이 될까",
       "url": "https://himawari.co.kr/story/backpack-dimensions-not-litres.html",
@@ -96,10 +96,19 @@
           "alt": "No.9004 라벤더 코랄 백팩의 실제 제품 정면 사진",
           "caption": "실제 제품 사진: 외부 윤곽과 코랄색 앞 포켓이 보입니다. 용량 수치는 제품 정보에 별도 기재되어 있지 않습니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-21T23:13:19.597Z",
+        "modifiedAt": "2026-10-21T23:13:19.597Z",
+        "firstDeploymentEvidence": "backups/story-2026-10-22/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-10-22/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-10-22/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-10-22/first-deployment-history.json",
+        "articleSha256": "a691370110c88c346500ed43f5ac6f09a6bb91efdbd5738ffff6e34e7e29a1be"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-side-buckle-opening",
       "title": "백팩 옆 버클, 가방을 열 때도 잠가 둘까",
       "url": "https://himawari.co.kr/story/backpack-side-buckle-opening.html",
@@ -181,10 +190,19 @@
           "alt": "No.9290 검정 백팩의 흰색 옆 버클과 조절 부품을 보여주는 실제 제품 사진",
           "caption": "실제 제품 사진: 위쪽의 버클과 아래쪽의 사각 조절 부품이 서로 다른 위치에 있습니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-21T23:13:19.597Z",
+        "modifiedAt": "2026-10-21T23:13:19.597Z",
+        "firstDeploymentEvidence": "backups/story-2026-10-22/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-10-22/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-10-22/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-10-22/first-deployment-history.json",
+        "articleSha256": "500a6168401ab7dbcfa47a288fe34427c494d985bcc1d591c3bec68143d364f5"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-left-right-front-pockets",
       "title": "앞포켓 두 개가 나란한 백팩, 왼쪽은 누구 기준일까",
       "url": "https://himawari.co.kr/story/backpack-left-right-front-pockets.html",
@@ -266,7 +284,16 @@
           "alt": "No.1230 그레이 백팩의 앞포켓과 삼각 패치가 보이는 실제 상품 착용 사진",
           "caption": "실제 상품 사진: 제품 페이지의 원본 착용 사진입니다. 두 앞포켓과 한쪽의 삼각 패치를 확인할 수 있습니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-21T23:13:19.597Z",
+        "modifiedAt": "2026-10-21T23:13:19.597Z",
+        "firstDeploymentEvidence": "backups/story-2026-10-22/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-10-22/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-10-22/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-10-22/first-deployment-history.json",
+        "articleSha256": "45709a41a1cadf7e34c13847b29515b65714add0bfbf898289ce276fe3eede15"
+      }
     }
   ],
   "topicsReviewed": 164,
@@ -278,7 +305,7 @@
         "backpack-side-buckle-opening",
         "backpack-left-right-front-pockets"
       ],
-      "stage": "prepared"
+      "stage": "metadata-verified"
     }
   }
 }
