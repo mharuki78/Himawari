@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-21-city-2301",
+    "date": "2026-10-21",
+    "category": "city",
+    "title": "계단을 올라가요",
+    "model": "2301",
+    "color": "네이비",
+    "scene": "회색 셔츠에 남색 백팩을 메고 계단을 올라가요. 한 손은 난간을 가볍게 잡고 있어요.",
+    "alt": "회색 셔츠를 입고 남색 No.2301 백팩을 멘 성인이 난간을 잡고 계단을 오르는 모습을 위쪽에서 가까이 담은 AI 착용 연출",
+    "productId": "coupang-c75f72bf26deba5f",
+    "image": "/assets/lookbook/2026-10-21-city-2301.webp",
+    "thumbnail": "/assets/lookbook/2026-10-21-city-2301-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-10-21-everyday-124s",
+    "date": "2026-10-21",
+    "category": "everyday",
+    "title": "분수 옆을 걸어요",
+    "model": "124S",
+    "color": "민트",
+    "scene": "붉은 카디건에 검정 바지를 입고 분수 옆을 걸어요. 연한 민트색 가방은 짧은 손잡이로 들어요.",
+    "alt": "붉은 카디건과 검정 바지를 입은 성인이 민트 No.124S 백팩의 원래 손잡이를 잡고 분수 옆을 걷는 앞쪽 전신 AI 착용 연출",
+    "productId": "coupang-d3423a6bee5844d6",
+    "image": "/assets/lookbook/2026-10-21-everyday-124s.webp",
+    "thumbnail": "/assets/lookbook/2026-10-21-everyday-124s-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-10-19-city-9291",
     "date": "2026-10-19",
     "category": "city",

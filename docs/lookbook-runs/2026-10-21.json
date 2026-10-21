@@ -1,0 +1,104 @@
+{
+  "date": "2026-10-21",
+  "automationId": "himawari-3",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-21/deployment.json",
+  "trigger": {
+    "receivedAt": "2026-10-20T23:58:33.595Z",
+    "receivedAtKst": "2026-10-21T08:58:33.595+09:00",
+    "scheduledAt": "2026-10-21T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "entries": [
+    {
+      "model": "2301",
+      "category": "city",
+      "title": "계단을 올라가요",
+      "color": "네이비",
+      "scene": "회색 셔츠에 남색 백팩을 메고 계단을 올라가요. 한 손은 난간을 가볍게 잡고 있어요.",
+      "alt": "회색 셔츠를 입고 남색 No.2301 백팩을 멘 성인이 난간을 잡고 계단을 오르는 모습을 위쪽에서 가까이 담은 AI 착용 연출",
+      "dimensionsCm": [
+        28,
+        42,
+        17
+      ],
+      "composition": {
+        "approach": "elevated close movement observation",
+        "angle": "slightly elevated rear three-quarter",
+        "framing": "head-to-upper-thigh tight portrait",
+        "activity": "ascending stairs while wearing both original backpack straps and holding a rail",
+        "setting": "pale concrete stairwell with a tall side window",
+        "observedFrameShare": "person nearly100percent image height; bag about48percent including loop"
+      },
+      "scenePrompt": "New fictional adult East Asian man age36, short straight dark hair, plain light grey cotton overshirt, dark charcoal trousers, ascending a broad pale-concrete public stairwell. His right hand naturally rests on stainless-steel railing. Camera is above and behind at a35degree downward diagonal, CLOSE head-through-upper-thigh portrait, NOT full body, slight rear three-quarter from backpack's left so full bag front and left side clearly face lens. Person occupies90percent image height, bag body about45percent. Catch one small natural upward step with relaxed shoulders. Soft side-window daylight reveals dark navy textile, no theatrical pose or glance back, no readable signage or extra props.",
+      "invariants": "EXACT No.2301 NAVY backpack external width28 height42 depth17cm. Tall rectangular softly rounded box shape in very dark navy woven polyester. Black short top carry loop; black original padded shoulder straps worn normally. Large square rounded upper FRONT zip compartment with black perimeter zipper and small centered black rectangular Himawari white-wordmark label near its upper part. Separate lower rounded-rectangle front zipper pocket with NAVY top strip and BLACK MESH panel across lower front. TWO visible black compression webbing straps with original side-release buckles on bag's visible left side, one high and one low. Preserve mesh texture, relative pocket sizes, original twin main-zip tracks/black pulls and side pocket geometry. No extra charms, chest belt, hip belt, new pocket, reflective trim, enlarged logo, USB cable or words.",
+      "id": "2026-10-21-city-2301",
+      "date": "2026-10-21",
+      "prompt": "Use case: photorealistic-natural. Create ONE new1024x1536 portrait2:3 photograph for Himawari LookBook. Actual supplied product photograph is strict identity reference. New fictional adult East Asian man age36, short straight dark hair, plain light grey cotton overshirt, dark charcoal trousers, ascending a broad pale-concrete public stairwell. His right hand naturally rests on stainless-steel railing. Camera is above and behind at a35degree downward diagonal, CLOSE head-through-upper-thigh portrait, NOT full body, slight rear three-quarter from backpack's left so full bag front and left side clearly face lens. Person occupies90percent image height, bag body about45percent. Catch one small natural upward step with relaxed shoulders. Soft side-window daylight reveals dark navy textile, no theatrical pose or glance back, no readable signage or extra props. Product invariants: EXACT No.2301 NAVY backpack external width28 height42 depth17cm. Tall rectangular softly rounded box shape in very dark navy woven polyester. Black short top carry loop; black original padded shoulder straps worn normally. Large square rounded upper FRONT zip compartment with black perimeter zipper and small centered black rectangular Himawari white-wordmark label near its upper part. Separate lower rounded-rectangle front zipper pocket with NAVY top strip and BLACK MESH panel across lower front. TWO visible black compression webbing straps with original side-release buckles on bag's visible left side, one high and one low. Preserve mesh texture, relative pocket sizes, original twin main-zip tracks/black pulls and side pocket geometry. No extra charms, chest belt, hip belt, new pocket, reflective trim, enlarged logo, USB cable or words. Realistic anatomy, natural five-finger hands, coherent contact/weight, plausible product to human scale from verified external dimensions. Fictional adult only, no actual customer implication. No collage, source promotional overlays, typography, watermark or added product features. Output1024x1536.",
+      "productId": "coupang-c75f72bf26deba5f",
+      "image": "/assets/lookbook/2026-10-21-city-2301.webp",
+      "thumbnail": "/assets/lookbook/2026-10-21-city-2301-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-10-21/reference-2301-front.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-c75f72bf26deba5f/main-X6lFrqCjAhVFZPDpyvXClAUs5yGZxa.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8645626927",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-10-21; 2026-09-14 제조사 카탈로그 38페이지의 2301 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "generatedSource": "backups/lookbook-2026-10-21/generated-2301.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/output inspection: navy rectangular body, upper square zip compartment/black centered wordmark, lower navy top strip and black mesh panel, black loop/padded straps, two side compression buckle rows and zipper outlines preserved. Both straps in normal contact, adult left hand holds rail, coherent anatomy; modest elevated rear diagonal, crop excludes feet. No new charm/chest/hip belt/USB feature. Verified42cm body plausible on adult; no measured fit claim.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-48306b01-05b2-4d8d-a0f2-f0ed4d7b044d.png"
+    },
+    {
+      "model": "124S",
+      "category": "everyday",
+      "title": "분수 옆을 걸어요",
+      "color": "민트",
+      "scene": "붉은 카디건에 검정 바지를 입고 분수 옆을 걸어요. 연한 민트색 가방은 짧은 손잡이로 들어요.",
+      "alt": "붉은 카디건과 검정 바지를 입은 성인이 민트 No.124S 백팩의 원래 손잡이를 잡고 분수 옆을 걷는 앞쪽 전신 AI 착용 연출",
+      "dimensionsCm": [
+        22,
+        33,
+        14
+      ],
+      "composition": {
+        "approach": "environmental full-figure walking portrait",
+        "angle": "front three-quarter eye-level",
+        "framing": "full-body with plaza and fountain",
+        "activity": "walking while holding original twin short handles in one hand",
+        "setting": "open paved plaza beside a low stone fountain",
+        "observedFrameShare": "complete walking figure about92percent image height; compact bag about23percent including handles"
+      },
+      "scenePrompt": "New fictional adult South Asian woman age52 with a short salt-and-pepper curly haircut, natural face and warm brown skin, terracotta-red cardigan over a plain ivory shirt, straight black trousers and cream flat shoes. She walks naturally across an open paved plaza next to a LOW pale stone fountain, mild autumn daylight. Front three-quarter eye-level environmental full-body portrait; head, both shoes and ample ground included, person about75percent of image height. Her left hand holds BOTH original short top handles of the small mint backpack at her side; backpack FRONT faces camera unobstructed, shoulder straps hang naturally behind bag and do not drag on ground. Bag body is only33cm high on a168cm fictional adult, small but clearly legible, do not inflate to full-sized42cm backpack. Fountain and space add context but do not dominate. Look ahead toward walking direction, no performance or water-resistance demonstration.",
+      "invariants": "EXACT Himawari No.124S pale MINT backpack, external width22 height33 depth14cm. Small rectangular body, gently rounded TOP corners, very pale grey-green mint body and matching twin short rounded handles. Tiny BLACK joining tab at handle center. Each front handle attachment has TWO black round rivets, stitched rectangular base. Small BLACK rectangular centered patch with white Himawari wordmark on upper front. ONE broad lower-front pale mint pocket with straight black horizontal ZIP near its top and original long black pull hanging at viewer-left. Thin tan-caramel brown BASE strip. Matching mint side pockets, black main zipper along opening and original black pulls at sides, black backpack shoulder straps behind. Preserve exact proportions, color contrast, rivets, seams, logo and pocket geometry. No chest belt, extra straps, front buckle or added pouch. Hand carry only by its original handles, not shoulder carry by handles.",
+      "id": "2026-10-21-everyday-124s",
+      "date": "2026-10-21",
+      "prompt": "Use case: photorealistic-natural. Create ONE new1024x1536 portrait2:3 photograph for Himawari LookBook. Actual supplied product photograph is strict identity reference. New fictional adult South Asian woman age52 with a short salt-and-pepper curly haircut, natural face and warm brown skin, terracotta-red cardigan over a plain ivory shirt, straight black trousers and cream flat shoes. She walks naturally across an open paved plaza next to a LOW pale stone fountain, mild autumn daylight. Front three-quarter eye-level environmental full-body portrait; head, both shoes and ample ground included, person about75percent of image height. Her left hand holds BOTH original short top handles of the small mint backpack at her side; backpack FRONT faces camera unobstructed, shoulder straps hang naturally behind bag and do not drag on ground. Bag body is only33cm high on a168cm fictional adult, small but clearly legible, do not inflate to full-sized42cm backpack. Fountain and space add context but do not dominate. Look ahead toward walking direction, no performance or water-resistance demonstration. Product invariants: EXACT Himawari No.124S pale MINT backpack, external width22 height33 depth14cm. Small rectangular body, gently rounded TOP corners, very pale grey-green mint body and matching twin short rounded handles. Tiny BLACK joining tab at handle center. Each front handle attachment has TWO black round rivets, stitched rectangular base. Small BLACK rectangular centered patch with white Himawari wordmark on upper front. ONE broad lower-front pale mint pocket with straight black horizontal ZIP near its top and original long black pull hanging at viewer-left. Thin tan-caramel brown BASE strip. Matching mint side pockets, black main zipper along opening and original black pulls at sides, black backpack shoulder straps behind. Preserve exact proportions, color contrast, rivets, seams, logo and pocket geometry. No chest belt, extra straps, front buckle or added pouch. Hand carry only by its original handles, not shoulder carry by handles. Realistic anatomy, natural five-finger hands, coherent contact/weight, plausible product to human scale from verified external dimensions. Fictional adult only, no actual customer implication. No collage, source promotional overlays, typography, watermark or added product features. Output1024x1536.",
+      "productId": "coupang-d3423a6bee5844d6",
+      "image": "/assets/lookbook/2026-10-21-everyday-124s.webp",
+      "thumbnail": "/assets/lookbook/2026-10-21-everyday-124s-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-10-21/reference-124S-front.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-d3423a6bee5844d6/main-c6Rb9KDfovCEiBBQpD7BlnWxetf1Cj.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8645627102",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-10-21; 2026-09-14 제조사 카탈로그 34페이지의 124S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "generatedSource": "backups/lookbook-2026-10-21/generated-124S.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/output inspection: compact pale mint body, twin short handles/black connector, twin black rivets per front attachment, small centered black Himawari patch, lower straight black front zipper/pull, tan base strip, mint side pockets and black original shoulder straps behind retained. Hand grips original handles, no unsupported shoulder carry, coherent walking feet and fingers. Head through shoes and fountain visible; verified33cm body remains compact relative to adult.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-21a8f04c-2c56-428c-9b65-4b413aac7817.png"
+    }
+  ],
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-10-21-city-2301",
+        "2026-10-21-everyday-124s"
+      ],
+      "stage": "prepared"
+    }
+  }
+}
