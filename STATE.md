@@ -4,4 +4,4 @@
 
 재개할 때 [매일 이야기 발행 절차](docs/DAILY-STORY-PUBLICATION.md), 해당 날짜의 실행 기록과 `backups/story-해당날짜/progress.json`을 함께 읽고 빠진 단계만 이어갑니다. LookBook은 `docs/lookbook-runs/`, 리뷰 동기화는 `backups/review-sync/`의 해당 실행 기록을 각각 따릅니다.
 
-이번 작업의 실행·검증 기록은 [작업 로그](logs/2026-10-22-story-publication.md)에 있습니다. 프로젝트 전체의 다른 미완료 업무를 완료로 간주하지 않습니다. 새 세션의 자동 로딩은 아직 검증하지 않았습니다.
+이야기의 실행·검증 기록은 [이야기 작업 로그](logs/2026-10-22-story-publication.md)에 있습니다. 오늘 LookBook 상태 원본은 [LookBook 실행 기록](docs/lookbook-runs/2026-10-22.json)이며 실제 완료 여부는 그 문서의 completionReceipt를 따릅니다. 생성·검수 기록은 [LookBook 작업 로그](logs/2026-10-22-lookbook-publication.md)에서 연결합니다. 프로젝트 전체의 다른 미완료 업무를 완료로 간주하지 않습니다. 새 세션의 자동 로딩은 아직 검증하지 않았습니다.

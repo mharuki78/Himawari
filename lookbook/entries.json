@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-22-everyday-0423",
+    "date": "2026-10-22",
+    "category": "everyday",
+    "title": "창가에 앉아 쉬어요",
+    "model": "0423",
+    "color": "브라운",
+    "scene": "회색 니트를 입고 창가 의자에 앉아 쉬어요. 무릎 위에 세운 가방의 갈색 장식이 보여요.",
+    "alt": "회색 니트를 입은 성인이 브라운 No.0423 백팩을 무릎 위에 세워 안고 창가 의자에 앉은 앞쪽 근접 AI 착용 연출",
+    "productId": "coupang-e733b49430ffbe4d",
+    "image": "/assets/lookbook/2026-10-22-everyday-0423.webp",
+    "thumbnail": "/assets/lookbook/2026-10-22-everyday-0423-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-10-22-travel-8029",
+    "date": "2026-10-22",
+    "category": "travel",
+    "title": "기차를 기다려요",
+    "model": "8029",
+    "color": "네이비브라운",
+    "scene": "파란 재킷에 네이비색 백팩을 메고 기차를 기다려요. 긴 승강장과 빈 벤치가 옆으로 이어져요.",
+    "alt": "파란 재킷과 베이지 바지를 입은 성인이 네이비브라운 No.8029 백팩을 양쪽 어깨에 메고 승강장에서 기다리는 뒤쪽 사선 전신 AI 착용 연출",
+    "productId": "coupang-0d8cb478bf996ce8",
+    "image": "/assets/lookbook/2026-10-22-travel-8029.webp",
+    "thumbnail": "/assets/lookbook/2026-10-22-travel-8029-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-10-21-city-2301",
     "date": "2026-10-21",
     "category": "city",

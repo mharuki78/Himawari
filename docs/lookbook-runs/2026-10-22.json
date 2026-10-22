@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-22",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-22/deployment.json",
+  "actualTriggerAt": "2026-10-21T23:58:57.239Z",
+  "scheduledSlot": "2026-10-22T09:00:00+09:00",
+  "entries": [
+    {
+      "id": "2026-10-22-everyday-0423",
+      "date": "2026-10-22",
+      "category": "everyday",
+      "model": "0423",
+      "color": "브라운",
+      "title": "창가에 앉아 쉬어요",
+      "scene": "회색 니트를 입고 창가 의자에 앉아 쉬어요. 무릎 위에 세운 가방의 갈색 장식이 보여요.",
+      "alt": "회색 니트를 입은 성인이 브라운 No.0423 백팩을 무릎 위에 세워 안고 창가 의자에 앉은 앞쪽 근접 AI 착용 연출",
+      "dimensionsCm": [
+        32,
+        42,
+        13
+      ],
+      "composition": {
+        "approach": "intimate seated bag-in-lap portrait",
+        "angle": "front three-quarter at seated chest height",
+        "framing": "head-through-lap close portrait",
+        "activity": "seated resting with backpack upright on lap and hands at sides",
+        "setting": "quiet reading room window and plain wooden chair",
+        "observedFrameShare": "person nearly full frame; bag body about48percent image height"
+      },
+      "prompt": "Use case: photorealistic-natural. One new editorial lifestyle portrait,1024x1536. Input product photograph is strict identity reference, not a style reference. Fictional adult Black woman about34 with short natural coils, plain light grey knitted sweater and dark indigo jeans, seated sideways on a plain wooden chair near a tall reading-room window. Camera in front of her at seated chest height, gentle front three-quarter. Tight head-through-knees crop, her face relaxed looking out the window. The actual backpack stands UPRIGHT on her thighs facing the camera; her two hands rest lightly at its sides, leaving all front pockets and the upper dog face fully visible. Do not wear the backpack on her chest, simply hold it on lap. Bag body about46percent image height, person fills frame. Soft overcast side daylight, authentic knit and fabric texture, unposed quiet moment. Exact No.0423 BROWN colorway, external width32 height42 depth13cm, black rounded domed backpack body. Large ochre-tan oval DOG FACE front pocket across upper front: round dark brown nose on viewer-left, TWO narrow vertical black eye marks in center, ONE long floppy dark brown oval ear on viewer-right. Preserve this exact asymmetric motif, no added ear or cartoon features. Large BLACK lower-front rectangular zipper pocket with two original long black zipper cords on viewer-left and a small white outlined square Himawari wordmark at lower viewer-right. Black mesh side pockets, original side black webbing bands, black padded shoulder straps behind, exact seams/zipper tracks/body proportions. Keep logo as in supplied photograph. No added charm, chest belt, hip belt, props in pockets, typography, collage or watermark. Natural anatomy and five fingers, contact and weight coherent. Fictional AI staged scene, not a real customer. Preserve color/shape/pockets/logo/strap geometry and plausible42cm scale on adult. Portrait2:3,1024x1536.",
+      "productId": "coupang-e733b49430ffbe4d",
+      "image": "/assets/lookbook/2026-10-22-everyday-0423.webp",
+      "thumbnail": "/assets/lookbook/2026-10-22-everyday-0423-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-10-22/reference-0423-front.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e733b49430ffbe4d/main-brJHq1r30m8drE0LSnC7wTdrj4N74r.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9520244217",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-10-22; 2026-09-14 제조사 카탈로그 9페이지의 0423 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "generatedSource": "backups/lookbook-2026-10-22/generated-0423.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/output inspection: black domed body, tan asymmetric dog face with nose on viewer-left/two black eye marks/one brown floppy ear on viewer-right, lower black zip pocket and paired long cords, white outlined square Himawari mark, mesh side pockets and original side webbing retained. Both hands lightly support sides, coherent fingers and lap contact, no invented wearing mode. Actual output is head-through-lap close crop, bag about48percent of frame height; no visible knees.42cm product is plausible on seated adult, not measured fit.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-b693fc48-8334-41d7-88ce-095562cc5862.png"
+    },
+    {
+      "id": "2026-10-22-travel-8029",
+      "date": "2026-10-22",
+      "category": "travel",
+      "model": "8029",
+      "color": "네이비브라운",
+      "title": "기차를 기다려요",
+      "scene": "파란 재킷에 네이비색 백팩을 메고 기차를 기다려요. 긴 승강장과 빈 벤치가 옆으로 이어져요.",
+      "alt": "파란 재킷과 베이지 바지를 입은 성인이 네이비브라운 No.8029 백팩을 양쪽 어깨에 메고 승강장에서 기다리는 뒤쪽 사선 전신 AI 착용 연출",
+      "dimensionsCm": [
+        27,
+        39,
+        14
+      ],
+      "composition": {
+        "approach": "environmental platform waiting portrait",
+        "angle": "rear three-quarter with visible side profile",
+        "framing": "full-body with generous station surroundings",
+        "activity": "standing at rest well back from platform edge with both backpack straps worn",
+        "setting": "quiet covered railway platform beside a wooden bench",
+        "observedFrameShare": "person about84percent image height; bag about26percent including handle"
+      },
+      "prompt": "Use case: photorealistic-natural. Create ONE new1024x1536 portrait2:3 editorial photograph. Product reference is strict identity. Fictional adult East Asian man about62, short silver hair, unlined face with natural age texture, blue cotton chore jacket, beige straight trousers, dark brown casual shoes. Waiting calmly beside a wooden bench on a quiet covered railway platform, well back from all platform edges. Empty platform and roof lines recede into distance. Camera at eye level, from his LEFT side and slightly behind so the bag FRONT and its side are fully visible, a genuine side rear three-quarter profile, no looking back. Environmental full-body image with both shoes and ample ground/headroom; person only65percent image height, bag body about15percent image height, correct39cm size on a174cm fictional adult. Both original shoulder straps worn normally, arms relaxed, no extra carry strap or belt. Mild diffuse outdoor daylight. Exact Himawari No.8029 NAVY BROWN, external width27 height39 depth14cm. Navy softly rectangular backpack with dark GREEN perimeter side panels, green main zipper rim, green original small top handle. Upper front large rounded rectangular NAVY zip pocket, small white square stitched logo patch at lower-right of this pocket with dark green/black Himawari graphic as reference. Below it a large BROWN rounded rectangular zip pocket. On that brown pocket ONE small NAVY patch pocket with DARK GREEN rounded flap and ONE navy round snap. Green side slip pockets. Preserve original navy padded shoulder straps, green main double zipper pulls, brown lower zipper pull, sewing lines and relative sizes. No extra keyring, charm, chest belt, hip belt, missing pocket, altered logo, new hardware, source advertising or overlaid text. No train logos, readable signage, collage, watermark or performance claims. Natural anatomy/fingers/feet, coherent strap contact, product-human scale, realistic nylon cloth. Fictional adult only, not customer photograph.1024x1536 portrait.",
+      "productId": "coupang-0d8cb478bf996ce8",
+      "image": "/assets/lookbook/2026-10-22-travel-8029.webp",
+      "thumbnail": "/assets/lookbook/2026-10-22-travel-8029-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-10-22/reference-8029-front.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-0d8cb478bf996ce8/main-8PtRLshwGhOc4JDgGcyxYvngeNL5zA.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9296044021",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-10-22; 2026-09-14 제조사 카탈로그 45페이지의 8029 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "generatedSource": "backups/lookbook-2026-10-22/generated-8029.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "fidelityReview": "Direct original/output inspection: navy front and original straps, green sides/rim/top handle and main double zip pulls, upper rounded navy zip pocket and white square logo patch, brown lower zip pocket, small navy pocket with green flap/navy snap all retained. Both straps worn normally, coherent feet and posture. Actual output is rear three-quarter full body with side profile, person about84percent frame height and bag about26percent including handle; no invented chest/hip belt or charm.39cm body remains plausible on adult; image is not a measured fit test.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-9d5a0fd5-3656-4800-8db9-901a1546e270.png"
+    }
+  ],
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-10-22-everyday-0423",
+        "2026-10-22-travel-8029"
+      ],
+      "stage": "prepared"
+    }
+  }
+}
