@@ -39,13 +39,34 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
   var preferredGameCouponId = '';
   var couponTokens = {};
   var couponRequests = {};
-  var paymentMethod = 'bank_transfer';
+  var paymentMethod = '';
   var kakaopayEnabled = false;
   var kakaopayButton = document.querySelector('[data-kakaopay-select]');
+  var paymentSelection = document.querySelector('[data-payment-selection]');
+  var paymentOptions = document.querySelector('[data-payment-options]');
+  var paymentChange = document.querySelector('[data-payment-change]');
+  var paymentNotice = document.querySelector('[data-payment-notice]');
 
-  function selectPayment(method) {
+  function showPaymentOptions(show) {
+    paymentOptions.hidden = !show;
+    paymentChange.setAttribute('aria-expanded', String(show));
+    paymentChange.textContent = show ? '닫기' : '변경';
+    document.querySelector('#purchase-method-title').textContent = show ? (paymentMethod ? '결제 방법 변경' : '구매 방법을 선택하세요.') : '선택한 결제 방법';
+  }
+
+  function prepareNpay() {
+    initializeCheckoutNpay(() => items.map(item => ({ productId: item.productId, optionId: item.optionId || '', quantity: item.quantity })), () => { dirty = false; });
+  }
+
+  function selectPayment(method, options) {
+    if (method === 'kakaopay' ? !kakaopayEnabled : method !== 'bank_transfer' || !bankTransferReady()) return;
     paymentMethod = method;
     var kakao = method === 'kakaopay';
+    paymentSelection.hidden = false;
+    paymentNotice.hidden = true;
+    document.querySelector('[data-payment-name]').textContent = kakao ? '카카오페이' : '무통장입금';
+    document.querySelector('[data-payment-description]').textContent = kakao ? '배송정보 입력 후 카카오페이 결제창으로 이어집니다.' : '주문 접수 후 안내 계좌로 입금해 주세요.';
+    showPaymentOptions(false);
     form.hidden = false;
     document.querySelector('#payment-title').textContent = kakao ? '카카오페이 결제 안내' : '무통장입금 안내';
     document.querySelector('[data-bank-instructions]').hidden = kakao;
@@ -54,8 +75,20 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
     submitButton.classList.toggle('kakaopay-button', kakao);
     bankButton.setAttribute('aria-expanded', String(!kakao));
     kakaopayButton.setAttribute('aria-expanded', String(kakao));
-    field('recipientName').focus();
+    var url = new URL(location.href);
+    url.searchParams.set('payment', method);
+    history.replaceState(null, '', url);
+    if (!options || options.focus !== false) field('recipientName').focus();
   }
+
+  paymentChange.addEventListener('click', function () {
+    var opening = paymentOptions.hidden;
+    showPaymentOptions(opening);
+    if (opening) {
+      prepareNpay();
+      document.querySelector('#purchase-method-title').focus();
+    }
+  });
 
   function readCouponWallet() { try { return JSON.parse(localStorage.getItem('himawari-coupon-wallet-v1')) || {}; } catch (error) { return {}; } }
   function saveCouponWallet() { try { localStorage.setItem('himawari-coupon-wallet-v1', JSON.stringify(couponTokens)); } catch (error) {} }
@@ -293,6 +326,11 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
 
   async function load() {
     showOnly(loading);
+    paymentMethod = '';
+    form.hidden = true;
+    paymentSelection.hidden = true;
+    paymentNotice.hidden = true;
+    showPaymentOptions(true);
     try {
       var session = await request('/api/auth/session');
       var payConfig = await request('/api/kakaopay/config').catch(function () { return {enabled:false}; });
@@ -348,10 +386,14 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
       }
       renderItems();
       showOnly(workspace);
-      initializeCheckoutNpay(() => items.map(item => ({ productId: item.productId, optionId: item.optionId || '', quantity: item.quantity })), () => { dirty = false; });
       var requestedPayment = new URLSearchParams(location.search).get('payment');
-      if (requestedPayment === 'kakaopay' && kakaopayEnabled) selectPayment('kakaopay');
-      if (requestedPayment === 'bank_transfer' && bankTransferReady()) selectPayment('bank_transfer');
+      if (requestedPayment === 'kakaopay' && kakaopayEnabled) selectPayment('kakaopay', { focus: false });
+      if (requestedPayment === 'bank_transfer' && bankTransferReady()) selectPayment('bank_transfer', { focus: false });
+      if ((requestedPayment === 'kakaopay' && !kakaopayEnabled) || (requestedPayment === 'bank_transfer' && !bankTransferReady())) {
+        paymentNotice.textContent = '선택한 결제 방법을 현재 이용할 수 없습니다. 다른 방법을 선택해 주세요.';
+        paymentNotice.hidden = false;
+      }
+      if (!paymentOptions.hidden) prepareNpay();
     } catch (error) {
       failureMessage.textContent = error.message;
       showOnly(failure);

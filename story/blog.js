@@ -44,9 +44,9 @@ function renderStoryImage(post, className, loading = 'lazy') {
   return image;
 }
 
-function renderStoryIndex(posts, { filtered = false, reset } = {}) {
+function renderStoryIndex(posts, { filtered = false, reset, append = false, focusNew = false } = {}) {
   const ordered = sortedPosts(posts);
-  storyIndex.replaceChildren();
+  if (!append) storyIndex.replaceChildren();
   storyIndex.setAttribute('aria-busy', 'false');
 
   if (!ordered.length) {
@@ -59,6 +59,8 @@ function renderStoryIndex(posts, { filtered = false, reset } = {}) {
     return;
   }
 
+  const fragment = document.createDocumentFragment();
+  let firstLink;
   ordered.forEach((post) => {
     const item = storyElement('li', 'story-list-card reveal');
     const link = storyElement('a');
@@ -78,46 +80,80 @@ function renderStoryIndex(posts, { filtered = false, reset } = {}) {
     arrow.setAttribute('aria-hidden', 'true');
     link.append(time, copy, arrow);
     item.append(link);
-    storyIndex.append(item);
+    fragment.append(item);
+    firstLink ||= link;
   });
+  storyIndex.append(fragment);
 
   window.himawariReveal?.(storyIndex);
+  if (focusNew && firstLink) {
+    firstLink.focus({ preventScroll: true });
+    firstLink.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
+  }
 }
 
 async function initializeStoryDiscovery(posts) {
+  const { getStoryWindow } = await import('./list-window.js');
   const form = document.querySelector('[data-story-filters]');
-  if (!form) { renderStoryIndex(posts); return; }
-  const { filterStories } = await import('./discovery-tools.js');
   const search = document.getElementById('story-search');
-  const status = form.querySelector('[data-story-results]');
-  const buttons = [...form.querySelectorAll('[data-story-category]')];
+  const status = form?.querySelector('[data-story-results]');
+  const buttons = [...(form?.querySelectorAll('[data-story-category]') || [])];
+  const pagination = document.querySelector('[data-story-pagination]');
+  const more = pagination?.querySelector('[data-story-more]');
+  const pageStatus = pagination?.querySelector('[data-story-window-status]');
   const params = new URLSearchParams(location.search);
   let category = buttons.some(button => button.dataset.storyCategory === params.get('category')) ? params.get('category') : 'all';
-  search.value = params.get('q') || '';
-  form.hidden = false;
+  if (search) search.value = params.get('q') || '';
+  if (form) form.hidden = false;
   let timer;
+  let page = 1;
+  let shown = 0;
+  let renderedQuery = '';
+  let currentWindow;
   const reset = () => {
-    clearTimeout(timer); search.value = ''; category = 'all'; render(); search.focus({ preventScroll: true });
+    clearTimeout(timer); if (search) search.value = ''; category = 'all'; render(); search?.focus({ preventScroll: true });
   };
+  function renderPage(append = false) {
+    const query = search?.value.trim() || '';
+    currentWindow = getStoryWindow(posts, { query, category }, page);
+    const batch = append ? currentWindow.posts.slice(shown) : currentWindow.posts;
+    renderStoryIndex(batch, { filtered: Boolean(query || category !== 'all'), reset, append, focusNew: append });
+    shown = currentWindow.shown;
+    renderedQuery = query;
+    if (pagination) pagination.hidden = currentWindow.total === 0;
+    if (pageStatus) pageStatus.textContent = `${currentWindow.total}개 이야기 중 ${shown}개 표시`;
+    if (more) {
+      more.hidden = currentWindow.remaining === 0;
+      more.textContent = `이야기 ${currentWindow.nextCount}개 더 보기 (${currentWindow.remaining}개 남음)`;
+    }
+  }
   function render() {
-    const query = search.value.trim();
-    const filtered = filterStories(posts, { query, category });
+    page = 1;
+    shown = 0;
+    renderPage();
+    const query = renderedQuery;
     buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.storyCategory === category)));
-    renderStoryIndex(filtered, { filtered: Boolean(query || category !== 'all'), reset });
     const categoryLabel = buttons.find(button => button.dataset.storyCategory === category)?.textContent || '전체';
-    status.textContent = `${categoryLabel} · ${filtered.length}개의 이야기${query ? ` · “${query}” 검색 결과` : ''}`;
+    if (status) status.textContent = `${categoryLabel} · ${currentWindow.total}개의 이야기${query ? ` · “${query}” 검색 결과` : ''}`;
     const url = new URL(location.href);
     query ? url.searchParams.set('q', query) : url.searchParams.delete('q');
     category !== 'all' ? url.searchParams.set('category', category) : url.searchParams.delete('category');
     history.replaceState(null, '', url);
   }
-  search.addEventListener('input', event => {
+  more?.addEventListener('click', () => {
+    clearTimeout(timer);
+    if ((search?.value.trim() || '') !== renderedQuery) { render(); return; }
+    if (!currentWindow.remaining) return;
+    page += 1;
+    renderPage(true);
+  });
+  search?.addEventListener('input', event => {
     clearTimeout(timer); if (!event.isComposing) timer = setTimeout(render, 160);
   });
-  search.addEventListener('compositionend', () => { clearTimeout(timer); render(); });
+  search?.addEventListener('compositionend', () => { clearTimeout(timer); render(); });
   buttons.forEach(button => button.addEventListener('click', () => { clearTimeout(timer); category = button.dataset.storyCategory; render(); }));
-  form.addEventListener('submit', event => { event.preventDefault(); clearTimeout(timer); render(); });
-  form.addEventListener('reset', event => { event.preventDefault(); reset(); });
+  form?.addEventListener('submit', event => { event.preventDefault(); clearTimeout(timer); render(); });
+  form?.addEventListener('reset', event => { event.preventDefault(); reset(); });
   render();
 }
 

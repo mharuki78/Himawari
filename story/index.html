@@ -71,6 +71,10 @@
           <ul class="story-index-list" id="story-list" data-story-index aria-busy="true">
             <li class="story-list-state">이야기를 불러오는 중입니다.</li>
           </ul>
+          <div class="story-pagination" data-story-pagination hidden>
+            <p id="story-window-status" data-story-window-status role="status" aria-live="polite" aria-atomic="true"></p>
+            <button class="story-more" type="button" data-story-more aria-controls="story-list" aria-describedby="story-window-status" hidden>이야기 더 보기</button>
+          </div>
           <a class="story-admin-link" href="admin.html">이야기 관리 <span aria-hidden="true">→</span></a>
         </div>
       </section>

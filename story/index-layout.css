@@ -47,6 +47,13 @@
 .story-index-page .story-empty-reset { display: block; margin: 18px auto 0; }
 .story-index-page :is(.story-discovery, .story-list-state) :focus-visible { outline: 3px solid var(--color-forest-focus); outline-offset: 3px; }
 .story-index-page .story-discovery ::selection { background: var(--color-sage-mid); color: var(--ink); }
+.story-index-page .story-pagination { display: grid; justify-items: center; gap: 14px; margin-top: 32px; text-align: center; }
+.story-index-page .story-pagination[hidden], .story-index-page .story-more[hidden] { display: none; }
+.story-index-page .story-pagination p { margin: 0; color: var(--ink); font-size: 14px; line-height: 1.6; font-variant-numeric: tabular-nums; }
+.story-index-page .story-more { min-height: 48px; max-width: 100%; padding: 12px 22px; border: 1px solid var(--color-forest-focus); border-radius: 999px; background: var(--color-sage-pop); color: var(--ink); font: inherit; font-size: 16px; font-weight: 650; line-height: 1.5; word-break: keep-all; overflow-wrap: anywhere; cursor: pointer; }
+.story-index-page .story-more:hover { background: var(--color-sage-tint); }
+.story-index-page .story-more:active { background: var(--color-sage-mid); }
+.story-index-page .story-more:focus-visible { outline: 3px solid var(--color-forest-focus); outline-offset: 3px; }
 @media (max-width: 600px) {
   .story-index-page .story-discovery { padding: 18px 16px; }
   .story-index-page .story-search-row label { width: 100%; }

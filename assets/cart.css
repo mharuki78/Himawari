@@ -57,13 +57,14 @@ html.rdcart-locked, body.rdcart-locked { overflow: hidden; }
 .rdcart {
   position: fixed; inset: 0; z-index: var(--cart-z-drawer);
   pointer-events: none;
+  visibility: hidden;
   font-family: var(--cart-font);
   color: var(--cart-ink);
   scrollbar-color: var(--cart-accent) var(--cart-bg);
   scrollbar-width: thin;
   -webkit-text-size-adjust: 100%;
 }
-.rdcart--open { pointer-events: auto; }
+.rdcart--open { pointer-events: auto; visibility: visible; }
 
 .rdcart__back {
   position: absolute; inset: 0;

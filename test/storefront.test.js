@@ -57,13 +57,14 @@ test('홈 첫 화면은 No.9007 캠페인 영상과 릴스 8개를 제공한다'
   const gearCss = await readFile(new URL('../assets/gear.css', import.meta.url), 'utf8');
 
   assert.match(html, /class="home-film-hero__video"[^>]+poster="assets\/hero-9007-poster\.jpg"/);
-  assert.match(html, /<source src="assets\/hero-9007-campaign\.mp4" type="video\/mp4">/);
+  assert.match(html, /<source data-src="assets\/hero-9007-campaign-web\.mp4" type="video\/mp4">/);
+  assert.match(html, /data-ambient-mobile-src="assets\/hero-9007-campaign-mobile\.mp4"/);
   assert.match(html, /Himawari No\.9007 백팩 캠페인 영상/);
   assert.match(html, /class="home-film-hero__toggle"[^>]+data-ambient-toggle/);
   assert.doesNotMatch(html, /class="home-film-hero__image"/);
   assert.equal((html.match(/data-reel-card/g) || []).length, 8);
   assert.equal((html.match(/data-reel-src=/g) || []).length, 8);
-  assert.equal((html.match(/preload="none"/g) || []).length, 8);
+  assert.equal((html.match(/preload="none"/g) || []).length, 10);
   assert.doesNotMatch(html, /onclick=/);
   assert.match(html, /assets\/reel-0514-260527\.mp4/);
   assert.match(html, /assets\/reel-0514-260604\.mp4/);
@@ -75,6 +76,10 @@ test('홈 첫 화면은 No.9007 캠페인 영상과 릴스 8개를 제공한다'
   for (const asset of [
     'assets/himawari-logo-hq.png',
     'assets/hero-9007-campaign.mp4',
+    'assets/hero-9007-campaign-web.mp4',
+    'assets/hero-9007-campaign-mobile.mp4',
+    'assets/campaign-1027-mint-web.mp4',
+    'assets/campaign-1027-mint-mobile.mp4',
     'assets/hero-9007-poster.jpg',
     'assets/reel-0514-260527.mp4',
     'assets/reel-0514-260527-poster.jpg',

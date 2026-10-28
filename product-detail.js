@@ -54,6 +54,39 @@ function renderDescription(value) {
   }));
 }
 
+function setupPurchaseDisclosure(sticky) {
+  const disclosure = sticky.querySelector('[data-purchase-disclosure]');
+  const summary = disclosure.querySelector('summary');
+  const toggleLabel = sticky.querySelector('[data-purchase-toggle-label]');
+  const compactViewport = window.matchMedia('(max-width: 600px)');
+  const updateBarSpace = () => {
+    const height = sticky.getBoundingClientRect().height;
+    document.body.style.setProperty('--purchase-bar-height', `${height}px`);
+    document.documentElement.style.scrollPaddingBottom = `${height + 32}px`;
+  };
+  const updateDisclosure = () => {
+    toggleLabel.textContent = disclosure.open ? '접기' : '구매하기';
+    updateBarSpace();
+  };
+  const adaptDisclosure = () => {
+    if (compactViewport.matches && disclosure.contains(document.activeElement) && document.activeElement !== summary) summary.focus();
+    disclosure.open = !compactViewport.matches;
+    updateDisclosure();
+  };
+  disclosure.addEventListener('toggle', updateDisclosure);
+  compactViewport.addEventListener('change', adaptDisclosure);
+  sticky.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape' || !disclosure.open) return;
+    event.preventDefault();
+    summary.focus();
+    disclosure.open = false;
+    updateDisclosure();
+  });
+  adaptDisclosure();
+  if ('ResizeObserver' in window) new ResizeObserver(updateBarSpace).observe(sticky);
+  else window.addEventListener('resize', updateBarSpace);
+}
+
 function configureInventory(product, cart, buyLinks, npayProduct, products) {
   const picker = document.querySelector('[data-option-picker]');
   const select = document.querySelector('[data-product-option]');
@@ -77,7 +110,10 @@ function configureInventory(product, cart, buyLinks, npayProduct, products) {
     if (quantityOutput) quantityOutput.value = String(quantity);
     if (minus) minus.disabled = unavailable || quantity <= 1;
     if (plus) plus.disabled = unavailable || quantity >= purchaseLimit(available);
-    if (sticky) sticky.querySelector('[data-sticky-price]').textContent = priceFormatter.format(product.price * quantity);
+    if (sticky) {
+      sticky.querySelector('[data-sticky-price]').textContent = priceFormatter.format(product.price * quantity);
+      sticky.querySelector('[data-purchase-selection]').textContent = `${option?.label || (options.length ? '옵션 선택 필요' : '선택한 상품')} · ${quantity}개${unavailable ? ' · 품절' : ''}`;
+    }
     cart.dataset.quantity = String(quantity);
     const needsOption = options.length > 0 && !option;
     cart.disabled = unavailable || needsOption;
@@ -329,11 +365,7 @@ function renderProduct(product, products) {
   if (sticky) {
     sticky.hidden = false;
     sticky.querySelector('[data-sticky-model]').textContent = product.model;
-
-
-    const updateBarSpace = () => document.body.style.setProperty('--purchase-bar-height', sticky.getBoundingClientRect().height + 'px');
-    updateBarSpace();
-    if ('ResizeObserver' in window) new ResizeObserver(updateBarSpace).observe(sticky);
+    setupPurchaseDisclosure(sticky);
     sticky.querySelector('[data-sticky-payment="bank_transfer"]').hidden = !bankTransferReady();
     fetch('/api/kakaopay/config', { cache: 'no-store' })
       .then(response => response.ok ? response.json() : { enabled: false })

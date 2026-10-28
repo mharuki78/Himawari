@@ -7,15 +7,24 @@
 .checkout-heading .accent-word { text-shadow: none; }
 .checkout-heading > p { max-width: 30rem; font-size: 1rem; line-height: 1.75; }
 .checkout-workspace { gap: 2rem; padding-top: 2rem; }
+.checkout-workspace > .checkout-methods { grid-column: 1 / -1; grid-row: 1; }
+.checkout-workspace > .checkout-summary { grid-column: 2; grid-row: 2; }
+.checkout-workspace > .checkout-form { grid-column: 1; grid-row: 2; }
 .checkout-section { padding-bottom: 2rem; margin-bottom: 2rem; border-color: var(--order-line); }
 .checkout-section__head { display: block; margin-bottom: 1.25rem; }
 .checkout-main .checkout-section__head .kicker, .checkout-main .checkout-summary__head .kicker { margin: 0 0 .4rem; font-size: .75rem; letter-spacing: .15em; }
 .checkout-main .checkout-section__head h2, .checkout-main .checkout-summary h2 { font-size: 1.5rem; line-height: 1.4; letter-spacing: -.03em; }
 
 /* Each method has its description above a consistently sized action. */
-.checkout-methods > .checkout-method-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding: 0; border: 0; }
+.checkout-methods > div.checkout-method-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding: 0; border: 0; }
 .checkout-method-card { min-width: 0; display: flex; flex-direction: column; align-items: start; gap: 1rem; padding: 1.25rem; border: 1px solid var(--order-line); border-radius: var(--radius-soft, 18px); background: var(--snow, #fff); }
 .checkout-method-card[hidden] { display: none; }
+.checkout-methods > .checkout-method-grid[hidden], .checkout-methods > .checkout-payment-selection[hidden] { display: none; }
+.checkout-methods > div.checkout-payment-selection { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 0; border-block: 1px solid var(--order-line); }
+.checkout-payment-selection strong { font-size: 1.125rem; color: var(--harbor); }
+.checkout-methods .checkout-payment-selection p { margin: .35rem 0 0; font-size: .9375rem; }
+.checkout-payment-selection .order-secondary-link { flex: none; min-height: 44px; box-shadow: none; }
+.checkout-methods .checkout-method-notice { font-size: .9375rem; color: var(--harbor); }
 .checkout-method-copy { min-height: 5.5rem; }
 .checkout-methods h3 { margin: 0 0 .5rem; font-size: 1.125rem; font-weight: 700; line-height: 1.4; }
 .checkout-methods .checkout-method-copy p { margin: 0; font-size: .9375rem; line-height: 1.65; word-break: keep-all; overflow-wrap: anywhere; }
@@ -60,8 +69,28 @@
   .checkout-heading { padding-bottom: 1.5rem; }
   .checkout-heading > p { font-size: .9375rem; }
   .checkout-workspace { padding-top: 1.5rem; gap: 1.5rem; }
-  .checkout-methods > .checkout-method-grid { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+  .checkout-methods > div.checkout-method-grid { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
   .checkout-method-copy { min-height: 0; }
   .checkout-method-card { padding: 1.25rem; gap: .875rem; }
   .checkout-summary { padding: 1.25rem; }
+}
+
+@media (max-width: 560px) {
+  .checkout-main { padding-top: 1rem; }
+  .checkout-breadcrumb { margin-bottom: 1rem; }
+  .checkout-heading { gap: .75rem; padding-bottom: 1rem; }
+  .checkout-heading h1 { font-size: 1.75rem; }
+  .checkout-workspace { gap: 1.25rem; padding-top: 1.25rem; }
+  .checkout-methods .checkout-section__head { margin-bottom: .5rem; }
+  .checkout-methods .checkout-section__head .kicker { display: none; }
+  .checkout-main .checkout-methods .checkout-section__head h2 { font-size: 1.125rem; }
+  .checkout-methods > div.checkout-payment-selection { padding: .75rem 0; }
+  .checkout-methods .checkout-payment-selection p { font-size: .875rem; line-height: 1.6; }
+  .checkout-summary { padding: 1rem; }
+  .checkout-main .checkout-summary__head .kicker { display: none; }
+  .checkout-summary__head { padding-bottom: .75rem; }
+  .checkout-main .checkout-summary h2 { font-size: 1.25rem; }
+  .checkout-main .checkout-items .checkout-item { padding: .75rem 0; }
+  .checkout-totals { margin-top: .75rem; }
+  .checkout-summary > p { margin-top: .75rem; padding-top: .75rem; }
 }

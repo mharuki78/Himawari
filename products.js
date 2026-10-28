@@ -562,6 +562,20 @@ function setupCatalog(container, families) {
   const count = document.querySelector('[data-catalog-result-count]');
   const more = document.querySelector('[data-catalog-more]');
   const empty = document.querySelector('[data-catalog-empty]');
+  const refinements = document.querySelector('[data-catalog-refinements]');
+  const refinementSummary = document.querySelector('[data-catalog-refinement-summary]');
+  if (refinements) {
+    const compact = matchMedia('(max-width: 760px)');
+    const toggle = refinements.querySelector('summary');
+    const adaptRefinements = () => {
+      if (compact.matches && refinements.contains(document.activeElement) && document.activeElement !== toggle) {
+        toggle?.focus({ preventScroll: true });
+      }
+      refinements.open = !compact.matches;
+    };
+    adaptRefinements();
+    compact.addEventListener('change', adaptRefinements);
+  }
   const params = new URLSearchParams(location.search);
   const initialCategory = params.get('category') || document.body.dataset.collection || location.pathname.match(/^\/collections\/([^/]+)/)?.[1];
   let state = {
@@ -587,13 +601,19 @@ function setupCatalog(container, families) {
     const visible = filtered.slice(0, state.shown);
     const fragment = document.createDocumentFragment();
     const previousCount = append ? container.children.length : 0;
-    const scrollPosition = { left: window.scrollX, top: window.scrollY };
-    const listScrollLeft = container.scrollLeft;
     visible.slice(previousCount).forEach((family) => fragment.append(createProductCard(family.representative, { family })));
     if (append) container.append(fragment);
-    else container.replaceChildren(fragment);
+    else {
+      container.replaceChildren(fragment);
+      container.scrollLeft = 0;
+    }
     container.setAttribute('aria-busy', 'false');
     if (count) count.textContent = `${filtered.length}개 제품군`;
+    if (refinementSummary) {
+      const categoryLabel = CATALOG_CATEGORIES.find((category) => category.id === state.category)?.label || '전체';
+      const sortLabel = sort?.selectedOptions[0]?.textContent || '추천순';
+      refinementSummary.textContent = `${categoryLabel} · ${sortLabel}`;
+    }
     if (empty) empty.hidden = filtered.length > 0;
     if (more) {
       more.hidden = visible.length >= filtered.length;
@@ -612,10 +632,10 @@ function setupCatalog(container, families) {
     history.replaceState(null, '', url);
     window.himawariReveal?.(container);
     if (append) {
-      // Continue keyboard navigation at the new products without moving the viewport.
-      container.children[previousCount]?.querySelector('a')?.focus({ preventScroll: true });
-      container.scrollLeft = listScrollLeft;
-      window.scrollTo({ ...scrollPosition, behavior: 'instant' });
+      // Reveal the new keyboard target in both the swipe rail and the page viewport.
+      const firstNewLink = container.children[previousCount]?.querySelector('a');
+      firstNewLink?.focus({ preventScroll: true });
+      firstNewLink?.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
     }
   };
 
@@ -648,8 +668,11 @@ function setupCatalog(container, families) {
     render({ append: true });
   });
   form?.addEventListener('reset', () => {
+    clearTimeout(inputTimer);
     requestAnimationFrame(() => {
       state = { query: '', category: 'all', sort: 'featured', shown: 12 };
+      if (search) search.value = '';
+      if (sort) sort.value = 'featured';
       render();
     });
   });

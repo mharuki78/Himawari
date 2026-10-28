@@ -67,12 +67,12 @@
     <main id="main">
       <section class="home-film-hero" id="home" aria-labelledby="hero-title">
         <div class="home-film-hero__media" data-ambient-film>
-          <video class="home-film-hero__video" autoplay loop playsinline preload="metadata" poster="assets/hero-9007-poster.jpg" aria-label="Himawari No.9007 백팩 캠페인 영상" data-ambient-video>
-            <source src="assets/hero-9007-campaign.mp4" type="video/mp4">
+          <video class="home-film-hero__video" loop playsinline preload="none" poster="assets/hero-9007-poster.jpg" aria-label="Himawari No.9007 백팩 캠페인 영상" data-ambient-video data-ambient-mobile-src="assets/hero-9007-campaign-mobile.mp4">
+            <source data-src="assets/hero-9007-campaign-web.mp4" type="video/mp4">
           </video>
           <div class="home-film-hero__controls">
             <button class="home-film-hero__toggle" type="button" data-ambient-sound aria-pressed="true">소리 끄기</button>
-            <button class="home-film-hero__toggle" type="button" data-ambient-toggle aria-pressed="true">영상 일시정지</button>
+            <button class="home-film-hero__toggle" type="button" data-ambient-toggle aria-pressed="false">영상 재생</button>
           </div>
         </div>
         <div class="home-film-hero__copy">
@@ -137,10 +137,10 @@
 
       <section class="feature section" id="campaign-film" aria-labelledby="feature-title">
         <div class="feature-film" data-ambient-film>
-          <video class="feature-film__video" autoplay muted loop playsinline preload="metadata" poster="assets/campaign-1027-mint-poster.jpg" aria-label="Himawari No.1027 민트 백팩을 착용하고 산책길을 걷는 모습" data-ambient-video>
-            <source src="assets/campaign-1027-mint.mp4" type="video/mp4">
+          <video class="feature-film__video" muted loop playsinline preload="none" poster="assets/campaign-1027-mint-poster.jpg" aria-label="Himawari No.1027 민트 백팩을 착용하고 산책길을 걷는 모습" data-ambient-video data-ambient-mobile-src="assets/campaign-1027-mint-mobile.mp4">
+            <source data-src="assets/campaign-1027-mint-web.mp4" type="video/mp4">
           </video>
-          <button class="feature-film__toggle" type="button" data-ambient-toggle aria-pressed="true">영상 일시정지</button>
+          <button class="feature-film__toggle" type="button" data-ambient-toggle aria-pressed="false">영상 재생</button>
         </div>
         <div class="feature-copy reveal">
           <p class="kicker">Himawari in motion</p>

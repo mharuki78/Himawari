@@ -159,6 +159,7 @@
     drawer = document.createElement('div');
     drawer.className = 'rdcart';
     drawer.setAttribute('aria-hidden', 'true');
+    drawer.inert = true;
     drawer.innerHTML =
       '<div class="rdcart__back" data-rdcart-close></div>' +
       '<div class="rdcart__panel" role="dialog" aria-modal="true" aria-label="' + esc(T.title) + '">' +
@@ -296,6 +297,7 @@
   function open() {
     if (!drawer || drawer.classList.contains('rdcart--open')) return;
     lastFocus = document.activeElement;
+    drawer.inert = false;
     drawer.classList.add('rdcart--open');
     drawer.removeAttribute('aria-hidden');
     setPageInert(true);
@@ -308,6 +310,7 @@
     if (!drawer || !drawer.classList.contains('rdcart--open')) return;
     drawer.classList.remove('rdcart--open');
     drawer.setAttribute('aria-hidden', 'true');
+    drawer.inert = true;
     setPageInert(false);
     document.documentElement.classList.remove('rdcart-locked');
     document.body.classList.remove('rdcart-locked');

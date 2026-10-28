@@ -59,18 +59,25 @@
       <section class="catalog-products section" aria-labelledby="all-products-title">
         <div class="section-inner">
           <h2 id="all-products-title" class="sr-only">전체 제품</h2>
-          <nav class="collection-links" aria-label="용도별 백팩 컬렉션"><a href="/collections/school">학생·책가방</a><a href="/collections/business">출근·노트북</a><a href="/collections/travel">여행·육아</a><a href="/collections/daily">데일리·미니</a></nav>
           <form class="catalog-controls" data-catalog-controls role="search" novalidate>
             <div class="catalog-search-row">
               <label for="catalog-search">제품 검색</label>
               <input id="catalog-search" type="search" data-catalog-search placeholder="모델명, 용도, 색상 검색" autocomplete="off">
-              <label for="catalog-sort">정렬</label>
-              <select id="catalog-sort" data-catalog-sort>
-                <option value="featured">추천순</option><option value="price-low">낮은 가격순</option><option value="price-high">높은 가격순</option><option value="name">이름순</option>
-              </select>
-              <button type="reset">조건 초기화</button>
             </div>
-            <div class="catalog-categories" data-catalog-categories aria-label="용도별 제품 필터"></div>
+            <details class="catalog-refinements" data-catalog-refinements>
+              <summary><span>정렬·필터</span><span data-catalog-refinement-summary>전체 · 추천순</span></summary>
+              <div class="catalog-refinements__content">
+                <div class="catalog-sort-row">
+                  <label for="catalog-sort">정렬</label>
+                  <select id="catalog-sort" data-catalog-sort>
+                    <option value="featured">추천순</option><option value="price-low">낮은 가격순</option><option value="price-high">높은 가격순</option><option value="name">이름순</option>
+                  </select>
+                  <button type="reset">조건 초기화</button>
+                </div>
+                <div class="catalog-categories" data-catalog-categories aria-label="용도별 제품 필터"></div>
+                <nav class="collection-links" aria-label="용도별 백팩 컬렉션"><a href="/collections/school">학생·책가방</a><a href="/collections/business">출근·노트북</a><a href="/collections/travel">여행·육아</a><a href="/collections/daily">데일리·미니</a></nav>
+              </div>
+            </details>
             <p class="catalog-result-count" data-catalog-result-count aria-live="polite">제품을 정리하고 있습니다.</p>
           </form>
           <p class="catalog-empty" data-catalog-empty hidden>조건에 맞는 제품이 없습니다. 검색어나 필터를 바꿔보세요.</p>

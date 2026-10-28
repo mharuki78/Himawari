@@ -26,9 +26,9 @@
     <link rel="stylesheet" href="assets/cart.css">
     <link rel="stylesheet" href="assets/member.css">
     <link rel="stylesheet" href="assets/product-guidance.css">
-    <link rel="stylesheet" href="assets/purchase-bar.css?v=20261008-payments">
+    <link rel="stylesheet" href="assets/purchase-bar.css?v=20261028-disclosure">
     <script src="script.js" defer></script>
-    <script src="product-detail.js?v=20261008-payments" type="module"></script>
+    <script src="product-detail.js?v=20261028-disclosure" type="module"></script>
   <link rel="stylesheet" href="/assets/commerce.css"><script src="https://wcs.naver.net/wcslog.js"></script><script src="/assets/naver-inflow.js"></script>
 <link rel="stylesheet" href="/assets/shopping-refinements.css?v=20261008-actions"></head>
   <body class="product-detail-page">
@@ -183,21 +183,29 @@
     </main>
 
     <aside class="mobile-purchase-bar" data-mobile-purchase hidden aria-label="빠른 구매">
-      <div><span data-sticky-model>Himawari</span><strong data-sticky-price></strong></div>
-      <div class="purchase-controls" data-purchase-controls>
-        <label class="purchase-option">옵션 선택<select data-sticky-select aria-describedby="purchase-selection-help"></select></label>
-        <div class="purchase-quantity"><span id="purchase-quantity-label">수량</span><div class="purchase-stepper" role="group" aria-labelledby="purchase-quantity-label"><button type="button" data-quantity-minus disabled aria-label="수량 줄이기">−</button><output data-purchase-quantity aria-live="polite">1</output><button type="button" data-quantity-plus disabled aria-label="수량 늘리기">+</button></div></div>
-        <p id="purchase-selection-help" data-purchase-help></p>
-      </div>
-      <div class="purchase-payment-actions">
-        <section class="npay-purchase" data-npay-product-section aria-labelledby="npay-product-title" hidden>
-          <p id="npay-product-title" class="npay-purchase__label">Npay로 구매</p>
-          <div id="npay-product-button" class="npay-button-container" data-npay-product></div>
-          <p class="npay-status" data-npay-status role="status" aria-live="polite"></p>
-        </section>
-        <a class="purchase-payment-link purchase-payment-link--kakao" data-sticky-payment="kakaopay" hidden aria-label="카카오페이 주문서로 이동">카카오페이</a>
-        <a class="purchase-payment-link purchase-payment-link--bank" data-sticky-payment="bank_transfer" hidden aria-label="무통장입금 주문서로 이동">무통장입금</a>
-      </div>
+      <details class="purchase-disclosure" data-purchase-disclosure open>
+        <summary class="purchase-summary" aria-controls="purchase-expanded">
+          <span class="purchase-summary__price"><span data-sticky-model>Himawari</span><strong data-sticky-price></strong></span>
+          <span class="purchase-summary__action"><span data-purchase-toggle-label>구매하기</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg></span>
+        </summary>
+        <div class="purchase-expanded" id="purchase-expanded">
+          <div class="purchase-controls" data-purchase-controls>
+            <label class="purchase-option">옵션 선택<select data-sticky-select aria-describedby="purchase-selection-help"></select></label>
+            <div class="purchase-quantity"><span id="purchase-quantity-label">수량</span><div class="purchase-stepper" role="group" aria-labelledby="purchase-quantity-label"><button type="button" data-quantity-minus disabled aria-label="수량 줄이기">−</button><output data-purchase-quantity aria-live="polite">1</output><button type="button" data-quantity-plus disabled aria-label="수량 늘리기">+</button></div></div>
+            <p id="purchase-selection-help" data-purchase-help></p>
+          </div>
+          <div class="purchase-payment-actions">
+            <section class="npay-purchase" data-npay-product-section aria-labelledby="npay-product-title" hidden>
+              <p id="npay-product-title" class="npay-purchase__label">Npay로 구매</p>
+              <div id="npay-product-button" class="npay-button-container" data-npay-product></div>
+              <p class="npay-status" data-npay-status role="status" aria-live="polite"></p>
+            </section>
+            <a class="purchase-payment-link purchase-payment-link--kakao" data-sticky-payment="kakaopay" hidden aria-label="카카오페이 주문서로 이동">카카오페이</a>
+            <a class="purchase-payment-link purchase-payment-link--bank" data-sticky-payment="bank_transfer" hidden aria-label="무통장입금 주문서로 이동">무통장입금</a>
+          </div>
+        </div>
+      </details>
+      <p class="purchase-compact-selection" data-purchase-selection aria-live="polite"></p>
     </aside>
 
     <footer class="site-footer">

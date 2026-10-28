@@ -6,10 +6,10 @@
 .product-guidance__header h2 { margin: 0; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.15; letter-spacing: -.045em; font-weight: 700; word-break: keep-all; text-shadow: none; }
 .product-guidance__intro { margin: 20px 0 0; max-width: 46ch; font-size: clamp(16px, 1.5vw, 19px); line-height: 1.7; color: var(--harbor); word-break: keep-all; }
 .product-guidance__body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: start; gap: clamp(32px, 6vw, 80px); }
-.product-guidance__visual { margin: 0; padding: 28px; border-radius: 24px; background: var(--cream); text-align: center; }
+.product-guidance__visual { min-width: 0; margin: 0; padding: 28px; border-radius: 24px; background: var(--cream); text-align: center; }
 .product-guidance__visual img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; border-radius: 12px; }
 .product-guidance__visual img[hidden] { display: none; }
-.product-guidance__visual figcaption { padding-top: 22px; font-size: 18px; font-weight: 650; letter-spacing: -.025em; }
+.product-guidance__visual figcaption { padding-top: 22px; font-size: 18px; font-weight: 650; letter-spacing: -.025em; overflow-wrap: anywhere; }
 .product-guidance__content { min-width: 0; padding-top: 8px; }
 .product-guidance__subheading { margin: 0 0 18px; font-size: clamp(22px, 2.3vw, 28px); line-height: 1.4; letter-spacing: -.035em; word-break: keep-all; }
 .product-guidance__description { margin: 0 0 28px; line-height: 1.85; font-size: 16px; color: var(--harbor); word-break: keep-all; }
@@ -35,9 +35,10 @@
 .product-guidance__related h3 { font-size: 20px; }
 .product-guidance__related a { display: inline-block; padding: 12px 0; }
 @media (max-width: 700px) {
-  .product-guidance__body { grid-template-columns: 1fr; gap: 32px; }
+  .product-guidance__body { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .product-guidance__visual { padding: 20px; }
   .product-guidance__visual img { max-height: 320px; }
   .product-guidance__content { padding-top: 0; }
-  .product-guidance__specs > div { gap: 16px; }
+  .product-guidance__specs > div { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 16px; }
+  .product-guidance__specs dt { overflow-wrap: anywhere; }
 }
