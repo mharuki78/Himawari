@@ -28,4 +28,10 @@ Meaningful review fixes included a late assistant stylesheet specificity overrid
 
 Evidence: backups/ui-fixes-2026-10-28/browser-evidence.json, final-tests.txt, media-sizes.json, screenshots and scoped detector files. Browser emulation covered 320/390/768/1440; physical devices, screen readers, real order/payment are unverified. Figma comparison remains unavailable without a project file key.
 
-Next: push the named task files, confirm exact SHA production READY, and verify the live site without route overrides. Provider responses and final completion status will be saved in backups/ui-fixes-2026-10-28/receipt.json.
+## Completion: production verified
+
+Code commit `1eb5f5629b07e30608a7356839ea83da68218697` was pushed to origin/main. The existing Git integration created production deployment `dpl_5i6e37TDxPpUoepfvhvXfk3nE6hu`, which reached READY with himawari.co.kr assigned. Its provider response is preserved as `backups/ui-fixes-2026-10-28/content-deployment-ready.json`.
+
+Live Chrome checks, with all task route overrides removed, passed at 390 and 1440 on home, catalog, product, story and checkout. Each route returned HTTP 200 and there were no page runtime errors in that batch. At 320, product guidance stayed inside the viewport. Closed-cart Tab focus reached the visible assistant launcher; expanded purchase panel showed one official Npay button, quantity 2 and matching Kakao/bank links. Mobile home loaded its new video while the offscreen feature remained unloaded. Reel contrast scan returned zero violations; story Load more displayed 24 with a visible new-link focus. Production catalog's first price occupied y719–753.
+
+All 15 changed JS/CSS files matched local SHA-256 values. Four new video files returned HTTP 200 with exact local byte counts. Evidence: `production-browser.json` and `live-asset-integrity.json` in the same backup directory. The final completion status and latest documentation deployment evidence are maintained in `receipt.json`; documentation-only commits do not alter the verified UI files. All nine requested fixes are complete. No real order/payment was executed, and unrelated untracked files remain untouched.

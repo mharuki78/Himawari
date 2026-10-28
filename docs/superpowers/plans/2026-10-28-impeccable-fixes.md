@@ -36,8 +36,8 @@
 - [x] 5. Integration — inspect diffs; run relevant tests then npm test once; correct failures caused by the change. Use a task-owned local server with existing storefront renderer and safe read-only production API fixtures if required.
 - [x] 6. Batched Chrome verification — check every fixed finding across desktop/mobile, keyboard/cart, purchase options/quantity, method change, catalog filters, story search/load-more and media lifecycle. Save JSON/screenshots under backups/ui-fixes-2026-10-28/. Fix observed issues in one batch and confirm once.
 - [x] 7. Final polish/review — verify brand, contrast, compact controls, focus, overflow and reduced motion. Inspect an independent whole-change review and resolve material findings.
-- [ ] 8. Commit/deploy — stage only named task files; git diff --check; commit and push main. Prefer the existing automatic production deployment. If Git integration does not create one, use the same exact SHA/project/team through Vercel MCP; do not change project settings.
-- [ ] 9. Production verification — confirm exact commit is READY with production alias, verify affected desktop/mobile flows and asset loading on himawari.co.kr, save provider response and receipt, update HIA status and report result.
+- [x] 8. Commit/deploy — stage only named task files; git diff --check; commit and push main. Prefer the existing automatic production deployment. If Git integration does not create one, use the same exact SHA/project/team through Vercel MCP; do not change project settings.
+- [x] 9. Production verification — confirm exact commit is READY with production alias, verify affected desktop/mobile flows and asset loading on himawari.co.kr, save provider response and receipt, update HIA status and report result.
 
 ## Completion evidence
 
