@@ -329,7 +329,7 @@ test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 �
   assert.match(html, /data-game-sound/);
   assert.match(html, /data-game-exit/);
   assert.match(html, /id="workshop-title"/);
-  assert.match(html, /35초의 등굣길/);
+  assert.match(html, /35초/); // Keep the actual duration; marketing wording may change.
   assert.match(html, /<dialog class="game-console"/);
   assert.match(html, /product\.html\?id=store-13326274540/);
   assert.match(gameJs, /var REWARD_STORAGE_KEY = 'himawari-game-coupon-v1'/);
@@ -409,13 +409,18 @@ test('공개·주문·관리 화면은 quiet sage 디자인 토큰을 공유한�
   assert.match(admin, /--moss:\s*#d9e8d3/);
 });
 
- test('collection pages retain category metadata with the current multi-class template', async () => {
+test('collection pages retain category metadata with the current multi-class template', async () => {
   const template = await readFile(new URL('../templates/products.html', import.meta.url), 'utf8');
   for (const key of ['school', 'business', 'travel', 'daily']) {
-    const output = renderCatalogPage(template, products, 'https://himawari.co.kr', { key, title: key, description: key, line1: key, line2: key });
+    const output = renderCatalogPage(template, products, 'https://himawari.co.kr', { key, title: key, description: `Description for ${key}`, line1: `Heading for ${key}`, line2: 'Second line' });
     assert.match(output, new RegExp('<body[^>]*data-collection="' + key + '"'));
     assert.match(output, /class="products-page catalog-page home-layout"/);
+    assert.match(output, new RegExp('<h1 id="catalog-title">Heading for ' + key + '<br>Second line</h1>'));
+    assert.match(output, new RegExp('<p>Description for ' + key + '</p>'));
   }
+  const fallback = renderCatalogPage(template, [], 'https://himawari.co.kr', { key: 'daily', title: 'Bags <daily>', description: 'Small & useful' });
+  assert.match(fallback, /<h1 id="catalog-title">Bags &lt;daily&gt;<\/h1>/);
+  assert.match(fallback, /<p>Small &amp; useful<\/p>/);
 });
 
 test('product specs are crawlable without JavaScript and schema uses distinct variant IDs', async () => {
@@ -423,6 +428,7 @@ test('product specs are crawlable without JavaScript and schema uses distinct va
   const product = { ...products[0], specs: { dimensions: '30 × 42 × 15', material: '<test> 원단' } };
   const html = renderProductPage(template, product);
   assert.match(html, /data-product-guidance/);
+  assert.ok(html.includes(`data-closing-title>${product.model} 주문하기</h2>`));
   assert.match(html, /<dd>30 × 42 × 15<\/dd>/);
   assert.match(html, /<dd>&lt;test&gt; 원단<\/dd>/);
   const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => JSON.parse(m[1]));

@@ -293,7 +293,7 @@ function selectProductCardVariant(article, product, family) {
   const footer = body?.querySelector('.store-product-footer');
   if (label) label.textContent = product.model;
   heading?.replaceWith(productNameHeading(product));
-  if (tagline) tagline.textContent = product.tagline || '일상에 자연스럽게 맞는 가방입니다.';
+  if (tagline) tagline.textContent = product.tagline || '제품 사진과 사양을 확인해 보세요.';
   footer?.replaceWith(createProductFooter(product, true));
   const saved = article.querySelector('.card-wishlist');
   if (saved) { const replacement = createWishlistButton(product); decorateCardWishlist(replacement); saved.replaceWith(replacement); }
@@ -332,7 +332,7 @@ function createProductCard(product, { family = null } = {}) {
   label.textContent = product.model;
   const tagline = document.createElement('p');
   tagline.className = 'product-tagline';
-  tagline.textContent = product.tagline || '일상에 자연스럽게 맞는 가방입니다.';
+  tagline.textContent = product.tagline || '제품 사진과 사양을 확인해 보세요.';
   const footer = createProductFooter(product, true);
   body.append(label, productNameHeading(product), tagline, footer);
   if (family?.variants?.length > 1) {

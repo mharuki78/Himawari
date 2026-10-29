@@ -78,7 +78,7 @@ function renderProductCard(product) {
     <div class="store-product-body">
       <p class="card-label">${escapeHtml(product.model || 'Himawari')}</p>
       <h3><a href="${detailHref(product)}">${escapeHtml(product.name)}</a></h3>
-      <p class="product-tagline">${escapeHtml(product.tagline || '일상에 자연스럽게 맞는 가방입니다.')}</p>
+      <p class="product-tagline">${escapeHtml(product.tagline || '제품 사진과 사양을 확인해 보세요.')}</p>
       <div class="store-product-footer">${productPrice(product)}<div class="store-product-actions"><a class="detail-link" href="${detailHref(product)}">상세 보기 <span aria-hidden="true">→</span></a><a class="compare-add" href="compare.html?products=${encodeURIComponent(product.id)}">제품 비교</a></div></div>
     </div>
   </article>`;
@@ -144,13 +144,15 @@ export function renderCatalogPage(template, products, origin = 'https://himawari
     .replaceAll('aria-busy="true"', 'aria-busy="false"');
   if (collection) {
     const canonical = `${origin}/collections/${collection.key}`;
+    const heading = [collection.line1, collection.line2].filter(Boolean).map(escapeHtml).join('<br>') || escapeHtml(collection.title);
     output = output
       .replace(/<body\b([^>]*)>/, `<body$1 data-collection="${escapeHtml(collection.key)}">`)
       .replace('<title>제품 — Himawari</title>', `<title>${escapeHtml(collection.title)} — Himawari</title>`)
       .replace('content="학생가방부터 비즈니스와 여행 백팩까지, Himawari의 전체 제품을 만나보세요."', `content="${escapeHtml(collection.description)}"`)
       .replace('href="https://himawari.co.kr/products.html"', `href="${canonical}"`)
       .replace('content="https://himawari.co.kr/products.html"', `content="${canonical}"`)
-      .replace('나의 하루에 맞는 가방.', escapeHtml(collection.title))
+      .replace(/(<h1\b[^>]*\bid="catalog-title"[^>]*>)[\s\S]*?<\/h1>/, (_, open) => `${open}${heading}</h1>`)
+      .replace(/(<h1\b[^>]*\bid="catalog-title"[^>]*>[\s\S]*?<\/h1>\s*<p>)[\s\S]*?<\/p>/, (_, open) => `${open}${escapeHtml(collection.description)}</p>`)
       .replace('<span>Current collection</span>', `<span>${escapeHtml(collection.title)}</span>`);
   }
   return output;
@@ -306,7 +308,7 @@ export function renderProductPage(template, product, origin = 'https://himawari.
     .replace('data-description></div>', `data-description>${renderDescription(product.description || product.tagline)}</div>`)
     .replace('data-highlights></ol>', `data-highlights>${renderHighlights(product)}</ol>`)
     .replace('data-gallery></div>', `data-gallery>${renderGallery(product)}</div>`)
-    .replace('data-closing-title>오래 곁에 둘 가방을 선택하세요.<', `data-closing-title>${escapeHtml(product.model)}, 오래 곁에 둘 선택.<`);
+    .replace(/(data-closing-title>)[\s\S]*?(<\/h2>)/, (_, open, close) => `${open}${escapeHtml(product.model)} 주문하기${close}`);
 
   html = html
     .replace(/(<link rel="canonical" href=")[^"]*(">)/, `$1${escapeHtml(canonical)}$2`)

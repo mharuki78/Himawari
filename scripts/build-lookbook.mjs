@@ -74,7 +74,7 @@ export function buildLookbook() {
 </head><body class="lookbook-page"><a class="skip-link" href="#main">본문으로 바로가기</a>
 ${header}
 <main id="main" class="lookbook-main">
-  <div class="lookbook-intro"><h1>LookBook</h1><p>여러 옷차림에 히마와리 가방을 매치해 봤어요.<br>사진을 보며 마음에 드는 코디를 찾아보세요.</p></div>
+  <div class="lookbook-intro"><h1>LookBook</h1><p>히마와리 가방으로 연출한 여러 옷차림을 모았어요.<br>사진을 보며 마음에 드는 가방과 코디를 찾아보세요.</p></div>
   <div class="lookbook-toolbar" data-lookbook-toolbar hidden><div class="lookbook-filters" role="group" aria-label="장면 선택">
     <button type="button" data-lookbook-filter="all" aria-pressed="true">전체</button>${Object.entries(labels).map(([key, label]) => `<button type="button" data-lookbook-filter="${key}" aria-pressed="false">${label}</button>`).join('')}
   </div><p class="lookbook-status" data-lookbook-status role="status" aria-live="polite"></p></div>

@@ -10,14 +10,14 @@ const MAX_REELS = 12;
 const REQUEST_ID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 const DEFAULT_REELS = [
-  ['No.0422 영상', '01 · No.0422', '매일의 수납을 한눈에.', '/assets/reel-0422.mp4', '/assets/reel-0422-poster.jpg'],
-  ['No.1088M 영상', '02 · No.1088M', '가벼운 하루의 시작.', '/assets/reel-1088m.mp4', '/assets/reel-1088m-poster.jpg'],
+  ['No.0422 영상', '01 · No.0422', '수납 공간을 살펴보세요.', '/assets/reel-0422.mp4', '/assets/reel-0422-poster.jpg'],
+  ['No.1088M 영상', '02 · No.1088M', '영상으로 보는 No.1088M.', '/assets/reel-1088m.mp4', '/assets/reel-1088m-poster.jpg'],
   ['No.1884 영상', '03 · No.1884', '출근과 출장 사이.', '/assets/reel-1884.mp4', '/assets/reel-1884-poster.jpg'],
-  ['No.1027 영상', '04 · No.1027', '가볍게 시작하는 등굣길.', '/assets/reel-1027.mp4', '/assets/reel-1027-poster.jpg'],
-  ['책가방 3종 영상', '05 · School collection', '세 가지 책가방, 한 장면.', '/assets/reel-school-set.mp4', '/assets/reel-school-set-poster.jpg'],
-  ['No.0514 데일리 영상', '06 · No.0514', '도시의 하루를 가볍게.', '/assets/reel-0514-260527.mp4', '/assets/reel-0514-260527-poster.jpg'],
-  ['No.0514 디테일 영상', '07 · No.0514 detail', '필요한 순간, 바로 꺼내도록.', '/assets/reel-0514-260604.mp4', '/assets/reel-0514-260604-poster.jpg'],
-  ['No.0424 영상', '08 · No.0424', '함께 걷는 하루의 균형.', '/assets/reel-0424-260528.mp4', '/assets/reel-0424-260528-poster.jpg'],
+  ['No.1027 영상', '04 · No.1027', '등굣길의 No.1027.', '/assets/reel-1027.mp4', '/assets/reel-1027-poster.jpg'],
+  ['책가방 3종 영상', '05 · School collection', '책가방 세 종류를 한눈에.', '/assets/reel-school-set.mp4', '/assets/reel-school-set-poster.jpg'],
+  ['No.0514 데일리 영상', '06 · No.0514', 'No.0514 데일리 영상.', '/assets/reel-0514-260527.mp4', '/assets/reel-0514-260527-poster.jpg'],
+  ['No.0514 디테일 영상', '07 · No.0514 detail', 'No.0514 디테일 살펴보기.', '/assets/reel-0514-260604.mp4', '/assets/reel-0514-260604-poster.jpg'],
+  ['No.0424 영상', '08 · No.0424', '영상으로 보는 No.0424.', '/assets/reel-0424-260528.mp4', '/assets/reel-0424-260528-poster.jpg'],
 ].map((item, index) => ({ id: `default-${index + 1}`, name: item[0], label: item[1], caption: item[2], videoUrl: item[3], posterUrl: item[4], enabled: true, managedMedia: [] }));
 
 function token() { return process.env.PRODUCT_BLOB_READ_WRITE_TOKEN || ''; }

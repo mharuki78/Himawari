@@ -372,7 +372,7 @@ function renderProduct(product, products) {
       .then(config => { sticky.querySelector('[data-sticky-payment="kakaopay"]').hidden = config.enabled !== true; })
       .catch(() => {});
   }
-  document.querySelector('[data-closing-title]').textContent = `${product.model}, 오래 곁에 둘 선택.`;
+  document.querySelector('[data-closing-title]').textContent = `${product.model} 주문하기`;
   renderDescription(product.description || product.tagline);
 
   const highlightsSection = document.querySelector('[data-highlights-section]');

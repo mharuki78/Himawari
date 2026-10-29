@@ -10,10 +10,10 @@ import { applyInventoryReservations } from './_lib/inventory.js';
 import { productCategory, productFamilyKey } from '../assets/catalog-tools.js';
 
 const COLLECTIONS = {
-  school: { title: '학생·책가방', description: '등굣길의 움직임과 수납을 고려한 Himawari 학생 백팩.', line1: '가볍고 단정한', line2: '학생·책가방.' },
-  business: { title: '출근·노트북', description: '노트북 수납과 도시 이동을 고려한 Himawari 비즈니스 백팩.', line1: '도시의 업무를 위한', line2: '출근·노트북 백팩.' },
-  travel: { title: '여행·육아', description: '여행과 가족의 하루에 필요한 수납을 담은 Himawari 백팩.', line1: '긴 하루를 정돈하는', line2: '여행·육아 백팩.' },
-  daily: { title: '데일리·미니', description: '가벼운 일상에 어울리는 균형 잡힌 Himawari 데일리 백팩.', line1: '매일 편안하게 드는', line2: '데일리 백팩.' },
+  school: { title: '학생·책가방', description: 'Himawari 학생 백팩의 크기와 수납 정보를 살펴보세요.', line1: '등교할 때 필요한', line2: '가방을 찾아보세요.' },
+  business: { title: '출근·노트북', description: '출근용 가방을 찾고 있다면 Himawari 백팩의 노트북 수납칸과 크기를 비교해 보세요.', line1: '노트북을 넣고', line2: '출근할 가방을 찾아보세요.' },
+  travel: { title: '여행·육아', description: '여행 짐과 육아 용품을 넣을 가방을 찾는다면 Himawari 백팩의 크기와 수납 정보를 확인해 보세요.', line1: '여행 짐과 육아 용품을', line2: '담을 가방을 찾아보세요.' },
+  daily: { title: '데일리·미니', description: '가까운 외출에 들 가방부터 평소에 멜 백팩까지, Himawari 데일리 제품을 살펴보세요.', line1: '가까운 외출에 들', line2: '데일리 가방을 만나보세요.' },
 };
 
 function html(body, status = 200) {
