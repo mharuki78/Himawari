@@ -1,0 +1,281 @@
+{
+  "date": "2026-10-30",
+  "automationId": "himawari",
+  "stage": "prepared",
+  "expectedCount": 3,
+  "expectedGeneratedImages": 6,
+  "publicationBaselineCommit": "1340fcf3342fd94e69e807ae204880c8e8673acd",
+  "publicationBaselineEvidence": "backups/story-2026-10-30/baseline-deployment.json",
+  "completionReceipt": "backups/story-runs/2026-10-30.deployment.json",
+  "trigger": {
+    "receivedAt": "2026-10-29T23:00:33.835Z",
+    "scheduledAt": "2026-10-30T08:00:00+09:00",
+    "edition": "morning"
+  },
+  "posts": [
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-beige-photo-colour",
+      "title": "베이지 백팩이 사진마다 다르게 보일 때, 실물 색은 어떻게 확인할까",
+      "url": "https://himawari.co.kr/story/backpack-beige-photo-colour.html",
+      "productId": "store-13308523903",
+      "model": "No.0403",
+      "image": "assets/story/backpack-beige-photo-colour.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-30/reference-1-front.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 22페이지의 0403 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다. 외부 크기는 백팩 기준이며 숄더백은 별도 23 × 18 cm로 표기됩니다. 900 g의 구성품 포함 여부는 미기재입니다.",
+      "dimensionsCm": {
+        "width": 28,
+        "height": 40,
+        "depth": 17
+      },
+      "editorialForm": "사진 두 장을 비교하는 가상 구매 사례와 문의 문장",
+      "coreQuestion": "사진마다 달라 보이는 베이지 백팩의 옵션을 식별하고, 실물의 몸판 색에 관한 불확실성을 어떻게 정확한 문의로 옮길까?",
+      "bodyChars": 3403,
+      "images": [
+        {
+          "id": "backpack-beige-photo-colour",
+          "model": "0403",
+          "role": "hero",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-beige-photo-colour.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-30/reference-1-front.jpg",
+          "references": [
+            "backups/story-2026-10-30/reference-1-front.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-30/generated-1.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-164f36e1-1a06-483a-8117-cd86e028fa60.png",
+          "prompt": "Use case: photorealistic-natural. Create ONE landscape 1536x1024 editorial photograph for a Korean bag article, using the attached image ONLY as exact PRODUCT REFERENCE, not person identity. Exact Himawari No.0403 beige/black backpack, external width28 height40 depth17cm. A fictional Korean woman around48 in a plain blue cotton coat stands beside a shop window holding both original BLACK top handles, the beige backpack at thigh level, crop shoulder to knees, front three-quarter angle, bag fills55percent image height. Preserve the tall beige main body, black base trim, two black webbing handles, black padded shoulder straps and exact rectangular beige detachable front pouch with black rounded zipper trim, small black press stud and small black Himawari patch at lower right; original black connector with silver clip above pouch; original vertical proportions. Soft neutral daylight and pale grey wall, natural beige fabric color, no color filter. All zippers/pouch closed. No added pocket, extra logo, straps, ornaments, ruler or color chart. This is fictional AI staging, not a color calibration or customer photograph. No text overlays.",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260211_281/1770774598923VUxxR_JPEG/20746952034287940_427742899.jpg",
+          "fidelityReviewed": true,
+          "review": "Directly compared with No.0403 original: beige tall body, black handles/base/straps, rectangular front pouch, black snap and lower-right brand patch, central clip retained. Fictional adult and shop-window scene; believable scale based on 28x40x17cm. Not a measured colour or customer image.",
+          "sha256": "5683b188c289be7c185d6179d6c93d3d03cfe160168727fc7bb89d44eb773d33",
+          "alt": "가상의 성인이 No.0403 베이지 백팩을 손에 든 AI 사용 연출 사진",
+          "caption": "AI 사용 연출: 가상의 성인이 No.0403을 든 장면입니다. 실물 색을 측정한 사진은 아닙니다."
+        },
+        {
+          "id": "backpack-beige-photo-colour",
+          "model": "0403",
+          "role": "detail",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-beige-photo-colour-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-30/reference-1-front.jpg",
+          "references": [
+            "backups/story-2026-10-30/reference-1-front.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-30/generated-2.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-712c9815-2962-4ceb-9333-e9ee047f2ab5.png",
+          "prompt": "Use case: product-mockup. ONE landscape1536x1024 editorial close photograph of exact referenced Himawari No.0403 beige/black backpack width28height40depth17cm. Product only, no person. Supported upright on a light grey counter against a muted blue-grey backdrop. Close oblique frontal crop from below top handles down to base, focus on actual BEIGE fabric and black edging of the rectangular detachable front pouch, original black circular press-stud, black Himawari logo patch near pouch lower right, original black top clip partly visible. Keep precise beige hue from reference, all original pocket geometry, seams, hardware and proportions. Gentle side daylight creates ordinary surface shading; no hue-changing filter or fake before/after comparison. No opened compartment or invented interior, no measuring tools, no whitebalance card, typography or overlays. This shows appearance only, never controlled color testing.",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260211_281/1770774598923VUxxR_JPEG/20746952034287940_427742899.jpg",
+          "fidelityReviewed": true,
+          "review": "Directly compared with No.0403 original including inspected clip crop: beige body, rounded black pouch edging, black snap, dark clip with reflective gate and black brand patch retained. Close product-only framing differs from adult hero. Surface shading is staging; no calibration claim.",
+          "sha256": "5c36889bd44cfa4b672e8a99fa536e7be21880c1ebbd7b531bb80044dc8ed778",
+          "alt": "No.0403의 베이지 몸판과 검정 앞주머니 테두리를 가까이 보여주는 AI 연출 사진",
+          "caption": "AI 연출: 베이지색 몸판과 검정 테두리의 경계를 살펴봅니다. 색상 비교·보정 실험의 결과가 아닙니다."
+        },
+        {
+          "id": "backpack-beige-photo-colour",
+          "model": "0403",
+          "role": "reference",
+          "imageKind": "reference",
+          "image": "assets/story/backpack-beige-photo-colour-product.webp",
+          "width": 720,
+          "height": 720,
+          "reference": "backups/story-2026-10-30/reference-1-front.jpg",
+          "originalSource": "backups/story-2026-10-30/reference-1-front.jpg",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260211_281/1770774598923VUxxR_JPEG/20746952034287940_427742899.jpg",
+          "crop": null,
+          "fidelityReviewed": true,
+          "review": "Current catalog original downloaded and directly viewed. Full image retained without modifying product or depicted person; this is product source material, not a customer testimonial.",
+          "sha256": "e8b4d305a56a4ad5a3ae669d4dee0dd31cb29255718db346d32f99806f97c358",
+          "alt": "No.0403 베이지 백팩의 실제 제품 원본 사진",
+          "caption": "실제 제품 사진: No.0403 베이지 옵션의 원본입니다. 이 사진의 색을 모든 화면에서 같은 색으로 보장하지는 않습니다."
+        }
+      ]
+    },
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-fabric-photo-material",
+      "title": "백팩 사진의 광택만 보고 나일론인지 알 수 있을까",
+      "url": "https://himawari.co.kr/story/backpack-fabric-photo-material.html",
+      "productId": "coupang-e16e6315910fdd6b",
+      "model": "No.2505",
+      "image": "assets/story/backpack-fabric-photo-material.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-30/reference-2-front.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 5페이지의 2505 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": {
+        "width": 30,
+        "height": 43,
+        "depth": 14
+      },
+      "editorialForm": "외관에서 생긴 소재 추측을 근거표로 검토하는 팩트체크",
+      "coreQuestion": "백팩 사진의 광택과 결로 소재를 판단할 수 있을까, 겉감과 안감 표기는 어디까지 적용할까?",
+      "bodyChars": 3019,
+      "images": [
+        {
+          "id": "backpack-fabric-photo-material",
+          "model": "2505",
+          "role": "hero",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-fabric-photo-material.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-30/reference-2-front.jpg",
+          "references": [
+            "backups/story-2026-10-30/reference-2-front.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-30/generated-3.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-38f49c46-c91c-449b-a2c9-645dec2e155c.png",
+          "prompt": "Use case: product-mockup. ONE landscape1536x1024 realistic editorial photograph of EXACT Himawari No.2505 BLACK backpack from reference, external width30height43depth14cm. Whole bag upright on a pale oak desk, front three-quarter angle, no person, neutral off-white studio wall. Preserve the rounded black fabric body, TWO wide IVORY woven webbing strips running vertically from matching ivory handles down to black lower front panel, ivory handle connector with black snap, small centered white Himawari wordmark between strips, original black curved zipper tracks and black side open pockets, original black shoulder straps behind. Soft broad daylight with mild honest fabric reflections. Product itself large and crisp, no exaggerated texture, no shiny plastic appearance, no added weave diagram, liquid, spray, testweight or waterproof demonstration. All compartments closed. No text overlay.",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e16e6315910fdd6b/main-rgxtYpMoAPOljowvNuFsQn7QcDh936.jpg",
+          "fidelityReviewed": true,
+          "review": "Directly compared with No.2505 original: rounded black body, two wide ivory vertical strips, ivory handles/connector and black snap, small centered white logo, curved zipper and side pockets retained. Whole-bag desk view; no performance demonstration.",
+          "sha256": "23807af110e1704b30a9a07a7ef640f188ae3878c9ef03703802c181b494bc56",
+          "alt": "No.2505 검정 백팩과 아이보리 웨빙의 외형을 보여주는 AI 연출 사진",
+          "caption": "AI 연출: 검정 몸판과 아이보리 웨빙이 함께 보이는 외형입니다. 소재와 성능은 제품 정보를 기준으로 확인하세요."
+        },
+        {
+          "id": "backpack-fabric-photo-material",
+          "model": "2505",
+          "role": "detail",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-fabric-photo-material-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-30/reference-2-front.jpg",
+          "references": [
+            "backups/story-2026-10-30/reference-2-front.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-30/generated-4.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-ae6de532-a29a-4317-ab8b-32658f257bf0.png",
+          "prompt": "Use case: product-mockup. ONE landscape1536x1024 CLOSE editorial photograph of exactly referenced BLACK Himawari No.2505 bag width30height43depth14cm. Crop the central upper FRONT between and including the two IVORY vertical webbing strips, tiny white Himawari wordmark in center, and black body panel beside original stitched webbing edge. Camera oblique close view from front-right, natural cloth folds and mild side daylight. Show the visibly different surfaces of actual black body cloth and ivory woven strap WITHOUT claiming their fiber identity or inventing microscopic weave. Preserve original colors, small logo placement, webbing width, stitching and panel construction. Do not add labels, zipper teeth in wrong positions, diagrams, magnification rings, water drops or strength-test props. No person or hands. Quiet grey background barely visible.",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e16e6315910fdd6b/main-rgxtYpMoAPOljowvNuFsQn7QcDh936.jpg",
+          "fidelityReviewed": true,
+          "review": "Directly compared with No.2505 original: centered white Himawari mark between ivory strips, black body and strap edges retained. Close oblique crop shows ordinary texture without inventing microscopy or fibre test results; different explanatory role from whole bag.",
+          "sha256": "c58641f0bb142881e4e2ccdfa6acdf16e40bc3bc7a1c75635e314a2d49dc548e",
+          "alt": "No.2505의 검정 몸판과 밝은 웨빙 표면을 가까이 보여주는 AI 연출 사진",
+          "caption": "AI 연출: 몸판과 웨빙의 표면을 가까이 보여줍니다. 섬유 종류를 판별한 현미경 사진이나 성능 시험 사진은 아닙니다."
+        },
+        {
+          "id": "backpack-fabric-photo-material",
+          "model": "2505",
+          "role": "reference",
+          "imageKind": "reference",
+          "image": "assets/story/backpack-fabric-photo-material-product.webp",
+          "width": 1000,
+          "height": 1000,
+          "reference": "backups/story-2026-10-30/reference-2-front.jpg",
+          "originalSource": "backups/story-2026-10-30/reference-2-front.jpg",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e16e6315910fdd6b/main-rgxtYpMoAPOljowvNuFsQn7QcDh936.jpg",
+          "crop": null,
+          "fidelityReviewed": true,
+          "review": "Current catalog original downloaded and directly viewed. Full image retained without modifying product or depicted person; this is product source material, not a customer testimonial.",
+          "sha256": "7798eddb6a2cc76f07919d7acfd9ef86263e278bc5f0ba6c4943667229a681ac",
+          "alt": "검정 몸판과 아이보리 웨빙이 보이는 No.2505의 실제 제품 사진",
+          "caption": "실제 제품 사진: No.2505 블랙의 몸판과 웨빙입니다. 겉감 나일론·안감 폴리에스터 표기는 제품 정보에서 확인했습니다."
+        }
+      ]
+    },
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-model-number-size",
+      "title": "No.0422와 No.0423, 번호가 커지면 백팩도 더 클까",
+      "url": "https://himawari.co.kr/story/backpack-model-number-size.html",
+      "productId": "coupang-e733b49430ffbe4d",
+      "model": "No.0423",
+      "image": "assets/story/backpack-model-number-size.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-10-30/reference-3-front.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 9페이지의 0423 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "dimensionsCm": {
+        "width": 32,
+        "height": 42,
+        "depth": 13
+      },
+      "editorialForm": "두 모델 비교표와 조건별 선택 해설",
+      "coreQuestion": "No.0423처럼 번호가 더 큰 백팩을 No.0422보다 전체적으로 더 크거나 개선된 모델이라고 고를 수 있을까?",
+      "bodyChars": 3315,
+      "images": [
+        {
+          "id": "backpack-model-number-size",
+          "model": "0423",
+          "role": "hero",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-model-number-size.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-30/reference-3-front.jpg",
+          "references": [
+            "backups/story-2026-10-30/reference-3-front.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-30/generated-5.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-96d42a77-b3d7-45bf-91d8-4d426a286c19.png",
+          "prompt": "Use case: photorealistic-natural. ONE landscape1536x1024 realistic editorial photo of the exact Himawari No.0423 BLACK dog-face backpack in reference, external width32height42depth13cm. Fictional Korean man around55 in a plain tan cotton jacket and dark trousers stands beside a station bench holding the ORIGINAL top handle at his side. Crop chest to knees, full bag visible in clear front three-quarter view, realistic42cm scale, bag about60percent image height. Preserve BLACK rounded body, warm TAN dog-face upper projecting pocket shaped horizontally with small brown oval nose toward LEFT, TWO slim dark vertical eye slots in center, ONE large dark-brown floppy ear overlay on RIGHT of face, original black lower wide rounded rectangular zip pocket and white outlined square Himawari logo lower-right, black mesh side pockets and existing side webbing loops. Both bag compartments closed, no extra face parts, teeth, tail, strap or invented seams. Normal daylight, unbranded station wall, no graphic text, ruler, claim of actual wear test or customer identity.",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e733b49430ffbe4d/main-brJHq1r30m8drE0LSnC7wTdrj4N74r.jpg",
+          "fidelityReviewed": true,
+          "review": "Directly compared with No.0423 original: black rounded body, tan dog-face pocket, left oval nose, two central eye lines, right brown floppy ear, black lower pocket and outlined lower-right white logo retained. Fictional adult/bench scene;42cm external height used for scale.",
+          "sha256": "cdd88dcd179c20b16ef317f231e377ad44a1a6295eff4e32e923622bcfc6fef3",
+          "alt": "가상의 성인이 No.0423 강아지 얼굴 백팩을 손에 든 AI 사용 연출 사진",
+          "caption": "AI 사용 연출: 가상의 성인이 No.0423을 든 장면입니다. 착용감이나 수납을 시험한 사진은 아닙니다."
+        },
+        {
+          "id": "backpack-model-number-size",
+          "model": "0423",
+          "role": "detail",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-model-number-size-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-10-30/reference-3-front.jpg",
+          "references": [
+            "backups/story-2026-10-30/reference-3-front.jpg"
+          ],
+          "generatedSource": "backups/story-2026-10-30/generated-6.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-756a1b56-97af-4bd0-8fae-704c7d6a9315.png",
+          "prompt": "Use case: product-mockup. ONE landscape1536x1024 close product editorial photo of EXACT BLACK Himawari No.0423 backpack width32height42depth13cm. Bag supported upright on grey table, camera slightly elevated at front-left three-quarter angle, include the warm TAN dog-face upper pocket and most black lower front pocket to show this model's distinct visible construction. Match original left small brown oval nose, two narrow dark vertical eyes in center, large dark brown floppy EAR on RIGHT, curved zipper line on upper pocket, rounded rectangular black lower zip pocket and outlined square white Himawari logo at lower right. Black mesh side pocket visible at edge, exact original silhouette, fabric colors and proportions. No new zipper opening, no imagined interior, no other model or comparison bag, ruler, diagram, text overlay or props. Soft side light, plain light-grey background.",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e733b49430ffbe4d/main-brJHq1r30m8drE0LSnC7wTdrj4N74r.jpg",
+          "fidelityReviewed": true,
+          "review": "Directly compared with No.0423 original: dog-face parts, warm tan/brown/black palette, curved upper pocket, lower zipper and square logo, mesh side pocket retained. Product-only three-quarter detail differs from adult hero; no interior or tested capacity implied.",
+          "sha256": "dfcaf14c02d393874ab2cfff28662fa5e876b9c981360bddd97e71a6ab5e9701",
+          "alt": "No.0423의 얼굴 모양 위 포켓과 검정 앞 포켓을 보여주는 AI 연출 사진",
+          "caption": "AI 연출: No.0423의 앞면 구조를 살펴봅니다. 다른 모델과 크기를 실측 비교한 장면은 아닙니다."
+        },
+        {
+          "id": "backpack-model-number-size",
+          "model": "0423",
+          "role": "reference",
+          "imageKind": "reference",
+          "image": "assets/story/backpack-model-number-size-product.webp",
+          "width": 1000,
+          "height": 1000,
+          "reference": "backups/story-2026-10-30/reference-3-front.jpg",
+          "originalSource": "backups/story-2026-10-30/reference-3-front.jpg",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e733b49430ffbe4d/main-brJHq1r30m8drE0LSnC7wTdrj4N74r.jpg",
+          "crop": null,
+          "fidelityReviewed": true,
+          "review": "Current catalog original downloaded and directly viewed. Full image retained without modifying product or depicted person; this is product source material, not a customer testimonial.",
+          "sha256": "0f64655d43873ad25111b0f73fbaa02eb17b0a56cb2ba99f7ea367865da0e1bc",
+          "alt": "강아지 얼굴 모양의 위 포켓이 있는 No.0423의 실제 제품 사진",
+          "caption": "실제 제품 사진: No.0423 브라운 옵션의 앞면입니다. 외부 크기와 수납칸 치수는 제품 정보의 해당 항목을 구분해 읽습니다."
+        }
+      ]
+    }
+  ],
+  "topicsReviewed": 167,
+  "overlapReview": "All167 titles, summaries and section maps reviewed; full corpus extracted and searched by each author. Closest wardrobe-colour, general photo-reading, surface-fold, fibre-care, model-series, SET and dimensions articles compared. New seller-inquiry case, visual-material fact check and cross-model dimension comparison are documented in editorial-review.md.",
+  "editions": {
+    "morning": {
+      "postIds": [
+        "backpack-beige-photo-colour",
+        "backpack-fabric-photo-material",
+        "backpack-model-number-size"
+      ],
+      "stage": "prepared"
+    }
+  }
+}

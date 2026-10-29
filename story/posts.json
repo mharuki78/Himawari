@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-beige-photo-colour",
+    "title": "베이지 백팩이 사진마다 다르게 보일 때, 실물 색은 어떻게 확인할까",
+    "date": "2026-10-30",
+    "summary": "베이지 백팩이 사진마다 크림색이나 회색으로 달리 느껴질 때, 같은 옵션인지와 색이 다르게 보이는 이유를 나누어 봅니다. No.0403의 몸판과 검은 끈을 구분하고, 사진 두 장을 지정해 판매자에게 문의하는 과정을 따라갑니다.",
+    "description": "베이지 백팩이 사진마다 크림색이나 회색으로 달리 느껴질 때, 같은 옵션인지와 색이 다르게 보이는 이유를 나누어 봅니다. No.0403의 몸판과 검은 끈을 구분하고, 사진 두 장을 지정해 판매자에게 문의하는 과정을 따라갑니다.",
+    "tags": [
+      "베이지 백팩",
+      "상품 사진",
+      "색상 확인"
+    ],
+    "image": "../assets/story/backpack-beige-photo-colour.webp",
+    "imageAlt": "가상의 성인이 No.0403 베이지 백팩을 손에 든 AI 사용 연출 사진",
+    "images": [
+      "../assets/story/backpack-beige-photo-colour.webp",
+      "../assets/story/backpack-beige-photo-colour-detail.webp",
+      "../assets/story/backpack-beige-photo-colour-product.webp"
+    ],
+    "url": "backpack-beige-photo-colour.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "사진 두 장을 비교하는 가상 구매 사례와 문의 문장"
+  },
+  {
+    "id": "backpack-fabric-photo-material",
+    "title": "백팩 사진의 광택만 보고 나일론인지 알 수 있을까",
+    "date": "2026-10-30",
+    "summary": "반짝임과 표면의 결만으로 백팩의 섬유나 코팅을 알아낼 수는 없습니다. No.2505의 실제 사진과 확인된 소재를 대조하며, 겉감·안감 표기가 가리키는 부위와 따로 물어볼 정보를 살펴봅니다.",
+    "description": "반짝임과 표면의 결만으로 백팩의 섬유나 코팅을 알아낼 수는 없습니다. No.2505의 실제 사진과 확인된 소재를 대조하며, 겉감·안감 표기가 가리키는 부위와 따로 물어볼 정보를 살펴봅니다.",
+    "tags": [
+      "백팩 소재",
+      "소재 표기",
+      "No.2505"
+    ],
+    "image": "../assets/story/backpack-fabric-photo-material.webp",
+    "imageAlt": "No.2505 검정 백팩과 아이보리 웨빙의 외형을 보여주는 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-fabric-photo-material.webp",
+      "../assets/story/backpack-fabric-photo-material-detail.webp",
+      "../assets/story/backpack-fabric-photo-material-product.webp"
+    ],
+    "url": "backpack-fabric-photo-material.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "외관에서 생긴 소재 추측을 근거표로 검토하는 팩트체크"
+  },
+  {
+    "id": "backpack-model-number-size",
+    "title": "No.0422와 No.0423, 번호가 커지면 백팩도 더 클까",
+    "date": "2026-10-30",
+    "summary": "No.0423은 No.0422보다 가로와 세로가 길지만 앞뒤 폭은 짧습니다. 실제 두 모델의 외부 치수와 노트북 수납칸을 나란히 보며, 번호 순서 대신 필요한 방향으로 백팩을 고르는 기준을 살펴봅니다.",
+    "description": "No.0423은 No.0422보다 가로와 세로가 길지만 앞뒤 폭은 짧습니다. 실제 두 모델의 외부 치수와 노트북 수납칸을 나란히 보며, 번호 순서 대신 필요한 방향으로 백팩을 고르는 기준을 살펴봅니다.",
+    "tags": [
+      "제품 비교",
+      "모델 번호",
+      "백팩 크기"
+    ],
+    "image": "../assets/story/backpack-model-number-size.webp",
+    "imageAlt": "가상의 성인이 No.0423 강아지 얼굴 백팩을 손에 든 AI 사용 연출 사진",
+    "images": [
+      "../assets/story/backpack-model-number-size.webp",
+      "../assets/story/backpack-model-number-size-detail.webp",
+      "../assets/story/backpack-model-number-size-product.webp"
+    ],
+    "url": "backpack-model-number-size.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "두 모델 비교표와 조건별 선택 해설"
+  },
+  {
     "id": "backpack-dimensions-not-litres",
     "title": "백팩 크기를 곱하면 리터 용량이 될까",
     "date": "2026-10-22",
