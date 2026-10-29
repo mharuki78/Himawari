@@ -1,7 +1,7 @@
 {
   "date": "2026-10-30",
   "automationId": "himawari",
-  "stage": "prepared",
+  "stage": "metadata-verified",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "publicationBaselineCommit": "1340fcf3342fd94e69e807ae204880c8e8673acd",
@@ -14,7 +14,7 @@
   },
   "posts": [
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-beige-photo-colour",
       "title": "베이지 백팩이 사진마다 다르게 보일 때, 실물 색은 어떻게 확인할까",
       "url": "https://himawari.co.kr/story/backpack-beige-photo-colour.html",
@@ -95,10 +95,19 @@
           "alt": "No.0403 베이지 백팩의 실제 제품 원본 사진",
           "caption": "실제 제품 사진: No.0403 베이지 옵션의 원본입니다. 이 사진의 색을 모든 화면에서 같은 색으로 보장하지는 않습니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-29T23:13:00.800Z",
+        "modifiedAt": "2026-10-29T23:13:00.800Z",
+        "firstDeploymentEvidence": "backups/story-2026-10-30/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-10-30/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-10-30/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-10-30/first-deployment-history.json",
+        "articleSha256": "f83d8bc9106b9e54c45c6873358fb341ae9783368bb054fa50e49edf36f95c11"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-fabric-photo-material",
       "title": "백팩 사진의 광택만 보고 나일론인지 알 수 있을까",
       "url": "https://himawari.co.kr/story/backpack-fabric-photo-material.html",
@@ -179,10 +188,19 @@
           "alt": "검정 몸판과 아이보리 웨빙이 보이는 No.2505의 실제 제품 사진",
           "caption": "실제 제품 사진: No.2505 블랙의 몸판과 웨빙입니다. 겉감 나일론·안감 폴리에스터 표기는 제품 정보에서 확인했습니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-29T23:13:00.800Z",
+        "modifiedAt": "2026-10-29T23:13:00.800Z",
+        "firstDeploymentEvidence": "backups/story-2026-10-30/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-10-30/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-10-30/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-10-30/first-deployment-history.json",
+        "articleSha256": "5f4fb5833adda725264bc03b753d7b84f1233810fc1d5296be63e8b75bf31815"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-model-number-size",
       "title": "No.0422와 No.0423, 번호가 커지면 백팩도 더 클까",
       "url": "https://himawari.co.kr/story/backpack-model-number-size.html",
@@ -263,7 +281,16 @@
           "alt": "강아지 얼굴 모양의 위 포켓이 있는 No.0423의 실제 제품 사진",
           "caption": "실제 제품 사진: No.0423 브라운 옵션의 앞면입니다. 외부 크기와 수납칸 치수는 제품 정보의 해당 항목을 구분해 읽습니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-29T23:13:00.800Z",
+        "modifiedAt": "2026-10-29T23:13:00.800Z",
+        "firstDeploymentEvidence": "backups/story-2026-10-30/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-10-30/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-10-30/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-10-30/first-deployment-history.json",
+        "articleSha256": "6857ceae3dc217bc1b67bebdffb72a4581b59167413a0d271f82903f76a77b32"
+      }
     }
   ],
   "topicsReviewed": 167,
@@ -275,7 +302,7 @@
         "backpack-fabric-photo-material",
         "backpack-model-number-size"
       ],
-      "stage": "prepared"
+      "stage": "metadata-verified"
     }
   }
 }
