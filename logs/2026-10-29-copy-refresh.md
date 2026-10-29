@@ -30,4 +30,12 @@ Created the story-only heartbeat "Himawari 이야기 매일 발행", id himawari
 
 The full prompt is preserved as story-automation-prompt.txt. It requires three distinct bag-centered stories, six new generated images, provider-backed actual first/modification deployment times and complete deployment histories, published verification, duplicate prevention and quiet no-op behavior using the app's supplied runtime format. It contains no invented heartbeat response tags. New content completion or a failure/user action is the notification trigger.
 
-Next: push only the task's source/test/log/STATE files, confirm the exact commit's Vercel production READY and recheck the live site. Final release evidence and status will be maintained in backups/copy-refresh-2026-10-29/receipt.json.
+Final release evidence and status are maintained in backups/copy-refresh-2026-10-29/receipt.json.
+
+## Completion: production verified
+
+Source commit 3946c53a0e7a5707849257ab34ea5f40443afc26 was pushed to origin/main. Vercel production deployment dpl_Ey7pgjkYqUkYpP2F2R9tYG9hU1Hg reached READY with himawari.co.kr assigned; the exact SHA/provider response is preserved in content-deployment-ready.json.
+
+Live Chrome checked 15 routes at both 390 and 1440 widths with no task route overrides: all 30 returned HTTP 200, with zero page runtime errors, horizontal overflows or clipped visible headings. Homepage section headings and all eight API-backed reel captions display the revised copy. Direct byte/hash comparison confirmed all 17 checked public HTML/JS and protected data files match local source. Live stories remain 167 with the latest dated October 22; this copy release did not create or backdate stories. production-browser.json, production-copy-headings.json and live-integrity.json preserve the evidence.
+
+The story-only automation was read back as ACTIVE, with explicit user approval and October 30 as its next scheduled local date. Future execution is not claimed as verified. This task is complete; the final documentation commit/deployment evidence is recorded only in receipt.json to avoid recursive evidence commits.
