@@ -57,7 +57,7 @@ User refinement: `getHomeHeroSelection(products,{previousModel,random})` chooses
 
 ### Task 4: Git and production
 
-- [ ] Review diff and stage explicit task-owned files; commit and push main.
-- [ ] Preserve Vercel provider response proving exact commit production READY.
-- [ ] Check actual production desktop/mobile, live catalogue/photos/links/RSS and key interactions. Refresh publication receipt only if needed, without replacing first evidence or times.
-- [ ] Record verified result and report live URL/commit succinctly.
+- [x] Review diff and stage explicit task-owned files; commit and push main.
+- [x] Preserve Vercel provider response proving exact commit production READY.
+- [x] Check actual production desktop/mobile, live catalogue/photos/links/RSS and key interactions. Refresh publication receipt only if needed, without replacing first evidence or times.
+- [x] Record verified result and report live URL/commit succinctly.
