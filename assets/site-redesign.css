@@ -206,5 +206,5 @@ input,textarea{caret-color:#315845}
 
 /* A model can have more colours than fit in one mobile row. */
 .colour-picker{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#b4c6bc transparent}
-.colour-swatch{flex:0 0 44px}
+.colour-swatch{flex:0 0 auto;min-width:44px;white-space:nowrap}
 .colour-swatch__circle{flex-shrink:0}
