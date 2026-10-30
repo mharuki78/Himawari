@@ -16,4 +16,6 @@
 
 콘텐츠 커밋 32d48646bf70852cc22c80018f6d8ac3029cc2a4를 push했다. 원래 baseline READY epoch 1793353400027부터 해당 프로젝트·팀의 production 목록을 끝까지 조회했다. 제공자 pagination.next는 생략되어 1페이지로 완료됐고 READY 후보 1건의 상세를 보존했다. 후보의 Git 목록에 세 글이 모두 들어 있음을 확인했다. first-deployment-history.json 및 first-deployment.json의 실제 최초 READY는 1793403093613, 즉 2026-10-31 08:31:33.613 KST다. 발행·최초 수정 시각을 이 값으로 기록했고 완전한 article 해시, 첫 배포·수정 배포와 각각의 이력 경로를 남겼다. 날짜별 스키마·RSS 동기화 후 준비 검증 metadata=verified를 확인했다. 메타데이터 외 본문·승인 사진과 기존 170편은 보존했다.
 
-다음 단계: 메타데이터 커밋 READY → 운영 PC·모바일·사진·링크·RSS → receipt와 --published 검증. 아직 최종 발행 완료로 기록하지 않는다.
+메타데이터 커밋 e3f791d19369deeb6f4d17ec5c29137c67b6a514의 production READY를 확인했다. 운영 Chrome 1440·390px에서 세 글·사진 18회 로딩·실제 제품 링크 6회 이동·모바일 메뉴 열기와 Escape 닫기를 확인했다. 페이지 오류와 가로 넘침은 없었다. 홈페이지와 목록에서 새 글 세 개를 확인하고 기존 혜택 팝업을 닫은 뒤 보이는 카드도 재검수했다. 실제 글 HTML·article 해시·사진 9개 해시·posts.json·RSS·사이트맵이 로컬 결과와 일치했다. 기존 170편의 메타데이터도 백업과 동일하다.
+
+실제 근거로 completionReceipt를 저장했고 `node scripts/verify-daily-story.mjs 2026-10-31 --published`가 metadata=verified·stage=published로 성공했다. 근거는 production-browser.json·production-home-list.json·production-resources.json·published-verification.log와 manifest의 completionReceipt를 따른다. 최초 공개·수정 시각과 최초 배포 이력은 메타데이터 배포 시각으로 바꾸지 않았다. 실행 마무리 기록만 추가한 문서 커밋에서도 공개 글·사진·시각이 같은지 확인하고, 최종 receipt는 그 확인된 운영 커밋을 기록한다.
