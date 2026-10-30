@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-closure-sound",
+    "title": "조용한 곳에서 쓸 백팩, 구매 전에 여밈 소리는 어떻게 확인할까",
+    "date": "2026-10-31",
+    "summary": "백팩의 지퍼가 움직이는 소리와 부품이 닿는 소리를 나누어 보고, 조용한 장소에서 쓸 가방의 개폐 자료를 확인하는 방법을 살펴봅니다.",
+    "description": "백팩의 지퍼가 움직이는 소리와 부품이 닿는 소리를 나누어 보고, 조용한 장소에서 쓸 가방의 개폐 자료를 확인하는 방법을 살펴봅니다.",
+    "tags": [
+      "백팩 여밈",
+      "개폐음",
+      "구매 전 확인"
+    ],
+    "image": "../assets/story/backpack-closure-sound.webp",
+    "imageAlt": "가상의 성인이 No.8029 블랙오렌지 백팩을 손에 든 AI 사용 연출 사진",
+    "images": [
+      "../assets/story/backpack-closure-sound.webp",
+      "../assets/story/backpack-closure-sound-detail.webp",
+      "../assets/story/backpack-closure-sound-product.webp"
+    ],
+    "url": "backpack-closure-sound.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "가상 도서관 사용 조건을 비교하는 선택 가이드"
+  },
+  {
+    "id": "backpack-zipper-element-types",
+    "title": "백팩 지퍼의 이빨은 모두 같을까, 금속·코일·사출을 나누어 읽기",
+    "date": "2026-10-31",
+    "summary": "백팩의 지퍼 손잡이와 맞물리는 줄을 구분하고, 금속·코일·사출이라는 구조 이름이 무엇을 가리키는지 공식 부품 자료로 읽어봅니다.",
+    "description": "백팩의 지퍼 손잡이와 맞물리는 줄을 구분하고, 금속·코일·사출이라는 구조 이름이 무엇을 가리키는지 공식 부품 자료로 읽어봅니다.",
+    "tags": [
+      "백팩 지퍼",
+      "엘리먼트",
+      "구조 해설"
+    ],
+    "image": "../assets/story/backpack-zipper-element-types.webp",
+    "imageAlt": "No.1089 핑크 백팩을 정면에서 보여주는 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-zipper-element-types.webp",
+      "../assets/story/backpack-zipper-element-types-detail.webp",
+      "../assets/story/backpack-zipper-element-types-product.webp"
+    ],
+    "url": "backpack-zipper-element-types.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "부품 구조를 분류하는 기술 해설"
+  },
+  {
+    "id": "backpack-round-hardware",
+    "title": "백팩 손잡이 아래의 둥근 부품, 누르면 열리는 단추일까",
+    "date": "2026-10-31",
+    "summary": "No.124S 손잡이 아래의 검정 원형 부품을 출발점으로, 원단에 고정하는 연결과 스냅을 여닫는 연결을 구분합니다. 실제 부품의 형식은 확인 전으로 남깁니다.",
+    "description": "No.124S 손잡이 아래의 검정 원형 부품을 출발점으로, 원단에 고정하는 연결과 스냅을 여닫는 연결을 구분합니다. 실제 부품의 형식은 확인 전으로 남깁니다.",
+    "tags": [
+      "백팩 손잡이",
+      "리벳과 스냅",
+      "부품 구분"
+    ],
+    "image": "../assets/story/backpack-round-hardware.webp",
+    "imageAlt": "책상 위 No.124S 베이지 백팩과 손잡이 부착부를 보여주는 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-round-hardware.webp",
+      "../assets/story/backpack-round-hardware-detail.webp",
+      "../assets/story/backpack-round-hardware-product.webp"
+    ],
+    "url": "backpack-round-hardware.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "리벳과 스냅의 연결을 대비하는 구조 비교"
+  },
+  {
     "id": "backpack-beige-photo-colour",
     "title": "베이지 백팩이 사진마다 다르게 보일 때, 실물 색은 어떻게 확인할까",
     "date": "2026-10-30",

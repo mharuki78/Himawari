@@ -1,10 +1,10 @@
 # Himawari 상태 문서 안내
 
-현재 이야기 발행 상태의 기준 문서는 [2026-10-30 실행 기록](docs/story-runs/2026-10-30.json)입니다. 각 글의 단계·발행 시각·배포 근거는 그 문서에서 관리합니다. 이 파일에 별도로 복제하지 않습니다.
+현재 이야기 발행 상태의 기준 문서는 [2026-10-31 실행 기록](docs/story-runs/2026-10-31.json)입니다. 각 글의 단계·발행 시각·배포 근거는 그 문서에서 관리합니다. 이 파일에 별도로 복제하지 않습니다.
 
 재개할 때 [매일 이야기 발행 절차](docs/DAILY-STORY-PUBLICATION.md), 해당 날짜의 실행 기록과 `backups/story-해당날짜/progress.json`을 함께 읽고 빠진 단계만 이어갑니다. LookBook은 `docs/lookbook-runs/`, 리뷰 동기화는 `backups/review-sync/`의 해당 실행 기록을 각각 따릅니다.
 
-이야기의 실행·검증 기록은 [이야기 작업 로그](logs/2026-10-30-story-publication.md)에 있습니다. 최근 LookBook 상태 원본은 [LookBook 실행 기록](docs/lookbook-runs/2026-10-22.json)이며 실제 완료 여부는 그 문서의 completionReceipt를 따릅니다. 생성·검수 기록은 [LookBook 작업 로그](logs/2026-10-22-lookbook-publication.md)에서 연결합니다. 프로젝트 전체의 다른 미완료 업무를 완료로 간주하지 않습니다. 새 세션의 자동 로딩은 아직 검증하지 않았습니다.
+이야기의 실행·검증 기록은 [이야기 작업 로그](logs/2026-10-31-story-publication.md)에 있습니다. 최근 LookBook 상태 원본은 [LookBook 실행 기록](docs/lookbook-runs/2026-10-22.json)이며 실제 완료 여부는 그 문서의 completionReceipt를 따릅니다. 생성·검수 기록은 [LookBook 작업 로그](logs/2026-10-22-lookbook-publication.md)에서 연결합니다. 프로젝트 전체의 다른 미완료 업무를 완료로 간주하지 않습니다. 새 세션의 자동 로딩은 아직 검증하지 않았습니다.
 
 2026-10-28 운영 사이트 진단은 [Impeccable 보고서](docs/audits/impeccable-2026-10-28.md)에 있습니다. 후속 승인한 9개 항목의 수정·Git 반영·Vercel 운영 배포와 실제 사이트 검증을 마쳤습니다. 구현·검증·배포 근거는 [수정 로그](logs/2026-10-28-impeccable-fixes.md)와 그 로그가 가리키는 receipt를 따릅니다. 이번 작업으로 기존 이야기·LookBook 발행 상태는 변경하지 않았습니다.
 
