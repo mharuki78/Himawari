@@ -1,7 +1,7 @@
 {
   "date": "2026-10-31",
   "automationId": "himawari",
-  "stage": "prepared",
+  "stage": "metadata-verified",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "publicationBaselineCommit": "16386aa61cc33a4000fdb6f02ec8e5e5007a6d4d",
@@ -13,7 +13,7 @@
   },
   "posts": [
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-closure-sound",
       "title": "조용한 곳에서 쓸 백팩, 구매 전에 여밈 소리는 어떻게 확인할까",
       "url": "https://himawari.co.kr/story/backpack-closure-sound.html",
@@ -87,10 +87,19 @@
           "alt": "No.8029 블랙오렌지의 실제 제품 원본 이미지",
           "caption": "실제 제품 원본: No.8029 블랙오렌지의 공개 카탈로그 이미지입니다. 이 사진에는 개폐음 자료가 없습니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-30T23:31:33.613Z",
+        "modifiedAt": "2026-10-30T23:31:33.613Z",
+        "firstDeploymentEvidence": "backups/story-2026-10-31/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-10-31/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-10-31/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-10-31/first-deployment-history.json",
+        "articleSha256": "3e981a5a63e298239776b541d4d7ec40e9498b2dc727af94848f4ee2da231d3d"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-zipper-element-types",
       "title": "백팩 지퍼의 이빨은 모두 같을까, 금속·코일·사출을 나누어 읽기",
       "url": "https://himawari.co.kr/story/backpack-zipper-element-types.html",
@@ -164,10 +173,19 @@
           "alt": "No.1089 핑크의 실제 제품 원본 이미지",
           "caption": "실제 제품 원본: No.1089 핑크의 공개 카탈로그 이미지입니다. 특정 지퍼 제조사나 엘리먼트 종류를 확인한 자료는 아닙니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-30T23:31:33.613Z",
+        "modifiedAt": "2026-10-30T23:31:33.613Z",
+        "firstDeploymentEvidence": "backups/story-2026-10-31/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-10-31/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-10-31/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-10-31/first-deployment-history.json",
+        "articleSha256": "283a0eb4ba35a1f361fca68ca94bda5edefb3c4bfb5b0ffc17d187ae6cf0444d"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-round-hardware",
       "title": "백팩 손잡이 아래의 둥근 부품, 누르면 열리는 단추일까",
       "url": "https://himawari.co.kr/story/backpack-round-hardware.html",
@@ -241,7 +259,16 @@
           "alt": "No.124S 베이지의 실제 제품 원본 이미지",
           "caption": "실제 제품 원본: No.124S 베이지의 공개 카탈로그 이미지입니다. 손잡이 아래 둥근 부품 네 개의 형식은 미확인입니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-30T23:31:33.613Z",
+        "modifiedAt": "2026-10-30T23:31:33.613Z",
+        "firstDeploymentEvidence": "backups/story-2026-10-31/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-10-31/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-10-31/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-10-31/first-deployment-history.json",
+        "articleSha256": "a7c4050fba5451d319baea8c46ba5ab24b33316f2dd5fc835eaf5a2fdd16dc73"
+      }
     }
   ],
   "topicsReviewed": 170,
@@ -254,7 +281,7 @@
         "backpack-zipper-element-types",
         "backpack-round-hardware"
       ],
-      "stage": "prepared"
+      "stage": "metadata-verified"
     }
   }
 }

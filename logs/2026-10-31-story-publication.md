@@ -14,4 +14,6 @@
 
 준비 검증은 3편·사진 9장·새 생성 6장·metadata=awaiting-first-deployment로 성공했다. 본문 글자 수는 검증기 기준 2,797 / 2,817 / 2,746자다. 기존 170편의 메타데이터를 보존했다. npm test 279개가 통과했다. 로컬 Chrome에서 세 글을 1440·390px로 확인했고 사진 18회 로딩, 제목·날짜·제품 링크·목록 반영과 가로 넘침 없음을 확인했다. 스크린샷과 수치 근거는 local-browser.json 및 local-*.png에 있다. 첫 QA에서는 화면 밖 지연 이미지 decode 대기가 끝나지 않아 작업 전용 탭을 닫고, 각 사진을 스크롤해 확인하는 방식으로 재검증했다.
 
-다음 단계: 콘텐츠 커밋 push → 원래 baseline 이후 production 목록 전체와 READY 상세 보존 → 실제 첫 공개 시각 적용 → 메타데이터 커밋 READY → 운영 PC·모바일·사진·링크·RSS → receipt와 --published 검증. 아직 발행 완료로 기록하지 않는다.
+콘텐츠 커밋 32d48646bf70852cc22c80018f6d8ac3029cc2a4를 push했다. 원래 baseline READY epoch 1793353400027부터 해당 프로젝트·팀의 production 목록을 끝까지 조회했다. 제공자 pagination.next는 생략되어 1페이지로 완료됐고 READY 후보 1건의 상세를 보존했다. 후보의 Git 목록에 세 글이 모두 들어 있음을 확인했다. first-deployment-history.json 및 first-deployment.json의 실제 최초 READY는 1793403093613, 즉 2026-10-31 08:31:33.613 KST다. 발행·최초 수정 시각을 이 값으로 기록했고 완전한 article 해시, 첫 배포·수정 배포와 각각의 이력 경로를 남겼다. 날짜별 스키마·RSS 동기화 후 준비 검증 metadata=verified를 확인했다. 메타데이터 외 본문·승인 사진과 기존 170편은 보존했다.
+
+다음 단계: 메타데이터 커밋 READY → 운영 PC·모바일·사진·링크·RSS → receipt와 --published 검증. 아직 최종 발행 완료로 기록하지 않는다.
