@@ -4,14 +4,17 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>Pack the Beat · 1884 리듬게임 — Himawari</title>
   <meta name="description" content="1884 백팩에 오늘의 물건을 박자에 맞춰 담아 보세요. 탭과 지퍼 홀드로 즐기는 Himawari 리듬게임, 점수에 따라 쿠폰에 도전하세요.">
-  <meta name="theme-color" content="#e3efe0"><link rel="canonical" href="https://himawari.co.kr/rhythm.html">
+  <meta name="theme-color" content="#ffffff"><link rel="canonical" href="https://himawari.co.kr/rhythm.html">
   <meta property="og:title" content="PACK THE BEAT · 1884 리듬게임"><meta property="og:description" content="오늘을 담는 55초. 박자에 맞춰 가방을 채우고 쿠폰에 도전하세요."><meta property="og:image" content="https://himawari.co.kr/assets/campaign-1884-gray.webp">
   <link rel="icon" href="/favicon.ico"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="assets/gear.css"><link rel="stylesheet" href="assets/rhythm.css">
   <link rel="stylesheet" href="assets/rhythm-scenes.css">
   <script src="script.js" defer></script><script type="module" src="assets/rhythm.mjs"></script>
-</head>
+    <link rel="stylesheet" href="/assets/ui-system.css">
+    <link rel="stylesheet" href="/assets/site-redesign.css">
+    <script type="module" src="/assets/site-ui.js"></script>
+  </head>
 <body class="rhythm-page">
   <a class="skip-link" href="#main">본문으로 바로가기</a>
   <div class="announcement-bar"><a href="products.html">오늘을 함께 담는 가방, HIMAWARI</a></div>
@@ -19,7 +22,9 @@
     <a class="brand" href="index.html" aria-label="Himawari 홈">HIMAWARI</a>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">메뉴 열기</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
     <nav class="site-nav" id="site-nav" aria-label="주요 메뉴"><a href="products.html">제품</a><a href="game.html">게임</a></nav>
-    <a class="header-store" href="product.html?id=store-13326303755">No.1884 보기 →</a>
+    <a class="header-icon hmw-btn hmw-btn-circle" data-header-search href="/products.html#catalog-search" aria-label="가방 검색"><img src="/assets/icons/magnifying-glass.svg" alt="" width="22" height="22"></a>
+      <button class="header-icon hmw-btn hmw-btn-circle" type="button" data-cart-button aria-label="장바구니 열기"><img src="/assets/icons/handbag.svg" alt="" width="22" height="22"></button>
+      <a class="header-store" href="product.html?id=store-13326303755">No.1884 보기 →</a>
   </header>
   <main id="main">
     <nav class="game-switch" aria-label="게임 선택"><a href="game.html">BAG QUEST <span>0422 어드벤처</span></a><a href="rhythm.html" aria-current="page">PACK THE BEAT <span>1884 리듬게임</span><b>NEW</b></a></nav>

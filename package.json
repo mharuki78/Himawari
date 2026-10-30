@@ -9,14 +9,19 @@
     "secrets": "node scripts/generate-admin-secrets.mjs",
     "db:migrate": "node scripts/migrate-members.mjs",
     "smoke:members": "node scripts/smoke-members.mjs",
-    "smoke:storefront": "node scripts/smoke-storefront.mjs"
+    "smoke:storefront": "node scripts/smoke-storefront.mjs",
+    "build:ui": "tailwindcss -i assets/ui-system.source.css -o assets/ui-system.css --minify && esbuild assets/site-ui.source.js --bundle --format=esm --platform=browser --target=es2022 --minify --external:/products.js --outfile=assets/site-ui.js"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
-    "@vercel/blob": "^2.8.0"
+    "@vercel/blob": "^2.8.0",
+    "animejs": "^4.5.0"
   },
   "devDependencies": {
     "@electric-sql/pglite": "^0.5.8",
-    "esbuild": "^0.28.2"
+    "@tailwindcss/cli": "^4.3.3",
+    "daisyui": "^5.7.50",
+    "esbuild": "^0.28.2",
+    "tailwindcss": "^4.3.3"
   }
 }

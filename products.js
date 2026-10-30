@@ -63,6 +63,12 @@ export async function fetchProducts() {
   }
 }
 
+let catalogueRequest;
+export function getCatalogProducts() {
+  if (!catalogueRequest) catalogueRequest = fetchProducts().catch(error => { catalogueRequest = null; throw error; });
+  return catalogueRequest;
+}
+
 function detailHref(product) {
   return `product.html?id=${encodeURIComponent(product.id)}`;
 }
@@ -460,7 +466,7 @@ function updateBagJourney(products) {
 
 async function loadProducts() {
   try {
-    const products = await fetchProducts();
+    const products = await getCatalogProducts();
     initCompareTray(products);
     updateBagJourney(products);
     const families = groupProductFamilies(products);

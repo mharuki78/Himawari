@@ -70,7 +70,17 @@ function syncSiteNavigation() {
     return link;
   });
 
-  siteNavigation.replaceChildren(...links);
+  const primaryPaths = ['/products.html', '/finder.html', '/lookbook/', '/story/'];
+  const glyphs = { '/products.html': 'backpack', '/finder.html': 'compass', '/lookbook/': 'images', '/story/': 'book-open' };
+  const primary = primaryPaths.map(path => links.find(link => link.getAttribute('href') === path));
+  primary.forEach(link => {
+    if (link.getAttribute('href') === '/products.html') link.textContent = '가방';
+    if (link.getAttribute('href') === '/lookbook/') link.textContent = '룩북';
+    const icon = document.createElement('img');
+    icon.src = `/assets/icons/${glyphs[link.getAttribute('href')]}.svg`; icon.alt = ''; icon.width = 16; icon.height = 16;
+    link.prepend(icon);
+  });
+  siteNavigation.replaceChildren(...primary, ...links.filter(link => !primary.includes(link)));
 }
 
 syncSiteNavigation();
@@ -96,12 +106,21 @@ menuButton.addEventListener('click', () => {
   menuLabel.textContent = willOpen ? '메뉴 닫기' : '메뉴 열기';
   navigation.classList.toggle('is-open', willOpen);
   document.body.style.overflow = willOpen ? 'hidden' : '';
+  if (willOpen) navigation.querySelector('a')?.focus();
 });
 
 navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => closeMenu()));
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && navigation.classList.contains('is-open')) closeMenu({ restoreFocus: true });
+  if (event.key === 'Tab' && navigation.classList.contains('is-open')) {
+    const items = [...siteHeader.querySelectorAll('a,button,summary')].filter(element => element.getClientRects().length && !element.disabled);
+    const first = items[0], last = items.at(-1);
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  }
 });
+
+window.matchMedia('(min-width: 1181px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const motionPage = document.body.matches('.home-layout, .about-page, .story-index-page, .lookbook-page');
@@ -147,123 +166,6 @@ if (document.querySelector('[data-ambient-film]')) {
   import('./assets/ambient-film.js').then(({ initializeAmbientFilms }) => initializeAmbientFilms(document));
 }
 
-function initializeJournalPencil() {
-  const journal = document.querySelector('.journal');
-  if (!journal) return;
-  const desktopMouse = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 821px)');
-  const pencil = document.createElement('span');
-  pencil.className = 'journal-pencil';
-  pencil.setAttribute('aria-hidden', 'true');
-  pencil.innerHTML = '<svg viewBox="0 0 16 56" fill="none" focusable="false" aria-hidden="true"><path d="M3 9h10v33L8 54 3 42V9Z" fill="var(--moss)" stroke="var(--harbor)" stroke-width="1.3" stroke-linejoin="round"/><path d="M3 9V5a5 5 0 0 1 10 0v4" fill="var(--cream)" stroke="var(--harbor)" stroke-width="1.3"/><path d="M3 9h10v5H3z" fill="var(--cream)" stroke="var(--harbor)" stroke-width="1.3"/><path d="M6 15v25M10 15v25" stroke="var(--harbor)" stroke-opacity=".45"/><path d="m3 42 5 12 5-12-3 2-2-2-2 2-3-2Z" fill="var(--cream)" stroke="var(--harbor)" stroke-width="1.3" stroke-linejoin="round"/><path d="m6 49 2 5 2-5H6Z" fill="var(--harbor)"/></svg>';
-  const trail = document.createElement('canvas');
-  trail.className = 'journal-pencil-trail';
-  trail.setAttribute('aria-hidden', 'true');
-  document.body.append(trail, pencil);
-  const ink = trail.getContext('2d');
-  const lifetime = 900;
-  let points = [];
-  let frame = 0;
-  let visible = false;
-  let x = 0, y = 0;
-  let angle = 30, targetAngle = 30;
-  let canvasReady = false;
-  let inkColor = '';
-
-  function clearTrail() {
-    points = [];
-    ink?.clearRect(0, 0, window.innerWidth, window.innerHeight);
-  }
-
-  function hide() {
-    visible = false;
-    pencil.classList.remove('is-visible', 'is-over-link');
-    journal.classList.remove('is-pencil-active');
-    clearTrail();
-    cancelAnimationFrame(frame);
-    frame = 0;
-  }
-
-  function prepareCanvas() {
-    if (canvasReady || !ink) return;
-    const scale = Math.min(window.devicePixelRatio || 1, 2);
-    const bounds = trail.getBoundingClientRect();
-    trail.width = Math.ceil(bounds.width * scale);
-    trail.height = Math.ceil(bounds.height * scale);
-    ink.setTransform(scale, 0, 0, scale, 0, 0);
-    inkColor = getComputedStyle(pencil).getPropertyValue('--moss').trim();
-    canvasReady = true;
-  }
-
-  function positionPencil() {
-    // The SVG graphite tip is (8, 54); rotate about that exact pointer position.
-    pencil.style.transform = `translate3d(${x - 8}px, ${y - 54}px, 0) rotate(${angle}deg)`;
-  }
-
-  function draw(now) {
-    frame = 0;
-    angle += (targetAngle - angle) * .2;
-    positionPencil();
-    points = points.filter((point) => now - point.time < lifetime);
-    if (ink) {
-      ink.clearRect(0, 0, window.innerWidth, window.innerHeight);
-      ink.strokeStyle = inkColor;
-      ink.lineWidth = 1.35;
-      ink.lineCap = 'round';
-      ink.lineJoin = 'round';
-      for (let i = 1; i < points.length; i += 1) {
-        const previous = points[i - 1];
-        const current = points[i];
-        ink.globalAlpha = .48 * Math.max(0, 1 - (now - previous.time) / lifetime);
-        ink.beginPath();
-        ink.moveTo(previous.x, previous.y);
-        ink.lineTo(current.x, current.y);
-        ink.stroke();
-      }
-      ink.globalAlpha = 1;
-    }
-    if (visible && (points.length || Math.abs(targetAngle - angle) > .1)) {
-      frame = requestAnimationFrame(draw);
-    }
-  }
-
-  journal.addEventListener('pointermove', (event) => {
-    if (event.pointerType !== 'mouse' || !desktopMouse.matches || reducedMotion.matches || document.hidden) {
-      hide();
-      return;
-    }
-    const overLink = Boolean(event.target.closest('a, button, input, textarea, select, [contenteditable="true"]'));
-    targetAngle = 30 + (visible ? Math.max(-10, Math.min(10, (event.clientX - x) * .25)) : 0);
-    x = event.clientX;
-    y = event.clientY;
-    if (!visible) angle = targetAngle;
-    visible = true;
-    // Render the nib and ink together, with no gap between their endpoints.
-    pencil.classList.add('is-visible');
-    pencil.classList.toggle('is-over-link', overLink);
-    journal.classList.toggle('is-pencil-active', !overLink);
-    if (overLink) {
-      clearTrail();
-    } else {
-      prepareCanvas();
-      const now = performance.now();
-      points = points.filter((point) => now - point.time < lifetime);
-      points.push({ x, y, time: now });
-      if (points.length > 160) points.shift();
-    }
-    if (!frame) frame = requestAnimationFrame(draw);
-  }, { passive: true });
-  journal.addEventListener('pointerleave', hide);
-  journal.addEventListener('pointerdown', hide);
-  window.addEventListener('scroll', hide, { passive: true, capture: true });
-  window.addEventListener('resize', () => { hide(); canvasReady = false; }, { passive: true });
-  window.addEventListener('blur', hide);
-  document.addEventListener('visibilitychange', hide);
-  document.addEventListener('keydown', hide);
-  reducedMotion.addEventListener('change', hide);
-  desktopMouse.addEventListener('change', hide);
-}
-
-initializeJournalPencil();
 
 function initializeBagJourney() {
   const journey = document.querySelector('[data-bag-journey]');

@@ -60,7 +60,7 @@ export function buildLookbook() {
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LookBook — Himawari</title>
   <meta name="description" content="히마와리 가방을 여러 옷차림에 매치한 LookBook입니다. 일상과 여행 코디를 실제 제품을 참고한 AI 착용 사진으로 둘러보세요.">
-  <meta name="theme-color" content="#F3F7EF"><link rel="canonical" href="https://himawari.co.kr/lookbook/">
+  <meta name="theme-color" content="#ffffff"><link rel="canonical" href="https://himawari.co.kr/lookbook/">
   <meta property="og:type" content="website"><meta property="og:title" content="LookBook — Himawari">
   <meta property="og:description" content="히마와리 가방을 여러 옷차림에 매치해 봤어요. 실제 제품을 참고한 AI 착용 사진으로 일상과 여행 코디를 둘러보세요.">
   <meta property="og:url" content="https://himawari.co.kr/lookbook/"><meta property="og:image" content="https://himawari.co.kr${entries[0].image}">
@@ -71,6 +71,7 @@ export function buildLookbook() {
   <script src="/script.js" defer></script><script src="/lookbook/lookbook.js" defer></script>
   <script type="application/ld+json">${schema}</script>
   <script src="https://wcs.naver.net/wcslog.js"></script><script src="/assets/naver-inflow.js"></script>
+  <link rel="stylesheet" href="/assets/ui-system.css"><link rel="stylesheet" href="/assets/site-redesign.css"><script type="module" src="/assets/site-ui.js"></script>
 </head><body class="lookbook-page"><a class="skip-link" href="#main">본문으로 바로가기</a>
 ${header}
 <main id="main" class="lookbook-main">

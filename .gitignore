@@ -7,3 +7,6 @@ test-artifacts/
 
 backups/
 *.hmwbackup
+
+# Local design comparison sessions and their access keys
+.superpowers/

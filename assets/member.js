@@ -225,7 +225,13 @@
       trigger.textContent = memberHint() ? 'MY' : '로그인';
       trigger.setAttribute('aria-haspopup', 'dialog');
       store.replaceWith(wrap);
-      wrap.append(trigger, store);
+      trigger.setAttribute('aria-label', '로그인 · 내 계정');
+      var search = header.querySelector('[data-header-search]');
+      var cart = header.querySelector('[data-cart-button]');
+      if (search) wrap.append(search);
+      wrap.append(trigger);
+      if (cart) wrap.append(cart);
+      wrap.append(store);
 
       var nav = header.querySelector('.site-nav');
       if (nav) {

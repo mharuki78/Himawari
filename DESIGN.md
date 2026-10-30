@@ -1,223 +1,330 @@
 ---
-version: alpha
 name: "Himawari"
-description: "세이지 미스트 바탕에 딥 그로브와 옅은 세이지를 얹은 Himawari 백팩 스토어"
+description: "A white, photo-led bag store with real catalogue colours and rounded icon controls."
 colors:
-  primary: "#D9E8D3"
-  sage-canvas: "#F3F7EF"
-  snow: "#FFFFFF"
-  ink: "#333333"
-  charcoal: "#212121"
-  fog: "#D0D5DD"
-  slate: "#616C8A"
-  slate-border: "#40444E"
-  deep-grove: "#4F6B58"
-  sage-pop: "#D9E8D3"
-  forest-focus: "#3E6B52"
-  sage-tint: "#EEF5EA"
-  sage-wash: "#F6F9F3"
-  sage-mist: "#E3EFE0"
-  sage-mid: "#BFD4BA"
-  danger: "#9A352F"
+  primary: "#202423"
+  primary-hover: "#343a37"
+  white: "#ffffff"
+  neutral-panel: "#f5f5f7"
+  neutral-photo: "#f7f7f9"
+  neutral-footer: "#f7f7f8"
+  neutral-border: "#e6e7e9"
+  secondary-text: "#616163"
+  forest-focus: "#315845"
+  sage-fill: "#d6e8df"
+  selected-outline: "#3c5a4b"
+  mint-swatch: "#bed8cc"
+  pink-swatch: "#dfbfc4"
+  blue-swatch: "#273d50"
+  yellow-swatch: "#d8ad39"
+  purple-swatch: "#66516c"
+  black-swatch: "#343a3a"
+  khaki-swatch: "#8c9273"
+  ivory-swatch: "#e7e1d1"
+  silver-swatch: "#b6babb"
+  gray-swatch: "#898d8c"
+  beige-swatch: "#cdbb9f"
+  brown-swatch: "#94745f"
+  red-swatch: "#b45353"
+  orange-swatch: "#d08a51"
+  green-swatch: "#648b72"
+  navy-swatch: "#34495a"
+  white-swatch: "#f4f1e9"
+  peach-swatch: "#e4b39f"
+  lavender-swatch: "#b8a3d1"
+  sky-swatch: "#a8c6d4"
+  burgundy-swatch: "#824f59"
+  coral-swatch: "#df9e8e"
+  mint-tint: "#edf5f1"
+  pink-tint: "#fcf1f3"
+  blue-tint: "#edf1f5"
+  yellow-tint: "#faf4dd"
+  purple-tint: "#f3eef6"
+  black-tint: "#f2f3f3"
+  khaki-tint: "#f2f3ec"
+  ivory-tint: "#faf8f2"
+  silver-tint: "#f3f5f5"
+  gray-tint: "#f2f3f3"
+  beige-tint: "#f7f2e9"
+  brown-tint: "#f5eeea"
+  red-tint: "#fbefef"
+  orange-tint: "#fbf1e7"
+  green-tint: "#edf5ef"
+  navy-tint: "#eef2f5"
+  white-tint: "#f7f7f4"
+  peach-tint: "#fcf0e9"
+  lavender-tint: "#f4effa"
+  sky-tint: "#eef6fa"
+  burgundy-tint: "#f6eef0"
+  coral-tint: "#fcf0ed"
 typography:
   display:
-    fontFamily: '"Manrope", "Pretendard Variable", Pretendard, "Noto Sans KR", system-ui, sans-serif'
-    lineHeight: "1.08"
+    fontFamily: '"Pretendard Local", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif'
+    fontWeight: 700
+    lineHeight: "1.13"
+    letterSpacing: "-0.04em"
+  title:
+    fontFamily: '"Pretendard Local", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif'
+    fontSize: "18px"
+    fontWeight: 600
+    lineHeight: "1.5"
+    letterSpacing: "-0.02em"
   body:
-    fontFamily: '"Manrope", "Pretendard Variable", Pretendard, "Noto Sans KR", system-ui, sans-serif'
+    fontFamily: '"Pretendard Local", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif'
+    fontSize: "16px"
+    fontWeight: 400
     lineHeight: "1.78"
+    letterSpacing: "-0.018em"
+  navigation:
+    fontFamily: '"Pretendard Local", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif'
+    fontSize: "13px"
+    fontWeight: 550
+    lineHeight: "1.4"
+    letterSpacing: "0px"
+  action:
+    fontFamily: '"Pretendard Local", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif'
+    fontSize: "13px"
+    fontWeight: 650
+    letterSpacing: "0px"
+  utility:
+    fontFamily: '"Pretendard Local", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif'
+    fontSize: "12px"
+    lineHeight: "1.6"
 rounded:
-  soft: "18px"
+  field: "12px"
+  soft: "16px"
+  icon: "18px"
   card: "24px"
+  panel-mobile: "26px"
+  feature: "28px"
+  panel: "30px"
   pill: "999px"
 spacing:
-  section-gap: "15vh"
-  page-max: "96rem"
+  compact: "8px"
+  field: "12px 14px"
+  control-gap: "16px"
+  gutter-small: "20px"
+  content: "24px"
+  group: "28px"
+  section-head: "32px"
+  page: "clamp(20px, 4.5vw, 72px)"
+  section: "clamp(60px, 7vw, 100px)"
 components:
-  hero:
-    backgroundColor: "#4F6B58"
-  button:
-    backgroundColor: "#D9E8D3"
-  card:
-    backgroundColor: "#FFFFFF"
+  button-primary:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.white}"
+    typography: "{typography.action}"
+    rounded: "{rounded.pill}"
+    padding: "0 22px"
+    height: "50px"
+  button-primary-hover:
+    backgroundColor: "{colors.primary-hover}"
+    textColor: "{colors.white}"
+  button-secondary:
+    backgroundColor: "{colors.neutral-panel}"
+    textColor: "{colors.primary}"
+    rounded: "{rounded.pill}"
+    height: "44px"
+  button-icon:
+    backgroundColor: "{colors.neutral-panel}"
+    textColor: "{colors.primary}"
+    rounded: "{rounded.soft}"
+    padding: "0"
+    width: "44px"
+    height: "44px"
+  navigation:
+    backgroundColor: "{colors.neutral-panel}"
+    textColor: "{colors.primary}"
+    typography: "{typography.navigation}"
+    rounded: "{rounded.pill}"
+    padding: "6px"
+  colour-swatch:
+    textColor: "{colors.primary}"
+    rounded: "20px"
+    padding: "3px 4px"
+    height: "64px"
+    width: "44px"
+  input:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.primary}"
+    typography: "{typography.body}"
+    rounded: "{rounded.field}"
+    padding: "{spacing.field}"
+    height: "48px"
+  product-information:
+    backgroundColor: "{colors.neutral-photo}"
+    textColor: "{colors.primary}"
+    rounded: "{rounded.feature}"
+    padding: "clamp(24px, 4vw, 52px)"
+  app-shortcut:
+    textColor: "{colors.primary}"
+    rounded: "{rounded.icon}"
+    width: "58px"
+    height: "58px"
+  colour-panel:
+    backgroundColor: "{colors.mint-tint}"
+    rounded: "{rounded.panel}"
+    padding: "22px"
 ---
 
-# Himawari Design System
+# Design System: Himawari
 
 ## Overview
 
-### Creative North Star
+**Creative North Star: "Choose a Colour, Meet the Bag"**
 
-세이지 미스트 종이 위에 딥 그로브 잉크와 아주 옅은 세이지 라벨을 얹은 편안한 가방 편집물을 지향한다. 기존의 큰 제품 사진, 캠페인 영상, 촘촘한 제품 그리드와 구매 흐름은 보존하고, 둥근 흰 카드와 부드러운 세이지 오프셋으로 차분하고 안정적인 분위기를 만든다.
+White space, original Himawari photography and the bags' varied colours carry the public brand. Visitors can recognise a real model and colour before opening its current product information. Dark, compact actions and consistent rounded icon controls keep the photography prominent. The official logo and established Korean brand statement remain identity assets.
 
-### Product context and register
+The approved direction combines photo-led presentation with Apple-like capsules and rounded-square controls. Use the implemented Phosphor SVG family, original product proportions and short Korean labels. Colour is a product discovery cue; the action hierarchy remains stable as the selected bag changes.
 
-- **Audience and primary job:** 20~40대 학생과 직장인이 자신의 하루에 맞는 백팩을 발견하고 제품별 구조·네이버 기준가·자사몰 가격을 살펴본 뒤 회원가입 없이도 쿠폰을 적용해 자사몰 주문서를 작성한다. 회원은 네이버·Google 간편 로그인으로 장바구니, 관심상품과 주문 내역을 이어서 보며, 단일 관리자는 제품·문의·주문·쿠폰·첫 화면 팝업을 관리한다.
-- **Target market(s) and evidence:** 한국어 콘텐츠와 네이버 스마트스토어를 사용하는 국내 고객.
-- **Locale(s) and language policy:** `ko-KR` 단일 언어. 한국어는 어절을 억지로 분리하지 않고 `word-break: keep-all`을 우선한다.
-- **Usage scene:** 모바일에서 제품을 빠르게 훑고, 데스크톱에서 큰 사진과 브랜드 이야기를 천천히 읽는다.
-- **Register:** 공개 브랜드·콘텐츠·제품 상세 페이지는 사진과 큰 문구가 이끄는 브랜드 레지스터다. `admin/inquiries.html`과 `admin/products.html`은 빠른 판독, 상태 명료성, 안전한 변경이 우선인 제품 레지스터로 분리한다. `story/admin.html`은 기존 관리 도구로 별도 유지한다.
-- **Memorable signature:** No.1884 블랙 백팩을 멘 직장인의 도심 캠페인 영상과 딥 그로브 카피 면, 그 위에 조용히 놓이는 옅은 세이지 구매 행동의 대비다. 16:9 무음 루프와 절제된 새벽빛 색감으로 출근용 백팩의 성격을 먼저 보여준다.
-- **Restraint:** 내비게이션과 상품 카드는 촘촘하게, 브랜드 이야기와 글 본문은 넓은 여백으로 유지한다.
-- **Brand mark:** 공식 로고의 형태와 색을 그대로 보존해 고해상도로 리샘플링한 `assets/himawari-logo-hq.png`를 모든 공개 페이지 헤더와 푸터에 사용한다. 밝은 헤더에는 원본 색상을, 어두운 푸터에는 동일 형태의 고대비 단색 처리를 적용하며, 내비게이션을 압도하지 않도록 2026-08-31 표시 크기의 약 60%를 기준으로 한다. 헤더의 로고 상자는 가로 크기를 키우지 않고 `EST.2010` 하단까지 잘리지 않는 세로 여백을 예약한다.
-- **Site icon:** 브라우저 탭과 모바일 홈 화면에는 No.1884의 각진 백팩 실루엣을 단순화한 `assets/favicon.png`를 사용한다. 밝은 파스텔 민트 본체, 살구색 앞 포켓, 크림색 부자재와 짙은 청록 윤곽으로 16px에서도 가방 형태와 수납 구획이 먼저 읽히게 하며, 텍스트·워드마크·배경 컨테이너는 넣지 않는다.
-- **Editorial image panels:** 홈 소개·저널과 브랜드 인용문·약속처럼 카피가 주도하는 중간 장면에는 서로 다른 실제 제품 사진을 배경으로 사용하고, 딥 그로브 스크림으로 본문 대비를 유지한다. 이야기 글의 대표 이미지는 실제 Himawari 제품 사진을 기준으로 제품의 색상·형태·포켓·부자재를 유지한 편집 장면을 만들 수 있으며, 상품 판매 사진이나 상세 이미지로 오인되지 않게 이야기 영역에만 사용한다.
-- **Anti-references:** 회색 일색의 기업형 SaaS, 블러 그림자와 유리 효과가 많은 쇼핑몰, 여러 포인트색을 섞은 키즈 브랜드, 제품 구매 화면에서 사진을 없앤 추상 일러스트 전용 구성.
-- **Scope decision:** 참고 가이드의 색·타이포·형태 언어를 채택하되 ‘사진을 사용하지 않는다’와 단순 내비게이션 지침은 판매 제품의 실물 확인과 기존 정보 구조에 맞지 않아 채택하지 않는다. 현재 제품 사진, 섹션 순서, 메뉴, 주문·회원·관리 흐름은 그대로 유지한다.
-- **Token ownership/runtime mapping:** 기존 런타임 토큰이 기준인 Model B를 사용한다. `styles.css`가 `sage-canvas`, `deep-grove`, `sage-pop`, `forest-focus`와 표면·반경·그림자 토큰을 소유하고 `--cream`, `--harbor`, `--moss`가 이를 소비하는 의미 별칭이다. 기존 선택자의 `--color-warm-cream`, `--color-deep-harbor`, `--color-sky-*`, `--blue`는 동일한 세이지 토큰을 가리키는 호환 별칭일 뿐 새 파란색을 정의하지 않는다. `assets/gear.css`, `assets/cart.css`, `assets/member.css`, `assets/orders.css`, `assets/scrub.css`, `story/story.css`가 공개 화면에서 소비하고 `admin/admin.css`는 같은 값을 운영 화면용으로 직접 매핑한다. 영구 삭제·오류에만 `--danger: #9A352F`를 사용한다.
+This records the approved public-site implementation on 2026-10-30. Its final theme is assets/site-redesign.css, loaded after legacy page styles and the locally generated, prefixed daisyUI button stylesheet. assets/home-colours.js owns catalogue-linked swatches and tints; assets/site-ui.source.js, script.js and assets/member.js own their interactions. Existing page layout files continue to own specialised grids. Administration retains its existing stylesheet and operating interface; these public tokens do not redefine it. Product, checkout, account, game and story data contracts remain in their implementation and policy documents.
+
+**Key Characteristics:**
+- White canvas and real, uncropped product imagery.
+- A fresh catalogue model on each visit, followed by that model's valid colour choices.
+- Dark actions, readable Korean type and restrained neutral surfaces.
+- Capsule navigation, rounded-square utility controls and labelled colour choices.
+- Small, product-linked pastel surfaces rather than full-page colour skins.
+- Existing catalogue, shopping and content flows carried into the new visual system.
 
 ## Colors
 
-`sage-canvas`는 페이지 캔버스, `snow`는 카드와 입력 면, `ink`는 본문, `deep-grove`는 넓은 브랜드 섹션과 강한 제목에 사용한다. `sage-pop`은 채도를 낮춘 주요 구매·저장·이동 행동, `forest-focus`는 포커스와 호버, `sage-tint`와 `sage-wash`는 거의 흰색에 가까운 선택·정보 면이다. `fog`는 기본 구분선, `slate`는 보조 문장에 쓴다. 작은 옅은 세이지 버튼은 접근 가능한 대비를 위해 `charcoal` 글자를 사용하며 포레스트 호버에서만 흰 글자로 전환한다. 한 화면의 장식 포인트는 세이지 계열 하나로 제한한다. 관리자 문의함의 `danger`는 복구할 수 없는 삭제와 오류에만 사용하며 브랜드 장식색으로 확장하지 않는다. 네이버 공식 버튼과 픽셀 게임 장면의 제한 팔레트는 각각 외부 브랜드·게임 세계의 예외다.
+The palette is neutral at the page level, with product-linked colours used for discovery and soft contextual surfaces.
+
+### Primary
+
+- **Bag Ink** (primary): body text, dominant headings and the main product action. primary-hover deepens the action's pointer state without changing its meaning.
+- **Forest Focus** (forest-focus): keyboard outlines, the caret and restrained link emphasis. selected-outline identifies the current colour independently of the swatch fill.
+
+### Secondary
+
+- **Catalogue Colours** (*-swatch): the 22 named interface approximations in assets/home-colours.js: mint, pink, blue, yellow, purple, black, khaki, ivory, silver, gray, beige, brown, red, orange, green, navy, white, peach, lavender, sky, burgundy and coral. Show only colours that resolve to valid products in the selected model. These are editorial screen values, not physical colour measurements or permission to recolour product photography.
+- **Catalogue Washes** (*-tint): the corresponding photo-panel surfaces for those 22 named colours. Black and gray intentionally share one source tint value. Mint, pink, purple and yellow also appear in the compact information strip.
+- **Soft Sage** (sage-fill): supporting purchase actions and text selection. It remains a small supporting fill within the white system.
+
+### Neutral
+
+- **White** (white): page canvas, product-image background, fields and navigation's active surface.
+- **Quiet Panel** (neutral-panel): navigation track, icon controls and utility surfaces.
+- **Photo Neutral** (neutral-photo): product media and form-container backgrounds.
+- **Footer Neutral** (neutral-footer): the legal and navigation footer.
+- **Hairline** (neutral-border): dividers, field borders and restrained boundaries.
+- **Secondary Ink** (secondary-text): supporting copy and captions on light neutral surfaces.
+
+**The Real Colour Rule.** Change the selected photo, label, selected state and detail destination together after the image has decoded; never tint a bag photograph with CSS.
+
+**The Stable Action Rule.** Keep the primary action dark when the product colour changes. Use a text label and a check or outline with selected swatches so colour is never the sole signal.
+
+Legacy names such as sage canvas, cream and deep grove remain compatibility aliases. Their final public values come from the new theme; historical names do not authorise restoring the old sage page background. Specialist components still consuming older local tokens are local inheritance, not additional global brand accents.
 
 ## Typography
 
-영문과 숫자는 Manrope, 한국어는 Pretendard Variable과 Noto Sans KR 폴백을 사용한다. 큰 제목과 버튼은 700, 본문은 400~500을 기준으로 하며 전역 자간은 `-0.018em`, 큰 제목은 최대 `-0.04em`까지 조인다. 큰 한국어 제목은 조사나 수식어를 홀로 떼지 않고 의미 단위의 `.headline-line`으로 묶으며 작은 화면에서만 자연스럽게 추가 줄바꿈을 허용한다. 대표 제목의 의미 있는 구절은 옅은 세이지로 강조하고 얕은 단색 오프셋을 허용한다. 한 문단은 최대 `40ch`로 제한하고, 영어 라벨은 작은 크기와 넓은 자간으로만 사용한다. 한 화면의 시선을 주도하는 큰 제목은 하나만 둔다.
+**Display and Body Font:** locally hosted Pretendard Variable, registered as **Pretendard Local**, with the frontmatter stack. The font supports weights 100–900. Platform fonts are fallbacks, not the selected display voice.
+
+**Character:** compact Korean sans lettering, clear weight changes and short headings. Preserve meaningful Korean word groups and original product names. Prices and the current product selection use tabular numerals.
+
+### Hierarchy
+
+- **Display:** the frontmatter role is the main colour heading. Its source size is clamp(46px, 4.8vw, 72px), preserved in the sidecar because the installed portable linter accepts only fixed dimensions in this typography field. It is 50px at the tablet breakpoint, 48px with 1.15 line height on mobile, and 44px at the narrowest breakpoint. One heading leads a viewport.
+- **Section headings:** the home section scale is 30–44px with 1.25 line height; contact and campaign copy retain their measured local scale. These exceptions do not define another display role.
+- **Title:** the frontmatter role describes compact product names. Journal titles use 20px on desktop and 18px on mobile, with inherited weight 650.
+- **Body:** the global frontmatter default. Hero supporting copy uses 16px with 1.75 line height, reducing to 15px on mobile. Longer brand copy has local 1.8–1.85 line height. The inherited paragraph measure is 40ch; do not stretch it to fill wide image columns.
+- **Navigation and action:** the corresponding frontmatter roles; labels are concise and sentence case.
+- **Utility:** captions, state messages and swatch labels are at least 12px in the redesigned discovery surface. Mobile form inputs remain 16px.
+
+The source still carries editorial eyebrows and some section-heading tracking tighter than -0.04em. These are inherited craft drift, not reusable typography roles; their styles are deliberately absent from the normative token set.
 
 ## Layout
 
-브랜드·콘텐츠 섹션 위아래 여백은 최소 `15vh`, 콘텐츠 최대 폭은 `96rem`이다. 제품 목록과 내비게이션은 더 촘촘하게 구성하고 이야기 본문은 넓은 호흡을 유지한다. 820px 이하에서는 밝은 헤더 아래 딥 그로브 전체 메뉴로 전환하고 520px 이하의 제품 카드는 가로 스크롤로 탐색한다. 글 상세 본문은 `680px` 이내다.
+The public gutter is fluid through the frontmatter page spacing token. The home colour hero has a maximum outer width of 1600px, a 0.9/1.1 two-column split and a 36–76px fluid gap. Its copy has a 7% left inset on wide screens. Home sections use a 1320px content rail. Compact catalogue and brand layouts retain their 1160px local rails; finder and brand reading sections retain 1016px.
+
+The header is sticky and 82px high on desktop. Its translucent white surface uses an 18px backdrop blur to preserve navigation readability over scrolling content. At 1180px it becomes a 74px header and navigation becomes an expandable two-column white menu; at 760px the header is 72px. External-store destinations remain accessible through their existing routes when the mobile utility control is hidden.
+
+At 760px and below, the colour hero becomes one column with 24px side gutters, 28px top space and a square product photo. At 370px and below, gutters become 20px and gaps tighten without reducing 44px utility targets. Swatches retain at least 44px width and 64px height; their visible circles are 34px. The colour capsule contains its own horizontal overflow when a model has many colours, keeping the page width stable.
+
+Home sections follow the fluid frontmatter spacing on desktop and 58px vertical padding on mobile. Product grids retain a contained mobile swipe rail with 88% card width, a visible next-card edge and scroll snapping. The home collection starts with nine families and appends nine per labelled load-more action, preserving count announcements and focus transfer. The home journal is three columns on desktop and one on mobile.
+
+Product-image frames reserve space and use object-fit: contain. Lifestyle and journal photos may retain their editorial crop. The campaign film retains its original 16:9 media treatment, with mobile copy stacked below. Inquiry fields use a paired first row on desktop and one column on mobile. Keep fixed support and purchase controls clear of each other and respect the purchase-bar offset.
 
 ## Elevation & Depth
 
-부드러운 블러 그림자와 유리 효과는 사용하지 않는다. 주요 옅은 세이지 행동은 `rgba(207, 226, 201, .9) 0 7px 0`, 작은 행동은 5px 오프셋을 사용한다. 흰 카드에는 `deep-grove` 10% 농도의 3px 단색 그림자만 허용한다. 나머지 깊이는 큰 사진, 딥 그로브와 세이지 미스트의 면 전환, `fog` 1px 헤어라인으로 만든다. 텍스트가 사진 위에 놓이면 가독성을 위해 딥 그로브 기반 스크림을 허용한다. 배경 사진은 한 페이지 안에서 같은 이미지를 반복하지 않고 제품·사용 장면이 카피의 의미와 맞을 때만 사용한다.
+The public system is flat by default. Photographs, white space, neutral surface changes and hairlines establish hierarchy. The final theme disables the old button, card and header-control offset-shadow tokens. Small soft shadows explain floating surfaces or tactile app shortcuts.
+
+### Shadow Vocabulary
+
+- **External-store float:** `0 12px 36px #20242314` on the external-store picker panel.
+- **Photo whisper:** `0 12px 38px #23483b05` on the colour photo panel.
+- **App shortcut:** `inset 0 1px 1px #ffffff80, 0 3px 8px #2024230a` on the small gradient icon tile.
+- **Support float:** `0 4px 16px #2024230a` on the support launcher.
+
+**The Flat Surface Rule.** Use no shadow for ordinary product cards or primary buttons. Reserve the named soft shadows for their existing components rather than making every rounded surface float.
 
 ## Shapes
 
-제품·주문·회원·콘텐츠 카드는 24px, 입력과 작은 패널은 18px, 주요 버튼과 배지는 완전한 pill을 사용한다. 제품 상세의 반분 화면은 바깥 모서리만 둥글게 연결하고 내부 접합선은 유지한다. 픽셀 게임의 캐릭터·배경·아이템은 도트 세계를 유지하되 시작·HUD·조작·일시정지·결과 화면은 브랜드의 읽기 쉬운 글자와 둥근 면을 사용한다.
+Small actions and navigation use capsules. Utility buttons are 44px rounded squares with the soft radius; their SVG glyphs are 22px. App shortcuts have an 18px corner radius and 27px glyphs inside a 58px tile on wide screens, 56px on mobile and 52px in compact tablet or narrow layouts. These are CSS rounded squares, not mathematical superellipse masks.
+
+Fields use the field radius, shared media and dialogs use the card radius, and larger containers use the feature or panel radius. The colour panel reduces to the mobile-panel radius at 760px; its inner photo changes from 21px on desktop to 18px on mobile. Product cards need no enclosing rounded box when the photo already supplies the shape. Preserve the official logo's geometry and colours; the light footer uses its original identity treatment.
 
 ## Components
 
-### Foundational visual states
+### Buttons
 
-기본은 아주 옅은 세이지 미스트 바탕, 흰 카드와 잉크색 글자다. 제품 카드는 포인터 호버와 내부 포커스에서 위로 2px 이내 이동하고, 선을 `sage-mid`, 단단한 그림자를 `sage-wash`로 바꿔 선택 가능성을 알린다. 제품 이미지는 확대하지 않는다. 키보드 포커스는 밝은 안쪽 선과 대비가 충분한 `forest-focus` 바깥 선으로 명확하게 표시한다. 로딩 영역은 최종 콘텐츠와 비슷한 최소 높이를 예약한다.
+Dark, compact and explicit. The principal product action follows button-primary with icon and text; its final directional glyph is smaller. Direct purchase actions share the dark hierarchy. Supporting cart and detail actions may use white, quiet neutral or soft sage surfaces. Keep existing destinations and enabled/disabled logic. Official Npay and authentication provider branding retain their prescribed treatment.
 
-### Buttons and actions
+Hover darkens the primary action. Utility controls shift to the observed slightly darker neutral hover fill. Fine-pointer press feedback scales icon controls to 0.97; it is not persistent. Keyboard focus has a forest outline, 2px wide and 4px outside the control. Preserve component-specific focus treatments that add a ring. Disabled and submitting states keep labels and layout stable.
 
-주요 `바로 구매하기`, 주문 완료, 관리자 저장은 옅은 세이지 면과 고대비 차콜 글자, 단단한 5~7px 오프셋을 사용한다. 포레스트 호버에서는 흰 글자를 사용한다. 장바구니 담기와 상세 보기 같은 보조 행동은 딥 그로브 또는 흰 면을 사용하며 모든 행동은 pill과 최소 높이 44px을 보장한다. 바로 구매하기는 `checkout.html?product=...` 내부 주문서로 이동하며, 장바구니의 `장바구니 주문하기`도 같은 주문서로 연결한다. 텍스트 링크는 기존 정보 구조를 유지하되 중요한 전환 행동과 혼동되지 않게 한다.
+### Colour choices
 
-네이버페이 주문형은 상품 상세와 장바구니에서 네이버가 제공하는 SDK v2.1 템플릿 버튼을 그대로 사용한다. 상품 목록 카드에는 Npay 버튼을 노출하지 않고 실제 상품 상세페이지에서 Npay 구매·네이버쇼핑 찜을 제공하며, 장바구니에는 담긴 상품의 Npay 구매만 제공한다. 모든 영역은 최소 200px 너비와 복수 버튼·혜택 영역을 위한 150px 높이를 예약한다. 최종 오픈 승인 전 검수 링크는 별도 상품목록을 렌더링하지 않고 비공개 세션을 설정한 뒤 동일한 운영 상품 상세 URL과 UI로 이동하며, 이 세션에서만 Sandbox SDK를 사용한다. 자사몰 주문서 행동과 분리해 사용자가 주문 경로를 혼동하지 않게 한다. 네이버 주문 등록 시 브라우저가 전달한 가격·상품명은 신뢰하지 않고 서버의 현재 공개 카탈로그로 다시 조회하며, 배송비는 3,500원이고 같은 배송 그룹의 상품 합계가 100,000원 이상이면 무료다. 인증키는 서버에만 두고 버튼 인증키만 SDK 초기화를 위해 브라우저로 전달한다.
+Each visit selects a random valid product family from the current public catalogue, then a random initial colour from that family's actual variants. When multiple eligible families exist, exclude the last successfully displayed family, stored locally after image decode. If storage is unavailable, random selection still works. Prefer a non-set product when the same family and colour has both a standalone and a set listing. Browser back/forward cache retains its existing valid selection rather than starting another visit.
 
-연락의 기본 행동은 사이트 안의 비공개 문의 접수다. 공개 화면에서 이메일 앱을 여는 링크는 제공하지 않으며, 푸터는 `비공개 문의 남기기`와 SNS를 안내한다. Instagram과 YouTube는 각 공식 로고와 채널명을 함께 표시하며, 주요 구매 버튼과 경쟁하지 않는 보조 링크로 유지한다.
+Labelled samples sit in one neutral, horizontally contained capsule. Selection uses an outline and inline check; derive a dark or white check from the actual swatch's luminance and contrast, never its position. Expose selection with aria-pressed. Decode the next image before replacing the model, photo, colour label, selected state, caption and product destination together. A failed image keeps the current matching selection; a failed catalogue request exposes retry and a full-catalogue destination. An empty colour set does not create imaginary products.
 
-### Navigation and data display
+The authored colour transition uses Anime.js: opacity 0.5 to 1 and a 6px vertical settle over 260ms with outQuad. Reduced motion commits the state without animation. Cancel previous animation and obsolete results during rapid changes; clean up listeners when the page leaves the document lifecycle.
 
-제품 가격에는 현재 판매가와 확인된 네이버 할인율만 표시하며 별도의 가격 동일 문구는 반복하지 않는다. 확인된 네이버 할인율은 `sage-tint` 바탕과 딥 그로브 글자의 pill 라벨로 표시한다. 주문 쿠폰은 한 장만 고르는 라디오 카드이며, 관리자 프로모션 화면은 네 종류의 고정 쿠폰에 활성화·최소 주문금액·최대 할인금액·종료 일시를 설정한다. 첫 화면 프로모션은 native `<dialog>`를 사용하고 동일 저장 버전에서 닫은 팝업은 브라우저에 다시 강제로 띄우지 않는다.
+### Cards / Containers
 
-No.0422 게임의 공식 이름은 `HIMAWARI BAG QUEST — 0422 등굣길 어드벤처`다. 실제 0422 블랙 백팩을 멘 픽셀 캐릭터와 기존 학교 등굣길·물건 그림은 보존한다. BAG QUEST와 PACK THE BEAT의 시작 제목은 다른 메뉴 페이지와 같은 32~50px, 모바일 최대 44px로 맞추고 소개 문구는 18~20px와 14px 본문으로 구성한다. 한 개의 시작 버튼을 두고 제품 소개는 조작 안내 다음에 둔다. `assets/game-layout.css`가 게임 화면의 표현을 소유하고, 기존 `styles.css`의 cream·harbor·snow 토큰을 소비한다. 게임 전용 짙은 세이지 `#294c40`와 제목 강조 `#72957b`는 리듬게임과 같은 지역 팔레트이며 전역 토큰을 변경하지 않는다.
+Product photography leads; information aligns beneath or alongside it. Home product cards are flat, borderless outer structures with rounded neutral media. Featured information uses the frontmatter container surface and 24px mobile padding. Keep full product names, real prices, options and existing purchase actions. Do not synthesize unavailable facts to fill a layout.
 
-게임은 native `<dialog>`에서 시작해 배경 포커스를 막고, 한 뷰포트 안에 제목·소리·일시정지·닫기, 생명·단계·점수·시간, 게임판과 조작기를 묶는다. BAG QUEST의 별도 전체 화면 로딩 dialog는 세이지 바탕·가방 선 그리기·실제 이미지 진행률을 표시한다. 세 장의 게임 이미지 디코딩이 완료되어야 시작을 활성화하며 실패 시 안내·재시도·홈으로 돌아가기를 제공한다. 로딩 중 배경 조작은 막고 준비 후 짧게 사라진다. 모션 감소 설정에서는 선 그리기·최소 표시 시간·전환을 생략한다. 픽셀 세계 밖의 HUD·버튼·일시정지·결과 화면은 세이지 면과 읽기 쉬운 한국어 글자를 사용하고 두꺼운 도트 테두리·오프셋 그림자는 제거한다. 결과는 최종 점수와 현재 활성 쿠폰 상태를 표시한다. 쿠폰 이벤트가 비활성일 때는 준비 중으로 안내하며 발급을 요청하지 않는다.
+Journal cards reuse published imagery, titles, summaries and links. The story area uses the ordinary browser cursor; the former pencil cursor and trail canvas have been removed. The support assistant uses a white panel, mint-tint header, neutral quick prompts and light message bubbles; the former yellow skin is superseded by the final public theme. Member and cart panels retain their behavior with the common card radius.
 
-PC에서는 게임판 클릭 지점으로 걷고 누른 채 드래그하면 목적지가 따라간다. 모바일 터치 드래그는 손가락 시작 위치와 캐릭터의 차이를 보존해 인물이 손가락 아래로 순간 이동하지 않으며, 손을 떼면 멈춘다. 짧은 탭 이동도 제공한다. 방향키·WASD·조이스틱 조작과 이동 속도·경계를 유지한다. 키보드와 조이스틱은 이전 목적지를 취소한다. 일시정지·화면 이탈·포인터 취소·회전·단계 전환·다시 시작에서 입력을 초기화한다. Space/점프와 F·J/새총 버튼은 유지하며 모바일 이동과 동시 터치를 지원한다. 등굣길 35초 동안 물건 낙하 속도·빈도와 위험물 비중이 증가하며 수집 판정은 더 정밀해진다. 수납 단계는 직접 수집한 물건만 제공하며 생명 소진이나 빈 수집에는 수납 보너스를 제공하지 않는다. 정리 시간은 12초, 잘못된 짝은 2초 차감한다. SVG 열기·삽입·닫기 동안 입력과 시계를 잠그며 완료 후 한 번의 150점 추가와 모션 감소 처리를 유지한다. 결과 제목은 완성·미완성·수집 실패·생명 소진을 구분한다. 닫기와 Escape는 시작 화면의 버튼으로 포커스를 돌려준다.
+### Inputs / Fields
 
-PACK THE BEAT의 게임 배경은 기존 No.1884 블랙·카키·그레이 착용 사진을 8마디마다 바꾸며, 중앙 레인과 피드백·장면 라벨에 밝은 세이지 면을 사용해 대비를 확보한다. `assets/rhythm-scenes.css`가 사진 표현을 소유한다. 배경 사진 3장과 가방 디코딩을 모두 확인한 뒤 시작하며 AI 연출 포함을 표시한다. 연속 탭·엇박과 가변 길이 홀드, Perfect ±45ms / Good ±100ms 판정, 박자 밖 탭의 콤보 초기화·점수 차감으로 정확한 입력을 요구한다. 짧은 가로 화면에서는 노트 크기를 게임판 높이에 맞춰 줄이며 모션 감소에서는 사진 전환을 생략한다. 공유 차트 버전 2를 브라우저·서버가 함께 사용하고 쿠폰 이벤트 보류 상태는 유지한다.
+White fields, a hairline border, the field radius and inherited Korean typography. The home contact form supplies the frontmatter input dimensions; textareas are 140px high. Put validation beside the relevant input and preserve aria-invalid, labels and consent requirements. Keep native select ownership for product options and system pickers; visual redesign does not replace data behavior.
 
-데스크톱은 딥 그로브 공지 바 아래 밝은 상품 내비게이션을 두고, 여섯 개 메뉴는 흰 면·포그 선·세이지 단색 오프셋을 가진 작은 `luggage tag`형 pill 버튼으로 표현한다. 현재 메뉴는 딥 그로브 면과 세이지 오프셋으로 명확히 구분하되 헤더의 주 구매 행동보다 시각적 우선순위가 높아지지 않게 한다. 모바일은 가운데 로고와 좌우 메뉴·스토어 행동을 두고, 메뉴가 열리면 헤더 아래 전체 딥 그로브 면에서 각 항목을 44px 이상 높이의 둥근 태그형 행 버튼으로 보여준다.
+### Navigation
 
-헤더 로고는 내비게이션 높이 안에서 가로형 비례와 하단 설립연도가 온전히 읽혀야 하며, 모바일에서도 메뉴와 스토어 버튼 사이에 최소 여백을 유지한다. 푸터 로고는 어두운 바탕에서 동일한 실루엣을 크림색 단색으로 보여준다. 홈의 마지막 연락 섹션 직전에는 세로형 숏폼 다섯 편을 중앙 스냅 방식의 필름 레일로 배치해 양옆 장면이 다음 탐색 방향을 알려준다. 양옆 영상은 전체 미디어 영역을 직접 눌러 중앙으로 이동·재생할 수 있다.
+All eight desktop routes are directly visible in the quiet capsule track: bags, finder, lookbook, stories, guidebook, brand, game and contact. The first four combine icons with text; the remaining routes retain readable labels. The active or hovered route gains a white surface. Do not hide routes behind a More disclosure.
 
-모든 공개 페이지의 푸터에는 비공개 문의 링크와 SNS 링크를 함께 제공한다. 상호명, 사업자번호, 대표자명, 사업장 소재지와 통신판매번호는 그 아래의 공통 사업자 정보 정의 목록에 표시하며 모바일에서는 항목별 두 열로 재배치해 긴 주소도 온전히 읽히게 한다.
+Expanded mobile navigation exposes all eight routes in two columns and an account action. Opening moves focus to its first route; Escape restores menu-button focus. Preserve focus containment and close-on-navigation behavior. Search, account and cart remain individually labelled utility controls. Original external-store destinations remain in their picker.
 
-제품 카드는 대표 이미지와 제품명을 통해 `product.html?id=...`의 개별 상세페이지로 이동한다. 같은 모델의 옵션 pill을 선택하면 선택 상태를 글과 체크로 함께 표시하고 카드의 대표 이미지·제품명·소개·가격·재고·관심상품·구매 대상을 해당 제품으로 즉시 전환한다. 이후 이미지나 `상세 보기`를 누르면 선택한 제품의 `product.html?id=...`로 이동하며, 옵션 선택 중에도 버튼 포커스를 유지한다. 상품 목록과 상세페이지는 현재 관리자 카탈로그를 서버에서 먼저 렌더링해 자바스크립트를 실행하지 않는 검색·심사 도구에도 이름, 가격, 이미지와 구매정보가 노출되어야 하며, 클라이언트 렌더링은 회원 장바구니·관심상품 상태를 이어받는다. 상세페이지는 대표 이미지와 구매 결정을 먼저 보여주는 반분 화면, 확인된 상세 설명과 번호가 붙은 제품 포인트, 쿠팡·네이버 상품 정보처럼 상세 이미지를 원본 비율로 잇는 최대 `56rem` 폭의 세로 콘텐츠 레일, 배송·청약철회 안내 순서로 구성한다. 상세 이미지는 카드 비율로 자르거나 이미지 사이에 장식 간격을 넣지 않고 문서 스크롤로 읽는다. 매우 긴 상세 이미지는 관리자 업로드 전에 브라우저에서 최대 다섯 장의 WebP 조각으로 나눠 저장하고, 공개 페이지에서는 지연 디코딩·낮은 fetch priority·콘텐츠 가시성 예약으로 긴 문서의 초기 렌더링을 줄인다. 이미지가 한 장뿐인 기존 제품은 빈 갤러리를 만들지 않는다.
+### App shortcuts and iconography
 
-### Forms and overlays
+Use the installed Phosphor SVG assets consistently. Shortcuts combine an SVG glyph, a soft peach/mint/lavender/yellow gradient tile and a visible label. This user-approved tile treatment does not define a page-background system. Sidecar previews inline equivalent SVG assets without package or icon-font dependencies.
 
-입력 필드는 흰 바탕, `fog` 1px 선, 18px 반경을 사용한다. 검증 문구는 해당 필드 가까이에 두고 `aria-invalid`와 연결한다. 텍스트 영역은 크기 조절을 끈다.
+### Existing specialised interfaces
 
-공개 문의 폼은 이름·이메일·제목·내용과 보관 동의를 받는다. 보관 안내는 제출 버튼 바로 앞에 두며, 접수 중에는 버튼 폭을 유지한 채 중복 제출을 막는다. 관리자 문의함은 둥근 흰 면과 `fog` 헤어라인으로 구성하고, 20건 단위의 목록과 선택한 문의 원문을 나란히 보여준다. 관리자 비밀번호는 기본 마스킹하고 표시/숨기기 버튼을 제공한다. 영구 삭제는 `danger` 색의 별도 확인 대화상자에서만 실행한다.
-
-관리자 제품 등록과 수정은 제품명·모델·가격·소개·상세 설명·제품 포인트·스마트스토어 주소·대표 이미지·상세 이미지를 같은 자연 높이 폼으로 다룬다. 목록의 `수정` 버튼은 현재 값을 폼에 불러오고 옅은 세이지 편집 상태를 표시한다. 수정 시 새 파일을 고르지 않은 이미지 영역은 기존 이미지를 유지하며, 새 대표 이미지나 상세 이미지를 선택한 영역만 교체한다. 파일 입력은 운영체제의 선택기를 사용하되 선택 파일의 이름·용량·미리보기를 화면에 보여준다. 대표 이미지는 8MB, 세로 콘텐츠 레일에 쓰는 상세 이미지는 장당 15MB까지 허용하며 브라우저와 서버가 같은 역할별 제한을 적용한다. 저장 중에는 이미지별 실제 업로드 진행률을 표시하고 취소를 제공하며, 작성 중 이동이나 초기화는 앱 소유 확인 대화상자에서 입력 손실을 알린다. 제품 영구 삭제는 문의 삭제와 같은 `danger` 확인 계약을 사용한다.
-
-옵션·재고 편집기는 제품 폼 안의 옅은 세이지 장부 면으로 구성한다. 옵션을 쓰지 않는 제품은 전체 재고를 한 칸에서 관리하고, 옵션을 쓰는 제품은 `옵션값 / 재고 / 삭제`의 반복 행과 명시적인 `옵션 추가` 행동을 사용한다. 옵션 선택은 공개 상세페이지의 native `<select>`가 소유하며 품절값은 선택할 수 없고, 선택 전에는 장바구니·바로 구매·Npay 주문 행동을 진행할 수 없다. 카드의 옵션 상품 구매 행동은 상세페이지의 선택 위치로 이동한다.
-
-장바구니는 결제 전 주문 목록이다. 비회원 목록은 브라우저에 보관하고, 네이버·Google 간편 로그인 후에는 Neon의 회원 계정에 동기화한다. 관심상품도 같은 비회원→회원 병합 흐름을 사용한다. `assets/cart.css`의 `--cart-bg`, `--cart-ink`, `--cart-accent`는 각각 흰 면, 본문 잉크, 옅은 세이지 행동색을 참조하며 회원 대화상자·서랍·수량 조절·버튼은 공통 카드와 pill 형태를 사용한다. 플로팅 버튼은 모바일 메뉴와 겹치지 않도록 우측 하단에 둔다. 주문 문의는 장바구니 내용을 세션 범위로 전달해 비공개 문의 폼에 제목과 본문을 자동으로 채우며, 수신번호 없는 `sms:` 링크를 노출하지 않는다.
-
-회원 메뉴는 데스크톱 헤더에서 스토어 행동 옆, 모바일에서는 전체 메뉴 안에 둔다. 로그인 대화상자는 네이버·Google 제공자 선택, 로그인 상태, 관심상품 수, 로그아웃과 마이페이지 진입을 제공한다. 회원탈퇴는 `회원탈퇴` 확인 문구를 받는 앱 소유 폼에서만 실행하며 간편 로그인 연결, 세션, 계정 장바구니와 관심상품을 영구 삭제한다.
-
-주문서는 가방에 붙는 포장 명세서처럼 큰 주문 제목, 둥근 흰 입력란과 우측의 24px 상품 합계 카드로 구성한다. 회원가입은 선택이며 비회원도 같은 주문서를 작성한다. 비회원에게는 로그인 시 주문 내역을 계정에서 이어 볼 수 있다는 안내만 보조적으로 제공하고 주문 자체를 막지 않는다. 모바일에서는 상품 합계를 먼저 확인한 뒤 배송정보를 입력한다. PG 연결 전 결제 영역은 비활성 결제수단을 가장하지 않고 `결제 대기` 주문의 의미를 문장으로 설명한다. 마이페이지 주문카드는 주문번호·상태·상품·금액을 먼저 보여주고 배송지와 처리 이력은 기본 접힘으로 둔다. 고객의 취소·반품 요청과 관리자의 취소·환불 완료는 앱 소유 확인 대화상자를 사용한다.
-
-관리자 주문 화면은 `admin/admin.css`의 제품 레지스터를 확장하며, 20건 단위 페이지와 상태 필터는 URL에 보존한다. 상태 필터와 상태 변경은 운영체제 팝업이 허용되는 네이티브 `select`를 정식 소유자로 사용한다. 주문 상세는 데스크톱에서 우측 고정 레지스터, 좁은 화면에서 목록 아래 자연 높이 문서 흐름으로 전환한다.
-
-### Iconography
-
-제품 상세의 크기·소재 안내는 흰 면, 최대 1120px 콘텐츠 폭, 큰 제목과 실제 제품 사진을 사용한다. `assets/product-guidance.js`와 `assets/product-guidance.css`가 전체 제품의 공통 소유자다. 확인된 사양만 정의 목록에 표시하고 미등록 항목은 한 개의 네이티브 details로 묶어 문의로 연결한다. 데스크톱의 사진·사양 2열은 700px 이하에서 1열로 바뀐다. 기존 `styles.css`의 snow·cream·ink·harbor·color-fog 토큰을 사용하며 숫자나 수납 가능 여부를 추정하지 않는다.
-
-별도 아이콘 라이브러리를 쓰지 않는다. 이동 방향을 나타내는 단순 화살표만 텍스트와 함께 사용한다.
-
-### Motion
-
-허용된 모션은 스크롤 리빌, 홈 히어로와 중간 캠페인의 무음 반복 영상, 마지막 연락 섹션 직전의 숏폼 필름 레일, 제품 카드의 짧은 오프셋 변화와 No.0422 게임의 아이템 낙하·점프·새총 탄환·아령 파괴다. 히어로는 스크롤 진행도나 동적 뷰포트 높이에 연결하지 않고 자연스러운 문서 흐름을 유지하며, 두 캠페인 영상은 사용자가 직접 일시정지할 수 있어야 한다. 필름 레일은 화면 중앙에 스냅된 한 영상만 소스를 연결해 자동 재생하고, 화면을 벗어나거나 다른 카드가 중앙에 오면 이전 소스를 해제한다. 영상 직접 선택·이전·다음·재생·소리 제어와 좌우 방향키 탐색을 제공한다. 게임은 시작 버튼을 누른 뒤 저작권 외부 음원 없이 Web Audio로 만든 낮은 음량의 8비트 BGM과 수집·점프·발사·파괴 효과음을 재생하고, 명시적인 BGM ON/OFF를 제공한다. 게임을 일시정지하거나 문서가 숨겨지면 음악과 진행을 함께 멈춘다. `prefers-reduced-motion: reduce`에서는 모든 영상을 포스터로 정지하고 게임 아이템을 낙하시키지 않은 채 수집선에 고정해 보여주며, 점프·파괴 판정과 조작은 유지하되 장식 애니메이션·카드 이동·전환·부드러운 스크롤을 모두 끈다.
-
-홈 브랜드 소개의 `Carry study` 카드는 페이지를 열 때 공개 카탈로그의 품절이 아닌 제품 중 하나를 무작위로 표시한다. 같은 탭에서는 직전 제품을 제외하며, 사진 로드가 끝나면 모델명·제품명·상세 링크를 함께 바꾼다. 카탈로그나 사진 로드에 실패하면 기존 정적 카드를 유지한다. 데스크톱에서만 섹션 안의 짧은 범위로 제품 카드가 30px 이내 이동하고, 모바일에서는 문서 흐름 안의 정지 카드로 유지한다. 게임 초대 카드에는 `assets/game-items.css`의 공통 아이템 그림을 재사용해 실제 게임과 같은 노트북·책·물병·연필을 표시한다. 같은 제품을 멘 픽셀 캐릭터와 이 수집품이 화면에 보일 때만 움직여 실제 제품에서 픽셀 세계로 이어지는 한 장면을 만든다. 제품 옵션은 기존 카드 크기를 고정한 채 사진만 짧게 교차 전환하고, 장바구니 담기 성공 시 제품 이미지가 고정 장바구니 버튼으로 이동해 결과를 확인시킨다. 제품 상세의 번호 포인트와 릴스 진행선은 정보를 드러내는 상태 표시이며 결제·Npay 버튼 자체에는 장식 모션을 추가하지 않는다. 이 상호작용은 `transform`과 `opacity`만 사용하고, 화면을 벗어나면 반복 모션을 중지하며, 모션 감소 설정에서는 정지 이미지와 즉시 상태 변경으로 대체한다.
-
-홈 Journal 영역에서는 데스크톱 마우스 위치에 세이지 연필의 흑연 끝을 정확히 맞추고, 연필 몸통은 오른쪽 위를 향하며 이동 방향에 따라 살짝 기울어진다. 빈 영역에서는 연필이 기본 커서를 대신하고, 같은 끝점에서 이어지는 얇은 세이지 선이 약 0.9초 안에 사라진다. 링크 위에서는 기본 커서를 복원하고 연필을 흐리게 하며 선을 지워 글 읽기와 클릭을 방해하지 않는다. 클릭·키보드·스크롤·영역 이탈 시 효과를 지우고 모바일·터치·모션 감소·고대비 환경에서는 표시하지 않는다. 선은 최대 160개 점으로 제한하고, 움직임과 잔상이 끝나면 애니메이션 프레임도 중지한다.
-
-### Content and data visualization
-
-말투는 과장된 명품 수식어보다 형태, 균형, 구조, 소재, 오래 쓰는 완성도를 구체적으로 말한다. 큰 제목은 자연스러운 한국어 의미 단위로 끊고, 확인되지 않은 수제·원산지·성능 주장은 만들지 않는다. 제품 카탈로그가 아직 생성되지 않은 배포는 `products.json`을 초기 출처로 사용하고, 최초 관리자 변경 이후에는 Public Product Blob의 `products/v1/catalog.json`을 런타임 단일 출처로 사용한다. `api/storefront.js`는 같은 단일 출처로 상품 목록과 상세 HTML을 서버 렌더링한다. 주문·배송·청약철회와 이용약관의 운영 기준은 `docs/COMMERCE-POLICY.md`를 따르고 주문 상태·권한·보관 기준은 `docs/ORDER-POLICY.md`를 따른다. 이야기 정보는 `story/posts.json`을 단일 출처로 유지한다.
+Games retain their pixel-art world, controls, pause/result dialogs and reduced-motion behavior. Comparison retains three real-photo selections and its contained table. Product guidance retains confirmed specifications and its responsive image/specification split. Checkout, coupons, member state, wishlist, private inquiry, story feed and support preserve their existing source of truth. Administration's data-entry and destructive-action patterns remain local to its unchanged interface.
 
 ## Do's and Don'ts
 
-- **Do:** 큰 제품 사진과 충분한 빈 공간으로 오래 쓰는 물건의 신뢰감을 보여준다.
-- **Do:** 공개 상품 페이지의 대표 비주얼에는 실제 Himawari 제품 연출컷을 사용하고, 이야기 글의 생성 장면은 실제 제품 사진을 기준으로 제품 외형을 보존한다.
-- **Do:** 모든 공개 페이지에서 세이지 미스트 캔버스, 딥 그로브, 옅은 세이지의 역할과 상품 중심의 밀도를 유지한다.
-- **Do:** 제품 카드는 24px 반경과 얕은 단색 그림자를, 주요 행동은 연한 파스텔 세이지 pill과 부드러운 오프셋을 사용한다.
-- **Don't:** 생성 이미지를 상품 카드·상품 상세의 판매용 대표 사진으로 사용하거나 실제 제품에 없는 기능·구조·인증을 보여주지 않는다.
-- **Don't:** 제품 이미지를 호버에서 확대하거나 카드에 큰 이동·회전을 추가하지 않는다.
-- **Don't:** 세이지 그린 외의 경쟁 포인트색, 부드러운 블러 그림자, 유리 효과, 장식용 그라데이션을 추가하지 않는다.
+### Do:
 
-### Product purchase clarity (2026-09-10)
+- **Do** use the white canvas, original logo and actual catalogue photographs to establish the brand.
+- **Do** keep the product model, photo, colour label, selected state and product destination in sync.
+- **Do** use dark primary actions, labelled SVG controls and visible keyboard focus.
+- **Do** expose all eight desktop routes directly and preserve their mobile menu destinations.
+- **Do** preserve the bag's full shape with contained product imagery and reserved image space.
+- **Do** keep utility targets at least 44px and redesigned small labels at least 12px.
+- **Do** respect reduced motion and preserve honest loading, error and empty states.
+- **Do** retain current catalogue, commerce, account and published-content contracts when extending the interface.
 
-상품 상세 첫 화면은 최대 76rem, 정사각형 사진 영역과 26~36px 제품명으로 구성한다. 대표 사진은 10% 여백과 contain으로 전체 형태를 보존하며 긴 상세 설명 이미지에는 적용하지 않는다. 상세 및 고정 구매 버튼은 deep-grove 바탕과 흰 글자로 활성 상태를 명확하게 표시하고, 비활성 상태만 별도로 흐리게 처리한다.
+### Don't:
 
-### Fixed purchase controls
-
-하단 구매 바의 옵션은 기존 native select를 재사용하며 운영체제의 선택 팝업을 허용한다. 실제 상품 옵션은 본문과 양방향 동기화하고, 별도 상품으로 등록된 같은 제품군의 색상·구성은 해당 상품으로 이동하며 수량을 전달한다. 기본 수량은 1개, 상한은 기존 주문서와 동일하게 재고 또는 99개다. 수량은 일반 주문서, 장바구니 담기, Npay에 동일하게 전달하고 합계 상품금액을 표시한다. 공식 Npay 버튼 디자인은 변경하지 않는다.
-
-### Purchase methods
-
-주문서 첫 화면에 공식 Npay 버튼과 무통장입금 선택을 표시한다. 무통장입금을 선택하면 기존 배송정보 폼이 열리고 첫 입력에 포커스를 이동한다. 기존 orders.css의 토큰과 820px 단일 열 기준을 유지한다. 계좌 안내는 주문 전과 완료 화면에 동일하게 표시한다.
-
-Fixed purchase bar compact layout: maximum width 580px; desktop uses two rows and mobile three compact rows. General buy and official Npay buttons share a row. Option help remains available to assistive technology; selection and quantity controls retain their labels and keyboard behavior.
-
-Contact channel cards use three equal white cards on desktop and one column on mobile, with platform logos, channel handles, and a clear external-link affordance. Brand colors are limited to platform marks.
-
-Home About section uses a single left reading column (eyebrow, heading, lead, supporting copy), a right-aligned product card, and three principles beneath. Desktop text and product share the same row group. Mobile stacks content with a right-aligned card; the card does not float or rotate in this layout.
-
-Homepage section alignment is owned by assets/home-layout.css, scoped to .home-layout: 1160px content rail, left-aligned section headings, 32–52px heading scale, balanced image/copy columns, contained featured imagery, and compact full product names with existing purchase controls. Campaign, journal, game, reels and inquiry use the same spacing rhythm; mobile stacks columns without removing content or actions.
-
-Contact page layout is scoped in assets/contact-layout.css: a compact left introduction, white right inquiry panel, paired name/email fields on desktop, full-width message and consent, and a single column on mobile. Existing validation and submission behavior remain authoritative.
-Contact introduction includes the existing No.1027 campaign photograph beneath its copy, filling the left column with a cropped lifestyle scene and a small model caption. The form retains an opaque white surface.
-Game landing and session layout are owned by assets/game-layout.css: a sage lobby matching PACK THE BEAT, direct mouse/touch movement, a native modal game session and readable pause/result screens. The real No.0422 photo follows the guide. Gameplay timing, scoring, packing and coupon rules stay authoritative in assets/game.js.
-Journal index uses story/index-layout.css scoped to story-index-page: compact left headings and a 3/2/1-column photographic card grid. Existing post images, full titles, summaries, tags, dates and destination links remain intact; article reading pages are unchanged.
-Product, finder and brand tabs share assets/navigation-layout.css: compact headings and aligned content rails; catalog reuses home-layout product proportions; finder questions use a 2-column desktop grid with dark selected options; brand uses an image/copy split and compact timeline. Mobile stacks content. Catalog and recommendation data logic remains unchanged.
-Mobile home and catalog product lists use a contained horizontal swipe rail with 88% width cards, a visible next-card edge, scroll snapping and keyboard-focusable scrolling. This supersedes the previous mobile vertical product list; desktop remains a grid.
-
-Game controls: direct click/tap and drag are primary; retain the analog joystick with its 15% dead zone as an alternative. The compact joystick is 74px, landscape 52px, with release/cancel reset and diagonal movement. Keyboard controls and separate pause, jump and shot buttons remain; all action targets are at least 44px and visible at 320px.
-
-
-### Game packing stage (2026-09-12)
-The packing stage uses a reference-matched No.0422 pixel-art sprite on a white surface over the sage canvas. Layered SVG openings and clipped item motion illustrate top, front and side storage. Select a collected item, then activate a labeled button directly on the matching bag compartment. Incorrect matches retain the item selection, subtract two seconds and announce retry without points. A correct match runs one complete opening/insertion/closing sequence; it awards 150 points only after completion. Input is locked and the packing clock pauses during this sequence. Reduced motion uses a brief completion state. This replaces the character preview and manual zone-selection interaction; coupon issuance remains in the existing game result flow.
-
-### Support assistant
-Public pages load a compact right-side support launcher via member.js. White panel, deep-grove header, readable messages, explicit guide/AI labeling and private-inquiry escalation. Hide during active game play; preserve cart controls. OAuth reuses existing member state and cookie sessions. Kakao stays visibly pending until external configuration is complete.
-
-Support assistant refresh (2026-09-14): user-requested automatic AI, transparent pre-send notice, no checkbox. Butter yellow #fff9df conversation canvas, #f6e6a6 header, dark sage #345841 action color, white answer bubbles. Inherited Korean sans typography: title 17px, body 15px, utility 12px. Desktop 440px x up to 720px; mobile fixed inset panel above launcher, dynamic viewport-aware. Compact horizontal quick prompts, conversation owns remaining height. Server-owned order answers never pass to AI; errors retain basic guidance.
-
-Comparison page: assets/compare.css and assets/compare.js own three photo selection slots and an inline, searchable photo gallery. Reuse catalog images, shared sage tokens, native buttons and existing comparison fields. Duplicate choices are disabled; Escape closes the picker and restores focus. Mobile retains three compact slots with a two-column picker and a contained scrolling comparison table.
-
-
-### Public interface refinement (2026-09-21)
-Preserve the sage identity, real product assets, existing 18/24px radii, campaign films and factual copy. Desktop navigation is 14px with 44px targets (12px in the compact desktop band). Content renders immediately rather than repeating scroll-triggered entrance animations. UI press feedback is 140ms and panel motion 220ms, with keyboard and reduced-motion exceptions. Native select fonts inherit the Korean type stack.
-
-Home journal cards now use each post's existing image and alternative text from story/posts.json, in a 3:2 photo layout with three desktop columns and one mobile column. Product footers align to the card bottom. Contact introduction and form share a row height; mobile inputs are at least 16px. Support and cart launchers share a bottom baseline and sit above product purchase controls; mobile navigation hides them while open. Store selection and login, cart, checkout, game and support data flows remain unchanged.
-
-The detector's legacy palette/radius advisories are contextual: official platform logos, user-requested yellow assistant, and incumbent sage card shapes stay intentional. Existing editorial labels are preserved in this refinement rather than changing approved copy.
-
-### Homepage refinement (2026-10-19)
-
-Preserve the sage identity, official logo, existing photography, campaign footage, copy and menu destinations. General navigation uses transparent surfaces without raised shadows; sage hover and deep-grove current-page states establish hierarchy. Mobile navigation retains readable light text on its dark surface.
-
-The home campaign uses the original 16:9 video without cropping, with a wider media column and compact copy alongside it on desktop. Mobile stacks the same video above left-aligned copy. Video controls remain at least 44px high and use 12px labels. The hero product link reserves horizontal space for the existing support/cart launchers on narrow screens.
-
-The home collection initially renders nine product families. A labeled load-more control appends nine at a time, announces the displayed/total count, then transfers focus to the first new product detail link. Every family remains reachable; the full catalog link and existing product, option, wishlist, comparison and purchase behavior stay intact. The home list's page-size attribute is opt-in and does not alter other catalogs.
+- **Don't** restore the former full-page sage canvas or hard offset action shadows on redesigned public surfaces.
+- **Don't** recolour product photography or describe interface swatches as measured physical colours.
+- **Don't** change the primary action's meaning or colour hierarchy for each selected bag.
+- **Don't** substitute invented claims, prices, stock, specifications or customer experiences for missing data.
+- **Don't** use generated editorial or AI lookbook scenes as factual sales photographs; retain their disclosure.
+- **Don't** make emoji, text glyphs or extracted Apple symbols the interface icon system.
+- **Don't** propagate inherited eyebrows or overly tight section-heading tracking as new system rules.
+- **Don't** reintroduce the removed story pencil cursor or trail effect.

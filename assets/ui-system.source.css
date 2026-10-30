@@ -1,0 +1,10 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+@source inline("hmw-btn hmw-btn-circle");
+@plugin "daisyui" {
+  themes: false;
+  include: button;
+  prefix: "hmw-";
+  logs: false;
+}

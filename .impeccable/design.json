@@ -1,0 +1,1006 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-30T09:32:35.478Z",
+  "title": "Design System: Himawari",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Bag Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.00612 179.17)",
+          "oklch(26.43% 0.00612 179.17)",
+          "oklch(37.86% 0.00612 179.17)",
+          "oklch(49.29% 0.00612 179.17)",
+          "oklch(60.71% 0.00612 179.17)",
+          "oklch(72.14% 0.00612 179.17)",
+          "oklch(83.57% 0.00612 179.17)",
+          "oklch(95.00% 0.00612 179.17)"
+        ]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Bag Ink Hover",
+        "tonalRamp": [
+          "oklch(15.00% 0.00963 164.38)",
+          "oklch(26.43% 0.00963 164.38)",
+          "oklch(37.86% 0.00963 164.38)",
+          "oklch(49.29% 0.00963 164.38)",
+          "oklch(60.71% 0.00963 164.38)",
+          "oklch(72.14% 0.00963 164.38)",
+          "oklch(83.57% 0.00963 164.38)",
+          "oklch(95.00% 0.00963 164.38)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0.00)",
+          "oklch(26.43% 0.00000 0.00)",
+          "oklch(37.86% 0.00000 0.00)",
+          "oklch(49.29% 0.00000 0.00)",
+          "oklch(60.71% 0.00000 0.00)",
+          "oklch(72.14% 0.00000 0.00)",
+          "oklch(83.57% 0.00000 0.00)",
+          "oklch(95.00% 0.00000 0.00)"
+        ]
+      },
+      "neutral-panel": {
+        "role": "neutral",
+        "displayName": "Quiet Panel",
+        "tonalRamp": [
+          "oklch(15.00% 0.00265 286.35)",
+          "oklch(26.43% 0.00265 286.35)",
+          "oklch(37.86% 0.00265 286.35)",
+          "oklch(49.29% 0.00265 286.35)",
+          "oklch(60.71% 0.00265 286.35)",
+          "oklch(72.14% 0.00265 286.35)",
+          "oklch(83.57% 0.00265 286.35)",
+          "oklch(95.00% 0.00265 286.35)"
+        ]
+      },
+      "neutral-photo": {
+        "role": "neutral",
+        "displayName": "Photo Neutral",
+        "tonalRamp": [
+          "oklch(15.00% 0.00265 286.35)",
+          "oklch(26.43% 0.00265 286.35)",
+          "oklch(37.86% 0.00265 286.35)",
+          "oklch(49.29% 0.00265 286.35)",
+          "oklch(60.71% 0.00265 286.35)",
+          "oklch(72.14% 0.00265 286.35)",
+          "oklch(83.57% 0.00265 286.35)",
+          "oklch(95.00% 0.00265 286.35)"
+        ]
+      },
+      "neutral-footer": {
+        "role": "neutral",
+        "displayName": "Footer Neutral",
+        "tonalRamp": [
+          "oklch(15.00% 0.00132 286.38)",
+          "oklch(26.43% 0.00132 286.38)",
+          "oklch(37.86% 0.00132 286.38)",
+          "oklch(49.29% 0.00132 286.38)",
+          "oklch(60.71% 0.00132 286.38)",
+          "oklch(72.14% 0.00132 286.38)",
+          "oklch(83.57% 0.00132 286.38)",
+          "oklch(95.00% 0.00132 286.38)"
+        ]
+      },
+      "neutral-border": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "tonalRamp": [
+          "oklch(15.00% 0.00290 264.54)",
+          "oklch(26.43% 0.00290 264.54)",
+          "oklch(37.86% 0.00290 264.54)",
+          "oklch(49.29% 0.00290 264.54)",
+          "oklch(60.71% 0.00290 264.54)",
+          "oklch(72.14% 0.00290 264.54)",
+          "oklch(83.57% 0.00290 264.54)",
+          "oklch(95.00% 0.00290 264.54)"
+        ]
+      },
+      "secondary-text": {
+        "role": "neutral",
+        "displayName": "Secondary Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.00314 286.28)",
+          "oklch(26.43% 0.00314 286.28)",
+          "oklch(37.86% 0.00314 286.28)",
+          "oklch(49.29% 0.00314 286.28)",
+          "oklch(60.71% 0.00314 286.28)",
+          "oklch(72.14% 0.00314 286.28)",
+          "oklch(83.57% 0.00314 286.28)",
+          "oklch(95.00% 0.00314 286.28)"
+        ]
+      },
+      "forest-focus": {
+        "role": "primary",
+        "displayName": "Forest Focus",
+        "tonalRamp": [
+          "oklch(15.00% 0.05507 161.65)",
+          "oklch(26.43% 0.05507 161.65)",
+          "oklch(37.86% 0.05507 161.65)",
+          "oklch(49.29% 0.05507 161.65)",
+          "oklch(60.71% 0.05507 161.65)",
+          "oklch(72.14% 0.05507 161.65)",
+          "oklch(83.57% 0.05507 161.65)",
+          "oklch(95.00% 0.05507 161.65)"
+        ]
+      },
+      "sage-fill": {
+        "role": "secondary",
+        "displayName": "Soft Sage",
+        "tonalRamp": [
+          "oklch(15.00% 0.02261 164.48)",
+          "oklch(26.43% 0.02261 164.48)",
+          "oklch(37.86% 0.02261 164.48)",
+          "oklch(49.29% 0.02261 164.48)",
+          "oklch(60.71% 0.02261 164.48)",
+          "oklch(72.14% 0.02261 164.48)",
+          "oklch(83.57% 0.02261 164.48)",
+          "oklch(95.00% 0.02261 164.48)"
+        ]
+      },
+      "selected-outline": {
+        "role": "primary",
+        "displayName": "Selected Outline",
+        "tonalRamp": [
+          "oklch(15.00% 0.04348 162.19)",
+          "oklch(26.43% 0.04348 162.19)",
+          "oklch(37.86% 0.04348 162.19)",
+          "oklch(49.29% 0.04348 162.19)",
+          "oklch(60.71% 0.04348 162.19)",
+          "oklch(72.14% 0.04348 162.19)",
+          "oklch(83.57% 0.04348 162.19)",
+          "oklch(95.00% 0.04348 162.19)"
+        ]
+      },
+      "mint-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Mint",
+        "tonalRamp": [
+          "oklch(15.00% 0.03226 166.12)",
+          "oklch(26.43% 0.03226 166.12)",
+          "oklch(37.86% 0.03226 166.12)",
+          "oklch(49.29% 0.03226 166.12)",
+          "oklch(60.71% 0.03226 166.12)",
+          "oklch(72.14% 0.03226 166.12)",
+          "oklch(83.57% 0.03226 166.12)",
+          "oklch(95.00% 0.03226 166.12)"
+        ]
+      },
+      "pink-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Pink",
+        "tonalRamp": [
+          "oklch(15.00% 0.03703 7.28)",
+          "oklch(26.43% 0.03703 7.28)",
+          "oklch(37.86% 0.03703 7.28)",
+          "oklch(49.29% 0.03703 7.28)",
+          "oklch(60.71% 0.03703 7.28)",
+          "oklch(72.14% 0.03703 7.28)",
+          "oklch(83.57% 0.03703 7.28)",
+          "oklch(95.00% 0.03703 7.28)"
+        ]
+      },
+      "blue-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Blue",
+        "tonalRamp": [
+          "oklch(15.00% 0.04340 245.53)",
+          "oklch(26.43% 0.04340 245.53)",
+          "oklch(37.86% 0.04340 245.53)",
+          "oklch(49.29% 0.04340 245.53)",
+          "oklch(60.71% 0.04340 245.53)",
+          "oklch(72.14% 0.04340 245.53)",
+          "oklch(83.57% 0.04340 245.53)",
+          "oklch(95.00% 0.04340 245.53)"
+        ]
+      },
+      "yellow-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Yellow",
+        "tonalRamp": [
+          "oklch(15.00% 0.13746 87.63)",
+          "oklch(26.43% 0.13746 87.63)",
+          "oklch(37.86% 0.13746 87.63)",
+          "oklch(49.29% 0.13746 87.63)",
+          "oklch(60.71% 0.13746 87.63)",
+          "oklch(72.14% 0.13746 87.63)",
+          "oklch(83.57% 0.13746 87.63)",
+          "oklch(95.00% 0.13746 87.63)"
+        ]
+      },
+      "purple-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Purple",
+        "tonalRamp": [
+          "oklch(15.00% 0.05004 318.64)",
+          "oklch(26.43% 0.05004 318.64)",
+          "oklch(37.86% 0.05004 318.64)",
+          "oklch(49.29% 0.05004 318.64)",
+          "oklch(60.71% 0.05004 318.64)",
+          "oklch(72.14% 0.05004 318.64)",
+          "oklch(83.57% 0.05004 318.64)",
+          "oklch(95.00% 0.05004 318.64)"
+        ]
+      },
+      "mint-tint": {
+        "role": "secondary",
+        "displayName": "Mint Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.00998 164.87)",
+          "oklch(26.43% 0.00998 164.87)",
+          "oklch(37.86% 0.00998 164.87)",
+          "oklch(49.29% 0.00998 164.87)",
+          "oklch(60.71% 0.00998 164.87)",
+          "oklch(72.14% 0.00998 164.87)",
+          "oklch(83.57% 0.00998 164.87)",
+          "oklch(95.00% 0.00998 164.87)"
+        ]
+      },
+      "pink-tint": {
+        "role": "secondary",
+        "displayName": "Pink Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.01211 4.75)",
+          "oklch(26.43% 0.01211 4.75)",
+          "oklch(37.86% 0.01211 4.75)",
+          "oklch(49.29% 0.01211 4.75)",
+          "oklch(60.71% 0.01211 4.75)",
+          "oklch(72.14% 0.01211 4.75)",
+          "oklch(83.57% 0.01211 4.75)",
+          "oklch(95.00% 0.01211 4.75)"
+        ]
+      },
+      "blue-tint": {
+        "role": "secondary",
+        "displayName": "Blue Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.00688 247.90)",
+          "oklch(26.43% 0.00688 247.90)",
+          "oklch(37.86% 0.00688 247.90)",
+          "oklch(49.29% 0.00688 247.90)",
+          "oklch(60.71% 0.00688 247.90)",
+          "oklch(72.14% 0.00688 247.90)",
+          "oklch(83.57% 0.00688 247.90)",
+          "oklch(95.00% 0.00688 247.90)"
+        ]
+      },
+      "yellow-tint": {
+        "role": "secondary",
+        "displayName": "Yellow Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.03085 94.89)",
+          "oklch(26.43% 0.03085 94.89)",
+          "oklch(37.86% 0.03085 94.89)",
+          "oklch(49.29% 0.03085 94.89)",
+          "oklch(60.71% 0.03085 94.89)",
+          "oklch(72.14% 0.03085 94.89)",
+          "oklch(83.57% 0.03085 94.89)",
+          "oklch(95.00% 0.03085 94.89)"
+        ]
+      },
+      "purple-tint": {
+        "role": "secondary",
+        "displayName": "Purple Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.01185 313.22)",
+          "oklch(26.43% 0.01185 313.22)",
+          "oklch(37.86% 0.01185 313.22)",
+          "oklch(49.29% 0.01185 313.22)",
+          "oklch(60.71% 0.01185 313.22)",
+          "oklch(72.14% 0.01185 313.22)",
+          "oklch(83.57% 0.01185 313.22)",
+          "oklch(95.00% 0.01185 313.22)"
+        ]
+      },
+      "black-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Black",
+        "tonalRamp": [
+          "oklch(15.00% 0.00813 196.78)",
+          "oklch(26.43% 0.00813 196.78)",
+          "oklch(37.86% 0.00813 196.78)",
+          "oklch(49.29% 0.00813 196.78)",
+          "oklch(60.71% 0.00813 196.78)",
+          "oklch(72.14% 0.00813 196.78)",
+          "oklch(83.57% 0.00813 196.78)",
+          "oklch(95.00% 0.00813 196.78)"
+        ]
+      },
+      "black-tint": {
+        "role": "secondary",
+        "displayName": "Black Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.00107 197.14)",
+          "oklch(26.43% 0.00107 197.14)",
+          "oklch(37.86% 0.00107 197.14)",
+          "oklch(49.29% 0.00107 197.14)",
+          "oklch(60.71% 0.00107 197.14)",
+          "oklch(72.14% 0.00107 197.14)",
+          "oklch(83.57% 0.00107 197.14)",
+          "oklch(95.00% 0.00107 197.14)"
+        ]
+      },
+      "khaki-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Khaki",
+        "tonalRamp": [
+          "oklch(15.00% 0.04492 116.57)",
+          "oklch(26.43% 0.04492 116.57)",
+          "oklch(37.86% 0.04492 116.57)",
+          "oklch(49.29% 0.04492 116.57)",
+          "oklch(60.71% 0.04492 116.57)",
+          "oklch(72.14% 0.04492 116.57)",
+          "oklch(83.57% 0.04492 116.57)",
+          "oklch(95.00% 0.04492 116.57)"
+        ]
+      },
+      "khaki-tint": {
+        "role": "secondary",
+        "displayName": "Khaki Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.00932 113.16)",
+          "oklch(26.43% 0.00932 113.16)",
+          "oklch(37.86% 0.00932 113.16)",
+          "oklch(49.29% 0.00932 113.16)",
+          "oklch(60.71% 0.00932 113.16)",
+          "oklch(72.14% 0.00932 113.16)",
+          "oklch(83.57% 0.00932 113.16)",
+          "oklch(95.00% 0.00932 113.16)"
+        ]
+      },
+      "ivory-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Ivory",
+        "tonalRamp": [
+          "oklch(15.00% 0.02237 89.80)",
+          "oklch(26.43% 0.02237 89.80)",
+          "oklch(37.86% 0.02237 89.80)",
+          "oklch(49.29% 0.02237 89.80)",
+          "oklch(60.71% 0.02237 89.80)",
+          "oklch(72.14% 0.02237 89.80)",
+          "oklch(83.57% 0.02237 89.80)",
+          "oklch(95.00% 0.02237 89.80)"
+        ]
+      },
+      "ivory-tint": {
+        "role": "secondary",
+        "displayName": "Ivory Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.00821 91.48)",
+          "oklch(26.43% 0.00821 91.48)",
+          "oklch(37.86% 0.00821 91.48)",
+          "oklch(49.29% 0.00821 91.48)",
+          "oklch(60.71% 0.00821 91.48)",
+          "oklch(72.14% 0.00821 91.48)",
+          "oklch(83.57% 0.00821 91.48)",
+          "oklch(95.00% 0.00821 91.48)"
+        ]
+      },
+      "silver-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Silver",
+        "tonalRamp": [
+          "oklch(15.00% 0.00471 214.33)",
+          "oklch(26.43% 0.00471 214.33)",
+          "oklch(37.86% 0.00471 214.33)",
+          "oklch(49.29% 0.00471 214.33)",
+          "oklch(60.71% 0.00471 214.33)",
+          "oklch(72.14% 0.00471 214.33)",
+          "oklch(83.57% 0.00471 214.33)",
+          "oklch(95.00% 0.00471 214.33)"
+        ]
+      },
+      "silver-tint": {
+        "role": "secondary",
+        "displayName": "Silver Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.00213 197.12)",
+          "oklch(26.43% 0.00213 197.12)",
+          "oklch(37.86% 0.00213 197.12)",
+          "oklch(49.29% 0.00213 197.12)",
+          "oklch(60.71% 0.00213 197.12)",
+          "oklch(72.14% 0.00213 197.12)",
+          "oklch(83.57% 0.00213 197.12)",
+          "oklch(95.00% 0.00213 197.12)"
+        ]
+      },
+      "gray-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Gray",
+        "tonalRamp": [
+          "oklch(15.00% 0.00492 179.65)",
+          "oklch(26.43% 0.00492 179.65)",
+          "oklch(37.86% 0.00492 179.65)",
+          "oklch(49.29% 0.00492 179.65)",
+          "oklch(60.71% 0.00492 179.65)",
+          "oklch(72.14% 0.00492 179.65)",
+          "oklch(83.57% 0.00492 179.65)",
+          "oklch(95.00% 0.00492 179.65)"
+        ]
+      },
+      "gray-tint": {
+        "role": "secondary",
+        "displayName": "Gray Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.00107 197.14)",
+          "oklch(26.43% 0.00107 197.14)",
+          "oklch(37.86% 0.00107 197.14)",
+          "oklch(49.29% 0.00107 197.14)",
+          "oklch(60.71% 0.00107 197.14)",
+          "oklch(72.14% 0.00107 197.14)",
+          "oklch(83.57% 0.00107 197.14)",
+          "oklch(95.00% 0.00107 197.14)"
+        ]
+      },
+      "beige-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Beige",
+        "tonalRamp": [
+          "oklch(15.00% 0.04325 78.89)",
+          "oklch(26.43% 0.04325 78.89)",
+          "oklch(37.86% 0.04325 78.89)",
+          "oklch(49.29% 0.04325 78.89)",
+          "oklch(60.71% 0.04325 78.89)",
+          "oklch(72.14% 0.04325 78.89)",
+          "oklch(83.57% 0.04325 78.89)",
+          "oklch(95.00% 0.04325 78.89)"
+        ]
+      },
+      "beige-tint": {
+        "role": "secondary",
+        "displayName": "Beige Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.01310 82.40)",
+          "oklch(26.43% 0.01310 82.40)",
+          "oklch(37.86% 0.01310 82.40)",
+          "oklch(49.29% 0.01310 82.40)",
+          "oklch(60.71% 0.01310 82.40)",
+          "oklch(72.14% 0.01310 82.40)",
+          "oklch(83.57% 0.01310 82.40)",
+          "oklch(95.00% 0.01310 82.40)"
+        ]
+      },
+      "brown-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Brown",
+        "tonalRamp": [
+          "oklch(15.00% 0.05086 54.76)",
+          "oklch(26.43% 0.05086 54.76)",
+          "oklch(37.86% 0.05086 54.76)",
+          "oklch(49.29% 0.05086 54.76)",
+          "oklch(60.71% 0.05086 54.76)",
+          "oklch(72.14% 0.05086 54.76)",
+          "oklch(83.57% 0.05086 54.76)",
+          "oklch(95.00% 0.05086 54.76)"
+        ]
+      },
+      "brown-tint": {
+        "role": "secondary",
+        "displayName": "Brown Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.00929 52.10)",
+          "oklch(26.43% 0.00929 52.10)",
+          "oklch(37.86% 0.00929 52.10)",
+          "oklch(49.29% 0.00929 52.10)",
+          "oklch(60.71% 0.00929 52.10)",
+          "oklch(72.14% 0.00929 52.10)",
+          "oklch(83.57% 0.00929 52.10)",
+          "oklch(95.00% 0.00929 52.10)"
+        ]
+      },
+      "red-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Red",
+        "tonalRamp": [
+          "oklch(15.00% 0.12668 21.96)",
+          "oklch(26.43% 0.12668 21.96)",
+          "oklch(37.86% 0.12668 21.96)",
+          "oklch(49.29% 0.12668 21.96)",
+          "oklch(60.71% 0.12668 21.96)",
+          "oklch(72.14% 0.12668 21.96)",
+          "oklch(83.57% 0.12668 21.96)",
+          "oklch(95.00% 0.12668 21.96)"
+        ]
+      },
+      "red-tint": {
+        "role": "secondary",
+        "displayName": "Red Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.01298 17.38)",
+          "oklch(26.43% 0.01298 17.38)",
+          "oklch(37.86% 0.01298 17.38)",
+          "oklch(49.29% 0.01298 17.38)",
+          "oklch(60.71% 0.01298 17.38)",
+          "oklch(72.14% 0.01298 17.38)",
+          "oklch(83.57% 0.01298 17.38)",
+          "oklch(95.00% 0.01298 17.38)"
+        ]
+      },
+      "orange-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Orange",
+        "tonalRamp": [
+          "oklch(15.00% 0.11266 58.56)",
+          "oklch(26.43% 0.11266 58.56)",
+          "oklch(37.86% 0.11266 58.56)",
+          "oklch(49.29% 0.11266 58.56)",
+          "oklch(60.71% 0.11266 58.56)",
+          "oklch(72.14% 0.11266 58.56)",
+          "oklch(83.57% 0.11266 58.56)",
+          "oklch(95.00% 0.11266 58.56)"
+        ]
+      },
+      "orange-tint": {
+        "role": "secondary",
+        "displayName": "Orange Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.01714 67.62)",
+          "oklch(26.43% 0.01714 67.62)",
+          "oklch(37.86% 0.01714 67.62)",
+          "oklch(49.29% 0.01714 67.62)",
+          "oklch(60.71% 0.01714 67.62)",
+          "oklch(72.14% 0.01714 67.62)",
+          "oklch(83.57% 0.01714 67.62)",
+          "oklch(95.00% 0.01714 67.62)"
+        ]
+      },
+      "green-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Green",
+        "tonalRamp": [
+          "oklch(15.00% 0.05774 156.11)",
+          "oklch(26.43% 0.05774 156.11)",
+          "oklch(37.86% 0.05774 156.11)",
+          "oklch(49.29% 0.05774 156.11)",
+          "oklch(60.71% 0.05774 156.11)",
+          "oklch(72.14% 0.05774 156.11)",
+          "oklch(83.57% 0.05774 156.11)",
+          "oklch(95.00% 0.05774 156.11)"
+        ]
+      },
+      "green-tint": {
+        "role": "secondary",
+        "displayName": "Green Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.01159 153.67)",
+          "oklch(26.43% 0.01159 153.67)",
+          "oklch(37.86% 0.01159 153.67)",
+          "oklch(49.29% 0.01159 153.67)",
+          "oklch(60.71% 0.01159 153.67)",
+          "oklch(72.14% 0.01159 153.67)",
+          "oklch(83.57% 0.01159 153.67)",
+          "oklch(95.00% 0.01159 153.67)"
+        ]
+      },
+      "navy-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Navy",
+        "tonalRamp": [
+          "oklch(15.00% 0.03905 243.38)",
+          "oklch(26.43% 0.03905 243.38)",
+          "oklch(37.86% 0.03905 243.38)",
+          "oklch(49.29% 0.03905 243.38)",
+          "oklch(60.71% 0.03905 243.38)",
+          "oklch(72.14% 0.03905 243.38)",
+          "oklch(83.57% 0.03905 243.38)",
+          "oklch(95.00% 0.03905 243.38)"
+        ]
+      },
+      "navy-tint": {
+        "role": "secondary",
+        "displayName": "Navy Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.00588 239.82)",
+          "oklch(26.43% 0.00588 239.82)",
+          "oklch(37.86% 0.00588 239.82)",
+          "oklch(49.29% 0.00588 239.82)",
+          "oklch(60.71% 0.00588 239.82)",
+          "oklch(72.14% 0.00588 239.82)",
+          "oklch(83.57% 0.00588 239.82)",
+          "oklch(95.00% 0.00588 239.82)"
+        ]
+      },
+      "white-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue White",
+        "tonalRamp": [
+          "oklch(15.00% 0.01110 89.72)",
+          "oklch(26.43% 0.01110 89.72)",
+          "oklch(37.86% 0.01110 89.72)",
+          "oklch(49.29% 0.01110 89.72)",
+          "oklch(60.71% 0.01110 89.72)",
+          "oklch(72.14% 0.01110 89.72)",
+          "oklch(83.57% 0.01110 89.72)",
+          "oklch(95.00% 0.01110 89.72)"
+        ]
+      },
+      "white-tint": {
+        "role": "secondary",
+        "displayName": "White Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.00396 106.47)",
+          "oklch(26.43% 0.00396 106.47)",
+          "oklch(37.86% 0.00396 106.47)",
+          "oklch(49.29% 0.00396 106.47)",
+          "oklch(60.71% 0.00396 106.47)",
+          "oklch(72.14% 0.00396 106.47)",
+          "oklch(83.57% 0.00396 106.47)",
+          "oklch(95.00% 0.00396 106.47)"
+        ]
+      },
+      "peach-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Peach",
+        "tonalRamp": [
+          "oklch(15.00% 0.06374 43.29)",
+          "oklch(26.43% 0.06374 43.29)",
+          "oklch(37.86% 0.06374 43.29)",
+          "oklch(49.29% 0.06374 43.29)",
+          "oklch(60.71% 0.06374 43.29)",
+          "oklch(72.14% 0.06374 43.29)",
+          "oklch(83.57% 0.06374 43.29)",
+          "oklch(95.00% 0.06374 43.29)"
+        ]
+      },
+      "peach-tint": {
+        "role": "secondary",
+        "displayName": "Peach Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.01603 52.56)",
+          "oklch(26.43% 0.01603 52.56)",
+          "oklch(37.86% 0.01603 52.56)",
+          "oklch(49.29% 0.01603 52.56)",
+          "oklch(60.71% 0.01603 52.56)",
+          "oklch(72.14% 0.01603 52.56)",
+          "oklch(83.57% 0.01603 52.56)",
+          "oklch(95.00% 0.01603 52.56)"
+        ]
+      },
+      "lavender-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Lavender",
+        "tonalRamp": [
+          "oklch(15.00% 0.06884 305.54)",
+          "oklch(26.43% 0.06884 305.54)",
+          "oklch(37.86% 0.06884 305.54)",
+          "oklch(49.29% 0.06884 305.54)",
+          "oklch(60.71% 0.06884 305.54)",
+          "oklch(72.14% 0.06884 305.54)",
+          "oklch(83.57% 0.06884 305.54)",
+          "oklch(95.00% 0.06884 305.54)"
+        ]
+      },
+      "lavender-tint": {
+        "role": "secondary",
+        "displayName": "Lavender Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.01551 306.41)",
+          "oklch(26.43% 0.01551 306.41)",
+          "oklch(37.86% 0.01551 306.41)",
+          "oklch(49.29% 0.01551 306.41)",
+          "oklch(60.71% 0.01551 306.41)",
+          "oklch(72.14% 0.01551 306.41)",
+          "oklch(83.57% 0.01551 306.41)",
+          "oklch(95.00% 0.01551 306.41)"
+        ]
+      },
+      "sky-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Sky",
+        "tonalRamp": [
+          "oklch(15.00% 0.03789 227.72)",
+          "oklch(26.43% 0.03789 227.72)",
+          "oklch(37.86% 0.03789 227.72)",
+          "oklch(49.29% 0.03789 227.72)",
+          "oklch(60.71% 0.03789 227.72)",
+          "oklch(72.14% 0.03789 227.72)",
+          "oklch(83.57% 0.03789 227.72)",
+          "oklch(95.00% 0.03789 227.72)"
+        ]
+      },
+      "sky-tint": {
+        "role": "secondary",
+        "displayName": "Sky Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.01007 228.89)",
+          "oklch(26.43% 0.01007 228.89)",
+          "oklch(37.86% 0.01007 228.89)",
+          "oklch(49.29% 0.01007 228.89)",
+          "oklch(60.71% 0.01007 228.89)",
+          "oklch(72.14% 0.01007 228.89)",
+          "oklch(83.57% 0.01007 228.89)",
+          "oklch(95.00% 0.01007 228.89)"
+        ]
+      },
+      "burgundy-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Burgundy",
+        "tonalRamp": [
+          "oklch(15.00% 0.06972 7.24)",
+          "oklch(26.43% 0.06972 7.24)",
+          "oklch(37.86% 0.06972 7.24)",
+          "oklch(49.29% 0.06972 7.24)",
+          "oklch(60.71% 0.06972 7.24)",
+          "oklch(72.14% 0.06972 7.24)",
+          "oklch(83.57% 0.06972 7.24)",
+          "oklch(95.00% 0.06972 7.24)"
+        ]
+      },
+      "burgundy-tint": {
+        "role": "secondary",
+        "displayName": "Burgundy Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.00899 0.13)",
+          "oklch(26.43% 0.00899 0.13)",
+          "oklch(37.86% 0.00899 0.13)",
+          "oklch(49.29% 0.00899 0.13)",
+          "oklch(60.71% 0.00899 0.13)",
+          "oklch(72.14% 0.00899 0.13)",
+          "oklch(83.57% 0.00899 0.13)",
+          "oklch(95.00% 0.00899 0.13)"
+        ]
+      },
+      "coral-swatch": {
+        "role": "secondary",
+        "displayName": "Catalogue Coral",
+        "tonalRamp": [
+          "oklch(15.00% 0.08160 34.34)",
+          "oklch(26.43% 0.08160 34.34)",
+          "oklch(37.86% 0.08160 34.34)",
+          "oklch(49.29% 0.08160 34.34)",
+          "oklch(60.71% 0.08160 34.34)",
+          "oklch(72.14% 0.08160 34.34)",
+          "oklch(83.57% 0.08160 34.34)",
+          "oklch(95.00% 0.08160 34.34)"
+        ]
+      },
+      "coral-tint": {
+        "role": "secondary",
+        "displayName": "Coral Wash",
+        "tonalRamp": [
+          "oklch(15.00% 0.01362 34.30)",
+          "oklch(26.43% 0.01362 34.30)",
+          "oklch(37.86% 0.01362 34.30)",
+          "oklch(49.29% 0.01362 34.30)",
+          "oklch(60.71% 0.01362 34.30)",
+          "oklch(72.14% 0.01362 34.30)",
+          "oklch(83.57% 0.01362 34.30)",
+          "oklch(95.00% 0.01362 34.30)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Colour Discovery Display",
+        "purpose": "The homepage main question; smaller measured variants at tablet and narrow widths.",
+        "css": "font-size:clamp(46px,4.8vw,72px)"
+      },
+      "title": {
+        "displayName": "Product Title",
+        "purpose": "Compact, complete product names."
+      },
+      "body": {
+        "displayName": "Reading Text",
+        "purpose": "Global Korean reading default with local hero and long-copy line heights."
+      },
+      "navigation": {
+        "displayName": "Capsule Navigation",
+        "purpose": "Compact icon-and-text route labels."
+      },
+      "action": {
+        "displayName": "Product Action",
+        "purpose": "The main 50px product-detail pill."
+      },
+      "utility": {
+        "displayName": "Utility Text",
+        "purpose": "Captions, state messages and compact labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "external-store-float",
+        "value": "0 12px 36px #20242314",
+        "purpose": "External-store picker panel; the former More menu is no longer rendered."
+      },
+      {
+        "name": "photo-whisper",
+        "value": "0 12px 38px #23483b05",
+        "purpose": "The selected-product photo panel."
+      },
+      {
+        "name": "app-shortcut",
+        "value": "inset 0 1px 1px #ffffff80, 0 3px 8px #2024230a",
+        "purpose": "Small app shortcut tiles only."
+      },
+      {
+        "name": "support-float",
+        "value": "0 4px 16px #2024230a",
+        "purpose": "Compact support launcher."
+      }
+    ],
+    "motion": [
+      {
+        "name": "colour-duration",
+        "value": "260ms",
+        "purpose": "A decoded colour photo settles from opacity .5 and translateY 6px to full opacity and zero offset."
+      },
+      {
+        "name": "colour-ease",
+        "value": "outQuad",
+        "purpose": "Anime.js colour-photo transition."
+      },
+      {
+        "name": "utility-state",
+        "value": "160ms ease",
+        "purpose": "Header utility background and pointer press."
+      },
+      {
+        "name": "inherited-press",
+        "value": "140ms",
+        "purpose": "Existing shared UI press token."
+      },
+      {
+        "name": "inherited-panel",
+        "value": "220ms",
+        "purpose": "Existing shared panel token."
+      },
+      {
+        "name": "inherited-ease",
+        "value": "cubic-bezier(.23, 1, .32, 1)",
+        "purpose": "Existing shared UI easing."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "none",
+        "purpose": "Skip the colour animation and relevant decorative CSS transitions."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "370px"
+      },
+      {
+        "name": "mobile-product-rail",
+        "value": "520px"
+      },
+      {
+        "name": "mobile",
+        "value": "760px"
+      },
+      {
+        "name": "menu",
+        "value": "1180px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "1150px"
+      },
+      {
+        "name": "wide-header",
+        "value": "1600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary product action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The dark pill with a product icon, explicit label and small direction glyph.",
+      "html": "<button class=\"ds-primary\" type=\"button\"><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M239.89,198.12l-14.26-120a16,16,0,0,0-16-14.12H176a48,48,0,0,0-96,0H46.33a16,16,0,0,0-16,14.12l-14.26,120A16,16,0,0,0,20,210.6a16.13,16.13,0,0,0,12,5.4H223.92A16.13,16.13,0,0,0,236,210.6,16,16,0,0,0,239.89,198.12ZM128,32a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32ZM32,200,46.33,80H80v24a8,8,0,0,0,16,0V80h64v24a8,8,0,0,0,16,0V80h33.75l14.17,120Z\"/></svg><span>가방 자세히 보기</span><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z\"/></svg></button>",
+      "css": ".ds-primary{font-family:var(--font-brand,\"Pretendard Local\",\"Pretendard Variable\",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif);display:inline-flex;align-items:center;gap:12px;height:50px;padding:0 22px;border:0;border-radius:999px;background:var(--ink,#202423);color:var(--snow,#fff);font-size:13px;font-weight:650;letter-spacing:0;cursor:pointer;box-shadow:none}.ds-primary svg{width:18px;height:18px}.ds-primary svg:last-child{width:14px;margin-left:6px}.ds-primary:hover{background:#343a37}.ds-primary:focus-visible{outline:2px solid var(--harbor,#315845);outline-offset:4px;}"
+    },
+    {
+      "name": "Secondary retry action",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "The quiet pill used to retry colour loading after a catalogue failure.",
+      "html": "<button class=\"ds-secondary\" type=\"button\">색상 다시 불러오기</button>",
+      "css": ".ds-secondary{font-family:var(--font-brand,\"Pretendard Local\",\"Pretendard Variable\",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif);min-height:44px;padding:12px 18px;border:0;border-radius:999px;background:var(--color-base-200,#f5f5f7);color:var(--ink,#202423);font-size:13px;cursor:pointer;box-shadow:none}.ds-secondary:hover{background:var(--color-base-200,#f5f5f7)}.ds-secondary:focus-visible{outline:2px solid var(--harbor,#315845);outline-offset:4px;}"
+    },
+    {
+      "name": "Search utility control",
+      "kind": "button",
+      "refersTo": "button-icon",
+      "description": "A 44px rounded-square control with a 22px Phosphor asset and accessible label.",
+      "html": "<button class=\"ds-icon\" type=\"button\" aria-label=\"가방 검색\"><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z\"/></svg></button>",
+      "css": ".ds-icon{font-family:var(--font-brand,\"Pretendard Local\",\"Pretendard Variable\",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif);display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:0;border-radius:16px;background:var(--color-base-200,#f5f5f7);color:var(--ink,#202423);cursor:pointer;transition:background-color 160ms ease,transform 160ms ease}.ds-icon svg{width:22px;height:22px}.ds-icon:hover{background:#e9e9ee}.ds-icon:focus-visible{outline:2px solid var(--harbor,#315845);outline-offset:4px;}@media(hover:hover) and (pointer:fine){.ds-icon:active{transform:scale(.97)}}@media(prefers-reduced-motion:reduce){.ds-icon{transition:none}}"
+    },
+    {
+      "name": "Capsule navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "All eight desktop routes are directly visible; four primary routes pair SVG icons with labels.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"주요 메뉴\"><a href=\"/products.html\" aria-current=\"page\"><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M168,40.58V32A24,24,0,0,0,144,8H112A24,24,0,0,0,88,32v8.58A56.09,56.09,0,0,0,40,96V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V96A56.09,56.09,0,0,0,168,40.58ZM112,24h32a8,8,0,0,1,8,8v8H104V32A8,8,0,0,1,112,24Zm56,136H88v-8a8,8,0,0,1,8-8h64a8,8,0,0,1,8,8ZM88,176h48v8a8,8,0,0,0,16,0v-8h16v40H88Zm112,40H184V152a24,24,0,0,0-24-24H96a24,24,0,0,0-24,24v64H56V96A40,40,0,0,1,96,56h64a40,40,0,0,1,40,40V216ZM152,88a8,8,0,0,1-8,8H112a8,8,0,0,1,0-16h32A8,8,0,0,1,152,88Z\"/></svg><span>가방</span></a><a href=\"/finder.html\"><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172.42,72.84l-64,32a8.05,8.05,0,0,0-3.58,3.58l-32,64A8,8,0,0,0,80,184a8.1,8.1,0,0,0,3.58-.84l64-32a8.05,8.05,0,0,0,3.58-3.58l32-64a8,8,0,0,0-10.74-10.74ZM138,138,97.89,158.11,118,118l40.15-20.07Z\"/></svg><span>가방 찾기</span></a><a href=\"/lookbook/\"><svg aria-hidden=\"true\" viewBox=\"0 0 256 256\" fill=\"currentColor\"><path d=\"M216,40H72A16,16,0,0,0,56,56V72H40A16,16,0,0,0,24,88V200a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V184h16a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM72,56H216v62.75l-10.07-10.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L72,109.37ZM184,200H40V88H56v80a16,16,0,0,0,16,16H184Zm32-32H72V132l36-36,49.66,49.66a8,8,0,0,0,11.31,0L194.63,120,216,141.38V168ZM160,84a12,12,0,1,1,12,12A12,12,0,0,1,160,84Z\"/></svg><span>룩북</span></a><a href=\"/story/\"><svg aria-hidden=\"true\" viewBox=\"0 0 256 256\" fill=\"currentColor\"><path d=\"M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V56A8,8,0,0,0,232,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64Z\"/></svg><span>이야기</span></a><a href=\"/guidebook.html\">가이드북</a><a href=\"/about.html\">브랜드</a><a href=\"/game.html\">게임</a><a href=\"/contact.html\">연락하기</a></nav>",
+      "css": ".ds-nav{font-family:var(--font-brand,\"Pretendard Local\",\"Pretendard Variable\",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif);display:inline-flex;gap:4px;padding:6px;border-radius:999px;background:var(--color-base-200,#f5f5f7);color:var(--ink,#202423)}.ds-nav a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:10px 14px;border-radius:999px;color:inherit;text-decoration:none;font-size:13px;font-weight:550;line-height:1.4;letter-spacing:0;white-space:nowrap}.ds-nav svg{width:16px;height:16px}.ds-nav a:hover,.ds-nav a[aria-current=page]{background:var(--snow,#fff)}.ds-nav a:focus-visible{outline:2px solid var(--harbor,#315845);outline-offset:4px;}@media(max-width:1180px){.ds-nav{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:28px max(24px,7vw);border-radius:0;background:var(--snow,#fff)}.ds-nav a{justify-content:flex-start;gap:12px;padding:16px;border-radius:16px;min-height:58px;background:var(--color-base-200,#f5f5f7);font-size:16px}.ds-nav svg{width:22px;height:22px}.ds-nav a:hover,.ds-nav a[aria-current=page]{background:#edf5f1}}"
+    },
+    {
+      "name": "Selected catalogue colour",
+      "kind": "chip",
+      "refersTo": "colour-swatch",
+      "description": "A catalogue-linked mint sample; the application computes dark or white check colour from actual swatch contrast.",
+      "html": "<div class=\"ds-picker\" role=\"group\" aria-label=\"No.0422 색상 선택\"><button class=\"ds-swatch\" type=\"button\" aria-pressed=\"true\" aria-label=\"민트 가방 보기\"><span class=\"ds-swatch-circle\" style=\"--swatch-check:#202423\"><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z\"/></svg></span><span>민트</span></button></div>",
+      "css": ".ds-picker{display:inline-flex;gap:9px;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#b4c6bc transparent;padding:12px 14px;border-radius:999px;background:var(--color-base-200,#f5f5f7)}.ds-swatch{font-family:var(--font-brand,\"Pretendard Local\",\"Pretendard Variable\",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;flex:0 0 44px;min-width:44px;min-height:64px;padding:3px 4px;border:0;border-radius:20px;background:transparent;color:var(--ink,#202423);font-size:12px;line-height:1.4;cursor:pointer}.ds-swatch-circle{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#bed8cc;color:var(--swatch-check,#202423);flex-shrink:0;box-shadow:inset 0 0 0 1px #00000008}.ds-swatch[aria-pressed=true] .ds-swatch-circle{outline:2px solid #3c5a4b;outline-offset:4px}.ds-swatch svg{width:16px;height:16px}.ds-swatch:hover .ds-swatch-circle{box-shadow:0 0 0 4px var(--color-fog,#e6e7e9)}.ds-swatch:focus-visible{outline:2px solid var(--harbor,#315845);outline-offset:4px;}"
+    },
+    {
+      "name": "Contact text field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "A labelled white field with neutral hairline, 16px type and a forest focus outline.",
+      "html": "<label class=\"ds-field\">이름<input class=\"ds-input\" type=\"text\" name=\"name\" autocomplete=\"name\"></label>",
+      "css": ".ds-field{font-family:var(--font-brand,\"Pretendard Local\",\"Pretendard Variable\",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif);display:grid;gap:8px;color:var(--ink,#202423);font-size:13px;font-weight:600}.ds-input{font-family:var(--font-brand,\"Pretendard Local\",\"Pretendard Variable\",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif);min-height:48px;padding:12px 14px;border:1px solid var(--color-fog,#e6e7e9);border-radius:12px;background:var(--snow,#fff);color:var(--ink,#202423);font-size:16px;font-weight:400;caret-color:var(--harbor,#315845)}.ds-input:hover{border-color:var(--color-fog,#e6e7e9)}.ds-input:focus{border-color:var(--color-deep-wave,#3e6b52)}.ds-input:focus-visible{outline:2px solid var(--harbor,#315845);outline-offset:4px;}"
+    },
+    {
+      "name": "Featured product information",
+      "kind": "card",
+      "refersTo": "product-information",
+      "description": "The flat information portion of the featured product, without invented price or specification data.",
+      "html": "<article class=\"ds-product\"><h3>Himawari No.0422</h3><p>민트</p><a href=\"/product.html?id=store-11070824181\">가방 자세히 보기</a></article>",
+      "css": ".ds-product{font-family:var(--font-brand,\"Pretendard Local\",\"Pretendard Variable\",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif);padding:clamp(24px,4vw,52px);border-radius:28px;background:#f7f7f9;color:var(--ink,#202423);box-shadow:none}.ds-product h3{margin:0;font-size:clamp(26px,2.5vw,34px);font-weight:620;line-height:1.35}.ds-product p{color:#616163;font-size:16px;line-height:1.78}.ds-product a{display:inline-flex;align-items:center;min-height:44px;padding:10px 18px;border:1px solid #d4d7d4;border-radius:999px;background:var(--snow,#fff);color:var(--ink,#202423);font-size:13px;text-decoration:none}.ds-product a:hover{border-color:var(--harbor,#315845)}.ds-product a:focus-visible{outline:2px solid var(--harbor,#315845);outline-offset:4px;}@media(max-width:760px){.ds-product{padding:24px}.ds-product h3{font-size:26px}}"
+    },
+    {
+      "name": "Mint app shortcut",
+      "kind": "custom",
+      "refersTo": "app-shortcut",
+      "description": "A labelled finder shortcut with the implemented mint gradient and inline Phosphor compass.",
+      "html": "<a class=\"ds-shortcut\" href=\"/finder.html\"><span class=\"ds-app-icon\"><svg viewBox=\"0 0 256 256\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172.42,72.84l-64,32a8.05,8.05,0,0,0-3.58,3.58l-32,64A8,8,0,0,0,80,184a8.1,8.1,0,0,0,3.58-.84l64-32a8.05,8.05,0,0,0,3.58-3.58l32-64a8,8,0,0,0-10.74-10.74ZM138,138,97.89,158.11,118,118l40.15-20.07Z\"/></svg></span><span>가방 찾기</span></a>",
+      "css": ".ds-shortcut{font-family:var(--font-brand,\"Pretendard Local\",\"Pretendard Variable\",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif);display:inline-flex;flex-direction:column;align-items:center;gap:9px;color:#505153;text-decoration:none;font-size:12px;line-height:1.5}.ds-app-icon{display:grid;place-items:center;width:58px;height:58px;border-radius:18px;background:linear-gradient(140deg,#d6ece0,#9ac6b1);box-shadow:inset 0 1px 1px #ffffff80,0 3px 8px #2024230a;color:var(--ink,#202423)}.ds-app-icon svg{width:27px;height:27px}.ds-shortcut:focus-visible{outline:2px solid var(--harbor,#315845);outline-offset:4px;}@media(hover:hover) and (pointer:fine){.ds-shortcut:hover .ds-app-icon{filter:brightness(.97)}.ds-shortcut:active{transform:scale(.97)}}@media(max-width:1180px){.ds-app-icon{width:52px;height:52px}}@media(max-width:760px){.ds-app-icon{width:56px;height:56px}}@media(max-width:370px){.ds-app-icon{width:52px;height:52px}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Choose a Colour, Meet the Bag",
+    "overview": "White space, original Himawari photography and the bags' varied colours carry the public brand. Visitors can recognise a real model and colour before opening its current product information. Dark, compact actions and consistent rounded icon controls keep the photography prominent. The official logo and established Korean brand statement remain identity assets.\n\nThe approved direction combines photo-led presentation with Apple-like capsules and rounded-square controls. Use the implemented Phosphor SVG family, original product proportions and short Korean labels. Colour is a product discovery cue; the action hierarchy remains stable as the selected bag changes.",
+    "keyCharacteristics": [
+      "White canvas and real, uncropped product imagery.",
+      "A fresh catalogue model on each visit, followed by that model's valid colour choices.",
+      "Dark actions, readable Korean type and restrained neutral surfaces.",
+      "Capsule navigation, rounded-square utility controls and labelled colour choices.",
+      "Small, product-linked pastel surfaces rather than full-page colour skins.",
+      "Existing catalogue, shopping and content flows carried into the new visual system."
+    ],
+    "rules": [
+      {
+        "name": "The Real Colour Rule",
+        "body": "Change the selected photo, label, selected state and detail destination together after the image has decoded; never tint a bag photograph with CSS.",
+        "section": "colors"
+      },
+      {
+        "name": "The Stable Action Rule",
+        "body": "Keep the primary action dark when the product colour changes. Use a text label and a check or outline with selected swatches so colour is never the sole signal.",
+        "section": "colors"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Use no shadow for ordinary product cards or primary buttons. Reserve the named soft shadows for their existing components rather than making every rounded surface float.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use the white canvas, original logo and actual catalogue photographs to establish the brand.",
+      "Do keep the product model, photo, colour label, selected state and product destination in sync.",
+      "Do use dark primary actions, labelled SVG controls and visible keyboard focus.",
+      "Do expose all eight desktop routes directly and preserve their mobile menu destinations.",
+      "Do preserve the bag's full shape with contained product imagery and reserved image space.",
+      "Do keep utility targets at least 44px and redesigned small labels at least 12px.",
+      "Do respect reduced motion and preserve honest loading, error and empty states.",
+      "Do retain current catalogue, commerce, account and published-content contracts when extending the interface."
+    ],
+    "donts": [
+      "Don't restore the former full-page sage canvas or hard offset action shadows on redesigned public surfaces.",
+      "Don't recolour product photography or describe interface swatches as measured physical colours.",
+      "Don't change the primary action's meaning or colour hierarchy for each selected bag.",
+      "Don't substitute invented claims, prices, stock, specifications or customer experiences for missing data.",
+      "Don't use generated editorial or AI lookbook scenes as factual sales photographs; retain their disclosure.",
+      "Don't make emoji, text glyphs or extracted Apple symbols the interface icon system.",
+      "Don't propagate inherited eyebrows or overly tight section-heading tracking as new system rules.",
+      "Don't reintroduce the removed story pencil cursor or trail effect."
+    ]
+  }
+}
