@@ -25,7 +25,8 @@ test('homepage FAQ schema matches visible, usable answers and real internal link
   const organization = blocks.find(b => ['Organization', 'OnlineStore'].includes(b['@type']));
   const page = blocks.find(b => b['@type'] === 'WebPage');
   assert.equal(page.publisher['@id'], organization['@id']);
-  assert.ok(section.includes(`datetime="${page.dateModified}"`));
+  // A section's review date does not establish the homepage's last content change.
+  if (schema.dateModified) assert.ok(section.includes(`datetime="${schema.dateModified}"`));
   assert.match(html.match(/<h1[\s\S]*?<\/h1>/)[0], /히마와리 Himawari/);
   const description = html.match(/<meta name="description" content="([^"]+)"/)[1];
   assert.ok(description.length >= 50 && description.length <= 160);

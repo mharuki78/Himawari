@@ -1,9 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { validateEntries, koreanDate, renderGallery, root } from '../scripts/build-lookbook.mjs';
 const entries = JSON.parse(fs.readFileSync(`${root}/lookbook/entries.json`)).filter(e => e.date === '2026-09-28');
 const options = {today:'2026-09-28',checkFiles:false};
+
+test('CLI builds from the project entry path, including a linked checkout', () => {
+  const invocationRoot = fs.realpathSync(process.cwd()) === root ? process.cwd() : root;
+  const output = execFileSync(process.execPath, [path.join(invocationRoot, 'scripts/build-lookbook.mjs')], { encoding: 'utf8' });
+  assert.match(output, /Built LookBook: \d+ photos across \d+ days/);
+});
 test('Korean publication date changes at 15:00 UTC, not midnight UTC', () => {
   assert.equal(koreanDate(new Date('2026-09-27T14:59:59Z')), '2026-09-27');
   assert.equal(koreanDate(new Date('2026-09-27T15:00:00Z')), '2026-09-28');

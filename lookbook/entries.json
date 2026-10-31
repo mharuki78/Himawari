@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-10-31-everyday-9018",
+    "date": "2026-10-31",
+    "category": "everyday",
+    "title": "과일 가게 구경",
+    "model": "9018",
+    "color": "퍼플",
+    "scene": "청재킷에 알록달록한 백팩을 메고 과일 가게를 둘러봐요.",
+    "alt": "청재킷을 입은 성인이 퍼플 No.9018 백팩을 양쪽 어깨에 메고 과일 가게 앞에 선 뒤쪽 사선 상반신 AI 착용 연출",
+    "productId": "coupang-e1dc5d1170e93e35",
+    "image": "/assets/lookbook/2026-10-31-everyday-9018.webp",
+    "thumbnail": "/assets/lookbook/2026-10-31-everyday-9018-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-10-31-city-2505",
+    "date": "2026-10-31",
+    "category": "city",
+    "title": "마당을 걸어요",
+    "model": "2505",
+    "color": "블랙",
+    "scene": "밝은 코트 차림으로 넓은 마당을 걸어요. 검정 백팩은 짧은 손잡이로 들어요.",
+    "alt": "밝은 코트와 검정 바지를 입은 성인이 블랙 No.2505 백팩의 원래 손잡이를 잡고 넓은 마당을 걷는 앞쪽 전신 AI 착용 연출",
+    "productId": "coupang-e16e6315910fdd6b",
+    "image": "/assets/lookbook/2026-10-31-city-2505.webp",
+    "thumbnail": "/assets/lookbook/2026-10-31-city-2505-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-10-22-everyday-0423",
     "date": "2026-10-22",
     "category": "everyday",

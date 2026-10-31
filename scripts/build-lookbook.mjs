@@ -105,4 +105,4 @@ ${footer}
   fs.writeFileSync(sitemapPath, sitemap);
   console.log(`Built LookBook: ${entries.length} photos across ${new Set(entries.map(e => e.date)).size} days`);
 }
-if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) buildLookbook();
+if (process.argv[1] && import.meta.url === pathToFileURL(fs.realpathSync(process.argv[1])).href) buildLookbook();

@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-31",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-10-31/deployment.json",
+  "scheduledSlot": "2026-10-31T09:00:00+09:00",
+  "entries": [
+    {
+      "id": "2026-10-31-everyday-9018",
+      "category": "everyday",
+      "model": "9018",
+      "color": "퍼플",
+      "title": "과일 가게 구경",
+      "scene": "청재킷에 알록달록한 백팩을 메고 과일 가게를 둘러봐요.",
+      "alt": "청재킷을 입은 성인이 퍼플 No.9018 백팩을 양쪽 어깨에 메고 과일 가게 앞에 선 뒤쪽 사선 상반신 AI 착용 연출",
+      "productId": "coupang-e1dc5d1170e93e35",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "composition": {
+        "approach": "close wearable market observation",
+        "angle": "rear-three-quarter near shoulder height with a partial side profile",
+        "framing": "close head-through-upper-thigh crop",
+        "activity": "pausing beside fruit crates with both original shoulder straps worn",
+        "setting": "shaded outdoor produce market beneath a canvas canopy",
+        "observedFrameShare": "cropped adult fills frame height; bag body approximately46percent image height and handle-to-base approximately52percent"
+      },
+      "toolOriginal": "C:/Users/UserK/.codex/generated_images/01a18f80-b3b6-75b2-bad9-14b0c6ce4555/exec-72f24ce9-23e9-4a77-a108-6699ae456b51.png",
+      "fidelityReview": "Direct local original/output inspection at original resolution: coral front, mint perimeter and upper sides, yellow lower side pockets, lavender original shoulder straps and front flap, gray joined short handles, original upper metal rings/stitched tabs, horizontal coral front zipper and gray pull, gray lower pocket, paired gray buckle straps and white Himawari patch retained. Both original straps meet the shoulders coherently; bag front is unobstructed and40cm size is plausible on the cropped adult. No extra pocket, chest/hip belt, charm or invented carry mode. The actual view is near shoulder height, not a pronounced overhead angle; crop includes head through upper thighs. No visible anatomy defect. This is an AI staged view, not measured fit.",
+      "date": "2026-10-31",
+      "image": "/assets/lookbook/2026-10-31-everyday-9018.webp",
+      "thumbnail": "/assets/lookbook/2026-10-31-everyday-9018-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-10-31/reference-9018-front.jpg",
+      "generatedSource": "backups/lookbook-2026-10-31/generated-9018.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e1dc5d1170e93e35/main-l4NT0MOzV2NVeu4uGrf9bLJBdbRr5k.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9155539894",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-10-31; 2026-09-14 제조사 카탈로그 40페이지의 9018 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "prompt": "Use case: photorealistic-natural.\nCreate ONE new 1024x1536 portrait, 2:3 editorial lifestyle photograph for Himawari LookBook. Attached image is an exact PRODUCT IDENTITY reference, never a person or setting reference.\nScene: a modest outdoor fruit market under soft canvas shade, simple wooden crates of oranges and green pears, no readable signs. A fictional adult East Asian woman about 40, short straight dark hair and a plain dark indigo denim jacket, pauses beside the fruit stall. She wears the referenced backpack on BOTH original padded lavender shoulder straps in the normal position. Arms rest naturally in front of her; no hands touch or obscure the bag.\nComposition: genuine close wearable observation, camera a little above shoulder height looking diagonally downward from behind and to her right, rear three-quarter view with a slight partial side profile. Crop from top of head/shoulders through hips, not full body. Backpack front should be almost face-on and dominate the lower center, body approximately 50percent image height; enough right side visible for mint and yellow side pocket. Candid leaning slightly toward fruit, not looking back or posing. Diffuse shaded daylight, fine realistic fabric and skin texture, restrained documentary photography.\nExact product: Himawari No.9018 PURPLE catalogue colorway, external WIDTH28 HEIGHT40 DEPTH17cm, plausible adult-relative scale, not oversized. Preserve exact coral/salmon rectangular front body, pale mint-green perimeter binding/top strip/upper side panels, bright yellow lower side pockets, lavender padded shoulder straps. TWO gray original short top handles fastened with the gray keeper, two original upper metal rectangular ring fittings and gray stitched attachment tabs. Horizontal coral upper front zipper with gray leather pull on viewer-left. Lower front pocket has gray fabric body and lavender curved flap, centered white stitched Himawari patch as reference, TWO gray vertical straps each with a silver buckle and holes. Original zipper tracks, sewing, proportions and hardware. Keep the logo faithful and legible, no invented letters, extra pockets, charms or straps.\nConstraints: all compartments closed, no extra carry strap, no chest or hip belt, no bottle, no second bag, no watermark, no image collage or overlay text. Preserve original color/shape/pockets/straps/logo/hardware and 40cm scale. Natural adult anatomy, coherent shoulder contact. Fictional AI staging, not a real customer photograph. Single portrait 1024x1536.\n",
+      "generatedSha256": "ff7d180c57b62196a84af96ee6da7e39bb66a12cce51ab2c6842b9f72fb9f295"
+    },
+    {
+      "id": "2026-10-31-city-2505",
+      "category": "city",
+      "model": "2505",
+      "color": "블랙",
+      "title": "마당을 걸어요",
+      "scene": "밝은 코트 차림으로 넓은 마당을 걸어요. 검정 백팩은 짧은 손잡이로 들어요.",
+      "alt": "밝은 코트와 검정 바지를 입은 성인이 블랙 No.2505 백팩의 원래 손잡이를 잡고 넓은 마당을 걷는 앞쪽 전신 AI 착용 연출",
+      "productId": "coupang-e16e6315910fdd6b",
+      "dimensionsCm": [
+        30,
+        43,
+        14
+      ],
+      "composition": {
+        "approach": "architectural courtyard walking portrait",
+        "angle": "front-three-quarter at eye level",
+        "framing": "full-body with courtyard architecture and open paving",
+        "activity": "walking while holding both original short top handles together at thigh level",
+        "setting": "pale concrete open-air courtyard with large rectangular opening",
+        "observedFrameShare": "person approximately86percent image height; bag body approximately21percent and handle-to-base approximately24percent"
+      },
+      "toolOriginal": "C:/Users/UserK/.codex/generated_images/01a18f80-b3b6-75b2-bad9-14b0c6ce4555/exec-af693d81-8ee2-42e4-8ac6-157034124795.png",
+      "fidelityReview": "Direct local original/output inspection at original resolution: elongated rounded black body, black base panel/perimeter zippers/side pockets, two cream front webbing bands flowing into the original short handles, original cream keeper with dark snap, and small centered white Himawari wordmark retained. Backpack shoulder straps lie behind and are not invented or converted into a shoulder-bag strap. Coherent one-hand grip through joined original handles, natural other hand and walking feet, bag hangs vertically clear of ground.43cm body scale is plausible. Actual person fills about86percent image height, closer than the planned65percent; final labels describe the observed full-body output. No extra front pocket/buckle/charm or visible anatomy defect. AI staged view, not measured fit.",
+      "date": "2026-10-31",
+      "image": "/assets/lookbook/2026-10-31-city-2505.webp",
+      "thumbnail": "/assets/lookbook/2026-10-31-city-2505-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-10-31/reference-2505-front.jpg",
+      "generatedSource": "backups/lookbook-2026-10-31/generated-2505.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e16e6315910fdd6b/main-rgxtYpMoAPOljowvNuFsQn7QcDh936.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9593404917",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-10-31; 2026-09-14 제조사 카탈로그 5페이지의 2505 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "prompt": "Use case: photorealistic-natural.\nCreate ONE new 1024x1536 portrait, 2:3 editorial lifestyle photograph for Himawari LookBook. Attached photograph is strict PRODUCT IDENTITY reference only.\nScene: a spacious open-air museum courtyard with quiet pale concrete walls, a large rectangular opening, simple stone paving and no artworks, logos or readable signs. A fictional adult Black man about 60 with short gray hair, plain light beige knee-length cotton coat, muted burgundy sweater, dark straight trousers and brown walking shoes walks diagonally across the courtyard. He holds BOTH original cream top handles of the referenced backpack together in his right hand naturally beside his thigh, arm straight and relaxed. No new carry strap. The bag FRONT faces camera unobstructed, remains vertical with coherent weight and slightly above ground. His other hand rests relaxed at his side.\nComposition: environmental frontal/very slight front-three-quarter full-body portrait. Eye-level camera at a distance; head and both shoes visible, generous architecture and paving around him. Person about65percent image height and bag body about17percent, clear 43cm adult-relative scale. Person slightly to right of center; bag hangs to viewer-left of his body and does not overlap dark trousers, silhouetted against pale wall/paving. Calm walking moment, looking along his path rather than into camera. Mild low autumn side sunlight with realistic soft shadow, neutral color rendering and fine cloth texture.\nExact product: Himawari No.2505 BLACK external WIDTH30 HEIGHT43 DEPTH14cm. Tall rounded black backpack with TWO continuous CREAM vertical webbing bands on the front flowing into the original short cream handles, black base panel, small white Himawari wordmark precisely centered between the cream bands on upper front. Original cream handle keeper with one dark snap, original black perimeter zipper tracks and pulls on viewer-left, original black side slip pockets and black padded backpack straps behind. Preserve the exact rounded top/body proportions, material, stitching, all straps and zipper layout. The cream bands are integral to the product, not a harness on the person. No front zipper pocket, front buckles or front badge.\nConstraints: keep original logo, black/cream color, shape, seams, pockets and carry construction. No invented accessories, straps, extra bag, chest belt, bottles, text overlay, readable signs, collage or watermark. Natural hands and five fingers, coherent handle grip and full-body anatomy. Fictional adult AI staging, not customer photography. ONE portrait 1024x1536.\n",
+      "generatedSha256": "f09b737719c0321908725e1f9f4608a8c470563e3faba673e17f57fbd92347bd"
+    }
+  ],
+  "planningEvidence": "backups/lookbook-2026-10-31/visual-comparison.md",
+  "sourceCatalog": "backups/lookbook-2026-10-31/public-catalog.json",
+  "sourceCatalogFetchedAt": "2026-10-31T01:11:57.025Z",
+  "preparedAt": "2026-10-31T01:14:19.885321+00:00",
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-10-31-everyday-9018",
+        "2026-10-31-city-2505"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "visualReview": "backups/lookbook-2026-10-31/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-10-31/optimization.json"
+}

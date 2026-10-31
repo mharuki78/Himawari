@@ -100,11 +100,14 @@ function renderFeaturedProduct(product) {
   </article>`;
 }
 
-function catalogSchema(products, origin) {
-  return {
-    '@context': 'https://schema.org',
+function catalogSchema(products, origin, collection) {
+  const url = collection ? `${origin}/collections/${collection.key}` : `${origin}/products.html`;
+  const name = collection?.title || 'Himawari 전체 제품';
+  const list = {
     '@type': 'ItemList',
-    name: 'Himawari 전체 제품',
+    '@id': `${url}#products`,
+    url,
+    name,
     numberOfItems: products.length,
     itemListElement: products.map((product, index) => ({
       '@type': 'ListItem',
@@ -112,6 +115,8 @@ function catalogSchema(products, origin) {
       url: `${origin}/product.html?id=${encodeURIComponent(product.id)}`,
       item: {
         '@type': 'Product',
+        '@id': `${origin}/product.html?id=${encodeURIComponent(product.id)}#product`,
+        url: `${origin}/product.html?id=${encodeURIComponent(product.id)}`,
         name: product.name,
         sku: product.id,
         model: product.model,
@@ -128,6 +133,26 @@ function catalogSchema(products, origin) {
       },
     })),
   };
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage', '@id': `${url}#webpage`, url, name,
+        ...(collection?.description ? { description: collection.description } : {}),
+        inLanguage: 'ko-KR', isPartOf: { '@id': `${origin}/#website` },
+        mainEntity: { '@id': list['@id'] }, breadcrumb: { '@id': `${url}#breadcrumb` },
+      },
+      list,
+      {
+        '@type': 'BreadcrumbList', '@id': `${url}#breadcrumb`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: '홈', item: `${origin}/` },
+          ...(collection ? [{ '@type': 'ListItem', position: 2, name: '제품', item: `${origin}/products.html` }] : []),
+          { '@type': 'ListItem', position: collection ? 3 : 2, name, item: url },
+        ],
+      },
+    ],
+  };
 }
 
 export function renderCatalogPage(template, products, origin = 'https://himawari.co.kr', collection = null) {
@@ -135,7 +160,7 @@ export function renderCatalogPage(template, products, origin = 'https://himawari
   const remaining = groupProductFamilies(products)
     .filter((family) => !template.includes('SERVER_FEATURED_PRODUCT') || !family.variants.includes(featured))
     .map((family) => family.representative);
-  const schema = JSON.stringify(catalogSchema(products, origin)).replaceAll('<', '\\u003c');
+  const schema = JSON.stringify(catalogSchema(products, origin, collection)).replaceAll('<', '\\u003c');
   let output = template
     .replace(/<!-- SERVER_CATALOG_SCHEMA -->\s*<script type="application\/ld\+json" data-catalog-schema>[\s\S]*?<\/script>/, `<script type="application/ld+json" data-catalog-schema>${schema}</script>`)
     .replace(/<!-- SERVER_FEATURED_PRODUCT -->\s*<p class="product-list-state">[\s\S]*?<\/p>/, featured ? renderFeaturedProduct(featured) : '<p class="product-list-state">등록된 대표 제품이 없습니다.</p>')
