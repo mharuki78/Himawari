@@ -12,4 +12,8 @@
 
 첫 작성 전에 HEAD e6bb880de1ce23ea70192aa4aa4cbfc117cfb1ba와 동일한 production READY 원본을 baseline-deployment.json에 보존했다. 첫 배포 전 글은 awaiting-first-deployment이며 날짜만 사용한다. 실제 배포 이력에서 최초 READY를 확인한 뒤 시각과 이력을 기록한다.
 
-준비 검증과 `npm test` 298/298 통과. Chrome156의 1440·390px에서 세 글과 홈·목록, 사진 9장, 실제 제품 링크를 확인했다. 가로 넘침·페이지 예외 없음. 로컬의 Vercel 분석 스크립트 404는 로컬 환경 요청으로 별도 구분한다. 운영 배포·정확한 시각·receipt·--published 성공은 아직 대기다. 기존 173편·승인 사진·최초 근거와 사용자 변경을 보존한다.
+준비 검증과 `npm test` 298/298 통과. Chrome156의 1440·390px에서 세 글과 홈·목록, 사진 9장, 실제 제품 링크를 확인했다. 가로 넘침·페이지 예외 없음. 최종 로컬 DOM 근거는 `local-browser-final.json`이며 숨겨진 오류 안내의 h1과 실제 표시된 상품 제목을 구분했다. 로컬 Vercel 분석 스크립트 404는 별도 구분한다. 기존 173편·승인 사진·최초 근거와 사용자 변경을 보존한다.
+
+콘텐츠 커밋 7fb59f49752c4def22508875f426db1ab3b38d8c의 실제 최초 production READY는 1793489328624, 한국 시간 2026-11-01 08:28:48.624다. 원래 baseline READY부터 프로젝트·팀의 production 전체 목록을 조회했고 마지막 pagination에는 next가 없었다. 해당 READY 후보 상세와 Git의 실제 원본 콘텐츠를 대조했다. 최초 배포·이력 원본은 `first-deployment.json` 및 `first-deployment-history.json`에 보존했으며 최초 수정 근거에도 같은 이력을 사용한다. 메타데이터 배포로 최초 시각을 바꾸지 않는다.
+
+최종 운영 배포·PC/모바일·사진·제품 링크·RSS 검증과 완료 여부는 `backups/story-runs/2026-11-01.deployment.json` 및 backup의 `progress.json`과 `published-verification.log`를 따른다. READY 대기나 메타데이터 준비 성공만으로 완료를 판정하지 않는다.

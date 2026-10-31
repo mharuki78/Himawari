@@ -1,7 +1,7 @@
 {
   "date": "2026-11-01",
   "automationId": "himawari",
-  "stage": "prepared",
+  "stage": "metadata-verified",
   "trigger": {
     "receivedAt": "2026-10-31T23:01:06.548Z",
     "scheduledAt": "2026-11-01T08:00:00+09:00",
@@ -13,7 +13,7 @@
   "expectedGeneratedImages": 6,
   "posts": [
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-piping-binding",
       "title": "백팩 테두리의 파이핑과 바인딩은 어떻게 다를까",
       "url": "https://himawari.co.kr/story/backpack-piping-binding.html",
@@ -87,10 +87,19 @@
           "alt": "No.9291 라벤더의 실제 제품 카탈로그 사진",
           "caption": "실제 제품 사진: No.9291 라벤더의 공개 카탈로그 원본입니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-31T23:28:48.624Z",
+        "modifiedAt": "2026-10-31T23:28:48.624Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-01/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-01/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-01/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-01/first-deployment-history.json",
+        "articleSha256": "539834461632b6a4d346521a0a0d89c150feba580d6d6a39fb94c62119ae67b7"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-colour-option-name",
       "title": "민트아이보리 백팩에는 왜 코랄색도 보일까, 색상 옵션 이름 읽기",
       "url": "https://himawari.co.kr/story/backpack-colour-option-name.html",
@@ -164,10 +173,19 @@
           "alt": "No.8029 민트아이보리의 실제 제품 카탈로그 사진",
           "caption": "실제 제품 사진: No.8029 민트아이보리의 공개 카탈로그 원본입니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-31T23:28:48.624Z",
+        "modifiedAt": "2026-10-31T23:28:48.624Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-01/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-01/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-01/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-01/first-deployment-history.json",
+        "articleSha256": "0007b449fdfdf7d92d7bfa73ad2b3af8bf5b8dfbac2ece8945fe2d1b64c3db6a"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-zipper-lock-meaning",
       "title": "백팩 지퍼의 잠금, 자물쇠를 걸 수 있다는 뜻일까",
       "url": "https://himawari.co.kr/story/backpack-zipper-lock-meaning.html",
@@ -241,7 +259,16 @@
           "alt": "No.1111 그린의 실제 제품 카탈로그 사진",
           "caption": "실제 제품 사진: No.1111 그린의 공개 카탈로그 원본입니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-10-31T23:28:48.624Z",
+        "modifiedAt": "2026-10-31T23:28:48.624Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-01/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-01/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-01/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-01/first-deployment-history.json",
+        "articleSha256": "c36de3eca8f1f8d4c64c66b370aaad2be8acb7735a97d652db46f08772d6f829"
+      }
     }
   ],
   "topicsReviewed": 173,
@@ -254,7 +281,7 @@
         "backpack-colour-option-name",
         "backpack-zipper-lock-meaning"
       ],
-      "stage": "prepared"
+      "stage": "metadata-verified"
     }
   }
 }
