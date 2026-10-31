@@ -236,11 +236,11 @@ The source still carries editorial eyebrows and some section-heading tracking ti
 
 ## Layout
 
-The public gutter is fluid through the frontmatter page spacing token. The home colour hero has a maximum outer width of 1600px, a 0.9/1.1 two-column split and a 36–76px fluid gap. Its copy has a 7% left inset on wide screens. Home sections use a 1320px content rail. Compact catalogue and brand layouts retain their 1160px local rails; finder and brand reading sections retain 1016px.
+The public gutter is fluid through the frontmatter page spacing token. Homepage sections share one centred content rail: a maximum of 1320px, with 20–72px fluid side gutters. The colour hero keeps its 0.9/1.1 split with no additional copy inset. Campaign films, the product grid, stories, game, reels and contact align to that rail; the FAQ has a padded panel inside it. Compact catalogue and brand layouts retain their local rails. Homepage refinements are scoped to `.home-page` so they do not redefine catalogue layouts.
 
-The header is sticky and 82px high on desktop. Its translucent white surface uses an 18px backdrop blur to preserve navigation readability over scrolling content. At 1180px it becomes a 74px header and navigation becomes an expandable two-column white menu; at 760px the header is 72px. External-store destinations remain accessible through their existing routes when the mobile utility control is hidden.
+The header is sticky and 82px high on desktop. Its translucent white surface uses an 18px backdrop blur to preserve navigation readability over scrolling content. At 1320px it becomes a 74px header and navigation becomes an expandable two-column white menu; at 760px the header is 72px. External-store destinations remain accessible through their existing routes when the mobile utility control is hidden.
 
-At 760px and below, the colour hero becomes one column with 24px side gutters, 28px top space and a square product photo. At 370px and below, gutters become 20px and gaps tighten without reducing 44px utility targets. Swatches retain at least 44px width and 64px height; their visible circles are 34px. The colour capsule contains its own horizontal overflow when a model has many colours, keeping the page width stable.
+At 760px and below, the colour hero becomes one column with 20px side gutters, 28px top space and a square product photo. Utility targets remain at least 44px. Swatches retain at least 44px width and 64px height; their visible circles are 34px. The colour capsule contains its own horizontal overflow when a model has many colours, keeping the page width stable.
 
 Home sections follow the fluid frontmatter spacing on desktop and 58px vertical padding on mobile. Product grids retain a contained mobile swipe rail with 88% card width, a visible next-card edge and scroll snapping. The home collection starts with nine families and appends nine per labelled load-more action, preserving count announcements and focus transfer. The home journal is three columns on desktop and one on mobile.
 
@@ -277,7 +277,7 @@ Hover darkens the primary action. Utility controls shift to the observed slightl
 
 Each visit selects a random valid product family from the current public catalogue, then a random initial colour from that family's actual variants. When multiple eligible families exist, exclude the last successfully displayed family, stored locally after image decode. If storage is unavailable, random selection still works. Prefer a non-set product when the same family and colour has both a standalone and a set listing. Browser back/forward cache retains its existing valid selection rather than starting another visit.
 
-Labelled samples sit in one neutral, horizontally contained capsule. Selection uses an outline and inline check; derive a dark or white check from the actual swatch's luminance and contrast, never its position. Expose selection with aria-pressed. Decode the next image before replacing the model, photo, colour label, selected state, caption and product destination together. A failed image keeps the current matching selection; a failed catalogue request exposes retry and a full-catalogue destination. An empty colour set does not create imaginary products.
+Labelled samples sit in one neutral, horizontally contained capsule. Selection uses an outline and inline check; derive a dark or white check from the actual swatch's luminance and contrast, never its position. Expose selection with aria-pressed. On enhanced first paint, a neutral loading panel conceals the static fallback model and photo. Insert the decoded image itself before publishing its model, labels, swatches, caption and destination together. Catalogue, first-image or bundle failures expose recovery and catalogue access after a bounded wait. A later failed colour switch preserves the existing matching selection. Without JavaScript the factual static photo remains usable. An empty colour set does not create imaginary products.
 
 The authored colour transition uses Anime.js: opacity 0.5 to 1 and a 6px vertical settle over 260ms with outQuad. Reduced motion commits the state without animation. Cancel previous animation and obsolete results during rapid changes; clean up listeners when the page leaves the document lifecycle.
 
@@ -293,7 +293,7 @@ White fields, a hairline border, the field radius and inherited Korean typograph
 
 ### Navigation
 
-All eight desktop routes are directly visible in the quiet capsule track: bags, finder, lookbook, stories, guidebook, brand, game and contact. The first four combine icons with text; the remaining routes retain readable labels. The active or hovered route gains a white surface. Do not hide routes behind a More disclosure.
+All eight desktop routes are directly visible in the quiet capsule track: bags, finder, lookbook, stories, guidebook, brand, game and contact. Each combines a Phosphor SVG icon with readable text. The active or hovered route gains a white surface. Do not hide routes behind a More disclosure. Header utility controls have a hoverable, dismissible tooltip on pointer hover and keyboard focus; labels follow the current account, cart, menu and store state.
 
 Expanded mobile navigation exposes all eight routes in two columns and an account action. Opening moves focus to its first route; Escape restores menu-button focus. Preserve focus containment and close-on-navigation behavior. Search, account and cart remain individually labelled utility controls. Original external-store destinations remain in their picker.
 

@@ -49,7 +49,7 @@ test('공개 페이지의 기존 메뉴와 공통 LookBook 메뉴 연결을 유�
     if (file === 'index.html' || file === 'lookbook/index.html') assert.equal(links.filter(link => link[1] === '/lookbook/').length, 1);
   }
   const script = await readFile(new URL('../script.js', import.meta.url), 'utf8');
-  assert.match(script, /label: 'LookBook', href: '\/lookbook\/'/);
+  assert.match(script, /label: '룩북', href: '\/lookbook\/'/);
 });
 
 test('홈 첫 화면은 No.9007 캠페인 영상과 릴스 8개를 제공한다', async () => {

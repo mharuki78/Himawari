@@ -6,6 +6,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
+      document.documentElement.classList.add('home-colours-js');
+      // The module may fail before its catalogue/image recovery can start.
+      setTimeout(function checkHomeController() {
+        const hero = document.querySelector('[data-home-colours]');
+        if (!hero) {
+          document.addEventListener('DOMContentLoaded', checkHomeController, { once: true });
+          return;
+        }
+        if (hero.dataset.colourController) return;
+        hero.dataset.colourState = 'error';
+        hero.querySelector('[data-colour-placeholder-label]').textContent = '가방을 불러오지 못했습니다. 다시 시도해 주세요.';
+        hero.querySelector('[data-colour-status]').textContent = '화면을 불러오지 못했습니다. 다시 시도하거나 전체 가방을 살펴보세요.';
+        const retry = hero.querySelector('[data-colour-retry]');
+        retry.hidden = false;
+        retry.textContent = '화면 다시 불러오기';
+        retry.addEventListener('click', () => location.reload());
+      }, 15000);
       // A fresh visit to the homepage should start at its hero, even if the browser
       // previously restored a scroll position near the game section.
       if (!location.hash) {
@@ -31,7 +48,6 @@
     <meta property="og:url" content="https://himawari.co.kr/">
     <meta property="og:image" content="https://himawari.co.kr/assets/hero-poster.jpg">
     <title>히마와리 Himawari — 학생·출근·여행 백팩</title>
-    <link rel="preload" as="image" href="/assets/home/0422-mint.jpg">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -54,7 +70,7 @@
     <link rel="stylesheet" href="/assets/site-redesign.css">
     <script type="module" src="/assets/site-ui.js"></script>
   </head>
-  <body class="home-layout">
+  <body class="home-layout home-page">
     <a class="skip-link" href="#main">본문으로 바로가기</a>
     <div class="announcement-bar"><a href="products.html">Himawari 백팩 컬렉션을 살펴보세요</a></div>
     <header class="site-header">
@@ -70,21 +86,40 @@
     </header>
 
     <main id="main">
-      <section class="colour-hero" id="home" aria-labelledby="hero-title" data-home-colours>
+      <section class="colour-hero" id="home" aria-labelledby="hero-title" data-home-colours data-colour-state="loading">
         <div class="colour-copy">
           <h1 id="hero-title"><span class="colour-brand">히마와리 Himawari</span>어떤 색이<br>끌리세요?</h1>
           <p>마음에 드는 색과 모양으로.<br>오늘 함께할 가방을 찾아보세요.</p>
           <div class="colour-picker" data-colour-picker role="group" aria-label="No.0422 색상 선택" hidden></div>
           <div class="colour-selection"><span data-colour-model>No.0422</span><strong data-colour-label>민트</strong></div>
-          <a class="hmw-btn colour-detail" data-colour-detail href="/product.html?id=store-11070824181"><img src="/assets/icons/handbag.svg" alt="" width="22" height="22"><span>가방 자세히 보기</span><img src="/assets/icons/caret-right.svg" alt="" width="22" height="22"></a>
+          <a class="hmw-btn colour-detail" data-colour-detail href="/products.html"><img src="/assets/icons/handbag.svg" alt="" width="22" height="22"><span>전체 가방 보기</span><img src="/assets/icons/caret-right.svg" alt="" width="22" height="22"></a>
           <p class="colour-status" data-colour-status role="status" aria-live="polite"></p>
           <button class="colour-retry" type="button" data-colour-retry hidden>색상 다시 불러오기</button>
           <nav class="app-shortcuts" aria-label="가방 둘러보기"><a href="/products.html"><span class="app-icon app-icon--peach"><img src="/assets/icons/backpack.svg" alt="" width="22" height="22"></span><span>전체 가방</span></a><a href="/finder.html"><span class="app-icon app-icon--mint"><img src="/assets/icons/compass.svg" alt="" width="22" height="22"></span><span>가방 찾기</span></a><a href="/lookbook/"><span class="app-icon app-icon--lavender"><img src="/assets/icons/images.svg" alt="" width="22" height="22"></span><span>룩북</span></a><a href="/story/"><span class="app-icon app-icon--yellow"><img src="/assets/icons/book-open.svg" alt="" width="22" height="22"></span><span>이야기</span></a></nav>
         </div>
         <figure class="colour-panel" data-colour-panel>
+          <div class="colour-placeholder" data-colour-placeholder><img src="/assets/icons/backpack.svg" alt="" width="40" height="40"><span data-colour-placeholder-label>오늘의 가방을 불러오는 중입니다.</span></div>
           <img class="colour-photo" data-colour-photo src="/assets/home/0422-mint.jpg" alt="히마와리 No.0422 민트 백팩 공식 제품 이미지" width="900" height="900" fetchpriority="high">
           <figcaption><span data-colour-label>민트</span><span data-colour-model-caption>Himawari No.0422 · 공식 제품 이미지</span></figcaption>
         </figure>
+      </section>
+
+      <section class="home-film-hero home-campaign" id="daily-film" aria-labelledby="daily-film-title">
+        <div class="home-film-hero__media" data-ambient-film>
+          <video class="home-film-hero__video" loop playsinline preload="none" poster="assets/hero-9007-poster.jpg" aria-label="Himawari No.9007 백팩 캠페인 영상" data-ambient-video data-ambient-mobile-src="assets/hero-9007-campaign-mobile.mp4">
+            <source data-src="assets/hero-9007-campaign-web.mp4" type="video/mp4">
+          </video>
+          <div class="home-film-hero__controls">
+            <button class="home-film-hero__toggle" type="button" data-ambient-sound aria-pressed="true">소리 끄기</button>
+            <button class="home-film-hero__toggle" type="button" data-ambient-toggle aria-pressed="false">영상 재생</button>
+          </div>
+        </div>
+        <div class="home-film-hero__copy">
+          <span class="home-film-hero__kicker">Himawari · The Collection</span>
+          <h2 id="daily-film-title">출근할 때도.<br>여행을 떠날 때도.</h2>
+          <p>학교와 회사에 가져갈 가방부터<br>여행에 함께할 백팩까지.<br>크기와 수납을 살펴보고 골라보세요.</p>
+          <a class="home-film-hero__link" href="products.html">제품 보기 <span aria-hidden="true">↗</span></a>
+        </div>
       </section>
 
       <section class="trust-strip" aria-label="Himawari가 지키는 기준">
@@ -113,25 +148,7 @@
             <p data-home-products-status role="status" aria-live="polite"></p>
             <button type="button" data-home-products-more aria-controls="home-product-list">제품 더 보기</button>
           </div>
-          <a class="collection-link reveal" href="products.html">전체 제품과 색상 보기 <span aria-hidden="true">→</span></a>
-        </div>
-      </section>
-
-      <section class="home-film-hero home-campaign" id="daily-film" aria-labelledby="daily-film-title">
-        <div class="home-film-hero__media" data-ambient-film>
-          <video class="home-film-hero__video" loop playsinline preload="none" poster="assets/hero-9007-poster.jpg" aria-label="Himawari No.9007 백팩 캠페인 영상" data-ambient-video data-ambient-mobile-src="assets/hero-9007-campaign-mobile.mp4">
-            <source data-src="assets/hero-9007-campaign-web.mp4" type="video/mp4">
-          </video>
-          <div class="home-film-hero__controls">
-            <button class="home-film-hero__toggle" type="button" data-ambient-sound aria-pressed="true">소리 끄기</button>
-            <button class="home-film-hero__toggle" type="button" data-ambient-toggle aria-pressed="false">영상 재생</button>
-          </div>
-        </div>
-        <div class="home-film-hero__copy">
-          <span class="home-film-hero__kicker">Himawari · The Collection</span>
-          <h2 id="daily-film-title">출근할 때도.<br>여행을 떠날 때도.</h2>
-          <p>학교와 회사에 가져갈 가방부터<br>여행에 함께할 백팩까지.<br>크기와 수납을 살펴보고 골라보세요.</p>
-          <a class="home-film-hero__link" href="products.html">제품 보기 <span aria-hidden="true">↗</span></a>
+          <div class="home-actions"><a class="collection-link" href="products.html"><span>전체 제품과 색상 보기</span><img src="/assets/icons/arrow-right.svg" alt="" width="20" height="20"></a></div>
         </div>
       </section>
 
@@ -180,33 +197,17 @@
           <div class="journal-list" data-home-stories aria-live="polite" aria-busy="true">
             <p class="journal-state">최신 이야기를 불러오는 중입니다.</p>
           </div>
-          <a class="collection-link reveal" href="story/">이야기 더 보기 <span aria-hidden="true">→</span></a>
-          <a class="home-rss-link" href="/feed.xml">이야기 RSS 구독 ↗</a>
+          <div class="home-actions"><a class="collection-link" href="story/"><span>이야기 더 보기</span><img src="/assets/icons/arrow-right.svg" alt="" width="20" height="20"></a><a class="home-rss-link" href="/feed.xml"><span>이야기 RSS 구독</span><img src="/assets/icons/arrow-up-right.svg" alt="" width="18" height="18"></a></div>
         </div>
       </section>
 
       <section class="game-invite" aria-labelledby="game-invite-title">
-        <div class="game-invite__number" aria-hidden="true">04<br>22</div>
         <div class="game-invite__copy">
-          <p class="kicker">Himawari pixel workshop</p>
-          <h2 id="game-invite-title"><span class="headline-line">물건을 모으고</span><span class="headline-line accent-word">가방에 정리해 보세요.</span></h2>
-          <p>위험물을 피해 물건을 모은 뒤 No.0422의 알맞은 수납칸에 정리하는 2단계 미니게임입니다. 쿠폰은 이벤트가 진행 중일 때만 조건에 따라 제공됩니다.</p>
-          <a href="game.html">게임 시작 <span aria-hidden="true">→</span></a>
-          <a href="rhythm.html" class="rhythm-home-link">NEW · 1884 리듬게임 <span aria-hidden="true">♫</span></a>
+          <h2 id="game-invite-title">박자에 맞춰<br>가방을 채워보세요.</h2>
+          <p>물건은 짧게, 지퍼는 길게 눌러주세요.<br>No.1884 백팩을 채우는 리듬게임입니다.</p>
+          <div class="home-actions"><a class="home-button home-button--primary" href="rhythm.html"><span>1884 리듬게임 시작</span><img src="/assets/icons/arrow-right.svg" alt="" width="20" height="20"></a><a class="home-text-link" href="game.html"><span>0422 어드벤처도 해보기</span><img src="/assets/icons/arrow-up-right.svg" alt="" width="18" height="18"></a></div>
         </div>
-        <figure class="game-invite__product">
-          <img src="assets/game-pixel-school-world.png" width="564" height="1002" loading="lazy" alt="황금빛 가로수와 석재 담장 사이 학교로 이어지는 16비트 픽셀 등굣길">
-          <div class="game-invite__preview" data-game-preview aria-hidden="true">
-            <span class="game-invite__item game-invite__item--laptop collectible" data-kind="laptop"><span class="collectible__sprite"></span></span>
-            <span class="game-invite__item game-invite__item--book collectible" data-kind="book"><span class="collectible__sprite"></span></span>
-            <span class="game-invite__item game-invite__item--bottle collectible" data-kind="bottle"><span class="collectible__sprite"></span></span>
-            <span class="game-invite__item game-invite__item--pencil collectible" data-kind="pencil"><span class="collectible__sprite"></span></span>
-            <img class="game-invite__player" src="assets/game-pixel-player.png" width="129" height="376" loading="lazy" alt="">
-            <span class="game-invite__spark game-invite__spark--one"></span>
-            <span class="game-invite__spark game-invite__spark--two"></span>
-          </div>
-          <figcaption>NO.0422 / PIXEL ADVENTURE</figcaption>
-        </figure>
+        <a class="home-rhythm-preview" href="rhythm.html" aria-label="No.1884 리듬게임 살펴보기"><span class="home-rhythm-preview__title" aria-hidden="true">PACK<br>THE BEAT.</span><img src="assets/rhythm-1884.webp" width="640" height="640" loading="lazy" alt="No.1884 블랙 백팩을 바탕으로 만든 리듬게임 그래픽"><span class="home-rhythm-preview__caption" aria-hidden="true">No.1884 리듬게임<img src="/assets/icons/arrow-up-right.svg" alt="" width="20" height="20"></span></a>
       </section>
 
       <section class="reel-showcase section" id="reels" aria-labelledby="reels-title" data-reel-showcase>

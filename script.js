@@ -47,43 +47,148 @@ function syncSiteNavigation() {
 
   const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
   const navigationItems = [
-    { label: '제품', href: '/products.html', active: /\/(?:products|product)(?:\.html|\/|$)/.test(currentPath) || currentPath.includes('/templates/product') },
-    { label: '가방 찾기', href: '/finder.html', active: /\/finder(?:\.html|\/|$)/.test(currentPath) },
-    { label: '가이드북', href: '/guidebook.html', active: currentPath === '/guidebook.html' },
-    { label: '브랜드', href: '/about.html', active: /\/about(?:\.html|\/|$)/.test(currentPath) },
-    { label: '이야기', href: '/story/', active: currentPath === '/story' || currentPath.startsWith('/story/') },
-    { label: 'LookBook', href: '/lookbook/', active: currentPath === '/lookbook' || currentPath.startsWith('/lookbook/') },
-    { label: '게임', href: '/game.html', active: /\/(?:game|rhythm)(?:\.html|\/|$)/.test(currentPath) },
-    { label: '연락하기', href: '/contact.html', active: /\/contact(?:\.html|\/|$)/.test(currentPath) },
+    { label: '가방', href: '/products.html', icon: 'backpack', active: /\/(?:products|product)(?:\.html|\/|$)/.test(currentPath) || currentPath.includes('/templates/product') },
+    { label: '가방 찾기', href: '/finder.html', icon: 'compass', active: /\/finder(?:\.html|\/|$)/.test(currentPath) },
+    { label: '가이드북', href: '/guidebook.html', icon: 'book-open-text', active: currentPath === '/guidebook.html' },
+    { label: '브랜드', href: '/about.html', icon: 'flower', active: /\/about(?:\.html|\/|$)/.test(currentPath) },
+    { label: '이야기', href: '/story/', icon: 'book-open', active: currentPath === '/story' || currentPath.startsWith('/story/') },
+    { label: '룩북', href: '/lookbook/', icon: 'images', active: currentPath === '/lookbook' || currentPath.startsWith('/lookbook/') },
+    { label: '게임', href: '/game.html', icon: 'game-controller', active: /\/(?:game|rhythm)(?:\.html|\/|$)/.test(currentPath) },
+    { label: '연락하기', href: '/contact.html', icon: 'envelope-simple', active: /\/contact(?:\.html|\/|$)/.test(currentPath) },
   ];
 
   const links = navigationItems.map((item) => {
     const link = document.createElement('a');
     link.href = item.href;
     link.textContent = item.label;
-    if (item.external) {
-      link.target = '_blank';
-      link.rel = 'noopener';
-      link.title = '2026 제품 가이드북 PDF · 새 탭';
-    }
+    const icon = document.createElement('img');
+    icon.src = `/assets/icons/${item.icon}.svg`;
+    icon.alt = '';
+    icon.width = 16;
+    icon.height = 16;
+    link.prepend(icon);
     if (item.active) link.setAttribute('aria-current', 'page');
     return link;
   });
 
   const primaryPaths = ['/products.html', '/finder.html', '/lookbook/', '/story/'];
-  const glyphs = { '/products.html': 'backpack', '/finder.html': 'compass', '/lookbook/': 'images', '/story/': 'book-open' };
   const primary = primaryPaths.map(path => links.find(link => link.getAttribute('href') === path));
-  primary.forEach(link => {
-    if (link.getAttribute('href') === '/products.html') link.textContent = '가방';
-    if (link.getAttribute('href') === '/lookbook/') link.textContent = '룩북';
-    const icon = document.createElement('img');
-    icon.src = `/assets/icons/${glyphs[link.getAttribute('href')]}.svg`; icon.alt = ''; icon.width = 16; icon.height = 16;
-    link.prepend(icon);
-  });
   siteNavigation.replaceChildren(...primary, ...links.filter(link => !primary.includes(link)));
 }
 
 syncSiteNavigation();
+
+function initializeHeaderTooltips() {
+  const selector = '[data-header-search],.member-trigger,[data-cart-button],.menu-button,.header-store';
+  const entries = new Map();
+  let nextId = 0, active, closeTimer;
+
+  function close({ dismiss = false } = {}) {
+    window.clearTimeout(closeTimer);
+    if (!active) return;
+    if (dismiss) active.dismissed = true;
+    active.tooltip.dataset.open = 'false';
+    active = undefined;
+  }
+
+  function position(entry) {
+    const bounds = entry.trigger.getBoundingClientRect();
+    const tooltipBounds = entry.tooltip.getBoundingClientRect();
+    const gutter = 8;
+    const halfWidth = Math.min(tooltipBounds.width, window.innerWidth - gutter * 2) / 2;
+    const left = Math.max(halfWidth + gutter, Math.min(bounds.left + bounds.width / 2, window.innerWidth - halfWidth - gutter));
+    const top = Math.max(gutter, Math.min(bounds.bottom + 8, window.innerHeight - tooltipBounds.height - gutter));
+    entry.tooltip.style.setProperty('--header-tooltip-left', `${Math.round(left)}px`);
+    entry.tooltip.style.setProperty('--header-tooltip-top', `${Math.round(top)}px`);
+  }
+
+  function open(entry, input) {
+    window.clearTimeout(closeTimer);
+    if (entry.dismissed || !entry.trigger.getClientRects().length || entry.trigger.disabled) return;
+    if (active && active !== entry) close();
+    active = entry;
+    position(entry);
+    entry.tooltip.dataset.input = input;
+    entry.tooltip.dataset.open = 'true';
+  }
+
+  function scheduleClose(entry) {
+    window.clearTimeout(closeTimer);
+    // Allow crossing the small gap between the control and its hoverable help.
+    closeTimer = window.setTimeout(() => {
+      if (active === entry && !entry.hovered && !entry.focused && !entry.tooltipHovered) close();
+    }, 140);
+  }
+
+  function labelFor(trigger) {
+    if (trigger.matches('.menu-button')) return trigger.getAttribute('aria-expanded') === 'true' ? '메뉴 닫기' : '메뉴 열기';
+    if (trigger.matches('.header-store')) {
+      if (!trigger.hasAttribute('aria-expanded')) return '공식 스토어 보기';
+      return trigger.getAttribute('aria-expanded') === 'true' ? '공식 스토어 닫기' : '공식 스토어 선택';
+    }
+    return trigger.getAttribute('aria-label') || (trigger.matches('[data-header-search]') ? '가방 검색' : trigger.matches('[data-cart-button]') ? '장바구니 열기' : '로그인 · 내 계정');
+  }
+
+  function sync(header) {
+    for (const [trigger, entry] of entries) {
+      if (!trigger.isConnected) {
+        if (active === entry) close();
+        entry.tooltip.remove();
+        entries.delete(trigger);
+      }
+    }
+    header.querySelectorAll(selector).forEach(trigger => {
+      let entry = entries.get(trigger);
+      if (!entry) {
+        const tooltip = document.createElement('span');
+        do { tooltip.id = `header-tooltip-${++nextId}`; } while (document.getElementById(tooltip.id));
+        tooltip.className = 'header-tooltip';
+        tooltip.setAttribute('role', 'tooltip');
+        tooltip.dataset.open = 'false';
+        document.body.append(tooltip);
+        entry = { trigger, tooltip, hovered: false, focused: false, tooltipHovered: false, dismissed: false };
+        entries.set(trigger, entry);
+        const describedBy = new Set((trigger.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean));
+        describedBy.add(tooltip.id);
+        trigger.setAttribute('aria-describedby', [...describedBy].join(' '));
+        trigger.addEventListener('pointerenter', event => {
+          if (event.pointerType === 'touch') return;
+          entry.hovered = true; entry.dismissed = false;
+          open(entry, entry.focused ? 'focus' : 'pointer');
+        });
+        trigger.addEventListener('pointerleave', () => {
+          entry.hovered = false;
+          scheduleClose(entry);
+        });
+        trigger.addEventListener('focus', () => {
+          entry.focused = true; entry.dismissed = false;
+          open(entry, 'focus');
+        });
+        trigger.addEventListener('blur', () => { entry.focused = false; scheduleClose(entry); });
+        trigger.addEventListener('click', () => { if (active === entry) close({ dismiss: true }); });
+        tooltip.addEventListener('pointerenter', () => { entry.tooltipHovered = true; window.clearTimeout(closeTimer); });
+        tooltip.addEventListener('pointerleave', () => { entry.tooltipHovered = false; scheduleClose(entry); });
+      }
+      const label = labelFor(trigger);
+      trigger.dataset.headerTooltip = label;
+      if (entry.tooltip.textContent !== label) entry.tooltip.textContent = label;
+      if (trigger.matches('.menu-button,.header-store') && trigger.getAttribute('aria-label') !== label) trigger.setAttribute('aria-label', label);
+      if (active === entry) position(entry);
+    });
+  }
+
+  document.querySelectorAll('.site-header,.about-header').forEach(header => {
+    sync(header);
+    // Member actions and the store picker are inserted after DOMContentLoaded.
+    new MutationObserver(() => sync(header)).observe(header, { childList: true, subtree: true, attributes: true, attributeFilter: ['aria-label', 'aria-expanded'] });
+  });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') close({ dismiss: true }); });
+  window.addEventListener('resize', () => close());
+  window.addEventListener('scroll', () => close(), { capture: true, passive: true });
+  window.addEventListener('pagehide', () => close());
+}
+
+initializeHeaderTooltips();
 
 const menuButton = document.querySelector('.menu-button');
 const navigation = document.querySelector('.site-nav');
@@ -120,7 +225,7 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-window.matchMedia('(min-width: 1181px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
+window.matchMedia('(min-width: 1321px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const motionPage = document.body.matches('.home-layout, .about-page, .story-index-page, .lookbook-page');
@@ -208,17 +313,6 @@ function initializeBagJourney() {
   updatePosition();
 }
 
-function initializeGamePreview() {
-  const preview = document.querySelector('[data-game-preview]');
-  const invite = preview?.closest('.game-invite');
-  if (!preview || !invite) return;
-  const visibility = new IntersectionObserver(([entry]) => {
-    invite.classList.toggle('is-previewing', entry.isIntersecting && entry.intersectionRatio >= 0.35);
-  }, { threshold: [0, 0.35, 0.7] });
-  invite.addEventListener('focusin', () => invite.classList.add('is-previewing'));
-  visibility.observe(invite);
-}
-
 function initializeCartFlight() {
   document.addEventListener('himawari:cart-added', (event) => {
     const trigger = event.detail?.button;
@@ -262,7 +356,6 @@ function initializeCartFlight() {
 }
 
 initializeBagJourney();
-initializeGamePreview();
 initializeCartFlight();
 
 function renderManagedReels(rail, items) {
