@@ -48,6 +48,11 @@ test('homepage identifies the online store with the business contact details sho
   assert.equal(store.address.postalCode, '15010');
   const poster = html.match(/<video\b[^>]*poster="([^"]+)"/)?.[1];
   assert.equal(store.image, new URL(poster, 'https://himawari.co.kr/').href);
+  const site = blocks.find(b => b['@type'] === 'WebSite');
+  const shareImage = html.match(/<meta property="og:image" content="([^"]+)"/)?.[1];
+  const shareName = html.match(/<meta property="og:site_name" content="([^"]+)"/)?.[1];
+  assert.equal(shareImage, store.image, 'Sharing image must match the current visible campaign and store image');
+  assert.equal(shareName, site.name, 'Sharing site name must match WebSite identity');
   assert.ok((await readFile(new URL('../' + poster, import.meta.url))).byteLength > 0);
   assert.ok(html.includes(store.address.streetAddress));
 });
