@@ -1,5 +1,72 @@
 [
   {
+    "id": "backpack-piping-binding",
+    "title": "백팩 테두리의 파이핑과 바인딩은 어떻게 다를까",
+    "date": "2026-11-01",
+    "summary": "백팩의 테두리를 봉제부 사이에 끼우는 파이핑과 잘린 끝을 감싸는 바인딩으로 나누어 읽습니다. No.9291 앞포켓의 밝은 테두리를 예로 재단 방향과 부착 위치의 차이를 살펴봅니다.",
+    "description": "백팩의 테두리를 봉제부 사이에 끼우는 파이핑과 잘린 끝을 감싸는 바인딩으로 나누어 읽습니다. No.9291 앞포켓의 밝은 테두리를 예로 재단 방향과 부착 위치의 차이를 살펴봅니다.",
+    "tags": [
+      "백팩 테두리",
+      "파이핑과 바인딩",
+      "포켓 구조"
+    ],
+    "image": "../assets/story/backpack-piping-binding.webp",
+    "imageAlt": "가상의 성인이 No.9291 라벤더 백팩을 멘 AI 착용 연출 사진",
+    "images": [
+      "../assets/story/backpack-piping-binding.webp",
+      "../assets/story/backpack-piping-binding-detail.webp",
+      "../assets/story/backpack-piping-binding-product.webp"
+    ],
+    "url": "backpack-piping-binding.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "봉제 단면과 부착 위치를 비교하는 구조 해설"
+  },
+  {
+    "id": "backpack-colour-option-name",
+    "title": "민트아이보리 백팩에는 왜 코랄색도 보일까, 색상 옵션 이름 읽기",
+    "date": "2026-11-01",
+    "summary": "No.8029 민트아이보리의 실제 앞면에는 코랄색과 회색빛 포켓도 보입니다. 두 색 단어로 전체 배색이나 색의 면적 순서를 추정하지 않고, 정확한 상품명과 해당 옵션의 원본 사진을 연결해 고르는 예를 따라갑니다.",
+    "description": "No.8029 민트아이보리의 실제 앞면에는 코랄색과 회색빛 포켓도 보입니다. 두 색 단어로 전체 배색이나 색의 면적 순서를 추정하지 않고, 정확한 상품명과 해당 옵션의 원본 사진을 연결해 고르는 예를 따라갑니다.",
+    "tags": [
+      "백팩 선택",
+      "색상 옵션",
+      "제품 사진",
+      "No.8029"
+    ],
+    "image": "../assets/story/backpack-colour-option-name.webp",
+    "imageAlt": "No.8029 민트아이보리 백팩의 전체 배색을 보여주는 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-colour-option-name.webp",
+      "../assets/story/backpack-colour-option-name-detail.webp",
+      "../assets/story/backpack-colour-option-name-product.webp"
+    ],
+    "url": "backpack-colour-option-name.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "색상 옵션을 고르는 사례 해설"
+  },
+  {
+    "id": "backpack-zipper-lock-meaning",
+    "title": "백팩 지퍼의 잠금, 자물쇠를 걸 수 있다는 뜻일까",
+    "date": "2026-11-01",
+    "summary": "지퍼의 자동 잠금은 슬라이더의 움직임을 멈추는 기능이며 자물쇠 연결 가능 여부와는 별도 정보입니다. No.1111의 여밈 위치를 예로 두 뜻을 구분하고 구매할 백팩에서 확인할 사양의 범위를 읽습니다.",
+    "description": "지퍼의 자동 잠금은 슬라이더의 움직임을 멈추는 기능이며 자물쇠 연결 가능 여부와는 별도 정보입니다. No.1111의 여밈 위치를 예로 두 뜻을 구분하고 구매할 백팩에서 확인할 사양의 범위를 읽습니다.",
+    "tags": [
+      "백팩 지퍼",
+      "자동 잠금",
+      "자물쇠 호환"
+    ],
+    "image": "../assets/story/backpack-zipper-lock-meaning.webp",
+    "imageAlt": "No.1111 그린 백팩의 덮개와 여밈 위치를 보여주는 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-zipper-lock-meaning.webp",
+      "../assets/story/backpack-zipper-lock-meaning-detail.webp",
+      "../assets/story/backpack-zipper-lock-meaning-product.webp"
+    ],
+    "url": "backpack-zipper-lock-meaning.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "잠금이라는 부품 용어가 만드는 구매 기대를 풀어 읽는 해설"
+  },
+  {
     "id": "backpack-closure-sound",
     "title": "조용한 곳에서 쓸 백팩, 구매 전에 여밈 소리는 어떻게 확인할까",
     "date": "2026-10-31",
