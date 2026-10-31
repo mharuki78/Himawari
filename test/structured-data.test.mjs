@@ -25,7 +25,7 @@ test('상품 구조화 데이터는 현재 상품 경로와 실제 가격·품�
   assert.equal(product.offers.availability, 'https://schema.org/OutOfStock');
   assert.equal(product.offers.seller.name, '히마와리 코리아');
   assert.equal(product.offers.shippingDetails.deliveryTime?.handlingTime?.maxValue, 2, 'Preserve the published dispatch deadline');
-  assert.equal(product.offers.shippingDetails.deliveryTime?.transitTime, undefined, 'Do not invent unverified carrier transit days');
+  assert.deepEqual(product.offers.shippingDetails.deliveryTime?.transitTime, { '@type': 'QuantitativeValue', minValue: 1, maxValue: 2, unitCode: 'DAY' }, 'Use the October31 owner-confirmed transit policy, separately from dispatch');
   assert.equal(product.aggregateRating, undefined, 'No fabricated ratings for unrated product');
 });
 

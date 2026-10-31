@@ -217,8 +217,19 @@ function productOffer(product, origin) {
     availability: product.soldOut ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
     url: `${origin}/${detailHref(product)}`,
     seller: { '@type': 'OnlineStore', '@id': `${origin}/#organization`, name: '히마와리 코리아', url: `${origin}/` },
-    // The page publishes dispatch within two business days, not carrier transit days.
-    shippingDetails: { '@type': 'OfferShippingDetails', shippingRate: { '@type': 'MonetaryAmount', value: product.price >= 100000 ? '0' : '3500', currency: 'KRW' }, shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'KR' }, deliveryTime: { '@type': 'ShippingDeliveryTime', handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 2, unitCode: 'DAY' } } },
+    // Owner-confirmed October31: general1 business day; Jeju/remote within2.
+    // Google does not support KR subregions here, so use the national1–2 day envelope.
+    shippingDetails: {
+      '@type': 'OfferShippingDetails',
+      shippingRate: { '@type': 'MonetaryAmount', value: product.price >= 100000 ? '0' : '3500', currency: 'KRW' },
+      shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'KR' },
+      deliveryTime: {
+        '@type': 'ShippingDeliveryTime',
+        handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 2, unitCode: 'DAY' },
+        transitTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 2, unitCode: 'DAY' },
+        businessDays: { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].map(day => `https://schema.org/${day}`) },
+      },
+    },
     hasMerchantReturnPolicy: { '@type': 'MerchantReturnPolicy', applicableCountry: 'KR', returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow', merchantReturnDays: 7, returnMethod: 'https://schema.org/ReturnByMail', returnFees: 'https://schema.org/ReturnShippingFees', returnShippingFeesAmount: { '@type': 'MonetaryAmount', value: '8000', currency: 'KRW' } },
   };
 }
