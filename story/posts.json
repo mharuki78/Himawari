@@ -1,5 +1,72 @@
 [
   {
+    "id": "backpack-denier-bag-weight",
+    "title": "백팩 원단의 데니어, 가방 무게와 같은 숫자일까",
+    "date": "2026-11-02",
+    "summary": "데니어는 실 9,000m의 질량을 나타내며 가방 한 개의 무게와는 기준이 다릅니다. No.2301의 확인된 중량과 소재 표기를 출발점으로 D, g, g/m²를 구분하고 원단 숫자로 알 수 있는 범위를 살펴봅니다.",
+    "description": "데니어는 실 9,000m의 질량을 나타내며 가방 한 개의 무게와는 기준이 다릅니다. No.2301의 확인된 중량과 소재 표기를 출발점으로 D, g, g/m²를 구분하고 원단 숫자로 알 수 있는 범위를 살펴봅니다.",
+    "tags": [
+      "백팩 원단",
+      "데니어",
+      "가방 무게"
+    ],
+    "image": "../assets/story/backpack-denier-bag-weight.webp",
+    "imageAlt": "No.2301 네이비 백팩과 별도 원단 견본·저울을 나란히 놓은 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-denier-bag-weight.webp",
+      "../assets/story/backpack-denier-bag-weight-detail.webp",
+      "../assets/story/backpack-denier-bag-weight-product.webp"
+    ],
+    "url": "backpack-denier-bag-weight.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "실의 길이·원단 면적·완성품을 오가는 단위 비교 해설"
+  },
+  {
+    "id": "backpack-trolley-band-fit",
+    "title": "백팩 뒤의 캐리어 밴드, 손잡이에 끼우기 전에 볼 것",
+    "date": "2026-11-02",
+    "summary": "No.1884의 후면 캐리어 밴드 사진을 출발점으로, 손잡이 전체가 통과할 여유와 짐을 넣은 뒤의 위치를 살펴봅니다. 끼우고 이동하고 다시 멜 때의 동작으로 실제 조합의 호환 여부를 판단합니다.",
+    "description": "No.1884의 후면 캐리어 밴드 사진을 출발점으로, 손잡이 전체가 통과할 여유와 짐을 넣은 뒤의 위치를 살펴봅니다. 끼우고 이동하고 다시 멜 때의 동작으로 실제 조합의 호환 여부를 판단합니다.",
+    "tags": [
+      "캐리어 밴드",
+      "백팩 사용",
+      "No.1884"
+    ],
+    "image": "../assets/story/backpack-trolley-band-fit.webp",
+    "imageAlt": "가상의 성인이 No.1884 블랙의 위쪽 손잡이를 잡고 캐리어 옆에 선 AI 착용 연출 사진",
+    "images": [
+      "../assets/story/backpack-trolley-band-fit.webp",
+      "../assets/story/backpack-trolley-band-fit-detail.webp",
+      "../assets/story/backpack-trolley-band-fit-product.webp"
+    ],
+    "url": "backpack-trolley-band-fit.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "실제 사용 동작을 따라가는 문제 해결형 해설"
+  },
+  {
+    "id": "everyday-backpack-hiking-choice",
+    "title": "일상 백팩을 산에서도 쓰려면, 수납량 말고 무엇을 봐야 할까",
+    "date": "2026-11-02",
+    "summary": "짧은 공원 산책과 여러 시간 걷는 산행은 같은 당일 외출이어도 가방의 선택 기준이 달라집니다. No.9004를 일상 백팩의 예로 두고, 반복하는 개폐와 착용, 짐을 받치는 구조를 비교해 겸용 여부를 판단합니다.",
+    "description": "짧은 공원 산책과 여러 시간 걷는 산행은 같은 당일 외출이어도 가방의 선택 기준이 달라집니다. No.9004를 일상 백팩의 예로 두고, 반복하는 개폐와 착용, 짐을 받치는 구조를 비교해 겸용 여부를 판단합니다.",
+    "tags": [
+      "백팩 선택",
+      "일상 백팩",
+      "산행용 가방",
+      "No.9004"
+    ],
+    "image": "../assets/story/everyday-backpack-hiking-choice.webp",
+    "imageAlt": "공원의 벤치에 놓인 No.9004 라벤더 코랄 백팩의 AI 연출 사진",
+    "images": [
+      "../assets/story/everyday-backpack-hiking-choice.webp",
+      "../assets/story/everyday-backpack-hiking-choice-detail.webp",
+      "../assets/story/everyday-backpack-hiking-choice-product.webp"
+    ],
+    "url": "everyday-backpack-hiking-choice.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "활동 조건에 따른 겸용 선택 비교"
+  },
+  {
     "id": "backpack-piping-binding",
     "title": "백팩 테두리의 파이핑과 바인딩은 어떻게 다를까",
     "date": "2026-11-01",
