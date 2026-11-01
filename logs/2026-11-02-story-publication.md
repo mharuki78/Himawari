@@ -17,7 +17,8 @@
 
 - 준비 검증: 새 글 3편, 사진 9장 중 새 생성 6장, 최소 본문 길이, 원본·링크·구조화 데이터 통과. 처음에는 `awaiting-first-deployment`로 실제 시각을 비워 두었다.
 - 전체 테스트 298개 통과. Chrome 156에서 1440px·390px의 세 글·9개 사진·홈 최신 글·이야기 목록과 실제 제품 링크를 확인했고 가로 넘침·페이지 예외가 없었다. 로컬 결과는 `backups/story-2026-11-02/local-browser.json`에 있다.
-- 최초 콘텐츠 READY 이후 원래 baseline부터 production 배포 목록의 모든 페이지와 READY 상세를 보존하고 Git 내용을 대조한다. 실제 최초 READY로 발행·수정 시각을 기록하며, 메타데이터 배포로 최초 시각을 바꾸지 않는다.
+- 콘텐츠 커밋 `69cf30c25649b91847fba9ea0bc64082a4cf3c0c`의 최초 운영 READY는 2026-11-02 08:19:04.618 KST이다. 원래 baseline READY부터 production 배포 목록을 마지막 페이지까지 조회했고 READY 후보 상세와 Git 내용을 대조해 이 최초 공개를 확인했다. 원본은 `first-deployment.json`, 완전한 이력은 `first-deployment-history.json`에 보존했다.
+- 실제 READY에서 얻은 `2026-11-01T23:19:04.618Z`를 발행·수정 시각으로 기록하고 JSON-LD·RSS와 동기화했다. 최초·수정 배포 및 양쪽 이력 필드와 완전한 article 해시를 보존했으며 준비 검증의 `metadata: verified`를 확인했다. 메타데이터 배포로 최초 시각을 바꾸지 않는다.
 - 최종 완료는 manifest의 `completionReceipt` 및 `backups/story-2026-11-02/progress.json`과 `published-verification.log`를 기준으로 판단한다. 최종 메타데이터 커밋의 READY와 운영 브라우저·RSS·이미지 검증 전에는 완료로 표시하지 않는다.
 
 기존 글·승인 사진·발행 근거·상거래 설정은 보존한다. 다른 미완료 업무, Search Console의 실제 색인 상태, 새 세션 자동 로딩은 이번 발행 검증으로 확인한 것으로 취급하지 않는다.
