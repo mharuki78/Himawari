@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-01-everyday-0515",
+    "date": "2026-11-01",
+    "category": "everyday",
+    "title": "책장 앞에서",
+    "model": "0515",
+    "color": "실버",
+    "scene": "남색 니트에 실버 백팩을 메고 책장을 살펴봐요.",
+    "alt": "남색 니트와 회색 바지를 입은 성인이 실버 No.0515 백팩을 양쪽 어깨에 메고 서점 책장을 바라보는 측면 전신 AI 착용 연출",
+    "productId": "store-13685201448",
+    "image": "/assets/lookbook/2026-11-01-everyday-0515.webp",
+    "thumbnail": "/assets/lookbook/2026-11-01-everyday-0515-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-01-city-1208",
+    "date": "2026-11-01",
+    "category": "city",
+    "title": "꽃가게 앞에서",
+    "model": "1208",
+    "color": "아이보리",
+    "scene": "아이보리 가방을 손에 들고 꽃가게 앞에 서 있어요.",
+    "alt": "밝은 셔츠와 갈색 긴 치마를 입은 성인이 아이보리 No.1208 백팩의 원래 두 손잡이를 잡고 꽃가게 앞에 선 모습을 위에서 내려다본 AI 착용 연출",
+    "productId": "store-13326577567",
+    "image": "/assets/lookbook/2026-11-01-city-1208.webp",
+    "thumbnail": "/assets/lookbook/2026-11-01-city-1208-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-10-31-everyday-9018",
     "date": "2026-10-31",
     "category": "everyday",

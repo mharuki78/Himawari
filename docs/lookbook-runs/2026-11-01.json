@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-01",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-01T00:01:07.536Z",
+    "scheduledAt": "2026-11-01T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "scheduledSlot": "2026-11-01T09:00:00+09:00",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-01/deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-01/public-catalog.json",
+  "sourceCatalogFetchedAt": "2026-11-01T00:02:46.516Z",
+  "entries": [
+    {
+      "model": "0515",
+      "id": "2026-11-01-everyday-0515",
+      "category": "everyday",
+      "color": "실버",
+      "title": "책장 앞에서",
+      "scene": "남색 니트에 실버 백팩을 메고 책장을 살펴봐요.",
+      "alt": "남색 니트와 회색 바지를 입은 성인이 실버 No.0515 백팩을 양쪽 어깨에 메고 서점 책장을 바라보는 측면 전신 AI 착용 연출",
+      "productId": "store-13685201448",
+      "dimensionsCm": [
+        35,
+        46,
+        18
+      ],
+      "composition": {
+        "approach": "environmental bookshop side-profile wearable portrait",
+        "angle": "side profile at eye level with three-quarter visibility of bag front",
+        "framing": "full-body including head and both shoes with surrounding bookshelves",
+        "activity": "standing beside bookshelves with both original shoulder straps worn",
+        "setting": "small wood-shelved bookshop with diffuse window daylight",
+        "observedFrameShare": "person approximately88percent image height; bag body about25percent; camera closer than planned75percent person height"
+      },
+      "fidelityReview": "Direct original/output comparison: metallic silver gathered body, ruched original top handle, drawstring/cord stopper, silver original backpack straps, horizontal front zip pocket, black Himawari wordmark, original oval silver pouch on viewer-right with dark perimeter zipper, side pockets, black bottom trim and two original lower clips retained. Both original straps use normal shoulder contact, far strap partly hidden naturally; no new carry mode, belt or extra pocket.46cm body plausible on full adult. Natural side-profile face, arm/hand and both shoes; no visible anatomy defect. Actual frame is closer than prompt, recorded as observed. Tiny secondary lettering is not used as product evidence; main wordmark placement matches. AI staged photo, not real customer or measured fit.",
+      "date": "2026-11-01",
+      "image": "/assets/lookbook/2026-11-01-everyday-0515.webp",
+      "thumbnail": "/assets/lookbook/2026-11-01-everyday-0515-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-01/reference-0515-front.jpg",
+      "generatedSource": "backups/lookbook-2026-11-01/generated-0515.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260728_237/1785203739585y5VOY_JPEG/130548331178797772_1520188927.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13685201448",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-01; 2026-09-14 제조사 카탈로그 4페이지의 0515 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "prompt": "Use case: photorealistic-natural. ONE 1024x1536 portrait (2:3) editorial lifestyle photo for Himawari LookBook. Reference supplies exact PRODUCT identity only, never the person or setting. A fictional adult East Asian man about48 with short wavy dark hair and glasses, plain navy knit sweater, charcoalstraighttrousers and whitesneakers stands in SIDE PROFILE in a small quiet bookshop, calmly looking along wood bookshelves. Both feet and entireheadvisible; person about75%imageheight, silverbackpackbodyabout21%imageheight, realistic46cmadultscale. Camera eyelevel at distance with shelving and floor included, genuinely environmental fullbody SIDE view, not a rear fullbody or lookingbackportrait. Bag front remains legible on rear-leftofperson, natural smallthreequarter view of bag as person faces right. His arms stay in front naturally, not coveringbag. Wears BOTH original backpack straps, proper shouldercontact. Softwindowlight, bookspines illegible. Exact attached No0515 SILVER external width35 height46 depth18cm: soft metallicsilver body with original gathered drawstring opening and silver ruched shorttophandle, original dark zipperpulls/black cordstopper, horizontallargefrontzippocket, smallblack Himawari wordmark in its original location, original silver oval zip pouch with black perimeterzipper on viewer-rightfront, sidepockets, blackbottomtrim andtwooriginalsmallbottomclips. Preserve seams, pocketcount, shape, colour, logo, straps and charm exactly. No newbelt, pockets, bag, printedtextoverlay,measurementsorwatermark. No sourcepersoncopy. Naturaladultanatomy, no openedinterior, no customerclaim.\n",
+      "generatedSha256": "8f3ebd39057c6694264c76990bbba9e6456692405156502a097e5a393d99ac40",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-def321f2-7529-4b95-b7e1-8a50a4d3c362.png"
+    },
+    {
+      "model": "1208",
+      "id": "2026-11-01-city-1208",
+      "category": "city",
+      "color": "아이보리",
+      "title": "꽃가게 앞에서",
+      "scene": "아이보리 가방을 손에 들고 꽃가게 앞에 서 있어요.",
+      "alt": "밝은 셔츠와 갈색 긴 치마를 입은 성인이 아이보리 No.1208 백팩의 원래 두 손잡이를 잡고 꽃가게 앞에 선 모습을 위에서 내려다본 AI 착용 연출",
+      "productId": "store-13326577567",
+      "dimensionsCm": [
+        29,
+        40,
+        17
+      ],
+      "composition": {
+        "approach": "high-angle hand-carry detail with pavement context",
+        "angle": "downward front-three-quarter from above at approximately40degrees",
+        "framing": "close lower-torso-to-feet crop, face excluded, one shoe fully visible and the other covered by skirt",
+        "activity": "standing by flower-shop entrance holding both original short handles in one hand",
+        "setting": "muted stone pavement with flower display at upper-left edge",
+        "observedFrameShare": "bag body about40percent image height; lower torso and long skirt fill right side; face outside frame"
+      },
+      "fidelityReview": "Direct reference/output comparison: ivory rounded-square body, original twin short ivory handles and paired dark round attachment pieces, centred small black Himawari patch, two original black curved front zipper paths/pulls, original side pockets and small dark side fittings retained. Hand grip gathers the two original handles coherently, bag hangs naturally and full body/base remains visible; no invented carry strap or stroller fitting.40cm bag scale considered against lower torso/skirt. Natural hand with partly hidden fingers, one shoe visible and other naturally covered by skirt. Actual crop/angle recorded, not planned both-shoes claim. AI staging, not real customer or measured fit.",
+      "date": "2026-11-01",
+      "image": "/assets/lookbook/2026-11-01-city-1208.webp",
+      "thumbnail": "/assets/lookbook/2026-11-01-city-1208-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-01/reference-1208-front.jpg",
+      "generatedSource": "backups/lookbook-2026-11-01/generated-1208.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260327_177/17745877470621bKeS_JPEG/3728478673959279_1633863399.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13326577567",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-01; 2026-09-14 제조사 카탈로그 30페이지의 1208 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "prompt": "Use case: photorealistic-natural. ONE 1024x1536 portrait2:3 editorial lifestyle photo for Himawari LookBook. Reference1 is EXACT PRODUCT identity, not person/stroller/setting. A fictional adult Black woman about55 wearing a plain lightcream rolled-sleeve cotton shirt, rust-brown long skirt and tanflatshoes pauses at the entrance of a small flower shop. Camera HIGH ANGLE looking diagonally DOWN around40degrees. Close detail crop from lower chest/waist to both feet; NO face needed. Her right arm hangs naturally, right hand coherently holds BOTH original short handles together at her side, with the IVORY bag front unobstructed facing the camera. Bag body fills about40-45percent pictureheight; real external WIDTH29 HEIGHT40 DEPTH17cm, not miniature. Fingers grip original handles, no additionalcarrystrap. Warm muted stonepavement, a few blurred plantpots at topedge only; no readable signs, nootherbag, nostroller. Exact attached Himawari No1208 IVORY: tall softlysquared ivorybackpackbody with roundeduppercorners, TWO shortivoryhandles with originalivorytabs anddarkroundrivets, original black rectangular Himawari patch centred upperfront, original two BLACK CURVED frontzipperlines defining the tall frontpockets, originaldarkzipperpulls, original side slip pockets and blacksmallsidefittings; original dark shoulderstraps remain behind, not a new handle. Preserve entire silhouette, colour, seams,pockets,logos and allhardware exactly. Allzippers closed, no imaginedinterior,bottle,motif,charm or extra pocket. Crisp realisticcloth under neutralsoftdaylight, naturalhandanatomy, accurateweightandperspective. This is close highangle handcarrydetail, deliberately different from fullbody sidewear photo. No textoverlay, watermark, measuringgraphicsorcustomerclaim.\n",
+      "generatedSha256": "203c5c9e14fe7ba7e6787646ffb709666d1b09397ff12a570f4bfa46eac43717",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-b8c719e1-fa7b-4171-bd5a-83fddf8d225e.png"
+    }
+  ],
+  "preparedAt": "2026-11-01T00:08:04.525001+00:00",
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-11-01-everyday-0515",
+        "2026-11-01-city-1208"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "visualReview": "backups/lookbook-2026-11-01/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-01/optimization.json",
+  "planningEvidence": "backups/lookbook-2026-11-01/visual-comparison.md"
+}
