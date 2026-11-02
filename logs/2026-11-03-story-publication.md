@@ -18,8 +18,8 @@
 
 - 날짜별 스키마 갱신과 준비 검증을 통과했다. 첫 공개 전에는 `awaiting-first-deployment`로 날짜만 사용하며 실제 시각을 만들지 않는다.
 - 구조화 데이터·발행 메타데이터 관련 테스트와 전체 테스트 298개가 통과했다. Chrome 156의 1440px·390px에서 세 글·사진·홈 최신 글·목록을 확인한다. 실제 제품 이동을 포함한 최종 로컬 결과는 `backups/story-2026-11-03/local-browser.json`을 따른다.
-- 콘텐츠 push 후 원래 baseline READY부터 production 배포 이력을 마지막 페이지까지 보존하고 READY 후보 상세·Git 내용과 대조해 실제 최초 공개를 정한다. 동일 SHA 재배포도 대조 대상이다.
-- 실제 최초 READY의 발행·수정 시각과 전체 article 해시를 목록·manifest·JSON-LD·RSS에 동기화한 뒤 메타데이터를 배포한다. 이 후속 READY로 최초 시각을 옮기지 않는다.
+- 콘텐츠 커밋 `734374cf2c4946963349426fd3963c12a2d4e986`의 실제 최초 운영 READY는 2026-11-03 08:35:00.366 KST이다. 원래 baseline READY부터 production 배포 이력을 마지막 페이지까지 보존하고 READY 후보 상세·Git 목록과 전체 article을 대조했다. 근거는 당일 `first-deployment.json`, `first-deployment-history.json`, `first-deployment-git-review.json`에 있다. 동일 SHA 재배포도 대조 대상으로 삼았다.
+- 실제 최초 READY에서 얻은 `2026-11-02T23:35:00.366Z`를 발행·수정 시각으로 목록·manifest·JSON-LD·RSS에 동기화했다. 최초·수정 배포 근거와 두 이력 필드 및 전체 article 해시를 기록했고 준비 검증의 `metadata: verified`를 확인했다. 후속 메타데이터 READY로 최초 시각을 옮기지 않는다.
 - 완료 여부는 manifest의 `completionReceipt`, 당일 `progress.json`, `published-verification.log`를 따른다. 정확한 최종 커밋 READY와 운영 PC·모바일·제품 링크·RSS 확인 및 `--published` 성공 전에는 완료가 아니다.
 
 다른 미완료 업무와 Search Console 색인 상태는 이번 발행으로 검증하지 않았다.
