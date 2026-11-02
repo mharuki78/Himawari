@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-water-resistant-fabric",
+    "title": "생활방수 원단을 쓴 백팩, 가방 전체가 방수라는 뜻일까",
+    "date": "2026-11-03",
+    "summary": "No.1089 핑크의 ‘생활방수 원단 사용’ 표기에서 출발해 원단과 완성된 가방의 방수 성능을 구분합니다. 입구·봉제부·물방울 사진이 알려주는 범위와 비 오는 날의 사용 조건을 살펴봅니다.",
+    "description": "No.1089 핑크의 ‘생활방수 원단 사용’ 표기에서 출발해 원단과 완성된 가방의 방수 성능을 구분합니다. 입구·봉제부·물방울 사진이 알려주는 범위와 비 오는 날의 사용 조건을 살펴봅니다.",
+    "tags": [
+      "생활방수",
+      "백팩 원단",
+      "우천 사용"
+    ],
+    "image": "../assets/story/backpack-water-resistant-fabric.webp",
+    "imageAlt": "비 오는 창밖을 배경으로 실내 벤치에 놓인 No.1089 핑크 백팩의 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-water-resistant-fabric.webp",
+      "../assets/story/backpack-water-resistant-fabric-detail.webp",
+      "../assets/story/backpack-water-resistant-fabric-product.webp"
+    ],
+    "url": "backpack-water-resistant-fabric.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "제품 표기의 적용 범위를 몸판·입구·사용 상황으로 넓혀 읽는 해설"
+  },
+  {
+    "id": "backpack-personal-item-size",
+    "title": "기내용 백팩과 개인 소지품, 같은 크기 기준일까",
+    "date": "2026-11-03",
+    "summary": "기내에 가져갈 백팩도 휴대용 가방과 개인 소지품 중 어느 항목인지에 따라 비교할 크기가 달라집니다. No.0514 실버미니의 외부 치수를 예로 방향을 맞춰 읽고, 짐을 담은 실물과 실제 이용편에서 더 확인할 조건을 살펴봅니다.",
+    "description": "기내에 가져갈 백팩도 휴대용 가방과 개인 소지품 중 어느 항목인지에 따라 비교할 크기가 달라집니다. No.0514 실버미니의 외부 치수를 예로 방향을 맞춰 읽고, 짐을 담은 실물과 실제 이용편에서 더 확인할 조건을 살펴봅니다.",
+    "tags": [
+      "기내용 백팩",
+      "개인 소지품",
+      "백팩 크기"
+    ],
+    "image": "../assets/story/backpack-personal-item-size.webp",
+    "imageAlt": "공항 대기 벤치에 놓인 No.0514 실버미니 백팩의 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-personal-item-size.webp",
+      "../assets/story/backpack-personal-item-size-detail.webp",
+      "../assets/story/backpack-personal-item-size-product.webp"
+    ],
+    "url": "backpack-personal-item-size.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "수하물 분류와 치수 조건을 가상 반례로 구별하는 비교 해설"
+  },
+  {
+    "id": "backpack-recycled-material-label",
+    "title": "리사이클링 백팩이라는 이름, 어느 부분이 재생 소재일까",
+    "date": "2026-11-03",
+    "summary": "No.1230의 상품명과 겉감·안감 표기를 나란히 읽고, 재생 소재를 쓴 부위와 함량이 어디까지 확인됐는지 구분합니다. 가상의 비율 문구와 RCS 안내를 참고해 섬유 이름, 재생 원료, 인증을 섞지 않는 읽기 방법을 살펴봅니다.",
+    "description": "No.1230의 상품명과 겉감·안감 표기를 나란히 읽고, 재생 소재를 쓴 부위와 함량이 어디까지 확인됐는지 구분합니다. 가상의 비율 문구와 RCS 안내를 참고해 섬유 이름, 재생 원료, 인증을 섞지 않는 읽기 방법을 살펴봅니다.",
+    "tags": [
+      "리사이클링 백팩",
+      "재생 소재",
+      "소재 표시"
+    ],
+    "image": "../assets/story/backpack-recycled-material-label.webp",
+    "imageAlt": "책상 위에 놓인 No.1230 그레이 백팩의 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-recycled-material-label.webp",
+      "../assets/story/backpack-recycled-material-label-detail.webp",
+      "../assets/story/backpack-recycled-material-label-product.webp"
+    ],
+    "url": "backpack-recycled-material-label.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "제품명에서 출발해 부위별 소재 문장과 가상 함량 표기의 적용 범위를 좁혀 읽는 편집 노트"
+  },
+  {
     "id": "backpack-denier-bag-weight",
     "title": "백팩 원단의 데니어, 가방 무게와 같은 숫자일까",
     "date": "2026-11-02",
