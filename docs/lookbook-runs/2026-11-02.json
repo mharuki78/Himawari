@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-02",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-01T23:59:58.287Z",
+    "scheduledAt": "2026-11-02T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "scheduledSlot": "2026-11-02T09:00:00+09:00",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-02/deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-02/public-catalog.json",
+  "sourceCatalogFetchedAt": "2026-11-02T00:03:09.397Z",
+  "entries": [
+    {
+      "model": "188L",
+      "id": "2026-11-02-everyday-188l",
+      "category": "everyday",
+      "color": "그레이",
+      "title": "정류장 벤치에서",
+      "scene": "청재킷을 입고 정류장 벤치에 앉아 있어요. 회색 백팩은 두 발 사이에 세워 두었어요.",
+      "alt": "청재킷과 짙은 바지를 입은 성인이 정류장 벤치에 앉아 두 발 사이에 세운 회색 No.188L 백팩의 원래 손잡이를 잡은 모습을 낮은 시점에서 담은 AI 착용 연출",
+      "productId": "coupang-4efcb6a5f2ae7b88",
+      "dimensionsCm": [
+        28,
+        39,
+        15
+      ],
+      "composition": {
+        "approach": "low-angle environmental seated hand-carry portrait",
+        "angle": "low front-three-quarter near ground looking upward",
+        "framing": "full seated body including head and both shoes with shelter and pavement",
+        "activity": "seated on busstop bench holding original twin handles while bag rests between shoes",
+        "setting": "glass bus shelter and bench in soft outdoor daylight",
+        "observedFrameShare": "person about80percent imageheight; bag body about32percent; source 39cm scale considered against seated legs and shoes"
+      },
+      "fidelityReview": "Direct original/output comparison: grey rectangular body, original twin grey handles and beige connector, silver upper double rings, beige cross-stitched attachment tabs, paired beige zip pulls, square ivory logo patch, grey angular flap pocket and two original beige buckle straps with round silver hardware, grey side pocket and straps retained. Original handles are held coherently; bag rests on pavement rather than suspended by invented fitting. Both shoes, hands and natural seated anatomy inspected. Tiny badge secondary lettering is not used as product evidence; patch size/position and main mark match source. AI staging, not customer or measured fit.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-01409f0e-d03d-4a7a-8120-06cd37705b7d.png",
+      "date": "2026-11-02",
+      "image": "/assets/lookbook/2026-11-02-everyday-188l.webp",
+      "thumbnail": "/assets/lookbook/2026-11-02-everyday-188l-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-02/reference-188L-front.jpg",
+      "generatedSource": "backups/lookbook-2026-11-02/generated-188L.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4efcb6a5f2ae7b88/main-KZMCgZUTl375uHZt7Ao3P1nrh1NIB9.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8732967336",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-02; 2026-09-14 제조사 카탈로그 57페이지의 188L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "prompt": "Use case:photorealistic-natural. ONE portrait1024x1536 (2:3) editorial lifestyle photograph for Himawari LookBook. Reference is EXACT PRODUCT only. Fictional adult SouthAsian man about32 wearing lightdenim jacket, plain offwhite Tshirt, darkolive trousers and whitesneakers sits on an openair citybusstop bench. Realisticdaylight, no readable transitlogos or numbers. CAMERA LOW nearground looking mildly upward, FRONT THREEQUARTER environmentalFULLBODY: wholehead, seat and BOTHshoes inframe; bench and glassshelter visible. No lookingback, hecalmlylookstowardstreet. Bag standsfrontfacingcamera BETWEENshoes directlyonthedrycleanpavement, onehandrestsonBOTH originalshorttophandles; handlegripnatural, otherhandrelaxedonknee. Exact referenceNo188L GREY externalwidth28 height39 depth15cm, realistic39cmheightrelativeadultshoes/shins. Darkwarmgreyrectangularbody, originalGREY twinshorttophandleswith beigeconnector, two silverupperdoubleD rings andlongbeigecrossstitchedattachmenttabs, beigepaired topzipperpulls, originalGREYlargefrontflappocket with SQUARE ivorysewnlogo patch and twooriginalbeigebuckle straps withsilverroundhardware onflap; matchinggreyshoulderstraps behindbag, sidepockets preserved. Keepbagclearlargeenoughinspect but fullenvironmentalsitting composition, nofictitiousstrap/pocketorchangedroundflaplogo. No extra bag/accessories, textoverlay, sizingdiagram orwatermark. Natural anatomy, fingers andboth feet.\n",
+      "generatedSha256": "71111ee606fb34524ce055990aff20f72a58ddaf5a1390f6d1e265fe76cc93cd"
+    },
+    {
+      "model": "194L",
+      "id": "2026-11-02-city-194l",
+      "category": "city",
+      "color": "라벤더",
+      "title": "음반을 고르며",
+      "scene": "초록색 상의에 연보라 백팩을 메고 음반을 살펴봐요.",
+      "alt": "초록색 상의를 입은 성인이 라벤더 No.194L 백팩을 원래 양쪽 어깨끈으로 메고 음반을 살펴보는 옆뒤 사선 상반신 AI 착용 연출",
+      "productId": "coupang-08039b2ac81db358",
+      "dimensionsCm": [
+        28,
+        39,
+        15
+      ],
+      "composition": {
+        "approach": "close wearable record-browsing activity portrait",
+        "angle": "side-rear three-quarter at midtorso height",
+        "framing": "close head-to-upper-thigh crop with top of hair cropped; no full body",
+        "activity": "wearing both original shoulderstraps and browsing a record sleeve with hands in front",
+        "setting": "warm wood recordshop with window sidelight and vinyl bins",
+        "observedFrameShare": "bag body about50percent imageheight, closer than planned35percent; source28x39x15cm proportions retained"
+      },
+      "fidelityReview": "Direct source/output comparison: lavender soft rectangle, matching original shoulderstraps and short twin handles, greige handle connector, silver upper double rings, greige X-stitched upper tabs, rounded flap front pocket with centered rounded-rectangle Himawari badge, two greige buckle straps/round metal fittings and original side zipper pull retained. Both shoulder contacts and natural arm/hand posture inspected; no added chest/hipbelt, pocket or charm. Profile face looks at record bins rather than looking at camera. Output closer than prompt, recorded as observed. AI staging, not actual customer or fit testing.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-b54c7e56-baa5-4a43-a734-917d95f72768.png",
+      "date": "2026-11-02",
+      "image": "/assets/lookbook/2026-11-02-city-194l.webp",
+      "thumbnail": "/assets/lookbook/2026-11-02-city-194l-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-02/reference-194L-front.jpg",
+      "generatedSource": "backups/lookbook-2026-11-02/generated-194L.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-08039b2ac81db358/main-mkrOsxkr3orTIBRMVe620YMpIMn39j.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8732967408",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-02; 2026-09-14 제조사 카탈로그 44페이지의 194L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "prompt": "Use case:photorealistic-natural. ONE portrait1024x1536 (2:3) editorial wearable close lifestyle photograph, Himawari LookBook. Reference image EXACT PRODUCT identity only. Fictional adult Blackwoman about38 with shortnaturalcurlyhair and smallsimpleearrings, plain darkforestgreen longsleevecotton top, tantrousers stands facingleft at bins in smallwarmrecordshop, onehand browses sleeveofvinylrecordinfrontofher; readablealbumtext notneeded. She wears BOTH ORIGINAL backpackshoulderstraps normally. Camera from SIDE-REAR THREEQUARTER atmidtorsoheight close, framing HEAD TO HIPS, NOTFULLBODY. Shelooksdownatrecords, NOTatcamera/overhershoulder. Backpackfront fullylegible onrightofherback inthreequarterview, occupyingabout35%pictureheight, real39cmheight andwidth28 depth15cm accurateadultproportion. ExactNo194L softLAVENDERbody, matchinglavendershorttwinhandles and originalshoulderstraps, lightGREIGEtwo rectangularupperattachmenttabs with X stitching/silverupperdoubleD rings, greigeconnectoraroundhandles, smallroundedrectangularHimawaripatch centeredonfrontflappocket, roundedcornersfrontflap and TWOgreigebuckle straps with silverroundsnaplikehardware and metalbuckles, greigezipperpull atside. Preserveentire pocketconfiguration, colours, straps, emblem and silhouette exactly. No newfrontloop, belt, bag, keychain, brand badge orimaginaryhardware. Softsidewindowlight, vinylbins andwoodcabinetsetting, crediblehumanhand/arms. No overlaytext, watermark, collage orcustomerclaim.\n",
+      "generatedSha256": "1b0e7e9388f8cb5ec589f6132cdc106a9f487ba1d9eec99e9a9ab3473eea928f"
+    }
+  ],
+  "preparedAt": "2026-11-02T00:08:01.878347+00:00",
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-11-02-everyday-188l",
+        "2026-11-02-city-194l"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "visualReview": "backups/lookbook-2026-11-02/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-02/optimization.json",
+  "planningEvidence": "backups/lookbook-2026-11-02/visual-comparison.md"
+}
