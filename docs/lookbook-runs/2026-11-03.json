@@ -1,0 +1,109 @@
+{
+  "date": "2026-11-03",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-03T00:01:58.777Z",
+    "scheduledAt": "2026-11-03T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "scheduledSlot": "2026-11-03T09:00:00+09:00",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-03/deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-03/public-catalog.json",
+  "sourceCatalogFetchedAt": "2026-11-03T00:04:31.249Z",
+  "entries": [
+    {
+      "model": "1088M",
+      "id": "2026-11-03-everyday-1088m",
+      "category": "everyday",
+      "color": "그린",
+      "title": "전시장 입구에서",
+      "scene": "남색 카디건을 입고 전시장 입구에 서 있어요. 연한 초록색 가방은 손잡이로 들어요.",
+      "alt": "남색 카디건과 밝은 바지를 입은 성인이 그린 No.1088M 백팩의 원래 분홍색 두 손잡이를 잡고 전시장 입구에 선 앞쪽 사선 AI 착용 연출",
+      "productId": "store-13308752642",
+      "dimensionsCm": [
+        28,
+        41.5,
+        14
+      ],
+      "composition": {
+        "approach": "close hand-carry gallery-entry portrait",
+        "angle": "front-three-quarter slightly downward at upper-chest level",
+        "framing": "head to below-knee crop with feet outside frame; entire hand-carried bag visible",
+        "activity": "standing at gallery entrance holding both original short pink handles in one hand",
+        "setting": "light-stone exhibition-gallery doorway with soft indoor daylight",
+        "observedFrameShare": "bag body about34percent imageheight; human head-to-knee framing wider than planned upperthigh crop; 41.5cm scale considered against torso and thighs"
+      },
+      "fidelityReview": "Direct source/output comparison including source enlarged front and real detail catalogue: palegreen body, pink twin handles, offwhite handle connector, original pink frontwebbing and offwhite adjusters, pink bottom edge, long offwhite zip pulls, upper doublezip, round pale logo patch and frontzip pocket preserved. Actual roundbadge verified in reference-1088M-front-inspection.jpg. Wholebag scale consistent28x41.5x14cm relative person. Both handles grip and fingers inspected, no added strap or belt. Output recorded at observed head-to-knee framing; AI staged adult, not customer or measured fit.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-922b2dd6-591e-4ea9-a17b-322083027fda.png",
+      "date": "2026-11-03",
+      "image": "/assets/lookbook/2026-11-03-everyday-1088m.webp",
+      "thumbnail": "/assets/lookbook/2026-11-03-everyday-1088m-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-03/reference-1088M-front.jpg",
+      "generatedSource": "backups/lookbook-2026-11-03/generated-1088M.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260326_100/17745078126890NcU7_JPEG/593205736606817_1806444046.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13308752642",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-03; 2026-09-14 제조사 카탈로그 27페이지의 1088M 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "prompt": "Use case:photorealistic-natural. Single portrait1024x1536 (2:3) editorial lifestyle photograph for Himawari LookBook. Exact reference PRODUCT only, do not copy reference model. Fictional EastAsian adultwoman around58 withshortsalt-and-pepperhair, navyknittedcardigan and creamtrousers, standing in minimalist exhibitiongallery entry lobby. Camera slightly above chest looking down, FRONT-THREEQUARTER CLOSE WEARABLE HAND-CARRY portrait, topofhead to upperthigh crop, entire bag clear inframe in front of her right thigh. One hand holds BOTH ORIGINAL SHORT PINK TOPHANDLES naturally, otherarmrelaxed. ExactNo1088M GREEN (pale mintgreen) backpack external28cm wide41.5cm high14cm deep, realistic41.5cm heightnexttoadulttorso/thigh. Preserve source palegreen body, original pink handles with smalloffwhiteconnector, two originalpinkverticalfrontwebbing strips with OFFWHITEadjusterbuckles, pinkbottomedge, palegreen rectangularfrontzipperpocket with lightziptrack and long offwhitepull, original rounded upperdoublezip with creamteardroppulls, palegreenoriginalshoulderstraps behindbag. Preserve shape/colour/hardware/pockets/logo fromreference, no added logos, charms, shoulderstrap orchestbelt. Simple lightstone wall with gallery door behind, softindoorwindowlight. She looks towardentry calmly NOToverhershoulder. No extra bag, tickettext, overlay, watermark, collage or customer's claim. Hands/fingers anatomicallycredible.\n",
+      "generatedSha256": "0d46da39c8f160f4fef0416416afa936f364ec9b4237939e2b1a4d5d5b5a8bfb"
+    },
+    {
+      "model": "9007",
+      "id": "2026-11-03-city-9007",
+      "category": "city",
+      "color": "퍼플",
+      "title": "자전거 옆에서",
+      "scene": "베이지색 셔츠에 보라색 백팩을 메고 자전거 옆에 서 있어요.",
+      "alt": "베이지색 셔츠와 짙은 바지를 입은 성인이 퍼플 No.9007 백팩을 원래 양쪽 어깨끈으로 메고 자전거 옆에 서 있는 옆뒤 사선 전신 AI 착용 연출",
+      "productId": "coupang-c897de17705c2521",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "composition": {
+        "approach": "environmental standing bicycle-side wearable portrait",
+        "angle": "side-rear three-quarter at adult waist height",
+        "framing": "full-body including entire head and both shoes with bicycle and paved setting",
+        "activity": "standing beside parked bicycle with both original purple backpack straps worn normally",
+        "setting": "neighbourhood bicycle parking area with brickwall and soft overcast daylight",
+        "observedFrameShare": "bag about27percent imageheight; whole person about90percent; 40cm bag height consistent against adult torso"
+      },
+      "fidelityReview": "Direct source/output comparison and enlarged logo-inspection-9007.png: purple rectangular body, turquoise base, original purple cap-shaped pouch with turquoisebrim/button and offwhiteclip, white Himawari wordmark with original rounded a letterform, twin purplehandles/greigeconnector, lightziptracks/turquoisepulls, original sidepockets and two shoulderstraps retained. First result had ambiguous smallletterform and was replaced by precise imagegen wordmark edit; accepted output enlarged and compared against source. Both shoes/legs and shoulder connections inspected; no invented belt/strap. Not riding, no cycling performance or customer claim.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-29606418-ccb5-4e48-acbb-c662fc517237.png",
+      "date": "2026-11-03",
+      "image": "/assets/lookbook/2026-11-03-city-9007.webp",
+      "thumbnail": "/assets/lookbook/2026-11-03-city-9007-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-03/reference-9007-front.jpg",
+      "generatedSource": "backups/lookbook-2026-11-03/generated-9007.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-c897de17705c2521/main-i6Tnykp60pjS14R6wnarr7MZ9fBu8T.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9593416918",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-03; 2026-09-14 제조사 카탈로그 10페이지의 9007 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "prompt": "Use case:photorealistic-natural. ONE portrait1024x1536 (2:3) editorial environmental photograph for Himawari LookBook. Exact reference is PRODUCT identity only. Fictional adult LatinAmerican man about42 with shortdarkcurlyhair, sand-colour cottonovershirt, charcoaltrousers and simple darksneakers, standing next to a citybicycle at an open neighbourhood bicycleparking area. He is NOT riding. BOTH ORIGINAL PURPLE backpackshoulderstraps worn normally. Wideenvironmental fullbody fromrear-threequarter side at adult waistheight, completehead and BOTHshoes inframe, head looksforwardtoward bicycle, notbackatcamera. Bagfront visible obliquely butlegible, entirebag about27percentimageheight, exactNo9007PURPLE outside28cm wide40cm high17cm deep realisticadultscale. Preserve purple rectangularbody, twinshortpurpletophandles withgreigeconnector, white Himawari wordmark uppermiddle front, original small baseballcapshaped PURPLE pouch with TURQUOISEbrimandbutton attachedwithoriginaloffwhiteclipatupperleft, tinycapembroideredmark, offwhite main/frontziptracks, turquoisebottompanel and zipperpulls, matchingpurpleshoulderstraps and sidepockets. No added chestbelt, newstrap/charms/pockets orreplacedlogo. Bicycle doesnotobscurebag. Softmorningovercastlight, simplepavement and lowbrickwalls/parkedbikes, understatedrealism. No cyclingperformance/safetyclaim, no readable shop signs, overlaytext, watermark orcollage.\n",
+      "generatedSha256": "49ed66e20caa1691ed2cb3e968b9da2ed0d9e442b0ad86ba671809fd4b44e230"
+    }
+  ],
+  "preparedAt": "2026-11-03T00:13:00.932524+00:00",
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-11-03-everyday-1088m",
+        "2026-11-03-city-9007"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "visualReview": "backups/lookbook-2026-11-03/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-03/optimization.json",
+  "planningEvidence": "backups/lookbook-2026-11-03/visual-comparison.md",
+  "sourceDetailEvidence": "backups/lookbook-2026-11-03/reference-1088M-detail.jpg"
+}

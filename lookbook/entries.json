@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-03-everyday-1088m",
+    "date": "2026-11-03",
+    "category": "everyday",
+    "title": "전시장 입구에서",
+    "model": "1088M",
+    "color": "그린",
+    "scene": "남색 카디건을 입고 전시장 입구에 서 있어요. 연한 초록색 가방은 손잡이로 들어요.",
+    "alt": "남색 카디건과 밝은 바지를 입은 성인이 그린 No.1088M 백팩의 원래 분홍색 두 손잡이를 잡고 전시장 입구에 선 앞쪽 사선 AI 착용 연출",
+    "productId": "store-13308752642",
+    "image": "/assets/lookbook/2026-11-03-everyday-1088m.webp",
+    "thumbnail": "/assets/lookbook/2026-11-03-everyday-1088m-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-03-city-9007",
+    "date": "2026-11-03",
+    "category": "city",
+    "title": "자전거 옆에서",
+    "model": "9007",
+    "color": "퍼플",
+    "scene": "베이지색 셔츠에 보라색 백팩을 메고 자전거 옆에 서 있어요.",
+    "alt": "베이지색 셔츠와 짙은 바지를 입은 성인이 퍼플 No.9007 백팩을 원래 양쪽 어깨끈으로 메고 자전거 옆에 서 있는 옆뒤 사선 전신 AI 착용 연출",
+    "productId": "coupang-c897de17705c2521",
+    "image": "/assets/lookbook/2026-11-03-city-9007.webp",
+    "thumbnail": "/assets/lookbook/2026-11-03-city-9007-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-02-everyday-188l",
     "date": "2026-11-02",
     "category": "everyday",
