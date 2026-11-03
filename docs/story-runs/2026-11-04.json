@@ -6,14 +6,14 @@
     "scheduledAt": "2026-11-04T08:00:00+09:00",
     "edition": "morning"
   },
-  "stage": "prepared",
+  "stage": "metadata-verified",
   "publicationBaselineCommit": "2699241eebc3440b3529bbf90b49db0f25f3f301",
   "publicationBaselineEvidence": "backups/story-2026-11-04/baseline-deployment.json",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "posts": [
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-detachable-shoulder-bag-spec",
       "title": "숄더백이 함께 보이는 백팩, 900g은 어디까지 잰 걸까",
       "url": "https://himawari.co.kr/story/backpack-detachable-shoulder-bag-spec.html",
@@ -87,10 +87,19 @@
           "alt": "No.0403 베이지의 실제 제품 카탈로그 사진",
           "caption": "실제 제품 사진: No.0403 베이지의 공개 카탈로그 원본입니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-03T23:22:12.231Z",
+        "modifiedAt": "2026-11-03T23:22:12.231Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-04/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-04/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-04/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-04/first-deployment-history.json",
+        "articleSha256": "f5cdcfbf3ca2da2871e7398f47bbe40bfceff355f66a03e66877b2dac62fb3b1"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-find-zipper-low-light",
       "title": "불빛이 약한 곳에서 백팩 지퍼를 찾는 법",
       "url": "https://himawari.co.kr/story/backpack-find-zipper-low-light.html",
@@ -164,10 +173,19 @@
           "alt": "No.9290 블랙의 실제 제품 카탈로그 사진",
           "caption": "실제 제품 사진: No.9290 블랙의 공개 카탈로그 원본입니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-03T23:22:12.231Z",
+        "modifiedAt": "2026-11-03T23:22:12.231Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-04/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-04/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-04/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-04/first-deployment-history.json",
+        "articleSha256": "047b892f6183c7253252d1481204871740ac14d82002e1a816f858dccffdbfe4"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-wall-hook-storage",
       "title": "백팩을 벽에 걸어둘까, 선반에 올려둘까",
       "url": "https://himawari.co.kr/story/backpack-wall-hook-storage.html",
@@ -241,7 +259,16 @@
           "alt": "No.200 블랙의 실제 제품 카탈로그 사진",
           "caption": "실제 제품 사진: No.200 블랙의 공개 카탈로그 원본입니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-03T23:22:12.231Z",
+        "modifiedAt": "2026-11-03T23:22:12.231Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-04/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-04/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-04/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-04/first-deployment-history.json",
+        "articleSha256": "783f5eeddb3b5c0cc4b74eaf37424b54146b040d8fce8523b9cd9f71de9aa6b4"
+      }
     }
   ],
   "editions": {
@@ -251,7 +278,7 @@
         "backpack-find-zipper-low-light",
         "backpack-wall-hook-storage"
       ],
-      "stage": "prepared"
+      "stage": "metadata-verified"
     }
   },
   "topicsReviewed": 182,
