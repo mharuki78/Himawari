@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-detachable-shoulder-bag-spec",
+    "title": "숄더백이 함께 보이는 백팩, 900g은 어디까지 잰 걸까",
+    "date": "2026-11-04",
+    "summary": "No.0403 베이지의 백팩 외부 크기와 숄더백 치수를 각각 읽고, 900g 표기에서 확인해야 할 측정 범위를 살펴봅니다. 사진에 보이는 구성, 주문에 포함되는 품목, 실제 중량의 기준을 구별합니다.",
+    "description": "No.0403 베이지의 백팩 외부 크기와 숄더백 치수를 각각 읽고, 900g 표기에서 확인해야 할 측정 범위를 살펴봅니다. 사진에 보이는 구성, 주문에 포함되는 품목, 실제 중량의 기준을 구별합니다.",
+    "tags": [
+      "백팩 제원",
+      "숄더백",
+      "가방 무게"
+    ],
+    "image": "../assets/story/backpack-detachable-shoulder-bag-spec.webp",
+    "imageAlt": "책상 위 No.0403 베이지 백팩과 빈 확인표 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-detachable-shoulder-bag-spec.webp",
+      "../assets/story/backpack-detachable-shoulder-bag-spec-detail.webp",
+      "../assets/story/backpack-detachable-shoulder-bag-spec-product.webp"
+    ],
+    "url": "backpack-detachable-shoulder-bag-spec.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "상품 제원을 비교 메모에 옮기고 측정 범위를 확인한 뒤 중량 항목을 갱신하는 사례"
+  },
+  {
+    "id": "backpack-find-zipper-low-light",
+    "title": "불빛이 약한 곳에서 백팩 지퍼를 찾는 법",
+    "date": "2026-11-04",
+    "summary": "No.9290의 흰 앞주머니 지퍼와 검은 윗입구를 나란히 살펴봅니다. 가방의 방향이나 그림자가 바뀌었을 때 지퍼의 색과 이어지는 길, 손끝에 닿는 주머니 위치로 열려는 입구를 구분하는 방법입니다.",
+    "description": "No.9290의 흰 앞주머니 지퍼와 검은 윗입구를 나란히 살펴봅니다. 가방의 방향이나 그림자가 바뀌었을 때 지퍼의 색과 이어지는 길, 손끝에 닿는 주머니 위치로 열려는 입구를 구분하는 방법입니다.",
+    "tags": [
+      "백팩 지퍼",
+      "앞주머니",
+      "백팩 사용"
+    ],
+    "image": "../assets/story/backpack-find-zipper-low-light.webp",
+    "imageAlt": "복도 선반에 놓인 No.9290 블랙 백팩 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-find-zipper-low-light.webp",
+      "../assets/story/backpack-find-zipper-low-light-detail.webp",
+      "../assets/story/backpack-find-zipper-low-light-product.webp"
+    ],
+    "url": "backpack-find-zipper-low-light.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "밝은 방과 어두운 현관을 오가며 눈과 손의 단서를 비교하는 장면형 해설"
+  },
+  {
+    "id": "backpack-wall-hook-storage",
+    "title": "백팩을 벽에 걸어둘까, 선반에 올려둘까",
+    "date": "2026-11-04",
+    "summary": "빈 백팩을 잠시 두는 저녁과 짐을 담은 채 다시 열어야 하는 저녁을 비교합니다. No.200의 손잡이·스냅 탭·어깨끈을 구별하고, 가방과 벽걸이의 사용 안내에 따라 걸이와 선반 중 알맞은 자리를 살펴봅니다.",
+    "description": "빈 백팩을 잠시 두는 저녁과 짐을 담은 채 다시 열어야 하는 저녁을 비교합니다. No.200의 손잡이·스냅 탭·어깨끈을 구별하고, 가방과 벽걸이의 사용 안내에 따라 걸이와 선반 중 알맞은 자리를 살펴봅니다.",
+    "tags": [
+      "백팩 보관",
+      "벽걸이",
+      "선반"
+    ],
+    "image": "../assets/story/backpack-wall-hook-storage.webp",
+    "imageAlt": "낮은 선반에 세워 둔 No.200 블랙 백팩 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-wall-hook-storage.webp",
+      "../assets/story/backpack-wall-hook-storage-detail.webp",
+      "../assets/story/backpack-wall-hook-storage-product.webp"
+    ],
+    "url": "backpack-wall-hook-storage.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "빈 가방과 짐 든 가방이 돌아오는 저녁을 대조하는 상황별 선택"
+  },
+  {
     "id": "backpack-water-resistant-fabric",
     "title": "생활방수 원단을 쓴 백팩, 가방 전체가 방수라는 뜻일까",
     "date": "2026-11-03",
