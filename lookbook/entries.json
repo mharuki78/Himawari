@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-04-everyday-124s",
+    "date": "2026-11-04",
+    "category": "everyday",
+    "title": "마당 입구에서",
+    "model": "124S",
+    "color": "옐로우",
+    "scene": "갈색 재킷을 입고 마당 입구에서 연노란 백팩을 손에 들어요.",
+    "alt": "갈색 소매가 보이는 손으로 연노란 No.124S 백팩을 드는 AI 착용 연출",
+    "productId": "coupang-89f32d8ebba306ec",
+    "image": "/assets/lookbook/2026-11-04-everyday-124s.webp",
+    "thumbnail": "/assets/lookbook/2026-11-04-everyday-124s-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-04-city-1682",
+    "date": "2026-11-04",
+    "category": "city",
+    "title": "보행교를 건너며",
+    "model": "1682",
+    "color": "그레이",
+    "scene": "회색 롤탑 백팩을 메고 보행교를 건너요. 남색 재킷 위로 검은 어깨끈이 보여요.",
+    "alt": "회색 No.1682 롤탑 백팩을 메고 보행교를 걷는 사람의 옆뒤 전신 AI 착용 연출",
+    "productId": "coupang-00860ebfcbb609f9",
+    "image": "/assets/lookbook/2026-11-04-city-1682.webp",
+    "thumbnail": "/assets/lookbook/2026-11-04-city-1682-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-03-everyday-1088m",
     "date": "2026-11-03",
     "category": "everyday",

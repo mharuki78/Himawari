@@ -1,0 +1,104 @@
+{
+  "date": "2026-11-04",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-04T00:00:50.605Z",
+    "scheduledAt": "2026-11-04T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "scheduledSlot": "2026-11-04T09:00:00+09:00",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-04/deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-04/public-catalog.json",
+  "sourceCatalogFetchedAt": "2026-11-04T00:02:27.538Z",
+  "entries": [
+    {
+      "id": "2026-11-04-everyday-124s",
+      "model": "124S",
+      "category": "everyday",
+      "title": "마당 입구에서",
+      "color": "옐로우",
+      "scene": "갈색 재킷을 입고 마당 입구에서 연노란 백팩을 손에 들어요.",
+      "alt": "갈색 소매가 보이는 손으로 연노란 No.124S 백팩을 드는 AI 착용 연출",
+      "productId": "coupang-89f32d8ebba306ec",
+      "dimensionsCm": [
+        22,
+        33,
+        14
+      ],
+      "composition": {
+        "approach": "close hand-carry product detail",
+        "angle": "front, slightly downward",
+        "framing": "hand and lower torso crop with entire bag",
+        "activity": "holding both short handles at the side",
+        "setting": "paved courtyard entrance"
+      },
+      "fidelityReview": "Reviewed generated output against catalog: cream yellow body, narrow brown base, rectangular logo, black zipper, four black rivets, handle keeper and side pockets retained. Hand and bag proportions plausible.",
+      "date": "2026-11-04",
+      "image": "/assets/lookbook/2026-11-04-everyday-124s.webp",
+      "thumbnail": "/assets/lookbook/2026-11-04-everyday-124s-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-04/reference-124S-front.jpg",
+      "generatedSource": "backups/lookbook-2026-11-04/generated-124S.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-89f32d8ebba306ec/main-RZbO1NbGDv0opC3TEzfRgp5JrIzNtG.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8645627102",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-04; 2026-09-14 제조사 카탈로그 34페이지의 124S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "prompt": "Portrait 1024x1536 photographic LookBook. Exact Himawari No.124S yellow backpack from reference, 22 wide x 33 high x 14 deep cm. Overhead nearly top-down close environmental detail: fictional adult woman's hand holds original paired cream top handles naturally, full bag front visible at her side, terracotta jacket sleeve and trouser leg and paving at quiet courtyard entrance, head not in frame. Bag approximately 58% of image height. Preserve cream pale yellow fabric, warm brown narrow bottom, black horizontal front zip and pull, black rectangular Himawari label with exact original wordmark, paired two black rivets on each handle tab, black handle keeper, both side pocket edges and black upper zipper pulls. No new hardware or accessories. Bag photographed with its front face tipped slightly upward, no opening or performance claim.\n",
+      "generatedSha256": "c2bc87f1f7cf3175b501df7284037d3520b4b76cc09aef26dd22a73141982c7e"
+    },
+    {
+      "id": "2026-11-04-city-1682",
+      "model": "1682",
+      "category": "city",
+      "title": "보행교를 건너며",
+      "color": "그레이",
+      "scene": "회색 롤탑 백팩을 메고 보행교를 건너요. 남색 재킷 위로 검은 어깨끈이 보여요.",
+      "alt": "회색 No.1682 롤탑 백팩을 메고 보행교를 걷는 사람의 옆뒤 전신 AI 착용 연출",
+      "productId": "coupang-00860ebfcbb609f9",
+      "dimensionsCm": [
+        30,
+        50,
+        14
+      ],
+      "composition": {
+        "approach": "environmental walking portrait",
+        "angle": "side-rear three-quarter",
+        "framing": "full-body with bridge and skyline",
+        "activity": "walking while wearing both shoulder straps",
+        "setting": "outdoor pedestrian bridge under cloudy daylight"
+      },
+      "fidelityReview": "Reviewed against catalog: grey tall body, black rolltop, two buckle straps, top loop, U zipper and twin pulls, wordmark, dark base and asymmetric panel retained; walking anatomy and relative bag scale plausible.",
+      "date": "2026-11-04",
+      "image": "/assets/lookbook/2026-11-04-city-1682.webp",
+      "thumbnail": "/assets/lookbook/2026-11-04-city-1682-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-04/reference-1682-front.jpg",
+      "generatedSource": "backups/lookbook-2026-11-04/generated-1682.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-00860ebfcbb609f9/main-rCV6RzlGBvwZvBZtCPx6rcOOl2mgYF.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8653683058",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-04; 2026-09-14 제조사 카탈로그 39페이지의 1682 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "prompt": "Portrait 1024x1536 natural editorial LookBook. Exact reference Himawari No.1682 grey 30x50x14cm tall rectangular rolltop backpack worn with original two black shoulder straps on fictional adult Black man in muted indigo jacket and light trousers, walking on a broad outdoor pedestrian bridge in soft cloudy daylight. Camera waist height side-rear three-quarter profile, full body with both shoes and large environment, bag frontal panel visible obliquely and occupies about 25% image height. Match light heather grey panel, black rolled top with two black buckle straps running vertically, black top grab loop, U-shaped black front zipper with two long black pull ends at center, small black Himawari lettering, lower black base, asymmetric side seams exactly. No extra exterior pouch or text, no chest belt. Natural walking pose.\n",
+      "generatedSha256": "2f9e97021a8cf14b41cb819de96bfe1aa87ae43029d4fa982e75cad262788a86"
+    }
+  ],
+  "preparedAt": "2026-11-04T00:07:54.603067+00:00",
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-11-04-everyday-124s",
+        "2026-11-04-city-1682"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "visualReview": "backups/lookbook-2026-11-04/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-04/optimization.json",
+  "planningEvidence": "backups/lookbook-2026-11-04/visual-comparison.md"
+}
