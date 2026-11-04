@@ -6,14 +6,14 @@
     "scheduledAt": "2026-11-05T08:00:00+09:00",
     "edition": "morning"
   },
-  "stage": "prepared",
+  "stage": "metadata-verified",
   "publicationBaselineCommit": "3a0e0a8b70125a74256cab2def56cc790c82ed68",
   "publicationBaselineEvidence": "backups/story-2026-11-05/baseline-deployment.json",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "posts": [
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-extra-base-insert",
       "title": "백팩 바닥에 판을 더 넣으면 모양이 잡힐까",
       "url": "https://himawari.co.kr/story/backpack-extra-base-insert.html",
@@ -87,10 +87,19 @@
           "alt": "No.1088M 블랙의 실제 제품 카탈로그 사진",
           "caption": "실제 제품 사진: No.1088M 블랙의 공개 카탈로그 원본입니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-04T23:27:16.122Z",
+        "modifiedAt": "2026-11-04T23:27:16.122Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-05/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-05/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-05/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-05/first-deployment-history.json",
+        "articleSha256": "7d6b62811eda1a837187b572d65f50c749cd129dcca41ad2e9d7e82e56dd7816"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-mirrored-product-photo",
       "title": "사진에서 백팩 포켓의 좌우가 바뀌어 보일 때",
       "url": "https://himawari.co.kr/story/backpack-mirrored-product-photo.html",
@@ -164,10 +173,19 @@
           "alt": "No.1208 아이보리의 실제 제품 카탈로그 사진",
           "caption": "실제 제품 사진: No.1208 아이보리의 공개 카탈로그 원본입니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-04T23:27:16.122Z",
+        "modifiedAt": "2026-11-04T23:27:16.122Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-05/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-05/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-05/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-05/first-deployment-history.json",
+        "articleSha256": "dc21b1053ed9dcee08082ae596dac73d9296df159d6a459c079d0d33396ea287"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-openings-compartment-count",
       "title": "백팩에 입구가 여러 개면 큰 수납실도 여러 개일까",
       "url": "https://himawari.co.kr/story/backpack-openings-compartment-count.html",
@@ -241,7 +259,16 @@
           "alt": "No.9018 블랙의 실제 제품 카탈로그 사진",
           "caption": "실제 제품 사진: No.9018 블랙의 공개 카탈로그 원본입니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-04T23:27:16.122Z",
+        "modifiedAt": "2026-11-04T23:27:16.122Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-05/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-05/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-05/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-05/first-deployment-history.json",
+        "articleSha256": "df8562bc59408a656fe00ee8b0106397bbd1bde1e538a7c2241e85e47080cb5f"
+      }
     }
   ],
   "editions": {
@@ -251,7 +278,7 @@
         "backpack-mirrored-product-photo",
         "backpack-openings-compartment-count"
       ],
-      "stage": "prepared"
+      "stage": "metadata-verified"
     }
   },
   "topicsReviewed": 185,
