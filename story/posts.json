@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-extra-base-insert",
+    "title": "백팩 바닥에 판을 더 넣으면 모양이 잡힐까",
+    "date": "2026-11-05",
+    "summary": "No.1088M의 외부 크기로 안쪽 바닥판을 정할 수 있는지 살펴봅니다. 받침을 더하기 전 확인할 모서리와 입구, 추가 두께와 무게, 안감에 닿는 상태를 짚습니다.",
+    "description": "No.1088M의 외부 크기로 안쪽 바닥판을 정할 수 있는지 살펴봅니다. 받침을 더하기 전 확인할 모서리와 입구, 추가 두께와 무게, 안감에 닿는 상태를 짚습니다.",
+    "tags": [
+      "백팩 바닥",
+      "가방 형태",
+      "안감 관리"
+    ],
+    "image": "../assets/story/backpack-extra-base-insert.webp",
+    "imageAlt": "No.1088M 블랙 백팩 옆에 별도 받침을 놓은 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-extra-base-insert.webp",
+      "../assets/story/backpack-extra-base-insert-detail.webp",
+      "../assets/story/backpack-extra-base-insert-product.webp"
+    ],
+    "url": "backpack-extra-base-insert.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "별도 바닥판을 추가하기 전 배치·치수·기능·관리를 따져보는 선택 검토"
+  },
+  {
+    "id": "backpack-mirrored-product-photo",
+    "title": "사진에서 백팩 포켓의 좌우가 바뀌어 보일 때",
+    "date": "2026-11-05",
+    "summary": "No.1208 아이보리의 손잡이·로고·앞 지퍼를 기준으로 사진의 방향을 비교합니다. 촬영 각도와 좌우 반전, 움직인 지퍼 손잡이와 다른 옵션을 구별해 포켓 위치를 확인하는 방법입니다.",
+    "description": "No.1208 아이보리의 손잡이·로고·앞 지퍼를 기준으로 사진의 방향을 비교합니다. 촬영 각도와 좌우 반전, 움직인 지퍼 손잡이와 다른 옵션을 구별해 포켓 위치를 확인하는 방법입니다.",
+    "tags": [
+      "가방 사진",
+      "포켓 위치",
+      "제품 비교"
+    ],
+    "image": "../assets/story/backpack-mirrored-product-photo.webp",
+    "imageAlt": "No.1208 아이보리의 앞면을 정면에서 본 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-mirrored-product-photo.webp",
+      "../assets/story/backpack-mirrored-product-photo-detail.webp",
+      "../assets/story/backpack-mirrored-product-photo-product.webp"
+    ],
+    "url": "backpack-mirrored-product-photo.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "사진 속 좌우 불일치를 촬영 방향·글자·옵션 순서로 좁히는 관찰 해설"
+  },
+  {
+    "id": "backpack-openings-compartment-count",
+    "title": "백팩에 입구가 여러 개면 큰 수납실도 여러 개일까",
+    "date": "2026-11-05",
+    "summary": "No.9018 블랙의 닫힌 외관에서 출발해 지퍼 손잡이·입구·내부 공간을 구별합니다. 독립 수납실과 작은 주머니를 같은 숫자로 세지 않고, 짐을 분리하려는 목적에 맞춰 확인할 사진과 치수를 살펴봅니다.",
+    "description": "No.9018 블랙의 닫힌 외관에서 출발해 지퍼 손잡이·입구·내부 공간을 구별합니다. 독립 수납실과 작은 주머니를 같은 숫자로 세지 않고, 짐을 분리하려는 목적에 맞춰 확인할 사진과 치수를 살펴봅니다.",
+    "tags": [
+      "백팩 구조",
+      "수납실",
+      "가방 입구"
+    ],
+    "image": "../assets/story/backpack-openings-compartment-count.webp",
+    "imageAlt": "No.9018 블랙의 닫힌 입구와 앞 덮개를 본 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-openings-compartment-count.webp",
+      "../assets/story/backpack-openings-compartment-count-detail.webp",
+      "../assets/story/backpack-openings-compartment-count-product.webp"
+    ],
+    "url": "backpack-openings-compartment-count.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "지퍼 손잡이·독립 수납실·포켓의 차이를 네 질문으로 풀어보는 문답"
+  },
+  {
     "id": "backpack-detachable-shoulder-bag-spec",
     "title": "숄더백이 함께 보이는 백팩, 900g은 어디까지 잰 걸까",
     "date": "2026-11-04",
