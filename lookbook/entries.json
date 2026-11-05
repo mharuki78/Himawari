@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-05-everyday-1084h",
+    "date": "2026-11-05",
+    "category": "everyday",
+    "title": "공원 탁자에서",
+    "model": "1084H",
+    "color": "민트",
+    "scene": "민트색 백팩을 메고 공원 탁자에 앉아 책을 읽어요. 연분홍 손잡이와 바닥이 가까이 보여요.",
+    "alt": "민트색 No.1084H 백팩을 메고 공원 탁자에 앉아 책을 읽는 사람을 가까이 본 AI 착용 연출",
+    "productId": "coupang-ba33ab8f40e76a95",
+    "image": "/assets/lookbook/2026-11-05-everyday-1084h.webp",
+    "thumbnail": "/assets/lookbook/2026-11-05-everyday-1084h-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-05-city-1230",
+    "date": "2026-11-05",
+    "category": "city",
+    "title": "옷을 받으러 왔어요",
+    "model": "1230",
+    "color": "그레이",
+    "scene": "세탁소 앞에서 옷을 받아 들었어요. 다른 손에는 앞주머니 두 개가 보이는 회색 백팩을 들어요.",
+    "alt": "세탁소 앞에서 포장된 옷과 회색 No.1230 백팩을 각각 손에 든 사람의 전신 AI 착용 연출",
+    "productId": "store-13308483411",
+    "image": "/assets/lookbook/2026-11-05-city-1230.webp",
+    "thumbnail": "/assets/lookbook/2026-11-05-city-1230-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-04-everyday-124s",
     "date": "2026-11-04",
     "category": "everyday",
