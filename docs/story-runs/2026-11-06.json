@@ -6,14 +6,14 @@
     "scheduledAt": "2026-11-06T08:00:00+09:00",
     "edition": "morning"
   },
-  "stage": "prepared",
+  "stage": "metadata-verified",
   "publicationBaselineCommit": "89ad9527b06de009f3b0f68323f2bee5a60f645b",
   "publicationBaselineEvidence": "backups/story-2026-11-06/baseline-deployment.json",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "posts": [
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-vertical-pocket-opening",
       "title": "백팩 앞 포켓의 긴 지퍼는 어디까지 열면 좋을까",
       "url": "https://himawari.co.kr/story/backpack-vertical-pocket-opening.html",
@@ -87,10 +87,19 @@
           "alt": "No.1208 라이트퍼플의 실제 상품 사진",
           "caption": "실제 제품 사진: No.1208 라이트퍼플의 공개 상품 사진입니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-05T23:27:29.126Z",
+        "modifiedAt": "2026-11-05T23:27:29.126Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-06/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-06/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-06/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-06/first-deployment-history.json",
+        "articleSha256": "1e41ef826c906b4607c08a05467523bd04e1d33e41b4ea8323ec36d84aa29c14"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-bottom-corner-wear",
       "title": "백팩 바닥 모서리가 닳아 보이면 어디를 살펴야 할까",
       "url": "https://himawari.co.kr/story/backpack-bottom-corner-wear.html",
@@ -164,10 +173,19 @@
           "alt": "No.124S 옐로우의 실제 상품 사진",
           "caption": "실제 제품 사진: No.124S 옐로우의 공개 상품 사진입니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-05T23:27:29.126Z",
+        "modifiedAt": "2026-11-05T23:27:29.126Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-06/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-06/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-06/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-06/first-deployment-history.json",
+        "articleSha256": "77bb931434b18a5169059cb66bacc2e42ed823f6fd58a6e14f338cb230b954c4"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-drawstring-uneven-gather",
       "title": "스트링 백팩 입구가 한쪽으로 몰리면 어디부터 볼까",
       "url": "https://himawari.co.kr/story/backpack-drawstring-uneven-gather.html",
@@ -244,7 +262,16 @@
           "alt": "No.0515 실버의 실제 상품 사진",
           "caption": "실제 제품 사진: No.0515 실버의 공개 상품 사진입니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-05T23:27:29.126Z",
+        "modifiedAt": "2026-11-05T23:27:29.126Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-06/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-06/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-06/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-06/first-deployment-history.json",
+        "articleSha256": "26b403a226ae1e6bd27ffdf0c6ab6855764d3506f0e30ced51ad7db63e819e39"
+      }
     }
   ],
   "editions": {
@@ -254,7 +281,7 @@
         "backpack-bottom-corner-wear",
         "backpack-drawstring-uneven-gather"
       ],
-      "stage": "prepared"
+      "stage": "metadata-verified"
     }
   },
   "topicsReviewed": 188,

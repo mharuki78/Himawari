@@ -9,3 +9,6 @@
 
 - 준비 검증에서 본문 2,532·2,807·2,522자, 실제 사진 3장과 생성 사진 6장을 확인했다. 구조화 데이터와 발행 검증은 실제 최초 배포 시각을 기다리는 단계로 통과했다. npm test 298개가 모두 통과했다.
 - [로컬 Chrome 기록](../backups/story-2026-11-06/local-browser.json)에 1440px와 390px 화면의 글 3개, 사진 9장, 제품 링크 6회 이동, 홈과 이야기 목록을 남겼다. 가로 넘침과 페이지 예외가 없었다. 이야기 목록과 모바일 글 화면을 직접 확인했다.
+
+- 최초 공개는 콘텐츠 커밋 `c8aaf37fb4b016834477e30fc76bee0a3f36358a`의 Vercel production READY인 2026-11-05T23:27:29.126Z, 한국 시간 08:27:29.126이었다. [전체 배포 목록](../backups/story-2026-11-06/first-deployment-history.json)의 마지막 페이지와 READY 상세를 보존하고 [Git의 글 내용](../backups/story-2026-11-06/first-deployment-git-review.json)을 대조했다.
+- 위 READY 시각을 세 글의 발행·수정 시각으로 기록했다. manifest에 [첫 배포 원본](../backups/story-2026-11-06/first-deployment.json), 전체 이력, article SHA-256을 연결했다. 날짜별 스키마 갱신과 준비 검증에서 metadata=verified를 확인했고 관련 테스트 19개가 모두 통과했다. 마지막 배포와 운영 결과는 receipt 및 [published 검증 로그](../backups/story-2026-11-06/published-verification.log)에서 확인한다.
