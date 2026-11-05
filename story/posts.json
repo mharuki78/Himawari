@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-vertical-pocket-opening",
+    "title": "백팩 앞 포켓의 긴 지퍼는 어디까지 열면 좋을까",
+    "date": "2026-11-06",
+    "summary": "No.1208 라이트퍼플의 굽은 앞 포켓 지퍼를 예로, 가방을 들고 있을 때와 받쳐 놓았을 때 입구를 얼마나 열면 편한지 살펴봅니다.",
+    "description": "No.1208 라이트퍼플의 굽은 앞 포켓 지퍼를 예로, 가방을 들고 있을 때와 받쳐 놓았을 때 입구를 얼마나 열면 편한지 살펴봅니다.",
+    "tags": [
+      "백팩 앞 포켓",
+      "곡선 지퍼",
+      "가방 수납"
+    ],
+    "image": "../assets/story/backpack-vertical-pocket-opening.webp",
+    "imageAlt": "무릎 위에 받친 No.1208 라이트퍼플 백팩의 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-vertical-pocket-opening.webp",
+      "../assets/story/backpack-vertical-pocket-opening-detail.webp",
+      "../assets/story/backpack-vertical-pocket-opening-product.webp"
+    ],
+    "url": "backpack-vertical-pocket-opening.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "서서 들 때와 무릎이나 탁자에 받쳤을 때를 비교하는 동작 안내"
+  },
+  {
+    "id": "backpack-bottom-corner-wear",
+    "title": "백팩 바닥 모서리가 닳아 보이면 어디를 살펴야 할까",
+    "date": "2026-11-06",
+    "summary": "No.124S 옐로우의 투톤 바닥을 예로, 백팩 모서리에서 원단 표면의 변화와 봉제선의 틈을 구분해 보는 순서를 짚습니다.",
+    "description": "No.124S 옐로우의 투톤 바닥을 예로, 백팩 모서리에서 원단 표면의 변화와 봉제선의 틈을 구분해 보는 순서를 짚습니다.",
+    "tags": [
+      "백팩 바닥",
+      "봉제선",
+      "가방 관리"
+    ],
+    "image": "../assets/story/backpack-bottom-corner-wear.webp",
+    "imageAlt": "탁자에 세운 No.124S 옐로우 백팩의 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-bottom-corner-wear.webp",
+      "../assets/story/backpack-bottom-corner-wear-detail.webp",
+      "../assets/story/backpack-bottom-corner-wear-product.webp"
+    ],
+    "url": "backpack-bottom-corner-wear.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "같은 빛에서 모서리를 비교하고 상태를 남기는 관찰 기록"
+  },
+  {
+    "id": "backpack-drawstring-uneven-gather",
+    "title": "스트링 백팩 입구가 한쪽으로 몰리면 어디부터 볼까",
+    "date": "2026-11-06",
+    "summary": "No.0515 실버의 스트링 입구를 예로, 원단 주름이 치우치거나 끈이 걸릴 때 짐의 위치와 겉으로 드러난 끈을 살피는 순서를 소개합니다.",
+    "description": "No.0515 실버의 스트링 입구를 예로, 원단 주름이 치우치거나 끈이 걸릴 때 짐의 위치와 겉으로 드러난 끈을 살피는 순서를 소개합니다.",
+    "tags": [
+      "스트링 백팩",
+      "조임끈",
+      "입구 관리"
+    ],
+    "image": "../assets/story/backpack-drawstring-uneven-gather.webp",
+    "imageAlt": "No.0515 실버의 스트링 입구와 앞 포켓이 보이는 AI 연출 사진",
+    "images": [
+      "../assets/story/backpack-drawstring-uneven-gather.webp",
+      "../assets/story/backpack-drawstring-uneven-gather-detail.webp",
+      "../assets/story/backpack-drawstring-uneven-gather-product.webp"
+    ],
+    "url": "backpack-drawstring-uneven-gather.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "입구 주름과 끈의 움직임을 증상별로 구분하는 문답"
+  },
+  {
     "id": "backpack-extra-base-insert",
     "title": "백팩 바닥에 판을 더 넣으면 모양이 잡힐까",
     "date": "2026-11-05",
