@@ -1,0 +1,103 @@
+{
+  "date": "2026-11-06",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-06T00:00:02.313Z",
+    "scheduledAt": "2026-11-06T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "scheduledSlot": "2026-11-06T09:00:00+09:00",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-06/deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-06/public-catalog.json",
+  "sourceCatalogFetchedAt": "2026-11-06T00:02:10.049Z",
+  "entries": [
+    {
+      "id": "2026-11-06-everyday-2301",
+      "model": "2301",
+      "category": "everyday",
+      "title": "온실에서 잎을 살피며",
+      "color": "핑크",
+      "scene": "분홍색 백팩을 멘 채 무릎을 굽혀 화분의 잎을 살펴봐요. 앞주머니에는 검은 망이 보여요.",
+      "alt": "분홍색 No.2301 백팩을 메고 온실에서 한쪽 무릎을 꿇어 잎을 살피는 AI 착용 연출",
+      "productId": "coupang-c059501520294ef4",
+      "dimensionsCm": [
+        28,
+        42,
+        17
+      ],
+      "composition": {
+        "approach": "environmental kneeling activity portrait",
+        "angle": "low side-rear three-quarter",
+        "framing": "full-body with face in profile and both shoes, greenhouse rows in frame",
+        "activity": "wearing backpack on the back while kneeling and inspecting a potted leaf",
+        "setting": "glass greenhouse with rows of terracotta pots and warm daylight"
+      },
+      "fidelityReview": "Direct comparison with product original. Dusty pink rectangular body with rounded corners, single dark logo patch on upper zip pocket, lower black mesh panel, parallel zips, side slip pocket, two black compression buckles, upper grab handle and black shoulder strap all retain the photographed arrangement. Unseen strap section behind torso is naturally occluded. Exterior 28 × 42 × 17 cm informed the proportion against an adult torso. Hands and kneeling posture checked.",
+      "date": "2026-11-06",
+      "image": "/assets/lookbook/2026-11-06-everyday-2301.webp",
+      "thumbnail": "/assets/lookbook/2026-11-06-everyday-2301-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-06/reference-2301-front.jpg",
+      "generatedSource": "backups/lookbook-2026-11-06/generated-2301.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-c059501520294ef4/main-y9Q3UwGI7flhDRwYMKBG8MfJqldI8i.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8645626927",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-06; 2026-09-14 제조사 카탈로그 38페이지의 2301 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "prompt": "Photorealistic lifestyle portrait, portrait 2:3, output 1024×1536. Preserve exact Himawari No.2301 pink backpack from attached original reference, 28 cm wide x 42 tall x 17 deep, plausible size worn by adult. Muted dusty rose woven body, black padded shoulder straps, black top grab handle, parallel dark compartment zip tracks, rounded rectangular upper pink zip pocket with single small black Himawari badge, lower front pink zip compartment with black mesh on lower half, two black side compression buckles at the original heights and black side slip pocket. Keep original rectangular proportions, original pocket and zip count, colors and label. Adult in olive overshirt, warm gray pants and practical shoes kneels with one knee close to ground, other leg planted, at the end of an aisle in a sunlit glass greenhouse, leaning slightly to inspect a low potted plant with leaves. Both actual backpack straps are worn conventionally on the back and the bag is unblocked. Low viewpoint near planter height, looking across the aisle in side-rear three-quarter view with the backpack front and one side clearly visible. Wider environmental framing with face in profile, shoes and whole body visible, warm sunlight through glass, plant rows and structure provide context. No accessories attached to backpack, no invented hardware, no visible photo text beyond product badge, no distorted hands, no open zips. Poses and greenhouse fictional.\n",
+      "generatedSha256": "ca7aa5066298861329d9933b6ba963e22b1ca420b3e320b25ae9ad292e8c99be"
+    },
+    {
+      "id": "2026-11-06-city-2513",
+      "model": "2513",
+      "category": "city",
+      "title": "작업실 문 앞에서",
+      "color": "민트",
+      "scene": "한 손에 민트색 노트북 가방을 들고 작업실 문에 출입 카드를 대요.",
+      "alt": "민트색 No.2513 노트북 가방을 한 손에 들고 출입 카드를 대는 사람을 가까이 본 AI 착용 연출",
+      "productId": "coupang-6c09e607c31fa331",
+      "dimensionsCm": [
+        36.5,
+        28,
+        2
+      ],
+      "composition": {
+        "approach": "close hand-carry and access-card moment",
+        "angle": "slightly elevated front three-quarter",
+        "framing": "tight shoulder-to-knees crop with no face and the full bag front",
+        "activity": "holding the original rope handle at the hip while tapping an access card",
+        "setting": "plain wood workshop door and concrete entry wall"
+      },
+      "fidelityReview": "Direct comparison with product original. Thin horizontal pale mint body, large looping quilt pattern, dark edge and centered readable Himawari wordmark, paired upper silver rings, one flecked dark rope handle with two decorative tails and knots, and lower silver ring retain source positions. Exterior 36.5 × 28 × 2 cm informed body ratio and plausible width against hand and hips. Both grips and hardware checked.",
+      "date": "2026-11-06",
+      "image": "/assets/lookbook/2026-11-06-city-2513.webp",
+      "thumbnail": "/assets/lookbook/2026-11-06-city-2513-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-06/reference-2513-front.jpg",
+      "generatedSource": "backups/lookbook-2026-11-06/generated-2513.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6c09e607c31fa331/main-6gVCtxywyhvmUsVIGgVwZKV6MYXaHZ.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9268264534",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-06; 2026-09-14 제조사 카탈로그 11페이지의 2513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "prompt": "Photorealistic editorial candid portrait, vertical 2:3, output 1024×1536. Use the attached original as a strict product reference for Himawari No.2513 mint: the flat rectangular laptop sleeve is 36.5 cm wide by 28 tall and 2 cm deep. The photographed original construction must be carried through: pale yellow-mint quilted front, subtle large looping quilting, thin navy edging and zipper, centered correct dark Himawari lettering, a single dark speckled rope handle clipped to both original upper silver rings, two decorative rope ends and knots on image-left and small lower ring as source. Camera is a bit elevated, looking down at about 28 degrees from front three-quarter, medium cropped composition from adult's shoulder to mid-thigh, no head necessary. At an unbranded maker studio doorway, an adult with a warm brown canvas jacket and charcoal trousers holds this original rope handle at hip height in one hand, with the other touching an access card to a simple wall reader. Sleeve hangs front toward camera, close to center, not being worn, normal horizontal shape, full front and hardware clearly visible with no hand covering logo. Soft overcast doorway light, muted concrete wall and wood door. Hands natural, no motion blur, no alteration to bag shape, no extra strap, pocket, duplicate logo or readable background signage.\n",
+      "generatedSha256": "ba60187d123640d893c632d71a86906901b762307b58f8393c8e4fe0766bc278"
+    }
+  ],
+  "preparedAt": "2026-11-06T00:07:30.915112+00:00",
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-11-06-everyday-2301",
+        "2026-11-06-city-2513"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "visualReview": "backups/lookbook-2026-11-06/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-06/optimization.json"
+}

@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-06-everyday-2301",
+    "date": "2026-11-06",
+    "category": "everyday",
+    "title": "온실에서 잎을 살피며",
+    "model": "2301",
+    "color": "핑크",
+    "scene": "분홍색 백팩을 멘 채 무릎을 굽혀 화분의 잎을 살펴봐요. 앞주머니에는 검은 망이 보여요.",
+    "alt": "분홍색 No.2301 백팩을 메고 온실에서 한쪽 무릎을 꿇어 잎을 살피는 AI 착용 연출",
+    "productId": "coupang-c059501520294ef4",
+    "image": "/assets/lookbook/2026-11-06-everyday-2301.webp",
+    "thumbnail": "/assets/lookbook/2026-11-06-everyday-2301-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-06-city-2513",
+    "date": "2026-11-06",
+    "category": "city",
+    "title": "작업실 문 앞에서",
+    "model": "2513",
+    "color": "민트",
+    "scene": "한 손에 민트색 노트북 가방을 들고 작업실 문에 출입 카드를 대요.",
+    "alt": "민트색 No.2513 노트북 가방을 한 손에 들고 출입 카드를 대는 사람을 가까이 본 AI 착용 연출",
+    "productId": "coupang-6c09e607c31fa331",
+    "image": "/assets/lookbook/2026-11-06-city-2513.webp",
+    "thumbnail": "/assets/lookbook/2026-11-06-city-2513-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-05-everyday-1084h",
     "date": "2026-11-05",
     "category": "everyday",
