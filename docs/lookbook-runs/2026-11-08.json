@@ -1,0 +1,103 @@
+{
+  "date": "2026-11-08",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-07T23:58:35.404Z",
+    "scheduledAt": "2026-11-08T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "scheduledSlot": "2026-11-08T09:00:00+09:00",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-08/deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-08/public-catalog.json",
+  "sourceCatalogFetchedAt": "2026-11-08T00:01:13.062Z",
+  "entries": [
+    {
+      "id": "2026-11-08-everyday-1089",
+      "model": "1089",
+      "category": "everyday",
+      "title": "원단 가게에서",
+      "color": "블루",
+      "scene": "연한 파란색 백팩을 매대에 세워 두고 옆에 놓인 원단을 만져 봐요.",
+      "alt": "원단 가게 매대에 연한 파란색 No.1089 백팩을 세우고 손잡이를 잡은 사람의 상체를 정면에서 본 AI 착용 연출",
+      "productId": "coupang-5984791b8c6c5fb2",
+      "dimensionsCm": [
+        29.5,
+        42,
+        12
+      ],
+      "composition": {
+        "approach": "countertop hand-and-product portrait",
+        "angle": "straight front near chest height",
+        "framing": "close crop from neckline to counter with both hands and entire bag",
+        "activity": "holding the original top handles with the bag on the counter and touching a folded cloth",
+        "setting": "fabric shop counter, folded fabric and fabric hanging in the background"
+      },
+      "fidelityReview": "Directly compared the original and generated images. Pale powder-blue shell, rounded top and compact depth, low-contrast white circular Himawari badge, paired fabric handles with long vertical front webbing, wide flap over the front pocket with pale pull near the left edge, two side pockets, pale right cord and dark curved zipper seam match the source. Observed the proportions against 29.5 × 42 × 12 cm; both hands and original handle grip are plausible. Rear shoulder straps are behind the product and are not represented in the caption.",
+      "date": "2026-11-08",
+      "image": "/assets/lookbook/2026-11-08-everyday-1089.webp",
+      "thumbnail": "/assets/lookbook/2026-11-08-everyday-1089-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-08/reference-1089-front.jpg",
+      "generatedSource": "backups/lookbook-2026-11-08/generated-1089.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-5984791b8c6c5fb2/main-eLSgNwsdKSc9Fgpg6vgF9FXMvc3jNr.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9593404958",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-08; 2026-09-14 제조사 카탈로그 12페이지의 1089 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "prompt": "Use case: photorealistic-natural. Vertical 2:3 1024×1536 editorial LookBook photograph. The provided real pale blue Himawari No.1089 backpack is the strict product reference, exterior width 29.5 cm × height 42 cm × depth 12 cm. A fictional adult woman in a dark charcoal long-sleeve knit stands at a fabric shop counter; one hand holds the original joined short top handles with the bag upright on the oak counter and the other hand touches a folded cream fabric swatch on the countertop to the side. Straight-on slightly elevated chest-height close frame with head out of frame, both hands and full backpack visible; bag centered in lower two-thirds of frame, no clothing or fingers covering the front. A small stack of folded linen beside it and a softly blurred rack of neutral fabric behind. Soft side window light and natural cotton textures. Match the exact very pale icy powder-blue rounded-rectangle body, low-contrast pale circular Himawari badge centered between the two vertical pale-blue webbing handle ends, broad lower front pocket with same-color storm flap and light cord pull near the left edge, pale-blue side pockets and light cord on the visible right side pocket, dark fine zipper seam along the outer top curve, and compact depth. No new seams, buckles, pockets or handles, no extra logos, no open or visible interior, no readable signage. Realistic hand anatomy. Product takes roughly half the frame height.\n",
+      "generatedSha256": "508d79f0c800b1ed92823a34f716e67f4a9d10450f3034be3a8eb05175c47261"
+    },
+    {
+      "id": "2026-11-08-travel-1111",
+      "model": "1111",
+      "category": "travel",
+      "title": "바닷가 난간에서",
+      "color": "그린",
+      "scene": "초록색 백팩을 메고 난간에 손을 얹은 채 바다를 바라봐요. 보라색 덮개와 검은 버클이 옆에서도 보여요.",
+      "alt": "초록색과 보라색 No.1111 백팩을 메고 바닷가 난간에 서 있는 사람을 낮은 옆뒤 시점에서 본 AI 착용 연출",
+      "productId": "store-13513526834",
+      "dimensionsCm": [
+        43,
+        47,
+        24
+      ],
+      "composition": {
+        "approach": "waterfront environmental standing portrait",
+        "angle": "low side-rear three-quarter",
+        "framing": "full-body from shoes to hair with open water and sky",
+        "activity": "wearing the backpack and resting one hand on the railing while looking across the water",
+        "setting": "harbor walkway with a metal railing, distant light and still water"
+      },
+      "fidelityReview": "Directly compared the original and generated images. Deep green soft body, purple triangular flap insert and inverted black Himawari badge, two original black fastened buckles, purple horizontal front pocket flap and purple side-pocket zipper borders are visible in the correct arrangement. Green-edged black shoulder straps follow the reference. Exterior 43 × 47 × 24 cm gives plausible scale; slight natural fabric compression while worn. Rail hand, stance and visible strap routing checked.",
+      "date": "2026-11-08",
+      "image": "/assets/lookbook/2026-11-08-travel-1111.webp",
+      "thumbnail": "/assets/lookbook/2026-11-08-travel-1111-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-08/reference-1111-front.jpg",
+      "generatedSource": "backups/lookbook-2026-11-08/generated-1111.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260511_282/1778476837383QWJQU_JPEG/8477290463441894_476336728.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13513526834",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-08; 2026-09-14 제조사 카탈로그 6페이지의 1111 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "prompt": "Use case: photorealistic-natural. Vertical 2:3 1024×1536 editorial LookBook environmental photograph. Use the reference only for the exact real green-and-purple Himawari No.1111 backpack (43 cm wide × 47 cm high × 24 cm deep); create a different fictional adult model and setting. A middle-aged woman with short dark curly hair in a simple warm gray jacket, tan trousers and dark walking shoes stands on a broad concrete harbor walkway at a matte steel railing and looks out over still water, one relaxed hand on the top rail. Both original green edged black backpack straps normally worn. Place the camera low near knee height and at a three-quarter angle from her back and side, tilted slightly upward, full figure from shoes to hair and the entire bag visibly separate from the rail; a generous open area of hazy sky and water, leading rail and textured concrete foreground. Her face only in side profile. Backpack should take about one quarter to one third of image height, still sharply legible. Copy exact deep green fabric shell with electric purple triangular top flap panel and its small black inverted triangular Himawari badge, matching purple broad lower front pocket trim and purple vertical zip edges on side pockets, two black fastened front buckles with narrow hanging strap ends, black zipper tracks and original strap routing. Keep the original full but soft silhouette and colors, no added compartments, no readable signs, other people, or invented strap details. Physically realistic body posture and proportions.\n",
+      "generatedSha256": "303d9f21b3a16ba1116485246ed213782c427fdb328e80ea2ba66db17d02908c"
+    }
+  ],
+  "preparedAt": "2026-11-08T00:05:00.814395+00:00",
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-11-08-everyday-1089",
+        "2026-11-08-travel-1111"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "visualReview": "backups/lookbook-2026-11-08/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-08/optimization.json"
+}

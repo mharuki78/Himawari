@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-08-everyday-1089",
+    "date": "2026-11-08",
+    "category": "everyday",
+    "title": "원단 가게에서",
+    "model": "1089",
+    "color": "블루",
+    "scene": "연한 파란색 백팩을 매대에 세워 두고 옆에 놓인 원단을 만져 봐요.",
+    "alt": "원단 가게 매대에 연한 파란색 No.1089 백팩을 세우고 손잡이를 잡은 사람의 상체를 정면에서 본 AI 착용 연출",
+    "productId": "coupang-5984791b8c6c5fb2",
+    "image": "/assets/lookbook/2026-11-08-everyday-1089.webp",
+    "thumbnail": "/assets/lookbook/2026-11-08-everyday-1089-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-08-travel-1111",
+    "date": "2026-11-08",
+    "category": "travel",
+    "title": "바닷가 난간에서",
+    "model": "1111",
+    "color": "그린",
+    "scene": "초록색 백팩을 메고 난간에 손을 얹은 채 바다를 바라봐요. 보라색 덮개와 검은 버클이 옆에서도 보여요.",
+    "alt": "초록색과 보라색 No.1111 백팩을 메고 바닷가 난간에 서 있는 사람을 낮은 옆뒤 시점에서 본 AI 착용 연출",
+    "productId": "store-13513526834",
+    "image": "/assets/lookbook/2026-11-08-travel-1111.webp",
+    "thumbnail": "/assets/lookbook/2026-11-08-travel-1111-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-07-everyday-1211",
     "date": "2026-11-07",
     "category": "everyday",
