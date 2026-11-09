@@ -81,7 +81,8 @@ syncSiteNavigation();
 function initializeBlackFridayNavigation() {
   const nav = document.querySelector('.site-nav');
   if (!nav) return;
-  let link, timer, loading = false;
+  let link, timer, endTimer, loading = false;
+  function removeSaleLink() { link?.remove(); link = null; }
   async function refresh() {
     if (loading) return;
     loading = true;
@@ -91,20 +92,28 @@ function initializeBlackFridayNavigation() {
       const response = await fetch('/api/black-friday?view=status', { cache: 'no-store' });
       if (!response.ok) throw new Error('Unavailable');
       const event = await response.json();
+      clearTimeout(endTimer);
       if (event.state === 'open') {
+        const remaining = Date.parse(event.endsAt) - Date.parse(event.serverTime);
+        if (Number.isFinite(remaining)) endTimer = setTimeout(removeSaleLink, Math.min(Math.max(0, remaining), 2_147_483_647));
         if (!link) {
           link = document.createElement('a');
           link.href = '/black-friday/';
-          link.textContent = '블랙 프라이데이';
+          const ribbon = document.createElement('span');
+          ribbon.className = 'site-nav__sale-ribbon';
+          ribbon.lang = 'en';
+          ribbon.textContent = 'BLACK FRIDAY';
+          ribbon.setAttribute('aria-hidden', 'true');
+          link.append(ribbon, document.createTextNode('블랙 프라이데이'));
           link.dataset.blackFridayNav = '';
           if (/^\/black-friday(?:\/|$)/.test(location.pathname)) link.setAttribute('aria-current', 'page');
           nav.prepend(link);
         }
-      } else { link?.remove(); link = null; }
+      } else removeSaleLink();
       const boundary = event.state === 'scheduled' ? event.startsAt : event.state === 'open' ? event.endsAt : null;
       if (boundary) delay = Math.max(250, Math.min(delay, Date.parse(boundary) - Date.parse(event.serverTime) + 100));
     } catch {
-      link?.remove(); link = null;
+      removeSaleLink();
     } finally {
       loading = false;
       timer = setTimeout(refresh, delay);

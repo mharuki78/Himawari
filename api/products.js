@@ -5,6 +5,7 @@ import { publicPromotions, readPromotions } from './_lib/promotions.js';
 import { applyInventoryReservations } from './_lib/inventory.js';
 import { publicReels, readReelsConfig } from './_lib/reels.js';
 import { readPublicBlackFriday } from './_lib/black-friday.js';
+import { EVENT_PATH, offerPath } from '../black-friday/view.js';
 import { ensureOrderSchema } from './_lib/orders.js';
 import storyPosts from '../story/posts.json' with { type: 'json' };
 import lookbookEntries from '../lookbook/entries.json' with { type: 'json' };
@@ -29,6 +30,7 @@ const SITEMAP_PAGES = [
   ['/privacy.html', '2026-09-03'],
   ['/terms.html', '2026-09-03'],
   ['/story/', '2026-09-08'],
+  [EVENT_PATH],
   ['/lookbook/', lookbookEntries.map(entry => entry.date).sort().at(-1) || ''],
 ];
 
@@ -42,6 +44,15 @@ async function fetchSitemap(request) {
   try {
     const catalog = productStoreIsConfigured() ? (await readProductCatalog()).catalog : seedCatalog();
     const pages = SITEMAP_PAGES.map(([path, lastmod]) => sitemapUrl(path, lastmod));
+    let salePages = [];
+    if (databaseIsConfigured()) {
+      try {
+        const event = await readPublicBlackFriday({ prepareOrders: ensureOrderSchema, catalog });
+        if (event.state === 'open') salePages = event.items.map(item => offerPath(item.offerId)).filter(Boolean).map(path => sitemapUrl(path));
+      } catch (error) {
+        console.error('black_friday_sitemap_read_failed', { message: error.message });
+      }
+    }
     const products = catalog.products.map((product) => sitemapUrl(`/product.html?id=${encodeURIComponent(product.id)}`));
     const stories = storyPosts
       .filter((post) => post && post.id)
@@ -51,6 +62,7 @@ async function fetchSitemap(request) {
       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
       ...pages,
       ...products,
+      ...salePages,
       ...stories,
       '</urlset>',
       '',
@@ -59,7 +71,7 @@ async function fetchSitemap(request) {
       status: 200,
       headers: {
         'Content-Type': 'application/xml; charset=utf-8',
-        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=3600',
+        'Cache-Control': 'no-store',
         'X-Content-Type-Options': 'nosniff',
       },
     });

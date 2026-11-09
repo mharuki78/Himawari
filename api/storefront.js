@@ -1,4 +1,8 @@
 import { renderNpayReviewCatalog, reviewProductPage } from './_lib/npay-review-page.js';
+import { readPublicBlackFriday } from './_lib/black-friday.js';
+import { ensureOrderSchema } from './_lib/orders.js';
+import { databaseIsConfigured } from './_lib/database.js';
+import { offerPath, renderBlackFridayPage } from '../black-friday/view.js';
 import { readFile } from 'node:fs/promises';
 
 import { methodNotAllowed } from './_lib/http.js';
@@ -56,10 +60,28 @@ async function template(name) {
 }
 
 export async function fetch(request) {
-  if (request.method !== 'GET') return methodNotAllowed(['GET']);
-
   const requestUrl = new URL(request.url);
   const page = requestUrl.searchParams.get('page');
+  if (page === 'black-friday' || page === 'black-friday-item') {
+    if (!['GET', 'HEAD'].includes(request.method)) return methodNotAllowed(['GET', 'HEAD']);
+    const source = await template('templates/black-friday.html');
+    const rawId = requestUrl.searchParams.get('offer') || '';
+    const id = page === 'black-friday-item' ? (offerPath(rawId) ? rawId.toLowerCase() : 'invalid') : '';
+    let event = { state: 'inactive' };
+    try {
+      if (id !== 'invalid' && databaseIsConfigured()) event = await readPublicBlackFriday({ prepareOrders: ensureOrderSchema });
+    } catch (error) {
+      console.error('black_friday_page_failed', { message: error.message });
+      event = { state: 'error' };
+    }
+    const result = renderBlackFridayPage(source, event, id);
+    return new Response(request.method === 'HEAD' ? null : result.html, {
+      status: result.status,
+      headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' },
+    });
+  }
+  if (request.method !== 'GET') return methodNotAllowed(['GET']);
+
   const origin = requestUrl.origin;
   let phase = 'request';
   try {

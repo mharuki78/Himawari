@@ -1,68 +1,59 @@
-const status = document.querySelector('[data-bf-status]');
-const grid = document.querySelector('[data-bf-products]');
-const period = document.querySelector('[data-bf-period]');
-const date = new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' });
-const won = new Intl.NumberFormat('ko-KR');
-let timer, loading = false, lastItems;
+import { blackFridayView, jsonLdText } from './view.js';
 
-function element(tag, className, text) {
-  const node = document.createElement(tag);
-  if (className) node.className = className;
-  if (text) node.textContent = text;
-  return node;
+const main = document.querySelector('[data-bf-offer]');
+const offerId = main?.dataset.bfOffer || '';
+let timer, expiryTimer, loading = false, lastContent, expiry, currentEvent;
+
+function render(event) {
+  const view = blackFridayView(event, offerId);
+  document.title = view.title;
+  document.querySelector('meta[name="description"]').content = view.description;
+  document.querySelector('meta[name="robots"]').content = !offerId || view.status === 200 ? 'index,follow' : 'noindex,follow';
+  let schema = document.getElementById('bf-json-ld');
+  if (view.schema) {
+    if (!schema) {
+      schema = document.createElement('script');
+      schema.type = 'application/ld+json';
+      schema.id = 'bf-json-ld';
+      document.head.append(schema);
+    }
+    schema.textContent = jsonLdText(view.schema);
+  } else schema?.remove();
+  if (view.content !== lastContent) {
+    const focus = document.activeElement?.dataset.bfFocus;
+    main.innerHTML = view.content;
+    if (focus) {
+      const replacement = [...main.querySelectorAll('[data-bf-focus]')].find(node => node.dataset.bfFocus === focus);
+      if (replacement) replacement.focus({ preventScroll: true });
+      else {
+        const title = main.querySelector('h1');
+        title.tabIndex = -1;
+        title.focus({ preventScroll: true });
+      }
+    }
+    lastContent = view.content;
+  }
 }
 
-function card(item) {
-  const article = element('article', 'bf-event__card');
-  const media = element('div', 'bf-event__media');
-  if (item.image) {
-    const photo = document.createElement('img');
-    photo.src = item.image; photo.alt = ''; photo.loading = 'lazy'; photo.decoding = 'async';
-    media.append(photo);
-  }
-  const details = element('div', 'bf-event__details');
-  const model = element('p', 'bf-event__model', [item.model, item.optionLabel].filter(Boolean).join(' · '));
-  const name = element('h2', '', item.name);
-  const prices = element('p', 'bf-event__prices');
-  const original = element('del', '', `${won.format(item.regularPrice)}원`);
-  original.prepend(element('span', 'sr-only', '정상가 '));
-  const price = element('strong', '', `${won.format(item.price)}원`);
-  price.prepend(element('span', 'sr-only', '행사가 '));
-  prices.append(original, price);
-  const remaining = element('p', 'bf-event__remaining', item.remaining ? `행사 수량 ${won.format(item.remaining)}개 남음` : '행사 수량 소진');
-  details.append(model, name, prices, remaining);
-  if (item.remaining > 0) {
-    const checkout = element('a', 'bf-event__buy', '행사가로 구매');
-    checkout.href = `/checkout.html?blackFriday=${encodeURIComponent(item.offerId)}`;
-    checkout.dataset.offerId = item.offerId;
-    checkout.setAttribute('aria-label', `${item.name}${item.optionLabel ? ' ' + item.optionLabel : ''} 행사가로 구매`);
-    details.append(checkout);
-  }
-  article.append(media, details);
-  return article;
+function expire() {
+  if (!expiry || Date.now() < expiry) return;
+  expiry = 0;
+  render({ ...currentEvent, state: 'closed', items: [] });
 }
 
-function render({ state, startsAt, endsAt, items = [] }) {
-  period.hidden = !startsAt || !endsAt;
-  if (!period.hidden) period.textContent = `${date.format(new Date(startsAt))} ~ ${date.format(new Date(endsAt))} (한국 시간)`;
-  const label = {
-    inactive: '현재 진행 중인 행사가 없습니다.',
-    scheduled: '행사가 시작되면 이곳에서 상품을 구매할 수 있습니다.',
-    closed: '블랙 프라이데이 행사가 종료됐습니다.',
-    open: items.length ? '이 페이지에서 구매할 때 행사가가 적용됩니다.' : '현재 구매할 수 있는 행사 상품이 없습니다.',
-    error: '행사 정보를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.',
-  }[state];
-  if (status.textContent !== label) status.textContent = label;
-  const snapshot = JSON.stringify(items);
-  if (lastItems !== snapshot) {
-    const focus = document.activeElement?.dataset.offerId;
-    grid.replaceChildren(...items.map(card));
-    if (focus) [...grid.querySelectorAll('[data-offer-id]')].find(node => node.dataset.offerId === focus)?.focus({ preventScroll: true });
-    lastItems = snapshot;
-  }
+function trackExpiry(event) {
+  clearTimeout(expiryTimer);
+  currentEvent = event;
+  expiry = 0;
+  const remaining = Date.parse(event.endsAt) - Date.parse(event.serverTime);
+  if (event.state !== 'open' || !Number.isFinite(remaining)) return;
+  expiry = Date.now() + remaining;
+  if (remaining <= 0) expire();
+  else expiryTimer = setTimeout(() => { expire(); refresh(); }, Math.min(remaining + 25, 2_147_483_647));
 }
 
 async function refresh() {
+  expire();
   if (loading) return;
   loading = true;
   clearTimeout(timer);
@@ -72,11 +63,21 @@ async function refresh() {
     if (!response.ok) throw new Error('Unavailable');
     const event = await response.json();
     render(event);
+    trackExpiry(event);
     const boundary = event.state === 'scheduled' ? event.startsAt : event.state === 'open' ? event.endsAt : null;
     if (boundary) delay = Math.max(250, Math.min(delay, Date.parse(boundary) - Date.parse(event.serverTime) + 100));
-  } catch { render({ state: 'error' }); }
-  finally { loading = false; timer = setTimeout(refresh, delay); }
+  } catch {
+    trackExpiry({ state: 'error' });
+    render({ state: 'error' });
+  } finally {
+    loading = false;
+    timer = setTimeout(refresh, delay);
+  }
 }
 
-document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
-refresh();
+if (main?.dataset.bfEnds) trackExpiry({ state: 'open', startsAt: main.dataset.bfStarts, endsAt: main.dataset.bfEnds, serverTime: main.dataset.bfTime });
+if (main) {
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
+  window.addEventListener('pageshow', event => { if (event.persisted) refresh(); });
+  refresh();
+}

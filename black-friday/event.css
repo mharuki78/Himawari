@@ -1,7 +1,7 @@
 .bf-event { --bf-ink: #202423; --bf-green: #315845; color: var(--bf-ink); }
 .bf-event__intro { padding: clamp(3rem, 8vw, 7rem) 24px; text-align: center; background: #202423; color: #fff; }
 .bf-event__intro h1 { margin: 0; color: inherit; font-size: clamp(2.25rem, 7vw, 5.15rem); line-height: 1.1; letter-spacing: -.055em; }
-.bf-event__intro p:last-child { margin: 1rem 0 0; color: #e1e8e4; font-size: clamp(.85rem, 2.5vw, 1rem); }
+.bf-event__intro [data-bf-period] { margin: 1rem 0 0; color: #e1e8e4; font-size: clamp(.85rem, 2.5vw, 1rem); text-wrap: balance; word-break: keep-all; }
 .bf-event__kicker { margin: 0 0 .9rem; color: #cad7d0; font-size: .75rem; font-weight: 700; letter-spacing: .18em; }
 .bf-event__body { max-width: 1264px; margin-inline: auto; padding: 2rem clamp(1.25rem, 4vw, 2.75rem) 4rem; }
 .bf-event__status { margin: 0 0 1.25rem; color: #48534d; }
@@ -21,3 +21,14 @@
 .bf-event__browse { gap: .5rem; margin-top: 1.25rem; border: 1px solid #d6dfd9; color: var(--bf-green); }
 .bf-event__browse:hover { background: #edf5f1; }
 .bf-event a:focus-visible { outline: 2px solid var(--bf-green); outline-offset: 3px; }
+
+.bf-event__intro--detail h1 { font-size: clamp(1.85rem, 4.5vw, 3.6rem); letter-spacing: -.04em; text-wrap: balance; }
+.bf-event__grid--detail { display: block; }
+.bf-event__card--detail { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); max-width: 880px; }
+.bf-event__card--detail .bf-event__details { align-self: center; padding: clamp(1.2rem, 4vw, 2.5rem); }
+.bf-event__card--detail .bf-event__prices { margin-top: .75rem; }
+.bf-event__details h2 a, .bf-event__detail-link { color: inherit; text-underline-offset: 3px; }
+.bf-event__detail-link { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; margin-top: .25rem; font-size: .9rem; }
+@media (max-width: 610px) {
+  .bf-event__card--detail { grid-template-columns: 1fr; }
+}

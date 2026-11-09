@@ -293,3 +293,13 @@ input,textarea{caret-color:#315845}
  .home-rhythm-preview__title{font-size:32px}
 }
 @media(prefers-reduced-motion:reduce){.header-tooltip{transition:none}}
+
+.site-nav a[data-black-friday-nav] { flex-direction: column; gap: 2px; padding-block: 4px; }
+.site-nav__sale-ribbon {
+  display: block; padding: 2px 8px; color: #202423; background: #ffd878;
+  font-size: 9px; font-weight: 800; line-height: 1.15; letter-spacing: .06em;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 3px) 50%, 100% 100%, 0 100%, 3px 50%);
+}
+@media (max-width: 1320px) {
+  .site-nav a[data-black-friday-nav] { align-items: flex-start; justify-content: center; gap: 3px; }
+}

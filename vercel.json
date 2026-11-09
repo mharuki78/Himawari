@@ -7,6 +7,11 @@
   },
   "redirects": [
     {
+      "source": "/black-friday/index.html",
+      "destination": "/black-friday/",
+      "permanent": true
+    },
+    {
       "source": "/admin",
       "destination": "/admin/products.html",
       "permanent": false
@@ -94,6 +99,18 @@
     {
       "source": "/api/member/account",
       "destination": "/api/member?route=account"
+    },
+    {
+      "source": "/black-friday/item/:offer/",
+      "destination": "/api/storefront?page=black-friday-item&offer=:offer"
+    },
+    {
+      "source": "/black-friday/",
+      "destination": "/api/storefront?page=black-friday"
+    },
+    {
+      "source": "/black-friday",
+      "destination": "/api/storefront?page=black-friday"
     },
     {
       "source": "/sitemap.xml",

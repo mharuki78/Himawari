@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import { neonConfig } from '@neondatabase/serverless';
+import { fetch as storefront } from '../api/storefront.js';
+import { fetch as productsApi } from '../api/products.js';
 import { createOrder, ensureOrderSchema } from '../api/_lib/orders.js';
 import { readPublicBlackFriday, readBlackFridayAdmin, saveBlackFriday } from '../api/_lib/black-friday.js';
 import { seedCatalog, publicProduct } from '../api/_lib/products.js';
@@ -123,6 +125,26 @@ test('two buyers racing for the last unit leave one discounted order and one res
     assert.equal(event.state, 'open');
     assert.equal(event.items[0]?.remaining, 1, JSON.stringify(event));
     const sale = { offerId: event.items[0].offerId, unitPrice: 1000 };
+    const root = 'https://himawari.co.kr';
+    const itemPage = () => storefront(new Request(root + '/api/storefront?page=black-friday-item&offer=' + sale.offerId));
+    const schema = source => JSON.parse(source.match(/<script id="bf-json-ld" type="application\/ld\+json">([^<]+)<\/script>/)[1]);
+    const sitemap = async () => (await productsApi(new Request(root + '/api/products?route=sitemap'))).text();
+    const itemUrl = root + '/black-friday/item/' + sale.offerId + '/';
+    const landing = await storefront(new Request(root + '/api/storefront?page=black-friday'));
+    assert.equal(landing.status, 200);
+    assert.equal(landing.headers.get('cache-control'), 'no-store');
+    const landingHtml = await landing.text();
+    assert.equal(schema(landingHtml).mainEntity.itemListElement[0].url, itemUrl);
+    assert.match(landingHtml, /1,000원/);
+    const itemResponse = await itemPage();
+    const openProduct = schema(await itemResponse.text());
+    assert.equal(itemResponse.status, 200);
+    assert.equal(openProduct['@type'], 'Product');
+    assert.equal(openProduct.offers.price, 1000);
+    assert.equal(openProduct.offers.priceCurrency, 'KRW');
+    assert.equal(openProduct.offers.availability, 'https://schema.org/InStock');
+    assert.equal(openProduct.offers.validThrough, event.endsAt);
+    assert.ok((await sitemap()).includes(itemUrl));
     const makeOrder = () => ({
       requestId: randomUUID(), recipientName: '테스트', email: 'test@example.invalid', phone: '010-1234-5678',
       postalCode: '12345', addressLine1: '테스트로 123', termsConsent: true, privacyConsent: true,
@@ -142,6 +164,9 @@ test('two buyers racing for the last unit leave one discounted order and one res
     assert.equal((await createOrder(null, requests[succeeded])).duplicate, true);
     assert.equal((await readBlackFridayAdmin()).config.items[0].used, 1);
     assert.equal((await readPublicBlackFriday({ prepareOrders: ensureOrderSchema })).items[0].remaining, 0);
+    const soldOut = await (await itemPage()).text();
+    assert.equal(schema(soldOut).offers.availability, 'https://schema.org/OutOfStock');
+    assert.doesNotMatch(soldOut, /blackFriday=/);
     const retail = await createOrder(null, { ...makeOrder(), blackFriday: undefined });
     assert.equal(retail.order.blackFriday, false);
     assert.equal(retail.order.subtotal, product.regularPrice);
@@ -149,6 +174,15 @@ test('two buyers racing for the last unit leave one discounted order and one res
     assert.equal((await db.query('SELECT count(*)::int AS count FROM inventory_reservations WHERE active')).rows[0].count, 1);
     await saveBlackFriday({ ...schedule, revision: 1, enabled: false });
     assert.equal((await readPublicBlackFriday({ prepareOrders: ensureOrderSchema })).items.length, 0);
+    const endedItem = await itemPage();
+    assert.equal(endedItem.status, 404);
+    assert.doesNotMatch(await endedItem.text(), /bf-json-ld|1,000원|blackFriday=/);
+    const endedLanding = await storefront(new Request(root + '/api/storefront?page=black-friday'));
+    const endedHtml = await endedLanding.text();
+    assert.equal(schema(endedHtml)['@type'], 'CollectionPage');
+    assert.doesNotMatch(endedHtml, /ItemList|1,000원|blackFriday=/);
+    assert.ok((await sitemap()).includes(root + '/black-friday/'));
+    assert.ok(!(await sitemap()).includes(itemUrl));
     await assert.rejects(createOrder(null, makeOrder()), { status: 409 });
   } finally {
     neonConfig.fetchFunction = oldFetch;

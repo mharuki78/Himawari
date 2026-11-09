@@ -134,7 +134,7 @@ export async function saveBlackFriday(input) {
   return next;
 }
 
-export async function readPublicBlackFriday({ statusOnly = false, prepareOrders } = {}) {
+export async function readPublicBlackFriday({ statusOnly = false, prepareOrders, catalog: sourceCatalog } = {}) {
   const config = await readBlackFriday();
   const now = Date.now();
   const state = blackFridayState(config, now);
@@ -142,7 +142,11 @@ export async function readPublicBlackFriday({ statusOnly = false, prepareOrders 
   if (statusOnly) return result;
   if (state !== 'open') return { ...result, items: [] };
   await prepareOrders();
-  const [products, usage] = await Promise.all([readBlackFridayCatalog().then(applyInventoryReservations), readUsage(config.id)]);
+  const raw = sourceCatalog ? Promise.resolve(sourceCatalog.products.map(publicProduct)) : readBlackFridayCatalog();
+  const [products, usage] = await Promise.all([raw.then(applyInventoryReservations), readUsage(config.id)]);
+  const checkedAt = Date.now();
+  result.serverTime = new Date(checkedAt).toISOString();
+  if (checkedAt >= Date.parse(config.endsAt)) return { ...result, state: 'closed', items: [] };
   const catalog = toMap(blackFridayCatalogRows(products));
   const items = config.items.flatMap(item => {
     const product = catalog.get(key(item));
