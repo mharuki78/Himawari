@@ -1,5 +1,71 @@
 [
   {
+    "id": "laptop-pouch-desk-clearance",
+    "title": "좁은 책상에서 노트북 파우치 지퍼를 어느 쪽으로 둘까",
+    "date": "2026-11-10",
+    "summary": "No.2513 민트의 지퍼와 장식끈을 보며, 옆자리가 가까울 때와 책상 뒤가 막혔을 때 손과 노트북을 둘 자리를 비교합니다.",
+    "description": "No.2513 민트의 지퍼와 장식끈을 보며, 옆자리가 가까울 때와 책상 뒤가 막혔을 때 손과 노트북을 둘 자리를 비교합니다.",
+    "tags": [
+      "노트북 파우치",
+      "지퍼 방향",
+      "책상 공간"
+    ],
+    "image": "../assets/story/laptop-pouch-desk-clearance.webp",
+    "imageAlt": "책상에 펼쳐 놓은 No.2513 민트 파우치와 옆자리의 AI 연출",
+    "images": [
+      "../assets/story/laptop-pouch-desk-clearance.webp",
+      "../assets/story/laptop-pouch-desk-clearance-detail.webp",
+      "../assets/story/laptop-pouch-desk-clearance-product.webp"
+    ],
+    "url": "laptop-pouch-desk-clearance.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "책상 두 종류를 나란히 비교하는 자리 배치 안내"
+  },
+  {
+    "id": "backpack-loaded-weight-budget",
+    "title": "빈 백팩 무게에 평소 짐을 더하면 몇 그램일까",
+    "date": "2026-11-10",
+    "summary": "No.9291 베이지의 공개 중량을 바탕으로, 가방을 바꿀 때와 짐이 늘어날 때 합계가 얼마나 달라지는지 계산해 봅니다.",
+    "description": "No.9291 베이지의 공개 중량을 바탕으로, 가방을 바꿀 때와 짐이 늘어날 때 합계가 얼마나 달라지는지 계산해 봅니다.",
+    "tags": [
+      "백팩 무게",
+      "가방 선택",
+      "짐 무게"
+    ],
+    "image": "../assets/story/backpack-loaded-weight-budget.webp",
+    "imageAlt": "No.9291 베이지 백팩과 그 옆에 따로 놓은 책과 물병의 AI 연출",
+    "images": [
+      "../assets/story/backpack-loaded-weight-budget.webp",
+      "../assets/story/backpack-loaded-weight-budget-detail.webp",
+      "../assets/story/backpack-loaded-weight-budget-product.webp"
+    ],
+    "url": "backpack-loaded-weight-budget.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "수치 예시를 두 조건으로 나누는 계산 해설"
+  },
+  {
+    "id": "backpack-forward-tilt-front-pocket",
+    "title": "백팩을 내려놓으면 앞으로 기울 때 어디부터 볼까",
+    "date": "2026-11-10",
+    "summary": "No.1230 그레이의 앞 포켓 배치를 예로 들어, 백팩이 앞으로 기울 때 놓인 면과 짐의 위치를 하나씩 확인하는 방법을 소개합니다.",
+    "description": "No.1230 그레이의 앞 포켓 배치를 예로 들어, 백팩이 앞으로 기울 때 놓인 면과 짐의 위치를 하나씩 확인하는 방법을 소개합니다.",
+    "tags": [
+      "백팩 앞 포켓",
+      "가방 균형",
+      "가방 사용"
+    ],
+    "image": "../assets/story/backpack-forward-tilt-front-pocket.webp",
+    "imageAlt": "낮은 벤치에서 손잡이를 잡고 받친 No.1230 그레이 백팩의 AI 연출",
+    "images": [
+      "../assets/story/backpack-forward-tilt-front-pocket.webp",
+      "../assets/story/backpack-forward-tilt-front-pocket-detail.webp",
+      "../assets/story/backpack-forward-tilt-front-pocket-product.webp"
+    ],
+    "url": "backpack-forward-tilt-front-pocket.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "관찰 결과에 따라 다음 동작을 고르는 문제 해결 글"
+  },
+  {
     "id": "backpack-vertical-pocket-opening",
     "title": "백팩 앞 포켓의 긴 지퍼는 어디까지 열면 좋을까",
     "date": "2026-11-06",
