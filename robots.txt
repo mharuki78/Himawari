@@ -13,3 +13,4 @@ Disallow: /story/admin.html
 Disallow: /admin/
 
 Sitemap: https://himawari.co.kr/sitemap.xml
+Sitemap: https://himawari.co.kr/black-friday-sitemap.xml

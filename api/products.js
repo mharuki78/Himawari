@@ -44,15 +44,6 @@ async function fetchSitemap(request) {
   try {
     const catalog = productStoreIsConfigured() ? (await readProductCatalog()).catalog : seedCatalog();
     const pages = SITEMAP_PAGES.map(([path, lastmod]) => sitemapUrl(path, lastmod));
-    let salePages = [];
-    if (databaseIsConfigured()) {
-      try {
-        const event = await readPublicBlackFriday({ prepareOrders: ensureOrderSchema, catalog });
-        if (event.state === 'open') salePages = event.items.map(item => offerPath(item.offerId)).filter(Boolean).map(path => sitemapUrl(path));
-      } catch (error) {
-        console.error('black_friday_sitemap_read_failed', { message: error.message });
-      }
-    }
     const products = catalog.products.map((product) => sitemapUrl(`/product.html?id=${encodeURIComponent(product.id)}`));
     const stories = storyPosts
       .filter((post) => post && post.id)
@@ -62,7 +53,6 @@ async function fetchSitemap(request) {
       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
       ...pages,
       ...products,
-      ...salePages,
       ...stories,
       '</urlset>',
       '',
@@ -71,7 +61,7 @@ async function fetchSitemap(request) {
       status: 200,
       headers: {
         'Content-Type': 'application/xml; charset=utf-8',
-        'Cache-Control': 'no-store',
+        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=3600',
         'X-Content-Type-Options': 'nosniff',
       },
     });
@@ -81,6 +71,28 @@ async function fetchSitemap(request) {
       status: 500,
       headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' },
     });
+  }
+}
+
+async function fetchBlackFridaySitemap(request) {
+  if (request.method !== 'GET') return methodNotAllowed(['GET']);
+  try {
+    const event = databaseIsConfigured() ? await readPublicBlackFriday({ prepareOrders: ensureOrderSchema }) : { state: 'inactive' };
+    const paths = event.state === 'open' ? event.items.map(item => offerPath(item.offerId)).filter(Boolean) : [];
+    const body = [
+      '<?xml version="1.0" encoding="UTF-8"?>',
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+      sitemapUrl(EVENT_PATH),
+      ...paths.map(path => sitemapUrl(path)),
+      '</urlset>',
+      '',
+    ].join('\n');
+    return new Response(body, {
+      headers: { 'Content-Type': 'application/xml; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' },
+    });
+  } catch (error) {
+    console.error('black_friday_sitemap_read_failed', { message: error.message });
+    return new Response('행사 사이트맵을 준비하지 못했습니다.', { status: 503, headers: { 'Cache-Control': 'no-store' } });
   }
 }
 
@@ -173,6 +185,7 @@ async function fetchRestock(request) {
 
 export async function fetch(request) {
   const route = new URL(request.url).searchParams.get('route');
+  if (route === 'black-friday-sitemap') return fetchBlackFridaySitemap(request);
   if (route === 'black-friday') return fetchBlackFriday(request);
   if (route === 'promotions') return fetchPromotions(request);
   if (route === 'sitemap') return fetchSitemap(request);

@@ -128,7 +128,7 @@ test('two buyers racing for the last unit leave one discounted order and one res
     const root = 'https://himawari.co.kr';
     const itemPage = () => storefront(new Request(root + '/api/storefront?page=black-friday-item&offer=' + sale.offerId));
     const schema = source => JSON.parse(source.match(/<script id="bf-json-ld" type="application\/ld\+json">([^<]+)<\/script>/)[1]);
-    const sitemap = async () => (await productsApi(new Request(root + '/api/products?route=sitemap'))).text();
+    const sitemap = async () => (await productsApi(new Request(root + '/api/products?route=black-friday-sitemap'))).text();
     const itemUrl = root + '/black-friday/item/' + sale.offerId + '/';
     const landing = await storefront(new Request(root + '/api/storefront?page=black-friday'));
     assert.equal(landing.status, 200);

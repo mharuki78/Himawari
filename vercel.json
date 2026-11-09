@@ -113,6 +113,10 @@
       "destination": "/api/storefront?page=black-friday"
     },
     {
+      "source": "/black-friday-sitemap.xml",
+      "destination": "/api/products?route=black-friday-sitemap"
+    },
+    {
       "source": "/sitemap.xml",
       "destination": "/api/products?route=sitemap"
     },
