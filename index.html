@@ -57,6 +57,7 @@
     <link rel="stylesheet" href="assets/home-layout.css">
     <link rel="stylesheet" href="assets/cart.css">
     <link rel="stylesheet" href="assets/member.css">
+    <script src="assets/promotions.js" defer></script>
     <script src="script.js" defer></script>
     <script src="products.js" type="module"></script>
     <script src="stories.js" defer></script>
@@ -367,10 +368,23 @@
       <p id="home-promotion-message" data-promotion-message></p>
       <a class="home-promotion-dialog__link" href="products.html" data-promotion-link><span data-promotion-link-label></span><span aria-hidden="true">→</span></a>
     </dialog>
+    <dialog class="home-promotion-dialog home-promotion-dialog--artwork" data-black-friday-popup aria-label="히마와리 블랙프라이데이">
+      <button class="home-promotion-dialog__close" type="button" data-promotion-close aria-label="팝업 닫기">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+      <div data-black-friday-artwork></div>
+      <template data-black-friday-template>
+        <a class="home-promotion-dialog__artwork" href="/black-friday/">
+          <picture>
+            <source media="(prefers-reduced-motion: reduce)" srcset="/assets/home/black-friday-popup-still.jpg">
+            <img src="/assets/home/black-friday-popup-v4.gif" alt="히마와리 블랙프라이데이 행사 보러가기" width="480" height="600">
+          </picture>
+        </a>
+      </template>
+    </dialog>
     <script src="assets/cart.js" defer></script>
     <script src="assets/member.js" defer></script>
     <script src="assets/inquiry-form.js" defer></script>
-    <script src="assets/promotions.js" defer></script>
   <script>if(window.wcs_do) window.wcs_do();</script>
 </body>
 </html>

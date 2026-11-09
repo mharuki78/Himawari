@@ -1419,6 +1419,27 @@ html {
 }
 .home-promotion-dialog__close { border-color: var(--color-fog); border-radius: 50%; background: var(--cream); }
 
+.home-promotion-dialog--artwork {
+  width: min(28rem, calc(100vw - 2rem), calc((100svh - 2rem) * .8));
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 16px;
+  background: #050505;
+}
+.home-promotion-dialog--artwork .home-promotion-dialog__close {
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  color: var(--ink);
+  background: var(--snow);
+}
+.home-promotion-dialog__artwork,
+.home-promotion-dialog__artwork img { display: block; width: 100%; }
+.home-promotion-dialog__artwork img { height: auto; }
+.home-promotion-dialog__artwork:focus-visible { outline: 3px solid var(--snow); outline-offset: -4px; }
+
 .npay-purchase { border-color: var(--color-fog); }
 .npay-status { color: var(--color-deep-wave); }
 

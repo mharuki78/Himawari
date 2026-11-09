@@ -82,7 +82,14 @@ function initializeBlackFridayNavigation() {
   const nav = document.querySelector('.site-nav');
   if (!nav) return;
   let link, timer, endTimer, loading = false;
-  function removeSaleLink() { link?.remove(); link = null; }
+  function publishSaleStatus(event) {
+    document.dispatchEvent(new CustomEvent('himawari:black-friday-status', { detail: event }));
+  }
+  function removeSaleLink() {
+    link?.remove();
+    link = null;
+    publishSaleStatus(null);
+  }
   async function refresh() {
     if (loading) return;
     loading = true;
@@ -109,6 +116,7 @@ function initializeBlackFridayNavigation() {
           if (/^\/black-friday(?:\/|$)/.test(location.pathname)) link.setAttribute('aria-current', 'page');
           nav.prepend(link);
         }
+        publishSaleStatus(event);
       } else removeSaleLink();
       const boundary = event.state === 'scheduled' ? event.startsAt : event.state === 'open' ? event.endsAt : null;
       if (boundary) delay = Math.max(250, Math.min(delay, Date.parse(boundary) - Date.parse(event.serverTime) + 100));
