@@ -30,6 +30,14 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
   var coupons = [];
   var requestId = crypto.randomUUID();
   var cartOrder = false;
+  var saleOfferId = new URLSearchParams(location.search).get('blackFriday');
+  var saleOffer = null;
+  if (saleOfferId !== null) {
+    document.querySelector('[data-npay-checkout-section]').hidden = true;
+    document.querySelector('[data-coupon-fieldset]').hidden = true;
+    document.querySelector('[data-black-friday-checkout]').hidden = false;
+    document.querySelector('[data-black-friday-return]').hidden = false;
+  }
   var memberOrder = false;
   var dirty = false;
   var submitted = false;
@@ -55,6 +63,7 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
   }
 
   function prepareNpay() {
+    if (saleOfferId !== null) return;
     initializeCheckoutNpay(() => items.map(item => ({ productId: item.productId, optionId: item.optionId || '', quantity: item.quantity })), () => { dirty = false; });
   }
 
@@ -258,7 +267,7 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
       article.append(media, copy);
       itemContainer.append(article);
     });
-    renderCoupons();
+    if (saleOfferId === null) renderCoupons();
     renderTotals();
   }
 
@@ -318,7 +327,7 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
   document.querySelectorAll('[data-bank-account]').forEach(function (node) { node.textContent = [bankTransfer.bank, bankTransfer.account, bankTransfer.holder && '예금주 ' + bankTransfer.holder].filter(Boolean).join(' · '); });
   var bankButton = document.querySelector('[data-bank-select]');
   bankButton.disabled = !bankTransferReady();
-  document.querySelector('[data-bank-availability]').textContent = bankTransferReady() ? '' : '입금 계좌를 준비하고 있습니다. Npay로 구매해 주세요.';
+  document.querySelector('[data-bank-availability]').textContent = bankTransferReady() ? '' : (saleOfferId === null ? '입금 계좌를 준비하고 있습니다. Npay로 구매해 주세요.' : '입금 계좌를 준비하고 있습니다.');
   bankButton.addEventListener('click', function () {
     selectPayment('bank_transfer');
   });
@@ -337,7 +346,7 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
       kakaopayEnabled = payConfig.enabled === true;
       document.querySelector('[data-kakaopay-section]').hidden = !kakaopayEnabled;
       kakaopayButton.disabled = !kakaopayEnabled;
-      var promotionPayload = await request('/api/promotions').catch(function () { return { coupons: [] }; });
+      var promotionPayload = saleOfferId === null ? await request('/api/promotions').catch(function () { return { coupons: [] }; }) : { coupons: [] };
       coupons = Array.isArray(promotionPayload.coupons) ? promotionPayload.coupons : [];
       var gameReward = readGameReward();
       couponTokens = readCouponWallet();
@@ -346,7 +355,18 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
       memberOrder = session.authenticated === true;
       guestNote.hidden = memberOrder;
       var productId = new URLSearchParams(location.search).get('product');
-      if (productId) {
+      if (saleOfferId !== null) {
+        var salePayload = await request('/api/black-friday');
+        saleOffer = salePayload.state === 'open' && salePayload.items.find(function (item) { return item.offerId === saleOfferId; });
+        if (!saleOffer || saleOffer.remaining < 1) throw new Error('행사가 끝났거나 이 품목의 행사 수량이 모두 소진됐습니다.');
+        items = [{ productId: saleOffer.productId, optionId: saleOffer.optionId, optionLabel: saleOffer.optionLabel,
+          stock: saleOffer.remaining, quantity: 1, product: saleOffer }];
+        cartOrder = false;
+        if (!kakaopayEnabled && !bankTransferReady()) {
+          paymentNotice.textContent = '현재 행사 결제를 이용할 수 없습니다. 잠시 후 다시 시도해 주세요.';
+          paymentNotice.hidden = false;
+        }
+      } else if (productId) {
         var productPayload = await request('/api/products?id=' + encodeURIComponent(productId));
         var optionId = new URLSearchParams(location.search).get('option') || '';
         var selectedOption = (productPayload.product.options || []).find(function (option) { return option.id === optionId; });
@@ -428,6 +448,7 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
         body: JSON.stringify({
           requestId: requestId,
           paymentMethod: paymentMethod,
+          blackFriday: saleOffer ? { offerId: saleOffer.offerId, unitPrice: saleOffer.price } : undefined,
           items: items.map(function (item) { return { productId: item.productId, optionId: item.optionId || '', quantity: item.quantity }; }),
           recipientName: values.recipientName,
           email: values.email,

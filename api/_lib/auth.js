@@ -109,7 +109,7 @@ export function adminCanAccess(principal, request) {
   if (path.endsWith('/session')) return true;
   if (route.startsWith('ops-') || path.includes('/operations')) return request.method === 'GET' && route !== 'ops-audit';
   if (principal.role === 'viewer') return request.method === 'GET';
-  if (principal.role === 'catalog') return /products|product-media|product-upload|promotions|reels/.test(path) && route !== 'reviews';
+  if (principal.role === 'catalog') return /products|product-media|product-upload|promotions|black-friday|reels/.test(path) && route !== 'reviews';
   if (principal.role === 'fulfillment') return path.endsWith('/orders') || (request.method === 'GET' && path.endsWith('/products'));
   if (principal.role === 'support') return path.endsWith('/inquiries') || route === 'reviews';
   return false;

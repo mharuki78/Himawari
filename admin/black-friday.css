@@ -1,0 +1,17 @@
+.black-friday-admin { margin-block-end: 1.5rem; }
+.black-friday-admin__section { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-block: 1.25rem .75rem; }
+.black-friday-admin__section h3 { margin: 0 0 .3rem; font-size: 1rem; }
+.black-friday-admin__section p { margin: 0; color: #4d5651; font-size: .88rem; }
+.black-friday-admin__section button { flex-shrink: 0; }
+.black-friday-admin__items { display: grid; gap: .7rem; margin-block-end: 1rem; }
+.black-friday-admin__item { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) auto; align-items: end; gap: .65rem; border: 1px solid #dde3df; border-radius: 14px; margin: 0; min-inline-size: 0; padding: .85rem; }
+.black-friday-admin__item .admin-field { min-width: 0; }
+.black-friday-admin__item .admin-field > span { font-size: .85rem; font-weight: 650; }
+.black-friday-admin__item select { width: 100%; padding: .65rem; border: 1px solid #bdc7bf; border-radius: 8px; background: #fff; color: #202423; font: inherit; }
+.black-friday-admin__item .field-help { grid-column: 1/-1; margin: 0; }
+.black-friday-admin .promotion-save { flex-wrap: wrap; }
+@media (max-width: 630px) {
+  .black-friday-admin__item { grid-template-columns: 1fr 1fr; }
+  .black-friday-admin__item .admin-field:first-of-type { grid-column: 1/-1; }
+  .black-friday-admin__item button { justify-self: start; }
+}

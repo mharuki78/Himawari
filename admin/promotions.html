@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="console-layout.css?v=20261008">
+    <link rel="stylesheet" href="black-friday.css">
     <script src="promotion-admin.js" type="module"></script>
   </head>
   <body>
@@ -36,6 +37,28 @@
         <div class="board-head"><div><p class="eyebrow">Promotion controls</p><h1 id="board-title" tabindex="-1">프로모션 관리</h1><p>활성화한 쿠폰만 주문서에 나타납니다. 저장한 팝업은 새 버전으로 한 번씩 노출됩니다.</p></div><button class="button button--quiet" type="button" data-logout>로그아웃</button></div>
         <div class="inventory-note"><div><span>가격 기준</span><strong>할인가</strong></div><p>제품 관리에 입력한 네이버 할인 적용 가격을 자사몰 판매가로 사용합니다. 쿠폰은 주문 접수 시 다시 검증합니다.</p></div>
         <p class="board-status" data-board-status role="status" aria-live="polite"></p>
+        <form class="promotion-form" data-black-friday-form>
+          <section class="promotion-panel black-friday-admin" aria-labelledby="black-friday-settings-title">
+            <div class="promotion-panel__head">
+              <div><p class="eyebrow">Black Friday</p><h2 id="black-friday-settings-title">블랙 프라이데이</h2><p>행사를 켜고 저장하면 아래 기간에만 쇼핑몰 메뉴에 행사 탭이 표시됩니다.</p></div>
+              <label class="admin-switch"><input type="checkbox" name="enabled" disabled><span>행사 사용</span></label>
+            </div>
+            <div class="product-form__pair">
+              <div class="admin-field"><label for="bf-starts-at">시작 일시 (한국 시간)</label><input type="datetime-local" id="bf-starts-at" name="startsAt" step="60" disabled></div>
+              <div class="admin-field"><label for="bf-ends-at">종료 일시 (한국 시간)</label><input type="datetime-local" id="bf-ends-at" name="endsAt" step="60" disabled></div>
+            </div>
+            <div class="black-friday-admin__section">
+              <div><h3>행사 품목</h3><p>옵션이 있는 상품은 옵션별로 추가하세요. 주문이 접수되면 행사 수량을 차감하고, 주문을 취소하면 돌려놓습니다.</p></div>
+              <button type="button" class="button button--quiet" data-bf-add disabled>품목 추가</button>
+            </div>
+            <div class="black-friday-admin__items" data-bf-items></div>
+            <div class="promotion-save">
+              <p class="form-status" data-bf-status role="status" aria-live="polite"></p>
+              <button type="button" class="button button--quiet" data-bf-reload>다시 불러오기</button>
+              <button class="button button--primary" type="submit" data-bf-save disabled>행사 설정 저장</button>
+            </div>
+          </section>
+        </form>
         <form class="promotion-form" data-promotion-form novalidate>
           <section class="promotion-panel" aria-labelledby="popup-settings-title">
             <div class="promotion-panel__head"><div><p class="eyebrow">Home popup</p><h2 id="popup-settings-title">첫 화면 팝업</h2></div><label class="admin-switch"><input type="checkbox" name="popupEnabled"><span>팝업 노출</span></label></div>

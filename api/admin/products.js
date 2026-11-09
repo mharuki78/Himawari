@@ -23,6 +23,8 @@ import {
   validatePromotionsInput,
   writePromotions,
 } from '../_lib/promotions.js';
+import { blackFridayState, readBlackFridayAdmin, saveBlackFriday } from '../_lib/black-friday.js';
+import { ensureOrderSchema } from '../_lib/orders.js';
 import { databaseIsConfigured } from '../_lib/database.js';
 import { listAdminReviews, moderateReview, notifyRestockSubscribers } from '../_lib/customer-features.js';
 import {
@@ -42,6 +44,24 @@ function parseCursor(value) {
   if (!value) return 0;
   if (!/^\d{1,6}$/.test(value)) return -1;
   return Number(value);
+}
+
+async function fetchBlackFriday(request) {
+  const headers = { Vary: 'Cookie' };
+  if (!['GET', 'PUT'].includes(request.method)) return methodNotAllowed(['GET', 'PUT']);
+  if (!authIsConfigured() || !databaseIsConfigured()) return json({ message: '행사 저장소 설정을 확인해 주세요.' }, 503, headers);
+  if (!isAdminRequest(request)) return json({ message: '관리자 로그인이 필요합니다.' }, 401, headers);
+  if (request.method === 'PUT' && !isSameOrigin(request)) return json({ message: '이 사이트에서만 행사 설정을 저장할 수 있습니다.' }, 403, headers);
+  try {
+    await ensureOrderSchema();
+    if (request.method === 'GET') return json(await readBlackFridayAdmin(), 200, headers);
+    const config = await saveBlackFriday(await readJson(request, 64_000));
+    return json({ config, state: blackFridayState(config) }, 200, headers);
+  } catch (error) {
+    if (error.status >= 400 && error.status < 500) return json({ message: error.message }, error.status, headers);
+    console.error('admin_black_friday_failed', { message: error.message });
+    return json({ message: '행사 설정을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요.' }, 503, headers);
+  }
 }
 
 async function fetchPromotions(request) {
@@ -183,6 +203,7 @@ async function fetchBulkProducts(request) {
 
 async function handleRequest(request) {
   const route = new URL(request.url).searchParams.get('route');
+  if (route === 'black-friday') return fetchBlackFriday(request);
   if (route === 'promotions') return fetchPromotions(request);
   if (route === 'reviews') return fetchReviews(request);
   if (route === 'reels') return fetchReels(request);

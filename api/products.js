@@ -4,6 +4,8 @@ import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalo
 import { publicPromotions, readPromotions } from './_lib/promotions.js';
 import { applyInventoryReservations } from './_lib/inventory.js';
 import { publicReels, readReelsConfig } from './_lib/reels.js';
+import { readPublicBlackFriday } from './_lib/black-friday.js';
+import { ensureOrderSchema } from './_lib/orders.js';
 import storyPosts from '../story/posts.json' with { type: 'json' };
 import lookbookEntries from '../lookbook/entries.json' with { type: 'json' };
 import { database, databaseIsConfigured } from './_lib/database.js';
@@ -67,6 +69,18 @@ async function fetchSitemap(request) {
       status: 500,
       headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' },
     });
+  }
+}
+
+async function fetchBlackFriday(request) {
+  if (request.method !== 'GET') return methodNotAllowed(['GET']);
+  if (!databaseIsConfigured()) return json({ state: 'inactive', items: [] });
+  try {
+    const statusOnly = new URL(request.url).searchParams.get('view') === 'status';
+    return json(await readPublicBlackFriday({ statusOnly, prepareOrders: ensureOrderSchema }));
+  } catch (error) {
+    console.error('black_friday_read_failed', { message: error.message });
+    return json({ message: '행사 정보를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.' }, 503);
   }
 }
 
@@ -147,6 +161,7 @@ async function fetchRestock(request) {
 
 export async function fetch(request) {
   const route = new URL(request.url).searchParams.get('route');
+  if (route === 'black-friday') return fetchBlackFriday(request);
   if (route === 'promotions') return fetchPromotions(request);
   if (route === 'sitemap') return fetchSitemap(request);
   if (route === 'merchant-feed') return fetchMerchantFeed(request);

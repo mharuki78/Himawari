@@ -1,3 +1,4 @@
+import { setupBlackFridayAdmin } from './black-friday-admin.js';
 import { HttpError, bindPasswordToggle, fetchJson } from './admin-client.js';
 
 const $ = (selector) => document.querySelector(selector);
@@ -26,6 +27,8 @@ function showLogin(message = '') {
   loginStatus.textContent = message; passwordInput.value = ''; passwordInput.type = 'password';
   requestAnimationFrame(() => passwordInput.focus());
 }
+
+const blackFriday = setupBlackFridayAdmin(() => showLogin('관리자 세션이 만료되었습니다. 다시 로그인해 주세요.'));
 
 function showBoard() { initialView.hidden = true; loginView.hidden = true; boardView.hidden = false; }
 
@@ -89,10 +92,11 @@ async function load() {
   try {
     const payload = await fetchJson('/api/admin/promotions', { cache: 'no-store' });
     etag = payload.etag || null; render(payload.config); showBoard();
+    void blackFriday.load();
     boardStatus.textContent = payload.config.updatedAt ? `마지막 저장: ${new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(payload.config.updatedAt))}` : '아직 저장된 설정이 없습니다. 모든 쿠폰과 팝업은 비활성 상태입니다.';
   } catch (error) {
     if (error instanceof HttpError && error.status === 401) return showLogin();
-    showBoard(); boardStatus.textContent = error.message || '프로모션 설정을 불러오지 못했습니다.';
+    showBoard(); void blackFriday.load(); boardStatus.textContent = error.message || '프로모션 설정을 불러오지 못했습니다.';
   }
 }
 

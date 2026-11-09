@@ -104,6 +104,10 @@
       "destination": "/api/products?route=merchant-feed"
     },
     {
+      "source": "/api/black-friday",
+      "destination": "/api/products?route=black-friday"
+    },
+    {
       "source": "/api/promotions",
       "destination": "/api/products?route=promotions"
     },
@@ -122,6 +126,10 @@
     {
       "source": "/api/health",
       "destination": "/api/products?route=health"
+    },
+    {
+      "source": "/api/admin/black-friday",
+      "destination": "/api/admin/products?route=black-friday"
     },
     {
       "source": "/api/admin/promotions",

@@ -78,6 +78,44 @@ function syncSiteNavigation() {
 
 syncSiteNavigation();
 
+function initializeBlackFridayNavigation() {
+  const nav = document.querySelector('.site-nav');
+  if (!nav) return;
+  let link, timer, loading = false;
+  async function refresh() {
+    if (loading) return;
+    loading = true;
+    clearTimeout(timer);
+    let delay = 60_000;
+    try {
+      const response = await fetch('/api/black-friday?view=status', { cache: 'no-store' });
+      if (!response.ok) throw new Error('Unavailable');
+      const event = await response.json();
+      if (event.state === 'open') {
+        if (!link) {
+          link = document.createElement('a');
+          link.href = '/black-friday/';
+          link.textContent = '블랙 프라이데이';
+          link.dataset.blackFridayNav = '';
+          if (/^\/black-friday(?:\/|$)/.test(location.pathname)) link.setAttribute('aria-current', 'page');
+          nav.prepend(link);
+        }
+      } else { link?.remove(); link = null; }
+      const boundary = event.state === 'scheduled' ? event.startsAt : event.state === 'open' ? event.endsAt : null;
+      if (boundary) delay = Math.max(250, Math.min(delay, Date.parse(boundary) - Date.parse(event.serverTime) + 100));
+    } catch {
+      link?.remove(); link = null;
+    } finally {
+      loading = false;
+      timer = setTimeout(refresh, delay);
+    }
+  }
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
+  refresh();
+}
+
+initializeBlackFridayNavigation();
+
 function initializeHeaderTooltips() {
   const selector = '[data-header-search],.member-trigger,[data-cart-button],.menu-button,.header-store';
   const entries = new Map();

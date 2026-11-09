@@ -1,0 +1,23 @@
+.bf-event { --bf-ink: #202423; --bf-green: #315845; color: var(--bf-ink); }
+.bf-event__intro { padding: clamp(3rem, 8vw, 7rem) 24px; text-align: center; background: #202423; color: #fff; }
+.bf-event__intro h1 { margin: 0; color: inherit; font-size: clamp(2.25rem, 7vw, 5.15rem); line-height: 1.1; letter-spacing: -.055em; }
+.bf-event__intro p:last-child { margin: 1rem 0 0; color: #e1e8e4; font-size: clamp(.85rem, 2.5vw, 1rem); }
+.bf-event__kicker { margin: 0 0 .9rem; color: #cad7d0; font-size: .75rem; font-weight: 700; letter-spacing: .18em; }
+.bf-event__body { max-width: 1264px; margin-inline: auto; padding: 2rem clamp(1.25rem, 4vw, 2.75rem) 4rem; }
+.bf-event__status { margin: 0 0 1.25rem; color: #48534d; }
+.bf-event__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16.5rem), 1fr)); gap: 1.1rem; }
+.bf-event__card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e1e5e2; border-radius: 18px; background: #fff; }
+.bf-event__media { display: grid; place-items: center; aspect-ratio: 5/4; background: #f5f5f7; }
+.bf-event__media img { width: 100%; height: 100%; aspect-ratio: 5/4; object-fit: contain; }
+.bf-event__details { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 1.15rem; }
+.bf-event__details h2 { margin: 0 0 .6rem; font-size: 1.16rem; }
+.bf-event__model, .bf-event__remaining { margin: 0 0 .35rem; font-size: .86rem; color: #4e5c54; }
+.bf-event__prices { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem .6rem; margin: auto 0 .25rem; font-variant-numeric: tabular-nums; }
+.bf-event__prices del { color: #546057; font-size: .88rem; }
+.bf-event__prices strong { color: var(--bf-green); font-size: 1.35rem; }
+.bf-event__buy, .bf-event__browse { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: .65rem 1rem; border-radius: 999px; font-weight: 650; text-decoration: none; }
+.bf-event__buy { width: 100%; margin-top: .65rem; background: var(--bf-green); color: #fff; }
+.bf-event__buy:hover { background: #254635; color: #fff; }
+.bf-event__browse { gap: .5rem; margin-top: 1.25rem; border: 1px solid #d6dfd9; color: var(--bf-green); }
+.bf-event__browse:hover { background: #edf5f1; }
+.bf-event a:focus-visible { outline: 2px solid var(--bf-green); outline-offset: 3px; }

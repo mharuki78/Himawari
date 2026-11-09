@@ -164,6 +164,7 @@ function selectOrder(order, trigger) {
   const recipient = document.querySelector('[data-detail-recipient]');
   recipient.replaceChildren(
     definitionRow('결제 방법', order.paymentLabel || order.paymentMethod),
+    ...(order.blackFriday ? [definitionRow('구매 경로', '블랙 프라이데이')] : []),
     definitionRow('받는 분', order.recipient.name), definitionRow('연락처', order.recipient.phone), definitionRow('이메일', order.recipient.email),
     definitionRow('배송지', `(${order.recipient.postalCode}) ${order.recipient.addressLine1}${order.recipient.addressLine2 ? ` ${order.recipient.addressLine2}` : ''}`),
     definitionRow('배송 요청사항', order.recipient.deliveryNote || '없음'), definitionRow('배송', order.delivery.trackingNumber ? `${order.delivery.carrier} ${order.delivery.trackingNumber}` : `${order.delivery.carrier} · 운송장 등록 전`)

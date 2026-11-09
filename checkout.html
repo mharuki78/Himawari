@@ -53,6 +53,7 @@
         <p class="kicker">Order unavailable</p><h2 id="checkout-error-title" tabindex="-1">주문서를 준비하지 못했습니다.</h2>
         <p data-checkout-error-message>잠시 후 다시 시도해 주세요.</p>
         <button type="button" class="order-secondary-link" data-checkout-retry>다시 시도</button>
+        <a class="order-secondary-link" href="/black-friday/" data-black-friday-return hidden>블랙 프라이데이로 돌아가기</a>
       </section>
 
       <div class="checkout-workspace" data-checkout-content hidden>
@@ -83,6 +84,7 @@
           </section>
         <aside class="checkout-summary" aria-labelledby="order-summary-title">
           <div class="checkout-summary__head"><p class="kicker">Order summary</p><h2 id="order-summary-title">주문 상품</h2><span data-order-count>0개</span></div>
+          <p data-black-friday-checkout hidden>블랙 프라이데이 행사가가 적용됩니다. 쿠폰은 함께 사용할 수 없습니다.</p>
           <div class="checkout-items" data-checkout-items></div>
           <dl class="checkout-totals">
             <div><dt>상품금액</dt><dd data-order-subtotal>0원</dd></div>
@@ -199,7 +201,7 @@
     </footer>
     <script src="assets/cart.js" defer></script>
     <script src="assets/member.js" defer></script>
-    <script src="assets/checkout.js?v=20261028-payments" type="module"></script>
+    <script src="assets/checkout.js?v=black-friday" type="module"></script>
   <script>if(window.wcs_do) window.wcs_do();</script>
 </body>
 </html>
