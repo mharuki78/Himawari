@@ -1,0 +1,103 @@
+{
+  "date": "2026-11-09",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-09T00:01:56.818Z",
+    "scheduledAt": "2026-11-09T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "scheduledSlot": "2026-11-09T09:00:00+09:00",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-09/deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-09/public-catalog.json",
+  "sourceCatalogFetchedAt": "2026-11-09T00:02:52.209Z",
+  "entries": [
+    {
+      "id": "2026-11-09-everyday-0403",
+      "model": "0403",
+      "category": "everyday",
+      "title": "상가 통로를 걸어요",
+      "color": "브라운",
+      "scene": "갈색 백팩을 손에 들고 파란 셔터가 늘어선 통로를 걸어요. 앞에 달린 작은 파우치가 가까이 보여요.",
+      "alt": "갈색 No.0403 백팩의 손잡이를 잡고 파란 셔터 옆을 지나는 사람을 낮은 시점에서 본 AI 착용 연출",
+      "productId": "coupang-2fecb77f47b7a8f8",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "composition": {
+        "approach": "close walking hand-carry portrait",
+        "angle": "low front-side three-quarter",
+        "framing": "torso-to-shoes with entire bag in near foreground",
+        "activity": "walking while holding the backpack by its short top handles",
+        "setting": "covered shopping arcade beside muted blue shutters"
+      },
+      "fidelityReview": "Directly compared catalog source and generated image. Muted brown box silhouette, black base trim and short handles, centered clip, snap and black rounded zip border on the front pouch, both distinct black logo patches, outer pocket shape, side zipper and original backpack straps match. The 28 × 40 × 17 cm exterior supports the depicted scale. Visible hands and both shoes were checked.",
+      "date": "2026-11-09",
+      "image": "/assets/lookbook/2026-11-09-everyday-0403.webp",
+      "thumbnail": "/assets/lookbook/2026-11-09-everyday-0403-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-09/reference-0403-front.jpg",
+      "generatedSource": "backups/lookbook-2026-11-09/generated-0403.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-2fecb77f47b7a8f8/main-mPeRzgTAkVAAd1p67jGbjKaon4EdI1.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8562698562",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-09; 2026-09-14 제조사 카탈로그 22페이지의 0403 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다. 외부 크기는 백팩 기준이며 숄더백은 별도 23 × 18 cm로 표기됩니다. 900 g의 구성품 포함 여부는 미기재입니다.",
+      "prompt": "Photorealistic natural editorial LookBook, vertical portrait 2:3 at 1024×1536. Use exact attached brown Himawari No.0403 backpack as strict product reference, 28 cm wide × 40 high × 17 deep; the front attached pouch is 23 × 18 cm. In a covered arcade with muted blue painted shop shutters, a fictional adult man in a light oatmeal pullover and navy chinos strides past in a natural unposed step, hand-carrying the backpack by its original short black top handles at his outside thigh, close to the camera. Frame at a low waist-height side-front diagonal angle, from waist to shoes, whole bag prominent and nearly front facing with a little side depth. One walking foot raised subtly; realistic gravity and relaxed grip; the original black backpack straps drape loosely behind without hiding the front. Keep the exact muted warm taupe-brown rectangular fabric shell, black base strip, stitched outlines, original black top handles, slightly gabled top sides, main zipper pulls at the upper side, open side pocket, and exact small removable brown pouch clipped high at center with its single black clasp. Match the rounded black pouch zipper piping, centered small dark snap, black square Himawari badge on the pouch and the separate second partly visible square badge on the lower-right face of the main bag, with no extra branding. Bag body fills about 45 percent of height. Soft light and ordinary setting, closed bag and pouch, no new straps, no added features, no bystanders or readable signs.\n",
+      "generatedSha256": "4d6fe7bccd349852e94a8225cdfe07f6bfe0d176d1b5fe4f73f7da2c50fb6b83"
+    },
+    {
+      "id": "2026-11-09-city-1884",
+      "model": "1884",
+      "category": "city",
+      "title": "정류장 벤치에서",
+      "color": "그레이",
+      "scene": "회색 백팩을 멘 채 벤치에 앉아 유리 너머 길을 바라봐요. 손은 무릎 위에 올려 두었어요.",
+      "alt": "회색 No.1884 백팩을 메고 유리 정류장 벤치에 앉은 사람을 높은 옆뒤 시점에서 본 AI 착용 연출",
+      "productId": "coupang-330775bdb18b62bf",
+      "dimensionsCm": [
+        30,
+        45,
+        20
+      ],
+      "composition": {
+        "approach": "seated transit-shelter environmental portrait",
+        "angle": "elevated rear-side three-quarter",
+        "framing": "full seated figure and shoes with bench and street through glass",
+        "activity": "waiting on a backless bench while wearing both shoulder straps",
+        "setting": "glass transit shelter and timber bench"
+      },
+      "fidelityReview": "Directly compared catalog source and generated image. Charcoal gray soft rectangular body, gray rounded handles and black keeper, stitched tabs with two rivets apiece, central black Himawari patch, single horizontal front zipper and left pull, side-pocket rims and gray padded shoulder straps correspond to the source. The catalog image's promotional round seal is absent from the staged bag. Scale checked against 30 × 45 × 20 cm exterior. Seated posture and hand placement are plausible.",
+      "date": "2026-11-09",
+      "image": "/assets/lookbook/2026-11-09-city-1884.webp",
+      "thumbnail": "/assets/lookbook/2026-11-09-city-1884-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-09/reference-1884-front.jpg",
+      "generatedSource": "backups/lookbook-2026-11-09/generated-1884.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-330775bdb18b62bf/main-cU6qNuvl6qykOG5TOg6gCBDIIiMBhp.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8653683037",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-09; 2026-09-14 제조사 카탈로그 31페이지의 1884 대형(1884L) 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "prompt": "Photorealistic natural editorial LookBook, 1024×1536 vertical 2:3. Reference is the exact dark gray Himawari No.1884 large backpack, 30 cm wide × 45 high × 20 deep. The round color seal in the product listing is promotional overlay; do not place it on the bag. An adult fictional woman with dark skin and short natural hair in a plain pale blue jacket and dark olive straight trousers sits sideways near the end of a backless timber bench in a quiet glass transit shelter, feet on the ground, with the gray backpack still on both shoulders. She looks out of the glass at the street, hands loose on her lap, body inclined just slightly forward so the pack is entirely clear of the bench. Distant high-angle three-quarter view from behind and to the side at about 25 degrees above normal eye level; capture the whole seated figure including shoes, bench geometry and surrounding glass with a clean open frame. The back-facing exterior of the bag and a little side depth remain legible and about one quarter of frame height; her face is only a partial profile. Preserve dark charcoal gray and black colors, boxy soft-edged silhouette, two original gray rounded handles joined at the top with a small black snap keeper, contrast stitched handle tabs with two black rivets each, small centered black rectangular Himawari badge, single long horizontal black zipper on the large lower front pocket with left-side pull, open side pockets with black rims, black side zipper pulls and original gray/black padded straps. Bag sits naturally against back, top handles do not connect to shoulder straps, no added hardware, readable signs or extra compartments. Soft overcast light and natural human posture.\n",
+      "generatedSha256": "860589677afd3f95a5bdf2e041496911a4973a28eb182f1498c74fda5b7dd31c"
+    }
+  ],
+  "preparedAt": "2026-11-09T00:05:44.572856+00:00",
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-11-09-everyday-0403",
+        "2026-11-09-city-1884"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "visualReview": "backups/lookbook-2026-11-09/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-09/optimization.json"
+}

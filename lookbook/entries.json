@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-09-everyday-0403",
+    "date": "2026-11-09",
+    "category": "everyday",
+    "title": "상가 통로를 걸어요",
+    "model": "0403",
+    "color": "브라운",
+    "scene": "갈색 백팩을 손에 들고 파란 셔터가 늘어선 통로를 걸어요. 앞에 달린 작은 파우치가 가까이 보여요.",
+    "alt": "갈색 No.0403 백팩의 손잡이를 잡고 파란 셔터 옆을 지나는 사람을 낮은 시점에서 본 AI 착용 연출",
+    "productId": "coupang-2fecb77f47b7a8f8",
+    "image": "/assets/lookbook/2026-11-09-everyday-0403.webp",
+    "thumbnail": "/assets/lookbook/2026-11-09-everyday-0403-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-09-city-1884",
+    "date": "2026-11-09",
+    "category": "city",
+    "title": "정류장 벤치에서",
+    "model": "1884",
+    "color": "그레이",
+    "scene": "회색 백팩을 멘 채 벤치에 앉아 유리 너머 길을 바라봐요. 손은 무릎 위에 올려 두었어요.",
+    "alt": "회색 No.1884 백팩을 메고 유리 정류장 벤치에 앉은 사람을 높은 옆뒤 시점에서 본 AI 착용 연출",
+    "productId": "coupang-330775bdb18b62bf",
+    "image": "/assets/lookbook/2026-11-09-city-1884.webp",
+    "thumbnail": "/assets/lookbook/2026-11-09-city-1884-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-08-everyday-1089",
     "date": "2026-11-08",
     "category": "everyday",
