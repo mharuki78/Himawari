@@ -6,12 +6,12 @@
     "scheduledAt": "2026-11-10T08:00:00+09:00",
     "edition": "morning"
   },
-  "stage": "prepared",
+  "stage": "metadata-verified",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "posts": [
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "laptop-pouch-desk-clearance",
       "title": "좁은 책상에서 노트북 파우치 지퍼를 어느 쪽으로 둘까",
       "url": "https://himawari.co.kr/story/laptop-pouch-desk-clearance.html",
@@ -85,10 +85,19 @@
           "review": "공개 상품 원본을 직접 대조했습니다. 모델·색·형태·로고·포켓·손잡이와 끈을 확인하고 원본 전체의 비율을 보존했습니다.",
           "originalSource": "backups/story-2026-11-10/reference-1.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-09T23:15:39.214Z",
+        "modifiedAt": "2026-11-09T23:15:39.214Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-10/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-10/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-10/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-10/first-deployment-history.json",
+        "articleSha256": "fb35218038925cad0c6103f2c467b4e687eda1f2219b35d25056615a0297ed62"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-loaded-weight-budget",
       "title": "빈 백팩 무게에 평소 짐을 더하면 몇 그램일까",
       "url": "https://himawari.co.kr/story/backpack-loaded-weight-budget.html",
@@ -162,10 +171,19 @@
           "review": "공개 상품 원본을 직접 대조했습니다. 모델·색·형태·로고·포켓·손잡이와 끈을 확인하고 원본 전체의 비율을 보존했습니다.",
           "originalSource": "backups/story-2026-11-10/reference-2.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-09T23:15:39.214Z",
+        "modifiedAt": "2026-11-09T23:15:39.214Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-10/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-10/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-10/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-10/first-deployment-history.json",
+        "articleSha256": "db817aca977edcd7007f06dc9aaaca5b480c90370502cae7338730bebb190712"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-forward-tilt-front-pocket",
       "title": "백팩을 내려놓으면 앞으로 기울 때 어디부터 볼까",
       "url": "https://himawari.co.kr/story/backpack-forward-tilt-front-pocket.html",
@@ -239,7 +257,16 @@
           "review": "공개 상품 원본을 직접 대조했습니다. 모델·색·형태·로고·포켓·손잡이와 끈을 확인하고 원본 전체의 비율을 보존했습니다.",
           "originalSource": "backups/story-2026-11-10/reference-3.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-09T23:15:39.214Z",
+        "modifiedAt": "2026-11-09T23:15:39.214Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-10/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-10/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-10/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-10/first-deployment-history.json",
+        "articleSha256": "f5ab77314f1c0f97d6040cbec99b752e81f7882f818eb6e0df152ce2488881da"
+      }
     }
   ],
   "editions": {
@@ -249,7 +276,7 @@
         "backpack-loaded-weight-budget",
         "backpack-forward-tilt-front-pocket"
       ],
-      "stage": "prepared"
+      "stage": "metadata-verified"
     }
   },
   "publicationBaselineCommit": "55489347e8a70ab2465cd6f7e2fc9c9e9fd0bcde",
