@@ -29,6 +29,15 @@ test('상품 구조화 데이터는 현재 상품 경로와 실제 가격·품�
   assert.equal(product.aggregateRating, undefined, 'No fabricated ratings for unrated product');
 });
 
+test('1088M 세트는 상세 화면의 영상 포스터를 상품 이미지로 제공한다', () => {
+  const bundle = { ...black, id: 'store-13725149652', name: '히마와리 No.1088M+체스트벨트 SET', gallery: ['https://images.example/old.jpg'] };
+  const html = renderProductPage(template, bundle, origin);
+  const product = parse(html).find(n => n.sku === bundle.id);
+  const posters = [...html.matchAll(/<video\b[^>]*poster="(\/assets\/product-1088m-set\/[^"\s]+)"/g)].map(match => origin + match[1]);
+  assert.equal(posters.length, 3);
+  assert.deepEqual(product.image, [bundle.image, ...posters]);
+});
+
 test('상품군은 확인된 색상·실측 차이만 변형 기준으로 선언한다', () => {
   const sameSize = parse(renderProductPage(template, black, origin, null, [black, mint]));
   assert.deepEqual(sameSize.find(n => n['@type'] === 'ProductGroup').variesBy, ['https://schema.org/color']);

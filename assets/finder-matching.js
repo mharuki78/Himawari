@@ -187,8 +187,8 @@ function laptopReason(laptop) {
 }
 
 function explainModern(item, answers) {
-  const { product, specs, evidence } = item;
-  const useReason = answers.use === 'laptop' ? laptopReason(specs.laptop) : USES[answers.use].label;
+  const { product, specs, evidence, fit } = item;
+  const useReason = fit.use ? (answers.use === 'laptop' ? laptopReason(specs.laptop) : USES[answers.use].label) : '';
   const sizeReason = specs.dimensions ? `외부 크기 ${specs.dimensions.join(' × ')} cm` : '';
   const practicalReason = sizeReason || (specs.weight ? `등록 무게 ${specs.weight} g` : '');
   const option = availableColorOption(product, answers.color);
@@ -196,10 +196,10 @@ function explainModern(item, answers) {
   const reasons = [...new Set([
     useReason, evidence.reason, colorLabel ? `재고가 있는 색상 옵션: ${colorLabel}` : '',
     answers.intent === 'gift' ? practicalReason : sizeReason,
-    answers.budget !== 'any' ? '선택한 예산 범위에 포함' : '', '현재 주문 가능',
+    fit.budget && answers.budget !== 'any' ? '선택한 예산 범위에 포함' : '', '현재 주문 가능',
   ].filter(Boolean))].slice(0, 3);
   const checks = [];
-  if (answers.use === 'laptop' || (answers.priority === 'storage' && specs.laptop)) {
+  if (specs.laptop && (answers.use === 'laptop' || answers.priority === 'storage')) {
     checks.push(`${specs.laptop.depth ? `수납칸 두께 ${specs.laptop.depth} cm.` : '수납칸 두께는 미기재입니다.'} 기기와 케이스 실측을 비교해 주세요. 수납을 보장하지 않습니다.`);
   }
   const priorityChecks = {
@@ -213,20 +213,40 @@ function explainModern(item, answers) {
   };
   if (priorityChecks[answers.priority]) checks.push(priorityChecks[answers.priority]);
   if (product.options?.length) checks.push('상세 페이지에서 재고가 있는 옵션을 선택해 주세요.');
-  return { reasons, check: checks.join(' ') || '상세 사진과 제품 사양을 확인해 주세요.' };
+  const differences = [
+    !fit.use && (answers.use === 'laptop' ? '노트북 수납칸 치수 미확인' : '선택한 용도와 다름'),
+    !fit.size && (specs.dimensions ? '선택한 크기와 다름' : '크기 정보 미확인'),
+    !fit.budget && '선택한 예산 범위 밖',
+    !fit.color && '선택한 색상으로 주문 가능한지 확인 필요',
+  ].filter(Boolean);
+  return { reasons, differences, check: checks.join(' ') || '상세 사진과 제품 사양을 확인해 주세요.' };
 }
 
 function findModernMatches(products, answers) {
   const catalog = Array.isArray(products) ? products : [];
   const available = catalog.filter(isFinderPurchasable);
   const use = Object.hasOwn(USES, answers.use) ? USES[answers.use] : null;
-  const purpose = available.map(product => ({ product, specs: modernSpecs(product) })).filter(({ product, specs }) =>
-    answers.use === 'laptop' ? Boolean(specs.laptop) : use?.pattern.test([product.name, product.tagline, product.description].filter(Boolean).join(' ')));
   const range = Object.hasOwn(BUDGETS, answers.budget) ? BUDGETS[answers.budget] : null;
-  const budget = purpose.filter(({ product }) => range && Number(product.price) >= range[0] && Number(product.price) < range[1]);
-  const size = budget.filter(({ specs }) => answers.size === 'any' || finderSize(specs.dimensions) === answers.size);
-  const color = size.filter(({ product }) => matchesColor(product, answers.color));
-  const candidates = color.map(item => ({ ...item, evidence: priorityEvidence(item, answers.priority) })).sort((a, b) =>
+  const evaluated = available.map(product => {
+    const specs = modernSpecs(product);
+    const price = Number(product.price);
+    const fit = {
+      use: answers.use === 'laptop' ? Boolean(specs.laptop) : Boolean(use?.pattern?.test([product.name, product.tagline, product.description].filter(Boolean).join(' '))),
+      budget: Boolean(range && price >= range[0] && price < range[1]),
+      size: answers.size === 'any' || finderSize(specs.dimensions) === answers.size,
+      color: matchesColor(product, answers.color),
+    };
+    return { product, specs, fit, matchCount: Object.values(fit).filter(Boolean).length,
+      budgetGap: range ? Math.max(0, range[0] - price, price - range[1] + 1) : 0,
+      evidence: priorityEvidence({ product, specs }, answers.priority) };
+  });
+  const purpose = evaluated.filter(item => item.fit.use);
+  const budget = purpose.filter(item => item.fit.budget);
+  const size = budget.filter(item => item.fit.size);
+  const exact = size.filter(item => item.fit.color);
+  const approximate = exact.length === 0 && evaluated.length > 0;
+  const candidates = (approximate ? evaluated : exact).sort((a, b) =>
+    (approximate ? b.matchCount - a.matchCount || Number(b.fit.use) - Number(a.fit.use) || a.budgetGap - b.budgetGap : 0) ||
     b.evidence.rank - a.evidence.rank ||
     (answers.intent === 'gift' ? Number(Boolean(b.product.featured)) - Number(Boolean(a.product.featured)) : 0) ||
     Number(a.product.price) - Number(b.product.price) || String(a.product.id).localeCompare(String(b.product.id)));
@@ -240,8 +260,9 @@ function findModernMatches(products, answers) {
   return {
     items: [...families.values()].slice(0, 3),
     total: families.size,
+    approximate,
     excluded: { unavailable: catalog.length - available.length, purpose: available.length - purpose.length,
-      budget: purpose.length - budget.length, size: budget.length - size.length, color: size.length - color.length, specifications: 0 },
+      budget: purpose.length - budget.length, size: budget.length - size.length, color: size.length - exact.length, specifications: 0 },
   };
 }
 

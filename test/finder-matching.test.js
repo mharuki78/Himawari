@@ -67,6 +67,29 @@ test('unlimited inventory follows storefront semantics, invalid prices and all-s
 const journey = { intent: 'personal', use: 'commute', size: 'any', budget: 'any', priority: 'weight', color: 'any' };
 const ids = result => result.items.map(item => item.product.id);
 
+test('a missing exact match recommends the closest purchasable bags and reports the differences', () => {
+  const specs = { dimensions: '28 × 40 × 14 cm', weight: '600 g' };
+  const products = [
+    bag('6101', { name: '출근 백팩 No.6101 블랙', price: 51000, specs }),
+    bag('6102', { name: '출근 백팩 No.6102 블랙', price: 65000, specs }),
+    bag('6103', { name: '여행 백팩 No.6103 그린', price: 49000, specs }),
+    bag('6104', { name: '출근 백팩 No.6104 블랙', price: 49000, specs, stock: 0 }),
+  ];
+  const result = findMatchingProducts(products, { ...journey, size: 'medium', budget: '30000-50000', color: 'black' });
+  assert.equal(result.approximate, true);
+  assert.deepEqual(ids(result), ['6101', '6102', '6103']);
+  assert.deepEqual(result.items[0].differences, ['선택한 예산 범위 밖']);
+  assert.ok(!result.items[0].reasons.includes('선택한 예산 범위에 포함'));
+});
+
+test('an alternative without laptop measurements does not claim laptop fit', () => {
+  const product = bag('6105', { specs: { weight: '600 g' } });
+  const result = findMatchingProducts([product], { ...journey, use: 'laptop' });
+  assert.equal(result.approximate, true);
+  assert.deepEqual(result.items[0].differences, ['노트북 수납칸 치수 미확인']);
+  assert.ok(!result.items[0].reasons.some(reason => reason.includes('노트북 수납칸')));
+});
+
 test('the redesigned finder honors each inclusive lower and exclusive upper budget boundary', () => {
   const prices = [29999, 30000, 49999, 50000, 79999, 80000, 99999, 100000];
   const products = prices.map(price => bag(String(price), { price }));

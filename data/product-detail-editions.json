@@ -5,10 +5,10 @@
     "media": [
       { "image": "/assets/product-1088m-set/01a.webp", "width": 900, "height": 10800, "alt": "No.1088M 학생 백팩 착용 사진, 6가지 색상과 주요 특징" },
       { "image": "/assets/product-1088m-set/01b.webp", "width": 900, "height": 7500, "alt": "No.1088M 착용 사진과 책·학용품을 담은 모습" },
-      { "image": "/assets/product-1088m-set/02-poster.webp", "video": "/assets/product-1088m-set/02.mp4", "width": 854, "height": 760, "alt": "안쪽 메시 포켓과 지퍼 사용 영상" },
-      { "image": "/assets/product-1088m-set/03-poster.webp", "video": "/assets/product-1088m-set/03.mp4", "width": 854, "height": 640, "alt": "앞면 포켓에 소지품을 넣고 옆면 포켓에 물병을 넣는 영상" },
+      { "image": "/assets/product-1088m-set/02-poster.webp", "video": "/assets/product-1088m-set/02.mp4", "width": 854, "height": 760, "alt": "안쪽 메시 포켓과 지퍼 사용 영상", "productImage": true },
+      { "image": "/assets/product-1088m-set/03-poster.webp", "video": "/assets/product-1088m-set/03.mp4", "width": 854, "height": 640, "alt": "앞면 포켓에 소지품을 넣고 옆면 포켓에 물병을 넣는 영상", "productImage": true },
       { "image": "/assets/product-1088m-set/04.webp", "width": 900, "height": 7876, "alt": "메시 포켓, 노트북 수납칸, 앞면·옆면 포켓과 어깨끈 구조" },
-      { "image": "/assets/product-1088m-set/05-poster.webp", "video": "/assets/product-1088m-set/05.mp4", "width": 854, "height": 700, "alt": "백팩을 멘 상태에서 어깨끈 길이를 조절하는 영상" },
+      { "image": "/assets/product-1088m-set/05-poster.webp", "video": "/assets/product-1088m-set/05.mp4", "width": 854, "height": 700, "alt": "백팩을 멘 상태에서 어깨끈 길이를 조절하는 영상", "productImage": true },
       { "image": "/assets/product-1088m-set/06.webp", "width": 900, "height": 9899, "alt": "생활방수 원단, 가방 앞·옆·뒤 사진과 크기·소재 정보" },
       { "image": "/assets/product-1088m-set/07a.webp", "width": 900, "height": 7800, "alt": "세트 구성품인 자석 버클 체스트벨트와 착용 모습" },
       { "image": "/assets/product-1088m-set/07b.webp", "width": 900, "height": 7488, "alt": "체스트벨트 장착 방법과 규격·관리 안내" }

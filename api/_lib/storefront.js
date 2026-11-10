@@ -296,7 +296,10 @@ export function renderProductPage(template, product, origin = 'https://himawari.
   const groupId = variants.length > 1 && variesBy.length && variants.some(item => item.id === product.id) ? `${origin}/#product-group-${encodeURIComponent(familyKey)}` : '';
   const selectedSchema = productVariantSchema(product, origin, groupId);
   selectedSchema.description = description;
-  selectedSchema.image = [mainImage, ...(!edition && Array.isArray(product.gallery) ? product.gallery.map(safeHttpsUrl) : [])].filter(Boolean);
+  const detailImages = edition
+    ? edition.media.filter((item) => item.productImage).map((item) => new URL(item.image, origin).href)
+    : (Array.isArray(product.gallery) ? product.gallery.map(safeHttpsUrl) : []);
+  selectedSchema.image = [mainImage, ...detailImages].filter(Boolean);
   selectedSchema.mainEntityOfPage = { '@id': `${canonical}#webpage` };
   const schema = {
     '@context': 'https://schema.org',

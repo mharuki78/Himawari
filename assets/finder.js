@@ -1,6 +1,6 @@
 import { fetchProducts, priceFormatter, safeHttpsUrl } from '../products.js';
 import { SPEC_FIELDS } from './product-specs.js';
-import { findMatchingProducts } from './finder-matching.js';
+import { findMatchingProducts } from './finder-matching.js?v=20261110-closest';
 import { initCompareTray, createCompareButton } from './compare-store.js';
 import { animate } from './site-ui.js';
 
@@ -48,6 +48,36 @@ const steps = [
   },
 ];
 
+const bagOutline = 'M16 23a5 5 0 0 1 5-5h22a5 5 0 0 1 5 5v25a5 5 0 0 1-5 5H21a5 5 0 0 1-5-5Zm8-5v-3a8 8 0 0 1 16 0v3M23 35h18v11H23z';
+const optionIcons = {
+  personal: bagOutline,
+  daily: 'M9 28h46l-6 25H15Zm13 0v-5a10 10 0 0 1 20 0v5',
+  travel: 'M14 18h36v32H14zm10 0v-7h16v7M22 25v18m20-18v18M20 50v4m24-4v4',
+  commute: 'M10 22h44v30H10zm13 0V13h18v9M10 32l22 8 22-8M28 39h8v6h-8z',
+  laptop: 'M14 14h36v29H14zM7 48h50v4H7z',
+  design: 'm32 9 6 16 17 1-13 11 4 17-14-9-14 9 4-17L9 26l17-1Z',
+  material: 'm11 21 21-11 21 11-21 11Zm0 11 21 11 21-11M11 43l21 11 21-11',
+  storage: 'M10 15h44v35H10Zm22 0v35M10 31h44M19 23h5m16 0h5m-26 17h5m16 0h5',
+  durability: 'M32 10 50 18v13c0 11-8 18-18 23-10-5-18-12-18-23V18Zm-8 21 5 5 11-12',
+  capacity: 'M12 20h40v34H12zm0 0 7-9h26l7 9M32 21v33M19 28h5m16 0h5',
+  weight: 'M21 22a11 11 0 1 1 22 0m-23 0h24l10 29H10Zm12 10v8',
+  waterproof: 'M32 9c-8 12-16 20-16 29a16 16 0 0 0 32 0c0-9-8-17-16-29Zm-7 30a7 7 0 0 0 7 7',
+};
+
+function optionIcon(step, value) {
+  if (step.id === 'color' && value !== 'any') return bagOutline;
+  if (step.id === 'size' && value !== 'any') {
+    const inset = { small: 10, medium: 6, large: 0 }[value];
+    const side = 40 - 2 * inset;
+    return `M${12 + inset} ${12 + inset}h${side}v${side}h-${side}zM13 51l38-38m-11 0h11v11M13 40v11h11`;
+  }
+  if (step.id === 'budget' && value !== 'any') {
+    const level = step.options.findIndex(option => option[0] === value) + 1;
+    return 'M11 52h42' + Array.from({ length: level }, (_, i) => `M${13 + i * 9} 48v-${8 + i * 6}`).join('');
+  }
+  return optionIcons[value] || step.icon;
+}
+
 const form = document.querySelector('[data-finder-form]');
 const results = document.querySelector('[data-finder-results]');
 const cards = document.querySelector('[data-finder-cards]');
@@ -93,7 +123,7 @@ function trackStart() {
 }
 
 function card(item, rank) {
-  const { product, reasons, check, variantCount } = item;
+  const { product, reasons, check, variantCount, differences } = item;
   const article = element('article', '', 'finder-card');
   const media = element('div', '', 'finder-card__media');
   const fallback = element('p', '제품 사진을 준비하고 있습니다.', 'finder-image-fallback');
@@ -107,9 +137,10 @@ function card(item, rank) {
   media.append(fallback);
   const body = element('div', '', 'finder-card__body');
   body.append(element('h3', product.model || product.name), element('p', product.name, 'finder-card__name'), element('strong', priceFormatter.format(product.price), 'finder-card__price'));
-  body.append(element('p', `조건에 맞는 판매 구성 ${variantCount}가지 · 표시 가격은 현재 구성 기준`, 'finder-card__variants'));
+  body.append(element('p', `${differences.length ? '주문 가능한' : '조건에 맞는'} 판매 구성 ${variantCount}가지 · 표시 가격은 현재 구성 기준`, 'finder-card__variants'));
   const reasonList = element('ul', '', 'finder-card__reasons');
   reasons.forEach(reason => reasonList.append(element('li', reason)));
+  if (differences.length) body.append(element('p', differences.join(' · '), 'finder-card__check'));
   body.append(reasonList, element('p', check, 'finder-card__check'));
   const link = element('a', '사진·옵션 확인하기');
   link.href = `product.html?id=${encodeURIComponent(product.id)}`;
@@ -208,6 +239,17 @@ function setLoading(loading) {
   else form.removeAttribute('aria-busy');
 }
 
+function updateArtwork(step) {
+  const selected = step.options.find(([value]) => value === answers[step.id]);
+  const [value, title, , shade] = selected || [];
+  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path.setAttribute('d', optionIcon(step, value));
+  artIcon.replaceChildren(path);
+  artName.textContent = title || step.label;
+  if (shade) board.style.setProperty('--art-swatch', shade);
+  else board.style.removeProperty('--art-swatch');
+}
+
 function showStep(index, { focus = true } = {}) {
   const direction = index < current ? -1 : 1;
   stopMotion();
@@ -221,11 +263,8 @@ function showStep(index, { focus = true } = {}) {
   count.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(steps.length).padStart(2, '0');
   heading.textContent = step.title;
   help.textContent = step.help;
-  artName.textContent = step.label;
   artNumber.textContent = String(index + 1).padStart(2, '0');
-  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  path.setAttribute('d', step.icon);
-  artIcon.replaceChildren(path);
+  updateArtwork(step);
   options.replaceChildren(...step.options.map(option => buildOption(step, option)));
   updateRoute();
   back.disabled = index === 0;
@@ -244,9 +283,10 @@ function showResults(matches, selection) {
   const count = matches.items.length;
   cards.replaceChildren(...matches.items.map((item, index) => card(item, index + 1)));
   renderCompare(matches.items);
-  summary.textContent = count
-    ? '고른 조건에 맞는 가방 ' + count + '종을 추천해요. 사진과 사양을 비교해 보세요.'
-    : '고른 조건에 맞는 가방이 없어요. 아래에서 조건을 바꿔 다시 찾아보세요.';
+  summary.textContent = matches.approximate
+    ? `고른 조건에 가장 가까운 가방 ${count}종이에요. 상품마다 어떤 조건이 다른지 확인해 보세요.`
+    : count ? `고른 조건에 맞는 가방 ${count}종을 추천해요. 사진과 사양을 비교해 보세요.`
+      : '지금 주문할 수 있는 가방이 없어요. 잠시 후 다시 확인해 주세요.';
   recovery.replaceChildren();
   steps.forEach((step, index) => {
     const [, label] = step.options.find(([value]) => value === selection[step.id]);
@@ -312,6 +352,15 @@ form.addEventListener('change', event => {
   setLoading(false);
   status.textContent = '';
   updateRoute();
+  stopMotion();
+  updateArtwork(steps[current]);
+  if (!reduceMotion.matches) {
+    animations = [
+      animate(artIcon.firstElementChild, { opacity: [.25, 1], scale: [.76, 1], duration: 330, ease: 'outQuad' }),
+      animate(artName, { opacity: [.45, 1], translateY: [5, 0], duration: 260, ease: 'outQuad' }),
+      animate(board.querySelector('.finder-art__route'), { strokeDashoffset: [20, 0], duration: 450, ease: 'outQuad' }),
+    ];
+  }
 });
 form.addEventListener('reset', event => {
   event.preventDefault();

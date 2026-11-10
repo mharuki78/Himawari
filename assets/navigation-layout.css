@@ -31,6 +31,13 @@
 .about-page .story-layout { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 48px; }
 .about-page .story-body { font-size: 16px; line-height: 1.85; }
 .about-page .story-lede { font-size: 20px; line-height: 1.7; }
+.about-page .brand-artwork { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: center; gap: clamp(20px, 5vw, 64px); margin-top: 12px; }
+.about-page .brand-artwork figure { margin: 0; }
+.about-page .brand-artwork figure:last-child { width: min(100%, 300px); }
+.about-page .brand-artwork img { display: block; width: 100%; height: auto; border-radius: 16px; }
+.about-page .brand-artwork figcaption { display: grid; gap: 4px; margin-top: 12px; color: var(--harbor); font-size: 14px; line-height: 1.55; }
+.about-page :is(.brand-artwork figcaption a, .brand-guide-link) { width: fit-content; color: inherit; text-decoration: underline; text-underline-offset: .2em; }
+@media (max-width: 600px) { .about-page .brand-artwork { grid-template-columns: minmax(0, 1fr); } }
 .about-page .founder-quote { min-height: 0; }
 .about-page .founder-quote blockquote { max-width: 900px; margin-inline: auto; font-size: 30px; }
 .about-page .founder-quote blockquote p { font-size: clamp(24px, 3vw, 36px); line-height: 1.5; }

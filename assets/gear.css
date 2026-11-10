@@ -637,7 +637,7 @@ html {
   grid-row: 1;
   min-width: 0;
   overflow: hidden;
-  background: var(--ink) url("campaign-1027-mint-poster.jpg") center / cover no-repeat;
+  background: #d1cfcd;
 }
 
 .feature-film__video {
@@ -646,7 +646,7 @@ html {
   height: 100%;
   min-height: min(82svh, 54rem);
   object-fit: cover;
-  object-position: 50% 50%;
+  object-position: 50% 15%;
 }
 
 .feature-film__toggle {

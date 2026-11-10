@@ -184,7 +184,7 @@ body .footer-organized .footer-business{border-color:#dedee3}
 body .footer-organized .footer-inquiry{border-color:#d7d7de;border-radius:999px;background:white}
 body .footer-organized a:hover{color:#315845}
 body .footer-organized .footer-inquiry:hover{background:#edf5f1}
-body .footer-organized .footer-brand strong{background:transparent url("himawari-logo-hq.png") center/contain no-repeat;mask:none;-webkit-mask:none}
+.site-footer .footer-brand strong{background:transparent url("himawari-logo-hq.png") center/contain no-repeat;mask:none;-webkit-mask:none}
 body .footer-organized .footer-brand p{opacity:1}
 body .support-assistant{right:20px;bottom:20px}
 body.product-detail-page .support-assistant{bottom:calc(var(--purchase-bar-height,110px) + 32px)}
@@ -225,8 +225,8 @@ input,textarea{caret-color:#315845}
 .home-page .home-campaign .home-film-hero__copy{justify-content:center;padding:clamp(24px,3vw,44px);max-width:none}
 .home-page .home-campaign h2{font-size:clamp(30px,3.1vw,44px);line-height:1.25;letter-spacing:-.03em;margin:0}
 .home-page .home-film-hero__kicker{display:none}
-.home-page main>.feature{margin-block:var(--home-section);grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-.home-page .feature-film__video{aspect-ratio:1;height:100%;max-height:600px;object-fit:cover}
+.home-page main>.feature{margin-block:var(--home-section);grid-template-columns:minmax(0,2fr) minmax(0,3fr)}
+.home-page .feature-film__video{aspect-ratio:4/5;height:auto;max-height:650px;object-fit:cover}
 .home-page .feature-copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(24px,4vw,52px)}
 .home-page .feature-copy .display-title{font-size:clamp(28px,3vw,42px);letter-spacing:-.03em}
 .home-page .feature-copy>p:not(.kicker){margin-top:24px;font-size:16px;line-height:1.8}
@@ -283,7 +283,7 @@ input,textarea{caret-color:#315845}
  .home-page .trust-item{padding:16px;min-width:0}
  .home-page .colour-placeholder{inset:16px}
  .home-page main>.feature,.home-page main>.game-invite{grid-template-columns:minmax(0,1fr)}
- .home-page .feature-film__video{aspect-ratio:1;max-height:480px}
+ .home-page .feature-film__video{max-height:480px}
  .home-page .feature-copy{padding:28px}
  .home-page .home-actions{gap:12px 20px;margin-top:24px}
  .home-page .reel-card__caption{min-height:136px;padding:20px}

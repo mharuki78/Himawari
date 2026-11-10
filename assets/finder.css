@@ -31,6 +31,7 @@
 .finder-board[data-step="budget"] { --art-bg: #e1ebe4; --art-ink: #355a48; }
 .finder-board[data-step="priority"] { --art-bg: #f0e8e1; --art-ink: #705342; }
 .finder-board[data-step="color"] { --art-bg: #ece7f0; --art-ink: #634f73; }
+.finder-board[data-step="color"] .finder-art__disk { fill: var(--art-swatch, #fff); fill-opacity: .54; transition: fill .24s ease; }
 .finder-art { display: flex; min-width: 0; flex-direction: column; justify-content: space-between; padding: clamp(1.25rem, 3vw, 2.25rem); background: var(--art-bg); color: var(--art-ink); transition: background-color .24s ease, color .24s ease; }
 .finder-art__label { font-size: .7rem; font-weight: 750; letter-spacing: .15em; }
 .finder-art__graphic { display: block; width: 100%; margin: auto; max-height: 16rem; }
@@ -64,7 +65,9 @@
 @media (hover: hover) { .finder-option:hover .finder-option__surface { border-color: var(--finder-accent); } }
 
 .finder-page .finder-actions { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .4rem; margin-top: 1.2rem; }
-.finder-page :is(.finder-back, .finder-forward) { display: inline-flex; justify-content: center; align-items: center; gap: .45rem; min-height: 48px; height: auto; padding: .6rem .9rem; border: 1px solid var(--finder-accent); border-radius: 999px; background: #fff; color: var(--finder-accent); font-size: .875rem; font-weight: 730; text-align: center; white-space: nowrap; }
+.finder-page :is(.finder-back, .finder-forward, .finder-all-products) { display: inline-flex; justify-content: center; align-items: center; gap: .45rem; min-height: 48px; height: auto; padding: .6rem .9rem; border: 1px solid var(--finder-accent); border-radius: 999px; background: #fff; color: var(--finder-accent); font-size: .875rem; font-weight: 730; text-align: center; white-space: nowrap; }
+.finder-page .finder-all-products { gap: .85rem; margin-top: 1.5rem; padding-inline: 1rem; text-decoration: none; }
+.finder-page .finder-all-products:hover { background: var(--finder-wash); }
 .finder-page .finder-forward { background: var(--finder-accent); color: #fff; }
 .finder-page .finder-back:disabled { opacity: .45; cursor: default; }
 .finder-page .finder-forward:disabled { opacity: .7; cursor: progress; }
@@ -76,7 +79,7 @@
 .finder-page .finder-refresh { align-self: flex-end; }
 .finder-page .finder-status { margin: .35rem 0 0; color: var(--finder-accent); font-size: .875rem; line-height: 1.4; }
 .finder-page .finder-status:empty { margin: 0; min-height: 0; }
-.finder-page :is(.finder-route__step, .finder-back, .finder-forward, .finder-reset, .finder-refresh, .finder-adjust, .finder-card a, .finder-compare):focus-visible,
+.finder-page :is(.finder-route__step, .finder-back, .finder-forward, .finder-reset, .finder-refresh, .finder-adjust, .finder-all-products, .finder-card a, .finder-compare):focus-visible,
 .finder-option input:focus-visible + .finder-option__surface { outline: 3px solid var(--finder-accent); outline-offset: 3px; }
 .finder-page :is(#finder-question-title, #finder-results-title):focus { outline: none; }
 
@@ -107,7 +110,7 @@
   .finder-option__title, .finder-option__note { font-size: .8125rem; }
   .finder-swatch { width: 1rem; height: 1rem; }
 }
-@media (prefers-reduced-motion: reduce) { .finder-art { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .finder-art, .finder-board[data-step="color"] .finder-art__disk { transition: none; } }
 
 .finder-page .finder-card { border-radius: var(--radius-soft, 16px); box-shadow: none; }
 .finder-page .finder-card > .finder-card__media { display: grid; padding: 0; background: var(--color-sky-wash, #f3f7ef); aspect-ratio: 4 / 3; }
