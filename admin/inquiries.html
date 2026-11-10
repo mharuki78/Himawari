@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
     <meta name="robots" content="noindex, nofollow, noarchive">
     <meta name="theme-color" content="#4F6B58">
-    <title>비공개 문의 관리 — Himawari</title>
+    <title>문의 관리 — Himawari</title>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="admin.css">
@@ -39,7 +39,7 @@
       <section class="login-view" data-login-view hidden aria-labelledby="login-title">
         <div class="login-copy">
           <p class="eyebrow">Administrator only</p>
-          <h1 id="login-title">비공개 문의 관리</h1>
+          <h1 id="login-title">문의 관리</h1>
           <p>문의 원문은 관리자 인증 후에만 표시됩니다. 비밀번호는 브라우저에 저장되지 않습니다.</p>
         </div>
         <form class="login-form" data-login-form novalidate>
@@ -59,8 +59,8 @@
       <section class="board-view" data-board-view hidden aria-labelledby="board-title">
         <div class="board-head">
           <div>
-            <p class="eyebrow">Private inquiry desk</p>
-            <h1 id="board-title" tabindex="-1">비공개 문의함</h1>
+            <p class="eyebrow">Inquiry desk</p>
+            <h1 id="board-title" tabindex="-1">문의함</h1>
             <p>최근 문의부터 20건씩 불러옵니다. 문의 내용은 외부에 공개되지 않습니다.</p>
           </div>
           <button class="button button--quiet" type="button" data-logout>로그아웃</button>
@@ -81,7 +81,7 @@
             </div>
             <div class="table-wrap" data-table-wrap>
               <table>
-                <caption class="sr-only">비공개 문의 접수 목록</caption>
+                <caption class="sr-only">문의 접수 목록</caption>
                 <thead><tr><th scope="col">접수 일시</th><th scope="col">문의 제목</th><th scope="col">이름</th><th scope="col">이메일</th><th scope="col">확인</th></tr></thead>
                 <tbody data-inquiry-rows></tbody>
               </table>

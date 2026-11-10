@@ -136,8 +136,8 @@
       pending = true;
       submitButton.disabled = true;
       submitButton.setAttribute('aria-busy', 'true');
-      submitLabel.textContent = '안전하게 접수하는 중';
-      status.textContent = '비공개 문의를 저장하고 있습니다.';
+      submitLabel.textContent = '접수 중';
+      status.textContent = '문의를 접수하고 있습니다.';
 
       const controller = new AbortController();
       const timeout = window.setTimeout(() => controller.abort(), 20_000);
@@ -172,7 +172,7 @@
         if (cartInquiry) sessionStorage.removeItem(cartInquiryKey);
         fieldNames.forEach((name) => setError(controls[name], ''));
         requestId = createRequestId();
-        status.textContent = '비공개 문의가 접수되었습니다. 확인 후 입력하신 이메일로 답변드리겠습니다.';
+        status.textContent = '문의가 접수되었습니다. 확인 후 입력하신 이메일로 답변드리겠습니다.';
       } catch (error) {
         status.textContent = error.name === 'AbortError'
           ? '접수 확인이 지연되고 있습니다. 잠시 후 다시 눌러 확인해 주세요. 같은 문의는 중복 저장되지 않습니다.'
@@ -182,7 +182,7 @@
         pending = false;
         submitButton.disabled = false;
         submitButton.removeAttribute('aria-busy');
-        submitLabel.textContent = '비공개 문의 접수';
+        submitLabel.textContent = '문의 접수';
       }
     });
   });

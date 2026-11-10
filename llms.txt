@@ -16,7 +16,7 @@
 - [제품 가이드북](https://himawari.co.kr/guidebook.html): 모델별 목차가 있는 가이드북
 - [자주 묻는 질문](https://himawari.co.kr/#faq): 가방 선택·노트북 수납·소재·관리·A/S 안내
 - [관리·A/S 안내](https://himawari.co.kr/care.html): 부분 관리·건조·보관 방법, A/S 범위와 비용은 당사 문의
-- [제품·수선 문의](https://himawari.co.kr/support.html): 제품과 수선에 관한 비공개 문의
+- [제품·수선 문의](https://himawari.co.kr/support.html): 제품과 수선에 관한 문의
 - [이야기](https://himawari.co.kr/story/): 백팩을 고르고 오래 쓰는 방법
 - [연락하기](https://himawari.co.kr/contact.html): 이메일, Instagram과 스마트스토어 연락 채널
 - [이야기 RSS](https://himawari.co.kr/feed.xml): 새 글 제목·요약·발행일과 원문 주소
