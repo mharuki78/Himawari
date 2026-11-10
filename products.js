@@ -1,4 +1,4 @@
-import { CATALOG_CATEGORIES, productCategory, filterAndSortFamilies, groupProductFamilies, productVariantLabel, productVariantKind } from './assets/catalog-tools.js';
+import { CATALOG_CATEGORIES, productCategory, filterAndSortFamilies, groupProductFamilies, productCardArtwork, productVariantLabel, productVariantKind } from './assets/catalog-tools.js';
 import { initCompareTray, createCompareButton } from './assets/compare-store.js';
 
 const productLists = document.querySelectorAll('[data-products]');
@@ -73,15 +73,20 @@ function detailHref(product) {
   return `product.html?id=${encodeURIComponent(product.id)}`;
 }
 
+function resolveProductMedia(product, className) {
+  const artwork = className === 'store-product-media' ? productCardArtwork(product.id) : null;
+  return artwork || { src: safeHttpsUrl(product.image), alt: product.name };
+}
+
 function createProductMedia(product, className) {
   const media = document.createElement('a');
   media.className = className;
   media.href = detailHref(product);
   media.setAttribute('aria-label', `${product.name} 상세페이지 보기`);
   const image = document.createElement('img');
-  const imageUrl = safeHttpsUrl(product.image);
+  const { src: imageUrl, alt } = resolveProductMedia(product, className);
   if (imageUrl) image.src = imageUrl;
-  image.alt = product.name;
+  image.alt = alt;
   image.loading = 'lazy';
   image.decoding = 'async';
   const imageFallback = document.createElement('p');
@@ -246,7 +251,7 @@ function transitionProductCardMedia(article, product) {
   }
 
   const swapId = String((Number(article.dataset.variantSwapId) || 0) + 1);
-  const imageUrl = safeHttpsUrl(product.image);
+  const { src: imageUrl, alt } = resolveProductMedia(product, 'store-product-media');
   article.dataset.variantSwapId = swapId;
   article.setAttribute('aria-busy', 'true');
   media.classList.add('is-variant-changing');
@@ -257,7 +262,7 @@ function transitionProductCardMedia(article, product) {
     settled = true;
     media.href = detailHref(product);
     media.setAttribute('aria-label', `${product.name} 상세페이지 보기`);
-    image.alt = product.name;
+    image.alt = alt;
     if (loaded && imageUrl) {
       image.src = imageUrl;
       image.hidden = false;

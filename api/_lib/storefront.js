@@ -1,5 +1,5 @@
 import { PUBLIC_SPEC_FIELDS as SPEC_FIELDS } from '../../assets/product-specs.js';
-import { groupProductFamilies, productColor, productFamilyKey, productVariantKind } from '../../assets/catalog-tools.js';
+import { groupProductFamilies, productCardArtwork, productColor, productFamilyKey, productVariantKind } from '../../assets/catalog-tools.js';
 import { productPurchaseFacts, productEvidenceHighlights } from '../../assets/product-facts.js';
 
 const KRW = new Intl.NumberFormat('ko-KR', {
@@ -35,9 +35,10 @@ function checkoutHref(product) {
 }
 
 function productImage(product, className) {
-  const image = safeHttpsUrl(product.image);
+  const artwork = className === 'store-product-media' ? productCardArtwork(product.id) : null;
+  const image = artwork?.src || safeHttpsUrl(product.image);
   const body = image
-    ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(product.name)}" loading="lazy" decoding="async">`
+    ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(artwork?.alt || product.name)}" loading="lazy" decoding="async">`
     : '<p class="product-image-fallback">이미지를 불러오지 못했습니다.</p>';
   return `<a class="${className}${image ? '' : ' is-missing'}" href="${detailHref(product)}" aria-label="${escapeHtml(product.name)} 상세페이지 보기">${body}</a>`;
 }

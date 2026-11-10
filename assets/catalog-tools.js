@@ -1,5 +1,16 @@
 const COLOR_WORDS = ['블랙', '블루', '핑크', '카키', '아이보리', '실버', '그레이', '베이지', '브라운', '민트', '퍼플', '레드', '옐로', '오렌지', '그린', '네이비', '화이트', '피치', '라벤더', '스카이', '버건디', '코랄'];
 
+const CARD_ARTWORK = new Map([
+  ['store-13326396058', {
+    src: '/assets/product-card-0514-silver-mini.webp',
+    alt: 'No.0514 실버 미니 백팩과 소품을 나란히 놓은 연출 사진',
+  }],
+]);
+
+export function productCardArtwork(productId) {
+  return CARD_ARTWORK.get(productId);
+}
+
 export const CATALOG_CATEGORIES = Object.freeze([
   { id: 'all', label: '전체' },
   { id: 'school', label: '학생·책가방' },
