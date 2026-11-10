@@ -64,5 +64,5 @@ test('feed discovery points to a real RSS feed and meaningful product image has 
   }
   assert.match(await readFile(new URL('../feed.xml', import.meta.url), 'utf8'), /<rss version="2.0">/);
   const home = await readFile(new URL('../index.html', import.meta.url), 'utf8');
-  assert.match(home, /src="assets\/game-0422-black.jpg"[^>]+alt="히마와리 No.0422/);
+  assert.match(home, /src="assets\/game-0422-black-v2.jpg"[^>]+alt="히마와리 No.0422/);
 });

@@ -313,14 +313,14 @@ test('No.0422 게임은 두 단계 진행과 활성 쿠폰 주문서 연결을 �
   const checkoutJs = await readFile(new URL('../assets/checkout.js', import.meta.url), 'utf8');
 
   await access(new URL('../assets/game-campus-spring.png', import.meta.url));
-  await access(new URL('../assets/game-pixel-player.png', import.meta.url));
+  await access(new URL('../assets/game-pixel-player-v2.png', import.meta.url));
   assert.match(html, /<title>HIMAWARI BAG QUEST — 0422 등굣길 어드벤처<\/title>/);
   assert.match(html, /등굣길 모험 시작하기/);
   assert.match(html, /data-game-panel="catch"/);
   assert.match(html, /data-game-panel="pack"/);
   assert.match(html, /data-game-panel="result"/);
   assert.match(html, /assets\/game-campus-spring\.png/);
-  assert.match(html, /assets\/game-pixel-player\.png/);
+  assert.match(html, /assets\/game-pixel-player-v2\.png/);
   assert.match(html, /data-game-joystick/);
   assert.match(html, /data-game-jump/);
   assert.match(html, /data-game-fire/);

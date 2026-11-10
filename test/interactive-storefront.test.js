@@ -9,7 +9,7 @@ test('홈 화면의 제품 여정·두 번째 게임·릴스 진행 표시가 �
   const journalImage = await readFile(new URL('../assets/journal-0514-silver.webp', import.meta.url));
 
   assert.match(html, /data-bag-journey/);
-  assert.match(html, /assets\/game-0422-black\.jpg/);
+  assert.match(html, /assets\/game-0422-black-v2\.jpg/);
   const game = html.match(/<section class="game-invite"[\s\S]*?<\/section>/)?.[0];
   assert.ok(game);
   assert.match(game, /class="home-button home-button--primary" href="rhythm.html"/);

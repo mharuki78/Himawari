@@ -1185,7 +1185,7 @@ import { campusDifficulty, campusResultTitle, PACK_SECONDS, WRONG_POCKET_SECONDS
     status.textContent = '등굣길과 가방을 준비합니다.';
     if (!loading.open) loading.showModal();
     loading.focus({ preventScroll: true });
-    var results = await Promise.allSettled(['assets/game-campus-spring.png', 'assets/game-pixel-player.png', 'assets/game-0422-pixel.png'].map(async function (src) {
+    var results = await Promise.allSettled(['assets/game-campus-spring.png', 'assets/game-pixel-player-v2.png', 'assets/game-0422-pixel-v2.png'].map(async function (src) {
       await loadGameImage(src);
       if (attempt !== loadAttempt) return;
       completed += 1; progress.value = completed;
