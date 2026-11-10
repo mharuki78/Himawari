@@ -1,3 +1,5 @@
+import { discountPercent } from './pricing.js';
+
 const ORIGIN = 'https://himawari.co.kr';
 export const EVENT_PATH = '/black-friday/';
 const TITLE = '블랙 프라이데이';
@@ -20,20 +22,35 @@ function photoUrl(value) {
   } catch { return ''; }
 }
 
+function priceBands(items) {
+  const groups = new Map();
+  for (const item of [...items].sort((a, b) => a.price - b.price)) {
+    const band = Math.floor(item.price / 10000);
+    if (!groups.has(band)) groups.set(band, []);
+    groups.get(band).push(item);
+  }
+  return groups;
+}
+
+const bandLabel = band => band ? `${money.format(band)}만원대` : '1만원 미만';
+
 function card(item, detail) {
   const image = photoUrl(item.image);
   const label = escape(offerName(item));
   const path = offerPath(item.offerId);
   const model = [item.model, !detail && item.optionLabel].filter(Boolean).join(' · ');
   const remaining = item.remaining > 0 ? '행사 수량 ' + money.format(item.remaining) + '개 남음' : '행사 수량 소진';
+  const discount = discountPercent(item.regularPrice, item.price);
+  const discountLabel = discount === 0 ? '1% 미만' : `${discount}%`;
   const info = detail ? '' : `<a class="bf-event__detail-link" data-bf-focus="details:${item.offerId}" href="${path}" aria-label="${label} 상품 정보">상품 정보 <span aria-hidden="true">→</span></a>`;
   const buy = item.remaining > 0 ? `<a class="bf-event__buy" data-bf-focus="buy:${item.offerId}" href="/checkout.html?blackFriday=${item.offerId}" aria-label="${label} 행사가로 구매">행사가로 구매</a>` : '';
   return `<article class="bf-event__card${detail ? ' bf-event__card--detail' : ''}">
     <div class="bf-event__media">${image ? `<img src="${escape(image)}" alt="" ${detail ? '' : 'loading="lazy" '}decoding="async">` : ''}</div>
     <div class="bf-event__details">${model ? `<p class="bf-event__model">${escape(model)}</p>` : ''}
-      ${detail ? '' : `<h2><a href="${path}" data-bf-focus="title:${item.offerId}">${escape(item.name)}</a></h2>`}
-      <p class="bf-event__prices"><del><span class="sr-only">정상가 </span>${money.format(item.regularPrice)}원</del><strong><span class="sr-only">행사가 </span>${money.format(item.price)}원</strong></p>
-      <p class="bf-event__remaining">${remaining}</p>${buy}${info}
+      ${detail ? '' : `<h3><a href="${path}" data-bf-focus="title:${item.offerId}">${escape(item.name)}</a></h3>`}
+      <p class="bf-event__prices"><del><span class="sr-only">정상가 </span>${money.format(item.regularPrice)}원</del><strong><span class="sr-only">행사가 </span>${money.format(item.price)}원</strong>${discount === null ? '' : `<span class="bf-event__discount"><span class="sr-only">할인율 </span>${discountLabel}</span>`}</p>
+      <p class="bf-event__remaining${item.remaining > 0 ? '' : ' bf-event__remaining--sold-out'}">${remaining}</p>
+      <div class="bf-event__card-actions">${buy}${info}</div>
     </div></article>`;
 }
 
@@ -41,7 +58,8 @@ export function blackFridayView(event, offerId = '') {
   const detail = Boolean(offerId);
   const eventOpen = event.state === 'open' && Number.isFinite(Date.parse(event.endsAt)) &&
     (!event.serverTime || Date.parse(event.serverTime) < Date.parse(event.endsAt));
-  const items = eventOpen ? (event.items || []).filter(item => offerPath(item.offerId)) : [];
+  const groups = priceBands(eventOpen ? (event.items || []).filter(item => offerPath(item.offerId)) : []);
+  const items = [...groups.values()].flat();
   const selected = detail ? items.find(item => item.offerId.toLowerCase() === offerId.toLowerCase()) : null;
   const visible = detail ? (selected ? [selected] : []) : items;
   const path = (detail && offerPath(offerId)) || EVENT_PATH;
@@ -80,14 +98,25 @@ export function blackFridayView(event, offerId = '') {
       })) } } : {}),
     };
   }
+  const navigation = !detail && groups.size ? `<nav class="bf-event__bands" aria-label="행사가 가격대">${[...groups].map(([band]) =>
+    `<a class="hmw-btn bf-event__band-link" data-bf-jump data-bf-focus="band:${band}" href="#bf-price-${band}">${bandLabel(band)} <span aria-hidden="true">↓</span></a>`
+  ).join('')}</nav>` : '';
+  const products = detail
+    ? `<div class="bf-event__grid--detail" data-bf-products>${visible.map(item => card(item, true)).join('')}</div>`
+    : `<div class="bf-event__groups" data-bf-products>${[...groups].map(([band, entries]) =>
+      `<section class="bf-event__group" id="bf-price-${band}" aria-labelledby="bf-title-${band}">
+        <header class="bf-event__group-head"><h2 id="bf-title-${band}">${bandLabel(band)}</h2><span>${entries.length}개 상품</span></header>
+        <div class="bf-event__grid">${entries.map(item => card(item, false)).join('')}</div>
+      </section>`).join('')}</div>`;
   const content = `<div class="bf-event__intro${detail && selected ? ' bf-event__intro--detail' : ''}">
-      <p class="bf-event__kicker">${detail ? 'HIMAWARI · BLACK FRIDAY' : 'HIMAWARI'}</p>
+      <p class="bf-event__kicker">${detail ? 'HIMAWARI · BLACK FRIDAY' : 'HIMAWARI / BLACK FRIDAY'}</p>
       <h1>${escape(title)}</h1>
       ${period ? `<p data-bf-period>${escape(period)}</p>` : ''}
     </div>
     <div class="bf-event__body">
       <p class="bf-event__status" data-bf-status role="status" aria-live="polite">${escape(label)}</p>
-      <div class="bf-event__grid${detail ? ' bf-event__grid--detail' : ''}" data-bf-products>${visible.map(item => card(item, detail)).join('')}</div>
+      ${navigation}
+      ${products}
       ${detail ? '<a class="bf-event__browse" href="/black-friday/">행사 목록 보기 <span aria-hidden="true">→</span></a>' : ''}
       <a class="bf-event__browse" href="/products.html">전체 가방 보기 <span aria-hidden="true">→</span></a>
     </div>`;

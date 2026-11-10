@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="console-layout.css?v=20261008">
-    <link rel="stylesheet" href="black-friday.css?v=20261110-picker">
-    <script src="promotion-admin.js?v=20261110-picker" type="module"></script>
+    <link rel="stylesheet" href="black-friday.css?v=20261110-price-bands">
+    <script src="promotion-admin.js?v=20261110-price-bands" type="module"></script>
   </head>
   <body>
     <a class="skip-link" href="#admin-main">본문으로 바로가기</a>
@@ -48,8 +48,8 @@
               <div class="admin-field"><label for="bf-ends-at">종료 일시 (한국 시간)</label><input type="datetime-local" id="bf-ends-at" name="endsAt" step="60" disabled></div>
             </div>
             <div class="black-friday-admin__section">
-              <div><h3>행사 품목</h3><p>옵션이 있는 상품은 옵션별로 추가하세요. 주문이 접수되면 행사 수량을 차감하고, 주문을 취소하면 돌려놓습니다.</p></div>
-              <button type="button" class="button button--quiet" data-bf-add aria-haspopup="dialog" disabled>상품 선택</button>
+              <div><h3>행사 품목</h3><p>상품과 옵션을 여러 개 고르고, 할인율과 수량을 한 화면에서 입력할 수 있습니다.</p></div>
+              <button type="button" class="button button--quiet" data-bf-add aria-haspopup="dialog" disabled>행사 상품 선택</button>
             </div>
             <div class="black-friday-admin__items" data-bf-items></div>
             <div class="promotion-save">
@@ -60,13 +60,25 @@
           </section>
         </form>
         <dialog class="bf-product-picker" data-bf-picker aria-labelledby="bf-picker-title">
-          <div class="bf-product-picker__head"><div><h3 id="bf-picker-title">행사 상품 선택</h3><p>상품과 옵션을 체크한 뒤 한꺼번에 추가하세요.</p></div><button class="button button--quiet" type="button" data-bf-picker-close>닫기</button></div>
-          <div class="bf-product-picker__filters">
-            <label class="admin-field"><span>상품 검색</span><input type="search" data-bf-picker-search placeholder="상품명, 모델명, 옵션 검색" autofocus></label>
-            <label class="admin-field"><span>정렬</span><select data-bf-picker-sort><option value="default">기본순</option><option value="review-count">상품평 많은순</option></select></label>
+          <div class="bf-product-picker__head"><div><h3 id="bf-picker-title">행사 상품 선택</h3><p>상품을 체크하고 할인율이나 행사가를 입력하세요.</p></div><button class="button button--quiet" type="button" data-bf-picker-close>닫기</button></div>
+          <div class="bf-product-picker__tools">
+            <div class="bf-product-picker__filters">
+              <label class="admin-field"><span>상품 검색</span><input type="search" data-bf-picker-search placeholder="상품명, 모델명, 옵션" autofocus></label>
+              <label class="admin-field"><span>정렬</span><select data-bf-picker-sort><option value="default">기본순</option><option value="review-count">상품평 많은순</option></select></label>
+            </div>
+            <div class="bf-product-picker__batch">
+              <div class="bf-product-picker__selection">
+                <button type="button" class="button button--quiet" data-bf-picker-select-visible>검색 결과 모두 체크</button>
+                <label class="bf-product-picker__checked"><input type="checkbox" data-bf-picker-selected>선택한 상품만 보기</label>
+              </div>
+              <div class="bf-product-picker__bulk">
+                <label class="admin-field"><span>일괄 할인율 (%)</span><input type="number" min="1" max="99" step="1" inputmode="numeric" placeholder="예: 30" required data-bf-picker-rate></label>
+                <button type="button" class="button button--quiet" data-bf-picker-apply disabled>선택 상품에 적용</button>
+              </div>
+            </div>
           </div>
           <div class="bf-product-picker__list" data-bf-picker-list></div>
-          <div class="bf-product-picker__actions"><p data-bf-picker-count role="status"></p><button class="button button--primary" type="button" data-bf-picker-add disabled>선택한 상품 추가</button></div>
+          <div class="bf-product-picker__actions"><div><p data-bf-picker-count role="status"></p><p>추가한 뒤 행사 설정을 저장하세요.</p></div><button class="button button--primary" type="button" data-bf-picker-add disabled>선택한 상품 추가</button></div>
         </dialog>
         <form class="promotion-form" data-promotion-form novalidate>
           <section class="promotion-panel" aria-labelledby="popup-settings-title">

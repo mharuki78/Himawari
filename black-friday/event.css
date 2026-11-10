@@ -1,22 +1,36 @@
 .bf-event { --bf-ink: #202423; --bf-green: #315845; color: var(--bf-ink); }
-.bf-event__intro { padding: clamp(3rem, 8vw, 7rem) 24px; text-align: center; background: #202423; color: #fff; }
+.bf-event__intro { padding: clamp(3.25rem, 7vw, 6.75rem) 24px; text-align: center; background: radial-gradient(ellipse at 50% 125%, #345545, transparent 70%), #202423; color: #fff; }
 .bf-event__intro h1 { margin: 0; color: inherit; font-size: clamp(2.25rem, 7vw, 5.15rem); line-height: 1.1; letter-spacing: -.055em; }
-.bf-event__intro [data-bf-period] { margin: 1rem 0 0; color: #e1e8e4; font-size: clamp(.85rem, 2.5vw, 1rem); text-wrap: balance; word-break: keep-all; }
-.bf-event__kicker { margin: 0 0 .9rem; color: #cad7d0; font-size: .75rem; font-weight: 700; letter-spacing: .18em; }
-.bf-event__body { max-width: 1264px; margin-inline: auto; padding: 2rem clamp(1.25rem, 4vw, 2.75rem) 4rem; }
+.bf-event__intro [data-bf-period] { margin: 1rem auto 0; color: #e1e8e4; font-size: clamp(.85rem, 2.5vw, 1rem); text-wrap: balance; word-break: keep-all; }
+.bf-event__intro .bf-event__kicker { margin: 0 auto .9rem; color: #cad7d0; font-size: .75rem; font-weight: 700; letter-spacing: .18em; }
+.bf-event__body { max-width: 1344px; margin-inline: auto; padding: 2rem clamp(1rem, 4vw, 2.75rem) 4rem; }
 .bf-event__status { margin: 0 0 1.25rem; color: #48534d; }
-.bf-event__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16.5rem), 1fr)); gap: 1.1rem; }
+.bf-event__bands { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 0 1.5rem; border-bottom: 1px solid #e1e5e2; }
+.bf-event__bands .bf-event__band-link { min-height: 44px; height: auto; padding: .55rem .9rem; border: 1px solid #d6dfd9; border-radius: 999px; background: #f4f8f5; color: var(--bf-green); font-size: .9rem; font-weight: 700; text-decoration: none; }
+.bf-event__bands .bf-event__band-link:hover { background: #e7f1eb; }
+.bf-event__groups { display: grid; gap: clamp(2.25rem, 5vw, 4.75rem); }
+.bf-event__groups:not(:empty) { margin-top: 1.75rem; }
+.bf-event__group { scroll-margin-top: 112px; }
+.bf-event__group-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem 1rem; margin-bottom: 1rem; }
+.bf-event__group-head h2 { margin: 0; font-size: clamp(1.75rem, 3.5vw, 2.7rem); line-height: 1.14; letter-spacing: -.04em; }
+.bf-event__group-head > span { color: #4e5c54; font-size: .87rem; font-variant-numeric: tabular-nums; }
+.bf-event__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.65rem, 1.7vw, 1.25rem); }
 .bf-event__card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e1e5e2; border-radius: 18px; background: #fff; }
-.bf-event__media { display: grid; place-items: center; aspect-ratio: 5/4; background: #f5f5f7; }
-.bf-event__media img { width: 100%; height: 100%; aspect-ratio: 5/4; object-fit: contain; }
-.bf-event__details { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 1.15rem; }
-.bf-event__details h2 { margin: 0 0 .6rem; font-size: 1.16rem; }
+.bf-event__media { display: grid; place-items: center; aspect-ratio: 1; background: #f5f5f7; }
+.bf-event__media img { width: 100%; height: 100%; aspect-ratio: 1; object-fit: contain; }
+.bf-event__details { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: clamp(.7rem, 1.5vw, 1.15rem); }
+.bf-event__details h3 { margin: 0 0 .75rem; font-size: clamp(.89rem, 1.35vw, 1.1rem); line-height: 1.42; overflow-wrap: anywhere; }
 .bf-event__model, .bf-event__remaining { margin: 0 0 .35rem; font-size: .86rem; color: #4e5c54; }
-.bf-event__prices { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem .6rem; margin: auto 0 .25rem; font-variant-numeric: tabular-nums; }
+.bf-event__remaining--sold-out { color: #71444a; }
+.bf-event__prices { display: flex; flex-wrap: wrap; align-items: baseline; gap: .18rem .5rem; margin: auto 0 .45rem; font-variant-numeric: tabular-nums; }
 .bf-event__prices del { color: #546057; font-size: .88rem; }
-.bf-event__prices strong { color: var(--bf-green); font-size: 1.35rem; }
+.bf-event__prices strong { color: var(--bf-ink); font-size: clamp(1.09rem, 2vw, 1.45rem); white-space: nowrap; }
+.bf-event__discount { order: -1; color: #8c253a; font-size: clamp(.97rem, 1.8vw, 1.28rem); font-weight: 800; white-space: nowrap; }
+.bf-event__prices del { order: -2; flex-basis: 100%; }
+.bf-event__card-actions { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; width: 100%; min-height: 96px; }
+.bf-event__card--detail .bf-event__card-actions { min-height: 0; }
 .bf-event__buy, .bf-event__browse { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: .65rem 1rem; border-radius: 999px; font-weight: 650; text-decoration: none; }
-.bf-event__buy { width: 100%; margin-top: .65rem; background: var(--bf-green); color: #fff; }
+.bf-event__buy { width: 100%; margin-top: .5rem; padding-inline: .4rem; background: var(--bf-green); color: #fff; font-size: .88rem; }
 .bf-event__buy:hover { background: #254635; color: #fff; }
 .bf-event__browse { gap: .5rem; margin-top: 1.25rem; border: 1px solid #d6dfd9; color: var(--bf-green); }
 .bf-event__browse:hover { background: #edf5f1; }
@@ -27,8 +41,14 @@
 .bf-event__card--detail { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); max-width: 880px; }
 .bf-event__card--detail .bf-event__details { align-self: center; padding: clamp(1.2rem, 4vw, 2.5rem); }
 .bf-event__card--detail .bf-event__prices { margin-top: .75rem; }
-.bf-event__details h2 a, .bf-event__detail-link { color: inherit; text-underline-offset: 3px; }
-.bf-event__detail-link { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; margin-top: .25rem; font-size: .9rem; }
+.bf-event__details h3 a, .bf-event__detail-link { color: inherit; text-underline-offset: 3px; }
+.bf-event__detail-link { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; font-size: .83rem; }
+@media (max-width: 990px) {
+  .bf-event__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 @media (max-width: 610px) {
   .bf-event__card--detail { grid-template-columns: 1fr; }
+  .bf-event__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bf-event__card { border-radius: 14px; }
+  .bf-event__model, .bf-event__remaining, .bf-event__prices del { font-size: .78rem; }
 }

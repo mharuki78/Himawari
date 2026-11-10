@@ -4,34 +4,59 @@
 .black-friday-admin__section p { margin: 0; color: #4d5651; font-size: .88rem; }
 .black-friday-admin__section button { flex-shrink: 0; }
 .black-friday-admin__items { display: grid; gap: .7rem; margin-block-end: 1rem; }
-.black-friday-admin__item { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) auto; align-items: end; gap: .65rem; border: 1px solid #dde3df; border-radius: 14px; margin: 0; min-inline-size: 0; padding: .85rem; }
+.black-friday-admin__item { display: grid; grid-template-columns: minmax(0, 2.2fr) repeat(3, minmax(0, 1fr)) auto; align-items: end; gap: .65rem; border: 1px solid #dde3df; border-radius: 14px; margin: 0; min-inline-size: 0; padding: .85rem; }
 .black-friday-admin__item .admin-field { min-width: 0; }
 .black-friday-admin__item .admin-field > span { font-size: .85rem; font-weight: 650; }
 .black-friday-admin__item select { width: 100%; padding: .65rem; border: 1px solid #bdc7bf; border-radius: 8px; background: #fff; color: #202423; font: inherit; }
 .black-friday-admin__item .field-help { grid-column: 1/-1; margin: 0; }
 .black-friday-admin .promotion-save { flex-wrap: wrap; }
-.bf-product-picker { width: min(720px, calc(100% - 28px)); max-height: 88dvh; padding: clamp(16px, 3vw, 24px); border: 1px solid #dde3df; border-radius: 18px; background: #fff; color: #202423; }
+.bf-product-picker { width: min(1100px, calc(100% - 28px)); max-height: 92dvh; padding: clamp(12px, 2vw, 24px); border: 1px solid #dde3df; border-radius: 18px; background: #fff; color: #202423; }
 .bf-product-picker[open] { display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto; gap: 12px; }
 .bf-product-picker::backdrop { background: #20242380; }
 .bf-product-picker__head, .bf-product-picker__actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .bf-product-picker__head h3, .bf-product-picker p { margin: 0; }
 .bf-product-picker__head p, .bf-product-picker__actions p { font-size: 14px; color: #4d5651; }
+.bf-product-picker__tools { display: grid; gap: 8px; }
 .bf-product-picker__filters { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 10px; }
 .bf-product-picker__filters label { min-width: 0; }
 .bf-product-picker__filters select { min-height: 44px; border: 1px solid #bdc7bf; border-radius: 8px; padding-inline: .65rem; color: inherit; background: white; font: inherit; }
+.bf-product-picker__batch, .bf-product-picker__selection, .bf-product-picker__bulk { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; }
+.bf-product-picker__batch { justify-content: space-between; border-radius: 12px; padding: .5rem .65rem; background: #f4f6f4; }
+.bf-product-picker__bulk { align-items: end; }
+.bf-product-picker__bulk .admin-field { width: 106px; }
+.bf-product-picker__checked { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-size: .85rem; }
+.bf-product-picker__checked input, .bf-product-picker__row input[type="checkbox"] { accent-color: #285744; width: 18px; height: 18px; }
 .bf-product-picker__list { overflow: auto; overscroll-behavior: contain; border-block: 1px solid #dde3df; }
-.bf-product-picker__row { display: grid; grid-template-columns: auto 48px minmax(0, 1fr); align-items: center; gap: 10px; min-height: 64px; padding: 8px; border-bottom: 1px solid #edf0ed; cursor: pointer; }
+.bf-product-picker__row { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; gap: 6px 14px; min-height: 70px; padding: 8px; border-bottom: 1px solid #edf0ed; }
+.bf-product-picker__summary { display: grid; grid-template-columns: auto 48px minmax(0, 1fr); align-items: center; gap: 10px; min-height: 48px; cursor: pointer; }
 .bf-product-picker__row:has(:checked) { background: #edf5f1; }
-.bf-product-picker__row:has(:disabled) { opacity: .65; cursor: default; }
-.bf-product-picker__row input { accent-color: #285744; width: 18px; height: 18px; }
+.bf-product-picker__summary:has(:disabled) { opacity: .7; cursor: default; }
+.bf-product-picker__fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; min-width: 0; padding: 0; margin: 0; border: 0; }
+.bf-product-picker__fields:disabled input { background: #f6f7f6; }
+.bf-product-picker .admin-field { display: grid; gap: 4px; min-width: 0; margin: 0; }
+.bf-product-picker .admin-field > span { font-size: .77rem; }
+.bf-product-picker .admin-field input { min-height: 40px; padding-inline: 8px; font-size: .9rem; }
 .bf-product-picker__thumbnail { display: block; width: 48px; height: 48px; border-radius: 6px; overflow: hidden; background: #f4f6f4; }
 .bf-product-picker__thumbnail img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .bf-product-picker__copy { display: grid; gap: 3px; word-break: keep-all; overflow-wrap: anywhere; }
 .bf-product-picker__copy strong { font-size: 14px; }
 .bf-product-picker__copy small { color: #4d5651; }
-.bf-product-picker__actions .button { width: auto; margin: 0; }
+.bf-product-picker .button { width: auto; margin: 0; }
+.bf-product-picker__actions .button { flex-shrink: 0; }
+.bf-product-picker__actions [role="status"] { font-weight: 700; color: #285744; }
+@media (max-width: 760px) {
+  .bf-product-picker__row { grid-template-columns: 1fr; }
+  .bf-product-picker__fields:not(:disabled) { padding-left: 4px; }
+  .bf-product-picker__fields:disabled { display: none; }
+}
 @media (max-width: 630px) {
   .black-friday-admin__item { grid-template-columns: 1fr 1fr; }
   .black-friday-admin__item .admin-field:first-of-type { grid-column: 1/-1; }
   .black-friday-admin__item button { justify-self: start; }
+  .bf-product-picker[open] { gap: 8px; }
+  .bf-product-picker__batch { padding: .35rem .5rem; }
+  .bf-product-picker__actions p { font-size: 12px; }
+}
+@media (max-height: 540px) {
+  .bf-product-picker[open] { grid-template-rows: auto auto minmax(90px, 1fr) auto; overflow: auto; }
 }

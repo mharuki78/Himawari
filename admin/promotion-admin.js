@@ -1,4 +1,4 @@
-import { setupBlackFridayAdmin } from './black-friday-admin.js?v=20261110-picker';
+import { setupBlackFridayAdmin } from './black-friday-admin.js?v=20261110-price-bands';
 import { HttpError, bindPasswordToggle, fetchJson } from './admin-client.js';
 
 const $ = (selector) => document.querySelector(selector);

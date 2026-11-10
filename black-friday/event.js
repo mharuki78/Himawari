@@ -1,8 +1,32 @@
-import { blackFridayView, jsonLdText } from './view.js';
+import { blackFridayView, jsonLdText } from './view.js?v=20261110-price-bands';
+import { animate } from '/assets/site-ui.js';
 
 const main = document.querySelector('[data-bf-offer]');
 const offerId = main?.dataset.bfOffer || '';
 let timer, expiryTimer, loading = false, lastContent, expiry, currentEvent;
+
+function initializeEventBands(root) {
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  let animation;
+  const stop = () => { animation?.revert(); animation = null; };
+  function highlight(event) {
+    const link = event.target.closest('[data-bf-jump]');
+    if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const heading = document.getElementById(link.hash.slice(1))?.querySelector('h2');
+    if (!heading) return;
+    stop();
+    if (!motion.matches) animation = animate(heading, { translateY: [5, 0], opacity: [.76, 1], duration: 230, ease: 'out(3)' });
+  }
+  root.addEventListener('click', highlight);
+  motion.addEventListener('change', stop);
+  addEventListener('pagehide', function clean(event) {
+    stop();
+    if (event.persisted) return;
+    root.removeEventListener('click', highlight);
+    motion.removeEventListener('change', stop);
+    removeEventListener('pagehide', clean);
+  });
+}
 
 function render(event) {
   const view = blackFridayView(event, offerId);
@@ -77,6 +101,7 @@ async function refresh() {
 
 if (main?.dataset.bfEnds) trackExpiry({ state: 'open', startsAt: main.dataset.bfStarts, endsAt: main.dataset.bfEnds, serverTime: main.dataset.bfTime });
 if (main) {
+  initializeEventBands(main);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
   window.addEventListener('pageshow', event => { if (event.persisted) refresh(); });
   refresh();
