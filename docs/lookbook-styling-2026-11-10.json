@@ -1,0 +1,507 @@
+{
+  "date": "2026-11-10",
+  "type": "lookbook-styling-correction",
+  "baselineCommit": "e9c9a509bc60eddd3cfd42d8edc124f632be2350",
+  "expectedCount": 11,
+  "reviewedGalleryCount": 79,
+  "previousSnapshot": "backups/lookbook-styling-2026-11-10/entries-before.json",
+  "completionReceipt": "backups/lookbook-styling-2026-11-10/receipt.json",
+  "preparedAt": "2026-11-10T09:06:13.520Z",
+  "entries": [
+    {
+      "id": "2026-11-07-city-1010",
+      "model": "1010",
+      "color": "카키",
+      "productId": "coupang-3d4fbf39120dea6f",
+      "publicationDate": "2026-11-07",
+      "reason": "남성 스타일링의 스커트를 바지로 교체",
+      "previousImage": "/assets/lookbook/2026-11-07-city-1010-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-07-city-1010-snap-640.webp",
+      "image": "/assets/lookbook/2026-11-07-city-1010-styling.webp",
+      "thumbnail": "/assets/lookbook/2026-11-07-city-1010-styling-640.webp",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-3d4fbf39120dea6f.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-3d4fbf39120dea6f/main-7eLzz0VGYkIX3KVApCVQWErMCnTqwM.jpg",
+      "dimensionsCm": [
+        33,
+        45,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 50페이지의 1010 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "generatedSource": "backups/lookbook-styling-2026-11-10/candidate-8.png",
+      "generatedSha256": "902e5135df0dd143a4184573b969703def69abb4239be5464ff839593d5e8170",
+      "prompt": "Photorealistic image edit for Himawari LookBook. Image 1 is the edit target and sets the composition. Image 2 is strictly a product reference, use only the bag, never reproduce any person, clothes or graphic background in it. Korean streetwear editorial snap, clean natural texture and restrained styling. Keep the exact catalogue product and accessory hardware; no additional zips, pockets, straps or logos. Keep the same adult male model, burgundy knitted vest and ecru long-sleeve shirt. Change only the skirt to charcoal straight-leg tailored trousers with two clearly separated pant legs and keep the low black shoes. Preserve the light stone arcade and rear three-quarter walking composition. Bag: No.1010 khaki, 33 × 45 × 15 cm, muted pale khaki rectangular body, original black handles, straps, two black buckles and off-white label. Output one clean 2:3 portrait at 1024×1536, full footwear and bag inside the frame, no added text or border.",
+      "fidelityReviewed": true,
+      "review": "상품 원본과 색상, 실루엣, 포켓, 손잡이·끈, 로고 위치, 착용 비율을 직접 대조했습니다.",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-07-city-1010-styling.webp",
+          "bytes": 127094,
+          "sha256": "9d055bd175996b2dd3e22b9d8f4c1247fe7c650064dcd7a1ee518ed3a65716cf",
+          "dimensions": [
+            1024,
+            1536
+          ]
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-07-city-1010-styling-640.webp",
+          "bytes": 50694,
+          "sha256": "5f95059a5a89169cdf4ab1eb621b21f0062694c2dc2da04a53f6e770729bf97b",
+          "dimensions": [
+            640,
+            960
+          ]
+        }
+      }
+    },
+    {
+      "id": "2026-10-16-city-2513",
+      "model": "2513",
+      "color": "블랙",
+      "productId": "store-12986327631",
+      "publicationDate": "2026-10-16",
+      "reason": "남성 스타일링의 스커트를 바지로 교체",
+      "previousImage": "/assets/lookbook/2026-10-16-city-2513-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-16-city-2513-snap-640.webp",
+      "image": "/assets/lookbook/2026-10-16-city-2513-styling.webp",
+      "thumbnail": "/assets/lookbook/2026-10-16-city-2513-styling-640.webp",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-12986327631.jpg",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260420_222/1776672718551bbtgo_JPEG/31205936622607670_209756021.jpg",
+      "dimensionsCm": [
+        36.5,
+        28,
+        2
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 11페이지의 2513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "generatedSource": "backups/lookbook-styling-2026-11-10/candidate-32.png",
+      "generatedSha256": "c0f867e38db30c9a058be70a696f30d12fc14777ae86cb3e8cccab7c6cfa6c6b",
+      "prompt": "Photorealistic image edit for Himawari LookBook. Image 1 is the edit target and sets the composition. Image 2 is strictly a product reference, use only the bag, never reproduce any person, clothes or graphic background in it. Korean streetwear editorial snap, clean natural texture and restrained styling. Keep the exact catalogue product and accessory hardware; no additional zips, pockets, straps or logos. Keep the same adult male model, grey zip hoodie and striped tee. Change only the black denim skirt to straight black jeans with two clearly separated full pant legs. Preserve the quiet grey street and candid full-body walking scene. Preserve the No.2513 black padded laptop bag, 36.5 × 28 × 2 cm, its rectangular onion quilting, tonal Himawari embroidery, original black-and-white rope handle and original carry position. Output one clean 2:3 portrait at 1024×1536, full footwear and bag inside the frame, no added text or border.",
+      "fidelityReviewed": true,
+      "review": "상품 원본과 색상, 실루엣, 포켓, 손잡이·끈, 로고 위치, 착용 비율을 직접 대조했습니다.",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-16-city-2513-styling.webp",
+          "bytes": 132202,
+          "sha256": "61bafa66917b7c008098e24875ffe57af2d91f8c5d0c40337c42012014a2c1a5",
+          "dimensions": [
+            1024,
+            1536
+          ]
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-16-city-2513-styling-640.webp",
+          "bytes": 51034,
+          "sha256": "527c9eff27e8603eacbaad4624d9d4e18a89dd84017edeb6c53dd22909bd8973",
+          "dimensions": [
+            640,
+            960
+          ]
+        }
+      }
+    },
+    {
+      "id": "2026-10-09-travel-9007",
+      "model": "9007",
+      "color": "민트",
+      "productId": "coupang-6a9c162aa87d45d8",
+      "publicationDate": "2026-10-09",
+      "reason": "여성용 제품에 맞는 착용 모델로 교체",
+      "previousImage": "/assets/lookbook/2026-10-09-travel-9007-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-09-travel-9007-snap-640.webp",
+      "image": "/assets/lookbook/2026-10-09-travel-9007-styling.webp",
+      "thumbnail": "/assets/lookbook/2026-10-09-travel-9007-styling-640.webp",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-6a9c162aa87d45d8.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6a9c162aa87d45d8/main-gEPqA6TaQKDNYePvYMbKNAxX6kP8yW.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 10페이지의 9007 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "generatedSource": "backups/lookbook-styling-2026-11-10/candidate-46.png",
+      "generatedSha256": "da01c160be462dfa79db852ef21734cdb5540320fe231115ed208a03950de713",
+      "prompt": "Photorealistic image edit for Himawari LookBook. Image 1 is the edit target and sets the composition. Image 2 is strictly a product reference, use only the bag, never reproduce any person, clothes or graphic background in it. Korean streetwear editorial snap, clean natural texture and restrained styling. Keep the exact catalogue product and accessory hardware; no additional zips, pockets, straps or logos. Replace the person with a fictional adult Korean woman with a loose low ponytail, wearing the existing blue denim overshirt, dark knit beanie, chocolate brown straight trousers and light canvas shoes. Maintain the stone arcade, movement and framing. Preserve No.9007 mint, 28 × 40 × 17 cm: vivid turquoise mint body, coral bottom and cap brim, matching cap charm, cream front zip, white Himawari logo, both original shoulder straps and handle details. Output one clean 2:3 portrait at 1024×1536, full footwear and bag inside the frame, no added text or border.",
+      "fidelityReviewed": true,
+      "review": "상품 원본과 색상, 실루엣, 포켓, 손잡이·끈, 로고 위치, 착용 비율을 직접 대조했습니다.",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-09-travel-9007-styling.webp",
+          "bytes": 145310,
+          "sha256": "e6e2e9593a2f1a056f932d5a93fb476a4aed7d19202b91a31aef668bd8719392",
+          "dimensions": [
+            1024,
+            1536
+          ]
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-09-travel-9007-styling-640.webp",
+          "bytes": 55514,
+          "sha256": "7ed2a2a3269a81a2da8d0f55c59a93b334704030171ebeb48d37c74d0c5221fa",
+          "dimensions": [
+            640,
+            960
+          ]
+        }
+      }
+    },
+    {
+      "id": "2026-10-07-city-188l",
+      "model": "188L",
+      "color": "그레이 베이지",
+      "productId": "coupang-4efcb6a5f2ae7b88",
+      "publicationDate": "2026-10-07",
+      "reason": "남성 스타일링의 스커트를 바지로 교체",
+      "previousImage": "/assets/lookbook/2026-10-07-city-188l-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-07-city-188l-snap-640.webp",
+      "image": "/assets/lookbook/2026-10-07-city-188l-styling.webp",
+      "thumbnail": "/assets/lookbook/2026-10-07-city-188l-styling-640.webp",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-4efcb6a5f2ae7b88.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4efcb6a5f2ae7b88/main-KZMCgZUTl375uHZt7Ao3P1nrh1NIB9.jpg",
+      "dimensionsCm": [
+        28,
+        39,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 57페이지의 188L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "generatedSource": "backups/lookbook-styling-2026-11-10/candidate-50.png",
+      "generatedSha256": "3a886a04030731c7c5963063bc78dcddb9cdcb0cbe978d1b883f52a1214e3652",
+      "prompt": "Photorealistic image edit for Himawari LookBook. Image 1 is the edit target and sets the composition. Image 2 is strictly a product reference, use only the bag, never reproduce any person, clothes or graphic background in it. Korean streetwear editorial snap, clean natural texture and restrained styling. Keep the exact catalogue product and accessory hardware; no additional zips, pockets, straps or logos. Keep the same adult male model, dark green striped rugby shirt and white sneakers. Replace the long denim skirt with dark indigo straight-leg jeans with two distinct legs, both full-length. Preserve walking pose, plain pale grey background and three-quarter view. Bag: No.188L gray beige, 28 × 39 × 15 cm, exact warm grey body, beige leather trim, dual silver buckles and light centered rectangular brand patch. Output one clean 2:3 portrait at 1024×1536, full footwear and bag inside the frame, no added text or border.",
+      "fidelityReviewed": true,
+      "review": "상품 원본과 색상, 실루엣, 포켓, 손잡이·끈, 로고 위치, 착용 비율을 직접 대조했습니다.",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-07-city-188l-styling.webp",
+          "bytes": 63118,
+          "sha256": "0fb52fc22d5f05f0803605f67cada088c00371432fa6b9c66778dbedd4631877",
+          "dimensions": [
+            1024,
+            1536
+          ]
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-07-city-188l-styling-640.webp",
+          "bytes": 24464,
+          "sha256": "457575e802b1f457dc332106a2e0f443e34fece46c2de39cc094b1b65ce473ca",
+          "dimensions": [
+            640,
+            960
+          ]
+        }
+      }
+    },
+    {
+      "id": "2026-10-01-everyday-0403",
+      "model": "0403",
+      "color": "베이지",
+      "productId": "store-13308523903",
+      "publicationDate": "2026-10-01",
+      "reason": "여성용 제품에 맞는 착용 모델로 교체",
+      "previousImage": "/assets/lookbook/2026-10-01-everyday-0403-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-01-everyday-0403-snap-640.webp",
+      "image": "/assets/lookbook/2026-10-01-everyday-0403-styling.webp",
+      "thumbnail": "/assets/lookbook/2026-10-01-everyday-0403-styling-640.webp",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13308523903.jpg",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260211_281/1770774598923VUxxR_JPEG/20746952034287940_427742899.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 22페이지의 0403 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다. 외부 크기는 백팩 기준이며 숄더백은 별도 23 × 18 cm로 표기됩니다. 900 g의 구성품 포함 여부는 미기재입니다.",
+      "generatedSource": "backups/lookbook-styling-2026-11-10/candidate-71.png",
+      "generatedSha256": "46b296605e053a53cd95af901a82ff04f2c1aea1c67f35838f59c45844c878a8",
+      "prompt": "Photorealistic image edit for Himawari LookBook. Image 1 is the edit target and sets the composition. Image 2 is strictly a product reference, use only the bag, never reproduce any person, clothes or graphic background in it. Korean streetwear editorial snap, clean natural texture and restrained styling. Keep the exact catalogue product and accessory hardware; no additional zips, pockets, straps or logos. Replace the person with a fictional adult Korean woman with a dark low ponytail, wearing the existing cream fleece, straight blue denim jeans and brown shoes. Keep standing pose, soft warm studio, natural hand carrying the bag by its real top handle. No.0403 beige, 28 × 40 × 17 cm, retain pale beige rectangular shell, original black trim, front removable pouch, clip and black bottom brand label. Output one clean 2:3 portrait at 1024×1536, full footwear and bag inside the frame, no added text or border.",
+      "fidelityReviewed": true,
+      "review": "상품 원본과 색상, 실루엣, 포켓, 손잡이·끈, 로고 위치, 착용 비율을 직접 대조했습니다.",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-01-everyday-0403-styling.webp",
+          "bytes": 90824,
+          "sha256": "577a663ad1afd0b0dd194a8ea5782ea2c583930e1fc42da3f1b30448c127a61d",
+          "dimensions": [
+            1024,
+            1536
+          ]
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-01-everyday-0403-styling-640.webp",
+          "bytes": 31398,
+          "sha256": "ffcce4047a0794c9f73669b5487ed9acea942fe2f54157c6f5aa924005b09a61",
+          "dimensions": [
+            640,
+            960
+          ]
+        }
+      }
+    },
+    {
+      "id": "2026-09-30-city-0514s",
+      "model": "0514S",
+      "color": "실버",
+      "productId": "store-13326396058",
+      "publicationDate": "2026-09-30",
+      "reason": "여성용 실버 미니 백팩의 착용 모델과 바지 코디 수정",
+      "previousImage": "/assets/lookbook/2026-09-30-city-0514s-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-09-30-city-0514s-snap-640.webp",
+      "image": "/assets/lookbook/2026-09-30-city-0514s-styling.webp",
+      "thumbnail": "/assets/lookbook/2026-09-30-city-0514s-styling-640.webp",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13326396058.jpg",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260211_152/17707744461046CCJC_JPEG/104907218390027692_404109632.jpg",
+      "dimensionsCm": [
+        27,
+        36,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 18페이지의 0514S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "generatedSource": "backups/lookbook-styling-2026-11-10/candidate-74.png",
+      "generatedSha256": "c6be93fcdb5152052c9fe735179a7113945a0e00931140ed5f600c52d8b5ff95",
+      "prompt": "Photorealistic image edit for Himawari LookBook. Image 1 is the edit target and sets the composition. Image 2 is strictly a product reference, use only the bag, never reproduce any person, clothes or graphic background in it. Korean streetwear editorial snap, clean natural texture and restrained styling. Keep the exact catalogue product and accessory hardware; no additional zips, pockets, straps or logos. Replace the person with a fictional adult Korean woman with a dark chin-length bob wearing burgundy knitted vest over ecru long sleeves, straight charcoal trousers and black shoes. Maintain the outdoor concrete steps, standing full-body frame and same natural hand carry by original top handle. No.0514 Mini silver, 27 × 36 × 14 cm, preserve metallic silver gathered body, black drawstrings, front zipper and small black triangular brand patch at bottom corner. Output one clean 2:3 portrait at 1024×1536, full footwear and bag inside the frame, no added text or border.",
+      "fidelityReviewed": true,
+      "review": "상품 원본과 색상, 실루엣, 포켓, 손잡이·끈, 로고 위치, 착용 비율을 직접 대조했습니다.",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-09-30-city-0514s-styling.webp",
+          "bytes": 110796,
+          "sha256": "88ea9510cfc926510638b639cd5c1745cb45007521eae36e5462e2622b41f111",
+          "dimensions": [
+            1024,
+            1536
+          ]
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-09-30-city-0514s-styling-640.webp",
+          "bytes": 40520,
+          "sha256": "d0943079b341ff5057442835dfbd71d85ce6c2c7e7fae47653471873f18b17a7",
+          "dimensions": [
+            640,
+            960
+          ]
+        }
+      }
+    },
+    {
+      "id": "2026-10-31-city-2505",
+      "model": "2505",
+      "color": "블랙",
+      "productId": "coupang-e16e6315910fdd6b",
+      "publicationDate": "2026-10-31",
+      "reason": "여성용 제품에 맞는 착용 모델로 교체",
+      "previousImage": "/assets/lookbook/2026-10-31-city-2505-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-31-city-2505-snap-640.webp",
+      "image": "/assets/lookbook/2026-10-31-city-2505-styling.webp",
+      "thumbnail": "/assets/lookbook/2026-10-31-city-2505-styling-640.webp",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-e16e6315910fdd6b.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e16e6315910fdd6b/main-rgxtYpMoAPOljowvNuFsQn7QcDh936.jpg",
+      "dimensionsCm": [
+        30,
+        43,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 5페이지의 2505 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "generatedSource": "backups/lookbook-styling-2026-11-10/candidate-22.png",
+      "generatedSha256": "d332cc6fc21c71c24ca526b93b4e952155706ecc79846602e6af20d8e483be9c",
+      "prompt": "Photorealistic editorial image edit for Himawari LookBook. Image 1 is the existing scene to edit. Image 2 is for exact product construction only; do not copy any model, clothing, background or image layout from image 2. Change the model as stated while keeping the original camera angle, environment, natural textile look, bag and proportions. Do not add any logo, hardware or pockets. An adult fictional Korean woman with a shoulder-length straight dark bob wears the same oatmeal cardigan, ivory tee and olive cargo pants, stands naturally in the same pale studio. Keep the black No.2505 backpack held by its original cream top carry handles, slightly away from thigh so the full front is legible. One 1024×1536 2:3 portrait, full subject and bag in frame, no borders, no writing, natural human anatomy.",
+      "fidelityReviewed": true,
+      "review": "상품 원본과 색상, 실루엣, 포켓, 손잡이·끈, 로고 위치, 착용 비율을 직접 대조했습니다.",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-31-city-2505-styling.webp",
+          "bytes": 74284,
+          "sha256": "5056afb0842dcf57ff477153e2e5548d8dcc341d7fd38da67357217946d93b6c",
+          "dimensions": [
+            1024,
+            1536
+          ]
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-31-city-2505-styling-640.webp",
+          "bytes": 27684,
+          "sha256": "5088ed42938feffcdbe59a3e77b7a708c994871e8c24b2d4950d2401546ef456",
+          "dimensions": [
+            640,
+            960
+          ]
+        }
+      }
+    },
+    {
+      "id": "2026-10-12-everyday-1230",
+      "model": "1230",
+      "color": "그레이",
+      "productId": "store-13308483411",
+      "publicationDate": "2026-10-12",
+      "reason": "여성용 제품에 맞는 착용 모델로 교체",
+      "previousImage": "/assets/lookbook/2026-10-12-everyday-1230-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-12-everyday-1230-snap-640.webp",
+      "image": "/assets/lookbook/2026-10-12-everyday-1230-styling.webp",
+      "thumbnail": "/assets/lookbook/2026-10-12-everyday-1230-styling-640.webp",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13308483411.jpg",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260326_238/1774503626907819SG_JPEG/29145858851779990_764507912.jpg",
+      "dimensionsCm": [
+        32,
+        40,
+        18
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 15페이지의 1230 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "generatedSource": "backups/lookbook-styling-2026-11-10/candidate-39.png",
+      "generatedSha256": "85c492e6a15641b98e0abf8595e78e2a8e0d697a4c84d14705417e1f06ad1136",
+      "prompt": "Photorealistic editorial image edit for Himawari LookBook. Image 1 is the existing scene to edit. Image 2 is for exact product construction only; do not copy any model, clothing, background or image layout from image 2. Change the model as stated while keeping the original camera angle, environment, natural textile look, bag and proportions. Do not add any logo, hardware or pockets. An adult fictional Korean woman with short wavy dark hair wears the same teal padded vest over a cream long sleeve, black cargo trousers and sneakers. Retain the same rear three-quarter step and plain warm studio setting, keeping the exact No.1230 gray backpack clear and sharp. One 1024×1536 2:3 portrait, full subject and bag in frame, no borders, no writing, natural human anatomy.",
+      "fidelityReviewed": true,
+      "review": "상품 원본과 색상, 실루엣, 포켓, 손잡이·끈, 로고 위치, 착용 비율을 직접 대조했습니다.",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-12-everyday-1230-styling.webp",
+          "bytes": 49188,
+          "sha256": "93b482ff162209be9ee46c7b7993062f670b908f07acbed5c2dd5c97c6426ca4",
+          "dimensions": [
+            1024,
+            1536
+          ]
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-12-everyday-1230-styling-640.webp",
+          "bytes": 20996,
+          "sha256": "171d6f4f2bcf524fc51b946552c3b2fdbe15dc919384da60e63ef3440d779690",
+          "dimensions": [
+            640,
+            960
+          ]
+        }
+      }
+    },
+    {
+      "id": "2026-10-10-travel-1089",
+      "model": "1089",
+      "color": "블루",
+      "productId": "coupang-5984791b8c6c5fb2",
+      "publicationDate": "2026-10-10",
+      "reason": "여성용 제품에 맞는 착용 모델로 교체",
+      "previousImage": "/assets/lookbook/2026-10-10-travel-1089-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-10-travel-1089-snap-640.webp",
+      "image": "/assets/lookbook/2026-10-10-travel-1089-styling.webp",
+      "thumbnail": "/assets/lookbook/2026-10-10-travel-1089-styling-640.webp",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-5984791b8c6c5fb2.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-5984791b8c6c5fb2/main-eLSgNwsdKSc9Fgpg6vgF9FXMvc3jNr.jpg",
+      "dimensionsCm": [
+        29.5,
+        42,
+        12
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 12페이지의 1089 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "generatedSource": "backups/lookbook-styling-2026-11-10/candidate-44.png",
+      "generatedSha256": "5a85deb504b828a4feee47632f83ca280c55fa52e2fe1dc435af2e756f0ab125",
+      "prompt": "Photorealistic editorial image edit for Himawari LookBook. Image 1 is the existing scene to edit. Image 2 is for exact product construction only; do not copy any model, clothing, background or image layout from image 2. Change the model as stated while keeping the original camera angle, environment, natural textile look, bag and proportions. Do not add any logo, hardware or pockets. An adult fictional Korean woman in a plain charcoal cap with a low ponytail wears the same black work jacket and straight gray denim. Keep the same stone steps, rear-side profile, and actual pastel light blue No.1089 backpack visible, including the top handles, white round Himawari logo, one large front zipper pocket and side pockets. One 1024×1536 2:3 portrait, full subject and bag in frame, no borders, no writing, natural human anatomy.",
+      "fidelityReviewed": true,
+      "review": "상품 원본과 색상, 실루엣, 포켓, 손잡이·끈, 로고 위치, 착용 비율을 직접 대조했습니다.",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-10-travel-1089-styling.webp",
+          "bytes": 130324,
+          "sha256": "b519e623cc9a6d412e807319f81b0809a59b732a03b1b2861e1768417f6d321b",
+          "dimensions": [
+            1024,
+            1536
+          ]
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-10-travel-1089-styling-640.webp",
+          "bytes": 47882,
+          "sha256": "ea71ed7e023496440b32973037efd0a1d5383ef8d0b250b896e2f1220525cae6",
+          "dimensions": [
+            640,
+            960
+          ]
+        }
+      }
+    },
+    {
+      "id": "2026-10-05-everyday-2505",
+      "model": "2505",
+      "color": "블랙",
+      "productId": "coupang-e16e6315910fdd6b",
+      "publicationDate": "2026-10-05",
+      "reason": "여성용 제품에 맞는 착용 모델로 교체",
+      "previousImage": "/assets/lookbook/2026-10-05-everyday-2505-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-05-everyday-2505-snap-640.webp",
+      "image": "/assets/lookbook/2026-10-05-everyday-2505-styling.webp",
+      "thumbnail": "/assets/lookbook/2026-10-05-everyday-2505-styling-640.webp",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-e16e6315910fdd6b.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e16e6315910fdd6b/main-rgxtYpMoAPOljowvNuFsQn7QcDh936.jpg",
+      "dimensionsCm": [
+        30,
+        43,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 5페이지의 2505 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "generatedSource": "backups/lookbook-styling-2026-11-10/candidate-59.png",
+      "generatedSha256": "0fb20f277777946b6537182ddad97f0a188d6a4a4417834775058b273f3a2124",
+      "prompt": "Photorealistic editorial image edit for Himawari LookBook. Image 1 is the existing scene to edit. Image 2 is for exact product construction only; do not copy any model, clothing, background or image layout from image 2. Change the model as stated while keeping the original camera angle, environment, natural textile look, bag and proportions. Do not add any logo, hardware or pockets. An adult fictional Korean woman with dark loose medium-length hair wears the same navy track jacket, olive trousers, and cream sneakers. Retain the soft studio light and back three-quarter turn. Keep the exact black No.2505 backpack worn normally, rounded silhouette, two wide cream vertical bands with X stitching, joined cream handles, centered small white Himawari name, clean black base. One 1024×1536 2:3 portrait, full subject and bag in frame, no borders, no writing, natural human anatomy.",
+      "fidelityReviewed": true,
+      "review": "상품 원본과 색상, 실루엣, 포켓, 손잡이·끈, 로고 위치, 착용 비율을 직접 대조했습니다.",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-05-everyday-2505-styling.webp",
+          "bytes": 61650,
+          "sha256": "47a22114315caf458ecf3cb0cace92ac79a324172b67652e1e72680ff131efd2",
+          "dimensions": [
+            1024,
+            1536
+          ]
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-05-everyday-2505-styling-640.webp",
+          "bytes": 25716,
+          "sha256": "6530072fad78a3ded4d45ea8c881fe2d5986ca37b53e594408cac3c07084f589",
+          "dimensions": [
+            640,
+            960
+          ]
+        }
+      }
+    },
+    {
+      "id": "2026-09-29-everyday-1230",
+      "model": "1230",
+      "color": "그레이",
+      "productId": "store-13308483411",
+      "publicationDate": "2026-09-29",
+      "reason": "여성용 제품에 맞는 착용 모델로 교체",
+      "previousImage": "/assets/lookbook/2026-09-29-everyday-1230-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-09-29-everyday-1230-snap-640.webp",
+      "image": "/assets/lookbook/2026-09-29-everyday-1230-styling.webp",
+      "thumbnail": "/assets/lookbook/2026-09-29-everyday-1230-styling-640.webp",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13308483411.jpg",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260326_238/1774503626907819SG_JPEG/29145858851779990_764507912.jpg",
+      "dimensionsCm": [
+        32,
+        40,
+        18
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 15페이지의 1230 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "generatedSource": "backups/lookbook-styling-2026-11-10/candidate-75.png",
+      "generatedSha256": "5a745dc6aaf2a92f403f2b07a3d053bf568bfd8194774bacb96360cbdfcea11a",
+      "prompt": "Photorealistic editorial image edit for Himawari LookBook. Image 1 is the existing scene to edit. Image 2 is for exact product construction only; do not copy any model, clothing, background or image layout from image 2. Change the model as stated while keeping the original camera angle, environment, natural textile look, bag and proportions. Do not add any logo, hardware or pockets. An adult fictional Korean woman with a dark bun, wearing the same gray sweatshirt and straight beige pants, stands by the studio window in the same rear-side pose. Keep the exact No.1230 gray backpack with rounded top and black trim, two separate black-and-gray front pockets with zippers, and original small black triangle at lower right. One 1024×1536 2:3 portrait, full subject and bag in frame, no borders, no writing, natural human anatomy.",
+      "fidelityReviewed": true,
+      "review": "상품 원본과 색상, 실루엣, 포켓, 손잡이·끈, 로고 위치, 착용 비율을 직접 대조했습니다.",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-09-29-everyday-1230-styling.webp",
+          "bytes": 112380,
+          "sha256": "173f51d2d7e17af66f3fb35bce94a8bcd4ff329966b38ba2266ad71c0fa994a6",
+          "dimensions": [
+            1024,
+            1536
+          ]
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-09-29-everyday-1230-styling-640.webp",
+          "bytes": 39970,
+          "sha256": "5c7229efabeff8d17e3cb22dbcc0c6c71de50a2ae38244046d04f067912ba2b8",
+          "dimensions": [
+            640,
+            960
+          ]
+        }
+      }
+    }
+  ]
+}
