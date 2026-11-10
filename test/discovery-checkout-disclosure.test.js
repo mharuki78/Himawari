@@ -4,6 +4,8 @@ import test from 'node:test';
 import vm from 'node:vm';
 import { CATALOG_CATEGORIES, filterAndSortFamilies, groupProductFamilies } from '../assets/catalog-tools.js';
 import { purchaseQuantity } from '../assets/purchase-quantity.js';
+import { standardShippingFee } from '../assets/shipping-policy.js';
+import { WELCOME_COUPON, welcomeCouponSubtotal } from '../assets/welcome-coupon.js';
 
 // A small DOM fixture runs the production event handlers without an order endpoint.
 class Element {
@@ -195,7 +197,7 @@ async function checkoutFixture({ payment = 'bank_transfer', quantity = '5', stoc
   const requests = [];
   let npayItems;
   const context = vm.createContext({
-    ...env, URL, URLSearchParams, Intl, crypto, purchaseQuantity,
+    ...env, URL, URLSearchParams, Intl, crypto, purchaseQuantity, standardShippingFee, WELCOME_COUPON, welcomeCouponSubtotal,
     bankTransfer: { bank: '은행', account: '000', holder: '예금주' }, bankTransferReady: () => bank,
     initializeCheckoutNpay: getItems => { npayItems = getItems; },
     fetch: async (url, options) => {

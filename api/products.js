@@ -10,6 +10,7 @@ import { ensureOrderSchema } from './_lib/orders.js';
 import storyPosts from '../story/posts.json' with { type: 'json' };
 import lookbookEntries from '../lookbook/entries.json' with { type: 'json' };
 import { database, databaseIsConfigured } from './_lib/database.js';
+import { standardShippingFee } from '../assets/shipping-policy.js';
 
 const SITE_ORIGIN = 'https://himawari.co.kr';
 const SITEMAP_PAGES = [
@@ -151,7 +152,7 @@ async function fetchMerchantFeed(request) {
   const catalog = productStoreIsConfigured() ? (await readProductCatalog()).catalog : seedCatalog();
   const available = await applyInventoryReservations(catalog.products.map(publicProduct));
   const items = available.filter((product) => product.image && product.price > 0).map((product) => `
-    <item><g:id>${xml(product.id)}</g:id><title>${xml(product.name)}</title><description>${xml(product.description || product.tagline)}</description><link>${SITE_ORIGIN}/product.html?id=${encodeURIComponent(product.id)}</link><g:image_link>${xml(product.image)}</g:image_link><g:availability>${product.soldOut ? 'out_of_stock' : 'in_stock'}</g:availability><g:price>${Number(product.price)} KRW</g:price><g:condition>new</g:condition><g:brand>Himawari</g:brand><g:mpn>${xml(product.model)}</g:mpn><g:product_type>가방 &gt; 백팩</g:product_type><g:google_product_category>5181</g:google_product_category><g:custom_label_0>${product.price >= 100000 ? '무료배송' : '일반배송'}</g:custom_label_0><g:shipping><g:country>KR</g:country><g:service>로젠택배</g:service><g:price>${product.price >= 100000 ? 0 : 3500} KRW</g:price></g:shipping></item>`).join('');
+    <item><g:id>${xml(product.id)}</g:id><title>${xml(product.name)}</title><description>${xml(product.description || product.tagline)}</description><link>${SITE_ORIGIN}/product.html?id=${encodeURIComponent(product.id)}</link><g:image_link>${xml(product.image)}</g:image_link><g:availability>${product.soldOut ? 'out_of_stock' : 'in_stock'}</g:availability><g:price>${Number(product.price)} KRW</g:price><g:condition>new</g:condition><g:brand>Himawari</g:brand><g:mpn>${xml(product.model)}</g:mpn><g:product_type>가방 &gt; 백팩</g:product_type><g:google_product_category>5181</g:google_product_category><g:custom_label_0>${standardShippingFee(product.price) ? '일반배송' : '무료배송'}</g:custom_label_0><g:shipping><g:country>KR</g:country><g:service>로젠택배</g:service><g:price>${standardShippingFee(product.price)} KRW</g:price></g:shipping></item>`).join('');
   const body = `<?xml version="1.0" encoding="UTF-8"?>\n<rss xmlns:g="http://base.google.com/ns/1.0" version="2.0"><channel><title>Himawari 제품</title><link>${SITE_ORIGIN}</link><description>Himawari 백팩 공식 상품 피드</description>${items}\n</channel></rss>\n`;
   return new Response(body, { headers: { 'Content-Type': 'application/xml; charset=utf-8', 'Cache-Control': 'public, s-maxage=900, stale-while-revalidate=3600', 'X-Content-Type-Options': 'nosniff' } });
 }

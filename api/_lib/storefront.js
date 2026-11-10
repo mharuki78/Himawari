@@ -2,6 +2,7 @@ import { PUBLIC_SPEC_FIELDS as SPEC_FIELDS } from '../../assets/product-specs.js
 import { groupProductFamilies, productCardArtwork, productColor, productFamilyKey, productVariantKind } from '../../assets/catalog-tools.js';
 import { productPurchaseFacts, productEvidenceHighlights } from '../../assets/product-facts.js';
 import productDetailEditions from '../../data/product-detail-editions.json' with { type: 'json' };
+import { standardShippingFee } from '../../assets/shipping-policy.js';
 
 const KRW = new Intl.NumberFormat('ko-KR', {
   style: 'currency',
@@ -233,7 +234,7 @@ function productOffer(product, origin) {
     // Google does not support KR subregions here, so use the national1–2 day envelope.
     shippingDetails: {
       '@type': 'OfferShippingDetails',
-      shippingRate: { '@type': 'MonetaryAmount', value: product.price >= 100000 ? '0' : '3500', currency: 'KRW' },
+      shippingRate: { '@type': 'MonetaryAmount', value: String(standardShippingFee(product.price)), currency: 'KRW' },
       shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'KR' },
       deliveryTime: {
         '@type': 'ShippingDeliveryTime',

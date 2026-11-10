@@ -3,6 +3,7 @@ import { database } from './database.js';
 import { activeCoupons, readPromotions } from './promotions.js';
 import { eligibleTiers } from '../../assets/rhythm-core.mjs';
 import { verifyRhythmSession, rhythmCouponToken } from './rhythm-session.js';
+import { WELCOME_COUPON } from '../../assets/welcome-coupon.js';
 
 const COOKIE = '__Host-himawari_coupon';
 let schemaPromise;
@@ -93,8 +94,24 @@ export async function consumeCouponClaim(couponId, token, orderId) {
 export async function releaseCouponClaim(orderId) { await ensureSchema(); await database().query('UPDATE coupon_claims SET used_at=NULL,order_id=NULL WHERE order_id=$1', [orderId]); }
 
 export { ensureSchema as ensureCouponSchema };
+
+export async function memberHasWelcomeCoupon(memberId) {
+  await ensureSchema();
+  const rows = await database().query(
+    'SELECT 1 FROM coupon_claims WHERE id=$1 AND coupon_id=$2 AND used_at IS NULL AND expires_at>now()',
+    [`welcome:${memberId}`, WELCOME_COUPON.id],
+  );
+  return rows.length > 0;
+}
+
 // The assertion aborts the enclosing order transaction when the claim is invalid.
-export function couponClaimStatement(couponId, token, orderId) {
+export function couponClaimStatement(couponId, token, orderId, memberId) {
+  if (couponId === WELCOME_COUPON.id) {
+    return { text: `WITH claimed AS (UPDATE coupon_claims SET used_at=COALESCE(used_at,now()),order_id=$1
+      WHERE id=$2 AND coupon_id=$3 AND (used_at IS NULL OR order_id=$1) AND expires_at>now() RETURNING id)
+      SELECT 1/count(*)::integer AS claim_verified FROM claimed`,
+    values: [orderId, `welcome:${memberId}`, couponId] };
+  }
   if (!token || String(token).length < 30) throw Object.assign(new Error('쿠폰을 다시 받은 뒤 주문해 주세요.'), {status:409});
   return { text: `WITH claimed AS (UPDATE coupon_claims SET used_at=COALESCE(used_at,now()),order_id=$1
     WHERE token_hash=$2 AND coupon_id=$3 AND (used_at IS NULL OR order_id=$1) AND expires_at>now() RETURNING id)

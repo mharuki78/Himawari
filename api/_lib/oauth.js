@@ -179,7 +179,7 @@ export async function completeOAuth(request, provider) {
       : provider === 'kakao' ? await kakaoProfile(request, code) : await naverProfile(request, code, providedState);
     const user = await upsertOAuthUser(profile);
     const sessionCookie = await createMemberSession(request, user.id);
-    return redirect(statusUrl(request, state.returnTo, 'success'), 302, [...cleared, sessionCookie]);
+    return redirect(statusUrl(request, state.returnTo, user.welcomeGranted ? 'welcome' : 'success'), 302, [...cleared, sessionCookie]);
   } catch (error) {
     console.error(`OAuth callback failed for ${provider}:`, error instanceof Error ? error.message : 'unknown error');
     return redirect(statusUrl(request, state.returnTo, 'failed'), 302, cleared);

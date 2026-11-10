@@ -1,5 +1,7 @@
 import { createHash, createHmac, randomBytes, randomUUID, timingSafeEqual } from 'node:crypto';
 import { database, databaseIsConfigured } from './database.js';
+import { ensureCouponSchema } from './coupon-claims.js';
+import { WELCOME_COUPON } from '../../assets/welcome-coupon.js';
 
 const SESSION_TTL_SECONDS = 30 * 24 * 60 * 60;
 const OAUTH_TTL_SECONDS = 10 * 60;
@@ -127,6 +129,7 @@ export function clearOAuthCookies(request) {
 }
 
 export async function upsertOAuthUser(profile) {
+  await ensureCouponSchema();
   const sql = database();
   const newUserId = randomUUID();
   const accountRows = await sql.query(
@@ -143,9 +146,16 @@ export async function upsertOAuthUser(profile) {
          SET email = EXCLUDED.email, display_name = EXCLUDED.display_name,
              avatar_url = EXCLUDED.avatar_url, updated_at = now()
        RETURNING user_id
+     ), welcome AS (
+       INSERT INTO coupon_claims (id, owner_hash, campaign, coupon_id, token_hash, expires_at)
+       SELECT 'welcome:' || u.id, $7, $8, $8, $9, 'infinity'::timestamptz
+       FROM inserted_user u JOIN account a ON a.user_id = u.id
+       ON CONFLICT (owner_hash, campaign) DO NOTHING
+       RETURNING id
      )
-     SELECT user_id FROM account`,
-    [profile.provider, profile.providerUserId, newUserId, profile.email || null, profile.displayName || null, profile.avatarUrl || null],
+     SELECT user_id, EXISTS (SELECT 1 FROM welcome) AS welcome_granted FROM account`,
+    [profile.provider, profile.providerUserId, newUserId, profile.email || null, profile.displayName || null, profile.avatarUrl || null,
+      hashToken(newUserId), WELCOME_COUPON.id, hashToken(randomBytes(32).toString('base64url'))],
   );
   if (!accountRows[0]) throw Object.assign(new Error('사용할 수 없는 회원 계정입니다.'), { status: 403 });
   const rows = await sql.query(
@@ -157,7 +167,7 @@ export async function upsertOAuthUser(profile) {
     [accountRows[0].user_id, profile.email || null, profile.displayName || null, profile.avatarUrl || null],
   );
   if (!rows[0]) throw Object.assign(new Error('사용할 수 없는 회원 계정입니다.'), { status: 403 });
-  return publicUser({ ...rows[0], provider: profile.provider });
+  return { ...publicUser({ ...rows[0], provider: profile.provider }), welcomeGranted: accountRows[0].welcome_granted };
 }
 
 export async function createMemberSession(request, userId) {
@@ -214,5 +224,10 @@ export async function revokeMemberSession(request) {
 }
 
 export async function deleteMemberAccount(userId) {
-  await database().query('DELETE FROM users WHERE id = $1', [userId]);
+  await ensureCouponSchema();
+  const sql = database();
+  await sql.transaction([
+    sql`DELETE FROM coupon_claims WHERE id = ${`welcome:${userId}`} AND coupon_id = ${WELCOME_COUPON.id}`,
+    sql`DELETE FROM users WHERE id = ${userId}`,
+  ]);
 }

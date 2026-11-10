@@ -57,7 +57,8 @@
     <link rel="stylesheet" href="assets/home-layout.css">
     <link rel="stylesheet" href="assets/cart.css">
     <link rel="stylesheet" href="assets/member.css">
-    <script src="assets/promotions.js" defer></script>
+    <link rel="stylesheet" href="/assets/welcome-popup.css">
+    <script src="assets/promotions.js?v=welcome-coupon" defer></script>
     <script src="script.js" defer></script>
     <script src="products.js" type="module"></script>
     <script src="stories.js" defer></script>
@@ -367,6 +368,24 @@
       <h2 id="home-promotion-title" data-promotion-title></h2>
       <p id="home-promotion-message" data-promotion-message></p>
       <a class="home-promotion-dialog__link" href="products.html" data-promotion-link><span data-promotion-link-label></span><span aria-hidden="true">→</span></a>
+    </dialog>
+    <dialog class="home-promotion-dialog home-welcome" data-welcome-popup aria-labelledby="welcome-popup-title" aria-describedby="welcome-popup-description">
+      <div class="home-welcome__art" aria-hidden="true">
+        <div class="home-welcome__ticket">
+          <span class="home-welcome__ticket-name">Welcome<br>coupon</span>
+          <strong class="home-welcome__rate">10<span>%</span></strong>
+          <span class="home-welcome__stub">HIMAWARI</span>
+        </div>
+      </div>
+      <div class="home-welcome__content">
+        <h2 id="welcome-popup-title">가입하면 10% 할인 쿠폰</h2>
+        <p id="welcome-popup-description">가입 즉시 쿠폰을 드려요. 행사 상품을 제외한 상품에 한 번 쓸 수 있어요.</p>
+        <p class="home-welcome__payment">무통장입금 · 카카오페이 주문에 사용 가능</p>
+        <div class="home-welcome__actions">
+          <button class="hmw-btn home-welcome__dismiss" type="button" data-welcome-close>닫기</button>
+          <button class="hmw-btn home-welcome__join" type="button" data-member-open>회원가입</button>
+        </div>
+      </div>
     </dialog>
     <dialog class="home-promotion-dialog home-promotion-dialog--artwork" data-black-friday-popup aria-label="히마와리 블랙프라이데이">
       <button class="home-promotion-dialog__close" type="button" data-promotion-close aria-label="팝업 닫기">

@@ -11,6 +11,11 @@
   var artworkTemplate = campaign.querySelector('[data-black-friday-template]');
   var campaignKey = '';
   var defaultRequested = false;
+  var welcome = document.querySelector('[data-welcome-popup]');
+  var welcomeKey = 'himawari-welcome-coupon-v1:dismissed';
+  var welcomeClose = welcome.querySelector('[data-welcome-close]');
+  var welcomeMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  var welcomeAnimation;
 
   function remember(key) {
     if (!key) return;
@@ -29,15 +34,40 @@
   artwork.addEventListener('click', function (event) {
     if (event.target.closest('a')) remember(campaignKey);
   });
+  welcomeClose.addEventListener('click', function () { remember(welcomeKey); welcome.close(); });
+  welcome.querySelector('[data-member-open]').addEventListener('click', function () { remember(welcomeKey); welcome.close(); });
+  welcome.addEventListener('cancel', function () { remember(welcomeKey); });
+  function stopWelcomeMotion() { welcomeAnimation?.revert(); welcomeAnimation = null; }
+  welcome.addEventListener('close', stopWelcomeMotion);
+  welcomeMotion.addEventListener('change', stopWelcomeMotion);
+
+  function request(url) {
+    return fetch(url, { cache: 'no-store' }).then(function (response) {
+      if (!response.ok) throw new Error();
+      return response.json();
+    });
+  }
 
   function showDefaultPopup() {
     if (defaultRequested) return;
     defaultRequested = true;
-    fetch('/api/promotions', { cache: 'no-store' })
-      .then(function (response) { if (!response.ok) throw new Error(); return response.json(); })
-      .then(function (payload) {
+    Promise.all([
+      request('/api/promotions').catch(function () { return {}; }),
+      wasDismissed(welcomeKey) ? null : request('/api/auth/session').catch(function () { return null; })
+    ]).then(function ([payload, session]) {
+        if ((campaignKey && !wasDismissed(campaignKey)) || document.querySelector('dialog[open]')) return;
+        if (session?.configured && !session.authenticated && Object.values(session.providers || {}).includes(true)) {
+          welcome.showModal();
+          welcomeClose.focus();
+          if (!welcomeMotion.matches) {
+            import('/assets/site-ui.js').then(function ({ animate }) {
+              if (welcome.open && !welcomeMotion.matches) welcomeAnimation = animate(welcome.querySelector('.home-welcome__ticket'), { translateY: [7, 0], duration: 250, ease: 'out(3)' });
+            }).catch(function () {});
+          }
+          return;
+        }
         var popup = payload.popup || {};
-        if (campaignKey || !popup.enabled || !payload.updatedAt) return;
+        if (!popup.enabled || !payload.updatedAt) return;
         storageKey = 'himawari-promotion-dismissed:' + payload.updatedAt;
         if (wasDismissed(storageKey)) return;
         dialog.querySelector('[data-promotion-title]').textContent = popup.title || '';
@@ -65,7 +95,8 @@
     campaignKey = key;
     if (campaign.open) campaign.close();
     if (dialog.open) dialog.close();
-    if (wasDismissed(key)) return;
+    if (welcome.open) welcome.close();
+    if (wasDismissed(key)) { showDefaultPopup(); return; }
 
     artwork.replaceChildren(artworkTemplate.content.cloneNode(true));
     artwork.querySelector('img').decode().then(function () {

@@ -39,11 +39,11 @@ function request(url, method = 'GET', body, headers = {}) {
   });
 }
 
-test('주문 배송비는 10만원 미만 3,500원, 이상 무료로 서버 계산한다', () => {
+test('주문 배송비는 쿠폰 적용 전 7만 원 미만 3,500원, 이상 무료로 서버 계산한다', () => {
   assert.equal(SHIPPING_FEE, 3_500);
-  assert.equal(FREE_SHIPPING_THRESHOLD, 100_000);
-  assert.deepEqual(calculateOrderTotals([{ unitPrice: 48_000, quantity: 2 }]), { subtotal: 96_000, discountAmount: 0, shippingFee: 3_500, total: 99_500 });
-  assert.deepEqual(calculateOrderTotals([{ unitPrice: 50_000, quantity: 2 }]), { subtotal: 100_000, discountAmount: 0, shippingFee: 0, total: 100_000 });
+  assert.equal(FREE_SHIPPING_THRESHOLD, 70_000);
+  assert.deepEqual(calculateOrderTotals([{ unitPrice: 69_999, quantity: 1 }]), { subtotal: 69_999, discountAmount: 0, shippingFee: 3_500, total: 73_499 });
+  assert.deepEqual(calculateOrderTotals([{ unitPrice: 35_000, quantity: 2 }], { type: 'percent', rate: 10 }), { subtotal: 70_000, discountAmount: 7_000, shippingFee: 0, total: 63_000 });
 });
 
 test('쿠폰은 한 장을 상품금액에 적용하고 무료배송 또는 할인액을 서버 계산한다', () => {

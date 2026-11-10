@@ -8,7 +8,8 @@ import {
   fetchNpayWishlist,
 } from './_lib/npay-handlers.js';
 import { sendOrderNotification } from './_lib/order-notifications.js';
-import { claimCoupon, claimRhythmCoupon, couponIdentity } from './_lib/coupon-claims.js';
+import { claimCoupon, claimRhythmCoupon, couponIdentity, memberHasWelcomeCoupon } from './_lib/coupon-claims.js';
+import { readWelcomeCouponExclusions } from './_lib/black-friday.js';
 import { startRhythmSession } from './_lib/rhythm-session.js';
 import { fetchKakaopay } from './_lib/kakaopay-handlers.js';
 
@@ -23,6 +24,16 @@ export async function fetch(request) {
   const route = new URL(request.url).searchParams.get('route');
   if (route?.startsWith('kakaopay-')) return fetchKakaopay(request,route);
   if (NPAY_ROUTES[route]) return NPAY_ROUTES[route](request);
+  if (route === 'welcome-coupon') {
+    if (request.method !== 'GET') return methodNotAllowed(['GET']);
+    try {
+      const member = await requireMember(request);
+      const available = await memberHasWelcomeCoupon(member.id);
+      return json({ available, excluded: available ? await readWelcomeCouponExclusions() : [] }, 200, { Vary: 'Cookie' });
+    } catch (error) {
+      return json({ message: error.status === 401 ? '로그인이 필요합니다.' : '쿠폰을 확인하지 못했습니다.' }, error.status || 500);
+    }
+  }
   if (route === 'rhythm-start' || route === 'rhythm-finish') {
     if (request.method !== 'POST') return methodNotAllowed(['POST']);
     try {

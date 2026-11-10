@@ -1,6 +1,8 @@
 import { purchaseQuantity } from './purchase-quantity.js';
 import { initializeCheckoutNpay } from './npay.js';
 import { bankTransfer, bankTransferReady } from './bank-transfer.js';
+import { WELCOME_COUPON, welcomeCouponSubtotal } from './welcome-coupon.js';
+import { standardShippingFee } from './shipping-policy.js';
 (function () {
   'use strict';
 
@@ -28,6 +30,7 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
   var priceFormatter = new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW', maximumFractionDigits: 0 });
   var items = [];
   var coupons = [];
+  var welcomeExcluded = [];
   var requestId = crypto.randomUUID();
   var cartOrder = false;
   var saleOfferId = new URLSearchParams(location.search).get('blackFriday');
@@ -84,6 +87,7 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
     submitButton.classList.toggle('kakaopay-button', kakao);
     bankButton.setAttribute('aria-expanded', String(!kakao));
     kakaopayButton.setAttribute('aria-expanded', String(kakao));
+    renderTotals();
     var url = new URL(location.href);
     url.searchParams.set('payment', method);
     history.replaceState(null, '', url);
@@ -102,6 +106,7 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
   function readCouponWallet() { try { return JSON.parse(localStorage.getItem('himawari-coupon-wallet-v1')) || {}; } catch (error) { return {}; } }
   function saveCouponWallet() { try { localStorage.setItem('himawari-coupon-wallet-v1', JSON.stringify(couponTokens)); } catch (error) {} }
   async function issueCoupon(couponId) {
+    if (couponId === WELCOME_COUPON.id) return '';
     if (!couponId || couponTokens[couponId]) return couponTokens[couponId] || '';
     if (couponRequests[couponId]) return couponRequests[couponId];
     couponError.textContent = '쿠폰을 안전하게 발급하고 있습니다.';
@@ -146,15 +151,22 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
     return coupons.find(function (coupon) { return coupon.id === (checked ? checked.value : ''); }) || null;
   }
 
+  function welcomeSubtotal() {
+    return welcomeCouponSubtotal(items.map(function (item) {
+      return { ...item, unitPrice: item.product.price };
+    }), welcomeExcluded);
+  }
+
   function totals() {
     var subtotal = items.reduce(function (sum, item) { return sum + item.product.price * item.quantity; }, 0);
-    var shippingFee = subtotal >= 100000 ? 0 : 3500;
+    var shippingFee = standardShippingFee(subtotal);
     var coupon = selectedCoupon();
     var discountAmount = 0;
-    if (coupon && subtotal >= Number(coupon.minimumSubtotal || 0)) {
+    if (coupon && (coupon.id !== WELCOME_COUPON.id || paymentMethod) && subtotal >= Number(coupon.minimumSubtotal || 0)) {
       if (coupon.type === 'free_shipping') shippingFee = 0;
       if (coupon.type === 'percent') {
-        discountAmount = Math.floor(subtotal * Number(coupon.rate || 0) / 100);
+        var discountBase = coupon.id === WELCOME_COUPON.id ? welcomeSubtotal() : subtotal;
+        discountAmount = Math.floor(discountBase * Number(coupon.rate || 0) / 100);
         if (Number(coupon.maximumDiscount || 0) > 0) discountAmount = Math.min(discountAmount, Number(coupon.maximumDiscount));
       }
     }
@@ -173,6 +185,7 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
 
   function couponDescription(coupon) {
     var parts = [coupon.type === 'free_shipping' ? '기본 배송비 3,500원 면제' : '상품금액 ' + coupon.rate + '% 할인'];
+    if (coupon.id === WELCOME_COUPON.id) parts.push('행사 상품 제외 · 무통장입금 또는 카카오페이');
     if (coupon.minimumSubtotal) parts.push(priceFormatter.format(coupon.minimumSubtotal) + ' 이상');
     if (coupon.maximumDiscount) parts.push('최대 ' + priceFormatter.format(coupon.maximumDiscount));
     if (coupon.expiresAt) parts.push(new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeZone: 'Asia/Seoul' }).format(new Date(coupon.expiresAt)) + '까지');
@@ -181,10 +194,12 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
 
   function renderCoupons() {
     var selected = form.querySelector('input[name="couponId"]:checked');
-    var current = selected ? selected.value : preferredGameCouponId;
+    var eligibleWelcome = Math.floor(welcomeSubtotal() * WELCOME_COUPON.rate / 100) > 0;
+    var welcome = coupons.some(function (coupon) { return coupon.id === WELCOME_COUPON.id; });
+    var current = selected ? selected.value : preferredGameCouponId || (welcome && eligibleWelcome ? WELCOME_COUPON.id : '');
     var subtotal = items.reduce(function (sum, item) { return sum + item.product.price * item.quantity; }, 0);
     var currentCoupon = coupons.find(function (coupon) { return coupon.id === current; });
-    if (currentCoupon && subtotal < Number(currentCoupon.minimumSubtotal || 0)) current = '';
+    if (currentCoupon && (subtotal < Number(currentCoupon.minimumSubtotal || 0) || (current === WELCOME_COUPON.id && !eligibleWelcome))) current = '';
     couponOptions.replaceChildren();
     var available = [{ id: '', label: '쿠폰 사용 안 함', type: 'none', minimumSubtotal: 0 }].concat(coupons);
     available.forEach(function (coupon) {
@@ -196,12 +211,13 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
       input.value = coupon.id;
       input.checked = coupon.id === current || (!available.some(function (item) { return item.id === current; }) && coupon.id === '');
       var minimumMissing = coupon.id && subtotal < Number(coupon.minimumSubtotal || 0);
-      input.disabled = Boolean(minimumMissing);
+      var welcomeExcludedOnly = coupon.id === WELCOME_COUPON.id && !eligibleWelcome;
+      input.disabled = Boolean(minimumMissing || welcomeExcludedOnly);
       var copy = document.createElement('span');
       var strong = document.createElement('strong');
       strong.textContent = coupon.label + (coupon.id && coupon.id === preferredGameCouponId ? ' · 게임 획득' : '');
       var detail = document.createElement('small');
-      detail.textContent = coupon.id ? couponDescription(coupon) + (minimumMissing ? ' · 금액 조건 미달' : '') : '기본 배송 정책으로 주문합니다.';
+      detail.textContent = coupon.id ? couponDescription(coupon) + (minimumMissing ? ' · 금액 조건 미달' : welcomeExcludedOnly ? ' · 적용 대상 없음' : '') : '기본 배송 정책으로 주문합니다.';
       copy.append(strong, detail);
       label.append(input, copy);
       couponOptions.append(label);
@@ -342,12 +358,20 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
     showPaymentOptions(true);
     try {
       var session = await request('/api/auth/session');
+      var welcomePayload = saleOfferId === null && session.authenticated === true
+        ? await request('/api/orders?route=welcome-coupon').catch(function () { return null; }) : null;
       var payConfig = await request('/api/kakaopay/config').catch(function () { return {enabled:false}; });
       kakaopayEnabled = payConfig.enabled === true;
       document.querySelector('[data-kakaopay-section]').hidden = !kakaopayEnabled;
       kakaopayButton.disabled = !kakaopayEnabled;
       var promotionPayload = saleOfferId === null ? await request('/api/promotions').catch(function () { return { coupons: [] }; }) : { coupons: [] };
       coupons = Array.isArray(promotionPayload.coupons) ? promotionPayload.coupons : [];
+      welcomeExcluded = [];
+      if (welcomePayload?.available) {
+        coupons = [WELCOME_COUPON].concat(coupons);
+        welcomeExcluded = welcomePayload.excluded || [];
+      }
+      document.querySelector('[data-npay-welcome-note]').hidden = !welcomePayload?.available;
       var gameReward = readGameReward();
       couponTokens = readCouponWallet();
       if (gameReward?.couponId && gameReward?.token) { couponTokens[gameReward.couponId] = gameReward.token; saveCouponWallet(); }
@@ -459,6 +483,7 @@ import { bankTransfer, bankTransferReady } from './bank-transfer.js';
           deliveryNote: values.deliveryNote,
           couponId: values.couponId || '',
           couponToken: values.couponId ? (couponTokens[values.couponId] || await issueCoupon(values.couponId)) : '',
+          ...(values.couponId === WELCOME_COUPON.id ? { welcomeDiscountAmount: totals().discountAmount } : {}),
           termsConsent: values.termsConsent,
           privacyConsent: values.privacyConsent
         })

@@ -1,6 +1,6 @@
 import { bankTransferReady } from '../../assets/bank-transfer.js';
 import { CONFIRM_ORDER_SQL, CANCEL_ORDER_SQL } from './order-transactions.js';
-import { blackFridayOrderGate, blackFridayUnavailable, INVENTORY_LOCK, readBlackFridayCatalog, resolveBlackFridayOrder } from './black-friday.js';
+import { blackFridayOrderGate, blackFridayUnavailable, INVENTORY_LOCK, readBlackFridayCatalog, readWelcomeCouponExclusions, resolveBlackFridayOrder } from './black-friday.js';
 import { randomUUID } from 'node:crypto';
 
 import { database } from './database.js';
@@ -9,9 +9,10 @@ import { activeCoupons, readPromotions } from './promotions.js';
 import { applyInventoryReservations } from './inventory.js';
 import { ensureCouponSchema, couponClaimStatement } from './coupon-claims.js';
 import { kakaopayConfig } from './kakaopay-client.js';
+import { WELCOME_COUPON, welcomeCouponSubtotal } from '../../assets/welcome-coupon.js';
+import { standardShippingFee } from '../../assets/shipping-policy.js';
 
-export const SHIPPING_FEE = 3_500;
-export const FREE_SHIPPING_THRESHOLD = 100_000;
+export { SHIPPING_FEE, FREE_SHIPPING_THRESHOLD } from '../../assets/shipping-policy.js';
 export const ORDER_PAGE_SIZE = 20;
 
 export const ORDER_STATUS = Object.freeze({
@@ -72,13 +73,13 @@ function orderNumber(id, now = new Date()) {
   return `HMW-${date}-${id.replaceAll('-', '').slice(0, 12).toUpperCase()}`;
 }
 
-export function calculateOrderTotals(items, coupon = null) {
+export function calculateOrderTotals(items, coupon = null, eligibleSubtotal) {
   const subtotal = items.reduce((sum, item) => sum + Number(item.unitPrice || 0) * Number(item.quantity || 0), 0);
-  let shippingFee = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FEE;
+  let shippingFee = standardShippingFee(subtotal);
   let discountAmount = 0;
   if (coupon?.type === 'free_shipping') shippingFee = 0;
   if (coupon?.type === 'percent' && Number(coupon.rate) > 0) {
-    discountAmount = Math.floor(subtotal * Number(coupon.rate) / 100);
+    discountAmount = Math.floor((eligibleSubtotal ?? subtotal) * Number(coupon.rate) / 100);
     if (Number(coupon.maximumDiscount) > 0) discountAmount = Math.min(discountAmount, Number(coupon.maximumDiscount));
   }
   return {
@@ -342,7 +343,10 @@ export async function createOrder(member, input, { paymentMethod = 'bank_transfe
   if (Object.keys(fieldErrors).length) {
     throw Object.assign(new Error('주문서 내용을 확인해 주세요.'), { status: 400, fieldErrors });
   }
+  const welcomeSelected = fields.value.couponId === WELCOME_COUPON.id;
+  if (sale && welcomeSelected) throw Object.assign(new Error('신규 회원 쿠폰은 행사 상품에 사용할 수 없습니다.'), { status: 409 });
   if (sale && (itemInput.items.length !== 1 || fields.value.couponId)) throw blackFridayUnavailable();
+  if (welcomeSelected && !member?.id) throw Object.assign(new Error('신규 회원 쿠폰을 사용하려면 로그인해 주세요.'), { status: 401 });
   if (paymentMethod === 'kakaopay' && !kakaopayConfig().enabled) throw Object.assign(new Error('카카오페이 결제 연결을 준비하고 있습니다.'), {status:503});
   if (paymentMethod === 'bank_transfer' && !bankTransferReady()) throw Object.assign(new Error(sale ? '무통장입금 계좌를 준비하고 있습니다.' : '무통장입금 계좌를 준비하고 있습니다. Npay로 구매해 주세요.'), { status: 503 });
   await ensureOrderSchema();
@@ -380,7 +384,12 @@ export async function createOrder(member, input, { paymentMethod = 'bank_transfe
     };
   });
   let coupon = null;
-  if (fields.value.couponId) {
+  let eligibleSubtotal;
+  if (welcomeSelected) {
+    coupon = WELCOME_COUPON;
+    eligibleSubtotal = welcomeCouponSubtotal(items, await readWelcomeCouponExclusions());
+    if (!eligibleSubtotal) throw Object.assign(new Error('신규 회원 쿠폰은 행사 상품에 사용할 수 없습니다.'), { status: 409 });
+  } else if (fields.value.couponId) {
     const promotions = await readPromotions();
     coupon = activeCoupons(promotions.config).find((item) => item.id === fields.value.couponId) || null;
     if (!coupon) {
@@ -391,7 +400,13 @@ export async function createOrder(member, input, { paymentMethod = 'bank_transfe
   if (coupon && subtotalBeforeCoupon < coupon.minimumSubtotal) {
     throw Object.assign(new Error('쿠폰 최소 주문금액을 충족하지 못했습니다.'), { status: 400, fieldErrors: { couponId: `${coupon.minimumSubtotal.toLocaleString('ko-KR')}원 이상 주문할 때 사용할 수 있습니다.` } });
   }
-  const totals = calculateOrderTotals(items, coupon);
+  const totals = calculateOrderTotals(items, coupon, eligibleSubtotal);
+  if (welcomeSelected && totals.discountAmount === 0) {
+    throw Object.assign(new Error('할인 가능한 상품을 담은 뒤 쿠폰을 사용해 주세요.'), { status: 409 });
+  }
+  if (welcomeSelected && input.welcomeDiscountAmount !== totals.discountAmount) {
+    throw Object.assign(new Error('할인 금액이 바뀌었습니다. 주문서를 새로고침한 뒤 다시 확인해 주세요.'), { status: 409 });
+  }
   if (totals.total > 30_000_000) {
     throw Object.assign(new Error('한 번에 주문할 수 있는 금액을 초과했습니다.'), { status: 400 });
   }
@@ -438,7 +453,7 @@ export async function createOrder(member, input, { paymentMethod = 'bank_transfe
     }
     if (coupon) {
       await ensureCouponSchema();
-      const claim=couponClaimStatement(coupon.id, fields.value.couponToken, id);
+      const claim=couponClaimStatement(coupon.id, fields.value.couponToken, id, member?.id);
       queries.unshift(sql.query(claim.text,claim.values));
     }
     await sql.transaction(queries, { isolationLevel: 'ReadCommitted' });

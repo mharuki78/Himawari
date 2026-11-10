@@ -97,6 +97,12 @@ export async function readBlackFridayCatalog() {
   return catalog.products.map(publicProduct);
 }
 
+export async function readWelcomeCouponExclusions() {
+  const campaign = await readBlackFriday();
+  if (blackFridayState(campaign) !== 'open') return [];
+  return campaign.items.map(({ productId, optionId }) => ({ productId, optionId }));
+}
+
 async function readUsage(campaignId) {
   if (!campaignId) return new Map();
   const rows = await database()`SELECT r.product_id AS "productId", r.option_id AS "optionId", sum(r.quantity)::int AS used

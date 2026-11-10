@@ -27,7 +27,7 @@
   </head>
   <body class="checkout-page">
     <a class="skip-link" href="#main">본문으로 바로가기</a>
-    <div class="announcement-bar"><a href="products.html">10만원 이상 주문 시 무료배송</a></div>
+    <div class="announcement-bar"><a href="products.html">7만 원 이상 주문 시 무료배송</a></div>
     <header class="site-header interior-header">
       <a class="brand" href="index.html" aria-label="Himawari 홈">HIMAWARI</a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">메뉴 열기</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
@@ -68,6 +68,7 @@
               <div class="checkout-method-card" data-npay-checkout-section>
                 <div class="checkout-method-copy"><h3>Npay 구매</h3><p>네이버 주문서에서 배송지와 결제 수단을 선택합니다.</p></div>
                 <div class="checkout-method-action" id="npay-checkout-button"></div>
+                <p class="checkout-method-status" data-npay-welcome-note hidden>신규 회원 쿠폰은 무통장입금 또는 카카오페이를 선택하면 적용할 수 있어요.</p>
                 <p class="checkout-method-status" data-npay-status role="status">Npay 버튼을 준비하고 있습니다.</p>
               </div>
               <div class="checkout-method-card" data-kakaopay-section hidden>
@@ -201,7 +202,7 @@
     </footer>
     <script src="assets/cart.js" defer></script>
     <script src="assets/member.js" defer></script>
-    <script src="assets/checkout.js?v=black-friday" type="module"></script>
+    <script src="assets/checkout.js?v=welcome-shipping" type="module"></script>
   <script>if(window.wcs_do) window.wcs_do();</script>
 </body>
 </html>

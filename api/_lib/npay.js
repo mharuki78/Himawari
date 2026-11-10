@@ -7,11 +7,10 @@ import {
   seedCatalog,
 } from './products.js';
 import { applyInventoryReservations } from './inventory.js';
+import { FREE_SHIPPING_THRESHOLD, SHIPPING_FEE } from '../../assets/shipping-policy.js';
 
 const SITE_ORIGIN = 'https://himawari.co.kr';
 const SHIPPING_GROUP_ID = 'HIMAWARI_DELIVERY';
-const SHIPPING_FEE = 3_500;
-const FREE_SHIPPING_THRESHOLD = 100_000;
 const PRODUCT_ID_PATTERN = /^[A-Za-z0-9!+\-/=_|]{1,30}$/;
 const NPAY_REVIEW_COOKIE = '__Host-himawari_npay_review';
 

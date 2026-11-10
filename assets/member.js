@@ -562,6 +562,7 @@
     var status = url.searchParams.get('auth');
     if (!status) return;
     var messages = {
+      welcome: '가입을 완료했습니다. 신규 회원 10% 쿠폰을 주문서에서 사용할 수 있어요.',
       success: '로그인이 완료되었습니다.', cancelled: '로그인을 취소했습니다.',
       failed: '로그인을 완료하지 못했습니다. 다시 시도해 주세요.',
       'state-error': '로그인 확인 시간이 지났습니다. 다시 시도해 주세요.',

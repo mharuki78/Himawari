@@ -184,7 +184,7 @@ test('개별 제품 원본 HTML에 이름·가격·이미지·구매정보를 �
   assert.match(html, /이용약관 전체 보기/);
   assert.equal(html.includes('로젠택배'), true);
   assert.equal(html.includes('기본 배송비는 3,500원'), true);
-  assert.equal(html.includes('100,000원 이상은 무료배송'), true);
+  assert.equal(html.includes('70,000원 이상은 무료배송'), true);
   assert.equal(html.includes('편도·왕복 반품비는 8,000원'), true);
   assert.equal(html.includes('nys9980@himawari.co.kr'), true);
   assert.match(html, new RegExp(`data-direct-buy href="checkout\\.html\\?product=${product.id}"`));
@@ -378,7 +378,7 @@ test('이용약관에 확정된 배송·반품·고객센터 정보를 표시한
   assert.equal(html.includes('nys9980@himawari.co.kr'), true);
   assert.equal(html.includes('로젠택배'), true);
   assert.equal(html.includes('기본 배송비는 3,500원'), true);
-  assert.equal(html.includes('100,000원 이상은 무료배송'), true);
+  assert.equal(html.includes('70,000원 이상은 무료배송'), true);
   assert.equal(html.includes('편도·왕복 반품비는 8,000원'), true);
   assert.equal(html.includes('배곧4로 32-29, 파크뷰 206호 히마와리 코리아'), true);
 });
