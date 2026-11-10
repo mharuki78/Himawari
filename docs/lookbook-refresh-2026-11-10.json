@@ -1,0 +1,3725 @@
+{
+  "date": "2026-11-10",
+  "type": "archive-photo-refresh",
+  "expectedCount": 79,
+  "reference": "https://www.musinsa.com/snap/main/recommend?gf=A",
+  "baselineCommit": "e6fe19b00b2437644118a8944635f0ca33f140cf",
+  "previousSnapshot": "backups/lookbook-refresh-2026-11-10/entries-before.json",
+  "completionReceipt": "backups/lookbook-refresh-2026-11-10/deployment.json",
+  "preparedAt": "2026-11-10T01:21:12.320750+00:00",
+  "entries": [
+    {
+      "id": "2026-11-10-everyday-0514",
+      "productId": "store-13326396058",
+      "model": "0514",
+      "color": "실버 미니",
+      "date": "2026-11-10",
+      "previousImage": "/assets/lookbook/2026-11-10-everyday-0514.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-10-everyday-0514-640.webp",
+      "image": "/assets/lookbook/2026-11-10-everyday-0514-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-10-everyday-0514-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260211_152/17707744461046CCJC_JPEG/104907218390027692_404109632.jpg",
+      "dimensionsCm": [
+        27,
+        36,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 18페이지의 0514S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13326396058.jpg",
+      "generatedSha256": "4cad8dc94a9c42ed2399180b5c5fbd10756e01617f19b526c72d83ff2089fde2",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-1.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/01.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-10-everyday-0514-snap.webp",
+          "bytes": 69480,
+          "sha256": "90e70b1e9d322f22c5c5d9be65485095326fb9771fd15a7cc29bfb82c26c2f6d",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "4cad8dc94a9c42ed2399180b5c5fbd10756e01617f19b526c72d83ff2089fde2"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-10-everyday-0514-snap-640.webp",
+          "bytes": 29480,
+          "sha256": "8b83efea3604e34e709e4bb1a6748b894ba780783958dbff8f096490f0968f4e",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "4cad8dc94a9c42ed2399180b5c5fbd10756e01617f19b526c72d83ff2089fde2"
+        }
+      }
+    },
+    {
+      "id": "2026-11-10-city-1027",
+      "productId": "store-11070925709",
+      "model": "1027",
+      "color": "라벤더",
+      "date": "2026-11-10",
+      "previousImage": "/assets/lookbook/2026-11-10-city-1027.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-10-city-1027-640.webp",
+      "image": "/assets/lookbook/2026-11-10-city-1027-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-10-city-1027-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260210_108/1770707978865U4o9A_JPEG/43528032995650075_718147852.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 28페이지의 1027 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-11070925709.jpg",
+      "generatedSha256": "9f81e7a621d95cdb2c0d962cb0647651fb7e2e2d7d7ff847225f8201bfe24bab",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-1.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/02.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-10-city-1027-snap.webp",
+          "bytes": 61612,
+          "sha256": "a183aa9a4afb3d5c7d83fb81094e20df3a8011f9db259640768d40c1072853d6",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "9f81e7a621d95cdb2c0d962cb0647651fb7e2e2d7d7ff847225f8201bfe24bab"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-10-city-1027-snap-640.webp",
+          "bytes": 26692,
+          "sha256": "226beb3b4eacf5c6536d54443a7bd850512c89adb1334acf52e23030ace47f87",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "9f81e7a621d95cdb2c0d962cb0647651fb7e2e2d7d7ff847225f8201bfe24bab"
+        }
+      }
+    },
+    {
+      "id": "2026-11-09-everyday-0403",
+      "productId": "coupang-2fecb77f47b7a8f8",
+      "model": "0403",
+      "color": "브라운",
+      "date": "2026-11-09",
+      "previousImage": "/assets/lookbook/2026-11-09-everyday-0403.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-09-everyday-0403-640.webp",
+      "image": "/assets/lookbook/2026-11-09-everyday-0403-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-09-everyday-0403-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-2fecb77f47b7a8f8/main-mPeRzgTAkVAAd1p67jGbjKaon4EdI1.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 22페이지의 0403 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다. 외부 크기는 백팩 기준이며 숄더백은 별도 23 × 18 cm로 표기됩니다. 900 g의 구성품 포함 여부는 미기재입니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-2fecb77f47b7a8f8.jpg",
+      "generatedSha256": "141233062f30a630a07a252da722040133768ba5db402e84235c9ce6d11a93c0",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-1.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/03.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-09-everyday-0403-snap.webp",
+          "bytes": 51654,
+          "sha256": "d8d8e36b8b7decd7955c7dba4e5f83e0a496b284608ff577b9506739715337b1",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "141233062f30a630a07a252da722040133768ba5db402e84235c9ce6d11a93c0"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-09-everyday-0403-snap-640.webp",
+          "bytes": 24494,
+          "sha256": "2066c3cbb47765e7be26aace130dc12ea61cc0b5223857308e202eba4228be7d",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "141233062f30a630a07a252da722040133768ba5db402e84235c9ce6d11a93c0"
+        }
+      }
+    },
+    {
+      "id": "2026-11-09-city-1884",
+      "productId": "coupang-330775bdb18b62bf",
+      "model": "1884",
+      "color": "그레이",
+      "date": "2026-11-09",
+      "previousImage": "/assets/lookbook/2026-11-09-city-1884.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-09-city-1884-640.webp",
+      "image": "/assets/lookbook/2026-11-09-city-1884-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-09-city-1884-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-330775bdb18b62bf/main-cU6qNuvl6qykOG5TOg6gCBDIIiMBhp.jpg",
+      "dimensionsCm": [
+        30,
+        45,
+        20
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 31페이지의 1884 대형(1884L) 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-330775bdb18b62bf.jpg",
+      "generatedSha256": "322c5cd1cf8030da6fffb1bc7ecd14489b69840637a5286b75a1e1ab038550c2",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-1.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/04.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-09-city-1884-snap.webp",
+          "bytes": 58298,
+          "sha256": "477528123e34a5563db693339321bab579ddda11902dae35c0930ed49f9b5a6b",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "322c5cd1cf8030da6fffb1bc7ecd14489b69840637a5286b75a1e1ab038550c2"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-09-city-1884-snap-640.webp",
+          "bytes": 27364,
+          "sha256": "00d5cdda2aa119b79e90c98f11ab44438eb6dfefd0c3ebf6d41669174de9e931",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "322c5cd1cf8030da6fffb1bc7ecd14489b69840637a5286b75a1e1ab038550c2"
+        }
+      }
+    },
+    {
+      "id": "2026-11-08-everyday-1089",
+      "productId": "coupang-5984791b8c6c5fb2",
+      "model": "1089",
+      "color": "블루",
+      "date": "2026-11-08",
+      "previousImage": "/assets/lookbook/2026-11-08-everyday-1089.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-08-everyday-1089-640.webp",
+      "image": "/assets/lookbook/2026-11-08-everyday-1089-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-08-everyday-1089-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-5984791b8c6c5fb2/main-eLSgNwsdKSc9Fgpg6vgF9FXMvc3jNr.jpg",
+      "dimensionsCm": [
+        29.5,
+        42,
+        12
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 12페이지의 1089 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-5984791b8c6c5fb2.jpg",
+      "generatedSha256": "915f8abac276517a6f65ac4b6fbaca883483b6155e0d23c74878d8ca2d9dd133",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-1.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/05.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-08-everyday-1089-snap.webp",
+          "bytes": 82748,
+          "sha256": "ab673cf02e7226ef9274dbb3a1e5ed731a8e6ff2efb00db4bea922c6860999a8",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "915f8abac276517a6f65ac4b6fbaca883483b6155e0d23c74878d8ca2d9dd133"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-08-everyday-1089-snap-640.webp",
+          "bytes": 34458,
+          "sha256": "a335dadc81e26ab32bfff7336ee40a0641a375b91ca7462c6e080c61e0957885",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "915f8abac276517a6f65ac4b6fbaca883483b6155e0d23c74878d8ca2d9dd133"
+        }
+      }
+    },
+    {
+      "id": "2026-11-08-travel-1111",
+      "productId": "store-13513526834",
+      "model": "1111",
+      "color": "그린",
+      "date": "2026-11-08",
+      "previousImage": "/assets/lookbook/2026-11-08-travel-1111.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-08-travel-1111-640.webp",
+      "image": "/assets/lookbook/2026-11-08-travel-1111-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-08-travel-1111-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260511_282/1778476837383QWJQU_JPEG/8477290463441894_476336728.jpg",
+      "dimensionsCm": [
+        43,
+        47,
+        24
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 6페이지의 1111 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13513526834.jpg",
+      "generatedSha256": "c6e70b47177847dcd1ab431df63a702640bc0269097ddb771882e0e5c88ceb41",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-1.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/06.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-08-travel-1111-snap.webp",
+          "bytes": 147584,
+          "sha256": "5c6ed791c71e147bcbb58c2cb5bfd823a164dc98f101dff56f257a3d1284a72e",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "c6e70b47177847dcd1ab431df63a702640bc0269097ddb771882e0e5c88ceb41"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-08-travel-1111-snap-640.webp",
+          "bytes": 67642,
+          "sha256": "ce611faabae0d121f1b76766a95958a1510144f970e76bde0942aa2582aee6d8",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "c6e70b47177847dcd1ab431df63a702640bc0269097ddb771882e0e5c88ceb41"
+        }
+      }
+    },
+    {
+      "id": "2026-11-07-everyday-1211",
+      "productId": "coupang-01bab6bcd7cd5306",
+      "model": "1211",
+      "color": "네이비",
+      "date": "2026-11-07",
+      "previousImage": "/assets/lookbook/2026-11-07-everyday-1211.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-07-everyday-1211-640.webp",
+      "image": "/assets/lookbook/2026-11-07-everyday-1211-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-07-everyday-1211-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-01bab6bcd7cd5306/main-1kn80rPMgZL0c4zCnLdjQI5HlXCByK.jpg",
+      "dimensionsCm": [
+        26,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 56페이지의 1211 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-01bab6bcd7cd5306.jpg",
+      "generatedSha256": "f7037ce2553e46f34f28e764628af9c376143564a8916bd10cc37fa1562e89eb",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-1.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/07.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-07-everyday-1211-snap.webp",
+          "bytes": 136690,
+          "sha256": "bdd4725c087f8a407bb6d53f5a360f0b2b6ec688ec718a944d4c3493fc1410d1",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "f7037ce2553e46f34f28e764628af9c376143564a8916bd10cc37fa1562e89eb"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-07-everyday-1211-snap-640.webp",
+          "bytes": 59044,
+          "sha256": "05900599b3d3a79211a5ff68621f3a11675a9a4c29539a39e56a05a0a6ae65ab",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "f7037ce2553e46f34f28e764628af9c376143564a8916bd10cc37fa1562e89eb"
+        }
+      }
+    },
+    {
+      "id": "2026-11-07-city-1010",
+      "productId": "coupang-3d4fbf39120dea6f",
+      "model": "1010",
+      "color": "카키",
+      "date": "2026-11-07",
+      "previousImage": "/assets/lookbook/2026-11-07-city-1010.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-07-city-1010-640.webp",
+      "image": "/assets/lookbook/2026-11-07-city-1010-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-07-city-1010-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-3d4fbf39120dea6f/main-7eLzz0VGYkIX3KVApCVQWErMCnTqwM.jpg",
+      "dimensionsCm": [
+        33,
+        45,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 50페이지의 1010 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-3d4fbf39120dea6f.jpg",
+      "generatedSha256": "d9187426217d3c5bdfe7d969c69249a293f883e4e3e86afa3378d4237123d76c",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-1.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/08.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-07-city-1010-snap.webp",
+          "bytes": 146854,
+          "sha256": "d852b1a68a6b0859a64bc059a1312f076d881f3afc15a93a8f733d09508b1847",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "d9187426217d3c5bdfe7d969c69249a293f883e4e3e86afa3378d4237123d76c"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-07-city-1010-snap-640.webp",
+          "bytes": 64670,
+          "sha256": "1f42e2d66913de5b2eef6ddcadd4a3f44d3695714bfa9edeb2f15949d1708b4f",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "d9187426217d3c5bdfe7d969c69249a293f883e4e3e86afa3378d4237123d76c"
+        }
+      }
+    },
+    {
+      "id": "2026-11-06-everyday-2301",
+      "productId": "coupang-c059501520294ef4",
+      "model": "2301",
+      "color": "핑크",
+      "date": "2026-11-06",
+      "previousImage": "/assets/lookbook/2026-11-06-everyday-2301.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-06-everyday-2301-640.webp",
+      "image": "/assets/lookbook/2026-11-06-everyday-2301-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-06-everyday-2301-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-c059501520294ef4/main-y9Q3UwGI7flhDRwYMKBG8MfJqldI8i.jpg",
+      "dimensionsCm": [
+        28,
+        42,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 38페이지의 2301 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-c059501520294ef4.jpg",
+      "generatedSha256": "27486cc1abf9ba4e4d0247fe7cada9b5218d9daec47f5a2c8038a92164eda561",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-1.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/09.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-06-everyday-2301-snap.webp",
+          "bytes": 70242,
+          "sha256": "29b806d363133b0b72a4ca0938c447fadd91fc9459e09916a989b6a694981806",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "27486cc1abf9ba4e4d0247fe7cada9b5218d9daec47f5a2c8038a92164eda561"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-06-everyday-2301-snap-640.webp",
+          "bytes": 30972,
+          "sha256": "2fc8b3427913f9d4d83b41377154152edb1e3de35043eb8608f6b3b5dd0b585b",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "27486cc1abf9ba4e4d0247fe7cada9b5218d9daec47f5a2c8038a92164eda561"
+        }
+      }
+    },
+    {
+      "id": "2026-11-06-city-2513",
+      "productId": "coupang-6c09e607c31fa331",
+      "model": "2513",
+      "color": "민트",
+      "date": "2026-11-06",
+      "previousImage": "/assets/lookbook/2026-11-06-city-2513.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-06-city-2513-640.webp",
+      "image": "/assets/lookbook/2026-11-06-city-2513-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-06-city-2513-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6c09e607c31fa331/main-6gVCtxywyhvmUsVIGgVwZKV6MYXaHZ.jpg",
+      "dimensionsCm": [
+        36.5,
+        28,
+        2
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 11페이지의 2513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-6c09e607c31fa331.jpg",
+      "generatedSha256": "9aefc27a2794a5c0f25b0a847761136e489565229798e88910cf3a17526d867c",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-1.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/10.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-06-city-2513-snap.webp",
+          "bytes": 140870,
+          "sha256": "85e865959e745488dec90fe78d87b0f99e1406d81a2e04dbefb988234274ab00",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "9aefc27a2794a5c0f25b0a847761136e489565229798e88910cf3a17526d867c"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-06-city-2513-snap-640.webp",
+          "bytes": 55492,
+          "sha256": "724d9b12c770951bd03a69d2aaf912e8dd9305da28d7199d9289d23ae3068df6",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "9aefc27a2794a5c0f25b0a847761136e489565229798e88910cf3a17526d867c"
+        }
+      }
+    },
+    {
+      "id": "2026-11-05-everyday-1084h",
+      "productId": "coupang-ba33ab8f40e76a95",
+      "model": "1084H",
+      "color": "민트",
+      "date": "2026-11-05",
+      "previousImage": "/assets/lookbook/2026-11-05-everyday-1084h.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-05-everyday-1084h-640.webp",
+      "image": "/assets/lookbook/2026-11-05-everyday-1084h-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-05-everyday-1084h-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-ba33ab8f40e76a95/main-DsF2CqdsrdjUsWSgJcu5XydYRcPngM.jpg",
+      "dimensionsCm": [
+        28.5,
+        39,
+        12
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 26페이지의 H1084 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-ba33ab8f40e76a95.jpg",
+      "generatedSha256": "1eae704d6d1a30d7d9e3db436c71d1d6e7385933e62e5e8c8cfdbd3c5188eb05",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-2.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/11.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-05-everyday-1084h-snap.webp",
+          "bytes": 76810,
+          "sha256": "457bfe8e742ddb1f8fb1d8cfdfd98db955fe60a6b38646e5ba1b086e4fa1e004",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "1eae704d6d1a30d7d9e3db436c71d1d6e7385933e62e5e8c8cfdbd3c5188eb05"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-05-everyday-1084h-snap-640.webp",
+          "bytes": 33046,
+          "sha256": "a346482f426089e0f4190c5203bfad193d59562394d7fe73cbe2499ad3c36179",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "1eae704d6d1a30d7d9e3db436c71d1d6e7385933e62e5e8c8cfdbd3c5188eb05"
+        }
+      }
+    },
+    {
+      "id": "2026-11-05-city-1230",
+      "productId": "store-13308483411",
+      "model": "1230",
+      "color": "그레이",
+      "date": "2026-11-05",
+      "previousImage": "/assets/lookbook/2026-11-05-city-1230.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-05-city-1230-640.webp",
+      "image": "/assets/lookbook/2026-11-05-city-1230-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-05-city-1230-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260326_238/1774503626907819SG_JPEG/29145858851779990_764507912.jpg",
+      "dimensionsCm": [
+        32,
+        40,
+        18
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 15페이지의 1230 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13308483411.jpg",
+      "generatedSha256": "e1a38ec47637598dca0e3344ff3ab63e10c59ec89c7b4efa07bf2a03f63ce0c7",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-2.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/12.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-05-city-1230-snap.webp",
+          "bytes": 58446,
+          "sha256": "d84541b22df450396205a679cfc01ab6fb778c7e06c33cec2a1be71dafe94ce0",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "e1a38ec47637598dca0e3344ff3ab63e10c59ec89c7b4efa07bf2a03f63ce0c7"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-05-city-1230-snap-640.webp",
+          "bytes": 26386,
+          "sha256": "de840c8cfd096dc7d4d51004e427e67409d6f2a2d727c660a815d7d37feb73b3",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "e1a38ec47637598dca0e3344ff3ab63e10c59ec89c7b4efa07bf2a03f63ce0c7"
+        }
+      }
+    },
+    {
+      "id": "2026-11-04-everyday-124s",
+      "productId": "coupang-89f32d8ebba306ec",
+      "model": "124S",
+      "color": "옐로우",
+      "date": "2026-11-04",
+      "previousImage": "/assets/lookbook/2026-11-04-everyday-124s.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-04-everyday-124s-640.webp",
+      "image": "/assets/lookbook/2026-11-04-everyday-124s-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-04-everyday-124s-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-89f32d8ebba306ec/main-RZbO1NbGDv0opC3TEzfRgp5JrIzNtG.jpg",
+      "dimensionsCm": [
+        22,
+        33,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 34페이지의 124S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-89f32d8ebba306ec.jpg",
+      "generatedSha256": "c98de8ce8cd15dae7eb3800b9203a694880e946e5c57dc880649647db9554a8a",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-2.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/13.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-04-everyday-124s-snap.webp",
+          "bytes": 77848,
+          "sha256": "eefc8cbec8b2d012d8bfc0aaca5cd7256d4482d9c44804d57966de0b5aca152f",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "c98de8ce8cd15dae7eb3800b9203a694880e946e5c57dc880649647db9554a8a"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-04-everyday-124s-snap-640.webp",
+          "bytes": 33272,
+          "sha256": "f04206eeafc0cf182c3d7d760f02b4635e4d37278ae9a8bce87e562a99ddfa0b",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "c98de8ce8cd15dae7eb3800b9203a694880e946e5c57dc880649647db9554a8a"
+        }
+      }
+    },
+    {
+      "id": "2026-11-04-city-1682",
+      "productId": "coupang-00860ebfcbb609f9",
+      "model": "1682",
+      "color": "그레이",
+      "date": "2026-11-04",
+      "previousImage": "/assets/lookbook/2026-11-04-city-1682.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-04-city-1682-640.webp",
+      "image": "/assets/lookbook/2026-11-04-city-1682-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-04-city-1682-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-00860ebfcbb609f9/main-rCV6RzlGBvwZvBZtCPx6rcOOl2mgYF.jpg",
+      "dimensionsCm": [
+        30,
+        50,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 39페이지의 1682 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-00860ebfcbb609f9.jpg",
+      "generatedSha256": "58f34a0bd4832ea13f5d98d306215a7e9663298203c76e60fb481c2c12694f7b",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-2.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/14.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-04-city-1682-snap.webp",
+          "bytes": 208826,
+          "sha256": "c3b2664c9d9b60344cd2d9bdd4596d88ed321f4cb6c06c9e05e68af4c5c7d839",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "58f34a0bd4832ea13f5d98d306215a7e9663298203c76e60fb481c2c12694f7b"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-04-city-1682-snap-640.webp",
+          "bytes": 90348,
+          "sha256": "31dd3ed558472f35fdbec91a42364cd10d76091b03e1709cfba9a4dac5af8403",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "58f34a0bd4832ea13f5d98d306215a7e9663298203c76e60fb481c2c12694f7b"
+        }
+      }
+    },
+    {
+      "id": "2026-11-03-everyday-1088m",
+      "productId": "store-13308752642",
+      "model": "1088M",
+      "color": "그린",
+      "date": "2026-11-03",
+      "previousImage": "/assets/lookbook/2026-11-03-everyday-1088m.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-03-everyday-1088m-640.webp",
+      "image": "/assets/lookbook/2026-11-03-everyday-1088m-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-03-everyday-1088m-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260326_100/17745078126890NcU7_JPEG/593205736606817_1806444046.jpg",
+      "dimensionsCm": [
+        28,
+        41.5,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 27페이지의 1088M 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13308752642.jpg",
+      "generatedSha256": "602e823281997068952e7a37c941e44344a60e764044e2b43dc8c0f0a59e1729",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-2.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/15.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-03-everyday-1088m-snap.webp",
+          "bytes": 98066,
+          "sha256": "827310c7bfafde5348e478a3836b464edfcfc016f55e2160a1f17f58fa8b9c00",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "602e823281997068952e7a37c941e44344a60e764044e2b43dc8c0f0a59e1729"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-03-everyday-1088m-snap-640.webp",
+          "bytes": 39832,
+          "sha256": "260681424d235668c741112c81d7d8f85f06529d7a4cf29352a303c41c55f6a0",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "602e823281997068952e7a37c941e44344a60e764044e2b43dc8c0f0a59e1729"
+        }
+      }
+    },
+    {
+      "id": "2026-11-03-city-9007",
+      "productId": "coupang-c897de17705c2521",
+      "model": "9007",
+      "color": "퍼플",
+      "date": "2026-11-03",
+      "previousImage": "/assets/lookbook/2026-11-03-city-9007.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-03-city-9007-640.webp",
+      "image": "/assets/lookbook/2026-11-03-city-9007-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-03-city-9007-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-c897de17705c2521/main-i6Tnykp60pjS14R6wnarr7MZ9fBu8T.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 10페이지의 9007 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-c897de17705c2521.jpg",
+      "generatedSha256": "53f40c9de1fa47eecc3b0854559d5ef16f34c428ea7675e6ea6a58a9f911c493",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-2.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/16.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-03-city-9007-snap.webp",
+          "bytes": 67670,
+          "sha256": "51ed978818f63188e6a9be833c909408e1e531e4ddc450cbe0d4ac585bb0a03b",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "53f40c9de1fa47eecc3b0854559d5ef16f34c428ea7675e6ea6a58a9f911c493"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-03-city-9007-snap-640.webp",
+          "bytes": 30712,
+          "sha256": "ecf9c60f0dd8217c24a692608546155edf64418c467aaa2031d49b680a29bfc6",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "53f40c9de1fa47eecc3b0854559d5ef16f34c428ea7675e6ea6a58a9f911c493"
+        }
+      }
+    },
+    {
+      "id": "2026-11-02-everyday-188l",
+      "productId": "coupang-4efcb6a5f2ae7b88",
+      "model": "188L",
+      "color": "그레이",
+      "date": "2026-11-02",
+      "previousImage": "/assets/lookbook/2026-11-02-everyday-188l.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-02-everyday-188l-640.webp",
+      "image": "/assets/lookbook/2026-11-02-everyday-188l-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-02-everyday-188l-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4efcb6a5f2ae7b88/main-KZMCgZUTl375uHZt7Ao3P1nrh1NIB9.jpg",
+      "dimensionsCm": [
+        28,
+        39,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 57페이지의 188L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-4efcb6a5f2ae7b88.jpg",
+      "generatedSha256": "1ab00ec5fed92f33ecedfb14512fe5e16390bcb4c894228e01b4458767e9b4e5",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-2.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/17.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-02-everyday-188l-snap.webp",
+          "bytes": 87160,
+          "sha256": "d324714cc552fef52b410f7a9157a62e7d67161466ab65c901a85f7d319facec",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "1ab00ec5fed92f33ecedfb14512fe5e16390bcb4c894228e01b4458767e9b4e5"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-02-everyday-188l-snap-640.webp",
+          "bytes": 42182,
+          "sha256": "7644ff2c61f74baef153ee29150fde1a1c7192fa793407072b05c60f32798635",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "1ab00ec5fed92f33ecedfb14512fe5e16390bcb4c894228e01b4458767e9b4e5"
+        }
+      }
+    },
+    {
+      "id": "2026-11-02-city-194l",
+      "productId": "coupang-08039b2ac81db358",
+      "model": "194L",
+      "color": "라벤더",
+      "date": "2026-11-02",
+      "previousImage": "/assets/lookbook/2026-11-02-city-194l.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-02-city-194l-640.webp",
+      "image": "/assets/lookbook/2026-11-02-city-194l-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-02-city-194l-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-08039b2ac81db358/main-mkrOsxkr3orTIBRMVe620YMpIMn39j.jpg",
+      "dimensionsCm": [
+        28,
+        39,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 44페이지의 194L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-08039b2ac81db358.jpg",
+      "generatedSha256": "4a6289154de4a1fbe57111e956b1aff144191f5db7d6f016b0f155ef2e7219b6",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-2.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/18.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-02-city-194l-snap.webp",
+          "bytes": 146784,
+          "sha256": "a0e0bb10e624fd72aa2753ea0fbef9029b7e8c67f781809ee8e33fb59657b94f",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "4a6289154de4a1fbe57111e956b1aff144191f5db7d6f016b0f155ef2e7219b6"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-02-city-194l-snap-640.webp",
+          "bytes": 64526,
+          "sha256": "21312ef77393727db06a6574b1713a7869f6578d732e9e0babee38906f3abe61",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "4a6289154de4a1fbe57111e956b1aff144191f5db7d6f016b0f155ef2e7219b6"
+        }
+      }
+    },
+    {
+      "id": "2026-11-01-everyday-0515",
+      "productId": "store-13685201448",
+      "model": "0515",
+      "color": "실버",
+      "date": "2026-11-01",
+      "previousImage": "/assets/lookbook/2026-11-01-everyday-0515.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-01-everyday-0515-640.webp",
+      "image": "/assets/lookbook/2026-11-01-everyday-0515-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-01-everyday-0515-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260728_237/1785203739585y5VOY_JPEG/130548331178797772_1520188927.jpg",
+      "dimensionsCm": [
+        35,
+        46,
+        18
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 4페이지의 0515 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13685201448.jpg",
+      "generatedSha256": "7f859f75891f13d0be2a794ea03e32a009f41d5207fbe1baa29fb24f1805a2af",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-2.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/19.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-01-everyday-0515-snap.webp",
+          "bytes": 151526,
+          "sha256": "840da806457da648edfa528713172b45d6f4417a0cc1d227179d612df1c74588",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "7f859f75891f13d0be2a794ea03e32a009f41d5207fbe1baa29fb24f1805a2af"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-01-everyday-0515-snap-640.webp",
+          "bytes": 65092,
+          "sha256": "fd7b049859b6c24c04e54a3d4baf39ff34753492ab3506aaa2afbbfb51506282",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "7f859f75891f13d0be2a794ea03e32a009f41d5207fbe1baa29fb24f1805a2af"
+        }
+      }
+    },
+    {
+      "id": "2026-11-01-city-1208",
+      "productId": "store-13326577567",
+      "model": "1208",
+      "color": "아이보리",
+      "date": "2026-11-01",
+      "previousImage": "/assets/lookbook/2026-11-01-city-1208.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-01-city-1208-640.webp",
+      "image": "/assets/lookbook/2026-11-01-city-1208-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-11-01-city-1208-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260327_177/17745877470621bKeS_JPEG/3728478673959279_1633863399.jpg",
+      "dimensionsCm": [
+        29,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 30페이지의 1208 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13326577567.jpg",
+      "generatedSha256": "05b4d8cf00b5c2b69a7ceea2155d487ab4c58cda80346c4811e20d29f3700ae9",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-2.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/20.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-01-city-1208-snap.webp",
+          "bytes": 155644,
+          "sha256": "0e2de351dc0b9ad58b02a8cedbfe0370853d0d44f94c8c6edb17c38d693b2c67",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "05b4d8cf00b5c2b69a7ceea2155d487ab4c58cda80346c4811e20d29f3700ae9"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-01-city-1208-snap-640.webp",
+          "bytes": 63448,
+          "sha256": "8c590a7bb63fe4a76cb62e0874fa333896100e260fd7678b7df046fd4cbe47c4",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "05b4d8cf00b5c2b69a7ceea2155d487ab4c58cda80346c4811e20d29f3700ae9"
+        }
+      }
+    },
+    {
+      "id": "2026-10-31-everyday-9018",
+      "productId": "coupang-e1dc5d1170e93e35",
+      "model": "9018",
+      "color": "퍼플",
+      "date": "2026-10-31",
+      "previousImage": "/assets/lookbook/2026-10-31-everyday-9018.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-31-everyday-9018-640.webp",
+      "image": "/assets/lookbook/2026-10-31-everyday-9018-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-31-everyday-9018-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e1dc5d1170e93e35/main-l4NT0MOzV2NVeu4uGrf9bLJBdbRr5k.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 40페이지의 9018 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-e1dc5d1170e93e35.jpg",
+      "generatedSha256": "5d312a49627a2bb603fb7faf86b1c1f4641c69909712c3742afc44c37a978619",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-3.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/21.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-31-everyday-9018-snap.webp",
+          "bytes": 66318,
+          "sha256": "856c6e968c9c6c60ec2e7051bcd3ed983303c4cdb425a31335a1dcbd325bde2d",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "5d312a49627a2bb603fb7faf86b1c1f4641c69909712c3742afc44c37a978619"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-31-everyday-9018-snap-640.webp",
+          "bytes": 29656,
+          "sha256": "7aeb2a289ee8d65251f30e8a04d8f16e03b9e18f2faa357b5ec89fdf6c0cf6b9",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "5d312a49627a2bb603fb7faf86b1c1f4641c69909712c3742afc44c37a978619"
+        }
+      }
+    },
+    {
+      "id": "2026-10-31-city-2505",
+      "productId": "coupang-e16e6315910fdd6b",
+      "model": "2505",
+      "color": "블랙",
+      "date": "2026-10-31",
+      "previousImage": "/assets/lookbook/2026-10-31-city-2505.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-31-city-2505-640.webp",
+      "image": "/assets/lookbook/2026-10-31-city-2505-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-31-city-2505-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e16e6315910fdd6b/main-rgxtYpMoAPOljowvNuFsQn7QcDh936.jpg",
+      "dimensionsCm": [
+        30,
+        43,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 5페이지의 2505 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-e16e6315910fdd6b.jpg",
+      "generatedSha256": "02aee399e5b864da9ddfd4a8f0b0fe5ae031ed5006997ee768e0f811f08e427e",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-3.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/22.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-31-city-2505-snap.webp",
+          "bytes": 81158,
+          "sha256": "74d09fb7d5c9058abac9511a1785d9d84d6a36cd7569f32d467ee69a8cbb9c25",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "02aee399e5b864da9ddfd4a8f0b0fe5ae031ed5006997ee768e0f811f08e427e"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-31-city-2505-snap-640.webp",
+          "bytes": 34166,
+          "sha256": "6ba9b863ac6dc4faeba83c1eb2490020f7c6359a761023eeb9f2bd67f63bb44b",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "02aee399e5b864da9ddfd4a8f0b0fe5ae031ed5006997ee768e0f811f08e427e"
+        }
+      }
+    },
+    {
+      "id": "2026-10-22-everyday-0423",
+      "productId": "coupang-e733b49430ffbe4d",
+      "model": "0423",
+      "color": "브라운",
+      "date": "2026-10-22",
+      "previousImage": "/assets/lookbook/2026-10-22-everyday-0423.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-22-everyday-0423-640.webp",
+      "image": "/assets/lookbook/2026-10-22-everyday-0423-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-22-everyday-0423-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e733b49430ffbe4d/main-brJHq1r30m8drE0LSnC7wTdrj4N74r.jpg",
+      "dimensionsCm": [
+        32,
+        42,
+        13
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 9페이지의 0423 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-e733b49430ffbe4d.jpg",
+      "generatedSha256": "89a292fc33d1d39aaedb95ac3d4034477e745766c2793dac6a45192eb58f7ee2",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-3.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/23.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-22-everyday-0423-snap.webp",
+          "bytes": 65686,
+          "sha256": "970cdaa7e1fea05fe6a396517e4361085289a45d67ee503d7302ec32c3fcf9a1",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "89a292fc33d1d39aaedb95ac3d4034477e745766c2793dac6a45192eb58f7ee2"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-22-everyday-0423-snap-640.webp",
+          "bytes": 27656,
+          "sha256": "061ae220ae272d724363eefe5a33734608be4528a7d7852858c97c3586327cf8",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "89a292fc33d1d39aaedb95ac3d4034477e745766c2793dac6a45192eb58f7ee2"
+        }
+      }
+    },
+    {
+      "id": "2026-10-22-travel-8029",
+      "productId": "coupang-0d8cb478bf996ce8",
+      "model": "8029",
+      "color": "네이비브라운",
+      "date": "2026-10-22",
+      "previousImage": "/assets/lookbook/2026-10-22-travel-8029.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-22-travel-8029-640.webp",
+      "image": "/assets/lookbook/2026-10-22-travel-8029-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-22-travel-8029-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-0d8cb478bf996ce8/main-8PtRLshwGhOc4JDgGcyxYvngeNL5zA.jpg",
+      "dimensionsCm": [
+        27,
+        39,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 45페이지의 8029 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-0d8cb478bf996ce8.jpg",
+      "generatedSha256": "a216245ea65e4e9a9c9a7c14095eab1f87f29e768198c5e83a478d3ff2eb1963",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-3.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/24.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-22-travel-8029-snap.webp",
+          "bytes": 125568,
+          "sha256": "6878201201239818b7729bb4365ee2500e71657eccfb24f12ec031117fe2d3e8",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "a216245ea65e4e9a9c9a7c14095eab1f87f29e768198c5e83a478d3ff2eb1963"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-22-travel-8029-snap-640.webp",
+          "bytes": 54008,
+          "sha256": "d81a5aacc9f52d1c384657445e0eafb455843c10de2fdce8d718a10b721422b9",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "a216245ea65e4e9a9c9a7c14095eab1f87f29e768198c5e83a478d3ff2eb1963"
+        }
+      }
+    },
+    {
+      "id": "2026-10-21-city-2301",
+      "productId": "coupang-c75f72bf26deba5f",
+      "model": "2301",
+      "color": "네이비",
+      "date": "2026-10-21",
+      "previousImage": "/assets/lookbook/2026-10-21-city-2301.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-21-city-2301-640.webp",
+      "image": "/assets/lookbook/2026-10-21-city-2301-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-21-city-2301-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-c75f72bf26deba5f/main-X6lFrqCjAhVFZPDpyvXClAUs5yGZxa.jpg",
+      "dimensionsCm": [
+        28,
+        42,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 38페이지의 2301 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-c75f72bf26deba5f.jpg",
+      "generatedSha256": "9de5f40212ec706222f3be9382d6cba526964d572c7fce05fffba14e5e1bf24c",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-3.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/25.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-21-city-2301-snap.webp",
+          "bytes": 62194,
+          "sha256": "e6693f57c5d397706ce8f05d893f65f71f7d367d6ce55bb27ce54355c053a5ac",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "9de5f40212ec706222f3be9382d6cba526964d572c7fce05fffba14e5e1bf24c"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-21-city-2301-snap-640.webp",
+          "bytes": 26524,
+          "sha256": "ed099eb8ef57d59e820657ec984f8a0593bdfe42f7bef485055f614ae579006c",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "9de5f40212ec706222f3be9382d6cba526964d572c7fce05fffba14e5e1bf24c"
+        }
+      }
+    },
+    {
+      "id": "2026-10-21-everyday-124s",
+      "productId": "coupang-d3423a6bee5844d6",
+      "model": "124S",
+      "color": "민트",
+      "date": "2026-10-21",
+      "previousImage": "/assets/lookbook/2026-10-21-everyday-124s.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-21-everyday-124s-640.webp",
+      "image": "/assets/lookbook/2026-10-21-everyday-124s-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-21-everyday-124s-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-d3423a6bee5844d6/main-c6Rb9KDfovCEiBBQpD7BlnWxetf1Cj.jpg",
+      "dimensionsCm": [
+        22,
+        33,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 34페이지의 124S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-d3423a6bee5844d6.jpg",
+      "generatedSha256": "55eb9fc9d504e45da08ea4a6fcd85153d65fffc7b2c272fd3d372e971eca2895",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-3.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/26.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-21-everyday-124s-snap.webp",
+          "bytes": 52532,
+          "sha256": "31a7735a68df008ae656deb332a49f6c37119fef31b92af98694acc68314b5ae",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "55eb9fc9d504e45da08ea4a6fcd85153d65fffc7b2c272fd3d372e971eca2895"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-21-everyday-124s-snap-640.webp",
+          "bytes": 23580,
+          "sha256": "01291cddc9263aa7e21c17c25927b9b9278c91ebe03e6d710dc30a09730c87c8",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "55eb9fc9d504e45da08ea4a6fcd85153d65fffc7b2c272fd3d372e971eca2895"
+        }
+      }
+    },
+    {
+      "id": "2026-10-19-city-9291",
+      "productId": "coupang-6df96140584b67f7",
+      "model": "9291",
+      "color": "스카이블루",
+      "date": "2026-10-19",
+      "previousImage": "/assets/lookbook/2026-10-19-city-9291.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-19-city-9291-640.webp",
+      "image": "/assets/lookbook/2026-10-19-city-9291-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-19-city-9291-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6df96140584b67f7/main-OakvznfepoDdmNdGfSa7fQ1f37cFmx.jpg",
+      "dimensionsCm": [
+        31,
+        45,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 7페이지의 9291 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-6df96140584b67f7.jpg",
+      "generatedSha256": "29833560a003a9b8e1553ce87b0617612e4bfff6b59b03b7e5ece5583ded9520",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-3.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/27.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-19-city-9291-snap.webp",
+          "bytes": 81460,
+          "sha256": "38d5aea19f185e09633c4ee4d33e157d5ec61a3e0fec08b220c2f67e2ce72b1f",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "29833560a003a9b8e1553ce87b0617612e4bfff6b59b03b7e5ece5583ded9520"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-19-city-9291-snap-640.webp",
+          "bytes": 33758,
+          "sha256": "7456feacb0b06bcecb5cf22735a3973d06c12e77ebe264c244e2cbbdfce6ba9d",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "29833560a003a9b8e1553ce87b0617612e4bfff6b59b03b7e5ece5583ded9520"
+        }
+      }
+    },
+    {
+      "id": "2026-10-19-everyday-9004",
+      "productId": "coupang-11bd051a162f120b",
+      "model": "9004",
+      "color": "라벤더 코랄",
+      "date": "2026-10-19",
+      "previousImage": "/assets/lookbook/2026-10-19-everyday-9004.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-19-everyday-9004-640.webp",
+      "image": "/assets/lookbook/2026-10-19-everyday-9004-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-19-everyday-9004-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-11bd051a162f120b/main-5wbrlVTXbbG7fKLHymvuoqynDsrcy9.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 49페이지의 9004 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-11bd051a162f120b.jpg",
+      "generatedSha256": "20da5389d32fdf3b796dec731f84c8702a29347d1460b5263005c4915dfdd410",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-3.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/28.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-19-everyday-9004-snap.webp",
+          "bytes": 76134,
+          "sha256": "b575e7930576c9b949d8a93405df36c26fb88286bd0ce986f8bd619c7b9b529a",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "20da5389d32fdf3b796dec731f84c8702a29347d1460b5263005c4915dfdd410"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-19-everyday-9004-snap-640.webp",
+          "bytes": 34270,
+          "sha256": "ce3ac6f52f61ef573cf15500993f6b3e3744256653401989129b4f2801540e4d",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "20da5389d32fdf3b796dec731f84c8702a29347d1460b5263005c4915dfdd410"
+        }
+      }
+    },
+    {
+      "id": "2026-10-18-city-124",
+      "productId": "coupang-9e8b28e0fab8e07a",
+      "model": "124",
+      "color": "오렌지",
+      "date": "2026-10-18",
+      "previousImage": "/assets/lookbook/2026-10-18-city-124.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-18-city-124-640.webp",
+      "image": "/assets/lookbook/2026-10-18-city-124-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-18-city-124-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-9e8b28e0fab8e07a/main-wpAadi227TDPkjv9fuXx8jOOQVqiSn.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 35페이지의 124 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-9e8b28e0fab8e07a.jpg",
+      "generatedSha256": "d89434eb24a4676e7d5943ad981cde44c74ec9600c7e25b08445547ddb47ad32",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-3.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/29.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-18-city-124-snap.webp",
+          "bytes": 175242,
+          "sha256": "a0c3e4f2449f1f809547c0c9ef1bbe46d640fd72f9b039bf36b798c9c2cdd193",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "d89434eb24a4676e7d5943ad981cde44c74ec9600c7e25b08445547ddb47ad32"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-18-city-124-snap-640.webp",
+          "bytes": 73970,
+          "sha256": "40334f818a85d91e76a1f25cf4c09e18bc27b4b2a5c5c14b23dbfeb5812bc318",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "d89434eb24a4676e7d5943ad981cde44c74ec9600c7e25b08445547ddb47ad32"
+        }
+      }
+    },
+    {
+      "id": "2026-10-18-travel-0513",
+      "productId": "store-13312570673",
+      "model": "0513",
+      "color": "스카이",
+      "date": "2026-10-18",
+      "previousImage": "/assets/lookbook/2026-10-18-travel-0513.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-18-travel-0513-640.webp",
+      "image": "/assets/lookbook/2026-10-18-travel-0513-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-18-travel-0513-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260416_279/1776311593691l3vHW_JPEG/596354370083117_582164802.jpg",
+      "dimensionsCm": [
+        30,
+        43,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 17페이지의 0513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13312570673.jpg",
+      "generatedSha256": "fcb645148758877b0e75df7dabef70bb073affb05ad0643297f38153e72ba62f",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-3.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/30.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-18-travel-0513-snap.webp",
+          "bytes": 162762,
+          "sha256": "911dba9a02404d14014252fc7382ae0d375a2b6a995b2ddafab0e96b1a10d52e",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "fcb645148758877b0e75df7dabef70bb073affb05ad0643297f38153e72ba62f"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-18-travel-0513-snap-640.webp",
+          "bytes": 74974,
+          "sha256": "e0e53e52e2598a64f163b0f62482efa317b1d6f3131d6d24084861b6305f8cb7",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "fcb645148758877b0e75df7dabef70bb073affb05ad0643297f38153e72ba62f"
+        }
+      }
+    },
+    {
+      "id": "2026-10-16-everyday-0422",
+      "productId": "store-13326274547",
+      "model": "0422",
+      "color": "블루",
+      "date": "2026-10-16",
+      "previousImage": "/assets/lookbook/2026-10-16-everyday-0422.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-16-everyday-0422-640.webp",
+      "image": "/assets/lookbook/2026-10-16-everyday-0422-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-16-everyday-0422-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260330_75/17748467055316cbOy_JPEG/932098654912450_478698910.jpg",
+      "dimensionsCm": [
+        30,
+        40,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 54페이지의 0422 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13326274547.jpg",
+      "generatedSha256": "0660510c3d142eb0ceb30d920d91564e8bc9194b55fd9c1ce6c6d3d059db92f8",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-4.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/31.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-16-everyday-0422-snap.webp",
+          "bytes": 122094,
+          "sha256": "d8bea26ff2c83e681c3e9c4d1b2b6bfb092f31a30b4cef0b4d415c1e19c9df61",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "0660510c3d142eb0ceb30d920d91564e8bc9194b55fd9c1ce6c6d3d059db92f8"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-16-everyday-0422-snap-640.webp",
+          "bytes": 50742,
+          "sha256": "c7869f03b813569a1cd289f4bb877cb3d2abaa695cec09fe90bad43d958e2223",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "0660510c3d142eb0ceb30d920d91564e8bc9194b55fd9c1ce6c6d3d059db92f8"
+        }
+      }
+    },
+    {
+      "id": "2026-10-16-city-2513",
+      "productId": "store-12986327631",
+      "model": "2513",
+      "color": "블랙",
+      "date": "2026-10-16",
+      "previousImage": "/assets/lookbook/2026-10-16-city-2513.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-16-city-2513-640.webp",
+      "image": "/assets/lookbook/2026-10-16-city-2513-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-16-city-2513-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260420_222/1776672718551bbtgo_JPEG/31205936622607670_209756021.jpg",
+      "dimensionsCm": [
+        36.5,
+        28,
+        2
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 11페이지의 2513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-12986327631.jpg",
+      "generatedSha256": "e49a75f6e95fccf6cb4abdb18a92d56f1f6bc95e6f765fb85be5bb1a07bec66d",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-4.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/32.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-16-city-2513-snap.webp",
+          "bytes": 146888,
+          "sha256": "00309d8b6f3e2b9ec611488793e57464bfdcfc1bd8289f38f3d1416f0cd9733c",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "e49a75f6e95fccf6cb4abdb18a92d56f1f6bc95e6f765fb85be5bb1a07bec66d"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-16-city-2513-snap-640.webp",
+          "bytes": 62052,
+          "sha256": "d1a9d788908d3c10e1f0a4e7faa7c4325967f5466c111f3990d7e254c1db8aec",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "e49a75f6e95fccf6cb4abdb18a92d56f1f6bc95e6f765fb85be5bb1a07bec66d"
+        }
+      }
+    },
+    {
+      "id": "2026-10-15-everyday-1211",
+      "productId": "store-13313475536",
+      "model": "1211",
+      "color": "블랙",
+      "date": "2026-10-15",
+      "previousImage": "/assets/lookbook/2026-10-15-everyday-1211.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-15-everyday-1211-640.webp",
+      "image": "/assets/lookbook/2026-10-15-everyday-1211-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-15-everyday-1211-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260327_53/1774591677108YLGWg_JPEG/47566029953353167_889905254.jpg",
+      "dimensionsCm": [
+        26,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 56페이지의 1211 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13313475536.jpg",
+      "generatedSha256": "d6b0ed1b3e03480062c16c1da9e326e3267a8b3133970e8730ef51aaaaa6f7c2",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-4.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/33.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-15-everyday-1211-snap.webp",
+          "bytes": 58578,
+          "sha256": "f47ef8f97a7d5a05d9efa1137ad2c7f6462ae5285fc132a39cc6253ad952ce99",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "d6b0ed1b3e03480062c16c1da9e326e3267a8b3133970e8730ef51aaaaa6f7c2"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-15-everyday-1211-snap-640.webp",
+          "bytes": 28110,
+          "sha256": "59884dbbaac037fcb88d4b48e670f8ba50aa10f62044aa806dbf4245848e538a",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "d6b0ed1b3e03480062c16c1da9e326e3267a8b3133970e8730ef51aaaaa6f7c2"
+        }
+      }
+    },
+    {
+      "id": "2026-10-15-city-1682",
+      "productId": "coupang-8af93fb01cbb013c",
+      "model": "1682",
+      "color": "카키",
+      "date": "2026-10-15",
+      "previousImage": "/assets/lookbook/2026-10-15-city-1682.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-15-city-1682-640.webp",
+      "image": "/assets/lookbook/2026-10-15-city-1682-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-15-city-1682-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-8af93fb01cbb013c/main-dmPrQ42ZMAohhflhxoOcEjuo82IL7F.jpg",
+      "dimensionsCm": [
+        30,
+        50,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 39페이지의 1682 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-8af93fb01cbb013c.jpg",
+      "generatedSha256": "ec7a1969eaada883a792999b9d8d912a81947c82971991a98b4da4fe169c9543",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-4.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/34.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-15-city-1682-snap.webp",
+          "bytes": 69018,
+          "sha256": "d93043e6b8b11a55566635cb6d3687961e242ccbc670ded0dd97c4a5db66f7c7",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "ec7a1969eaada883a792999b9d8d912a81947c82971991a98b4da4fe169c9543"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-15-city-1682-snap-640.webp",
+          "bytes": 29638,
+          "sha256": "5355adbff10a3dd40af5bfcec145a690482686d4e1ab1f2d98e804186c64de35",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "ec7a1969eaada883a792999b9d8d912a81947c82971991a98b4da4fe169c9543"
+        }
+      }
+    },
+    {
+      "id": "2026-10-14-city-1084h",
+      "productId": "coupang-988f225068675842",
+      "model": "1084H",
+      "color": "라이트그레이",
+      "date": "2026-10-14",
+      "previousImage": "/assets/lookbook/2026-10-14-city-1084h.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-14-city-1084h-640.webp",
+      "image": "/assets/lookbook/2026-10-14-city-1084h-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-14-city-1084h-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-988f225068675842/main-TYNaIxu0fFkpKYtSMPbssYxCb5tCU4.jpg",
+      "dimensionsCm": [
+        28.5,
+        39,
+        12
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 26페이지의 H1084 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-988f225068675842.jpg",
+      "generatedSha256": "6f1fa65597f212c36141fb62d564f33047a7ab7442e1ac90e20a5c39a57da469",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-4.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/35.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-14-city-1084h-snap.webp",
+          "bytes": 153214,
+          "sha256": "4c41af3c3cfb7051621db0371768acf66d916193978eefcce1847f6b3cfb889b",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "6f1fa65597f212c36141fb62d564f33047a7ab7442e1ac90e20a5c39a57da469"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-14-city-1084h-snap-640.webp",
+          "bytes": 70290,
+          "sha256": "952545cc2f759b03491be706c084ea5254a1eb56827a7827f262d34c3086a4bc",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "6f1fa65597f212c36141fb62d564f33047a7ab7442e1ac90e20a5c39a57da469"
+        }
+      }
+    },
+    {
+      "id": "2026-10-14-travel-1111",
+      "productId": "store-13513526834",
+      "model": "1111",
+      "color": "그린",
+      "date": "2026-10-14",
+      "previousImage": "/assets/lookbook/2026-10-14-travel-1111.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-14-travel-1111-640.webp",
+      "image": "/assets/lookbook/2026-10-14-travel-1111-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-14-travel-1111-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260511_282/1778476837383QWJQU_JPEG/8477290463441894_476336728.jpg",
+      "dimensionsCm": [
+        43,
+        47,
+        24
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 6페이지의 1111 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13513526834.jpg",
+      "generatedSha256": "ce13a932dae062566ebd150bbb48476f372ff99c65580e644afeebec701e824e",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-4.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/36.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-14-travel-1111-snap.webp",
+          "bytes": 158640,
+          "sha256": "f8565e6f94b19eb45f43d4cf21a57f28ece0b5f8f026b285f738172823c9fd09",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "ce13a932dae062566ebd150bbb48476f372ff99c65580e644afeebec701e824e"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-14-travel-1111-snap-640.webp",
+          "bytes": 72204,
+          "sha256": "0c70cfd8c97e50704722a9059c7428c4bd04f2e86136c3f6da6d7d80511eb0c5",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "ce13a932dae062566ebd150bbb48476f372ff99c65580e644afeebec701e824e"
+        }
+      }
+    },
+    {
+      "id": "2026-10-13-everyday-1223",
+      "productId": "store-13313756862",
+      "model": "1223",
+      "color": "화이트",
+      "date": "2026-10-13",
+      "previousImage": "/assets/lookbook/2026-10-13-everyday-1223.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-13-everyday-1223-640.webp",
+      "image": "/assets/lookbook/2026-10-13-everyday-1223-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-13-everyday-1223-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260330_110/1774843091752lRdub_JPEG/60885435181830789_147192211.jpg",
+      "dimensionsCm": [
+        29,
+        40,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 29페이지의 1223 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13313756862.jpg",
+      "generatedSha256": "06b1548e1736c35e1b6b01b5b74d726bfa7967d51b150930568fe9b38ec9466a",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-4.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/37.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-13-everyday-1223-snap.webp",
+          "bytes": 82794,
+          "sha256": "58b8509e2524fbb3a8bcdeb6239a65e3920a40381c4a5701fc6db7b87929b234",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "06b1548e1736c35e1b6b01b5b74d726bfa7967d51b150930568fe9b38ec9466a"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-13-everyday-1223-snap-640.webp",
+          "bytes": 34684,
+          "sha256": "40be55e3561012f3b0828e155ec96e9d7d0eceab752545bd69f97704126ac04b",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "06b1548e1736c35e1b6b01b5b74d726bfa7967d51b150930568fe9b38ec9466a"
+        }
+      }
+    },
+    {
+      "id": "2026-10-13-city-1010",
+      "productId": "coupang-ffc25c3c01be2949",
+      "model": "1010",
+      "color": "그레이",
+      "date": "2026-10-13",
+      "previousImage": "/assets/lookbook/2026-10-13-city-1010.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-13-city-1010-640.webp",
+      "image": "/assets/lookbook/2026-10-13-city-1010-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-13-city-1010-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-ffc25c3c01be2949/main-VPop07i9BT9PMfgDjhSTPE514psIny.jpg",
+      "dimensionsCm": [
+        33,
+        45,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 50페이지의 1010 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-ffc25c3c01be2949.jpg",
+      "generatedSha256": "706ff3ec24f30fdc94bc8b757de26c8ebd32ae814d56e0bb0f8c2500d9c9be0e",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-4.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/38.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-13-city-1010-snap.webp",
+          "bytes": 56088,
+          "sha256": "b5419b814e5b3cdae56229e40fb58c4c1aaf53e40517f4d81e3e4d6f9321b5b6",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "706ff3ec24f30fdc94bc8b757de26c8ebd32ae814d56e0bb0f8c2500d9c9be0e"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-13-city-1010-snap-640.webp",
+          "bytes": 25708,
+          "sha256": "200daf4c5d0a08805c14f18a6d76702bc733d5a74370e8192180c05087ea820a",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "706ff3ec24f30fdc94bc8b757de26c8ebd32ae814d56e0bb0f8c2500d9c9be0e"
+        }
+      }
+    },
+    {
+      "id": "2026-10-12-everyday-1230",
+      "productId": "store-13308483411",
+      "model": "1230",
+      "color": "그레이",
+      "date": "2026-10-12",
+      "previousImage": "/assets/lookbook/2026-10-12-everyday-1230.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-12-everyday-1230-640.webp",
+      "image": "/assets/lookbook/2026-10-12-everyday-1230-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-12-everyday-1230-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260326_238/1774503626907819SG_JPEG/29145858851779990_764507912.jpg",
+      "dimensionsCm": [
+        32,
+        40,
+        18
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 15페이지의 1230 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13308483411.jpg",
+      "generatedSha256": "cea41b615df8b4c0b5e65a8715c28681661cee71596e73ca19d055c382b52072",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-4.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/39.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-12-everyday-1230-snap.webp",
+          "bytes": 46298,
+          "sha256": "82126cfdf76da8c391cf6e51fbe9d548db69659e531b14d131341d7618347b49",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "cea41b615df8b4c0b5e65a8715c28681661cee71596e73ca19d055c382b52072"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-12-everyday-1230-snap-640.webp",
+          "bytes": 22564,
+          "sha256": "3de8e5358e5a240e69db75e9228542c7139e81157816a115cb777ecd0c49ac59",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "cea41b615df8b4c0b5e65a8715c28681661cee71596e73ca19d055c382b52072"
+        }
+      }
+    },
+    {
+      "id": "2026-10-12-travel-0403",
+      "productId": "coupang-1fad617222b357b4",
+      "model": "0403",
+      "color": "라이트 핑크",
+      "date": "2026-10-12",
+      "previousImage": "/assets/lookbook/2026-10-12-travel-0403.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-12-travel-0403-640.webp",
+      "image": "/assets/lookbook/2026-10-12-travel-0403-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-12-travel-0403-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-1fad617222b357b4/main-HSq9pgMeGELoDhk9pIXEMb9o6sCQoz.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 22페이지의 0403 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다. 외부 크기는 백팩 기준이며 숄더백은 별도 23 × 18 cm로 표기됩니다. 900 g의 구성품 포함 여부는 미기재입니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-1fad617222b357b4.jpg",
+      "generatedSha256": "dff5282e7db9ded6603d6753ddcd96b2e8ae61c727c6b58339fea983dd591f08",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-4.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/40.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-12-travel-0403-snap.webp",
+          "bytes": 146308,
+          "sha256": "0f2cea254341f6dc90f85cb5ad54de3401caf14923d5d564e0643a9c998af1de",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "dff5282e7db9ded6603d6753ddcd96b2e8ae61c727c6b58339fea983dd591f08"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-12-travel-0403-snap-640.webp",
+          "bytes": 69176,
+          "sha256": "13f30a4d80bbf0f3f24af15942d29f2b2d371d56d351c3e73b51f71bee5508e3",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "dff5282e7db9ded6603d6753ddcd96b2e8ae61c727c6b58339fea983dd591f08"
+        }
+      }
+    },
+    {
+      "id": "2026-10-11-city-1027",
+      "productId": "store-13326224847",
+      "model": "1027",
+      "color": "블랙",
+      "date": "2026-10-11",
+      "previousImage": "/assets/lookbook/2026-10-11-city-1027.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-11-city-1027-640.webp",
+      "image": "/assets/lookbook/2026-10-11-city-1027-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-11-city-1027-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260210_201/1770709035243OicU2_JPEG/18070600097326153_1285571532.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 28페이지의 1027 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13326224847.jpg",
+      "generatedSha256": "98ea93b34bb4537e45d249f848aaa06c5394257b2d702aa706cbccfdff435366",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-5.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/41.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-11-city-1027-snap.webp",
+          "bytes": 164684,
+          "sha256": "17e1ebc77e709693161cd9845b6c87cbda470c6936ca10a3cdc797c37a58279a",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "98ea93b34bb4537e45d249f848aaa06c5394257b2d702aa706cbccfdff435366"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-11-city-1027-snap-640.webp",
+          "bytes": 73190,
+          "sha256": "e13c0ae1b1dfadce64b525f60767bfd6b658df7ed196a89159742c93974ec268",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "98ea93b34bb4537e45d249f848aaa06c5394257b2d702aa706cbccfdff435366"
+        }
+      }
+    },
+    {
+      "id": "2026-10-11-everyday-1208",
+      "productId": "coupang-6a508e0278ce77c7",
+      "model": "1208",
+      "color": "네이비",
+      "date": "2026-10-11",
+      "previousImage": "/assets/lookbook/2026-10-11-everyday-1208.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-11-everyday-1208-640.webp",
+      "image": "/assets/lookbook/2026-10-11-everyday-1208-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-11-everyday-1208-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6a508e0278ce77c7/main-1wCnmPgXRW2CCzmKbnOnXIgW1j9CGH.jpg",
+      "dimensionsCm": [
+        29,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 30페이지의 1208 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-6a508e0278ce77c7.jpg",
+      "generatedSha256": "a39a8ba4747f32244a6dffb01283aacf9c5aa8790f079426c978d5ada49116d4",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-5.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/42.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-11-everyday-1208-snap.webp",
+          "bytes": 65078,
+          "sha256": "440866986104fdfea35784c1bbe857581b62e2a045010610fb36ecbde93a526c",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "a39a8ba4747f32244a6dffb01283aacf9c5aa8790f079426c978d5ada49116d4"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-11-everyday-1208-snap-640.webp",
+          "bytes": 28290,
+          "sha256": "615a3fe36b58642aae1c5d1b8606f0663bcb36bdf5494de51958b5f2d6d3d70f",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "a39a8ba4747f32244a6dffb01283aacf9c5aa8790f079426c978d5ada49116d4"
+        }
+      }
+    },
+    {
+      "id": "2026-10-10-city-1884",
+      "productId": "coupang-686f8c96ea4c0598",
+      "model": "1884",
+      "color": "라이트그레이",
+      "date": "2026-10-10",
+      "previousImage": "/assets/lookbook/2026-10-10-city-1884.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-10-city-1884-640.webp",
+      "image": "/assets/lookbook/2026-10-10-city-1884-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-10-city-1884-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-686f8c96ea4c0598/main-wJuYO2kJQoXHwODIKpnosMWjdjRTWD.jpg",
+      "dimensionsCm": [
+        30,
+        45,
+        20
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 31페이지의 1884 대형(1884L) 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-686f8c96ea4c0598.jpg",
+      "generatedSha256": "47aa1b51e2b17b2c3bf3b897bcc22e289c6abffdb97d1e00e163c6b816db494e",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-5.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/43.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-10-city-1884-snap.webp",
+          "bytes": 104094,
+          "sha256": "ffabdd26a74f94b44d6ecf23de046334c355eaf69326dfba597e4f3698277263",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "47aa1b51e2b17b2c3bf3b897bcc22e289c6abffdb97d1e00e163c6b816db494e"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-10-city-1884-snap-640.webp",
+          "bytes": 44728,
+          "sha256": "415010d57216ad93a266e9a205700a041248f4386f87b74cb5009650ff6e2649",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "47aa1b51e2b17b2c3bf3b897bcc22e289c6abffdb97d1e00e163c6b816db494e"
+        }
+      }
+    },
+    {
+      "id": "2026-10-10-travel-1089",
+      "productId": "coupang-5984791b8c6c5fb2",
+      "model": "1089",
+      "color": "블루",
+      "date": "2026-10-10",
+      "previousImage": "/assets/lookbook/2026-10-10-travel-1089.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-10-travel-1089-640.webp",
+      "image": "/assets/lookbook/2026-10-10-travel-1089-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-10-travel-1089-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-5984791b8c6c5fb2/main-eLSgNwsdKSc9Fgpg6vgF9FXMvc3jNr.jpg",
+      "dimensionsCm": [
+        29.5,
+        42,
+        12
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 12페이지의 1089 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-5984791b8c6c5fb2.jpg",
+      "generatedSha256": "a0fc503e08bcbf86dcffb186bf36885645730c704708e4b9e292979857771e5e",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-5.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/44.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-10-travel-1089-snap.webp",
+          "bytes": 133642,
+          "sha256": "be25f931f17455aaf32d7312220aeb17f70c36325e198021f527d11eee64413d",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "a0fc503e08bcbf86dcffb186bf36885645730c704708e4b9e292979857771e5e"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-10-travel-1089-snap-640.webp",
+          "bytes": 55298,
+          "sha256": "3625aec11562e9e9ac53a6f68bd3dff230bd3cb741fb25904a6435b800be7a45",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "a0fc503e08bcbf86dcffb186bf36885645730c704708e4b9e292979857771e5e"
+        }
+      }
+    },
+    {
+      "id": "2026-10-09-city-9001",
+      "productId": "coupang-50c5b38af3fd50b0",
+      "model": "9001",
+      "color": "블랙",
+      "date": "2026-10-09",
+      "previousImage": "/assets/lookbook/2026-10-09-city-9001.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-09-city-9001-640.webp",
+      "image": "/assets/lookbook/2026-10-09-city-9001-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-09-city-9001-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-50c5b38af3fd50b0/main-IP2dPnR2XhTnmDiJlgnYuywyR0JCKl.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 62페이지의 9001 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-50c5b38af3fd50b0.jpg",
+      "generatedSha256": "3e35086cf8d05689c32c2da3e45a9290c508fbca745a4f697cb5f3fa1384fca7",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-5.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/45.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-09-city-9001-snap.webp",
+          "bytes": 63082,
+          "sha256": "edd0c4caab9e95ebab082d7830ad4665c9a4b4dd9fa0dc55e4fa8d4f78ae4db2",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "3e35086cf8d05689c32c2da3e45a9290c508fbca745a4f697cb5f3fa1384fca7"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-09-city-9001-snap-640.webp",
+          "bytes": 26576,
+          "sha256": "6a47dbf08daa06d227302f59801920caf0de5265d0b01f9c1c6db7666e930198",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "3e35086cf8d05689c32c2da3e45a9290c508fbca745a4f697cb5f3fa1384fca7"
+        }
+      }
+    },
+    {
+      "id": "2026-10-09-travel-9007",
+      "productId": "coupang-6a9c162aa87d45d8",
+      "model": "9007",
+      "color": "민트",
+      "date": "2026-10-09",
+      "previousImage": "/assets/lookbook/2026-10-09-travel-9007.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-09-travel-9007-640.webp",
+      "image": "/assets/lookbook/2026-10-09-travel-9007-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-09-travel-9007-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6a9c162aa87d45d8/main-gEPqA6TaQKDNYePvYMbKNAxX6kP8yW.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 10페이지의 9007 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-6a9c162aa87d45d8.jpg",
+      "generatedSha256": "c73865f79242c36570affdd0b51ebfb01618bfab3689074a721480b85a2d120e",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-5.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/46.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-09-travel-9007-snap.webp",
+          "bytes": 143862,
+          "sha256": "e85802dcdb30734b44c472a5c336ce7902aa932e926b7c7b67dd255cbc3aa0f1",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "c73865f79242c36570affdd0b51ebfb01618bfab3689074a721480b85a2d120e"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-09-travel-9007-snap-640.webp",
+          "bytes": 63504,
+          "sha256": "0852f4ea0f43fe1b05c0512e472de967d59a070ad5328c258b49d447f0b1270a",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "c73865f79242c36570affdd0b51ebfb01618bfab3689074a721480b85a2d120e"
+        }
+      }
+    },
+    {
+      "id": "2026-10-08-everyday-200",
+      "productId": "coupang-b8f7115d45d4c5f4",
+      "model": "200",
+      "color": "블랙",
+      "date": "2026-10-08",
+      "previousImage": "/assets/lookbook/2026-10-08-everyday-200.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-08-everyday-200-640.webp",
+      "image": "/assets/lookbook/2026-10-08-everyday-200-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-08-everyday-200-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-b8f7115d45d4c5f4/main-8oZzWrORYaCFTOsIJLwkMdYSmEMT0Y.jpg",
+      "dimensionsCm": [
+        28,
+        39,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 51페이지의 200 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-b8f7115d45d4c5f4.jpg",
+      "generatedSha256": "06a1db6432308f1a883e85ecf708f75c81bdef2586323bb9f43fdafda9796f6f",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-5.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/47.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-08-everyday-200-snap.webp",
+          "bytes": 89168,
+          "sha256": "682282bcdc56442dc1e2c76fc5654cd5d0852e039ad9de0bfed936f6439246d0",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "06a1db6432308f1a883e85ecf708f75c81bdef2586323bb9f43fdafda9796f6f"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-08-everyday-200-snap-640.webp",
+          "bytes": 44698,
+          "sha256": "5f6a5b336a581c4c84e053cc92580d9d93c859b7da9133b6cea02ad050f626d2",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "06a1db6432308f1a883e85ecf708f75c81bdef2586323bb9f43fdafda9796f6f"
+        }
+      }
+    },
+    {
+      "id": "2026-10-08-travel-9290",
+      "productId": "coupang-4861cd80cf7fce0c",
+      "model": "9290",
+      "color": "블랙",
+      "date": "2026-10-08",
+      "previousImage": "/assets/lookbook/2026-10-08-travel-9290.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-08-travel-9290-640.webp",
+      "image": "/assets/lookbook/2026-10-08-travel-9290-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-08-travel-9290-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4861cd80cf7fce0c/main-yXSjjIlJ9Fo5IBOAANpwjCu50SK8rJ.jpg",
+      "dimensionsCm": [
+        30,
+        42,
+        18
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 42페이지의 9290 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-4861cd80cf7fce0c.jpg",
+      "generatedSha256": "c6b42e9089eec12c6b5c3ad1780d5470673b53d17e68cc90f5ef90df070478c2",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-5.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/48.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-08-travel-9290-snap.webp",
+          "bytes": 98874,
+          "sha256": "8312428de1aed1c1772cc951eb942814fb9102cf892e60be00677711448bd640",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "c6b42e9089eec12c6b5c3ad1780d5470673b53d17e68cc90f5ef90df070478c2"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-08-travel-9290-snap-640.webp",
+          "bytes": 42178,
+          "sha256": "48e9485701280c62d169b9dde4f007c4fabb663209e6068aaf041661783a6fa9",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "c6b42e9089eec12c6b5c3ad1780d5470673b53d17e68cc90f5ef90df070478c2"
+        }
+      }
+    },
+    {
+      "id": "2026-10-07-everyday-0514",
+      "productId": "store-11788400997",
+      "model": "0514",
+      "color": "실버",
+      "date": "2026-10-07",
+      "previousImage": "/assets/lookbook/2026-10-07-everyday-0514.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-07-everyday-0514-640.webp",
+      "image": "/assets/lookbook/2026-10-07-everyday-0514-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-07-everyday-0514-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260828_147/1787879951207YvXT4_JPEG/37480638312887197_339724870.jpg",
+      "dimensionsCm": [
+        30,
+        43,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 19페이지의 0514 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-11788400997.jpg",
+      "generatedSha256": "d1ae94aad1d6329b7b808e82393afd150126c9723d13bc8f8de50550d7506df5",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-5.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/49.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-07-everyday-0514-snap.webp",
+          "bytes": 119318,
+          "sha256": "08c76fb67151c2f890c8afd722b843b8d8755b7906a416da5dc80b2b0ff389e1",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "d1ae94aad1d6329b7b808e82393afd150126c9723d13bc8f8de50550d7506df5"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-07-everyday-0514-snap-640.webp",
+          "bytes": 56240,
+          "sha256": "e2d2355ebf1bce11a69b0ed1366da0364138900f7d55dcb035fdc2970d733ba6",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "d1ae94aad1d6329b7b808e82393afd150126c9723d13bc8f8de50550d7506df5"
+        }
+      }
+    },
+    {
+      "id": "2026-10-07-city-188l",
+      "productId": "coupang-4efcb6a5f2ae7b88",
+      "model": "188L",
+      "color": "그레이 베이지",
+      "date": "2026-10-07",
+      "previousImage": "/assets/lookbook/2026-10-07-city-188l.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-07-city-188l-640.webp",
+      "image": "/assets/lookbook/2026-10-07-city-188l-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-07-city-188l-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4efcb6a5f2ae7b88/main-KZMCgZUTl375uHZt7Ao3P1nrh1NIB9.jpg",
+      "dimensionsCm": [
+        28,
+        39,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 57페이지의 188L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-4efcb6a5f2ae7b88.jpg",
+      "generatedSha256": "24fbc99f3a3f9bd3ecc98b4022b26af888c43d160d282782b6b53e3f88601520",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-5.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/50.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-07-city-188l-snap.webp",
+          "bytes": 66510,
+          "sha256": "79cf9bc39ba4dc04c405a039f879e801596c440ecbe2fb594d2fd518d06661c3",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "24fbc99f3a3f9bd3ecc98b4022b26af888c43d160d282782b6b53e3f88601520"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-07-city-188l-snap-640.webp",
+          "bytes": 27816,
+          "sha256": "42d4f65c89da9afb43dc5f02997516f2e1e79b4574829333917134647d56fa9b",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "24fbc99f3a3f9bd3ecc98b4022b26af888c43d160d282782b6b53e3f88601520"
+        }
+      }
+    },
+    {
+      "id": "2026-10-07-everyday-1088m",
+      "productId": "store-13308752642",
+      "model": "1088M",
+      "color": "그린",
+      "date": "2026-10-07",
+      "previousImage": "/assets/lookbook/2026-10-07-everyday-1088m.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-07-everyday-1088m-640.webp",
+      "image": "/assets/lookbook/2026-10-07-everyday-1088m-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-07-everyday-1088m-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260326_100/17745078126890NcU7_JPEG/593205736606817_1806444046.jpg",
+      "dimensionsCm": [
+        28,
+        41.5,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 27페이지의 1088M 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13308752642.jpg",
+      "generatedSha256": "1fca0a70a055300ff49af38c3d7fe9406946b4986d546e834b1fd31c9c301954",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-6.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/51.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-07-everyday-1088m-snap.webp",
+          "bytes": 74476,
+          "sha256": "c8d3b9030419ff86b6abe5720718d000058375f7f54aa78f9a2be1b9ee5581fa",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "1fca0a70a055300ff49af38c3d7fe9406946b4986d546e834b1fd31c9c301954"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-07-everyday-1088m-snap-640.webp",
+          "bytes": 31870,
+          "sha256": "e9a7451f9821f697acb2d740b39e50fd5141cbbe775628ac0f5e52258b74a593",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "1fca0a70a055300ff49af38c3d7fe9406946b4986d546e834b1fd31c9c301954"
+        }
+      }
+    },
+    {
+      "id": "2026-10-07-travel-8029",
+      "productId": "coupang-eb0e638e682ff1ab",
+      "model": "8029",
+      "color": "블루라임",
+      "date": "2026-10-07",
+      "previousImage": "/assets/lookbook/2026-10-07-travel-8029.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-07-travel-8029-640.webp",
+      "image": "/assets/lookbook/2026-10-07-travel-8029-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-07-travel-8029-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-eb0e638e682ff1ab/main-X8E6kQWRAUeugdc7MtlNbAsILE8FIy.jpg",
+      "dimensionsCm": [
+        27,
+        39,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 45페이지의 8029 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-eb0e638e682ff1ab.jpg",
+      "generatedSha256": "b87005702c8eb430f4b3870b0f9d5e52d2a9a7259b1972eea38440959d9d72ae",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-6.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/52.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-07-travel-8029-snap.webp",
+          "bytes": 153736,
+          "sha256": "aab7934ba69e9eea0d57d199709457134b08733ebca16354677c8c5f09e9c610",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "b87005702c8eb430f4b3870b0f9d5e52d2a9a7259b1972eea38440959d9d72ae"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-07-travel-8029-snap-640.webp",
+          "bytes": 74684,
+          "sha256": "ed4effb779969390a577a57b5662a443a8dca9d2eb6256ee030728ec26580c55",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "b87005702c8eb430f4b3870b0f9d5e52d2a9a7259b1972eea38440959d9d72ae"
+        }
+      }
+    },
+    {
+      "id": "2026-10-06-city-2513",
+      "productId": "store-12986327631",
+      "model": "2513",
+      "color": "블랙",
+      "date": "2026-10-06",
+      "previousImage": "/assets/lookbook/2026-10-06-city-2513.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-06-city-2513-640.webp",
+      "image": "/assets/lookbook/2026-10-06-city-2513-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-06-city-2513-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260420_222/1776672718551bbtgo_JPEG/31205936622607670_209756021.jpg",
+      "dimensionsCm": [
+        36.5,
+        28,
+        2
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 11페이지의 2513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-12986327631.jpg",
+      "generatedSha256": "dd87092c6c3c9b6215d1ba15f29d0878ee97e2ced8e32c1def662844557bf7ea",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-6.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/53.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-06-city-2513-snap.webp",
+          "bytes": 71848,
+          "sha256": "096124b719c73d8b3a80009f18436fe3749d560647eff39e0dd04eebbabb6f84",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "dd87092c6c3c9b6215d1ba15f29d0878ee97e2ced8e32c1def662844557bf7ea"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-06-city-2513-snap-640.webp",
+          "bytes": 30352,
+          "sha256": "f83aee4b867de11b2806a939de59317a36a5ced3e6aa640c1496d2ee61e848c1",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "dd87092c6c3c9b6215d1ba15f29d0878ee97e2ced8e32c1def662844557bf7ea"
+        }
+      }
+    },
+    {
+      "id": "2026-10-06-travel-9018",
+      "productId": "coupang-66513184481d2764",
+      "model": "9018",
+      "color": "베이지블랙",
+      "date": "2026-10-06",
+      "previousImage": "/assets/lookbook/2026-10-06-travel-9018.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-06-travel-9018-640.webp",
+      "image": "/assets/lookbook/2026-10-06-travel-9018-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-06-travel-9018-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-66513184481d2764/main-eT2o0pKD0snvdHsL3egiSWaqR92QF6.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 40페이지의 9018 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-66513184481d2764.jpg",
+      "generatedSha256": "ac26750172d3eed1a201b43ac0437911ac774db6b3ca0137ac6270c1a95595d5",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-6.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/54.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-06-travel-9018-snap.webp",
+          "bytes": 168996,
+          "sha256": "eacc82d4f97bda4eac81fefdeec4e98c300f39b6210d2ebd3206f9885bd8eb53",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "ac26750172d3eed1a201b43ac0437911ac774db6b3ca0137ac6270c1a95595d5"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-06-travel-9018-snap-640.webp",
+          "bytes": 75174,
+          "sha256": "01f1fba163f2d1beaf6d916692c1aac88c76d4a06273bdda07aa5ecddcc8db13",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "ac26750172d3eed1a201b43ac0437911ac774db6b3ca0137ac6270c1a95595d5"
+        }
+      }
+    },
+    {
+      "id": "2026-10-06-city-0515",
+      "productId": "store-13685201448",
+      "model": "0515",
+      "color": "실버",
+      "date": "2026-10-06",
+      "previousImage": "/assets/lookbook/2026-10-06-city-0515.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-06-city-0515-640.webp",
+      "image": "/assets/lookbook/2026-10-06-city-0515-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-06-city-0515-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260728_237/1785203739585y5VOY_JPEG/130548331178797772_1520188927.jpg",
+      "dimensionsCm": [
+        35,
+        46,
+        18
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 4페이지의 0515 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13685201448.jpg",
+      "generatedSha256": "a4c8eef7f7d14fa00bda11e433faf45f1c339465452c4fd1b1094da3b9705eab",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-6.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/55.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-06-city-0515-snap.webp",
+          "bytes": 121128,
+          "sha256": "bcbd6d93843900fc5c72c3b8bb8b5ea2ea0a0f66159ae5e309e42e1608ee2aab",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "a4c8eef7f7d14fa00bda11e433faf45f1c339465452c4fd1b1094da3b9705eab"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-06-city-0515-snap-640.webp",
+          "bytes": 58646,
+          "sha256": "1103aa36b1cc796d6d109069fbf93025e2cf0ac9a2e30b0b953a185308dfe696",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "a4c8eef7f7d14fa00bda11e433faf45f1c339465452c4fd1b1094da3b9705eab"
+        }
+      }
+    },
+    {
+      "id": "2026-10-06-everyday-194l",
+      "productId": "coupang-08039b2ac81db358",
+      "model": "194L",
+      "color": "라벤더",
+      "date": "2026-10-06",
+      "previousImage": "/assets/lookbook/2026-10-06-everyday-194l.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-06-everyday-194l-640.webp",
+      "image": "/assets/lookbook/2026-10-06-everyday-194l-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-06-everyday-194l-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-08039b2ac81db358/main-mkrOsxkr3orTIBRMVe620YMpIMn39j.jpg",
+      "dimensionsCm": [
+        28,
+        39,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 44페이지의 194L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-08039b2ac81db358.jpg",
+      "generatedSha256": "7a6a0c35d3d5f5bc713813ec4eacf6f3d9f917bb6c8f8ec6005455c7f5c960f1",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-6.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/56.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-06-everyday-194l-snap.webp",
+          "bytes": 67364,
+          "sha256": "9150d55cd5a85cf738d1bf8dff698738bd4dfe0480421b0a48836bb344e2f641",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "7a6a0c35d3d5f5bc713813ec4eacf6f3d9f917bb6c8f8ec6005455c7f5c960f1"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-06-everyday-194l-snap-640.webp",
+          "bytes": 27140,
+          "sha256": "318c90b6ec8fe009aec479b0631c30af3ef086d916d5267575c2a847181cf23b",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "7a6a0c35d3d5f5bc713813ec4eacf6f3d9f917bb6c8f8ec6005455c7f5c960f1"
+        }
+      }
+    },
+    {
+      "id": "2026-10-05-city-124",
+      "productId": "coupang-9e8b28e0fab8e07a",
+      "model": "124",
+      "color": "오렌지",
+      "date": "2026-10-05",
+      "previousImage": "/assets/lookbook/2026-10-05-city-124.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-05-city-124-640.webp",
+      "image": "/assets/lookbook/2026-10-05-city-124-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-05-city-124-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-9e8b28e0fab8e07a/main-wpAadi227TDPkjv9fuXx8jOOQVqiSn.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 35페이지의 124 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-9e8b28e0fab8e07a.jpg",
+      "generatedSha256": "4d2f4a5465a8c0dde1536b409978397c3a94a03e14ea4436cd2261f5001d9256",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-6.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/57.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-05-city-124-snap.webp",
+          "bytes": 128098,
+          "sha256": "b2770a966180a9388342e06c124c330d6d625e19e8aaa214505bb1d6586cf38d",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "4d2f4a5465a8c0dde1536b409978397c3a94a03e14ea4436cd2261f5001d9256"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-05-city-124-snap-640.webp",
+          "bytes": 53030,
+          "sha256": "546cc489435f5bb76bdb95c857efaff60e444ca3d7493dbd81872541fb2cdfe7",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "4d2f4a5465a8c0dde1536b409978397c3a94a03e14ea4436cd2261f5001d9256"
+        }
+      }
+    },
+    {
+      "id": "2026-10-05-everyday-0423",
+      "productId": "coupang-e733b49430ffbe4d",
+      "model": "0423",
+      "color": "브라운",
+      "date": "2026-10-05",
+      "previousImage": "/assets/lookbook/2026-10-05-everyday-0423.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-05-everyday-0423-640.webp",
+      "image": "/assets/lookbook/2026-10-05-everyday-0423-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-05-everyday-0423-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e733b49430ffbe4d/main-brJHq1r30m8drE0LSnC7wTdrj4N74r.jpg",
+      "dimensionsCm": [
+        32,
+        42,
+        13
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 9페이지의 0423 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-e733b49430ffbe4d.jpg",
+      "generatedSha256": "0ca0014548220a119566edf7c03f00eb6ee1879cf09aa64ebb3980b221cc39ee",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-6.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/58.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-05-everyday-0423-snap.webp",
+          "bytes": 66150,
+          "sha256": "9632e7439027c78387893bf7298c3435ddb85dc2772512aa89546fd0760aec03",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "0ca0014548220a119566edf7c03f00eb6ee1879cf09aa64ebb3980b221cc39ee"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-05-everyday-0423-snap-640.webp",
+          "bytes": 27882,
+          "sha256": "e85fcbea9180f7c95725c26f0ce01d30208affaad74e1c91660bfad8276dafac",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "0ca0014548220a119566edf7c03f00eb6ee1879cf09aa64ebb3980b221cc39ee"
+        }
+      }
+    },
+    {
+      "id": "2026-10-05-everyday-2505",
+      "productId": "coupang-e16e6315910fdd6b",
+      "model": "2505",
+      "color": "블랙",
+      "date": "2026-10-05",
+      "previousImage": "/assets/lookbook/2026-10-05-everyday-2505.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-05-everyday-2505-640.webp",
+      "image": "/assets/lookbook/2026-10-05-everyday-2505-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-05-everyday-2505-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e16e6315910fdd6b/main-rgxtYpMoAPOljowvNuFsQn7QcDh936.jpg",
+      "dimensionsCm": [
+        30,
+        43,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 5페이지의 2505 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-e16e6315910fdd6b.jpg",
+      "generatedSha256": "47f118188f01ffa2d32f9a83da90e8de22741bda2927d9dfaf16afe3dada0c89",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-6.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/59.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-05-everyday-2505-snap.webp",
+          "bytes": 65038,
+          "sha256": "557a22aa9d5be00ab5e6242f2f1ff6e586a26b160eef36deb2fdd90fb388a1ce",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "47f118188f01ffa2d32f9a83da90e8de22741bda2927d9dfaf16afe3dada0c89"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-05-everyday-2505-snap-640.webp",
+          "bytes": 31192,
+          "sha256": "294cf30dff2298926e511a4c76c386afefcd21ffd4013c7c0da5c532c8b498df",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "47f118188f01ffa2d32f9a83da90e8de22741bda2927d9dfaf16afe3dada0c89"
+        }
+      }
+    },
+    {
+      "id": "2026-10-05-travel-0513",
+      "productId": "store-13312570673",
+      "model": "0513",
+      "color": "스카이",
+      "date": "2026-10-05",
+      "previousImage": "/assets/lookbook/2026-10-05-travel-0513.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-05-travel-0513-640.webp",
+      "image": "/assets/lookbook/2026-10-05-travel-0513-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-05-travel-0513-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260416_279/1776311593691l3vHW_JPEG/596354370083117_582164802.jpg",
+      "dimensionsCm": [
+        30,
+        43,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 17페이지의 0513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13312570673.jpg",
+      "generatedSha256": "f13221a18888111d1964f072abf12768378ef0854324117c5febab3c6831a2b7",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-6.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/60.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-05-travel-0513-snap.webp",
+          "bytes": 205090,
+          "sha256": "1959fd110c0ebc733ba542653f483e53dfb2cc131ea546677787d1cc81457cec",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "f13221a18888111d1964f072abf12768378ef0854324117c5febab3c6831a2b7"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-05-travel-0513-snap-640.webp",
+          "bytes": 91954,
+          "sha256": "79d0800104f36b363d466ffba516949f2e149d1bf25f109d011b2434fec84e4f",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "f13221a18888111d1964f072abf12768378ef0854324117c5febab3c6831a2b7"
+        }
+      }
+    },
+    {
+      "id": "2026-10-04-travel-124s",
+      "productId": "coupang-89f32d8ebba306ec",
+      "model": "124S",
+      "color": "옐로우 브라운",
+      "date": "2026-10-04",
+      "previousImage": "/assets/lookbook/2026-10-04-travel-124s.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-04-travel-124s-640.webp",
+      "image": "/assets/lookbook/2026-10-04-travel-124s-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-04-travel-124s-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-89f32d8ebba306ec/main-RZbO1NbGDv0opC3TEzfRgp5JrIzNtG.jpg",
+      "dimensionsCm": [
+        22,
+        33,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 34페이지의 124S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-89f32d8ebba306ec.jpg",
+      "generatedSha256": "d1f8027784c0b821cb0d5f6a3c540d46f75474d9b56b794852ecb38836fbb282",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-7.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/61.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-04-travel-124s-snap.webp",
+          "bytes": 123276,
+          "sha256": "52adc7739e57946a320dbb31ad8afd6e1c60b4cd0cdaefb1bf6e66a05093dcb4",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "d1f8027784c0b821cb0d5f6a3c540d46f75474d9b56b794852ecb38836fbb282"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-04-travel-124s-snap-640.webp",
+          "bytes": 52172,
+          "sha256": "f708d6b8a4e88c7b80ad91fd0cdba6cc9ca5f0ec245ba9f2b4c711c23adb649e",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "d1f8027784c0b821cb0d5f6a3c540d46f75474d9b56b794852ecb38836fbb282"
+        }
+      }
+    },
+    {
+      "id": "2026-10-04-everyday-9291",
+      "productId": "store-13408069845",
+      "model": "9291",
+      "color": "라벤더",
+      "date": "2026-10-04",
+      "previousImage": "/assets/lookbook/2026-10-04-everyday-9291.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-04-everyday-9291-640.webp",
+      "image": "/assets/lookbook/2026-10-04-everyday-9291-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-04-everyday-9291-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260416_30/1776315459037ny7Nf_JPEG/108348427949227048_692471493.jpg",
+      "dimensionsCm": [
+        31,
+        45,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 7페이지의 9291 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13408069845.jpg",
+      "generatedSha256": "3625bfbe90038fa44c2488f75e85226d5d20d873ed02288ed42f49665d7f5b6c",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-7.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/62.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-04-everyday-9291-snap.webp",
+          "bytes": 161632,
+          "sha256": "ab7e7ac163180cd8a8e45747fad9fad88f72b4da8add4381d152957fa6ba689d",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "3625bfbe90038fa44c2488f75e85226d5d20d873ed02288ed42f49665d7f5b6c"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-04-everyday-9291-snap-640.webp",
+          "bytes": 64786,
+          "sha256": "e357942792ba557f454920c3644d6752f501eeef44098477ba029d2e2c6110ca",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "3625bfbe90038fa44c2488f75e85226d5d20d873ed02288ed42f49665d7f5b6c"
+        }
+      }
+    },
+    {
+      "id": "2026-10-04-everyday-9004",
+      "productId": "coupang-07ec396be4fa6753",
+      "model": "9004",
+      "color": "민트 그레이",
+      "date": "2026-10-04",
+      "previousImage": "/assets/lookbook/2026-10-04-everyday-9004.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-04-everyday-9004-640.webp",
+      "image": "/assets/lookbook/2026-10-04-everyday-9004-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-04-everyday-9004-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-07ec396be4fa6753/main-2WLPROfkFWHazRkvzHqfOSxbcr4qPH.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 49페이지의 9004 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-07ec396be4fa6753.jpg",
+      "generatedSha256": "7ab5a735e5e0f6a1c5b213ebe4cb45d41eed597f6abe8e9553d76b61428c9202",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-7.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/63.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-04-everyday-9004-snap.webp",
+          "bytes": 62164,
+          "sha256": "fc4ba035f410dc7822092321e8755836ce7c465a81b8c777e52220aeddcd3644",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "7ab5a735e5e0f6a1c5b213ebe4cb45d41eed597f6abe8e9553d76b61428c9202"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-04-everyday-9004-snap-640.webp",
+          "bytes": 26778,
+          "sha256": "a0c4a526db3f00540062c82460c0335ae85963fe83b687ec75c914b10427d4ec",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "7ab5a735e5e0f6a1c5b213ebe4cb45d41eed597f6abe8e9553d76b61428c9202"
+        }
+      }
+    },
+    {
+      "id": "2026-10-04-city-2301",
+      "productId": "coupang-c75f72bf26deba5f",
+      "model": "2301",
+      "color": "네이비",
+      "date": "2026-10-04",
+      "previousImage": "/assets/lookbook/2026-10-04-city-2301.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-04-city-2301-640.webp",
+      "image": "/assets/lookbook/2026-10-04-city-2301-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-04-city-2301-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-c75f72bf26deba5f/main-X6lFrqCjAhVFZPDpyvXClAUs5yGZxa.jpg",
+      "dimensionsCm": [
+        28,
+        42,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 38페이지의 2301 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-c75f72bf26deba5f.jpg",
+      "generatedSha256": "3376417add21f15387bffaff35b81d38c1867b50bcad56581963a1100f98b383",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-7.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/64.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-04-city-2301-snap.webp",
+          "bytes": 72390,
+          "sha256": "7d37a6ce15706f7274a5a17d77809ea950c518c3459cc328dc4c2930724bf85b",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "3376417add21f15387bffaff35b81d38c1867b50bcad56581963a1100f98b383"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-04-city-2301-snap-640.webp",
+          "bytes": 29232,
+          "sha256": "8f2892d90783b660a69f341d211a599e5dd2156dbf682693c038aad6fd7f789a",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "3376417add21f15387bffaff35b81d38c1867b50bcad56581963a1100f98b383"
+        }
+      }
+    },
+    {
+      "id": "2026-10-03-travel-1111",
+      "productId": "coupang-24ab5bb3a4b1aa6a",
+      "model": "1111",
+      "color": "브라운",
+      "date": "2026-10-03",
+      "previousImage": "/assets/lookbook/2026-10-03-travel-1111.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-03-travel-1111-640.webp",
+      "image": "/assets/lookbook/2026-10-03-travel-1111-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-03-travel-1111-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-24ab5bb3a4b1aa6a/main-f0dyKBH0fS6ojaxTysQQFI3zjVuCWl.jpg",
+      "dimensionsCm": [
+        43,
+        47,
+        24
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 6페이지의 1111 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-24ab5bb3a4b1aa6a.jpg",
+      "generatedSha256": "1fba933bce38449af1631b13fe560f05489173abeb868c1521a956e9dd57626a",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-7.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/65.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-03-travel-1111-snap.webp",
+          "bytes": 140956,
+          "sha256": "b57ef52b6dc3e46903e3d375dceb39df9bdd38feaa1f1f5572ef7e3d555328ae",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "1fba933bce38449af1631b13fe560f05489173abeb868c1521a956e9dd57626a"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-03-travel-1111-snap-640.webp",
+          "bytes": 68252,
+          "sha256": "54f7f4f2d8d9475dc15bc7a1a48d2c48e21e10bba770e2d86f5ca605c8ac54e6",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "1fba933bce38449af1631b13fe560f05489173abeb868c1521a956e9dd57626a"
+        }
+      }
+    },
+    {
+      "id": "2026-10-03-city-1211",
+      "productId": "coupang-6c251867ca1551fd",
+      "model": "1211",
+      "color": "핑크",
+      "date": "2026-10-03",
+      "previousImage": "/assets/lookbook/2026-10-03-city-1211.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-03-city-1211-640.webp",
+      "image": "/assets/lookbook/2026-10-03-city-1211-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-03-city-1211-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6c251867ca1551fd/main-jhsPfpFhbBScsrdVj0Awrz69HbFmWE.jpg",
+      "dimensionsCm": [
+        26,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 56페이지의 1211 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-6c251867ca1551fd.jpg",
+      "generatedSha256": "e182cf7eb9f0602f85ead7a7be55009655913ed6acc3d573b8cd9dd52068f2a1",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-7.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/66.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-03-city-1211-snap.webp",
+          "bytes": 156062,
+          "sha256": "bfbc4206ece49f5820f27e345dddc945fa23bb33744e9d153722721c4a6a0395",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "e182cf7eb9f0602f85ead7a7be55009655913ed6acc3d573b8cd9dd52068f2a1"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-03-city-1211-snap-640.webp",
+          "bytes": 72236,
+          "sha256": "a0ffcf7b34a564fbc0d459d03639181236719125448f69be994cc05e9af6bfff",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "e182cf7eb9f0602f85ead7a7be55009655913ed6acc3d573b8cd9dd52068f2a1"
+        }
+      }
+    },
+    {
+      "id": "2026-10-03-everyday-0422",
+      "productId": "coupang-d688e9b1291f7997",
+      "model": "0422",
+      "color": "옐로우",
+      "date": "2026-10-03",
+      "previousImage": "/assets/lookbook/2026-10-03-everyday-0422.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-03-everyday-0422-640.webp",
+      "image": "/assets/lookbook/2026-10-03-everyday-0422-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-03-everyday-0422-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-d688e9b1291f7997/main-toYqM2Jib7V2z2Jan06Jky9asr0qrf.jpg",
+      "dimensionsCm": [
+        30,
+        40,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 54페이지의 0422 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-d688e9b1291f7997.jpg",
+      "generatedSha256": "54d55fffa5bae71fa5aa7f5b93c4a595a50b3606e69c734bfca18537496c17c1",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-7.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/67.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-03-everyday-0422-snap.webp",
+          "bytes": 102220,
+          "sha256": "20b48123963edcdacc69af98071bdb1f3193fea7c022b26159148fc648e88235",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "54d55fffa5bae71fa5aa7f5b93c4a595a50b3606e69c734bfca18537496c17c1"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-03-everyday-0422-snap-640.webp",
+          "bytes": 40778,
+          "sha256": "ed4dd1f7216c66e835b494d0db04f012889d6471e119a4f74bb4ed5383d341c9",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "54d55fffa5bae71fa5aa7f5b93c4a595a50b3606e69c734bfca18537496c17c1"
+        }
+      }
+    },
+    {
+      "id": "2026-10-03-city-1682",
+      "productId": "coupang-00860ebfcbb609f9",
+      "model": "1682",
+      "color": "그레이",
+      "date": "2026-10-03",
+      "previousImage": "/assets/lookbook/2026-10-03-city-1682.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-03-city-1682-640.webp",
+      "image": "/assets/lookbook/2026-10-03-city-1682-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-03-city-1682-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-00860ebfcbb609f9/main-rCV6RzlGBvwZvBZtCPx6rcOOl2mgYF.jpg",
+      "dimensionsCm": [
+        30,
+        50,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 39페이지의 1682 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-00860ebfcbb609f9.jpg",
+      "generatedSha256": "e1fbf039f5e9db2d4a79751127e0e103c55866a44d12ad373e1c2cc884b3ae58",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-7.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/68.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-03-city-1682-snap.webp",
+          "bytes": 61970,
+          "sha256": "719d68b648e812d3feddd1888cfb70a8ebef33818a73f89b25d5f6285c0ae8a3",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "e1fbf039f5e9db2d4a79751127e0e103c55866a44d12ad373e1c2cc884b3ae58"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-03-city-1682-snap-640.webp",
+          "bytes": 26456,
+          "sha256": "f1fa75662d70d55fecab4e02eb35182da930bc920457ad6fb970dd32e4bcfbe0",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "e1fbf039f5e9db2d4a79751127e0e103c55866a44d12ad373e1c2cc884b3ae58"
+        }
+      }
+    },
+    {
+      "id": "2026-10-02-city-1084h",
+      "productId": "coupang-ba33ab8f40e76a95",
+      "model": "1084H",
+      "color": "민트",
+      "date": "2026-10-02",
+      "previousImage": "/assets/lookbook/2026-10-02-city-1084h.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-02-city-1084h-640.webp",
+      "image": "/assets/lookbook/2026-10-02-city-1084h-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-02-city-1084h-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-ba33ab8f40e76a95/main-DsF2CqdsrdjUsWSgJcu5XydYRcPngM.jpg",
+      "dimensionsCm": [
+        28.5,
+        39,
+        12
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 26페이지의 H1084 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-ba33ab8f40e76a95.jpg",
+      "generatedSha256": "e9c02c19513c8880acc548cc3cc3be79d46e9461b2f838c60cc9e262fe745561",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-7.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/69.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-02-city-1084h-snap.webp",
+          "bytes": 174312,
+          "sha256": "5473651c44f55d29cb120a503c0dbd8be883bb970f13e9f6835974be65731f63",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "e9c02c19513c8880acc548cc3cc3be79d46e9461b2f838c60cc9e262fe745561"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-02-city-1084h-snap-640.webp",
+          "bytes": 76380,
+          "sha256": "eddc5fe1da63ae63949457d5329155ecd73ea6d8378210e3742e46d8854889ff",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "e9c02c19513c8880acc548cc3cc3be79d46e9461b2f838c60cc9e262fe745561"
+        }
+      }
+    },
+    {
+      "id": "2026-10-02-travel-1010",
+      "productId": "coupang-3d4fbf39120dea6f",
+      "model": "1010",
+      "color": "카키",
+      "date": "2026-10-02",
+      "previousImage": "/assets/lookbook/2026-10-02-travel-1010.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-02-travel-1010-640.webp",
+      "image": "/assets/lookbook/2026-10-02-travel-1010-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-02-travel-1010-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-3d4fbf39120dea6f/main-7eLzz0VGYkIX3KVApCVQWErMCnTqwM.jpg",
+      "dimensionsCm": [
+        33,
+        45,
+        15
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 50페이지의 1010 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-3d4fbf39120dea6f.jpg",
+      "generatedSha256": "f984574e2dd328373b876c544813e94db0a7ad029ee86d0030a20ea695560036",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-7.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/70.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-02-travel-1010-snap.webp",
+          "bytes": 116530,
+          "sha256": "54abe4f73bd91a2fefb0caf5f9350efff2bb69a06930e6228a12b9499482a453",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "f984574e2dd328373b876c544813e94db0a7ad029ee86d0030a20ea695560036"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-02-travel-1010-snap-640.webp",
+          "bytes": 49744,
+          "sha256": "8a8f9942212135cd877e65351651be0ed1ff3da231905aaad8f36add31e67397",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "f984574e2dd328373b876c544813e94db0a7ad029ee86d0030a20ea695560036"
+        }
+      }
+    },
+    {
+      "id": "2026-10-01-everyday-0403",
+      "productId": "store-13308523903",
+      "model": "0403",
+      "color": "베이지",
+      "date": "2026-10-01",
+      "previousImage": "/assets/lookbook/2026-10-01-everyday-0403.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-01-everyday-0403-640.webp",
+      "image": "/assets/lookbook/2026-10-01-everyday-0403-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-01-everyday-0403-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260211_281/1770774598923VUxxR_JPEG/20746952034287940_427742899.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 22페이지의 0403 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다. 외부 크기는 백팩 기준이며 숄더백은 별도 23 × 18 cm로 표기됩니다. 900 g의 구성품 포함 여부는 미기재입니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13308523903.jpg",
+      "generatedSha256": "e3c9fa29f6bb644d237d0716901eb3ec2fa9aaaf5c39f25bc88afa7af53d6151",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-8.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/71.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-01-everyday-0403-snap.webp",
+          "bytes": 82956,
+          "sha256": "4c504d1e0a9a2c073fbb62ebc0d9bf49c3d5e6040c6fb2dd9dd19314a995f41c",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "e3c9fa29f6bb644d237d0716901eb3ec2fa9aaaf5c39f25bc88afa7af53d6151"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-01-everyday-0403-snap-640.webp",
+          "bytes": 32728,
+          "sha256": "8a01533e750abb9d3271cd3a07eeb9499aa5bb77527c76f6527f606f448964c7",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "e3c9fa29f6bb644d237d0716901eb3ec2fa9aaaf5c39f25bc88afa7af53d6151"
+        }
+      }
+    },
+    {
+      "id": "2026-10-01-travel-1223",
+      "productId": "store-13326074553",
+      "model": "1223",
+      "color": "블랙",
+      "date": "2026-10-01",
+      "previousImage": "/assets/lookbook/2026-10-01-travel-1223.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-01-travel-1223-640.webp",
+      "image": "/assets/lookbook/2026-10-01-travel-1223-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-10-01-travel-1223-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260211_155/1770774832275FXD6k_JPEG/9310800270407694_948731888.jpg",
+      "dimensionsCm": [
+        29,
+        40,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 29페이지의 1223 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13326074553.jpg",
+      "generatedSha256": "20e3ad21146f14b7a6674510c854838ab0a51caf05b0e702ebe119a9f4d2d279",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-8.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/72.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-01-travel-1223-snap.webp",
+          "bytes": 135454,
+          "sha256": "a015f7af16ada98b94bc25e49bb1298a0b2f85aa706112498d5b53ad899251ec",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "20e3ad21146f14b7a6674510c854838ab0a51caf05b0e702ebe119a9f4d2d279"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-01-travel-1223-snap-640.webp",
+          "bytes": 69316,
+          "sha256": "357066f7d599a19cb3c3c60df52c23451ba2dea44c6f12f0460a0c7f26a8bfea",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "20e3ad21146f14b7a6674510c854838ab0a51caf05b0e702ebe119a9f4d2d279"
+        }
+      }
+    },
+    {
+      "id": "2026-09-30-everyday-1208",
+      "productId": "store-13326577567",
+      "model": "1208",
+      "color": "아이보리",
+      "date": "2026-09-30",
+      "previousImage": "/assets/lookbook/2026-09-30-everyday-1208.webp",
+      "previousThumbnail": "/assets/lookbook/2026-09-30-everyday-1208-640.webp",
+      "image": "/assets/lookbook/2026-09-30-everyday-1208-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-09-30-everyday-1208-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260327_177/17745877470621bKeS_JPEG/3728478673959279_1633863399.jpg",
+      "dimensionsCm": [
+        29,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 30페이지의 1208 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13326577567.jpg",
+      "generatedSha256": "d77b852eb22c80719ccefb17e9df0c6f76e5974e039fd86d226a817273f3cd35",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-8.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/73.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-09-30-everyday-1208-snap.webp",
+          "bytes": 71964,
+          "sha256": "6765f264e24378beb220c1ee7dc718c674f1370e36c2672da5c93afa289b5d66",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "d77b852eb22c80719ccefb17e9df0c6f76e5974e039fd86d226a817273f3cd35"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-09-30-everyday-1208-snap-640.webp",
+          "bytes": 31312,
+          "sha256": "dc22de237096ac164f712ed6a45ecfc47446c09f030ce975d45130bb15195db2",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "d77b852eb22c80719ccefb17e9df0c6f76e5974e039fd86d226a817273f3cd35"
+        }
+      }
+    },
+    {
+      "id": "2026-09-30-city-0514s",
+      "productId": "store-13326396058",
+      "model": "0514S",
+      "color": "실버",
+      "date": "2026-09-30",
+      "previousImage": "/assets/lookbook/2026-09-30-city-0514s.webp",
+      "previousThumbnail": "/assets/lookbook/2026-09-30-city-0514s-640.webp",
+      "image": "/assets/lookbook/2026-09-30-city-0514s-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-09-30-city-0514s-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260211_152/17707744461046CCJC_JPEG/104907218390027692_404109632.jpg",
+      "dimensionsCm": [
+        27,
+        36,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 18페이지의 0514S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13326396058.jpg",
+      "generatedSha256": "6ae00459de2256b706808770d6a0106424a053f9b18fd55d817b131f1616ab98",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-8.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/74.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-09-30-city-0514s-snap.webp",
+          "bytes": 91192,
+          "sha256": "8b0decf9f27b55a95b6db7deccbb1c2ba4d1332ae6a23cc58891cd22107bbfdf",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "6ae00459de2256b706808770d6a0106424a053f9b18fd55d817b131f1616ab98"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-09-30-city-0514s-snap-640.webp",
+          "bytes": 39468,
+          "sha256": "e38e946db155026b932600be36b1a2a86d5272616d424b62bd70cf40b1a45703",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "6ae00459de2256b706808770d6a0106424a053f9b18fd55d817b131f1616ab98"
+        }
+      }
+    },
+    {
+      "id": "2026-09-29-everyday-1230",
+      "productId": "store-13308483411",
+      "model": "1230",
+      "color": "그레이",
+      "date": "2026-09-29",
+      "previousImage": "/assets/lookbook/2026-09-29-everyday-1230.webp",
+      "previousThumbnail": "/assets/lookbook/2026-09-29-everyday-1230-640.webp",
+      "image": "/assets/lookbook/2026-09-29-everyday-1230-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-09-29-everyday-1230-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260326_238/1774503626907819SG_JPEG/29145858851779990_764507912.jpg",
+      "dimensionsCm": [
+        32,
+        40,
+        18
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 15페이지의 1230 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13308483411.jpg",
+      "generatedSha256": "ab5215505521143b0e37cf87b2979a17ff33c8a9a2f50d1757f1029683063daf",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-8.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/75.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-09-29-everyday-1230-snap.webp",
+          "bytes": 119346,
+          "sha256": "ad12dc64fb5f17d19b9bd3f9a9fcbd1a6b5a2f1b57a405bf3210c3dca9d5aa8a",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "ab5215505521143b0e37cf87b2979a17ff33c8a9a2f50d1757f1029683063daf"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-09-29-everyday-1230-snap-640.webp",
+          "bytes": 48228,
+          "sha256": "5ec2861098ab23b71da9e6363afdc90148491988081a42287a5d3cadb8451269",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "ab5215505521143b0e37cf87b2979a17ff33c8a9a2f50d1757f1029683063daf"
+        }
+      }
+    },
+    {
+      "id": "2026-09-29-travel-1089",
+      "productId": "store-13685218117",
+      "model": "1089",
+      "color": "핑크",
+      "date": "2026-09-29",
+      "previousImage": "/assets/lookbook/2026-09-29-travel-1089.webp",
+      "previousThumbnail": "/assets/lookbook/2026-09-29-travel-1089-640.webp",
+      "image": "/assets/lookbook/2026-09-29-travel-1089-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-09-29-travel-1089-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260728_177/1785204907093Rb8GH_JPEG/32449486153229195_959631206.jpg",
+      "dimensionsCm": [
+        29.5,
+        42,
+        12
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 12페이지의 1089 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13685218117.jpg",
+      "generatedSha256": "73c335f1f1172478f59df1aba6b375f269d2c118cd21e93e8e1481d0696fe8de",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-8.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/76.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-09-29-travel-1089-snap.webp",
+          "bytes": 190042,
+          "sha256": "27a03e0bef51996d01819a7921d3beaa956decef1fbf2d586230ca31edabe8ca",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "73c335f1f1172478f59df1aba6b375f269d2c118cd21e93e8e1481d0696fe8de"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-09-29-travel-1089-snap-640.webp",
+          "bytes": 78314,
+          "sha256": "ddb53f5aefa84f0103b8b12d925b9606fb802fe01ccc14ebc628e3fc87d97723",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "73c335f1f1172478f59df1aba6b375f269d2c118cd21e93e8e1481d0696fe8de"
+        }
+      }
+    },
+    {
+      "id": "2026-09-28-city-1884",
+      "productId": "store-13326303754",
+      "model": "1884",
+      "color": "카키",
+      "date": "2026-09-28",
+      "previousImage": "/assets/lookbook/2026-09-28-city-1884.webp",
+      "previousThumbnail": "/assets/lookbook/2026-09-28-city-1884-640.webp",
+      "image": "/assets/lookbook/2026-09-28-city-1884-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-09-28-city-1884-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260708_26/1783479881442IJMDp_JPEG/128389886240827058_66176657.jpg",
+      "dimensionsCm": [
+        30,
+        45,
+        20
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 31페이지의 1884 대형(1884L) 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13326303754.jpg",
+      "generatedSha256": "e96a91d014d908c20ad6085e8a730d3ab4f747b441b0df68855f5b22d46e3dba",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-8.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/77.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-09-28-city-1884-snap.webp",
+          "bytes": 59932,
+          "sha256": "126c2ea750dc0345fbd7bdab994d148865adb85a03021924477770bf06891fb8",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "e96a91d014d908c20ad6085e8a730d3ab4f747b441b0df68855f5b22d46e3dba"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-09-28-city-1884-snap-640.webp",
+          "bytes": 27976,
+          "sha256": "744be381dc624ee877f498697467cf81ab33de3f4b5a4d1918ba76d325129700",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "e96a91d014d908c20ad6085e8a730d3ab4f747b441b0df68855f5b22d46e3dba"
+        }
+      }
+    },
+    {
+      "id": "2026-09-28-travel-1027",
+      "productId": "store-11070925709",
+      "model": "1027",
+      "color": "라벤더",
+      "date": "2026-09-28",
+      "previousImage": "/assets/lookbook/2026-09-28-travel-1027.webp",
+      "previousThumbnail": "/assets/lookbook/2026-09-28-travel-1027-640.webp",
+      "image": "/assets/lookbook/2026-09-28-travel-1027-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-09-28-travel-1027-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260210_108/1770707978865U4o9A_JPEG/43528032995650075_718147852.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 28페이지의 1027 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-11070925709.jpg",
+      "generatedSha256": "d7aeabcecfffe2def5a75be67164ab59faf3156ae1e69cfcfbe048e25c5d4141",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-8.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/78.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-09-28-travel-1027-snap.webp",
+          "bytes": 233794,
+          "sha256": "f6964ac921d97491dfd7887fc44a8c283a78f90a7a39ea7e816f9a46729eee13",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "d7aeabcecfffe2def5a75be67164ab59faf3156ae1e69cfcfbe048e25c5d4141"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-09-28-travel-1027-snap-640.webp",
+          "bytes": 111960,
+          "sha256": "3bc15529f55d4b3a4b5216c3e00feaf10ab8d86e7f928cefb5dd071386be6010",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "d7aeabcecfffe2def5a75be67164ab59faf3156ae1e69cfcfbe048e25c5d4141"
+        }
+      }
+    },
+    {
+      "id": "2026-09-28-everyday-9007",
+      "productId": "coupang-42bfd784b3247c8b",
+      "model": "9007",
+      "color": "베이지",
+      "date": "2026-09-28",
+      "previousImage": "/assets/lookbook/2026-09-28-everyday-9007.webp",
+      "previousThumbnail": "/assets/lookbook/2026-09-28-everyday-9007-640.webp",
+      "image": "/assets/lookbook/2026-09-28-everyday-9007-snap.webp",
+      "thumbnail": "/assets/lookbook/2026-09-28-everyday-9007-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-42bfd784b3247c8b/main-GORqso7CScHtD1TDA6lu5fnlyuxlsj.jpg",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 10페이지의 9007 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-42bfd784b3247c8b.jpg",
+      "generatedSha256": "42690efaa0f1bfc83f37e0f67f71bb0e37664c6df5498597790b60a196568c34",
+      "fidelityReviewed": true,
+      "reviewRecord": "backups/lookbook-refresh-2026-11-10/approvals-8.json",
+      "generatedSource": "backups/lookbook-refresh-2026-11-10/approved/79.png",
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-09-28-everyday-9007-snap.webp",
+          "bytes": 98712,
+          "sha256": "353b197e8fe546782608c3aef19f53dd7438196adbf69ed3442dba7db7b72175",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "quality": 86,
+          "generatedSha256": "42690efaa0f1bfc83f37e0f67f71bb0e37664c6df5498597790b60a196568c34"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-09-28-everyday-9007-snap-640.webp",
+          "bytes": 43798,
+          "sha256": "758e451b2af074d7ff3b187b38a7a4ba01ec8f2b5dbad8cfa7dfd7ca92deb31a",
+          "dimensions": [
+            640,
+            960
+          ],
+          "quality": 86,
+          "generatedSha256": "42690efaa0f1bfc83f37e0f67f71bb0e37664c6df5498597790b60a196568c34"
+        }
+      }
+    }
+  ]
+}
