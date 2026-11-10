@@ -14,7 +14,7 @@ import { database, databaseIsConfigured } from './_lib/database.js';
 const SITE_ORIGIN = 'https://himawari.co.kr';
 const SITEMAP_PAGES = [
   ['/', '2026-09-08'],
-  ['/about.html', '2026-08-29'],
+  ['/about.html', '2026-11-10'],
   ['/products.html', '2026-09-03'],
   ['/collections/school', '2026-09-08'],
   ['/collections/business', '2026-09-08'],
