@@ -1,4 +1,4 @@
-import { blackFridayView, jsonLdText } from './view.js?v=20261110-price-bands';
+import { blackFridayView, jsonLdText } from './view.js?v=20261110-continuous-grid';
 import { animate } from '/assets/site-ui.js';
 
 const main = document.querySelector('[data-bf-offer]');

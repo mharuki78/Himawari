@@ -9,11 +9,21 @@ const items = [49900, 39000, 29999, 30000, 40000].map((price, i) => ({
 }));
 const event = { state: 'open', startsAt: '2026-11-27T00:00:00Z', serverTime: '2026-11-27T01:00:00Z', endsAt: '2026-11-27T02:00:00Z', items };
 
-test('shows only populated bands by sale price and uses the same ordering in structured data', () => {
+test('links populated price bands to the first matching cards in one sale-price-ordered grid', () => {
   const { content, schema } = blackFridayView(event);
-  const groups = [...content.matchAll(/<section[^>]+id="bf-price-(\d+)"/g)].map(match => Number(match[1]));
-  assert.deepEqual(groups, [2, 3, 4]);
-  for (const label of ['2만원대', '3만원대', '4만원대']) assert.ok(content.includes(label));
+  const [navigation, products] = content.split('</nav>');
+  const jumps = [...navigation.matchAll(/href="#bf-price-(\d+)">(\d+)만원대/g)];
+  assert.deepEqual(jumps.map(match => match.slice(1)), [['2', '2'], ['3', '3'], ['4', '4']]);
+  assert.equal([...products.matchAll(/data-bf-products/g)].length, 1);
+  assert.doesNotMatch(products, /만원대|<section/);
+  const cards = [...products.matchAll(/<article([^>]*)>[\s\S]*?<h2[^>]*><a[^>]*>([^<]+)<\/a>/g)];
+  assert.deepEqual(cards.map(([, attrs, name]) => [attrs.match(/id="([^"]+)"/)?.[1], name]), [
+    ['bf-price-2', 'Test bag 2'],
+    ['bf-price-3', 'Test bag 3'],
+    [undefined, 'Test bag 1'],
+    ['bf-price-4', 'Test bag 4'],
+    [undefined, 'Test bag 0'],
+  ]);
   assert.deepEqual(schema.mainEntity.itemListElement.map(x => x.name), ['Test bag 2', 'Test bag 3', 'Test bag 1', 'Test bag 4', 'Test bag 0']);
   assert.match(content, /34%/);
   assert.match(content, /행사 수량 소진/);
