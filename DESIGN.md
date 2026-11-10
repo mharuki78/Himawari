@@ -305,6 +305,10 @@ Use the installed Phosphor SVG assets consistently. Shortcuts combine an SVG gly
 
 Games retain their pixel-art world, controls, pause/result dialogs and reduced-motion behavior. Comparison retains three real-photo selections and its contained table. Product guidance retains confirmed specifications and its responsive image/specification split. Checkout, coupons, member state, wishlist, private inquiry, story feed and support preserve their existing source of truth. Administration's data-entry and destructive-action patterns remain local to its unchanged interface.
 
+### Generated lifestyle imagery
+
+Use approved staged imagery where available. For new lifestyle imagery and outfit films, take direction from Musinsa Snap: current Korean streetwear, relaxed poses, and everyday locations with a clear view of the bag. Match product shape, scale, hardware and color against verified catalogue photography, and label AI-staged visuals in the interface.
+
 ## Do's and Don'ts
 
 ### Do:
