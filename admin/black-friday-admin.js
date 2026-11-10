@@ -3,6 +3,8 @@ import { fetchJson } from './admin-client.js';
 const formatPrice = new Intl.NumberFormat('ko-KR');
 const formatState = { inactive: '사용 안 함', scheduled: '시작 예정', open: '진행 중', closed: '종료' };
 const kst = value => value ? new Date(Date.parse(value) + 9 * 3600_000).toISOString().slice(0, 16) : '';
+const entryKey = ({ productId, optionId }) => JSON.stringify([productId, optionId || '']);
+const itemLimit = 100;
 
 function element(tag, className, text) {
   const node = document.createElement(tag);
@@ -27,11 +29,20 @@ export function setupBlackFridayAdmin(onUnauthorized) {
   const enabled = form.elements.namedItem('enabled');
   const starts = form.elements.namedItem('startsAt');
   const ends = form.elements.namedItem('endsAt');
-  let catalog = [], revision = 0, ready = false, busy = false;
+  const picker = document.querySelector('[data-bf-picker]');
+  const pickerSearch = picker.querySelector('[data-bf-picker-search]');
+  const pickerSort = picker.querySelector('[data-bf-picker-sort]');
+  const pickerList = picker.querySelector('[data-bf-picker-list]');
+  const pickerCount = picker.querySelector('[data-bf-picker-count]');
+  const pickerAdd = picker.querySelector('[data-bf-picker-add]');
+  const selected = new Set();
+  let catalog = [], reviewCounts = null, revision = 0, ready = false, busy = false;
+
+  const rows = () => [...list.querySelectorAll('fieldset')];
 
   function sync() {
     save.disabled = enabled.disabled = starts.disabled = ends.disabled = !ready || busy;
-    add.disabled = save.disabled || !catalog.length || list.querySelectorAll('fieldset').length >= 100;
+    add.disabled = save.disabled || !catalog.length || rows().length >= itemLimit;
     reload.disabled = busy;
     list.querySelectorAll('fieldset').forEach(row => { row.disabled = busy || !ready; });
   }
@@ -77,7 +88,41 @@ export function setupBlackFridayAdmin(onUnauthorized) {
       return { productId: entry?.productId, optionId: entry?.optionId, price: price.valueAsNumber, quantity: quantity.valueAsNumber };
     };
     list.append(row); showHint();
-    return product;
+    return price;
+  }
+
+  function updatePickerCount() {
+    pickerCount.textContent = `${selected.size}개 선택 · 최대 ${itemLimit - rows().length}개 추가 가능`;
+    pickerAdd.disabled = selected.size === 0;
+  }
+
+  function renderPicker() {
+    const existing = new Set(rows().map(row => entryKey(row.collect())));
+    const query = pickerSearch.value.trim().toLocaleLowerCase('ko-KR');
+    const entries = catalog.map((entry, index) => ({ entry, index }));
+    if (pickerSort.value === 'review-count' && reviewCounts) {
+      entries.sort((a, b) => (reviewCounts[b.entry.productId] || 0) - (reviewCounts[a.entry.productId] || 0));
+    }
+    const choices = entries.flatMap(({ entry, index }) => {
+      if (query && ![entry.model, entry.name, entry.optionLabel].join(' ').toLocaleLowerCase('ko-KR').includes(query)) return [];
+      const alreadyAdded = existing.has(entryKey(entry));
+      const choice = element('label', 'bf-product-picker__row');
+      const checkbox = element('input'); checkbox.type = 'checkbox'; checkbox.value = String(index);
+      checkbox.checked = selected.has(index);
+      checkbox.disabled = alreadyAdded || entry.regularPrice <= 1;
+      const thumbnail = element('span', 'bf-product-picker__thumbnail');
+      if (/^https:\/\//i.test(entry.image || '')) {
+        const image = element('img'); image.src = entry.image; image.alt = ''; image.loading = 'lazy'; image.width = image.height = 48;
+        image.addEventListener('error', () => { image.hidden = true; }, { once: true }); thumbnail.append(image);
+      }
+      const copy = element('span', 'bf-product-picker__copy');
+      const count = reviewCounts ? `상품평 ${formatPrice.format(reviewCounts[entry.productId] || 0)}개` : '';
+      copy.append(element('strong', '', entry.name), element('small', '', [entry.optionLabel, `${formatPrice.format(entry.regularPrice)}원`, count, alreadyAdded ? '추가됨' : `재고 ${entry.stock ?? '미설정'}`].filter(Boolean).join(' · ')));
+      choice.append(checkbox, thumbnail, copy);
+      return [choice];
+    });
+    pickerList.replaceChildren(...(choices.length ? choices : [element('p', 'field-help', '검색어와 일치하는 상품이 없습니다.')]));
+    updatePickerCount();
   }
 
   function renderEmpty() {
@@ -85,8 +130,11 @@ export function setupBlackFridayAdmin(onUnauthorized) {
     const empty = element('p', 'field-help', '아직 추가한 행사 품목이 없습니다.'); empty.dataset.bfEmpty = ''; list.append(empty);
   }
 
-  function show({ config, catalog: entries, state }) {
+  function show({ config, catalog: entries, state, reviewCounts: counts }) {
     catalog = entries; revision = config.revision;
+    reviewCounts = counts || null;
+    pickerSort.querySelector('[value="review-count"]').disabled = !reviewCounts;
+    if (!reviewCounts) pickerSort.value = 'default';
     enabled.checked = config.enabled; starts.value = kst(config.startsAt); ends.value = kst(config.endsAt);
     list.replaceChildren(); config.items.forEach(addRow); renderEmpty();
     status.textContent = `현재 상태: ${formatState[state]}`;
@@ -101,7 +149,25 @@ export function setupBlackFridayAdmin(onUnauthorized) {
     finally { busy = false; sync(); }
   }
 
-  add.addEventListener('click', () => { const select = addRow(); sync(); select.focus(); });
+  add.addEventListener('click', () => {
+    selected.clear(); pickerSearch.value = ''; renderPicker(); picker.showModal();
+  });
+  picker.querySelector('[data-bf-picker-close]').addEventListener('click', () => picker.close());
+  pickerSearch.addEventListener('input', renderPicker);
+  pickerSort.addEventListener('change', renderPicker);
+  pickerList.addEventListener('change', event => {
+    const checkbox = event.target;
+    if (!checkbox.matches('input[type="checkbox"]')) return;
+    const index = Number(checkbox.value);
+    if (!checkbox.checked) selected.delete(index);
+    else if (selected.size < itemLimit - rows().length) selected.add(index);
+    else checkbox.checked = false;
+    updatePickerCount();
+  });
+  pickerAdd.addEventListener('click', () => {
+    const fields = [...selected].map(index => addRow(catalog[index]));
+    picker.close(); sync(); fields[0]?.focus();
+  });
   reload.addEventListener('click', load);
   form.addEventListener('submit', async event => {
     event.preventDefault();

@@ -5,6 +5,7 @@ import { database } from './database.js';
 import { ensureOrderSchema } from './orders.js';
 import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalog } from './products.js';
 import { applyInventoryReservations } from './inventory.js';
+import { reviewGroupKey } from '../../assets/review-groups.js';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 let schemaPromise;
@@ -99,6 +100,29 @@ export async function listPublishedReviews(productId, offset = 0, nativeOnly = f
       FROM product_reviews WHERE ${predicate}`, [safeId, groupKey],
   );
   return { reviews, nextOffset: pageOffset + reviews.length < Number(aggregate.count) ? pageOffset + reviews.length : null, aggregate: { count: Number(aggregate.count), ratingValue: Number(aggregate.rating_value), naverCount: Number(aggregate.naver_count), coupangCount: Number(aggregate.coupang_count) } };
+}
+
+export async function publishedReviewCounts(products) {
+  await ensureCustomerFeatureSchema();
+  const rows = await database().query(`SELECT product_id, review_group_key, source, count(*)::int AS count
+    FROM product_reviews WHERE status = 'published' GROUP BY product_id, review_group_key, source`);
+  const direct = new Map();
+  const groups = new Map();
+  const overlap = new Map();
+  for (const row of rows) {
+    const count = Number(row.count);
+    direct.set(row.product_id, (direct.get(row.product_id) || 0) + count);
+    if (!['naver', 'coupang'].includes(row.source) || !row.review_group_key) continue;
+    groups.set(row.review_group_key, (groups.get(row.review_group_key) || 0) + count);
+    const key = JSON.stringify([row.product_id, row.review_group_key]);
+    overlap.set(key, (overlap.get(key) || 0) + count);
+  }
+  return Object.fromEntries(products.map(product => {
+    const group = reviewGroupKey(product.name, product.model);
+    const key = JSON.stringify([product.id, group]);
+    const groupCount = /^[A-Z0-9-]{1,30}$/.test(group) ? (groups.get(group) || 0) - (overlap.get(key) || 0) : 0;
+    return [product.id, (direct.get(product.id) || 0) + groupCount];
+  }));
 }
 
 async function verifiedOrder(productId, orderNumber, email) {

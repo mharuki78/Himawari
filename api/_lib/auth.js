@@ -106,6 +106,7 @@ export function adminCanAccess(principal, request) {
   if (principal.role === 'owner') return true;
   const url = new URL(request.url);
   const path = url.pathname; const route = url.searchParams.get('route') || '';
+  if (route === 'members' || path.endsWith('/members')) return false;
   if (path.endsWith('/session')) return true;
   if (route.startsWith('ops-') || path.includes('/operations')) return request.method === 'GET' && route !== 'ops-audit';
   if (principal.role === 'viewer') return request.method === 'GET';

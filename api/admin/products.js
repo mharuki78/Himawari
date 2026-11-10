@@ -26,7 +26,8 @@ import {
 import { blackFridayState, readBlackFridayAdmin, saveBlackFriday } from '../_lib/black-friday.js';
 import { ensureOrderSchema } from '../_lib/orders.js';
 import { databaseIsConfigured } from '../_lib/database.js';
-import { listAdminReviews, moderateReview, notifyRestockSubscribers } from '../_lib/customer-features.js';
+import { listAdminReviews, moderateReview, notifyRestockSubscribers, publishedReviewCounts } from '../_lib/customer-features.js';
+import { changeMemberStatus, listMembers } from '../_lib/admin-members.js';
 import {
   BlobPreconditionFailedError as ReelsBlobPreconditionFailedError,
   MAX_REELS,
@@ -54,7 +55,11 @@ async function fetchBlackFriday(request) {
   if (request.method === 'PUT' && !isSameOrigin(request)) return json({ message: '이 사이트에서만 행사 설정을 저장할 수 있습니다.' }, 403, headers);
   try {
     await ensureOrderSchema();
-    if (request.method === 'GET') return json(await readBlackFridayAdmin(), 200, headers);
+    if (request.method === 'GET') {
+      const data = await readBlackFridayAdmin();
+      const counts = await publishedReviewCounts(data.catalog.map(row => ({ ...row, id: row.productId }))).catch(() => null);
+      return json({ ...data, reviewCounts: counts }, 200, headers);
+    }
     const config = await saveBlackFriday(await readJson(request, 64_000));
     return json({ config, state: blackFridayState(config) }, 200, headers);
   } catch (error) {
@@ -97,6 +102,26 @@ async function fetchReviews(request) {
   } catch (error) {
     const status = Number(error.status) || 500;
     return json({ message: status < 500 ? error.message : '리뷰 정보를 처리하지 못했습니다.' }, status);
+  }
+}
+
+async function fetchMembers(request) {
+  const headers = { Vary: 'Cookie' };
+  if (!['GET', 'PATCH'].includes(request.method)) return methodNotAllowed(['GET', 'PATCH']);
+  if (!isAdminRequest(request)) return json({ message: '소유자 계정으로 로그인해 주세요.' }, 401, headers);
+  if (!databaseIsConfigured()) return json({ message: '회원 저장소가 연결되지 않았습니다.' }, 503, headers);
+  try {
+    if (request.method === 'GET') {
+      const params = new URL(request.url).searchParams;
+      const offset = parseCursor(params.get('offset'));
+      if (offset < 0) return json({ message: '목록 위치를 확인해 주세요.' }, 400, headers);
+      return json(await listMembers({ query: params.get('q') || '', status: params.get('status') || '', offset }), 200, headers);
+    }
+    if (!isSameOrigin(request)) return json({ message: '요청 출처를 확인할 수 없습니다.' }, 403, headers);
+    return json(await changeMemberStatus(await readJson(request, 4096) || {}), 200, headers);
+  } catch (error) {
+    const status = Number(error.status) || 500;
+    return json({ message: status < 500 ? error.message : '회원 정보를 처리하지 못했습니다.' }, status, headers);
   }
 }
 
@@ -206,6 +231,7 @@ async function handleRequest(request) {
   if (route === 'black-friday') return fetchBlackFriday(request);
   if (route === 'promotions') return fetchPromotions(request);
   if (route === 'reviews') return fetchReviews(request);
+  if (route === 'members') return fetchMembers(request);
   if (route === 'reels') return fetchReels(request);
   if (route === 'bulk-products') return fetchBulkProducts(request);
   if (!['GET', 'POST', 'PATCH', 'DELETE'].includes(request.method)) return methodNotAllowed(['GET', 'POST', 'PATCH', 'DELETE']);

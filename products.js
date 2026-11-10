@@ -1,4 +1,4 @@
-import { CATALOG_CATEGORIES, productCategory, filterAndSortFamilies, groupProductFamilies, productCardArtwork, productVariantLabel, productVariantKind } from './assets/catalog-tools.js';
+import { CATALOG_CATEGORIES, productCategory, filterAndSortFamilies, groupProductFamilies, productCardArtwork, productVariantLabel, productVariantKind } from './assets/catalog-tools.js?v=20261110-review-sort';
 import { initCompareTray, createCompareButton } from './assets/compare-store.js';
 
 const productLists = document.querySelectorAll('[data-products]');
@@ -592,7 +592,7 @@ function setupCatalog(container, families) {
   let state = {
     query: params.get('q') || '',
     category: CATALOG_CATEGORIES.some((item) => item.id === initialCategory) ? initialCategory : 'all',
-    sort: ['featured', 'price-low', 'price-high', 'name'].includes(params.get('sort')) ? params.get('sort') : 'featured',
+    sort: ['featured', 'review-count', 'price-low', 'price-high', 'name'].includes(params.get('sort')) ? params.get('sort') : 'featured',
     shown: 12,
   };
   if (search) search.value = state.query;
@@ -607,8 +607,29 @@ function setupCatalog(container, families) {
     });
   }
 
+  let reviewCounts = null;
+  let loadingReviewCounts = false;
   const render = ({ append = false } = {}) => {
-    const filtered = filterAndSortFamilies(families, state);
+    if (state.sort === 'review-count' && !reviewCounts) {
+      if (loadingReviewCounts) return;
+      loadingReviewCounts = true;
+      if (count) count.textContent = '상품평 수를 확인하고 있습니다.';
+      fetch('/api/products?route=review-counts').then(async response => {
+        if (!response.ok) throw new Error('Review count request failed');
+        const payload = await response.json();
+        if (!payload.counts || typeof payload.counts !== 'object') throw new Error('Review counts missing');
+        reviewCounts = payload.counts;
+        if (state.sort === 'review-count') render();
+      }).catch(() => {
+        if (state.sort !== 'review-count') return;
+        state.sort = 'featured';
+        if (sort) sort.value = state.sort;
+        render();
+        if (count) count.textContent += ' · 상품평 수를 불러오지 못해 추천순으로 표시합니다.';
+      }).finally(() => { loadingReviewCounts = false; });
+      return;
+    }
+    const filtered = filterAndSortFamilies(families, { ...state, reviewCounts: reviewCounts || {} });
     const visible = filtered.slice(0, state.shown);
     const fragment = document.createDocumentFragment();
     const previousCount = append ? container.children.length : 0;

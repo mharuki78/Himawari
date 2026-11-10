@@ -14,14 +14,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="console-layout.css?v=20261008">
-    <link rel="stylesheet" href="black-friday.css">
-    <script src="promotion-admin.js" type="module"></script>
+    <link rel="stylesheet" href="black-friday.css?v=20261110-picker">
+    <script src="promotion-admin.js?v=20261110-picker" type="module"></script>
   </head>
   <body>
     <a class="skip-link" href="#admin-main">본문으로 바로가기</a>
     <header class="admin-header admin-header--console">
       <div class="admin-identity"><a class="admin-brand" href="../index.html" aria-label="Himawari 공개 사이트 홈">HIMAWARI</a><span>관리자</span></div>
-      <nav class="admin-nav" aria-label="관리자 메뉴"><a href="operations.html">운영 현황</a><a href="inquiries.html">문의 관리</a><a href="products.html">제품 관리</a><a href="orders.html">주문 관리</a><a href="reviews.html">리뷰·재입고</a><a href="promotions.html" aria-current="page">프로모션</a><a href="reels.html">영상 관리</a></nav>
+      <nav class="admin-nav" aria-label="관리자 메뉴"><a href="operations.html">운영 현황</a><a href="inquiries.html">문의 관리</a><a href="products.html">제품 관리</a><a href="orders.html">주문 관리</a><a href="members.html">회원 관리</a><a href="reviews.html">리뷰·재입고</a><a href="promotions.html" aria-current="page">프로모션</a><a href="reels.html">영상 관리</a></nav>
       <a class="admin-header__site" href="../index.html">첫 화면 보기 <span aria-hidden="true">↗</span></a>
     </header>
     <main id="admin-main" class="admin-main admin-main--promotions">
@@ -49,7 +49,7 @@
             </div>
             <div class="black-friday-admin__section">
               <div><h3>행사 품목</h3><p>옵션이 있는 상품은 옵션별로 추가하세요. 주문이 접수되면 행사 수량을 차감하고, 주문을 취소하면 돌려놓습니다.</p></div>
-              <button type="button" class="button button--quiet" data-bf-add disabled>품목 추가</button>
+              <button type="button" class="button button--quiet" data-bf-add aria-haspopup="dialog" disabled>상품 선택</button>
             </div>
             <div class="black-friday-admin__items" data-bf-items></div>
             <div class="promotion-save">
@@ -59,6 +59,15 @@
             </div>
           </section>
         </form>
+        <dialog class="bf-product-picker" data-bf-picker aria-labelledby="bf-picker-title">
+          <div class="bf-product-picker__head"><div><h3 id="bf-picker-title">행사 상품 선택</h3><p>상품과 옵션을 체크한 뒤 한꺼번에 추가하세요.</p></div><button class="button button--quiet" type="button" data-bf-picker-close>닫기</button></div>
+          <div class="bf-product-picker__filters">
+            <label class="admin-field"><span>상품 검색</span><input type="search" data-bf-picker-search placeholder="상품명, 모델명, 옵션 검색" autofocus></label>
+            <label class="admin-field"><span>정렬</span><select data-bf-picker-sort><option value="default">기본순</option><option value="review-count">상품평 많은순</option></select></label>
+          </div>
+          <div class="bf-product-picker__list" data-bf-picker-list></div>
+          <div class="bf-product-picker__actions"><p data-bf-picker-count role="status"></p><button class="button button--primary" type="button" data-bf-picker-add disabled>선택한 상품 추가</button></div>
+        </dialog>
         <form class="promotion-form" data-promotion-form novalidate>
           <section class="promotion-panel" aria-labelledby="popup-settings-title">
             <div class="promotion-panel__head"><div><p class="eyebrow">Home popup</p><h2 id="popup-settings-title">첫 화면 팝업</h2></div><label class="admin-switch"><input type="checkbox" name="popupEnabled"><span>팝업 노출</span></label></div>

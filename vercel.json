@@ -161,6 +161,10 @@
       "destination": "/api/admin/products?route=reviews"
     },
     {
+      "source": "/api/admin/members",
+      "destination": "/api/admin/products?route=members"
+    },
+    {
       "source": "/api/admin/reels",
       "destination": "/api/admin/products?route=reels"
     },

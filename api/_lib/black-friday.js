@@ -110,7 +110,7 @@ export async function readBlackFridayAdmin(config) {
   const [products, usage] = await Promise.all([readBlackFridayCatalog(), readUsage(config.id)]);
   return {
     config: { ...config, items: config.items.map(item => ({ ...item, used: usage.get(key(item))?.used || 0 })) },
-    catalog: blackFridayCatalogRows(products).map(({ image, ...row }) => row),
+    catalog: blackFridayCatalogRows(products),
     state: blackFridayState(config),
   };
 }

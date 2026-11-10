@@ -164,11 +164,14 @@ export async function createMemberSession(request, userId) {
   const sql = database();
   const token = randomBytes(32).toString('base64url');
   const expiresAt = new Date(Date.now() + SESSION_TTL_SECONDS * 1000);
-  await sql.transaction((tx) => [
+  const [, sessions] = await sql.transaction((tx) => [
     tx`DELETE FROM member_sessions WHERE expires_at <= now()`,
     tx`INSERT INTO member_sessions (id, user_id, token_hash, expires_at)
-       VALUES (${randomUUID()}, ${userId}, ${hashToken(token)}, ${expiresAt.toISOString()})`,
+       SELECT ${randomUUID()}, id, ${hashToken(token)}, ${expiresAt.toISOString()}
+       FROM users WHERE id = ${userId} AND status = 'active' FOR UPDATE
+       RETURNING id`,
   ]);
+  if (!sessions.length) throw Object.assign(new Error('사용할 수 없는 회원 계정입니다.'), { status: 403 });
   return `${cookieName(request, 'session')}=${token}; ${cookieBase(request)}; Max-Age=${SESSION_TTL_SECONDS}`;
 }
 

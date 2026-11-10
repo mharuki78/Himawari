@@ -1,5 +1,5 @@
 import { isSameOrigin, json, methodNotAllowed, readJson } from './_lib/http.js';
-import { createVerifiedReview, listPublishedReviews, subscribeRestock, unsubscribeRestock } from './_lib/customer-features.js';
+import { createVerifiedReview, listPublishedReviews, publishedReviewCounts, subscribeRestock, unsubscribeRestock } from './_lib/customer-features.js';
 import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalog } from './_lib/products.js';
 import { publicPromotions, readPromotions } from './_lib/promotions.js';
 import { applyInventoryReservations } from './_lib/inventory.js';
@@ -191,6 +191,15 @@ export async function fetch(request) {
   if (route === 'sitemap') return fetchSitemap(request);
   if (route === 'merchant-feed') return fetchMerchantFeed(request);
   if (route === 'reviews') return fetchReviews(request);
+  if (route === 'review-counts') {
+    if (request.method !== 'GET') return methodNotAllowed(['GET']);
+    try {
+      const catalog = productStoreIsConfigured() ? (await readProductCatalog()).catalog : seedCatalog();
+      return json({ counts: await publishedReviewCounts(catalog.products) }, 200, { 'Cache-Control': 'public, s-maxage=60' });
+    } catch {
+      return json({ message: '상품평 수를 불러오지 못했습니다.' }, 503);
+    }
+  }
   if (route === 'restock') return fetchRestock(request);
   if (route === 'reels') return fetchReels(request);
   if (route === 'health') return fetchHealth(request);

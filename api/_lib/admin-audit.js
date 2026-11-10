@@ -23,7 +23,7 @@ export async function auditedAdminRequest(request, handler) {
   const target=String(input.id||input.orderNumber||(input.pathname?createHash('sha256').update(String(input.pathname)).digest('hex').slice(0,16):'')).slice(0,100);
   const details={fields:Object.keys(input).filter(k=>['id','orderNumber','status','price','stock','revision','naverDiscountRate','specs','relatedProductIds','options','optionName','image','gallery','highlights','description','tagline','url','updates','config'].includes(k))};
   for(const key of ['price','stock','revision','naverDiscountRate'])if(Number.isFinite(input[key]))details[key]=input[key];
-  if(['received','reviewing','waiting_customer','resolved','payment_pending','confirmed','preparing','shipped','delivered','cancelled','refunded','cancel_requested','refund_requested'].includes(input.status))details.status=input.status;
+  if(['received','reviewing','waiting_customer','resolved','payment_pending','confirmed','preparing','shipped','delivered','cancelled','refunded','cancel_requested','refund_requested','active','disabled'].includes(input.status))details.status=input.status;
   if(Array.isArray(input.updates))details.itemCount=input.updates.length;
   try { await ensureAuditSchema(); await database().query('INSERT INTO admin_audit(id,actor,role,action,status,target,details) VALUES($1,$2,$3,$4,$5,$6,$7::jsonb)', [id, principal.id, principal.role, action, 'pending', target, JSON.stringify(details)]); }
   catch { return json({ message: '변경 이력을 저장하지 못해 작업을 시작하지 않았습니다. 다시 시도해 주세요.' }, 503); }

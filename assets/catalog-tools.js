@@ -85,13 +85,17 @@ export function groupProductFamilies(products) {
   }));
 }
 
-export function filterAndSortFamilies(families, { query = '', category = 'all', sort = 'featured' } = {}) {
+export function filterAndSortFamilies(families, { query = '', category = 'all', sort = 'featured', reviewCounts = {} } = {}) {
   const needle = String(query).trim().toLocaleLowerCase('ko-KR');
   const visible = families.filter((family) => {
     const matchesCategory = category === 'all' || family.category === category;
     return matchesCategory && (!needle || family.searchText.includes(needle));
   });
   return visible.sort((a, b) => {
+    if (sort === 'review-count') {
+      const difference = (reviewCounts[b.representative.id] || 0) - (reviewCounts[a.representative.id] || 0);
+      if (difference) return difference;
+    }
     if (sort === 'price-low') return a.minPrice - b.minPrice;
     if (sort === 'price-high') return b.minPrice - a.minPrice;
     if (sort === 'name') return a.representative.name.localeCompare(b.representative.name, 'ko-KR');
