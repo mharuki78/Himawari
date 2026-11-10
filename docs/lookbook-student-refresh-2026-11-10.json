@@ -1,0 +1,397 @@
+{
+  "date": "2026-11-10",
+  "type": "student-lookbook-photo-revision",
+  "expectedCount": 7,
+  "styleReference": "https://www.musinsa.com/snap/main/recommend?gf=A",
+  "baselineCommit": "d5606d44a64b9068a4b5b568ad57dc546b1c5754",
+  "previousSnapshot": "backups/lookbook-students-2026-11-10/entries-before.json",
+  "completionReceipt": "backups/lookbook-students-2026-11-10/receipt.json",
+  "preparedAt": "2026-11-10T02:30:19.013904+00:00",
+  "entries": [
+    {
+      "id": "2026-11-10-city-1027",
+      "date": "2026-11-10",
+      "category": "city",
+      "model": "1027",
+      "color": "라벤더",
+      "productId": "store-11070925709",
+      "image": "/assets/lookbook/2026-11-10-city-1027-student.webp",
+      "thumbnail": "/assets/lookbook/2026-11-10-city-1027-student-640.webp",
+      "previousImage": "/assets/lookbook/2026-11-10-city-1027-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-10-city-1027-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260210_108/1770707978865U4o9A_JPEG/43528032995650075_718147852.jpg",
+      "dimensionsCm": [
+        28.0,
+        40.0,
+        17.0
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 28페이지의 1027 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-11070925709.jpg",
+      "prompt": "Use case: photorealistic-natural. Photorealistic original Himawari LookBook school backpack editorial, one 2:3 portrait (1024×1536) with clean margins. Wholesome, fully clothed everyday school styling for a fictional child, no adult styling, no makeup, no uniform logos, no identifying name. The uploaded catalog image is for the BAG ONLY; do not reproduce or identify the person, outfit or scene in it. General Korean streetwear snap aesthetic: thoughtful layered casual outfit, clean restrained composition, natural colors, natural anatomy, 45–55mm documentary fashion photograph. Keep the bag centered/fully in-frame and faithful to its measured actual size. No other brand logo, lettering, watermark, digital embellishment, accessories on the bag, new compartments or changed colors.\nProduct: Himawari No.1027 lavender, 28 cm wide, 40 cm tall, 17 cm deep.\nScene: Fictional Korean girl in middle school, approximately 13, natural young teen proportions. Light gray zip-up hoodie over blue and white striped long-sleeve tee, roomy charcoal jeans and off-white retro sneakers. Walk past a light concrete school-side wall, soft autumn morning, rear three-quarter candid nearly full body from a few meters with the bag sharply visible. Side view of face only.\nBag invariants: Pale blue upper panel and side pocket, soft lavender body and horizontal zip front pocket, cream twin handles and bottom piping, original small Himawari wordmark and rounded rectangular cream zip pouch on viewer's right.",
+      "generatedSource": "backups/lookbook-students-2026-11-10/candidates/2026-11-10-city-1027.png",
+      "generatedSha256": "d7de87563bc09bbc65ac0ae17ae84eaac141af751eec03737f0732553954ddca",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "fidelityReview": "상단과 옆 주머니의 옅은 파랑, 라벤더 앞 지퍼 포켓, 밝은 손잡이와 오른쪽 파우치, 로고 위치와 착용 크기를 원본과 대조했다.",
+      "composition": {
+        "approach": "street-walking",
+        "angle": "rear-three-quarter",
+        "framing": "full-body",
+        "activity": "walking",
+        "setting": "school-side-concrete-wall"
+      },
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-10-city-1027-student.webp",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "bytes": 220906,
+          "quality": 86,
+          "sha256": "6820e9cfeeb43142159af7a135fb2c13bb4ce358d4db2661932a4cc27e721eca"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-10-city-1027-student-640.webp",
+          "dimensions": [
+            640,
+            960
+          ],
+          "bytes": 97138,
+          "quality": 86,
+          "sha256": "ee31f53beb3f82538a22b13ce523f8f1bb3590f9ea4f6717feed027dfb047748"
+        }
+      }
+    },
+    {
+      "id": "2026-11-03-everyday-1088m",
+      "date": "2026-11-03",
+      "category": "everyday",
+      "model": "1088M",
+      "color": "그린",
+      "productId": "store-13308752642",
+      "image": "/assets/lookbook/2026-11-03-everyday-1088m-student.webp",
+      "thumbnail": "/assets/lookbook/2026-11-03-everyday-1088m-student-640.webp",
+      "previousImage": "/assets/lookbook/2026-11-03-everyday-1088m-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-11-03-everyday-1088m-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260326_100/17745078126890NcU7_JPEG/593205736606817_1806444046.jpg",
+      "dimensionsCm": [
+        28.0,
+        41.5,
+        14.0
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 27페이지의 1088M 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13308752642.jpg",
+      "prompt": "Use case: photorealistic-natural. Photorealistic original Himawari LookBook school backpack editorial, one 2:3 portrait (1024×1536) with clean margins. Wholesome, fully clothed everyday school styling for a fictional child, no adult styling, no makeup, no uniform logos, no identifying name. The uploaded catalog image is for the BAG ONLY; do not reproduce or identify the person, outfit or scene in it. General Korean streetwear snap aesthetic: thoughtful layered casual outfit, clean restrained composition, natural colors, natural anatomy, 45–55mm documentary fashion photograph. Keep the bag centered/fully in-frame and faithful to its measured actual size. No other brand logo, lettering, watermark, digital embellishment, accessories on the bag, new compartments or changed colors.\nProduct: Himawari No.1088M mint green, 28 cm wide, 41.5 cm tall, 14 cm deep.\nScene: Fictional Korean elementary school girl aged 10–11 with a short bob. Ivory fleece with sage striped cuffs, relaxed indigo straight jeans and white sneakers. Passing a pale school hallway window, pause looking outside. Waist-to-knee portrait, rear three-quarter from shoulder height so the entire bag is clear, light side-window daylight.\nBag invariants: Cool light mint body and shoulder straps, two dusty-pink front webbing strips with pale pink buckles, pink joined handle and pink bottom trim, mint rounded lower front zip pocket, pale circular brand patch and ivory zip pull tabs in their original positions.",
+      "generatedSource": "backups/lookbook-students-2026-11-10/candidates/2026-11-03-everyday-1088m.png",
+      "generatedSha256": "5b05bec1e74377cd39def4a007e77ada10629fec01d22281eb1669968c5c419f",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "fidelityReview": "연두 몸체와 어깨끈, 분홍 손잡이·바닥·앞 끈 두 줄, 옅은 버클, 둥근 패치와 아래 지퍼 포켓의 형태와 위치를 대조했다.",
+      "composition": {
+        "approach": "window-portrait",
+        "angle": "rear-three-quarter",
+        "framing": "head-to-thigh",
+        "activity": "looking-out-window",
+        "setting": "school-corridor"
+      },
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-11-03-everyday-1088m-student.webp",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "bytes": 139928,
+          "quality": 86,
+          "sha256": "bc2c078385b608c38971f2126ba6a6da818979256569b2b66f899419f00a8b11"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-11-03-everyday-1088m-student-640.webp",
+          "dimensions": [
+            640,
+            960
+          ],
+          "bytes": 60416,
+          "quality": 86,
+          "sha256": "5208dc904d50b00208d98f72e2a6d7177de68bb1c9037d41d0a6c06e6e6cd7fc"
+        }
+      }
+    },
+    {
+      "id": "2026-10-16-everyday-0422",
+      "date": "2026-10-16",
+      "category": "everyday",
+      "model": "0422",
+      "color": "블루",
+      "productId": "store-13326274547",
+      "image": "/assets/lookbook/2026-10-16-everyday-0422-student.webp",
+      "thumbnail": "/assets/lookbook/2026-10-16-everyday-0422-student-640.webp",
+      "previousImage": "/assets/lookbook/2026-10-16-everyday-0422-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-16-everyday-0422-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260330_75/17748467055316cbOy_JPEG/932098654912450_478698910.jpg",
+      "dimensionsCm": [
+        30.0,
+        40.0,
+        15.0
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 54페이지의 0422 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13326274547.jpg",
+      "prompt": "Use case: photorealistic-natural. Photorealistic original Himawari LookBook school backpack editorial, one 2:3 portrait (1024×1536) with clean margins. Wholesome, fully clothed everyday school styling for a fictional child, no adult styling, no makeup, no uniform logos, no identifying name. The uploaded catalog image is for the BAG ONLY; do not reproduce or identify the person, outfit or scene in it. General Korean streetwear snap aesthetic: thoughtful layered casual outfit, clean restrained composition, natural colors, natural anatomy, 45–55mm documentary fashion photograph. Keep the bag centered/fully in-frame and faithful to its measured actual size. No other brand logo, lettering, watermark, digital embellishment, accessories on the bag, new compartments or changed colors.\nProduct: Himawari No.0422 multicolor blue, 30 cm wide, 40 cm tall, 15 cm deep.\nScene: Fictional Korean boy, 11–12, elementary school age. Navy and ivory rugby striped knit under a light gray coach jacket, loose light-wash denim and simple navy trainers. After school on a quiet court-side bench, seated, facing sideways and carrying the backpack by its top loop next to him, front face visible, frame from head to knees. Cool clean concrete and muted green court out of focus, overcast natural light.\nBag invariants: Dark navy rounded upper bag, black twin zip pull tabs and black grab loop, vivid green rectangular front pocket, red side pocket on viewer's right and narrow yellow on viewer's left, bright blue round logo pouch on viewer left and blue scalloped smile charm on viewer right, small rectangular black Himawari tag on lower right of green pocket. Keep both attachments and color blocks exactly.",
+      "generatedSource": "backups/lookbook-students-2026-11-10/candidates/2026-10-16-everyday-0422.png",
+      "generatedSha256": "0e1a1011777151f5bfe001772f0296dda0aaf444763c8afaaa981490614b5f97",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "fidelityReview": "남색 몸체, 초록 앞주머니, 노랑·빨강 옆주머니, 파란 원형 파우치와 웃는 얼굴 장식, 검정 손잡이와 오른쪽 하단 라벨을 대조했다.",
+      "composition": {
+        "approach": "seated-product-portrait",
+        "angle": "front-three-quarter",
+        "framing": "seated-full-body",
+        "activity": "holding-top-loop",
+        "setting": "courtside-bench"
+      },
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-16-everyday-0422-student.webp",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "bytes": 234576,
+          "quality": 86,
+          "sha256": "d5c68132de35fce3bd65a45ff35a6c8b5a8b5a70a49d5a1fc7d98d24edbce84c"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-16-everyday-0422-student-640.webp",
+          "dimensions": [
+            640,
+            960
+          ],
+          "bytes": 100250,
+          "quality": 86,
+          "sha256": "9973c79d715a112bfdd7c38544a2c3370910cd1ff9446fd6b7e00219abdad8b1"
+        }
+      }
+    },
+    {
+      "id": "2026-10-11-city-1027",
+      "date": "2026-10-11",
+      "category": "city",
+      "model": "1027",
+      "color": "블랙",
+      "productId": "store-13326224847",
+      "image": "/assets/lookbook/2026-10-11-city-1027-student.webp",
+      "thumbnail": "/assets/lookbook/2026-10-11-city-1027-student-640.webp",
+      "previousImage": "/assets/lookbook/2026-10-11-city-1027-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-11-city-1027-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260210_201/1770709035243OicU2_JPEG/18070600097326153_1285571532.jpg",
+      "dimensionsCm": [
+        28.0,
+        40.0,
+        17.0
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 28페이지의 1027 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13326224847.jpg",
+      "prompt": "Use case: photorealistic-natural. Photorealistic original Himawari LookBook school backpack editorial, one 2:3 portrait (1024×1536) with clean margins. Wholesome, fully clothed everyday school styling for a fictional child, no adult styling, no makeup, no uniform logos, no identifying name. The uploaded catalog image is for the BAG ONLY; do not reproduce or identify the person, outfit or scene in it. General Korean streetwear snap aesthetic: thoughtful layered casual outfit, clean restrained composition, natural colors, natural anatomy, 45–55mm documentary fashion photograph. Keep the bag centered/fully in-frame and faithful to its measured actual size. No other brand logo, lettering, watermark, digital embellishment, accessories on the bag, new compartments or changed colors.\nProduct: Himawari No.1027 all black, 28 cm wide, 40 cm tall, 17 cm deep.\nScene: Fictional Korean middle school boy age 13–14, soft age-appropriate features. Washed navy track jacket with simple white piping, gray crew-neck sweatshirt, loose olive cargo pants and black-and-cream trainers. Quiet tree-lined school-side street by low brick wall, full-body walking away at a natural rear three-quarter angle, early daylight. Backpack front is in sharp focus and reads clearly at thumbnail size.\nBag invariants: Matte black boxy bag with broad black rectangular front zip pocket, pair of black carry handles with visible anchor tabs, slim rounded rectangular black accessory pouch hanging on the viewer right, actual small white Himawari wordmark in both placements, plain black padded straps and side pocket. No new logos.",
+      "generatedSource": "backups/lookbook-students-2026-11-10/candidates/2026-10-11-city-1027.png",
+      "generatedSha256": "9b0105a74111a3c3ec648d806dc13479a4a342338d840eb4e1093c9dc617d4b4",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "fidelityReview": "검정 몸체와 각진 비율, 두 손잡이와 고정 탭, 가로 지퍼, 오른쪽 파우치, 밝은 로고 위치와 어깨끈을 대조했다.",
+      "composition": {
+        "approach": "environmental-street-snap",
+        "angle": "rear-three-quarter",
+        "framing": "full-body",
+        "activity": "walking",
+        "setting": "tree-lined-brick-wall"
+      },
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-11-city-1027-student.webp",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "bytes": 221914,
+          "quality": 86,
+          "sha256": "e9b5cc281e92363c20dcab7934805b0175427fd6d20216f38757720d211d8e99"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-11-city-1027-student-640.webp",
+          "dimensions": [
+            640,
+            960
+          ],
+          "bytes": 110350,
+          "quality": 86,
+          "sha256": "36f39d2597f8cb9f924db481d27c1120009e0c8bcc07cf34baae1bd9a4e88ef4"
+        }
+      }
+    },
+    {
+      "id": "2026-10-07-everyday-1088m",
+      "date": "2026-10-07",
+      "category": "everyday",
+      "model": "1088M",
+      "color": "그린",
+      "productId": "store-13308752642",
+      "image": "/assets/lookbook/2026-10-07-everyday-1088m-student.webp",
+      "thumbnail": "/assets/lookbook/2026-10-07-everyday-1088m-student-640.webp",
+      "previousImage": "/assets/lookbook/2026-10-07-everyday-1088m-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-07-everyday-1088m-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260326_100/17745078126890NcU7_JPEG/593205736606817_1806444046.jpg",
+      "dimensionsCm": [
+        28.0,
+        41.5,
+        14.0
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 27페이지의 1088M 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-13308752642.jpg",
+      "prompt": "Use case: photorealistic-natural. Photorealistic original Himawari LookBook school backpack editorial, one 2:3 portrait (1024×1536) with clean margins. Wholesome, fully clothed everyday school styling for a fictional child, no adult styling, no makeup, no uniform logos, no identifying name. The uploaded catalog image is for the BAG ONLY; do not reproduce or identify the person, outfit or scene in it. General Korean streetwear snap aesthetic: thoughtful layered casual outfit, clean restrained composition, natural colors, natural anatomy, 45–55mm documentary fashion photograph. Keep the bag centered/fully in-frame and faithful to its measured actual size. No other brand logo, lettering, watermark, digital embellishment, accessories on the bag, new compartments or changed colors.\nProduct: Himawari No.1088M mint green, 28 cm wide, 41.5 cm tall, 14 cm deep.\nScene: Fictional Korean elementary school boy age 10 with short slightly tousled hair. Muted blue checked overshirt over a white long-sleeve tee, wide navy twill trousers and white sneakers. Standing by the open entrance of a neighborhood library, looking at a notice board, carrying the backpack by its pink joined top handle close to his leg. Slightly low, clean three-quarter medium-full snap, full bag in foreground; no legible location, logo or signage.\nBag invariants: Light mint green body, two dusty pink front webbing strips with pale pink buckles, dusty pink twin top handles and bottom trim, mint rounded lower front zipper pocket, light brand patch and pale zipper pull tabs. Keep the exact bag geometry at correct scale.",
+      "generatedSource": "backups/lookbook-students-2026-11-10/candidates/2026-10-07-everyday-1088m.png",
+      "generatedSha256": "230b2b3ae1e1d6482d5332e2da8f4c0032fd5e39fac1a9c701daba1e61c0c4e7",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "fidelityReview": "연두·분홍 배색, 두 버클, 둥근 상단과 패치, 아래 지퍼 포켓 및 손잡이의 실제 위치를 대조했다. 앞면을 보여 주는 손잡이 휴대 자세가 자연스럽다.",
+      "composition": {
+        "approach": "hand-carry-editorial",
+        "angle": "front-three-quarter",
+        "framing": "full-body",
+        "activity": "reading-notice-board",
+        "setting": "library-entrance"
+      },
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-07-everyday-1088m-student.webp",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "bytes": 187104,
+          "quality": 86,
+          "sha256": "5b10bc39de23b1558f8c7039b080e23621b85bbfefa2f45b91b5509d2649011a"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-07-everyday-1088m-student-640.webp",
+          "dimensions": [
+            640,
+            960
+          ],
+          "bytes": 83624,
+          "quality": 86,
+          "sha256": "8ea84b561c16aa50448a2ac14933d04e4dd342fc50c41a0d9163d2bf2fe35016"
+        }
+      }
+    },
+    {
+      "id": "2026-10-03-everyday-0422",
+      "date": "2026-10-03",
+      "category": "everyday",
+      "model": "0422",
+      "color": "옐로우",
+      "productId": "coupang-d688e9b1291f7997",
+      "image": "/assets/lookbook/2026-10-03-everyday-0422-student.webp",
+      "thumbnail": "/assets/lookbook/2026-10-03-everyday-0422-student-640.webp",
+      "previousImage": "/assets/lookbook/2026-10-03-everyday-0422-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-10-03-everyday-0422-snap-640.webp",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-d688e9b1291f7997/main-toYqM2Jib7V2z2Jan06Jky9asr0qrf.jpg",
+      "dimensionsCm": [
+        30.0,
+        40.0,
+        15.0
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 54페이지의 0422 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/coupang-d688e9b1291f7997.jpg",
+      "prompt": "Use case: photorealistic-natural. Photorealistic original Himawari LookBook school backpack editorial, one 2:3 portrait (1024×1536) with clean margins. Wholesome, fully clothed everyday school styling for a fictional child, no adult styling, no makeup, no uniform logos, no identifying name. The uploaded catalog image is for the BAG ONLY; do not reproduce or identify the person, outfit or scene in it. General Korean streetwear snap aesthetic: thoughtful layered casual outfit, clean restrained composition, natural colors, natural anatomy, 45–55mm documentary fashion photograph. Keep the bag centered/fully in-frame and faithful to its measured actual size. No other brand logo, lettering, watermark, digital embellishment, accessories on the bag, new compartments or changed colors.\nProduct: Himawari No.0422 yellow, 30 cm wide, 40 cm tall, 15 cm deep.\nScene: Fictional Korean girl age 10–11, elementary school age, natural dark hair tied back. Navy varsity jacket with no lettering and ivory cuff stripes, oat crew-neck, relaxed light indigo jeans and gray sneakers. On a pale concrete school courtyard stair landing, leaning lightly on the handrail with both straps on, rear three-quarter mid-thigh view. Golden mustard bag is in focus against quiet cool neutral backdrop.\nBag invariants: Muted mustard yellow body, shoulder straps and wide rectangular lower front zip pocket. Black upper zipper piping, two black attachment tabs, black top grab loop, two black zipper pulls. Mustard round zip pouch with small red Himawari embroidery on viewer left, same-color scalloped smile charm on viewer right, original small black rectangular woven Himawari patch lower right. Omit only the big round promotional testing sticker over the lower pocket, which is an overlay in the product listing, preserve pocket and real sewn label.",
+      "generatedSource": "backups/lookbook-students-2026-11-10/candidates/2026-10-03-everyday-0422.png",
+      "generatedSha256": "f79956ea3d256e14eb1246bf56136485e9d1c55d6d4058367eca6b0a119eeab0",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "fidelityReview": "노란 몸체와 어깨끈, 검정 지퍼와 손잡이, 원형 파우치의 빨간 로고, 웃는 얼굴 장식과 아래 검정 라벨을 대조했다. 원본 상세 사진의 시험 안내 스티커는 연출에서 제외했다.",
+      "composition": {
+        "approach": "stair-portrait",
+        "angle": "rear-three-quarter",
+        "framing": "full-body",
+        "activity": "leaning-on-railing",
+        "setting": "school-stair-landing"
+      },
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-10-03-everyday-0422-student.webp",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "bytes": 204880,
+          "quality": 86,
+          "sha256": "ed7d96091e7b3c924b68b74b31afa5aa0193fc0e1b232d0994e82cdbf729734f"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-10-03-everyday-0422-student-640.webp",
+          "dimensions": [
+            640,
+            960
+          ],
+          "bytes": 87906,
+          "quality": 86,
+          "sha256": "92921d78f5277d8894cd54b6f5c35245f564328580f0086dbfe33c50480b5482"
+        }
+      }
+    },
+    {
+      "id": "2026-09-28-travel-1027",
+      "date": "2026-09-28",
+      "category": "travel",
+      "model": "1027",
+      "color": "라벤더",
+      "productId": "store-11070925709",
+      "image": "/assets/lookbook/2026-09-28-travel-1027-student.webp",
+      "thumbnail": "/assets/lookbook/2026-09-28-travel-1027-student-640.webp",
+      "previousImage": "/assets/lookbook/2026-09-28-travel-1027-snap.webp",
+      "previousThumbnail": "/assets/lookbook/2026-09-28-travel-1027-snap-640.webp",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260210_108/1770707978865U4o9A_JPEG/43528032995650075_718147852.jpg",
+      "dimensionsCm": [
+        28.0,
+        40.0,
+        17.0
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 28페이지의 1027 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "reference": "backups/lookbook-refresh-2026-11-10/references/store-11070925709.jpg",
+      "prompt": "Use case: photorealistic-natural. Photorealistic original Himawari LookBook school backpack editorial, one 2:3 portrait (1024×1536) with clean margins. Wholesome, fully clothed everyday school styling for a fictional child, no adult styling, no makeup, no uniform logos, no identifying name. The uploaded catalog image is for the BAG ONLY; do not reproduce or identify the person, outfit or scene in it. General Korean streetwear snap aesthetic: thoughtful layered casual outfit, clean restrained composition, natural colors, natural anatomy, 45–55mm documentary fashion photograph. Keep the bag centered/fully in-frame and faithful to its measured actual size. No other brand logo, lettering, watermark, digital embellishment, accessories on the bag, new compartments or changed colors.\nProduct: Himawari No.1027 lavender, 28 cm wide, 40 cm tall, 17 cm deep.\nScene: Fictional Korean elementary school girl age 11, short dark ponytail, regular child proportions. Light olive windbreaker layered over a cream sweatshirt, straight washed-blue denim, and muted lilac sneakers. Waiting at a neutral bus shelter on a daytime school field trip, seated turned sideways with backpack on the bench immediately next to her, the complete front face close enough to see. Soft natural light, editorial medium portrait, no other people or destination names.\nBag invariants: Pale blue upper panel and side pocket, soft lavender body and horizontal zip front pocket, cream twin handles and bottom trim, original small Himawari wordmark and rounded rectangular cream zip pouch on viewer right, natural 40 cm backpack scale.",
+      "generatedSource": "backups/lookbook-students-2026-11-10/candidates/2026-09-28-travel-1027.png",
+      "generatedSha256": "39810bdf2a47f7c9b2742e6de1e82c1a2b5afa520f7ce2a07874fe87508c5a78",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "fidelityReview": "앞 포켓과 옆 주머니, 하늘색·라벤더 배색, 밝은 손잡이와 파우치, 실제 로고 위치와 앉은 인물 옆 크기를 대조했다.",
+      "composition": {
+        "approach": "seated-field-trip-snap",
+        "angle": "front-three-quarter",
+        "framing": "seated-full-body",
+        "activity": "waiting-by-backpack",
+        "setting": "bus-shelter"
+      },
+      "optimization": {
+        "image": {
+          "path": "/assets/lookbook/2026-09-28-travel-1027-student.webp",
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "bytes": 250548,
+          "quality": 86,
+          "sha256": "cfdf7fb9e10c63959fc54237ba351fce3e9b1217a9e07f08712dbbac6d40b5e6"
+        },
+        "thumbnail": {
+          "path": "/assets/lookbook/2026-09-28-travel-1027-student-640.webp",
+          "dimensions": [
+            640,
+            960
+          ],
+          "bytes": 106128,
+          "quality": 86,
+          "sha256": "6f232fb242316559b3493bf6c5470a7263f4a85f1cff8761905830ab0be79715"
+        }
+      }
+    }
+  ]
+}
