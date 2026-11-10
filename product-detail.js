@@ -311,12 +311,15 @@ function renderProduct(product, products) {
     if (fragment) link.href = `${location.pathname}${location.search}${fragment}`;
   });
   const canonicalUrl = `${location.origin}${location.pathname}?id=${encodeURIComponent(product.id)}`;
-  const description = String(product.description || product.tagline || '').slice(0, 160);
+  const hasDetailEdition = content.hasAttribute('data-detail-edition');
   document.title = `${product.name} — Himawari`;
-  setMeta('meta[name="description"]', 'content', description);
+  if (!hasDetailEdition) {
+    const description = String(product.description || product.tagline || '').slice(0, 160);
+    setMeta('meta[name="description"]', 'content', description);
+    setMeta('meta[property="og:description"]', 'content', description);
+  }
   setMeta('link[rel="canonical"]', 'href', canonicalUrl);
   setMeta('meta[property="og:title"]', 'content', product.name);
-  setMeta('meta[property="og:description"]', 'content', description);
   setMeta('meta[property="og:url"]', 'content', canonicalUrl);
   setMeta('meta[property="og:image"]', 'content', safeHttpsUrl(product.image));
 
@@ -373,7 +376,7 @@ function renderProduct(product, products) {
       .catch(() => {});
   }
   document.querySelector('[data-closing-title]').textContent = `${product.model} 주문하기`;
-  renderDescription(product.description || product.tagline);
+  if (!hasDetailEdition) renderDescription(product.description || product.tagline);
 
   const highlightsSection = document.querySelector('[data-highlights-section]');
   const highlights = document.querySelector('[data-highlights]');
@@ -391,14 +394,13 @@ function renderProduct(product, products) {
   highlightsSection.hidden = evidence.length === 0;
 
   const gallerySection = document.querySelector('[data-gallery-section]');
-  const gallery = document.querySelector('[data-gallery]');
-  gallery.replaceChildren();
-  product.gallery.forEach((url, index) => {
-    gallery.append(createProductImage(url, `${product.name} 상세 이미지 ${index + 1}`, { longform: true }));
-  });
-  gallerySection.hidden = product.gallery.length === 0;
+  if (!hasDetailEdition) {
+    const gallery = document.querySelector('[data-gallery]');
+    gallery.replaceChildren(...product.gallery.map((url, index) => createProductImage(url, `${product.name} 상세 이미지 ${index + 1}`, { longform: true })));
+    gallerySection.hidden = product.gallery.length === 0;
+  }
   const photoLink = document.querySelector('.product-section-nav a[href$="#product-photos"]');
-  if (photoLink) photoLink.hidden = product.gallery.length === 0;
+  if (photoLink) photoLink.hidden = gallerySection.hidden;
 
   loadingState.hidden = true;
   notFound.hidden = true;

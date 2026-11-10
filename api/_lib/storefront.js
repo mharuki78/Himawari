@@ -1,6 +1,7 @@
 import { PUBLIC_SPEC_FIELDS as SPEC_FIELDS } from '../../assets/product-specs.js';
 import { groupProductFamilies, productCardArtwork, productColor, productFamilyKey, productVariantKind } from '../../assets/catalog-tools.js';
 import { productPurchaseFacts, productEvidenceHighlights } from '../../assets/product-facts.js';
+import productDetailEditions from '../../data/product-detail-editions.json' with { type: 'json' };
 
 const KRW = new Intl.NumberFormat('ko-KR', {
   style: 'currency',
@@ -210,6 +211,16 @@ function renderGallery(product) {
     .join('');
 }
 
+function renderDetailEdition(media) {
+  return media.map(({ image, video, width, height, alt }) => {
+    const dimensions = `width="${width}" height="${height}"`;
+    const item = video
+      ? `<video ${dimensions} src="${escapeHtml(video)}" poster="${escapeHtml(image)}" aria-label="${escapeHtml(alt)}" controls muted playsinline preload="none"></video>`
+      : `<img ${dimensions} src="${escapeHtml(image)}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async" fetchpriority="low">`;
+    return `<div class="product-detail-image-frame product-detail-image-frame--longform">${item}</div>`;
+  }).join('');
+}
+
 function productOffer(product, origin) {
   return {
     '@type': 'Offer',
@@ -267,7 +278,9 @@ function productVariantSchema(product, origin, groupId) {
 
 export function renderProductPage(template, product, origin = 'https://himawari.co.kr', reviewData = null, familyProducts = [product]) {
   const canonical = `${origin}/product.html?id=${encodeURIComponent(product.id)}`;
-  const description = productSearchDescription(product);
+  const edition = Object.hasOwn(productDetailEditions, product.id) ? productDetailEditions[product.id] : null;
+  const productDescription = edition?.description || product.description || product.tagline;
+  const description = productSearchDescription({ ...product, description: productDescription });
   const mainImage = safeHttpsUrl(product.image);
   const storeUrl = safeHttpsUrl(product.url) || 'https://smartstore.naver.com/baegot';
   const familyKey = productFamilyKey(product);
@@ -282,7 +295,8 @@ export function renderProductPage(template, product, origin = 'https://himawari.
   const variesBy = variantProperties.filter(([, value]) => new Set(variants.map(value)).size > 1).map(([key]) => `https://schema.org/${key}`);
   const groupId = variants.length > 1 && variesBy.length && variants.some(item => item.id === product.id) ? `${origin}/#product-group-${encodeURIComponent(familyKey)}` : '';
   const selectedSchema = productVariantSchema(product, origin, groupId);
-  selectedSchema.image = [mainImage, ...(Array.isArray(product.gallery) ? product.gallery.map(safeHttpsUrl) : [])].filter(Boolean);
+  selectedSchema.description = description;
+  selectedSchema.image = [mainImage, ...(!edition && Array.isArray(product.gallery) ? product.gallery.map(safeHttpsUrl) : [])].filter(Boolean);
   selectedSchema.mainEntityOfPage = { '@id': `${canonical}#webpage` };
   const schema = {
     '@context': 'https://schema.org',
@@ -329,7 +343,7 @@ export function renderProductPage(template, product, origin = 'https://himawari.
     .replace('<title>제품 상세 — Himawari</title>', `<title>${escapeHtml(product.name)} — Himawari</title>`)
     .replace('</head>', `<script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>\n  </head>`)
     .replace('<section class="product-detail-state" data-loading-state role="status">', '<section class="product-detail-state" data-loading-state role="status" hidden>')
-    .replace('<article data-product-content hidden>', '<article data-product-content>')
+    .replace('<article data-product-content hidden>', edition ? '<article data-product-content data-detail-edition>' : '<article data-product-content>')
     .replace('aria-busy="true"', 'aria-busy="false"')
     .replace('data-breadcrumb-current aria-current="page">상세<', `data-breadcrumb-current aria-current="page">${escapeHtml(product.model)}<`)
     .replace('data-model>Himawari<', `data-model>${escapeHtml(product.model)}<`)
@@ -342,9 +356,9 @@ export function renderProductPage(template, product, origin = 'https://himawari.
       ? `data-naver-discount>네이버 ${product.naverDiscountRate}% 할인</span>`
       : 'data-naver-discount hidden></span>')
     .replace('data-main-image></figure>', `data-main-image>${mainImage ? `<div class="product-detail-image-frame"><img src="${escapeHtml(mainImage)}" alt="${escapeHtml(product.name)}" decoding="async" fetchpriority="high"></div>` : '<p class="product-image-fallback">이미지를 불러오지 못했습니다.</p>'}</figure>`)
-    .replace('data-description></div>', `data-description>${renderDescription(product.description || product.tagline)}</div>`)
+    .replace('data-description></div>', `data-description>${renderDescription(productDescription)}${edition ? `<p><a class="product-detail-source" href="${escapeHtml(safeHttpsUrl(edition.sourceUrl))}">네이버 스마트스토어에서 보기 ↗</a></p>` : ''}</div>`)
     .replace('data-highlights></ol>', `data-highlights>${renderHighlights(product)}</ol>`)
-    .replace('data-gallery></div>', `data-gallery>${renderGallery(product)}</div>`)
+    .replace('data-gallery></div>', `data-gallery>${edition ? renderDetailEdition(edition.media) : renderGallery(product)}</div>`)
     .replace(/(data-closing-title>)[\s\S]*?(<\/h2>)/, (_, open, close) => `${open}${escapeHtml(product.model)} 주문하기${close}`);
 
   html = html
@@ -364,7 +378,9 @@ export function renderProductPage(template, product, origin = 'https://himawari.
   if (!productEvidenceHighlights(product).length) {
     html = html.replace('<section class="product-highlights section" data-highlights-section', '<section class="product-highlights section" data-highlights-section hidden');
   }
-  if (!(Array.isArray(product.gallery) && product.gallery.length)) {
+  if (edition) {
+    html = html.replace('>사진으로 자세히 보기<', '>사진과 영상으로 자세히 보기<');
+  } else if (!(Array.isArray(product.gallery) && product.gallery.length)) {
     html = html.replace('<section class="product-gallery section" data-gallery-section', '<section class="product-gallery section" data-gallery-section hidden');
   }
   html = html.replace('<section class="product-highlights section"', `${renderCrawlableSpecs(product)}\n<section class="product-highlights section"`);
