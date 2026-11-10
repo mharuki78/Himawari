@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-zipper-extension-fit",
+    "title": "백팩 지퍼 손잡이에 고리를 덧달아도 될까",
+    "date": "2026-11-11",
+    "summary": "No.1230 그레이의 작은 지퍼 손잡이를 보며, 연장 고리를 고를 때 구멍의 모양과 연결 방법, 여닫을 때 지나갈 길을 나누어 살펴봅니다.",
+    "description": "No.1230 그레이의 작은 지퍼 손잡이를 보며, 연장 고리를 고를 때 구멍의 모양과 연결 방법, 여닫을 때 지나갈 길을 나누어 살펴봅니다.",
+    "tags": [
+      "지퍼 손잡이",
+      "연장 고리",
+      "가방 부자재"
+    ],
+    "image": "../assets/story/backpack-zipper-extension-fit.webp",
+    "imageAlt": "No.1230 그레이 백팩 옆에 연결하지 않은 지퍼 연장 고리를 놓은 AI 연출",
+    "images": [
+      "../assets/story/backpack-zipper-extension-fit.webp",
+      "../assets/story/backpack-zipper-extension-fit-detail.webp",
+      "../assets/story/backpack-zipper-extension-fit-product.webp"
+    ],
+    "url": "backpack-zipper-extension-fit.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "연장 부품을 고르기 전의 세 가지 질문을 따라가는 선택 문답"
+  },
+  {
+    "id": "backpack-side-strap-volume",
+    "title": "백팩 옆 끈을 조이면 가방의 폭도 줄어들까",
+    "date": "2026-11-11",
+    "summary": "No.9290 블랙의 옆 버클과 아래쪽 조절 부품을 보며, 끈 길이와 몸판의 모양, 공개 외부 크기를 구별해 읽습니다.",
+    "description": "No.9290 블랙의 옆 버클과 아래쪽 조절 부품을 보며, 끈 길이와 몸판의 모양, 공개 외부 크기를 구별해 읽습니다.",
+    "tags": [
+      "옆 조절끈",
+      "백팩 폭",
+      "외부 치수"
+    ],
+    "image": "../assets/story/backpack-side-strap-volume.webp",
+    "imageAlt": "No.9290 블랙 백팩과 바깥에 따로 놓은 니트의 AI 연출",
+    "images": [
+      "../assets/story/backpack-side-strap-volume.webp",
+      "../assets/story/backpack-side-strap-volume-detail.webp",
+      "../assets/story/backpack-side-strap-volume-product.webp"
+    ],
+    "url": "backpack-side-strap-volume.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "옆 부품의 위치와 외부 치수를 연결하는 구조 해설"
+  },
+  {
+    "id": "backpack-handle-winter-gloves",
+    "title": "두꺼운 장갑을 낀 손에도 백팩 손잡이가 맞을까",
+    "date": "2026-11-11",
+    "summary": "No.1208 아이보리의 두 손잡이를 보며, 맨손과 장갑을 낀 손으로 잡을 때 비교할 공간과 동작을 살펴봅니다.",
+    "description": "No.1208 아이보리의 두 손잡이를 보며, 맨손과 장갑을 낀 손으로 잡을 때 비교할 공간과 동작을 살펴봅니다.",
+    "tags": [
+      "백팩 손잡이",
+      "겨울 장갑",
+      "가방 선택"
+    ],
+    "image": "../assets/story/backpack-handle-winter-gloves.webp",
+    "imageAlt": "No.1208 아이보리 백팩과 별도로 놓인 겨울 장갑의 AI 연출",
+    "images": [
+      "../assets/story/backpack-handle-winter-gloves.webp",
+      "../assets/story/backpack-handle-winter-gloves-detail.webp",
+      "../assets/story/backpack-handle-winter-gloves-product.webp"
+    ],
+    "url": "backpack-handle-winter-gloves.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "맨손과 장갑을 낀 손의 동작을 나란히 살피는 겨울 사용 비교"
+  },
+  {
     "id": "laptop-pouch-desk-clearance",
     "title": "좁은 책상에서 노트북 파우치 지퍼를 어느 쪽으로 둘까",
     "date": "2026-11-10",
