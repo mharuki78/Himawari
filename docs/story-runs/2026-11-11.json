@@ -6,14 +6,14 @@
     "scheduledAt": "2026-11-11T08:00:00+09:00",
     "edition": "morning"
   },
-  "stage": "prepared",
+  "stage": "metadata-verified",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "publicationBaselineCommit": "085c073d470a840066b9271cab236a6d9bca002c",
   "publicationBaselineEvidence": "backups/story-2026-11-11/baseline-deployment.json",
   "posts": [
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-zipper-extension-fit",
       "title": "백팩 지퍼 손잡이에 고리를 덧달아도 될까",
       "url": "https://himawari.co.kr/story/backpack-zipper-extension-fit.html",
@@ -87,10 +87,19 @@
           "review": "공개 상품 원본을 직접 대조했습니다. 모델·색·형태·로고·포켓·손잡이와 끈을 확인하고 원본 전체의 비율을 보존했습니다.",
           "originalSource": "backups/story-2026-11-11/reference-1.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-10T23:24:47.300Z",
+        "modifiedAt": "2026-11-10T23:24:47.300Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-11/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-11/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-11/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-11/first-deployment-history.json",
+        "articleSha256": "426359af721ebe6bb208e79399f758d770e3178af3c8e8a36bb31805575b88fe"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-side-strap-volume",
       "title": "백팩 옆 끈을 조이면 가방의 폭도 줄어들까",
       "url": "https://himawari.co.kr/story/backpack-side-strap-volume.html",
@@ -164,10 +173,19 @@
           "review": "공개 상품 원본을 직접 대조했습니다. 모델·색·형태·로고·포켓·손잡이와 끈을 확인하고 원본 전체의 비율을 보존했습니다.",
           "originalSource": "backups/story-2026-11-11/reference-2.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-10T23:24:47.300Z",
+        "modifiedAt": "2026-11-10T23:24:47.300Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-11/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-11/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-11/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-11/first-deployment-history.json",
+        "articleSha256": "284b67ae07ce9d26b54cdcb107a22d7fb8ec36f4fa8d8ae530be0cd6b4c4d3a8"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-handle-winter-gloves",
       "title": "두꺼운 장갑을 낀 손에도 백팩 손잡이가 맞을까",
       "url": "https://himawari.co.kr/story/backpack-handle-winter-gloves.html",
@@ -241,15 +259,19 @@
           "review": "공개 상품 원본을 직접 대조했습니다. 모델·색·형태·로고·포켓·손잡이와 끈을 확인하고 원본 전체의 비율을 보존했습니다.",
           "originalSource": "backups/story-2026-11-11/reference-3.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-10T23:24:47.300Z",
+        "modifiedAt": "2026-11-10T23:24:47.300Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-11/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-11/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-11/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-11/first-deployment-history.json",
+        "articleSha256": "9586c253973dec9b90185b0fb0bd44c270800fe2adfd9490031fd7a90c621299"
+      }
     }
   ],
   "completionReceipt": "backups/story-runs/2026-11-11.deployment.json",
-  "pendingPostIds": [
-    "backpack-zipper-extension-fit",
-    "backpack-side-strap-volume",
-    "backpack-handle-winter-gloves"
-  ],
   "approvedGeneratedImages": 6,
   "topicsReviewed": 194,
   "overlapReview": "Compared all saved titles, summaries, article headings and relevant full body passages against zipper extension fitting, side-strap geometry, and gloved handle grip.  See backups/story-2026-11-11/overlap-review.md.",
@@ -260,7 +282,7 @@
         "backpack-side-strap-volume",
         "backpack-handle-winter-gloves"
       ],
-      "stage": "prepared"
+      "stage": "metadata-verified"
     }
   }
 }
