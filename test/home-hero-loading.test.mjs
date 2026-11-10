@@ -6,6 +6,7 @@ import { getHomeHeroSelection } from '../assets/home-colours.js';
 
 const source = readFileSync(new URL('../assets/site-ui.source.js', import.meta.url), 'utf8')
   .replace(/^import .*;\r?\n/gm, '')
+  .replace(/^export \{ animate \};\r?\n/gm, '')
   .replace("import('/products.js')", 'catalogModule()');
 const products = [
   { id: 'black-9007', name: 'Himawari No.9007 블랙', model: 'No.9007', image: 'https://example.com/9007-black.jpg' },

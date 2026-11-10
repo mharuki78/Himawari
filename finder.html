@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-    <meta name="description" content="용도, 예산, 수납 취향을 선택하고 나에게 맞는 Himawari 백팩을 비교해 보세요.">
+    <meta name="description" content="구매 목적, 용도, 크기, 예산, 중요 기준, 선호 색상을 골라 나에게 맞는 히마와리 가방을 찾아보세요.">
     <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="https://himawari.co.kr/finder.html">
     <title>내게 맞는 가방 찾기 — Himawari</title>
@@ -33,16 +33,59 @@
       <a class="header-store" href="https://smartstore.naver.com/baegot" target="_blank" rel="noopener noreferrer">스토어 ↗</a>
     </header>
     <main id="main" class="finder-main">
-      <section class="finder-hero"><h1>어디에 쓸 가방을<br><span class="accent-word">찾고 계세요?</span></h1><p>주로 쓰는 용도와 예산을 골라주세요. 지금 주문할 수 있는 제품 중에서 조건에 맞는 가방을 최대 세 가지 보여드립니다.</p><p class="finder-method">용도는 등록된 상품 설명을 기준으로 분류합니다. 무게는 가벼운 순, 용량은 큰 순으로 비교하고 같은 조건에서는 낮은 가격을 먼저 보여드립니다.</p></section>
-      <form class="finder-form" data-finder-form novalidate>
-        <fieldset><legend><span>01</span>가방을 주로 어디에 쓰시나요?</legend><div class="finder-choices"><label><input type="radio" name="purpose" value="school" required><span>학교·학원</span></label><label><input type="radio" name="purpose" value="business"><span>출근·노트북</span></label><label><input type="radio" name="purpose" value="travel"><span>여행·육아</span></label><label><input type="radio" name="purpose" value="daily"><span>가벼운 일상</span></label></div></fieldset>
-        <fieldset><legend><span>02</span>크기·용량·무게 중 무엇을 먼저 볼까요?</legend><div class="finder-choices"><label><input type="radio" name="storage" value="organized" required><span>수납칸 치수 우선</span></label><label><input type="radio" name="storage" value="roomy"><span>용량(L) 우선</span></label><label><input type="radio" name="storage" value="light"><span>가벼운 구성</span></label><label><input type="radio" name="storage" value="any"><span>제한 없음</span></label></div><p class="finder-help">치수·용량·무게가 미기재된 제품은 해당 기준의 추천에서 제외합니다.</p></fieldset>
-        <fieldset><legend><span>03</span>생각한 예산은?</legend><div class="finder-choices"><label><input type="radio" name="budget" value="80000" required><span>8만원 이하</span></label><label><input type="radio" name="budget" value="110000"><span>11만원 이하</span></label><label><input type="radio" name="budget" value="999999"><span>예산 제한 없음</span></label></div></fieldset>
-        <fieldset><legend><span>04</span>가장 중요한 한 가지는?</legend><div class="finder-choices"><label><input type="radio" name="priority" value="waterproof" required><span>생활 방수</span></label><label><input type="radio" name="priority" value="light"><span>가벼운 무게</span></label><label><input type="radio" name="priority" value="design"><span>사진으로 직접 비교</span></label></div></fieldset>
-        <p class="finder-laptop-note">노트북용은 수납칸의 가로·세로 치수가 등록된 제품만 추천합니다. 기기나 보호 케이스의 두께·입구 형태까지 확인되지 않으므로 수납 가능 여부는 구매 전에 문의해 주세요.</p><div class="finder-actions"><button class="finder-submit" type="submit">추천 결과 보기 <span aria-hidden="true">→</span></button><button class="finder-reset" type="reset">조건 초기화</button></div>
-        <p class="finder-status" data-finder-status role="status" aria-live="polite"></p>
+      <section class="finder-intro" aria-labelledby="finder-title">
+        <p class="finder-kicker" lang="en">HIMAWARI BAG FINDER</p>
+        <h1 id="finder-title">내게 맞는 가방 찾기</h1>
+        <p>가방을 고르는 여섯 가지 질문. 하나씩 골라 지금 주문할 수 있는 가방을 비교해 보세요.</p>
+      </section>
+
+      <form class="finder-journey" data-finder-form novalidate hidden>
+        <nav class="finder-route" aria-label="가방 찾기 단계"><ol data-finder-route></ol></nav>
+        <div class="finder-board" data-finder-board>
+          <div class="finder-art" aria-hidden="true">
+            <span class="finder-art__label" lang="en">THE BAG EDIT</span>
+            <svg class="finder-art__graphic" viewBox="0 0 340 252" fill="none">
+              <path class="finder-art__grid" d="M0 56h340M0 126h340M0 196h340M58 0v252M128 0v252M198 0v252M268 0v252"/>
+              <path class="finder-art__route" d="M-12 194C31 194 20 116 79 116c34 0 54 24 91 24 45 0 51-64 102-64 23 0 42 17 80 17"/>
+              <circle class="finder-art__stop" cx="49" cy="130" r="5"/>
+              <circle class="finder-art__stop" cx="277" cy="76" r="5"/>
+              <circle class="finder-art__halo" cx="170" cy="126" r="76"/>
+              <circle class="finder-art__disk" cx="170" cy="126" r="58"/>
+              <g data-finder-art-icon transform="translate(138 94)" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></g>
+              <path class="finder-art__sparkle" d="M254 163v18m-9-9h18m-171-99v12m-6-6h12"/>
+            </svg>
+            <div class="finder-art__caption"><span data-finder-art-name></span><span data-finder-art-number></span></div>
+          </div>
+          <div class="finder-panel">
+            <div class="finder-question" data-finder-question>
+              <p class="finder-count" data-finder-count></p>
+              <h2 id="finder-question-title" tabindex="-1" data-finder-heading></h2>
+              <p id="finder-question-help" class="finder-help" data-finder-help></p>
+              <fieldset aria-labelledby="finder-question-title" aria-describedby="finder-question-help">
+                <div class="finder-options" data-finder-options></div>
+              </fieldset>
+            </div>
+            <div class="finder-actions">
+              <button class="hmw-btn finder-back" type="button" data-finder-back><span aria-hidden="true">←</span> 이전</button>
+              <button class="finder-reset" type="reset">처음부터</button>
+              <button class="hmw-btn finder-forward" type="submit"><span data-finder-forward-label>다음</span><span aria-hidden="true">→</span></button>
+            </div>
+            <button class="finder-refresh" type="button" data-finder-refresh hidden>이 조건으로 다시 추천받기 <span aria-hidden="true">→</span></button>
+            <p class="finder-status" data-finder-status role="status"></p>
+          </div>
+        </div>
       </form>
-      <section class="finder-results" data-finder-results hidden tabindex="-1" aria-labelledby="finder-results-title"><h2 id="finder-results-title">가방 추천 결과</h2><p class="finder-summary" data-finder-summary></p><div class="finder-recovery" data-finder-recovery hidden></div><div class="finder-result-grid" data-finder-cards></div><div class="finder-compare" data-finder-compare hidden tabindex="0" role="region" aria-label="추천 제품 사양 비교표 — 좌우로 이동해 확인하세요"></div><a href="products.html" class="collection-link">전체 제품에서 더 살펴보기 <span aria-hidden="true">→</span></a></section>
+
+      <noscript><p>가방 찾기를 이용하려면 JavaScript를 켜 주세요. <a href="products.html">전체 제품 보기</a></p></noscript>
+      <section class="finder-results" data-finder-results hidden aria-labelledby="finder-results-title">
+        <p class="finder-kicker" lang="en">YOUR BAG EDIT</p>
+        <h2 id="finder-results-title" tabindex="-1">가방 추천 결과</h2>
+        <p class="finder-summary" data-finder-summary></p>
+        <div class="finder-recovery" data-finder-recovery aria-label="선택 조건 바꾸기"></div>
+        <div class="finder-result-grid" data-finder-cards></div>
+        <div class="finder-compare" data-finder-compare hidden tabindex="0" role="region" aria-label="추천 제품 사양 비교표"></div>
+        <a href="products.html" class="collection-link">전체 제품 살펴보기 <span aria-hidden="true">→</span></a>
+      </section>
     </main>
     <footer class="site-footer"><div class="footer-brand"><strong>HIMAWARI</strong><p class="footer-brand__tagline"><span lang="en">Himawari—a brand inspired by Van Gogh’s soul.</span><span class="footer-brand__translation">고흐의 감성을 담아, 일상에 색을 더하는 히마와리.</span></p></div><nav aria-label="푸터 메뉴"><a href="about.html">브랜드</a><a href="products.html">제품</a><a href="terms.html">이용약관</a><a href="privacy.html">개인정보</a><a href="contact.html">연락하기</a></nav><p class="copyright">© <span id="year">2026</span> HIMAWARI</p></footer>
     <script src="assets/cart.js" defer></script><script src="assets/member.js" defer></script>

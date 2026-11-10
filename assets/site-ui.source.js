@@ -135,3 +135,5 @@ async function initializeHomeColours(root) {
   root.dataset.colourController = 'ready';
   await load();
 }
+
+export { animate };
