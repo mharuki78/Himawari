@@ -1,0 +1,102 @@
+{
+  "date": "2026-11-10",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-09T23:59:39.959Z",
+    "scheduledAt": "2026-11-10T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "scheduledSlot": "2026-11-10T09:00:00+09:00",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-10/deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-10/public-catalog.json",
+  "entries": [
+    {
+      "id": "2026-11-10-everyday-0514",
+      "model": "0514",
+      "category": "everyday",
+      "title": "작업대에 종이 펴기",
+      "color": "실버 미니",
+      "scene": "은색 미니 백팩을 멘 채 작업대에 종이를 펴요. 위에서 보니 조임끈과 앞주머니가 한눈에 보여요.",
+      "alt": "은색 No.0514 미니 백팩을 메고 작업대에 종이를 펴는 사람을 높은 옆뒤 시점에서 본 AI 착용 연출",
+      "productId": "store-13326396058",
+      "dimensionsCm": [
+        27,
+        36,
+        14
+      ],
+      "composition": {
+        "approach": "observational worktable activity",
+        "angle": "high rear-side three-quarter",
+        "framing": "tight head-to-hips with whole bag and both hands",
+        "activity": "standing and smoothing paper while wearing both shoulder straps",
+        "setting": "print studio with a maple worktable and a printing press"
+      },
+      "fidelityReview": "Directly compared the source, first candidate and corrected output. The accepted image shows the actual inverted black patch with small two-line white Hima/wari marking at lower right, silver tapered body, dark lock and long loop, short black grab loop, silver shoulder straps, broad covered front zipper with a dark left pull and gathered side pockets. Exterior proportions are consistent with 27 × 36 × 14 cm; both hands and posture were inspected. The first version with distorted badge lettering is retained only as a rejected source.",
+      "date": "2026-11-10",
+      "image": "/assets/lookbook/2026-11-10-everyday-0514.webp",
+      "thumbnail": "/assets/lookbook/2026-11-10-everyday-0514-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-10/reference-0514-front.jpg",
+      "generatedSource": "backups/lookbook-2026-11-10/generated-0514.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260211_152/17707744461046CCJC_JPEG/104907218390027692_404109632.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13326396058",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-10; 2026-09-14 제조사 카탈로그 18페이지의 0514S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "prompt": "Use case: photorealistic-natural. Create one portrait 1024×1536 photograph for the Himawari LookBook. Treat the attached photo as a precise product reference for the metallic silver Himawari No.0514 Mini (0514S) backpack, verified exterior width 27 × height 36 × depth 14 cm. Ignore the reference model and clothes. A fictional adult woman with short curly black hair in a plain midnight-navy long-sleeve tee stands at a maple worktable in a print studio and flattens one blank sheet of ivory paper with both hands. View the scene from a distinctly high 45-degree angle just above and slightly behind her left shoulder. Tight working portrait cropped from shoulder and partial hairline to hips with both hands and the whole backpack inside the frame. The bag face is clearly presented to the lens and occupies about 42 percent of picture height. The pack is worn with both original silver webbing straps. Match the exact bright metallic silver with gray shadows, soft tapered gathered mouth, black cord lock and the long continuous black drawcord loop down the exterior, short original black carry loop, single broad front pocket with silver zipper cover and black left-side zipper pull, side gathered pocket, and the small black triangular white Himawari badge at lower right in the same orientation, size and location. Keep the silhouette and seam layout of the exact mini variant. Soft daylight from a high window; no reflections with people, readable text, extra branding, fixtures attached to the bag, visible interior, added zips or pockets. Natural posture, five anatomically correct fingers per hand, the hands are secondary to the bag.\n\nBadge correction: Use case: precise-object-edit. Image 1 is the target vertical 1024 × 1536 LookBook photo to edit. Image 2 is the real product photograph of the exact silver Himawari No.0514 Mini, 27 × 36 × 14 cm. In image 1, correct only the tiny black triangular brand badge at the lower right corner of the silver bag's front pocket. Match the actual badge from image 2: small inverted black triangle with a restrained compact white two-line Himawari wordmark, with the lettering correctly shaped, small in the center and with black padding around it. Reproduce the original badge's exact orientation, white mark, edge stitching, and small size relative to the pocket. On the 1024px-wide output, the overall patch should be approximately 62px wide and the white logo only about 30px wide, visually subdued, as in the product photograph. It must read as the small authentic mark, never as an enlarged wavy scribble. Keep the existing silver backpack geometry, color, cord, pockets and straps, the studio, composition, model, clothing, lighting, hands and paper intact. Output one full edited vertical photograph, without adding other text.\n",
+      "generatedSha256": "286e15e82e865c462ee2210fdad38549d0a2b6acedf782af766c2787b9d34a5c"
+    },
+    {
+      "id": "2026-11-10-city-1027",
+      "model": "1027",
+      "category": "city",
+      "title": "기둥 사이를 걸어요",
+      "color": "라벤더",
+      "scene": "짙은 재킷에 라벤더 백팩을 메고 기둥 사이를 걸어요. 가방 앞에 아이보리 파우치가 달려 있어요.",
+      "alt": "라벤더 No.1027 백팩을 메고 기둥이 늘어선 통로를 걷는 사람의 전신을 담은 AI 착용 연출",
+      "productId": "store-11070925709",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "composition": {
+        "approach": "architectural environmental walking portrait",
+        "angle": "eye-level rear diagonal",
+        "framing": "full-body with shoes and receding colonnade",
+        "activity": "walking toward the entrance wearing both shoulder straps",
+        "setting": "pale concrete colonnade with low sunlight"
+      },
+      "fidelityReview": "Directly compared the generated output and real product photo. The pale blue upper and side panels, lavender lower panel and single zipper pocket, ivory base strip, two joined ivory handles and single rivet on each tab, subdued gold wordmark, pale blue straps and one ivory pouch at front right match. The pouch has the fine zipper and faint wordmark. Scale was checked against 28 × 40 × 17 cm, and the stepping pose, hand and shoes were inspected.",
+      "date": "2026-11-10",
+      "image": "/assets/lookbook/2026-11-10-city-1027.webp",
+      "thumbnail": "/assets/lookbook/2026-11-10-city-1027-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-10/reference-1027-front.jpg",
+      "generatedSource": "backups/lookbook-2026-11-10/generated-1027.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260210_108/1770707978865U4o9A_JPEG/43528032995650075_718147852.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/11070925709",
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-10; 2026-09-14 제조사 카탈로그 28페이지의 1027 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "prompt": "Use case: photorealistic-natural. Create one portrait 1024×1536 Himawari LookBook photo. Use attached image solely as the exact reference for the Himawari No.1027 lavender backpack, verified outer size 28 cm wide × 40 cm high × 17 cm deep. Match the reference geometry, colors, pouch and hardware. In a simple pale concrete courtyard with tall shaded columns, a fictional adult man with short dark hair, plain charcoal blue chore jacket and dark straight trousers steps across a bright strip of pavement toward a doorway, carrying the backpack on both original pale blue shoulder straps. Camera at a level horizontal angle at about torso height, a long shot from right-rear diagonal, whole figure including shoes with room in front and deep repeating columns. The backpack face remains clear and complete, about 22 percent of image height. The adult's profile can be only partly visible. One foot slightly lifted, realistic soft late-afternoon side light. Retain original softly squared outline, light icy blue upper panel and side pocket, lavender lower panel and large front zipper pocket with the original lavender zipper and zipper pull, thin ivory base edging, twin short ivory carry handles with join at the top and the two rectangular ends with one round rivet each, small subtle gold Himawari wordmark at upper center, and the original single cream rounded-rectangle zip pouch hanging off the right handle on the front-right, including its faint Himawari mark. Preserve the pouch proportion about 40 percent of the bag height and place it clear of the left zipper. No invented hardware, extra pockets, logos or chest belt. No signs, no background people, no over-styling.\n",
+      "generatedSha256": "6f7473ea86232eee771b96c7368aae752ecfe5aa853dd0e858197003578a9fff"
+    }
+  ],
+  "preparedAt": "2026-11-10T00:06:10.655675+00:00",
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-11-10-everyday-0514",
+        "2026-11-10-city-1027"
+      ],
+      "stage": "prepared"
+    }
+  },
+  "visualReview": "backups/lookbook-2026-11-10/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-10/optimization.json"
+}
