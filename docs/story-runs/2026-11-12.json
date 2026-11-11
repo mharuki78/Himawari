@@ -8,14 +8,14 @@
     "edition": "morning",
     "waitedForSchedule": true
   },
-  "stage": "prepared",
+  "stage": "metadata-verified",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "publicationBaselineCommit": "30289cf22c943f5127c7affd8fd179db38a6176d",
   "publicationBaselineEvidence": "backups/story-2026-11-12/baseline-deployment.json",
   "posts": [
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-zipper-separating-end",
       "title": "백팩 지퍼를 끝까지 열었는데 두 면이 붙어 있다면",
       "url": "https://himawari.co.kr/story/backpack-zipper-separating-end.html",
@@ -89,10 +89,19 @@
           "review": "공개 상품 원본을 직접 대조했습니다. 모델·색·형태·로고·포켓·손잡이와 끈을 확인하고 원본 전체의 비율을 보존했습니다.",
           "originalSource": "backups/story-2026-11-12/reference-1.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-11T23:30:24.271Z",
+        "modifiedAt": "2026-11-11T23:30:24.271Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-12/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-12/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-12/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-12/first-deployment-history.json",
+        "articleSha256": "fc2d17f74447c5108000b1ba25b14ddfd2ab9a28566ad02f5541271d2bde4ac3"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-raincover-fit-coverage",
       "title": "백팩 레인커버, 리터 표시만 맞으면 될까",
       "url": "https://himawari.co.kr/story/backpack-raincover-fit-coverage.html",
@@ -166,10 +175,19 @@
           "review": "공개 상품 원본을 직접 대조했습니다. 모델·색·형태·로고·포켓·손잡이와 끈을 확인하고 원본 전체의 비율을 보존했습니다.",
           "originalSource": "backups/story-2026-11-12/reference-2.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-11T23:30:24.271Z",
+        "modifiedAt": "2026-11-11T23:30:24.271Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-12/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-12/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-12/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-12/first-deployment-history.json",
+        "articleSha256": "940953277a32ad0fcaba20230d54b60d81f562c181a4fd562f0066661380be2a"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-stacked-storage-contact",
       "title": "백팩 두 개를 포개면 어느 부분부터 맞닿을까",
       "url": "https://himawari.co.kr/story/backpack-stacked-storage-contact.html",
@@ -243,7 +261,16 @@
           "review": "공개 상품 원본을 직접 대조했습니다. 모델·색·형태·로고·포켓·손잡이와 끈을 확인하고 원본 전체의 비율을 보존했습니다.",
           "originalSource": "backups/story-2026-11-12/reference-3.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-11T23:30:24.271Z",
+        "modifiedAt": "2026-11-11T23:30:24.271Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-12/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-12/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-12/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-12/first-deployment-history.json",
+        "articleSha256": "f50c17781c3d0d841456d78d300a47b0680d45cee0d58c30742b178406d79dab"
+      }
     }
   ],
   "topicsReviewed": 197,
@@ -255,7 +282,7 @@
         "backpack-raincover-fit-coverage",
         "backpack-stacked-storage-contact"
       ],
-      "stage": "prepared"
+      "stage": "metadata-verified"
     }
   },
   "completionReceipt": "backups/story-runs/2026-11-12.deployment.json"
