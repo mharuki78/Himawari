@@ -1,4 +1,5 @@
 import { createSpecEditor } from './spec-editor.js';
+import { bindProductCsv } from './product-csv.js';
 import { upload } from '@vercel/blob/client';
 
 import { HttpError, bindPasswordToggle, fetchJson } from './admin-client.js';
@@ -28,8 +29,6 @@ const errorRetryButton = $('[data-error-retry]');
 const loadMoreButton = $('[data-load-more]');
 const loadLabel = $('[data-load-label]');
 const listTitle = $('#product-list-title');
-const bulkDownload = $('[data-bulk-download]');
-const bulkFile = $('[data-bulk-file]');
 const productForm = $('[data-product-form]');
 const specEditor = createSpecEditor(productForm);
 const formSummary = $('[data-form-summary]');
@@ -87,6 +86,7 @@ const maxGallery = 5;
 const longImageSegmentHeight = 6_000;
 const fieldNames = ['name', 'model', 'price', 'naverDiscountRate', 'tagline', 'description', 'highlights', 'url', 'stock', 'optionName', 'options', 'mainImage', 'gallery'];
 
+let csvController;
 let products = [];
 let total = 0;
 let cursor = null;
@@ -107,6 +107,7 @@ let editEtag = null;
 let editTrigger = null;
 
 function showLogin(message = '') {
+  csvController?.clear();
   initialView.hidden = true;
   boardView.hidden = true;
   loginView.hidden = false;
@@ -793,33 +794,15 @@ retryButton.addEventListener('click', () => loadProducts({ reset: true }));
 errorRetryButton.addEventListener('click', () => loadProducts({ reset: true }));
 loadMoreButton.addEventListener('click', () => loadProducts());
 
-function csvCell(value) { const text = String(value ?? ''); return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text; }
-function parseCsvLine(line) { const result = []; let value = ''; let quoted = false; for (let index = 0; index < line.length; index += 1) { const char = line[index]; if (char === '"' && quoted && line[index + 1] === '"') { value += '"'; index += 1; } else if (char === '"') quoted = !quoted; else if (char === ',' && !quoted) { result.push(value); value = ''; } else value += char; } result.push(value); return result; }
-function optionText(options) { return (options || []).map((option) => `${option.label}=${option.stock}`).join('|'); }
-function parseOptions(value) { if (!String(value).trim()) return []; return String(value).split('|').map((part) => { const split = part.lastIndexOf('='); return { label: part.slice(0, split).trim(), stock: Number(part.slice(split + 1)) }; }); }
-
-bulkDownload.addEventListener('click', async () => {
-  bulkDownload.disabled = true; boardStatus.textContent = '현재 재고 CSV를 준비하고 있습니다.';
-  try {
-    const payload = await fetchJson('/api/admin/products/bulk');
-    const lines = [['id','model','name','stock','optionName','options(label=stock|...)','naverDiscountRate'], ...payload.items.map((item) => [item.id,item.model,item.name,item.stock ?? '',item.optionName,optionText(item.options),item.naverDiscountRate ?? ''])];
-    const blob = new Blob(['\ufeff' + lines.map((line) => line.map(csvCell).join(',')).join('\r\n')], { type: 'text/csv;charset=utf-8' }); const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = `himawari-stock-${new Date().toISOString().slice(0,10)}.csv`; link.click(); setTimeout(() => URL.revokeObjectURL(link.href), 1000); boardStatus.textContent = '재고 CSV를 내려받았습니다.';
-  } catch (error) { boardStatus.textContent = error.message || 'CSV를 준비하지 못했습니다.'; }
-  finally { bulkDownload.disabled = false; }
+csvController = bindProductCsv({
+  getEtag: () => catalogEtag,
+  canApply: () => !dirty && !uploadController,
+  onApplied: async () => {
+    if (!dirty) await resetDraft({ cleanup: true });
+    await loadProducts({ reset: true });
+  },
+  onSessionError: handleSessionError,
 });
-
-bulkFile.addEventListener('change', async () => {
-  const file = bulkFile.files[0]; if (!file) return;
-  try {
-    const lines = (await file.text()).replace(/^\ufeff/, '').split(/\r?\n/).filter(Boolean); const header = parseCsvLine(lines.shift() || '');
-    const indexes = Object.fromEntries(header.map((name, index) => [name, index])); if (indexes.id === undefined || indexes.stock === undefined || indexes['options(label=stock|...)'] === undefined) throw new Error('Himawari에서 내려받은 CSV 형식이 아닙니다.');
-    const updates = lines.map(parseCsvLine).map((row) => ({ id: row[indexes.id], stock: row[indexes.stock], optionName: row[indexes.optionName] || '', options: parseOptions(row[indexes['options(label=stock|...)']]), naverDiscountRate: row[indexes.naverDiscountRate] || '' }));
-    if (!confirm(`${updates.length}개 제품의 재고·할인율을 CSV 내용으로 반영할까요?`)) { bulkFile.value = ''; return; }
-    boardStatus.textContent = 'CSV 내용을 검증하고 반영하고 있습니다.'; await fetchJson('/api/admin/products/bulk', { method: 'PUT', body: JSON.stringify({ etag: catalogEtag, updates }) }); await loadProducts({ reset: true }); boardStatus.textContent = `${updates.length}개 제품의 재고·할인율을 반영했습니다.`;
-  } catch (error) { boardStatus.textContent = error.message || 'CSV를 반영하지 못했습니다.'; }
-  finally { bulkFile.value = ''; }
-});
-
 productForm.addEventListener('input', (event) => {
   dirty = true;
   if (event.target.name) setFieldError(event.target.name);

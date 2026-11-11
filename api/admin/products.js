@@ -26,6 +26,7 @@ import {
 import { blackFridayState, readBlackFridayAdmin, saveBlackFriday } from '../_lib/black-friday.js';
 import { ensureOrderSchema } from '../_lib/orders.js';
 import { databaseIsConfigured } from '../_lib/database.js';
+import { exportProductCsv, planProductCsv, planBulkProducts } from '../_lib/product-csv.js';
 import { listAdminReviews, moderateReview, notifyRestockSubscribers, publishedReviewCounts } from '../_lib/customer-features.js';
 import { changeMemberStatus, listMembers } from '../_lib/admin-members.js';
 import {
@@ -186,43 +187,30 @@ async function fetchReels(request) {
 }
 
 async function fetchBulkProducts(request) {
-  if (!['GET', 'PUT'].includes(request.method)) return methodNotAllowed(['GET', 'PUT']);
+  if (!['GET', 'POST', 'PUT'].includes(request.method)) return methodNotAllowed(['GET', 'POST', 'PUT']);
   if (!authIsConfigured() || !productStoreIsConfigured()) return json({ message: '제품 관리 저장소 설정이 완료되지 않았습니다.' }, 503);
   if (!isAdminRequest(request)) return json({ message: '관리자 로그인이 필요합니다.' }, 401, { Vary: 'Cookie' });
   try {
     const current = await readProductCatalog();
     if (request.method === 'GET') return json({
       etag: current.etag,
-      items: current.catalog.products.map((product) => ({ id: product.id, model: product.model, name: product.name, stock: product.stock, optionName: product.optionName || '', options: product.options || [], naverDiscountRate: product.naverDiscountRate })),
+      csv: exportProductCsv(current.catalog.products, current.etag),
+      items: current.catalog.products.map((product) => ({ id: product.id, model: product.model, name: product.name, naverPrice: product.naverPrice, stock: product.stock, optionName: product.optionName || '', options: product.options || [], naverDiscountRate: product.naverDiscountRate })),
     }, 200, { Vary: 'Cookie' });
     if (!isSameOrigin(request)) return json({ message: '요청 출처를 확인할 수 없습니다.' }, 403);
-    const input = await readJson(request, 256_000);
-    if ((input.etag || null) !== (current.etag || null)) return json({ message: '제품 목록이 변경되었습니다. 새 CSV를 받은 뒤 다시 반영해 주세요.' }, 409);
-    if (!Array.isArray(input.updates) || !input.updates.length || input.updates.length > 500) return json({ message: '반영할 제품 행을 확인해 주세요.' }, 400);
-    const byId = new Map(input.updates.map((item) => [String(item?.id || ''), item]));
-    const unknown = [...byId.keys()].filter((id) => !current.catalog.products.some((product) => product.id === id));
-    if (unknown.length) return json({ message: `찾을 수 없는 제품 ID가 있습니다: ${unknown.slice(0, 3).join(', ')}` }, 400);
-    const errors = [];
-    const updated = current.catalog.products.map((product) => {
-      const patch = byId.get(product.id); if (!patch) return product;
-      const candidate = {
-        ...publicProduct(product),
-        stock: patch.stock === '' || patch.stock === null ? null : Number(patch.stock),
-        naverDiscountRate: patch.naverDiscountRate === '' || patch.naverDiscountRate === null ? null : Number(patch.naverDiscountRate),
-        optionName: String(patch.optionName || ''),
-        options: Array.isArray(patch.options) ? patch.options : [],
-        replaceMainImage: false, replaceGallery: false, managedImages: [],
-      };
-      const checked = validateProductUpdateInput(candidate, product);
-      if (!checked.valid) { errors.push(`${product.model}: ${Object.values(checked.fieldErrors)[0]}`); return product; }
-      return updateProductRecord(product, checked.value, mergeProductMedia(product, checked.value));
-    });
-    if (errors.length) return json({ message: errors.slice(0, 5).join(' / ') }, 400);
-    const saved = await writeProductCatalog({ ...current.catalog, products: updated }, current.etag);
-    return json({ ok: true, updated: byId.size, etag: saved.etag });
+    const input = await readJson(request, 4_200_000);
+    if (!input || typeof input !== 'object' || Array.isArray(input)) return json({ message: 'CSV 요청 형식을 확인해 주세요.' }, 400);
+    if (request.method === 'PUT' && normalizeBlobEtag(input.etag) !== normalizeBlobEtag(current.etag)) return json({ message: '제품 목록이 변경되었습니다. 새 CSV를 받은 뒤 다시 반영해 주세요.' }, 409);
+    const plan = typeof input.csv === 'string'
+      ? planProductCsv(input.csv, current.catalog.products, current.etag, input.etag)
+      : planBulkProducts(current.catalog.products, input.updates);
+    if (request.method === 'POST') return json({ etag: current.etag, changes: plan.changes, updated: plan.updated, submitted: plan.submitted }, 200, { Vary: 'Cookie' });
+    if (!plan.updated) return json({ ok: true, updated: 0, etag: current.etag });
+    const saved = await writeProductCatalog({ ...current.catalog, products: plan.products }, current.etag);
+    return json({ ok: true, updated: plan.updated, etag: saved.etag });
   } catch (error) {
     if (error instanceof BlobPreconditionFailedError) return json({ message: '다른 관리자 작업으로 제품 목록이 변경되었습니다. 다시 내려받아 주세요.' }, 409);
-    return json({ message: Number(error.status) < 500 ? error.message : '제품 일괄 작업을 처리하지 못했습니다.' }, Number(error.status) || 500);
+    return json({ message: Number(error.status) < 500 ? error.message : '제품 일괄 작업을 처리하지 못했습니다.', fieldErrors: error.fieldErrors || {} }, Number(error.status) || 500);
   }
 }
 

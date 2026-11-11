@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:admin": "esbuild admin/product-admin.source.js --bundle --format=esm --platform=browser --target=es2022 --outfile=admin/product-admin.js && esbuild admin/reel-admin.source.js --bundle --format=esm --platform=browser --target=es2022 --outfile=admin/reel-admin.js",
+    "build:admin": "esbuild admin/product-admin.source.js --bundle --format=esm --platform=browser --target=es2022 --outfile=admin/product-admin.js && esbuild admin/reel-admin.source.js --bundle --format=esm --platform=browser --target=es2022 --outfile=admin/reel-admin.js && tailwindcss -i admin/product-csv.source.css -o admin/product-csv.css --minify",
     "test": "node --test \"test/*.test.js\" \"test/*.test.mjs\"",
     "design": "npx -p @google/design.md designmd lint DESIGN.md",
     "secrets": "node scripts/generate-admin-secrets.mjs",
@@ -15,7 +15,8 @@
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
     "@vercel/blob": "^2.8.0",
-    "animejs": "^4.5.0"
+    "animejs": "^4.5.0",
+    "papaparse": "^5.7.0"
   },
   "devDependencies": {
     "@electric-sql/pglite": "^0.5.8",

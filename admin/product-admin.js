@@ -25,9 +25,9 @@ var __export = (target, all) => {
 };
 var __copyProps = (to, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") {
-    for (let key of __getOwnPropNames(from))
-      if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+    for (let key2 of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key2) && key2 !== except)
+        __defProp(to, key2, { get: () => from[key2], enumerable: !(desc = __getOwnPropDesc(from, key2)) || desc.enumerable });
   }
   return to;
 };
@@ -64,9 +64,9 @@ var require_get_context = __commonJS({
     };
     var __copyProps2 = (to, from, except, desc) => {
       if (from && typeof from === "object" || typeof from === "function") {
-        for (let key of __getOwnPropNames2(from))
-          if (!__hasOwnProp2.call(to, key) && key !== except)
-            __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
+        for (let key2 of __getOwnPropNames2(from))
+          if (!__hasOwnProp2.call(to, key2) && key2 !== except)
+            __defProp2(to, key2, { get: () => from[key2], enumerable: !(desc = __getOwnPropDesc2(from, key2)) || desc.enumerable });
       }
       return to;
     };
@@ -90,7 +90,7 @@ var webcrypto_default, isCryptoKey;
 var init_webcrypto = __esm({
   "node_modules/jose/dist/browser/runtime/webcrypto.js"() {
     webcrypto_default = crypto;
-    isCryptoKey = (key) => key instanceof CryptoKey;
+    isCryptoKey = (key2) => key2 instanceof CryptoKey;
   }
 });
 
@@ -460,8 +460,8 @@ function getNamedCurve(alg) {
       throw new Error("unreachable");
   }
 }
-function checkUsage(key, usages) {
-  if (usages.length && !usages.some((expected) => key.usages.includes(expected))) {
+function checkUsage(key2, usages) {
+  if (usages.length && !usages.some((expected) => key2.usages.includes(expected))) {
     let msg = "CryptoKey does not support this operation, its usages must include ";
     if (usages.length > 2) {
       const last = usages.pop();
@@ -474,15 +474,15 @@ function checkUsage(key, usages) {
     throw new TypeError(msg);
   }
 }
-function checkSigCryptoKey(key, alg, ...usages) {
+function checkSigCryptoKey(key2, alg, ...usages) {
   switch (alg) {
     case "HS256":
     case "HS384":
     case "HS512": {
-      if (!isAlgorithm(key.algorithm, "HMAC"))
+      if (!isAlgorithm(key2.algorithm, "HMAC"))
         throw unusable("HMAC");
       const expected = parseInt(alg.slice(2), 10);
-      const actual = getHashLength(key.algorithm.hash);
+      const actual = getHashLength(key2.algorithm.hash);
       if (actual !== expected)
         throw unusable(`SHA-${expected}`, "algorithm.hash");
       break;
@@ -490,10 +490,10 @@ function checkSigCryptoKey(key, alg, ...usages) {
     case "RS256":
     case "RS384":
     case "RS512": {
-      if (!isAlgorithm(key.algorithm, "RSASSA-PKCS1-v1_5"))
+      if (!isAlgorithm(key2.algorithm, "RSASSA-PKCS1-v1_5"))
         throw unusable("RSASSA-PKCS1-v1_5");
       const expected = parseInt(alg.slice(2), 10);
-      const actual = getHashLength(key.algorithm.hash);
+      const actual = getHashLength(key2.algorithm.hash);
       if (actual !== expected)
         throw unusable(`SHA-${expected}`, "algorithm.hash");
       break;
@@ -501,32 +501,32 @@ function checkSigCryptoKey(key, alg, ...usages) {
     case "PS256":
     case "PS384":
     case "PS512": {
-      if (!isAlgorithm(key.algorithm, "RSA-PSS"))
+      if (!isAlgorithm(key2.algorithm, "RSA-PSS"))
         throw unusable("RSA-PSS");
       const expected = parseInt(alg.slice(2), 10);
-      const actual = getHashLength(key.algorithm.hash);
+      const actual = getHashLength(key2.algorithm.hash);
       if (actual !== expected)
         throw unusable(`SHA-${expected}`, "algorithm.hash");
       break;
     }
     case "EdDSA": {
-      if (key.algorithm.name !== "Ed25519" && key.algorithm.name !== "Ed448") {
+      if (key2.algorithm.name !== "Ed25519" && key2.algorithm.name !== "Ed448") {
         throw unusable("Ed25519 or Ed448");
       }
       break;
     }
     case "Ed25519": {
-      if (!isAlgorithm(key.algorithm, "Ed25519"))
+      if (!isAlgorithm(key2.algorithm, "Ed25519"))
         throw unusable("Ed25519");
       break;
     }
     case "ES256":
     case "ES384":
     case "ES512": {
-      if (!isAlgorithm(key.algorithm, "ECDSA"))
+      if (!isAlgorithm(key2.algorithm, "ECDSA"))
         throw unusable("ECDSA");
       const expected = getNamedCurve(alg);
-      const actual = key.algorithm.namedCurve;
+      const actual = key2.algorithm.namedCurve;
       if (actual !== expected)
         throw unusable(expected, "algorithm.namedCurve");
       break;
@@ -534,17 +534,17 @@ function checkSigCryptoKey(key, alg, ...usages) {
     default:
       throw new TypeError("CryptoKey does not support this operation");
   }
-  checkUsage(key, usages);
+  checkUsage(key2, usages);
 }
-function checkEncCryptoKey(key, alg, ...usages) {
+function checkEncCryptoKey(key2, alg, ...usages) {
   switch (alg) {
     case "A128GCM":
     case "A192GCM":
     case "A256GCM": {
-      if (!isAlgorithm(key.algorithm, "AES-GCM"))
+      if (!isAlgorithm(key2.algorithm, "AES-GCM"))
         throw unusable("AES-GCM");
       const expected = parseInt(alg.slice(1, 4), 10);
-      const actual = key.algorithm.length;
+      const actual = key2.algorithm.length;
       if (actual !== expected)
         throw unusable(expected, "algorithm.length");
       break;
@@ -552,16 +552,16 @@ function checkEncCryptoKey(key, alg, ...usages) {
     case "A128KW":
     case "A192KW":
     case "A256KW": {
-      if (!isAlgorithm(key.algorithm, "AES-KW"))
+      if (!isAlgorithm(key2.algorithm, "AES-KW"))
         throw unusable("AES-KW");
       const expected = parseInt(alg.slice(1, 4), 10);
-      const actual = key.algorithm.length;
+      const actual = key2.algorithm.length;
       if (actual !== expected)
         throw unusable(expected, "algorithm.length");
       break;
     }
     case "ECDH": {
-      switch (key.algorithm.name) {
+      switch (key2.algorithm.name) {
         case "ECDH":
         case "X25519":
         case "X448":
@@ -574,17 +574,17 @@ function checkEncCryptoKey(key, alg, ...usages) {
     case "PBES2-HS256+A128KW":
     case "PBES2-HS384+A192KW":
     case "PBES2-HS512+A256KW":
-      if (!isAlgorithm(key.algorithm, "PBKDF2"))
+      if (!isAlgorithm(key2.algorithm, "PBKDF2"))
         throw unusable("PBKDF2");
       break;
     case "RSA-OAEP":
     case "RSA-OAEP-256":
     case "RSA-OAEP-384":
     case "RSA-OAEP-512": {
-      if (!isAlgorithm(key.algorithm, "RSA-OAEP"))
+      if (!isAlgorithm(key2.algorithm, "RSA-OAEP"))
         throw unusable("RSA-OAEP");
       const expected = parseInt(alg.slice(9), 10) || 1;
-      const actual = getHashLength(key.algorithm.hash);
+      const actual = getHashLength(key2.algorithm.hash);
       if (actual !== expected)
         throw unusable(`SHA-${expected}`, "algorithm.hash");
       break;
@@ -592,7 +592,7 @@ function checkEncCryptoKey(key, alg, ...usages) {
     default:
       throw new TypeError("CryptoKey does not support this operation");
   }
-  checkUsage(key, usages);
+  checkUsage(key2, usages);
 }
 var init_crypto_key = __esm({
   "node_modules/jose/dist/browser/lib/crypto_key.js"() {
@@ -638,11 +638,11 @@ var is_key_like_default, types;
 var init_is_key_like = __esm({
   "node_modules/jose/dist/browser/runtime/is_key_like.js"() {
     init_webcrypto();
-    is_key_like_default = (key) => {
-      if (isCryptoKey(key)) {
+    is_key_like_default = (key2) => {
+      if (isCryptoKey(key2)) {
         return true;
       }
-      return key?.[Symbol.toStringTag] === "KeyObject";
+      return key2?.[Symbol.toStringTag] === "KeyObject";
     };
     types = ["CryptoKey"];
   }
@@ -807,20 +807,20 @@ var init_bogus = __esm({
 });
 
 // node_modules/jose/dist/browser/runtime/aeskw.js
-function checkKeySize(key, alg) {
-  if (key.algorithm.length !== parseInt(alg.slice(1, 4), 10)) {
+function checkKeySize(key2, alg) {
+  if (key2.algorithm.length !== parseInt(alg.slice(1, 4), 10)) {
     throw new TypeError(`Invalid key size for alg: ${alg}`);
   }
 }
-function getCryptoKey(key, alg, usage) {
-  if (isCryptoKey(key)) {
-    checkEncCryptoKey(key, alg, usage);
-    return key;
+function getCryptoKey(key2, alg, usage) {
+  if (isCryptoKey(key2)) {
+    checkEncCryptoKey(key2, alg, usage);
+    return key2;
   }
-  if (key instanceof Uint8Array) {
-    return webcrypto_default.subtle.importKey("raw", key, "AES-KW", true, [usage]);
+  if (key2 instanceof Uint8Array) {
+    return webcrypto_default.subtle.importKey("raw", key2, "AES-KW", true, [usage]);
   }
-  throw new TypeError(invalid_key_input_default(key, ...types, "Uint8Array"));
+  throw new TypeError(invalid_key_input_default(key2, ...types, "Uint8Array"));
 }
 var wrap, unwrap;
 var init_aeskw = __esm({
@@ -830,14 +830,14 @@ var init_aeskw = __esm({
     init_crypto_key();
     init_invalid_key_input();
     init_is_key_like();
-    wrap = async (alg, key, cek) => {
-      const cryptoKey = await getCryptoKey(key, alg, "wrapKey");
+    wrap = async (alg, key2, cek) => {
+      const cryptoKey = await getCryptoKey(key2, alg, "wrapKey");
       checkKeySize(cryptoKey, alg);
       const cryptoKeyCek = await webcrypto_default.subtle.importKey("raw", cek, ...bogus_default);
       return new Uint8Array(await webcrypto_default.subtle.wrapKey("raw", cryptoKeyCek, cryptoKey, "AES-KW"));
     };
-    unwrap = async (alg, key, encryptedKey) => {
-      const cryptoKey = await getCryptoKey(key, alg, "unwrapKey");
+    unwrap = async (alg, key2, encryptedKey) => {
+      const cryptoKey = await getCryptoKey(key2, alg, "unwrapKey");
       checkKeySize(cryptoKey, alg);
       const cryptoKeyCek = await webcrypto_default.subtle.unwrapKey("raw", encryptedKey, cryptoKey, "AES-KW", ...bogus_default);
       return new Uint8Array(await webcrypto_default.subtle.exportKey("raw", cryptoKeyCek));
@@ -870,17 +870,17 @@ async function deriveKey(publicKey, privateKey, algorithm, keyLength, apu = new 
   }, privateKey, length));
   return concatKdf(sharedSecret, keyLength, value);
 }
-async function generateEpk(key) {
-  if (!isCryptoKey(key)) {
-    throw new TypeError(invalid_key_input_default(key, ...types));
+async function generateEpk(key2) {
+  if (!isCryptoKey(key2)) {
+    throw new TypeError(invalid_key_input_default(key2, ...types));
   }
-  return webcrypto_default.subtle.generateKey(key.algorithm, true, ["deriveBits"]);
+  return webcrypto_default.subtle.generateKey(key2.algorithm, true, ["deriveBits"]);
 }
-function ecdhAllowed(key) {
-  if (!isCryptoKey(key)) {
-    throw new TypeError(invalid_key_input_default(key, ...types));
+function ecdhAllowed(key2) {
+  if (!isCryptoKey(key2)) {
+    throw new TypeError(invalid_key_input_default(key2, ...types));
   }
-  return ["P-256", "P-384", "P-521"].includes(key.algorithm.namedCurve) || key.algorithm.name === "X25519" || key.algorithm.name === "X448";
+  return ["P-256", "P-384", "P-521"].includes(key2.algorithm.namedCurve) || key2.algorithm.name === "X25519" || key2.algorithm.name === "X448";
 }
 var init_ecdhes = __esm({
   "node_modules/jose/dist/browser/runtime/ecdhes.js"() {
@@ -905,17 +905,17 @@ var init_check_p2s = __esm({
 });
 
 // node_modules/jose/dist/browser/runtime/pbes2kw.js
-function getCryptoKey2(key, alg) {
-  if (key instanceof Uint8Array) {
-    return webcrypto_default.subtle.importKey("raw", key, "PBKDF2", false, ["deriveBits"]);
+function getCryptoKey2(key2, alg) {
+  if (key2 instanceof Uint8Array) {
+    return webcrypto_default.subtle.importKey("raw", key2, "PBKDF2", false, ["deriveBits"]);
   }
-  if (isCryptoKey(key)) {
-    checkEncCryptoKey(key, alg, "deriveBits", "deriveKey");
-    return key;
+  if (isCryptoKey(key2)) {
+    checkEncCryptoKey(key2, alg, "deriveBits", "deriveKey");
+    return key2;
   }
-  throw new TypeError(invalid_key_input_default(key, ...types, "Uint8Array"));
+  throw new TypeError(invalid_key_input_default(key2, ...types, "Uint8Array"));
 }
-async function deriveKey2(p2s2, alg, p2c, key) {
+async function deriveKey2(p2s2, alg, p2c, key2) {
   checkP2s(p2s2);
   const salt = p2s(alg, p2s2);
   const keylen = parseInt(alg.slice(13, 16), 10);
@@ -929,7 +929,7 @@ async function deriveKey2(p2s2, alg, p2c, key) {
     length: keylen,
     name: "AES-KW"
   };
-  const cryptoKey = await getCryptoKey2(key, alg);
+  const cryptoKey = await getCryptoKey2(key2, alg);
   if (cryptoKey.usages.includes("deriveBits")) {
     return new Uint8Array(await webcrypto_default.subtle.deriveBits(subtleAlg, cryptoKey, keylen));
   }
@@ -950,13 +950,13 @@ var init_pbes2kw = __esm({
     init_crypto_key();
     init_invalid_key_input();
     init_is_key_like();
-    encrypt = async (alg, key, cek, p2c = 2048, p2s2 = random_default(new Uint8Array(16))) => {
-      const derived = await deriveKey2(p2s2, alg, p2c, key);
+    encrypt = async (alg, key2, cek, p2c = 2048, p2s2 = random_default(new Uint8Array(16))) => {
+      const derived = await deriveKey2(p2s2, alg, p2c, key2);
       const encryptedKey = await wrap(alg.slice(-6), derived, cek);
       return { encryptedKey, p2c, p2s: encode(p2s2) };
     };
-    decrypt2 = async (alg, key, encryptedKey, p2c, p2s2) => {
-      const derived = await deriveKey2(p2s2, alg, p2c, key);
+    decrypt2 = async (alg, key2, encryptedKey, p2c, p2s2) => {
+      const derived = await deriveKey2(p2s2, alg, p2c, key2);
       return unwrap(alg.slice(-6), derived, encryptedKey);
     };
   }
@@ -984,9 +984,9 @@ var init_subtle_rsaes = __esm({
 var check_key_length_default;
 var init_check_key_length = __esm({
   "node_modules/jose/dist/browser/runtime/check_key_length.js"() {
-    check_key_length_default = (alg, key) => {
+    check_key_length_default = (alg, key2) => {
       if (alg.startsWith("RS") || alg.startsWith("PS")) {
-        const { modulusLength } = key.algorithm;
+        const { modulusLength } = key2.algorithm;
         if (typeof modulusLength !== "number" || modulusLength < 2048) {
           throw new TypeError(`${alg} requires key modulusLength to be 2048 bits or larger`);
         }
@@ -1006,32 +1006,32 @@ var init_rsaes = __esm({
     init_check_key_length();
     init_invalid_key_input();
     init_is_key_like();
-    encrypt2 = async (alg, key, cek) => {
-      if (!isCryptoKey(key)) {
-        throw new TypeError(invalid_key_input_default(key, ...types));
+    encrypt2 = async (alg, key2, cek) => {
+      if (!isCryptoKey(key2)) {
+        throw new TypeError(invalid_key_input_default(key2, ...types));
       }
-      checkEncCryptoKey(key, alg, "encrypt", "wrapKey");
-      check_key_length_default(alg, key);
-      if (key.usages.includes("encrypt")) {
-        return new Uint8Array(await webcrypto_default.subtle.encrypt(subtleRsaEs(alg), key, cek));
+      checkEncCryptoKey(key2, alg, "encrypt", "wrapKey");
+      check_key_length_default(alg, key2);
+      if (key2.usages.includes("encrypt")) {
+        return new Uint8Array(await webcrypto_default.subtle.encrypt(subtleRsaEs(alg), key2, cek));
       }
-      if (key.usages.includes("wrapKey")) {
+      if (key2.usages.includes("wrapKey")) {
         const cryptoKeyCek = await webcrypto_default.subtle.importKey("raw", cek, ...bogus_default);
-        return new Uint8Array(await webcrypto_default.subtle.wrapKey("raw", cryptoKeyCek, key, subtleRsaEs(alg)));
+        return new Uint8Array(await webcrypto_default.subtle.wrapKey("raw", cryptoKeyCek, key2, subtleRsaEs(alg)));
       }
       throw new TypeError('RSA-OAEP key "usages" must include "encrypt" or "wrapKey" for this operation');
     };
-    decrypt3 = async (alg, key, encryptedKey) => {
-      if (!isCryptoKey(key)) {
-        throw new TypeError(invalid_key_input_default(key, ...types));
+    decrypt3 = async (alg, key2, encryptedKey) => {
+      if (!isCryptoKey(key2)) {
+        throw new TypeError(invalid_key_input_default(key2, ...types));
       }
-      checkEncCryptoKey(key, alg, "decrypt", "unwrapKey");
-      check_key_length_default(alg, key);
-      if (key.usages.includes("decrypt")) {
-        return new Uint8Array(await webcrypto_default.subtle.decrypt(subtleRsaEs(alg), key, encryptedKey));
+      checkEncCryptoKey(key2, alg, "decrypt", "unwrapKey");
+      check_key_length_default(alg, key2);
+      if (key2.usages.includes("decrypt")) {
+        return new Uint8Array(await webcrypto_default.subtle.decrypt(subtleRsaEs(alg), key2, encryptedKey));
       }
-      if (key.usages.includes("unwrapKey")) {
-        const cryptoKeyCek = await webcrypto_default.subtle.unwrapKey("raw", encryptedKey, key, subtleRsaEs(alg), ...bogus_default);
+      if (key2.usages.includes("unwrapKey")) {
+        const cryptoKeyCek = await webcrypto_default.subtle.unwrapKey("raw", encryptedKey, key2, subtleRsaEs(alg), ...bogus_default);
         return new Uint8Array(await webcrypto_default.subtle.exportKey("raw", cryptoKeyCek));
       }
       throw new TypeError('RSA-OAEP key "usages" must include "decrypt" or "unwrapKey" for this operation');
@@ -1040,17 +1040,17 @@ var init_rsaes = __esm({
 });
 
 // node_modules/jose/dist/browser/lib/is_jwk.js
-function isJWK(key) {
-  return isObject(key) && typeof key.kty === "string";
+function isJWK(key2) {
+  return isObject(key2) && typeof key2.kty === "string";
 }
-function isPrivateJWK(key) {
-  return key.kty !== "oct" && typeof key.d === "string";
+function isPrivateJWK(key2) {
+  return key2.kty !== "oct" && typeof key2.d === "string";
 }
-function isPublicJWK(key) {
-  return key.kty !== "oct" && typeof key.d === "undefined";
+function isPublicJWK(key2) {
+  return key2.kty !== "oct" && typeof key2.d === "undefined";
 }
-function isSecretJWK(key) {
-  return isJWK(key) && key.kty === "oct" && typeof key.k === "string";
+function isSecretJWK(key2) {
+  return isJWK(key2) && key2.kty === "oct" && typeof key2.k === "string";
 }
 var init_is_jwk = __esm({
   "node_modules/jose/dist/browser/lib/is_jwk.js"() {
@@ -1177,27 +1177,27 @@ var init_normalize_key = __esm({
     init_base64url();
     init_jwk_to_key();
     exportKeyValue = (k) => decode(k);
-    isKeyObject = (key) => {
-      return key?.[Symbol.toStringTag] === "KeyObject";
+    isKeyObject = (key2) => {
+      return key2?.[Symbol.toStringTag] === "KeyObject";
     };
-    importAndCache = async (cache, key, jwk, alg, freeze = false) => {
-      let cached = cache.get(key);
+    importAndCache = async (cache, key2, jwk, alg, freeze = false) => {
+      let cached = cache.get(key2);
       if (cached?.[alg]) {
         return cached[alg];
       }
       const cryptoKey = await jwk_to_key_default({ ...jwk, alg });
       if (freeze)
-        Object.freeze(key);
+        Object.freeze(key2);
       if (!cached) {
-        cache.set(key, { [alg]: cryptoKey });
+        cache.set(key2, { [alg]: cryptoKey });
       } else {
         cached[alg] = cryptoKey;
       }
       return cryptoKey;
     };
-    normalizePublicKey = (key, alg) => {
-      if (isKeyObject(key)) {
-        let jwk = key.export({ format: "jwk" });
+    normalizePublicKey = (key2, alg) => {
+      if (isKeyObject(key2)) {
+        let jwk = key2.export({ format: "jwk" });
         delete jwk.d;
         delete jwk.dp;
         delete jwk.dq;
@@ -1208,34 +1208,34 @@ var init_normalize_key = __esm({
           return exportKeyValue(jwk.k);
         }
         pubCache || (pubCache = /* @__PURE__ */ new WeakMap());
-        return importAndCache(pubCache, key, jwk, alg);
+        return importAndCache(pubCache, key2, jwk, alg);
       }
-      if (isJWK(key)) {
-        if (key.k)
-          return decode(key.k);
+      if (isJWK(key2)) {
+        if (key2.k)
+          return decode(key2.k);
         pubCache || (pubCache = /* @__PURE__ */ new WeakMap());
-        const cryptoKey = importAndCache(pubCache, key, key, alg, true);
+        const cryptoKey = importAndCache(pubCache, key2, key2, alg, true);
         return cryptoKey;
       }
-      return key;
+      return key2;
     };
-    normalizePrivateKey = (key, alg) => {
-      if (isKeyObject(key)) {
-        let jwk = key.export({ format: "jwk" });
+    normalizePrivateKey = (key2, alg) => {
+      if (isKeyObject(key2)) {
+        let jwk = key2.export({ format: "jwk" });
         if (jwk.k) {
           return exportKeyValue(jwk.k);
         }
         privCache || (privCache = /* @__PURE__ */ new WeakMap());
-        return importAndCache(privCache, key, jwk, alg);
+        return importAndCache(privCache, key2, jwk, alg);
       }
-      if (isJWK(key)) {
-        if (key.k)
-          return decode(key.k);
+      if (isJWK(key2)) {
+        if (key2.k)
+          return decode(key2.k);
         privCache || (privCache = /* @__PURE__ */ new WeakMap());
-        const cryptoKey = importAndCache(privCache, key, key, alg, true);
+        const cryptoKey = importAndCache(privCache, key2, key2, alg, true);
         return cryptoKey;
       }
-      return key;
+      return key2;
     };
     normalize_key_default = { normalizePublicKey, normalizePrivateKey };
   }
@@ -1357,23 +1357,23 @@ var init_asn1 = __esm({
     init_format_pem();
     init_errors();
     init_is_key_like();
-    genericExport = async (keyType, keyFormat, key) => {
-      if (!isCryptoKey(key)) {
-        throw new TypeError(invalid_key_input_default(key, ...types));
+    genericExport = async (keyType, keyFormat, key2) => {
+      if (!isCryptoKey(key2)) {
+        throw new TypeError(invalid_key_input_default(key2, ...types));
       }
-      if (!key.extractable) {
+      if (!key2.extractable) {
         throw new TypeError("CryptoKey is not extractable");
       }
-      if (key.type !== keyType) {
+      if (key2.type !== keyType) {
         throw new TypeError(`key is not a ${keyType} key`);
       }
-      return format_pem_default(encodeBase64(new Uint8Array(await webcrypto_default.subtle.exportKey(keyFormat, key))), `${keyType.toUpperCase()} KEY`);
+      return format_pem_default(encodeBase64(new Uint8Array(await webcrypto_default.subtle.exportKey(keyFormat, key2))), `${keyType.toUpperCase()} KEY`);
     };
-    toSPKI = (key) => {
-      return genericExport("public", "spki", key);
+    toSPKI = (key2) => {
+      return genericExport("public", "spki", key2);
     };
-    toPKCS8 = (key) => {
-      return genericExport("private", "pkcs8", key);
+    toPKCS8 = (key2) => {
+      return genericExport("private", "pkcs8", key2);
     };
     findOid = (keyData, oid, from = 0) => {
       if (from === 0) {
@@ -1540,12 +1540,12 @@ var init_import = __esm({
 });
 
 // node_modules/jose/dist/browser/lib/check_key_type.js
-function checkKeyType(allowJwk, alg, key, usage) {
+function checkKeyType(allowJwk, alg, key2, usage) {
   const symmetric = alg.startsWith("HS") || alg === "dir" || alg.startsWith("PBES2") || /^A\d{3}(?:GCM)?KW$/.test(alg);
   if (symmetric) {
-    symmetricTypeCheck(alg, key, usage, allowJwk);
+    symmetricTypeCheck(alg, key2, usage, allowJwk);
   } else {
-    asymmetricTypeCheck(alg, key, usage, allowJwk);
+    asymmetricTypeCheck(alg, key2, usage, allowJwk);
   }
 }
 var tag, jwkMatchesOp, symmetricTypeCheck, asymmetricTypeCheck, check_key_type_default, checkKeyTypeWithJwk;
@@ -1554,64 +1554,64 @@ var init_check_key_type = __esm({
     init_invalid_key_input();
     init_is_key_like();
     init_is_jwk();
-    tag = (key) => key?.[Symbol.toStringTag];
-    jwkMatchesOp = (alg, key, usage) => {
-      if (key.use !== void 0 && key.use !== "sig") {
+    tag = (key2) => key2?.[Symbol.toStringTag];
+    jwkMatchesOp = (alg, key2, usage) => {
+      if (key2.use !== void 0 && key2.use !== "sig") {
         throw new TypeError("Invalid key for this operation, when present its use must be sig");
       }
-      if (key.key_ops !== void 0 && key.key_ops.includes?.(usage) !== true) {
+      if (key2.key_ops !== void 0 && key2.key_ops.includes?.(usage) !== true) {
         throw new TypeError(`Invalid key for this operation, when present its key_ops must include ${usage}`);
       }
-      if (key.alg !== void 0 && key.alg !== alg) {
+      if (key2.alg !== void 0 && key2.alg !== alg) {
         throw new TypeError(`Invalid key for this operation, when present its alg must be ${alg}`);
       }
       return true;
     };
-    symmetricTypeCheck = (alg, key, usage, allowJwk) => {
-      if (key instanceof Uint8Array)
+    symmetricTypeCheck = (alg, key2, usage, allowJwk) => {
+      if (key2 instanceof Uint8Array)
         return;
-      if (allowJwk && isJWK(key)) {
-        if (isSecretJWK(key) && jwkMatchesOp(alg, key, usage))
+      if (allowJwk && isJWK(key2)) {
+        if (isSecretJWK(key2) && jwkMatchesOp(alg, key2, usage))
           return;
         throw new TypeError(`JSON Web Key for symmetric algorithms must have JWK "kty" (Key Type) equal to "oct" and the JWK "k" (Key Value) present`);
       }
-      if (!is_key_like_default(key)) {
-        throw new TypeError(withAlg(alg, key, ...types, "Uint8Array", allowJwk ? "JSON Web Key" : null));
+      if (!is_key_like_default(key2)) {
+        throw new TypeError(withAlg(alg, key2, ...types, "Uint8Array", allowJwk ? "JSON Web Key" : null));
       }
-      if (key.type !== "secret") {
-        throw new TypeError(`${tag(key)} instances for symmetric algorithms must be of type "secret"`);
+      if (key2.type !== "secret") {
+        throw new TypeError(`${tag(key2)} instances for symmetric algorithms must be of type "secret"`);
       }
     };
-    asymmetricTypeCheck = (alg, key, usage, allowJwk) => {
-      if (allowJwk && isJWK(key)) {
+    asymmetricTypeCheck = (alg, key2, usage, allowJwk) => {
+      if (allowJwk && isJWK(key2)) {
         switch (usage) {
           case "sign":
-            if (isPrivateJWK(key) && jwkMatchesOp(alg, key, usage))
+            if (isPrivateJWK(key2) && jwkMatchesOp(alg, key2, usage))
               return;
             throw new TypeError(`JSON Web Key for this operation be a private JWK`);
           case "verify":
-            if (isPublicJWK(key) && jwkMatchesOp(alg, key, usage))
+            if (isPublicJWK(key2) && jwkMatchesOp(alg, key2, usage))
               return;
             throw new TypeError(`JSON Web Key for this operation be a public JWK`);
         }
       }
-      if (!is_key_like_default(key)) {
-        throw new TypeError(withAlg(alg, key, ...types, allowJwk ? "JSON Web Key" : null));
+      if (!is_key_like_default(key2)) {
+        throw new TypeError(withAlg(alg, key2, ...types, allowJwk ? "JSON Web Key" : null));
       }
-      if (key.type === "secret") {
-        throw new TypeError(`${tag(key)} instances for asymmetric algorithms must not be of type "secret"`);
+      if (key2.type === "secret") {
+        throw new TypeError(`${tag(key2)} instances for asymmetric algorithms must not be of type "secret"`);
       }
-      if (usage === "sign" && key.type === "public") {
-        throw new TypeError(`${tag(key)} instances for asymmetric algorithm signing must be of type "private"`);
+      if (usage === "sign" && key2.type === "public") {
+        throw new TypeError(`${tag(key2)} instances for asymmetric algorithm signing must be of type "private"`);
       }
-      if (usage === "decrypt" && key.type === "public") {
-        throw new TypeError(`${tag(key)} instances for asymmetric algorithm decryption must be of type "private"`);
+      if (usage === "decrypt" && key2.type === "public") {
+        throw new TypeError(`${tag(key2)} instances for asymmetric algorithm decryption must be of type "private"`);
       }
-      if (key.algorithm && usage === "verify" && key.type === "private") {
-        throw new TypeError(`${tag(key)} instances for asymmetric algorithm verifying must be of type "public"`);
+      if (key2.algorithm && usage === "verify" && key2.type === "private") {
+        throw new TypeError(`${tag(key2)} instances for asymmetric algorithm verifying must be of type "public"`);
       }
-      if (key.algorithm && usage === "encrypt" && key.type === "private") {
-        throw new TypeError(`${tag(key)} instances for asymmetric algorithm encryption must be of type "public"`);
+      if (key2.algorithm && usage === "encrypt" && key2.type === "private") {
+        throw new TypeError(`${tag(key2)} instances for asymmetric algorithm encryption must be of type "public"`);
       }
     };
     check_key_type_default = checkKeyType.bind(void 0, false);
@@ -1701,18 +1701,18 @@ var init_encrypt = __esm({
 });
 
 // node_modules/jose/dist/browser/lib/aesgcmkw.js
-async function wrap2(alg, key, cek, iv) {
+async function wrap2(alg, key2, cek, iv) {
   const jweAlgorithm = alg.slice(0, 7);
-  const wrapped = await encrypt_default(jweAlgorithm, cek, key, iv, new Uint8Array(0));
+  const wrapped = await encrypt_default(jweAlgorithm, cek, key2, iv, new Uint8Array(0));
   return {
     encryptedKey: wrapped.ciphertext,
     iv: encode(wrapped.iv),
     tag: encode(wrapped.tag)
   };
 }
-async function unwrap2(alg, key, encryptedKey, iv, tag2) {
+async function unwrap2(alg, key2, encryptedKey, iv, tag2) {
   const jweAlgorithm = alg.slice(0, 7);
-  return decrypt_default(jweAlgorithm, key, encryptedKey, iv, tag2, new Uint8Array(0));
+  return decrypt_default(jweAlgorithm, key2, encryptedKey, iv, tag2, new Uint8Array(0));
 }
 var init_aesgcmkw = __esm({
   "node_modules/jose/dist/browser/lib/aesgcmkw.js"() {
@@ -1723,14 +1723,14 @@ var init_aesgcmkw = __esm({
 });
 
 // node_modules/jose/dist/browser/lib/decrypt_key_management.js
-async function decryptKeyManagement(alg, key, encryptedKey, joseHeader, options) {
-  check_key_type_default(alg, key, "decrypt");
-  key = await normalize_key_default.normalizePrivateKey?.(key, alg) || key;
+async function decryptKeyManagement(alg, key2, encryptedKey, joseHeader, options) {
+  check_key_type_default(alg, key2, "decrypt");
+  key2 = await normalize_key_default.normalizePrivateKey?.(key2, alg) || key2;
   switch (alg) {
     case "dir": {
       if (encryptedKey !== void 0)
         throw new JWEInvalid("Encountered unexpected JWE Encrypted Key");
-      return key;
+      return key2;
     }
     case "ECDH-ES":
       if (encryptedKey !== void 0)
@@ -1740,7 +1740,7 @@ async function decryptKeyManagement(alg, key, encryptedKey, joseHeader, options)
     case "ECDH-ES+A256KW": {
       if (!isObject(joseHeader.epk))
         throw new JWEInvalid(`JOSE Header "epk" (Ephemeral Public Key) missing or invalid`);
-      if (!ecdhAllowed(key))
+      if (!ecdhAllowed(key2))
         throw new JOSENotSupported("ECDH with the provided key is not allowed or not supported by your javascript runtime");
       const epk = await importJWK(joseHeader.epk, alg);
       let partyUInfo;
@@ -1763,7 +1763,7 @@ async function decryptKeyManagement(alg, key, encryptedKey, joseHeader, options)
           throw new JWEInvalid("Failed to base64url decode the apv");
         }
       }
-      const sharedSecret = await deriveKey(epk, key, alg === "ECDH-ES" ? joseHeader.enc : alg, alg === "ECDH-ES" ? bitLength2(joseHeader.enc) : parseInt(alg.slice(-5, -2), 10), partyUInfo, partyVInfo);
+      const sharedSecret = await deriveKey(epk, key2, alg === "ECDH-ES" ? joseHeader.enc : alg, alg === "ECDH-ES" ? bitLength2(joseHeader.enc) : parseInt(alg.slice(-5, -2), 10), partyUInfo, partyVInfo);
       if (alg === "ECDH-ES")
         return sharedSecret;
       if (encryptedKey === void 0)
@@ -1777,7 +1777,7 @@ async function decryptKeyManagement(alg, key, encryptedKey, joseHeader, options)
     case "RSA-OAEP-512": {
       if (encryptedKey === void 0)
         throw new JWEInvalid("JWE Encrypted Key missing");
-      return decrypt3(alg, key, encryptedKey);
+      return decrypt3(alg, key2, encryptedKey);
     }
     case "PBES2-HS256+A128KW":
     case "PBES2-HS384+A192KW":
@@ -1797,14 +1797,14 @@ async function decryptKeyManagement(alg, key, encryptedKey, joseHeader, options)
       } catch {
         throw new JWEInvalid("Failed to base64url decode the p2s");
       }
-      return decrypt2(alg, key, encryptedKey, joseHeader.p2c, p2s2);
+      return decrypt2(alg, key2, encryptedKey, joseHeader.p2c, p2s2);
     }
     case "A128KW":
     case "A192KW":
     case "A256KW": {
       if (encryptedKey === void 0)
         throw new JWEInvalid("JWE Encrypted Key missing");
-      return unwrap(alg, key, encryptedKey);
+      return unwrap(alg, key2, encryptedKey);
     }
     case "A128GCMKW":
     case "A192GCMKW":
@@ -1827,7 +1827,7 @@ async function decryptKeyManagement(alg, key, encryptedKey, joseHeader, options)
       } catch {
         throw new JWEInvalid("Failed to base64url decode the tag");
       }
-      return unwrap2(alg, key, encryptedKey, iv, tag2);
+      return unwrap2(alg, key2, encryptedKey, iv, tag2);
     }
     default: {
       throw new JOSENotSupported('Invalid or unsupported "alg" (JWE Algorithm) header value');
@@ -1909,7 +1909,7 @@ var init_validate_algorithms = __esm({
 });
 
 // node_modules/jose/dist/browser/jwe/flattened/decrypt.js
-async function flattenedDecrypt(jwe, key, options) {
+async function flattenedDecrypt(jwe, key2, options) {
   if (!isObject(jwe)) {
     throw new JWEInvalid("Flattened JWE must be an object");
   }
@@ -1985,13 +1985,13 @@ async function flattenedDecrypt(jwe, key, options) {
     }
   }
   let resolvedKey = false;
-  if (typeof key === "function") {
-    key = await key(parsedProt, jwe);
+  if (typeof key2 === "function") {
+    key2 = await key2(parsedProt, jwe);
     resolvedKey = true;
   }
   let cek;
   try {
-    cek = await decrypt_key_management_default(alg, key, encryptedKey, joseHeader, options);
+    cek = await decrypt_key_management_default(alg, key2, encryptedKey, joseHeader, options);
   } catch (err) {
     if (err instanceof TypeError || err instanceof JWEInvalid || err instanceof JOSENotSupported) {
       throw err;
@@ -2046,7 +2046,7 @@ async function flattenedDecrypt(jwe, key, options) {
     result.unprotectedHeader = jwe.header;
   }
   if (resolvedKey) {
-    return { ...result, key };
+    return { ...result, key: key2 };
   }
   return result;
 }
@@ -2066,7 +2066,7 @@ var init_decrypt2 = __esm({
 });
 
 // node_modules/jose/dist/browser/jwe/compact/decrypt.js
-async function compactDecrypt(jwe, key, options) {
+async function compactDecrypt(jwe, key2, options) {
   if (jwe instanceof Uint8Array) {
     jwe = decoder.decode(jwe);
   }
@@ -2083,9 +2083,9 @@ async function compactDecrypt(jwe, key, options) {
     protected: protectedHeader,
     tag: tag2 || void 0,
     encrypted_key: encryptedKey || void 0
-  }, key, options);
+  }, key2, options);
   const result = { plaintext: decrypted.plaintext, protectedHeader: decrypted.protectedHeader };
-  if (typeof key === "function") {
+  if (typeof key2 === "function") {
     return { ...result, key: decrypted.key };
   }
   return result;
@@ -2099,7 +2099,7 @@ var init_decrypt3 = __esm({
 });
 
 // node_modules/jose/dist/browser/jwe/general/decrypt.js
-async function generalDecrypt(jwe, key, options) {
+async function generalDecrypt(jwe, key2, options) {
   if (!isObject(jwe)) {
     throw new JWEInvalid("General JWE must be an object");
   }
@@ -2120,7 +2120,7 @@ async function generalDecrypt(jwe, key, options) {
         protected: jwe.protected,
         tag: jwe.tag,
         unprotected: jwe.unprotected
-      }, key, options);
+      }, key2, options);
     } catch {
     }
   }
@@ -2150,20 +2150,20 @@ var init_key_to_jwk = __esm({
     init_invalid_key_input();
     init_base64url();
     init_is_key_like();
-    keyToJWK = async (key) => {
-      if (key instanceof Uint8Array) {
+    keyToJWK = async (key2) => {
+      if (key2 instanceof Uint8Array) {
         return {
           kty: "oct",
-          k: encode(key)
+          k: encode(key2)
         };
       }
-      if (!isCryptoKey(key)) {
-        throw new TypeError(invalid_key_input_default(key, ...types, "Uint8Array"));
+      if (!isCryptoKey(key2)) {
+        throw new TypeError(invalid_key_input_default(key2, ...types, "Uint8Array"));
       }
-      if (!key.extractable) {
+      if (!key2.extractable) {
         throw new TypeError("non-extractable CryptoKey cannot be exported as a JWK");
       }
-      const { ext, key_ops, alg, use, ...jwk } = await webcrypto_default.subtle.exportKey("jwk", key);
+      const { ext, key_ops, alg, use, ...jwk } = await webcrypto_default.subtle.exportKey("jwk", key2);
       return jwk;
     };
     key_to_jwk_default = keyToJWK;
@@ -2171,14 +2171,14 @@ var init_key_to_jwk = __esm({
 });
 
 // node_modules/jose/dist/browser/key/export.js
-async function exportSPKI(key) {
-  return toSPKI(key);
+async function exportSPKI(key2) {
+  return toSPKI(key2);
 }
-async function exportPKCS8(key) {
-  return toPKCS8(key);
+async function exportPKCS8(key2) {
+  return toPKCS8(key2);
 }
-async function exportJWK(key) {
-  return key_to_jwk_default(key);
+async function exportJWK(key2) {
+  return key_to_jwk_default(key2);
 }
 var init_export = __esm({
   "node_modules/jose/dist/browser/key/export.js"() {
@@ -2189,29 +2189,29 @@ var init_export = __esm({
 });
 
 // node_modules/jose/dist/browser/lib/encrypt_key_management.js
-async function encryptKeyManagement(alg, enc, key, providedCek, providedParameters = {}) {
+async function encryptKeyManagement(alg, enc, key2, providedCek, providedParameters = {}) {
   let encryptedKey;
   let parameters;
   let cek;
-  check_key_type_default(alg, key, "encrypt");
-  key = await normalize_key_default.normalizePublicKey?.(key, alg) || key;
+  check_key_type_default(alg, key2, "encrypt");
+  key2 = await normalize_key_default.normalizePublicKey?.(key2, alg) || key2;
   switch (alg) {
     case "dir": {
-      cek = key;
+      cek = key2;
       break;
     }
     case "ECDH-ES":
     case "ECDH-ES+A128KW":
     case "ECDH-ES+A192KW":
     case "ECDH-ES+A256KW": {
-      if (!ecdhAllowed(key)) {
+      if (!ecdhAllowed(key2)) {
         throw new JOSENotSupported("ECDH with the provided key is not allowed or not supported by your javascript runtime");
       }
       const { apu, apv } = providedParameters;
       let { epk: ephemeralKey } = providedParameters;
-      ephemeralKey || (ephemeralKey = (await generateEpk(key)).privateKey);
+      ephemeralKey || (ephemeralKey = (await generateEpk(key2)).privateKey);
       const { x, y, crv, kty } = await exportJWK(ephemeralKey);
-      const sharedSecret = await deriveKey(key, ephemeralKey, alg === "ECDH-ES" ? enc : alg, alg === "ECDH-ES" ? bitLength2(enc) : parseInt(alg.slice(-5, -2), 10), apu, apv);
+      const sharedSecret = await deriveKey(key2, ephemeralKey, alg === "ECDH-ES" ? enc : alg, alg === "ECDH-ES" ? bitLength2(enc) : parseInt(alg.slice(-5, -2), 10), apu, apv);
       parameters = { epk: { x, crv, kty } };
       if (kty === "EC")
         parameters.epk.y = y;
@@ -2234,7 +2234,7 @@ async function encryptKeyManagement(alg, enc, key, providedCek, providedParamete
     case "RSA-OAEP-384":
     case "RSA-OAEP-512": {
       cek = providedCek || cek_default(enc);
-      encryptedKey = await encrypt2(alg, key, cek);
+      encryptedKey = await encrypt2(alg, key2, cek);
       break;
     }
     case "PBES2-HS256+A128KW":
@@ -2242,14 +2242,14 @@ async function encryptKeyManagement(alg, enc, key, providedCek, providedParamete
     case "PBES2-HS512+A256KW": {
       cek = providedCek || cek_default(enc);
       const { p2c, p2s: p2s2 } = providedParameters;
-      ({ encryptedKey, ...parameters } = await encrypt(alg, key, cek, p2c, p2s2));
+      ({ encryptedKey, ...parameters } = await encrypt(alg, key2, cek, p2c, p2s2));
       break;
     }
     case "A128KW":
     case "A192KW":
     case "A256KW": {
       cek = providedCek || cek_default(enc);
-      encryptedKey = await wrap(alg, key, cek);
+      encryptedKey = await wrap(alg, key2, cek);
       break;
     }
     case "A128GCMKW":
@@ -2257,7 +2257,7 @@ async function encryptKeyManagement(alg, enc, key, providedCek, providedParamete
     case "A256GCMKW": {
       cek = providedCek || cek_default(enc);
       const { iv } = providedParameters;
-      ({ encryptedKey, ...parameters } = await wrap2(alg, key, cek, iv));
+      ({ encryptedKey, ...parameters } = await wrap2(alg, key2, cek, iv));
       break;
     }
     default: {
@@ -2349,7 +2349,7 @@ var init_encrypt2 = __esm({
         this._iv = iv;
         return this;
       }
-      async encrypt(key, options) {
+      async encrypt(key2, options) {
         if (!this._protectedHeader && !this._unprotectedHeader && !this._sharedUnprotectedHeader) {
           throw new JWEInvalid("either setProtectedHeader, setUnprotectedHeader, or sharedUnprotectedHeader must be called before #encrypt()");
         }
@@ -2379,7 +2379,7 @@ var init_encrypt2 = __esm({
         let cek;
         {
           let parameters;
-          ({ cek, encryptedKey, parameters } = await encrypt_key_management_default(alg, enc, key, this._cek, this._keyManagementParameters));
+          ({ cek, encryptedKey, parameters } = await encrypt_key_management_default(alg, enc, key2, this._cek, this._keyManagementParameters));
           if (parameters) {
             if (options && unprotected in options) {
               if (!this._unprotectedHeader) {
@@ -2452,9 +2452,9 @@ var init_encrypt3 = __esm({
     init_base64url();
     init_validate_crit();
     IndividualRecipient = class {
-      constructor(enc, key, options) {
+      constructor(enc, key2, options) {
         this.parent = enc;
-        this.key = key;
+        this.key = key2;
         this.options = options;
       }
       setUnprotectedHeader(unprotectedHeader) {
@@ -2479,8 +2479,8 @@ var init_encrypt3 = __esm({
         this._recipients = [];
         this._plaintext = plaintext;
       }
-      addRecipient(key, options) {
-        const recipient = new IndividualRecipient(this, key, { crit: options?.crit });
+      addRecipient(key2, options) {
+        const recipient = new IndividualRecipient(this, key2, { crit: options?.crit });
         this._recipients.push(recipient);
         return recipient;
       }
@@ -2640,24 +2640,24 @@ var init_subtle_dsa = __esm({
 });
 
 // node_modules/jose/dist/browser/runtime/get_sign_verify_key.js
-async function getCryptoKey3(alg, key, usage) {
+async function getCryptoKey3(alg, key2, usage) {
   if (usage === "sign") {
-    key = await normalize_key_default.normalizePrivateKey(key, alg);
+    key2 = await normalize_key_default.normalizePrivateKey(key2, alg);
   }
   if (usage === "verify") {
-    key = await normalize_key_default.normalizePublicKey(key, alg);
+    key2 = await normalize_key_default.normalizePublicKey(key2, alg);
   }
-  if (isCryptoKey(key)) {
-    checkSigCryptoKey(key, alg, usage);
-    return key;
+  if (isCryptoKey(key2)) {
+    checkSigCryptoKey(key2, alg, usage);
+    return key2;
   }
-  if (key instanceof Uint8Array) {
+  if (key2 instanceof Uint8Array) {
     if (!alg.startsWith("HS")) {
-      throw new TypeError(invalid_key_input_default(key, ...types));
+      throw new TypeError(invalid_key_input_default(key2, ...types));
     }
-    return webcrypto_default.subtle.importKey("raw", key, { hash: `SHA-${alg.slice(-3)}`, name: "HMAC" }, false, [usage]);
+    return webcrypto_default.subtle.importKey("raw", key2, { hash: `SHA-${alg.slice(-3)}`, name: "HMAC" }, false, [usage]);
   }
-  throw new TypeError(invalid_key_input_default(key, ...types, "Uint8Array", "JSON Web Key"));
+  throw new TypeError(invalid_key_input_default(key2, ...types, "Uint8Array", "JSON Web Key"));
 }
 var init_get_sign_verify_key = __esm({
   "node_modules/jose/dist/browser/runtime/get_sign_verify_key.js"() {
@@ -2677,8 +2677,8 @@ var init_verify = __esm({
     init_webcrypto();
     init_check_key_length();
     init_get_sign_verify_key();
-    verify = async (alg, key, signature, data) => {
-      const cryptoKey = await getCryptoKey3(alg, key, "verify");
+    verify = async (alg, key2, signature, data) => {
+      const cryptoKey = await getCryptoKey3(alg, key2, "verify");
       check_key_length_default(alg, cryptoKey);
       const algorithm = subtleDsa(alg, cryptoKey.algorithm);
       try {
@@ -2692,7 +2692,7 @@ var init_verify = __esm({
 });
 
 // node_modules/jose/dist/browser/jws/flattened/verify.js
-async function flattenedVerify(jws, key, options) {
+async function flattenedVerify(jws, key2, options) {
   if (!isObject(jws)) {
     throw new JWSInvalid("Flattened JWS must be an object");
   }
@@ -2751,15 +2751,15 @@ async function flattenedVerify(jws, key, options) {
     throw new JWSInvalid("JWS Payload must be a string or an Uint8Array instance");
   }
   let resolvedKey = false;
-  if (typeof key === "function") {
-    key = await key(parsedProt, jws);
+  if (typeof key2 === "function") {
+    key2 = await key2(parsedProt, jws);
     resolvedKey = true;
-    checkKeyTypeWithJwk(alg, key, "verify");
-    if (isJWK(key)) {
-      key = await importJWK(key, alg);
+    checkKeyTypeWithJwk(alg, key2, "verify");
+    if (isJWK(key2)) {
+      key2 = await importJWK(key2, alg);
     }
   } else {
-    checkKeyTypeWithJwk(alg, key, "verify");
+    checkKeyTypeWithJwk(alg, key2, "verify");
   }
   const data = concat(encoder.encode(jws.protected ?? ""), encoder.encode("."), typeof jws.payload === "string" ? encoder.encode(jws.payload) : jws.payload);
   let signature;
@@ -2768,7 +2768,7 @@ async function flattenedVerify(jws, key, options) {
   } catch {
     throw new JWSInvalid("Failed to base64url decode the signature");
   }
-  const verified = await verify_default(alg, key, signature, data);
+  const verified = await verify_default(alg, key2, signature, data);
   if (!verified) {
     throw new JWSSignatureVerificationFailed();
   }
@@ -2792,7 +2792,7 @@ async function flattenedVerify(jws, key, options) {
     result.unprotectedHeader = jws.header;
   }
   if (resolvedKey) {
-    return { ...result, key };
+    return { ...result, key: key2 };
   }
   return result;
 }
@@ -2813,7 +2813,7 @@ var init_verify2 = __esm({
 });
 
 // node_modules/jose/dist/browser/jws/compact/verify.js
-async function compactVerify(jws, key, options) {
+async function compactVerify(jws, key2, options) {
   if (jws instanceof Uint8Array) {
     jws = decoder.decode(jws);
   }
@@ -2824,9 +2824,9 @@ async function compactVerify(jws, key, options) {
   if (length !== 3) {
     throw new JWSInvalid("Invalid Compact JWS");
   }
-  const verified = await flattenedVerify({ payload, protected: protectedHeader, signature }, key, options);
+  const verified = await flattenedVerify({ payload, protected: protectedHeader, signature }, key2, options);
   const result = { payload: verified.payload, protectedHeader: verified.protectedHeader };
-  if (typeof key === "function") {
+  if (typeof key2 === "function") {
     return { ...result, key: verified.key };
   }
   return result;
@@ -2840,7 +2840,7 @@ var init_verify3 = __esm({
 });
 
 // node_modules/jose/dist/browser/jws/general/verify.js
-async function generalVerify(jws, key, options) {
+async function generalVerify(jws, key2, options) {
   if (!isObject(jws)) {
     throw new JWSInvalid("General JWS must be an object");
   }
@@ -2854,7 +2854,7 @@ async function generalVerify(jws, key, options) {
         payload: jws.payload,
         protected: signature.protected,
         signature: signature.signature
-      }, key, options);
+      }, key2, options);
     } catch {
     }
   }
@@ -3009,7 +3009,7 @@ var init_jwt_claims_set = __esm({
           throw new TypeError("Invalid clockTolerance option type");
       }
       const { currentDate } = options;
-      const now = epoch_default(currentDate || /* @__PURE__ */ new Date());
+      const now2 = epoch_default(currentDate || /* @__PURE__ */ new Date());
       if ((payload.iat !== void 0 || maxTokenAge) && typeof payload.iat !== "number") {
         throw new JWTClaimValidationFailed('"iat" claim must be a number', payload, "iat", "invalid");
       }
@@ -3017,7 +3017,7 @@ var init_jwt_claims_set = __esm({
         if (typeof payload.nbf !== "number") {
           throw new JWTClaimValidationFailed('"nbf" claim must be a number', payload, "nbf", "invalid");
         }
-        if (payload.nbf > now + tolerance) {
+        if (payload.nbf > now2 + tolerance) {
           throw new JWTClaimValidationFailed('"nbf" claim timestamp check failed', payload, "nbf", "check_failed");
         }
       }
@@ -3025,12 +3025,12 @@ var init_jwt_claims_set = __esm({
         if (typeof payload.exp !== "number") {
           throw new JWTClaimValidationFailed('"exp" claim must be a number', payload, "exp", "invalid");
         }
-        if (payload.exp <= now - tolerance) {
+        if (payload.exp <= now2 - tolerance) {
           throw new JWTExpired('"exp" claim timestamp check failed', payload, "exp", "check_failed");
         }
       }
       if (maxTokenAge) {
-        const age = now - payload.iat;
+        const age = now2 - payload.iat;
         const max = typeof maxTokenAge === "number" ? maxTokenAge : secs_default(maxTokenAge);
         if (age - tolerance > max) {
           throw new JWTExpired('"iat" claim timestamp check failed (too far in the past)', payload, "iat", "check_failed");
@@ -3045,14 +3045,14 @@ var init_jwt_claims_set = __esm({
 });
 
 // node_modules/jose/dist/browser/jwt/verify.js
-async function jwtVerify(jwt, key, options) {
-  const verified = await compactVerify(jwt, key, options);
+async function jwtVerify(jwt, key2, options) {
+  const verified = await compactVerify(jwt, key2, options);
   if (verified.protectedHeader.crit?.includes("b64") && verified.protectedHeader.b64 === false) {
     throw new JWTInvalid("JWTs MUST NOT use unencoded payload");
   }
   const payload = jwt_claims_set_default(verified.protectedHeader, verified.payload, options);
   const result = { payload, protectedHeader: verified.protectedHeader };
-  if (typeof key === "function") {
+  if (typeof key2 === "function") {
     return { ...result, key: verified.key };
   }
   return result;
@@ -3066,8 +3066,8 @@ var init_verify5 = __esm({
 });
 
 // node_modules/jose/dist/browser/jwt/decrypt.js
-async function jwtDecrypt(jwt, key, options) {
-  const decrypted = await compactDecrypt(jwt, key, options);
+async function jwtDecrypt(jwt, key2, options) {
+  const decrypted = await compactDecrypt(jwt, key2, options);
   const payload = jwt_claims_set_default(decrypted.protectedHeader, decrypted.plaintext, options);
   const { protectedHeader } = decrypted;
   if (protectedHeader.iss !== void 0 && protectedHeader.iss !== payload.iss) {
@@ -3080,7 +3080,7 @@ async function jwtDecrypt(jwt, key, options) {
     throw new JWTClaimValidationFailed('replicated "aud" claim header parameter mismatch', payload, "aud", "mismatch");
   }
   const result = { payload, protectedHeader };
-  if (typeof key === "function") {
+  if (typeof key2 === "function") {
     return { ...result, key: decrypted.key };
   }
   return result;
@@ -3118,8 +3118,8 @@ var init_encrypt4 = __esm({
         this._flattened.setKeyManagementParameters(parameters);
         return this;
       }
-      async encrypt(key, options) {
-        const jwe = await this._flattened.encrypt(key, options);
+      async encrypt(key2, options) {
+        const jwe = await this._flattened.encrypt(key2, options);
         return [jwe.protected, jwe.encrypted_key, jwe.iv, jwe.ciphertext, jwe.tag].join(".");
       }
     };
@@ -3134,8 +3134,8 @@ var init_sign = __esm({
     init_webcrypto();
     init_check_key_length();
     init_get_sign_verify_key();
-    sign = async (alg, key, data) => {
-      const cryptoKey = await getCryptoKey3(alg, key, "sign");
+    sign = async (alg, key2, data) => {
+      const cryptoKey = await getCryptoKey3(alg, key2, "sign");
       check_key_length_default(alg, cryptoKey);
       const signature = await webcrypto_default.subtle.sign(subtleDsa(alg, cryptoKey.algorithm), cryptoKey, data);
       return new Uint8Array(signature);
@@ -3176,7 +3176,7 @@ var init_sign2 = __esm({
         this._unprotectedHeader = unprotectedHeader;
         return this;
       }
-      async sign(key, options) {
+      async sign(key2, options) {
         if (!this._protectedHeader && !this._unprotectedHeader) {
           throw new JWSInvalid("either setProtectedHeader or setUnprotectedHeader must be called before #sign()");
         }
@@ -3199,7 +3199,7 @@ var init_sign2 = __esm({
         if (typeof alg !== "string" || !alg) {
           throw new JWSInvalid('JWS "alg" (Algorithm) Header Parameter missing or invalid');
         }
-        checkKeyTypeWithJwk(alg, key, "sign");
+        checkKeyTypeWithJwk(alg, key2, "sign");
         let payload = this._payload;
         if (b64) {
           payload = encoder.encode(encode(payload));
@@ -3211,7 +3211,7 @@ var init_sign2 = __esm({
           protectedHeader = encoder.encode("");
         }
         const data = concat(protectedHeader, encoder.encode("."), payload);
-        const signature = await sign_default(alg, key, data);
+        const signature = await sign_default(alg, key2, data);
         const jws = {
           signature: encode(signature),
           payload: ""
@@ -3244,8 +3244,8 @@ var init_sign3 = __esm({
         this._flattened.setProtectedHeader(protectedHeader);
         return this;
       }
-      async sign(key, options) {
-        const jws = await this._flattened.sign(key, options);
+      async sign(key2, options) {
+        const jws = await this._flattened.sign(key2, options);
         if (jws.payload === void 0) {
           throw new TypeError("use the flattened module for creating JWS with b64: false");
         }
@@ -3262,9 +3262,9 @@ var init_sign4 = __esm({
     init_sign2();
     init_errors();
     IndividualSignature = class {
-      constructor(sig, key, options) {
+      constructor(sig, key2, options) {
         this.parent = sig;
-        this.key = key;
+        this.key = key2;
         this.options = options;
       }
       setProtectedHeader(protectedHeader) {
@@ -3296,8 +3296,8 @@ var init_sign4 = __esm({
         this._signatures = [];
         this._payload = payload;
       }
-      addSignature(key, options) {
-        const signature = new IndividualSignature(this, key, options);
+      addSignature(key2, options) {
+        const signature = new IndividualSignature(this, key2, options);
         this._signatures.push(signature);
         return signature;
       }
@@ -3416,13 +3416,13 @@ var init_sign5 = __esm({
         this._protectedHeader = protectedHeader;
         return this;
       }
-      async sign(key, options) {
+      async sign(key2, options) {
         const sig = new CompactSign(encoder.encode(JSON.stringify(this._payload)));
         sig.setProtectedHeader(this._protectedHeader);
         if (Array.isArray(this._protectedHeader?.crit) && this._protectedHeader.crit.includes("b64") && this._protectedHeader.b64 === false) {
           throw new JWTInvalid("JWTs MUST NOT use unencoded payload");
         }
-        return sig.sign(key, options);
+        return sig.sign(key2, options);
       }
     };
   }
@@ -3476,7 +3476,7 @@ var init_encrypt5 = __esm({
         this._replicateAudienceAsHeader = true;
         return this;
       }
-      async encrypt(key, options) {
+      async encrypt(key2, options) {
         const enc = new CompactEncrypt(encoder.encode(JSON.stringify(this._payload)));
         if (this._replicateIssuerAsHeader) {
           this._protectedHeader = { ...this._protectedHeader, iss: this._payload.iss };
@@ -3497,7 +3497,7 @@ var init_encrypt5 = __esm({
         if (this._keyManagementParameters) {
           enc.setKeyManagementParameters(this._keyManagementParameters);
         }
-        return enc.encrypt(key, options);
+        return enc.encrypt(key2, options);
       }
     };
   }
@@ -3570,11 +3570,11 @@ async function EmbeddedJWK(protectedHeader, token) {
   if (!isObject(joseHeader.jwk)) {
     throw new JWSInvalid('"jwk" (JSON Web Key) Header Parameter must be a JSON object');
   }
-  const key = await importJWK({ ...joseHeader.jwk, ext: true }, joseHeader.alg);
-  if (key instanceof Uint8Array || key.type !== "public") {
+  const key2 = await importJWK({ ...joseHeader.jwk, ext: true }, joseHeader.alg);
+  if (key2 instanceof Uint8Array || key2.type !== "public") {
     throw new JWSInvalid('"jwk" (JSON Web Key) Header Parameter must be a public key');
   }
-  return key;
+  return key2;
 }
 var init_embedded = __esm({
   "node_modules/jose/dist/browser/jwk/embedded.js"() {
@@ -3601,8 +3601,8 @@ function getKtyFromAlg(alg) {
 function isJWKSLike(jwks) {
   return jwks && typeof jwks === "object" && Array.isArray(jwks.keys) && jwks.keys.every(isJWKLike);
 }
-function isJWKLike(key) {
-  return isObject(key);
+function isJWKLike(key2) {
+  return isObject(key2);
 }
 function clone(obj) {
   if (typeof structuredClone === "function") {
@@ -3613,11 +3613,11 @@ function clone(obj) {
 async function importWithAlgCache(cache, jwk, alg) {
   const cached = cache.get(jwk) || cache.set(jwk, {}).get(jwk);
   if (cached[alg] === void 0) {
-    const key = await importJWK({ ...jwk, ext: true }, alg);
-    if (key instanceof Uint8Array || key.type !== "public") {
+    const key2 = await importJWK({ ...jwk, ext: true }, alg);
+    if (key2 instanceof Uint8Array || key2.type !== "public") {
       throw new JWKSInvalid("JSON Web Key Set members must be public keys");
     }
-    cached[alg] = key;
+    cached[alg] = key2;
   }
   return cached[alg];
 }
@@ -4286,9 +4286,9 @@ var require_verify_vercel_oidc_token = __commonJS({
     };
     var __copyProps2 = (to, from, except, desc) => {
       if (from && typeof from === "object" || typeof from === "function") {
-        for (let key of __getOwnPropNames2(from))
-          if (!__hasOwnProp2.call(to, key) && key !== except)
-            __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
+        for (let key2 of __getOwnPropNames2(from))
+          if (!__hasOwnProp2.call(to, key2) && key2 !== except)
+            __defProp2(to, key2, { get: () => from[key2], enumerable: !(desc = __getOwnPropDesc2(from, key2)) || desc.enumerable });
       }
       return to;
     };
@@ -4409,9 +4409,9 @@ var require_auth_errors = __commonJS({
     };
     var __copyProps2 = (to, from, except, desc) => {
       if (from && typeof from === "object" || typeof from === "function") {
-        for (let key of __getOwnPropNames2(from))
-          if (!__hasOwnProp2.call(to, key) && key !== except)
-            __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
+        for (let key2 of __getOwnPropNames2(from))
+          if (!__hasOwnProp2.call(to, key2) && key2 !== except)
+            __defProp2(to, key2, { get: () => from[key2], enumerable: !(desc = __getOwnPropDesc2(from, key2)) || desc.enumerable });
       }
       return to;
     };
@@ -4456,9 +4456,9 @@ var require_index_browser = __commonJS({
     };
     var __copyProps2 = (to, from, except, desc) => {
       if (from && typeof from === "object" || typeof from === "function") {
-        for (let key of __getOwnPropNames2(from))
-          if (!__hasOwnProp2.call(to, key) && key !== except)
-            __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
+        for (let key2 of __getOwnPropNames2(from))
+          if (!__hasOwnProp2.call(to, key2) && key2 !== except)
+            __defProp2(to, key2, { get: () => from[key2], enumerable: !(desc = __getOwnPropDesc2(from, key2)) || desc.enumerable });
       }
       return to;
     };
@@ -4647,8 +4647,8 @@ var require_retry = __commonJS({
         maxTimeout: Infinity,
         randomize: false
       };
-      for (var key in options) {
-        opts[key] = options[key];
+      for (var key2 in options) {
+        opts[key2] = options[key2];
       }
       if (opts.minTimeout > opts.maxTimeout) {
         throw new Error("minTimeout is greater than maxTimeout");
@@ -4678,9 +4678,9 @@ var require_retry = __commonJS({
       }
       if (!methods) {
         methods = [];
-        for (var key in obj) {
-          if (typeof obj[key] === "function") {
-            methods.push(key);
+        for (var key2 in obj) {
+          if (typeof obj[key2] === "function") {
+            methods.push(key2);
           }
         }
       }
@@ -4774,11 +4774,11 @@ var require_throttleit = __commonJS({
       let lastCallTime = 0;
       return function throttled(...arguments_) {
         clearTimeout(timeoutId);
-        const now = Date.now();
-        const timeSinceLastCall = now - lastCallTime;
+        const now2 = Date.now();
+        const timeSinceLastCall = now2 - lastCallTime;
         const delayForNextCall = wait - timeSinceLastCall;
         if (delayForNextCall <= 0) {
-          lastCallTime = now;
+          lastCallTime = now2;
           function_.apply(this, arguments_);
         } else {
           timeoutId = setTimeout(() => {
@@ -4797,15 +4797,16 @@ var SPEC_FIELDS = Object.freeze([
   ["dimensions", "\uC678\uBD80 \uD06C\uAE30 (\uAC00\uB85C \xD7 \uC138\uB85C \xD7 \uD3ED, cm)"],
   ["weight", "\uBB34\uAC8C (g)"],
   ["capacity", "\uC6A9\uB7C9 (L)"],
-  ["laptopCompartment", "\uB178\uD2B8\uBD81 \uC218\uB0A9\uCE78 \uC2E4\uCE21 (\uAC00\uB85C \xD7 \uC138\uB85C \xD7 \uB450\uAED8, cm)"],
+  ["laptopCompartment", "\uB178\uD2B8\uBD81 \uC218\uB0A9\uCE78 \uD06C\uAE30 (cm)"],
   ["material", "\uAC89\uAC10\xB7\uC548\uAC10 \uC18C\uC7AC"],
   ["waterResistance", "\uC0DD\uD65C\uBC29\uC218 \uBC94\uC704"],
   ["care", "\uC138\uD0C1\xB7\uBCF4\uAD00\xB7\uAD00\uB9AC \uBC29\uBC95"],
   ["warranty", "A/S \uBC94\uC704\xB7\uBE44\uC6A9 \uC548\uB0B4"],
-  ["measurementNote", "\uCE21\uC815 \uC870\uAC74\xB7\uC624\uCC28 \uC548\uB0B4"]
+  ["measurementNote", "\uC0AC\uC591 \uCD9C\uCC98\xB7\uCE21\uC815 \uC548\uB0B4"]
 ]);
+var PUBLIC_SPEC_FIELDS = Object.freeze(SPEC_FIELDS.filter(([key2]) => key2 !== "measurementNote"));
 function normalizeSpecs(input = {}) {
-  return Object.fromEntries(SPEC_FIELDS.map(([key]) => [key, String(input?.[key] || "").replace(/[\u0000-\u001f\u007f]+/g, " ").trim().slice(0, 600)]));
+  return Object.fromEntries(SPEC_FIELDS.map(([key2]) => [key2, String(input?.[key2] || "").replace(/[\u0000-\u001f\u007f]+/g, " ").trim().slice(0, 600)]));
 }
 function normalizeRelatedIds(value) {
   return [...new Set((Array.isArray(value) ? value : []).filter((x) => typeof x === "string" && /^[a-zA-Z0-9_-]{1,100}$/.test(x)))].slice(0, 8);
@@ -4821,28 +4822,2829 @@ function createSpecEditor(form) {
   const help = document.createElement("p");
   help.textContent = "\uC2E4\uC81C \uD655\uC778\uD55C \uAC12\uB9CC \uC785\uB825\uD574 \uC8FC\uC138\uC694. \uBE48 \uD56D\uBAA9\uC740 \uACE0\uAC1D\uC5D0\uAC8C \uBBF8\uD655\uC778\uC73C\uB85C \uC548\uB0B4\uD569\uB2C8\uB2E4. \uC0C9\uC0C1\xB7\uD06C\uAE30 \uC635\uC158\uBCC4\uB85C \uAC01\uAC01 \uC800\uC7A5\uB429\uB2C8\uB2E4.";
   panel.append(help);
-  for (const [key, label] of [...SPEC_FIELDS, ["relatedProductIds", "\uD638\uD658 \uAD6C\uC131\uD488 \uC0C1\uD488 ID (\uC27C\uD45C\uB85C \uAD6C\uBD84)"]]) {
+  for (const [key2, label] of [...SPEC_FIELDS, ["relatedProductIds", "\uD638\uD658 \uAD6C\uC131\uD488 \uC0C1\uD488 ID (\uC27C\uD45C\uB85C \uAD6C\uBD84)"]]) {
     const row = document.createElement("div");
     row.className = "form-field";
     const title = document.createElement("label");
-    title.htmlFor = `spec-${key}`;
+    title.htmlFor = `spec-${key2}`;
     title.textContent = label;
     const input = document.createElement("input");
     input.type = "text";
-    input.id = `spec-${key}`;
-    input.name = `spec-${key}`;
+    input.id = `spec-${key2}`;
+    input.name = `spec-${key2}`;
     input.maxLength = 600;
     row.append(title, input);
     panel.append(row);
   }
   form.insertBefore(panel, form.querySelector(".product-form-actions"));
   return {
-    read: () => ({ specs: normalizeSpecs(Object.fromEntries(SPEC_FIELDS.map(([key]) => [key, form.elements.namedItem(`spec-${key}`).value]))), relatedProductIds: normalizeRelatedIds(form.elements.namedItem("spec-relatedProductIds").value.split(",").map((x) => x.trim())) }),
+    read: () => ({ specs: normalizeSpecs(Object.fromEntries(SPEC_FIELDS.map(([key2]) => [key2, form.elements.namedItem(`spec-${key2}`).value]))), relatedProductIds: normalizeRelatedIds(form.elements.namedItem("spec-relatedProductIds").value.split(",").map((x) => x.trim())) }),
     fill(product) {
-      for (const [key] of SPEC_FIELDS) form.elements.namedItem(`spec-${key}`).value = product.specs?.[key] || "";
+      for (const [key2] of SPEC_FIELDS) form.elements.namedItem(`spec-${key2}`).value = product.specs?.[key2] || "";
       form.elements.namedItem("spec-relatedProductIds").value = (product.relatedProductIds || []).join(", ");
     }
   };
+}
+
+// node_modules/animejs/dist/modules/core/consts.js
+var isBrowser = typeof window !== "undefined";
+var win = isBrowser ? (
+  /** @type {AnimeJSWindow} */
+  /** @type {unknown} */
+  window
+) : null;
+var doc = isBrowser ? document : null;
+var tweenTypes = {
+  OBJECT: 0,
+  ATTRIBUTE: 1,
+  CSS: 2,
+  TRANSFORM: 3,
+  CSS_VAR: 4
+};
+var valueTypes = {
+  NUMBER: 0,
+  UNIT: 1,
+  COLOR: 2,
+  COMPLEX: 3
+};
+var tickModes = {
+  NONE: 0,
+  AUTO: 1,
+  FORCE: 2
+};
+var compositionTypes = {
+  replace: 0,
+  none: 1,
+  blend: 2
+};
+var isRegisteredTargetSymbol = /* @__PURE__ */ Symbol();
+var isDomSymbol = /* @__PURE__ */ Symbol();
+var isSvgSymbol = /* @__PURE__ */ Symbol();
+var transformsSymbol = /* @__PURE__ */ Symbol();
+var proxyTargetSymbol = /* @__PURE__ */ Symbol();
+var minValue = 1e-11;
+var maxValue = 1e12;
+var K = 1e3;
+var maxFps = 240;
+var emptyString = "";
+var cssVarPrefix = "var(";
+var emptyArray = [];
+var shortTransforms = /* @__PURE__ */ (() => {
+  const map2 = /* @__PURE__ */ new Map();
+  map2.set("x", "translateX");
+  map2.set("y", "translateY");
+  map2.set("z", "translateZ");
+  return map2;
+})();
+var validTransforms = [
+  "perspective",
+  "translateX",
+  "translateY",
+  "translateZ",
+  "rotate",
+  "rotateX",
+  "rotateY",
+  "rotateZ",
+  "scale",
+  "scaleX",
+  "scaleY",
+  "scaleZ",
+  "skew",
+  "skewX",
+  "skewY"
+];
+var transformsFragmentStrings = /* @__PURE__ */ validTransforms.reduce((a, v) => ({ ...a, [v]: v + "(" }), {});
+var noop = () => {
+};
+var noopModifier = (v) => v;
+var validRgbHslRgx = /\)\s*[-.\d]/;
+var hexTestRgx = /(^#([\da-f]{3}){1,2}$)|(^#([\da-f]{4}){1,2}$)/i;
+var rgbExecRgx = /rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/i;
+var rgbaExecRgx = /rgba\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(-?\d+|-?\d*.\d+)\s*\)/i;
+var hslExecRgx = /hsl\(\s*(-?\d+|-?\d*.\d+)\s*,\s*(-?\d+|-?\d*.\d+)%\s*,\s*(-?\d+|-?\d*.\d+)%\s*\)/i;
+var hslaExecRgx = /hsla\(\s*(-?\d+|-?\d*.\d+)\s*,\s*(-?\d+|-?\d*.\d+)%\s*,\s*(-?\d+|-?\d*.\d+)%\s*,\s*(-?\d+|-?\d*.\d+)\s*\)/i;
+var digitWithExponentRgx = /[-+]?\d*\.?\d+(?:e[-+]?\d)?/gi;
+var unitsExecRgx = /^([-+]?\d*\.?\d+(?:e[-+]?\d+)?)([a-z]+|%)$/i;
+var lowerCaseRgx = /([a-z])([A-Z])/g;
+var cssVariableMatchRgx = /var\(\s*(--[\w-]+)(?:\s*,\s*([^)]+))?\s*\)/;
+
+// node_modules/animejs/dist/modules/core/globals.js
+var defaults = {
+  id: null,
+  keyframes: null,
+  playbackEase: null,
+  playbackRate: 1,
+  frameRate: maxFps,
+  loop: 0,
+  reversed: false,
+  alternate: false,
+  autoplay: true,
+  persist: false,
+  duration: K,
+  delay: 0,
+  loopDelay: 0,
+  ease: "out(2)",
+  composition: compositionTypes.replace,
+  modifier: noopModifier,
+  onBegin: noop,
+  onBeforeUpdate: noop,
+  onUpdate: noop,
+  onLoop: noop,
+  onPause: noop,
+  onComplete: noop,
+  onRender: noop
+};
+var scope = {
+  /** @type {Scope} */
+  current: null,
+  /** @type {Document|DOMTarget} */
+  root: doc
+};
+var globals = {
+  /** @type {DefaultsParams} */
+  defaults,
+  /** @type {Number} */
+  precision: 4,
+  /** @type {Number} equals 1 in ms mode, 0.001 in s mode */
+  timeScale: 1,
+  /** @type {Number} */
+  tickThreshold: 200,
+  /** @type {EditorGlobals|null} */
+  editor: null
+};
+var globalVersions = { version: "4.5.0", engine: null };
+if (isBrowser) {
+  if (!win.AnimeJS) win.AnimeJS = [];
+  win.AnimeJS.push(globalVersions);
+}
+
+// node_modules/animejs/dist/modules/core/helpers.js
+var toLowerCase = (str) => str.replace(lowerCaseRgx, "$1-$2").toLowerCase();
+var stringStartsWith = (str, sub) => str.indexOf(sub) === 0;
+var now = Date.now;
+var isArr = Array.isArray;
+var isObj = (a) => a && a.constructor === Object;
+var isNum = (a) => typeof a === "number" && !isNaN(a);
+var isStr = (a) => typeof a === "string";
+var isFnc = (a) => typeof a === "function";
+var isUnd = (a) => typeof a === "undefined";
+var isNil = (a) => isUnd(a) || a === null;
+var isSvg = (a) => isBrowser && a instanceof SVGElement;
+var isHex = (a) => hexTestRgx.test(a);
+var isRgb = (a) => stringStartsWith(a, "rgb");
+var isHsl = (a) => stringStartsWith(a, "hsl");
+var isCol = (a) => isHex(a) || (isRgb(a) || isHsl(a)) && (a[a.length - 1] === ")" || !validRgbHslRgx.test(a));
+var isKey = (a) => !globals.defaults.hasOwnProperty(a);
+var svgCssReservedProperties = ["opacity", "rotate", "overflow", "color"];
+var isValidSVGAttribute = (el, propertyName) => {
+  if (svgCssReservedProperties.includes(propertyName)) return false;
+  if (el.getAttribute(propertyName) || propertyName in el) {
+    if (propertyName === "scale") {
+      const elParentNode = (
+        /** @type {SVGGeometryElement} */
+        /** @type {DOMTarget} */
+        el.parentNode
+      );
+      return elParentNode && elParentNode.tagName === "filter";
+    }
+    return true;
+  }
+};
+var pow = Math.pow;
+var sqrt = Math.sqrt;
+var sin = Math.sin;
+var cos = Math.cos;
+var floor = Math.floor;
+var asin = Math.asin;
+var PI = Math.PI;
+var _round = Math.round;
+var clamp = (v, min, max) => v < min ? min : v > max ? max : v;
+var round = (v, decimalLength) => {
+  if (decimalLength < 0) return v;
+  if (!decimalLength) return _round(v);
+  const p = 10 ** decimalLength;
+  return _round(v * p) / p;
+};
+var lerp = (start, end, factor) => factor === 1 ? end : factor === 0 ? start : start + (end - start) * factor;
+var clampInfinity = (v) => v === Infinity ? maxValue : v === -Infinity ? -maxValue : v;
+var normalizeTime = (v) => v <= minValue ? minValue : clampInfinity(round(v, 11));
+var cloneArray = (a) => isArr(a) ? [...a] : a;
+var mergeObjects = (o1, o2) => {
+  const merged = (
+    /** @type {T & U} */
+    { ...o1 }
+  );
+  for (let p in o2) {
+    const o1p = (
+      /** @type {T & U} */
+      o1[p]
+    );
+    merged[p] = isUnd(o1p) ? (
+      /** @type {T & U} */
+      o2[p]
+    ) : o1p;
+  }
+  return merged;
+};
+var forEachChildren = (parent, callback, reverse, prevProp = "_prev", nextProp = "_next") => {
+  let next = parent._head;
+  let adjustedNextProp = nextProp;
+  if (reverse) {
+    next = parent._tail;
+    adjustedNextProp = prevProp;
+  }
+  while (next) {
+    const currentNext = next[adjustedNextProp];
+    callback(next);
+    next = currentNext;
+  }
+};
+var removeChild = (parent, child, prevProp = "_prev", nextProp = "_next") => {
+  const prev = child[prevProp];
+  const next = child[nextProp];
+  prev ? prev[nextProp] = next : parent._head = next;
+  next ? next[prevProp] = prev : parent._tail = prev;
+  child[prevProp] = null;
+  child[nextProp] = null;
+};
+var addChild = (parent, child, sortMethod, prevProp = "_prev", nextProp = "_next") => {
+  let prev = parent._tail;
+  while (prev && sortMethod && sortMethod(prev, child)) prev = prev[prevProp];
+  const next = prev ? prev[nextProp] : parent._head;
+  prev ? prev[nextProp] = child : parent._head = child;
+  next ? next[prevProp] = child : parent._tail = child;
+  child[prevProp] = prev;
+  child[nextProp] = next;
+};
+
+// node_modules/animejs/dist/modules/core/transforms.js
+var parseInlineTransforms = (target, propName, animationInlineStyles) => {
+  const inlineTransforms = target.style.transform;
+  if (inlineTransforms) {
+    const cachedTransforms = target[transformsSymbol];
+    let pos = 0;
+    const len = inlineTransforms.length;
+    let fullTranslateValue;
+    while (pos < len) {
+      while (pos < len && inlineTransforms.charCodeAt(pos) === 32) pos++;
+      if (pos >= len) break;
+      const nameStart = pos;
+      while (pos < len && inlineTransforms.charCodeAt(pos) !== 40) pos++;
+      if (pos >= len) break;
+      const name = inlineTransforms.substring(nameStart, pos);
+      let depth = 1;
+      const valueStart = pos + 1;
+      let c1 = -1, c2 = -1;
+      pos++;
+      while (pos < len && depth > 0) {
+        const c = inlineTransforms.charCodeAt(pos);
+        if (c === 40) depth++;
+        else if (c === 41) depth--;
+        else if (c === 44 && depth === 1) {
+          if (c1 === -1) c1 = pos;
+          else if (c2 === -1) c2 = pos;
+        }
+        pos++;
+      }
+      const valueEnd = pos - 1;
+      if (name === "translate" || name === "translate3d") {
+        if (c1 === -1) {
+          cachedTransforms.translateX = inlineTransforms.substring(valueStart, valueEnd).trim();
+        } else {
+          cachedTransforms.translateX = inlineTransforms.substring(valueStart, c1).trim();
+          if (c2 === -1) {
+            cachedTransforms.translateY = inlineTransforms.substring(c1 + 1, valueEnd).trim();
+          } else {
+            cachedTransforms.translateY = inlineTransforms.substring(c1 + 1, c2).trim();
+            cachedTransforms.translateZ = inlineTransforms.substring(c2 + 1, valueEnd).trim();
+          }
+        }
+        fullTranslateValue = inlineTransforms.substring(valueStart, valueEnd);
+      } else if (name === "scale" || name === "scale3d") {
+        if (c1 === -1) {
+          cachedTransforms.scale = inlineTransforms.substring(valueStart, valueEnd).trim();
+        } else {
+          cachedTransforms.scaleX = inlineTransforms.substring(valueStart, c1).trim();
+          if (c2 === -1) {
+            cachedTransforms.scaleY = inlineTransforms.substring(c1 + 1, valueEnd).trim();
+          } else {
+            cachedTransforms.scaleY = inlineTransforms.substring(c1 + 1, c2).trim();
+            cachedTransforms.scaleZ = inlineTransforms.substring(c2 + 1, valueEnd).trim();
+          }
+        }
+      } else {
+        cachedTransforms[name] = inlineTransforms.substring(valueStart, valueEnd);
+      }
+    }
+    if (propName === "translate3d" && fullTranslateValue) {
+      if (animationInlineStyles) animationInlineStyles[propName] = fullTranslateValue;
+      return fullTranslateValue;
+    }
+    const cached = cachedTransforms[propName];
+    if (!isUnd(cached)) {
+      if (animationInlineStyles) animationInlineStyles[propName] = cached;
+      return cached;
+    }
+  }
+  return propName === "translate3d" ? "0px, 0px, 0px" : propName === "rotate3d" ? "0, 0, 0, 0deg" : stringStartsWith(propName, "scale") ? "1" : stringStartsWith(propName, "rotate") || stringStartsWith(propName, "skew") ? "0deg" : "0px";
+};
+var buildTransformString = (props) => {
+  let str = emptyString;
+  for (let i = 0, l = validTransforms.length; i < l; i++) {
+    const key2 = validTransforms[i];
+    const val = props[key2];
+    if (val !== void 0) {
+      if (key2 === "translateX") {
+        const next = props.translateY;
+        if (next !== void 0) {
+          const next2 = props.translateZ;
+          if (next2 !== void 0) {
+            str += `translate3d(${val},${next},${next2}) `;
+            i += 2;
+          } else {
+            str += `translate(${val},${next}) `;
+            i += 1;
+          }
+          continue;
+        }
+      }
+      if (key2 === "scaleX" && props.scale === void 0) {
+        const next = props.scaleY;
+        if (next !== void 0) {
+          const next2 = props.scaleZ;
+          if (next2 !== void 0) {
+            str += `scale3d(${val},${next},${next2}) `;
+            i += 2;
+          } else {
+            str += `scale(${val},${next}) `;
+            i += 1;
+          }
+          continue;
+        }
+      }
+      str += `${transformsFragmentStrings[key2]}${val}) `;
+    }
+    if (key2 === "rotateZ") {
+      if (props.rotate3d !== void 0) str += `rotate3d(${props.rotate3d}) `;
+    }
+  }
+  if (props.matrix !== void 0) str += `matrix(${props.matrix}) `;
+  if (props.matrix3d !== void 0) str += `matrix3d(${props.matrix3d}) `;
+  return str;
+};
+
+// node_modules/animejs/dist/modules/adapters/registry.js
+var adapters = (
+  /** @type {Adapter[]} */
+  []
+);
+function resolveAdapterEntry(target, name) {
+  if (!target) return null;
+  const al = adapters.length;
+  outer: for (let i = 0; i < al; i++) {
+    const a = adapters[i];
+    if (a.detect && !a.detect(target)) continue;
+    const tas = a.targetAdapters;
+    for (let j = 0, m = tas.length; j < m; j++) {
+      const ta = tas[j];
+      if (ta.detect(target)) {
+        const entry = ta.props[name];
+        if (entry && (!entry.gate || entry.gate(target))) return entry;
+        break outer;
+      }
+    }
+  }
+  for (let i = 0; i < al; i++) {
+    const a = adapters[i];
+    if (a.detect && !a.detect(target)) continue;
+    const rs = a.propertyResolvers;
+    for (let j = 0, m = rs.length; j < m; j++) {
+      const entry = rs[j](target, name);
+      if (entry) return entry;
+    }
+  }
+  return null;
+}
+
+// node_modules/animejs/dist/modules/core/colors.js
+var rgbToRgba = (rgbValue) => {
+  const rgba = rgbExecRgx.exec(rgbValue) || rgbaExecRgx.exec(rgbValue);
+  const a = !isUnd(rgba[4]) ? +rgba[4] : 1;
+  return [
+    +rgba[1],
+    +rgba[2],
+    +rgba[3],
+    a
+  ];
+};
+var hexToRgba = (hexValue) => {
+  const hexLength = hexValue.length;
+  const isShort = hexLength === 4 || hexLength === 5;
+  return [
+    +("0x" + hexValue[1] + hexValue[isShort ? 1 : 2]),
+    +("0x" + hexValue[isShort ? 2 : 3] + hexValue[isShort ? 2 : 4]),
+    +("0x" + hexValue[isShort ? 3 : 5] + hexValue[isShort ? 3 : 6]),
+    hexLength === 5 || hexLength === 9 ? +(+("0x" + hexValue[isShort ? 4 : 7] + hexValue[isShort ? 4 : 8]) / 255).toFixed(3) : 1
+  ];
+};
+var hue2rgb = (p, q, t) => {
+  if (t < 0) t += 1;
+  if (t > 1) t -= 1;
+  return t < 1 / 6 ? p + (q - p) * 6 * t : t < 1 / 2 ? q : t < 2 / 3 ? p + (q - p) * (2 / 3 - t) * 6 : p;
+};
+var hslToRgba = (hslValue) => {
+  const hsla = hslExecRgx.exec(hslValue) || hslaExecRgx.exec(hslValue);
+  const h = +hsla[1] / 360;
+  const s = +hsla[2] / 100;
+  const l = +hsla[3] / 100;
+  const a = !isUnd(hsla[4]) ? +hsla[4] : 1;
+  let r, g, b;
+  if (s === 0) {
+    r = g = b = l;
+  } else {
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+    r = round(hue2rgb(p, q, h + 1 / 3) * 255, 0);
+    g = round(hue2rgb(p, q, h) * 255, 0);
+    b = round(hue2rgb(p, q, h - 1 / 3) * 255, 0);
+  }
+  return [r, g, b, a];
+};
+var convertColorStringValuesToRgbaArray = (colorString) => {
+  return isRgb(colorString) ? rgbToRgba(colorString) : isHex(colorString) ? hexToRgba(colorString) : isHsl(colorString) ? hslToRgba(colorString) : [0, 0, 0, 1];
+};
+
+// node_modules/animejs/dist/modules/core/values.js
+var setValue = (targetValue, defaultValue) => {
+  return isUnd(targetValue) ? defaultValue : targetValue;
+};
+var resolveCssVar = (value, target) => {
+  const match = value.match(cssVariableMatchRgx);
+  const el = target[isDomSymbol] ? target : document.documentElement;
+  let computed = getComputedStyle(
+    /** @type {HTMLElement} */
+    el
+  )?.getPropertyValue(match[1]);
+  if ((!computed || computed.trim() === emptyString) && match[2]) computed = match[2].trim();
+  return computed || 0;
+};
+var getFunctionValue = (value, target, index, targets, store, prevTween) => {
+  if (isFnc(value)) {
+    if (!store) {
+      const computed = (
+        /** @type {Function} */
+        value(target, index, targets, prevTween)
+      );
+      return !isNaN(+computed) ? +computed : computed || 0;
+    }
+    const func = () => {
+      const computed = (
+        /** @type {Function} */
+        value(target, index, targets, prevTween)
+      );
+      return !isNaN(+computed) ? +computed : computed || 0;
+    };
+    store.func = func;
+    return func();
+  }
+  if (isStr(value) && stringStartsWith(value, cssVarPrefix)) {
+    if (!store) return resolveCssVar(
+      /** @type {String} */
+      value,
+      target
+    );
+    const func = () => resolveCssVar(
+      /** @type {String} */
+      value,
+      target
+    );
+    store.func = func;
+    return func();
+  }
+  return value;
+};
+var getTweenType = (target, prop) => {
+  return !target[isDomSymbol] ? tweenTypes.OBJECT : (
+    // Handle SVG attributes
+    target[isSvgSymbol] && isValidSVGAttribute(target, prop) ? tweenTypes.ATTRIBUTE : (
+      // Handle CSS Transform properties differently than CSS to allow individual animations
+      validTransforms.includes(prop) || shortTransforms.get(prop) ? tweenTypes.TRANSFORM : (
+        // CSS variables
+        stringStartsWith(prop, "--") ? tweenTypes.CSS_VAR : (
+          // All other CSS properties
+          prop in /** @type {DOMTarget} */
+          target.style ? tweenTypes.CSS : (
+            // Handle other DOM Attributes
+            prop in target ? tweenTypes.OBJECT : tweenTypes.ATTRIBUTE
+          )
+        )
+      )
+    )
+  );
+};
+var getCSSValue = (target, propName, animationInlineStyles) => {
+  const inlineStyles = target.style[propName];
+  if (inlineStyles && animationInlineStyles) {
+    animationInlineStyles[propName] = inlineStyles;
+  }
+  const value = inlineStyles || getComputedStyle(target[proxyTargetSymbol] || target).getPropertyValue(propName);
+  return value === "auto" ? "0" : value;
+};
+var getOriginalAnimatableValue = (target, propName, tweenType, animationInlineStyles) => {
+  const type = !isUnd(tweenType) ? tweenType : getTweenType(target, propName);
+  const adapterProp = resolveAdapterEntry(target, propName);
+  if (adapterProp) {
+    const value = adapterProp.get(target);
+    if (value && animationInlineStyles) animationInlineStyles[propName] = value;
+    return value == null ? 0 : value;
+  }
+  if (type === tweenTypes.OBJECT) {
+    const value = target[propName];
+    if (value && animationInlineStyles) animationInlineStyles[propName] = value;
+    return value || 0;
+  }
+  if (type === tweenTypes.ATTRIBUTE) {
+    const value = (
+      /** @type {DOMTarget} */
+      target.getAttribute(propName)
+    );
+    if (value && animationInlineStyles) animationInlineStyles[propName] = value;
+    return value;
+  }
+  return type === tweenTypes.TRANSFORM ? parseInlineTransforms(
+    /** @type {DOMTarget} */
+    target,
+    propName,
+    animationInlineStyles
+  ) : type === tweenTypes.CSS_VAR ? getCSSValue(
+    /** @type {DOMTarget} */
+    target,
+    propName,
+    animationInlineStyles
+  ).trimStart() : getCSSValue(
+    /** @type {DOMTarget} */
+    target,
+    propName,
+    animationInlineStyles
+  );
+};
+var getRelativeValue = (x, y, operator) => {
+  return operator === "-" ? x - y : operator === "+" ? x + y : x * y;
+};
+var createDecomposedValueTargetObject = () => {
+  return {
+    /** @type {valueTypes} */
+    t: valueTypes.NUMBER,
+    n: 0,
+    u: null,
+    o: null,
+    d: null,
+    s: null
+  };
+};
+var decomposeRawValue = (rawValue, targetObject) => {
+  targetObject.t = valueTypes.NUMBER;
+  targetObject.n = 0;
+  targetObject.u = null;
+  targetObject.o = null;
+  targetObject.d = null;
+  targetObject.s = null;
+  if (!rawValue) return targetObject;
+  const num = +rawValue;
+  if (!isNaN(num)) {
+    targetObject.n = num;
+    return targetObject;
+  }
+  let str = (
+    /** @type {String} */
+    rawValue
+  );
+  if (str[1] === "=") {
+    targetObject.o = str[0];
+    str = str.slice(2);
+  }
+  const unitMatch = str.includes(" ") ? false : unitsExecRgx.exec(str);
+  if (unitMatch) {
+    targetObject.t = valueTypes.UNIT;
+    targetObject.n = +unitMatch[1];
+    targetObject.u = unitMatch[2];
+    return targetObject;
+  } else if (targetObject.o) {
+    targetObject.n = +str;
+    return targetObject;
+  } else if (isCol(str)) {
+    targetObject.t = valueTypes.COLOR;
+    targetObject.d = convertColorStringValuesToRgbaArray(str);
+    return targetObject;
+  } else {
+    const matchedNumbers = str.match(digitWithExponentRgx);
+    targetObject.t = valueTypes.COMPLEX;
+    targetObject.d = matchedNumbers ? matchedNumbers.map(Number) : [];
+    targetObject.s = str.split(digitWithExponentRgx) || [];
+    return targetObject;
+  }
+};
+var decomposeTweenValue = (tween, targetObject) => {
+  targetObject.t = tween._valueType;
+  targetObject.n = tween._toNumber;
+  targetObject.u = tween._unit;
+  targetObject.o = null;
+  targetObject.d = cloneArray(tween._toNumbers);
+  targetObject.s = cloneArray(tween._strings);
+  return targetObject;
+};
+var decomposedOriginalValue = createDecomposedValueTargetObject();
+var composeComplexValue = (tween, progress, precision) => {
+  const mod = tween._modifier;
+  const fn = tween._fromNumbers;
+  const tn = tween._toNumbers;
+  const ts = tween._strings;
+  let v = ts[0];
+  for (let j = 0, l = tn.length; j < l; j++) {
+    const n = (
+      /** @type {Number} */
+      mod(round(lerp(fn[j], tn[j], progress), precision))
+    );
+    const s = ts[j + 1];
+    v += `${s ? n + s : n}`;
+    tween._numbers[j] = n;
+  }
+  return v;
+};
+
+// node_modules/animejs/dist/modules/core/render.js
+var render = (tickable, time, muteCallbacks, internalRender, tickMode) => {
+  const parent = tickable.parent;
+  const duration = tickable.duration;
+  const completed = tickable.completed;
+  const iterationDuration = tickable.iterationDuration;
+  const iterationCount = tickable.iterationCount;
+  const _currentIteration = tickable._currentIteration;
+  const _loopDelay = tickable._loopDelay;
+  const _reversed = tickable._reversed;
+  const _alternate = tickable._alternate;
+  const _hasChildren = tickable._hasChildren;
+  const tickableDelay = tickable._delay;
+  const tickablePrevAbsoluteTime = tickable._currentTime;
+  const tickableEndTime = tickableDelay + iterationDuration;
+  const tickableAbsoluteTime = time - tickableDelay;
+  const tickablePrevTime = clamp(tickablePrevAbsoluteTime, -tickableDelay, duration);
+  const tickableCurrentTime = clamp(tickableAbsoluteTime, -tickableDelay, duration);
+  const deltaTime = tickableAbsoluteTime - tickablePrevAbsoluteTime;
+  const isCurrentTimeAboveZero = tickableCurrentTime > 0;
+  const isCurrentTimeEqualOrAboveDuration = tickableCurrentTime >= duration;
+  const isSetter = duration <= minValue;
+  const forcedTick = tickMode === tickModes.FORCE;
+  let isOdd = 0;
+  let iterationElapsedTime = tickableAbsoluteTime;
+  let hasRendered = 0;
+  if (iterationCount > 1) {
+    const period = iterationDuration + (isCurrentTimeEqualOrAboveDuration ? 0 : _loopDelay);
+    const currentIteration = ~~(tickableCurrentTime / period);
+    tickable._currentIteration = clamp(currentIteration, 0, iterationCount);
+    if (isCurrentTimeEqualOrAboveDuration) tickable._currentIteration--;
+    isOdd = tickable._currentIteration % 2;
+    iterationElapsedTime = tickableCurrentTime - currentIteration * period || 0;
+  }
+  const isReversed = _reversed ^ (_alternate && isOdd);
+  const _ease = (
+    /** @type {Renderable} */
+    tickable._ease
+  );
+  let iterationTime = isCurrentTimeEqualOrAboveDuration ? isReversed ? 0 : duration : isReversed ? iterationDuration - iterationElapsedTime : iterationElapsedTime;
+  if (_ease) iterationTime = iterationDuration * _ease(iterationTime / iterationDuration) || 0;
+  const isRunningBackwards = (parent ? parent.backwards : tickableAbsoluteTime < tickablePrevAbsoluteTime) ? !isReversed : !!isReversed;
+  tickable._currentTime = tickableAbsoluteTime;
+  tickable._iterationTime = iterationTime;
+  tickable.backwards = isRunningBackwards;
+  if (isCurrentTimeAboveZero && !tickable.began) {
+    tickable.began = true;
+    if (!muteCallbacks && !(parent && (isRunningBackwards || !parent.began))) {
+      tickable.onBegin(
+        /** @type {CallbackArgument} */
+        tickable
+      );
+    }
+  } else if (tickableAbsoluteTime <= 0) {
+    tickable.began = false;
+  }
+  if (!muteCallbacks && !_hasChildren && isCurrentTimeAboveZero && tickable._currentIteration !== _currentIteration) {
+    tickable.onLoop(
+      /** @type {CallbackArgument} */
+      tickable
+    );
+  }
+  if (forcedTick || tickMode === tickModes.AUTO && // Timeline children render from their offset instead of their delay so the gap left by a truncated sibling is covered on seek.
+  (time >= (parent && tickableDelay > 0 ? 0 : tickableDelay) && time <= tickableEndTime || // Normal render
+  time <= tickableDelay && tickablePrevTime > tickableDelay || // Playhead is before the animation start time so make sure the animation is at its initial state
+  time >= tickableEndTime && tickablePrevTime !== duration) || iterationTime >= tickableEndTime && tickablePrevTime !== duration || // iterationTime is per-iteration, compared to the delay to catch a backward seek into a looped iteration's delay region. Exclude the final settled end, where iterationTime clamps to duration and would falsely match the delay region when the delay exceeds the duration.
+  iterationTime <= tickableDelay && tickablePrevTime > 0 && !isCurrentTimeEqualOrAboveDuration || time <= tickablePrevTime && tickablePrevTime === duration && completed || // Force a render if a seek occurs on an completed animation
+  isCurrentTimeEqualOrAboveDuration && !completed && isSetter) {
+    if (isCurrentTimeAboveZero) {
+      tickable.computeDeltaTime(tickablePrevTime);
+      if (!muteCallbacks) tickable.onBeforeUpdate(
+        /** @type {CallbackArgument} */
+        tickable
+      );
+    }
+    if (!_hasChildren) {
+      const forcedRender = forcedTick || (isRunningBackwards ? deltaTime * -1 : deltaTime) >= globals.tickThreshold;
+      const absoluteTime = round(tickable._offset + (parent ? parent._offset : 0) + tickableDelay + iterationTime, 12);
+      let tween = (
+        /** @type {Tween} */
+        /** @type {JSAnimation} */
+        tickable._head
+      );
+      let tweenTarget;
+      let tweenStyle;
+      let tweenTargetTransforms;
+      let tweenTargetTransformsProperties;
+      let tweenTransformsNeedUpdate = 0;
+      while (tween) {
+        const tweenComposition = tween._composition;
+        const tweenCurrentTime = tween._currentTime;
+        const tweenChangeDuration = tween._changeDuration;
+        const tweenAbsEndTime = tween._absoluteStartTime + tween._changeDuration;
+        const tweenNextRep = tween._nextRep;
+        const tweenPrevRep = tween._prevRep;
+        const tweenHasComposition = tweenComposition !== compositionTypes.none;
+        const tweenPrevRepEndTime = tweenPrevRep ? tweenPrevRep._absoluteStartTime + tweenPrevRep._changeDuration : 0;
+        const tweenPrevRepIsCrossParent = tweenPrevRep && tweenPrevRep.parent !== tween.parent;
+        const tweenNextRepTakeover = !tweenNextRep || tweenNextRep._isOverridden ? tweenAbsEndTime : tweenNextRep.parent === tween.parent ? tweenAbsEndTime + tweenNextRep._delay : tweenNextRep._absoluteStartTime < tweenNextRep._absoluteUpdateStartTime ? tweenNextRep._absoluteStartTime : tweenNextRep._absoluteUpdateStartTime;
+        if ((forcedRender || // Tail keyframes always re-evaluate the gate so an earlier keyframe cannot leave the target stale by writing past its own range after a backward seek.
+        (tweenCurrentTime !== tweenChangeDuration || absoluteTime <= tweenNextRepTakeover || tweenPrevRep && !tweenPrevRepIsCrossParent && (!tweenNextRep || tweenNextRep.parent !== tween.parent)) && // A cross parent tween re-renders its from value from the previous sibling truncated end so the handoff gap holds.
+        // A keyframe re-renders its from revert while the next keyframe time is stale so a backward jump over its range cannot leave the next value in place.
+        (tweenCurrentTime !== 0 || absoluteTime >= tween._absoluteStartTime || tweenPrevRepIsCrossParent && !tween._hasFromValue && !tweenPrevRep._isOverridden && absoluteTime >= tweenPrevRepEndTime || tweenNextRep && !tweenNextRep._isOverridden && tweenNextRep.parent === tween.parent && tweenNextRep._currentTime !== 0 && iterationTime < tweenNextRep._startTime)) && // Non-first keyframes wait until the iteration reaches their own start before rendering, so the previous keyframe can handle the from-revert when scrubbed backward past this tween's range.
+        (!tweenPrevRep || tweenPrevRepIsCrossParent || iterationTime >= tween._startTime) && (!tweenHasComposition || !tween._isOverridden && (!tween._isOverlapped || absoluteTime <= tweenAbsEndTime) && // The next sibling owns the value past its takeover point, so yielding there keeps writes single owner in both directions.
+        (!tweenNextRep || tweenNextRep._isOverridden || absoluteTime <= tweenNextRepTakeover) && // The previous sibling owns the value up to its truncated end.
+        // Cross parent tweens take over the hold from that point, explicit from values wait for their own start.
+        (!tweenPrevRep || (tweenPrevRep._isOverridden || (!tweenPrevRepIsCrossParent ? absoluteTime >= tweenPrevRepEndTime + tween._delay : absoluteTime >= tween._absoluteStartTime || !tween._hasFromValue && absoluteTime >= tweenPrevRepEndTime))))) {
+          const tweenNewTime = tween._currentTime = clamp(iterationTime - tween._startTime, 0, tweenChangeDuration);
+          const tweenProgress = tween._ease(tweenNewTime / tween._updateDuration);
+          const tweenModifier = tween._modifier;
+          const tweenValueType = tween._valueType;
+          const tweenType = tween._tweenType;
+          const tweenIsObject = tweenType === tweenTypes.OBJECT;
+          const tweenIsNumber = tweenValueType === valueTypes.NUMBER;
+          const tweenPrecision = tweenIsNumber && tweenIsObject || tweenProgress === 0 || tweenProgress === 1 ? -1 : globals.precision;
+          let value;
+          let number2;
+          if (tweenIsNumber) {
+            value = number2 = /** @type {Number} */
+            tweenModifier(round(lerp(tween._fromNumber, tween._toNumber, tweenProgress), tweenPrecision));
+          } else if (tweenValueType === valueTypes.UNIT) {
+            number2 = /** @type {Number} */
+            tweenModifier(round(lerp(tween._fromNumber, tween._toNumber, tweenProgress), tweenPrecision));
+            value = `${number2}${tween._unit}`;
+          } else if (tweenValueType === valueTypes.COLOR) {
+            const ns = tween._numbers;
+            const fn = tween._fromNumbers;
+            const tn = tween._toNumbers;
+            const omt = 1 - tweenProgress;
+            const fr = fn[0], fg = fn[1], fb = fn[2];
+            const tr = tn[0], tg = tn[1], tb = tn[2];
+            ns[0] = /** @type {Number} */
+            tweenModifier(Math.sqrt(fr * fr * omt + tr * tr * tweenProgress));
+            ns[1] = /** @type {Number} */
+            tweenModifier(Math.sqrt(fg * fg * omt + tg * tg * tweenProgress));
+            ns[2] = /** @type {Number} */
+            tweenModifier(Math.sqrt(fb * fb * omt + tb * tb * tweenProgress));
+            ns[3] = /** @type {Number} */
+            tweenModifier(lerp(fn[3], tn[3], tweenProgress));
+            if (!tween._setter || internalRender) {
+              value = `rgba(${round(ns[0], 0)},${round(ns[1], 0)},${round(ns[2], 0)},${ns[3]})`;
+            }
+          } else if (tweenValueType === valueTypes.COMPLEX) {
+            value = composeComplexValue(tween, tweenProgress, tweenPrecision);
+          }
+          if (tweenHasComposition) {
+            tween._number = number2;
+          }
+          if (!internalRender && tweenComposition !== compositionTypes.blend) {
+            const tweenProperty = tween.property;
+            tweenTarget = tween.target;
+            if (tween._setter) {
+              tween._setter(tweenTarget, number2, tween);
+            } else if (tweenIsObject) {
+              tweenTarget[tweenProperty] = value;
+            } else if (tweenType === tweenTypes.ATTRIBUTE) {
+              tweenTarget.setAttribute(
+                tweenProperty,
+                /** @type {String} */
+                value
+              );
+            } else {
+              tweenStyle = /** @type {DOMTarget} */
+              tweenTarget.style;
+              if (tweenType === tweenTypes.TRANSFORM) {
+                if (tweenTarget !== tweenTargetTransforms) {
+                  tweenTargetTransforms = tweenTarget;
+                  tweenTargetTransformsProperties = tweenTarget[transformsSymbol];
+                }
+                tweenTargetTransformsProperties[tweenProperty] = value;
+                tweenTransformsNeedUpdate = 1;
+              } else if (tweenType === tweenTypes.CSS) {
+                tweenStyle[tweenProperty] = value;
+              } else if (tweenType === tweenTypes.CSS_VAR) {
+                tweenStyle.setProperty(
+                  tweenProperty,
+                  /** @type {String} */
+                  value
+                );
+              }
+            }
+            if (isCurrentTimeAboveZero) hasRendered = 1;
+          } else {
+            tween._value = value;
+          }
+        } else if (tweenCurrentTime && tweenPrevRep && !tweenPrevRepIsCrossParent && iterationTime < tween._startTime) {
+          tween._currentTime = 0;
+        }
+        if (tweenTransformsNeedUpdate && tween._renderTransforms) {
+          tweenStyle.transform = buildTransformString(tweenTargetTransformsProperties);
+          tweenTransformsNeedUpdate = 0;
+        }
+        tween = tween._next;
+      }
+      if (!muteCallbacks && hasRendered) {
+        tickable.onRender(
+          /** @type {JSAnimation} */
+          tickable
+        );
+      }
+    }
+    if (!muteCallbacks && isCurrentTimeAboveZero) {
+      tickable.onUpdate(
+        /** @type {CallbackArgument} */
+        tickable
+      );
+    }
+  }
+  if (parent && isSetter) {
+    if (!muteCallbacks && // (tickableAbsoluteTime > 0 instead) of (tickableAbsoluteTime >= duration) to prevent floating point precision issues
+    // see: https://github.com/juliangarnier/anime/issues/1088
+    (parent.began && !isRunningBackwards && tickableAbsoluteTime > 0 && !completed || isRunningBackwards && tickableAbsoluteTime <= minValue && completed)) {
+      tickable.onComplete(
+        /** @type {CallbackArgument} */
+        tickable
+      );
+      tickable.completed = !isRunningBackwards;
+    }
+  } else if (isCurrentTimeAboveZero && isCurrentTimeEqualOrAboveDuration) {
+    if (iterationCount === Infinity) {
+      tickable._startTime += tickable.duration;
+    } else if (tickable._currentIteration >= iterationCount - 1) {
+      tickable.paused = true;
+      if (!completed && !_hasChildren) {
+        tickable.completed = true;
+        if (!muteCallbacks && !(parent && (isRunningBackwards || !parent.began))) {
+          tickable.onComplete(
+            /** @type {CallbackArgument} */
+            tickable
+          );
+          tickable._resolve(
+            /** @type {CallbackArgument} */
+            tickable
+          );
+        }
+      }
+    }
+  } else {
+    tickable.completed = false;
+  }
+  return hasRendered;
+};
+var tick = (tickable, time, muteCallbacks, internalRender, tickMode) => {
+  const _currentIteration = tickable._currentIteration;
+  render(tickable, time, muteCallbacks, internalRender, tickMode);
+  if (tickable._hasChildren) {
+    const tl = (
+      /** @type {Timeline} */
+      tickable
+    );
+    const tlIsRunningBackwards = tl.backwards;
+    const tlChildrenTime = internalRender ? time : tl._iterationTime;
+    const tlCildrenTickTime = now();
+    let tlChildrenHasRendered = 0;
+    let tlChildrenHaveCompleted = true;
+    if (!internalRender && tl._currentIteration !== _currentIteration) {
+      const tlIterationDuration = tl.iterationDuration;
+      forEachChildren(tl, (child) => {
+        if (!tlIsRunningBackwards) {
+          if (!child.completed && !child.backwards && child._currentTime < child.iterationDuration) {
+            render(child, tlIterationDuration, muteCallbacks, 1, tickModes.FORCE);
+          }
+          child.began = false;
+          child.completed = false;
+        } else {
+          const childDuration = child.duration;
+          const childStartTime = child._offset + child._delay;
+          const childEndTime = childStartTime + childDuration;
+          if (!muteCallbacks && childDuration <= minValue && (!childStartTime || childEndTime === tlIterationDuration)) {
+            child.onComplete(child);
+          }
+        }
+      });
+      if (!muteCallbacks) tl.onLoop(
+        /** @type {CallbackArgument} */
+        tl
+      );
+    }
+    forEachChildren(tl, (child) => {
+      const childTime = round((tlChildrenTime - child._offset) * child._speed, 12);
+      if (tlIsRunningBackwards && childTime > child._delay + child.duration) return;
+      const childTickMode = child._fps < tl._fps ? child.requestTick(tlCildrenTickTime) : tickMode;
+      tlChildrenHasRendered += render(child, childTime, muteCallbacks, internalRender, childTickMode);
+      if (!child.completed && tlChildrenHaveCompleted) tlChildrenHaveCompleted = false;
+    }, tlIsRunningBackwards);
+    if (!muteCallbacks && tlChildrenHasRendered) tl.onRender(
+      /** @type {CallbackArgument} */
+      tl
+    );
+    if ((tlChildrenHaveCompleted || tlIsRunningBackwards) && tl._currentTime >= tl.duration) {
+      tl.paused = true;
+      if (!tl.completed) {
+        tl.completed = true;
+        if (!muteCallbacks) {
+          tl.onComplete(
+            /** @type {CallbackArgument} */
+            tl
+          );
+          tl._resolve(
+            /** @type {CallbackArgument} */
+            tl
+          );
+        }
+      }
+    }
+  }
+};
+
+// node_modules/animejs/dist/modules/core/styles.js
+var propertyNamesCache = {};
+var sanitizePropertyName = (propertyName, target, tweenType) => {
+  if (tweenType === tweenTypes.TRANSFORM) {
+    const t = shortTransforms.get(propertyName);
+    return t ? t : propertyName;
+  } else if (tweenType === tweenTypes.CSS || // Handle special cases where properties like "strokeDashoffset" needs to be set as "stroke-dashoffset"
+  // but properties like "baseFrequency" should stay in lowerCamelCase
+  tweenType === tweenTypes.ATTRIBUTE && (isSvg(target) && propertyName in /** @type {DOMTarget} */
+  target.style)) {
+    const cachedPropertyName = propertyNamesCache[propertyName];
+    if (cachedPropertyName) {
+      return cachedPropertyName;
+    } else {
+      const lowerCaseName = propertyName ? toLowerCase(propertyName) : propertyName;
+      propertyNamesCache[propertyName] = lowerCaseName;
+      return lowerCaseName;
+    }
+  } else {
+    return propertyName;
+  }
+};
+var revertValues = (renderable, inlineStylesOnly = false) => {
+  if (renderable._hasChildren) {
+    forEachChildren(renderable, (child) => revertValues(child, inlineStylesOnly), true);
+  } else {
+    const animation = (
+      /** @type {JSAnimation} */
+      renderable
+    );
+    animation.pause();
+    forEachChildren(animation, (tween) => {
+      const tweenProperty = tween.property;
+      const tweenTarget = tween.target;
+      const tweenType = tween._tweenType;
+      const originalInlinedValue = tween._inlineValue;
+      const tweenHadNoInlineValue = isNil(originalInlinedValue) || originalInlinedValue === emptyString;
+      if (tween._setter) {
+        if (!inlineStylesOnly && !tweenHadNoInlineValue) {
+          decomposeRawValue(originalInlinedValue, decomposedOriginalValue);
+          if (decomposedOriginalValue.d) {
+            const src = decomposedOriginalValue.d;
+            const dst = tween._numbers;
+            for (let i = 0, l = src.length; i < l; i++) dst[i] = src[i];
+          } else {
+            tween._number = decomposedOriginalValue.n;
+          }
+          tween._setter(tween.target, tween._number, tween);
+        }
+      } else if (tweenType === tweenTypes.OBJECT) {
+        if (!inlineStylesOnly && !tweenHadNoInlineValue) {
+          tweenTarget[tweenProperty] = originalInlinedValue;
+        }
+      } else if (tweenTarget[isDomSymbol]) {
+        if (tweenType === tweenTypes.ATTRIBUTE) {
+          if (!inlineStylesOnly) {
+            if (tweenHadNoInlineValue) {
+              tweenTarget.removeAttribute(tweenProperty);
+            } else {
+              tweenTarget.setAttribute(
+                tweenProperty,
+                /** @type {String} */
+                originalInlinedValue
+              );
+            }
+          }
+        } else {
+          const targetStyle = (
+            /** @type {DOMTarget} */
+            tweenTarget.style
+          );
+          if (tweenType === tweenTypes.TRANSFORM) {
+            const cachedTransforms = tweenTarget[transformsSymbol];
+            if (tweenHadNoInlineValue) {
+              delete cachedTransforms[tweenProperty];
+            } else {
+              cachedTransforms[tweenProperty] = originalInlinedValue;
+            }
+            if (tween._renderTransforms) {
+              if (!Object.keys(cachedTransforms).length) {
+                targetStyle.removeProperty("transform");
+              } else {
+                targetStyle.transform = buildTransformString(cachedTransforms);
+              }
+            }
+          } else {
+            if (tweenHadNoInlineValue) {
+              targetStyle.removeProperty(toLowerCase(tweenProperty));
+            } else {
+              targetStyle[tweenProperty] = originalInlinedValue;
+            }
+          }
+        }
+      }
+      if (tweenTarget[isDomSymbol] && animation._tail === tween) {
+        animation.targets.forEach((t) => {
+          if (t.getAttribute && t.getAttribute("style") === emptyString) {
+            t.removeAttribute("style");
+          }
+        });
+      }
+    });
+  }
+  return renderable;
+};
+
+// node_modules/animejs/dist/modules/core/clock.js
+var Clock = class {
+  /** @param {Number} [initTime] */
+  constructor(initTime = 0) {
+    this.deltaTime = 0;
+    this._currentTime = initTime;
+    this._lastTickTime = initTime;
+    this._startTime = initTime;
+    this._lastTime = initTime;
+    this._frameDuration = K / maxFps;
+    this._fps = maxFps;
+    this._speed = 1;
+    this._hasChildren = false;
+    this._head = null;
+    this._tail = null;
+  }
+  get fps() {
+    return this._fps;
+  }
+  set fps(frameRate) {
+    const fr = +frameRate;
+    const fps = fr < minValue ? minValue : fr;
+    const frameDuration = K / fps;
+    if (fps > defaults.frameRate) defaults.frameRate = fps;
+    this._fps = fps;
+    this._frameDuration = frameDuration;
+  }
+  get speed() {
+    return this._speed;
+  }
+  set speed(playbackRate) {
+    const pbr = +playbackRate;
+    this._speed = pbr < minValue ? minValue : pbr;
+  }
+  /**
+   * @param  {Number} time
+   * @return {tickModes}
+   */
+  requestTick(time) {
+    const frameDuration = this._frameDuration;
+    const elapsed = time - this._lastTickTime;
+    const scaled = frameDuration * 0.25;
+    const tolerance = scaled < 4 ? scaled : 4;
+    if (elapsed + tolerance < frameDuration) return tickModes.NONE;
+    this._lastTickTime = elapsed >= frameDuration ? time - elapsed % frameDuration : time;
+    return tickModes.AUTO;
+  }
+  /**
+   * @param  {Number} time
+   * @return {Number}
+   */
+  computeDeltaTime(time) {
+    const delta = time - this._lastTime;
+    this.deltaTime = delta;
+    this._lastTime = time;
+    return delta;
+  }
+};
+
+// node_modules/animejs/dist/modules/animation/additive.js
+var additive = {
+  animation: null,
+  update: noop
+};
+var addAdditiveAnimation = (lookups2) => {
+  let animation = additive.animation;
+  if (!animation) {
+    animation = {
+      duration: minValue,
+      computeDeltaTime: noop,
+      _offset: 0,
+      _delay: 0,
+      _head: null,
+      _tail: null
+    };
+    additive.animation = animation;
+    additive.update = () => {
+      lookups2.forEach((propertyAnimation) => {
+        for (let propertyName in propertyAnimation) {
+          const tweens = propertyAnimation[propertyName];
+          const lookupTween = tweens._head;
+          if (lookupTween) {
+            const valueType = lookupTween._valueType;
+            const additiveValues = valueType === valueTypes.COMPLEX || valueType === valueTypes.COLOR ? cloneArray(lookupTween._fromNumbers) : null;
+            let additiveValue = lookupTween._fromNumber;
+            let tween = tweens._tail;
+            while (tween && tween !== lookupTween) {
+              if (additiveValues) {
+                for (let i = 0, l = tween._numbers.length; i < l; i++) additiveValues[i] += tween._numbers[i];
+              } else {
+                additiveValue += tween._number;
+              }
+              tween = tween._prevAdd;
+            }
+            lookupTween._toNumber = additiveValue;
+            lookupTween._toNumbers = additiveValues;
+          }
+        }
+      });
+      render(animation, 1, 1, 0, tickModes.FORCE);
+    };
+  }
+  return animation;
+};
+
+// node_modules/animejs/dist/modules/engine/engine.js
+var engineTickMethod = /* @__PURE__ */ (() => isBrowser ? requestAnimationFrame : setImmediate)();
+var engineCancelMethod = /* @__PURE__ */ (() => isBrowser ? cancelAnimationFrame : clearImmediate)();
+var Engine = class extends Clock {
+  /** @param {Number} [initTime] */
+  constructor(initTime) {
+    super(initTime);
+    this.useDefaultMainLoop = true;
+    this.pauseOnDocumentHidden = true;
+    this.defaults = defaults;
+    this.paused = true;
+    this.reqId = 0;
+  }
+  update() {
+    const time = this._currentTime = now();
+    if (this.requestTick(time)) {
+      this.computeDeltaTime(time);
+      const engineSpeed = this._speed;
+      const engineFps = this._fps;
+      let activeTickable = (
+        /** @type {Tickable} */
+        this._head
+      );
+      while (activeTickable) {
+        const nextTickable = activeTickable._next;
+        if (!activeTickable.paused) {
+          tick(
+            activeTickable,
+            (time - activeTickable._startTime) * activeTickable._speed * engineSpeed,
+            0,
+            // !muteCallbacks
+            0,
+            // !internalRender
+            activeTickable._fps < engineFps ? activeTickable.requestTick(time) : tickModes.AUTO
+          );
+        } else {
+          removeChild(this, activeTickable);
+          this._hasChildren = !!this._tail;
+          activeTickable._running = false;
+          if (activeTickable.completed && !activeTickable._cancelled) {
+            activeTickable.cancel();
+          }
+        }
+        activeTickable = nextTickable;
+      }
+      additive.update();
+    }
+  }
+  wake() {
+    if (this.useDefaultMainLoop && !this.reqId) {
+      this.requestTick(now());
+      this.reqId = engineTickMethod(tickEngine);
+    }
+    return this;
+  }
+  pause() {
+    if (!this.reqId) return;
+    this.paused = true;
+    return killEngine();
+  }
+  resume() {
+    if (!this.paused) return;
+    this.paused = false;
+    forEachChildren(this, (child) => child.resetTime());
+    return this.wake();
+  }
+  // Getter and setter for speed
+  get speed() {
+    return this._speed * (globals.timeScale === 1 ? 1 : K);
+  }
+  set speed(playbackRate) {
+    const speed = playbackRate * globals.timeScale;
+    if (this._speed === speed) return;
+    this._speed = speed;
+    forEachChildren(this, (child) => child.speed = child._speed);
+  }
+  // Getter and setter for timeUnit
+  get timeUnit() {
+    return globals.timeScale === 1 ? "ms" : "s";
+  }
+  set timeUnit(unit) {
+    const secondsScale = 1e-3;
+    const isSecond = unit === "s";
+    const newScale = isSecond ? secondsScale : 1;
+    if (globals.timeScale !== newScale) {
+      globals.timeScale = newScale;
+      globals.tickThreshold = 200 * newScale;
+      const scaleFactor = isSecond ? secondsScale : K;
+      this.defaults.duration *= scaleFactor;
+      this._speed *= scaleFactor;
+    }
+  }
+  // Getter and setter for precision
+  get precision() {
+    return globals.precision;
+  }
+  set precision(precision) {
+    globals.precision = precision;
+  }
+};
+var engine = /* @__PURE__ */ (() => {
+  const engine2 = new Engine(now());
+  if (isBrowser) {
+    globalVersions.engine = engine2;
+    doc.addEventListener("visibilitychange", () => {
+      if (!engine2.pauseOnDocumentHidden) return;
+      doc.hidden ? engine2.pause() : engine2.resume();
+    });
+  }
+  return engine2;
+})();
+var tickEngine = () => {
+  if (engine._head) {
+    engine.reqId = engineTickMethod(tickEngine);
+    engine.update();
+  } else {
+    engine.reqId = 0;
+  }
+};
+var killEngine = () => {
+  engineCancelMethod(
+    /** @type {NodeJS.Immediate & Number} */
+    engine.reqId
+  );
+  engine.reqId = 0;
+  return engine;
+};
+
+// node_modules/animejs/dist/modules/animation/composition.js
+var lookups = {
+  /** @type {TweenReplaceLookups} */
+  _rep: /* @__PURE__ */ new WeakMap(),
+  /** @type {TweenAdditiveLookups} */
+  _add: /* @__PURE__ */ new Map()
+};
+var getTweenSiblings = (target, property, lookup = "_rep") => {
+  const lookupMap = lookups[lookup];
+  let targetLookup = lookupMap.get(target);
+  if (!targetLookup) {
+    targetLookup = {};
+    lookupMap.set(target, targetLookup);
+  }
+  return targetLookup[property] ? targetLookup[property] : targetLookup[property] = {
+    _head: null,
+    _tail: null
+  };
+};
+var addTweenSortMethod = (p, c) => {
+  return p._isOverridden || p._absoluteStartTime > c._absoluteStartTime;
+};
+var overrideTween = (tween) => {
+  tween._isOverlapped = 1;
+  tween._isOverridden = 1;
+  tween._changeDuration = minValue;
+  tween._currentTime = minValue;
+};
+var composeTween = (tween, siblings) => {
+  const tweenCompositionType = tween._composition;
+  if (tweenCompositionType === compositionTypes.replace) {
+    const tweenAbsStartTime = tween._absoluteStartTime;
+    addChild(siblings, tween, addTweenSortMethod, "_prevRep", "_nextRep");
+    const prevSibling = tween._prevRep;
+    if (prevSibling) {
+      const prevParent = prevSibling.parent;
+      const prevAbsEndTime = prevSibling._absoluteEndTime;
+      if (
+        // Check if the previous tween is from a different animation
+        tween.parent.id !== prevParent.id && // Check if the animation has loops
+        prevParent.iterationCount > 1 && // Check if _absoluteChangeEndTime of last loop overlaps the current tween
+        prevAbsEndTime + (prevParent.duration - prevParent.iterationDuration) > tweenAbsStartTime
+      ) {
+        overrideTween(prevSibling);
+        let prevPrevSibling = prevSibling._prevRep;
+        while (prevPrevSibling && prevPrevSibling.parent.id === prevParent.id) {
+          overrideTween(prevPrevSibling);
+          prevPrevSibling = prevPrevSibling._prevRep;
+        }
+      }
+      const absoluteUpdateStartTime = tween._absoluteUpdateStartTime;
+      if (prevAbsEndTime > absoluteUpdateStartTime) {
+        const prevChangeStartTime = prevSibling._startTime;
+        const prevTLOffset = prevAbsEndTime - (prevChangeStartTime + prevSibling._updateDuration);
+        const updatedPrevChangeDuration = round(absoluteUpdateStartTime - prevTLOffset - prevChangeStartTime, 12);
+        prevSibling._changeDuration = updatedPrevChangeDuration;
+        prevSibling._currentTime = updatedPrevChangeDuration;
+        prevSibling._isOverlapped = 1;
+        if (updatedPrevChangeDuration < minValue) {
+          overrideTween(prevSibling);
+        }
+      }
+      const tweenParentTL = tween.parent.parent;
+      if (!tweenParentTL || tweenParentTL !== prevParent.parent) {
+        let pausePrevParentAnimation = true;
+        forEachChildren(prevParent, (t) => {
+          if (!t._isOverlapped) pausePrevParentAnimation = false;
+        });
+        if (pausePrevParentAnimation) {
+          const prevParentTL = prevParent.parent;
+          if (prevParentTL) {
+            let pausePrevParentTL = true;
+            forEachChildren(prevParentTL, (a) => {
+              if (a !== prevParent) {
+                forEachChildren(a, (t) => {
+                  if (!t._isOverlapped) pausePrevParentTL = false;
+                });
+              }
+            });
+            if (pausePrevParentTL) {
+              prevParentTL.cancel();
+            }
+          } else {
+            prevParent.cancel();
+          }
+        }
+      }
+    }
+  } else if (tweenCompositionType === compositionTypes.blend) {
+    const additiveTweenSiblings = getTweenSiblings(tween.target, tween.property, "_add");
+    const additiveAnimation = addAdditiveAnimation(lookups._add);
+    let lookupTween = additiveTweenSiblings._head;
+    if (!lookupTween) {
+      lookupTween = { ...tween };
+      lookupTween._composition = compositionTypes.replace;
+      lookupTween._updateDuration = minValue;
+      lookupTween._startTime = 0;
+      lookupTween._numbers = cloneArray(tween._fromNumbers);
+      lookupTween._number = 0;
+      lookupTween._next = null;
+      lookupTween._prev = null;
+      addChild(additiveTweenSiblings, lookupTween);
+      addChild(additiveAnimation, lookupTween);
+    }
+    const toNumber = tween._toNumber;
+    tween._fromNumber = lookupTween._fromNumber - toNumber;
+    tween._toNumber = 0;
+    tween._numbers = cloneArray(tween._fromNumbers);
+    tween._number = 0;
+    lookupTween._fromNumber = toNumber;
+    if (tween._toNumbers.length) {
+      const toNumbers = cloneArray(tween._toNumbers);
+      toNumbers.forEach((value, i) => {
+        tween._fromNumbers[i] = lookupTween._fromNumbers[i] - value;
+        tween._toNumbers[i] = 0;
+      });
+      lookupTween._fromNumbers = toNumbers;
+    }
+    addChild(additiveTweenSiblings, tween, null, "_prevAdd", "_nextAdd");
+  }
+  return tween;
+};
+var removeTweenSliblings = (tween) => {
+  const tweenComposition = tween._composition;
+  if (tweenComposition !== compositionTypes.none) {
+    const tweenTarget = tween.target;
+    const tweenProperty = tween.property;
+    const replaceTweensLookup = lookups._rep;
+    const replaceTargetProps = replaceTweensLookup.get(tweenTarget);
+    const tweenReplaceSiblings = replaceTargetProps[tweenProperty];
+    removeChild(tweenReplaceSiblings, tween, "_prevRep", "_nextRep");
+    if (tweenComposition === compositionTypes.blend) {
+      const addTweensLookup = lookups._add;
+      const addTargetProps = addTweensLookup.get(tweenTarget);
+      if (!addTargetProps) return;
+      const additiveTweenSiblings = addTargetProps[tweenProperty];
+      const additiveAnimation = additive.animation;
+      removeChild(additiveTweenSiblings, tween, "_prevAdd", "_nextAdd");
+      const lookupTween = additiveTweenSiblings._head;
+      if (lookupTween && lookupTween === additiveTweenSiblings._tail) {
+        removeChild(additiveTweenSiblings, lookupTween, "_prevAdd", "_nextAdd");
+        removeChild(additiveAnimation, lookupTween);
+        let shouldClean = true;
+        for (let prop in addTargetProps) {
+          if (addTargetProps[prop]._head) {
+            shouldClean = false;
+            break;
+          }
+        }
+        if (shouldClean) {
+          addTweensLookup.delete(tweenTarget);
+        }
+      }
+    }
+  }
+  return tween;
+};
+
+// node_modules/animejs/dist/modules/timer/timer.js
+var resetTimerProperties = (timer) => {
+  timer.paused = true;
+  timer.began = false;
+  timer.completed = false;
+  return timer;
+};
+var reviveTimer = (timer) => {
+  if (!timer._cancelled) return timer;
+  if (timer._hasChildren) {
+    forEachChildren(timer, reviveTimer);
+  } else {
+    forEachChildren(timer, (tween) => {
+      if (tween._composition !== compositionTypes.none) {
+        composeTween(tween, getTweenSiblings(tween.target, tween.property));
+      }
+    });
+  }
+  timer._cancelled = 0;
+  return timer;
+};
+var timerId = 0;
+var sortByPriority = (prev, child) => prev._priority > child._priority;
+var Timer = class extends Clock {
+  /**
+   * @param {TimerParams} [parameters]
+   * @param {Timeline} [parent]
+   * @param {Number} [parentPosition]
+   */
+  constructor(parameters = {}, parent = null, parentPosition = 0) {
+    super(0);
+    ++timerId;
+    const {
+      id,
+      delay,
+      duration,
+      reversed,
+      alternate,
+      loop,
+      loopDelay,
+      autoplay,
+      frameRate,
+      playbackRate,
+      priority,
+      onComplete,
+      onLoop,
+      onPause,
+      onBegin,
+      onBeforeUpdate,
+      onUpdate
+    } = parameters;
+    if (scope.current) scope.current.register(this);
+    const timerInitTime = parent ? 0 : engine._lastTickTime;
+    const timerDefaults = parent ? parent.defaults : globals.defaults;
+    const timerDelay = (
+      /** @type {Number} */
+      isFnc(delay) || isUnd(delay) ? timerDefaults.delay : +delay
+    );
+    const timerDuration = isFnc(duration) || isUnd(duration) ? Infinity : +duration;
+    const timerLoop = setValue(loop, timerDefaults.loop);
+    const timerLoopDelay = setValue(loopDelay, timerDefaults.loopDelay);
+    let timerIterationCount = timerLoop === true || timerLoop === Infinity || /** @type {Number} */
+    timerLoop < 0 ? Infinity : (
+      /** @type {Number} */
+      timerLoop + 1
+    );
+    let offsetPosition = 0;
+    if (parent) {
+      offsetPosition = parentPosition;
+    } else {
+      if (!engine.reqId) engine.requestTick(now());
+      offsetPosition = (engine._lastTickTime - engine._startTime) * globals.timeScale;
+    }
+    this.id = !isUnd(id) ? id : timerId;
+    this.parent = parent;
+    this.duration = clampInfinity((timerDuration + timerLoopDelay) * timerIterationCount - timerLoopDelay) || minValue;
+    this.backwards = false;
+    this.paused = true;
+    this.began = false;
+    this.completed = false;
+    this.onBegin = onBegin || timerDefaults.onBegin;
+    this.onBeforeUpdate = onBeforeUpdate || timerDefaults.onBeforeUpdate;
+    this.onUpdate = onUpdate || timerDefaults.onUpdate;
+    this.onLoop = onLoop || timerDefaults.onLoop;
+    this.onPause = onPause || timerDefaults.onPause;
+    this.onComplete = onComplete || timerDefaults.onComplete;
+    this.iterationDuration = timerDuration;
+    this.iterationCount = timerIterationCount;
+    this._autoplay = parent ? false : setValue(autoplay, timerDefaults.autoplay);
+    this._offset = offsetPosition;
+    this._delay = timerDelay;
+    this._loopDelay = timerLoopDelay;
+    this._iterationTime = 0;
+    this._currentIteration = 0;
+    this._resolve = noop;
+    this._running = false;
+    this._reversed = +setValue(reversed, timerDefaults.reversed);
+    this._reverse = this._reversed;
+    this._cancelled = 0;
+    this._alternate = setValue(alternate, timerDefaults.alternate);
+    this._prev = null;
+    this._next = null;
+    this._lastTickTime = timerInitTime;
+    this._startTime = timerInitTime;
+    this._lastTime = timerInitTime;
+    this._fps = setValue(frameRate, timerDefaults.frameRate);
+    this._speed = setValue(playbackRate, timerDefaults.playbackRate);
+    this._priority = +setValue(priority, 1);
+  }
+  get cancelled() {
+    return !!this._cancelled;
+  }
+  set cancelled(cancelled) {
+    cancelled ? this.cancel() : this.reset(true).play();
+  }
+  get currentTime() {
+    return clamp(round(this._currentTime, globals.precision), -this._delay, this.duration);
+  }
+  set currentTime(time) {
+    const paused = this.paused;
+    this.pause().seek(+time);
+    if (!paused) this.resume();
+  }
+  get iterationCurrentTime() {
+    return clamp(round(this._iterationTime, globals.precision), 0, this.iterationDuration);
+  }
+  set iterationCurrentTime(time) {
+    this.currentTime = this.iterationDuration * this._currentIteration + time;
+  }
+  get progress() {
+    return clamp(round(this._currentTime / this.duration, 10), 0, 1);
+  }
+  set progress(progress) {
+    this.currentTime = this.duration * progress;
+  }
+  get iterationProgress() {
+    return clamp(round(this._iterationTime / this.iterationDuration, 10), 0, 1);
+  }
+  set iterationProgress(progress) {
+    const iterationDuration = this.iterationDuration;
+    this.currentTime = iterationDuration * this._currentIteration + iterationDuration * progress;
+  }
+  get currentIteration() {
+    return this._currentIteration;
+  }
+  set currentIteration(iterationCount) {
+    this.currentTime = this.iterationDuration * clamp(+iterationCount, 0, this.iterationCount - 1);
+  }
+  get reversed() {
+    return !!this._reversed;
+  }
+  set reversed(reverse) {
+    reverse ? this.reverse() : this.play();
+  }
+  get speed() {
+    return super.speed;
+  }
+  set speed(playbackRate) {
+    super.speed = playbackRate;
+    this.resetTime();
+  }
+  /**
+   * @param  {Boolean} [softReset]
+   * @return {this}
+   */
+  reset(softReset = false) {
+    reviveTimer(this);
+    if (this._reversed && !this._reverse) this.reversed = false;
+    this._iterationTime = this.iterationDuration;
+    tick(this, 0, 1, ~~softReset, tickModes.FORCE);
+    resetTimerProperties(this);
+    if (this._hasChildren) {
+      forEachChildren(this, resetTimerProperties);
+    }
+    return this;
+  }
+  /**
+   * @param  {Boolean} internalRender
+   * @return {this}
+   */
+  init(internalRender = false) {
+    this.fps = this._fps;
+    this.speed = this._speed;
+    if (!internalRender && this._hasChildren) {
+      tick(this, this.duration, 1, ~~internalRender, tickModes.FORCE);
+    }
+    this.reset(internalRender);
+    const autoplay = this._autoplay;
+    if (autoplay === true) {
+      this.resume();
+    } else if (autoplay && !isUnd(
+      /** @type {ScrollObserver} */
+      autoplay.linked
+    )) {
+      autoplay.link(this);
+    }
+    return this;
+  }
+  /** @return {this} */
+  resetTime() {
+    const timeScale = 1 / (this._speed * engine._speed);
+    this._startTime = now() - (this._currentTime + this._delay) * timeScale;
+    return this;
+  }
+  /** @return {this} */
+  pause() {
+    if (this.paused) return this;
+    this.paused = true;
+    this.onPause(this);
+    return this;
+  }
+  /** @return {this} */
+  resume() {
+    if (!this.paused) return this;
+    this.paused = false;
+    if (this.duration <= minValue && !this._hasChildren) {
+      tick(this, minValue, 0, 0, tickModes.FORCE);
+    } else {
+      if (!this._running) {
+        addChild(engine, this, sortByPriority);
+        engine._hasChildren = true;
+        this._running = true;
+      }
+      this.resetTime();
+      this._startTime -= 12;
+      engine.wake();
+    }
+    return this;
+  }
+  /** @return {this} */
+  restart() {
+    return this.reset().resume();
+  }
+  /**
+   * @param  {Number} time
+   * @param  {Boolean|Number} [muteCallbacks]
+   * @param  {Boolean|Number} [internalRender]
+   * @return {this}
+   */
+  seek(time, muteCallbacks = 0, internalRender = 0) {
+    reviveTimer(this);
+    this.completed = false;
+    const isPaused = this.paused;
+    this.paused = true;
+    tick(this, time + this._delay, ~~muteCallbacks, ~~internalRender, tickModes.AUTO);
+    return isPaused ? this : this.resume();
+  }
+  /** @return {this} */
+  alternate() {
+    const reversed = this._reversed;
+    const count = this.iterationCount;
+    const duration = this.iterationDuration;
+    const iterations = count === Infinity ? floor(maxValue / duration) : count;
+    this._reversed = +(this._alternate && !(iterations % 2) ? reversed : !reversed);
+    if (count === Infinity) {
+      this.iterationProgress = this._reversed ? 1 - this.iterationProgress : this.iterationProgress;
+    } else {
+      this.seek(duration * iterations - this._currentTime);
+    }
+    this.resetTime();
+    return this;
+  }
+  /** @return {this} */
+  play() {
+    if (this._reversed) this.alternate();
+    return this.resume();
+  }
+  /** @return {this} */
+  reverse() {
+    if (!this._reversed) this.alternate();
+    return this.resume();
+  }
+  // TODO: Move all the animation / tweens / children related code to Animation / Timeline
+  /** @return {this} */
+  cancel() {
+    if (this._hasChildren) {
+      forEachChildren(this, (child) => child.cancel(), true);
+    } else {
+      forEachChildren(this, removeTweenSliblings);
+    }
+    this._cancelled = 1;
+    return this.pause();
+  }
+  /**
+   * @param  {Number} newDuration
+   * @return {this}
+   */
+  stretch(newDuration) {
+    const currentDuration = this.duration;
+    const normlizedDuration = normalizeTime(newDuration);
+    if (currentDuration === normlizedDuration) return this;
+    const timeScale = newDuration / currentDuration;
+    const isSetter = newDuration <= minValue;
+    this.duration = isSetter ? minValue : normlizedDuration;
+    this.iterationDuration = isSetter ? minValue : normalizeTime(this.iterationDuration * timeScale);
+    this._offset *= timeScale;
+    this._delay *= timeScale;
+    this._loopDelay *= timeScale;
+    return this;
+  }
+  /**
+    * Cancels the timer by seeking it back to 0 and reverting the attached scroller if necessary
+    * @return {this}
+    */
+  revert() {
+    tick(this, 0, 1, 0, tickModes.AUTO);
+    const ap = (
+      /** @type {ScrollObserver} */
+      this._autoplay
+    );
+    if (ap && ap.linked && ap.linked === this) ap.revert();
+    return this.cancel();
+  }
+  /**
+    * Imediatly completes the timer, cancels it and triggers the onComplete callback
+    * @param  {Boolean|Number} [muteCallbacks]
+    * @return {this}
+    */
+  complete(muteCallbacks = 0) {
+    return this.seek(this.duration, muteCallbacks).cancel();
+  }
+  /**
+   * @typedef {this & {then: null}} ResolvedTimer
+   */
+  /**
+   * @param  {Callback<ResolvedTimer>} [callback]
+   * @return Promise<this>
+   */
+  then(callback = noop) {
+    const then = this.then;
+    const onResolve = () => {
+      this.then = null;
+      callback(
+        /** @type {ResolvedTimer} */
+        this
+      );
+      this.then = then;
+      this._resolve = noop;
+    };
+    return new Promise((r) => {
+      this._resolve = () => r(onResolve());
+      if (this.completed) this._resolve();
+      return this;
+    });
+  }
+};
+
+// node_modules/animejs/dist/modules/core/targets.js
+function getNodeList(v) {
+  const n = isStr(v) ? scope.root.querySelectorAll(v) : v;
+  if (n instanceof NodeList || n instanceof HTMLCollection) return n;
+}
+function parseTargets(targets) {
+  if (isNil(targets)) return (
+    /** @type {TargetsArray} */
+    []
+  );
+  if (!isBrowser) return (
+    /** @type {JSTargetsArray} */
+    isArr(targets) && targets.flat(Infinity) || [targets]
+  );
+  if (isArr(targets)) {
+    const flattened = targets.flat(Infinity);
+    const parsed = [];
+    for (let i = 0, l = flattened.length; i < l; i++) {
+      const item = flattened[i];
+      if (!isNil(item)) {
+        const nodeList2 = getNodeList(item);
+        if (nodeList2) {
+          for (let j = 0, jl = nodeList2.length; j < jl; j++) {
+            const subItem = nodeList2[j];
+            if (!isNil(subItem)) {
+              let isDuplicate = false;
+              for (let k = 0, kl = parsed.length; k < kl; k++) {
+                if (parsed[k] === subItem) {
+                  isDuplicate = true;
+                  break;
+                }
+              }
+              if (!isDuplicate) {
+                parsed.push(subItem);
+              }
+            }
+          }
+        } else {
+          let isDuplicate = false;
+          for (let j = 0, jl = parsed.length; j < jl; j++) {
+            if (parsed[j] === item) {
+              isDuplicate = true;
+              break;
+            }
+          }
+          if (!isDuplicate) {
+            parsed.push(item);
+          }
+        }
+      }
+    }
+    return parsed;
+  }
+  const nodeList = getNodeList(targets);
+  if (nodeList) return (
+    /** @type {DOMTargetsArray} */
+    Array.from(nodeList)
+  );
+  return (
+    /** @type {TargetsArray} */
+    [targets]
+  );
+}
+function registerTargets(targets) {
+  const parsedTargetsArray = parseTargets(targets);
+  const parsedTargetsLength = parsedTargetsArray.length;
+  for (let i = 0; i < parsedTargetsLength; i++) {
+    const target = parsedTargetsArray[i];
+    if (!target[isRegisteredTargetSymbol]) {
+      target[isRegisteredTargetSymbol] = true;
+      const isSvgType = isSvg(target);
+      const isDom = (
+        /** @type {DOMTarget} */
+        target.nodeType || isSvgType
+      );
+      if (isDom) {
+        target[isDomSymbol] = true;
+        target[isSvgSymbol] = isSvgType;
+        target[transformsSymbol] = {};
+      }
+    }
+  }
+  return parsedTargetsArray;
+}
+
+// node_modules/animejs/dist/modules/core/units.js
+var angleUnitsMap = { "deg": 1, "rad": 180 / PI, "turn": 360 };
+var convertedValuesCache = {};
+var convertValueUnit = (el, decomposedValue, unit, force = false) => {
+  const currentUnit = decomposedValue.u;
+  const currentNumber = decomposedValue.n;
+  if (decomposedValue.t === valueTypes.UNIT && currentUnit === unit) {
+    return decomposedValue;
+  }
+  const cachedKey = currentNumber + currentUnit + unit;
+  const cached = convertedValuesCache[cachedKey];
+  if (!isUnd(cached) && !force) {
+    decomposedValue.n = cached;
+  } else {
+    let convertedValue;
+    if (currentUnit in angleUnitsMap) {
+      convertedValue = currentNumber * angleUnitsMap[currentUnit] / angleUnitsMap[unit];
+    } else {
+      const baseline = 100;
+      const tempEl = (
+        /** @type {DOMTarget} */
+        el.cloneNode()
+      );
+      const parentNode = el.parentNode;
+      const parentEl = parentNode && parentNode !== doc ? parentNode : doc.body;
+      parentEl.appendChild(tempEl);
+      const elStyle = tempEl.style;
+      elStyle.width = baseline + currentUnit;
+      const currentUnitWidth = (
+        /** @type {HTMLElement} */
+        tempEl.offsetWidth || baseline
+      );
+      elStyle.width = baseline + unit;
+      const newUnitWidth = (
+        /** @type {HTMLElement} */
+        tempEl.offsetWidth || baseline
+      );
+      const factor = currentUnitWidth / newUnitWidth;
+      parentEl.removeChild(tempEl);
+      convertedValue = factor * currentNumber;
+    }
+    decomposedValue.n = convertedValue;
+    convertedValuesCache[cachedKey] = convertedValue;
+  }
+  decomposedValue.t === valueTypes.UNIT;
+  decomposedValue.u = unit;
+  return decomposedValue;
+};
+
+// node_modules/animejs/dist/modules/easings/none.js
+var none = (t) => t;
+
+// node_modules/animejs/dist/modules/easings/eases/parser.js
+var easeInPower = (p = 1.68) => (t) => pow(t, +p);
+var easeTypes = {
+  in: (easeIn) => (t) => easeIn(t),
+  out: (easeIn) => (t) => 1 - easeIn(1 - t),
+  inOut: (easeIn) => (t) => t < 0.5 ? easeIn(t * 2) / 2 : 1 - easeIn(t * -2 + 2) / 2,
+  outIn: (easeIn) => (t) => t < 0.5 ? (1 - easeIn(1 - t * 2)) / 2 : (easeIn(t * 2 - 1) + 1) / 2
+};
+var halfPI = PI / 2;
+var doublePI = PI * 2;
+var easeInFunctions = {
+  [emptyString]: easeInPower,
+  Quad: easeInPower(2),
+  Cubic: easeInPower(3),
+  Quart: easeInPower(4),
+  Quint: easeInPower(5),
+  /** @type {EasingFunction} */
+  Sine: (t) => 1 - cos(t * halfPI),
+  /** @type {EasingFunction} */
+  Circ: (t) => 1 - sqrt(1 - t * t),
+  /** @type {EasingFunction} */
+  Expo: (t) => t ? pow(2, 10 * t - 10) : 0,
+  /** @type {EasingFunction} */
+  Bounce: (t) => {
+    let pow2, b = 4;
+    while (t < ((pow2 = pow(2, --b)) - 1) / 11) ;
+    return 1 / pow(4, 3 - b) - 7.5625 * pow((pow2 * 3 - 2) / 22 - t, 2);
+  },
+  /** @type {BackEasing} */
+  Back: (overshoot = 1.7) => (t) => (+overshoot + 1) * t * t * t - +overshoot * t * t,
+  /** @type {ElasticEasing} */
+  Elastic: (amplitude = 1, period = 0.3) => {
+    const a = clamp(+amplitude, 1, 10);
+    const p = clamp(+period, minValue, 2);
+    const s = p / doublePI * asin(1 / a);
+    const e = doublePI / p;
+    return (t) => t === 0 || t === 1 ? t : -a * pow(2, -10 * (1 - t)) * sin((1 - t - s) * e);
+  }
+};
+var eases = /* @__PURE__ */ (() => {
+  const list = { linear: none, none };
+  for (let type in easeTypes) {
+    for (let name in easeInFunctions) {
+      const easeIn = easeInFunctions[name];
+      const easeType = easeTypes[type];
+      list[type + name] = /** @type {EasingFunctionWithParams|EasingFunction} */
+      name === emptyString || name === "Back" || name === "Elastic" ? (a, b) => easeType(
+        /** @type {EasingFunctionWithParams} */
+        easeIn(a, b)
+      ) : easeType(
+        /** @type {EasingFunction} */
+        easeIn
+      );
+    }
+  }
+  return (
+    /** @type {EasesFunctions} */
+    list
+  );
+})();
+var easesLookups = { linear: none, none };
+var parseEaseString = (string) => {
+  if (easesLookups[string]) return easesLookups[string];
+  if (string.indexOf("(") <= -1) {
+    const hasParams = easeTypes[string] || string.includes("Back") || string.includes("Elastic");
+    const parsedFn = (
+      /** @type {EasingFunction} */
+      hasParams ? (
+        /** @type {EasingFunctionWithParams} */
+        eases[string]()
+      ) : eases[string]
+    );
+    return parsedFn ? easesLookups[string] = parsedFn : none;
+  } else {
+    const split = string.slice(0, -1).split("(");
+    const parsedFn = (
+      /** @type {EasingFunctionWithParams} */
+      eases[split[0]]
+    );
+    return parsedFn ? easesLookups[string] = parsedFn(...split[1].split(",")) : none;
+  }
+};
+var deprecated = ["steps(", "irregular(", "linear(", "cubicBezier("];
+var parseEase = (ease) => {
+  if (isStr(ease)) {
+    for (let i = 0, l = deprecated.length; i < l; i++) {
+      if (stringStartsWith(ease, deprecated[i])) {
+        console.warn(`String syntax for \`ease: "${ease}"\` has been removed from the core and replaced by importing and passing the easing function directly: \`ease: ${ease}\``);
+        return none;
+      }
+    }
+  }
+  const easeFunc = isFnc(ease) ? ease : isStr(ease) ? parseEaseString(
+    /** @type {String} */
+    ease
+  ) : none;
+  return easeFunc;
+};
+
+// node_modules/animejs/dist/modules/animation/animation.js
+var fromTargetObject = createDecomposedValueTargetObject();
+var toTargetObject = createDecomposedValueTargetObject();
+var inlineStylesStore = {};
+var toFunctionStore = { func: null };
+var fromFunctionStore = { func: null };
+var keyframesTargetArray = [null];
+var fastSetValuesArray = [null, null];
+var keyObjectTarget = { to: null };
+var tweenId = 0;
+var JSAnimationId = 0;
+var keyframes;
+var key;
+var generateKeyframes = (keyframes2, parameters) => {
+  const properties = {};
+  if (isArr(keyframes2)) {
+    const propertyNames = [].concat(.../** @type {DurationKeyframes} */
+    keyframes2.map((key2) => Object.keys(key2))).filter(isKey);
+    for (let i = 0, l = propertyNames.length; i < l; i++) {
+      const propName = propertyNames[i];
+      const propArray = (
+        /** @type {DurationKeyframes} */
+        keyframes2.map((key2) => {
+          const newKey = {};
+          for (let p in key2) {
+            const keyValue = (
+              /** @type {TweenPropValue} */
+              key2[p]
+            );
+            if (isKey(p)) {
+              if (p === propName) {
+                newKey.to = keyValue;
+              }
+            } else {
+              newKey[p] = keyValue;
+            }
+          }
+          return newKey;
+        })
+      );
+      properties[propName] = /** @type {ArraySyntaxValue} */
+      propArray;
+    }
+  } else {
+    const totalDuration = (
+      /** @type {Number} */
+      setValue(parameters.duration, globals.defaults.duration)
+    );
+    const keys = Object.keys(keyframes2).map((key2) => {
+      return { o: parseFloat(key2) / 100, p: keyframes2[key2] };
+    }).sort((a, b) => a.o - b.o);
+    keys.forEach((key2) => {
+      const offset = key2.o;
+      const prop = key2.p;
+      for (let name in prop) {
+        if (isKey(name)) {
+          let propArray = (
+            /** @type {Array} */
+            properties[name]
+          );
+          if (!propArray) propArray = properties[name] = [];
+          const duration = offset * totalDuration;
+          let length = propArray.length;
+          let prevKey = propArray[length - 1];
+          const keyObj = { to: prop[name] };
+          let durProgress = 0;
+          for (let i = 0; i < length; i++) {
+            durProgress += propArray[i].duration;
+          }
+          if (length === 1) {
+            keyObj.from = prevKey.to;
+          }
+          if (prop.ease) {
+            keyObj.ease = prop.ease;
+          }
+          keyObj.duration = duration - (length ? durProgress : 0);
+          propArray.push(keyObj);
+        }
+      }
+      return key2;
+    });
+    for (let name in properties) {
+      const propArray = (
+        /** @type {Array} */
+        properties[name]
+      );
+      let prevEase;
+      for (let i = 0, l = propArray.length; i < l; i++) {
+        const prop = propArray[i];
+        const currentEase = prop.ease;
+        prop.ease = prevEase ? prevEase : void 0;
+        prevEase = currentEase;
+      }
+      if (!propArray[0].duration) {
+        propArray.shift();
+      }
+    }
+  }
+  return properties;
+};
+var JSAnimation = class extends Timer {
+  /**
+   * @param {TargetsParam} targets
+   * @param {AnimationParams} parameters
+   * @param {Timeline} [parent]
+   * @param {Number} [parentPosition]
+   * @param {Boolean} [fastSet=false]
+   * @param {Number} [index=0]
+   * @param {TargetsArray} [allTargets]
+   */
+  constructor(targets, parameters, parent, parentPosition, fastSet = false, index = 0, allTargets) {
+    super(
+      /** @type {TimerParams & AnimationParams} */
+      parameters,
+      parent,
+      parentPosition
+    );
+    this._head;
+    this._tail;
+    ++JSAnimationId;
+    const parsedTargets = registerTargets(targets);
+    const targetsLength = parsedTargets.length;
+    const kfParams = (
+      /** @type {AnimationParams} */
+      parameters.keyframes
+    );
+    const params = (
+      /** @type {AnimationParams} */
+      kfParams ? mergeObjects(generateKeyframes(
+        /** @type {DurationKeyframes} */
+        kfParams,
+        parameters
+      ), parameters) : parameters
+    );
+    const {
+      id,
+      delay,
+      duration,
+      ease,
+      playbackEase,
+      modifier,
+      composition,
+      onRender
+    } = params;
+    const animDefaults = parent ? parent.defaults : globals.defaults;
+    const animEase = setValue(ease, animDefaults.ease);
+    const animPlaybackEase = setValue(playbackEase, animDefaults.playbackEase);
+    const parsedAnimPlaybackEase = animPlaybackEase ? parseEase(animPlaybackEase) : null;
+    const hasSpring = !isUnd(
+      /** @type {Spring} */
+      animEase.ease
+    );
+    const tEasing = hasSpring ? (
+      /** @type {Spring} */
+      animEase.ease
+    ) : setValue(ease, parsedAnimPlaybackEase ? "linear" : animDefaults.ease);
+    const tDuration = hasSpring ? (
+      /** @type {Spring} */
+      animEase.settlingDuration
+    ) : setValue(duration, animDefaults.duration);
+    const tDelay = setValue(delay, animDefaults.delay);
+    const tModifier = modifier || animDefaults.modifier;
+    const tComposition = isUnd(composition) && targetsLength >= K ? compositionTypes.none : !isUnd(composition) ? composition : animDefaults.composition;
+    const absoluteOffsetTime = this._offset + (parent ? parent._offset : 0);
+    if (hasSpring) animEase.parent = this;
+    let iterationDuration = NaN;
+    let iterationDelay = NaN;
+    let animationAnimationLength = 0;
+    let shouldTriggerRender = 0;
+    for (let targetIndex = 0; targetIndex < targetsLength; targetIndex++) {
+      const target = parsedTargets[targetIndex];
+      const ti = index || targetIndex;
+      const tl = allTargets || parsedTargets;
+      let lastTransformGroupIndex = NaN;
+      let lastTransformGroupLength = NaN;
+      for (let p in params) {
+        if (isKey(p)) {
+          const tweenType = getTweenType(target, p);
+          const adapterProp = resolveAdapterEntry(target, p);
+          const propName = sanitizePropertyName(p, target, tweenType);
+          let propValue = params[p];
+          const isPropValueArray = isArr(propValue);
+          if (fastSet && !isPropValueArray) {
+            fastSetValuesArray[0] = propValue;
+            fastSetValuesArray[1] = propValue;
+            propValue = fastSetValuesArray;
+          }
+          if (isPropValueArray) {
+            const arrayLength = (
+              /** @type {Array} */
+              propValue.length
+            );
+            const isNotObjectValue = !isObj(propValue[0]);
+            if (arrayLength === 2 && isNotObjectValue) {
+              keyObjectTarget.to = /** @type {TweenParamValue} */
+              /** @type {unknown} */
+              propValue;
+              keyframesTargetArray[0] = keyObjectTarget;
+              keyframes = keyframesTargetArray;
+            } else if (arrayLength > 2 && isNotObjectValue) {
+              keyframes = [];
+              propValue.forEach((v, i) => {
+                if (!i) {
+                  fastSetValuesArray[0] = v;
+                } else if (i === 1) {
+                  fastSetValuesArray[1] = v;
+                  keyframes.push(fastSetValuesArray);
+                } else {
+                  keyframes.push(v);
+                }
+              });
+            } else {
+              keyframes = /** @type {Array.<TweenKeyValue>} */
+              propValue;
+            }
+          } else {
+            keyframesTargetArray[0] = propValue;
+            keyframes = keyframesTargetArray;
+          }
+          let siblings = null;
+          let prevTween = null;
+          let firstTweenChangeStartTime = NaN;
+          let lastTweenChangeEndTime = 0;
+          let tweenIndex = 0;
+          for (let l = keyframes.length; tweenIndex < l; tweenIndex++) {
+            const keyframe = keyframes[tweenIndex];
+            if (isObj(keyframe)) {
+              key = keyframe;
+            } else {
+              keyObjectTarget.to = /** @type {TweenParamValue} */
+              keyframe;
+              key = keyObjectTarget;
+            }
+            toFunctionStore.func = null;
+            fromFunctionStore.func = null;
+            const computedComposition = getFunctionValue(setValue(key.composition, tComposition), target, ti, tl, null, null);
+            const tweenComposition = isNum(computedComposition) ? computedComposition : compositionTypes[computedComposition];
+            if (!siblings && tweenComposition !== compositionTypes.none) siblings = getTweenSiblings(target, propName);
+            const tailTween = siblings ? siblings._tail : null;
+            const prevSiblingTween = parent && tailTween && tailTween.parent.parent === parent ? tailTween : prevTween;
+            const computedToValue = getFunctionValue(key.to, target, ti, tl, toFunctionStore, prevSiblingTween);
+            let tweenToValue;
+            if (isObj(computedToValue) && !isUnd(computedToValue.to)) {
+              key = computedToValue;
+              tweenToValue = computedToValue.to;
+            } else {
+              tweenToValue = computedToValue;
+            }
+            const tweenFromValue = getFunctionValue(key.from, target, ti, tl, fromFunctionStore, prevSiblingTween);
+            const easeToParse = key.ease || tEasing;
+            const easeFunctionResult = getFunctionValue(easeToParse, target, ti, tl, null, prevSiblingTween);
+            const keyEasing = isFnc(easeFunctionResult) || isStr(easeFunctionResult) ? easeFunctionResult : easeToParse;
+            const hasSpring2 = !isUnd(keyEasing) && !isUnd(
+              /** @type {Spring} */
+              keyEasing.ease
+            );
+            const tweenEasing = hasSpring2 ? (
+              /** @type {Spring} */
+              keyEasing.ease
+            ) : keyEasing;
+            const tweenDuration = hasSpring2 ? (
+              /** @type {Spring} */
+              keyEasing.settlingDuration
+            ) : getFunctionValue(setValue(key.duration, l > 1 ? getFunctionValue(tDuration, target, ti, tl, null, prevSiblingTween) / l : tDuration), target, ti, tl, null, prevSiblingTween);
+            const tweenDelay = getFunctionValue(setValue(key.delay, !tweenIndex ? tDelay : 0), target, ti, tl, null, prevSiblingTween);
+            const tweenModifier = key.modifier || tModifier;
+            const hasFromvalue = !isUnd(tweenFromValue);
+            const hasToValue = !isUnd(tweenToValue);
+            const isFromToArray = isArr(tweenToValue);
+            const isFromToValue = isFromToArray || hasFromvalue && hasToValue;
+            const tweenUpdateStartLocal = prevTween ? lastTweenChangeEndTime : 0;
+            const tweenStartTime = prevTween ? lastTweenChangeEndTime + tweenDelay : tweenDelay;
+            const absoluteStartTime = round(absoluteOffsetTime + tweenStartTime, 12);
+            const absoluteUpdateStartTime = round(absoluteOffsetTime + tweenUpdateStartLocal, 12);
+            if (!shouldTriggerRender && (hasFromvalue || isFromToArray)) shouldTriggerRender = 1;
+            let prevSibling = prevTween;
+            if (tweenComposition !== compositionTypes.none) {
+              let nextSibling = siblings._head;
+              while (nextSibling && nextSibling._absoluteStartTime <= absoluteStartTime) {
+                if (!nextSibling._isOverridden) prevSibling = nextSibling;
+                nextSibling = nextSibling._nextRep;
+                if (nextSibling && nextSibling._absoluteStartTime >= absoluteStartTime) {
+                  while (nextSibling) {
+                    overrideTween(nextSibling);
+                    nextSibling = nextSibling._nextRep;
+                  }
+                }
+              }
+            }
+            if (isFromToValue) {
+              decomposeRawValue(isFromToArray ? getFunctionValue(tweenToValue[0], target, ti, tl, fromFunctionStore, prevSiblingTween) : tweenFromValue, fromTargetObject);
+              decomposeRawValue(isFromToArray ? getFunctionValue(tweenToValue[1], target, ti, tl, toFunctionStore, prevSiblingTween) : tweenToValue, toTargetObject);
+              const originalValue = getOriginalAnimatableValue(target, propName, tweenType, inlineStylesStore);
+              if (fromTargetObject.t === valueTypes.NUMBER) {
+                if (prevSibling) {
+                  if (prevSibling._valueType === valueTypes.UNIT) {
+                    fromTargetObject.t = valueTypes.UNIT;
+                    fromTargetObject.u = prevSibling._unit;
+                  }
+                } else {
+                  decomposeRawValue(
+                    originalValue,
+                    decomposedOriginalValue
+                  );
+                  if (decomposedOriginalValue.t === valueTypes.UNIT) {
+                    fromTargetObject.t = valueTypes.UNIT;
+                    fromTargetObject.u = decomposedOriginalValue.u;
+                  }
+                }
+              }
+            } else {
+              if (hasToValue) {
+                decomposeRawValue(tweenToValue, toTargetObject);
+              } else {
+                if (prevTween) {
+                  decomposeTweenValue(prevTween, toTargetObject);
+                } else {
+                  decomposeRawValue(parent && prevSibling && prevSibling.parent.parent === parent ? prevSibling._value : getOriginalAnimatableValue(target, propName, tweenType, inlineStylesStore), toTargetObject);
+                }
+              }
+              if (hasFromvalue) {
+                decomposeRawValue(tweenFromValue, fromTargetObject);
+              } else {
+                if (prevTween) {
+                  decomposeTweenValue(prevTween, fromTargetObject);
+                } else {
+                  decomposeRawValue(parent && prevSibling && prevSibling.parent.parent === parent ? prevSibling._value : getOriginalAnimatableValue(target, propName, tweenType, inlineStylesStore), fromTargetObject);
+                }
+              }
+            }
+            if (fromTargetObject.o) {
+              fromTargetObject.n = getRelativeValue(
+                !prevSibling ? decomposeRawValue(
+                  getOriginalAnimatableValue(target, propName, tweenType, inlineStylesStore),
+                  decomposedOriginalValue
+                ).n : prevSibling._toNumber,
+                fromTargetObject.n,
+                fromTargetObject.o
+              );
+            }
+            if (toTargetObject.o) {
+              toTargetObject.n = getRelativeValue(fromTargetObject.n, toTargetObject.n, toTargetObject.o);
+            }
+            if (fromTargetObject.t !== toTargetObject.t) {
+              if (fromTargetObject.t === valueTypes.COMPLEX || toTargetObject.t === valueTypes.COMPLEX) {
+                const complexValue = fromTargetObject.t === valueTypes.COMPLEX ? fromTargetObject : toTargetObject;
+                const notComplexValue = fromTargetObject.t === valueTypes.COMPLEX ? toTargetObject : fromTargetObject;
+                notComplexValue.t = valueTypes.COMPLEX;
+                notComplexValue.s = cloneArray(complexValue.s);
+                notComplexValue.d = complexValue.d.map(() => notComplexValue.n);
+              } else if (fromTargetObject.t === valueTypes.UNIT || toTargetObject.t === valueTypes.UNIT) {
+                const unitValue = fromTargetObject.t === valueTypes.UNIT ? fromTargetObject : toTargetObject;
+                const notUnitValue = fromTargetObject.t === valueTypes.UNIT ? toTargetObject : fromTargetObject;
+                notUnitValue.t = valueTypes.UNIT;
+                notUnitValue.u = unitValue.u;
+              } else if (fromTargetObject.t === valueTypes.COLOR || toTargetObject.t === valueTypes.COLOR) {
+                const colorValue = fromTargetObject.t === valueTypes.COLOR ? fromTargetObject : toTargetObject;
+                const notColorValue = fromTargetObject.t === valueTypes.COLOR ? toTargetObject : fromTargetObject;
+                notColorValue.t = valueTypes.COLOR;
+                notColorValue.d = colorValue.d.map(() => 0);
+              }
+            }
+            if (fromTargetObject.u !== toTargetObject.u) {
+              let valueToConvert = toTargetObject.u ? fromTargetObject : toTargetObject;
+              valueToConvert = convertValueUnit(
+                /** @type {DOMTarget} */
+                target,
+                valueToConvert,
+                toTargetObject.u ? toTargetObject.u : fromTargetObject.u,
+                false
+              );
+            }
+            if (toTargetObject.d && fromTargetObject.d && toTargetObject.d.length !== fromTargetObject.d.length) {
+              const longestValue = fromTargetObject.d.length > toTargetObject.d.length ? fromTargetObject : toTargetObject;
+              const shortestValue = longestValue === fromTargetObject ? toTargetObject : fromTargetObject;
+              shortestValue.d = longestValue.d.map((_, i) => isUnd(shortestValue.d[i]) ? 0 : shortestValue.d[i]);
+              shortestValue.s = cloneArray(longestValue.s);
+            }
+            const tweenUpdateDuration = round(+tweenDuration || minValue, 12);
+            let inlineValue = inlineStylesStore[propName];
+            if (!isNil(inlineValue)) inlineStylesStore[propName] = null;
+            const tweenSetter = adapterProp ? adapterProp.set : null;
+            lastTweenChangeEndTime = round(tweenStartTime + tweenUpdateDuration, 12);
+            const fromD = fromTargetObject.d;
+            const toD = toTargetObject.d;
+            const toS = toTargetObject.s;
+            const tween = {
+              parent: this,
+              id: tweenId++,
+              property: propName,
+              target,
+              _value: null,
+              _toFunc: toFunctionStore.func,
+              _fromFunc: fromFunctionStore.func,
+              _ease: parseEase(tweenEasing),
+              _fromNumbers: fromD ? cloneArray(fromD) : emptyArray,
+              _toNumbers: toD ? cloneArray(toD) : emptyArray,
+              _strings: toS ? cloneArray(toS) : emptyArray,
+              _fromNumber: fromTargetObject.n,
+              _toNumber: toTargetObject.n,
+              _numbers: fromD ? cloneArray(fromD) : emptyArray,
+              // For additive tween and animatables
+              _number: fromTargetObject.n,
+              // For additive tween and animatables
+              _unit: toTargetObject.u,
+              _modifier: tweenModifier,
+              _currentTime: 0,
+              _startTime: tweenStartTime,
+              _delay: +tweenDelay,
+              _updateDuration: tweenUpdateDuration,
+              _changeDuration: tweenUpdateDuration,
+              _absoluteStartTime: absoluteStartTime,
+              _absoluteUpdateStartTime: absoluteUpdateStartTime,
+              _absoluteEndTime: round(absoluteOffsetTime + lastTweenChangeEndTime, 12),
+              _hasFromValue: hasFromvalue || isFromToArray ? 1 : 0,
+              // NOTE: Investigate bit packing to stores ENUM / BOOL
+              _tweenType: tweenType,
+              _setter: tweenSetter,
+              _valueType: toTargetObject.t,
+              _composition: tweenComposition,
+              _isOverlapped: 0,
+              _isOverridden: 0,
+              _renderTransforms: 0,
+              _inlineValue: inlineValue,
+              _prevRep: null,
+              // For replaced tween
+              _nextRep: null,
+              // For replaced tween
+              _prevAdd: null,
+              // For additive tween
+              _nextAdd: null,
+              // For additive tween
+              _prev: null,
+              _next: null
+            };
+            if (tweenComposition !== compositionTypes.none) {
+              composeTween(tween, siblings);
+            }
+            const vt = tween._valueType;
+            if (vt === valueTypes.COMPLEX) {
+              tween._value = composeComplexValue(tween, 1, -1);
+            } else if (vt === valueTypes.UNIT) {
+              tween._value = `${tweenModifier(tween._toNumber)}${tween._unit}`;
+            } else if (vt === valueTypes.COLOR) {
+              const d = toTargetObject.d;
+              tween._value = `rgba(${round(d[0], 0)},${round(d[1], 0)},${round(d[2], 0)},${d[3]})`;
+            } else {
+              tween._value = tweenModifier(tween._toNumber);
+            }
+            if (isNaN(firstTweenChangeStartTime)) {
+              firstTweenChangeStartTime = tween._startTime;
+            }
+            prevTween = tween;
+            animationAnimationLength++;
+            addChild(this, tween);
+          }
+          if (isNaN(iterationDelay) || firstTweenChangeStartTime < iterationDelay) {
+            iterationDelay = firstTweenChangeStartTime;
+          }
+          if (isNaN(iterationDuration) || lastTweenChangeEndTime > iterationDuration) {
+            iterationDuration = lastTweenChangeEndTime;
+          }
+          if (tweenType === tweenTypes.TRANSFORM) {
+            lastTransformGroupIndex = animationAnimationLength - tweenIndex;
+            lastTransformGroupLength = animationAnimationLength;
+          }
+        }
+      }
+      if (!isNaN(lastTransformGroupIndex)) {
+        let i = 0;
+        forEachChildren(this, (tween) => {
+          if (i >= lastTransformGroupIndex && i < lastTransformGroupLength) {
+            tween._renderTransforms = 1;
+            if (tween._composition === compositionTypes.blend) {
+              forEachChildren(additive.animation, (additiveTween) => {
+                if (additiveTween.id === tween.id) {
+                  additiveTween._renderTransforms = 1;
+                }
+              });
+            }
+          }
+          i++;
+        });
+      }
+    }
+    if (!targetsLength) {
+      console.warn(`No target found. Make sure the element you're trying to animate is accessible before creating your animation.`);
+    }
+    if (iterationDelay) {
+      forEachChildren(this, (tween) => {
+        if (!(tween._startTime - tween._delay)) {
+          tween._delay -= iterationDelay;
+        }
+        tween._startTime -= iterationDelay;
+      });
+      iterationDuration -= iterationDelay;
+    } else {
+      iterationDelay = 0;
+    }
+    if (!iterationDuration) {
+      iterationDuration = minValue;
+      this.iterationCount = 0;
+    }
+    this.targets = parsedTargets;
+    this.id = !isUnd(id) ? id : JSAnimationId;
+    this.duration = iterationDuration === minValue ? minValue : clampInfinity((iterationDuration + this._loopDelay) * this.iterationCount - this._loopDelay) || minValue;
+    this.onRender = onRender || animDefaults.onRender;
+    this._ease = parsedAnimPlaybackEase;
+    this._delay = iterationDelay;
+    this.iterationDuration = iterationDuration;
+    if (!this._autoplay && shouldTriggerRender) this.onRender(this);
+  }
+  /**
+   * @param  {Number} newDuration
+   * @return {this}
+   */
+  stretch(newDuration) {
+    const currentDuration = this.duration;
+    if (currentDuration === normalizeTime(newDuration)) return this;
+    const timeScale = newDuration / currentDuration;
+    forEachChildren(this, (tween) => {
+      tween._updateDuration = normalizeTime(tween._updateDuration * timeScale);
+      tween._changeDuration = normalizeTime(tween._changeDuration * timeScale);
+      tween._currentTime *= timeScale;
+      tween._delay *= timeScale;
+      tween._startTime *= timeScale;
+      tween._absoluteStartTime *= timeScale;
+      tween._absoluteUpdateStartTime *= timeScale;
+      tween._absoluteEndTime *= timeScale;
+    });
+    return super.stretch(newDuration);
+  }
+  /**
+   * @return {this}
+   */
+  refresh() {
+    forEachChildren(this, (tween) => {
+      const toFunc = tween._toFunc;
+      const fromFunc = tween._fromFunc;
+      if (toFunc || fromFunc) {
+        if (fromFunc) {
+          decomposeRawValue(fromFunc(), fromTargetObject);
+          if (fromTargetObject.u !== tween._unit && tween.target[isDomSymbol]) {
+            convertValueUnit(
+              /** @type {DOMTarget} */
+              tween.target,
+              fromTargetObject,
+              tween._unit,
+              true
+            );
+          }
+          tween._fromNumbers = cloneArray(fromTargetObject.d);
+          tween._fromNumber = fromTargetObject.n;
+        } else if (toFunc) {
+          decomposeRawValue(getOriginalAnimatableValue(tween.target, tween.property, tween._tweenType), decomposedOriginalValue);
+          tween._fromNumbers = cloneArray(decomposedOriginalValue.d);
+          tween._fromNumber = decomposedOriginalValue.n;
+        }
+        if (toFunc) {
+          decomposeRawValue(toFunc(), toTargetObject);
+          tween._toNumbers = cloneArray(toTargetObject.d);
+          tween._strings = cloneArray(toTargetObject.s);
+          tween._toNumber = toTargetObject.o ? getRelativeValue(tween._fromNumber, toTargetObject.n, toTargetObject.o) : toTargetObject.n;
+        }
+      }
+    });
+    if (this.duration === minValue) this.restart();
+    return this;
+  }
+  /**
+   * Cancel the animation and revert all the values affected by this animation to their original state
+   * @return {this}
+   */
+  revert() {
+    super.revert();
+    return revertValues(this);
+  }
+  /**
+   * @typedef {this & {then: null}} ResolvedJSAnimation
+   */
+  /**
+   * @param  {Callback<ResolvedJSAnimation>} [callback]
+   * @return Promise<this>
+   */
+  then(callback) {
+    return super.then(callback);
+  }
+};
+var animate = (targets, parameters) => {
+  if (globals.editor) {
+    return globals.editor.addAnimation(targets, parameters);
+  } else {
+    return new JSAnimation(targets, parameters, null, 0, false).init();
+  }
+};
+
+// admin/admin-client.js
+var HttpError = class extends Error {
+  constructor(status, message2, fieldErrors = {}) {
+    super(message2);
+    this.status = status;
+    this.fieldErrors = fieldErrors;
+  }
+};
+async function fetchJson(url, options = {}) {
+  const headers = { ...options.headers || {} };
+  if (options.body !== void 0 && !(options.body instanceof FormData)) headers["Content-Type"] = "application/json";
+  const response = await fetch(url, { ...options, headers });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) throw new HttpError(response.status, payload.message || "\uC694\uCCAD\uC744 \uCC98\uB9AC\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.", payload.fieldErrors || {});
+  return payload;
+}
+function bindPasswordToggle(input, button) {
+  button.addEventListener("click", () => {
+    const showing = input.type === "text";
+    input.type = showing ? "password" : "text";
+    button.textContent = showing ? "\uD45C\uC2DC" : "\uC228\uAE30\uAE30";
+    button.setAttribute("aria-label", showing ? "\uBE44\uBC00\uBC88\uD638 \uD45C\uC2DC" : "\uBE44\uBC00\uBC88\uD638 \uC228\uAE30\uAE30");
+    button.setAttribute("aria-pressed", String(!showing));
+    input.focus();
+  });
+}
+
+// admin/product-csv.js
+var maxBytes = 2e6;
+var number = new Intl.NumberFormat("ko-KR");
+function bindProductCsv({ getEtag, canApply, onApplied, onSessionError }) {
+  const $2 = (selector) => document.querySelector(selector);
+  const download = $2("[data-bulk-download]");
+  const upload2 = $2("[data-bulk-upload]");
+  const fileInput = $2("[data-bulk-file]");
+  const panel = $2("[data-csv-preview]");
+  const heading = $2("[data-csv-title]");
+  const summary = $2("[data-csv-summary]");
+  const status = $2("[data-csv-status]");
+  const errors = $2("[data-csv-errors]");
+  const tableWrap2 = $2("[data-csv-table-wrap]");
+  const rows2 = $2("[data-csv-rows]");
+  const apply = $2("[data-csv-apply]");
+  const cancel = $2("[data-csv-cancel]");
+  let pending = null;
+  let busy = false;
+  let animation;
+  let generation = 0;
+  function setBusy(value) {
+    busy = value;
+    download.disabled = value;
+    upload2.disabled = value;
+    fileInput.disabled = value;
+    cancel.disabled = value;
+    apply.disabled = value || !pending?.updated;
+    panel.setAttribute("aria-busy", String(value));
+  }
+  function clear() {
+    generation += 1;
+    animation?.revert();
+    pending = null;
+    fileInput.value = "";
+    cancel.textContent = "\uCDE8\uC18C";
+    panel.hidden = true;
+    status.textContent = "";
+    errors.replaceChildren();
+    rows2.replaceChildren();
+    setBusy(false);
+  }
+  function show() {
+    const wasHidden = panel.hidden;
+    panel.hidden = false;
+    if (wasHidden && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      animation?.revert();
+      animation = animate(panel, { opacity: [0, 1], translateY: [4, 0], duration: 170, ease: "outQuad" });
+    }
+    heading.focus({ preventScroll: true });
+    panel.scrollIntoView({ behavior: "instant", block: "nearest" });
+  }
+  function report(error) {
+    pending = null;
+    if (onSessionError(error)) return;
+    summary.textContent = "CSV\uB97C \uBC18\uC601\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
+    status.textContent = error.message || "\uD30C\uC77C\uC744 \uD655\uC778\uD55C \uB4A4 \uB2E4\uC2DC \uC62C\uB824 \uC8FC\uC138\uC694.";
+    status.classList.add("is-error");
+    tableWrap2.hidden = true;
+    errors.replaceChildren();
+    for (const [field2, message2] of Object.entries(error.fieldErrors || {})) {
+      const item = document.createElement("li");
+      item.textContent = `${field2}: ${message2}`;
+      errors.append(item);
+    }
+    show();
+  }
+  const display = (field2, value) => value === null ? field2 === "\uC7AC\uACE0\uC218\uB7C9" ? "\uC218\uB7C9 \uC81C\uD55C \uC5C6\uC74C" : "\uBBF8\uC124\uC815" : `${number.format(value)}${field2 === "\uD310\uB9E4\uAC00" ? "\uC6D0" : field2 === "\uB124\uC774\uBC84\uD560\uC778\uC728" ? "%" : "\uAC1C"}`;
+  download.addEventListener("click", async () => {
+    if (busy) return;
+    setBusy(true);
+    const boardStatus2 = $2("[data-board-status]");
+    boardStatus2.textContent = "\uAC00\uACA9\xB7\uC7AC\uACE0 CSV\uB97C \uC900\uBE44\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
+    try {
+      const payload = await fetchJson("/api/admin/products/bulk");
+      const url = URL.createObjectURL(new Blob([payload.csv], { type: "text/csv;charset=utf-8" }));
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `himawari-price-stock-${new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Seoul" }).format(/* @__PURE__ */ new Date())}.csv`;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1e3);
+      boardStatus2.textContent = "\uAC00\uACA9\xB7\uC7AC\uACE0 CSV\uB97C \uB0B4\uB824\uBC1B\uC558\uC2B5\uB2C8\uB2E4. \uC218\uC815 \uD6C4 CSV\uB85C \uC800\uC7A5\uD574 \uC62C\uB824 \uC8FC\uC138\uC694.";
+    } catch (error) {
+      if (!onSessionError(error)) boardStatus2.textContent = error.message || "CSV\uB97C \uC900\uBE44\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
+    } finally {
+      setBusy(false);
+    }
+  });
+  upload2.addEventListener("click", () => {
+    if (!busy) fileInput.click();
+  });
+  cancel.addEventListener("click", () => {
+    clear();
+    upload2.focus();
+  });
+  fileInput.addEventListener("change", async () => {
+    const file = fileInput.files[0];
+    if (!file || busy) return;
+    clear();
+    const attempt = generation;
+    setBusy(true);
+    try {
+      if (!canApply()) throw new Error("\uC624\uB978\uCABD \uC81C\uD488 \uC591\uC2DD\uC758 \uBCC0\uACBD \uB0B4\uC6A9\uC744 \uC800\uC7A5\uD558\uAC70\uB098 \uCDE8\uC18C\uD55C \uB4A4 CSV\uB97C \uC62C\uB824 \uC8FC\uC138\uC694.");
+      if (!/\.csv$/i.test(file.name) || file.size > maxBytes) throw new Error("2MB \uC774\uD558\uC758 CSV \uD30C\uC77C\uC744 \uC120\uD0DD\uD574 \uC8FC\uC138\uC694. \uC5D1\uC140 \uD30C\uC77C\uC740 CSV\uB85C \uC800\uC7A5\uD574\uC57C \uD569\uB2C8\uB2E4.");
+      const bytes2 = await file.arrayBuffer();
+      let csv;
+      try {
+        csv = new TextDecoder("utf-8", { fatal: true }).decode(bytes2);
+      } catch {
+        csv = new TextDecoder("euc-kr", { fatal: true }).decode(bytes2);
+      }
+      const preview = await fetchJson("/api/admin/products/bulk", { method: "POST", body: JSON.stringify({ csv, etag: getEtag() }) });
+      if (attempt !== generation) return;
+      pending = { ...preview, csv };
+      summary.textContent = `${preview.submitted}\uAC1C \uC81C\uD488 \uD655\uC778 \xB7 ${preview.updated}\uAC1C \uC81C\uD488, ${preview.changes.length}\uAC1C \uD56D\uBAA9 \uBCC0\uACBD`;
+      status.classList.remove("is-error");
+      status.textContent = preview.updated ? `${file.name} \xB7 \uC544\uB798 \uBCC0\uACBD \uB0B4\uC6A9\uC744 \uD655\uC778\uD55C \uB4A4 \uBC18\uC601\uD574 \uC8FC\uC138\uC694. \uC544\uC9C1 \uC800\uC7A5\uB418\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4.` : "\uD604\uC7AC \uC815\uBCF4\uC640 \uAC19\uC2B5\uB2C8\uB2E4. \uBC18\uC601\uD560 \uBCC0\uACBD \uB0B4\uC6A9\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.";
+      tableWrap2.hidden = !preview.changes.length;
+      rows2.replaceChildren();
+      for (const change of preview.changes) {
+        const tr = document.createElement("tr");
+        for (const value of [String(change.row), `${change.model} \xB7 ${change.name}${change.option ? ` / ${change.option}` : ""}`, change.field, display(change.field, change.before), display(change.field, change.after)]) {
+          const td = document.createElement("td");
+          td.textContent = value;
+          tr.append(td);
+        }
+        rows2.append(tr);
+      }
+      apply.textContent = `${preview.updated}\uAC1C \uC81C\uD488 \uBC18\uC601`;
+      show();
+    } catch (error) {
+      if (attempt === generation) report(error);
+    } finally {
+      if (attempt === generation) {
+        fileInput.value = "";
+        setBusy(false);
+      }
+    }
+  });
+  apply.addEventListener("click", async () => {
+    if (busy || !pending?.updated) return;
+    setBusy(true);
+    try {
+      if (!canApply()) throw new Error("\uC624\uB978\uCABD \uC81C\uD488 \uC591\uC2DD\uC758 \uBCC0\uACBD \uB0B4\uC6A9\uC744 \uC800\uC7A5\uD558\uAC70\uB098 \uCDE8\uC18C\uD55C \uB4A4 CSV\uB97C \uB2E4\uC2DC \uC62C\uB824 \uC8FC\uC138\uC694.");
+      status.textContent = "\uAC00\uACA9\xB7\uC7AC\uACE0\uB97C \uBC18\uC601\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4. \uC7A0\uC2DC \uAE30\uB2E4\uB824 \uC8FC\uC138\uC694.";
+      const result = await fetchJson("/api/admin/products/bulk", { method: "PUT", body: JSON.stringify({ csv: pending.csv, etag: pending.etag }) });
+      pending = null;
+      await onApplied();
+      summary.textContent = `${result.updated}\uAC1C \uC81C\uD488 \uBC18\uC601 \uC644\uB8CC`;
+      status.textContent = "\uD310\uB9E4\uAC00\uC640 \uC7AC\uACE0\uB97C \uC800\uC7A5\uD588\uC2B5\uB2C8\uB2E4. \uC81C\uD488 \uBAA9\uB85D\uACFC \uC0C1\uC138\uD398\uC774\uC9C0\uC5D0 \uD568\uAED8 \uBC18\uC601\uB429\uB2C8\uB2E4.";
+      status.classList.remove("is-error");
+      apply.textContent = "\uBC18\uC601 \uC644\uB8CC";
+      cancel.textContent = "\uB2EB\uAE30";
+      show();
+    } catch (error) {
+      report(error);
+    } finally {
+      setBusy(false);
+    }
+  });
+  window.addEventListener("pagehide", () => animation?.revert(), { once: true });
+  return { clear };
 }
 
 // node_modules/is-node-process/lib/index.mjs
@@ -5169,8 +7971,8 @@ function isStream(value) {
 }
 var addPresignedParams = (url, presignedUrlPayload) => {
   const urlObj = new URL(url);
-  for (const [key, value] of Object.entries(presignedUrlPayload.params)) {
-    urlObj.searchParams.set(key, value);
+  for (const [key2, value] of Object.entries(presignedUrlPayload.params)) {
+    urlObj.searchParams.set(key2, value);
   }
   urlObj.searchParams.set(
     "vercel-blob-delegation",
@@ -5306,9 +8108,9 @@ var blobXhr = async ({
       const rawHeaders = xhr.getAllResponseHeaders().trim().split(/[\r\n]+/);
       rawHeaders.forEach((line) => {
         const parts = line.split(": ");
-        const key = parts.shift();
+        const key2 = parts.shift();
         const value = parts.join(": ");
-        if (key) headers.set(key.toLowerCase(), value);
+        if (key2) headers.set(key2.toLowerCase(), value);
       });
       const response = new Response(xhr.response, {
         status: xhr.status,
@@ -5328,8 +8130,8 @@ var blobXhr = async ({
     };
     if (init.headers) {
       const headers = new Headers(init.headers);
-      headers.forEach((value, key) => {
-        xhr.setRequestHeader(key, value);
+      headers.forEach((value, key2) => {
+        xhr.setRequestHeader(key2, value);
       });
     }
     if (init.signal) {
@@ -5817,7 +8619,7 @@ function createCompleteMultipartUploadMethod({ allowedOptions, getToken, extraCh
 }
 async function completeMultipartUpload({
   uploadId,
-  key,
+  key: key2,
   pathname,
   parts,
   headers,
@@ -5836,7 +8638,7 @@ async function completeMultipartUpload({
           "x-mpu-upload-id": uploadId,
           // key can be any utf8 character so we need to encode it as HTTP headers can only be us-ascii
           // https://www.rfc-editor.org/rfc/rfc7230#swection-3.2.4
-          "x-mpu-key": encodeURIComponent(key)
+          "x-mpu-key": encodeURIComponent(key2)
         },
         body: JSON.stringify(parts),
         signal: options.abortSignal
@@ -5928,7 +8730,7 @@ function createUploadPartMethod({ allowedOptions, getToken, extraChecks }) {
 }
 async function uploadPart({
   uploadId,
-  key,
+  key: key2,
   pathname,
   headers,
   options,
@@ -5945,7 +8747,7 @@ async function uploadPart({
       headers: {
         ...headers,
         "x-mpu-action": "upload",
-        "x-mpu-key": encodeURIComponent(key),
+        "x-mpu-key": encodeURIComponent(key2),
         "x-mpu-upload-id": uploadId,
         "x-mpu-part-number": part.partNumber.toString()
       },
@@ -5971,14 +8773,14 @@ var partSizeInBytes = 8 * 1024 * 1024;
 var maxBytesInMemory = maxConcurrentUploads * partSizeInBytes * 2;
 function uploadAllParts({
   uploadId,
-  key,
+  key: key2,
   pathname,
   stream,
   headers,
   options,
   totalToLoad
 }) {
-  debug("mpu: upload init", "key:", key);
+  debug("mpu: upload init", "key:", key2);
   const internalAbortController = new AbortController();
   return new Promise((resolve, reject) => {
     const partsToUpload = [];
@@ -6105,7 +8907,7 @@ function uploadAllParts({
         } : void 0;
         const completedPart = await uploadPart({
           uploadId,
-          key,
+          key: key2,
           pathname,
           headers,
           options: {
@@ -6556,33 +9358,6 @@ function isAbsoluteUrl(url) {
   }
 }
 
-// admin/admin-client.js
-var HttpError = class extends Error {
-  constructor(status, message2, fieldErrors = {}) {
-    super(message2);
-    this.status = status;
-    this.fieldErrors = fieldErrors;
-  }
-};
-async function fetchJson(url, options = {}) {
-  const headers = { ...options.headers || {} };
-  if (options.body !== void 0 && !(options.body instanceof FormData)) headers["Content-Type"] = "application/json";
-  const response = await fetch(url, { ...options, headers });
-  const payload = await response.json().catch(() => ({}));
-  if (!response.ok) throw new HttpError(response.status, payload.message || "\uC694\uCCAD\uC744 \uCC98\uB9AC\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.", payload.fieldErrors || {});
-  return payload;
-}
-function bindPasswordToggle(input, button) {
-  button.addEventListener("click", () => {
-    const showing = input.type === "text";
-    input.type = showing ? "password" : "text";
-    button.textContent = showing ? "\uD45C\uC2DC" : "\uC228\uAE30\uAE30";
-    button.setAttribute("aria-label", showing ? "\uBE44\uBC00\uBC88\uD638 \uD45C\uC2DC" : "\uBE44\uBC00\uBC88\uD638 \uC228\uAE30\uAE30");
-    button.setAttribute("aria-pressed", String(!showing));
-    input.focus();
-  });
-}
-
 // admin/product-admin.source.js
 var $ = (selector) => document.querySelector(selector);
 var initialView = $("[data-initial-view]");
@@ -6609,8 +9384,6 @@ var errorRetryButton = $("[data-error-retry]");
 var loadMoreButton = $("[data-load-more]");
 var loadLabel = $("[data-load-label]");
 var listTitle = $("#product-list-title");
-var bulkDownload = $("[data-bulk-download]");
-var bulkFile = $("[data-bulk-file]");
 var productForm = $("[data-product-form]");
 var specEditor = createSpecEditor(productForm);
 var formSummary = $("[data-form-summary]");
@@ -6666,6 +9439,7 @@ var maxGalleryImageSize = 15 * 1024 * 1024;
 var maxGallery = 5;
 var longImageSegmentHeight = 6e3;
 var fieldNames = ["name", "model", "price", "naverDiscountRate", "tagline", "description", "highlights", "url", "stock", "optionName", "options", "mainImage", "gallery"];
+var csvController;
 var products = [];
 var total = 0;
 var cursor = null;
@@ -6685,6 +9459,7 @@ var editTarget = null;
 var editEtag = null;
 var editTrigger = null;
 function showLogin(message2 = "") {
+  csvController?.clear();
   initialView.hidden = true;
   boardView.hidden = true;
   loginView.hidden = false;
@@ -7325,79 +10100,14 @@ logoutButton.addEventListener("click", async () => {
 retryButton.addEventListener("click", () => loadProducts({ reset: true }));
 errorRetryButton.addEventListener("click", () => loadProducts({ reset: true }));
 loadMoreButton.addEventListener("click", () => loadProducts());
-function csvCell(value) {
-  const text = String(value ?? "");
-  return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
-}
-function parseCsvLine(line) {
-  const result = [];
-  let value = "";
-  let quoted = false;
-  for (let index = 0; index < line.length; index += 1) {
-    const char = line[index];
-    if (char === '"' && quoted && line[index + 1] === '"') {
-      value += '"';
-      index += 1;
-    } else if (char === '"') quoted = !quoted;
-    else if (char === "," && !quoted) {
-      result.push(value);
-      value = "";
-    } else value += char;
-  }
-  result.push(value);
-  return result;
-}
-function optionText(options) {
-  return (options || []).map((option) => `${option.label}=${option.stock}`).join("|");
-}
-function parseOptions(value) {
-  if (!String(value).trim()) return [];
-  return String(value).split("|").map((part) => {
-    const split = part.lastIndexOf("=");
-    return { label: part.slice(0, split).trim(), stock: Number(part.slice(split + 1)) };
-  });
-}
-bulkDownload.addEventListener("click", async () => {
-  bulkDownload.disabled = true;
-  boardStatus.textContent = "\uD604\uC7AC \uC7AC\uACE0 CSV\uB97C \uC900\uBE44\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
-  try {
-    const payload = await fetchJson("/api/admin/products/bulk");
-    const lines = [["id", "model", "name", "stock", "optionName", "options(label=stock|...)", "naverDiscountRate"], ...payload.items.map((item) => [item.id, item.model, item.name, item.stock ?? "", item.optionName, optionText(item.options), item.naverDiscountRate ?? ""])];
-    const blob = new Blob(["\uFEFF" + lines.map((line) => line.map(csvCell).join(",")).join("\r\n")], { type: "text/csv;charset=utf-8" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = `himawari-stock-${(/* @__PURE__ */ new Date()).toISOString().slice(0, 10)}.csv`;
-    link.click();
-    setTimeout(() => URL.revokeObjectURL(link.href), 1e3);
-    boardStatus.textContent = "\uC7AC\uACE0 CSV\uB97C \uB0B4\uB824\uBC1B\uC558\uC2B5\uB2C8\uB2E4.";
-  } catch (error) {
-    boardStatus.textContent = error.message || "CSV\uB97C \uC900\uBE44\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
-  } finally {
-    bulkDownload.disabled = false;
-  }
-});
-bulkFile.addEventListener("change", async () => {
-  const file = bulkFile.files[0];
-  if (!file) return;
-  try {
-    const lines = (await file.text()).replace(/^\ufeff/, "").split(/\r?\n/).filter(Boolean);
-    const header = parseCsvLine(lines.shift() || "");
-    const indexes = Object.fromEntries(header.map((name, index) => [name, index]));
-    if (indexes.id === void 0 || indexes.stock === void 0 || indexes["options(label=stock|...)"] === void 0) throw new Error("Himawari\uC5D0\uC11C \uB0B4\uB824\uBC1B\uC740 CSV \uD615\uC2DD\uC774 \uC544\uB2D9\uB2C8\uB2E4.");
-    const updates = lines.map(parseCsvLine).map((row) => ({ id: row[indexes.id], stock: row[indexes.stock], optionName: row[indexes.optionName] || "", options: parseOptions(row[indexes["options(label=stock|...)"]]), naverDiscountRate: row[indexes.naverDiscountRate] || "" }));
-    if (!confirm(`${updates.length}\uAC1C \uC81C\uD488\uC758 \uC7AC\uACE0\xB7\uD560\uC778\uC728\uC744 CSV \uB0B4\uC6A9\uC73C\uB85C \uBC18\uC601\uD560\uAE4C\uC694?`)) {
-      bulkFile.value = "";
-      return;
-    }
-    boardStatus.textContent = "CSV \uB0B4\uC6A9\uC744 \uAC80\uC99D\uD558\uACE0 \uBC18\uC601\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
-    await fetchJson("/api/admin/products/bulk", { method: "PUT", body: JSON.stringify({ etag: catalogEtag, updates }) });
+csvController = bindProductCsv({
+  getEtag: () => catalogEtag,
+  canApply: () => !dirty && !uploadController,
+  onApplied: async () => {
+    if (!dirty) await resetDraft({ cleanup: true });
     await loadProducts({ reset: true });
-    boardStatus.textContent = `${updates.length}\uAC1C \uC81C\uD488\uC758 \uC7AC\uACE0\xB7\uD560\uC778\uC728\uC744 \uBC18\uC601\uD588\uC2B5\uB2C8\uB2E4.`;
-  } catch (error) {
-    boardStatus.textContent = error.message || "CSV\uB97C \uBC18\uC601\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
-  } finally {
-    bulkFile.value = "";
-  }
+  },
+  onSessionError: handleSessionError
 });
 productForm.addEventListener("input", (event) => {
   dirty = true;
@@ -7643,6 +10353,75 @@ is-buffer/index.js:
    *
    * @author   Feross Aboukhadijeh <https://feross.org>
    * @license  MIT
+   *)
+
+animejs/dist/modules/core/consts.js:
+animejs/dist/modules/core/globals.js:
+animejs/dist/modules/core/helpers.js:
+animejs/dist/modules/core/transforms.js:
+animejs/dist/modules/core/colors.js:
+animejs/dist/modules/core/values.js:
+animejs/dist/modules/core/render.js:
+animejs/dist/modules/core/styles.js:
+animejs/dist/modules/core/clock.js:
+animejs/dist/modules/core/targets.js:
+animejs/dist/modules/core/units.js:
+  (**
+   * Anime.js - core - ESM
+   * @version v4.5.0
+   * @license MIT
+   * @copyright 2026 - Julian Garnier
+   *)
+
+animejs/dist/modules/adapters/registry.js:
+  (**
+   * Anime.js - adapters - ESM
+   * @version v4.5.0
+   * @license MIT
+   * @copyright 2026 - Julian Garnier
+   *)
+
+animejs/dist/modules/animation/additive.js:
+animejs/dist/modules/animation/composition.js:
+animejs/dist/modules/animation/animation.js:
+  (**
+   * Anime.js - animation - ESM
+   * @version v4.5.0
+   * @license MIT
+   * @copyright 2026 - Julian Garnier
+   *)
+
+animejs/dist/modules/engine/engine.js:
+  (**
+   * Anime.js - engine - ESM
+   * @version v4.5.0
+   * @license MIT
+   * @copyright 2026 - Julian Garnier
+   *)
+
+animejs/dist/modules/timer/timer.js:
+  (**
+   * Anime.js - timer - ESM
+   * @version v4.5.0
+   * @license MIT
+   * @copyright 2026 - Julian Garnier
+   *)
+
+animejs/dist/modules/easings/none.js:
+animejs/dist/modules/easings/eases/parser.js:
+  (**
+   * Anime.js - easings - ESM
+   * @version v4.5.0
+   * @license MIT
+   * @copyright 2026 - Julian Garnier
+   *)
+
+animejs/dist/modules/index.js:
+  (**
+   * Anime.js - ESM
+   * @version v4.5.0
+   * @license MIT
+   * @copyright 2026 - Julian Garnier
    *)
 
 @vercel/blob/dist/chunk-YYMLUMXS.js:

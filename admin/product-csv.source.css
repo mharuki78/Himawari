@@ -1,0 +1,44 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+@source inline("csv-table csv-table-sm csv-table-pin-rows");
+@plugin "daisyui" {
+  themes: false;
+  include: table;
+  prefix: "csv-";
+  logs: false;
+}
+
+.csv-preview {
+  --color-base-100: #fff;
+  --color-base-200: #f3f7ef;
+  --color-base-content: #333;
+  margin: 0 0 1.5rem;
+  padding: 1.1rem;
+  border: 1px solid var(--fog);
+  border-radius: 12px;
+  background: var(--snow);
+}
+.csv-preview h3 { margin: 0; font-size: 1rem; color: var(--deep-wave); }
+.csv-preview__summary { margin: .55rem 0; font-size: .85rem; font-weight: 700; }
+.csv-preview__status { margin: .5rem 0 .9rem; font-size: .78rem; overflow-wrap: anywhere; }
+.csv-preview__status.is-error, .csv-preview__errors { color: var(--danger); }
+.csv-preview__errors { margin: .6rem 0; padding-left: 1.25rem; max-height: 14rem; overflow: auto; font-size: .78rem; }
+.csv-preview__errors:empty { display: none; }
+.csv-preview__table-wrap { max-height: 26rem; overflow: auto; border: 1px solid var(--fog); border-radius: 8px; }
+.csv-preview .csv-table { min-width: 600px; width: 100%; border-collapse: collapse; font-size: .76rem; }
+.csv-preview .csv-table th { font-weight: 700; text-align: left; color: var(--ink); background: var(--cream); }
+.csv-preview .csv-table td, .csv-preview .csv-table th { padding: .65rem .75rem; border-bottom: 1px solid var(--fog); }
+.csv-preview .csv-table td:nth-child(2) { min-width: 200px; white-space: normal; overflow-wrap: anywhere; }
+.csv-preview .csv-table td:nth-child(n+4) { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.csv-preview .csv-table td:last-child { font-weight: 750; color: var(--deep-wave); }
+.csv-preview__actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1rem; }
+.csv-preview__actions .button { min-height: 44px; }
+.csv-preview__apply { background: var(--deep-wave); color: white; }
+.csv-preview__apply:disabled { opacity: .55; cursor: default; }
+.bulk-product-help ul { margin: .35rem 0; padding-left: 1.1rem; }
+.bulk-product-help p { margin: .4rem 0; }
+@media (max-width: 600px) {
+  .csv-preview { padding: .85rem; }
+  .csv-preview__actions .button { flex: 1; }
+}
