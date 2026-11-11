@@ -1,0 +1,103 @@
+{
+  "date": "2026-11-11",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-10T23:59:39.129Z",
+    "scheduledAt": "2026-11-11T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "scheduledSlot": "2026-11-11T09:00:00+09:00",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-11/deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-11/public-catalog.json",
+  "entries": [
+    {
+      "model": "1223",
+      "category": "everyday",
+      "title": "서점 창가에 앉아서",
+      "color": "화이트",
+      "scene": "흰색 백팩을 무릎 위에 세우고 손잡이를 잡았어요. 창가에 앉아 펼친 책을 들여다봐요.",
+      "alt": "갈색 재킷과 청바지 차림으로 서점 창가에 앉아 흰색 No.1223 백팩을 무릎 위에 둔 AI 착용 연출",
+      "id": "2026-11-11-everyday-1223",
+      "date": "2026-11-11",
+      "productId": "store-13313756862",
+      "image": "/assets/lookbook/2026-11-11-everyday-1223.webp",
+      "thumbnail": "/assets/lookbook/2026-11-11-everyday-1223-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-11/reference-1223.jpg",
+      "generatedSource": "backups/lookbook-2026-11-11/generated-1223.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260330_110/1774843091752lRdub_JPEG/60885435181830789_147192211.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13313756862",
+      "dimensionsCm": [
+        29.0,
+        40.0,
+        14.0
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-11; 2026-09-14 제조사 카탈로그 29페이지의 1223 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "prompt": "Use case photorealistic-natural. Create exactly ONE portrait photograph 1024 x 1536 for a Korean street-style brand LookBook. Attached photo is a precise PRODUCT reference for Himawari No.1223 WHITE backpack, confirmed exterior width 29 x height 40 x depth 14 cm. Do not copy the reference person. A very attractive fictional Korean adult woman in her mid-twenties, expressive refined face, long dark hair tucked behind one ear, subtle makeup, camel cropped wool jacket over a black fine-knit turtleneck and dark indigo wide-leg jeans sits on a low wooden window bench inside a small independent bookstore. Her LEFT hand lightly grips the bag's original SINGLE SHORT BLACK TOP CARRY LOOP, with the fully closed bag upright on her lap and its entire front facing the camera, supported by her lap. Her RIGHT hand rests on an open unbranded paperback on the small table beside her. The book stays outside the bag. Eye-level front three-quarter seated activity portrait, framed from her whole head to knees. The bag is clearly legible in the lower centre at about 36 percent of image height, true body proportions. Let her face be visible looking softly toward the book, appealing authentic Korean street-style editorial rather than studio catalog. Match actual pale cool WHITE/gray-white nylon body, dark top/perimeter zipper, black short top loop, large rounded-rectangle front compartment outlined by dark piping with zip pulls at left, ONE narrow horizontal black zipper across the upper part of that pocket and the small dark gray Himawari rectangular label just below it. Original white side pockets and white shoulder straps with black adjusters may appear to the sides, no extra pockets, brown trim, pouch, logo, attachments, lining view or invented carry strap. Gentle sidelight from bookstore window, quiet shelves receding softly, natural hands with five fingers, no readable background text or other people.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-43f5b422-72ea-4f5f-bcf1-ef83f53d6925.png",
+      "composition": {
+        "approach": "close seated bookstore activity portrait",
+        "angle": "eye-level near-frontal",
+        "framing": "head-to-knees with bag occupying roughly one third of height",
+        "activity": "backpack front-worn on original straps and supported upright on lap; one hand holding original top loop and other beside open book",
+        "setting": "wooden bookstore window bench with daylight from left"
+      },
+      "fidelityReview": "흰 몸판의 네모 외형과 검은 테두리, 단일 검은 짧은 손잡이, 흰 어깨끈과 검은 조절 부품, 앞의 둥근 직사각 포켓과 그 위 가로 검은 지퍼, 작은 회색 Himawari 패치, 옆 포켓을 원본과 직접 비교했습니다. 실제 원본의 앞쪽 착용 방식을 따르고 가방을 무릎에서 받친 모습입니다. 29 × 40 × 14cm의 비율과 모델의 손가락·팔·표정을 살폈습니다.",
+      "generatedSha256": "69d3cbecd2ede12026b613f8071d58c9688bec78ea11fdb7af98e1ac874f98a6"
+    },
+    {
+      "model": "9291",
+      "category": "city",
+      "title": "벽돌 담장 옆을 걸어요",
+      "color": "블랙",
+      "scene": "검정 백팩을 메고 벽돌 담장 옆을 걸어요. 회색 재킷 아래로 밝은 니트가 보여요.",
+      "alt": "회색 재킷과 청바지에 검정 No.9291 백팩을 메고 벽돌 담장 옆을 걷는 전신을 담은 AI 착용 연출",
+      "id": "2026-11-11-city-9291",
+      "date": "2026-11-11",
+      "productId": "coupang-f87b22a76f806740",
+      "image": "/assets/lookbook/2026-11-11-city-9291.webp",
+      "thumbnail": "/assets/lookbook/2026-11-11-city-9291-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "reference": "backups/lookbook-2026-11-11/reference-9291.jpg",
+      "generatedSource": "backups/lookbook-2026-11-11/generated-9291.png",
+      "imageKind": "generated",
+      "fidelityReviewed": true,
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-f87b22a76f806740/main-EST2hMldY4M1JhKRvA7QF1sgv9RuEl.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9520244278",
+      "dimensionsCm": [
+        31.0,
+        45.0,
+        15.0
+      ],
+      "dimensionsSource": "Live himawari.co.kr/api/products 2026-11-11; 2026-09-14 제조사 카탈로그 7페이지의 9291 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "prompt": "Use case photorealistic-natural. ONE vertical 1024 x1536 current Korean street-style photograph. Use attached product image as exact reference for the BLACK Himawari No.9291 backpack, verified exterior width31 xheight45 xdepth15 cm. A very handsome fictional Korean adult male streetwear model in his twenties, short textured black hair and attractive face in clear profile, wears a cropped charcoal overshirt over a light gray knit, relaxed straight dark indigo jeans and clean off-white sneakers. The masculine utility black backpack is worn naturally on BOTH original BLACK shoulder straps. He is captured in mid-step just off a low curb on a narrow brick-and-pavement city side street, with an unbranded red-brown brick corner and distant shopfront behind. Camera at knee height, slightly upward low rear-side THREE-QUARTER view, full body including both shoes and ground with room in walking direction. His shoulders rotate naturally a little toward camera, face in profile; show the full front panel of bag, in focus, no arm covering. Bag height about25 percent of picture height, actual scale on a180cm adult, never mini or oversized. Preserve exact rounded tall black body, original top fabric carry handle with padded middle, top layered black zipper paths, centered small dark rectangular label with white Himawari, upper front black mesh panel with large WHITE Himawari and small EST.2010 lettering, upper mesh-pocket zipper and its dark rounded pull, original small BLACK removable pouch clipped at the FRONT VIEWER-RIGHT with its little white Himawari label, horizontal black band, lower separate rounded zipper pocket with the small elastic cord lacing, side black buckles and mesh pockets. All black fabric and black trim as reference, NO beige, extra pockets, straps, charms or chest belt. Natural morning side lighting and mild walking motion only in clothes and shoe, photographically sharp product and face. No skirt, feminine styling, other brand, readable signs, other people or text overlay.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-8c0edc7e-8123-479a-b28a-84f6d24398c0.png",
+      "composition": {
+        "approach": "low-angle environmental street walking portrait",
+        "angle": "low rear-side three-quarter",
+        "framing": "full-body including shoes and pavement; bag roughly one quarter of height",
+        "activity": "stepping along a low curb with both original shoulder straps; face in profile",
+        "setting": "red-brown brick city side street with morning sidelight"
+      },
+      "fidelityReview": "검은 몸판과 원래 손잡이, 위쪽 지퍼 경로, 작은 흰 글씨 상단 패치, 앞 망 포켓의 큰 흰 Himawari 및 EST.2010 글씨, 오른쪽에 걸린 검은 파우치와 패치, 아래 별도 포켓과 고무끈, 옆 버클·망 포켓을 실제 원본과 직접 비교했습니다. 31 × 45 × 15cm의 크기와 몸에 멘 비율, 손·걸음·신발을 살폈습니다. 남성 모델의 회색 재킷과 청바지는 검정 유틸리티 백팩에 맞춰 골랐습니다.",
+      "generatedSha256": "415d7f0d666c49d6b70408326b94027f3f1a2bcbbf610363f645a7cd6ff12c66"
+    }
+  ],
+  "visualReview": "backups/lookbook-2026-11-11/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-11/optimization.json",
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-11-11-everyday-1223",
+        "2026-11-11-city-9291"
+      ],
+      "stage": "prepared"
+    }
+  }
+}
