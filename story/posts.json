@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-zipper-separating-end",
+    "title": "백팩 지퍼를 끝까지 열었는데 두 면이 붙어 있다면",
+    "date": "2026-11-12",
+    "summary": "No.1884 블랙의 입구 선을 보며 지퍼가 열리는 일과 양쪽이 완전히 분리되는 일, 몸판의 연결을 구별합니다.",
+    "description": "No.1884 블랙의 입구 선을 보며 지퍼가 열리는 일과 양쪽이 완전히 분리되는 일, 몸판의 연결을 구별합니다.",
+    "tags": [
+      "백팩 지퍼",
+      "분리형 지퍼",
+      "입구 구조"
+    ],
+    "image": "../assets/story/backpack-zipper-separating-end.webp",
+    "imageAlt": "No.1884 블랙 백팩의 닫힌 입구와 앞면을 작업대 위에서 본 AI 연출",
+    "images": [
+      "../assets/story/backpack-zipper-separating-end.webp",
+      "../assets/story/backpack-zipper-separating-end-detail.webp",
+      "../assets/story/backpack-zipper-separating-end-product.webp"
+    ],
+    "url": "backpack-zipper-separating-end.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "지퍼 끝의 분리 구조와 몸판 연결을 구별하는 부품 해설"
+  },
+  {
+    "id": "backpack-raincover-fit-coverage",
+    "title": "백팩 레인커버, 리터 표시만 맞으면 될까",
+    "date": "2026-11-12",
+    "summary": "No.1089 핑크의 외부 치수와 앞 포켓을 기준으로, 별도 레인커버가 감쌀 외곽과 등판·어깨끈에 남을 부분을 나누어 봅니다.",
+    "description": "No.1089 핑크의 외부 치수와 앞 포켓을 기준으로, 별도 레인커버가 감쌀 외곽과 등판·어깨끈에 남을 부분을 나누어 봅니다.",
+    "tags": [
+      "레인커버",
+      "백팩 외부 치수",
+      "가방 액세서리"
+    ],
+    "image": "../assets/story/backpack-raincover-fit-coverage.webp",
+    "imageAlt": "No.1089 핑크 백팩과 별도로 놓인 레인커버를 살펴보는 AI 연출",
+    "images": [
+      "../assets/story/backpack-raincover-fit-coverage.webp",
+      "../assets/story/backpack-raincover-fit-coverage-detail.webp",
+      "../assets/story/backpack-raincover-fit-coverage-product.webp"
+    ],
+    "url": "backpack-raincover-fit-coverage.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "별도 커버 후보 선정·장착 범위·개폐 동작을 따라가는 구매 안내"
+  },
+  {
+    "id": "backpack-stacked-storage-contact",
+    "title": "백팩 두 개를 포개면 어느 부분부터 맞닿을까",
+    "date": "2026-11-12",
+    "summary": "No.9291 라벤더의 망 포켓·작은 파우치·버클을 보며 두 가방이 맞닿는 방향과 한 개만 꺼낼 때 끈이 지나가는 길을 비교합니다.",
+    "description": "No.9291 라벤더의 망 포켓·작은 파우치·버클을 보며 두 가방이 맞닿는 방향과 한 개만 꺼낼 때 끈이 지나가는 길을 비교합니다.",
+    "tags": [
+      "백팩 보관",
+      "앞 포켓",
+      "가방 접촉면"
+    ],
+    "image": "../assets/story/backpack-stacked-storage-contact.webp",
+    "imageAlt": "No.9291 라벤더 백팩 두 개를 겹치지 않고 선반에 나란히 둔 AI 연출",
+    "images": [
+      "../assets/story/backpack-stacked-storage-contact.webp",
+      "../assets/story/backpack-stacked-storage-contact-detail.webp",
+      "../assets/story/backpack-stacked-storage-contact-product.webp"
+    ],
+    "url": "backpack-stacked-storage-contact.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "앞면끼리·앞면과 등판·나란히 배치하는 보관 상황 비교"
+  },
+  {
     "id": "backpack-zipper-extension-fit",
     "title": "백팩 지퍼 손잡이에 고리를 덧달아도 될까",
     "date": "2026-11-11",
