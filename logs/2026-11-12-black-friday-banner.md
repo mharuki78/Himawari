@@ -17,4 +17,14 @@
 - 직접 화면 검수 후 관리자 행사 패널이 전체 가로폭을 쓰도록 조정하고 날짜 필드 넘침과 팝업의 상속 여백을 수정했다. 수정 후 해당 화면과 이동을 재확인했다.
 - 독립 코드 리뷰에서 차단 결함이 없었으며 권고한 토큰 경로·인증 회귀 테스트를 추가해 통과했다.
 - 전체 테스트의 sitemap URL 순서 변경은 전체 `<url>` 항목의 일치를 대조한 후 원래 바이트로 복구했다. 다른 작업자의 `AGENTS.md`·`DESIGN.md`·`STATE.md` 변경은 커밋하지 않는다.
-- 다음: 이번 작업 파일만 동기화·배포한 후 실제 관리자 업로드로 사용자 가로 사진을 등록한다. 전체 행사 필드와 제품 카탈로그의 유지, 실제 이미지 해시·공개 페이지·팝업을 운영에서 확인한다.
+- 완료 근거는 아래 운영 확인과 최종 `deployment-receipt.json`이다.
+
+## 운영 반영·검증 완료
+
+- 작업 파일 21개만 커밋·push한 기능 커밋 `e304b4bafdf159ce8fe67a5ef159d5833c2ca4e6`의 Vercel production `dpl_99PV1xiWmepzFUra5PAg1kJasGZA` READY 및 `himawari.co.kr` 연결을 확인했다. 후속 기록 커밋이 있으면 그 배포 근거는 최종 receipt에서 관리한다.
+- Chrome에서 운영 관리자 화면의 실제 파일 선택·로컬 미리보기·Blob 업로드·행사 설정 저장을 실행해 사용자의 가로 사진을 등록했다. CSP 위반·브라우저 오류 0개, 이미지 원본 SHA256 일치, 일정·상품·행사가·수량·offer ID 유지, 작업 직전 운영 제품 149개와 카탈로그 ETag/전체 항목 불변을 대조했다. 제품 생성 요청 0회. 인증은 작업 전용 읽기/배너 저장 프록시 내부에서만 처리하고 비밀값을 기록하지 않았다.
+- 세로 제공 사진은 홈 블랙 프라이데이 팝업에서 실제 표시되며 누르면 기획전으로 이동한다. 새 사진 버전의 닫기 상태를 사용하고 기존 행사 기간에 따라 노출한다.
+- 운영 Chrome PC 1440px·모바일 390px에서 상단 배너 SSR·갱신 후 표시·원본 비율·가로 넘침 없음, 팝업 사진·이동, CollectionPage 및 실제 상품 가격/재고와 Product 구조화 데이터의 일치를 확인했다.
+- 브라우저의 응답만 종료 상태로 바꿔 배너·행사가·구매 링크·행사 상품 구조화 데이터가 사라짐을 검증했다. 실제 운영 행사는 변경하지 않았다. 테스트 응답은 컨텍스트 종료와 함께 제거했다.
+- 운영 정적 파일 11개의 SHA256이 배포 소스와 일치했다. 관리자·공개 화면을 직접 시각 검수했다. 작업 전용 Chrome 컨텍스트와 임시 서버는 종료했다. 저장된 원본 배너 자산은 운영에서 사용하므로 보존한다.
+- 최종 근거: `backups/black-friday-banner-2026-11-12/deployment-receipt.json`, `live-registration.json`, `production-browser-verification.json`, `production-assets.json`. 검증 화면: `production-banner-1440.png`, `production-banner-390.png`, `production-popup-1440.png`, `production-popup-390.png`, `live-admin-saved.png`.
