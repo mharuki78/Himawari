@@ -9,6 +9,7 @@
     "waitedForSchedule": false
   },
   "stage": "metadata-verified",
+  "completionReceipt": "backups/story-runs/2026-11-13.deployment.json",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "publicationBaselineCommit": "d71f70f5a5047725fa8da8ccb4309861d7284062",

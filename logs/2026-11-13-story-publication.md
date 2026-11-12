@@ -10,3 +10,4 @@
 - 다른 작업자의 AGENTS.md·DESIGN.md·STATE.md 및 Npay 후속 로그 등 변경은 함께 커밋하지 않습니다.
 - 첫 콘텐츠 커밋 `06b7a6f2f87c575f81bf660878911b4130447db4`의 실제 최초 운영 READY는 `2026-11-12T23:29:05.504Z`(11월13일08:29:05.504 KST)입니다. 원래 baseline READY부터 production 목록1페이지를 끝까지 보존했고 마지막 pagination.next는 제공자 응답에서 생략되어 있습니다. READY 후보 상세와 Git의 시각 없는 원본 목록·완전한 article3개 해시를 대조했습니다.
 - 첫 실제 READY로 publishedAt/modifiedAt을 고정하고 날짜별 스키마·RSS를 맞췄습니다. 준비 검증 metadata=verified와 구조화 데이터/발행 이력 회귀20개가 통과했습니다. 메타데이터 배포 뒤 운영 확인 전이므로 완료 알림은 보류합니다.
+- 메타데이터 배포85c965b의 운영 READY를 확인했습니다. 최종 검증기가 커밋된 manifest와 receipt를 대조하도록 completionReceipt 경로를 먼저 저장합니다. 이 경로 설정은 완료 판정이 아니며, 실제 운영 브라우저·파일 일치·--published 성공을 뒤따라 기록합니다. 최초 발행시각과 article 해시는 유지합니다.
