@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-buckle-replacement-width",
+    "title": "백팩 버클, 끈 폭만 같으면 다른 부품도 맞을까",
+    "date": "2026-11-13",
+    "summary": "No.9290의 옆 버클을 보며 끈 폭, 기존 반쪽과의 결합, 가방에 연결되는 방식을 나눠 교체품 문의 항목을 정리합니다.",
+    "description": "No.9290의 옆 버클을 보며 끈 폭, 기존 반쪽과의 결합, 가방에 연결되는 방식을 나눠 교체품 문의 항목을 정리합니다.",
+    "tags": [
+      "백팩 버클",
+      "버클 교체",
+      "웨빙 폭"
+    ],
+    "image": "../assets/story/backpack-buckle-replacement-width.webp",
+    "imageAlt": "No.9290 블랙의 흰 버클과 앞 지퍼를 작업대 위에서 본 AI 연출",
+    "images": [
+      "../assets/story/backpack-buckle-replacement-width.webp",
+      "../assets/story/backpack-buckle-replacement-width-detail.webp",
+      "../assets/story/backpack-buckle-replacement-width-product.webp"
+    ],
+    "url": "backpack-buckle-replacement-width.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "규격 표기·반쪽 호환·설치 조건을 차례로 구분하는 부품 선택 안내"
+  },
+  {
+    "id": "soft-backpack-packable-claim",
+    "title": "부드러운 백팩이면 접어서 보조가방으로 가져가도 될까",
+    "date": "2026-11-13",
+    "summary": "No.0515 실버의 외형과 확인된 사양으로, 부드러운 몸판과 접이식 보관 기능을 구분하고 여행에 가져갈 방식을 비교합니다.",
+    "description": "No.0515 실버의 외형과 확인된 사양으로, 부드러운 몸판과 접이식 보관 기능을 구분하고 여행에 가져갈 방식을 비교합니다.",
+    "tags": [
+      "접이식 백팩",
+      "보조가방",
+      "백팩 보관"
+    ],
+    "image": "../assets/story/soft-backpack-packable-claim.webp",
+    "imageAlt": "No.0515 실버 백팩을 멘 가상의 성인 모델의 AI 착용 연출",
+    "images": [
+      "../assets/story/soft-backpack-packable-claim.webp",
+      "../assets/story/soft-backpack-packable-claim-detail.webp",
+      "../assets/story/soft-backpack-packable-claim-product.webp"
+    ],
+    "url": "soft-backpack-packable-claim.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "큰 가방 안에 넣기와 이동 중 메기의 여행 계획 비교"
+  },
+  {
+    "id": "grey-backpack-texture-or-mark",
+    "title": "회색 백팩의 잔무늬, 얼룩으로 보기 전에 비교할 것",
+    "date": "2026-11-13",
+    "summary": "No.1084H 그레이의 실제 원단 사진을 보며 반복되는 결, 특정 부위의 흔적, 같은 옵션의 비교 자료를 나누어 살펴봅니다.",
+    "description": "No.1084H 그레이의 실제 원단 사진을 보며 반복되는 결, 특정 부위의 흔적, 같은 옵션의 비교 자료를 나누어 살펴봅니다.",
+    "tags": [
+      "그레이 백팩",
+      "원단 무늬",
+      "백팩 관리"
+    ],
+    "image": "../assets/story/grey-backpack-texture-or-mark.webp",
+    "imageAlt": "No.1084H 그레이의 앞면과 원단을 학생 모델과 함께 보는 AI 연출",
+    "images": [
+      "../assets/story/grey-backpack-texture-or-mark.webp",
+      "../assets/story/grey-backpack-texture-or-mark-detail.webp",
+      "../assets/story/grey-backpack-texture-or-mark-product.webp"
+    ],
+    "url": "grey-backpack-texture-or-mark.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "실제 사진의 반복 무늬와 새 흔적을 구별해 기록하는 관찰 해설"
+  },
+  {
     "id": "backpack-zipper-separating-end",
     "title": "백팩 지퍼를 끝까지 열었는데 두 면이 붙어 있다면",
     "date": "2026-11-12",
