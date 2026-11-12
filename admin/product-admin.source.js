@@ -1,5 +1,6 @@
 import { createSpecEditor } from './spec-editor.js';
 import { bindProductCsv } from './product-csv.js';
+import { uploadProductImage, runProductRequest } from './product-network.js';
 import { upload } from '@vercel/blob/client';
 
 import { HttpError, bindPasswordToggle, fetchJson } from './admin-client.js';
@@ -517,10 +518,11 @@ async function cleanupUploadedImages() {
   }
   const urls = [...uploadedImageUrls];
   try {
-    await fetchJson('/api/admin/product-media', {
+    await runProductRequest(signal => fetchJson('/api/admin/product-media', {
       method: 'DELETE',
+      signal,
       body: JSON.stringify({ requestId, urls }),
-    });
+    }), { timeoutMs: 15_000 });
     uploadedImageUrls = [];
     uploadsComplete = false;
     return true;
@@ -737,7 +739,7 @@ async function uploadImages(entries) {
     if (kind === 'gallery') galleryIndex += 1;
     const filename = kind === 'main' ? `main.${extension}` : `gallery-${galleryIndex}.${extension}`;
     const pathname = `product-media/${requestId}/${filename}`;
-    const blob = await upload(pathname, file, {
+    const blob = await uploadProductImage(upload, pathname, file, {
       access: 'public',
       handleUploadUrl: '/api/admin/product-upload',
       clientPayload: JSON.stringify({ requestId, kind }),
@@ -904,9 +906,13 @@ productForm.addEventListener('submit', async (event) => {
       ...(values.mainFile ? [{ file: values.mainFile, kind: 'main' }] : []),
       ...values.galleryFiles.map((file) => ({ file, kind: 'gallery' })),
     ];
-    if (uploadEntries.length) formStatus.textContent = '제품 이미지를 안전하게 업로드하고 있습니다.';
+    if (uploadEntries.length) {
+      formStatus.textContent = '제품 이미지를 안전하게 업로드하고 있습니다.';
+      submitLabel.textContent = '이미지 업로드 중';
+    }
     if (uploadEntries.length && !uploadsComplete) await uploadImages(uploadEntries);
     formStatus.textContent = '제품 정보를 저장하고 있습니다.';
+    submitLabel.textContent = editingProduct ? '변경사항 저장 중' : '제품 등록 중';
     const commonPayload = {
       ...specEditor.read(),
       requestId,

@@ -48,7 +48,7 @@ export async function createProductCsvSandbox(fixtureProducts = seedCatalog().pr
     export async function head(value) {
       const pathname = path(value), item = state.blobs.get(pathname);
       if (!item) throw new BlobNotFoundError();
-      return {url:'https://fixture.public.blob.vercel-storage.com/'+pathname, pathname, etag:item.etag};
+      return {url:'https://fixture.public.blob.vercel-storage.com/'+pathname, pathname, etag:item.etag, contentType:item.contentType, size:item.size};
     }
     export async function get(value) {
       const item = state.blobs.get(path(value));

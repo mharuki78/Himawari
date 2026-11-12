@@ -7652,6 +7652,76 @@ function bindProductCsv({ getEtag, getQuery = () => "", canApply, onApplied, onS
   return { clear };
 }
 
+// admin/product-network.js
+function withDeadline(operation, { signal, idleMs, maxMs, message: message2 }) {
+  const controller = new AbortController();
+  return new Promise((resolve, reject) => {
+    let idleTimer, totalTimer, settled = false, loaded = 0;
+    const finish = (callback, value) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(idleTimer);
+      clearTimeout(totalTimer);
+      signal?.removeEventListener("abort", cancel);
+      callback(value);
+    };
+    const abort = (error) => {
+      if (settled) return;
+      controller.abort(error);
+      finish(reject, error);
+    };
+    const cancel = () => abort(new DOMException("\uC774\uBBF8\uC9C0 \uC5C5\uB85C\uB4DC\uB97C \uCDE8\uC18C\uD588\uC2B5\uB2C8\uB2E4.", "AbortError"));
+    const timeout = () => abort(new DOMException(message2, "TimeoutError"));
+    const resetIdle = () => {
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(timeout, idleMs);
+    };
+    const progress = (bytes2) => {
+      if (settled || !Number.isFinite(bytes2) || bytes2 <= 0 || bytes2 === loaded) return;
+      loaded = bytes2;
+      resetIdle();
+    };
+    signal?.addEventListener("abort", cancel, { once: true });
+    if (signal?.aborted) {
+      cancel();
+      return;
+    }
+    resetIdle();
+    totalTimer = setTimeout(timeout, maxMs);
+    try {
+      Promise.resolve(operation(controller.signal, progress)).then(
+        (value) => finish(resolve, value),
+        (error) => finish(reject, error)
+      );
+    } catch (error) {
+      finish(reject, error);
+    }
+  });
+}
+function uploadProductImage(upload2, pathname, file, options, { idleMs = 6e4, maxMs = 3e5 } = {}) {
+  return withDeadline((signal, progress) => upload2(pathname, file, {
+    ...options,
+    abortSignal: signal,
+    onUploadProgress: (event) => {
+      if (signal.aborted) return;
+      progress(event.loaded);
+      options.onUploadProgress?.(event);
+    }
+  }), {
+    signal: options.abortSignal,
+    idleMs,
+    maxMs,
+    message: "\uC774\uBBF8\uC9C0 \uC5C5\uB85C\uB4DC \uC751\uB2F5\uC774 \uC9C0\uC5F0\uB418\uC5B4 \uC911\uB2E8\uD588\uC2B5\uB2C8\uB2E4. \uC778\uD130\uB137 \uC5F0\uACB0\uC744 \uD655\uC778\uD55C \uB4A4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574 \uC8FC\uC138\uC694."
+  });
+}
+function runProductRequest(operation, { timeoutMs = 15e3 } = {}) {
+  return withDeadline((signal) => operation(signal), {
+    idleMs: timeoutMs,
+    maxMs: timeoutMs,
+    message: "\uC774\uBBF8\uC9C0 \uC815\uB9AC \uC11C\uBC84\uC758 \uC751\uB2F5\uC774 \uC9C0\uC5F0\uB418\uC5B4 \uC694\uCCAD\uC744 \uC911\uB2E8\uD588\uC2B5\uB2C8\uB2E4. \uC7A0\uC2DC \uD6C4 \uB2E4\uC2DC \uC2DC\uB3C4\uD574 \uC8FC\uC138\uC694."
+  });
+}
+
 // node_modules/is-node-process/lib/index.mjs
 function isNodeProcess() {
   if (typeof navigator !== "undefined" && navigator.product === "ReactNative") {
@@ -9838,10 +9908,11 @@ async function cleanupUploadedImages() {
   }
   const urls = [...uploadedImageUrls];
   try {
-    await fetchJson("/api/admin/product-media", {
+    await runProductRequest((signal) => fetchJson("/api/admin/product-media", {
       method: "DELETE",
+      signal,
       body: JSON.stringify({ requestId, urls })
-    });
+    }), { timeoutMs: 15e3 });
     uploadedImageUrls = [];
     uploadsComplete = false;
     return true;
@@ -10051,7 +10122,7 @@ async function uploadImages(entries) {
     if (kind === "gallery") galleryIndex += 1;
     const filename = kind === "main" ? `main.${extension}` : `gallery-${galleryIndex}.${extension}`;
     const pathname = `product-media/${requestId}/${filename}`;
-    const blob = await upload(pathname, file, {
+    const blob = await uploadProductImage(upload, pathname, file, {
       access: "public",
       handleUploadUrl: "/api/admin/product-upload",
       clientPayload: JSON.stringify({ requestId, kind }),
@@ -10208,9 +10279,13 @@ productForm.addEventListener("submit", async (event) => {
       ...values.mainFile ? [{ file: values.mainFile, kind: "main" }] : [],
       ...values.galleryFiles.map((file) => ({ file, kind: "gallery" }))
     ];
-    if (uploadEntries.length) formStatus.textContent = "\uC81C\uD488 \uC774\uBBF8\uC9C0\uB97C \uC548\uC804\uD558\uAC8C \uC5C5\uB85C\uB4DC\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
+    if (uploadEntries.length) {
+      formStatus.textContent = "\uC81C\uD488 \uC774\uBBF8\uC9C0\uB97C \uC548\uC804\uD558\uAC8C \uC5C5\uB85C\uB4DC\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
+      submitLabel.textContent = "\uC774\uBBF8\uC9C0 \uC5C5\uB85C\uB4DC \uC911";
+    }
     if (uploadEntries.length && !uploadsComplete) await uploadImages(uploadEntries);
     formStatus.textContent = "\uC81C\uD488 \uC815\uBCF4\uB97C \uC800\uC7A5\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
+    submitLabel.textContent = editingProduct ? "\uBCC0\uACBD\uC0AC\uD56D \uC800\uC7A5 \uC911" : "\uC81C\uD488 \uB4F1\uB85D \uC911";
     const commonPayload = {
       ...specEditor.read(),
       requestId,
