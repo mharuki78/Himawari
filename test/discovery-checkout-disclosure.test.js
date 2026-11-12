@@ -6,6 +6,7 @@ import { CATALOG_CATEGORIES, filterAndSortFamilies, groupProductFamilies } from 
 import { purchaseQuantity } from '../assets/purchase-quantity.js';
 import { standardShippingFee } from '../assets/shipping-policy.js';
 import { WELCOME_COUPON, welcomeCouponSubtotal } from '../assets/welcome-coupon.js';
+import { checkoutCartLine, checkoutItemsInput } from '../assets/black-friday-cart.js';
 
 // A small DOM fixture runs the production event handlers without an order endpoint.
 class Element {
@@ -22,6 +23,7 @@ class Element {
   append(...nodes) { this.children.push(...nodes.flatMap(node => node?.tagName === 'fragment' ? node.children : [node])); }
   replaceChildren(...nodes) { this.children = []; this.append(...nodes); }
   setAttribute(name, value) { this.attributes[name] = value; }
+  getAttribute(name) { return this.attributes[name] ?? null; }
   removeAttribute(name) { delete this.attributes[name]; }
   addEventListener(name, handler) { this.listeners[name] = handler; }
   dispatch(name, values = {}) { return this.listeners[name]?.({ target: this, preventDefault() {}, ...values }); }
@@ -186,18 +188,26 @@ test('collapsing catalog refinements at the mobile breakpoint moves internal foc
   assert.equal(page.refinementToggle.focusCalls, 3, 'Outside focus and focus already on the summary stay in place');
 });
 
-async function checkoutFixture({ payment = 'bank_transfer', quantity = '5', stock = 3, kakao = true, bank = true, option = false } = {}) {
+async function checkoutFixture({ payment = 'bank_transfer', quantity = '5', stock = 3, kakao = true, bank = true, option = false, sale = false, mixed = false, endsAt = '2099-01-01T00:00:00Z' } = {}) {
   const env = environment(`https://himawari.co.kr/checkout.html?product=bag-1&quantity=${quantity}${option ? '&option=blue' : ''}${payment ? '&payment=' + payment : ''}`);
+  const offerId = 'eb3ff32a-dce8-4c79-8dba-c93058eb6247';
+  if (sale) env.history.replaceState(null, '', `https://himawari.co.kr/checkout.html?blackFriday=${offerId}&quantity=${quantity}`);
+  if (mixed) env.history.replaceState(null, '', 'https://himawari.co.kr/checkout.html');
+  let clock = Date.now(), timer;
+  if (mixed) env.sessionStorage = { getItem: key => key === 'himawari-checkout-items' ? JSON.stringify({createdAt:clock,items:[{productId:'bag-1',optionId:'',quantity:2,blackFriday:{offerId,unitPrice:39000}},{productId:'bag-2',quantity:1}]}) : null, setItem() {} };
   const form = env.node('[data-checkout-form]');
   const fields = new Map();
   form.elements = { namedItem(name) { if (!fields.has(name)) fields.set(name, new Element('input')); return fields.get(name); } };
   form.elements.namedItem('recipientName');
   form.querySelector = selector => selector === 'button[type="submit"]' ? env.node('submit') : null;
   const product = { id: 'bag-1', name: '가방', model: 'No.1027', price: 48000, stock, options: option ? [{ id: 'blue', label: '블루', stock }] : [] };
+  const ordinary = { id:'bag-2',name:'일반 가방',price:12000,stock:5,options:[] };
+  const campaign = {state:'open',endsAt,items:[{productId:'bag-1',optionId:'',optionLabel:'',name:'행사 가방',offerId,price:39000,regularPrice:59000,remaining:stock}]};
   const requests = [];
   let npayItems;
   const context = vm.createContext({
-    ...env, URL, URLSearchParams, Intl, crypto, purchaseQuantity, standardShippingFee, WELCOME_COUPON, welcomeCouponSubtotal,
+    ...env, URL, URLSearchParams, Intl, crypto, purchaseQuantity, standardShippingFee, WELCOME_COUPON, welcomeCouponSubtotal, checkoutCartLine, checkoutItemsInput,
+    Date: class extends Date { static now() { return clock; } }, setTimeout: callback => { timer=callback;return 1; }, clearTimeout: () => { timer=null; },
     bankTransfer: { bank: '은행', account: '000', holder: '예금주' }, bankTransferReady: () => bank,
     initializeCheckoutNpay: getItems => { npayItems = getItems; },
     fetch: async (url, options) => {
@@ -205,15 +215,50 @@ async function checkoutFixture({ payment = 'bank_transfer', quantity = '5', stoc
       assert.equal(options?.method || 'GET', 'GET', 'Disclosure and quantity changes must not create orders');
       const payload = url === '/api/auth/session' ? { authenticated: false }
         : url === '/api/kakaopay/config' ? { enabled: kakao }
-          : url === '/api/promotions' ? { coupons: [] } : { product };
+          : url === '/api/promotions' ? { coupons: [] } : url === '/api/black-friday' ? campaign : url === '/api/products' ? {products:[product,ordinary]} : { product };
       return { ok: true, json: async () => payload };
     },
   });
   const source = await readFile(new URL('../assets/checkout.js', import.meta.url), 'utf8');
   vm.runInContext(source.replace(/^import .*;\r?\n/gm, '').replace('  load();\n', '  globalThis.loadCheckout = load;\n').replace('  load();\r\n', '  globalThis.loadCheckout = load;\r\n'), context);
   await context.loadCheckout();
-  return { ...env, form, fields, requests, npayItems: () => npayItems?.() };
+  return { ...env, form, fields, requests, npayItems: () => npayItems?.(), expire() { assert.equal(typeof timer,'function');clock=Date.parse(endsAt)+1;timer(); }, extend() { campaign.endsAt='2099-01-01T00:00:00Z'; } };
 }
+
+const descendants = node => [node, ...(node.children || []).flatMap(descendants)];
+const withClass = (node, name) => descendants(node).filter(element => (element.className || '').split(' ').includes(name));
+
+test('direct and mixed campaign checkout show unit discount details separately from quantity totals', async () => {
+  for (const mode of [{sale:true},{mixed:true}]) {
+    const page=await checkoutFixture({...mode,quantity:'2'});
+    assert.equal(page.node('[data-checkout-content]').hidden,false);
+    const rows=page.node('[data-checkout-items]').children;
+    assert.equal(rows.length,mode.mixed?2:1);
+    const original=descendants(rows[0]).find(node=>node.tagName==='del');
+    assert.ok(original,'A verified campaign line needs its original unit price');
+    assert.match(original.textContent,/59,000/);
+    assert.match(withClass(rows[0],'checkout-item__sale-price')[0].textContent,/39,000/);
+    assert.equal(withClass(rows[0],'checkout-item__discount')[0].textContent,'34% 할인');
+    assert.match(page.node('[data-order-subtotal]').textContent,mode.mixed?/90,000/:/78,000/);
+    const controls=withClass(rows[0],'checkout-item__quantity')[0];controls.children[0].dispatch('click');
+    assert.match(page.node('[data-order-subtotal]').textContent,mode.mixed?/51,000/:/39,000/);
+    assert.match(withClass(page.node('[data-checkout-items]'),'checkout-item__sale-price')[0].textContent,/39,000/);
+    if(mode.mixed)assert.equal(descendants(rows[1]).some(node=>node.tagName==='del'),false);
+  }
+});
+
+test('campaign checkout removes discount details and requires rechecking when the campaign expires while open', async () => {
+  const page=await checkoutFixture({mixed:true,endsAt:new Date(Date.now()+10000).toISOString()});
+  assert.equal(withClass(page.node('[data-checkout-items]'),'checkout-item__discount').length,1);
+  page.expire();
+  assert.equal(page.node('[data-checkout-content]').hidden,true);
+  assert.equal(page.node('[data-checkout-error]').hidden,false);
+  assert.equal(page.node('[data-checkout-items]').children.length,0);
+  assert.equal(page.node('submit').disabled,true);
+  page.extend();await page.node('[data-checkout-retry]').dispatch('click');
+  assert.equal(page.node('[data-checkout-content]').hidden,false);
+  assert.equal(page.node('submit').disabled,false,'A successfully revalidated extended campaign must allow checkout again');
+});
 
 test('selected checkout method opens delivery directly without stealing initial focus; changing methods retains data and Npay', async () => {
   const page = await checkoutFixture({ option: true });

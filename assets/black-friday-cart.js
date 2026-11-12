@@ -15,6 +15,7 @@ export function checkoutCartLine(input, product, event) {
         Date.now() >= Date.parse(event.endsAt) || (event.serverTime && Date.parse(event.serverTime) >= Date.parse(event.endsAt)) ||
         !offer || offer.price !== selection.unitPrice || !Number.isSafeInteger(offer.remaining) || quantity > offer.remaining) throw unavailable();
     return { productId, optionId, optionLabel: offer.optionLabel || '', quantity, stock: offer.remaining,
+      saleDisplay: { regularPrice: offer.regularPrice, endsAt: event.endsAt },
       blackFriday: { offerId: selection.offerId, unitPrice: selection.unitPrice }, product: { ...product, price: offer.price } };
   }
   const stock = option ? option.stock : product?.stock;

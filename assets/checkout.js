@@ -1,6 +1,6 @@
 import { purchaseQuantity } from './purchase-quantity.js';
 import { initializeCheckoutNpay } from './npay.js?v=20261112-bf-cart';
-import { checkoutCartLine, checkoutItemsInput, removePurchasedCartItems, mergeRemainingCart } from './black-friday-cart.js?v=20261112-bf-cart';
+import { checkoutCartLine, checkoutItemsInput, removePurchasedCartItems, mergeRemainingCart } from './black-friday-cart.js?v=20261112-checkout-prices';
 import { bankTransfer, bankTransferReady } from './bank-transfer.js';
 import { WELCOME_COUPON, welcomeCouponSubtotal } from './welcome-coupon.js';
 import { standardShippingFee } from './shipping-policy.js';
@@ -36,6 +36,7 @@ import { standardShippingFee } from './shipping-policy.js';
   var cartOrder = false;
   var saleOfferId = new URLSearchParams(location.search).get('blackFriday');
   var saleOffer = null;
+  var saleExpiryTimer = null;
   function hasSaleItems() { return saleOfferId !== null || items.some(function (item) { return item.blackFriday != null; }); }
   if (saleOfferId !== null) {
     document.querySelector('[data-npay-checkout-section]').hidden = true;
@@ -234,7 +235,15 @@ import { standardShippingFee } from './shipping-policy.js';
   }
 
   function renderItems() {
+    if (saleExpiryTimer !== null) { clearTimeout(saleExpiryTimer); saleExpiryTimer = null; }
     itemContainer.replaceChildren();
+    if (items.some(function (entry) { return entry.saleDisplay && Date.now() >= Date.parse(entry.saleDisplay.endsAt); })) {
+      failureMessage.textContent = '행사가 종료되었습니다. 장바구니에서 상품과 가격을 다시 확인해 주세요.';
+      submitButton.disabled = true;
+      showOnly(failure);
+      failureTitle.focus();
+      return false;
+    }
     items.forEach(function (entry, index) {
       var product = entry.product;
       var article = document.createElement('article');
@@ -282,12 +291,46 @@ import { standardShippingFee } from './shipping-policy.js';
       var amount = document.createElement('strong');
       amount.textContent = priceFormatter.format(product.price * entry.quantity);
       meta.append(quantity, amount);
-      copy.append(model, name, option, meta);
+      copy.append(model, name, option);
+      if (entry.blackFriday && entry.saleDisplay) {
+        var prices = document.createElement('div');
+        prices.className = 'checkout-item__prices';
+        var regular = entry.saleDisplay.regularPrice;
+        var deal = document.createElement('div');
+        deal.className = 'checkout-item__deal';
+        var unitPrice = document.createElement('strong');
+        unitPrice.className = 'checkout-item__sale-price';
+        unitPrice.textContent = '개당 행사가 ' + priceFormatter.format(product.price);
+        if (Number.isSafeInteger(regular) && regular > product.price) {
+          var original = document.createElement('del');
+          original.textContent = '개당 정상가 ' + priceFormatter.format(regular);
+          prices.append(original);
+          var discount = document.createElement('span');
+          discount.className = 'checkout-item__discount';
+          var percent = Math.min(99, Math.round((regular - product.price) / regular * 100));
+          discount.textContent = (percent ? percent + '%' : '1% 미만') + ' 할인';
+          deal.append(unitPrice, discount);
+        } else { deal.append(unitPrice); }
+        prices.append(deal);
+        copy.append(prices);
+        var lineTotal = document.createElement('span');
+        lineTotal.className = 'checkout-item__line-total';
+        var totalLabel = document.createElement('span');
+        totalLabel.textContent = '상품금액';
+        lineTotal.append(totalLabel, amount);
+        meta.replaceChildren(quantity, lineTotal);
+      }
+      copy.append(meta);
       article.append(media, copy);
       itemContainer.append(article);
     });
     if (!hasSaleItems()) renderCoupons();
     renderTotals();
+    var deadlines = items.filter(function (entry) { return entry.saleDisplay; }).map(function (entry) { return Date.parse(entry.saleDisplay.endsAt); });
+    if (deadlines.length) saleExpiryTimer = setTimeout(function () {
+      saleExpiryTimer = null;
+      if (!submitted) renderItems();
+    }, Math.min(Math.max(0, Math.min.apply(null, deadlines) - Date.now()), 2147483647));
   }
 
   function field(name) { return form.elements.namedItem(name); }
@@ -353,6 +396,7 @@ import { standardShippingFee } from './shipping-policy.js';
   kakaopayButton.addEventListener('click', function () { if (kakaopayEnabled) selectPayment('kakaopay'); });
 
   async function load() {
+    if (saleExpiryTimer !== null) { clearTimeout(saleExpiryTimer); saleExpiryTimer = null; }
     showOnly(loading);
     paymentMethod = '';
     form.hidden = true;
@@ -387,9 +431,8 @@ import { standardShippingFee } from './shipping-policy.js';
         saleOffer = salePayload.state === 'open' && salePayload.items.find(function (item) { return item.offerId === saleOfferId; });
         if (!saleOffer || saleOffer.remaining < 1) throw new Error('행사가 끝났거나 이 품목의 행사 수량이 모두 소진됐습니다.');
         var saleQuantity = purchaseQuantity(new URLSearchParams(location.search).get('quantity'), saleOffer.remaining);
-        items = [{ productId: saleOffer.productId, optionId: saleOffer.optionId, optionLabel: saleOffer.optionLabel,
-          stock: saleOffer.remaining, quantity: saleQuantity, product: saleOffer,
-          blackFriday: { offerId: saleOffer.offerId, unitPrice: saleOffer.price } }];
+        items = [checkoutCartLine({ productId: saleOffer.productId, optionId: saleOffer.optionId, quantity: saleQuantity,
+          blackFriday: { offerId: saleOffer.offerId, unitPrice: saleOffer.price } }, { ...saleOffer, id: saleOffer.productId }, salePayload)];
         cartOrder = false;
         if (!kakaopayEnabled && !bankTransferReady()) {
           paymentNotice.textContent = '현재 행사 결제를 이용할 수 없습니다. 잠시 후 다시 시도해 주세요.';
@@ -434,7 +477,8 @@ import { standardShippingFee } from './shipping-policy.js';
         field('recipientName').value = session.user.displayName || '';
         field('email').value = session.user.email || '';
       }
-      renderItems();
+      if (renderItems() === false) return;
+      if (submitButton.getAttribute('aria-busy') !== 'true') submitButton.disabled = false;
       showOnly(workspace);
       var requestedPayment = new URLSearchParams(location.search).get('payment');
       if (requestedPayment === 'kakaopay' && kakaopayEnabled) selectPayment('kakaopay', { focus: false });
