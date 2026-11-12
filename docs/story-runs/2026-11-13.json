@@ -8,14 +8,14 @@
     "edition": "morning",
     "waitedForSchedule": false
   },
-  "stage": "prepared",
+  "stage": "metadata-verified",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "publicationBaselineCommit": "d71f70f5a5047725fa8da8ccb4309861d7284062",
   "publicationBaselineEvidence": "backups/story-2026-11-13/baseline-deployment.json",
   "posts": [
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-buckle-replacement-width",
       "title": "백팩 버클, 끈 폭만 같으면 다른 부품도 맞을까",
       "url": "https://himawari.co.kr/story/backpack-buckle-replacement-width.html",
@@ -89,10 +89,19 @@
           "review": "공개 상품 원본을 직접 대조했습니다. 모델·색·형태·로고·포켓·손잡이와 끈을 확인하고 원본 전체의 비율을 보존했습니다.",
           "originalSource": "backups/story-2026-11-13/reference-1.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-12T23:29:05.504Z",
+        "modifiedAt": "2026-11-12T23:29:05.504Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-13/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-13/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-13/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-13/first-deployment-history.json",
+        "articleSha256": "10e4b1afcca416d41fbb8302b249f6b359173bdb62f2193d899df0605a27e49a"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "soft-backpack-packable-claim",
       "title": "부드러운 백팩이면 접어서 보조가방으로 가져가도 될까",
       "url": "https://himawari.co.kr/story/soft-backpack-packable-claim.html",
@@ -166,10 +175,19 @@
           "review": "공개 상품 원본을 직접 대조했습니다. 모델·색·형태·로고·포켓·손잡이와 끈을 확인하고 원본 전체의 비율을 보존했습니다.",
           "originalSource": "backups/story-2026-11-13/reference-2.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-12T23:29:05.504Z",
+        "modifiedAt": "2026-11-12T23:29:05.504Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-13/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-13/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-13/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-13/first-deployment-history.json",
+        "articleSha256": "443aef3cd9db2e9f12e44f977cc327d79e34c7411a7e6b39430b3f3bc4f158aa"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "grey-backpack-texture-or-mark",
       "title": "회색 백팩의 잔무늬, 얼룩으로 보기 전에 비교할 것",
       "url": "https://himawari.co.kr/story/grey-backpack-texture-or-mark.html",
@@ -243,7 +261,16 @@
           "review": "공개 상품 원본을 직접 대조했습니다. 모델·색·형태·로고·포켓·손잡이와 끈을 확인하고 원본 전체의 비율을 보존했습니다.",
           "originalSource": "backups/story-2026-11-13/reference-3.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-12T23:29:05.504Z",
+        "modifiedAt": "2026-11-12T23:29:05.504Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-13/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-13/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-13/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-13/first-deployment-history.json",
+        "articleSha256": "4301668b4f782f3bbf0669408eb53736580ab919be7d9daad6c241b51eba1aea"
+      }
     }
   ],
   "topicsReviewed": 200,
@@ -255,7 +282,7 @@
         "soft-backpack-packable-claim",
         "grey-backpack-texture-or-mark"
       ],
-      "stage": "prepared"
+      "stage": "metadata-verified"
     }
   }
 }

@@ -8,3 +8,5 @@
 - 두 한국어 윤문 스킬의 light 편집·독립 finalizer를 거쳤습니다. 의미·수치·서법 보존, 등급B·자체검증6/6입니다. blog→essay 대체 baseline의 쉼표 구간 길이 통계 경고는 editor-gates.json과 run별10_gate_after_finalize.json에 기록했으며 수치를 맞추려고 쉼표를 추가하지 않았습니다.
 - 준비 검증과 전체397개 테스트가 통과했습니다. Chrome1440/390px에서 세 글·사진9장·실제 제품 링크·목록·홈 최신 이야기·RSS, 가로 넘침과 브라우저 오류 없음, 직접 캡처 확인을 마쳤습니다. 스키마는 최초 공개 전 날짜만 사용합니다. 첫 콘텐츠 배포 이력, 실제 READY 발행시각, 메타데이터 배포, 운영 확인·receipt와 --published 성공까지 이어갑니다.
 - 다른 작업자의 AGENTS.md·DESIGN.md·STATE.md 및 Npay 후속 로그 등 변경은 함께 커밋하지 않습니다.
+- 첫 콘텐츠 커밋 `06b7a6f2f87c575f81bf660878911b4130447db4`의 실제 최초 운영 READY는 `2026-11-12T23:29:05.504Z`(11월13일08:29:05.504 KST)입니다. 원래 baseline READY부터 production 목록1페이지를 끝까지 보존했고 마지막 pagination.next는 제공자 응답에서 생략되어 있습니다. READY 후보 상세와 Git의 시각 없는 원본 목록·완전한 article3개 해시를 대조했습니다.
+- 첫 실제 READY로 publishedAt/modifiedAt을 고정하고 날짜별 스키마·RSS를 맞췄습니다. 준비 검증 metadata=verified와 구조화 데이터/발행 이력 회귀20개가 통과했습니다. 메타데이터 배포 뒤 운영 확인 전이므로 완료 알림은 보류합니다.
