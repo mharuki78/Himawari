@@ -7486,7 +7486,8 @@ function bindPasswordToggle(input, button) {
 // admin/product-csv.js
 var maxBytes = 2e6;
 var number = new Intl.NumberFormat("ko-KR");
-function bindProductCsv({ getEtag, canApply, onApplied, onSessionError }) {
+function bindProductCsv({ getEtag, getQuery = () => "", canApply, onApplied, onSessionError, onBusyChange = () => {
+} }) {
   const $2 = (selector) => document.querySelector(selector);
   const download = $2("[data-bulk-download]");
   const upload2 = $2("[data-bulk-upload]");
@@ -7506,6 +7507,7 @@ function bindProductCsv({ getEtag, canApply, onApplied, onSessionError }) {
   let generation = 0;
   function setBusy(value) {
     busy = value;
+    onBusyChange(value);
     download.disabled = value;
     upload2.disabled = value;
     fileInput.disabled = value;
@@ -7550,21 +7552,23 @@ function bindProductCsv({ getEtag, canApply, onApplied, onSessionError }) {
     }
     show();
   }
-  const display = (field2, value) => value === null ? field2 === "\uC7AC\uACE0\uC218\uB7C9" ? "\uC218\uB7C9 \uC81C\uD55C \uC5C6\uC74C" : "\uBBF8\uC124\uC815" : `${number.format(value)}${field2 === "\uD310\uB9E4\uAC00" ? "\uC6D0" : field2 === "\uB124\uC774\uBC84\uD560\uC778\uC728" ? "%" : "\uAC1C"}`;
+  const display = (field2, value) => field2 === "\uC81C\uD488\uBA85" ? String(value) : value === null ? field2 === "\uC7AC\uACE0\uC218\uB7C9" ? "\uC218\uB7C9 \uC81C\uD55C \uC5C6\uC74C" : "\uBBF8\uC124\uC815" : `${number.format(value)}${field2 === "\uD310\uB9E4\uAC00" ? "\uC6D0" : field2 === "\uB124\uC774\uBC84\uD560\uC778\uC728" ? "%" : "\uAC1C"}`;
   download.addEventListener("click", async () => {
     if (busy) return;
     setBusy(true);
     const boardStatus2 = $2("[data-board-status]");
-    boardStatus2.textContent = "\uAC00\uACA9\xB7\uC7AC\uACE0 CSV\uB97C \uC900\uBE44\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
+    boardStatus2.textContent = "\uC0C1\uD488\uBA85\xB7\uAC00\uACA9\xB7\uC7AC\uACE0 CSV\uB97C \uC900\uBE44\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
     try {
-      const payload = await fetchJson("/api/admin/products/bulk");
+      const query = getQuery();
+      const payload = await fetchJson(`/api/admin/products/bulk${query ? `?q=${encodeURIComponent(query)}` : ""}`);
+      if (!payload.items.length) throw new Error("\uAC80\uC0C9 \uACB0\uACFC\uAC00 \uC5C6\uC5B4 CSV\uB97C \uB9CC\uB4E4\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. \uAC80\uC0C9\uC5B4\uB97C \uBC14\uAFD4 \uC8FC\uC138\uC694.");
       const url = URL.createObjectURL(new Blob([payload.csv], { type: "text/csv;charset=utf-8" }));
       const link = document.createElement("a");
       link.href = url;
-      link.download = `himawari-price-stock-${new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Seoul" }).format(/* @__PURE__ */ new Date())}.csv`;
+      link.download = `himawari-products-${new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Seoul" }).format(/* @__PURE__ */ new Date())}.csv`;
       link.click();
       setTimeout(() => URL.revokeObjectURL(url), 1e3);
-      boardStatus2.textContent = "\uAC00\uACA9\xB7\uC7AC\uACE0 CSV\uB97C \uB0B4\uB824\uBC1B\uC558\uC2B5\uB2C8\uB2E4. \uC218\uC815 \uD6C4 CSV\uB85C \uC800\uC7A5\uD574 \uC62C\uB824 \uC8FC\uC138\uC694.";
+      boardStatus2.textContent = `${query ? "\uAC80\uC0C9 \uACB0\uACFC " : ""}${payload.items.length}\uAC1C \uC0C1\uD488\uC758 CSV\uB97C \uB0B4\uB824\uBC1B\uC558\uC2B5\uB2C8\uB2E4. \uC81C\uD488\uBA85\xB7\uAC00\uACA9\xB7\uC7AC\uACE0\uB97C \uC218\uC815 \uD6C4 CSV\uB85C \uC800\uC7A5\uD574 \uC62C\uB824 \uC8FC\uC138\uC694.`;
     } catch (error) {
       if (!onSessionError(error)) boardStatus2.textContent = error.message || "CSV\uB97C \uC900\uBE44\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
     } finally {
@@ -7604,6 +7608,7 @@ function bindProductCsv({ getEtag, canApply, onApplied, onSessionError }) {
       rows2.replaceChildren();
       for (const change of preview.changes) {
         const tr = document.createElement("tr");
+        if (change.field === "\uC81C\uD488\uBA85") tr.className = "csv-name-change";
         for (const value of [String(change.row), `${change.model} \xB7 ${change.name}${change.option ? ` / ${change.option}` : ""}`, change.field, display(change.field, change.before), display(change.field, change.after)]) {
           const td = document.createElement("td");
           td.textContent = value;
@@ -7627,12 +7632,12 @@ function bindProductCsv({ getEtag, canApply, onApplied, onSessionError }) {
     setBusy(true);
     try {
       if (!canApply()) throw new Error("\uC624\uB978\uCABD \uC81C\uD488 \uC591\uC2DD\uC758 \uBCC0\uACBD \uB0B4\uC6A9\uC744 \uC800\uC7A5\uD558\uAC70\uB098 \uCDE8\uC18C\uD55C \uB4A4 CSV\uB97C \uB2E4\uC2DC \uC62C\uB824 \uC8FC\uC138\uC694.");
-      status.textContent = "\uAC00\uACA9\xB7\uC7AC\uACE0\uB97C \uBC18\uC601\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4. \uC7A0\uC2DC \uAE30\uB2E4\uB824 \uC8FC\uC138\uC694.";
+      status.textContent = "\uBCC0\uACBD \uB0B4\uC6A9\uC744 \uBC18\uC601\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4. \uC7A0\uC2DC \uAE30\uB2E4\uB824 \uC8FC\uC138\uC694.";
       const result = await fetchJson("/api/admin/products/bulk", { method: "PUT", body: JSON.stringify({ csv: pending.csv, etag: pending.etag }) });
       pending = null;
       await onApplied();
       summary.textContent = `${result.updated}\uAC1C \uC81C\uD488 \uBC18\uC601 \uC644\uB8CC`;
-      status.textContent = "\uD310\uB9E4\uAC00\uC640 \uC7AC\uACE0\uB97C \uC800\uC7A5\uD588\uC2B5\uB2C8\uB2E4. \uC81C\uD488 \uBAA9\uB85D\uACFC \uC0C1\uC138\uD398\uC774\uC9C0\uC5D0 \uD568\uAED8 \uBC18\uC601\uB429\uB2C8\uB2E4.";
+      status.textContent = "\uBCC0\uACBD \uB0B4\uC6A9\uC744 \uC800\uC7A5\uD588\uC2B5\uB2C8\uB2E4. \uC0C1\uD488\uBA85\xB7\uAC00\uACA9\xB7\uC7AC\uACE0\uB294 \uC81C\uD488 \uBAA9\uB85D\uACFC \uC0C1\uC138\uD398\uC774\uC9C0\uC5D0 \uD568\uAED8 \uBC18\uC601\uB429\uB2C8\uB2E4.";
       status.classList.remove("is-error");
       apply.textContent = "\uBC18\uC601 \uC644\uB8CC";
       cancel.textContent = "\uB2EB\uAE30";
@@ -9384,6 +9389,10 @@ var errorRetryButton = $("[data-error-retry]");
 var loadMoreButton = $("[data-load-more]");
 var loadLabel = $("[data-load-label]");
 var listTitle = $("#product-list-title");
+var searchForm = $("[data-product-search]");
+var searchInput = $("[data-product-search-input]");
+var searchSubmit = $("[data-product-search-submit]");
+var searchReset = $("[data-product-search-reset]");
 var productForm = $("[data-product-form]");
 var specEditor = createSpecEditor(productForm);
 var formSummary = $("[data-form-summary]");
@@ -9442,10 +9451,12 @@ var fieldNames = ["name", "model", "price", "naverDiscountRate", "tagline", "des
 var csvController;
 var products = [];
 var total = 0;
+var catalogTotal = 0;
 var cursor = null;
 var hasMore = false;
 var catalogEtag = null;
 var loadingList = false;
+var searchQuery = "";
 var listController = null;
 var deleteTarget = null;
 var requestId = crypto.randomUUID();
@@ -9949,11 +9960,13 @@ function renderRows() {
   emptyState.hidden = products.length !== 0 || loadingList;
   listError.hidden = true;
   loadMoreButton.hidden = !hasMore || products.length === 0;
-  productTotal.textContent = String(total);
+  productTotal.textContent = String(catalogTotal);
 }
 async function loadProducts({ reset = false, initial = false } = {}) {
   if (loadingList) return;
   loadingList = true;
+  searchSubmit.disabled = true;
+  searchReset.disabled = true;
   listController?.abort();
   listController = new AbortController();
   const nextCursor = reset ? "" : cursor || "";
@@ -9964,11 +9977,14 @@ async function loadProducts({ reset = false, initial = false } = {}) {
   loadLabel.textContent = "\uC81C\uD488 \uBD88\uB7EC\uC624\uB294 \uC911";
   if (!initial) boardStatus.textContent = reset ? "\uC81C\uD488 \uBAA9\uB85D\uC744 \uC0C8\uB85C \uBD88\uB7EC\uC624\uACE0 \uC788\uC2B5\uB2C8\uB2E4." : "\uC81C\uD488\uC744 \uB354 \uBD88\uB7EC\uC624\uACE0 \uC788\uC2B5\uB2C8\uB2E4.";
   try {
-    const query = nextCursor ? `?cursor=${encodeURIComponent(nextCursor)}` : "";
-    const payload = await fetchJson(`/api/admin/products${query}`, { signal: listController.signal });
+    const query = new URLSearchParams();
+    if (nextCursor) query.set("cursor", nextCursor);
+    if (searchQuery) query.set("q", searchQuery);
+    const payload = await fetchJson(`/api/admin/products?${query}`, { signal: listController.signal });
     if (reset) products = [];
     products = [...products, ...payload.items.filter((item) => !products.some((current) => current.id === item.id))];
     total = payload.total;
+    catalogTotal = payload.catalogTotal ?? payload.total;
     cursor = payload.nextCursor;
     hasMore = payload.hasMore;
     catalogEtag = payload.etag;
@@ -9985,7 +10001,9 @@ async function loadProducts({ reset = false, initial = false } = {}) {
     });
     showBoard();
     renderRows();
-    boardStatus.textContent = total ? `${total}\uAC1C \uC81C\uD488 \uC911 ${products.length}\uAC1C\uB97C \uBD88\uB7EC\uC654\uC2B5\uB2C8\uB2E4.` : "\uB4F1\uB85D\uB41C \uC81C\uD488\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.";
+    $("[data-bulk-download]").textContent = searchQuery ? "\uAC80\uC0C9 \uACB0\uACFC CSV \uBC1B\uAE30" : "\uC0C1\uD488\uBA85\xB7\uAC00\uACA9\xB7\uC7AC\uACE0 CSV \uBC1B\uAE30";
+    boardStatus.textContent = total ? `${searchQuery ? `\u2018${searchQuery}\u2019 \uAC80\uC0C9 \uACB0\uACFC \xB7 ` : ""}${total}\uAC1C \uC81C\uD488 \uC911 ${products.length}\uAC1C\uB97C \uBD88\uB7EC\uC654\uC2B5\uB2C8\uB2E4.` : searchQuery ? "\uAC80\uC0C9 \uACB0\uACFC\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4. \uB2E4\uB978 \uD488\uBC88\uC774\uB098 \uC0C1\uD488\uBA85\uC73C\uB85C \uAC80\uC0C9\uD574 \uC8FC\uC138\uC694." : "\uB4F1\uB85D\uB41C \uC81C\uD488\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.";
+    emptyState.textContent = searchQuery ? "\uC77C\uCE58\uD558\uB294 \uC81C\uD488\uC774 \uC5C6\uC2B5\uB2C8\uB2E4. \uAC80\uC0C9\uC5B4\uB97C \uBC14\uAFB8\uAC70\uB098 \uC804\uCCB4 \uBCF4\uAE30\uB97C \uB20C\uB7EC \uC8FC\uC138\uC694." : "\uB4F1\uB85D\uB41C \uC81C\uD488\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.";
   } catch (error) {
     if (error.name === "AbortError") return;
     if (handleSessionError(error)) return;
@@ -9998,6 +10016,8 @@ async function loadProducts({ reset = false, initial = false } = {}) {
     boardStatus.textContent = error.message || "\uC81C\uD488 \uBAA9\uB85D\uC744 \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.";
   } finally {
     loadingList = false;
+    searchSubmit.disabled = false;
+    searchReset.disabled = false;
     retryButton.disabled = false;
     retryButton.removeAttribute("aria-busy");
     loadMoreButton.disabled = false;
@@ -10100,14 +10120,33 @@ logoutButton.addEventListener("click", async () => {
 retryButton.addEventListener("click", () => loadProducts({ reset: true }));
 errorRetryButton.addEventListener("click", () => loadProducts({ reset: true }));
 loadMoreButton.addEventListener("click", () => loadProducts());
+searchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (loadingList) return;
+  searchQuery = searchInput.value.trim();
+  csvController.clear();
+  void loadProducts({ reset: true });
+});
+searchReset.addEventListener("click", () => {
+  if (loadingList) return;
+  searchQuery = "";
+  searchInput.value = "";
+  csvController.clear();
+  void loadProducts({ reset: true });
+});
 csvController = bindProductCsv({
   getEtag: () => catalogEtag,
+  getQuery: () => searchQuery,
   canApply: () => !dirty && !uploadController,
   onApplied: async () => {
     if (!dirty) await resetDraft({ cleanup: true });
     await loadProducts({ reset: true });
   },
-  onSessionError: handleSessionError
+  onSessionError: handleSessionError,
+  onBusyChange: (busy) => {
+    searchSubmit.disabled = busy || loadingList;
+    searchReset.disabled = busy || loadingList;
+  }
 });
 productForm.addEventListener("input", (event) => {
   dirty = true;

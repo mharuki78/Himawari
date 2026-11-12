@@ -4,6 +4,7 @@ import { normalizeBlobEtag, publicProduct, validateProductUpdateInput, updatePro
 export const MAX_PRODUCT_CSV_BYTES = 2_000_000;
 const columns = ['제품ID', '모델명', '제품명', '옵션ID', '옵션값', '판매가', '재고수량', '네이버할인율', '카탈로그버전'];
 const version = (etag) => normalizeBlobEtag(etag) || 'initial';
+const formulaPrefix = /^[\s]*[=+\-@]|^[\t\r\n]/;
 
 export class ProductCsvError extends Error {
   constructor(message, status = 400, fieldErrors = {}) {
@@ -20,7 +21,7 @@ export function exportProductCsv(products, etag) {
       option ? option.stock : (product.stock ?? ''), product.naverDiscountRate ?? '', version(etag)]);
   });
   return '\ufeff' + Papa.unparse({ fields: columns, data }, {
-    newline: '\r\n', escapeFormulae: /^[\s]*[=+\-@]|^[\t\r\n]/,
+    newline: '\r\n', escapeFormulae: formulaPrefix,
   });
 }
 
@@ -48,7 +49,7 @@ export function planProductCsv(csv, products, etag, fallbackEtag) {
   if (new Set(header).size !== header.length) throw new ProductCsvError('CSV에 같은 이름의 열이 중복되어 있습니다.');
   const modern = header.includes('제품ID');
   const names = modern
-    ? { id: '제품ID', option: '옵션ID', price: '판매가', stock: '재고수량', discount: '네이버할인율', version: '카탈로그버전' }
+    ? { id: '제품ID', name: '제품명', option: '옵션ID', price: '판매가', stock: '재고수량', discount: '네이버할인율', version: '카탈로그버전' }
     : { id: 'id', options: 'options(label=stock|...)', price: header.includes('naverPrice') ? 'naverPrice' : 'price', stock: 'stock', discount: 'naverDiscountRate' };
   const required = modern ? [names.id, names.option, names.price, names.stock, names.discount, names.version] : [names.id, names.stock, names.options];
   if (required.some((name) => !header.includes(name))) throw new ProductCsvError('이 화면에서 내려받은 가격·재고 CSV를 사용해 주세요. 필수 열이 없습니다.');
@@ -80,6 +81,17 @@ export function planProductCsv(csv, products, etag, fallbackEtag) {
     if (seen.has(key)) { error('중복', modern ? '같은 제품·옵션이 두 번 들어 있습니다.' : '같은 제품이 두 번 들어 있습니다.'); continue; }
     seen.add(key);
     const patch = patches.get(id) || { id, row, optionStocks: new Map(), optionRows: new Map() };
+    if (modern && header.includes(names.name)) {
+      const text = get(names.name);
+      // Papa escapes formula-like names for spreadsheets. Only undo that exact
+      // unchanged export value; a newly typed apostrophe is part of the name.
+      const exportedName = formulaPrefix.test(product.name) ? `'${product.name}` : product.name;
+      const unchangedEscapedName = text.startsWith("'") && formulaPrefix.test(text.slice(1))
+        && text.slice(1).replace(/\s+/g, ' ').trim() === product.name;
+      const name = !text || text === exportedName || unchangedEscapedName ? product.name : text;
+      if (patch.name !== undefined && patch.name !== name) error('제품명', '같은 제품의 모든 옵션 행에 제품명을 동일하게 입력해 주세요.');
+      patch.name = name;
+    }
     const price = integer(get(names.price), { blank: product.naverPrice, min: 1, max: 10_000_000 });
     const discount = header.includes(names.discount) ? integer(get(names.discount), { max: 99 }) : product.naverDiscountRate;
     if (!Number.isFinite(price)) error('판매가', '1~10,000,000 사이의 정수를 입력해 주세요.');
@@ -144,6 +156,7 @@ export function planBulkProducts(products, updates) {
     }
     const candidate = {
       ...publicProduct(product), options,
+      name: patch.name === undefined ? product.name : patch.name,
       naverPrice: patch.naverPrice === undefined && patch.price === undefined ? product.naverPrice : integer(patch.naverPrice ?? patch.price, { blank: NaN, min: 1, max: 10_000_000 }),
       stock: patch.stock === undefined ? product.stock : integer(patch.stock),
       naverDiscountRate: patch.naverDiscountRate === undefined ? product.naverDiscountRate : integer(patch.naverDiscountRate, { max: 99 }),
@@ -160,6 +173,7 @@ export function planBulkProducts(products, updates) {
       changedIds.add(product.id);
       changes.push({ row, id: product.id, name: product.name, model: product.model, option, field, before, after });
     };
+    addChange('제품명', product.name, updated.name);
     addChange('판매가', product.naverPrice, updated.naverPrice);
     addChange('네이버할인율', product.naverDiscountRate ?? null, updated.naverDiscountRate);
     if (options.length) for (const option of product.options) addChange('재고수량', option.stock, updated.options.find((item) => item.id === option.id).stock, option.label, patch.optionRows?.get(option.id) || patch.row);

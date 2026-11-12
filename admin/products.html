@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="console-layout.css?v=20261008">
-    <link rel="stylesheet" href="product-csv.css?v=20261111">
-    <script src="product-admin.js?v=20261111-csv" type="module"></script>
+    <link rel="stylesheet" href="product-csv.css?v=20261112-names">
+    <script src="product-admin.js?v=20261112-names" type="module"></script>
   </head>
   <body>
     <a class="skip-link" href="#admin-main">본문으로 바로가기</a>
@@ -78,27 +78,32 @@
           <section class="product-register" aria-labelledby="product-list-title">
             <div class="inquiry-list__head">
               <h2 id="product-list-title" tabindex="-1">제품 목록</h2>
-              <div class="bulk-product-actions"><button class="button button--quiet" type="button" data-bulk-download>가격·재고 CSV 받기</button><button class="button button--quiet" type="button" data-bulk-upload>수정한 CSV 올리기</button><input id="bulk-product-file" type="file" accept=".csv,text/csv" data-bulk-file hidden><button class="button button--quiet" type="button" data-retry>새로고침</button></div>
+              <div class="bulk-product-actions"><button class="button button--quiet" type="button" data-bulk-download>상품명·가격·재고 CSV 받기</button><button class="button button--quiet" type="button" data-bulk-upload>수정한 CSV 올리기</button><input id="bulk-product-file" type="file" accept=".csv,text/csv" data-bulk-file hidden><button class="button button--quiet" type="button" data-retry>새로고침</button></div>
             </div>
+            <form class="product-search" data-product-search role="search" aria-label="관리 제품 검색">
+              <label for="product-search">품번·상품명 검색</label>
+              <div class="product-search__controls"><input id="product-search" type="search" name="q" maxlength="160" placeholder="예: 1027, 1088M, 실버" data-product-search-input><button class="button" type="submit" data-product-search-submit>검색</button><button class="button button--quiet" type="button" data-product-search-reset>전체 보기</button></div>
+              <p>품번으로 검색한 뒤 검색 결과 CSV를 받으면, 해당 상품들의 이름·가격·재고를 한꺼번에 수정할 수 있습니다.</p>
+            </form>
             <details class="field-help bulk-product-help">
-              <summary>CSV 수정 방법 · 판매가와 재고를 한 번에 관리하세요</summary>
+              <summary>CSV 수정 방법 · 상품명·가격·재고를 한 번에 관리하세요</summary>
               <ul>
-                <li>CSV를 내려받아 <strong>판매가·재고수량·네이버할인율</strong>을 수정하고 CSV로 저장해 올려 주세요. 업로드 후 변경 내용을 확인하고 반영합니다.</li>
+                <li>CSV를 내려받아 <strong>제품명·판매가·재고수량·네이버할인율</strong>을 수정하고 CSV로 저장해 올려 주세요. 업로드 후 변경 내용을 확인하고 반영합니다. 검색 중에는 화면에 아직 불러오지 않은 상품까지 검색 결과 전체가 포함됩니다.</li>
                 <li>재고 0은 품절입니다. 옵션이 없는 제품의 빈 재고 칸은 수량 제한 없음이며, 옵션 재고에는 숫자가 필요합니다.</li>
-                <li>판매가 빈칸은 기존 가격을 유지합니다. 네이버할인율 빈칸은 할인율 미설정입니다.</li>
-                <li>옵션은 한 줄씩 표시됩니다. 같은 제품의 옵션 행에는 판매가와 할인율을 같게 입력해 주세요.</li>
-                <li>제품ID·옵션ID·카탈로그버전은 수정하지 마세요. 모델명·제품명·옵션값은 확인용이며 변경되지 않습니다. 필요한 제품 행만 남겨 올려도 됩니다.</li>
+                <li>제품명과 판매가 빈칸은 기존 값을 유지합니다. 네이버할인율 빈칸은 할인율 미설정입니다.</li>
+                <li>옵션은 한 줄씩 표시됩니다. 같은 제품의 옵션 행에는 제품명·판매가·할인율을 같게 입력해 주세요.</li>
+                <li>제품ID·옵션ID·카탈로그버전은 수정하지 마세요. 모델명·옵션값은 확인용이며 변경되지 않습니다. 필요한 제품 행만 남겨 올려도 됩니다.</li>
               </ul>
               <p>재고는 관리자에 등록한 수량 기준입니다. 주문으로 확보된 수량은 판매 가능 재고에서 자동으로 제외됩니다. 한 번에 최대 500개 제품 · 2MB까지 가능합니다.</p>
             </details>
             <section class="csv-preview" data-csv-preview aria-labelledby="csv-preview-title" hidden>
-              <h3 id="csv-preview-title" tabindex="-1" data-csv-title>가격·재고 변경 확인</h3>
+              <h3 id="csv-preview-title" tabindex="-1" data-csv-title>상품명·가격·재고 변경 확인</h3>
               <p class="csv-preview__summary" data-csv-summary></p>
               <p class="csv-preview__status" data-csv-status role="status" aria-live="polite"></p>
               <ul class="csv-preview__errors" data-csv-errors></ul>
               <div class="csv-preview__table-wrap" data-csv-table-wrap tabindex="0" role="region" aria-label="CSV 변경 항목, 가로로 스크롤할 수 있습니다">
                 <table class="csv-table csv-table-sm csv-table-pin-rows">
-                  <caption class="sr-only">CSV의 변경 전과 변경 후 가격·재고</caption>
+                  <caption class="sr-only">CSV의 변경 전과 변경 후 상품명·가격·재고</caption>
                   <thead><tr><th scope="col">CSV 행</th><th scope="col">제품 / 옵션</th><th scope="col">항목</th><th scope="col">현재</th><th scope="col">변경 후</th></tr></thead>
                   <tbody data-csv-rows></tbody>
                 </table>

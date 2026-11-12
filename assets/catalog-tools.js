@@ -41,7 +41,10 @@ export function productFamilyKey(product) {
 
 export function productColor(product) {
   const text = `${product?.name || ''} ${product?.model || ''}`;
-  return COLOR_WORDS.find((color) => text.includes(color)) || '';
+  // Some Smart Store listings use one title for several colours. Existing
+  // imported taglines retain each variant's colour when the title is renamed.
+  return COLOR_WORDS.find((color) => text.includes(color))
+    || COLOR_WORDS.find((color) => String(product?.tagline || '').includes(color)) || '';
 }
 
 export function productVariantLabel(product) {

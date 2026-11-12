@@ -4,7 +4,7 @@ import { fetchJson } from './admin-client.js';
 const maxBytes = 2_000_000;
 const number = new Intl.NumberFormat('ko-KR');
 
-export function bindProductCsv({ getEtag, canApply, onApplied, onSessionError }) {
+export function bindProductCsv({ getEtag, getQuery = () => '', canApply, onApplied, onSessionError, onBusyChange = () => {} }) {
   const $ = (selector) => document.querySelector(selector);
   const download = $('[data-bulk-download]');
   const upload = $('[data-bulk-upload]');
@@ -25,6 +25,7 @@ export function bindProductCsv({ getEtag, canApply, onApplied, onSessionError })
 
   function setBusy(value) {
     busy = value;
+    onBusyChange(value);
     download.disabled = value;
     upload.disabled = value;
     fileInput.disabled = value;
@@ -69,23 +70,25 @@ export function bindProductCsv({ getEtag, canApply, onApplied, onSessionError })
     }
     show();
   }
-  const display = (field, value) => value === null ? (field === '재고수량' ? '수량 제한 없음' : '미설정')
+  const display = (field, value) => field === '제품명' ? String(value) : value === null ? (field === '재고수량' ? '수량 제한 없음' : '미설정')
     : `${number.format(value)}${field === '판매가' ? '원' : field === '네이버할인율' ? '%' : '개'}`;
 
   download.addEventListener('click', async () => {
     if (busy) return;
     setBusy(true);
     const boardStatus = $('[data-board-status]');
-    boardStatus.textContent = '가격·재고 CSV를 준비하고 있습니다.';
+    boardStatus.textContent = '상품명·가격·재고 CSV를 준비하고 있습니다.';
     try {
-      const payload = await fetchJson('/api/admin/products/bulk');
+      const query = getQuery();
+      const payload = await fetchJson(`/api/admin/products/bulk${query ? `?q=${encodeURIComponent(query)}` : ''}`);
+      if (!payload.items.length) throw new Error('검색 결과가 없어 CSV를 만들지 못했습니다. 검색어를 바꿔 주세요.');
       const url = URL.createObjectURL(new Blob([payload.csv], { type: 'text/csv;charset=utf-8' }));
       const link = document.createElement('a');
       link.href = url;
-      link.download = `himawari-price-stock-${new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Seoul' }).format(new Date())}.csv`;
+      link.download = `himawari-products-${new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Seoul' }).format(new Date())}.csv`;
       link.click();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
-      boardStatus.textContent = '가격·재고 CSV를 내려받았습니다. 수정 후 CSV로 저장해 올려 주세요.';
+      boardStatus.textContent = `${query ? '검색 결과 ' : ''}${payload.items.length}개 상품의 CSV를 내려받았습니다. 제품명·가격·재고를 수정 후 CSV로 저장해 올려 주세요.`;
     } catch (error) { if (!onSessionError(error)) boardStatus.textContent = error.message || 'CSV를 준비하지 못했습니다.'; }
     finally { setBusy(false); }
   });
@@ -114,6 +117,7 @@ export function bindProductCsv({ getEtag, canApply, onApplied, onSessionError })
       rows.replaceChildren();
       for (const change of preview.changes) {
         const tr = document.createElement('tr');
+        if (change.field === '제품명') tr.className = 'csv-name-change';
         for (const value of [String(change.row), `${change.model} · ${change.name}${change.option ? ` / ${change.option}` : ''}`, change.field, display(change.field, change.before), display(change.field, change.after)]) {
           const td = document.createElement('td');
           td.textContent = value;
@@ -131,12 +135,12 @@ export function bindProductCsv({ getEtag, canApply, onApplied, onSessionError })
     setBusy(true);
     try {
       if (!canApply()) throw new Error('오른쪽 제품 양식의 변경 내용을 저장하거나 취소한 뒤 CSV를 다시 올려 주세요.');
-      status.textContent = '가격·재고를 반영하고 있습니다. 잠시 기다려 주세요.';
+      status.textContent = '변경 내용을 반영하고 있습니다. 잠시 기다려 주세요.';
       const result = await fetchJson('/api/admin/products/bulk', { method: 'PUT', body: JSON.stringify({ csv: pending.csv, etag: pending.etag }) });
       pending = null;
       await onApplied();
       summary.textContent = `${result.updated}개 제품 반영 완료`;
-      status.textContent = '판매가와 재고를 저장했습니다. 제품 목록과 상세페이지에 함께 반영됩니다.';
+      status.textContent = '변경 내용을 저장했습니다. 상품명·가격·재고는 제품 목록과 상세페이지에 함께 반영됩니다.';
       status.classList.remove('is-error');
       apply.textContent = '반영 완료';
       cancel.textContent = '닫기';

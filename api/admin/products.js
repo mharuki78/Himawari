@@ -27,6 +27,7 @@ import { blackFridayState, readBlackFridayAdmin, saveBlackFriday } from '../_lib
 import { ensureOrderSchema } from '../_lib/orders.js';
 import { databaseIsConfigured } from '../_lib/database.js';
 import { exportProductCsv, planProductCsv, planBulkProducts } from '../_lib/product-csv.js';
+import { filterAdminProducts } from '../_lib/admin-product-search.js';
 import { listAdminReviews, moderateReview, notifyRestockSubscribers, publishedReviewCounts } from '../_lib/customer-features.js';
 import { changeMemberStatus, listMembers } from '../_lib/admin-members.js';
 import {
@@ -192,11 +193,16 @@ async function fetchBulkProducts(request) {
   if (!isAdminRequest(request)) return json({ message: '관리자 로그인이 필요합니다.' }, 401, { Vary: 'Cookie' });
   try {
     const current = await readProductCatalog();
-    if (request.method === 'GET') return json({
-      etag: current.etag,
-      csv: exportProductCsv(current.catalog.products, current.etag),
-      items: current.catalog.products.map((product) => ({ id: product.id, model: product.model, name: product.name, naverPrice: product.naverPrice, stock: product.stock, optionName: product.optionName || '', options: product.options || [], naverDiscountRate: product.naverDiscountRate })),
-    }, 200, { Vary: 'Cookie' });
+    if (request.method === 'GET') {
+      const query = (new URL(request.url).searchParams.get('q') || '').trim().slice(0, 160);
+      const products = filterAdminProducts(current.catalog.products, query);
+      return json({
+        etag: current.etag,
+        csv: exportProductCsv(products, current.etag),
+        query,
+        items: products.map((product) => ({ id: product.id, model: product.model, name: product.name, naverPrice: product.naverPrice, stock: product.stock, optionName: product.optionName || '', options: product.options || [], naverDiscountRate: product.naverDiscountRate })),
+      }, 200, { Vary: 'Cookie' });
+    }
     if (!isSameOrigin(request)) return json({ message: '요청 출처를 확인할 수 없습니다.' }, 403);
     const input = await readJson(request, 4_200_000);
     if (!input || typeof input !== 'object' || Array.isArray(input)) return json({ message: 'CSV 요청 형식을 확인해 주세요.' }, 400);
@@ -231,20 +237,23 @@ async function handleRequest(request) {
       const offset = parseCursor(new URL(request.url).searchParams.get('cursor') || '');
       if (offset < 0) return json({ message: '목록 위치 값이 올바르지 않습니다.' }, 400);
       const { catalog, etag } = await readProductCatalog();
-      const ordered = catalog.products.slice().sort((first, second) => {
+      const query = (new URL(request.url).searchParams.get('q') || '').trim().slice(0, 160);
+      const ordered = filterAdminProducts(catalog.products, query).slice().sort((first, second) => {
         const firstDate = first.createdAt || '';
         const secondDate = second.createdAt || '';
         return secondDate.localeCompare(firstDate);
       });
       const items = ordered.slice(offset, offset + PAGE_SIZE).map(publicProduct);
       const readiness = {
-        inventoryMissing: ordered.filter((product) => product.stock === null && !(Array.isArray(product.options) && product.options.length)).length,
-        discountMissing: ordered.filter((product) => product.naverDiscountRate === null || product.naverDiscountRate === undefined).length,
-        highlightsMissing: ordered.filter((product) => !Array.isArray(product.highlights) || product.highlights.length < 2).length,
+        inventoryMissing: catalog.products.filter((product) => product.stock === null && !(Array.isArray(product.options) && product.options.length)).length,
+        discountMissing: catalog.products.filter((product) => product.naverDiscountRate === null || product.naverDiscountRate === undefined).length,
+        highlightsMissing: catalog.products.filter((product) => !Array.isArray(product.highlights) || product.highlights.length < 2).length,
       };
       const nextOffset = offset + items.length;
       return json({
         items,
+        query,
+        catalogTotal: catalog.products.length,
         total: ordered.length,
         hasMore: nextOffset < ordered.length,
         nextCursor: nextOffset < ordered.length ? String(nextOffset) : null,

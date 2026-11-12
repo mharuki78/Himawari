@@ -31,6 +31,7 @@
 .csv-preview .csv-table td, .csv-preview .csv-table th { padding: .65rem .75rem; border-bottom: 1px solid var(--fog); }
 .csv-preview .csv-table td:nth-child(2) { min-width: 200px; white-space: normal; overflow-wrap: anywhere; }
 .csv-preview .csv-table td:nth-child(n+4) { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.csv-preview .csv-table .csv-name-change td:nth-child(n+4) { min-width: 220px; max-width: 340px; white-space: normal; overflow-wrap: anywhere; }
 .csv-preview .csv-table td:last-child { font-weight: 750; color: var(--deep-wave); }
 .csv-preview__actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1rem; }
 .csv-preview__actions .button { min-height: 44px; }
@@ -38,6 +39,12 @@
 .csv-preview__apply:disabled { opacity: .55; cursor: default; }
 .bulk-product-help ul { margin: .35rem 0; padding-left: 1.1rem; }
 .bulk-product-help p { margin: .4rem 0; }
+.product-search { margin: 1rem 0; }
+.product-search label { display: block; margin-bottom: .5rem; font-size: .85rem; font-weight: 700; }
+.product-search__controls { display: flex; flex-wrap: wrap; gap: .5rem; }
+.product-search input { flex: 1 1 180px; min-width: 0; min-height: 44px; padding: .65rem .8rem; border: 1px solid var(--fog); border-radius: 8px; background: var(--snow); color: var(--ink); font: inherit; }
+.product-search .button { min-height: 44px; }
+.product-search p { margin: .5rem 0 0; font-size: .78rem; line-height: 1.7; color: var(--muted); }
 @media (max-width: 600px) {
   .csv-preview { padding: .85rem; }
   .csv-preview__actions .button { flex: 1; }

@@ -42,10 +42,10 @@ test('price, stock zero, discount and partial option rows update existing produc
   assert.equal(optioned.options[0].stock, 12);
 });
 
-test('reordering option rows and editing display labels does not reassign IDs or product names', () => {
+test('reordering option rows and editing display labels does not reassign IDs', () => {
   const plan = planProductCsv(editCsv((rows) => {
     rows.splice(1, 1); rows.splice(1, 2, rows[2], rows[1]);
-    rows[1][2] = '표시 이름 수정'; rows[1][4] = '표시 옵션 수정'; rows[1][6] = '2';
+    rows[1][4] = '표시 옵션 수정'; rows[1][6] = '2';
   }), products, etag);
   const updated = plan.products[1];
   assert.equal(updated.name, optioned.name);
@@ -53,6 +53,39 @@ test('reordering option rows and editing display labels does not reassign IDs or
   assert.equal(updated.options[1].stock, 2);
   assert.equal(updated.options[0].stock, 12);
   assert.equal(plan.changes[0].row, 2);
+});
+
+test('product names can be changed together while retaining prices, inventory, variants and images', () => {
+  const plan = planProductCsv(editCsv(rows => {
+    rows[1][2] = '히마와리 메탈릭 미니 백팩 No.0514 실버';
+    rows[2][2] = rows[3][2] = '히마와리 컬러 백팩 No.1027';
+  }), products, etag);
+  assert.equal(plan.updated, 2);
+  assert.deepEqual(plan.changes.map(change => change.field), ['제품명', '제품명']);
+  for (const [i, item] of plan.products.entries()) {
+    assert.equal(item.id, products[i].id);
+    assert.equal(item.model, products[i].model);
+    assert.equal(item.naverPrice, products[i].naverPrice);
+    assert.equal(item.stock, products[i].stock);
+    assert.deepEqual(item.options, products[i].options);
+    assert.equal(item.image, products[i].image);
+  }
+});
+
+test('conflicting option-row names or invalid names reject the entire batch', () => {
+  for (const mutate of [
+    rows => { rows[2][2] = '다른 제품명'; },
+    rows => { rows[1][2] = '가'; },
+    rows => { rows[1][2] = '가'.repeat(161); },
+  ]) assert.throws(() => planProductCsv(editCsv(mutate), products, etag), { status: 400 });
+  assert.equal(products[1].name, optioned.name);
+});
+
+test('unchanged formula-escaped names round trip and newly entered names remain literal', () => {
+  const catalog = [normalizeProduct({ ...simple, name: '=실버 백팩' })];
+  assert.equal(planProductCsv(exportProductCsv(catalog, etag), catalog, etag).updated, 0);
+  const changed = planProductCsv(editCsv(rows => { rows[1][2] = "'새 제품명"; }, catalog), catalog, etag);
+  assert.equal(changed.products[0].name, "'새 제품명");
 });
 
 test('stale or mixed catalog versions are rejected even when the page has a fresh etag', () => {

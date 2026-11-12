@@ -29,6 +29,10 @@ const errorRetryButton = $('[data-error-retry]');
 const loadMoreButton = $('[data-load-more]');
 const loadLabel = $('[data-load-label]');
 const listTitle = $('#product-list-title');
+const searchForm = $('[data-product-search]');
+const searchInput = $('[data-product-search-input]');
+const searchSubmit = $('[data-product-search-submit]');
+const searchReset = $('[data-product-search-reset]');
 const productForm = $('[data-product-form]');
 const specEditor = createSpecEditor(productForm);
 const formSummary = $('[data-form-summary]');
@@ -89,10 +93,12 @@ const fieldNames = ['name', 'model', 'price', 'naverDiscountRate', 'tagline', 'd
 let csvController;
 let products = [];
 let total = 0;
+let catalogTotal = 0;
 let cursor = null;
 let hasMore = false;
 let catalogEtag = null;
 let loadingList = false;
+let searchQuery = '';
 let listController = null;
 let deleteTarget = null;
 let requestId = crypto.randomUUID();
@@ -638,12 +644,14 @@ function renderRows() {
   emptyState.hidden = products.length !== 0 || loadingList;
   listError.hidden = true;
   loadMoreButton.hidden = !hasMore || products.length === 0;
-  productTotal.textContent = String(total);
+  productTotal.textContent = String(catalogTotal);
 }
 
 async function loadProducts({ reset = false, initial = false } = {}) {
   if (loadingList) return;
   loadingList = true;
+  searchSubmit.disabled = true;
+  searchReset.disabled = true;
   listController?.abort();
   listController = new AbortController();
   const nextCursor = reset ? '' : cursor || '';
@@ -655,11 +663,14 @@ async function loadProducts({ reset = false, initial = false } = {}) {
   if (!initial) boardStatus.textContent = reset ? '제품 목록을 새로 불러오고 있습니다.' : '제품을 더 불러오고 있습니다.';
 
   try {
-    const query = nextCursor ? `?cursor=${encodeURIComponent(nextCursor)}` : '';
-    const payload = await fetchJson(`/api/admin/products${query}`, { signal: listController.signal });
+    const query = new URLSearchParams();
+    if (nextCursor) query.set('cursor', nextCursor);
+    if (searchQuery) query.set('q', searchQuery);
+    const payload = await fetchJson(`/api/admin/products?${query}`, { signal: listController.signal });
     if (reset) products = [];
     products = [...products, ...payload.items.filter((item) => !products.some((current) => current.id === item.id))];
     total = payload.total;
+    catalogTotal = payload.catalogTotal ?? payload.total;
     cursor = payload.nextCursor;
     hasMore = payload.hasMore;
     catalogEtag = payload.etag;
@@ -671,7 +682,11 @@ async function loadProducts({ reset = false, initial = false } = {}) {
     });
     showBoard();
     renderRows();
-    boardStatus.textContent = total ? `${total}개 제품 중 ${products.length}개를 불러왔습니다.` : '등록된 제품이 없습니다.';
+    $('[data-bulk-download]').textContent = searchQuery ? '검색 결과 CSV 받기' : '상품명·가격·재고 CSV 받기';
+    boardStatus.textContent = total
+      ? `${searchQuery ? `‘${searchQuery}’ 검색 결과 · ` : ''}${total}개 제품 중 ${products.length}개를 불러왔습니다.`
+      : searchQuery ? '검색 결과가 없습니다. 다른 품번이나 상품명으로 검색해 주세요.' : '등록된 제품이 없습니다.';
+    emptyState.textContent = searchQuery ? '일치하는 제품이 없습니다. 검색어를 바꾸거나 전체 보기를 눌러 주세요.' : '등록된 제품이 없습니다.';
   } catch (error) {
     if (error.name === 'AbortError') return;
     if (handleSessionError(error)) return;
@@ -684,6 +699,8 @@ async function loadProducts({ reset = false, initial = false } = {}) {
     boardStatus.textContent = error.message || '제품 목록을 불러오지 못했습니다.';
   } finally {
     loadingList = false;
+    searchSubmit.disabled = false;
+    searchReset.disabled = false;
     retryButton.disabled = false;
     retryButton.removeAttribute('aria-busy');
     loadMoreButton.disabled = false;
@@ -793,15 +810,34 @@ logoutButton.addEventListener('click', async () => {
 retryButton.addEventListener('click', () => loadProducts({ reset: true }));
 errorRetryButton.addEventListener('click', () => loadProducts({ reset: true }));
 loadMoreButton.addEventListener('click', () => loadProducts());
+searchForm.addEventListener('submit', event => {
+  event.preventDefault();
+  if (loadingList) return;
+  searchQuery = searchInput.value.trim();
+  csvController.clear();
+  void loadProducts({ reset: true });
+});
+searchReset.addEventListener('click', () => {
+  if (loadingList) return;
+  searchQuery = '';
+  searchInput.value = '';
+  csvController.clear();
+  void loadProducts({ reset: true });
+});
 
 csvController = bindProductCsv({
   getEtag: () => catalogEtag,
+  getQuery: () => searchQuery,
   canApply: () => !dirty && !uploadController,
   onApplied: async () => {
     if (!dirty) await resetDraft({ cleanup: true });
     await loadProducts({ reset: true });
   },
   onSessionError: handleSessionError,
+  onBusyChange: busy => {
+    searchSubmit.disabled = busy || loadingList;
+    searchReset.disabled = busy || loadingList;
+  },
 });
 productForm.addEventListener('input', (event) => {
   dirty = true;
