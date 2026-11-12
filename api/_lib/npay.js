@@ -120,6 +120,10 @@ export function npayPublicConfiguration({ review = false } = {}) {
   const visible = review || npayPublicIsOpen();
   return {
     enabled: Boolean(config.enabled && visible),
+    // Registration keys and XML stock snapshots do not establish paid/cancelled
+    // order synchronization or atomic campaign allocation. Do not turn this on
+    // with a client flag or an environment switch before that contract exists.
+    blackFriday: { enabled: false, reason: 'order_management_required' },
     mode: config.mode,
     buttonKey: config.enabled && visible ? config.buttonKey : '',
     sdkUrl: config.sdkUrl,

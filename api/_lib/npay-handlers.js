@@ -81,6 +81,16 @@ export async function fetchNpayOrder(request) {
     const reviewToken = String(input?.reviewToken || '').trim();
     const review = npayReviewRequestIsValid(request) || npayReviewTokenIsValid(reviewToken);
     if (!review && !npayPublicIsOpen()) return json({ message: '네이버페이 정식 오픈 전 검수 중입니다.' }, 403);
+    // Never discard a locked campaign context and charge the regular price.
+    // Reject malformed/null contexts too; the browser restriction is not a
+    // trust boundary. Ordinary orders keep the existing registration path.
+    if ((input && Object.hasOwn(input, 'blackFriday'))
+      || (Array.isArray(input?.items) && input.items.some(item => item && Object.hasOwn(item, 'blackFriday')))) {
+      return json({
+        code: 'NPAY_CAMPAIGN_INTEGRATION_REQUIRED',
+        message: '행사 상품의 네이버페이 주문관리 연동을 준비 중입니다. 현재는 무통장입금 또는 카카오페이로 주문해 주세요.',
+      }, 503);
+    }
     const config = npayConfiguration({ mode: review ? 'test' : undefined });
     if (!config.enabled) return json({ message: '네이버페이 설정을 확인하고 있습니다.' }, 503);
     const items = validateItems(input, await currentProducts());

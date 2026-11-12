@@ -46,6 +46,46 @@ function sameOriginRequest(path, body) {
   });
 }
 
+test('행사 문맥을 정상가 주문으로 바꾸지 않고 주문관리 연동 전 서버에서 거절한다', async () => {
+  const product = publicProduct(seedCatalog().products[0]);
+  const originalFetch = globalThis.fetch;
+  const requests = [];
+  await withEnv({ NPAY_SHOP_ID: 'fixture-shop', NPAY_CERTI_KEY: 'fixture-cert', NPAY_BUTTON_KEY: 'fixture-button', NPAY_PUBLIC_ENABLED: 'true' }, async () => {
+    globalThis.fetch = async (...args) => { requests.push(args); return new Response('SUCCESS:fixture:fixture'); };
+    try {
+      const response = await orderHandler(sameOriginRequest('/api/npay/order', { items: [{ productId: product.id, quantity: 1,
+        blackFriday: { offerId: 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa', unitPrice: 10000 } }] }));
+      assert.equal(response.status, 503);
+      assert.equal((await response.json()).code, 'NPAY_CAMPAIGN_INTEGRATION_REQUIRED');
+      assert.equal(requests.length, 0, 'No ordinary-price registration or other upstream request is allowed');
+    } finally { globalThis.fetch = originalFetch; }
+  });
+});
+
+test('최상위 행사 문맥과 잘못된 행사 문맥도 정상가로 등록하지 않는다', async () => {
+  const product = publicProduct(seedCatalog().products[0]);
+  const originalFetch = globalThis.fetch;
+  let requests = 0;
+  await withEnv({ NPAY_SHOP_ID: 'fixture-shop', NPAY_CERTI_KEY: 'fixture-cert', NPAY_BUTTON_KEY: 'fixture-button', NPAY_PUBLIC_ENABLED: 'true' }, async () => {
+    globalThis.fetch = async () => { requests++; return new Response('SUCCESS:fixture:fixture'); };
+    try {
+      for (const input of [
+        { blackFriday: { offerId: 'fixture', unitPrice: 1 }, items: [{ productId: product.id, quantity: 1 }] },
+        { blackFriday: null, items: [{ productId: product.id, quantity: 1 }] },
+        { items: [{ productId: product.id, quantity: 1, blackFriday: null }] },
+        ...[false, 0, '', 'fixture', {}, []].map(blackFriday => ({ items: [{ productId: product.id, quantity: 1, blackFriday }] })),
+        { items: [{ productId: product.id, quantity: 1 }, { productId: 'another-fixture', quantity: 1,
+          blackFriday: { offerId: 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa', unitPrice: 10000 } }] },
+      ]) {
+        const response = await orderHandler(sameOriginRequest('/api/npay/order', input));
+        assert.equal(response.status, 503);
+        assert.equal((await response.json()).code, 'NPAY_CAMPAIGN_INTEGRATION_REQUIRED');
+      }
+      assert.equal(requests, 0);
+    } finally { globalThis.fetch = originalFetch; }
+  });
+});
+
 test('유입 쿠키 두 종류를 XML로 전달하며 누락 시 빈 필드를 유지한다', () => {
   const product = publicProduct(seedCatalog().products[0]);
   const request = new Request('https://himawari.co.kr', { headers: { cookie: 'NA_CO=inflow%26code; NVADID=click%3D123' } });
@@ -74,6 +114,7 @@ test('공개 설정은 버튼 SDK 정보만 제공하고 상점 인증키를 노
     assert.equal(visible.enabled, true);
     assert.equal(visible.buttonKey, 'browser-button-key');
     assert.equal(visible.mode, 'production');
+    assert.deepEqual(visible.blackFriday, { enabled: false, reason: 'order_management_required' });
     assert.equal(visible.trackingConfigured, true);
     assert.equal(JSON.stringify(visible).includes('server-only-certificate'), false);
     assert.equal(JSON.stringify(visible).includes('himawari-shop'), false);
