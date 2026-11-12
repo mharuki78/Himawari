@@ -112,12 +112,12 @@ export function blackFridayView(event, offerId = '') {
   const dimensions = banner && [banner.width, banner.height].every(size => Number.isSafeInteger(size) && size > 0 && size <= 20000)
     ? ` width="${banner.width}" height="${banner.height}"` : '';
   const bannerMarkup = bannerUrl ? `<div class="bf-event__banner"><img src="${escape(bannerUrl)}" alt="${escape(banner.alt || '히마와리 블랙 프라이데이')}"${dimensions} fetchpriority="high" decoding="async"></div>` : '';
-  const content = `${bannerMarkup}<div class="bf-event__intro${detail && selected ? ' bf-event__intro--detail' : ''}">
-      <p class="bf-event__kicker">${detail ? 'HIMAWARI · BLACK FRIDAY' : 'HIMAWARI / BLACK FRIDAY'}</p>
+  const intro = detail ? `<div class="bf-event__intro${selected ? ' bf-event__intro--detail' : ''}">
+      <p class="bf-event__kicker">HIMAWARI · BLACK FRIDAY</p>
       <h1>${escape(title)}</h1>
       ${period ? `<p data-bf-period>${escape(period)}</p>` : ''}
-    </div>
-    <div class="bf-event__body">
+    </div>` : `<h1 class="sr-only">${escape(title)}</h1>`;
+  const content = `${bannerMarkup}${intro}<div class="bf-event__body">
       <p class="bf-event__status" data-bf-status role="status" aria-live="polite">${escape(label)}</p>
       ${navigation}
       ${products}

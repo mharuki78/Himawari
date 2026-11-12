@@ -14,10 +14,13 @@ test('banner tokens use an isolated UUID scope and image filename', () => {
   for (const path of [pathname.replace(requestId, 'another-owner'), pathname.replace('banner-', 'main-'), pathname + '.html', pathname.replace('black-friday-banners', 'product-media')]) assert.equal(classifyBlackFridayBannerPath(path, requestId), '');
 });
 
-test('collection banner appears above the intro, with its original ratio; closed or detail pages omit it', () => {
+test('collection banner replaces the old intro, preserves an accessible heading and its original ratio', () => {
   const view = blackFridayView(open);
   assert.ok(view.content.includes(banner.url));
-  assert.ok(view.content.indexOf(banner.url) < view.content.indexOf('bf-event__intro'));
+  assert.ok(view.content.indexOf(banner.url) < view.content.indexOf('bf-event__body'));
+  assert.ok(!view.content.includes('class="bf-event__intro'));
+  assert.match(view.content, /<h1 class="sr-only">블랙 프라이데이<\/h1>/);
+  assert.ok(!blackFridayView({ ...open, banner: null }).content.includes('class="bf-event__intro'));
   assert.match(view.content, /width="1600" height="600"/);
   assert.match(view.content, /alt="블랙 프라이데이 행사 안내"/);
   for (const state of ['inactive', 'scheduled', 'closed', 'error']) assert.ok(!blackFridayView({ ...open, state }).content.includes(banner.url));
