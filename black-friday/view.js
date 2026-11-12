@@ -107,7 +107,12 @@ export function blackFridayView(event, offerId = '') {
     : `<div class="bf-event__grid" data-bf-products>${[...groups].flatMap(([band, entries]) =>
       entries.map((item, index) => card(item, false, index === 0 ? band : undefined))
     ).join('')}</div>`;
-  const content = `<div class="bf-event__intro${detail && selected ? ' bf-event__intro--detail' : ''}">
+  const banner = !detail && eventOpen && event.banner ? event.banner : null;
+  const bannerUrl = banner && photoUrl(banner.url);
+  const dimensions = banner && [banner.width, banner.height].every(size => Number.isSafeInteger(size) && size > 0 && size <= 20000)
+    ? ` width="${banner.width}" height="${banner.height}"` : '';
+  const bannerMarkup = bannerUrl ? `<div class="bf-event__banner"><img src="${escape(bannerUrl)}" alt="${escape(banner.alt || '히마와리 블랙 프라이데이')}"${dimensions} fetchpriority="high" decoding="async"></div>` : '';
+  const content = `${bannerMarkup}<div class="bf-event__intro${detail && selected ? ' bf-event__intro--detail' : ''}">
       <p class="bf-event__kicker">${detail ? 'HIMAWARI · BLACK FRIDAY' : 'HIMAWARI / BLACK FRIDAY'}</p>
       <h1>${escape(title)}</h1>
       ${period ? `<p data-bf-period>${escape(period)}</p>` : ''}

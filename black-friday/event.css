@@ -1,4 +1,6 @@
 .bf-event { --bf-ink: #202423; --bf-green: #315845; color: var(--bf-ink); }
+.bf-event__banner { max-width: 1344px; margin-inline: auto; }
+.bf-event__banner img { display: block; width: 100%; height: auto; }
 .bf-event__intro { padding: clamp(3.25rem, 7vw, 6.75rem) 24px; text-align: center; background: radial-gradient(ellipse at 50% 125%, #345545, transparent 70%), #202423; color: #fff; }
 .bf-event__intro h1 { margin: 0; color: inherit; font-size: clamp(2.25rem, 7vw, 5.15rem); line-height: 1.1; letter-spacing: -.055em; }
 .bf-event__intro [data-bf-period] { margin: 1rem auto 0; color: #e1e8e4; font-size: clamp(.85rem, 2.5vw, 1rem); text-wrap: balance; word-break: keep-all; }

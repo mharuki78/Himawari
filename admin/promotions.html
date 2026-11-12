@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="console-layout.css?v=20261008">
-    <link rel="stylesheet" href="black-friday.css?v=20261110-price-bands">
-    <script src="promotion-admin.js?v=20261110-price-bands" type="module"></script>
+    <link rel="stylesheet" href="black-friday.css?v=20261112-banner">
+    <script src="promotion-admin.js?v=20261112-banner" type="module"></script>
   </head>
   <body>
     <a class="skip-link" href="#admin-main">본문으로 바로가기</a>
@@ -47,6 +47,16 @@
               <div class="admin-field"><label for="bf-starts-at">시작 일시 (한국 시간)</label><input type="datetime-local" id="bf-starts-at" name="startsAt" step="60" disabled></div>
               <div class="admin-field"><label for="bf-ends-at">종료 일시 (한국 시간)</label><input type="datetime-local" id="bf-ends-at" name="endsAt" step="60" disabled></div>
             </div>
+            <section class="bf-banner-admin" aria-labelledby="bf-banner-title">
+              <h3 id="bf-banner-title">상단 배너 이미지</h3>
+              <p id="bf-banner-help" class="field-help">행사 진행 중에 기획전 맨 위에 표시합니다. PC·모바일 모두 원본 비율로 보여줍니다.</p>
+              <div class="admin-field"><label for="bf-banner-file">배너 사진 선택</label><input id="bf-banner-file" data-bf-banner-file type="file" accept="image/jpeg,image/png,image/webp,image/avif" aria-describedby="bf-banner-types bf-banner-help" disabled><p id="bf-banner-types" class="field-help">JPG·PNG·WebP·AVIF, 최대 8MB. 가로형 이미지를 권장합니다.</p></div>
+              <div class="bf-banner-admin__preview"><p data-bf-banner-empty>등록된 배너가 없습니다.</p><img data-bf-banner-preview alt="" hidden></div>
+              <div class="admin-field"><label for="bf-banner-alt">이미지 설명</label><input id="bf-banner-alt" data-bf-banner-alt type="text" maxlength="200" placeholder="사진 속 행사 문구를 간단히 적어주세요" disabled></div>
+              <div class="bf-banner-admin__actions"><button type="button" class="button button--quiet" data-bf-banner-remove disabled>배너 삭제</button><button type="button" class="button button--quiet" data-bf-banner-cancel hidden>업로드 취소</button></div>
+              <progress data-bf-banner-progress max="100" value="0" aria-label="배너 업로드 진행률" hidden></progress>
+              <p class="form-status" data-bf-banner-status role="status" aria-live="polite"></p>
+            </section>
             <div class="black-friday-admin__section">
               <div><h3>행사 품목</h3><p>상품과 옵션을 여러 개 고르고, 할인율과 수량을 한 화면에서 입력할 수 있습니다.</p></div>
               <button type="button" class="button button--quiet" data-bf-add aria-haspopup="dialog" disabled>행사 상품 선택</button>

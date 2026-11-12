@@ -1420,8 +1420,8 @@ html {
 }
 .home-promotion-dialog__close { border-color: var(--color-fog); border-radius: 50%; background: var(--cream); }
 
-.home-promotion-dialog--artwork {
-  width: min(28rem, calc(100vw - 2rem), calc((100svh - 2rem) * .8));
+.home-promotion-dialog.home-promotion-dialog--artwork {
+  width: min(28rem, calc(100vw - 2rem), calc((100svh - 2rem) * .7496));
   padding: 0;
   overflow: hidden;
   border: 0;
@@ -1438,6 +1438,7 @@ html {
 }
 .home-promotion-dialog__artwork,
 .home-promotion-dialog__artwork img { display: block; width: 100%; }
+.home-promotion-dialog .home-promotion-dialog__artwork { min-height: 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
 .home-promotion-dialog__artwork img { height: auto; }
 .home-promotion-dialog__artwork:focus-visible { outline: 3px solid var(--snow); outline-offset: -4px; }
 

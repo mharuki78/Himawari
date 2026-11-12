@@ -1,4 +1,5 @@
 import { handleUpload } from '@vercel/blob/client';
+import { classifyBlackFridayBannerPath, MAX_BANNER_SIZE } from '../_lib/black-friday-banner.js';
 
 import { authIsConfigured, isAdminRequest } from '../_lib/auth.js';
 import { isSameOrigin, json, methodNotAllowed, readJson } from '../_lib/http.js';
@@ -44,17 +45,17 @@ export async function fetch(request) {
           throw new Error('업로드 정보를 확인할 수 없습니다.');
         }
         const requestId = typeof payload.requestId === 'string' ? payload.requestId : '';
-        const allowedKinds = new Set(['main', 'gallery', 'reel-video', 'reel-poster']);
+        const allowedKinds = new Set(['main', 'gallery', 'reel-video', 'reel-poster', 'black-friday-banner']);
         const kind = allowedKinds.has(payload.kind) ? payload.kind : '';
         const isReel = kind.startsWith('reel-');
-        const pathRole = isReel ? classifyReelPath(pathname, requestId) : classifyProductImagePath(pathname, requestId);
+        const pathRole = kind === 'black-friday-banner' ? classifyBlackFridayBannerPath(pathname, requestId) : isReel ? classifyReelPath(pathname, requestId) : classifyProductImagePath(pathname, requestId);
         const roleMatches = kind ? pathRole === kind : pathRole === 'legacy';
         if (!REQUEST_ID_PATTERN.test(requestId) || !roleMatches) {
           throw new Error('업로드 경로를 확인할 수 없습니다.');
         }
         return {
           allowedContentTypes: isReel ? [...(kind === 'reel-video' ? REEL_VIDEO_TYPES : REEL_POSTER_TYPES)] : [...IMAGE_TYPES],
-          maximumSizeInBytes: kind === 'reel-video' ? MAX_REEL_VIDEO_SIZE : kind === 'reel-poster' ? MAX_REEL_POSTER_SIZE : kind === 'main' ? MAX_MAIN_IMAGE_SIZE : MAX_GALLERY_IMAGE_SIZE,
+          maximumSizeInBytes: kind === 'black-friday-banner' ? MAX_BANNER_SIZE : kind === 'reel-video' ? MAX_REEL_VIDEO_SIZE : kind === 'reel-poster' ? MAX_REEL_POSTER_SIZE : kind === 'main' ? MAX_MAIN_IMAGE_SIZE : MAX_GALLERY_IMAGE_SIZE,
           addRandomSuffix: true,
           allowOverwrite: false,
           cacheControlMaxAge: 31_536_000,

@@ -90,7 +90,7 @@
       return;
     }
 
-    var key = 'himawari-black-friday-dismissed:' + sale.startsAt + ':' + sale.endsAt;
+    var key = 'himawari-black-friday-dismissed:artwork-20261112:' + sale.startsAt + ':' + sale.endsAt;
     if (campaignKey === key) return;
     campaignKey = key;
     if (campaign.open) campaign.close();

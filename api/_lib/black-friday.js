@@ -2,10 +2,11 @@ import { randomUUID } from 'node:crypto';
 import { database } from './database.js';
 import { applyInventoryReservations } from './inventory.js';
 import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalog } from './products.js';
+import { verifyBlackFridayBanner } from './black-friday-banner.js';
 
 export const INVENTORY_LOCK = "SELECT pg_advisory_xact_lock(hashtext('himawari_inventory'))";
 export const BLACK_FRIDAY_LIMIT = 100;
-const blank = { id: null, revision: 0, enabled: false, startsAt: null, endsAt: null, items: [] };
+const blank = { id: null, revision: 0, enabled: false, startsAt: null, endsAt: null, items: [], banner: null };
 let schemaPromise;
 
 export function ensureBlackFridaySchema() {
@@ -19,7 +20,8 @@ export function ensureBlackFridaySchema() {
       starts_at timestamptz,
       ends_at timestamptz,
       items jsonb NOT NULL
-    )`.catch(error => { schemaPromise = null; throw error; });
+    )`.then(() => sql`ALTER TABLE black_friday_campaign ADD COLUMN IF NOT EXISTS banner jsonb`)
+      .catch(error => { schemaPromise = null; throw error; });
   }
   return schemaPromise;
 }
@@ -89,7 +91,7 @@ export async function readBlackFriday() {
     if (reason?.code !== '42P01') throw reason;
   }
   if (!row) return { ...blank, items: [] };
-  return { id: row.id, revision: row.revision, enabled: row.enabled, startsAt: row.starts_at?.toISOString?.() ?? row.starts_at, endsAt: row.ends_at?.toISOString?.() ?? row.ends_at, items: row.items };
+  return { id: row.id, revision: row.revision, enabled: row.enabled, startsAt: row.starts_at?.toISOString?.() ?? row.starts_at, endsAt: row.ends_at?.toISOString?.() ?? row.ends_at, items: row.items, banner: row.banner ?? null };
 }
 
 export async function readBlackFridayCatalog() {
@@ -126,13 +128,14 @@ export async function saveBlackFriday(input) {
   const current = await readBlackFriday();
   if (input?.revision !== current.revision) throw error('다른 곳에서 행사 설정이 바뀌었습니다. 설정을 다시 불러와 주세요.', 409);
   const next = validateBlackFriday(input, current, blackFridayCatalogRows(await readBlackFridayCatalog()));
+  next.banner = Object.hasOwn(input, 'banner') ? await verifyBlackFridayBanner(input.banner) : current.banner;
   const sql = database();
   const [, rows] = await sql.transaction([
     sql.query(INVENTORY_LOCK),
-    sql`INSERT INTO black_friday_campaign AS c (id, revision, enabled, starts_at, ends_at, items)
-      VALUES (${next.id}, ${next.revision}, ${next.enabled}, ${next.startsAt}, ${next.endsAt}, ${JSON.stringify(next.items)}::jsonb)
+    sql`INSERT INTO black_friday_campaign AS c (id, revision, enabled, starts_at, ends_at, items, banner)
+      VALUES (${next.id}, ${next.revision}, ${next.enabled}, ${next.startsAt}, ${next.endsAt}, ${JSON.stringify(next.items)}::jsonb, ${JSON.stringify(next.banner)}::jsonb)
       ON CONFLICT (singleton) DO UPDATE SET id = excluded.id, revision = excluded.revision, enabled = excluded.enabled,
-        starts_at = excluded.starts_at, ends_at = excluded.ends_at, items = excluded.items
+        starts_at = excluded.starts_at, ends_at = excluded.ends_at, items = excluded.items, banner = excluded.banner
       WHERE c.revision = ${current.revision}
       RETURNING revision`,
   ], { isolationLevel: 'ReadCommitted' });
@@ -146,12 +149,14 @@ export async function readPublicBlackFriday({ statusOnly = false, prepareOrders 
   const state = blackFridayState(config, now);
   const result = { state, serverTime: new Date(now).toISOString(), startsAt: state === 'inactive' ? null : config.startsAt, endsAt: state === 'inactive' ? null : config.endsAt };
   if (statusOnly) return result;
-  if (state !== 'open') return { ...result, items: [] };
+  if (state !== 'open') return { ...result, banner: null, items: [] };
+  const { url, alt, width, height } = config.banner || {};
+  result.banner = url ? { url, alt, width, height } : null;
   await prepareOrders();
   const [products, usage] = await Promise.all([readBlackFridayCatalog().then(applyInventoryReservations), readUsage(config.id)]);
   const checkedAt = Date.now();
   result.serverTime = new Date(checkedAt).toISOString();
-  if (checkedAt >= Date.parse(config.endsAt)) return { ...result, state: 'closed', items: [] };
+  if (checkedAt >= Date.parse(config.endsAt)) return { ...result, state: 'closed', banner: null, items: [] };
   const catalog = toMap(blackFridayCatalogRows(products));
   const items = config.items.flatMap(item => {
     const product = catalog.get(key(item));

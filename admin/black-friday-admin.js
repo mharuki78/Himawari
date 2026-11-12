@@ -1,5 +1,6 @@
 import { fetchJson } from './admin-client.js';
 import { discountPercent, salePriceForRate } from '../black-friday/pricing.js';
+import { setupBlackFridayBanner } from './black-friday-banner.js?v=20261112-banner';
 
 const formatPrice = new Intl.NumberFormat('ko-KR');
 const formatState = { inactive: '사용 안 함', scheduled: '시작 예정', open: '진행 중', closed: '종료' };
@@ -78,13 +79,15 @@ export function setupBlackFridayAdmin(onUnauthorized) {
   const selected = new Set();
   const drafts = new Map();
   let catalog = [], reviewCounts = null, revision = 0, ready = false, busy = false;
+  const banner = setupBlackFridayBanner(form, sync);
 
   const rows = () => [...list.querySelectorAll('fieldset')];
 
   function sync() {
-    save.disabled = enabled.disabled = starts.disabled = ends.disabled = !ready || busy;
+    save.disabled = enabled.disabled = starts.disabled = ends.disabled = !ready || busy || banner.isDecoding();
+    banner.sync(!ready || busy);
     add.disabled = save.disabled || !catalog.length || rows().length >= itemLimit;
-    reload.disabled = busy;
+    reload.disabled = busy || banner.isDecoding();
     list.querySelectorAll('fieldset').forEach(row => { row.disabled = busy || !ready; });
   }
 
@@ -200,6 +203,7 @@ export function setupBlackFridayAdmin(onUnauthorized) {
     pickerSort.querySelector('[value="review-count"]').disabled = !reviewCounts;
     if (!reviewCounts) pickerSort.value = 'default';
     enabled.checked = config.enabled; starts.value = kst(config.startsAt); ends.value = kst(config.endsAt);
+    banner.load(config.banner);
     list.replaceChildren(); config.items.forEach(addRow); renderEmpty();
     status.textContent = `현재 상태: ${formatState[state]}`;
     ready = true;
@@ -259,7 +263,7 @@ export function setupBlackFridayAdmin(onUnauthorized) {
   reload.addEventListener('click', load);
   form.addEventListener('submit', async event => {
     event.preventDefault();
-    if (busy || !ready) return;
+    if (busy || !ready || banner.isDecoding()) return;
     if (enabled.checked && (!starts.value || !ends.value || !list.querySelector('fieldset'))) {
       status.textContent = '행사를 켜려면 시작·종료 일시와 품목을 입력해 주세요.';
       (!starts.value ? starts : !ends.value ? ends : add).focus();
@@ -268,8 +272,10 @@ export function setupBlackFridayAdmin(onUnauthorized) {
     const input = { revision, enabled: enabled.checked, startsAt: starts.value, endsAt: ends.value, items: [...list.querySelectorAll('fieldset')].map(row => row.collect()) };
     busy = true; sync(); status.textContent = '행사 설정을 저장하고 있습니다.';
     try {
+      input.banner = await banner.prepare();
       const { config, state } = await fetchJson('/api/admin/black-friday', { method: 'PUT', body: JSON.stringify(input) });
       revision = config.revision;
+      banner.saved(config.banner);
       status.textContent = `저장했습니다. 현재 상태: ${formatState[state]}`;
     } catch (error) {
       if (error.status === 401) onUnauthorized();
