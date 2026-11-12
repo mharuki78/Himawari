@@ -1,10 +1,25 @@
 import test from 'node:test';
+import vm from 'node:vm';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { normalizeCompareIds } from '../assets/compare-store.js';
 import { productPurchaseFacts, parseExternalDimensions, productEvidenceHighlights } from '../assets/product-facts.js';
 import { productVariantKind } from '../assets/catalog-tools.js';
 import { renderProductPage } from '../api/_lib/storefront.js';
+
+test('compact catalog cards add the displayed SKU to cart and require selection for multi-option products',async()=>{
+ const source=await readFile(new URL('../products.js',import.meta.url),'utf8');
+ const node=tag=>({tagName:tag,dataset:{},children:[],setAttribute(name,value){this[name]=value;},append(...children){this.children.push(...children);}});
+ const context=vm.createContext({document:{createElement:node},safeHttpsUrl:url=>url||'',detailHref:p=>'/product.html?id='+p.id,priceFormatter:new Intl.NumberFormat('ko-KR',{style:'currency',currency:'KRW'}),createDetailLink:p=>Object.assign(node('a'),{href:'/product.html?id='+p.id}),createCompareButton:p=>Object.assign(node('button'),{dataset:{compareAdd:p.id}})});
+ vm.runInContext(source.slice(source.indexOf('function createCartButton('),source.indexOf('function createWishlistButton('))+'\n'+source.slice(source.indexOf('function createPriceBlock('),source.indexOf('function transitionProductCardMedia('))+'\nglobalThis.footer=createProductFooter;',context);
+ const product={id:'blue',name:'파란 가방',price:59000,stock:3,options:[],soldOut:false};
+ for(const p of [product,{...product,id:'pink',name:'분홍 가방',price:61000}]){
+  const button=context.footer(p,true).children[1].children[1];
+  assert.equal(Object.hasOwn(button.dataset,'cartAdd'),true);assert.equal(button.dataset.productId,p.id);assert.equal(button.dataset.price,String(p.price));assert.match(button.textContent,/장바구니/);assert.equal(button.dataset.compareAdd,undefined);
+ }
+ const sold=context.footer({...product,soldOut:true,stock:0},true).children[1].children[1];assert.equal(sold.disabled,true);
+ const option=context.footer({...product,options:[{id:'mint',stock:2}]},true).children[1].children[1];assert.equal(option.tagName,'a');assert.match(option.href,/#product-options$/);assert.equal(option.dataset.cartAdd,undefined);
+});
 
 test('comparison selection preserves order, removes duplicates and unsafe IDs, and never exceeds three', () => {
   assert.deepEqual(normalizeCompareIds(['one','one','<bad>','two','three','four']), ['one','two','three']);

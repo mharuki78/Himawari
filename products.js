@@ -1,5 +1,5 @@
 import { CATALOG_CATEGORIES, productCategory, filterAndSortFamilies, groupProductFamilies, productCardArtwork, productVariantLabel, productVariantKind } from './assets/catalog-tools.js?v=20261110-review-sort';
-import { initCompareTray, createCompareButton } from './assets/compare-store.js';
+import { initCompareTray } from './assets/compare-store.js';
 
 const productLists = document.querySelectorAll('[data-products]');
 const featuredProductSlots = document.querySelectorAll('[data-featured-product]');
@@ -104,12 +104,12 @@ function createProductMedia(product, className) {
   return media;
 }
 
-function createCartButton(product, className = 'buy-link') {
+function createCartButton(product, className = 'buy-link', compact = false) {
   if (product.options.length) {
     const link = document.createElement('a');
     link.className = className;
     link.href = `${detailHref(product)}#product-options`;
-    link.textContent = '옵션 선택';
+    link.textContent = compact ? '옵션 선택 후 담기' : '옵션 선택';
     link.setAttribute('aria-label', `${product.name} 옵션 선택 후 장바구니에 담기`);
     const arrow = document.createElement('span');
     arrow.setAttribute('aria-hidden', 'true');
@@ -120,7 +120,7 @@ function createCartButton(product, className = 'buy-link') {
   const button = document.createElement('button');
   button.type = 'button';
   button.className = className;
-  button.textContent = '장바구니 담기';
+  button.textContent = compact ? '장바구니 추가' : '장바구니 담기';
   button.dataset.cartAdd = '';
   button.dataset.productId = product.id;
   button.dataset.name = product.name;
@@ -233,7 +233,7 @@ function createProductFooter(product, compact = false) {
   footer.className = 'store-product-footer';
   const actions = document.createElement('div');
   actions.className = 'store-product-actions';
-  if (compact) actions.append(createDetailLink(product), createCompareButton(product));
+  if (compact) actions.append(createDetailLink(product), createCartButton(product, 'buy-link', true));
   else actions.append(createDetailLink(product), createCartButton(product), createWishlistButton(product), createDirectBuyLink(product));
   footer.append(createPriceBlock(product), actions);
   return footer;
