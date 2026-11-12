@@ -321,16 +321,17 @@ import { variantChoices, replaceCartOption } from './cart-options.js';
             '<' + (detail ? 'a' : 'span') + ' class="rdcart__thumb' + (image ? '' : ' is-missing') + '"' + (detail ? ' href="' + esc(detail) + '" aria-label="' + esc(l.name) + ' 상세 보기"' : '') + '>' +
               (image ? '<img class="rdcart__photo" src="' + esc(image) + '" alt="" width="72" height="88" decoding="async">' : '') + '<span class="rdcart__placeholder" aria-hidden="true">사진 준비 중</span></' + (detail ? 'a' : 'span') + '>' +
             '<div class="rdcart__grow">' +
-              '<b>' + esc(l.name) + '</b>' +
+              '<b>' + (detail ? '<a class="rdcart__name" href="' + esc(detail) + '">' + esc(l.name) + '</a>' : esc(l.name)) + '</b>' +
               (l.optionLabel ? '<em>' + esc(l.optionLabel) + '</em>' : '') +
               (l.blackFriday ? '<em class="rdcart__sale">블랙 프라이데이</em>' : '') +
-              priceMarkup(l, offer) + go + '<button type="button" class="rdcart__option" data-rdcart-options="' + i + '"' + (optionBusy ? ' disabled' : '') + '>색상·옵션 변경</button>' +
+              priceMarkup(l, offer) + go +
             '</div>' +
+            '<div class="rdcart__controls"><button type="button" class="rdcart__option" data-rdcart-options="' + i + '"' + (optionBusy ? ' disabled' : '') + '>옵션 변경</button>' +
             '<span class="rdcart__qty">' +
               '<button type="button" data-rdcart-dec="' + i + '" aria-label="' + esc(l.name) + ' 수량 줄이기">&minus;</button>' +
               '<span>' + l.q + '</span>' +
               '<button type="button" data-rdcart-inc="' + i + '" aria-label="' + esc(l.name) + ' 수량 늘리기"' + (l.stock !== null && l.q >= l.stock ? ' disabled' : '') + '>+</button>' +
-            '</span>' +
+            '</span></div>' +
             '<button type="button" class="rdcart__kill" data-rdcart-kill="' + i + '" aria-label="' + esc(l.name) + ' 삭제">삭제</button>' +
           '</div>';
       }
