@@ -148,7 +148,7 @@ async function createProductButton() {
 }
 
 async function syncCartButton() {
-  if (window.SiteCart?.items) currentCartItems = window.SiteCart.items();
+  if (window.SiteCart?.items) currentCartItems = (window.SiteCart.selectedItems || window.SiteCart.items)();
   const section = document.querySelector('[data-npay-cart-section]');
   const container = section?.querySelector('[data-npay-cart]');
   if (section && currentCartItems.some(item => item?.blackFriday != null)) { section.hidden = true; return; }
@@ -180,7 +180,7 @@ async function syncCartButton() {
         benefitCoachMark: false,
       },
       onBuyClick: () => {
-        if (window.SiteCart?.items) currentCartItems = window.SiteCart.items();
+        if (window.SiteCart?.items) currentCartItems = (window.SiteCart.selectedItems || window.SiteCart.items)();
         if (currentCartItems.some(item => item?.blackFriday != null)) {
           setStatus(section, '행사 상품이 포함된 주문은 장바구니 주문하기를 이용해 주세요.', true);
           section.hidden = true;

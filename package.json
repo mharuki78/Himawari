@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build:cart": "esbuild assets/cart.source.js --bundle --format=iife --platform=browser --target=es2022 --outfile=assets/cart.js",
     "build:admin": "esbuild admin/product-admin.source.js --bundle --format=esm --platform=browser --target=es2022 --outfile=admin/product-admin.js && esbuild admin/reel-admin.source.js --bundle --format=esm --platform=browser --target=es2022 --outfile=admin/reel-admin.js && esbuild admin/black-friday-banner.source.js --bundle --format=esm --platform=browser --target=es2022 --outfile=admin/black-friday-banner.js && tailwindcss -i admin/product-csv.source.css -o admin/product-csv.css --minify",
     "test": "node --test \"test/*.test.js\" \"test/*.test.mjs\"",
     "design": "npx -p @google/design.md designmd lint DESIGN.md",

@@ -20,4 +20,14 @@ test('member-style silent cart restoration hides Npay and stale callbacks read t
  assert.equal(section.hidden,true);
  const result=await creations[0].onBuyClick();
  assert.equal(result,null);assert.ok(!requests.some(r=>r.url==='/api/npay/order'));
+ const sale=context.window.SiteCart.items()[0],normal={id:'normal',name:'일반 상품',price:50000,q:1,stock:5};
+ context.window.SiteCart.replace([sale,normal],false);
+ let selected=[normal];context.window.SiteCart.selectedItems=()=>selected;
+ document.dispatchEvent(new context.CustomEvent('himawari:cart-state',{detail:{items:context.window.SiteCart.items()}}));
+ assert.equal(section.hidden,false,'An excluded campaign must not block selected ordinary checkout');
+ await creations[0].onBuyClick();
+ const order=requests.find(r=>r.url==='/api/npay/order');
+ assert.deepEqual(JSON.parse(order.options.body).items,[{productId:'normal',optionId:'',quantity:1}]);
+ selected=[];const before=requests.filter(r=>r.url==='/api/npay/order').length;await creations[0].onBuyClick();
+ assert.equal(requests.filter(r=>r.url==='/api/npay/order').length,before,'A stale callback must not purchase an empty selection');
 });

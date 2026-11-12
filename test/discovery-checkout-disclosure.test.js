@@ -7,6 +7,7 @@ import { purchaseQuantity } from '../assets/purchase-quantity.js';
 import { standardShippingFee } from '../assets/shipping-policy.js';
 import { WELCOME_COUPON, welcomeCouponSubtotal } from '../assets/welcome-coupon.js';
 import { checkoutCartLine, checkoutItemsInput } from '../assets/black-friday-cart.js';
+import { orderBenefits } from '../assets/order-summary.js';
 
 // A small DOM fixture runs the production event handlers without an order endpoint.
 class Element {
@@ -48,6 +49,7 @@ function environment(href) {
   const document = {
     body: { dataset: {} },
     querySelector: node,
+    getElementById: id => node('#' + id),
     querySelectorAll: () => [],
     createElement: tag => new Element(tag),
     createDocumentFragment: () => new Element('fragment'),
@@ -206,7 +208,8 @@ async function checkoutFixture({ payment = 'bank_transfer', quantity = '5', stoc
   const requests = [];
   let npayItems;
   const context = vm.createContext({
-    ...env, URL, URLSearchParams, Intl, crypto, purchaseQuantity, standardShippingFee, WELCOME_COUPON, welcomeCouponSubtotal, checkoutCartLine, checkoutItemsInput,
+    ...env, URL, URLSearchParams, Intl, crypto, purchaseQuantity, standardShippingFee, WELCOME_COUPON, welcomeCouponSubtotal, checkoutCartLine, checkoutItemsInput, orderBenefits,
+    FormData: class { *[Symbol.iterator]() { yield* [['recipientName','테스트'],['email','test@example.invalid'],['phone','01000000000'],['postalCode','00000'],['addressLine1','테스트 주소']]; } },
     Date: class extends Date { static now() { return clock; } }, setTimeout: callback => { timer=callback;return 1; }, clearTimeout: () => { timer=null; },
     bankTransfer: { bank: '은행', account: '000', holder: '예금주' }, bankTransferReady: () => bank,
     initializeCheckoutNpay: getItems => { npayItems = getItems; },
@@ -245,6 +248,27 @@ test('direct and mixed campaign checkout show unit discount details separately f
     assert.match(withClass(page.node('[data-checkout-items]'),'checkout-item__sale-price')[0].textContent,/39,000/);
     if(mode.mixed)assert.equal(descendants(rows[1]).some(node=>node.tagName==='del'),false);
   }
+});
+
+test('checkout benefits and mobile action follow current totals and chosen payment without submitting', async()=>{
+  const page=await checkoutFixture({mixed:true});
+  assert.match(page.node('[data-order-savings]').textContent,/40,000/);
+  assert.match(page.node('[data-mobile-total]').textContent,/90,000/);
+  assert.equal(page.node('[data-mobile-checkout]').textContent,'구매 방법 선택');
+  assert.match(page.node('[data-order-shipping-progress-text]').textContent,/무료배송/);
+  page.node('[data-bank-select]').dispatch('click');
+  assert.equal(page.node('[data-mobile-checkout]').textContent,'무통장입금 주문 접수');
+  withClass(page.node('[data-checkout-items]'),'checkout-item__quantity')[0].children[0].dispatch('click');
+  assert.match(page.node('[data-order-savings]').textContent,/20,000/);
+  assert.match(page.node('[data-mobile-total]').textContent,/54,500/);
+  assert.match(page.node('[data-order-shipping-progress-text]').textContent,/19,000/);
+  assert.equal(page.requests.every(request=>request.method==='GET'),true);
+});
+test('a failed synthetic order restores the mobile action label with its enabled state',async()=>{
+ const page=await checkoutFixture();page.form.elements.namedItem('termsConsent').checked=true;page.form.elements.namedItem('privacyConsent').checked=true;
+ await page.form.dispatch('submit');
+ assert.equal(page.node('[data-mobile-checkout]').textContent,'무통장입금 주문 접수');
+ assert.equal(page.node('[data-mobile-checkout]').disabled,false);
 });
 
 test('campaign checkout removes discount details and requires rechecking when the campaign expires while open', async () => {

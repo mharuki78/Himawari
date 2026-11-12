@@ -54,6 +54,24 @@
 .checkout-item__line-total { display: grid; gap: .15rem; text-align: right; }
 .checkout-item__line-total > span { color: #526158; font-size: .75rem; }
 .checkout-item__line-total strong { font-size: 1rem; }
+.checkout-benefits { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .35rem; margin-top: 1rem; padding: .85rem; border-radius: 10px; background: #eef5ef; color: #315a43; font-size: .875rem; }
+.checkout-benefits[hidden] { display: none; }
+.checkout-benefits small { flex: 1 0 100%; font-size: .75rem; line-height: 1.55; }
+.checkout-shipping-progress { margin-top: 1rem; }
+.checkout-shipping-progress p { margin: 0 0 .5rem; color: #315a43; font-size: .8125rem; }
+.checkout-shipping-progress progress { display: block; width: 100%; height: 6px; accent-color: #3e6b52; }
+.checkout-mobile-action { display: none; }
+@media (max-width: 900px) {
+  .checkout-page .checkout-main { padding-bottom: calc(7rem + env(safe-area-inset-bottom, 0px)); }
+  .checkout-mobile-action { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: center; gap: .75rem; position: fixed; inset: auto 0 0; z-index: 30; padding: .75rem 1rem calc(.75rem + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--order-line); background: var(--snow, #fff); }
+  .checkout-mobile-action[data-keyboard-open=true] { display: none; }
+  .checkout-mobile-action > div { display: grid; gap: .2rem; font-variant-numeric: tabular-nums; }
+  .checkout-mobile-action > div span { font-size: .75rem; color: #526158; }
+  .checkout-mobile-action > div strong { font-size: 1.125rem; }
+  .checkout-mobile-action button { min-width: 0; min-height: 50px; padding: .5rem; font-size: .8125rem; line-height: 1.4; }
+  .checkout-submit-bar > button { display: none; }
+  .checkout-page:has([data-checkout-content]:not([hidden])) .support-assistant { display: none; }
+}
 .checkout-main .payment-pending-card p { font-size: .9375rem; line-height: 1.7; }
 .checkout-submit-bar { border-color: var(--order-line); }
 .order-complete h1 { font-size: clamp(1.75rem, 3.2vw, 2.5rem); line-height: 1.3; text-shadow: none; }

@@ -15,10 +15,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="assets/gear.css">
-    <link rel="stylesheet" href="assets/cart.css?v=20261112-cart-photos">
+    <link rel="stylesheet" href="assets/cart.css?v=20261112-cart-convenience">
     <link rel="stylesheet" href="assets/member.css">
     <link rel="stylesheet" href="assets/orders.css">
-    <link rel="stylesheet" href="assets/checkout-layout.css?v=20261112-checkout-prices">
+    <link rel="stylesheet" href="assets/checkout-layout.css?v=20261112-cart-convenience">
     <script src="script.js" defer></script>
   <script src="https://wcs.naver.net/wcslog.js"></script><script src="/assets/naver-inflow.js"></script>
     <link rel="stylesheet" href="/assets/ui-system.css">
@@ -87,6 +87,8 @@
           <div class="checkout-summary__head"><p class="kicker">Order summary</p><h2 id="order-summary-title">주문 상품</h2><span data-order-count>0개</span></div>
           <p data-black-friday-checkout hidden>블랙 프라이데이 행사가가 적용됩니다. 쿠폰은 함께 사용할 수 없습니다.</p>
           <div class="checkout-items" data-checkout-items></div>
+          <div class="checkout-benefits" data-order-savings-row hidden><span>이번 주문 혜택</span><strong data-order-savings></strong><small>행사·쿠폰으로 할인받은 금액입니다. 아래 상품금액에는 행사가가 이미 반영되어 있습니다.</small></div>
+          <div class="checkout-shipping-progress"><p data-order-shipping-progress-text></p><progress max="1" value="0" data-order-shipping-progress aria-label="무료배송 달성"></progress></div>
           <dl class="checkout-totals">
             <div><dt>상품금액</dt><dd data-order-subtotal>0원</dd></div>
             <div data-order-discount-row hidden><dt>쿠폰 할인</dt><dd data-order-discount>−0원</dd></div>
@@ -177,6 +179,7 @@
             <button type="submit" class="order-primary-link"><span data-order-submit-label>무통장입금 주문 접수</span><span aria-hidden="true">→</span></button>
           </div>
         </form>
+        <div class="checkout-mobile-action" data-mobile-action><div><span>최종 결제금액</span><strong data-mobile-total>0원</strong></div><button type="button" class="order-primary-link" data-mobile-checkout disabled>구매 방법 선택</button></div>
 
       </div>
 
@@ -200,9 +203,9 @@
       <dl class="footer-business"><div><dt>상호명</dt><dd>히마와리 코리아</dd></div><div><dt>사업자번호</dt><dd>462-66-00596</dd></div><div><dt>대표자명</dt><dd>남영선</dd></div><div><dt>고객센터</dt><dd><a href="tel:+821084476271">010-8447-6271</a></dd></div><div data-business-email><dt>고객센터 이메일</dt><dd>nys9980@himawari.co.kr</dd></div><div><dt>소재지</dt><dd>경기도 시흥시 배곧4로 32-29, 파크뷰 206호</dd></div><div><dt>통신판매번호</dt><dd>제2025-경기시흥-2607호</dd></div></dl>
       <p class="copyright">© <span id="year">2026</span> HIMAWARI</p>
     </footer>
-    <script src="assets/cart.js?v=20261112-cart-photos" defer></script>
+    <script src="assets/cart.js?v=20261112-cart-convenience" defer></script>
     <script src="assets/member.js?v=20261112-bf-cart" defer></script>
-    <script src="assets/checkout.js?v=20261112-checkout-prices" type="module"></script>
+    <script src="assets/checkout.js?v=20261112-cart-convenience" type="module"></script>
   <script>if(window.wcs_do) window.wcs_do();</script>
 </body>
 </html>

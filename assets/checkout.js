@@ -1,9 +1,10 @@
 import { purchaseQuantity } from './purchase-quantity.js';
-import { initializeCheckoutNpay } from './npay.js?v=20261112-bf-cart';
+import { initializeCheckoutNpay } from './npay.js?v=20261112-cart-convenience';
 import { checkoutCartLine, checkoutItemsInput, removePurchasedCartItems, mergeRemainingCart } from './black-friday-cart.js?v=20261112-checkout-prices';
 import { bankTransfer, bankTransferReady } from './bank-transfer.js';
 import { WELCOME_COUPON, welcomeCouponSubtotal } from './welcome-coupon.js';
 import { standardShippingFee } from './shipping-policy.js';
+import { orderBenefits } from './order-summary.js';
 (function () {
   'use strict';
 
@@ -66,6 +67,7 @@ import { standardShippingFee } from './shipping-policy.js';
     paymentChange.setAttribute('aria-expanded', String(show));
     paymentChange.textContent = show ? '닫기' : '변경';
     document.querySelector('#purchase-method-title').textContent = show ? (paymentMethod ? '결제 방법 변경' : '구매 방법을 선택하세요.') : '선택한 결제 방법';
+    updateMobileAction();
   }
 
   function prepareNpay() {
@@ -147,6 +149,7 @@ import { standardShippingFee } from './shipping-policy.js';
 
   function showOnly(target) {
     [loading, failure, workspace, complete].forEach(function (element) { element.hidden = element !== target; });
+    updateMobileAction();
   }
 
   function selectedCoupon() {
@@ -179,12 +182,44 @@ import { standardShippingFee } from './shipping-policy.js';
 
   function renderTotals() {
     var value = totals();
+    var benefit = orderBenefits(items.map(function (item) { return {unitPrice:item.product.price,quantity:item.quantity,campaign:Boolean(item.blackFriday),regularPrice:item.saleDisplay?.regularPrice}; }), value);
+    document.querySelector('[data-order-savings-row]').hidden = !benefit.totalSavings;
+    document.querySelector('[data-order-savings]').textContent = priceFormatter.format(benefit.totalSavings) + ' 할인';
+    document.querySelector('[data-order-shipping-progress-text]').textContent = benefit.remaining ? priceFormatter.format(benefit.remaining) + ' 더 담으면 무료배송' : '무료배송 적용';
+    document.querySelector('[data-order-shipping-progress]').value = benefit.progress;
     document.querySelector('[data-order-count]').textContent = items.reduce(function (sum, item) { return sum + item.quantity; }, 0) + '개';
     document.querySelector('[data-order-subtotal]').textContent = priceFormatter.format(value.subtotal);
     document.querySelector('[data-order-discount-row]').hidden = value.discountAmount === 0;
     document.querySelector('[data-order-discount]').textContent = '−' + priceFormatter.format(value.discountAmount);
     document.querySelector('[data-order-shipping]').textContent = value.shippingFee ? priceFormatter.format(value.shippingFee) : '무료';
     document.querySelector('[data-order-total]').textContent = priceFormatter.format(value.total);
+    document.querySelector('[data-mobile-total]').textContent = priceFormatter.format(value.total);
+    updateMobileAction();
+  }
+
+  function updateMobileAction() {
+    var action = document.querySelector('[data-mobile-checkout]');
+    action.textContent = !paymentMethod || !paymentOptions.hidden ? '구매 방법 선택' : submitLabel.textContent;
+    action.disabled = submitButton.disabled || submitted || workspace.hidden;
+    action.setAttribute('aria-busy', submitButton.getAttribute('aria-busy') === 'true' ? 'true' : 'false');
+  }
+  document.querySelector('[data-mobile-checkout]').addEventListener('click', function () {
+    if (workspace.hidden || submitButton.disabled || submitted) return;
+    if (!paymentMethod || !paymentOptions.hidden) {
+      showPaymentOptions(true);
+      paymentOptions.scrollIntoView?.({block:'center',behavior:'auto'});
+      paymentOptions.querySelector('button:not([disabled])')?.focus();
+    } else { form.requestSubmit(submitButton); }
+  });
+  if (window.visualViewport) {
+    var keyboardVisibility = function () {
+      var active = document.activeElement;
+      var typing = active && /^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName);
+      document.querySelector('[data-mobile-action]').setAttribute('data-keyboard-open', String(Boolean(typing && window.innerHeight - window.visualViewport.height > 150)));
+    };
+    window.visualViewport.addEventListener('resize',keyboardVisibility);
+    document.addEventListener('focusin',keyboardVisibility);
+    document.addEventListener('focusout',function () { setTimeout(keyboardVisibility,0); });
   }
 
   function couponDescription(coupon) {
@@ -514,6 +549,7 @@ import { standardShippingFee } from './shipping-policy.js';
     submitButton.disabled = true;
     submitButton.setAttribute('aria-busy', 'true');
     submitLabel.textContent = paymentMethod === 'kakaopay' ? '결제창 준비 중' : '주문 접수 중';
+    updateMobileAction();
     submitStatus.textContent = '상품 가격과 배송비를 서버에서 다시 확인하고 있습니다.';
     try {
       var payload = await request(paymentMethod === 'kakaopay' ? '/api/kakaopay/ready' : '/api/orders', {
@@ -581,6 +617,7 @@ import { standardShippingFee } from './shipping-policy.js';
       submitButton.disabled = false;
       submitButton.removeAttribute('aria-busy');
       submitLabel.textContent = paymentMethod === 'kakaopay' ? '카카오페이로 결제하기' : '무통장입금 주문 접수';
+      updateMobileAction();
     }
   });
 

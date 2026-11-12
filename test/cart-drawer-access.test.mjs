@@ -11,12 +11,13 @@ function setup({ stored = null, fetch, now = Date.now, setTimer = () => {} } = {
   function node() {
     const attributes = new Map(), queries = new Map();
     const element = {
+      listeners: {},
       className: '', inert: false, dataset: {}, children: [], disabled: false, offsetWidth: 44, offsetHeight: 44,
       setAttribute(key, value) { attributes.set(key, String(value)); },
       getAttribute(key) { return attributes.get(key) ?? null; },
       removeAttribute(key) { attributes.delete(key); },
       appendChild(child) { this.children.push(child); },
-      addEventListener() {},
+      addEventListener(name, handler) { this.listeners[name] = handler; },
       focus() { document.activeElement = this; },
       querySelector(selector) { if (!queries.has(selector)) queries.set(selector, node()); return queries.get(selector); },
       querySelectorAll() { return this.focusTargets || []; },
@@ -38,7 +39,7 @@ function setup({ stored = null, fetch, now = Date.now, setTimer = () => {} } = {
   preserved.inert = true; preserved.setAttribute('aria-hidden', 'true');
   document.body.children.push(page, preserved);
   page.focus();
-  const context = vm.createContext({ document, window: { addEventListener() {} }, localStorage: { getItem: () => stored ? JSON.stringify(stored) : null, setItem() {} }, CustomEvent: class {}, setTimeout: setTimer, clearTimeout() {}, Date: class extends Date { static now() { return now(); } }, navigator: {}, fetch, URL });
+  const context = vm.createContext({ document, window: { addEventListener() {} }, localStorage: { getItem: () => stored ? JSON.stringify(stored) : null, setItem() {} }, CustomEvent: class {}, setTimeout: setTimer, clearTimeout() {}, Date: class extends Date { static now() { return now(); } }, navigator: {}, fetch, URL, AbortController });
   vm.runInContext(source, context);
   const drawer = document.querySelector('.rdcart');
   const panel = drawer.querySelector('.rdcart__panel');
@@ -106,4 +107,37 @@ test('an open drawer removes expired sale prices and discount metadata without a
   assert.doesNotMatch(h.body.innerHTML,/<del |34% 할인|39,000원/);
   assert.equal(h.cart.items()[0].blackFridayUnavailable,true);
   assert.equal(h.cart.items()[0].blackFriday.unitPrice,39000);
+});
+
+test('cart selection controls selected checkout input while retaining the full silently restored cart', () => {
+  const h=setup({stored:[{id:'a',name:'가방 A',price:49000,q:1,stock:3},{id:'b',name:'가방 B',price:39000,q:1,stock:4}]});
+  assert.equal(h.cart.selectedItems().length,2);
+  const checkbox={checked:false,getAttribute:name=>name==='data-rdcart-select'?'0':null,closest(){return this;}};
+  h.drawer.listeners.change({target:checkbox});
+  assert.equal(h.cart.items().length,2);assert.equal(h.cart.selectedItems().length,1);assert.equal(h.cart.selectedItems()[0].id,'b');
+  h.cart.replace(h.cart.items(),false);assert.equal(h.cart.selectedItems().length,1);
+  checkbox.checked=true;h.drawer.listeners.change({target:checkbox});assert.equal(h.cart.selectedItems().length,2);
+});
+
+const clickAction = (h,name,value='') => h.drawer.listeners.click({target:{closest(){return this;},hasAttribute:key=>key===name,getAttribute:key=>key===name?value:null}});
+const variantProducts=[{id:'blue',name:'No.1027 블루',model:'No.1027',price:59000,stock:4},{id:'pink',name:'No.1027 핑크',model:'No.1027',price:61000,stock:3}];
+test('cancel during a pending option apply prevents any later mutation',async()=>{
+ let deferred=false;const releases=[];
+ const h=setup({stored:[{id:'blue',name:'No.1027 블루',price:59000,q:1,stock:4}],fetch:async url=>{
+   if(deferred)await new Promise(resolve=>releases.push(resolve));
+   return {ok:true,json:async()=>url==='/api/products'?{products:variantProducts}:{state:'closed',items:[]}};
+ }});
+ clickAction(h,'data-rdcart-options','0');await new Promise(setImmediate);
+ h.drawer.querySelector('[data-rdcart-choice]').value='1';deferred=true;
+ clickAction(h,'data-rdcart-apply-option');clickAction(h,'data-rdcart-cancel-option');
+ releases.forEach(resolve=>resolve());await new Promise(setImmediate);
+ assert.equal(h.cart.items()[0].id,'blue');assert.equal(h.drawer.querySelector('.rdcart__editor').hidden,true);
+});
+test('a hanging option request times out and restores selected checkout',async()=>{
+ let timeout;
+ const h=setup({stored:[{id:'blue',name:'No.1027 블루',price:59000,q:1,stock:4}],fetch:async()=>new Promise(()=>{}),setTimer:callback=>{timeout=callback;return 1;}});
+ clickAction(h,'data-rdcart-options','0');assert.equal(h.drawer.querySelector('.rdcart__checkout').disabled,true);
+ assert.equal(typeof timeout,'function');timeout();await new Promise(setImmediate);
+ assert.equal(h.drawer.querySelector('.rdcart__checkout').disabled,false);
+ assert.match(h.drawer.querySelector('.rdcart__status').textContent,/다시/);
 });
