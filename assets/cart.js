@@ -44,6 +44,12 @@
 
   /* ───────── 상태 ───────── */
   var cart = [];
+  var productDisplay = new Map();
+  var offerDisplay = new Map();
+  var productRequest = null;
+  var saleRequest = null;
+  var offerExpiresAt = 0;
+  var saleExpiryTimer = null;
   try {
     var raw = JSON.parse(localStorage.getItem(KEY));
     if (Object.prototype.toString.call(raw) === '[object Array]') {
@@ -90,6 +96,38 @@
   }
   /* http/https 로 시작하는 주소만 링크로 만듭니다 (javascript: 등 차단) */
   function safeUrl(u) { return /^https?:\/\//i.test(String(u || '')) ? String(u) : ''; }
+  function photoUrl(value) {
+    if (!value) return '';
+    try { var url = new URL(value, 'https://himawari.co.kr'); return url.protocol === 'https:' && !url.username && !url.password ? url.href : ''; }
+    catch (error) { return ''; }
+  }
+  function sku(item) { return JSON.stringify([item.id, item.optionId || '']); }
+  function expireSaleDisplay() {
+    if (!offerExpiresAt || Date.now() < offerExpiresAt) return false;
+    offerExpiresAt = 0;
+    offerDisplay.clear();
+    cart.forEach(function (item) { if (item.blackFriday) { item.blackFridayUnavailable = true; item.stock = 0; } });
+    return true;
+  }
+  function scheduleSaleExpiry() {
+    if (saleExpiryTimer !== null) clearTimeout(saleExpiryTimer);
+    saleExpiryTimer = null;
+    if (!offerExpiresAt) return;
+    saleExpiryTimer = setTimeout(function () {
+      saleExpiryTimer = null;
+      paint();
+      if (offerExpiresAt) scheduleSaleExpiry();
+    }, Math.min(Math.max(0, offerExpiresAt - Date.now()), 2147483647));
+  }
+  function priceMarkup(item, offer) {
+    if (saleBlocked(item)) return '<small>행사 상태·수량을 다시 확인해 주세요.</small>';
+    var regular = offer?.regularPrice;
+    var discount = item.blackFriday && offer && offer.offerId === item.blackFriday.offerId && offer.price === item.price && Number.isSafeInteger(regular) && regular > item.price;
+    var current = '<strong class="rdcart__current"><span class="sr-only">' + (item.blackFriday ? '행사가 ' : '판매가 ') + '</span>' + won(item.price) + '</strong>';
+    if (!discount) return '<div class="rdcart__prices">' + current + '</div>';
+    var percent = Math.min(99, Math.round((regular - item.price) / regular * 100));
+    return '<div class="rdcart__prices"><del class="rdcart__original"><span class="sr-only">정상가 </span>' + won(regular) + '</del><div class="rdcart__deal">' + current + '<span class="rdcart__discount">' + (percent ? percent + '%' : '1% 미만') + ' 할인</span></div></div>';
+  }
 
   /* 담은 목록을 사람이 읽는 한 줄로 — 복사·문자·카톡 어디에나 붙여넣습니다.
      형식: 제품명 ×2, 제품명 ×1 (합계 158,000원) */
@@ -192,6 +230,12 @@
 
     panel = drawer.querySelector('.rdcart__panel');
     bodyEl = drawer.querySelector('.rdcart__body');
+    bodyEl.addEventListener('error', function (event) {
+      if (event.target.classList?.contains('rdcart__photo')) {
+        event.target.hidden = true;
+        event.target.parentElement.classList.add('is-missing');
+      }
+    }, true);
     totalEl = drawer.querySelector('.rdcart__total');
     checkoutBtn = drawer.querySelector('.rdcart__checkout');
     copyBtn = drawer.querySelector('.rdcart__copy');
@@ -206,6 +250,7 @@
 
   /* ───────── 그리기 ───────── */
   function paint() {
+    if (expireSaleDisplay()) save(false);
     var count = 0, total = 0, i;
     for (i = 0; i < cart.length; i++) { count += cart[i].q; if (!saleBlocked(cart[i])) total += cart[i].q * cart[i].price; }
 
@@ -229,17 +274,22 @@
       var html = '';
       for (i = 0; i < cart.length; i++) {
         var l = cart[i];
+        var display = productDisplay.get(l.id) || {};
+        var offer = offerDisplay.get(sku(l));
+        var image = photoUrl(offer?.image || display.image);
         var detail = l.blackFriday ? '/black-friday/item/' + encodeURIComponent(l.blackFriday.offerId) + '/' : l.id ? '/product.html?id=' + encodeURIComponent(l.id) : '';
         var go = detail
           ? '<a class="rdcart__go" href="' + esc(detail) + '">' + esc(T.go) + '</a>'
           : '<span class="rdcart__go rdcart__go--off">' + NOLINK + '</span>';
         html +=
           '<div class="rdcart__line">' +
+            '<' + (detail ? 'a' : 'span') + ' class="rdcart__thumb' + (image ? '' : ' is-missing') + '"' + (detail ? ' href="' + esc(detail) + '" aria-label="' + esc(l.name) + ' 상세 보기"' : '') + '>' +
+              (image ? '<img class="rdcart__photo" src="' + esc(image) + '" alt="" width="72" height="88" decoding="async">' : '') + '<span class="rdcart__placeholder" aria-hidden="true">사진 준비 중</span></' + (detail ? 'a' : 'span') + '>' +
             '<div class="rdcart__grow">' +
               '<b>' + esc(l.name) + '</b>' +
               (l.optionLabel ? '<em>' + esc(l.optionLabel) + '</em>' : '') +
               (l.blackFriday ? '<em class="rdcart__sale">블랙 프라이데이</em>' : '') +
-              '<small>' + (saleBlocked(l) ? '행사 상태·수량을 다시 확인해 주세요.' : won(l.price)) + '</small>' + go +
+              priceMarkup(l, offer) + go +
             '</div>' +
             '<span class="rdcart__qty">' +
               '<button type="button" data-rdcart-dec="' + i + '" aria-label="' + esc(l.name) + ' 수량 줄이기">&minus;</button>' +
@@ -291,7 +341,7 @@
         ...(blackFriday ? { blackFriday: copySale(blackFriday) } : {}) });
       added = true;
     }
-    if (added) { save(); paint(); }
+    if (added) { save(); paint(); refreshProductInfo(); refreshSaleItems(); }
     return added;
   }
 
@@ -323,14 +373,31 @@
     document.body.classList.add('rdcart-locked');
     if (btn) btn.setAttribute('aria-expanded', 'true');
     try { closeBtn.focus(); } catch (e) {}
+    refreshProductInfo();
     refreshSaleItems();
   }
-  async function refreshSaleItems() {
+  function refreshProductInfo() {
+    if (!cart.length || typeof fetch !== 'function') return;
+    if (productRequest) return productRequest;
+    productRequest = (async function () {
+      var response = await fetch('/api/products', { cache: 'no-store' });
+      if (!response.ok) throw new Error('Product photos unavailable');
+      var data = await response.json();
+      (data.products || []).forEach(function (product) { productDisplay.set(product.id, { image: product.image }); });
+      paint();
+    })().catch(function () { productRequest = null; });
+    return productRequest;
+  }
+  function refreshSaleItems() {
     if (!cart.some(function (item) { return item.blackFriday; }) || typeof fetch !== 'function') return;
-    try {
+    if (saleRequest) return saleRequest;
+    offerDisplay.clear(); paint();
+    saleRequest = (async function () {
       var response = await fetch('/api/black-friday', { cache: 'no-store' });
       if (!response.ok) return;
       var event = await response.json();
+      offerExpiresAt = event.state === 'open' && Date.parse(event.endsAt) > Date.now() ? Date.parse(event.endsAt) : 0;
+      scheduleSaleExpiry();
       cart.forEach(function (item) {
         if (!item.blackFriday) return;
         var sale = event.state === 'open' && Date.parse(event.endsAt) > Date.now() && (event.items || []).find(function (offer) {
@@ -338,10 +405,11 @@
         });
         item.blackFridayUnavailable = !sale || sale.remaining < 1;
         item.stock = sale ? sale.remaining : 0;
-        if (sale) item.price = sale.price;
+        if (sale) { item.price = sale.price; offerDisplay.set(sku(item), sale); }
       });
       save(false); paint();
-    } catch (error) { /* Checkout revalidates independently before any order is sent. */ }
+    })().catch(function () { /* Checkout revalidates independently before any order is sent. */ }).finally(function () { saleRequest = null; });
+    return saleRequest;
   }
   function close() {
     if (!drawer || !drawer.classList.contains('rdcart--open')) return;
@@ -488,6 +556,8 @@
     });
 
     paint();
+    refreshProductInfo();
+    refreshSaleItems();
     document.dispatchEvent(new CustomEvent('himawari:cart-ready', { detail: { items: cart.slice() } }));
   }
 
@@ -513,7 +583,7 @@
           ...(item.blackFridayUnavailable ? { blackFridayUnavailable: true } : {})
         };
       }).filter(function (item) { return item.name; });
-      save(announce); paint();
+      save(announce); paint(); refreshProductInfo(); refreshSaleItems();
     }
   };
 })();

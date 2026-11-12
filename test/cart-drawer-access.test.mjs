@@ -5,7 +5,7 @@ import vm from 'node:vm';
 
 const source = readFileSync(new URL('../assets/cart.js', import.meta.url), 'utf8');
 
-function setup() {
+function setup({ stored = null, fetch, now = Date.now, setTimer = () => {} } = {}) {
   const documentListeners = new Map();
   const document = { readyState: 'complete', activeElement: null };
   function node() {
@@ -38,14 +38,14 @@ function setup() {
   preserved.inert = true; preserved.setAttribute('aria-hidden', 'true');
   document.body.children.push(page, preserved);
   page.focus();
-  const context = vm.createContext({ document, window: { addEventListener() {} }, localStorage: { getItem: () => null, setItem() {} }, CustomEvent: class {}, setTimeout() {}, navigator: {} });
+  const context = vm.createContext({ document, window: { addEventListener() {} }, localStorage: { getItem: () => stored ? JSON.stringify(stored) : null, setItem() {} }, CustomEvent: class {}, setTimeout: setTimer, clearTimeout() {}, Date: class extends Date { static now() { return now(); } }, navigator: {}, fetch, URL });
   vm.runInContext(source, context);
   const drawer = document.querySelector('.rdcart');
   const panel = drawer.querySelector('.rdcart__panel');
   const close = drawer.querySelector('.rdcart__close');
   const last = node();
   panel.focusTargets = [close, last];
-  return { document, documentListeners, page, preserved, drawer, close, last, cart: context.window.SiteCart };
+  return { document, documentListeners, page, preserved, drawer, close, last, body: drawer.querySelector('.rdcart__body'), cart: context.window.SiteCart };
 }
 
 test('closed drawer is inert at initialization and after every close, while open focus trap and restoration survive', () => {
@@ -76,4 +76,34 @@ test('closed drawer is inert at initialization and after every close, while open
   h.cart.close();
   assert.equal(h.drawer.inert, true);
   assert.equal(h.document.activeElement, h.page);
+});
+
+test('existing saved carts receive canonical photos and only active offers show original price, sale price and discount', async () => {
+  const offerId='eb3ff32a-dce8-4c79-8dba-c93058eb6247';
+  const stored=[{id:'sale',name:'행사 가방',price:39000,q:2,stock:4,optionId:'',blackFriday:{offerId,unitPrice:39000}},{id:'regular',name:'일반 가방',price:50000,q:1,stock:3}];
+  let state='open';
+  const h=setup({stored,fetch:async url=>({ok:true,json:async()=>url==='/api/products'?{products:[{id:'sale',image:'https://images.example/sale.webp',price:59000},{id:'regular',image:'https://images.example/regular.webp',price:50000}]}:{state,endsAt:'2099-01-01T00:00:00Z',items:state==='open'?[{productId:'sale',optionId:'',offerId,price:39000,regularPrice:59000,image:'https://images.example/sale.webp',remaining:4}]:[]}})});
+  h.cart.open();await new Promise(setImmediate);
+  assert.match(h.body.innerHTML, /src="https:\/\/images.example\/sale.webp"/);
+  assert.match(h.body.innerHTML, /src="https:\/\/images.example\/regular.webp"/);
+  assert.equal((h.body.innerHTML.match(/<del /g)||[]).length,1);
+  assert.match(h.body.innerHTML,/59,000원/);assert.match(h.body.innerHTML,/39,000원/);assert.match(h.body.innerHTML,/34% 할인/);
+  assert.equal(h.cart.items()[0].price,39000);assert.equal(h.cart.items()[0].q,2);
+  state='closed';h.cart.close();h.cart.open();await new Promise(setImmediate);
+  assert.doesNotMatch(h.body.innerHTML,/<del |34% 할인/);
+  assert.equal(h.cart.items()[0].blackFridayUnavailable,true);
+});
+
+test('an open drawer removes expired sale prices and discount metadata without another interaction', async () => {
+  const offerId='eb3ff32a-dce8-4c79-8dba-c93058eb6247';
+  let clock=Date.now(),timer;
+  const endsAt=new Date(clock+10000).toISOString();
+  const h=setup({stored:[{id:'sale',name:'행사 가방',price:39000,q:1,stock:4,blackFriday:{offerId,unitPrice:39000}}],now:()=>clock,setTimer:callback=>{timer=callback;return 1;},fetch:async url=>({ok:true,json:async()=>url==='/api/products'?{products:[]}:{state:'open',endsAt,items:[{productId:'sale',optionId:'',offerId,price:39000,regularPrice:59000,remaining:4}]}})});
+  h.cart.open();await new Promise(setImmediate);
+  assert.match(h.body.innerHTML,/34% 할인/);
+  clock+=11000;
+  assert.equal(typeof timer,'function');timer();
+  assert.doesNotMatch(h.body.innerHTML,/<del |34% 할인|39,000원/);
+  assert.equal(h.cart.items()[0].blackFridayUnavailable,true);
+  assert.equal(h.cart.items()[0].blackFriday.unitPrice,39000);
 });
