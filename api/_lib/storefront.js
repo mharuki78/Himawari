@@ -3,6 +3,7 @@ import { groupProductFamilies, productCardArtwork, productColor, productFamilyKe
 import { productPurchaseFacts, productEvidenceHighlights } from '../../assets/product-facts.js';
 import productDetailEditions from '../../data/product-detail-editions.json' with { type: 'json' };
 import { standardShippingFee } from '../../assets/shipping-policy.js';
+import { blackFridayDetailPath, resolveBlackFridayDetail, refreshBlackFridayProductSchema } from '../../assets/black-friday-product-context.js';
 
 const KRW = new Intl.NumberFormat('ko-KR', {
   style: 'currency',
@@ -277,8 +278,10 @@ function productVariantSchema(product, origin, groupId) {
   };
 }
 
-export function renderProductPage(template, product, origin = 'https://himawari.co.kr', reviewData = null, familyProducts = [product]) {
-  const canonical = `${origin}/product.html?id=${encodeURIComponent(product.id)}`;
+export function renderProductPage(template, product, origin = 'https://himawari.co.kr', reviewData = null, familyProducts = [product], blackFriday = null) {
+  if (blackFriday) product = resolveBlackFridayDetail({ state: 'open', endsAt: blackFriday.endsAt, items: [blackFriday.offer] }, blackFriday.offer.offerId, [product]).product;
+  const detailPath = blackFriday ? blackFridayDetailPath(blackFriday.offer.offerId) : detailHref(product);
+  const canonical = blackFriday ? `${origin}${detailPath}` : `${origin}/${detailPath}`;
   const edition = Object.hasOwn(productDetailEditions, product.id) ? productDetailEditions[product.id] : null;
   const productDescription = edition?.description || product.description || product.tagline;
   const description = productSearchDescription({ ...product, description: productDescription });
@@ -294,7 +297,7 @@ export function renderProductPage(template, product, origin = 'https://himawari.
   // Every member must provide the attributes declared by variesBy; never guess a color.
   const variants = candidates.filter(item => variantProperties.every(([, value]) => value(item)));
   const variesBy = variantProperties.filter(([, value]) => new Set(variants.map(value)).size > 1).map(([key]) => `https://schema.org/${key}`);
-  const groupId = variants.length > 1 && variesBy.length && variants.some(item => item.id === product.id) ? `${origin}/#product-group-${encodeURIComponent(familyKey)}` : '';
+  const groupId = !blackFriday && variants.length > 1 && variesBy.length && variants.some(item => item.id === product.id) ? `${origin}/#product-group-${encodeURIComponent(familyKey)}` : '';
   const selectedSchema = productVariantSchema(product, origin, groupId);
   selectedSchema.description = description;
   const detailImages = edition
@@ -302,6 +305,9 @@ export function renderProductPage(template, product, origin = 'https://himawari.
     : (Array.isArray(product.gallery) ? product.gallery.map(safeHttpsUrl) : []);
   selectedSchema.image = [mainImage, ...detailImages].filter(Boolean);
   selectedSchema.mainEntityOfPage = { '@id': `${canonical}#webpage` };
+  if (blackFriday) {
+    Object.assign(selectedSchema, refreshBlackFridayProductSchema(selectedSchema, { ...blackFriday, product }, origin));
+  }
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -345,7 +351,9 @@ export function renderProductPage(template, product, origin = 'https://himawari.
 
   let html = template
     .replace('<title>제품 상세 — Himawari</title>', `<title>${escapeHtml(product.name)} — Himawari</title>`)
-    .replace('</head>', `<script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>\n  </head>`)
+    .replace('</head>', blackFriday
+      ? `<script id="bf-json-ld" type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', ...selectedSchema }).replaceAll('<', '\\u003c')}</script>\n<script type="application/ld+json">${JSON.stringify({ ...schema, '@graph': schema['@graph'].filter(item => item !== selectedSchema) }).replaceAll('<', '\\u003c')}</script>\n  </head>`
+      : `<script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>\n  </head>`)
     .replace('<section class="product-detail-state" data-loading-state role="status">', '<section class="product-detail-state" data-loading-state role="status" hidden>')
     .replace('<article data-product-content hidden>', edition ? '<article data-product-content data-detail-edition>' : '<article data-product-content>')
     .replace('aria-busy="true"', 'aria-busy="false"')
@@ -377,7 +385,21 @@ export function renderProductPage(template, product, origin = 'https://himawari.
     .replace('data-detail-cart>', `data-detail-cart data-cart-add data-product-id="${escapeHtml(product.id)}" data-name="${escapeHtml(product.name)}" data-price="${escapeHtml(product.price)}" data-url="${escapeHtml(storeUrl)}">`)
     .replace('data-detail-wishlist data-wishlist-toggle', `data-detail-wishlist data-wishlist-toggle data-product-id="${escapeHtml(product.id)}"`);
 
-  html = html.replace('data-npay-product></div>', `data-npay-product data-product-id="${escapeHtml(product.id)}"></div>`);
+  html = html.replace('data-npay-product></div>', blackFriday ? 'data-npay-product hidden></div>' : `data-npay-product data-product-id="${escapeHtml(product.id)}"></div>`);
+
+  if (blackFriday) {
+    const offer = blackFriday.offer;
+    const remaining = product.stock > 0 ? `행사 수량 ${product.stock}개 남음` : '행사 수량 소진';
+    html = html
+      .replace(/<section\b[^>]*\bdata-npay-product-section\b[^>]*>[\s\S]*?<\/section>/, '')
+      .replace('class="product-detail-main"', `class="product-detail-main" data-black-friday-offer-id="${escapeHtml(offer.offerId)}" data-product-id="${escapeHtml(product.id)}" data-black-friday-unit-price="${offer.price}" data-black-friday-ends-at="${escapeHtml(blackFriday.endsAt)}"`)
+      .replace(/data-naver-discount(?: hidden)?/, 'data-naver-discount hidden')
+      .replace('</strong>\n            </div>', `</strong><p data-black-friday-status role="status" aria-live="polite">블랙 프라이데이 · ${remaining}${offer.optionLabel ? ' · ' + escapeHtml(offer.optionLabel) : ''}</p>\n            </div>`)
+      .replace('data-detail-cart data-cart-add', `data-detail-cart disabled data-black-friday-offer-id="${escapeHtml(offer.offerId)}" data-option-id="${escapeHtml(offer.optionId || '')}" data-option-label="${escapeHtml(offer.optionLabel || '')}" data-stock="${product.stock}" data-cart-add`)
+      .replace(/data-(direct-buy|closing-buy) href="[^"]*"/g, 'data-$1 aria-disabled="true"')
+      .replace('실물 상품이며 현재 주문 가능합니다. 옵션별 재고와 최종 결제금액은 주문 화면에서 확인해 주세요.', '블랙 프라이데이 행사가가 적용됩니다. 남은 행사 수량과 최종 결제금액은 주문 화면에서 다시 확인해 주세요.')
+      .replace(/data-url="[^"]*"(?=>)/, `data-url="${escapeHtml(canonical)}"`);
+  }
 
   if (!productEvidenceHighlights(product).length) {
     html = html.replace('<section class="product-highlights section" data-highlights-section', '<section class="product-highlights section" data-highlights-section hidden');
@@ -389,7 +411,7 @@ export function renderProductPage(template, product, origin = 'https://himawari.
   }
   html = html.replace('<section class="product-highlights section"', `${renderCrawlableSpecs(product)}\n<section class="product-highlights section"`);
   // <base href="/"> keeps shared assets working; fragment links must retain this product.
-  html = html.replace(/href="#([^"]+)"/g, (_, fragment) => `href="${detailHref(product)}#${escapeHtml(fragment)}"`);
+  html = html.replace(/href="#([^"]+)"/g, (_, fragment) => `href="${detailPath}#${escapeHtml(fragment)}"`);
   return html;
 }
 

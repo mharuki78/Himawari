@@ -7,6 +7,7 @@ import { fetchProducts, priceFormatter, safeHttpsUrl } from './products.js';
 import { renderProductGuidance } from './assets/product-guidance.js';
 import { initCompareTray, createCompareButton } from './assets/compare-store.js';
 import { productPurchaseFacts, productEvidenceHighlights } from './assets/product-facts.js';
+import { blackFridayDetailPath, blackFridayOfferFromPath, resolveBlackFridayDetail, refreshBlackFridayProductSchema, createBlackFridayDetailLifecycle } from './assets/black-friday-product-context.js?v=20261112-bf-cart';
 
 const main = document.querySelector('.product-detail-main');
 const loadingState = document.querySelector('[data-loading-state]');
@@ -87,26 +88,31 @@ function setupPurchaseDisclosure(sticky) {
   else window.addEventListener('resize', updateBarSpace);
 }
 
-function configureInventory(product, cart, buyLinks, npayProduct, products) {
+function configureInventory(product, cart, buyLinks, npayProduct, products, blackFriday = null) {
   const picker = document.querySelector('[data-option-picker]');
   const select = document.querySelector('[data-product-option]');
   const stockStatus = document.querySelector('[data-stock-status]');
   const selectedPrice = document.querySelector('[data-selected-price]');
   const optionError = document.querySelector('[data-option-error]');
-  const options = Array.isArray(product.options) ? product.options : [];
+  let options = Array.isArray(product.options) ? product.options : [];
   const sticky = document.querySelector('[data-mobile-purchase]');
   const stickySelect = sticky?.querySelector('[data-sticky-select]');
   const minus = sticky?.querySelector('[data-quantity-minus]');
   const plus = sticky?.querySelector('[data-quantity-plus]');
   const quantityOutput = sticky?.querySelector('[data-purchase-quantity]');
   let selectedOption = null;
+  let blocked = false;
   let quantity = purchaseQuantity(new URLSearchParams(location.search).get('quantity'), product.stock);
   const restockForm = document.querySelector('[data-restock-form]');
+  if (blackFriday) {
+    cart.dataset.blackFridayOfferId = blackFriday.offer.offerId;
+    cart.dataset.price = String(blackFriday.offer.price);
+  }
   const setBuyState = (option = null) => {
     selectedOption = option;
     const available = option ? option.stock : product.stock;
     quantity = purchaseQuantity(quantity, available);
-    const unavailable = product.soldOut || (option && option.stock < 1);
+    const unavailable = blocked || product.soldOut || (option && option.stock < 1);
     if (quantityOutput) quantityOutput.value = String(quantity);
     if (minus) minus.disabled = unavailable || quantity <= 1;
     if (plus) plus.disabled = unavailable || quantity >= purchaseLimit(available);
@@ -124,7 +130,9 @@ function configureInventory(product, cart, buyLinks, npayProduct, products) {
       const enabled = !unavailable && !needsOption;
       if (enabled) {
         const payment = link.dataset.stickyPayment;
-        link.href = `checkout.html?product=${encodeURIComponent(product.id)}${option ? `&option=${encodeURIComponent(option.id)}` : ''}&quantity=${quantity}${payment ? `&payment=${payment}` : ''}`;
+        link.href = blackFriday
+          ? `/checkout.html?blackFriday=${encodeURIComponent(blackFriday.offer.offerId)}&quantity=${quantity}${payment ? `&payment=${payment}` : ''}`
+          : `checkout.html?product=${encodeURIComponent(product.id)}${option ? `&option=${encodeURIComponent(option.id)}` : ''}&quantity=${quantity}${payment ? `&payment=${payment}` : ''}`;
         link.removeAttribute('aria-disabled');
       } else {
         link.removeAttribute('href');
@@ -144,12 +152,20 @@ function configureInventory(product, cart, buyLinks, npayProduct, products) {
       npayProduct.dataset.soldOut = unavailable ? 'true' : 'false';
     }
   };
+  const updateInventory = (nextProduct, nextBlackFriday) => {
+    if (!nextProduct) { blocked = true; setBuyState(selectedOption); return; }
+    blocked = false;
+    product = nextProduct;
+    blackFriday = nextBlackFriday;
+    options = Array.isArray(product.options) ? product.options : [];
+    setBuyState(options.find(option => option.id === selectedOption?.id) || options[0] || null);
+  };
 
   minus?.addEventListener('click', () => { quantity -= 1; setBuyState(selectedOption); });
   plus?.addEventListener('click', () => { quantity += 1; setBuyState(selectedOption); });
   if (!options.length) {
     if (stickySelect) {
-      const variants = products.filter(p => productFamilyKey(p) === productFamilyKey(product));
+      const variants = blackFriday ? [product] : products.filter(p => productFamilyKey(p) === productFamilyKey(product));
       stickySelect.replaceChildren(...variants.map(p => {
         const item = document.createElement('option');
         item.value = p.id;
@@ -175,7 +191,7 @@ function configureInventory(product, cart, buyLinks, npayProduct, products) {
     badge.textContent = product.soldOut ? '품절' : (product.stock === null ? '현재 주문 가능' : `재고 ${product.stock}개`);
     document.querySelector('.product-detail-pricing')?.append(badge);
     setBuyState();
-    return;
+    return updateInventory;
   }
 
   picker.hidden = false;
@@ -216,7 +232,13 @@ function configureInventory(product, cart, buyLinks, npayProduct, products) {
     select.focus();
   }));
   stockStatus.textContent = product.soldOut ? '모든 옵션이 품절되었습니다.' : '옵션을 선택하면 주문 버튼이 활성화됩니다.';
-  setBuyState();
+  if (blackFriday) {
+    select.value = blackFriday.offer.optionId;
+    select.disabled = true;
+    if (stickySelect) stickySelect.disabled = true;
+    select.dispatchEvent(new Event('change'));
+  } else setBuyState();
+  return updateInventory;
 }
 
 function setupCustomerFeatures(product) {
@@ -305,12 +327,58 @@ function setupCustomerFeatures(product) {
   });
 }
 
-function renderProduct(product, products) {
+function blockBlackFridayPurchase(message, updateInventory = null) {
+  updateInventory?.(null);
+  const cart = document.querySelector('[data-detail-cart]');
+  if (cart) { cart.disabled = true; cart.removeAttribute('data-price'); }
+  document.querySelectorAll('[data-direct-buy], [data-closing-buy], [data-sticky-payment]').forEach(link => {
+    link.removeAttribute('href');
+    link.setAttribute('aria-disabled', 'true');
+  });
+  document.querySelectorAll('[data-quantity-minus], [data-quantity-plus], [data-sticky-select], [data-product-option]').forEach(control => { control.disabled = true; });
+  for (const selector of ['[data-price]', '[data-selected-price]', '[data-sticky-price]']) {
+    const price = document.querySelector(selector);
+    if (price) price.textContent = '';
+  }
+  const sticky = document.querySelector('[data-mobile-purchase]');
+  if (sticky) sticky.hidden = true;
+  document.querySelector('#bf-json-ld')?.remove();
+  const status = document.querySelector('[data-black-friday-status]');
+  if (status) status.textContent = message;
+}
+
+function setupBlackFridayPurchaseLifecycle(context, products, updateInventory) {
+  const originalSchema = JSON.parse(document.querySelector('#bf-json-ld').textContent);
+  const cart = document.querySelector('[data-detail-cart]');
+  const sticky = document.querySelector('[data-mobile-purchase]');
+  const status = document.querySelector('[data-black-friday-status]');
+  createBlackFridayDetailLifecycle({ context,
+    refresh: async () => {
+      const response = await fetch('/api/products?route=black-friday', { cache: 'no-store' });
+      if (!response.ok) throw new Error('행사 정보를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.');
+      return resolveBlackFridayDetail(await response.json(), context.offer.offerId, products, context.offer.price);
+    },
+    onBlock: message => blockBlackFridayPurchase(message, updateInventory),
+    onUpdate: next => {
+      cart.dataset.price = String(next.offer.price);
+      updateInventory(next.product, next);
+      document.querySelector('[data-price]').textContent = priceFormatter.format(next.offer.price);
+      document.querySelector('[data-selected-price]').textContent = next.offer.optionId ? priceFormatter.format(next.offer.price) : '';
+      if (sticky) sticky.hidden = false;
+      if (status) status.textContent = next.product.stock > 0 ? `블랙 프라이데이 · 행사 수량 ${next.product.stock}개 남음${next.offer.optionLabel ? ' · ' + next.offer.optionLabel : ''}` : '블랙 프라이데이 · 행사 수량 소진';
+      let schema = document.querySelector('#bf-json-ld');
+      if (!schema) { schema = document.createElement('script'); schema.id = 'bf-json-ld'; schema.type = 'application/ld+json'; document.head.append(schema); }
+      schema.textContent = JSON.stringify(refreshBlackFridayProductSchema(originalSchema, next, location.origin)).replaceAll('<', '\\u003c');
+    },
+  });
+}
+
+function renderProduct(product, products, blackFriday = null) {
   document.querySelectorAll('a[href^="#"], .product-section-nav a, .purchase-reassurance a').forEach(link => {
     const fragment = new URL(link.getAttribute('href'), location.href).hash;
     if (fragment) link.href = `${location.pathname}${location.search}${fragment}`;
   });
-  const canonicalUrl = `${location.origin}${location.pathname}?id=${encodeURIComponent(product.id)}`;
+  const canonicalUrl = blackFriday ? `${location.origin}${blackFridayDetailPath(blackFriday.offer.offerId)}` : `${location.origin}${location.pathname}?id=${encodeURIComponent(product.id)}`;
   const hasDetailEdition = content.hasAttribute('data-detail-edition');
   document.title = `${product.name} — Himawari`;
   if (!hasDetailEdition) {
@@ -336,7 +404,7 @@ function renderProduct(product, products) {
   initCompareTray(products);
   document.querySelector('[data-detail-compare]')?.replaceChildren(createCompareButton(product));
   const discountRate = document.querySelector('[data-naver-discount]');
-  discountRate.hidden = !(Number.isInteger(product.naverDiscountRate) && product.naverDiscountRate > 0);
+  discountRate.hidden = Boolean(blackFriday) || !(Number.isInteger(product.naverDiscountRate) && product.naverDiscountRate > 0);
   discountRate.textContent = discountRate.hidden ? '' : `네이버 ${product.naverDiscountRate}% 할인`;
   document.querySelector('[data-main-image]').replaceChildren(createProductImage(product.image, product.name, { eager: true }));
 
@@ -345,7 +413,7 @@ function renderProduct(product, products) {
   cart.dataset.productId = product.id;
   cart.dataset.name = product.name;
   cart.dataset.price = String(product.price);
-  cart.dataset.url = safeHttpsUrl(product.url);
+  cart.dataset.url = blackFriday ? canonicalUrl : safeHttpsUrl(product.url);
   cart.setAttribute('aria-label', `${product.name} 장바구니에 담기`);
 
   const wishlist = document.querySelector('[data-detail-wishlist]');
@@ -354,15 +422,22 @@ function renderProduct(product, products) {
 
   const directBuyLinks = [document.querySelector('[data-direct-buy]'), document.querySelector('[data-closing-buy]')];
   directBuyLinks.forEach((link) => {
-    link.href = `checkout.html?product=${encodeURIComponent(product.id)}`;
+    if (!blackFriday) link.href = `checkout.html?product=${encodeURIComponent(product.id)}`;
     link.removeAttribute('target');
     link.removeAttribute('rel');
     link.setAttribute('aria-label', `${product.name} 내부 주문서에서 바로 구매하기`);
   });
   const npayProduct = document.querySelector('[data-npay-product]');
-  if (npayProduct) npayProduct.dataset.productId = product.id;
+  if (npayProduct && !blackFriday) npayProduct.dataset.productId = product.id;
+  if (blackFriday) {
+    document.querySelector('[data-npay-product-section]')?.remove();
+    const schema = document.querySelector('#bf-json-ld');
+    if (schema) schema.textContent = JSON.stringify(refreshBlackFridayProductSchema(JSON.parse(schema.textContent), blackFriday, location.origin)).replaceAll('<', '\\u003c');
+    const status = document.querySelector('[data-black-friday-status]');
+    if (status) status.textContent = product.stock > 0 ? `블랙 프라이데이 · 행사 수량 ${product.stock}개 남음${blackFriday.offer.optionLabel ? ' · ' + blackFriday.offer.optionLabel : ''}` : '블랙 프라이데이 · 행사 수량 소진';
+  }
   const paymentLinks = [...document.querySelectorAll('[data-sticky-payment]')];
-  configureInventory(product, cart, [...directBuyLinks, ...paymentLinks], npayProduct, products);
+  const updateInventory = configureInventory(product, cart, [...directBuyLinks, ...paymentLinks], blackFriday ? null : npayProduct, products, blackFriday);
   setupCustomerFeatures(product);
   const sticky = document.querySelector('[data-mobile-purchase]');
   if (sticky) {
@@ -408,6 +483,7 @@ function renderProduct(product, products) {
   main.setAttribute('aria-busy', 'false');
   window.himawariReveal?.(content);
   document.dispatchEvent(new CustomEvent('himawari:product-ready', { detail: { productId: product.id } }));
+  if (blackFriday) setupBlackFridayPurchaseLifecycle(blackFriday, products, updateInventory);
 }
 
 function renderNotFound() {
@@ -439,22 +515,36 @@ function renderUnavailable() {
 }
 
 async function loadProduct() {
-  const id = new URLSearchParams(location.search).get('id');
-  if (!id) {
+  const offerId = blackFridayOfferFromPath(location.pathname) || main?.dataset.blackFridayOfferId || '';
+  const id = offerId ? main?.dataset.productId : new URLSearchParams(location.search).get('id');
+  if (!id && !offerId) {
     renderNotFound();
     return;
   }
   try {
+    let blackFriday = null;
     const products = await fetchProducts();
-    const product = products.find((item) => item.id === id);
+    if (offerId) {
+      const response = await fetch('/api/products?route=black-friday', { cache: 'no-store' });
+      if (!response.ok) throw new Error('행사 정보를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.');
+      blackFriday = resolveBlackFridayDetail(await response.json(), offerId, products, main?.dataset.blackFridayUnitPrice ?? null);
+    }
+    const product = blackFriday?.product || products.find((item) => item.id === id);
     if (!product) {
       renderNotFound();
       return;
     }
-    renderProduct(product, products);
+    renderProduct(product, products, blackFriday);
     renderProductGuidance(product, products);
-  } catch {
+  } catch (error) {
     renderUnavailable();
+    if (offerId) {
+      blockBlackFridayPurchase(error.message || '블랙 프라이데이에서 행사 가격과 수량을 다시 확인해 주세요.');
+      document.querySelector('[data-state-title]').textContent = '행사 상품을 구매할 수 없습니다.';
+      document.querySelector('[data-state-message]').textContent = error.message || '블랙 프라이데이에서 행사 가격과 수량을 다시 확인해 주세요.';
+      document.querySelector('[data-state-action]').href = '/black-friday/';
+      document.querySelector('[data-state-action-label]').textContent = '블랙 프라이데이로 돌아가기';
+    }
   }
 }
 

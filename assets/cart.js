@@ -58,7 +58,9 @@
           url: typeof it.url === 'string' ? it.url : '',
           optionId: typeof it.optionId === 'string' ? it.optionId : '',
           optionLabel: typeof it.optionLabel === 'string' ? it.optionLabel : '',
-          stock: it.stock === '' || it.stock === null || it.stock === undefined ? null : Math.max(0, num(it.stock))
+          stock: it.stock === '' || it.stock === null || it.stock === undefined ? null : Math.max(0, num(it.stock)),
+          ...(it.blackFriday != null ? { blackFriday: copySale(it.blackFriday) } : {}),
+          ...(it.blackFridayUnavailable ? { blackFridayUnavailable: true } : {})
         });
       }
     }
@@ -69,6 +71,7 @@
   }
   function save(announce) {
     try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (e) {}
+    document.dispatchEvent(new CustomEvent('himawari:cart-state', { detail: { items: cart.slice() } }));
     if (announce !== false) announceCartChange();
   }
 
@@ -78,6 +81,9 @@
     return isNaN(n) ? 0 : n;
   }
   function won(n) { return Number(n || 0).toLocaleString('ko-KR') + '원'; }
+  function copySale(value) { return { offerId: String(value?.offerId || ''), unitPrice: Number(value?.unitPrice) || 0 }; }
+  function validSale(value) { return value && /^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/i.test(value.offerId) && Number.isSafeInteger(value.unitPrice) && value.unitPrice > 0; }
+  function saleBlocked(item) { return Boolean(item.blackFriday && (item.blackFridayUnavailable || !validSale(item.blackFriday) || (item.stock !== null && item.q > item.stock))); }
   var ENT = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
   function esc(t) {
     return String(t == null ? '' : t).replace(/[&<>"']/g, function (c) { return ENT[c]; });
@@ -201,7 +207,7 @@
   /* ───────── 그리기 ───────── */
   function paint() {
     var count = 0, total = 0, i;
-    for (i = 0; i < cart.length; i++) { count += cart[i].q; total += cart[i].q * cart[i].price; }
+    for (i = 0; i < cart.length; i++) { count += cart[i].q; if (!saleBlocked(cart[i])) total += cart[i].q * cart[i].price; }
 
     if (btn) {
       btn.classList.toggle('rdcart-btn--has', count > 0);
@@ -223,7 +229,7 @@
       var html = '';
       for (i = 0; i < cart.length; i++) {
         var l = cart[i];
-        var detail = l.id ? '/product.html?id=' + encodeURIComponent(l.id) : '';
+        var detail = l.blackFriday ? '/black-friday/item/' + encodeURIComponent(l.blackFriday.offerId) + '/' : l.id ? '/product.html?id=' + encodeURIComponent(l.id) : '';
         var go = detail
           ? '<a class="rdcart__go" href="' + esc(detail) + '">' + esc(T.go) + '</a>'
           : '<span class="rdcart__go rdcart__go--off">' + NOLINK + '</span>';
@@ -232,7 +238,8 @@
             '<div class="rdcart__grow">' +
               '<b>' + esc(l.name) + '</b>' +
               (l.optionLabel ? '<em>' + esc(l.optionLabel) + '</em>' : '') +
-              '<small>' + won(l.price) + '</small>' + go +
+              (l.blackFriday ? '<em class="rdcart__sale">블랙 프라이데이</em>' : '') +
+              '<small>' + (saleBlocked(l) ? '행사 상태·수량을 다시 확인해 주세요.' : won(l.price)) + '</small>' + go +
             '</div>' +
             '<span class="rdcart__qty">' +
               '<button type="button" data-rdcart-dec="' + i + '" aria-label="' + esc(l.name) + ' 수량 줄이기">&minus;</button>' +
@@ -247,16 +254,20 @@
 
     askBtn.disabled = !cart.length;
     copyBtn.disabled = !cart.length;
-    checkoutBtn.disabled = !cart.length;
+    checkoutBtn.disabled = !cart.length || cart.some(saleBlocked);
+    drawer.querySelector('.rdcart__lead').textContent = cart.some(saleBlocked)
+      ? '행사가 종료·변경되었거나 남은 수량보다 많이 담긴 상품이 있습니다. 수량을 줄이거나 해당 상품을 다시 담아 주세요.'
+      : cart.some(function (item) { return item.blackFriday; }) ? '행사 상품 포함 · 무통장입금 또는 카카오페이로 주문할 수 있습니다.' : T.note;
   }
 
   /* ───────── 동작 ───────── */
-  function add(name, price, url, id, optionId, optionLabel, stock, quantity) {
+  function add(name, price, url, id, optionId, optionLabel, stock, quantity, blackFriday) {
     name = String(name == null ? '' : name).trim();
     id = String(id == null ? '' : id).trim();
     optionId = String(optionId == null ? '' : optionId).trim();
     optionLabel = String(optionLabel == null ? '' : optionLabel).trim();
     stock = stock === '' || stock === null || stock === undefined ? null : Math.max(0, num(stock));
+    if (blackFriday != null && !validSale(blackFriday)) return false;
     if (!name || stock === 0) return false;
     quantity = Math.min(MAX_Q, stock === null ? MAX_Q : stock, Math.max(1, Math.floor(Number(quantity) || 1)));
     var hit = null;
@@ -265,12 +276,19 @@
       if ((id && cart[i].id === id && cart[i].optionId === optionId) || (!id && cart[i].name === name)) { hit = cart[i]; break; }
     }
     if (hit) {
-      if (hit.q + quantity <= MAX_Q && (stock === null || hit.q + quantity <= stock)) { hit.q += quantity; added = true; }
+      var selection = blackFriday || hit.blackFriday;
+      var available = !blackFriday && hit.blackFriday ? hit.stock : stock;
+      if (hit.q + quantity > MAX_Q || (available !== null && hit.q + quantity > available)) return false;
+      hit.q += quantity; added = true;
+      hit.stock = available;
+      if (selection) { hit.blackFriday = copySale(selection); hit.price = selection.unitPrice; }
+      else if (price) hit.price = num(price);
+      if (blackFriday) delete hit.blackFridayUnavailable;
       if (id) hit.id = id;
       if (url) hit.url = url;
-      if (price) hit.price = price;
     } else {
-      cart.push({ id: id, name: name, price: num(price), q: quantity, url: String(url || ''), optionId: optionId, optionLabel: optionLabel, stock: stock });
+      cart.push({ id: id, name: name, price: blackFriday ? blackFriday.unitPrice : num(price), q: quantity, url: String(url || ''), optionId: optionId, optionLabel: optionLabel, stock: stock,
+        ...(blackFriday ? { blackFriday: copySale(blackFriday) } : {}) });
       added = true;
     }
     if (added) { save(); paint(); }
@@ -305,6 +323,25 @@
     document.body.classList.add('rdcart-locked');
     if (btn) btn.setAttribute('aria-expanded', 'true');
     try { closeBtn.focus(); } catch (e) {}
+    refreshSaleItems();
+  }
+  async function refreshSaleItems() {
+    if (!cart.some(function (item) { return item.blackFriday; }) || typeof fetch !== 'function') return;
+    try {
+      var response = await fetch('/api/black-friday', { cache: 'no-store' });
+      if (!response.ok) return;
+      var event = await response.json();
+      cart.forEach(function (item) {
+        if (!item.blackFriday) return;
+        var sale = event.state === 'open' && Date.parse(event.endsAt) > Date.now() && (event.items || []).find(function (offer) {
+          return offer.offerId === item.blackFriday.offerId && offer.productId === item.id && offer.optionId === item.optionId && offer.price === item.blackFriday.unitPrice;
+        });
+        item.blackFridayUnavailable = !sale || sale.remaining < 1;
+        item.stock = sale ? sale.remaining : 0;
+        if (sale) item.price = sale.price;
+      });
+      save(false); paint();
+    } catch (error) { /* Checkout revalidates independently before any order is sent. */ }
   }
   function close() {
     if (!drawer || !drawer.classList.contains('rdcart--open')) return;
@@ -380,7 +417,7 @@
         version: 1,
         createdAt: Date.now(),
         items: cart.filter(function (item) { return item.id; }).map(function (item) {
-          return { productId: item.id, optionId: item.optionId || '', quantity: item.q };
+          return { productId: item.id, optionId: item.optionId || '', quantity: item.q, ...(item.blackFriday ? { blackFriday: copySale(item.blackFriday) } : {}) };
         })
       }));
     } catch (error) {}
@@ -396,7 +433,7 @@
     buildButton();
     buildDrawer();
 
-    import('/assets/npay.js')
+    import('/assets/npay.js?v=20261112-bf-cart')
       .then(function (module) { return module.initializeNpay({ cartItems: cart.slice() }); })
       .catch(function () {});
 
@@ -406,7 +443,8 @@
       if (!b) return;
       ev.preventDefault();
       if (b.dataset && b.dataset.rdcartBusy) return;
-      var added = add(b.getAttribute('data-name'), b.getAttribute('data-price'), b.getAttribute('data-url'), b.getAttribute('data-product-id'), b.getAttribute('data-option-id'), b.getAttribute('data-option-label'), b.getAttribute('data-stock'), b.getAttribute('data-quantity'));
+      var offerId = b.getAttribute('data-black-friday-offer-id');
+      var added = add(b.getAttribute('data-name'), b.getAttribute('data-price'), b.getAttribute('data-url'), b.getAttribute('data-product-id'), b.getAttribute('data-option-id'), b.getAttribute('data-option-label'), b.getAttribute('data-stock'), b.getAttribute('data-quantity'), offerId ? { offerId: offerId, unitPrice: Number(b.getAttribute('data-price')) } : undefined);
       var was = b.textContent;
       var wasLabel = b.getAttribute('aria-label');
       b.dataset.rdcartBusy = '1';
@@ -444,8 +482,9 @@
     /* 다른 탭에서 담은 것도 따라오게 */
     window.addEventListener('storage', function (e) {
       if (e.key !== KEY) return;
-      try { cart = JSON.parse(e.newValue) || []; } catch (err) { cart = []; }
-      paint();
+      try { window.SiteCart.replace(JSON.parse(e.newValue) || [], false); } catch (err) { cart = []; paint(); }
+      announceCartChange();
+      refreshSaleItems();
     });
 
     paint();
@@ -469,7 +508,9 @@
           name: String(item.name || ''), price: num(item.price),
           q: Math.min(MAX_Q, Math.max(1, num(item.q) || 1)), url: String(item.url || ''),
           optionId: String(item.optionId || ''), optionLabel: String(item.optionLabel || ''),
-          stock: item.stock === '' || item.stock === null || item.stock === undefined ? null : Math.max(0, num(item.stock))
+          stock: item.stock === '' || item.stock === null || item.stock === undefined ? null : Math.max(0, num(item.stock)),
+          ...(item.blackFriday != null ? { blackFriday: copySale(item.blackFriday) } : {}),
+          ...(item.blackFridayUnavailable ? { blackFridayUnavailable: true } : {})
         };
       }).filter(function (item) { return item.name; });
       save(announce); paint();

@@ -62,7 +62,7 @@ async function fetchBlackFriday(request) {
       const counts = await publishedReviewCounts(data.catalog.map(row => ({ ...row, id: row.productId }))).catch(() => null);
       return json({ ...data, reviewCounts: counts }, 200, headers);
     }
-    const config = await saveBlackFriday(await readJson(request, 64_000));
+    const config = await saveBlackFriday(await readJson(request, 512_000));
     return json({ config, state: blackFridayState(config) }, 200, headers);
   } catch (error) {
     if (error.status >= 400 && error.status < 500) return json({ message: error.message }, error.status, headers);

@@ -5,7 +5,7 @@ import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalo
 import { verifyBlackFridayBanner } from './black-friday-banner.js';
 
 export const INVENTORY_LOCK = "SELECT pg_advisory_xact_lock(hashtext('himawari_inventory'))";
-export const BLACK_FRIDAY_LIMIT = 100;
+export const BLACK_FRIDAY_LIMIT = 1000;
 const blank = { id: null, revision: 0, enabled: false, startsAt: null, endsAt: null, items: [], banner: null };
 let schemaPromise;
 
@@ -61,7 +61,7 @@ const key = ({ productId, optionId }) => JSON.stringify([productId, optionId || 
 const toMap = rows => new Map(rows.map(row => [key(row), row]));
 
 export function validateBlackFriday(input, current, catalog, now = Date.now()) {
-  if (!input || typeof input.enabled !== 'boolean' || !Array.isArray(input.items) || input.items.length > BLACK_FRIDAY_LIMIT) throw error('행사 설정을 확인해 주세요. 품목은 최대 100개까지 추가할 수 있습니다.');
+  if (!input || typeof input.enabled !== 'boolean' || !Array.isArray(input.items) || input.items.length > BLACK_FRIDAY_LIMIT) throw error('행사 설정을 확인해 주세요. 품목은 최대 1,000개까지 추가할 수 있습니다.');
   const startsAt = parseKst(input.startsAt);
   const endsAt = parseKst(input.endsAt);
   if ((startsAt && endsAt && startsAt >= endsAt) || (input.enabled && (!startsAt || !endsAt || !input.items.length))) throw error('시작보다 늦은 종료 일시와 행사 품목을 입력해 주세요.');
@@ -107,9 +107,14 @@ export async function readWelcomeCouponExclusions() {
 
 async function readUsage(campaignId) {
   if (!campaignId) return new Map();
+  // New mixed orders use reservation attribution. Historical direct-buy orders
+  // use their single parent offer; nullable columns need no historical rewrite.
+  // JSON access also tolerates the earlier parent-only schema during rollout.
   const rows = await database()`SELECT r.product_id AS "productId", r.option_id AS "optionId", sum(r.quantity)::int AS used
     FROM inventory_reservations r JOIN orders o ON o.id = r.order_id
-    WHERE r.active AND o.black_friday_id = ${campaignId} GROUP BY r.product_id, r.option_id`;
+    WHERE r.active AND ${campaignId} = COALESCE(to_jsonb(r)->>'black_friday_id',
+      CASE WHEN to_jsonb(o)->>'black_friday_offer_id' IS NOT NULL OR NOT (to_jsonb(o) ? 'black_friday_offer_id') THEN o.black_friday_id END)
+    GROUP BY r.product_id, r.option_id`;
   return toMap(rows);
 }
 
@@ -186,12 +191,25 @@ export function blackFridayOrderGate({ campaignId, offer, product }, quantity) {
         AND (x.item->>'price')::int = $5
         AND (x.item->>'quantity')::int >= $6 + COALESCE((
           SELECT sum(r.quantity) FROM inventory_reservations r JOIN orders o ON o.id = r.order_id
-          WHERE r.active AND r.product_id = $3 AND r.option_id = $4 AND o.black_friday_id = $1
+          WHERE r.active AND r.product_id = $3 AND r.option_id = $4
+            AND $1 = COALESCE(to_jsonb(r)->>'black_friday_id',
+              CASE WHEN to_jsonb(o)->>'black_friday_offer_id' IS NOT NULL OR NOT (to_jsonb(o) ? 'black_friday_offer_id') THEN o.black_friday_id END)
         ), 0)
         AND ($7::int IS NULL OR $7 >= $6 + COALESCE((
           SELECT sum(r.quantity) FROM inventory_reservations r WHERE r.active AND r.product_id = $3 AND r.option_id = $4
         ), 0))
     ) THEN 1 ELSE 0 END`,
     values: [campaignId, offer.offerId, offer.productId, offer.optionId, offer.price, quantity, product.stock ?? null],
+  };
+}
+
+// Called under INVENTORY_LOCK with the unreserved catalog stock. Mixed orders
+// reserve regular lines too, but those lines do not consume campaign quota.
+export function blackFridayRegularStockGate({ productId, optionId, quantity, baseStock }) {
+  return {
+    text: `SELECT 1 / CASE WHEN $4::int IS NULL OR $4 >= $3 + COALESCE((
+      SELECT sum(quantity) FROM inventory_reservations WHERE active AND product_id=$1 AND option_id=$2
+    ), 0) THEN 1 ELSE 0 END`,
+    values: [productId, optionId || '', quantity, baseStock ?? null],
   };
 }

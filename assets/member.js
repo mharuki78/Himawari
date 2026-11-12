@@ -368,7 +368,9 @@
   function cartItemsForServer() {
     if (!window.SiteCart) return [];
     return window.SiteCart.items().filter(function (item) { return item.id; }).map(function (item) {
-      return { productId: item.id, optionId: item.optionId || '', quantity: Math.min(99, Math.max(1, Number(item.q) || 1)) };
+      var result = { productId: item.id, optionId: item.optionId || '', quantity: Math.min(99, Math.max(1, Number(item.q) || 1)) };
+      if (item.blackFriday !== undefined) result.blackFriday = item.blackFriday;
+      return result;
     });
   }
 
@@ -399,23 +401,61 @@
       var sameOwner = false;
       try { sameOwner = localStorage.getItem(CART_OWNER_KEY) === state.user.id; } catch (error) {}
       var merged = new Map();
+      var campaign = null;
+      if (serverItems.concat(localItems).some(function (item) { return item.blackFriday !== undefined; })) {
+        try { campaign = await request('/api/black-friday'); } catch (_) { /* Keep locked identities unavailable until the next live check. */ }
+      }
+      function currentOffer(item) {
+        var context = item.blackFriday;
+        if (!context || campaign?.state !== 'open') return null;
+        return (campaign.items || []).find(function (offer) {
+          return offer.offerId === context.offerId && offer.productId === item.id && (offer.optionId || '') === (item.optionId || '') && offer.price === context.unitPrice;
+        }) || null;
+      }
+      function refreshItem(item) {
+        var refreshed = Object.assign({}, item);
+        if (item.blackFriday !== undefined) {
+          var offer = currentOffer(item);
+          refreshed.blackFridayUnavailable = !offer || offer.remaining < 1;
+          refreshed.stock = offer ? offer.remaining : 0;
+          if (Number.isSafeInteger(item.blackFriday?.unitPrice) && item.blackFriday.unitPrice > 0) refreshed.price = item.blackFriday.unitPrice;
+        }
+        return refreshed;
+      }
+      function capQuantity(item, quantity) {
+        var maximum = item.stock === null || item.stock === undefined ? 99 : Math.min(99, Number(item.stock));
+        return Math.max(1, Math.min(maximum > 0 ? maximum : 99, quantity));
+      }
+      function mergeItem(item, addQuantity) {
+        var cartKey = item.id + '::' + (item.optionId || '');
+        item = refreshItem(item);
+        var existing = merged.get(cartKey);
+        if (!existing) {
+          item.q = capQuantity(item, Number(item.q) || 1);
+          merged.set(cartKey, item);
+          return;
+        }
+        var quantity = addQuantity ? (Number(existing.q) || 1) + (Number(item.q) || 1) : (Number(existing.q) || 1);
+        // A valid offer wins; an unavailable offer still keeps its explicit purchase identity.
+        var preferred = existing;
+        if (item.blackFriday !== undefined && (!item.blackFridayUnavailable || existing.blackFriday === undefined)) preferred = item;
+        var result = Object.assign({}, preferred);
+        result.q = capQuantity(result, quantity);
+        merged.set(cartKey, result);
+      }
       serverItems.forEach(function (item) {
         var product = item.product || {};
-        var cartKey = item.productId + '::' + (item.optionId || '');
-        merged.set(cartKey, {
+        var restored = {
           id: item.productId, name: product.name, price: product.price,
           q: item.quantity, url: product.url || '', optionId: item.optionId || '',
           optionLabel: item.optionLabel || '', stock: item.stock
-        });
+        };
+        if (item.blackFriday !== undefined) restored.blackFriday = item.blackFriday;
+        mergeItem(restored, true);
       });
       localItems.forEach(function (item) {
         if (!item.id) return;
-        var cartKey = item.id + '::' + (item.optionId || '');
-        if (!merged.has(cartKey)) merged.set(cartKey, item);
-        else if (!sameOwner) {
-          var existing = merged.get(cartKey);
-          existing.q = Math.min(99, (Number(existing.q) || 1) + (Number(item.q) || 1));
-        }
+        mergeItem(item, !sameOwner);
       });
       var legacy = localItems.filter(function (item) { return !item.id; });
       window.SiteCart.replace(legacy.concat(Array.from(merged.values())), false);

@@ -67,10 +67,11 @@ export async function createProductCsvSandbox(fixtureProducts = seedCatalog().pr
     export async function del() {throw new Error('Media deletion is outside CSV fixture scope');}
   `;
   const paths = [];
-  async function bundle(entry, name) {
+  async function bundle(entry, name, { sourceMetaUrl = false } = {}) {
     const outfile = new URL(name, directory); paths.push(outfile);
     await build({ absWorkingDir: fileURLToPath(root), entryPoints: [entry], outfile: fileURLToPath(outfile),
       bundle: true, format: 'esm', platform: 'node', packages: 'external', logLevel: 'silent',
+      ...(sourceMetaUrl ? { define: { 'import.meta.url': JSON.stringify(new URL(entry, root).href) } } : {}),
       plugins: [{ name: 'isolated-blob', setup(build) {
         build.onResolve({ filter: /^@vercel\/blob$/ }, () => ({ path: 'blob-fixture', namespace: 'csv-fixture' }));
         build.onLoad({ filter: /.*/, namespace: 'csv-fixture' }, () => ({ contents: blobStub, loader: 'js' }));
@@ -86,7 +87,7 @@ export async function createProductCsvSandbox(fixtureProducts = seedCatalog().pr
     method, headers: { origin, cookie, ...(body === undefined ? {} : { 'content-type': 'application/json' }), ...headers },
     ...(body === undefined ? {} : { body: JSON.stringify(body) }),
   });
-  return { handler, publicHandler, request, db, state, cookie,
+  return { handler, publicHandler, request, db, state, cookie, bundle,
     get products() { return JSON.parse(state.blobs.get('products/v1/catalog.json').body).products.map(publicProduct); },
     async close() {
       neonConfig.fetchFunction = previousNeon;

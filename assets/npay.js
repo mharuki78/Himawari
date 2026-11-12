@@ -63,6 +63,10 @@ function runOnce(key, work) {
 }
 
 async function registerOrder(items, context, section) {
+  if (items.some(item => item?.blackFriday != null)) {
+    setStatus(section, '행사 상품이 포함된 주문은 장바구니 주문하기를 이용해 주세요.', true);
+    return null;
+  }
   window.himawariTrack?.('Begin checkout', { destination: 'npay', context, itemCount: items.length });
   setStatus(section, '네이버페이 주문서를 준비하고 있습니다.');
   try {
@@ -144,8 +148,10 @@ async function createProductButton() {
 }
 
 async function syncCartButton() {
+  if (window.SiteCart?.items) currentCartItems = window.SiteCart.items();
   const section = document.querySelector('[data-npay-cart-section]');
   const container = section?.querySelector('[data-npay-cart]');
+  if (section && currentCartItems.some(item => item?.blackFriday != null)) { section.hidden = true; return; }
   if (!section || !container || !config?.enabled || !window.Npay?.order?.create) return;
   if (sdkBlockedMessage) {
     section.hidden = false;
@@ -174,6 +180,12 @@ async function syncCartButton() {
         benefitCoachMark: false,
       },
       onBuyClick: () => {
+        if (window.SiteCart?.items) currentCartItems = window.SiteCart.items();
+        if (currentCartItems.some(item => item?.blackFriday != null)) {
+          setStatus(section, '행사 상품이 포함된 주문은 장바구니 주문하기를 이용해 주세요.', true);
+          section.hidden = true;
+          return null;
+        }
         const latest = currentCartItems
           .filter((item) => item?.id)
           .map((item) => ({ productId: item.id, optionId: item.optionId || '', quantity: Number(item.q) || 1 }));
@@ -200,6 +212,10 @@ export async function initializeNpay({ cartItems = [] } = {}) {
   initialized = true;
 
   document.addEventListener('himawari:cart-change', (event) => {
+    currentCartItems = Array.isArray(event.detail?.items) ? event.detail.items : [];
+    syncCartButton();
+  });
+  document.addEventListener('himawari:cart-state', (event) => {
     currentCartItems = Array.isArray(event.detail?.items) ? event.detail.items : [];
     syncCartButton();
   });

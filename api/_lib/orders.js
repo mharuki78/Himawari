@@ -1,6 +1,6 @@
 import { bankTransferReady } from '../../assets/bank-transfer.js';
 import { CONFIRM_ORDER_SQL, CANCEL_ORDER_SQL } from './order-transactions.js';
-import { blackFridayOrderGate, blackFridayUnavailable, INVENTORY_LOCK, readBlackFridayCatalog, readWelcomeCouponExclusions, resolveBlackFridayOrder } from './black-friday.js';
+import { blackFridayOrderGate, blackFridayRegularStockGate, blackFridayUnavailable, INVENTORY_LOCK, readBlackFridayCatalog, readWelcomeCouponExclusions, resolveBlackFridayOrder } from './black-friday.js';
 import { randomUUID } from 'node:crypto';
 
 import { database } from './database.js';
@@ -45,6 +45,11 @@ const PHONE_PATTERN = /^\+?[0-9][0-9\s-]{7,19}$/;
 const MAX_ITEMS = 30;
 const MAX_QUANTITY = 99;
 let schemaPromise;
+
+function validBlackFridayContext(value) {
+  return value && typeof value.offerId === 'string' && /^[\da-f-]{36}$/i.test(value.offerId)
+    && Number.isSafeInteger(value.unitPrice) && value.unitPrice > 0;
+}
 
 function cleanLine(value, maximum = 500) {
   return String(value || '')
@@ -131,13 +136,14 @@ export function validateOrderItems(input) {
     const productId = cleanLine(item?.productId, 120);
     const optionId = cleanLine(item?.optionId, 120);
     const quantity = Number(item?.quantity);
+    const sale = item?.blackFriday;
     const key = `${productId}::${optionId}`;
-    if (!productId || seen.has(key) || !Number.isInteger(quantity) || quantity < 1 || quantity > MAX_QUANTITY) {
+    if (!productId || seen.has(key) || !Number.isInteger(quantity) || quantity < 1 || quantity > MAX_QUANTITY || (sale !== undefined && !validBlackFridayContext(sale))) {
       fieldErrors.items = '상품과 수량을 다시 확인해 주세요.';
       break;
     }
     seen.add(key);
-    items.push({ productId, optionId, quantity });
+    items.push({ productId, optionId, quantity, ...(sale ? { blackFriday: { offerId: sale.offerId, unitPrice: sale.unitPrice } } : {}) });
   }
   return { items, fieldErrors, valid: Object.keys(fieldErrors).length === 0 };
 }
@@ -217,6 +223,8 @@ export async function ensureOrderSchema() {
       tx`CREATE INDEX IF NOT EXISTS order_items_order_idx ON order_items(order_id, created_at)`,
       tx`ALTER TABLE order_items ADD COLUMN IF NOT EXISTS option_id text`,
       tx`ALTER TABLE order_items ADD COLUMN IF NOT EXISTS option_label text`,
+      tx`ALTER TABLE order_items ADD COLUMN IF NOT EXISTS black_friday_id text`,
+      tx`ALTER TABLE order_items ADD COLUMN IF NOT EXISTS black_friday_offer_id text`,
       tx`CREATE TABLE IF NOT EXISTS order_events (
         id text PRIMARY KEY,
         order_id text NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
@@ -238,6 +246,8 @@ export async function ensureOrderSchema() {
         updated_at timestamptz NOT NULL DEFAULT now()
       )`,
       tx`CREATE INDEX IF NOT EXISTS inventory_reservations_stock_idx ON inventory_reservations(product_id, option_id, active)`,
+      tx`ALTER TABLE inventory_reservations ADD COLUMN IF NOT EXISTS black_friday_id text`,
+      tx`ALTER TABLE inventory_reservations ADD COLUMN IF NOT EXISTS black_friday_offer_id text`,
     ]).then(() => sql.query('DELETE FROM orders WHERE retention_until <= now()')).catch((error) => {
       schemaPromise = null;
       throw error;
@@ -287,6 +297,10 @@ function mapOrderRow(row, items = [], events = [], includeAdminNotes = false) {
       quantity: Number(item.quantity),
       lineTotal: Number(item.line_total),
       image: item.image_url || '',
+      ...((item.black_friday_offer_id || row.black_friday_offer_id) ? { blackFriday: {
+        offerId: item.black_friday_offer_id || row.black_friday_offer_id,
+        unitPrice: Number(item.unit_price),
+      } } : {}),
     })),
     events: events.map((event) => ({
       actor: event.actor,
@@ -325,7 +339,14 @@ async function readExistingOrder(requestId, email, userId = null) {
     [requestId, email, userId],
   );
   const order = (await hydrateOrders(rows))[0];
-  return order ? { order, offerId: rows[0].black_friday_offer_id || '' } : null;
+  return order ? { order } : null;
+}
+
+function sameOrderIntent(existing, items, paymentMethod) {
+  if (existing.order.paymentMethod !== paymentMethod) return false;
+  const signature = lines => JSON.stringify(lines.map(item => [item.productId, item.optionId || '', item.quantity,
+    item.blackFriday?.offerId || '', item.blackFriday?.unitPrice ?? null]).sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b))));
+  return signature(existing.order.items) === signature(items);
 }
 
 export async function readOrderById(id) {
@@ -336,36 +357,45 @@ export async function readOrderById(id) {
 export async function createOrder(member, input, { paymentMethod = 'bank_transfer' } = {}) {
   if (!['bank_transfer','kakaopay'].includes(paymentMethod) || (input?.paymentMethod && input.paymentMethod !== paymentMethod)) throw Object.assign(new Error('결제 방법을 다시 선택해 주세요.'), { status: 400 });
   const sale = input?.blackFriday;
-  if (sale != null && (typeof sale.offerId !== 'string' || !/^[\da-f-]{36}$/i.test(sale.offerId) || !Number.isSafeInteger(sale.unitPrice) || sale.unitPrice < 1)) throw blackFridayUnavailable();
+  if (sale != null && !validBlackFridayContext(sale)) throw blackFridayUnavailable();
   const fields = validateOrderFields(input);
   const itemInput = validateOrderItems(input?.items);
   const fieldErrors = { ...fields.fieldErrors, ...itemInput.fieldErrors };
   if (Object.keys(fieldErrors).length) {
     throw Object.assign(new Error('주문서 내용을 확인해 주세요.'), { status: 400, fieldErrors });
   }
+  if (sale) {
+    if (itemInput.items.length !== 1 || (itemInput.items[0].blackFriday && (itemInput.items[0].blackFriday.offerId !== sale.offerId || itemInput.items[0].blackFriday.unitPrice !== sale.unitPrice))) throw blackFridayUnavailable();
+    itemInput.items[0].blackFriday = { offerId: sale.offerId, unitPrice: sale.unitPrice };
+  }
+  const containsBlackFriday = itemInput.items.some(item => item.blackFriday);
   const welcomeSelected = fields.value.couponId === WELCOME_COUPON.id;
-  if (sale && welcomeSelected) throw Object.assign(new Error('신규 회원 쿠폰은 행사 상품에 사용할 수 없습니다.'), { status: 409 });
-  if (sale && (itemInput.items.length !== 1 || fields.value.couponId)) throw blackFridayUnavailable();
+  if (containsBlackFriday && welcomeSelected) throw Object.assign(new Error('신규 회원 쿠폰은 행사 상품에 사용할 수 없습니다.'), { status: 409 });
+  if (containsBlackFriday && fields.value.couponId) throw blackFridayUnavailable();
   if (welcomeSelected && !member?.id) throw Object.assign(new Error('신규 회원 쿠폰을 사용하려면 로그인해 주세요.'), { status: 401 });
   if (paymentMethod === 'kakaopay' && !kakaopayConfig().enabled) throw Object.assign(new Error('카카오페이 결제 연결을 준비하고 있습니다.'), {status:503});
-  if (paymentMethod === 'bank_transfer' && !bankTransferReady()) throw Object.assign(new Error(sale ? '무통장입금 계좌를 준비하고 있습니다.' : '무통장입금 계좌를 준비하고 있습니다. Npay로 구매해 주세요.'), { status: 503 });
+  if (paymentMethod === 'bank_transfer' && !bankTransferReady()) throw Object.assign(new Error(containsBlackFriday ? '무통장입금 계좌를 준비하고 있습니다.' : '무통장입금 계좌를 준비하고 있습니다. Npay로 구매해 주세요.'), { status: 503 });
   await ensureOrderSchema();
 
   const existing = await readExistingOrder(fields.value.requestId, fields.value.email, member?.id || null);
   if (existing) {
-    if (existing.order.paymentMethod !== paymentMethod || existing.order.isGuest !== !member || existing.offerId !== (sale?.offerId || '') || (sale && existing.order.items[0]?.unitPrice !== sale.unitPrice)) throw Object.assign(new Error('다른 결제 방법으로 접수된 주문입니다. 주문서를 새로고침해 주세요.'), {status:409});
+    if (!sameOrderIntent(existing, itemInput.items, paymentMethod)) throw Object.assign(new Error('다른 상품, 수량 또는 가격으로 접수된 주문입니다. 주문서를 새로고침해 주세요.'), {status:409});
     return { order: existing.order, duplicate: true };
   }
 
-  const catalog = sale ? await readBlackFridayCatalog() : await currentCatalog();
-  const eventOrder = sale ? await resolveBlackFridayOrder(sale.offerId, sale.unitPrice, itemInput.items[0], catalog) : null;
+  const catalog = containsBlackFriday ? await readBlackFridayCatalog() : await currentCatalog();
+  const eventOrders = await Promise.all(itemInput.items.map(item => item.blackFriday
+    ? resolveBlackFridayOrder(item.blackFriday.offerId, item.blackFriday.unitPrice, item, catalog) : null));
+  const campaignId = eventOrders.find(Boolean)?.campaignId || null;
+  if (eventOrders.some(eventOrder => eventOrder && eventOrder.campaignId !== campaignId)) throw blackFridayUnavailable();
   const byId = new Map(catalog.map((product) => [product.id, product]));
-  const items = itemInput.items.map((item) => {
+  const items = itemInput.items.map((item, index) => {
+    const eventOrder = eventOrders[index];
     const product = byId.get(item.productId);
     const options = Array.isArray(product?.options) ? product.options : [];
     const option = options.find((entry) => entry.id === item.optionId) || null;
     const available = option ? option.stock : product?.stock;
-    if (!eventOrder && (!product || !Number.isInteger(product.price) || product.price < 1 || (options.length && !option) || available === 0 || (available !== null && item.quantity > available))) {
+    if (!eventOrder && (!product || !Number.isInteger(product.price) || product.price < 1 || ((options.length || item.optionId) && !option) || available === 0 || (available !== null && item.quantity > available))) {
       throw Object.assign(new Error('현재 주문할 수 없는 상품이 포함되어 있습니다.'), {
         status: 409,
         fieldErrors: { items: '상품 정보를 새로 불러온 뒤 다시 주문해 주세요.' },
@@ -381,6 +411,8 @@ export async function createOrder(member, input, { paymentMethod = 'bank_transfe
       unitPrice: eventOrder?.offer.price ?? product.price,
       id: randomUUID(),
       quantity: item.quantity,
+      baseStock: available ?? null,
+      ...(eventOrder ? { blackFriday: { offerId: eventOrder.offer.offerId, unitPrice: eventOrder.offer.price }, campaignId: eventOrder.campaignId } : {}),
     };
   });
   let coupon = null;
@@ -429,27 +461,29 @@ export async function createOrder(member, input, { paymentMethod = 'bank_transfe
       ${fields.value.recipientName}, ${fields.value.email}, ${fields.value.phone},
       ${fields.value.postalCode}, ${fields.value.addressLine1}, ${fields.value.addressLine2 || null},
       ${fields.value.deliveryNote || null}, ${totals.subtotal}, ${coupon?.id || null}, ${coupon?.label || null},
-      ${totals.discountAmount}, ${totals.shippingFee}, ${totals.total}, ${paymentMethod}, ${eventOrder?.campaignId ?? null}, ${sale?.offerId ?? null},
+      ${totals.discountAmount}, ${totals.shippingFee}, ${totals.total}, ${paymentMethod}, ${campaignId}, ${items.length === 1 ? items[0].blackFriday?.offerId ?? null : null},
       ${now.toISOString()}, ${now.toISOString()}, ${retentionUntil.toISOString()}
     )`,
     ...items.map((item) => sql`INSERT INTO order_items (
-      id, order_id, product_id, product_name, product_model, option_id, option_label, unit_price, quantity, line_total, image_url
+      id, order_id, product_id, product_name, product_model, option_id, option_label, unit_price, quantity, line_total, image_url, black_friday_id, black_friday_offer_id
     ) VALUES (
       ${item.id}, ${id}, ${item.productId}, ${item.name}, ${item.model}, ${item.optionId || null}, ${item.optionLabel || null}, ${item.unitPrice},
-      ${item.quantity}, ${item.unitPrice * item.quantity}, ${item.image || null}
+      ${item.quantity}, ${item.unitPrice * item.quantity}, ${item.image || null}, ${item.campaignId || null}, ${item.blackFriday?.offerId || null}
     )`),
     sql`INSERT INTO order_events (id, order_id, actor, from_status, to_status, note)
       VALUES (${randomUUID()}, ${id}, ${member ? 'member' : 'system'}, ${null}, 'payment_pending', ${paymentMethod === 'kakaopay' ? '카카오페이 결제 준비 · 승인 대기' : (member ? '회원 무통장입금 주문 접수 · 입금 확인 대기' : '비회원 무통장입금 주문 접수 · 입금 확인 대기')})`,
   ];
 
   try {
-    if (eventOrder) {
-      const item = items[0];
-      const gate = blackFridayOrderGate(eventOrder, item.quantity);
+    if (containsBlackFriday) {
       queries.unshift(sql.query(INVENTORY_LOCK));
-      queries.splice(2, 0, sql.query(gate.text, gate.values));
-      queries.push(sql`INSERT INTO inventory_reservations (order_item_id, order_id, product_id, option_id, quantity)
-        VALUES (${item.id}, ${id}, ${item.productId}, ${item.optionId}, ${item.quantity})`);
+      const gates = items.map((item, index) => {
+        const gate = eventOrders[index] ? blackFridayOrderGate(eventOrders[index], item.quantity) : blackFridayRegularStockGate(item);
+        return sql.query(gate.text, gate.values);
+      });
+      queries.splice(2, 0, ...gates);
+      queries.push(...items.map(item => sql`INSERT INTO inventory_reservations (order_item_id, order_id, product_id, option_id, quantity, black_friday_id, black_friday_offer_id)
+        VALUES (${item.id}, ${id}, ${item.productId}, ${item.optionId}, ${item.quantity}, ${item.campaignId || null}, ${item.blackFriday?.offerId || null})`));
     }
     if (coupon) {
       await ensureCouponSchema();
@@ -458,11 +492,11 @@ export async function createOrder(member, input, { paymentMethod = 'bank_transfe
     }
     await sql.transaction(queries, { isolationLevel: 'ReadCommitted' });
   } catch (error) {
-    if (eventOrder && error?.code === '22012') throw blackFridayUnavailable();
+    if (containsBlackFriday && error?.code === '22012') throw blackFridayUnavailable();
     if (coupon && error?.code === '22012') throw Object.assign(new Error('이미 사용했거나 만료된 쿠폰입니다. 쿠폰을 다시 확인해 주세요.'), {status:409,fieldErrors:{couponId:'사용 가능한 쿠폰을 다시 확인해 주세요.'}});
     if (error?.code === '23505') {
       const duplicate = await readExistingOrder(fields.value.requestId, fields.value.email, member?.id || null);
-      if (duplicate?.order.paymentMethod === paymentMethod && duplicate.offerId === (sale?.offerId || '') && (!sale || duplicate.order.items[0]?.unitPrice === sale.unitPrice)) return { order: duplicate.order, duplicate: true };
+      if (duplicate && sameOrderIntent(duplicate, itemInput.items, paymentMethod)) return { order: duplicate.order, duplicate: true };
       throw Object.assign(new Error('이미 사용된 주문 요청입니다. 주문서를 새로고침한 뒤 다시 시도해 주세요.'), { status: 409 });
     }
     throw error;

@@ -1,3 +1,4 @@
+import { checkoutItemsInput, removePurchasedCartItems } from './black-friday-cart.js?v=20261112-bf-cart';
 const params = new URLSearchParams(location.search);
 let context;
 try { context = JSON.parse(sessionStorage.getItem('himawari-kakaopay-checkout')); } catch {}
@@ -22,24 +23,17 @@ async function request(url,body) {
 
 async function clearPurchasedItems() {
   if (!context || context.orderId!==orderId || context.state!==state || context.cleaned || !context.cartOrder) return;
-  const bought = new Map((context.items || []).map(item=>[`${item.productId}::${item.optionId || ''}`,item.quantity]));
   if (context.memberOrder) {
     try {
       const response = await fetch('/api/member/cart',{cache:'no-store'});
       if (response.ok) {
         const cart = await response.json();
-        const items = cart.items.flatMap(item=> {
-          const quantity = item.quantity - (bought.get(`${item.productId}::${item.optionId || ''}`) || 0);
-          return quantity>0 ? [{productId:item.productId,optionId:item.optionId || '',quantity}] : [];
-        });
+        const items = checkoutItemsInput(removePurchasedCartItems(cart.items,context.items || []));
         await fetch('/api/member/cart',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({items})});
       }
     } catch { /* The paid order remains valid if cart cleanup is unavailable. */ }
   }
-  if (window.SiteCart) window.SiteCart.replace(window.SiteCart.items().flatMap(item=> {
-    const q = item.q - (bought.get(`${item.id}::${item.optionId || ''}`) || 0);
-    return q>0 ? [{...item,q}] : [];
-  }));
+  if (window.SiteCart) window.SiteCart.replace(removePurchasedCartItems(window.SiteCart.items(),context.items || []));
   context.cleaned = true;
   try { sessionStorage.setItem('himawari-kakaopay-checkout',JSON.stringify(context)); sessionStorage.removeItem('himawari-checkout-items'); } catch {}
 }

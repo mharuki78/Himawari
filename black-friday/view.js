@@ -44,6 +44,7 @@ function card(item, detail, band) {
   const discountLabel = discount === 0 ? '1% 미만' : `${discount}%`;
   const info = detail ? '' : `<a class="bf-event__detail-link" data-bf-focus="details:${item.offerId}" href="${path}" aria-label="${label} 상품 정보">상품 정보 <span aria-hidden="true">→</span></a>`;
   const buy = item.remaining > 0 ? `<a class="bf-event__buy" data-bf-focus="buy:${item.offerId}" href="/checkout.html?blackFriday=${item.offerId}" aria-label="${label} 행사가로 구매">행사가로 구매</a>` : '';
+  const add = item.remaining > 0 ? `<button type="button" class="bf-event__add" data-bf-focus="cart:${item.offerId}" data-cart-add data-black-friday-offer-id="${item.offerId}" data-product-id="${escape(item.productId)}" data-option-id="${escape(item.optionId)}" data-option-label="${escape(item.optionLabel)}" data-name="${escape(item.name)}" data-price="${item.price}" data-stock="${item.remaining}" aria-label="${label} 행사가로 장바구니 담기">장바구니 담기</button>` : '';
   const anchor = band === undefined ? '' : ` id="bf-price-${band}" tabindex="-1" data-bf-focus="start:${band}"`;
   return `<article class="bf-event__card${detail ? ' bf-event__card--detail' : ''}"${anchor}>
     <div class="bf-event__media">${image ? `<img src="${escape(image)}" alt="" ${detail ? '' : 'loading="lazy" '}decoding="async">` : ''}</div>
@@ -51,7 +52,7 @@ function card(item, detail, band) {
       ${detail ? '' : `<h2><a href="${path}" data-bf-focus="title:${item.offerId}">${escape(item.name)}</a></h2>`}
       <p class="bf-event__prices"><del><span class="sr-only">정상가 </span>${money.format(item.regularPrice)}원</del><strong><span class="sr-only">행사가 </span>${money.format(item.price)}원</strong>${discount === null ? '' : `<span class="bf-event__discount"><span class="sr-only">할인율 </span>${discountLabel}</span>`}</p>
       <p class="bf-event__remaining${item.remaining > 0 ? '' : ' bf-event__remaining--sold-out'}">${remaining}</p>
-      <div class="bf-event__card-actions">${buy}${info}</div>
+      <div class="bf-event__card-actions">${buy}${add}${info}</div>
     </div></article>`;
 }
 

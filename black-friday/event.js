@@ -1,4 +1,4 @@
-import { blackFridayView, jsonLdText } from './view.js?v=20261112-banner-only';
+import { blackFridayView, jsonLdText } from './view.js?v=20261112-bf-cart';
 import { animate } from '/assets/site-ui.js';
 
 const main = document.querySelector('[data-bf-offer]');

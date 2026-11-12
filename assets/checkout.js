@@ -1,5 +1,6 @@
 import { purchaseQuantity } from './purchase-quantity.js';
-import { initializeCheckoutNpay } from './npay.js';
+import { initializeCheckoutNpay } from './npay.js?v=20261112-bf-cart';
+import { checkoutCartLine, checkoutItemsInput, removePurchasedCartItems, mergeRemainingCart } from './black-friday-cart.js?v=20261112-bf-cart';
 import { bankTransfer, bankTransferReady } from './bank-transfer.js';
 import { WELCOME_COUPON, welcomeCouponSubtotal } from './welcome-coupon.js';
 import { standardShippingFee } from './shipping-policy.js';
@@ -35,6 +36,7 @@ import { standardShippingFee } from './shipping-policy.js';
   var cartOrder = false;
   var saleOfferId = new URLSearchParams(location.search).get('blackFriday');
   var saleOffer = null;
+  function hasSaleItems() { return saleOfferId !== null || items.some(function (item) { return item.blackFriday != null; }); }
   if (saleOfferId !== null) {
     document.querySelector('[data-npay-checkout-section]').hidden = true;
     document.querySelector('[data-coupon-fieldset]').hidden = true;
@@ -66,7 +68,7 @@ import { standardShippingFee } from './shipping-policy.js';
   }
 
   function prepareNpay() {
-    if (saleOfferId !== null) return;
+    if (hasSaleItems()) return;
     initializeCheckoutNpay(() => items.map(item => ({ productId: item.productId, optionId: item.optionId || '', quantity: item.quantity })), () => { dirty = false; });
   }
 
@@ -147,6 +149,7 @@ import { standardShippingFee } from './shipping-policy.js';
   }
 
   function selectedCoupon() {
+    if (hasSaleItems()) return null;
     var checked = form.querySelector('input[name="couponId"]:checked');
     return coupons.find(function (coupon) { return coupon.id === (checked ? checked.value : ''); }) || null;
   }
@@ -283,7 +286,7 @@ import { standardShippingFee } from './shipping-policy.js';
       article.append(media, copy);
       itemContainer.append(article);
     });
-    if (saleOfferId === null) renderCoupons();
+    if (!hasSaleItems()) renderCoupons();
     renderTotals();
   }
 
@@ -383,8 +386,10 @@ import { standardShippingFee } from './shipping-policy.js';
         var salePayload = await request('/api/black-friday');
         saleOffer = salePayload.state === 'open' && salePayload.items.find(function (item) { return item.offerId === saleOfferId; });
         if (!saleOffer || saleOffer.remaining < 1) throw new Error('행사가 끝났거나 이 품목의 행사 수량이 모두 소진됐습니다.');
+        var saleQuantity = purchaseQuantity(new URLSearchParams(location.search).get('quantity'), saleOffer.remaining);
         items = [{ productId: saleOffer.productId, optionId: saleOffer.optionId, optionLabel: saleOffer.optionLabel,
-          stock: saleOffer.remaining, quantity: 1, product: saleOffer }];
+          stock: saleOffer.remaining, quantity: saleQuantity, product: saleOffer,
+          blackFriday: { offerId: saleOffer.offerId, unitPrice: saleOffer.price } }];
         cartOrder = false;
         if (!kakaopayEnabled && !bankTransferReady()) {
           paymentNotice.textContent = '현재 행사 결제를 이용할 수 없습니다. 잠시 후 다시 시도해 주세요.';
@@ -405,25 +410,26 @@ import { standardShippingFee } from './shipping-policy.js';
           ? checkoutIntent.items
           : [];
         if (intendedItems.length) {
+          if (intendedItems.length > 30) throw new Error('한 주문에는 최대 30개 품목을 담을 수 있습니다. 장바구니에서 주문할 품목을 줄여 주세요.');
           var catalogPayload = await request('/api/products');
           var byId = new Map((catalogPayload.products || []).map(function (product) { return [product.id, product]; }));
-          items = intendedItems.slice(0, 30).flatMap(function (item) {
-            var product = byId.get(String(item.productId || ''));
-            var quantity = Math.min(99, Math.max(1, Number(item.quantity) || 1));
-            var optionId = String(item.optionId || '');
-            var option = (product && product.options || []).find(function (entry) { return entry.id === optionId; });
-            var available = option ? option.stock : product && product.stock;
-            if (available === 0) return [];
-            if (available !== null && available !== undefined) quantity = Math.min(quantity, available);
-            return product && (!(product.options || []).length || option) ? [{ productId: product.id, optionId: optionId, optionLabel: option ? option.label : '', stock: option ? option.stock : product.stock, quantity: quantity, product: product }] : [];
-          });
+          var cartSale = intendedItems.some(function (item) { return item.blackFriday != null; }) ? await request('/api/black-friday') : null;
+          items = intendedItems.map(function (item) { return checkoutCartLine(item, byId.get(String(item.productId || '')), cartSale); });
         } else if (memberOrder) {
           var cartPayload = await request('/api/member/cart');
-          items = (cartPayload.items || []).map(function (item) { return { productId: item.productId, optionId: item.optionId || '', optionLabel: item.optionLabel || '', stock: item.stock, quantity: item.quantity, product: item.product }; });
+          var memberSale = (cartPayload.items || []).some(function (item) { return item.blackFriday != null; }) ? await request('/api/black-friday') : null;
+          items = (cartPayload.items || []).map(function (item) { return checkoutCartLine(item, item.product, memberSale); });
         }
         cartOrder = true;
       }
       if (!items.length) throw Object.assign(new Error('장바구니가 비어 있습니다. 제품을 담은 뒤 다시 주문해 주세요.'), { status: 400 });
+      var saleMode = hasSaleItems();
+      document.querySelector('[data-npay-checkout-section]').hidden = saleMode;
+      document.querySelector('[data-coupon-fieldset]').hidden = saleMode;
+      document.querySelector('[data-coupon-fieldset]').disabled = saleMode;
+      document.querySelector('[data-black-friday-checkout]').hidden = !saleMode;
+      document.querySelector('[data-black-friday-return]').hidden = !saleMode;
+      if (saleMode) coupons = [];
       if (memberOrder) {
         field('recipientName').value = session.user.displayName || '';
         field('email').value = session.user.email || '';
@@ -472,8 +478,7 @@ import { standardShippingFee } from './shipping-policy.js';
         body: JSON.stringify({
           requestId: requestId,
           paymentMethod: paymentMethod,
-          blackFriday: saleOffer ? { offerId: saleOffer.offerId, unitPrice: saleOffer.price } : undefined,
-          items: items.map(function (item) { return { productId: item.productId, optionId: item.optionId || '', quantity: item.quantity }; }),
+          items: checkoutItemsInput(items),
           recipientName: values.recipientName,
           email: values.email,
           phone: values.phone,
@@ -489,7 +494,7 @@ import { standardShippingFee } from './shipping-policy.js';
         })
       });
       if (paymentMethod === 'kakaopay') {
-        try { sessionStorage.setItem('himawari-kakaopay-checkout',JSON.stringify({orderId:payload.orderId,state:payload.state,cartOrder:cartOrder,memberOrder:memberOrder,items:items.map(function (item) { return {productId:item.productId,optionId:item.optionId || '',quantity:item.quantity}; }),createdAt:Date.now()})); } catch (error) {}
+        try { sessionStorage.setItem('himawari-kakaopay-checkout',JSON.stringify({orderId:payload.orderId,state:payload.state,cartOrder:cartOrder,memberOrder:memberOrder,items:checkoutItemsInput(items),createdAt:Date.now()})); } catch (error) {}
         dirty = false;
         var redirect = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ? payload.mobile : payload.pc;
         location.assign(redirect);
@@ -500,8 +505,16 @@ import { standardShippingFee } from './shipping-policy.js';
       submitted = true;
       dirty = false;
       if (cartOrder) {
-        if (memberOrder) await request('/api/member/cart', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: [] }) }).catch(function () {});
-        if (window.SiteCart) window.SiteCart.clear();
+        var localRemaining = window.SiteCart ? removePurchasedCartItems(window.SiteCart.items(), checkoutItemsInput(items)) : [];
+        if (memberOrder) {
+          try {
+            var latest = await request('/api/member/cart');
+            var remaining = removePurchasedCartItems(latest.items || [], checkoutItemsInput(items));
+            await request('/api/member/cart', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ items: checkoutItemsInput(remaining) }) });
+            localRemaining = mergeRemainingCart(localRemaining, remaining);
+          } catch (error) { /* Order remains valid if account-cart cleanup is temporarily unavailable. */ }
+        }
+        if (window.SiteCart) window.SiteCart.replace(localRemaining, !memberOrder);
         try { sessionStorage.removeItem(checkoutStorageKey); } catch (error) {}
       }
       document.querySelector('[data-complete-number]').textContent = order.orderNumber;

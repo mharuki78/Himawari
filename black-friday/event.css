@@ -34,6 +34,10 @@
 .bf-event__buy, .bf-event__browse { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: .65rem 1rem; border-radius: 999px; font-weight: 650; text-decoration: none; }
 .bf-event__buy { width: 100%; margin-top: .5rem; padding-inline: .4rem; background: var(--bf-green); color: #fff; font-size: .88rem; }
 .bf-event__buy:hover { background: #254635; color: #fff; }
+.bf-event__add { display: inline-flex; align-items: center; justify-content: center; width: 100%; min-height: 44px; margin-top: .5rem; padding: .65rem .4rem; border: 1px solid #315845; border-radius: 999px; background: #fff; color: #315845; font: inherit; font-size: .88rem; font-weight: 650; cursor: pointer; }
+.bf-event__add:hover { background: #edf5f1; }
+.bf-event__add:focus-visible { outline: 2px solid #315845; outline-offset: 3px; }
+.bf-event__add:disabled { opacity: .5; cursor: default; }
 .bf-event__browse { gap: .5rem; margin-top: 1.25rem; border: 1px solid #d6dfd9; color: var(--bf-green); }
 .bf-event__browse:hover { background: #edf5f1; }
 .bf-event a:focus-visible { outline: 2px solid var(--bf-green); outline-offset: 3px; }

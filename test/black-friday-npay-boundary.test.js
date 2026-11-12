@@ -1,0 +1,23 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+import { readFileSync } from 'node:fs';
+import { purchaseQuantity } from '../assets/purchase-quantity.js';
+
+test('member-style silent cart restoration hides Npay and stale callbacks read the actual sale cart',async()=>{
+ const events=new Map(),storage=new Map(),requests=[],creations=[];
+ const container={dataset:{}},status={textContent:'',classList:{toggle(){}}};
+ const section={hidden:true,querySelector:s=>s==='[data-npay-cart]'?container:status};
+ const document={readyState:'loading',addEventListener(name,fn){if(!events.has(name))events.set(name,[]);events.get(name).push(fn);},dispatchEvent(event){for(const fn of events.get(event.type)||[])fn(event);},querySelector:s=>s==='[data-npay-cart-section]'?section:null};
+ const context=vm.createContext({document,window:{addEventListener(){},Npay:{order:{create:async options=>creations.push(options)}}},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},CustomEvent:class{constructor(type,init){this.type=type;this.detail=init.detail;}},setTimeout:()=>1,clearTimeout(){},navigator:{},location:{pathname:'/product.html',search:''},AbortController,purchaseQuantity,fetch:async(url,options)=>{requests.push({url,options});return{ok:true,json:async()=>({enabled:true,buttonKey:'fixture'})};}});
+ vm.runInContext(readFileSync(new URL('../assets/cart.js',import.meta.url),'utf8'),context);
+ let source=readFileSync(new URL('../assets/npay.js',import.meta.url),'utf8').replace(/^import .*;\r?\n/gm,'').replace(/export /g,'');
+ vm.runInContext(source,context);
+ context.window.SiteCart.add('가방',59000,'','bag','','',5,1);
+ await context.initializeNpay({cartItems:context.window.SiteCart.items()});
+ assert.equal(section.hidden,false);assert.equal(creations.length,1);
+ context.window.SiteCart.replace([{id:'bag',name:'가방',price:39000,q:1,stock:3,blackFriday:{offerId:'eb3ff32a-dce8-4c79-8dba-c93058eb6247',unitPrice:39000}}],false);
+ assert.equal(section.hidden,true);
+ const result=await creations[0].onBuyClick();
+ assert.equal(result,null);assert.ok(!requests.some(r=>r.url==='/api/npay/order'));
+});

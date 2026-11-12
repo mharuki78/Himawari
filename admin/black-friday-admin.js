@@ -6,7 +6,7 @@ const formatPrice = new Intl.NumberFormat('ko-KR');
 const formatState = { inactive: '사용 안 함', scheduled: '시작 예정', open: '진행 중', closed: '종료' };
 const kst = value => value ? new Date(Date.parse(value) + 9 * 3600_000).toISOString().slice(0, 16) : '';
 const entryKey = ({ productId, optionId }) => JSON.stringify([productId, optionId || '']);
-const itemLimit = 100;
+const itemLimit = 1000;
 
 function element(tag, className, text) {
   const node = document.createElement(tag);

@@ -12,6 +12,7 @@ import { npayReviewRequestIsValid, npayReviewSessionCookie, npayReviewTokenIsVal
 import { listPublishedReviews } from './_lib/customer-features.js';
 import { applyInventoryReservations } from './_lib/inventory.js';
 import { productCategory, productFamilyKey } from '../assets/catalog-tools.js';
+import { resolveBlackFridayDetail } from '../assets/black-friday-product-context.js';
 
 const COLLECTIONS = {
   school: { title: '학생·책가방', description: 'Himawari 학생 백팩의 크기와 수납 정보를 살펴보세요.', line1: '등교할 때 필요한', line2: '가방을 찾아보세요.' },
@@ -73,6 +74,25 @@ export async function fetch(request) {
     } catch (error) {
       console.error('black_friday_page_failed', { message: error.message });
       event = { state: 'error' };
+    }
+    if (page === 'black-friday-item' && event.state === 'open' && event.items?.some(item => item.offerId.toLowerCase() === id) &&
+      Number.isFinite(Date.parse(event.endsAt)) && (!event.serverTime || Date.parse(event.serverTime) < Date.parse(event.endsAt))) {
+      try {
+        const catalog = productStoreIsConfigured() ? (await readProductCatalog()).catalog : seedCatalog();
+        const products = await applyInventoryReservations(catalog.products.map(publicProduct));
+        const context = resolveBlackFridayDetail(event, id, products);
+        const product = products.find(item => item.id === context.product.id);
+        let reviewData = null;
+        try { reviewData = await listPublishedReviews(product.id, 0, true); } catch {}
+        const family = products.filter(item => productFamilyKey(item) === productFamilyKey(product));
+        const body = renderProductPage(await template('templates/product.html'), product, requestUrl.origin, reviewData, family, context);
+        return new Response(request.method === 'HEAD' ? null : body, { status: 200,
+          headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' } });
+      } catch (error) {
+        console.error('black_friday_product_failed', { message: error.message });
+        // Keep the offer identity; an unavailable detail must never fall back to retail controls.
+        event = { state: 'error' };
+      }
     }
     const result = renderBlackFridayPage(source, event, id);
     return new Response(request.method === 'HEAD' ? null : result.html, {
