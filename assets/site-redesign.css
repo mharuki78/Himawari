@@ -294,12 +294,20 @@ input,textarea{caret-color:#315845}
 }
 @media(prefers-reduced-motion:reduce){.header-tooltip{transition:none}}
 
-.site-nav a[data-black-friday-nav] { flex-direction: column; gap: 2px; padding-block: 4px; }
+.site-nav a[data-black-friday-nav] {
+  flex-direction: column; gap: 3px; min-height: 50px; padding: 6px 12px;
+  border: 1px solid #111; background: #111; color: #fff; font-weight: 750;
+}
+.site-nav a[data-black-friday-nav]:is(:hover, :focus-visible, [aria-current="page"]) {
+  background: #242424; color: #fff; border-color: #ffd878;
+}
+.site-nav a[data-black-friday-nav]:focus-visible { outline: 3px solid #9b6410; outline-offset: 3px; }
 .site-nav__sale-ribbon {
-  display: block; padding: 2px 8px; color: #202423; background: #ffd878;
-  font-size: 9px; font-weight: 800; line-height: 1.15; letter-spacing: .06em;
+  display: block; padding: 2px 8px; color: #111; background: #ffd878;
+  font-size: 12px; font-weight: 800; line-height: 1.2; letter-spacing: .025em;
+  white-space: nowrap;
   clip-path: polygon(0 0, 100% 0, calc(100% - 3px) 50%, 100% 100%, 0 100%, 3px 50%);
 }
 @media (max-width: 1320px) {
-  .site-nav a[data-black-friday-nav] { align-items: flex-start; justify-content: center; gap: 3px; }
+  .site-nav a[data-black-friday-nav] { align-items: center; justify-content: center; }
 }
