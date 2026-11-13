@@ -21,3 +21,11 @@
 - Figma 파일의 디자인 시스템 조회는 Starter 플랜 호출 한도로 제한됐다. 기존 자사몰 디자인과 저장소 소스를 기준으로 적용했다.
 
 근거: `backups/checkout-selection-2026-11-13/predeployment-receipt.json`, 같은 폴더의 테스트 출력·PC/모바일 캡처. 현재 단계는 사전 검증 완료이며 push·정확한 커밋의 production READY·운영 원본 화면 확인은 아래 후속 기록으로 구분한다.
+
+## 운영 반영 확인
+
+기능 커밋 `046e72e1587ac413f67a2875bd0ec0e263e08461`을 main에 push하고 Vercel `dpl_5gDLPmfbys8JpmggAW3ESWpgLFkz`의 production READY와 `himawari.co.kr` 별칭을 확인했다. 수정한 HTML/JS/CSS 세 파일의 운영 SHA-256이 그 커밋의 원본과 모두 일치한다.
+
+로컬 응답 교체 없이 운영 사이트에서 1,440/390/320/430px 혼합 주문을 다시 검증했다. 선택 상품 3종·총 수량4개·255,000원, 첫 상품 수량 감소 후206,000원, 사진·정상가 취소선·할인율·결제 변경·행사 Npay 준비 안내가 맞다. 별도 일반 상품 주문에서 공식 Npay SDK 생성 완료·초록색 구매 버튼을 PC와 모바일에서 확인했다. 가로 넘침·페이지 오류·주문/결제 API 쓰기 요청0개. 비 API 경로의 쓰기 시도는 모두 전송 전에 차단했고 원문·매개변수는 기록하지 않았다. 실제 Npay 주문 생성이나 결제를 시험한 결과는 아니다.
+
+완료 근거는 `backups/checkout-selection-2026-11-13/deployment-receipt.json`과 `live-assets.json`이다. 운영 캡처는 같은 폴더의 `live-normal-desktop.png`, `live-normal-mobile.png`, `live-mixed-summary-390.png`, `live-mixed-payment-390.png`에 보존했다. 이번 배포의 선조에 미완료 Npay 백엔드 커밋 `a23c158`이 포함되지 않음을 Git으로 확인했다. 행사 Npay 개통 작업은 별도 브랜치의 미완료 상태를 유지한다.
