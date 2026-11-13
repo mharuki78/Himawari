@@ -7,8 +7,8 @@
 .checkout-heading .accent-word { text-shadow: none; }
 .checkout-heading > p { max-width: 30rem; font-size: 1rem; line-height: 1.75; }
 .checkout-workspace { gap: 2rem; padding-top: 2rem; }
-.checkout-workspace > .checkout-methods { grid-column: 1 / -1; grid-row: 1; }
-.checkout-workspace > .checkout-summary { grid-column: 2; grid-row: 2; }
+.checkout-workspace > .checkout-methods { grid-column: 1; grid-row: 1; }
+.checkout-workspace > .checkout-summary { grid-column: 2; grid-row: 1 / span 2; }
 .checkout-workspace > .checkout-form { grid-column: 1; grid-row: 2; }
 .checkout-section { padding-bottom: 2rem; margin-bottom: 2rem; border-color: var(--order-line); }
 .checkout-section__head { display: block; margin-bottom: 1.25rem; }
@@ -16,7 +16,7 @@
 .checkout-main .checkout-section__head h2, .checkout-main .checkout-summary h2 { font-size: 1.5rem; line-height: 1.4; letter-spacing: -.03em; }
 
 /* Each method has its description above a consistently sized action. */
-.checkout-methods > div.checkout-method-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding: 0; border: 0; }
+.checkout-methods > div.checkout-method-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; padding: 0; border: 0; }
 .checkout-method-card { min-width: 0; display: flex; flex-direction: column; align-items: start; gap: 1rem; padding: 1.25rem; border: 1px solid var(--order-line); border-radius: var(--radius-soft, 18px); background: var(--snow, #fff); }
 .checkout-method-card[hidden] { display: none; }
 .checkout-methods > .checkout-method-grid[hidden], .checkout-methods > .checkout-payment-selection[hidden] { display: none; }
@@ -25,10 +25,12 @@
 .checkout-methods .checkout-payment-selection p { margin: .35rem 0 0; font-size: .9375rem; }
 .checkout-payment-selection .order-secondary-link { flex: none; min-height: 44px; box-shadow: none; }
 .checkout-methods .checkout-method-notice { font-size: .9375rem; color: var(--harbor); }
-.checkout-method-copy { min-height: 5.5rem; }
+.checkout-method-copy { min-height: 0; }
 .checkout-methods h3 { margin: 0 0 .5rem; font-size: 1.125rem; font-weight: 700; line-height: 1.4; }
 .checkout-methods .checkout-method-copy p { margin: 0; font-size: .9375rem; line-height: 1.65; word-break: keep-all; overflow-wrap: anywhere; }
 .checkout-method-action { width: min(100%, 13rem); min-height: 68px; }
+.checkout-method-action[hidden] { display: none; }
+.checkout-method-action button:disabled { opacity: 1; background: #eef0ee; color: #526158; cursor: not-allowed; }
 /* The official Npay template reserves 18px above its button. */
 .checkout-method-action:not(#npay-checkout-button) { padding-top: 18px; }
 .checkout-method-action > .order-primary-link { width: 100%; min-height: 50px; justify-content: center; padding: .5rem .65rem; font-size: .875rem; line-height: 1.4; box-shadow: none; }
@@ -79,8 +81,8 @@
 
 @media (max-width: 1240px) {
   .checkout-workspace { grid-template-columns: minmax(0, 1fr); }
-  .checkout-workspace > .checkout-methods { grid-column: 1; grid-row: 1; }
-  .checkout-workspace > .checkout-summary { grid-column: 1; grid-row: 2; position: static; }
+  .checkout-workspace > .checkout-methods { grid-column: 1; grid-row: 2; }
+  .checkout-workspace > .checkout-summary { grid-column: 1; grid-row: 1; position: static; }
   .checkout-workspace > .checkout-form { grid-column: 1; grid-row: 3; }
   .checkout-methods { margin-bottom: 0; padding-bottom: 0; border: 0; }
 }
