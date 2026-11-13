@@ -54,6 +54,7 @@ test('PostgreSQL rejects stale prices, closed schedules and depleted quotas; can
       CREATE TABLE black_friday_campaign (singleton boolean DEFAULT true, id text, enabled boolean, starts_at timestamptz, ends_at timestamptz, items jsonb);
       CREATE TABLE orders (id text PRIMARY KEY, black_friday_id text, order_number text, revision int DEFAULT 1, status text DEFAULT 'payment_pending', tracking_number text, updated_at timestamptz);
       CREATE TABLE inventory_reservations (order_id text REFERENCES orders(id), product_id text, option_id text, quantity int, active boolean DEFAULT true, updated_at timestamptz);
+      CREATE TABLE npay_inventory_reservations(product_id text,option_id text,held_quantity integer,campaign_id text);
       CREATE TABLE coupon_claims (id text, order_id text, used_at timestamptz);
       CREATE TABLE order_events (id text, order_id text, actor text, from_status text, to_status text, note text);
     `);

@@ -139,13 +139,17 @@ export async function currentProducts() {
 
 export function npayProductId(product) {
   const sourceId = clean(product?.id);
-  if (PRODUCT_ID_PATTERN.test(sourceId)) return sourceId;
+  const reservedNamespace = /^NPR-[0-9a-f]{24}$/.test(sourceId);
+  // These internal fields are created by the durable reservation projection;
+  // publicProduct() strips them from ordinary catalog data.
+  const allocated = reservedNamespace && typeof product?.physicalProductId === 'string' && product.npaySaleStatus !== undefined;
+  if (PRODUCT_ID_PATTERN.test(sourceId) && (!reservedNamespace || allocated)) return sourceId;
   const digest = createHash('sha256').update(sourceId, 'utf8').digest('hex').slice(0, 18);
   return `HIMAWARI-${digest}`;
 }
 
 export function productPageUrl(product) {
-  return `${SITE_ORIGIN}/product.html?id=${encodeURIComponent(product.id)}`;
+  return `${SITE_ORIGIN}/product.html?id=${encodeURIComponent(product.physicalProductId || product.id)}`;
 }
 
 export function npayOptionManageCode(product, option) {
@@ -185,10 +189,17 @@ function availableOptionsXml(product, options) {
 function productXml(product, quantity, includeAvailability = false, selectedOption = null) {
   const { name, price, image } = ensurePurchasableProduct(product);
   const id = npayProductId(product);
-  const options = Array.isArray(product.options) ? product.options : [];
-  const stock = product.stock === null ? 99_999 : Math.max(0, Number(product.stock) || 0);
+  const state = product.npaySaleStatus;
+  if ((state !== undefined && !['ON_SALE', 'SOLD_OUT', 'NOT_SALE'].includes(state))
+    || (!includeAvailability && state !== undefined && state !== 'ON_SALE')) {
+    throw Object.assign(new Error('구매할 수 없는 네이버페이 예약입니다.'), { status: 409 });
+  }
+  const disabled = state === 'SOLD_OUT' || state === 'NOT_SALE';
+  const options = (Array.isArray(product.options) ? product.options : [])
+    .map(option => disabled ? { ...option, stock: 0 } : option);
+  const stock = disabled ? 0 : product.stock === null ? 99_999 : Math.max(0, Number(product.stock) || 0);
   const availability = includeAvailability
-    ? `<status>${stock > 0 ? 'ON_SALE' : 'SOLD_OUT'}</status><stockQuantity>${stock}</stockQuantity><supplementSupport>false</supplementSupport><optionSupport>${options.length ? 'true' : 'false'}</optionSupport>${availableOptionsXml(product, options)}`
+    ? `<status>${state || (stock > 0 ? 'ON_SALE' : 'SOLD_OUT')}</status><stockQuantity>${stock}</stockQuantity><supplementSupport>false</supplementSupport><optionSupport>${options.length ? 'true' : 'false'}</optionSupport>${availableOptionsXml(product, options)}`
     : selectedOption
       ? `<option><quantity>${quantity}</quantity><price>0</price><manageCode>${npayOptionManageCode(product, selectedOption)}</manageCode>${selectedOptionXml(product, selectedOption)}</option>`
       : `<single><quantity>${quantity}</quantity></single>`;

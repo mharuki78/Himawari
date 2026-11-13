@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { database } from './database.js';
 import { applyInventoryReservations } from './inventory.js';
+import { ALL_INVENTORY_RESERVATIONS, ensureNpayReservationSchema } from './inventory-reservation-store.js';
 import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalog } from './products.js';
 import { verifyBlackFridayBanner } from './black-friday-banner.js';
 
@@ -107,14 +108,14 @@ export async function readWelcomeCouponExclusions() {
 
 async function readUsage(campaignId) {
   if (!campaignId) return new Map();
+  await ensureNpayReservationSchema();
   // New mixed orders use reservation attribution. Historical direct-buy orders
   // use their single parent offer; nullable columns need no historical rewrite.
   // JSON access also tolerates the earlier parent-only schema during rollout.
-  const rows = await database()`SELECT r.product_id AS "productId", r.option_id AS "optionId", sum(r.quantity)::int AS used
-    FROM inventory_reservations r JOIN orders o ON o.id = r.order_id
-    WHERE r.active AND ${campaignId} = COALESCE(to_jsonb(r)->>'black_friday_id',
-      CASE WHEN to_jsonb(o)->>'black_friday_offer_id' IS NOT NULL OR NOT (to_jsonb(o) ? 'black_friday_offer_id') THEN o.black_friday_id END)
-    GROUP BY r.product_id, r.option_id`;
+  const rows = await database().query(`SELECT r.product_id AS "productId", r.option_id AS "optionId", sum(r.quantity)::int AS used
+    FROM (${ALL_INVENTORY_RESERVATIONS}) r
+    WHERE r.active AND $1 = r.black_friday_id
+    GROUP BY r.product_id, r.option_id`, [campaignId]);
   return toMap(rows);
 }
 
@@ -178,7 +179,7 @@ export async function resolveBlackFridayOrder(offerId, price, item, catalog) {
   const offer = config.items.find(entry => entry.offerId === offerId && key(entry) === key(item));
   const product = toMap(blackFridayCatalogRows(catalog)).get(key(item));
   if (blackFridayState(config) !== 'open' || !offer || !product || offer.price !== price || offer.price >= product.regularPrice) throw blackFridayUnavailable();
-  return { campaignId: config.id, offer, product };
+  return { campaignId: config.id, campaignRevision: config.revision, offer, product };
 }
 
 export function blackFridayOrderGate({ campaignId, offer, product }, quantity) {
@@ -190,13 +191,12 @@ export function blackFridayOrderGate({ campaignId, offer, product }, quantity) {
         AND x.item->>'offerId' = $2 AND x.item->>'productId' = $3 AND x.item->>'optionId' = $4
         AND (x.item->>'price')::int = $5
         AND (x.item->>'quantity')::int >= $6 + COALESCE((
-          SELECT sum(r.quantity) FROM inventory_reservations r JOIN orders o ON o.id = r.order_id
+          SELECT sum(r.quantity) FROM (${ALL_INVENTORY_RESERVATIONS}) r
           WHERE r.active AND r.product_id = $3 AND r.option_id = $4
-            AND $1 = COALESCE(to_jsonb(r)->>'black_friday_id',
-              CASE WHEN to_jsonb(o)->>'black_friday_offer_id' IS NOT NULL OR NOT (to_jsonb(o) ? 'black_friday_offer_id') THEN o.black_friday_id END)
+            AND $1 = r.black_friday_id
         ), 0)
         AND ($7::int IS NULL OR $7 >= $6 + COALESCE((
-          SELECT sum(r.quantity) FROM inventory_reservations r WHERE r.active AND r.product_id = $3 AND r.option_id = $4
+          SELECT sum(r.quantity) FROM (${ALL_INVENTORY_RESERVATIONS}) r WHERE r.active AND r.product_id = $3 AND r.option_id = $4
         ), 0))
     ) THEN 1 ELSE 0 END`,
     values: [campaignId, offer.offerId, offer.productId, offer.optionId, offer.price, quantity, product.stock ?? null],
@@ -208,7 +208,7 @@ export function blackFridayOrderGate({ campaignId, offer, product }, quantity) {
 export function blackFridayRegularStockGate({ productId, optionId, quantity, baseStock }) {
   return {
     text: `SELECT 1 / CASE WHEN $4::int IS NULL OR $4 >= $3 + COALESCE((
-      SELECT sum(quantity) FROM inventory_reservations WHERE active AND product_id=$1 AND option_id=$2
+      SELECT sum(quantity) FROM (${ALL_INVENTORY_RESERVATIONS}) r WHERE active AND product_id=$1 AND option_id=$2
     ), 0) THEN 1 ELSE 0 END`,
     values: [productId, optionId || '', quantity, baseStock ?? null],
   };

@@ -7,6 +7,7 @@ import { database } from './database.js';
 import { productStoreIsConfigured, publicProduct, readProductCatalog, seedCatalog } from './products.js';
 import { activeCoupons, readPromotions } from './promotions.js';
 import { applyInventoryReservations } from './inventory.js';
+import { ensureNpayReservationSchema } from './inventory-reservation-store.js';
 import { ensureCouponSchema, couponClaimStatement } from './coupon-claims.js';
 import { kakaopayConfig } from './kakaopay-client.js';
 import { WELCOME_COUPON, welcomeCouponSubtotal } from '../../assets/welcome-coupon.js';
@@ -165,7 +166,7 @@ export function customerOrderAction(status) {
 export async function ensureOrderSchema() {
   if (!schemaPromise) {
     const sql = database();
-    schemaPromise = sql.transaction((tx) => [
+    schemaPromise = ensureNpayReservationSchema().then(() => sql.transaction((tx) => [
       tx`CREATE TABLE IF NOT EXISTS orders (
         id text PRIMARY KEY,
         order_number text NOT NULL UNIQUE,
@@ -248,7 +249,7 @@ export async function ensureOrderSchema() {
       tx`CREATE INDEX IF NOT EXISTS inventory_reservations_stock_idx ON inventory_reservations(product_id, option_id, active)`,
       tx`ALTER TABLE inventory_reservations ADD COLUMN IF NOT EXISTS black_friday_id text`,
       tx`ALTER TABLE inventory_reservations ADD COLUMN IF NOT EXISTS black_friday_offer_id text`,
-    ]).then(() => sql.query('DELETE FROM orders WHERE retention_until <= now()')).catch((error) => {
+    ])).then(() => sql.query('DELETE FROM orders WHERE retention_until <= now()')).catch((error) => {
       schemaPromise = null;
       throw error;
     });

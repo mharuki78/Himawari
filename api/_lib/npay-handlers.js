@@ -1,4 +1,5 @@
 import { isSameOrigin, json, methodNotAllowed, readJson } from './http.js';
+import { isReservedNpayProductId, readReservedNpayProducts } from './npay-reservations.js';
 import {
   SITE_ORIGIN,
   buildOrderXml,
@@ -133,9 +134,10 @@ export async function fetchNpayProductInformation(request) {
   try {
     const requestedIds = parseRequestedProductIds(new URL(request.url));
     if (!requestedIds.length) return xmlResponse('<?xml version="1.0" encoding="utf-8"?><products></products>', 400);
-    const products = await currentProducts();
+    const [products, reservedProducts] = await Promise.all([currentProducts(), readReservedNpayProducts(requestedIds)]);
     const byNpayId = new Map(products.map((product) => [npayProductId(product), product]));
-    const matches = requestedIds.map((id) => byNpayId.get(id)).filter(Boolean);
+    const byReservationId = new Map(reservedProducts.map(p => [p.id, p]));
+    const matches = requestedIds.map(id => isReservedNpayProductId(id) ? byReservationId.get(id) : byNpayId.get(id)).filter(Boolean);
     return xmlResponse(buildProductInformationXml(matches));
   } catch (error) {
     console.error('npay_product_information_failed', { message: error?.message || 'unknown error' });

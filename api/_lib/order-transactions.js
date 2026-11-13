@@ -1,5 +1,7 @@
+import { ALL_INVENTORY_RESERVATIONS } from './inventory-reservation-store.js';
+
 export const CONFIRM_ORDER_SQL = `WITH limits AS (SELECT * FROM jsonb_to_recordset($8::jsonb) AS x("productId" text, "optionId" text, "baseStock" integer)),
-       used AS (SELECT product_id, option_id, SUM(quantity)::integer AS quantity FROM inventory_reservations WHERE active=true AND order_id<>$9 GROUP BY product_id, option_id),
+       used AS (SELECT product_id, option_id, SUM(quantity)::integer AS quantity FROM (${ALL_INVENTORY_RESERVATIONS}) r WHERE active=true AND order_id IS DISTINCT FROM $9 GROUP BY product_id, option_id),
        stock_ok AS (SELECT NOT EXISTS (
          SELECT 1 FROM order_items oi JOIN limits l ON l."productId"=oi.product_id AND l."optionId"=COALESCE(oi.option_id,'')
          LEFT JOIN used u ON u.product_id=oi.product_id AND u.option_id=COALESCE(oi.option_id,'')

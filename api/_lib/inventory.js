@@ -1,10 +1,12 @@
 import { database, databaseIsConfigured } from './database.js';
+import { PHYSICAL_INVENTORY_RESERVATIONS, ensureNpayReservationSchema } from './inventory-reservation-store.js';
 
 export async function applyInventoryReservations(products) {
   if (!databaseIsConfigured() || !Array.isArray(products) || !products.length) return products;
   let rows;
+  await ensureNpayReservationSchema();
   try {
-    rows = await database().query(`SELECT product_id, option_id, SUM(quantity)::integer AS reserved FROM inventory_reservations WHERE active=true GROUP BY product_id, option_id`);
+    rows = await database().query(`SELECT product_id, option_id, SUM(quantity)::integer AS reserved FROM (${PHYSICAL_INVENTORY_RESERVATIONS}) r WHERE active=true GROUP BY product_id, option_id`);
   } catch (error) {
     if (error?.code === '42P01') return products;
     throw error;

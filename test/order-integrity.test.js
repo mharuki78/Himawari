@@ -22,6 +22,7 @@ test('PostgreSQL: 재고 부족 확인은 주문·예약을 남기지 않고 취
  await db.exec(`CREATE TABLE orders(id text PRIMARY KEY,order_number text,status text,tracking_number text,revision integer,updated_at timestamptz);
  CREATE TABLE order_items(id text PRIMARY KEY,order_id text,product_id text,option_id text,quantity integer);
  CREATE TABLE inventory_reservations(order_item_id text PRIMARY KEY,order_id text,product_id text,option_id text,quantity integer,active boolean,updated_at timestamptz);
+ CREATE TABLE npay_inventory_reservations(product_id text,option_id text,held_quantity integer,campaign_id text);
  CREATE TABLE order_events(id text PRIMARY KEY,order_id text,actor text,from_status text,to_status text,note text);
  CREATE TABLE coupon_claims(id text PRIMARY KEY,order_id text,used_at timestamptz);
  INSERT INTO orders VALUES('one','ONE','payment_pending',NULL,1,now()),('two','TWO','payment_pending',NULL,1,now());
