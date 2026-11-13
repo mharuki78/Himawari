@@ -334,8 +334,29 @@ test('checkout without a method shows the chooser; unavailable requested method 
   assert.match(soldOut.node('[data-checkout-error-message]').textContent, /품절/);
 });
 
-test('checkout source order confirms products and totals before the shipping form', async () => {
+test('campaign Npay stays visible with an unavailable explanation without initializing ordinary-price checkout', async () => {
+  for (const mode of [{sale:true},{mixed:true}]) {
+    const page = await checkoutFixture({...mode, quantity:'2'});
+    assert.equal(page.node('[data-npay-checkout-section]').hidden, false);
+    assert.equal(page.node('#npay-checkout-button').hidden, true);
+    assert.equal(page.node('[data-npay-unavailable]').hidden, false);
+    assert.match(page.node('[data-npay-status]').textContent, /블랙 프라이데이.*Npay.*준비 중/);
+    assert.equal(page.npayItems(), undefined);
+    page.node('[data-bank-select]').dispatch('click');
+    page.node('[data-payment-change]').dispatch('click');
+    assert.equal(page.npayItems(), undefined, 'Changing payment methods cannot drop campaign prices into ordinary Npay');
+    assert.equal(page.node('[data-npay-unavailable]').hidden, false);
+  }
+  const ordinary = await checkoutFixture({payment:'',option:true,quantity:'2'});
+  assert.equal(ordinary.node('[data-npay-checkout-section]').hidden, false);
+  assert.equal(ordinary.node('#npay-checkout-button').hidden, false);
+  assert.equal(ordinary.node('[data-npay-unavailable]').hidden, true);
+  assert.deepEqual(JSON.parse(JSON.stringify(ordinary.npayItems())), [{productId:'bag-1',optionId:'blue',quantity:2}]);
+});
+
+test('checkout source order confirms products and totals before payment selection and shipping', async () => {
   const html = await readFile(new URL('../checkout.html', import.meta.url), 'utf8');
+  assert.ok(html.indexOf('class="checkout-summary"') < html.indexOf('class="checkout-section checkout-methods"'));
   assert.ok(html.indexOf('class="checkout-summary"') < html.indexOf('class="checkout-form"'));
   assert.match(html, /data-payment-change aria-expanded="false" aria-controls="checkout-method-options"/);
 });

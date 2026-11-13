@@ -40,7 +40,6 @@ import { orderBenefits } from './order-summary.js';
   var saleExpiryTimer = null;
   function hasSaleItems() { return saleOfferId !== null || items.some(function (item) { return item.blackFriday != null; }); }
   if (saleOfferId !== null) {
-    document.querySelector('[data-npay-checkout-section]').hidden = true;
     document.querySelector('[data-coupon-fieldset]').hidden = true;
     document.querySelector('[data-black-friday-checkout]').hidden = false;
     document.querySelector('[data-black-friday-return]').hidden = false;
@@ -502,7 +501,9 @@ import { orderBenefits } from './order-summary.js';
       }
       if (!items.length) throw Object.assign(new Error('장바구니가 비어 있습니다. 제품을 담은 뒤 다시 주문해 주세요.'), { status: 400 });
       var saleMode = hasSaleItems();
-      document.querySelector('[data-npay-checkout-section]').hidden = saleMode;
+      document.querySelector('#npay-checkout-button').hidden = saleMode;
+      document.querySelector('[data-npay-unavailable]').hidden = !saleMode;
+      if (saleMode) document.querySelector('[data-npay-status]').textContent = '블랙 프라이데이 상품의 Npay 결제는 연동 준비 중입니다. 카카오페이 또는 무통장입금을 선택해 주세요. 일반 상품만 주문할 때는 Npay를 이용할 수 있습니다.';
       document.querySelector('[data-coupon-fieldset]').hidden = saleMode;
       document.querySelector('[data-coupon-fieldset]').disabled = saleMode;
       document.querySelector('[data-black-friday-checkout]').hidden = !saleMode;
