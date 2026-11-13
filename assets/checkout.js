@@ -1,5 +1,5 @@
 import { purchaseQuantity } from './purchase-quantity.js';
-import { initializeCheckoutNpay } from './npay.js?v=20261112-cart-convenience';
+import { initializeCheckoutNpay } from './npay.js?v=20261113-managed-checkout';
 import { checkoutCartLine, checkoutItemsInput, removePurchasedCartItems, mergeRemainingCart } from './black-friday-cart.js?v=20261112-checkout-prices';
 import { bankTransfer, bankTransferReady } from './bank-transfer.js';
 import { WELCOME_COUPON, welcomeCouponSubtotal } from './welcome-coupon.js';
@@ -55,6 +55,7 @@ import { orderBenefits } from './order-summary.js';
   var couponRequests = {};
   var paymentMethod = '';
   var kakaopayEnabled = false;
+  var npayCampaignEnabled = false;
   var kakaopayButton = document.querySelector('[data-kakaopay-select]');
   var paymentSelection = document.querySelector('[data-payment-selection]');
   var paymentOptions = document.querySelector('[data-payment-options]');
@@ -70,8 +71,8 @@ import { orderBenefits } from './order-summary.js';
   }
 
   function prepareNpay() {
-    if (hasSaleItems()) return;
-    initializeCheckoutNpay(() => items.map(item => ({ productId: item.productId, optionId: item.optionId || '', quantity: item.quantity })), () => { dirty = false; });
+    if (hasSaleItems() && !npayCampaignEnabled) return;
+    initializeCheckoutNpay(() => checkoutItemsInput(items), () => { dirty = false; });
   }
 
   function selectPayment(method, options) {
@@ -442,6 +443,8 @@ import { orderBenefits } from './order-summary.js';
       var welcomePayload = saleOfferId === null && session.authenticated === true
         ? await request('/api/orders?route=welcome-coupon').catch(function () { return null; }) : null;
       var payConfig = await request('/api/kakaopay/config').catch(function () { return {enabled:false}; });
+      var npayConfig = await request('/api/npay/config').catch(function () { return {enabled:false}; });
+      npayCampaignEnabled = npayConfig.enabled === true && (!npayConfig.review || location.pathname === '/npay-sandbox-checkout.html') && npayConfig.blackFriday?.enabled === true;
       kakaopayEnabled = payConfig.enabled === true;
       document.querySelector('[data-kakaopay-section]').hidden = !kakaopayEnabled;
       kakaopayButton.disabled = !kakaopayEnabled;
@@ -501,9 +504,10 @@ import { orderBenefits } from './order-summary.js';
       }
       if (!items.length) throw Object.assign(new Error('장바구니가 비어 있습니다. 제품을 담은 뒤 다시 주문해 주세요.'), { status: 400 });
       var saleMode = hasSaleItems();
-      document.querySelector('#npay-checkout-button').hidden = saleMode;
-      document.querySelector('[data-npay-unavailable]').hidden = !saleMode;
-      if (saleMode) document.querySelector('[data-npay-status]').textContent = '블랙 프라이데이 상품의 Npay 결제는 연동 준비 중입니다. 카카오페이 또는 무통장입금을 선택해 주세요. 일반 상품만 주문할 때는 Npay를 이용할 수 있습니다.';
+      var npayUnavailable = saleMode && !npayCampaignEnabled;
+      document.querySelector('#npay-checkout-button').hidden = npayUnavailable;
+      document.querySelector('[data-npay-unavailable]').hidden = !npayUnavailable;
+      document.querySelector('[data-npay-status]').textContent = npayUnavailable ? '블랙 프라이데이 상품의 Npay 결제는 연동 준비 중입니다. 카카오페이 또는 무통장입금을 선택해 주세요. 일반 상품만 주문할 때는 Npay를 이용할 수 있습니다.' : 'Npay 버튼을 준비하고 있습니다.';
       document.querySelector('[data-coupon-fieldset]').hidden = saleMode;
       document.querySelector('[data-coupon-fieldset]').disabled = saleMode;
       document.querySelector('[data-black-friday-checkout]').hidden = !saleMode;

@@ -5,6 +5,45 @@ let config = null;
 let sdkPromise = null;
 let sdkBlockedMessage = '';
 const pending = new Map();
+const orderIntents = new Map();
+
+function campaignAllowed(capability) {
+  return capability?.enabled === true && capability?.blackFriday?.enabled === true;
+}
+
+function hasCampaign(items) {
+  return items.some(item => item?.blackFriday != null);
+}
+
+async function publicConfig() {
+  const capability = await requestJson('/api/npay/config');
+  return capability.review && !/^\/(?:npay-review-(?:products|product)|npay-sandbox-checkout)\.html$/.test(location.pathname)
+    ? { ...capability, enabled: false } : capability;
+}
+
+function orderIntent(items, context) {
+  // Only public product/option/quantity/campaign identifiers enter the retry key.
+  const fingerprint = JSON.stringify([context, items.map(item => [item.productId, item.optionId || '', item.quantity, item.blackFriday?.offerId || '', item.blackFriday?.unitPrice || 0])]);
+  let intent = orderIntents.get(fingerprint);
+  if (!intent) {
+    try {
+      const stored = JSON.parse(sessionStorage.getItem('himawari-npay-intent-v1'));
+      if (stored?.fingerprint === fingerprint && Date.now() - stored.createdAt < 30 * 60 * 1000 && /^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/i.test(stored.requestId)) intent = stored;
+    } catch (_) {}
+    if (!intent) {
+      if (typeof globalThis.crypto?.randomUUID !== 'function') throw new Error('안전한 주문 연결을 준비하지 못했습니다. 페이지를 새로고침해 주세요.');
+      intent = { fingerprint, requestId: globalThis.crypto.randomUUID(), createdAt: Date.now() };
+    }
+    orderIntents.set(fingerprint, intent);
+  }
+  try { sessionStorage.setItem('himawari-npay-intent-v1', JSON.stringify(intent)); } catch (_) {}
+  return intent.requestId;
+}
+
+function cartInput(items) {
+  return items.filter(item => item?.id).map(item => ({ productId: item.id, optionId: item.optionId || '', quantity: Number(item.q) || 1,
+    ...(item.blackFriday != null ? { blackFriday: { offerId: item.blackFriday.offerId, unitPrice: item.blackFriday.unitPrice } } : {}) }));
+}
 
 function revealProductNpay(section) {
   section.hidden = false;
@@ -63,17 +102,25 @@ function runOnce(key, work) {
 }
 
 async function registerOrder(items, context, section) {
-  if (items.some(item => item?.blackFriday != null)) {
-    setStatus(section, '행사 상품이 포함된 주문은 장바구니 주문하기를 이용해 주세요.', true);
-    return null;
-  }
-  window.himawariTrack?.('Begin checkout', { destination: 'npay', context, itemCount: items.length });
-  setStatus(section, '네이버페이 주문서를 준비하고 있습니다.');
   try {
-    const result = await runOnce(`order:${context}`, () => requestJson('/api/npay/order', {
+    if (!Array.isArray(items) || !items.length) {
+      setStatus(section, '주문할 상품을 다시 확인해 주세요.', true);
+      return null;
+    }
+    const capability = await publicConfig();
+    config = capability;
+    if (capability.enabled !== true || (hasCampaign(items) && !campaignAllowed(capability))) {
+      if (section === document.querySelector('[data-npay-cart-section]')) section.hidden = true;
+      setStatus(section, '현재 이 상품의 Npay 구매를 이용할 수 없습니다. 다른 결제 방법을 선택해 주세요.', true);
+      return null;
+    }
+    const requestId = orderIntent(items, context);
+    window.himawariTrack?.('Begin checkout', { destination: 'npay', context, itemCount: items.length });
+    setStatus(section, '네이버페이 주문서를 준비하고 있습니다.');
+    const result = await runOnce(`order:${requestId}`, () => requestJson('/api/npay/order', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items, context }),
+      body: JSON.stringify({ items, context, requestId }),
     }));
     setStatus(section, '네이버페이 주문서로 이동합니다.');
     return { key: result.key, merchantNo: result.merchantNo };
@@ -151,16 +198,14 @@ async function syncCartButton() {
   if (window.SiteCart?.items) currentCartItems = (window.SiteCart.selectedItems || window.SiteCart.items)();
   const section = document.querySelector('[data-npay-cart-section]');
   const container = section?.querySelector('[data-npay-cart]');
-  if (section && currentCartItems.some(item => item?.blackFriday != null)) { section.hidden = true; return; }
+  if (section && hasCampaign(currentCartItems) && !campaignAllowed(config)) { section.hidden = true; return; }
   if (!section || !container || !config?.enabled || !window.Npay?.order?.create) return;
   if (sdkBlockedMessage) {
     section.hidden = false;
     setStatus(section, sdkBlockedMessage, true);
     return;
   }
-  const items = currentCartItems
-    .filter((item) => item?.id)
-    .map((item) => ({ productId: item.id, optionId: item.optionId || '', quantity: Number(item.q) || 1 }));
+  const items = cartInput(currentCartItems);
   section.hidden = items.length === 0;
   if (!items.length || container.dataset.npayReady === 'true') return;
 
@@ -181,14 +226,12 @@ async function syncCartButton() {
       },
       onBuyClick: () => {
         if (window.SiteCart?.items) currentCartItems = (window.SiteCart.selectedItems || window.SiteCart.items)();
-        if (currentCartItems.some(item => item?.blackFriday != null)) {
+        if (hasCampaign(currentCartItems) && !campaignAllowed(config)) {
           setStatus(section, '행사 상품이 포함된 주문은 장바구니 주문하기를 이용해 주세요.', true);
           section.hidden = true;
           return null;
         }
-        const latest = currentCartItems
-          .filter((item) => item?.id)
-          .map((item) => ({ productId: item.id, optionId: item.optionId || '', quantity: Number(item.q) || 1 }));
+        const latest = cartInput(currentCartItems);
         if (!latest.length) {
           setStatus(section, '장바구니에 상품을 먼저 담아 주세요.', true);
           return null;
@@ -222,8 +265,7 @@ export async function initializeNpay({ cartItems = [] } = {}) {
   document.addEventListener('himawari:product-ready', createProductButton);
 
   try {
-    config = await requestJson('/api/npay/config');
-    if (config.review && !/^\/npay-review-(?:products|product)\.html$/.test(location.pathname)) config = { ...config, enabled: false };
+    config = await publicConfig();
     if (!config.enabled) return;
     await loadSdk(config.sdkUrl);
     createProductButton();
@@ -243,8 +285,8 @@ export async function initializeCheckoutNpay(getItems, onNavigate = () => {}) {
   if (!container || container.dataset.npayReady === 'true') return;
   container.dataset.npayReady = 'true';
   try {
-    const checkoutConfig = await requestJson('/api/npay/config');
-    if (!checkoutConfig.enabled || checkoutConfig.review) throw new Error('현재 Npay 구매를 이용할 수 없습니다.');
+    const checkoutConfig = await publicConfig();
+    if (!checkoutConfig.enabled || (checkoutConfig.review && location.pathname !== '/npay-sandbox-checkout.html') || (hasCampaign(getItems()) && !campaignAllowed(checkoutConfig))) throw new Error('현재 Npay 구매를 이용할 수 없습니다.');
     await loadSdk(checkoutConfig.sdkUrl);
     await window.Npay.order.create({
       buttonKey: checkoutConfig.buttonKey, containerId: container.id,

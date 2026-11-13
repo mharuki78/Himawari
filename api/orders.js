@@ -12,12 +12,14 @@ import { claimCoupon, claimRhythmCoupon, couponIdentity, memberHasWelcomeCoupon 
 import { readWelcomeCouponExclusions } from './_lib/black-friday.js';
 import { startRhythmSession } from './_lib/rhythm-session.js';
 import { fetchKakaopay } from './_lib/kakaopay-handlers.js';
+import { fetchNpaySync } from './_lib/npay-sync-handler.js';
 
 const NPAY_ROUTES = {
   'npay-config': fetchNpayConfig,
   'npay-order': fetchNpayOrder,
   'npay-product-info': fetchNpayProductInformation,
   'npay-wishlist': fetchNpayWishlist,
+  'npay-sync': fetchNpaySync,
 };
 
 export async function fetch(request) {

@@ -1,4 +1,5 @@
 import { createHash, timingSafeEqual } from 'node:crypto';
+import {sandboxReviewToken} from './npay-credentials.js';
 
 import {
   productStoreIsConfigured,
@@ -66,7 +67,7 @@ export function npayPublicIsOpen() {
 export function npayReviewTokenIsValid(value) {
   // Old review cookies must never select Sandbox after the public launch.
   if (npayPublicIsOpen()) return false;
-  const expected = clean(process.env.NPAY_REVIEW_TOKEN);
+  const expected = clean(sandboxReviewToken());
   const received = clean(value);
   if (!expected || !received) return false;
   const expectedBuffer = Buffer.from(expected);

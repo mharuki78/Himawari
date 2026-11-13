@@ -42,7 +42,9 @@ async function readCheckout(requestId) {
 // authenticated settlement and the ordinary/legacy Npay cutover are verified.
 export async function reserveNpayCheckout(input) {
   const requested = normalizeInput(input);
-  const fingerprint = createHash('sha256').update(JSON.stringify(requested)).digest('hex');
+  const environment = input.environment ?? 'sandbox';
+  if (!['sandbox','production'].includes(environment)) throw invalid();
+  const fingerprint = createHash('sha256').update(JSON.stringify({environment,items:requested})).digest('hex');
   await ensureOrderSchema();
   const previous = await readCheckout(input.requestId);
   if (previous) {
@@ -78,8 +80,8 @@ export async function reserveNpayCheckout(input) {
     queries.push(sql.query(`SELECT CASE WHEN EXISTS (SELECT 1 FROM npay_checkouts WHERE request_id=$${gate.values.length + 1})
       THEN 1 ELSE (${gate.text}) END`, [...gate.values, input.requestId]));
   }
-  queries.push(sql`INSERT INTO npay_checkouts(id,request_id,fingerprint,catalog_revision)
-    VALUES(${id},${input.requestId},${fingerprint},${catalog.revision}) ON CONFLICT(request_id) DO NOTHING`);
+  queries.push(sql`INSERT INTO npay_checkouts(id,request_id,fingerprint,catalog_revision,environment)
+    VALUES(${id},${input.requestId},${fingerprint},${catalog.revision},${environment}) ON CONFLICT(request_id) DO NOTHING`);
   for (const line of lines) queries.push(sql`INSERT INTO npay_inventory_reservations
     (id,checkout_id,product_id,option_id,quantity,held_quantity,campaign_id,offer_id,campaign_revision,unit_price,regular_price,snapshot)
     SELECT ${line.id},${id},${line.productId},${line.optionId},${line.quantity},${line.quantity},
@@ -140,17 +142,17 @@ export function projectNpayReservation(row, { product, campaign, catalogRevision
 
 export const isReservedNpayProductId = id => /^NPR-[0-9a-f]{24}$/.test(id);
 
-export async function readReservedNpayProducts(ids) {
+export async function readReservedNpayProducts(ids, { sql: suppliedSql, loadCampaign = readBlackFriday, prepareSchema = true } = {}) {
   const requested = ids.filter(isReservedNpayProductId);
   if (!requested.length || !databaseIsConfigured()) return [];
-  await ensureNpayReservationSchema();
-  const sql = database();
+  if(prepareSchema)await ensureNpayReservationSchema();
+  const sql = suppliedSql || database();
   const rows = await sql.query(`SELECT r.*, c.phase, c.catalog_revision FROM npay_inventory_reservations r
     JOIN npay_checkouts c ON c.id=r.checkout_id WHERE r.id=ANY($1::text[])`, [requested]);
   if (!rows.length) return [];
   const [catalog, campaign, usage] = await Promise.all([
     productStoreIsConfigured() ? readProductCatalog().then(r => r.catalog) : seedCatalog(),
-    readBlackFriday(),
+    loadCampaign(),
     sql.query(`SELECT product_id,option_id,sum(quantity)::int AS used FROM (${PHYSICAL_INVENTORY_RESERVATIONS}) r
       WHERE active GROUP BY product_id,option_id`),
   ]);

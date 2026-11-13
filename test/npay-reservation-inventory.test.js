@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { randomUUID } from 'node:crypto';
+import { randomUUID, generateKeyPairSync, publicEncrypt, constants } from 'node:crypto';
 import { PGlite } from '@electric-sql/pglite';
 import { neonConfig } from '@neondatabase/serverless';
 import seed from '../products.json' with { type: 'json' };
@@ -8,7 +8,7 @@ import { applyInventoryReservations } from '../api/_lib/inventory.js';
 import { ensureOrderSchema, createOrder, updateOrderByAdmin } from '../api/_lib/orders.js';
 import { ensureCouponSchema } from '../api/_lib/coupon-claims.js';
 import { ensureBlackFridaySchema, readPublicBlackFriday } from '../api/_lib/black-friday.js';
-import { fetchNpayProductInformation } from '../api/_lib/npay-handlers.js';
+import { fetchNpayProductInformation, fetchNpayOrder, fetchNpayConfig } from '../api/_lib/npay-handlers.js';
 import { npayProductId, buildOrderXml } from '../api/_lib/npay.js';
 const reservations = await import('../api/_lib/npay-reservations.js').catch(error => {
   if (error.code !== 'ERR_MODULE_NOT_FOUND') throw error;
@@ -44,7 +44,7 @@ test('Npay allocation participates in local stock, campaign quota and confirmati
     catch (error) { return Response.json({ message: error.message, code: error.code }, { status: 400 }); }
   };
   const reset = async () => {
-    await db.exec('TRUNCATE orders CASCADE; DELETE FROM npay_inventory_reservations; DELETE FROM npay_checkouts; DELETE FROM black_friday_campaign');
+    await db.exec('TRUNCATE orders CASCADE; TRUNCATE npay_checkouts CASCADE; DELETE FROM black_friday_campaign');
     await db.query("INSERT INTO black_friday_campaign(singleton,id,revision,enabled,starts_at,ends_at,items) VALUES(true,'campaign',1,true,now()-interval '1 hour',now()+interval '1 hour',$1::jsonb)",
       [JSON.stringify([{ productId: 'bag-a', optionId: '', offerId, price: 10000, quantity: 1 }])]);
   };
@@ -197,6 +197,136 @@ test('Npay allocation participates in local stock, campaign quota and confirmati
       assert.equal((await db.query('SELECT sum(held_quantity)::int AS n FROM npay_inventory_reservations')).rows[0].n, 1);
       const claims = await Promise.all([reservations.claimNpayRegistration(a.checkout.id), reservations.claimNpayRegistration(a.checkout.id)]);
       assert.equal(claims.filter(Boolean).length, 1);
+    });
+    await t.test('reserved registration sends the locked sale price once and encrypts replayable provider keys', async () => {
+      await reset();
+      const registration = await import('../api/_lib/npay-registration.js').catch(() => ({}));
+      assert.equal(typeof registration.registerReservedNpayCheckout, 'function', 'reservation-bound registration missing');
+      const input = { requestId: randomUUID(), items: [{ productId:'bag-a',optionId:'',quantity:1,blackFriday:sale }] };
+      let calls = 0;
+      const options = { keySecret:Buffer.alloc(32,7).toString('base64'), config:{shopId:'fixture-shop',certiKey:'fixture-cert',orderRegistrationUrl:'https://test-api.pay.naver.com/o/customer/api/order/v20/register'},
+        backUrl:'https://example.invalid/checkout.html', request:async (_url, init) => {
+          calls++; assert.match(init.body, /<basePrice>10000<\/basePrice>/); assert.match(init.body, /<id>NPR-[0-9a-f]{24}<\/id>/);
+          assert.match(init.body, /product.html\?id=bag-a/); assert.equal(init.redirect,'error');
+          return new Response('SUCCESS:fixture_BUY_KEY:12345');
+        } };
+      const result = await registration.registerReservedNpayCheckout(input, options);
+      assert.deepEqual(result, {key:'fixture_BUY_KEY',merchantNo:'12345'});
+      assert.deepEqual(await registration.registerReservedNpayCheckout(input, options), result);
+      assert.equal(calls,1);
+      const raw = JSON.stringify((await db.query('SELECT * FROM npay_registration_results')).rows);
+      assert.doesNotMatch(raw, /fixture_BUY_KEY|12345|fixture-cert/);
+      assert.equal((await db.query('SELECT phase FROM npay_checkouts')).rows[0].phase,'registered');
+      await assert.rejects(registration.registerReservedNpayCheckout({...input,items:[{...input.items[0],quantity:2}]},options),{status:409});
+      assert.equal(calls,1);
+    });
+    await t.test('lost registration response cannot be retried upstream or release the held unit', async () => {
+      await reset();
+      const registration = await import('../api/_lib/npay-registration.js').catch(() => ({}));
+      assert.equal(typeof registration.registerReservedNpayCheckout,'function');
+      let calls=0;
+      const input={requestId:randomUUID(),items:[{productId:'bag-a',optionId:'',quantity:1}]};
+      const options={keySecret:Buffer.alloc(32,7).toString('base64'),config:{shopId:'fixture',certiKey:'fixture',orderRegistrationUrl:'https://test-api.pay.naver.com/o/customer/api/order/v20/register'},backUrl:'https://example.invalid/',request:async()=>{calls++;throw new Error('synthetic lost response');}};
+      await assert.rejects(registration.registerReservedNpayCheckout(input,options),{status:502});
+      await assert.rejects(registration.registerReservedNpayCheckout(input,options),{status:409});
+      assert.equal(calls,1);
+      assert.equal((await applyInventoryReservations(seed.products))[0].stock,0);
+      assert.equal((await db.query('SELECT phase FROM npay_checkouts')).rows[0].phase,'uncertain');
+    });
+    await t.test('authenticated synchronization advances only after matching settlement; missing details preserve its cursor and stock', async () => {
+      await reset();
+      const worker=await import('../api/_lib/npay-sync.js').catch(()=>({}));
+      assert.equal(typeof worker.runNpayOrderSync,'function','durable synchronization worker missing');
+      const allocated=await reserve({requestId:randomUUID(),items:[{productId:'bag-a',optionId:'',quantity:1,blackFriday:sale}]});
+      const productId=allocated.items[0].id;
+      let missing=false;
+      const now=new Date(),request=async(path)=>{
+        if(path.includes('last-changed-statuses'))return{data:{count:1,lastChangeStatuses:[{productOrderId:'fixture-sync-order',orderId:'fixture-sync-parent',lastChangedDate:now.toISOString(),productOrderStatus:'PAYED'}]}};
+        return{data:missing?[]:[{order:{orderId:'fixture-sync-parent',paymentDate:now.toISOString()},productOrder:{productOrderId:'fixture-sync-order',productId,productOrderStatus:'PAYED',initialQuantity:1,remainQuantity:1,unitPrice:10000,optionPrice:0},completedClaims:[]}]};
+      };
+      const first=await worker.runNpayOrderSync({environment:'sandbox',request,now});
+      assert.equal(first.cursorAdvanced,true);
+      assert.equal(first.bound,1);
+      const before=(await db.query("SELECT through_at FROM npay_sync_state WHERE environment='sandbox'")).rows[0].through_at;
+      missing=true;
+      const second=await worker.runNpayOrderSync({environment:'sandbox',request,now:new Date(now.getTime()+1000)});
+      assert.equal(second.cursorAdvanced,false);
+      assert.equal(second.missing,1);
+      assert.equal((await db.query("SELECT through_at FROM npay_sync_state WHERE environment='sandbox'")).rows[0].through_at.toISOString(),before.toISOString());
+      assert.equal((await applyInventoryReservations(seed.products))[0].stock,0);
+      assert.doesNotMatch(JSON.stringify(first),/fixture-sync|NPR-|buyer@/);
+    });
+    await t.test('private sandbox route registers campaign prices through reservations while public production stays closed', async () => {
+      await reset();
+      const settings={NPAY_PUBLIC_ENABLED:'false',NPAY_REVIEW_TOKEN:'fixture-review',NPAY_SHOP_ID:'fixture',NPAY_CERTI_KEY:'fixture',NPAY_BUTTON_KEY:'fixture',
+        NPAY_ORDER_API_ENV:'sandbox',NPAY_ORDER_CLIENT_ID:'fixture',NPAY_ORDER_CLIENT_SECRET:'fixture',NPAY_ORDER_PROXY_URL:'fixture',NPAY_SYNC_SECRET:'fixture',NPAY_RESERVATION_ENCRYPTION_KEY:Buffer.alloc(32,7).toString('base64')};
+      const before=Object.fromEntries(Object.keys(settings).map(k=>[k,process.env[k]])),oldFetch=globalThis.fetch;
+      Object.assign(process.env,settings);
+      try{
+        const readiness=await import('../api/_lib/npay-readiness.js');
+        await readiness.ensureNpayReadinessSchema();
+        await db.query("INSERT INTO npay_integration_release(environment,sandbox_testing) VALUES('sandbox',true) ON CONFLICT(environment) DO UPDATE SET sandbox_testing=true");
+        let calls=0;
+        globalThis.fetch=async(_url,init)=>{calls++;assert.match(init.body,/<basePrice>10000<\/basePrice>/);return new Response('SUCCESS:route_KEY:12345');};
+        const body={reviewToken:'fixture-review',requestId:randomUUID(),items:[{productId:'bag-a',optionId:'',quantity:1,blackFriday:sale}]};
+        const request=()=>new Request('https://example.invalid/api/npay/order',{method:'POST',headers:{origin:'https://example.invalid','content-type':'application/json'},body:JSON.stringify(body)});
+        const response=await fetchNpayOrder(request());
+        assert.equal(response.status,200);assert.equal((await response.json()).key,'route_KEY');
+        assert.equal((await fetchNpayOrder(request())).status,200);assert.equal(calls,1);
+        process.env.NPAY_PUBLIC_ENABLED='true';
+        assert.equal((await fetchNpayOrder(request())).status,503);
+        assert.equal(calls,1);
+      }finally{
+        globalThis.fetch=oldFetch;
+        for(const [key,value] of Object.entries(before))value===undefined?delete process.env[key]:process.env[key]=value;
+      }
+    });
+    await t.test('one synchronization lease prevents concurrent empty polls from masking a reconciliation incident',async()=>{
+      const worker=await import('../api/_lib/npay-sync.js');
+      await db.exec('DELETE FROM npay_sync_state');
+      let release,entered,calls=0;
+      const blocked=new Promise(resolve=>{release=resolve;}),started=new Promise(resolve=>{entered=resolve;});
+      const request=async()=>{calls++;if(calls===1){entered();await blocked;}return{data:{count:0,lastChangeStatuses:[]}};};
+      const first=worker.runNpayOrderSync({environment:'sandbox',request});
+      await started;
+      try{
+        await assert.rejects(worker.runNpayOrderSync({environment:'sandbox',request}),{status:409});
+        assert.equal(calls,1,'A concurrent worker must not query the provider');
+      }finally{release();await first;}
+    });
+    await t.test('cutover never reopens legacy purchase paths while synchronization or credentials are unavailable',async()=>{
+      await reset();
+      const settings={NPAY_PUBLIC_ENABLED:'true',NPAY_SHOP_ID:'fixture',NPAY_CERTI_KEY:'fixture',NPAY_BUTTON_KEY:'fixture',NPAY_ENV:'production',NPAY_MANAGED_CHECKOUT_REQUIRED:'true'};
+      const before=Object.fromEntries(Object.keys(settings).map(k=>[k,process.env[k]])),oldFetch=globalThis.fetch;
+      Object.assign(process.env,settings);let calls=0;globalThis.fetch=async()=>{calls++;throw Error('Unexpected registration');};
+      try{
+        const config=await (await fetchNpayConfig(new Request('https://example.invalid/api/npay/config'))).json();
+        assert.equal(config.enabled,false);assert.equal(config.blackFriday.enabled,false);
+        const order=await fetchNpayOrder(new Request('https://example.invalid/api/npay/order',{method:'POST',headers:{origin:'https://example.invalid','content-type':'application/json'},body:JSON.stringify({items:[{productId:'bag-a',optionId:'',quantity:1}]})}));
+        assert.equal(order.status,503);assert.equal(calls,0);
+        const xml=await (await fetchNpayProductInformation(new Request('https://example.invalid/api/npay/product-info?product[0][id]=bag-a'))).text();
+        assert.match(xml,/<status>NOT_SALE<\/status><stockQuantity>0<\/stockQuantity>/);
+      }finally{globalThis.fetch=oldFetch;for(const [key,value]of Object.entries(before))value===undefined?delete process.env[key]:process.env[key]=value;}
+    });
+    await t.test('encrypted private entry is preview-only, expiring and redeemable once without persisting its token',async()=>{
+      const {redeemSandboxSession}=await import('../api/_lib/npay-sandbox-session.js');
+      const pair=generateKeyPairSync('rsa',{modulusLength:2048});
+      const encrypt=value=>publicEncrypt({key:pair.publicKey,padding:constants.RSA_PKCS1_OAEP_PADDING,oaepHash:'sha256'},Buffer.from(JSON.stringify(value))).toString('base64');
+      const token='a'.repeat(64),nonce='b'.repeat(32);
+      const settings={VERCEL_ENV:'preview',NPAY_ORDER_API_ENV:'sandbox',NPAY_PUBLIC_ENABLED:'false',
+        NPAY_SANDBOX_CREDENTIAL_PRIVATE_KEY:pair.privateKey.export({format:'der',type:'pkcs8'}).toString('base64'),
+        NPAY_SANDBOX_REVIEW_ENVELOPE:encrypt({type:'sandbox-review',token})};
+      const before=Object.fromEntries(Object.keys(settings).map(k=>[k,process.env[k]]));Object.assign(process.env,settings);
+      try{
+        const ticket=encrypt({type:'sandbox-entry',token,nonce,expiresAt:Date.now()+600_000});
+        const cookie=await redeemSandboxSession(ticket);
+        assert.match(cookie,/HttpOnly/);assert.match(cookie,/Secure/);assert.match(cookie,/Max-Age=3600/);
+        assert.equal(await redeemSandboxSession(ticket),null);
+        assert.equal(await redeemSandboxSession(encrypt({type:'sandbox-entry',token,nonce:'c'.repeat(32),expiresAt:Date.now()-1})),null);
+        const stored=JSON.stringify((await db.query('SELECT * FROM npay_sandbox_sessions')).rows);
+        assert.doesNotMatch(stored,new RegExp(token));
+        process.env.VERCEL_ENV='production';assert.equal(await redeemSandboxSession(ticket),null);
+      }finally{for(const [key,value]of Object.entries(before))value===undefined?delete process.env[key]:process.env[key]=value;}
     });
   } finally {
     neonConfig.fetchFunction = previousFetch; seed.products = previousProducts;

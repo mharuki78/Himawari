@@ -13,6 +13,7 @@ import { listPublishedReviews } from './_lib/customer-features.js';
 import { applyInventoryReservations } from './_lib/inventory.js';
 import { productCategory, productFamilyKey } from '../assets/catalog-tools.js';
 import { resolveBlackFridayDetail } from '../assets/black-friday-product-context.js';
+import {redeemSandboxSession} from './_lib/npay-sandbox-session.js';
 
 const COLLECTIONS = {
   school: { title: '학생·책가방', description: 'Himawari 학생 백팩의 크기와 수납 정보를 살펴보세요.', line1: '등교할 때 필요한', line2: '가방을 찾아보세요.' },
@@ -105,6 +106,14 @@ export async function fetch(request) {
   const origin = requestUrl.origin;
   let phase = 'request';
   try {
+    if(page==='npay-sandbox-entry'){
+      const cookie=await redeemSandboxSession(requestUrl.searchParams.get('ticket'));
+      return cookie?reviewRedirect(origin+'/npay-sandbox-checkout.html',cookie):privateHtml('검수 페이지를 찾을 수 없습니다.',404);
+    }
+    if(page==='npay-sandbox-checkout'){
+      if(process.env.VERCEL_ENV==='production'||!npayReviewRequestIsValid(request))return privateHtml('검수 페이지를 찾을 수 없습니다.',404);
+      return privateHtml(await readFile(new URL('../checkout.html',import.meta.url),'utf8'));
+    }
     if (page === 'npay-review') {
       const token = requestUrl.searchParams.get('token') || '';
       if (!npayReviewTokenIsValid(token)) return privateHtml('검수 페이지를 찾을 수 없습니다.', 404);

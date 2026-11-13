@@ -1,5 +1,8 @@
 import { isSameOrigin, json, methodNotAllowed, readJson } from './http.js';
 import { isReservedNpayProductId, readReservedNpayProducts } from './npay-reservations.js';
+import { registerReservedNpayCheckout } from './npay-registration.js';
+import { npayIntegrationReadiness } from './npay-readiness.js';
+import { readSandboxReservedNpayProducts } from './npay-sandbox-products.js';
 import {
   SITE_ORIGIN,
   buildOrderXml,
@@ -70,7 +73,11 @@ export async function fetchNpayConfig(request) {
   if (request.method !== 'GET') return methodNotAllowed(['GET']);
   const review = npayReviewRequestIsValid(request)
     || npayReviewTokenIsValid(new URL(request.url).searchParams.get('reviewToken'));
-  return json(npayPublicConfiguration({ review }));
+  try {
+    const config=npayPublicConfiguration({review});
+    const readiness=await npayIntegrationReadiness({review});
+    return json({...config,enabled:config.enabled&&(!readiness.legacyBlocked||readiness.enabled),blackFriday:{enabled:config.enabled&&readiness.enabled,reason:readiness.reason}});
+  } catch { return json({...npayPublicConfiguration({review}),enabled:false,blackFriday:{enabled:false,reason:'synchronization_unavailable'}}); }
 }
 
 export async function fetchNpayOrder(request) {
@@ -82,6 +89,22 @@ export async function fetchNpayOrder(request) {
     const reviewToken = String(input?.reviewToken || '').trim();
     const review = npayReviewRequestIsValid(request) || npayReviewTokenIsValid(reviewToken);
     if (!review && !npayPublicIsOpen()) return json({ message: '네이버페이 정식 오픈 전 검수 중입니다.' }, 403);
+    const readiness=await npayIntegrationReadiness({review});
+    const config = npayConfiguration({ mode: review ? 'test' : undefined });
+    if (!config.enabled) return json({ message: '네이버페이 설정을 확인하고 있습니다.' }, 503);
+    if(readiness.enabled){
+      const items=Array.isArray(input?.items)?input.items.map(item=>({...item,optionId:item.optionId||''})):[];
+      if(Object.hasOwn(input,'blackFriday')){
+        if(items.length!==1||!input.blackFriday||typeof input.blackFriday!=='object')return json({message:'행사 상품을 다시 확인해 주세요.'},400);
+        if(items[0].blackFriday&&JSON.stringify(items[0].blackFriday)!==JSON.stringify(input.blackFriday))return json({message:'행사가가 바뀌었습니다.'},409);
+        items[0].blackFriday=input.blackFriday;
+      }
+      const result=await registerReservedNpayCheckout({...input,items},{config,
+        backUrl:backUrlFor(input,items.map(item=>({product:{id:item.productId}})),request,review),
+        naverInflowCode:readNaverInflowCode(request),saClickId:readNaverSaClickId(request)});
+      return json(result);
+    }
+    if(readiness.legacyBlocked)return json({message:'네이버페이 주문 동기화를 확인하고 있습니다. 잠시 후 다시 이용해 주세요.'},503);
     // Never discard a locked campaign context and charge the regular price.
     // Reject malformed/null contexts too; the browser restriction is not a
     // trust boundary. Ordinary orders keep the existing registration path.
@@ -92,8 +115,6 @@ export async function fetchNpayOrder(request) {
         message: '행사 상품의 네이버페이 주문관리 연동을 준비 중입니다. 현재는 무통장입금 또는 카카오페이로 주문해 주세요.',
       }, 503);
     }
-    const config = npayConfiguration({ mode: review ? 'test' : undefined });
-    if (!config.enabled) return json({ message: '네이버페이 설정을 확인하고 있습니다.' }, 503);
     const items = validateItems(input, await currentProducts());
     const body = buildOrderXml({
       config,
@@ -124,7 +145,7 @@ export async function fetchNpayOrder(request) {
     return json({ key: result.key, merchantNo: result.merchantNo });
   } catch (error) {
     const status = Number(error?.status) || (error?.name === 'TimeoutError' ? 504 : 500);
-    console.error('npay_order_request_failed', { status, message: error?.message || 'unknown error' });
+    console.error('npay_order_request_failed', { status });
     return json({ message: status >= 500 ? '네이버페이 연결이 지연되고 있습니다. 잠시 후 다시 시도해 주세요.' : error.message }, status);
   }
 }
@@ -134,9 +155,11 @@ export async function fetchNpayProductInformation(request) {
   try {
     const requestedIds = parseRequestedProductIds(new URL(request.url));
     if (!requestedIds.length) return xmlResponse('<?xml version="1.0" encoding="utf-8"?><products></products>', 400);
-    const [products, reservedProducts] = await Promise.all([currentProducts(), readReservedNpayProducts(requestedIds)]);
-    const byNpayId = new Map(products.map((product) => [npayProductId(product), product]));
+    const [products, reservedProducts, readiness] = await Promise.all([currentProducts(), readReservedNpayProducts(requestedIds),npayIntegrationReadiness()]);
+    const byNpayId = new Map(products.map((product) => [npayProductId(product),readiness.legacyBlocked?{...product,npaySaleStatus:'NOT_SALE',stock:0,options:product.options.map(option=>({...option,stock:0}))}:product]));
     const byReservationId = new Map(reservedProducts.map(p => [p.id, p]));
+    const unresolved=requestedIds.filter(id=>isReservedNpayProductId(id)&&!byReservationId.has(id));
+    for(const product of await readSandboxReservedNpayProducts(unresolved))byReservationId.set(product.id,product);
     const matches = requestedIds.map(id => isReservedNpayProductId(id) ? byReservationId.get(id) : byNpayId.get(id)).filter(Boolean);
     return xmlResponse(buildProductInformationXml(matches));
   } catch (error) {

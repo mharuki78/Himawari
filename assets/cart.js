@@ -850,7 +850,7 @@
       if (document.querySelector(".rdcart")) return;
       buildButton();
       buildDrawer();
-      import("/assets/npay.js?v=20261112-cart-convenience").then(function(module) {
+      import("/assets/npay.js?v=20261113-managed-checkout").then(function(module) {
         return module.initializeNpay({ cartItems: cart.slice() });
       }).catch(function() {
       });

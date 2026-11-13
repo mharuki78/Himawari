@@ -45,6 +45,14 @@
       "destination": "/api/inquiries?route=assistant"
     },
     {
+      "source": "/npay-sandbox-entry",
+      "destination": "/api/storefront?page=npay-sandbox-entry"
+    },
+    {
+      "source": "/npay-sandbox-checkout.html",
+      "destination": "/api/storefront?page=npay-sandbox-checkout"
+    },
+    {
       "source": "/npay-review-products.html",
       "destination": "/api/storefront?page=npay-review-catalog"
     },

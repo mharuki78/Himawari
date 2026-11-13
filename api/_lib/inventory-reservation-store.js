@@ -12,10 +12,12 @@ export function ensureNpayReservationSchema() {
         request_id text NOT NULL UNIQUE,
         fingerprint text NOT NULL,
         catalog_revision integer NOT NULL DEFAULT 0,
+        environment text NOT NULL DEFAULT 'sandbox' CHECK (environment IN ('sandbox','production')),
         phase text NOT NULL DEFAULT 'reserved' CHECK (phase IN ('reserved','registering','registered','uncertain','blocked')),
         created_at timestamptz NOT NULL DEFAULT now(),
         updated_at timestamptz NOT NULL DEFAULT now()
       )`,
+      tx`ALTER TABLE npay_checkouts ADD COLUMN IF NOT EXISTS environment text NOT NULL DEFAULT 'sandbox' CHECK (environment IN ('sandbox','production'))`,
       tx`CREATE TABLE IF NOT EXISTS npay_inventory_reservations (
         id text PRIMARY KEY,
         checkout_id text NOT NULL REFERENCES npay_checkouts(id),

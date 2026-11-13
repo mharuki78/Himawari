@@ -190,11 +190,12 @@ test('collapsing catalog refinements at the mobile breakpoint moves internal foc
   assert.equal(page.refinementToggle.focusCalls, 3, 'Outside focus and focus already on the summary stay in place');
 });
 
-async function checkoutFixture({ payment = 'bank_transfer', quantity = '5', stock = 3, kakao = true, bank = true, option = false, sale = false, mixed = false, endsAt = '2099-01-01T00:00:00Z' } = {}) {
+async function checkoutFixture({ payment = 'bank_transfer', quantity = '5', stock = 3, kakao = true, bank = true, option = false, sale = false, mixed = false, npay = {enabled:true}, sandbox = false, endsAt = '2099-01-01T00:00:00Z' } = {}) {
   const env = environment(`https://himawari.co.kr/checkout.html?product=bag-1&quantity=${quantity}${option ? '&option=blue' : ''}${payment ? '&payment=' + payment : ''}`);
   const offerId = 'eb3ff32a-dce8-4c79-8dba-c93058eb6247';
   if (sale) env.history.replaceState(null, '', `https://himawari.co.kr/checkout.html?blackFriday=${offerId}&quantity=${quantity}`);
   if (mixed) env.history.replaceState(null, '', 'https://himawari.co.kr/checkout.html');
+  if (sandbox) env.history.replaceState(null, '', 'https://himawari.co.kr/npay-sandbox-checkout.html' + env.location.search);
   let clock = Date.now(), timer;
   if (mixed) env.sessionStorage = { getItem: key => key === 'himawari-checkout-items' ? JSON.stringify({createdAt:clock,items:[{productId:'bag-1',optionId:'',quantity:2,blackFriday:{offerId,unitPrice:39000}},{productId:'bag-2',quantity:1}]}) : null, setItem() {} };
   const form = env.node('[data-checkout-form]');
@@ -217,7 +218,7 @@ async function checkoutFixture({ payment = 'bank_transfer', quantity = '5', stoc
       requests.push({ url, method: options?.method || 'GET' });
       assert.equal(options?.method || 'GET', 'GET', 'Disclosure and quantity changes must not create orders');
       const payload = url === '/api/auth/session' ? { authenticated: false }
-        : url === '/api/kakaopay/config' ? { enabled: kakao }
+        : url === '/api/npay/config' ? npay : url === '/api/kakaopay/config' ? { enabled: kakao }
           : url === '/api/promotions' ? { coupons: [] } : url === '/api/black-friday' ? campaign : url === '/api/products' ? {products:[product,ordinary]} : { product };
       return { ok: true, json: async () => payload };
     },
@@ -359,4 +360,24 @@ test('checkout source order confirms products and totals before payment selectio
   assert.ok(html.indexOf('class="checkout-summary"') < html.indexOf('class="checkout-section checkout-methods"'));
   assert.ok(html.indexOf('class="checkout-summary"') < html.indexOf('class="checkout-form"'));
   assert.match(html, /data-payment-change aria-expanded="false" aria-controls="checkout-method-options"/);
+});
+
+test('explicit server capability enables campaign checkout while preserving its verified payload',async()=>{
+ for(const mode of [{sale:true},{mixed:true}]) {
+  const page=await checkoutFixture({...mode,quantity:'2',npay:{enabled:true,blackFriday:{enabled:true}}});
+  assert.equal(page.node('#npay-checkout-button').hidden,false);
+  assert.equal(page.node('[data-npay-unavailable]').hidden,true);
+  assert.deepEqual(JSON.parse(JSON.stringify(page.npayItems())),[{productId:'bag-1',optionId:'',quantity:2,blackFriday:{offerId:'eb3ff32a-dce8-4c79-8dba-c93058eb6247',unitPrice:39000}},...(mode.mixed?[{productId:'bag-2',optionId:'',quantity:1}]:[])]);
+ }
+ const disabled=await checkoutFixture({mixed:true,npay:{enabled:false,blackFriday:{enabled:true}}});
+ assert.equal(disabled.node('[data-npay-unavailable]').hidden,false);assert.equal(disabled.npayItems(),undefined);
+});
+
+test('private sandbox checkout shows the Npay action only with explicit server review capability',async()=>{
+ for(const sandbox of [false,true]) {
+  const page=await checkoutFixture({mixed:true,sandbox,npay:{enabled:true,review:true,blackFriday:{enabled:true}}});
+  assert.equal(page.node('#npay-checkout-button').hidden,!sandbox);
+  assert.equal(page.node('[data-npay-unavailable]').hidden,sandbox);
+  assert.equal(Boolean(page.npayItems()),sandbox);
+ }
 });
