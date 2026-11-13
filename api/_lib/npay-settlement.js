@@ -9,13 +9,16 @@ const quantity = value => Number.isSafeInteger(value) && value >= 0;
 // Unknown provider states deliberately require an operator/code review. These
 // guards deliberately cover only the known mall order states. New states must
 // be checked against the merchant's exact mall API version before adding them.
-const orderRanks = new Map(['PAYMENT_WAITING', 'PAYED', 'DELIVERING', 'DELIVERED', 'PURCHASE_DECIDED', 'EXCHANGED', 'RETURNED', 'CANCELED'].map((state, index) => [state, index]));
-const claimTypes = new Set(['', 'CANCEL', 'RETURN', 'EXCHANGE', 'PURCHASE_DECISION_HOLDBACK', 'ADMIN_CANCEL']);
+const orderRanks = new Map(['PAYMENT_WAITING', 'PAYED', 'DELIVERING', 'DELIVERED', 'PURCHASE_DECIDED', 'EXCHANGED', 'RETURNED', 'CANCELED', 'CANCELED_BY_NOPAYMENT'].map((state, index) => [state, index]));
+const claimTypes = new Set(['', 'CANCEL', 'RETURN', 'EXCHANGE', 'ADMIN_CANCEL']);
 const claimStatuses = new Set(['', 'CANCEL_REQUEST', 'CANCELING', 'CANCEL_DONE', 'CANCEL_REJECT',
+  'ADMIN_CANCELING', 'ADMIN_CANCEL_DONE', 'ADMIN_CANCEL_REJECT',
   'RETURN_REQUEST', 'COLLECTING', 'COLLECT_DONE', 'RETURN_DONE', 'RETURN_REJECT',
   'EXCHANGE_REQUEST', 'EXCHANGE_REDELIVERING', 'EXCHANGE_DONE', 'EXCHANGE_REJECT',
   'PURCHASE_DECISION_HOLDBACK', 'PURCHASE_DECISION_HOLDBACK_RELEASE']);
 const invalid = reason => ({ valid: false, incident: reason });
+const completedCancellation = claim => claim.claimType === 'CANCEL' && claim.claimStatus === 'CANCEL_DONE'
+  || claim.claimType === 'ADMIN_CANCEL' && claim.claimStatus === 'ADMIN_CANCEL_DONE';
 let schemaPromise;
 
 export function ensureNpaySettlementSchema() {
@@ -57,10 +60,10 @@ export function projectNpayOrderSettlement(reservation, order, previous = null) 
   if (!quantity(oldCanceled) || oldCanceled > order.initialQuantity
     || reservation.held_quantity !== reservation.quantity - oldCanceled) return invalid('hold_mismatch');
   if (!Array.isArray(order.completedClaims) || order.completedClaims.length > 1000) return invalid('invalid_claims');
-  const claims = new Map((previous?.cancellation_claims || []).map(c => [c.claimId, c.quantity]));
+  const claims = new Map((previous?.cancellation_claims || []).map(c => [c.claimId, { ...c, claimType: c.claimType || 'CANCEL' }]));
   const nonCancellationClaims = new Map((previous?.non_cancellation_claims || []).map(c => [c.claimId, c]));
   const seenClaims = new Map([
-    ...[...claims].map(([claimId, count]) => [claimId, { claimType: 'CANCEL', quantity: count }]),
+    ...claims,
     ...nonCancellationClaims,
   ]);
   const incomingClaims = new Map();
@@ -70,17 +73,16 @@ export function projectNpayOrderSettlement(reservation, order, previous = null) 
     const known = seenClaims.get(claim.claimId);
     if (known && (known.claimType !== claim.claimType || known.quantity !== claim.requestQuantity)) return invalid('claim_identity_changed');
     seenClaims.set(claim.claimId, { claimType: claim.claimType, quantity: claim.requestQuantity });
-    if (claim.claimType !== 'CANCEL' || claim.claimStatus !== 'CANCEL_DONE') {
+    if (!completedCancellation(claim)) {
       nonCancellationClaims.set(claim.claimId, { claimId: claim.claimId, claimType: claim.claimType, quantity: claim.requestQuantity });
       continue;
     }
     if (!Number.isFinite(Date.parse(claim.claimCompleteOperationDate))) return invalid('invalid_claims');
-    if (claims.has(claim.claimId) && claims.get(claim.claimId) !== claim.requestQuantity) return invalid('claim_quantity_changed');
-    claims.set(claim.claimId, claim.requestQuantity);
+    claims.set(claim.claimId, { claimId: claim.claimId, claimType: claim.claimType, quantity: claim.requestQuantity });
     incomingClaims.set(claim.claimId, claim.requestQuantity);
   }
   if ([...incomingClaims.values()].reduce((sum, count) => sum + count, 0) > order.initialQuantity - order.remainQuantity) return invalid('inconsistent_cancellation_quantity');
-  const claimedCanceled = [...claims.values()].reduce((sum, count) => sum + count, 0);
+  const claimedCanceled = [...claims.values()].reduce((sum, claim) => sum + claim.quantity, 0);
   if (claimedCanceled > order.initialQuantity) return invalid('cancellation_exceeds_purchase');
   const protectedQuantity = [...nonCancellationClaims.values()].reduce((sum, claim) => sum + claim.quantity, 0);
   if (Math.max(oldCanceled, claimedCanceled) + protectedQuantity > order.initialQuantity) return invalid('contradictory_completed_claims');
@@ -92,16 +94,16 @@ export function projectNpayOrderSettlement(reservation, order, previous = null) 
     || [order.productOrderStatus, previous?.product_order_status].some(state => ['RETURNED', 'EXCHANGED'].includes(state))
     || [order.claimType, previous?.claim_type].some(type => ['RETURN', 'EXCHANGE'].includes(type));
   const fullCancellation = !nonCancellationEvidence && order.remainQuantity === 0 && (order.productOrderStatus === 'CANCELED'
-    || order.claimType === 'CANCEL' && order.claimStatus === 'CANCEL_DONE');
+    || completedCancellation(order));
   const canceledQuantity = Math.max(oldCanceled, claimedCanceled, fullCancellation ? order.initialQuantity : 0);
   const oldRank = orderRanks.get(previous?.product_order_status) ?? -1;
   const stale = oldRank > orderRanks.get(order.productOrderStatus)
-    || ['CANCELED', 'RETURNED', 'EXCHANGED'].includes(previous?.product_order_status) && previous.product_order_status !== order.productOrderStatus;
-  const terminalClaim = ['CANCEL_DONE', 'RETURN_DONE', 'EXCHANGE_DONE'].includes(previous?.claim_status);
+    || ['CANCELED', 'CANCELED_BY_NOPAYMENT', 'RETURNED', 'EXCHANGED'].includes(previous?.product_order_status) && previous.product_order_status !== order.productOrderStatus;
+  const terminalClaim = ['CANCEL_DONE', 'ADMIN_CANCEL_DONE', 'RETURN_DONE', 'EXCHANGE_DONE'].includes(previous?.claim_status);
   const line = {
     product_order_id: order.productOrderId, reservation_id: reservation.id, order_id: order.orderId,
     initial_quantity: order.initialQuantity, canceled_quantity: canceledQuantity,
-    cancellation_claims: [...claims].sort(([a], [b]) => a.localeCompare(b)).map(([claimId, count]) => ({ claimId, quantity: count })),
+    cancellation_claims: [...claims.values()].sort((a, b) => a.claimId.localeCompare(b.claimId)),
     non_cancellation_claims: [...nonCancellationClaims.values()].sort((a, b) => a.claimId.localeCompare(b.claimId)),
     product_order_status: stale ? previous.product_order_status : order.productOrderStatus,
     claim_type: stale || terminalClaim ? previous.claim_type : order.claimType,

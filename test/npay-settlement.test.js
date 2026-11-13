@@ -102,6 +102,44 @@ test('a completed claim ID cannot change its type or quantity within or across p
   assert.equal(project(reservation({ held_quantity: 3 }), order({ remainQuantity: 0, completedClaims: [returned] }), canceled.line).valid, false);
 });
 
+test('verified no-payment cancellation status retains stock without completed cancel quantities', () => {
+  const first = project(reservation(), order({ productOrderStatus: 'CANCELED_BY_NOPAYMENT', remainQuantity: 0 }));
+  assert.equal(first.valid, true);
+  assert.equal(first.heldQuantity, 5);
+  const stale = project(reservation(), order(), first.line);
+  assert.equal(stale.valid, true);
+  assert.equal(stale.heldQuantity, 5);
+  assert.equal(stale.line.product_order_status, 'CANCELED_BY_NOPAYMENT');
+  const completed = project(reservation(), order({ productOrderStatus: 'CANCELED_BY_NOPAYMENT', remainQuantity: 0,
+    completedClaims: [claim('cancel-proof', 1)] }));
+  assert.equal(completed.valid, true);
+  assert.equal(completed.heldQuantity, 4);
+});
+
+test('administrator cancellation releases only validated completed quantities with stable claim identity', () => {
+  for (const status of ['ADMIN_CANCELING', 'ADMIN_CANCEL_REJECT']) {
+    const result = project(reservation(), order({ remainQuantity: 0, claimType: 'ADMIN_CANCEL', claimStatus: status }));
+    assert.equal(result.valid, true);
+    assert.equal(result.heldQuantity, 5);
+  }
+  assert.equal(project(reservation(), order({ remainQuantity: 0, claimType: 'ADMIN_CANCEL', claimStatus: 'ADMIN_CANCEL_DONE' })).heldQuantity, 2);
+  const admin = { ...claim('admin-id', 1), claimType: 'ADMIN_CANCEL', claimStatus: 'ADMIN_CANCEL_DONE' };
+  const first = project(reservation(), order({ remainQuantity: 2, completedClaims: [admin, admin] }));
+  assert.equal(first.valid, true);
+  assert.equal(first.heldQuantity, 4);
+  const replay = project(reservation({ held_quantity: 4 }), order({ remainQuantity: 2, completedClaims: [admin] }), first.line);
+  assert.equal(replay.valid, true);
+  assert.equal(replay.heldQuantity, 4);
+  assert.equal(project(reservation({ held_quantity: 4 }), order({ remainQuantity: 2,
+    completedClaims: [claim('admin-id', 1)] }), first.line).valid, false);
+  const returned = { ...claim('returned', 2), claimType: 'RETURN', claimStatus: 'RETURN_DONE' };
+  const mixed = project(reservation(), order({ remainQuantity: 0, claimType: 'ADMIN_CANCEL', claimStatus: 'ADMIN_CANCEL_DONE',
+    completedClaims: [admin, returned] }));
+  assert.equal(mixed.valid, true);
+  assert.equal(mixed.heldQuantity, 4);
+  assert.equal(project(reservation(), order({ claimStatus: 'ADMIN_UNKNOWN' })).valid, false);
+});
+
 test('authenticated metadata reconciliation binds once, preserves stock and rolls back atomically', async t => {
   assert.equal(typeof settlement.reconcileNpayOrderMetadata, 'function', 'Npay metadata reconciler is missing');
   const db = new PGlite();
@@ -195,6 +233,20 @@ test('authenticated metadata reconciliation binds once, preserves stock and roll
       assert.equal(await held(alias), 4);
       const invalid = await reconcile([order({ remainQuantity: 0, completedClaims: [claim('returned', 2)] })]);
       assert.equal(invalid.incidents.length, 1);
+      assert.equal(await held(alias), 4);
+    });
+    await t.test('administrator partial cancellation and no-payment states persist safely across polls', async () => {
+      await reset();
+      await reconcile([order({ productOrderStatus: 'CANCELED_BY_NOPAYMENT', remainQuantity: 0 })]);
+      assert.equal(await held(alias), 5);
+      const admin = { ...claim('admin-id', 1), claimType: 'ADMIN_CANCEL', claimStatus: 'ADMIN_CANCEL_DONE' };
+      await reconcile([order({ productOrderStatus: 'CANCELED_BY_NOPAYMENT', remainQuantity: 0, completedClaims: [admin] })]);
+      assert.equal(await held(alias), 4);
+      await reconcile([order({ productOrderStatus: 'CANCELED_BY_NOPAYMENT', remainQuantity: 0, completedClaims: [admin, admin] })]);
+      assert.equal(await held(alias), 4);
+      const result = await reconcile([order({ productOrderStatus: 'CANCELED_BY_NOPAYMENT', remainQuantity: 0,
+        completedClaims: [{ ...admin, claimStatus: 'ADMIN_UNKNOWN' }] })]);
+      assert.equal(result.incidents.length, 1);
       assert.equal(await held(alias), 4);
     });
     await t.test('competing provider order IDs cannot buy the same reserved alias twice', async () => {
