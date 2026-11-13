@@ -14,4 +14,8 @@ Applied content-strategy/copywriting and both Korean prose skills. LIGHT routes2
 
 Prepared story pages/list/RSS/sitemap/schema with date-only first-publication metadata. `node scripts/verify-daily-story.mjs 2026-11-14` succeeds with awaiting-first-deployment. This is preparation, not publication completion. Remaining: full test result, first content production READY and complete history, original timestamps/article hashes, metadata deployment, Chrome desktop/mobile/images/product links/home/RSS, receipt and successful --published verification.
 
-Full test suite469/469 passed (`tests.log`). Restored the test-induced LookBook sitemap row reorder while preserving today's new entries. Only today's18publication files will be staged; unrelated AGENTS/DESIGN/STATE/Npay and previous story logs remain excluded.
+Full test suite469/469 passed (`tests.log`). Restored the test-induced LookBook sitemap row reorder while preserving today's new entries. Only today's17publication files will be staged; unrelated AGENTS/DESIGN/STATE/Npay and previous story logs remain excluded.
+
+First content commit3cadf4ca38b4611e5ed8efea871a8dc191679a0c production READY dpl_2ozPGWn71uCqpLXFPpynNbT9XhfE at2026-11-13T23:25:04.690Z (08:25:04.690 KST). Preserved complete production history from original baseline READY, with1page/no next cursor and1READY candidate; Git confirms all3articles were introduced without publication timestamps. The original evidence/history is fixed.
+
+RSS metadata conversion initially failed because the date-only draft items had no pubDate element. Added exactly one pubDate to each of today's3items using the actual first READY time, then reran the required dated schema updater and preparation verifier successfully. No older feed items or first timestamps changed. Metadata regression tests20/20 passed. Remaining final metadata READY, Chrome production checks, receipt and --published.

@@ -1,6 +1,6 @@
 {
   "date": "2026-11-14",
-  "stage": "prepared",
+  "stage": "metadata-verified",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "publicationBaselineCommit": "9c0af566884b7d1bc42061263b8d2e8ecbed57df",
@@ -11,7 +11,7 @@
   "runType": "morning",
   "posts": [
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-product-vs-package-size",
       "title": "백팩 크기와 포장 상자 크기, 같은 숫자로 읽어도 될까",
       "url": "https://himawari.co.kr/story/backpack-product-vs-package-size.html",
@@ -85,10 +85,19 @@
           "review": "공개 제품 원본을 직접 확인하고 모델·색·로고·포켓·손잡이와 끈, 외곽 비율을 대조했습니다.",
           "originalSource": "backups/story-2026-11-14/reference-1.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-13T23:25:04.690Z",
+        "modifiedAt": "2026-11-13T23:25:04.690Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-14/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-14/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-14/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-14/first-deployment-history.json",
+        "articleSha256": "e18d6f83fd43854d5ac62c8a59cb2cd60ea89b382ec5a8196f8b4ce6876e6849"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-photo-perspective-shape",
       "title": "사진마다 백팩 폭이 달라 보이면 촬영 각도부터",
       "url": "https://himawari.co.kr/story/backpack-photo-perspective-shape.html",
@@ -162,10 +171,19 @@
           "review": "공개 제품 원본을 직접 확인하고 모델·색·로고·포켓·손잡이와 끈, 외곽 비율을 대조했습니다.",
           "originalSource": "backups/story-2026-11-14/reference-2.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-13T23:25:04.690Z",
+        "modifiedAt": "2026-11-13T23:25:04.690Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-14/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-14/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-14/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-14/first-deployment-history.json",
+        "articleSha256": "eb82561969b346197f028029933e160ff8a360f0166e8cc5cbe66589b159e6f0"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "school-backpack-name-tag-visibility",
       "title": "책가방 이름표, 어디까지 보이게 달면 좋을까",
       "url": "https://himawari.co.kr/story/school-backpack-name-tag-visibility.html",
@@ -239,7 +257,16 @@
           "review": "공개 제품 원본을 직접 확인하고 모델·색·로고·포켓·손잡이와 끈, 외곽 비율을 대조했습니다.",
           "originalSource": "backups/story-2026-11-14/reference-3.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-13T23:25:04.690Z",
+        "modifiedAt": "2026-11-13T23:25:04.690Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-14/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-14/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-14/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-14/first-deployment-history.json",
+        "articleSha256": "c5a6b8b2f1ebc9cd13600f8581150d59485b596417133d2877eef281f6b80652"
+      }
     }
   ],
   "topicsReviewed": 203,
@@ -251,7 +278,8 @@
         "backpack-photo-perspective-shape",
         "school-backpack-name-tag-visibility"
       ],
-      "stage": "prepared"
+      "stage": "metadata-verified"
     }
-  }
+  },
+  "completionReceipt": "backups/story-runs/2026-11-14.deployment.json"
 }
