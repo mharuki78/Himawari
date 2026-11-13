@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-product-vs-package-size",
+    "title": "백팩 크기와 포장 상자 크기, 같은 숫자로 읽어도 될까",
+    "date": "2026-11-14",
+    "summary": "No.8029의 외부 치수를 예로 들어 상품 크기와 포장 단위 크기를 나누고, 선반·배송 상자에 필요한 숫자를 구별합니다.",
+    "description": "No.8029의 외부 치수를 예로 들어 상품 크기와 포장 단위 크기를 나누고, 선반·배송 상자에 필요한 숫자를 구별합니다.",
+    "tags": [
+      "백팩 크기",
+      "포장 크기",
+      "상품 치수"
+    ],
+    "image": "../assets/story/backpack-product-vs-package-size.webp",
+    "imageAlt": "No.8029 민트아이보리 백팩과 별도 빈 상자를 나란히 둔 AI 연출",
+    "images": [
+      "../assets/story/backpack-product-vs-package-size.webp",
+      "../assets/story/backpack-product-vs-package-size-detail.webp",
+      "../assets/story/backpack-product-vs-package-size-product.webp"
+    ],
+    "url": "backpack-product-vs-package-size.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "상품표·배송표·사용 목적의 세 기록을 구분하는 치수 해독 안내"
+  },
+  {
+    "id": "backpack-photo-perspective-shape",
+    "title": "사진마다 백팩 폭이 달라 보이면 촬영 각도부터",
+    "date": "2026-11-14",
+    "summary": "No.9001 핑크그레이의 정면과 사선 장면으로 촬영 방향, 원단의 실제 상태, 치수 확인을 구분해 사진 속 외곽을 읽습니다.",
+    "description": "No.9001 핑크그레이의 정면과 사선 장면으로 촬영 방향, 원단의 실제 상태, 치수 확인을 구분해 사진 속 외곽을 읽습니다.",
+    "tags": [
+      "백팩 사진",
+      "촬영 각도",
+      "원근감"
+    ],
+    "image": "../assets/story/backpack-photo-perspective-shape.webp",
+    "imageAlt": "No.9001 핑크그레이 백팩을 정면에 가깝게 본 AI 연출",
+    "images": [
+      "../assets/story/backpack-photo-perspective-shape.webp",
+      "../assets/story/backpack-photo-perspective-shape-detail.webp",
+      "../assets/story/backpack-photo-perspective-shape-product.webp"
+    ],
+    "url": "backpack-photo-perspective-shape.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "정면·상방 사선의 시각 관찰과 실제 변형 판단을 구분하는 사진 해설"
+  },
+  {
+    "id": "school-backpack-name-tag-visibility",
+    "title": "책가방 이름표, 어디까지 보이게 달면 좋을까",
+    "date": "2026-11-14",
+    "summary": "No.1027의 앞 포켓과 부착 파우치를 보며 이름표의 공개 범위, 연결 위치, 여닫는 동작과 교체할 때의 확인 항목을 살펴봅니다.",
+    "description": "No.1027의 앞 포켓과 부착 파우치를 보며 이름표의 공개 범위, 연결 위치, 여닫는 동작과 교체할 때의 확인 항목을 살펴봅니다.",
+    "tags": [
+      "책가방 이름표",
+      "학생 백팩",
+      "이름표 위치"
+    ],
+    "image": "../assets/story/school-backpack-name-tag-visibility.webp",
+    "imageAlt": "No.1027 라벤더 백팩을 멘 가상의 학생 모델의 AI 착용 연출",
+    "images": [
+      "../assets/story/school-backpack-name-tag-visibility.webp",
+      "../assets/story/school-backpack-name-tag-visibility-detail.webp",
+      "../assets/story/school-backpack-name-tag-visibility-product.webp"
+    ],
+    "url": "school-backpack-name-tag-visibility.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "이름표의 바깥 표시·연결·안쪽 확인·교체에 답하는 질문형 사용 안내"
+  },
+  {
     "id": "backpack-buckle-replacement-width",
     "title": "백팩 버클, 끈 폭만 같으면 다른 부품도 맞을까",
     "date": "2026-11-13",
