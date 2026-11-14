@@ -1,0 +1,103 @@
+{
+  "date": "2026-11-14",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-14T00:00:19.957Z",
+    "scheduledAt": "2026-11-14T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "scheduledSlot": "2026-11-14T09:00:00+09:00",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-14/deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-14/public-catalog.json",
+  "entries": [
+    {
+      "model": "200",
+      "category": "city",
+      "dimensionsCm": [
+        28,
+        39,
+        15
+      ],
+      "prompt": "Use case photorealistic-natural. Create exactly ONE vertical 1024x1536 Korean contemporary street-style LookBook photograph, inspired by the photographic attitude of Musinsa Snap, without copying any existing person or photograph. The attached image is the precise PRODUCT reference: real BLACK Himawari No.200 backpack, confirmed exterior width28 xheight39 xdepth15 cm from manufacturer catalogue page51. Preserve this exact object. A very beautiful fictional Korean adult woman about25, expressive face, clear skin, dark hair in a neat low bun with soft loose fringe, wears a cropped dark olive quilted bomber over an ivory crew-neck knit, straight medium-wash blue jeans and white low sneakers. She is paused naturally on a broad pale concrete outdoor stair landing beside a brushed-steel handrail and small modern gallery facade. She holds the backpack by its ORIGINAL pair of short top carry handles with one hand beside her thigh, the complete FRONT of the bag facing the camera, bag upright and clear of her clothes, no new carry straps. Her other hand lightly touches the rail, looking up toward the photographer with an appealing relaxed expression. High camera angle from about2.4m at a25-degree downward angle; a front-three-quarter environmental FULL-BODY composition with both shoes and diagonal stair lines. Human body about80percent image height, bag about23percent of image height and correct39cm human-relative height. Natural perspective without wide-angle distortion. Match the matte black fabric, tall softly rounded rectangle, two short black handle loops joined with the small wrap at top, paired large black leatherlike main zipper tabs below handle, round BLACK Himawari EST.2010 logo patch on upper front, single large curved front flap pocket, vertical black fastening tab and black rectangular buckle with round snap on lower end, black side pockets and original padded shoulder straps resting behind. Entire round logo, flap and fastening tab must be visible. Do not add white trim, metal chain, pouch, decorations, extra pockets or different branding. Soft cloudy November daylight, restrained concrete grays, genuine editorial fashion photograph, naturally correct hands and anatomy. No text overlays, readable signs, other people or collage.",
+      "productId": "coupang-b8f7115d45d4c5f4",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-b8f7115d45d4c5f4/main-8oZzWrORYaCFTOsIJLwkMdYSmEMT0Y.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8732967418",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 51페이지의 200 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-2026-11-14/reference-200.jpg",
+      "generatedSource": "backups/lookbook-2026-11-14/generated-200.png",
+      "fidelityReviewed": true,
+      "imageKind": "generated",
+      "title": "갤러리 앞 계단에서",
+      "scene": "초록색 점퍼에 청바지를 입고 계단에 서 있어요. 검정 백팩의 손잡이를 잡았어요.",
+      "alt": "초록색 점퍼와 청바지 차림으로 갤러리 앞 계단에서 검정 No.200 백팩의 손잡이를 든 전신을 위에서 내려다본 AI 착용 연출",
+      "composition": {
+        "approach": "high-angle stair-landing fashion observation",
+        "angle": "elevated downward front-three-quarter",
+        "framing": "full-body including shoes; bag roughly one quarter of image height",
+        "activity": "standing on stair landing, one hand holding original paired top handles and the other touching railing",
+        "setting": "concrete gallery entrance and brushed-steel stair handrail in soft cloudy daylight"
+      },
+      "fidelityReview": "직접 본 원본과 생성물을 대조해 검정 몸판, 위 쌍 손잡이와 결합 탭, 두 개의 큰 지퍼 손잡이, 둥근 Himawari EST.2010 패치, 곡선 앞 플랩과 세로 고정끈·사각 버클·원형 스냅, 옆 포켓을 확인했습니다.39cm 높이와 가로28cm의 비율, 손잡이로 드는 방식과 손·발·얼굴을 확인했습니다. 패치의 작은 글씨는 연출이며 제품 표시 사실의 근거로 사용하지 않습니다.",
+      "id": "2026-11-14-city-200",
+      "date": "2026-11-14",
+      "color": "블랙",
+      "image": "/assets/lookbook/2026-11-14-city-200.webp",
+      "thumbnail": "/assets/lookbook/2026-11-14-city-200-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-2eaf60dc-e3ad-4f55-8acf-ca273388d4ce.png",
+      "generatedSha256": "f96f5ebfdbcf9d6c0e74db73eb545e0d54438af61059edec751c2799b5d86656"
+    },
+    {
+      "model": "9290",
+      "category": "everyday",
+      "dimensionsCm": [
+        30,
+        42,
+        18
+      ],
+      "prompt": "Use case photorealistic-natural. Create ONE portrait1024x1536 photograph for a current Korean street-style brand LookBook. Attached reference is the exact real BLACK Himawari No.9290 backpack, confirmed exterior width30 xheight42 xdepth18cm from manufacturer catalogue page42. A very handsome fictional Korean adult man around27 with expressive profile, short gently wavy black hair, dressed in a burgundy fine-knit sweater under a navy unbranded work jacket, charcoal straight trousers, no skirt or feminine styling. He sits sideways on a low pale concrete plaza bench outside an urban record shop, backpack worn naturally using BOTH original BLACK padded shoulder straps. He leans very slightly forward with forearms resting on thighs and turns his face toward the open plaza, his face visible in attractive natural profile. Close side-rear THREE-QUARTER seated wearable portrait, camera at seated shoulder level, framed from his complete head to mid-thigh so the whole backpack fills roughly42percent of image height and is prominent in focus. Bag front turned enough toward camera to see its front panel and both near-side buckles, face in upper-left and bag occupying lower-right. Do not turn him into a rear full-body walker. Crisp texture, subtly blurred plain shop window and one empty stool behind, no readable text or other people. Preserve the reference rounded tall black textile body, BLACK top loop, layered rounded main zipper tracks, centered small WHITE rectangular Himawari label in upper front with correct lettering, large lower rounded rectangular front pocket with a conspicuous thick WHITE HORIZONTAL ZIPPER and white pull at viewer-left, two sets of BLACK horizontal compression straps with WHITE plastic buckle/adjuster parts on each side, black mesh side pockets. Exactly as photo: no hanging pouch, elastic lacing, extra front pocket, tan leather, chest belt or invented accessories. True42cm torso-relative scale; front compartment must remain fully visible with jacket and arms not covering it. Soft lateral daylight, handsome fashion-snap model, natural expressive face and accurate hands, documentary-style seated moment rather than studio catalog. No collage or text overlay.",
+      "productId": "coupang-4861cd80cf7fce0c",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4861cd80cf7fce0c/main-yXSjjIlJ9Fo5IBOAANpwjCu50SK8rJ.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8732967324",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 42페이지의 9290 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "reference": "backups/lookbook-2026-11-14/reference-9290.jpg",
+      "generatedSource": "backups/lookbook-2026-11-14/generated-9290.png",
+      "fidelityReviewed": true,
+      "imageKind": "generated",
+      "title": "레코드 가게 앞 벤치",
+      "scene": "남색 재킷에 검정 백팩을 메고 벤치에 앉았어요. 흰 지퍼와 버클이 검정 몸판과 대비돼요.",
+      "alt": "남색 재킷과 회색 바지 차림으로 레코드 가게 앞 벤치에 앉아 검정 No.9290 백팩을 멘 옆모습을 가까이 담은 AI 착용 연출",
+      "composition": {
+        "approach": "close seated wearable fashion portrait",
+        "angle": "seated eye-level side-rear three-quarter",
+        "framing": "head-to-thigh close portrait with whole backpack around half of image height",
+        "activity": "seated sideways on bench with original shoulder straps and hands resting by knees, face in profile",
+        "setting": "concrete plaza bench beside record-shop display window with lateral daylight"
+      },
+      "fidelityReview": "원본과 출력을 직접 보며 검정 둥근 몸판, 검정 손잡이와 겹친 주 지퍼선, 흰 사각 Himawari 패치, 앞 큰 별도 포켓과 흰 가로 지퍼·지퍼 손잡이, 위아래 옆 검정 조절끈과 흰 부품, 망 옆 포켓을 비교했습니다. 두 어깨끈으로 멘 구도와42cm 높이의 몸 대비 크기, 남성 모델의 손·얼굴·앉은 자세를 확인했습니다. 새 파우치나 장식은 추가되지 않았습니다.",
+      "id": "2026-11-14-everyday-9290",
+      "date": "2026-11-14",
+      "color": "블랙",
+      "image": "/assets/lookbook/2026-11-14-everyday-9290.webp",
+      "thumbnail": "/assets/lookbook/2026-11-14-everyday-9290-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-0d6ace4e-eaf2-46bc-841a-f97b4d671f1e.png",
+      "generatedSha256": "a636005ccaf45ed04bc7c8c71fc9fa743fd3d62456183895eed275cc78497f3c"
+    }
+  ],
+  "visualReview": "backups/lookbook-2026-11-14/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-14/optimization.json",
+  "editions": {
+    "morning": {
+      "entryIds": [
+        "2026-11-14-city-200",
+        "2026-11-14-everyday-9290"
+      ],
+      "stage": "prepared"
+    }
+  }
+}
