@@ -1,0 +1,279 @@
+{
+  "date": "2026-11-15",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-14T23:02:08.692Z",
+    "scheduledAt": "2026-11-15T08:00:00+09:00"
+  },
+  "scheduledSlot": "2026-11-15T08:00:00+09:00",
+  "expectedCount": 3,
+  "expectedGeneratedImages": 6,
+  "stage": "prepared",
+  "publicationBaselineCommit": "8cff9018f645bd50809fc27df6a46c566090f866",
+  "publicationBaselineEvidence": "backups/story-2026-11-15/baseline-deployment.json",
+  "completionReceipt": "backups/story-runs/2026-11-15.deployment.json",
+  "posts": [
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-colour-specific-weight",
+      "title": "같은 백팩도 색상에 따라 무게가 다를까",
+      "url": "https://himawari.co.kr/story/backpack-colour-specific-weight.html",
+      "productId": "store-13685201448",
+      "model": "No.0515",
+      "image": "assets/story/backpack-colour-specific-weight.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-15/reference-1.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 4페이지의 0515 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": {
+        "width": 35,
+        "height": 46,
+        "depth": 18
+      },
+      "editorialForm": "색상별 공개 사양 대조",
+      "coreQuestion": "같은 No.0515의 색상을 바꿀 때 무게도 공통 값으로 읽어도 되는가?",
+      "bodyChars": 2901,
+      "images": [
+        {
+          "id": "backpack-colour-specific-weight",
+          "model": "No.0515",
+          "role": "hero",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-colour-specific-weight.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-11-15/reference-1.jpg",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260728_237/1785203739585y5VOY_JPEG/130548331178797772_1520188927.jpg",
+          "fidelityReviewed": true,
+          "sha256": "ed255a70d839a83bd97d7db6d681154c000ea9d047c95cf22a45038dac28dbb5",
+          "alt": "실버와 블랙 No.0515 백팩 두 개를 나란히 둔 AI 연출",
+          "caption": "AI 연출 사진. 두 색의 No.0515 외형을 나란히 놓았습니다. 실제 무게를 측정하거나 제조 차이를 입증한 장면은 아닙니다.",
+          "review": "실버·블랙 두 No.0515를 같은 외부 크기의 전체 구도로 배치했습니다. 입구 주름·고무끈·주름 손잡이·가로 앞 포켓·원래 작은 파우치·밑 검정 부품과 색상별 로고 대비를 실제 두 원본과 대조했습니다. 무게를 나타내는 도구·숫자를 넣지 않았습니다.",
+          "generatedSource": "backups/story-2026-11-15/generated-1.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-b57a5e05-9733-4da9-a922-a43eef2e5ed8.png",
+          "prompt": "Create exactly ONE photorealistic-natural editorial photograph, landscape 1536 x1024, for a Korean bag-care magazine. Attached images are precise PRODUCT references, not style targets. Preserve actual product silhouette, all visible logos and pocket/strap/hardware layout, exact colors and realistic relative size. Do not invent hidden construction, performance, labels or new accessories. No collage, before/after, text overlay, measurement numbers, diagrams, water droplets or test claims. Show TWO versions of the SAME Himawari No.0515 backpack, SILVER at viewer-left and BLACK at viewer-right, exterior width35 height46 depth18cm each, standing beside each other on a pale wooden comparison counter, three-quarter frontal view at bag level. The attached SILVER reference is worn by a person: isolate only its precise bag design, do not copy that model. Both bags are the same external size. Preserve crinkled lustrous fabric, gathered drawstring mouth with black cords and black toggles, original gathered short top handle, large front horizontal zipper pocket, original small clipped oval pouch at front viewer-right, side pockets and lower black fittings. Silver has subtle DARK Himawari EST.2010 front lettering; black has WHITE Himawari EST.2010 lettering. Original black shoulder straps rest behind, no unrelated decoration. Calm daylight and soft neutral background. A small plain closed notebook to one side gives context, not a scale or weight test. Sharp product detail.",
+          "references": [
+            "backups/story-2026-11-15/reference-1.jpg",
+            "backups/story-2026-11-15/reference-4.jpg"
+          ]
+        },
+        {
+          "id": "backpack-colour-specific-weight",
+          "model": "No.0515",
+          "role": "detail",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-colour-specific-weight-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-11-15/reference-1.jpg",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260728_237/1785203739585y5VOY_JPEG/130548331178797772_1520188927.jpg",
+          "fidelityReviewed": true,
+          "sha256": "cb90a12054c04a3b9222d6301abe3d1e3d36327dfa2f88c5a3c85dee1c19a413",
+          "alt": "실버 No.0515의 입구와 앞 파우치를 보여주는 AI 연출",
+          "caption": "AI 연출 사진. 실버 옵션의 입구와 부착 파우치, 표면을 단독 구도로 봅니다. 사진으로 각 부위의 무게를 알 수는 없습니다.",
+          "review": "실버 No.0515 한 개의 앞 파우치·손잡이·입구와 표면을 보이는 사선 단독 구도로 확인했습니다. 두 가방 전체 비교와 역할이 다르며 새 재료나 중량 차이의 제조 원인을 그리지 않았습니다.",
+          "generatedSource": "backups/story-2026-11-15/generated-2.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-632cfaa3-f8e6-4f20-b824-3217ee576f25.png",
+          "prompt": "Create exactly ONE photorealistic-natural editorial photograph, landscape 1536 x1024, for a Korean bag-care magazine. Attached images are precise PRODUCT references, not style targets. Preserve actual product silhouette, all visible logos and pocket/strap/hardware layout, exact colors and realistic relative size. Do not invent hidden construction, performance, labels or new accessories. No collage, before/after, text overlay, measurement numbers, diagrams, water droplets or test claims. Close oblique tabletop detail of the real SILVER Himawari No.0515,35x46x18cm full exterior. Frame the gathered upper mouth, short gathered handle, front pocket logo and original attached small oval silver pouch, with enough lower body to understand its shape. Black drawcords and original black clasps, silver body with natural wrinkles and dark Himawari EST.2010 print as reference. Quiet light-gray background and soft side light that makes folds legible without extreme shine. A plain blank card lies separately beside it. No person, scales, weight labels or inferred manufacturing steps. Different composition from a pair of complete bags.",
+          "references": [
+            "backups/story-2026-11-15/reference-1.jpg"
+          ]
+        },
+        {
+          "id": "backpack-colour-specific-weight",
+          "model": "No.0515",
+          "role": "reference",
+          "imageKind": "reference",
+          "image": "assets/story/backpack-colour-specific-weight-product.webp",
+          "width": 1000,
+          "height": 1000,
+          "reference": "backups/story-2026-11-15/reference-1.jpg",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260728_237/1785203739585y5VOY_JPEG/130548331178797772_1520188927.jpg",
+          "fidelityReviewed": true,
+          "sha256": "88235c15659272dde4075e0ee77516c665a9fe62532f739ae140992af23c24ab",
+          "alt": "No.0515의 공개 상품 원본 사진",
+          "caption": "공개 상품 원본 사진. No.0515의 제품 페이지에 게시된 외형 자료입니다.",
+          "review": "공개 원본을 직접 보고 모델·색·포켓·로고·끈·외곽 비율을 확인했습니다.",
+          "originalSource": "backups/story-2026-11-15/reference-1.jpg"
+        }
+      ]
+    },
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-crease-heat-care",
+      "title": "백팩의 접힌 자국, 다리미로 펴도 될까",
+      "url": "https://himawari.co.kr/story/backpack-crease-heat-care.html",
+      "productId": "coupang-5984791b8c6c5fb2",
+      "model": "No.1089",
+      "image": "assets/story/backpack-crease-heat-care.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-15/reference-2.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 12페이지의 1089 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": {
+        "width": 29.5,
+        "height": 42,
+        "depth": 12
+      },
+      "editorialForm": "접힘 상태에서 시작하는 관리 판단",
+      "coreQuestion": "No.1089의 접힌 선에 옷의 다림질 방법을 그대로 적용해도 되는가?",
+      "bodyChars": 2821,
+      "images": [
+        {
+          "id": "backpack-crease-heat-care",
+          "model": "No.1089",
+          "role": "hero",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-crease-heat-care.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-11-15/reference-2.jpg",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-5984791b8c6c5fb2/main-eLSgNwsdKSc9Fgpg6vgF9FXMvc3jNr.jpg",
+          "fidelityReviewed": true,
+          "sha256": "91990e39f7e00e172a46e898956a0a3ceca13e7d1b5ffc23ed6b25c6a4a88d71",
+          "alt": "블루 No.1089와 떨어뜨려 놓은 전원 분리 다리미의 AI 연출",
+          "caption": "AI 연출 사진. 다리미는 플러그를 뽑아 별도로 놓은 소품입니다. 가방에 열을 가하거나 주름을 편 장면이 아닙니다.",
+          "review": "블루 No.1089의 네모 몸판·두 세로 손잡이 띠·둥근 흰 패치·넓은 덮개 앞 포켓·옆 조임 포켓·지퍼·비율을 원본과 대조했습니다. 다리미는 별도 매트에 세워 두고 뽑힌 플러그가 보입니다. 접촉·증기·복원 결과는 없습니다.",
+          "generatedSource": "backups/story-2026-11-15/generated-3.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-876376e9-a35a-4472-bfd0-1ceef90df0dc.png",
+          "prompt": "Create exactly ONE photorealistic-natural editorial photograph, landscape 1536 x1024, for a Korean bag-care magazine. Attached images are precise PRODUCT references, not style targets. Preserve actual product silhouette, all visible logos and pocket/strap/hardware layout, exact colors and realistic relative size. Do not invent hidden construction, performance, labels or new accessories. No collage, before/after, text overlay, measurement numbers, diagrams, water droplets or test claims. Real very pale icy BLUE Himawari No.1089, exterior29.5x42x12cm, sits upright in full front-three-quarter view on a clean light wooden care table. Preserve twin pale-blue woven top handles extending vertically down front, large round white Himawari patch, rectangular front pocket under broad fabric flap, pale zipper pulls, original blue side pockets gathered with drawcord and original blue straps behind. Body has only ordinary gentle fabric folds, no stains, melting, damage or exaggerated creases. A household iron stands UNPLUGGED and UPRIGHT on a separate gray mat at least40cm to the far side, never contacting the bag; plug visibly rests on mat. No steam, spray or heat. Two distinct objects and empty space between them. Conceptual editorial question about a tool, not a demonstration of using it. Soft indoor window light, natural product proportions.",
+          "references": [
+            "backups/story-2026-11-15/reference-2.jpg"
+          ]
+        },
+        {
+          "id": "backpack-crease-heat-care",
+          "model": "No.1089",
+          "role": "detail",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-crease-heat-care-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-11-15/reference-2.jpg",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-5984791b8c6c5fb2/main-eLSgNwsdKSc9Fgpg6vgF9FXMvc3jNr.jpg",
+          "fidelityReviewed": true,
+          "sha256": "555e78ddc0dc54f9d34e9c197c8c7a9d1d135ad5e315d70980697f332a4c9676",
+          "alt": "No.1089 블루 앞 포켓과 손잡이 띠·지퍼 옆의 접힘을 가까이 본 AI 연출",
+          "caption": "AI 연출 사진. No.1089의 포켓 옆 접힘과 봉제 위치를 봅니다. 세척·다림질의 전후 결과가 아닙니다.",
+          "review": "원본의 둥근 패치와 손잡이 띠·앞주머니 덮개·옆 지퍼와 주름을 가까이 본 장면을 확인했습니다. 접힘의 위치를 보여주고 손상·변형·교정 전후로 그리지 않았습니다.",
+          "generatedSource": "backups/story-2026-11-15/generated-4.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-bb08c179-c8eb-4aa9-a16a-6273b3b78dd6.png",
+          "prompt": "Create exactly ONE photorealistic-natural editorial photograph, landscape 1536 x1024, for a Korean bag-care magazine. Attached images are precise PRODUCT references, not style targets. Preserve actual product silhouette, all visible logos and pocket/strap/hardware layout, exact colors and realistic relative size. Do not invent hidden construction, performance, labels or new accessories. No collage, before/after, text overlay, measurement numbers, diagrams, water droplets or test claims. Close front-side detail of the same pale icy BLUE Himawari No.1089 backpack, exterior29.5x42x12cm. Carefully depict part of the round white logo patch, one original pale blue woven vertical handle band, broad front pocket flap and naturally soft folds where the fabric lies next to the pocket seam, original pale zipper pull visible at the side. Entire object remains a recognizable backpack. No newly added tag, inside lining, melted part, cutaway or severe flaw. Soft glancing daylight, a clean dry off-white cloth folded on the table but NOT rubbing or covering the bag. Explain where a fold sits relative to original seam and trim, not an ironing or cleaning result. No iron in this close detail.",
+          "references": [
+            "backups/story-2026-11-15/reference-2.jpg"
+          ]
+        },
+        {
+          "id": "backpack-crease-heat-care",
+          "model": "No.1089",
+          "role": "reference",
+          "imageKind": "reference",
+          "image": "assets/story/backpack-crease-heat-care-product.webp",
+          "width": 1000,
+          "height": 1000,
+          "reference": "backups/story-2026-11-15/reference-2.jpg",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-5984791b8c6c5fb2/main-eLSgNwsdKSc9Fgpg6vgF9FXMvc3jNr.jpg",
+          "fidelityReviewed": true,
+          "sha256": "ebeb7d12e158926d875a91b822caef3aa209cc728f9aa61372fae53a6b050a8a",
+          "alt": "No.1089의 공개 상품 원본 사진",
+          "caption": "공개 상품 원본 사진. No.1089의 제품 페이지에 게시된 외형 자료입니다.",
+          "review": "공개 원본을 직접 보고 모델·색·포켓·로고·끈·외곽 비율을 확인했습니다.",
+          "originalSource": "backups/story-2026-11-15/reference-2.jpg"
+        }
+      ]
+    },
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-waterproofing-spray-compatibility",
+      "title": "백팩에 방수 스프레이, 소재만 보고 뿌려도 될까",
+      "url": "https://himawari.co.kr/story/backpack-waterproofing-spray-compatibility.html",
+      "productId": "coupang-08039b2ac81db358",
+      "model": "No.194L",
+      "image": "assets/story/backpack-waterproofing-spray-compatibility.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-15/reference-3.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 44페이지의 194L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": {
+        "width": 28,
+        "height": 39,
+        "depth": 15
+      },
+      "editorialForm": "관리제 적용을 확인하는 문답",
+      "coreQuestion": "폴리에스터 백팩이라면 합성 소재용 방수 스프레이를 가방 전체에 적용해도 되는가?",
+      "bodyChars": 3060,
+      "images": [
+        {
+          "id": "backpack-waterproofing-spray-compatibility",
+          "model": "No.194L",
+          "role": "hero",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-waterproofing-spray-compatibility.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-11-15/reference-3.jpg",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-08039b2ac81db358/main-mkrOsxkr3orTIBRMVe620YMpIMn39j.jpg",
+          "fidelityReviewed": true,
+          "sha256": "fe886156b749412d1c0f586a1754a381e4a7fd72239c42c5afa2d1f0bcd01e2f",
+          "alt": "창가에서 No.194L 라벤더 백팩을 무릎에 둔 AI 착용 연출",
+          "caption": "AI 착용 연출 사진. No.194L의 외형과 여러 연결부가 보입니다. 실제 고객 착용 후기나 관리제 시험 사진이 아닙니다.",
+          "review": "라벤더 No.194L의 베이지 연결부·손잡이 모음 탭·금속 고리·앞 덮개·두 베이지 고정끈과 버클·작은 라벨·어깨끈·몸 대비 비율을 원본과 비교했습니다. 모델의 얼굴·손·앉은 자세가 자연스럽고 가방을 무릎에 둔 상태입니다.",
+          "generatedSource": "backups/story-2026-11-15/generated-5.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-a4e4688a-2abd-4677-a250-5e67fa2cd69e.png",
+          "prompt": "Create exactly ONE photorealistic-natural editorial photograph, landscape 1536 x1024, for a Korean bag-care magazine. Attached images are precise PRODUCT references, not style targets. Preserve actual product silhouette, all visible logos and pocket/strap/hardware layout, exact colors and realistic relative size. Do not invent hidden construction, performance, labels or new accessories. No collage, before/after, text overlay, measurement numbers, diagrams, water droplets or test claims. A very beautiful fictional Korean adult woman in her twenties, expressive face, dark shoulder-length hair and natural polished makeup, wears a cropped navy wool jacket, gray crewneck and relaxed dark jeans, seated sideways near a gallery window. She holds the original twin short top handles of the real LAVENDER Himawari No.194L backpack,28x39x15cm, upright on her lap with full FRONT visible to camera. Medium near-frontal seated street-style portrait from full head to knees, appealing current Korean fashion styling, realistic39cm bag height. Preserve rounded rectangular lavender body, beige handle wrap, beige rectangular handle attachment patches with X stitching and silver rounded rectangular loops, original large front flap with small beige rectangular Himawari label, TWO beige fastening tabs and silver rectangular buckles, pale lavender shoulder straps resting naturally behind. No large accessories or another carry mode, no spraying or wet weather. Bright soft window light and understated contemporary setting.",
+          "references": [
+            "backups/story-2026-11-15/reference-3.jpg"
+          ]
+        },
+        {
+          "id": "backpack-waterproofing-spray-compatibility",
+          "model": "No.194L",
+          "role": "detail",
+          "imageKind": "generated",
+          "image": "assets/story/backpack-waterproofing-spray-compatibility-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "reference": "backups/story-2026-11-15/reference-3.jpg",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-08039b2ac81db358/main-mkrOsxkr3orTIBRMVe620YMpIMn39j.jpg",
+          "fidelityReviewed": true,
+          "sha256": "cbcdc1be0ead6444e7abb529ebe56b4a7d53de9364acd7899b871fb18a70431d",
+          "alt": "No.194L 라벤더 몸판과 베이지 연결부·금속 부품을 가까이 본 AI 연출",
+          "caption": "AI 연출 사진. 가방의 몸판과 연결부를 가까이 봅니다. 닫힌 용기는 별도 소품이며 특정 관리제나 호환성을 나타내지 않습니다.",
+          "review": "No.194L의 라벤더 몸판과 베이지 패치·앞 고정끈·은색 고리와 버클·라벨을 가까이 본 원단 경계 구도입니다. 별도 닫힌 무표기 용기는 떨어져 있으며 분사·젖음·효능·호환성을 그리지 않았습니다.",
+          "generatedSource": "backups/story-2026-11-15/generated-6.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-ea94e3db-b389-447e-aace-8b9a99e5f4cd.png",
+          "prompt": "Create exactly ONE photorealistic-natural editorial photograph, landscape 1536 x1024, for a Korean bag-care magazine. Attached images are precise PRODUCT references, not style targets. Preserve actual product silhouette, all visible logos and pocket/strap/hardware layout, exact colors and realistic relative size. Do not invent hidden construction, performance, labels or new accessories. No collage, before/after, text overlay, measurement numbers, diagrams, water droplets or test claims. Oblique close product photograph of LAVENDER Himawari No.194L,28x39x15cm, focusing on the lavender front fabric, beige handle attachment patch with cross stitching and silver loop, and both beige fastening tabs with silver rectangular buckles over the front flap, small beige rectangular Himawari logo. Preserve original color placement, no construction invented. Include the entire width of front flap and part of original top carry handle. A small GENERIC CLOSED plain bottle with cap, no spray nozzle in use and no label or branding, stands separately on the table far to the side, visually isolated from the bag. This is an editorial question about checking materials, not proof of compatibility, application or repellency. No person, droplets, gloss coating, treatment result or before/after. Soft neutral studio daylight and accurate fabric texture.",
+          "references": [
+            "backups/story-2026-11-15/reference-3.jpg"
+          ]
+        },
+        {
+          "id": "backpack-waterproofing-spray-compatibility",
+          "model": "No.194L",
+          "role": "reference",
+          "imageKind": "reference",
+          "image": "assets/story/backpack-waterproofing-spray-compatibility-product.webp",
+          "width": 1000,
+          "height": 1000,
+          "reference": "backups/story-2026-11-15/reference-3.jpg",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-08039b2ac81db358/main-mkrOsxkr3orTIBRMVe620YMpIMn39j.jpg",
+          "fidelityReviewed": true,
+          "sha256": "c93c65cc7fde66b5a8a40dc83cd8131dc22c2dc2f6f3ceb36bf0fd04706dc587",
+          "alt": "No.194L의 공개 상품 원본 사진",
+          "caption": "공개 상품 원본 사진. No.194L의 제품 페이지에 게시된 외형 자료입니다.",
+          "review": "공개 원본을 직접 보고 모델·색·포켓·로고·끈·외곽 비율을 확인했습니다.",
+          "originalSource": "backups/story-2026-11-15/reference-3.jpg"
+        }
+      ]
+    }
+  ],
+  "topicsReviewed": 206,
+  "overlapReview": "기존206편의 제목·요약·소제목·전체 본문을 비교했습니다. 색상별 사양 대조, 접힌 선의 열처리 판단, 별도 관리제의 호환 문답을 다른 질문·논지·형식으로 구분했습니다. backups/story-2026-11-15/topic-review.md 참조.",
+  "editions": {
+    "morning": {
+      "postIds": [
+        "backpack-colour-specific-weight",
+        "backpack-crease-heat-care",
+        "backpack-waterproofing-spray-compatibility"
+      ],
+      "stage": "prepared"
+    }
+  }
+}

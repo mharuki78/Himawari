@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-colour-specific-weight",
+    "title": "같은 백팩도 색상에 따라 무게가 다를까",
+    "date": "2026-11-15",
+    "summary": "No.0515 실버750g과 블랙850g의 공개 사양을 대조합니다. 같은 외부 크기와 색상별 무게를 구별하고 선택한 옵션에 맞는 정보를 남겨 봅니다.",
+    "description": "No.0515 실버750g과 블랙850g의 공개 사양을 대조합니다. 같은 외부 크기와 색상별 무게를 구별하고 선택한 옵션에 맞는 정보를 남겨 봅니다.",
+    "tags": [
+      "백팩 무게",
+      "색상 옵션",
+      "가방 선택"
+    ],
+    "image": "../assets/story/backpack-colour-specific-weight.webp",
+    "imageAlt": "실버와 블랙 No.0515 백팩 두 개를 나란히 둔 AI 연출",
+    "images": [
+      "../assets/story/backpack-colour-specific-weight.webp",
+      "../assets/story/backpack-colour-specific-weight-detail.webp",
+      "../assets/story/backpack-colour-specific-weight-product.webp"
+    ],
+    "url": "backpack-colour-specific-weight.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "색상별 공개 사양 대조"
+  },
+  {
+    "id": "backpack-crease-heat-care",
+    "title": "백팩의 접힌 자국, 다리미로 펴도 될까",
+    "date": "2026-11-15",
+    "summary": "No.1089 블루의 접힘 위치와 관리 안내를 나누어 읽습니다. 소재 이름만으로 다림질·스팀 조건을 정하지 않고 무엇을 확인할지 살펴봅니다.",
+    "description": "No.1089 블루의 접힘 위치와 관리 안내를 나누어 읽습니다. 소재 이름만으로 다림질·스팀 조건을 정하지 않고 무엇을 확인할지 살펴봅니다.",
+    "tags": [
+      "백팩 주름",
+      "가방 관리",
+      "관리 표시"
+    ],
+    "image": "../assets/story/backpack-crease-heat-care.webp",
+    "imageAlt": "블루 No.1089와 떨어뜨려 놓은 전원 분리 다리미의 AI 연출",
+    "images": [
+      "../assets/story/backpack-crease-heat-care.webp",
+      "../assets/story/backpack-crease-heat-care-detail.webp",
+      "../assets/story/backpack-crease-heat-care-product.webp"
+    ],
+    "url": "backpack-crease-heat-care.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "접힘 상태에서 시작하는 관리 판단"
+  },
+  {
+    "id": "backpack-waterproofing-spray-compatibility",
+    "title": "백팩에 방수 스프레이, 소재만 보고 뿌려도 될까",
+    "date": "2026-11-15",
+    "summary": "No.194L 라벤더의 몸판·연결부와 관리제 설명을 함께 봅니다. 적용 소재, 작업 조건, 작은 면 확인이 각각 어디까지 답하는지 질문을 나눕니다.",
+    "description": "No.194L 라벤더의 몸판·연결부와 관리제 설명을 함께 봅니다. 적용 소재, 작업 조건, 작은 면 확인이 각각 어디까지 답하는지 질문을 나눕니다.",
+    "tags": [
+      "백팩 관리",
+      "방수 스프레이",
+      "소재 확인"
+    ],
+    "image": "../assets/story/backpack-waterproofing-spray-compatibility.webp",
+    "imageAlt": "창가에서 No.194L 라벤더 백팩을 무릎에 둔 AI 착용 연출",
+    "images": [
+      "../assets/story/backpack-waterproofing-spray-compatibility.webp",
+      "../assets/story/backpack-waterproofing-spray-compatibility-detail.webp",
+      "../assets/story/backpack-waterproofing-spray-compatibility-product.webp"
+    ],
+    "url": "backpack-waterproofing-spray-compatibility.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "관리제 적용을 확인하는 문답"
+  },
+  {
     "id": "backpack-product-vs-package-size",
     "title": "백팩 크기와 포장 상자 크기, 같은 숫자로 읽어도 될까",
     "date": "2026-11-14",
