@@ -8,13 +8,13 @@
   "scheduledSlot": "2026-11-15T08:00:00+09:00",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
-  "stage": "prepared",
+  "stage": "metadata-verified",
   "publicationBaselineCommit": "8cff9018f645bd50809fc27df6a46c566090f866",
   "publicationBaselineEvidence": "backups/story-2026-11-15/baseline-deployment.json",
   "completionReceipt": "backups/story-runs/2026-11-15.deployment.json",
   "posts": [
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-colour-specific-weight",
       "title": "같은 백팩도 색상에 따라 무게가 다를까",
       "url": "https://himawari.co.kr/story/backpack-colour-specific-weight.html",
@@ -95,10 +95,19 @@
           "review": "공개 원본을 직접 보고 모델·색·포켓·로고·끈·외곽 비율을 확인했습니다.",
           "originalSource": "backups/story-2026-11-15/reference-1.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-14T23:35:58.046Z",
+        "modifiedAt": "2026-11-14T23:35:58.046Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-15/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-15/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-15/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-15/first-deployment-history.json",
+        "articleSha256": "1ae5bb367dd2848b8c1d0616b8d950fbea5aff1c9312e7cb5e26e49e84e39d94"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-crease-heat-care",
       "title": "백팩의 접힌 자국, 다리미로 펴도 될까",
       "url": "https://himawari.co.kr/story/backpack-crease-heat-care.html",
@@ -178,10 +187,19 @@
           "review": "공개 원본을 직접 보고 모델·색·포켓·로고·끈·외곽 비율을 확인했습니다.",
           "originalSource": "backups/story-2026-11-15/reference-2.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-14T23:35:58.046Z",
+        "modifiedAt": "2026-11-14T23:35:58.046Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-15/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-15/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-15/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-15/first-deployment-history.json",
+        "articleSha256": "951095bca726e865b524d0b448d7c64664df2f85672abdd5888efe69610a766f"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-waterproofing-spray-compatibility",
       "title": "백팩에 방수 스프레이, 소재만 보고 뿌려도 될까",
       "url": "https://himawari.co.kr/story/backpack-waterproofing-spray-compatibility.html",
@@ -261,7 +279,16 @@
           "review": "공개 원본을 직접 보고 모델·색·포켓·로고·끈·외곽 비율을 확인했습니다.",
           "originalSource": "backups/story-2026-11-15/reference-3.jpg"
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-14T23:35:58.046Z",
+        "modifiedAt": "2026-11-14T23:35:58.046Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-15/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-15/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-15/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-15/first-deployment-history.json",
+        "articleSha256": "dd8984957c8f0e9e7327dda49576a83a95ba39f915f7543b3e51bbc202d463f2"
+      }
     }
   ],
   "topicsReviewed": 206,
