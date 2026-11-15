@@ -68,6 +68,18 @@ test('cancellation evidence is monotonic across replay, missing claims and stale
   assert.equal(project(nextReservation, order({ initialQuantity: 2, remainQuantity: 2 }), first.line).valid, false);
 });
 
+test('PostgreSQL JSONB claim key ordering does not turn cancellation replay into another update',()=>{
+  const canceled=order({initialQuantity:1,remainQuantity:0,productOrderStatus:'CANCELED',claimType:'CANCEL',claimStatus:'CANCEL_DONE',
+    completedClaims:[claim('completed',1)]});
+  const first=project(reservation({quantity:1,held_quantity:1}),canceled);
+  assert.equal(first.valid,true);
+  const fromJsonb={...first.line,cancellation_claims:[{claimId:'completed',quantity:1,claimType:'CANCEL'}]};
+  const replay=project(reservation({quantity:1,held_quantity:0}),canceled,fromJsonb);
+  assert.equal(replay.valid,true);
+  assert.equal(replay.heldQuantity,0);
+  assert.equal(replay.changed,false);
+});
+
 test('inconsistent completed claim quantity cannot release a unit', () => {
   assert.equal(project(reservation(), order({ completedClaims: [claim('a', 2)] })).valid, false);
   assert.equal(project(reservation(), order({ remainQuantity: 0,

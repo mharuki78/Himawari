@@ -2,6 +2,7 @@ import { database } from './database.js';
 import { INVENTORY_LOCK } from './black-friday.js';
 import { ensureNpayReservationSchema } from './inventory-reservation-store.js';
 import { npayOptionManageCode } from './npay.js';
+import { isDeepStrictEqual } from 'node:util';
 
 const reservedId = value => typeof value === 'string' && /^NPR-[0-9a-f]{24}$/.test(value);
 const identifier = value => typeof value === 'string' && value.length > 0 && value.length <= 150 && !/[\u0000-\u001f\u007f]/.test(value);
@@ -109,7 +110,7 @@ export function projectNpayOrderSettlement(reservation, order, previous = null) 
     claim_type: stale || terminalClaim ? previous.claim_type : order.claimType,
     claim_status: stale || terminalClaim ? previous.claim_status : order.claimStatus,
   };
-  const changed = !previous || Object.entries(line).some(([key, value]) => JSON.stringify(previous[key]) !== JSON.stringify(value));
+  const changed = !previous || Object.entries(line).some(([key, value]) => !isDeepStrictEqual(previous[key], value));
   return { valid: true, line, heldQuantity: reservation.quantity - canceledQuantity, changed };
 }
 
