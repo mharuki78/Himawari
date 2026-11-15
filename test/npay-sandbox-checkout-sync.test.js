@@ -49,3 +49,34 @@ test('invalid scope and non-sandbox checkout stop before provider access',async(
   await assert.rejects(run({...args(),request},{loadReservations:async()=>[{id:alias,environment:'production'}]}),{status:403});
   assert.equal(calls,0);
 });
+
+test('inspection derives one bounded changes query from the known checkout claim and returns counts only',async()=>{
+  const calls=[];
+  const payload=provider({productOrderStatus:'CANCELED',remainQuantity:0});
+  payload.data[0].completedClaims=[{claimId:'fixture-claim',claimType:'CANCEL',claimStatus:'CANCEL_DONE',requestQuantity:1,
+    claimCompleteOperationDate:'2026-11-15T14:40:00+09:00'}];
+  const result=await run({...args(),inspectApi:true,request:async(path,options)=>{
+    calls.push({path,...options});
+    return path.includes('last-changed-statuses')?{data:{count:1,lastChangeStatuses:[{productOrderId,orderId:'PRIVATE_ORDER_ID',
+      lastChangedDate:'2026-11-15T14:40:05+09:00',lastChangedType:'CANCEL_DONE'}]}}:payload;
+  }},{loadReservations:reservations,clock:()=>Date.parse('2026-11-15T14:42:00+09:00'),
+    reconcile:async()=>({bound:0,updated:0,ignored:1,incidents:[]})});
+  assert.equal(calls.length,2);
+  const query=new URL('https://fixture.invalid'+calls[1].path).searchParams;
+  assert.equal(query.get('lastChangedFrom'),'2026-11-15T14:39:00.000+09:00');
+  assert.equal(query.get('lastChangedTo'),'2026-11-15T14:41:00.000+09:00');
+  assert.deepEqual(result.inspection,{changesCount:1,matchingProductOrderCount:1,coverageComplete:true,
+    from:'2026-11-15T14:39:00.000+09:00',to:'2026-11-15T14:41:00.000+09:00',collectionFinal:false});
+  assert.equal(result.cursorAdvanced,false);
+  assert.doesNotMatch(JSON.stringify(result),/PRIVATE_|2026111500000001|fixture-claim/);
+});
+
+test('inspection rejects missing event times and invalid flags without a broader query or reconciliation',async()=>{
+  let detailCalls=0,otherCalls=0,writes=0;
+  const request=async path=>{if(path.endsWith('/query')){detailCalls++;const row=provider();row.data[0].order.paymentDate='';return row;}
+    otherCalls++;throw new Error('unexpected broad query');};
+  const deps={loadReservations:reservations,reconcile:async()=>{writes++;return{};}};
+  await assert.rejects(run({...args(),inspectApi:true,request},deps),{status:409});
+  await assert.rejects(run({...args(),inspectApi:'true',request},deps),{status:400});
+  assert.equal(detailCalls,1);assert.equal(otherCalls,0);assert.equal(writes,0);
+});

@@ -6,7 +6,7 @@ const CHANGES='/v1/pay-order/mall/product-orders/last-changed-statuses';
 const DETAILS='/v1/pay-order/mall/product-orders/query';
 const error = (status=502) => Object.assign(new Error('네이버페이 주문 동기화 연결을 확인해 주세요.'),{status});
 
-export function createNpayOrderClient({environment,clientId,clientSecret,proxyUrl,clock=Date.now,maxRequests=20,send}={}) {
+export function createNpayOrderClient({environment,clientId,clientSecret,proxyUrl,clock=Date.now,maxRequests=20,send,captureInspectionEvidence=false}={}) {
   if(!ORIGINS[environment]||typeof clientId!=='string'||!clientId||bcrypt.truncates(`${clientId}_${clock()}`)
     ||!/^\$2[aby]\$(0[4-9]|1[0-4])\$[./A-Za-z0-9]{22}$/.test(clientSecret||'')
     ||!Number.isSafeInteger(maxRequests)||maxRequests<1||maxRequests>1000)throw error(503);
@@ -16,6 +16,7 @@ export function createNpayOrderClient({environment,clientId,clientSecret,proxyUr
     ||proxy.pathname!=='/'||proxy.search||proxy.hash)throw error(503);
   proxy.protocol='https:';proxy.port='443';
   let agent,token,expiresAt=0,authPromise,attempts=0,closed=false;
+  const inspectionEvidence=[];
   const origin=ORIGINS[environment];
   const wire=send||async function(url,options){
     agent ||= new ProxyAgent({uri:proxy.href,connections:1,allowH2:false,maxResponseSize:2_000_000,
@@ -23,7 +24,8 @@ export function createNpayOrderClient({environment,clientId,clientSecret,proxyUr
     const {proxyUrl:_proxy,...init}=options;
     const response=await httpRequest(url,{...init,dispatcher:agent,idempotent:false,headersTimeout:10_000,bodyTimeout:5000});
     if(response.statusCode!==200){await response.body.dump({limit:2_000_000});throw error();}
-    return{status:response.statusCode,payload:await response.body.json()};
+    return{status:response.statusCode,payload:await response.body.json(),
+      headers:{'gncp-gw-trace-id':response.headers['gncp-gw-trace-id']}};
   };
   async function transmit(path,options){
     if(closed||attempts>=maxRequests)throw error(503);
@@ -31,6 +33,10 @@ export function createNpayOrderClient({environment,clientId,clientSecret,proxyUr
     try{
       const result=await wire(origin+path,{...options,proxyUrl:proxy.href,maxRedirections:0,signal:AbortSignal.timeout(15_000)});
       if(result?.status!==200||!result.payload||typeof result.payload!=='object')throw error();
+      const traceId=result.headers?.['gncp-gw-trace-id'];
+      if(captureInspectionEvidence===true&&path!=='/v1/oauth2/token'
+        &&typeof traceId==='string'&&/^[\x21-\x7e]{1,256}$/.test(traceId))
+        inspectionEvidence.push({method:options.method,endpoint:path.split('?')[0],httpStatus:200,traceId});
       return result.payload;
     }catch(e){if(e?.status===503)throw e;throw error();}
   }
@@ -59,6 +65,7 @@ export function createNpayOrderClient({environment,clientId,clientSecret,proxyUr
       if(body)headers['content-type']='application/json';
       return transmit(path,{method,headers,...(body?{body:JSON.stringify(body)}:{})});
     },
-    async close(){closed=true;token=undefined;expiresAt=0;await agent?.close();},
+    getInspectionEvidence(){return inspectionEvidence.map(row=>({...row}));},
+    async close(){closed=true;token=undefined;expiresAt=0;inspectionEvidence.length=0;await agent?.close();},
   };
 }

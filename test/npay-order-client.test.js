@@ -48,3 +48,32 @@ test('failed authentication does not retry or leak provider response, secrets, t
     assert.equal(error.status,502);assert.doesNotMatch(error.message,/SYNTHETIC_PRIVATE|fixture|abcdefghijkl/);return true;
   });assert.equal(calls,1);}finally{await client.close();}
 });
+
+test('inspection evidence retains only successful order API trace headers and never auth, query or response data',async()=>{
+  const client=setup({...settings,captureInspectionEvidence:true,send:async url=>url.endsWith('/v1/oauth2/token')
+    ?{status:200,headers:{'gncp-gw-trace-id':'auth-trace'},payload:{access_token:'PRIVATE_AUTH_TOKEN',expires_in:10800}}
+    :{status:200,headers:{'gncp-gw-trace-id':'actual-fixture-trace:123','set-cookie':'PRIVATE_COOKIE'},payload:{data:[],private:'PRIVATE_NAME'}}});
+  try{
+    await client.request('/v1/pay-order/mall/product-orders/last-changed-statuses?lastChangedFrom=PRIVATE_QUERY');
+    const expected=[{method:'GET',endpoint:'/v1/pay-order/mall/product-orders/last-changed-statuses',httpStatus:200,traceId:'actual-fixture-trace:123'}];
+    const first=client.getInspectionEvidence();assert.deepEqual(first,expected);
+    first[0].traceId='mutated';first.push({});
+    assert.deepEqual(client.getInspectionEvidence(),expected);
+    assert.doesNotMatch(JSON.stringify(client.getInspectionEvidence()),/PRIVATE_|auth-trace/);
+  }finally{await client.close();}
+  assert.deepEqual(client.getInspectionEvidence(),[]);
+});
+
+test('ordinary clients do not capture evidence and inspection rejects malformed or missing trace headers',async()=>{
+  for(const value of [undefined,'bad\nheader',['duplicated'], 'x'.repeat(257)]){
+    const client=setup({...settings,captureInspectionEvidence:true,send:async url=>({status:200,
+      headers:{'gncp-gw-trace-id':value},payload:url.endsWith('/v1/oauth2/token')?{access_token:'fixture',expires_in:10800}:{data:[]}})});
+    try{await client.request('/v1/pay-order/mall/product-orders/query',{method:'POST',body:{}});
+      assert.deepEqual(client.getInspectionEvidence(),[]);
+    }finally{await client.close();}
+  }
+  const client=setup({...settings,send:async url=>({status:200,headers:{'gncp-gw-trace-id':'fixture-trace'},
+    payload:url.endsWith('/v1/oauth2/token')?{access_token:'fixture',expires_in:10800}:{data:[]}})});
+  try{await client.request('/v1/pay-order/mall/product-orders/query',{method:'POST',body:{}});assert.deepEqual(client.getInspectionEvidence(),[]);}
+  finally{await client.close();}
+});
