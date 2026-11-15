@@ -132,7 +132,9 @@ test('상품 목록 원본 HTML에 전체 카탈로그를 제품군으로 묶고
   assert.doesNotMatch(html, /SERVER_CATALOG_SCHEMA|SERVER_FEATURED_PRODUCT|SERVER_PRODUCT_GRID/);
   assert.doesNotMatch(html, /제품을 불러오는 중입니다/);
   assert.match(html, /<strong data-product-count>34<\/strong>/);
-  assert.match(html, /href="compare\.html\?products=[^"]+"[^>]*>제품 비교/);
+  assert.match(html, /data-cart-add data-product-id="[^"]+"/);
+  assert.match(html, /href="checkout\.html\?product=[^"]+"[^>]*>바로구매/);
+  assert.doesNotMatch(html, /class="compare-add"/);
 });
 
 test('사이트맵은 모든 공개 제품 상세페이지를 포함한다', async () => {

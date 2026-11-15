@@ -42,3 +42,17 @@ test('calculates a whole-won offer from a percentage and displays the discount f
   assert.equal(pricing.discountPercent(59000, 58999), 0);
   assert.equal(pricing.discountPercent(59000, 59000), null);
 });
+
+test('campaign cards expose detail, cart and direct checkout in order and retain the exact sale identity',()=>{
+  const {content}=blackFridayView(event);
+  const cards=[...content.matchAll(/<article\b[\s\S]*?<\/article>/g)].map(match=>match[0]);
+  for(const card of cards){
+    if(card.includes('행사 수량 소진')){assert.doesNotMatch(card,/class="bf-event__buy"|data-cart-add/);continue;}
+    const actions=card.slice(card.indexOf('class="bf-event__card-actions"'));
+    assert.ok(actions.indexOf('bf-event__detail-link')<actions.indexOf('data-cart-add'));
+    assert.ok(actions.indexOf('data-cart-add')<actions.indexOf('bf-event__buy'));
+    const offer=actions.match(/data-black-friday-offer-id="([^"]+)"/)[1];
+    assert.ok(actions.includes('href="/checkout.html?blackFriday='+offer+'"'));
+    assert.match(actions,/>바로구매<\/a>/);
+  }
+});

@@ -34,8 +34,8 @@
 .store-product-card.is-compact .product-variants button{font-size:12px;min-height:40px;min-width:0;padding:7px 11px;gap:4px}
 .store-product-card.is-compact .product-variants-more{width:100%;font-size:13px;text-align:center}.product-variants-more summary{min-height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:underline;text-underline-offset:4px;color:var(--harbor)}
 .variant-kind{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:8px 0;border-top:1px solid var(--color-fog)}.variant-kind>span{width:100%;font-size:12px;color:var(--harbor)}
-.store-product-card.is-compact .store-product-actions{order:4;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0;padding-top:4px}
-.store-product-card.is-compact .store-product-actions>:is(a,button){min-height:44px;font-size:13px;padding:9px 8px;line-height:1.4;width:100%;white-space:nowrap;justify-content:center;text-align:center;box-shadow:none}
+.store-product-card.is-compact .store-product-actions{order:4;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:0;padding-top:4px}
+.store-product-card.is-compact .store-product-actions>:is(a,button){min-height:44px;min-width:0;font-size:12px;padding:9px 4px;line-height:1.4;width:100%;white-space:normal;word-break:keep-all;justify-content:center;text-align:center;box-shadow:none}
 .store-product-card.is-compact .card-wishlist{position:absolute;top:12px;right:12px;display:grid;place-items:center;padding:0;width:44px;height:44px;min-height:44px;z-index:2;border-radius:50%;border:1px solid var(--color-fog);background:var(--snow);color:var(--harbor);box-shadow:none}
 .card-wishlist svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6}.card-wishlist[aria-pressed=true] svg{fill:currentColor}
 .product-detail-page .product-detail-copy h1{font-size:clamp(24px,2.4vw,38px);line-height:1.4;letter-spacing:-.035em}

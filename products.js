@@ -157,11 +157,11 @@ function createWishlistButton(product) {
   return button;
 }
 
-function createDirectBuyLink(product, className = 'direct-buy-link') {
+function createDirectBuyLink(product, className = 'direct-buy-link', compact = false) {
   if (product.options.length) {
     const link = createDetailLink(product, className);
     link.href = `${detailHref(product)}#product-options`;
-    link.firstChild.textContent = '옵션 선택';
+    link.firstChild.textContent = compact ? '바로구매' : '옵션 선택';
     link.setAttribute('aria-label', `${product.name} 옵션 선택 후 바로 구매하기`);
     return link;
   }
@@ -176,7 +176,7 @@ function createDirectBuyLink(product, className = 'direct-buy-link') {
   const link = document.createElement('a');
   link.className = className;
   link.href = `checkout.html?product=${encodeURIComponent(product.id)}`;
-  link.textContent = '바로 구매하기';
+  link.textContent = compact ? '바로구매' : '바로 구매하기';
   link.setAttribute('aria-label', `${product.name} 내부 주문서에서 바로 구매하기`);
   const arrow = document.createElement('span');
   arrow.setAttribute('aria-hidden', 'true');
@@ -233,7 +233,7 @@ function createProductFooter(product, compact = false) {
   footer.className = 'store-product-footer';
   const actions = document.createElement('div');
   actions.className = 'store-product-actions';
-  if (compact) actions.append(createDetailLink(product), createCartButton(product, 'buy-link', true));
+  if (compact) actions.append(createDetailLink(product), createCartButton(product, 'buy-link', true), createDirectBuyLink(product, 'direct-buy-link', true));
   else actions.append(createDetailLink(product), createCartButton(product), createWishlistButton(product), createDirectBuyLink(product));
   footer.append(createPriceBlock(product), actions);
   return footer;
