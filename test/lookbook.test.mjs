@@ -32,3 +32,11 @@ test('static gallery keeps full image/product links without JavaScript and escap
   assert.ok(html.includes(`href="${entries[0].image}"`));
   assert.ok(html.includes(`href="/product.html?id=${entries[0].productId}"`));
 });
+test('accepts current administrator-created product IDs while rejecting unsafe identifiers', () => {
+  const current = [{...entries[0], productId:'no-9001-235b690a'}, entries[1]];
+  assert.doesNotThrow(() => validateEntries(current, options));
+  assert.ok(renderGallery(current).includes('/product.html?id=no-9001-235b690a'));
+  for (const productId of ['no-9001-../secret', 'no-9001-235b690a?admin=true', 'no-9001-235b690a\" onclick=\"bad()']) {
+    assert.throws(() => validateEntries([{...entries[0], productId}, entries[1]], options));
+  }
+});

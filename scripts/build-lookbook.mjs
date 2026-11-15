@@ -19,7 +19,7 @@ export function validateEntries(entries, { today = koreanDate(), checkFiles = tr
     assert.ok(entry.date <= today, 'Future publication date');
     assert.ok(Object.hasOwn(labels, entry.category), 'Unknown category');
     for (const key of ['title', 'model', 'color', 'scene', 'alt']) assert.ok(typeof entry[key] === 'string' && entry[key].trim(), `Missing ${key}`);
-    assert.match(entry.productId, /^(?:store|coupang)-[a-z0-9]+$/);
+    assert.match(entry.productId, /^(?:(?:store|coupang)-[a-z0-9]+|no-[a-z0-9]+-[a-f0-9]{8}(?:-[1-9]\d*)?)$/);
     assert.ok(!images.has(entry.image), 'Reused image'); images.add(entry.image);
     for (const key of ['image', 'thumbnail']) {
       assert.match(entry[key], /^\/assets\/lookbook\/[a-z0-9-]+\.webp$/);

@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-15-everyday-9001",
+    "date": "2026-11-15",
+    "category": "everyday",
+    "title": "꽃가게 앞에서",
+    "model": "9001",
+    "color": "핑크그레이",
+    "productId": "no-9001-235b690a",
+    "scene": "회색 재킷에 청바지를 입고 꽃가게 앞에 섰어요. 분홍 손잡이를 잡아 백팩을 들었어요.",
+    "alt": "꽃가게 카운터 앞에서 회색 재킷과 청바지 차림으로 핑크그레이 No.9001 백팩의 두 손잡이를 잡고 든 모습을 가까이 담은 AI 착용 연출",
+    "image": "/assets/lookbook/2026-11-15-everyday-9001.webp",
+    "thumbnail": "/assets/lookbook/2026-11-15-everyday-9001-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-15-city-8029",
+    "date": "2026-11-15",
+    "category": "city",
+    "title": "농구장 입구에서",
+    "model": "8029",
+    "color": "네이비브라운",
+    "productId": "coupang-0d8cb478bf996ce8",
+    "scene": "청재킷에 진회색 바지를 입고 낮은 턱에 한 발을 올렸어요. 네이비와 갈색이 섞인 백팩을 메고 있어요.",
+    "alt": "농구장 철망 입구에서 청재킷과 진회색 바지 차림으로 네이비브라운 No.8029 백팩을 메고 한 발을 낮은 턱에 올린 전신을 아래쪽 옆뒤에서 담은 AI 착용 연출",
+    "image": "/assets/lookbook/2026-11-15-city-8029.webp",
+    "thumbnail": "/assets/lookbook/2026-11-15-city-8029-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-14-city-200",
     "date": "2026-11-14",
     "category": "city",
