@@ -1,0 +1,297 @@
+{
+  "date": "2026-11-16",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-15T23:01:04.567Z",
+    "scheduledAt": "2026-11-16T08:00:00+09:00"
+  },
+  "scheduledSlot": "2026-11-16T08:00:00+09:00",
+  "expectedCount": 3,
+  "expectedGeneratedImages": 6,
+  "stage": "prepared",
+  "publicationBaselineCommit": "5a1ca20befdade3d063ceff336a2c864b1a4baa7",
+  "publicationBaselineEvidence": "backups/story-2026-11-16/baseline-deployment.json",
+  "completionReceipt": "backups/story-runs/2026-11-16.deployment.json",
+  "posts": [
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-zipper-reopens-after-closing",
+      "title": "백팩 지퍼를 닫았는데 가운데가 다시 벌어진다면",
+      "url": "https://himawari.co.kr/story/backpack-zipper-reopens-after-closing.html",
+      "productId": "no-1230-4419256b",
+      "model": "No.1230",
+      "image": "assets/story/backpack-zipper-reopens-after-closing.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-16/reference-1.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 15페이지의 1230 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": {
+        "width": 32,
+        "height": 40,
+        "depth": 18
+      },
+      "editorialForm": "증상 사례를 구별하는 수선 해설",
+      "coreQuestion": "백팩 지퍼의 손잡이는 이동했는데 맞물림이 다시 벌어질 때 무엇을 구별해서 수선 문의해야 할까?",
+      "bodyChars": 2929,
+      "images": [
+        {
+          "post": 0,
+          "role": "hero",
+          "image": "assets/story/backpack-zipper-reopens-after-closing.webp",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 152988,
+          "sha256": "5cb40db3071439b4a66f1e1d91feaf4c4d122bdef513761b4281ac7640c83e6f",
+          "id": "backpack-zipper-reopens-after-closing",
+          "model": "No.1230",
+          "imageKind": "generated",
+          "reference": "backups/story-2026-11-16/reference-1.jpg",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/4419256b-1ebf-4c1b-a820-456c9e4e507e/main-JNlhfBlRE80ziG0hiBl20igi2NeiDb.jpg",
+          "fidelityReviewed": true,
+          "alt": "AI 연출: 나무 작업대 위 No.1230 민트 백팩의 큰 입구와 앞면 지퍼",
+          "caption": "AI 연출 이미지입니다. No.1230 민트의 여밈 위치를 설명하는 장면이며, 고장이나 실제 수선 결과를 촬영한 사진이 아닙니다.",
+          "review": "실제 원본과 생성본을 직접 보았습니다. 민트 몸판, 둥근 큰 지퍼 입구, 검정 메쉬 아래쪽의 앞주머니 두 개, 검정 끈·손잡이·삼각 로고와 32×40×18cm 외형 비율을 대조했습니다. 고장 표현은 없으며 실제 작동 검증으로 쓰지 않습니다.",
+          "generatedSource": "backups/story-2026-11-16/generated-1.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-fba5f5d7-3e99-4203-8cf7-b7e5ae8b0161.png",
+          "prompt": "Generate exactly ONE landscape photorealistic-natural editorial photo,1536x1024. The input is an exact product reference, not a style reference. Preserve this real bag silhouette, construction visible in the original, all pocket/zipper/handle/strap layout, color, logo and realistic proportions. Do not redesign, add accessories to the bag, invent hidden compartments, damage, text overlays, performance tests, collages or diagrams. Himawari No.1230 mint backpack, external32cm wide40high18deep, pale mint ripstop-looking body, black arched main zipper with two long loop pull tabs near the top, short black carry handle, two separate front pouches with black mesh lower sections and individual horizontal zips, black inner-edge trim and small black triangular Himawari logo at lower viewer-right. On a light wood repair-consultation counter, frontal three-quarter complete-bag view, all zippers intact and closed normally, no claimed defect. A closed plain notebook sits beside it for taking notes. Calm daylight, realistic soft folds, bag fills60percent of image. No tools touching the bag.\nTargeted correction: replace the tiny triangular logo model text No.1230 with EST.2010 and remove the unrequested Repair Consultation sign. Preserve all other bag geometry and composition.",
+          "references": [
+            "backups/story-2026-11-16/reference-1.jpg"
+          ],
+          "rejectedGeneratedSource": "backups/story-2026-11-16/generated-1.rejected.png",
+          "correctionReview": "수정 뒤 로고·형태를 직접 다시 대조해 최종 이미지를 승인했습니다."
+        },
+        {
+          "post": 0,
+          "role": "detail",
+          "image": "assets/story/backpack-zipper-reopens-after-closing-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 189958,
+          "sha256": "ea8633ba44cc9342f7c2c499b2c3ec23d61b56fbc419a6d1d732518b35c8cbc2",
+          "id": "backpack-zipper-reopens-after-closing",
+          "model": "No.1230",
+          "imageKind": "generated",
+          "reference": "backups/story-2026-11-16/reference-1.jpg",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/4419256b-1ebf-4c1b-a820-456c9e4e507e/main-JNlhfBlRE80ziG0hiBl20igi2NeiDb.jpg",
+          "fidelityReviewed": true,
+          "alt": "AI 연출: 손으로 받친 No.1230 민트 백팩의 지퍼 위치를 비스듬히 본 모습",
+          "caption": "AI 연출 이미지입니다. 큰 입구와 앞주머니의 지퍼 위치를 보여줍니다. 손은 관찰 구도를 위한 연출이며 실제 점검·수선 과정이 아닙니다.",
+          "review": "실제 원본과 생성본을 직접 보았습니다. 민트 몸판, 둥근 큰 지퍼 입구, 검정 메쉬 아래쪽의 앞주머니 두 개, 검정 끈·손잡이·삼각 로고와 32×40×18cm 외형 비율을 대조했습니다. 고장 표현은 없으며 실제 작동 검증으로 쓰지 않습니다.",
+          "generatedSource": "backups/story-2026-11-16/generated-2.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-a3074fed-c9be-4b49-822b-3204495c2692.png",
+          "prompt": "Generate exactly ONE landscape photorealistic-natural editorial photo,1536x1024. The input is an exact product reference, not a style reference. Preserve this real bag silhouette, construction visible in the original, all pocket/zipper/handle/strap layout, color, logo and realistic proportions. Do not redesign, add accessories to the bag, invent hidden compartments, damage, text overlays, performance tests, collages or diagrams. Close oblique front view of the SAME mint No.1230, external32x40x18cm. Frame the upper arched zipper, its black loop pull tabs and both black-mesh front pockets, with some mint body and original triangular black logo visible. Bag lies slightly reclined on a neutral work mat, all elements intact and aligned, one hand gently supports the side without pulling or modifying any hardware. Show the slider versus the adjoining zipper chain clearly, not a fabricated broken seam. Macro editorial product texture, soft sidelight.",
+          "references": [
+            "backups/story-2026-11-16/reference-1.jpg"
+          ]
+        },
+        {
+          "post": 0,
+          "role": "reference",
+          "image": "assets/story/backpack-zipper-reopens-after-closing-reference.webp",
+          "width": 720,
+          "height": 720,
+          "bytes": 45170,
+          "sha256": "9af53fa36557ae565de3bdbce49db2948794071c59a8129c0b0b220f5e10f951",
+          "id": "backpack-zipper-reopens-after-closing",
+          "model": "No.1230",
+          "imageKind": "reference",
+          "reference": "backups/story-2026-11-16/reference-1.jpg",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/4419256b-1ebf-4c1b-a820-456c9e4e507e/main-JNlhfBlRE80ziG0hiBl20igi2NeiDb.jpg",
+          "fidelityReviewed": true,
+          "alt": "실제 제품 사진: No.1230 민트 백팩 정면",
+          "caption": "실제 No.1230 민트 제품 사진입니다. 원본의 형태·색·여밈을 확인하는 참고 사진이며 지퍼 고장을 뜻하지 않습니다.",
+          "review": "실제 원본과 생성본을 직접 보았습니다. 민트 몸판, 둥근 큰 지퍼 입구, 검정 메쉬 아래쪽의 앞주머니 두 개, 검정 끈·손잡이·삼각 로고와 32×40×18cm 외형 비율을 대조했습니다. 고장 표현은 없으며 실제 작동 검증으로 쓰지 않습니다."
+        }
+      ]
+    },
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-patch-backing-choice",
+      "title": "백팩에 붙일 패치, 뒷면부터 골라야 하는 이유",
+      "url": "https://himawari.co.kr/story/backpack-patch-backing-choice.html",
+      "productId": "coupang-e16e6315910fdd6b",
+      "model": "No.2505",
+      "image": "assets/story/backpack-patch-backing-choice.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-16/reference-2.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 5페이지의 2505 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": {
+        "width": 30,
+        "height": 43,
+        "depth": 14
+      },
+      "editorialForm": "장식 부착 방식을 고르는 선택 메모",
+      "coreQuestion": "같은 그림의 패치라도 어떤 뒷면과 고정 방식을 고르느냐에 따라 백팩에 남을 변화는 어떻게 달라질까?",
+      "bodyChars": 2963,
+      "images": [
+        {
+          "post": 1,
+          "role": "hero",
+          "image": "assets/story/backpack-patch-backing-choice.webp",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 117614,
+          "sha256": "a3db149b12d344df277caf3f4826ec2d2f81f56606affc77c291d4c49298ebb6",
+          "id": "backpack-patch-backing-choice",
+          "model": "No.2505",
+          "imageKind": "generated",
+          "reference": "backups/story-2026-11-16/reference-2.jpg",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e16e6315910fdd6b/main-rgxtYpMoAPOljowvNuFsQn7QcDh936.jpg",
+          "fidelityReviewed": true,
+          "alt": "AI 인물 연출: No.2505 블랙 백팩을 들고 옆에 패치를 대어 보는 여성",
+          "caption": "AI 인물 연출 이미지입니다. No.2505 블랙 옆에 패치를 대어 배치를 살펴보는 장면입니다. 패치는 부착하지 않았으며 제품에 포함되지 않습니다.",
+          "review": "실제 원본과 생성본을 직접 보았습니다. 검정 둥근 몸판, 아이보리 세로 띠 두 줄과 상단 연결 손잡이, 중앙 흰 Himawari 글자, 앞 수납부·옆포켓·끈과 30×43×14cm 외형 비율을 대조했습니다. 패치는 가방 옆의 소품으로만 보입니다.",
+          "generatedSource": "backups/story-2026-11-16/generated-3.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-b979c0b5-a626-4eee-9bbe-dccbd177d2e7.png",
+          "prompt": "Generate exactly ONE landscape photorealistic-natural editorial photo,1536x1024. The input is an exact product reference, not a style reference. Preserve this real bag silhouette, construction visible in the original, all pocket/zipper/handle/strap layout, color, logo and realistic proportions. Do not redesign, add accessories to the bag, invent hidden compartments, damage, text overlays, performance tests, collages or diagrams. Himawari No.2505 BLACK nylon backpack, external30wide43high14deep cm, rounded top, two broad IVORY vertical webbing strips continuing into twin ivory top handles joined by ivory snap band, small white Himawari wordmark centered between strips, simple black lower front panel and black side pockets/straps. A stylish attractive Korean woman in her20s with expressive natural face and neat bob hair, navy cropped work jacket, ivory tee and straight blue jeans, seated at a contemporary bright design-studio table, holds the unmodified bag upright on her lap/front at a three-quarter angle while considering a small plain unbranded embroidered green patch held BESIDE the bag, never attached. Musinsa Snap-inspired candid Korean streetwear editorial, medium eye-level framing with face and whole bag clearly visible, no needle, glue or iron in use, no alteration.",
+          "references": [
+            "backups/story-2026-11-16/reference-2.jpg"
+          ]
+        },
+        {
+          "post": 1,
+          "role": "detail",
+          "image": "assets/story/backpack-patch-backing-choice-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 115084,
+          "sha256": "addc354e4b418f33085f713e0011ead16ccbbfa5cdc2ec20023e4419cfcc21fd",
+          "id": "backpack-patch-backing-choice",
+          "model": "No.2505",
+          "imageKind": "generated",
+          "reference": "backups/story-2026-11-16/reference-2.jpg",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e16e6315910fdd6b/main-rgxtYpMoAPOljowvNuFsQn7QcDh936.jpg",
+          "fidelityReviewed": true,
+          "alt": "AI 연출: No.2505 블랙 백팩과 종이 뒷면·천 뒷면 패치를 위에서 본 모습",
+          "caption": "AI 연출 이미지입니다. No.2505 블랙과 서로 다른 뒷면의 패치 소품을 나란히 놓았습니다. 부착 강도·소재 호환성을 시험한 사진이 아닙니다.",
+          "review": "실제 원본과 생성본을 직접 보았습니다. 검정 둥근 몸판, 아이보리 세로 띠 두 줄과 상단 연결 손잡이, 중앙 흰 Himawari 글자, 앞 수납부·옆포켓·끈과 30×43×14cm 외형 비율을 대조했습니다. 패치는 가방 옆의 소품으로만 보입니다.",
+          "generatedSource": "backups/story-2026-11-16/generated-4.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-a5f0703a-7eac-4d8b-b670-3b404a2c6c17.png",
+          "prompt": "Generate exactly ONE landscape photorealistic-natural editorial photo,1536x1024. The input is an exact product reference, not a style reference. Preserve this real bag silhouette, construction visible in the original, all pocket/zipper/handle/strap layout, color, logo and realistic proportions. Do not redesign, add accessories to the bag, invent hidden compartments, damage, text overlays, performance tests, collages or diagrams. Overhead still life on a pale grey table of the SAME black No.2505 backpack, external30x43x14cm, preserve the ivory twin webbing/handles and small centered white Himawari wordmark. Backpack occupies right two thirds and stays intact with no patch attached. On the left are TWO small plain unbranded fabric patches lying separately, one face down with a pale paper backing still fully intact and one showing its plain textile back; no instructional labels. Reveal contrast between choosing a backing and permanently changing a bag, no sewing/adhesive action. Precise natural fabric texture and quiet daylight, different from model portrait.",
+          "references": [
+            "backups/story-2026-11-16/reference-2.jpg"
+          ]
+        },
+        {
+          "post": 1,
+          "role": "reference",
+          "image": "assets/story/backpack-patch-backing-choice-reference.webp",
+          "width": 1000,
+          "height": 1000,
+          "bytes": 28344,
+          "sha256": "a883072342a6fe536dcb466c76af9565bbcfe246ed585b1a91848fbba86261c0",
+          "id": "backpack-patch-backing-choice",
+          "model": "No.2505",
+          "imageKind": "reference",
+          "reference": "backups/story-2026-11-16/reference-2.jpg",
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e16e6315910fdd6b/main-rgxtYpMoAPOljowvNuFsQn7QcDh936.jpg",
+          "fidelityReviewed": true,
+          "alt": "실제 제품 사진: 아이보리 세로 띠와 손잡이가 있는 No.2505 블랙 백팩",
+          "caption": "실제 No.2505 블랙 제품 사진입니다. 검정 몸판과 아이보리 띠, 손잡이의 원래 형태를 확인할 수 있습니다.",
+          "review": "실제 원본과 생성본을 직접 보았습니다. 검정 둥근 몸판, 아이보리 세로 띠 두 줄과 상단 연결 손잡이, 중앙 흰 Himawari 글자, 앞 수납부·옆포켓·끈과 30×43×14cm 외형 비율을 대조했습니다. 패치는 가방 옆의 소품으로만 보입니다."
+        }
+      ]
+    },
+    {
+      "publicationStatus": "awaiting-first-deployment",
+      "id": "backpack-insulated-pouch-scope",
+      "title": "보냉 파우치를 넣으면 일반 백팩도 보냉 가방이 될까",
+      "url": "https://himawari.co.kr/story/backpack-insulated-pouch-scope.html",
+      "productId": "store-13326577567",
+      "model": "No.1208",
+      "image": "assets/story/backpack-insulated-pouch-scope.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-16/reference-3.jpg",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 30페이지의 1208 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": {
+        "width": 29,
+        "height": 40,
+        "depth": 17
+      },
+      "editorialForm": "바깥 가방과 내부 용품의 기능 분담 해설",
+      "coreQuestion": "보냉 파우치를 일반 백팩에 넣는 조합에서 바깥 가방의 수납 조건과 내부 용품의 보냉 성능을 어떻게 따로 확인할까?",
+      "bodyChars": 2981,
+      "images": [
+        {
+          "post": 2,
+          "role": "hero",
+          "image": "assets/story/backpack-insulated-pouch-scope.webp",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 151262,
+          "sha256": "8876c2191c957c9b36271676b7c2b7b5397e9b152f5a541b9878e53d7f3d565c",
+          "id": "backpack-insulated-pouch-scope",
+          "model": "No.1208",
+          "imageKind": "generated",
+          "reference": "backups/story-2026-11-16/reference-3.jpg",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260327_177/17745877470621bKeS_JPEG/3728478673959279_1633863399.jpg",
+          "fidelityReviewed": true,
+          "alt": "AI 연출: No.1208 아이보리 백팩과 옆에 놓인 열린 보냉 파우치",
+          "caption": "AI 연출 이미지입니다. No.1208 아이보리 옆에 별도 보냉 파우치를 놓았습니다. 파우치는 제품에 포함되지 않으며 내부 수납·보냉 성능을 검증한 장면이 아닙니다.",
+          "review": "실제 원본과 생성본을 직접 보았습니다. 아이보리 직사각형 몸판, 짧은 두 손잡이·리벳, 검정 작은 로고, 앞 수납부의 곡선 지퍼와 옆면 검정 띠, 29×40×17cm 외형 비율을 대조했습니다. 파우치는 별도로 두었으며 실제 삽입·보냉 성능을 주장하지 않습니다.",
+          "generatedSource": "backups/story-2026-11-16/generated-5.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-8996e20f-cc4f-434a-b3b6-570bb7fac182.png",
+          "prompt": "Generate exactly ONE landscape photorealistic-natural editorial photo,1536x1024. The input is an exact product reference, not a style reference. Preserve this real bag silhouette, construction visible in the original, all pocket/zipper/handle/strap layout, color, logo and realistic proportions. Do not redesign, add accessories to the bag, invent hidden compartments, damage, text overlays, performance tests, collages or diagrams. Use ONLY the precise IVORY Himawari No.1208 bag from the stroller reference, NOT its original woman or stroller. External29wide40high17deep cm. Preserve rectangular rounded body, ivory short handles with small dark rivets and snap connector, small black rectangular logo on upper front, black curved zipper lines on two lower front pockets and horizontal black side band. Full bag standing upright on a pale kitchen side counter. Beside it, clearly separated with a gap, a small plain grey insulated lunch pouch with zipper lid open just enough to show its silver inner lining. Neither pouch nor food is inside the backpack, no cooling claim or temperature tools. Frontal bag-level medium still life, contemporary natural daylight.",
+          "references": [
+            "backups/story-2026-11-16/reference-3.jpg"
+          ]
+        },
+        {
+          "post": 2,
+          "role": "detail",
+          "image": "assets/story/backpack-insulated-pouch-scope-detail.webp",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 92222,
+          "sha256": "78e501f408ca03e45ec71441a63cf6418e1ca5cbb6d9b0dcd4bcc5fcb45d7134",
+          "id": "backpack-insulated-pouch-scope",
+          "model": "No.1208",
+          "imageKind": "generated",
+          "reference": "backups/story-2026-11-16/reference-3.jpg",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260327_177/17745877470621bKeS_JPEG/3728478673959279_1633863399.jpg",
+          "fidelityReviewed": true,
+          "alt": "AI 연출: No.1208 아이보리 백팩과 별도로 놓인 닫힌 회색 보냉 파우치",
+          "caption": "AI 연출 이미지입니다. 백팩과 닫은 보냉 파우치를 별도로 놓아 역할을 구분했습니다. 실제 삽입·누수·보냉 시험 사진이 아닙니다.",
+          "review": "실제 원본과 생성본을 직접 보았습니다. 아이보리 직사각형 몸판, 짧은 두 손잡이·리벳, 검정 작은 로고, 앞 수납부의 곡선 지퍼와 옆면 검정 띠, 29×40×17cm 외형 비율을 대조했습니다. 파우치는 별도로 두었으며 실제 삽입·보냉 성능을 주장하지 않습니다.",
+          "generatedSource": "backups/story-2026-11-16/generated-6.png",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-c54c0ac9-0f4e-48ed-a34a-2216ede347e4.png",
+          "prompt": "Generate exactly ONE landscape photorealistic-natural editorial photo,1536x1024. The input is an exact product reference, not a style reference. Preserve this real bag silhouette, construction visible in the original, all pocket/zipper/handle/strap layout, color, logo and realistic proportions. Do not redesign, add accessories to the bag, invent hidden compartments, damage, text overlays, performance tests, collages or diagrams. Close side-oblique still life of the SAME IVORY No.1208 backpack, external29x40x17cm, retain original small black upper-front logo, twin ivory handles with dark rivets, lower pocket black curved zips, body shape and side pocket. It stands slightly behind to viewer-left, completely closed. A separate CLOSED grey insulated pouch stands in front/right on the table with clear gap, its zipper lid and thickness visible. Bag and pouch remain separate; do NOT depict fitting, internal storage or hidden insulated lining in the backpack. Hands may hold a plain measuring tape next to the separate pouch but show no readable numbers and no measured capacity. Quiet bright neutral room, tight different angle emphasizing two independently closed items.\nTargeted correction: replace the incorrect cimobebe front label text with Himawari, keeping the black rectangular label and all bag geometry and composition.",
+          "references": [
+            "backups/story-2026-11-16/reference-3.jpg"
+          ],
+          "rejectedGeneratedSource": "backups/story-2026-11-16/generated-6.rejected.png",
+          "correctionReview": "수정 뒤 로고·형태를 직접 다시 대조해 최종 이미지를 승인했습니다."
+        },
+        {
+          "post": 2,
+          "role": "reference",
+          "image": "assets/story/backpack-insulated-pouch-scope-reference.webp",
+          "width": 720,
+          "height": 720,
+          "bytes": 28612,
+          "sha256": "e0e6b6d3e0ef89921d258f6683421aac542be181943462d987c9e59c8d440ade",
+          "id": "backpack-insulated-pouch-scope",
+          "model": "No.1208",
+          "imageKind": "reference",
+          "reference": "backups/story-2026-11-16/reference-3.jpg",
+          "sourceUrl": "https://shop-phinf.pstatic.net/20260327_177/17745877470621bKeS_JPEG/3728478673959279_1633863399.jpg",
+          "fidelityReviewed": true,
+          "alt": "실제 제품 사진: 유모차에 걸린 No.1208 아이보리 백팩",
+          "caption": "실제 No.1208 아이보리 제품 사진입니다. 공개 제품 원본에 담긴 형태를 확인하는 참고 사진입니다.",
+          "review": "실제 원본과 생성본을 직접 보았습니다. 아이보리 직사각형 몸판, 짧은 두 손잡이·리벳, 검정 작은 로고, 앞 수납부의 곡선 지퍼와 옆면 검정 띠, 29×40×17cm 외형 비율을 대조했습니다. 파우치는 별도로 두었으며 실제 삽입·보냉 성능을 주장하지 않습니다."
+        }
+      ]
+    }
+  ],
+  "topicsReviewed": 209,
+  "overlapReview": "기존209편의 제목·요약·소제목·전체 본문을 비교했습니다. 닫힌 뒤 벌어지는 지퍼의 증상 구별, 장식 패치 뒷면과 가방 고정 방식의 선택, 외부 백팩과 내부 보냉 파우치의 기능 분담을 다른 질문·논지·형식으로 구분했습니다. backups/story-2026-11-16/topic-review.md 참조.",
+  "editions": {
+    "morning": {
+      "postIds": [
+        "backpack-zipper-reopens-after-closing",
+        "backpack-patch-backing-choice",
+        "backpack-insulated-pouch-scope"
+      ],
+      "stage": "prepared"
+    }
+  }
+}
