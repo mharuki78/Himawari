@@ -5,6 +5,7 @@ import { runNpayOrderSync } from './npay-sync.js';
 import {readNpayOrderCredentials} from './npay-credentials.js';
 import {npayReviewRequestIsValid} from './npay.js';
 import {syncNpaySandboxCheckout} from './npay-sandbox-checkout-sync.js';
+import {npaySyncPolicy} from './npay-sync-policy.js';
 
 export async function fetchNpaySync(request,{runSync=runNpayOrderSync}={}){
   if(!['GET','POST'].includes(request.method))return methodNotAllowed(['GET','POST']);
@@ -27,7 +28,9 @@ export async function fetchNpaySync(request,{runSync=runNpayOrderSync}={}){
     }
     const credentials=readNpayOrderCredentials();
     const environment=credentials.environment;
-    client=createNpayOrderClient({...credentials,maxRequests:20,captureInspectionEvidence:scope?.inspectApi===true});
+    const policy=npaySyncPolicy();
+    if(!policy)return json({message:'주문 수집 주기 설정을 확인해 주세요.'},503);
+    client=createNpayOrderClient({...credentials,maxRequests:policy.maxRequests,captureInspectionEvidence:scope?.inspectApi===true});
     if(!scope)return json(await runSync({environment,request:client.request}));
     const result=await syncNpaySandboxCheckout({...scope,request:client.request});
     return json({...result,...(scope.inspectApi?{apiEvidence:client.getInspectionEvidence()}:{})});

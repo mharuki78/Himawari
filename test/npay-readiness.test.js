@@ -22,3 +22,21 @@ test('sandbox test capability is isolated from public production activation and 
   assert.equal(evaluate(sandbox,null,{...settings,review:true}).enabled,false);
   assert.equal(evaluate(sandbox,null,{configured:true,environment:'sandbox',review:false,now}).enabled,false);
 });
+
+test('four-hour collection needs matching release proof and closes on late, incomplete or incident-bearing sync',()=>{
+  const fourHourly={...settings,cadence:'4h'};
+  const approved={...proof,sync_cadence:'4h'};
+  const recent={last_success_at:new Date(now-4*3600_000-15*60_000),through_at:new Date(now-4*3600_000-15*60_000),incident_count:0};
+  assert.equal(evaluate(approved,recent,fourHourly).enabled,true);
+  assert.equal(evaluate(proof,recent,fourHourly).enabled,false,'old capacity proof cannot approve a different cadence');
+  assert.equal(evaluate(approved,recent,settings).enabled,false,'four-hour proof cannot silently authorize another schedule');
+  for(const key of ['last_success_at','through_at']) {
+    assert.equal(evaluate(approved,{...recent,[key]:new Date(now-5*3600_000-1)},fourHourly).enabled,false);
+    assert.equal(evaluate(approved,{...recent,[key]:new Date(now+1)},fourHourly).enabled,false);
+    assert.equal(evaluate(approved,{...recent,[key]:null},fourHourly).enabled,false);
+  }
+  assert.equal(evaluate(approved,{...recent,incident_count:1},fourHourly).enabled,false);
+  assert.equal(evaluate(approved,recent,{...fourHourly,cadence:'never'}).enabled,false);
+  for(const key of ['sandbox_verified_at','provider_approved_at','cutover_verified_at','polling_capacity_verified_at'])
+    assert.equal(evaluate({...approved,[key]:null},recent,fourHourly).enabled,false);
+});

@@ -11,7 +11,13 @@ This is a release procedure, not an activation receipt. Current execution eviden
 
 Official process: [Npay merchant API guide](https://github.com/npay-mall-order-api/merchant-order-api#주문관리-api-연동-프로세스).
 
-## Polling capacity decision
+## Polling capacity decision — owner chose free, six collections daily
+
+The owner chose2026-11-16 to retain Fixie Tricycle (US$0,500/month,100MB) and collect six times daily. No paid upgrade is authorized. Configure `NPAY_SYNC_CADENCE=4h` with the native Vercel Schedules expression `0 */4 * * *`, timezone Asia/Seoul; the schedule uses GET `/api/npay/sync`. Set Production `CRON_SECRET` and `NPAY_SYNC_SECRET` to the same random secret, and confirm the actual deployed schedule/execution history before recording capacity proof. Native Schedules supports a four-hour interval on Hobby, with up to15minutes jitter; this differs from legacy Cron Jobs' daily Hobby limit. No SDK or hosting upgrade is needed for a path target. Sources: [configuration](https://vercel.com/docs/schedules/configuration), [path authentication](https://vercel.com/docs/schedules/handle-runs), [limits](https://vercel.com/docs/schedules/limits).
+
+Four-hour policy caps each invocation at10upstream requests and requires both complete collection time and successful sync time within5hours, zero incidents, and matching `sync_cadence=4h` release proof. The five-minute policy keeps its original10-minute freshness limit; invalid/mismatched policy closes managed checkout. Reservations are allocated before upstream registration and never released on timeout/absence. Completed cancellations update on the next successful collection plus any provider propagation delay; no finite provider propagation guarantee is asserted.
+
+The approved initial48-hour audit completed with zero changed order lines and at most3HTTP calls (one OAuth plus two change queries). Fixie dashboard immediately before/after showed16→17requests and194→204kB. Current transport reuses one HTTPS CONNECT connection within a poll. This one measured invocation supports connection reuse; it does not prove that every invocation will always consume one metered request. Thirty-one days at six runs daily is186runs. The earlier372–558estimate counts upstream HTTP calls, not necessarily Fixie metered proxy connections. Watch actual request and transfer counters, keep manual/preview calls in the same budget, preserve holds on quota/connection failures, and obtain approval before any paid change. Do not promise uninterrupted free capacity or an unconfigured alert/automatic upgrade.
 
 The present client reuses an OAuth token within one invocation, then clears it when closing. It does not guarantee token reuse across serverless invocations. Budget authentication as well as changed-order pages and detail batches. `maxRequests=20` is a per-invocation guard; it is not a normal request forecast.
 
@@ -26,7 +32,7 @@ Public [Fixie HTTP/HTTPS pricing](https://usefixie.com/pricing), checked2026-11-
 
 Illustration only, not a configured schedule: `*/7 * * * *` runs nine times per hour, or6,696 times in31days. Two calls per empty poll require13,392 requests; three calls per normal poll require20,088. Adding20% yields24,106, close to Cruiser's25,000 limit. At the current20-request invocation ceiling, the same schedule could consume133,920. Multiple pages/batches, catch-up, registrations using that proxy and other traffic must be counted separately as applicable. Do not mark capacity verified from the normal-path estimate alone. Free500/month is insufficient for this continuous polling pattern.
 
-The readiness guard requires both `last_success_at` and `through_at` to be no more than600seconds old. A scheduler must allow collection duration, overlap, failure/recovery and quota headroom inside that condition. Verify the actual hosting plan's cron frequency and authentication mechanism before configuration; no cron is configured by this document. Paid recurring service requires the owner's specific plan/amount approval.
+The five-minute policy requires both `last_success_at` and `through_at` to be no more than600seconds old. The explicit four-hour policy above uses5hours only with matching release proof. A scheduler must allow collection duration, overlap, failure/recovery and quota headroom inside its verified policy. Actual schedule activation and a successful authenticated deployed run remain release evidence; configuration alone is not that proof. Paid recurring service requires the owner's specific plan/amount approval.
 
 ## Legacy checkout and inventory gates
 

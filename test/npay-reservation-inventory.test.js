@@ -308,6 +308,23 @@ test('Npay allocation participates in local stock, campaign quota and confirmati
         assert.match(xml,/<status>NOT_SALE<\/status><stockQuantity>0<\/stockQuantity>/);
       }finally{globalThis.fetch=oldFetch;for(const [key,value]of Object.entries(before))value===undefined?delete process.env[key]:process.env[key]=value;}
     });
+    await t.test('a cadence typo cannot reopen legacy checkout after a stored cutover without the override flag',async()=>{
+      await reset();
+      const settings={NPAY_PUBLIC_ENABLED:'true',NPAY_SHOP_ID:'fixture',NPAY_CERTI_KEY:'fixture',NPAY_BUTTON_KEY:'fixture',
+        NPAY_ENV:'production',NPAY_MANAGED_CHECKOUT_REQUIRED:'false',NPAY_SYNC_CADENCE:'typo'};
+      const before=Object.fromEntries(Object.keys(settings).map(k=>[k,process.env[k]])),oldFetch=globalThis.fetch;
+      Object.assign(process.env,settings);let calls=0;globalThis.fetch=async()=>{calls++;throw Error('Unexpected legacy registration');};
+      await db.query("INSERT INTO npay_integration_release(environment,cutover_verified_at) VALUES('production',now()) ON CONFLICT(environment) DO UPDATE SET cutover_verified_at=now()");
+      try{
+        const config=await(await fetchNpayConfig(new Request('https://example.invalid/api/npay/config'))).json();
+        assert.equal(config.enabled,false,'stored cutover must keep legacy disabled despite invalid cadence');
+        assert.equal(config.blackFriday.enabled,false);
+        const order=await fetchNpayOrder(new Request('https://example.invalid/api/npay/order',{method:'POST',headers:{origin:'https://example.invalid','content-type':'application/json'},body:JSON.stringify({items:[{productId:'bag-a',optionId:'',quantity:1}]})}));
+        assert.equal(order.status,503);assert.equal(calls,0);
+        const xml=await(await fetchNpayProductInformation(new Request('https://example.invalid/api/npay/product-info?product[0][id]=bag-a'))).text();
+        assert.match(xml,/<status>NOT_SALE<\/status><stockQuantity>0<\/stockQuantity>/);
+      }finally{await db.query("DELETE FROM npay_integration_release WHERE environment='production'");globalThis.fetch=oldFetch;for(const[key,value]of Object.entries(before))value===undefined?delete process.env[key]:process.env[key]=value;}
+    });
     await t.test('encrypted private entry is preview-only, expiring and redeemable once without persisting its token',async()=>{
       const {redeemSandboxSession}=await import('../api/_lib/npay-sandbox-session.js');
       const pair=generateKeyPairSync('rsa',{modulusLength:2048});
