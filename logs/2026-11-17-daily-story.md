@@ -7,3 +7,5 @@
 현재 근거와 미완료 단계는 C:/Himawari/backups/story-2026-11-17/progress.json에서 관리한다. 한국어 두 지침의 진단·윤문·게이트·finalize를 진행 중이며 아직 발행 완료가 아니다. Npay·상품·주문·LookBook은 이 회차에서 수정하지 않는다.
 
 준비 검증: 각 본문3056·3013·3033자, 사진9장 중새 생성6장. 한국어 원문 대조·golden·서법 보존 검사는 통과했고 finalizer는 의미 위반0건으로 채택했다. 문장 길이 통계 지표 경고는 보존하고 수치를 맞추기 위해 쉼표를 추가하지 않았다. 최초 준비 회귀에서 빠진 관련 글 링크를 확인해 기존 글로 연결한 뒤 전체 검증을 다시 실행했다.
+
+전체486개 테스트와 준비 검증이 통과했다. 최초 콘텐츠 커밋 ecf378598ab689fe89f68eaef4f46c7a1e8fcc9c의 production dpl_Ex9GRmHmtADFy8cUnSkoWueoQJjJ가 실제 2026-11-16T23:47:02.998Z에 READY였다. 기준 READY부터 배포 목록을 끝까지 조회한 결과1페이지·후보1건이며 마지막 pagination.next는 제공자가 생략했다. Git의 최초 콘텐츠에는시각이 없음을 대조했다. 원본 first-deployment.json·first-deployment-history.json을 보존하고 이 시각과 완전한 article 해시만 목록·manifest·RSS·JSON-LD에 반영한다.

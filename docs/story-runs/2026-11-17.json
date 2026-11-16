@@ -8,7 +8,7 @@
   "scheduledSlot": "2026-11-17T08:00:00+09:00",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
-  "stage": "prepared-content",
+  "stage": "metadata-ready",
   "publicationBaselineCommit": "8c6b2fe0a38ed99819ba1131e883f3950b0598cc",
   "publicationBaselineEvidence": "backups/story-2026-11-17/baseline-deployment.json",
   "completionReceipt": "backups/story-runs/2026-11-17.deployment.json",
@@ -31,7 +31,7 @@
       "editorialForm": "사용 동작을 나눠 보는 접촉면 관찰",
       "coreQuestion": "백팩 어깨끈 커버가 돌아갈 때 겹친 여밈과 봉제선의 방향을 어느 동작에서 살펴야 할까?",
       "summary": "No.9291 라벤더의 어깨끈을 기준으로 별도 커버의 안팎과 겹친 면을 살펴봅니다. 좌우 설치 방향, 메고 벗을 때 바뀌는 위치를 나누어 옷깃과 어깨에 닿는 자리를 확인합니다.",
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "images": [
         {
           "image": "assets/story/backpack-shoulder-cover-seam-direction.webp",
@@ -85,7 +85,16 @@
           "review": "실제 다운로드 원본을 직접 열어 형태·색상·모델을 확인하고 공개 사양 및 원본 URL과 대조했습니다."
         }
       ],
-      "bodyChars": 3056
+      "bodyChars": 3056,
+      "publication": {
+        "publishedAt": "2026-11-16T23:47:02.998Z",
+        "modifiedAt": "2026-11-16T23:47:02.998Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-17/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-17/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-17/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-17/first-deployment-history.json",
+        "articleSha256": "44adaeaa035eb2a6fbd639fa79955620d03993e75107dde6e57fa4a6e2062659"
+      }
     },
     {
       "id": "backpack-shell-lining-coating",
@@ -105,7 +114,7 @@
       "editorialForm": "겉감·안감·코팅 용어를 대조하는 해설",
       "coreQuestion": "백팩 사양표의 겉감과 안감은 어떤 부위이며 원단 코팅은 이 두 소재 이름으로 확인할 수 있을까?",
       "summary": "No.2301 네이비의 겉감·안감 표기에서 출발해 원단의 위치와 표면 처리를 구별합니다. 소재 이름, 단면 그림, 관리 안내가 각각 어느 질문에 답하는지 살펴봅니다.",
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "images": [
         {
           "image": "assets/story/backpack-shell-lining-coating.webp",
@@ -159,7 +168,16 @@
           "review": "실제 다운로드 원본을 직접 열어 형태·색상·모델을 확인하고 공개 사양 및 원본 URL과 대조했습니다."
         }
       ],
-      "bodyChars": 3013
+      "bodyChars": 3013,
+      "publication": {
+        "publishedAt": "2026-11-16T23:47:02.998Z",
+        "modifiedAt": "2026-11-16T23:47:02.998Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-17/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-17/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-17/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-17/first-deployment-history.json",
+        "articleSha256": "869348478cac4abb772d7c4d9786ae9970d8aac6e5eeaebbb4a2829a294bbe24"
+      }
     },
     {
       "id": "backpack-usb-port-power-source",
@@ -179,7 +197,7 @@
       "editorialForm": "상품 사진을 따라 연결 구성을 확인하는 구매 사례",
       "coreQuestion": "백팩의 USB 연결부 사진만으로 전원 포함 여부·단자 호환·출력을 어디까지 알 수 있을까?",
       "summary": "No.1884 블랙 사진의 USB 연결 연출을 읽으며 가방·연결 케이블·별도 전원·기기의 역할을 나눕니다. 포트 모양만으로 배터리 포함 여부나 고속충전을 판단하지 않는 구매 확인법입니다.",
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "images": [
         {
           "image": "assets/story/backpack-usb-port-power-source.webp",
@@ -239,7 +257,16 @@
           "review": "실제 다운로드 원본을 직접 열어 형태·색상·모델을 확인하고 공개 사양 및 원본 URL과 대조했습니다."
         }
       ],
-      "bodyChars": 3033
+      "bodyChars": 3033,
+      "publication": {
+        "publishedAt": "2026-11-16T23:47:02.998Z",
+        "modifiedAt": "2026-11-16T23:47:02.998Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-17/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-17/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-17/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-17/first-deployment-history.json",
+        "articleSha256": "b9c1baa2b96a389e73f0dfef446b65345ec968b8e9c8df94b511e7ee4a3b6a6b"
+      }
     }
   ]
 }
