@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-shoulder-cover-seam-direction",
+    "title": "백팩 어깨끈 커버가 돌아가면, 겹친 면부터 다시 보기",
+    "date": "2026-11-17",
+    "summary": "No.9291 라벤더의 어깨끈을 기준으로 별도 커버의 안팎과 겹친 면을 살펴봅니다. 좌우 설치 방향, 메고 벗을 때 바뀌는 위치를 나누어 옷깃과 어깨에 닿는 자리를 확인합니다.",
+    "description": "No.9291 라벤더의 어깨끈을 기준으로 별도 커버의 안팎과 겹친 면을 살펴봅니다. 좌우 설치 방향, 메고 벗을 때 바뀌는 위치를 나누어 옷깃과 어깨에 닿는 자리를 확인합니다.",
+    "tags": [
+      "어깨끈 커버",
+      "착용",
+      "접촉면"
+    ],
+    "image": "../assets/story/backpack-shoulder-cover-seam-direction.webp",
+    "imageAlt": "AI 착용 연출: 도서관 벽 옆에서 No.9291 라벤더의 원래 어깨끈을 잡은 성인 여성",
+    "images": [
+      "../assets/story/backpack-shoulder-cover-seam-direction.webp",
+      "../assets/story/backpack-shoulder-cover-seam-direction-detail.webp",
+      "../assets/story/backpack-shoulder-cover-seam-direction-reference.webp"
+    ],
+    "url": "backpack-shoulder-cover-seam-direction.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "사용 동작을 나눠 보는 접촉면 관찰"
+  },
+  {
+    "id": "backpack-shell-lining-coating",
+    "title": "백팩의 겉감과 안감, 코팅은 어디에 있는 걸까",
+    "date": "2026-11-17",
+    "summary": "No.2301 네이비의 겉감·안감 표기에서 출발해 원단의 위치와 표면 처리를 구별합니다. 소재 이름, 단면 그림, 관리 안내가 각각 어느 질문에 답하는지 살펴봅니다.",
+    "description": "No.2301 네이비의 겉감·안감 표기에서 출발해 원단의 위치와 표면 처리를 구별합니다. 소재 이름, 단면 그림, 관리 안내가 각각 어느 질문에 답하는지 살펴봅니다.",
+    "tags": [
+      "겉감과 안감",
+      "원단 코팅",
+      "구조"
+    ],
+    "image": "../assets/story/backpack-shell-lining-coating.webp",
+    "imageAlt": "AI 연출: 닫힌 No.2301 네이비 백팩 옆에 분리된 두 천 조각을 놓은 모습",
+    "images": [
+      "../assets/story/backpack-shell-lining-coating.webp",
+      "../assets/story/backpack-shell-lining-coating-detail.webp",
+      "../assets/story/backpack-shell-lining-coating-reference.webp"
+    ],
+    "url": "backpack-shell-lining-coating.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "겉감·안감·코팅 용어를 대조하는 해설"
+  },
+  {
+    "id": "backpack-usb-port-power-source",
+    "title": "USB 포트가 있는 백팩, 보조배터리도 들어 있다는 뜻일까",
+    "date": "2026-11-17",
+    "summary": "No.1884 블랙 사진의 USB 연결 연출을 읽으며 가방·연결 케이블·별도 전원·기기의 역할을 나눕니다. 포트 모양만으로 배터리 포함 여부나 고속충전을 판단하지 않는 구매 확인법입니다.",
+    "description": "No.1884 블랙 사진의 USB 연결 연출을 읽으며 가방·연결 케이블·별도 전원·기기의 역할을 나눕니다. 포트 모양만으로 배터리 포함 여부나 고속충전을 판단하지 않는 구매 확인법입니다.",
+    "tags": [
+      "USB 포트",
+      "구성품",
+      "구매 확인"
+    ],
+    "image": "../assets/story/backpack-usb-port-power-source.webp",
+    "imageAlt": "AI 연출: No.1884 블랙 백팩 옆에 연결하지 않은 휴대전화와 케이블",
+    "images": [
+      "../assets/story/backpack-usb-port-power-source.webp",
+      "../assets/story/backpack-usb-port-power-source-detail.webp",
+      "../assets/story/backpack-usb-port-power-source-reference.webp"
+    ],
+    "url": "backpack-usb-port-power-source.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "상품 사진을 따라 연결 구성을 확인하는 구매 사례"
+  },
+  {
     "id": "backpack-zipper-reopens-after-closing",
     "title": "백팩 지퍼를 닫았는데 가운데가 다시 벌어진다면",
     "date": "2026-11-16",
