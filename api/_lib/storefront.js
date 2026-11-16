@@ -46,7 +46,7 @@ function productImage(product, className) {
   return `<a class="${className}${image ? '' : ' is-missing'}" href="${detailHref(product)}" aria-label="${escapeHtml(product.name)} 상세페이지 보기">${body}</a>`;
 }
 
-function productActions(product, featured = false) {
+function productActions(product, featured = false, compact = false) {
   const classes = featured
     ? { detail: 'detail-link featured-detail-link', cart: 'buy-link featured-buy-link', buy: 'direct-buy-link featured-direct-buy-link' }
     : { detail: 'detail-link', cart: 'buy-link', buy: 'direct-buy-link' };
@@ -54,16 +54,16 @@ function productActions(product, featured = false) {
   const hasOptions = Array.isArray(product.options) && product.options.length > 0;
   const cartAction = hasOptions
     ? `<a class="${classes.cart}" href="${detailHref(product)}#product-options" aria-label="${escapeHtml(product.name)} 옵션 선택 후 장바구니에 담기">옵션 선택 <span aria-hidden="true">→</span></a>`
-    : `<button class="${classes.cart}" type="button" data-cart-add data-product-id="${escapeHtml(product.id)}" data-name="${escapeHtml(product.name)}" data-price="${escapeHtml(product.price)}" data-url="${escapeHtml(storeUrl)}" data-stock="${product.stock === null ? '' : escapeHtml(product.stock)}" aria-label="${escapeHtml(product.name)} 장바구니에 담기" aria-live="polite"${product.soldOut ? ' disabled' : ''}>${product.soldOut ? '품절' : '장바구니 담기'} <span aria-hidden="true">+</span></button>`;
+    : `<button class="${classes.cart}" type="button" data-cart-add data-product-id="${escapeHtml(product.id)}" data-name="${escapeHtml(product.name)}" data-price="${escapeHtml(product.price)}" data-url="${escapeHtml(storeUrl)}" data-stock="${product.stock === null ? '' : escapeHtml(product.stock)}" aria-label="${escapeHtml(product.name)} 장바구니에 담기" aria-live="polite"${product.soldOut ? ' disabled' : ''}>${product.soldOut ? '품절' : compact ? '장바구니 추가' : '장바구니 담기'} <span aria-hidden="true">+</span></button>`;
   const buyAction = hasOptions
-    ? `<a class="${classes.buy}" href="${detailHref(product)}#product-options" aria-label="${escapeHtml(product.name)} 옵션 선택 후 바로 구매하기">옵션 선택 <span aria-hidden="true">→</span></a>`
+    ? `<a class="${classes.buy}" href="${detailHref(product)}#product-options" aria-label="${escapeHtml(product.name)} 옵션 선택 후 바로 구매하기">${compact ? '바로구매' : '옵션 선택'} <span aria-hidden="true">→</span></a>`
     : product.soldOut
       ? `<button class="${classes.buy}" type="button" disabled>품절</button>`
-      : `<a class="${classes.buy}" href="${checkoutHref(product)}" aria-label="${escapeHtml(product.name)} 내부 주문서에서 바로 구매하기">바로 구매하기 <span aria-hidden="true">→</span></a>`;
+      : `<a class="${classes.buy}" href="${checkoutHref(product)}" aria-label="${escapeHtml(product.name)} 내부 주문서에서 바로 구매하기">${compact ? '바로구매' : '바로 구매하기'} <span aria-hidden="true">→</span></a>`;
   return `<div class="${featured ? 'featured-product-actions' : 'store-product-actions'}">
     <a class="${classes.detail}" href="${detailHref(product)}" aria-label="${escapeHtml(product.name)} 상세페이지 보기">상세 보기 <span aria-hidden="true">→</span></a>
     ${cartAction}
-    <button class="wishlist-button" type="button" data-wishlist-toggle data-product-id="${escapeHtml(product.id)}" aria-pressed="false" aria-label="${escapeHtml(product.name)} 관심상품 저장"><span data-wishlist-label>관심상품 저장</span></button>
+    ${compact ? '' : `<button class="wishlist-button" type="button" data-wishlist-toggle data-product-id="${escapeHtml(product.id)}" aria-pressed="false" aria-label="${escapeHtml(product.name)} 관심상품 저장"><span data-wishlist-label>관심상품 저장</span></button>`}
     ${buyAction}
   </div>`;
 }
@@ -83,7 +83,7 @@ function renderProductCard(product) {
       <p class="card-label">${escapeHtml(product.model || 'Himawari')}</p>
       <h3><a href="${detailHref(product)}">${escapeHtml(product.name)}</a></h3>
       <p class="product-tagline">${escapeHtml(product.tagline || '제품 사진과 사양을 확인해 보세요.')}</p>
-      <div class="store-product-footer">${productPrice(product)}<div class="store-product-actions"><a class="detail-link" href="${detailHref(product)}">상세 보기 <span aria-hidden="true">→</span></a><a class="compare-add" href="compare.html?products=${encodeURIComponent(product.id)}">제품 비교</a></div></div>
+      <div class="store-product-footer">${productPrice(product)}${productActions(product, false, true)}</div>
     </div>
   </article>`;
 }

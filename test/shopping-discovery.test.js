@@ -5,20 +5,35 @@ import { readFile } from 'node:fs/promises';
 import { normalizeCompareIds } from '../assets/compare-store.js';
 import { productPurchaseFacts, parseExternalDimensions, productEvidenceHighlights } from '../assets/product-facts.js';
 import { productVariantKind } from '../assets/catalog-tools.js';
-import { renderProductPage } from '../api/_lib/storefront.js';
+import { renderProductPage, renderCatalogPage } from '../api/_lib/storefront.js';
 
 test('compact catalog cards add the displayed SKU to cart and require selection for multi-option products',async()=>{
  const source=await readFile(new URL('../products.js',import.meta.url),'utf8');
- const node=tag=>({tagName:tag,dataset:{},children:[],setAttribute(name,value){this[name]=value;},append(...children){this.children.push(...children);}});
+ const node=tag=>({tagName:tag,dataset:{},children:[],firstChild:{textContent:''},setAttribute(name,value){this[name]=value;},append(...children){this.children.push(...children);}});
  const context=vm.createContext({document:{createElement:node},safeHttpsUrl:url=>url||'',detailHref:p=>'/product.html?id='+p.id,priceFormatter:new Intl.NumberFormat('ko-KR',{style:'currency',currency:'KRW'}),createDetailLink:p=>Object.assign(node('a'),{href:'/product.html?id='+p.id}),createCompareButton:p=>Object.assign(node('button'),{dataset:{compareAdd:p.id}})});
- vm.runInContext(source.slice(source.indexOf('function createCartButton('),source.indexOf('function createWishlistButton('))+'\n'+source.slice(source.indexOf('function createPriceBlock('),source.indexOf('function transitionProductCardMedia('))+'\nglobalThis.footer=createProductFooter;',context);
+ vm.runInContext(source.slice(source.indexOf('function createCartButton('),source.indexOf('function createWishlistButton('))+'\n'+source.slice(source.indexOf('function createDirectBuyLink('),source.indexOf('function createDetailLink('))+'\n'+source.slice(source.indexOf('function createPriceBlock('),source.indexOf('function transitionProductCardMedia('))+'\nglobalThis.footer=createProductFooter;',context);
  const product={id:'blue',name:'파란 가방',price:59000,stock:3,options:[],soldOut:false};
  for(const p of [product,{...product,id:'pink',name:'분홍 가방',price:61000}]){
   const button=context.footer(p,true).children[1].children[1];
+  const actions=context.footer(p,true).children[1].children;
+  assert.equal(actions.length,3);
+  assert.equal(new URL(actions[2].href,'https://himawari.co.kr').searchParams.get('product'),p.id);
+  assert.match(actions[2].textContent,/바로구매/);
   assert.equal(Object.hasOwn(button.dataset,'cartAdd'),true);assert.equal(button.dataset.productId,p.id);assert.equal(button.dataset.price,String(p.price));assert.match(button.textContent,/장바구니/);assert.equal(button.dataset.compareAdd,undefined);
  }
  const sold=context.footer({...product,soldOut:true,stock:0},true).children[1].children[1];assert.equal(sold.disabled,true);
  const option=context.footer({...product,options:[{id:'mint',stock:2}]},true).children[1].children[1];assert.equal(option.tagName,'a');assert.match(option.href,/#product-options$/);assert.equal(option.dataset.cartAdd,undefined);
+ const optionBuy=context.footer({...product,options:[{id:'mint',stock:2}]},true).children[1].children[2];assert.match(optionBuy.href,/#product-options$/);
+ const soldBuy=context.footer({...product,soldOut:true,stock:0},true).children[1].children[2];assert.equal(soldBuy.disabled,true);assert.equal(soldBuy.href,undefined);
+});
+
+test('initial catalog HTML includes direct checkout for the displayed SKU without waiting for client hydration',async()=>{
+ const template=await readFile(new URL('../templates/products.html',import.meta.url),'utf8');
+ const html=renderCatalogPage(template,[{id:'selected-sku',name:'가방',price:59000,stock:3,options:[],soldOut:false}]);
+ const article=html.match(/<article class="store-product-card[\s\S]*?<\/article>/)?.[0];
+ assert.ok(article);assert.match(article,/href="checkout.html\?product=selected-sku"/);
+ assert.match(article,/data-cart-add data-product-id="selected-sku"/);
+ assert.doesNotMatch(article,/compare-add|wishlist-button/);
 });
 
 test('comparison selection preserves order, removes duplicates and unsafe IDs, and never exceeds three', () => {

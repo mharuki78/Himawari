@@ -1,5 +1,80 @@
 [
   {
+    "id": "backpack-zipper-reopens-after-closing",
+    "title": "백팩 지퍼를 닫았는데 가운데가 다시 벌어진다면",
+    "date": "2026-11-16",
+    "summary": "No.1230의 여밈 위치를 예로 지퍼가 멈추는 증상과 닫힌 뒤 벌어지는 증상을 구별합니다. 손잡이·슬라이더·맞물림을 나누어 보고 수선 문의에서 교체할 부위와 조건을 정확히 남깁니다.",
+    "description": "No.1230의 여밈 위치를 예로 지퍼가 멈추는 증상과 닫힌 뒤 벌어지는 증상을 구별합니다. 손잡이·슬라이더·맞물림을 나누어 보고 수선 문의에서 교체할 부위와 조건을 정확히 남깁니다.",
+    "tags": [
+      "지퍼",
+      "백팩 수선",
+      "부품 구조"
+    ],
+    "image": "../assets/story/backpack-zipper-reopens-after-closing.webp",
+    "imageAlt": "AI 연출: 나무 작업대 위 No.1230 민트 백팩의 큰 입구와 앞면 지퍼",
+    "images": [
+      "../assets/story/backpack-zipper-reopens-after-closing.webp",
+      "../assets/story/backpack-zipper-reopens-after-closing-detail.webp",
+      "../assets/story/backpack-zipper-reopens-after-closing-reference.webp"
+    ],
+    "url": "backpack-zipper-reopens-after-closing.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "증상 사례를 구별하는 수선 해설",
+    "publishedAt": "2026-11-16T01:18:19.733Z",
+    "modifiedAt": "2026-11-16T01:18:19.733Z",
+    "dateModified": "2026-11-16"
+  },
+  {
+    "id": "backpack-patch-backing-choice",
+    "title": "백팩에 붙일 패치, 뒷면부터 골라야 하는 이유",
+    "date": "2026-11-16",
+    "summary": "No.2505 블랙에 패치를 더하기 전 접착·봉제·찍찍이의 부착면을 구별합니다. 원하는 배치와 가방에 남을 변화를 나누고 원단·안감·손잡이 띠에 필요한 확인을 정리합니다.",
+    "description": "No.2505 블랙에 패치를 더하기 전 접착·봉제·찍찍이의 부착면을 구별합니다. 원하는 배치와 가방에 남을 변화를 나누고 원단·안감·손잡이 띠에 필요한 확인을 정리합니다.",
+    "tags": [
+      "백팩 꾸미기",
+      "패치",
+      "부착 방식"
+    ],
+    "image": "../assets/story/backpack-patch-backing-choice.webp",
+    "imageAlt": "AI 인물 연출: No.2505 블랙 백팩을 들고 옆에 패치를 대어 보는 여성",
+    "images": [
+      "../assets/story/backpack-patch-backing-choice.webp",
+      "../assets/story/backpack-patch-backing-choice-detail.webp",
+      "../assets/story/backpack-patch-backing-choice-reference.webp"
+    ],
+    "url": "backpack-patch-backing-choice.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "장식 부착 방식을 고르는 선택 메모",
+    "publishedAt": "2026-11-16T01:18:19.733Z",
+    "modifiedAt": "2026-11-16T01:18:19.733Z",
+    "dateModified": "2026-11-16"
+  },
+  {
+    "id": "backpack-insulated-pouch-scope",
+    "title": "보냉 파우치를 넣으면 일반 백팩도 보냉 가방이 될까",
+    "date": "2026-11-16",
+    "summary": "No.1208의 공개 사양과 별도 보냉 파우치의 기능 범위를 나누어 읽습니다. 외부 운반 가방의 수납 조건과 내부 용품의 단열·닫힘·사용 조건을 구별하며 확인되지 않은 성능을 덧붙이지 않습니다.",
+    "description": "No.1208의 공개 사양과 별도 보냉 파우치의 기능 범위를 나누어 읽습니다. 외부 운반 가방의 수납 조건과 내부 용품의 단열·닫힘·사용 조건을 구별하며 확인되지 않은 성능을 덧붙이지 않습니다.",
+    "tags": [
+      "백팩 용도",
+      "보냉 파우치",
+      "기능 확인"
+    ],
+    "image": "../assets/story/backpack-insulated-pouch-scope.webp",
+    "imageAlt": "AI 연출: No.1208 아이보리 백팩과 옆에 놓인 열린 보냉 파우치",
+    "images": [
+      "../assets/story/backpack-insulated-pouch-scope.webp",
+      "../assets/story/backpack-insulated-pouch-scope-detail.webp",
+      "../assets/story/backpack-insulated-pouch-scope-reference.webp"
+    ],
+    "url": "backpack-insulated-pouch-scope.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "바깥 가방과 내부 용품의 기능 분담 해설",
+    "publishedAt": "2026-11-16T01:18:19.733Z",
+    "modifiedAt": "2026-11-16T01:18:19.733Z",
+    "dateModified": "2026-11-16"
+  },
+  {
     "id": "backpack-colour-specific-weight",
     "title": "같은 백팩도 색상에 따라 무게가 다를까",
     "date": "2026-11-15",

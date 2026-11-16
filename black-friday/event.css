@@ -29,12 +29,13 @@
 .bf-event__prices strong { color: var(--bf-ink); font-size: clamp(1.09rem, 2vw, 1.45rem); white-space: nowrap; }
 .bf-event__discount { order: -1; color: #8c253a; font-size: clamp(.97rem, 1.8vw, 1.28rem); font-weight: 800; white-space: nowrap; }
 .bf-event__prices del { order: -2; flex-basis: 100%; }
-.bf-event__card-actions { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; width: 100%; min-height: 96px; }
-.bf-event__card--detail .bf-event__card-actions { min-height: 0; }
+.bf-event__card-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; width: 100%; margin-top: .5rem; }
+.bf-event__card--detail .bf-event__card-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.bf-event__card-actions > :is(a,button) { min-width: 0; min-height: 44px; margin: 0; padding: 9px 4px; font-size: 12px; line-height: 1.4; text-align: center; word-break: keep-all; }
 .bf-event__buy, .bf-event__browse { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: .65rem 1rem; border-radius: 999px; font-weight: 650; text-decoration: none; }
-.bf-event__buy { width: 100%; margin-top: .5rem; padding-inline: .4rem; background: var(--bf-green); color: #fff; font-size: .88rem; }
+.bf-event__buy { width: 100%; background: var(--bf-green); color: #fff; }
 .bf-event__buy:hover { background: #254635; color: #fff; }
-.bf-event__add { display: inline-flex; align-items: center; justify-content: center; width: 100%; min-height: 44px; margin-top: .5rem; padding: .65rem .4rem; border: 1px solid #315845; border-radius: 999px; background: #fff; color: #315845; font: inherit; font-size: .88rem; font-weight: 650; cursor: pointer; }
+.bf-event__add { display: inline-flex; align-items: center; justify-content: center; width: 100%; border: 1px solid #315845; border-radius: 999px; background: #fff; color: #315845; font-family: inherit; font-weight: 650; cursor: pointer; }
 .bf-event__add:hover { background: #edf5f1; }
 .bf-event__add:focus-visible { outline: 2px solid #315845; outline-offset: 3px; }
 .bf-event__add:disabled { opacity: .5; cursor: default; }
@@ -48,10 +49,10 @@
 .bf-event__card--detail .bf-event__details { align-self: center; padding: clamp(1.2rem, 4vw, 2.5rem); }
 .bf-event__card--detail .bf-event__prices { margin-top: .75rem; }
 .bf-event__details h2 a, .bf-event__detail-link { color: inherit; text-underline-offset: 3px; }
-.bf-event__detail-link { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; font-size: .83rem; }
+.bf-event__detail-link { display: inline-flex; align-items: center; justify-content: center; border: 1px solid #d6dfd9; border-radius: 999px; background: #f5f5f7; text-decoration: none; font-weight: 650; }
 @media (max-width: 610px) {
   .bf-event__card--detail { grid-template-columns: 1fr; }
-  .bf-event__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bf-event__grid { grid-template-columns: minmax(0, 1fr); }
   .bf-event__card { border-radius: 14px; }
   .bf-event__model, .bf-event__remaining, .bf-event__prices del { font-size: .78rem; }
 }

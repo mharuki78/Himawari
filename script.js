@@ -111,7 +111,8 @@ function initializeBlackFridayNavigation() {
           ribbon.lang = 'en';
           ribbon.textContent = 'BLACK FRIDAY';
           ribbon.setAttribute('aria-hidden', 'true');
-          link.append(ribbon, document.createTextNode('블랙 프라이데이'));
+          link.append(ribbon, document.createTextNode('UP TO 70% 할인'));
+          link.setAttribute('aria-label', '블랙 프라이데이 UP TO 70% 할인');
           link.dataset.blackFridayNav = '';
           if (/^\/black-friday(?:\/|$)/.test(location.pathname)) link.setAttribute('aria-current', 'page');
           nav.prepend(link);
