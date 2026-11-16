@@ -119,14 +119,19 @@ export function projectNpayOrderSettlement(reservation, order, previous = null) 
 // logs. A bounded optimistic retry makes pre-read projections safe with Neon's
 // non-interactive batch transactions: validate the snapshot again under the
 // same inventory lock used by ordinary orders and the reservation allocator.
-export async function reconcileNpayOrderMetadata(orders, { environment = 'sandbox' } = {}) {
+export async function reconcileNpayOrderMetadata(orders, { environment = 'sandbox', rejectUnmanaged = false } = {}) {
   if (!Array.isArray(orders) || orders.length > 10000 || !['sandbox', 'production'].includes(environment)) throw Object.assign(new Error('Invalid Npay settlement batch.'), { status: 400 });
   await ensureNpaySettlementSchema();
+  // Classify a known legacy batch before any managed settlement can fail. The
+  // worker must persist this incident even if a different line needs a write.
+  if(rejectUnmanaged&&orders.some(order=>!reservedId(order?.productId)))return{
+    bound:0,updated:0,ignored:orders.length,incidents:[{reason:'unmanaged_order_after_cutover'}]};
   const sql = database();
   for (let attempt = 0; attempt < 3; attempt++) {
     const result = { bound: 0, updated: 0, ignored: 0, incidents: [] };
     const ids = [...new Set(orders.map(order => order?.productId).filter(reservedId))];
-    if (!ids.length) return { ...result, ignored: orders.length };
+    if (!ids.length) return { ...result, ignored: orders.length,
+      incidents:rejectUnmanaged&&orders.length?[{reason:'unmanaged_order_after_cutover'}]:[] };
     const [reservations, previousLines] = await Promise.all([
       sql.query(`SELECT r.*,c.environment FROM npay_inventory_reservations r
         JOIN npay_checkouts c ON c.id=r.checkout_id WHERE r.id=ANY($1::text[])`, [ids]),
@@ -139,7 +144,11 @@ export async function reconcileNpayOrderMetadata(orders, { environment = 'sandbo
     const pending = new Map();
     for (const order of orders) {
       const reservation = byReservation.get(order?.productId);
-      if (!reservation) { result.ignored++; continue; }
+      if (!reservation) {
+        result.ignored++;
+        if(rejectUnmanaged)result.incidents.push({reason:'unmanaged_order_after_cutover'});
+        continue;
+      }
       if (reservation.environment !== environment) { result.incidents.push({ reason: 'environment_mismatch' }); continue; }
       const previous = linesByReservation.get(reservation.id);
       if (previous && previous.product_order_id !== order.productOrderId
@@ -160,6 +169,10 @@ export async function reconcileNpayOrderMetadata(orders, { environment = 'sandbo
       }
       pending.set(reservation.id, { reservation, previous, projection });
     }
+    // Orphan NPR identities also stop the whole batch before writes, so a
+    // managed SQL failure cannot erase the already-observed unknown identity.
+    if(rejectUnmanaged&&result.incidents.some(x=>x.reason==='unmanaged_order_after_cutover'))
+      return{...result,ignored:orders.length};
     const queries = [sql.query(INVENTORY_LOCK)];
     for (const { reservation, previous, projection, conflict } of pending.values()) {
       if (conflict) continue;

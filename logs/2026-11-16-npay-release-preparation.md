@@ -29,3 +29,9 @@ Added allowlisted4h policy (max10requests,5-hour freshness), matching release-pr
 ## Four-hour policy review and final verification
 
 Independent review found an invalid-cadence early return could reopen legacy checkout despite stored cutover proof when the override flag was false. Added a real PostgreSQL regression, observed RED (legacy unexpectedly enabled), moved policy rejection after reading the durable cutover block, and observed GREEN29targeted tests. Independent recheck passed29/29and resolved the Important finding. Full suite485/485passed. The earlier proof/schema migration and native schedule format were independently checked; no outstanding Critical/Important source finding. This is still source verification, not production release proof.
+
+## Persistent post-cutover incident guard
+
+Source review identified that a late legacy or orphan reserved identity could be ignored and allow a healthy cursor. Added a production-only persistent legacy_order_incident latch, explicit readiness check and safe old-schema read. A second reproduced mixed-batch failure showed managed SQL could throw before the flag was returned. Strict cutover batches now classify known legacy rows before managed reads/writes and orphan identities before any settlement transaction; unknown batches do not settle partial managed writes. Watched both RED regressions; GREEN50targeted and full486passed. Empty polls cannot clear the latch. Known cancellations still require authenticated evidence; inventory holds are unchanged. Actual retirement/old-form rejection is a separate operational gate, not inferred from an empty interval.
+
+Owner approved three production order-form connection tests with no final payment. Ordinary legacy form reached Npay with66700product+3500shipping=70200KRW. The proposal had incorrectly assumed3000shipping; this was corrected to the observed existing3500policy, with zero actual charge. No raw account/address/contact/orderform key is recorded.

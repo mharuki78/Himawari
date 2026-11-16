@@ -325,6 +325,53 @@ test('Npay allocation participates in local stock, campaign quota and confirmati
         assert.match(xml,/<status>NOT_SALE<\/status><stockQuantity>0<\/stockQuantity>/);
       }finally{await db.query("DELETE FROM npay_integration_release WHERE environment='production'");globalThis.fetch=oldFetch;for(const[key,value]of Object.entries(before))value===undefined?delete process.env[key]:process.env[key]=value;}
     });
+    await t.test('post-cutover unmanaged orders latch an incident through empty polls while managed and sandbox lines keep their behavior',async()=>{
+      const worker=await import('../api/_lib/npay-sync.js');
+      const now=new Date();
+      await db.query("INSERT INTO npay_integration_release(environment,cutover_verified_at) VALUES('production',now()) ON CONFLICT(environment) DO UPDATE SET cutover_verified_at=now()");
+      const responseFor=productId=>async path=>path.includes('last-changed-statuses')
+        ?{data:{count:1,lastChangeStatuses:[{productOrderId:'fixture-late-line',lastChangedDate:now.toISOString()}]}}
+        :{data:[{order:{orderId:'fixture-late-parent',paymentDate:'2020-01-01T00:00:00+09:00'},productOrder:{productOrderId:'fixture-late-line',productId,initialQuantity:1,remainQuantity:1,unitPrice:10000,optionPrice:0,productOrderStatus:'PAYED'}}]};
+      try{
+        for(const productId of ['legacy-unreserved','NPR-aaaaaaaaaaaaaaaaaaaaaaaa']){
+          await reset();await db.exec('DELETE FROM npay_sync_state');
+          const result=await worker.runNpayOrderSync({environment:'production',request:responseFor(productId),now});
+          assert.ok(result.incidents>0,'unknown legacy or reserved identity must stop healthy collection');
+          assert.equal(result.cursorAdvanced,false);
+          const empty=await worker.runNpayOrderSync({environment:'production',request:async()=>({data:{count:0,lastChangeStatuses:[]}}),now:new Date(now.getTime()+1000)});
+          assert.ok(empty.incidents>0,'absence cannot clear the unmatched-order incident');
+          assert.equal(empty.cursorAdvanced,false);
+          const [state]=(await db.query("SELECT legacy_order_incident,last_success_at FROM npay_sync_state WHERE environment='production'")).rows;
+          assert.equal(state.legacy_order_incident,true);assert.equal(state.last_success_at,null);
+        }
+        for(const unmanaged of ['legacy-unreserved','NPR-bbbbbbbbbbbbbbbbbbbbbbbb']){
+          await reset();await db.exec('DELETE FROM npay_sync_state');
+          const managed=await reserve({environment:'production',requestId:randomUUID(),items:[{productId:'bag-a',optionId:'',quantity:1,blackFriday:sale}]});
+          const request=async path=>{
+            if(path.includes('last-changed-statuses'))return{data:{count:2,lastChangeStatuses:['fixture-managed-line','fixture-unmanaged-line'].map(productOrderId=>({productOrderId,lastChangedDate:now.toISOString()}))}};
+            return{data:[managed.items[0].id,unmanaged].map((productId,index)=>({order:{orderId:'fixture-parent'},productOrder:{productOrderId:index?'fixture-unmanaged-line':'fixture-managed-line',productId,initialQuantity:1,remainQuantity:1,unitPrice:10000,optionPrice:0,productOrderStatus:'PAYED'}}))};
+          };
+          const previous=neonConfig.fetchFunction;let attemptedWrites=0;
+          neonConfig.fetchFunction=async(url,init)=>{
+            const input=JSON.parse(init.body);
+            if(input.queries?.some(q=>q.query.includes('INSERT INTO npay_provider_lines'))){attemptedWrites++;return Response.json({message:'Synthetic settlement write failure',code:'XX000'},{status:400});}
+            return previous(url,init);
+          };
+          try{
+            const rejected=await worker.runNpayOrderSync({environment:'production',request,now});
+            assert.ok(rejected.incidents>0);assert.equal(attemptedWrites,0,'unmanaged batches must be classified before any managed settlement writes');
+            const empty=await worker.runNpayOrderSync({environment:'production',request:async()=>({data:{count:0,lastChangeStatuses:[]}}),now:new Date(now.getTime()+1000)});
+            assert.ok(empty.incidents>0);assert.equal(empty.cursorAdvanced,false);
+          }finally{neonConfig.fetchFunction=previous;}
+        }
+        await reset();await db.exec('DELETE FROM npay_sync_state');
+        const managed=await reserve({environment:'production',requestId:randomUUID(),items:[{productId:'bag-a',optionId:'',quantity:1,blackFriday:sale}]});
+        const paid=await worker.runNpayOrderSync({environment:'production',request:responseFor(managed.items[0].id),now});
+        assert.equal(paid.bound,1);assert.equal(paid.incidents,0);assert.equal(paid.cursorAdvanced,true);
+        const sandbox=await worker.runNpayOrderSync({environment:'sandbox',request:responseFor('legacy-unreserved'),now});
+        assert.equal(sandbox.incidents,0);assert.equal(sandbox.ignored,1);assert.equal(sandbox.cursorAdvanced,true);
+      }finally{await db.query("DELETE FROM npay_integration_release WHERE environment='production'");await db.exec('DELETE FROM npay_sync_state');}
+    });
     await t.test('encrypted private entry is preview-only, expiring and redeemable once without persisting its token',async()=>{
       const {redeemSandboxSession}=await import('../api/_lib/npay-sandbox-session.js');
       const pair=generateKeyPairSync('rsa',{modulusLength:2048});

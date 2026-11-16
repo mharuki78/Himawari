@@ -10,6 +10,7 @@ test('production readiness requires independent provider, cutover, capacity and 
   assert.equal(evaluate(proof,sync,settings).enabled,true);
   for(const key of ['sandbox_verified_at','provider_approved_at','cutover_verified_at','polling_capacity_verified_at'])assert.equal(evaluate({...proof,[key]:null},sync,settings).enabled,false);
   assert.equal(evaluate(proof,{...sync,incident_count:1},settings).enabled,false);
+  assert.equal(evaluate(proof,{...sync,legacy_order_incident:true},settings).enabled,false);
   assert.equal(evaluate(proof,{...sync,last_success_at:new Date(now-601000)},settings).enabled,false);
   assert.equal(evaluate(proof,{...sync,through_at:new Date(now-601000)},settings).enabled,false);
   assert.equal(evaluate(proof,sync,{...settings,configured:false}).enabled,false);

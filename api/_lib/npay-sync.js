@@ -3,20 +3,23 @@ import { randomUUID } from 'node:crypto';
 import { ensureOrderSchema } from './orders.js';
 import { collectNpayChanges, readNpayOrderMetadata } from './npay-order-feed.js';
 import { ensureNpaySettlementSchema, reconcileNpayOrderMetadata } from './npay-settlement.js';
+import {ensureNpayReadinessSchema} from './npay-readiness.js';
 
 let schemaPromise;
 export async function ensureNpaySyncSchema() {
-  if(!schemaPromise) schemaPromise=ensureOrderSchema().then(ensureNpaySettlementSchema).then(()=>{const sql=database();return sql.transaction([sql`CREATE TABLE IF NOT EXISTS npay_sync_state (
+  if(!schemaPromise) schemaPromise=ensureOrderSchema().then(ensureNpaySettlementSchema).then(ensureNpayReadinessSchema).then(()=>{const sql=database();return sql.transaction([sql`CREATE TABLE IF NOT EXISTS npay_sync_state (
     environment text PRIMARY KEY CHECK(environment IN ('sandbox','production')),
     through_at timestamptz,
     last_success_at timestamptz,
     last_attempt_at timestamptz,
     incident_count integer NOT NULL DEFAULT 0,
+    legacy_order_incident boolean NOT NULL DEFAULT false,
     revision integer NOT NULL DEFAULT 0,
     lease_owner text,
     lease_until timestamptz
   )`,sql`ALTER TABLE npay_sync_state ADD COLUMN IF NOT EXISTS lease_owner text`,
-  sql`ALTER TABLE npay_sync_state ADD COLUMN IF NOT EXISTS lease_until timestamptz`]);}).catch(error=>{schemaPromise=undefined;throw error;});
+  sql`ALTER TABLE npay_sync_state ADD COLUMN IF NOT EXISTS lease_until timestamptz`,
+  sql`ALTER TABLE npay_sync_state ADD COLUMN IF NOT EXISTS legacy_order_incident boolean NOT NULL DEFAULT false`]);}).catch(error=>{schemaPromise=undefined;throw error;});
   return schemaPromise;
 }
 
@@ -41,15 +44,19 @@ export async function runNpayOrderSync({environment,request,now=new Date(),maxPa
   const end=Math.min(nowTime,from+86400_000);
     const changes=await collectNpayChanges({from:new Date(from).toISOString(),to:new Date(end).toISOString(),request,maxPages});
     const details=await readNpayOrderMetadata({productOrderIds:changes.productOrderIds,request});
-    const settled=await reconcileNpayOrderMetadata(details.orders,{environment});
+    const [release]=await sql`SELECT cutover_verified_at FROM npay_integration_release WHERE environment=${environment}`;
+    const settled=await reconcileNpayOrderMetadata(details.orders,{environment,
+      rejectUnmanaged:environment==='production'&&Boolean(release?.cutover_verified_at)});
+    const detectedLegacy=settled.incidents.some(x=>x.reason==='unmanaged_order_after_cutover');
+    const legacyIncident=state.legacy_order_incident===true||detectedLegacy;
     const missing=details.missingProductOrderIds.length;
-    const incidents=settled.incidents.length+missing+(changes.coverageComplete?0:1);
+    const incidents=settled.incidents.length+missing+(changes.coverageComplete?0:1)+(legacyIncident?1:0);
     const success=incidents===0&&changes.through!==null;
     const updated=await sql`UPDATE npay_sync_state SET through_at=CASE WHEN ${success} THEN ${changes.through}::timestamptz ELSE through_at END,
       last_success_at=CASE WHEN ${success} THEN ${now.toISOString()}::timestamptz ELSE last_success_at END,
-      last_attempt_at=${now.toISOString()},incident_count=${incidents},revision=revision+1
+      last_attempt_at=${now.toISOString()},incident_count=${incidents},legacy_order_incident=legacy_order_incident OR ${detectedLegacy},revision=revision+1
       WHERE environment=${environment} AND revision=${state.revision} AND lease_owner=${owner} RETURNING revision`;
-    if(!updated.length&&incidents>0)await sql`UPDATE npay_sync_state SET incident_count=incident_count+${incidents},revision=revision+1
+    if(!updated.length&&incidents>0)await sql`UPDATE npay_sync_state SET incident_count=incident_count+${incidents},legacy_order_incident=legacy_order_incident OR ${detectedLegacy},revision=revision+1
       WHERE environment=${environment}`;
     return {bound:settled.bound,updated:settled.updated,ignored:settled.ignored,incidents:incidents,
       missing,changeCount:changes.changes.length,cursorAdvanced:success&&updated.length===1,collectionFinal:false};

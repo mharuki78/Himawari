@@ -13,7 +13,7 @@ export function evaluateNpayReadiness(proof,sync,{configured,environment,review=
   if((proof.sync_cadence??'5m')!==policy.cadence)return closed;
   const validDate=value=>{const t=new Date(value??NaN).getTime();return Number.isFinite(t)&&t<=now;};
   if(!['sandbox_verified_at','provider_approved_at','cutover_verified_at','polling_capacity_verified_at'].every(k=>validDate(proof[k])))return closed;
-  if(!sync||sync.incident_count!==0||![sync.last_success_at,sync.through_at].every(v=>validDate(v)&&now-new Date(v).getTime()<=policy.maxAgeMs))return closed;
+  if(!sync||sync.incident_count!==0||sync.legacy_order_incident===true||![sync.last_success_at,sync.through_at].every(v=>validDate(v)&&now-new Date(v).getTime()<=policy.maxAgeMs))return closed;
   return{enabled:true,reason:null};
 }
 
@@ -43,7 +43,9 @@ export async function npayIntegrationReadiness({review=false,environment=review?
   const policy=npaySyncPolicy();
   if(!policy)return{...unavailable,legacyBlocked};
   let sync;
-  try{[sync]=await sql`SELECT last_success_at,through_at,incident_count FROM npay_sync_state WHERE environment=${environment}`;}
+  try{[sync]=await sql`SELECT last_success_at,through_at,incident_count,
+    COALESCE((to_jsonb(s)->>'legacy_order_incident')::boolean,false) AS legacy_order_incident
+    FROM npay_sync_state s WHERE environment=${environment}`;}
   catch(error){if(error.code!=='42P01')throw error;}
   const credentials=readNpayOrderCredentials();
   const configured=credentials.environment===environment&&Boolean(credentials.clientId&&credentials.clientSecret

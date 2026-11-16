@@ -40,6 +40,8 @@ The five-minute policy requires both `last_success_at` and `through_at` to be no
 - Preserve uncertain/expired holds. Npay has not supplied a guaranteed propagation bound or collection-finality barrier; elapsed time or a completed polling window is insufficient evidence to release them automatically.
 - Bind any supported new ordinary/campaign/mixed registration to the shared inventory/quota allocator, immutable price/option and one upstream registration result. Old unreserved identities must stop being purchasable as designed during controlled cutover.
 - Do not set `cutover_verified_at` until actual legacy behavior and inventory reconciliation are evidenced. Record a rollback plan that closes new registration while preserving holds and authenticated reconciliation; never free reservations as a rollback shortcut.
+- Keep `NPAY_MANAGED_CHECKOUT_REQUIRED=true` after retirement so missing database/configuration cannot reopen fallback. Before marking cutover, verify the old SKU callback and the existing ordinary canary order form against the retired identity. The approved48-hour audit and absence of local Npay holds are point-in-time evidence, not a provider finality barrier.
+- After a stored production cutover, any observed provider line without a matching managed reservation (including legacy products and orphan NPR aliases) latches `npay_sync_state.legacy_order_incident`. Unknown batches stop before managed settlement writes. Later empty/failed polls do not clear this latch or restore readiness; retain the cutover date and reservations until approved operator inventory review resolves it. A latch prevents silent healthy status but is not a synthetic inventory adjustment for an old unreserved purchase.
 
 ## Release and completion gates
 
