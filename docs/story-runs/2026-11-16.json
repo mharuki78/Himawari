@@ -8,13 +8,13 @@
   "scheduledSlot": "2026-11-16T08:00:00+09:00",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
-  "stage": "prepared",
+  "stage": "metadata-ready",
   "publicationBaselineCommit": "5a1ca20befdade3d063ceff336a2c864b1a4baa7",
   "publicationBaselineEvidence": "backups/story-2026-11-16/baseline-deployment.json",
   "completionReceipt": "backups/story-runs/2026-11-16.deployment.json",
   "posts": [
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-zipper-reopens-after-closing",
       "title": "백팩 지퍼를 닫았는데 가운데가 다시 벌어진다면",
       "url": "https://himawari.co.kr/story/backpack-zipper-reopens-after-closing.html",
@@ -101,10 +101,19 @@
           "caption": "실제 No.1230 민트 제품 사진입니다. 원본의 형태·색·여밈을 확인하는 참고 사진이며 지퍼 고장을 뜻하지 않습니다.",
           "review": "실제 원본과 생성본을 직접 보았습니다. 민트 몸판, 둥근 큰 지퍼 입구, 검정 메쉬 아래쪽의 앞주머니 두 개, 검정 끈·손잡이·삼각 로고와 32×40×18cm 외형 비율을 대조했습니다. 고장 표현은 없으며 실제 작동 검증으로 쓰지 않습니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-16T01:18:19.733Z",
+        "modifiedAt": "2026-11-16T01:18:19.733Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-16/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-16/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-16/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-16/first-deployment-history.json",
+        "articleSha256": "6ba74440b84daa199e8b1283b3d35a916100675bf355054ede95203ba7a759b7"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-patch-backing-choice",
       "title": "백팩에 붙일 패치, 뒷면부터 골라야 하는 이유",
       "url": "https://himawari.co.kr/story/backpack-patch-backing-choice.html",
@@ -189,10 +198,19 @@
           "caption": "실제 No.2505 블랙 제품 사진입니다. 검정 몸판과 아이보리 띠, 손잡이의 원래 형태를 확인할 수 있습니다.",
           "review": "실제 원본과 생성본을 직접 보았습니다. 검정 둥근 몸판, 아이보리 세로 띠 두 줄과 상단 연결 손잡이, 중앙 흰 Himawari 글자, 앞 수납부·옆포켓·끈과 30×43×14cm 외형 비율을 대조했습니다. 패치는 가방 옆의 소품으로만 보입니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-16T01:18:19.733Z",
+        "modifiedAt": "2026-11-16T01:18:19.733Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-16/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-16/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-16/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-16/first-deployment-history.json",
+        "articleSha256": "b6713842587deb6f2204ac69f5a6413674963f1cdbab48c4a8358dda3b6b108b"
+      }
     },
     {
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "id": "backpack-insulated-pouch-scope",
       "title": "보냉 파우치를 넣으면 일반 백팩도 보냉 가방이 될까",
       "url": "https://himawari.co.kr/story/backpack-insulated-pouch-scope.html",
@@ -279,7 +297,16 @@
           "caption": "실제 No.1208 아이보리 제품 사진입니다. 공개 제품 원본에 담긴 형태를 확인하는 참고 사진입니다.",
           "review": "실제 원본과 생성본을 직접 보았습니다. 아이보리 직사각형 몸판, 짧은 두 손잡이·리벳, 검정 작은 로고, 앞 수납부의 곡선 지퍼와 옆면 검정 띠, 29×40×17cm 외형 비율을 대조했습니다. 파우치는 별도로 두었으며 실제 삽입·보냉 성능을 주장하지 않습니다."
         }
-      ]
+      ],
+      "publication": {
+        "publishedAt": "2026-11-16T01:18:19.733Z",
+        "modifiedAt": "2026-11-16T01:18:19.733Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-16/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-16/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-16/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-16/first-deployment-history.json",
+        "articleSha256": "65da39ce80082aba38e5083ecfb8f452df2c8fb8f4c4871c69fec8f050076845"
+      }
     }
   ],
   "topicsReviewed": 209,
@@ -291,7 +318,7 @@
         "backpack-patch-backing-choice",
         "backpack-insulated-pouch-scope"
       ],
-      "stage": "prepared"
+      "stage": "metadata-ready"
     }
   }
 }
