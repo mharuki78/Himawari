@@ -2,6 +2,18 @@
 
 This is a release procedure, not an activation receipt. Current execution evidence is in `logs/2026-11-16-npay-release-preparation.md`. The earlier implementation and successful sandbox payment/cancellation evidence remain in `logs/2026-11-15-npay-sandbox-resume.md`.
 
+## Verified production activation —2026-11-16
+
+Implementation commit `d7feebf4de1ccdd60ea3b8f5073223ca5e968d2b` reached Production READY (`dpl_5NGsPXAg46AJSxpH6NesMDVSE2dP`). Issued production credentials and operational secrets are server-only sensitive settings. Actual release evidence: Sandbox API verification2026-11-15T09:32:17.275Z, provider approval2026-11-16T02:41:08Z, native scheduler verification2026-11-16T08:36:44.369Z, and verified legacy retirement/post-transition audit2026-11-16T09:06:14.808Z. The four-hour policy is explicitly bound to the release row. No date is inferred from a deployment time or an empty collection.
+
+An already-open ordinary Npay form was exercised under separate owner authorization for a maximum70200KRW one-time payment/refund test. Npay rejected the retired identity at its payment-stage validation with `구매불가 상품안내`, before authentication or charge. This is direct provider revalidation evidence. The post-retirement collection had zero changed lines/incidents; it is not represented as collection finality. The durable unmatched-order latch remains in force for later anomalies.
+
+Public production capability reports ordinary and campaign enabled in production mode. Genuine Chrome/Npay handoffs verified an Android/mobile390px campaign form (39000+3500=42500KRW) and desktop mixed form (66700+39000=105700KRW, free shipping). Expanding Npay's product details showed both exact selected products and prices. A390px merchant mixed form retained thumbnails, struck regular76000price,39000saleprice,49%discount,105700total and active green Npay button, without horizontal overflow. No campaign/mixed payment button was pressed and no live charge/refund occurred.
+
+The two controlled, never-payment-attempted canaries were manually voided: exact identities permanently blocked, all three reserved-product callbacks verified NOT_SALE/zero stock, all controlled forms closed, then three held units restored under the shared inventory lock with strict phase/quantity/price/no-provider-line assertions. Checkout, reservation and encrypted registration records remain. This is an operator-controlled test void, not a provider cancellation or automatic timeout release. The campaign's tested remaining quantity returned to52.
+
+Full tests486/486passed. Independent reviews verified the cadence regression fix and persistent/mixed-failure latch fixes. Two actual native scheduler runs completed with0%errors; latest successful collection2026-11-16T09:22:27.988Z, zero incidents and no legacy latch. Fixie remains Tricycle/US$0; dashboard21/500requests and229kB/100MB. Future quota availability is not guaranteed and no unconfigured alert or paid upgrade is implied. Final deployment/verification receipt is kept in canonical `C:/Himawari/backups/npay-prep-2026-11-16/production-activation-receipt.json`.
+
 ## Provider and account gates
 
 1. Preserve the single [inspection request #227](https://github.com/npay-mall-order-api/merchant-order-api/discussions/227). The official [approval reply](https://github.com/npay-mall-order-api/merchant-order-api/discussions/227#discussioncomment-19644541), posted2026-11-16T02:41:08Z, confirms completed Sandbox inspection. Live Chrome inspection verified the reply; a search-cached zero-comment page was stale. Preserve this actual evidence before setting `provider_approved_at` during an authorized release. It does not establish that production credentials have been issued.
