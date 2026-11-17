@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-17-everyday-1884",
+    "date": "2026-11-17",
+    "category": "everyday",
+    "title": "마당 의자에 앉아서",
+    "model": "1884",
+    "color": "블랙",
+    "productId": "store-13326303755",
+    "scene": "초록 셔츠와 베이지색 바지 차림으로 의자에 앉았어요. 검정 백팩을 무릎 앞에 세워 두었어요.",
+    "alt": "마당의 낮은 의자에 앉아 검정 No.1884 백팩을 무릎 앞에 세운 모습을 위쪽 사선에서 가까이 담은 AI 착용 연출",
+    "image": "/assets/lookbook/2026-11-17-everyday-1884.webp",
+    "thumbnail": "/assets/lookbook/2026-11-17-everyday-1884-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-17-travel-124s",
+    "date": "2026-11-17",
+    "category": "travel",
+    "title": "작은 다리 위에서",
+    "model": "124S",
+    "color": "민트",
+    "productId": "coupang-d3423a6bee5844d6",
+    "scene": "갈색 재킷에 민트색 백팩을 메고 다리 위에 섰어요. 난간 너머로 물길이 보여요.",
+    "alt": "갈색 재킷과 어두운 바지 차림으로 민트 No.124S 백팩을 메고 작은 다리 위에 선 전신을 주변 풍경과 함께 담은 AI 착용 연출",
+    "image": "/assets/lookbook/2026-11-17-travel-124s.webp",
+    "thumbnail": "/assets/lookbook/2026-11-17-travel-124s-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-15-everyday-9001",
     "date": "2026-11-15",
     "category": "everyday",

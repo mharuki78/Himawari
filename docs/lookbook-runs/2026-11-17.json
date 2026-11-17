@@ -1,0 +1,101 @@
+{
+  "date": "2026-11-17",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-17T00:29:13.510Z",
+    "scheduledAt": "2026-11-17T09:30:00+09:00",
+    "edition": "morning-recovery"
+  },
+  "scheduledSlot": "2026-11-17T09:30:00+09:00",
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-17/deployment.json",
+  "baselineCommit": "b02bb0815d59eedeb14f83a9a846f4438ffc3ac1",
+  "baselineEvidence": "backups/lookbook-2026-11-17/baseline-deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-17/products.json",
+  "recentVisualReview": "backups/lookbook-2026-11-17/recent-visual-review.md",
+  "entries": [
+    {
+      "id": "2026-11-17-everyday-1884",
+      "date": "2026-11-17",
+      "category": "everyday",
+      "title": "마당 의자에 앉아서",
+      "model": "1884",
+      "color": "블랙",
+      "productId": "store-13326303755",
+      "scene": "초록 셔츠와 베이지색 바지 차림으로 의자에 앉았어요. 검정 백팩을 무릎 앞에 세워 두었어요.",
+      "alt": "마당의 낮은 의자에 앉아 검정 No.1884 백팩을 무릎 앞에 세운 모습을 위쪽 사선에서 가까이 담은 AI 착용 연출",
+      "composition": {
+        "approach": "close seated environmental fashion portrait with hand-supported bag",
+        "angle": "slightly elevated front-three-quarter",
+        "framing": "head to knees; person fills most frame, full bag about40percent image height",
+        "activity": "seated on wooden chair with bag upright on lap, right hand holding paired original handles, left hand on thigh",
+        "setting": "stone courtyard and pale wall beside potted plants in soft side daylight"
+      },
+      "reference": "backups/lookbook-2026-11-17/reference-1.jpg",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260708_79/1783479884744eVyuv_JPEG/117612733821439951_1379023069.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13326303755",
+      "dimensionsCm": [
+        30,
+        45,
+        20
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 31페이지의 1884 대형(1884L) 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "prompt": "Use case: photorealistic-natural. Create exactly ONE portrait1024x1536 Korean street-fashion LookBook photograph, Musinsa Snap inspired without copying any real person. Attached image is an EXACT PRODUCT reference, not a collage or pose template. Preserve silhouette, pockets, all handles, straps, zipper locations, hardware, colors, logo and true human-relative exterior dimensions. Fictional attractive adult, expressive face, natural stylish clothing and hands, no watermark or text overlay, no invented bag features, no chest belts, extra charms, extra bags or invented straps. Real Himawari No.1884 BLACK LARGE backpack exterior30cm wide45high20deep; manufacturer catalogue2026-09-14page31(1884L). Match the boxy tall black body, paired short rounded carry handles with black base tabs with TWO small silver round rivets each, small black rectangular Himawari EST.2010 label centered on upper front, long horizontal zipped front pocket with original long black pull, rounded main top zip, black side pockets and black original shoulder straps resting behind the bag, small base feet. ONE seated lifestyle photograph, no collage or product diagrams. A handsome fictional Korean man around40 with textured short dark hair and a relaxed expressive face wears an olive-green overshirt over a white tee, beige straight trousers. He sits on a low wooden courtyard chair and looks gently up toward the camera. The backpack stands UPRIGHT on his lap in FRONT of him, supported by his right hand gently holding the TWO original top handles together; left hand rests relaxed on his own thigh, not over the bag logo. Camera slightly elevated about25degrees, front three-quarter, portrait framed from head to just below knees; the COMPLETE bag including its bottom clearly visible, bag about40percent image height, correct45cm height relative to seated adult torso and lap. A small quiet stone courtyard with a plain wall and a couple of blurred potted plants, soft warm side daylight. No phone, charging cable, water droplets, performance claims or props. Masculine understated clothing, no skirt or feminine accessories. Preserve actual product proportions; bag not miniaturized or huge.",
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-17/generated-1.png",
+      "image": "/assets/lookbook/2026-11-17-everyday-1884.webp",
+      "thumbnail": "/assets/lookbook/2026-11-17-everyday-1884-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "실제 대표 원본과 생성물을 직접 보았습니다. 검정 사각 몸판, 쌍 손잡이·각 받침의 은색 둥근 리벳2개, 작은 사각 Himawari 로고, 앞 가로 지퍼와 긴 검정 손잡이, 옆 포켓·어깨끈·바닥 받침을 대조했습니다.45cm 높이의 무릎·상반신 대비 크기를 확인했고 얼굴·손가락·양팔·바지와 의자에 앉은 자세가 자연스럽습니다. 남성은 셔츠·바지 착장이고 여성형 장식가방·치마나 새 긴 끈은 없습니다. 실제로는 얼굴부터 무릎까지의 가까운 사선 앞모습이며 가방이 화면높이 약40%를 차지합니다.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-3215fd1e-40b9-4577-b761-0fa3fef6de25.png",
+      "generatedSha256": "e52d0cf0d1e96cf9a85229c0f70487aecf0f0ed090d47d1dfbf4735af31a10e3"
+    },
+    {
+      "id": "2026-11-17-travel-124s",
+      "date": "2026-11-17",
+      "category": "travel",
+      "title": "작은 다리 위에서",
+      "model": "124S",
+      "color": "민트",
+      "productId": "coupang-d3423a6bee5844d6",
+      "scene": "갈색 재킷에 민트색 백팩을 메고 다리 위에 섰어요. 난간 너머로 물길이 보여요.",
+      "alt": "갈색 재킷과 어두운 바지 차림으로 민트 No.124S 백팩을 메고 작은 다리 위에 선 전신을 주변 풍경과 함께 담은 AI 착용 연출",
+      "composition": {
+        "approach": "environmental standing street-fashion portrait",
+        "angle": "eye-level side-rear-three-quarter with face turned toward camera",
+        "framing": "head and both shoes visible; person about80percent and complete bag about20percent image height",
+        "activity": "paused on the pedestrian bridge with separate naturally aligned legs and both soles on deck, wearing original shoulder straps",
+        "setting": "narrow bridge with metal railing above waterway, brick building and autumn branches in clear daylight"
+      },
+      "reference": "backups/lookbook-2026-11-17/reference-2.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-d3423a6bee5844d6/main-c6Rb9KDfovCEiBBQpD7BlnWxetf1Cj.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8645627102",
+      "dimensionsCm": [
+        22,
+        33,
+        14
+      ],
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 34페이지의 124S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "prompt": "Use case: photorealistic-natural. Create exactly ONE portrait1024x1536 Korean street-fashion LookBook photograph, Musinsa Snap inspired without copying any real person. Attached image is an EXACT PRODUCT reference, not a collage or pose template. Preserve silhouette, pockets, all handles, straps, zipper locations, hardware, colors, logo and true human-relative exterior dimensions. Fictional attractive adult, expressive face, natural stylish clothing and hands, no watermark or text overlay, no invented bag features, no chest belts, extra charms, extra bags or invented straps. Exact Himawari No.124S MINT mini backpack, exterior22cm wide33high14deep, catalogue2026-09-14page34. Pale mint tall rounded rectangular body, single large lower front pocket with black horizontal zipper and long black pull at viewer-left, tan/caramel narrow bottom strip, paired mint handles with black fastening tab at the top, two black circular rivets on each mint handle base, small black rectangular Himawari label centered on upper face, slim black main zipper tracks on each side, mint side pockets and original black shoulder straps. No extra lower pouch or decorative emblem. A stylish fictional Korean adult woman around29 with shoulder-length dark hair wears a brown leather blouson jacket, cream knit, straight charcoal trousers and off-white sneakers. Candid walking photograph on a narrow pedestrian bridge across a small quiet urban waterway. Full body including both shoes and head, person occupies only60percent of image height so there is visible bridge railing, water and old brick building context. Camera from about5meters away at chest height, side-three-quarter view so her relaxed face is visible in profile and the bag FRONT and tan bottom face the camera. She wears BOTH original backpack shoulder straps; no invented long crossbody handle, bag centered normally on her back. At this viewpoint one original strap can be partly hidden naturally. Keep realistic small33cm bag scale, bag about18percent image height and completely visible. One foot naturally forward in an unhurried step, no exaggerated runway pose. Clear November morning daylight and crisp natural shadows, quiet architecture, no readable signs, no other people or luggage.\n\nUser-requested targeted edit:\nPrecisely EDIT image1 (existing generated LookBook photograph). Image2 is only the exact real product reference for fidelity. The user says the woman's legs in image1 look anatomically wrong. Correct ONLY the lower-body stance and leg/foot anatomy so it looks convincingly natural. Keep the woman's same face, hair, expression, brown leather jacket and cream knit, charcoal straight trousers, off-white sneakers, exact mint Himawari No.124S backpack and all its details, lighting, bridge, railing, water and brick building unchanged. Keep portrait1024x1536. Give her a relaxed, grounded standing pause rather than a cross-legged walking step: two legs visibly separate, both knees anatomically aligned with hips and ankles, one foot a small half-step ahead and the other foot next to it with natural hip-width spacing, both soles on the bridge deck. No crossed/scissored legs, twisted knees, disconnected feet, reverse ankles, unusually long shins or fused trousers. Show both whole shoes with correct left/right orientation and consistent perspective, each foot attached naturally to its own leg. Retain realistic adult proportions and the same camera perspective, upper-body pose and head turn. Preserve the exact real mint small bag exterior22x33x14cm, black horizontal front zipper, tan narrow bottom strip, black label, paired mint handles with two black rivets each and original black straps. Do not change bag size, color or shape, no new straps/accessories, no collage or text overlays.",
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-17/generated-2.png",
+      "image": "/assets/lookbook/2026-11-17-travel-124s.webp",
+      "thumbnail": "/assets/lookbook/2026-11-17-travel-124s-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "실제 민트 원본과 생성물을 직접 보았습니다. 연한 민트 몸판·두 손잡이와 위 검정 결합탭, 각 받침의 검정 원형 리벳2개, 작은 검정 Himawari 라벨, 앞 가로 검정 지퍼·왼쪽 긴 손잡이, 옆 주머니·원래 검정 어깨끈과 좁은 갈색 바닥띠가 유지됩니다.22×33×14cm 외형과 작은 백팩의 몸 대비 비율을 확인했습니다. 양발·신발·얼굴·팔과 걷는 자세가 자연스럽고 새 파우치·장식·긴 보조끈이 없습니다. 출력에서 사람 점유가 계획60%보다 큰 약80%여서 실제 composition을 수정했습니다. 그래도 첫 사진과 달리 머리부터 양신발까지의 전신·옆뒤각도·물길/다리배경·두어깨끈 착용을 담습니다. 사용자가 다리 자세를 지적해 두번째 사진만 수정했습니다. 수정본을 원본 및 수정전과 직접 대조했습니다. 두 다리가 교차하지 않고 고관절·무릎·발목이 이어지며 두 신발의 밑창이 바닥에 자연스럽게 놓입니다. 얼굴·갈색 재킷·민트 백팩의 색·앞 지퍼·갈색 바닥띠·손잡이·로고·검정 끈과 배경을 유지했습니다. 걷는 설명은 실제 서 있는 모습에 맞춰 고쳤습니다.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-ef298c31-128c-4efb-a182-9902ffd341bb.png",
+      "generatedSha256": "887d6ca05d5c8fcd400568bf65b5483f178fd76da31ef8c94b84156ffa2c5c8b",
+      "promptBeforeLegCorrection": "Use case: photorealistic-natural. Create exactly ONE portrait1024x1536 Korean street-fashion LookBook photograph, Musinsa Snap inspired without copying any real person. Attached image is an EXACT PRODUCT reference, not a collage or pose template. Preserve silhouette, pockets, all handles, straps, zipper locations, hardware, colors, logo and true human-relative exterior dimensions. Fictional attractive adult, expressive face, natural stylish clothing and hands, no watermark or text overlay, no invented bag features, no chest belts, extra charms, extra bags or invented straps. Exact Himawari No.124S MINT mini backpack, exterior22cm wide33high14deep, catalogue2026-09-14page34. Pale mint tall rounded rectangular body, single large lower front pocket with black horizontal zipper and long black pull at viewer-left, tan/caramel narrow bottom strip, paired mint handles with black fastening tab at the top, two black circular rivets on each mint handle base, small black rectangular Himawari label centered on upper face, slim black main zipper tracks on each side, mint side pockets and original black shoulder straps. No extra lower pouch or decorative emblem. A stylish fictional Korean adult woman around29 with shoulder-length dark hair wears a brown leather blouson jacket, cream knit, straight charcoal trousers and off-white sneakers. Candid walking photograph on a narrow pedestrian bridge across a small quiet urban waterway. Full body including both shoes and head, person occupies only60percent of image height so there is visible bridge railing, water and old brick building context. Camera from about5meters away at chest height, side-three-quarter view so her relaxed face is visible in profile and the bag FRONT and tan bottom face the camera. She wears BOTH original backpack shoulder straps; no invented long crossbody handle, bag centered normally on her back. At this viewpoint one original strap can be partly hidden naturally. Keep realistic small33cm bag scale, bag about18percent image height and completely visible. One foot naturally forward in an unhurried step, no exaggerated runway pose. Clear November morning daylight and crisp natural shadows, quiet architecture, no readable signs, no other people or luggage.",
+      "toolOriginalBeforeLegCorrection": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-5bcfd343-870e-47f1-a4f2-d1da691e8edc.png",
+      "supersededGeneratedSource": "backups/lookbook-2026-11-17/generated-2.before-leg-fix.png"
+    }
+  ],
+  "visualReview": "backups/lookbook-2026-11-17/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-17/optimization.json",
+  "languageReview": "backups/lookbook-2026-11-17/korean-copy-review.json"
+}
