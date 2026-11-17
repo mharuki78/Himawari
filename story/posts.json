@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-laundry-net-machine-wash",
+    "title": "세탁망에 넣으면 백팩도 세탁기로 빨아도 될까",
+    "date": "2026-11-18",
+    "summary": "No.1230 민트의 관리 안내를 예로 세탁망과 세탁 허용 범위를 구별합니다. 손세탁·부분 관리·탈수까지 같은 허가로 묶지 않고 실제 가방에서 확인할 내용을 짚습니다.",
+    "description": "No.1230 민트의 관리 안내를 예로 세탁망과 세탁 허용 범위를 구별합니다. 손세탁·부분 관리·탈수까지 같은 허가로 묶지 않고 실제 가방에서 확인할 내용을 짚습니다.",
+    "tags": [
+      "세탁망",
+      "부분 관리",
+      "세탁 안내"
+    ],
+    "image": "../assets/story/backpack-laundry-net-machine-wash.webp",
+    "imageAlt": "AI 연출: No.1230 민트 백팩과 따로 놓은 빈 세탁망·부드러운 천",
+    "images": [
+      "../assets/story/backpack-laundry-net-machine-wash.webp",
+      "../assets/story/backpack-laundry-net-machine-wash-detail.webp",
+      "../assets/story/backpack-laundry-net-machine-wash-reference.webp"
+    ],
+    "url": "backpack-laundry-net-machine-wash.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "관리 방법의 허용 범위를 따지는 문답"
+  },
+  {
+    "id": "backpack-weight-not-load-rating",
+    "title": "백팩 무게 800g, 몇 kg까지 담아도 된다는 뜻일까",
+    "date": "2026-11-18",
+    "summary": "No.124 블랙의 800g 표기를 읽으며 빈 가방 무게와 담을 수 있는 무게를 구분합니다. 외부 치수, 끈 모양, 직접 잰 총중량으로도 대신할 수 없는 하중 정보를 살펴봅니다.",
+    "description": "No.124 블랙의 800g 표기를 읽으며 빈 가방 무게와 담을 수 있는 무게를 구분합니다. 외부 치수, 끈 모양, 직접 잰 총중량으로도 대신할 수 없는 하중 정보를 살펴봅니다.",
+    "tags": [
+      "제품 무게",
+      "허용 하중",
+      "사양 읽기"
+    ],
+    "image": "../assets/story/backpack-weight-not-load-rating.webp",
+    "imageAlt": "AI 연출: No.124 블랙 백팩 옆에 따로 놓인 빈 화면의 저울",
+    "images": [
+      "../assets/story/backpack-weight-not-load-rating.webp",
+      "../assets/story/backpack-weight-not-load-rating-detail.webp",
+      "../assets/story/backpack-weight-not-load-rating-reference.webp"
+    ],
+    "url": "backpack-weight-not-load-rating.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "무게 표기의 단위와 대상을 대조하는 해설"
+  },
+  {
+    "id": "backpack-mesh-pocket-wet-umbrella",
+    "title": "메쉬 옆 포켓이면 젖은 우산을 바로 넣어도 될까",
+    "date": "2026-11-18",
+    "summary": "No.9291 라벤더의 메쉬 옆 포켓을 살피며 접은 우산의 길이와 물기, 포켓 안에서 닿는 면을 나눕니다. 비를 피한 뒤 우산을 옮기고 귀가해 꺼내는 동작을 따라갑니다.",
+    "description": "No.9291 라벤더의 메쉬 옆 포켓을 살피며 접은 우산의 길이와 물기, 포켓 안에서 닿는 면을 나눕니다. 비를 피한 뒤 우산을 옮기고 귀가해 꺼내는 동작을 따라갑니다.",
+    "tags": [
+      "메쉬 포켓",
+      "젖은 우산",
+      "사용 동작"
+    ],
+    "image": "../assets/story/backpack-mesh-pocket-wet-umbrella.webp",
+    "imageAlt": "AI 사용 연출: 비를 피한 입구에서 No.9291 라벤더 백팩과 우산을 따로 둔 성인 남성",
+    "images": [
+      "../assets/story/backpack-mesh-pocket-wet-umbrella.webp",
+      "../assets/story/backpack-mesh-pocket-wet-umbrella-detail.webp",
+      "../assets/story/backpack-mesh-pocket-wet-umbrella-reference.webp"
+    ],
+    "url": "backpack-mesh-pocket-wet-umbrella.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "비 오는 날 우산을 옮기는 장면별 선택"
+  },
+  {
     "id": "backpack-shoulder-cover-seam-direction",
     "title": "백팩 어깨끈 커버가 돌아가면, 겹친 면부터 다시 보기",
     "date": "2026-11-17",
