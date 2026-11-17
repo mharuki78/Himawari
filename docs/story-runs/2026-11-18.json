@@ -8,7 +8,7 @@
   "scheduledSlot": "2026-11-18T08:00:00+09:00",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
-  "stage": "corrected-metadata-ready",
+  "stage": "photo-logo-restoration",
   "publicationBaselineCommit": "7b88e2e9158e0f1c352882bdcc154ffc5daf908f",
   "publicationBaselineEvidence": "backups/story-2026-11-18/baseline-deployment.json",
   "completionReceipt": "backups/story-runs/2026-11-18.deployment.json",
@@ -197,7 +197,7 @@
       "editorialForm": "비 오는 날 우산을 옮기는 장면별 선택",
       "coreQuestion": "메쉬 옆 포켓의 열린 부분을 확인하는 것과 젖은 우산의 물기를 안쪽 짐에서 분리하는 것은 어떻게 다를까?",
       "summary": "No.9291 라벤더의 메쉬 옆 포켓을 살피며 접은 우산의 길이와 물기, 포켓 안에서 닿는 면을 나눕니다. 비를 피한 뒤 우산을 옮기고 귀가해 꺼내는 동작을 따라갑니다.",
-      "publicationStatus": "verified",
+      "publicationStatus": "awaiting-content-deployment",
       "images": [
         {
           "image": "assets/story/backpack-mesh-pocket-wet-umbrella.webp",
@@ -207,17 +207,17 @@
           "sourceUrl": "https://shop-phinf.pstatic.net/20260416_30/1776315459037ny7Nf_JPEG/108348427949227048_692471493.jpg",
           "width": 1536,
           "height": 1024,
-          "bytes": 173800,
-          "sha256": "d551d8d2f9bd037a08839810c638bd213aa3119f58682582afa7692acf70dad2",
+          "bytes": 212352,
+          "sha256": "c397b02608a12a2f9ca8610741162d8f4bedbc044ab5f857fc6ef973c98ca702",
           "alt": "AI 사용 연출: 비를 피한 입구에서 No.9291 라벤더 백팩과 우산을 따로 둔 성인 남성",
           "caption": "AI 사용 연출 이미지입니다. 가상의 성인 인물이 우산을 들고 가방은 벤치에 따로 두었습니다. 실제 고객의 경험이나 방수 시험을 보여주지 않습니다.",
           "fidelityReviewed": true,
-          "review": "실제 원본과 교정된 생성본 두 장을 직접 열어 라벤더 본체, 회색 메쉬 앞·옆 포켓·상부 가로 버클, 작은 파우치와 하단 번지끈·지퍼·손잡이·로고 위치, 31×45×15cm 비율을 대조했습니다. 원본에 없는 큰 흰색 로고가 추가된 초안 두 장은 제외하고 해당 글자만 지운 교정본의 plain 메쉬를 재검수했습니다. 성인 남성의 자연스러운 손과 우산 분리 장면, 옆 포켓의 별도 우산 근접 구도를 구별합니다.",
+          "review": "실제 원본의 앞 메쉬를 확대해 큰 흰색 Himawari 글자가 원래 존재함을 재확인했습니다. 이를 보존한 최초 생성본을 채택하고 글자를 지운 두 결과는 제외했습니다. 라벤더 본체·회색 앞/옆 메쉬·버클·파우치·하단 번지끈·지퍼·작은 로고·31×45×15cm 비율과 성인 인물 및 별도 우산 배치를 직접 대조했습니다.",
           "generatedSource": "backups/story-2026-11-18/generated-5.png",
-          "prompt": "Create exactly ONE photorealistic landscape editorial photo, 1536x1024. Use the attached image as an exact BAG product reference only. Preserve the real product silhouette, proportions, original small Himawari logo, colors, pocket geometry, handles, straps, zips and hardware. No redesigned bag, no extra pockets or functions, no text overlays, no collage, no performance demonstration. No.9291 LAVENDER backpack external31cm wide45high15deep, exactly match lavender round tall body, pale grey upper front mesh pocket with horizontal lavender zipper, little original lavender edged pouch, lower lavender front bungee pocket, pale grey side mesh pocket and grey horizontal buckle, original grey/lavender shoulder straps and small logo badges. New fictional adult Korean man around30 with short dark hair and clean natural face wears charcoal chore jacket, pale grey knit and navy trousers in contemporary relaxed Korean streetwear. Under covered brick entryway after rain, he stands still beside a wooden bench with CLOSED backpack on it; he holds a CLOSED plain short grey umbrella separately away from bag. Waist-up environmental front-side three-quarter, bag front and mesh side clearly visible, bag45percent frame. No copying the reference model or clothing, no umbrella inserted, no visible water on bag, no invented performance test.\nCorrection: Edit ONLY the unsupported oversized white 'Himawari' lettering printed across the grey front mesh pocket: remove that lettering completely, replacing it with the same plain grey mesh texture and plain lavender backing seen in the actual product reference (image 2). Keep the SMALL original rectangular Himawari badge above the front mesh, the small original pouch badge, and all original small hardware branding. Preserve everything else from image 1 exactly: original bag shape, 31x45x15cm scale, lavender/grey colors, mesh pattern, zipper locations, strap and buckle, pouch, lower bungee, composition, props, lighting and (if present) the fictional adult person/pose. No new logos, no new writing, no layout change. Return exactly ONE landscape1536x1024 photograph.",
-          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-e3069935-d985-4c75-a5a9-da92377068ce.png",
-          "rejectedGeneratedSource": "backups/story-2026-11-18/generated-5.rejected.png",
-          "correctionReview": "원본에 없는 큰 흰색 Himawari 글자를 제거하고 작은 실제 로고·원단·형태·색·구도·인물과 우산 배치를 유지한 결과를 직접 다시 검수했습니다."
+          "prompt": "Create exactly ONE photorealistic landscape editorial photo, 1536x1024. Use the attached image as an exact BAG product reference only. Preserve the real product silhouette, proportions, original small Himawari logo, colors, pocket geometry, handles, straps, zips and hardware. No redesigned bag, no extra pockets or functions, no text overlays, no collage, no performance demonstration. No.9291 LAVENDER backpack external31cm wide45high15deep, exactly match lavender round tall body, pale grey upper front mesh pocket with horizontal lavender zipper, little original lavender edged pouch, lower lavender front bungee pocket, pale grey side mesh pocket and grey horizontal buckle, original grey/lavender shoulder straps and small logo badges. New fictional adult Korean man around30 with short dark hair and clean natural face wears charcoal chore jacket, pale grey knit and navy trousers in contemporary relaxed Korean streetwear. Under covered brick entryway after rain, he stands still beside a wooden bench with CLOSED backpack on it; he holds a CLOSED plain short grey umbrella separately away from bag. Waist-up environmental front-side three-quarter, bag front and mesh side clearly visible, bag45percent frame. No copying the reference model or clothing, no umbrella inserted, no visible water on bag, no invented performance test.",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-d821b250-0e89-4e94-864b-31ce8faa0a19.png",
+          "rejectedGeneratedSource": "backups/story-2026-11-18/generated-5.logo-removed-rejected.png",
+          "reinspectionReview": "원본 reference-3-logo-review.png 확대에서 확인한 흰색 글자를 유지한 최초 결과를 최종 채택했습니다. 제거 결과는 게시하지 않습니다."
         },
         {
           "image": "assets/story/backpack-mesh-pocket-wet-umbrella-detail.webp",
@@ -227,17 +227,17 @@
           "sourceUrl": "https://shop-phinf.pstatic.net/20260416_30/1776315459037ny7Nf_JPEG/108348427949227048_692471493.jpg",
           "width": 1536,
           "height": 1024,
-          "bytes": 277940,
-          "sha256": "0ad37508617288788036c1035a5a1ce3c31688b11cb554461a9df5f64bc87bb5",
+          "bytes": 315092,
+          "sha256": "f77b650ea7ca40cc2cabddeb1f55353b5c1a2196ab09dc3e08cd07868164e9a1",
           "alt": "AI 연출: No.9291 라벤더 옆 메쉬 포켓과 바깥에 놓은 덮개 속 우산",
-          "caption": "AI 연출 이미지입니다. 덮개를 씌운 우산은 포켓 바깥에 놓았습니다. 실제 수납 치수·고정·배수·덮개의 방수 성능을 확인한 사진이 아닙니다.",
+          "caption": "AI 연출 이미지입니다. 원본에서 확인한 앞 메쉬의 흰색 글자와 옆 포켓을 함께 표현했습니다. 덮개를 씌운 우산은 포켓 바깥에 놓았으며 실제 수납 치수·고정·배수·덮개의 방수 성능을 확인한 사진이 아닙니다.",
           "fidelityReviewed": true,
-          "review": "실제 원본과 교정된 생성본 두 장을 직접 열어 라벤더 본체, 회색 메쉬 앞·옆 포켓·상부 가로 버클, 작은 파우치와 하단 번지끈·지퍼·손잡이·로고 위치, 31×45×15cm 비율을 대조했습니다. 원본에 없는 큰 흰색 로고가 추가된 초안 두 장은 제외하고 해당 글자만 지운 교정본의 plain 메쉬를 재검수했습니다. 성인 남성의 자연스러운 손과 우산 분리 장면, 옆 포켓의 별도 우산 근접 구도를 구별합니다.",
+          "review": "실제 원본의 앞 메쉬를 확대해 큰 흰색 Himawari 글자가 원래 존재함을 재확인했습니다. 이를 보존한 최초 생성본을 채택하고 글자를 지운 두 결과는 제외했습니다. 라벤더 본체·회색 앞/옆 메쉬·버클·파우치·하단 번지끈·지퍼·작은 로고·31×45×15cm 비율과 성인 인물 및 별도 우산 배치를 직접 대조했습니다.",
           "generatedSource": "backups/story-2026-11-18/generated-6.png",
-          "prompt": "Create exactly ONE photorealistic landscape editorial photo, 1536x1024. Use the attached image as an exact BAG product reference only. Preserve the real product silhouette, proportions, original small Himawari logo, colors, pocket geometry, handles, straps, zips and hardware. No redesigned bag, no extra pockets or functions, no text overlays, no collage, no performance demonstration. SAME No.9291 LAVENDER31x45x15cm in close side-front three-quarter view resting on a dry pale stone ledge. Show exactly the original grey open side mesh pocket, lavender body edge, side buckle and part of upper front mesh zip pocket and lower bungee pocket. A closed short plain grey umbrella inside its separate simple grey water-resistant-looking sleeve rests BESIDE the bag, clearly not in the side pocket. No claimed sleeve waterproof rating, no liquid or testing, no stretched pocket and no invented lining. Soft overcast light, tactile mesh texture, bag dominates frame.\nCorrection: Edit ONLY the unsupported oversized white 'Himawari' lettering printed across the grey front mesh pocket: remove that lettering completely, replacing it with the same plain grey mesh texture and plain lavender backing seen in the actual product reference (image 2). Keep the SMALL original rectangular Himawari badge above the front mesh, the small original pouch badge, and all original small hardware branding. Preserve everything else from image 1 exactly: original bag shape, 31x45x15cm scale, lavender/grey colors, mesh pattern, zipper locations, strap and buckle, pouch, lower bungee, composition, props, lighting and (if present) the fictional adult person/pose. No new logos, no new writing, no layout change. Return exactly ONE landscape1536x1024 photograph.",
-          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-87a840a9-0052-4773-8167-77ac22d95648.png",
-          "rejectedGeneratedSource": "backups/story-2026-11-18/generated-6.rejected.png",
-          "correctionReview": "원본에 없는 큰 흰색 Himawari 글자를 제거하고 작은 실제 로고·원단·형태·색·구도·인물과 우산 배치를 유지한 결과를 직접 다시 검수했습니다."
+          "prompt": "Create exactly ONE photorealistic landscape editorial photo, 1536x1024. Use the attached image as an exact BAG product reference only. Preserve the real product silhouette, proportions, original small Himawari logo, colors, pocket geometry, handles, straps, zips and hardware. No redesigned bag, no extra pockets or functions, no text overlays, no collage, no performance demonstration. SAME No.9291 LAVENDER31x45x15cm in close side-front three-quarter view resting on a dry pale stone ledge. Show exactly the original grey open side mesh pocket, lavender body edge, side buckle and part of upper front mesh zip pocket and lower bungee pocket. A closed short plain grey umbrella inside its separate simple grey water-resistant-looking sleeve rests BESIDE the bag, clearly not in the side pocket. No claimed sleeve waterproof rating, no liquid or testing, no stretched pocket and no invented lining. Soft overcast light, tactile mesh texture, bag dominates frame.",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-82c65a98-757d-4ab8-9ded-6fd101d3e2a5.png",
+          "rejectedGeneratedSource": "backups/story-2026-11-18/generated-6.logo-removed-rejected.png",
+          "reinspectionReview": "원본 reference-3-logo-review.png 확대에서 확인한 흰색 글자를 유지한 최초 결과를 최종 채택했습니다. 제거 결과는 게시하지 않습니다."
         },
         {
           "image": "assets/story/backpack-mesh-pocket-wet-umbrella-reference.webp",
@@ -259,11 +259,7 @@
       "publication": {
         "publishedAt": "2026-11-17T23:28:15.651Z",
         "firstDeploymentEvidence": "backups/story-2026-11-18/first-deployment.json",
-        "firstDeploymentHistoryEvidence": "backups/story-2026-11-18/first-deployment-history.json",
-        "modifiedAt": "2026-11-17T23:39:41.781Z",
-        "modificationDeploymentEvidence": "backups/story-2026-11-18/modification-deployment.json",
-        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-18/modification-deployment-history.json",
-        "articleSha256": "8c9d9692722f69d0116fe40a521d13eaa24b28755d63fd42a2b103e2d31e4836"
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-18/first-deployment-history.json"
       }
     }
   ]
