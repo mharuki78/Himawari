@@ -30,3 +30,5 @@ deuter 공식 관리 안내는 자사 백팩의 세탁기 회피 설명만 참�
 ## 검증과 배포
 
 본문은 각각 2692·2831·2656자로 최소 길이를 충족한다. 날짜별 스키마 갱신과 준비 검증에서 3편·9장·생성 6장·awaiting-first-deployment를 확인했다. 전체 테스트 486개가 통과했다. 운영 최초 공개와 메타데이터 보완 배포, Chrome PC·모바일 화면·사진·실제 제품 링크·홈 최신 이야기·RSS 및 --published 결과는 원본 receipt와 배포 이력에서 확인한다. 완료 검증 전에는 완료로 알리지 않는다.
+
+전체486개 테스트와 준비 검증이 통과했다. 최초 콘텐츠 커밋 1ea9a33645d32233db15949cc1e9a12e5d1905a8의 production dpl_5fHSVSjwNmtyJ9Xrwei2Nk3XJkCK가 실제 2026-11-17T23:28:15.651Z에 READY였다. 기준 READY부터 배포 목록을 끝까지 조회한 결과1페이지·후보1건이며 마지막 pagination.next는 제공자가 생략했다. Git의 최초 콘텐츠에는시각이 없음을 대조했다. 원본 first-deployment.json·first-deployment-history.json을 보존하고 이 시각과 완전한 article 해시만 목록·manifest·RSS·JSON-LD에 반영한다.
