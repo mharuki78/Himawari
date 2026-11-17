@@ -8,7 +8,7 @@
   "scheduledSlot": "2026-11-18T08:00:00+09:00",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
-  "stage": "metadata-ready",
+  "stage": "visible-date-correction",
   "publicationBaselineCommit": "7b88e2e9158e0f1c352882bdcc154ffc5daf908f",
   "publicationBaselineEvidence": "backups/story-2026-11-18/baseline-deployment.json",
   "completionReceipt": "backups/story-runs/2026-11-18.deployment.json",
@@ -31,7 +31,7 @@
       "editorialForm": "관리 방법의 허용 범위를 따지는 문답",
       "coreQuestion": "백팩을 세탁망에 넣거나 약한 세탁 코스를 고르면 제품의 세탁기 사용을 피하라는 안내를 바꿔 읽어도 될까?",
       "summary": "No.1230 민트의 관리 안내를 예로 세탁망과 세탁 허용 범위를 구별합니다. 손세탁·부분 관리·탈수까지 같은 허가로 묶지 않고 실제 가방에서 확인할 내용을 짚습니다.",
-      "publicationStatus": "verified",
+      "publicationStatus": "awaiting-content-deployment",
       "images": [
         {
           "image": "assets/story/backpack-laundry-net-machine-wash.webp",
@@ -88,12 +88,8 @@
       "bodyChars": 2692,
       "publication": {
         "publishedAt": "2026-11-17T23:28:15.651Z",
-        "modifiedAt": "2026-11-17T23:28:15.651Z",
         "firstDeploymentEvidence": "backups/story-2026-11-18/first-deployment.json",
-        "firstDeploymentHistoryEvidence": "backups/story-2026-11-18/first-deployment-history.json",
-        "modificationDeploymentEvidence": "backups/story-2026-11-18/first-deployment.json",
-        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-18/first-deployment-history.json",
-        "articleSha256": "77904554af69688da7d1815f2b66de22a8c5836d4302617e2b032d89c56fd720"
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-18/first-deployment-history.json"
       }
     },
     {
@@ -114,7 +110,7 @@
       "editorialForm": "무게 표기의 단위와 대상을 대조하는 해설",
       "coreQuestion": "백팩 자체 무게와 최대 적재량은 어떤 정보를 담으며 빈 가방 무게에서 허용 하중을 계산할 수 있을까?",
       "summary": "No.124 블랙의 800g 표기를 읽으며 빈 가방 무게와 담을 수 있는 무게를 구분합니다. 외부 치수, 끈 모양, 직접 잰 총중량으로도 대신할 수 없는 하중 정보를 살펴봅니다.",
-      "publicationStatus": "verified",
+      "publicationStatus": "awaiting-content-deployment",
       "images": [
         {
           "image": "assets/story/backpack-weight-not-load-rating.webp",
@@ -171,12 +167,8 @@
       "bodyChars": 2831,
       "publication": {
         "publishedAt": "2026-11-17T23:28:15.651Z",
-        "modifiedAt": "2026-11-17T23:28:15.651Z",
         "firstDeploymentEvidence": "backups/story-2026-11-18/first-deployment.json",
-        "firstDeploymentHistoryEvidence": "backups/story-2026-11-18/first-deployment-history.json",
-        "modificationDeploymentEvidence": "backups/story-2026-11-18/first-deployment.json",
-        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-18/first-deployment-history.json",
-        "articleSha256": "3dde40fffc4a62c6bfed937c3455032d9103cd31ccad5154efaf47bfc97e17e4"
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-18/first-deployment-history.json"
       }
     },
     {
@@ -197,7 +189,7 @@
       "editorialForm": "비 오는 날 우산을 옮기는 장면별 선택",
       "coreQuestion": "메쉬 옆 포켓의 열린 부분을 확인하는 것과 젖은 우산의 물기를 안쪽 짐에서 분리하는 것은 어떻게 다를까?",
       "summary": "No.9291 라벤더의 메쉬 옆 포켓을 살피며 접은 우산의 길이와 물기, 포켓 안에서 닿는 면을 나눕니다. 비를 피한 뒤 우산을 옮기고 귀가해 꺼내는 동작을 따라갑니다.",
-      "publicationStatus": "verified",
+      "publicationStatus": "awaiting-content-deployment",
       "images": [
         {
           "image": "assets/story/backpack-mesh-pocket-wet-umbrella.webp",
@@ -258,12 +250,8 @@
       "bodyChars": 2656,
       "publication": {
         "publishedAt": "2026-11-17T23:28:15.651Z",
-        "modifiedAt": "2026-11-17T23:28:15.651Z",
         "firstDeploymentEvidence": "backups/story-2026-11-18/first-deployment.json",
-        "firstDeploymentHistoryEvidence": "backups/story-2026-11-18/first-deployment-history.json",
-        "modificationDeploymentEvidence": "backups/story-2026-11-18/first-deployment.json",
-        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-18/first-deployment-history.json",
-        "articleSha256": "4f6c7c26e049220d7387e7f2714dd4988644e4f5c5e1c748c16b0e42394c7f29"
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-18/first-deployment-history.json"
       }
     }
   ]
