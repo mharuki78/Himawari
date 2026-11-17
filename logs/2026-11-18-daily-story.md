@@ -34,3 +34,5 @@ deuter 공식 관리 안내는 자사 백팩의 세탁기 회피 설명만 참�
 전체486개 테스트와 준비 검증이 통과했다. 최초 콘텐츠 커밋 1ea9a33645d32233db15949cc1e9a12e5d1905a8의 production dpl_5fHSVSjwNmtyJ9Xrwei2Nk3XJkCK가 실제 2026-11-17T23:28:15.651Z에 READY였다. 기준 READY부터 배포 목록을 끝까지 조회한 결과1페이지·후보1건이며 마지막 pagination.next는 제공자가 생략했다. Git의 최초 콘텐츠에는시각이 없음을 대조했다. 원본 first-deployment.json·first-deployment-history.json을 보존하고 이 시각과 완전한 article 해시만 목록·manifest·RSS·JSON-LD에 반영한다.
 
 운영 PC·모바일 사진을 직접 대조하다 본문 헤더의 한글 표시 날짜가 템플릿의 11월 17일로 남은 것을 발견했다. 원래 date·URL·publishedAt·최초 배포 및 최초 이력·승인 사진은 유지한다. 표시 날짜만 11월 18일로 교정하고 변경된 전체 article의 실제 수정 배포와 별도 이력에서 modifiedAt을 확인한다. 날짜 숫자 표시는 DOM 검사에도 추가했다.
+
+표시 날짜 교정의 실제 본문 커밋 97290e944c0e7cb0c0e9f50265e982c49fbc68a1 / dpl_7v7HRcmMjEVefyVpPufyzxWmcaa9 READY 2026-11-17T23:39:41.781Z를 확인했다. 원래 baseline부터 완료된 배포 목록 1페이지·READY 후보 3건의 전체 article을 대조해 처음 교정본이 공개된 배포를 선택했다. 최초 공개 2026-11-17T23:28:15.651Z와 최초 이력은 보존했고 modifiedAt 및 수정 이력·완전한 article 해시만 새 근거에 맞췄다.
