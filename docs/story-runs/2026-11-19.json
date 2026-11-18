@@ -8,7 +8,7 @@
   "scheduledSlot": "2026-11-19T08:00:00+09:00",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
-  "stage": "prepared-content",
+  "stage": "metadata-ready",
   "publicationBaselineCommit": "9adaa949ede9a9cb32eb636e2f0b3d8fb4b509aa",
   "publicationBaselineEvidence": "backups/story-2026-11-19/baseline-deployment.json",
   "completionReceipt": "backups/story-runs/2026-11-19.deployment.json",
@@ -31,7 +31,7 @@
         "depth": 17
       },
       "dimensionsSource": "2026-09-14 제조사 카탈로그 28페이지의 1027 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "images": [
         {
           "image": "assets/story/backpack-hanging-pouch-turns.webp",
@@ -85,7 +85,16 @@
           "review": "제품 원본을 직접 열어 색상, 형태, 사용하는 부품과 공개 사양을 대조했다."
         }
       ],
-      "bodyChars": 2587
+      "bodyChars": 2587,
+      "publication": {
+        "publishedAt": "2026-11-18T23:24:23.108Z",
+        "modifiedAt": "2026-11-18T23:24:23.108Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-19/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-19/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-19/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-19/first-deployment-history.json",
+        "articleSha256": "a129fab01cce2f7e2e99d63e1dc5f5101d8ebf963152bd86b10004342bf305aa"
+      }
     },
     {
       "id": "backpack-height-top-handle-inclusion",
@@ -105,7 +114,7 @@
         "depth": 17
       },
       "dimensionsSource": "히마와리 2026 제품 가이드북 PDF 29페이지 기준. 외부 크기는 가로 × 세로 × 폭 순서입니다.",
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "images": [
         {
           "image": "assets/story/backpack-height-top-handle-inclusion.webp",
@@ -159,7 +168,16 @@
           "review": "제품 원본을 직접 열어 색상, 형태, 사용하는 부품과 공개 사양을 대조했다."
         }
       ],
-      "bodyChars": 2547
+      "bodyChars": 2547,
+      "publication": {
+        "publishedAt": "2026-11-18T23:24:23.108Z",
+        "modifiedAt": "2026-11-18T23:24:23.108Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-19/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-19/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-19/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-19/first-deployment-history.json",
+        "articleSha256": "a420bbe883f195476218d78468d0b2b2ad7ec2d19e56fcfdd47bede74fed9021"
+      }
     },
     {
       "id": "backpack-original-label-lift-care",
@@ -179,7 +197,7 @@
         "depth": 17
       },
       "dimensionsSource": "2026-09-14 제조사 카탈로그 62페이지의 9001 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "images": [
         {
           "image": "assets/story/backpack-original-label-lift-care.webp",
@@ -234,7 +252,16 @@
           "review": "제품 원본을 직접 열어 색상, 형태, 사용하는 부품과 공개 사양을 대조했다."
         }
       ],
-      "bodyChars": 2526
+      "bodyChars": 2526,
+      "publication": {
+        "publishedAt": "2026-11-18T23:24:23.108Z",
+        "modifiedAt": "2026-11-18T23:24:23.108Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-19/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-19/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-19/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-19/first-deployment-history.json",
+        "articleSha256": "72c038155bb160cdadf9adf654ae5c4bba3b027652f71e0dfbc41550ce12e8f3"
+      }
     }
   ]
 }
