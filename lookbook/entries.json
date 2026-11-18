@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-18-city-9018",
+    "date": "2026-11-18",
+    "category": "city",
+    "title": "전차 정류장에서",
+    "model": "9018",
+    "color": "네이비",
+    "productId": "coupang-69b90046e4f0ae93",
+    "scene": "회색 재킷에 네이비 백팩을 메고 전차를 기다려요. 갈색 버클 장식이 가까이 보여요.",
+    "alt": "전차 정류장에서 네이비 No.9018 백팩을 멘 사람의 옆뒤 상반신과 갈색 버클 장식을 가까이 담은 AI 착용 연출",
+    "image": "/assets/lookbook/2026-11-18-city-9018.webp",
+    "thumbnail": "/assets/lookbook/2026-11-18-city-9018-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-18-everyday-1027",
+    "date": "2026-11-18",
+    "category": "everyday",
+    "title": "카페 앞에서",
+    "model": "1027",
+    "color": "카키브라운",
+    "productId": "coupang-c03046593f9d7e57",
+    "scene": "짙은 코트에 청바지를 입고 카페 앞에 섰어요. 가방은 손잡이를 잡아 옆으로 들었어요.",
+    "alt": "카페 차양 아래에서 카키브라운 No.1027 백팩의 손잡이를 잡고 서 있는 사람의 전신과 주변 거리를 함께 담은 AI 착용 연출",
+    "image": "/assets/lookbook/2026-11-18-everyday-1027.webp",
+    "thumbnail": "/assets/lookbook/2026-11-18-everyday-1027-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-17-everyday-1884",
     "date": "2026-11-17",
     "category": "everyday",
