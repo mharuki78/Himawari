@@ -47,8 +47,14 @@
         </section>
         <div data-account-signed-in hidden>
           <section class="account-profile" aria-labelledby="account-profile-title">
-            <div><p class="kicker">My account</p><h2 id="account-profile-title" data-account-name>Himawari 회원</h2><p data-account-email></p></div>
-            <a href="privacy.html">개인정보 처리 안내 →</a>
+            <div class="account-profile__identity">
+              <p class="kicker">My account</p>
+              <h2 id="account-profile-title" data-account-name>Himawari 회원</h2>
+              <p data-account-email></p>
+            </div>
+            <a class="account-profile__privacy hmw-btn" href="privacy.html">
+              개인정보 처리 안내 <img src="/assets/icons/arrow-right.svg" alt="" width="14" height="14">
+            </a>
           </section>
           <section aria-labelledby="wishlist-title">
             <div class="section-head"><p class="kicker">Wish list</p><h2 id="wishlist-title" class="display-title">관심상품.</h2></div>
