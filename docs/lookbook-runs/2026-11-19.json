@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-19",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-18T23:58:55.737Z",
+    "scheduledAt": "2026-11-19T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-19/deployment.json",
+  "baselineCommit": "9a294ba1b63f1ced0229245e4c5ba8eb689bd47b",
+  "baselineEvidence": "backups/lookbook-2026-11-19/baseline-deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-19/products.json",
+  "recentVisualReview": "backups/lookbook-2026-11-19/recent-visual-review.md",
+  "entries": [
+    {
+      "productId": "coupang-6c09e607c31fa331",
+      "category": "everyday",
+      "model": "2513",
+      "color": "민트",
+      "title": "창가에 앉아",
+      "scene": "짙은 회색 니트에 청바지를 입었어요. 가방은 무릎에 올려두고 한 손으로 끈 손잡이를 잡았어요.",
+      "alt": "AI 착용 연출. 창가 의자에 앉아 No.2513 민트 가방을 무릎에 올려두고 끈 손잡이를 잡은 모습.",
+      "composition": {
+        "approach": "close product-led seated detail",
+        "angle": "slightly elevated frontal angle with face in profile",
+        "framing": "near crop from head to thighs; complete pouch body about 30 percent of frame height",
+        "activity": "seated with pouch supported on lap, holding original rope handle",
+        "setting": "wooden chair beside shared workspace table in window light"
+      },
+      "id": "2026-11-19-everyday-2513",
+      "date": "2026-11-19",
+      "reference": "backups/lookbook-2026-11-19/reference-1.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6c09e607c31fa331/main-6gVCtxywyhvmUsVIGgVwZKV6MYXaHZ.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9268264534",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 11페이지의 2513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "dimensionsCm": [
+        36.5,
+        28,
+        2
+      ],
+      "prompt": "One 1024x1536 portrait, candid Korean fashion editorial (Musinsa Snap mood), not a product collage. Reference is the exact Himawari No.2513 mint laptop pouch, external 36.5cm wide × 28cm high × 2cm thick. Keep a thin horizontal rectangle, light yellow-green mint quilted wavy material, black/dark navy piping around edges and upper zipper, original dark speckled rope handle (one high loop between two small metal rings) and two hanging rope ends with small silver beads/knots at left connection; large exact dark Himawari wordmark in center; no front pocket, no invented strap, no laptop or contents. Photo from near shoulder-height above foreground, 35 degrees looking down toward table edge, front slightly high three-quarter product-focused near crop. A fictional stylish adult Korean man in late thirties with short dark hair, textured charcoal knit and dark blue jeans, seated upright in a light wooden chair at the edge of a bright coworking table. Compose mainly from mid chest to thighs with a bit of face in profile upper left if it fits. On his lap, pouch angled upright with FULL front facing camera and its bottom supported by his upper legs, naturally using ONE hand on the original rope loop while the other rests on the chair. Hand and wrist natural. Product body about 35 percent of frame height and centered in lower half, actual 36.5cm width relative to adult torso, both connected ends clearly visible, original shape/2cm slim edge. Table behind small plain blank paper, cloudy window light from side, natural texture, no extra bags, marks, typography or overlays.",
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-19/generated-1.png",
+      "image": "/assets/lookbook/2026-11-19-everyday-2513.webp",
+      "thumbnail": "/assets/lookbook/2026-11-19-everyday-2513-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "실제 원본과 생성물을 직접 비교했다. 얇고 가로로 긴 모서리가 둥근 몸판, 옅은 연두빛 민트 물결 누빔, 짙은 테두리와 상단 지퍼, 은색 고리 두 개, 짙은 얼룩무늬 끈 손잡이, 왼쪽 매듭의 두 줄과 은색 장식, 전면 Himawari 글자가 유지된다. 앞주머니나 새 끈을 덧붙이지 않았다. 몸판은 화면 높이의 약 30%로, 가로 36.5cm인 제품이 무릎 위에 놓인 모습과 비율이 맞는다. 손목과 손가락의 연결, 의자와 허벅지에서 가방을 받치는 위치를 확인했다.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-e8b3a45b-8a5b-447c-868d-4ecb68cdda45.png",
+      "generatedSha256": "41d38726ab05661632b8879a94735df5c5633efbd0cdae444ba1a1585051ef9c"
+    },
+    {
+      "productId": "coupang-11bd051a162f120b",
+      "category": "travel",
+      "model": "9004",
+      "color": "연보라",
+      "title": "온실 입구에서",
+      "scene": "파란 패딩에 밝은 바지를 입고 온실 앞에 섰어요. 연보라 백팩의 코랄색 앞주머니가 보여요.",
+      "alt": "AI 착용 연출. 온실 앞에 서서 코랄색 앞주머니가 달린 No.9004 연보라 백팩을 멘 전신.",
+      "composition": {
+        "approach": "environmental still full-body portrait",
+        "angle": "waist-height side-rear-three-quarter",
+        "framing": "medium-distance full body with both shoes; person about 83 percent and bag including handles about 24 percent of frame height",
+        "activity": "standing flat-footed wearing original backpack shoulder straps",
+        "setting": "greenhouse entrance and low brick planter in soft afternoon light"
+      },
+      "id": "2026-11-19-travel-9004",
+      "date": "2026-11-19",
+      "reference": "backups/lookbook-2026-11-19/reference-2.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-11bd051a162f120b/main-5wbrlVTXbbG7fKLHymvuoqynDsrcy9.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8732967405",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 49페이지의 9004 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "prompt": "One 1024x1536 portrait, natural Korean autumn fashion editorial, exact reference Himawari No.9004 lavender 28cm wide × 40cm high × 17cm deep. Preserve boxy light lilac upper face and side sleeve, wearable pale lilac padded shoulder straps, paired rounded lilac top handles joined with a beige snap tab; two small muted metallic round rivets on each rectangular handle tab; centered khaki diamond label with the exact small white curved emblem; large coral rectangular lower front pocket with slim coral horizontal zipper and simple pale pull on viewer left; small white Himawari label on lower right of that coral pocket with tiny secondary print kept indistinct as in reference; muted beige-gray bottom trim, original side zipper and muted pulls. No added belts, pouches or accessories. A fictional adult Korean woman around 40, expressive short dark chestnut hair, straight oatmeal trousers and slate-blue padded jacket, dark simple flat shoes. Both original shoulder straps worn naturally; standing still close to low brick planter while looking to one side at a glass greenhouse entrance, no railing or lifting. Keep her face in side profile and the backpack FRONT plainly visible to the camera from an oblique side-rear view. Medium-distant full-body scene, camera at about waist height from 4 meters, complete head and both flat naturally placed foot soles visible, the upright person about 70% of frame height with 40cm bag about 20%, mild low oblique perspective, full body and glass windows and brick planter around her. Soft late afternoon light, warm leaves behind window, no readable signage, no hand covering backpack, no walking or crossed legs, no resemblance to person in reference.",
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-19/generated-2.png",
+      "image": "/assets/lookbook/2026-11-19-travel-9004.webp",
+      "thumbnail": "/assets/lookbook/2026-11-19-travel-9004-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "실제 원본과 생성물을 직접 비교했다. 연보라 몸판과 옆주머니, 연보라 어깨끈 두 개와 손잡이 두 개, 베이지 결합띠, 앞쪽 손잡이 받침의 리벳 두 쌍, 흰 곡선이 있는 마름모 라벨, 코랄색 가로 지퍼 포켓, 오른쪽 아래 흰 라벨과 회베이지 바닥띠가 유지된다. 흰 라벨의 작은 보조 글씨는 전신 거리에서 읽기 어렵지만 위치와 형태가 맞는다. 가방 높이는 화면의 약 24%로, 세로 40cm 제품의 등 착용 비율과 맞는다. 양쪽 바짓단에서 이어지는 발목과 신발, 두 밑창이 닿는 지면, 어깨끈과 팔의 위치를 확인했다.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-fb45d7cc-d3e1-4fbf-8723-bf295448a32e.png",
+      "generatedSha256": "558b46cfedc5221a6c238ea48cb11a5e71cd985fd2cc78a4e7122a0e1d6c44f8"
+    }
+  ],
+  "visualReview": "backups/lookbook-2026-11-19/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-19/optimization.json",
+  "languageReview": "backups/lookbook-2026-11-19/korean-copy-review.json",
+  "generationEvidence": "backups/lookbook-2026-11-19/generation-evidence.json"
+}

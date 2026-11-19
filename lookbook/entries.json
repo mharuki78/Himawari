@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-19-everyday-2513",
+    "date": "2026-11-19",
+    "category": "everyday",
+    "title": "창가에 앉아",
+    "model": "2513",
+    "color": "민트",
+    "productId": "coupang-6c09e607c31fa331",
+    "scene": "짙은 회색 니트에 청바지를 입었어요. 가방은 무릎에 올려두고 한 손으로 끈 손잡이를 잡았어요.",
+    "alt": "AI 착용 연출. 창가 의자에 앉아 No.2513 민트 가방을 무릎에 올려두고 끈 손잡이를 잡은 모습.",
+    "image": "/assets/lookbook/2026-11-19-everyday-2513.webp",
+    "thumbnail": "/assets/lookbook/2026-11-19-everyday-2513-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-19-travel-9004",
+    "date": "2026-11-19",
+    "category": "travel",
+    "title": "온실 입구에서",
+    "model": "9004",
+    "color": "연보라",
+    "productId": "coupang-11bd051a162f120b",
+    "scene": "파란 패딩에 밝은 바지를 입고 온실 앞에 섰어요. 연보라 백팩의 코랄색 앞주머니가 보여요.",
+    "alt": "AI 착용 연출. 온실 앞에 서서 코랄색 앞주머니가 달린 No.9004 연보라 백팩을 멘 전신.",
+    "image": "/assets/lookbook/2026-11-19-travel-9004.webp",
+    "thumbnail": "/assets/lookbook/2026-11-19-travel-9004-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-18-city-9018",
     "date": "2026-11-18",
     "category": "city",
