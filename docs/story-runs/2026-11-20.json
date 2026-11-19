@@ -8,7 +8,7 @@
   "scheduledSlot": "2026-11-20T08:00:00+09:00",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
-  "stage": "prepared-content",
+  "stage": "metadata-ready",
   "publicationBaselineCommit": "7113da3c9d00359ce9d3ad7d3c5da19ade653ee9",
   "publicationBaselineEvidence": "backups/story-2026-11-20/baseline-deployment.json",
   "completionReceipt": "backups/story-runs/2026-11-20.deployment.json",
@@ -31,7 +31,7 @@
         "depth": 2
       },
       "dimensionsSource": "2026-09-14 제조사 카탈로그 11페이지의 2513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "images": [
         {
           "image": "assets/story/laptop-pouch-quilting-cushioning-evidence.webp",
@@ -90,7 +90,16 @@
           "review": "현재 제품 카탈로그의 실제 원본을 직접 열고 색상, 로고, 몸판·끈·주머니, 제조사 치수 표기를 대조했다."
         }
       ],
-      "bodyChars": 2606
+      "bodyChars": 2606,
+      "publication": {
+        "publishedAt": "2026-11-19T23:26:33.719Z",
+        "modifiedAt": "2026-11-19T23:26:33.719Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-20/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-20/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-20/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-20/first-deployment-history.json",
+        "articleSha256": "9916201a4b5f08e3c6ab40a4aa13b3071a8fc9e77283b91854dfa5c485cda71a"
+      }
     },
     {
       "id": "backpack-side-pocket-floor-contact",
@@ -110,7 +119,7 @@
         "depth": 17
       },
       "dimensionsSource": "2026-09-14 제조사 카탈로그 49페이지의 9004 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "images": [
         {
           "image": "assets/story/backpack-side-pocket-floor-contact.webp",
@@ -171,7 +180,16 @@
           "review": "현재 제품 카탈로그의 실제 원본을 직접 열고 색상, 로고, 몸판·끈·주머니, 제조사 치수 표기를 대조했다."
         }
       ],
-      "bodyChars": 2640
+      "bodyChars": 2640,
+      "publication": {
+        "publishedAt": "2026-11-19T23:26:33.719Z",
+        "modifiedAt": "2026-11-19T23:26:33.719Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-20/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-20/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-20/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-20/first-deployment-history.json",
+        "articleSha256": "f12e75de8e17e19cec1d680fcbb4794269437a990befacfacc510aef2686ff61"
+      }
     },
     {
       "id": "backpack-trace-half-twisted-strap",
@@ -191,7 +209,7 @@
         "depth": 14
       },
       "dimensionsSource": "2026-09-14 제조사 카탈로그 34페이지의 124S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
-      "publicationStatus": "awaiting-first-deployment",
+      "publicationStatus": "verified",
       "images": [
         {
           "image": "assets/story/backpack-trace-half-twisted-strap.webp",
@@ -252,7 +270,16 @@
           "review": "현재 제품 카탈로그의 실제 원본을 직접 열고 색상, 로고, 몸판·끈·주머니, 제조사 치수 표기를 대조했다."
         }
       ],
-      "bodyChars": 2718
+      "bodyChars": 2718,
+      "publication": {
+        "publishedAt": "2026-11-19T23:26:33.719Z",
+        "modifiedAt": "2026-11-19T23:26:33.719Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-20/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-20/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-20/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-20/first-deployment-history.json",
+        "articleSha256": "4f4c46b1819ec30c85efe613b0c129534a1f00dc283129ddc70daff0af308621"
+      }
     }
   ],
   "visualReviewEvidence": "backups/story-2026-11-20/accepted-images.json",
