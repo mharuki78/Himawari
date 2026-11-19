@@ -1,5 +1,71 @@
 [
   {
+    "id": "laptop-pouch-quilting-cushioning-evidence",
+    "title": "노트북 파우치의 누빔 사진에서 완충 정도까지 읽을 수 있을까",
+    "date": "2026-11-20",
+    "summary": "No.2513 민트의 누빔과 테두리를 살펴보고, 파우치의 외부 폭과 완충 정보를 확인할 때 볼 자료를 짚습니다.",
+    "description": "No.2513 민트의 누빔과 테두리를 살펴보고, 파우치의 외부 폭과 완충 정보를 확인할 때 볼 자료를 짚습니다.",
+    "tags": [
+      "노트북 파우치",
+      "누빔",
+      "제품 정보"
+    ],
+    "image": "../assets/story/laptop-pouch-quilting-cushioning-evidence.webp",
+    "imageAlt": "AI 연출. 책상에 놓인 No.2513 민트 파우치의 물결 누빔과 끈 손잡이.",
+    "images": [
+      "../assets/story/laptop-pouch-quilting-cushioning-evidence.webp",
+      "../assets/story/laptop-pouch-quilting-cushioning-evidence-detail.webp",
+      "../assets/story/laptop-pouch-quilting-cushioning-evidence-reference.webp"
+    ],
+    "url": "laptop-pouch-quilting-cushioning-evidence.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "구매 정보 검증형 해설"
+  },
+  {
+    "id": "backpack-side-pocket-floor-contact",
+    "title": "백팩을 내려놓을 때 옆주머니 끝은 바닥에서 얼마나 떨어져 있을까",
+    "date": "2026-11-20",
+    "summary": "No.9004 연보라의 옆주머니와 바닥 모서리를 살펴보고, 짐을 넣기 전과 후에 어디가 먼저 닿는지 확인합니다.",
+    "description": "No.9004 연보라의 옆주머니와 바닥 모서리를 살펴보고, 짐을 넣기 전과 후에 어디가 먼저 닿는지 확인합니다.",
+    "tags": [
+      "옆주머니",
+      "바닥",
+      "사용 동작"
+    ],
+    "image": "../assets/story/backpack-side-pocket-floor-contact.webp",
+    "imageAlt": "AI 연출. 벤치에 세워 둔 No.9004 연보라의 앞주머니와 옆주머니.",
+    "images": [
+      "../assets/story/backpack-side-pocket-floor-contact.webp",
+      "../assets/story/backpack-side-pocket-floor-contact-detail.webp",
+      "../assets/story/backpack-side-pocket-floor-contact-reference.webp"
+    ],
+    "url": "backpack-side-pocket-floor-contact.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "빈 가방을 놓는 순간부터 따라가는 현장형 관찰"
+  },
+  {
+    "id": "backpack-trace-half-twisted-strap",
+    "title": "백팩 어깨끈이 반 바퀴 꼬였을 때 어느 쪽을 먼저 돌릴까",
+    "date": "2026-11-20",
+    "summary": "No.124S 그레이를 예로 어깨끈의 넓은 면을 따라가며 꼬인 곳을 찾고, 길이 조절부를 그대로 둔 채 푸는 순서를 알아봅니다.",
+    "description": "No.124S 그레이를 예로 어깨끈의 넓은 면을 따라가며 꼬인 곳을 찾고, 길이 조절부를 그대로 둔 채 푸는 순서를 알아봅니다.",
+    "tags": [
+      "어깨끈",
+      "비틀림",
+      "착용 관리"
+    ],
+    "image": "../assets/story/backpack-trace-half-twisted-strap.webp",
+    "imageAlt": "AI 사용 연출. 테이블 위 No.124S 그레이의 어깨끈을 한 손으로 살피는 모습.",
+    "images": [
+      "../assets/story/backpack-trace-half-twisted-strap.webp",
+      "../assets/story/backpack-trace-half-twisted-strap-detail.webp",
+      "../assets/story/backpack-trace-half-twisted-strap-reference.webp"
+    ],
+    "url": "backpack-trace-half-twisted-strap.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "끈 상태에 따라 처리 순서를 고르는 진단 안내"
+  },
+  {
     "id": "backpack-hanging-pouch-turns",
     "title": "백팩 앞 파우치가 자꾸 돌아가면 어디부터 볼까",
     "date": "2026-11-19",
