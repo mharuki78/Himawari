@@ -1,0 +1,100 @@
+{
+  "date": "2026-11-20",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-19T23:59:20.952Z",
+    "scheduledAt": "2026-11-20T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-20/deployment.json",
+  "baselineCommit": "1d5818658969541e1d0f1dc22808dadde88ad530",
+  "baselineEvidence": "backups/lookbook-2026-11-20/baseline-deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-20/products.json",
+  "recentVisualReview": "backups/lookbook-2026-11-20/recent-visual-review.md",
+  "entries": [
+    {
+      "productId": "coupang-18c7b08efa607a51",
+      "category": "everyday",
+      "model": "1208",
+      "color": "핑크",
+      "title": "음반 가게에서",
+      "scene": "짙은 코트에 핑크 백팩을 들었어요. 한 손으로 매대의 음반을 골라요.",
+      "alt": "AI 착용 연출. 음반 매대에서 No.1208 핑크 백팩의 위 손잡이를 잡아 든 모습.",
+      "composition": {
+        "approach": "close hand-carry and browsing portrait",
+        "angle": "slightly elevated near-front three-quarter",
+        "framing": "head-to-knees near crop with the full bag; body about 31 percent of frame height",
+        "activity": "standing with one hand on a record sleeve and one on the paired handles",
+        "setting": "record shop with wooden waist-high bins and window light"
+      },
+      "prompt": "Create one photorealistic 1024×1536 portrait, editorial Korean everyday fashion in a small record shop, real physical materials. Use exact catalogue reference Himawari No.1208 PINK, external 29 cm wide × 40 cm high × 17 cm deep. Keep muted dusty pink box-shaped canvas with original matte black rectangular Himawari white-letter label, original matching twin rounded pink top carry handles fastened together with small black tab, two black rivets per pink anchor patch, black padded rear shoulder straps and black fittings, original TWO big symmetric outward patch pockets across lower front with inward curving tall black zippers and plain slim black zipper pulls. Pink side sleeves with original small black side tabs and pull ends. Natural correct 40 cm scale relative to adult. No added pouch, handle, strap or text. Fictional stylish adult Korean woman around 45 with short dark ash bob, slate grey or olive tailored coat and black jeans. From slightly above eye level, diagonal near front-side camera pointed down across waist-high oak record bins. Compose standing person from face or chin to knees, entire bag clearly visible in foreground below hand, about 38% frame height. SHE holds the existing paired handles with one hand at her side, both handle straps naturally together near black joining tab, bag upright and Pink front toward camera. Other hand is on a record sleeve in waist-high open bin beside her, comfortably separate from bag. Natural relaxed fingers and elbow, body balanced; no big motion, no additional bag or gear. Use muted record sleeves without readable signs, soft overcast daylight through street window and natural wood. Focus on the bag with entire front visible and perfectly matching exact reference.\n\n로고 보정 요청\nEdit only the small rectangular black logo patch on the pink No.1208 bag in Image 1. Image 1 is the existing approved scene except for this lettering. Reproduce the real white Himawari wordmark on the black patch in Image 2 exactly, matching its original spelling Himawari (capital H, remaining lowercase), shape, proportions, scale, and position; keep the slightly softened textile lettering at its original small size. Ensure there is no extra letter and do not stylize or replace the wordmark. Preserve the precise 1024×1536 composition, the woman's identity, hands and their placement, warm grey coat, front pink pockets and zipper geometry, handles, rivets, color and all background elements. Only the patch lettering changes.",
+      "id": "2026-11-20-everyday-1208",
+      "date": "2026-11-20",
+      "reference": "backups/lookbook-2026-11-20/reference-1.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-18c7b08efa607a51/main-e9fG5vGqgHjtpnoFVLzeg6aeCEookW.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8646104758",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 30페이지의 1208 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": [
+        29,
+        40,
+        17
+      ],
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-20/generated-1.png",
+      "image": "/assets/lookbook/2026-11-20-everyday-1208.webp",
+      "thumbnail": "/assets/lookbook/2026-11-20-everyday-1208-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "실제 No.1208 핑크 원본과 생성 사진을 직접 비교했다. 분홍 네모 몸판, 검은 결합띠를 둔 두 손잡이, 받침의 검은 리벳 두 쌍, 검은 사각 라벨에 흰 Himawari 글자, 나란한 큰 포켓과 안쪽으로 굽은 검은 지퍼 두 개, 옆 포켓과 검은 탭, 끝이 분홍인 옆 지퍼 끈을 확인했다. 뒤 어깨끈은 앞 사선에서 대부분 가려진다. 로고 글자를 보정한 뒤 사진 전체에서 손가락과 손목의 연결, 몸판과 손잡이 크기를 다시 확인했다. 가방 몸판은 화면 높이의 약 31%다.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-28fd7e3b-238f-42e5-9647-bd306d84ae34.png",
+      "generatedSha256": "5f85c971529d7b1d13114b76d2d03ea12bed1a684d5a6b0db72fa6d5d10343a6",
+      "earlierGeneratedSource": "backups/lookbook-2026-11-20/candidate-generated-1.png"
+    },
+    {
+      "productId": "no-0513-967e8b36",
+      "category": "travel",
+      "model": "0513",
+      "color": "그린",
+      "title": "보행교를 건너며",
+      "scene": "갈색 재킷과 짙은 바지에 연두색 백팩을 멨어요. 난간을 따라 보행교를 걸어요.",
+      "alt": "AI 착용 연출. 보행교를 걸으며 No.0513 그린 스트링 백팩을 양어깨에 멘 전신 모습.",
+      "composition": {
+        "approach": "environmental moving full-body portrait",
+        "angle": "low side-rear three-quarter with facial profile",
+        "framing": "full body with both shoes and open span; person about 84 percent and bag body about 21 percent of frame height",
+        "activity": "walking with both original padded shoulder straps worn",
+        "setting": "outdoor pedestrian overpass with bronze railings and overcast late autumn light"
+      },
+      "prompt": "Create one photorealistic 1024×1536 portrait. Exact reference Himawari No.0513 Green string backpack, 30 cm wide × 43 cm high × 15 cm deep. Preserve unmistakable soft gathered shape with pale green body and muted sage green lower band, olive crown and rings of the two matching side pouches, original shoulder straps of muted olive color, true small olive top handle, long black narrow twin string with dark stopper centered hanging in a loop nearly to the base, front horizontal concealed zipper lip with small green-tipped black cord pull at the left, two side pouches with dark end ties, original small ivory triangular badge on lower right with subdued stacked logo in original scale. Preserve every shape, label and proportional scale, no new zippers, buckles or extra attachments. A fictional stylish Korean man around 50, salt-and-pepper crew cut, warm brown short chore jacket, charcoal loose dark trousers, neutral grippy low sneakers. Wearing both original shoulder straps at a normal back height with product face visible from the camera's side-rear three-quarter view. Full-body walking on a broad flat concrete open-air pedestrian overpass with bronze rails and soft overcast late-autumn light, soft city buildings distant, no signage. Camera from 6 metres at hip height, diagonal to direction of travel, person ~70% of frame height, bag ~20%, generous negative space in direction of walk. One modest step with natural weight-bearing leg and visible grounded shoe, both distinct legs and shoes full in image, no crossed feet or legs, right arm swinging minimally and relaxed. Let subject glance to side so face seen in profile, bag FRONT unobstructed. No stark lowlight obscuring straps and pockets. No text overlay or other bags.\n\n로고 보정 요청\nEdit only the lettering inside the small triangular ivory logo patch low on the right of the pale green No.0513 backpack in Image 1. Image 1 is the existing scene. Carefully reproduce exactly the restrained olive stacked HIMA WARI stitched wordmark from Image 2 (read the visual glyphs of the two original rows rather than making up replacement typography). Keep the exact triangle, light fill, original stitch edge, scale and placement. Preserve the 1024×1536 frame, complete figure, face, shoes, pose, walking anatomy, straps, drawstrings, all pouch lines and proportions, color, and the bridge. Only the tiny original patch lettering changes. Do not increase logo size, add text or regenerate other elements.",
+      "id": "2026-11-20-travel-0513",
+      "date": "2026-11-20",
+      "reference": "backups/lookbook-2026-11-20/reference-2.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/967e8b36-36af-4751-ba90-08e5b56b1cb8/main-F9UmTFKfzo8BQ5JLzh6hV98WlRLtOH.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13312570672",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 17페이지의 0513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "dimensionsCm": [
+        30,
+        43,
+        15
+      ],
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-20/generated-2.png",
+      "image": "/assets/lookbook/2026-11-20-travel-0513.webp",
+      "thumbnail": "/assets/lookbook/2026-11-20-travel-0513-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "실제 No.0513 그린 원본과 생성 사진을 직접 비교했다. 연두색 몸판과 회녹색 밑단, 올리브색으로 모인 입구와 작은 손잡이, 앞 중앙에서 길게 늘어진 검은 스트링과 조임 부품, 앞 가로 덮개 아래의 연두색 지퍼 끝, 양쪽 주머니와 검은 끝 끈이 보인다. 아래 오른쪽 삼각 라벨과 두 줄의 글자를 원본 배치에 맞게 보정했다. 어깨끈 두 개와 43cm 높이 대비 몸통 크기, 팔의 자세, 두 무릎과 발목 및 양쪽 신발을 다시 봤다. 한 발은 보행교 바닥을 딛고 다른 발은 뒤꿈치가 들려 있다. 가방 몸판은 화면 높이의 약 21%다.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-de0753e2-84ae-49c9-86ee-9b644d0f048a.png",
+      "generatedSha256": "8fe8e7d1a38f4dd81b8041d3397f3bed8383684e340779aec457435b85a1a308",
+      "earlierGeneratedSource": "backups/lookbook-2026-11-20/candidate-generated-2.png"
+    }
+  ],
+  "visualReview": "backups/lookbook-2026-11-20/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-20/optimization.json",
+  "languageReview": "backups/lookbook-2026-11-20/korean-copy-review.json",
+  "generationEvidence": "backups/lookbook-2026-11-20/accepted-images.json"
+}

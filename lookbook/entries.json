@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-20-everyday-1208",
+    "date": "2026-11-20",
+    "category": "everyday",
+    "title": "음반 가게에서",
+    "model": "1208",
+    "color": "핑크",
+    "productId": "coupang-18c7b08efa607a51",
+    "scene": "짙은 코트에 핑크 백팩을 들었어요. 한 손으로 매대의 음반을 골라요.",
+    "alt": "AI 착용 연출. 음반 매대에서 No.1208 핑크 백팩의 위 손잡이를 잡아 든 모습.",
+    "image": "/assets/lookbook/2026-11-20-everyday-1208.webp",
+    "thumbnail": "/assets/lookbook/2026-11-20-everyday-1208-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-20-travel-0513",
+    "date": "2026-11-20",
+    "category": "travel",
+    "title": "보행교를 건너며",
+    "model": "0513",
+    "color": "그린",
+    "productId": "no-0513-967e8b36",
+    "scene": "갈색 재킷과 짙은 바지에 연두색 백팩을 멨어요. 난간을 따라 보행교를 걸어요.",
+    "alt": "AI 착용 연출. 보행교를 걸으며 No.0513 그린 스트링 백팩을 양어깨에 멘 전신 모습.",
+    "image": "/assets/lookbook/2026-11-20-travel-0513.webp",
+    "thumbnail": "/assets/lookbook/2026-11-20-travel-0513-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-19-everyday-2513",
     "date": "2026-11-19",
     "category": "everyday",
