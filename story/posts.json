@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-handle-anchor-one-side",
+    "title": "백팩을 들 때 손잡이 한쪽만 당겨진다면",
+    "date": "2026-11-21",
+    "summary": "No.9001 핑크그레이의 손잡이 아래를 보며, 잡는 위치에 따라 생기는 주름과 가방을 내려놓아도 남는 틈을 구분합니다.",
+    "description": "No.9001 핑크그레이의 손잡이 아래를 보며, 잡는 위치에 따라 생기는 주름과 가방을 내려놓아도 남는 틈을 구분합니다.",
+    "tags": [
+      "손잡이",
+      "고정부",
+      "사용"
+    ],
+    "image": "../assets/story/backpack-handle-anchor-one-side.webp",
+    "imageAlt": "AI 연출. 벤치 위 분홍색과 회색의 No.9001 백팩 손잡이를 모아 잡는 모습",
+    "images": [
+      "../assets/story/backpack-handle-anchor-one-side.webp",
+      "../assets/story/backpack-handle-anchor-one-side-detail.webp",
+      "../assets/story/backpack-handle-anchor-one-side-reference.webp"
+    ],
+    "url": "backpack-handle-anchor-one-side.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "사용 상황별 안내"
+  },
+  {
+    "id": "backpack-two-front-zipper-paths",
+    "title": "백팩 앞에 지퍼가 두 줄이면 어디로 열리는 걸까",
+    "date": "2026-11-21",
+    "summary": "No.1223 베이지 앞판의 가로 지퍼와 둘레 지퍼를 구분하고, 열린 뒤의 입구를 확인할 사진을 고릅니다.",
+    "description": "No.1223 베이지 앞판의 가로 지퍼와 둘레 지퍼를 구분하고, 열린 뒤의 입구를 확인할 사진을 고릅니다.",
+    "tags": [
+      "앞 포켓",
+      "지퍼",
+      "제품 사진"
+    ],
+    "image": "../assets/story/backpack-two-front-zipper-paths.webp",
+    "imageAlt": "AI 연출. 베이지 No.1223 앞판에서 둥근 둘레 지퍼와 짧은 가로 지퍼가 보이는 모습",
+    "images": [
+      "../assets/story/backpack-two-front-zipper-paths.webp",
+      "../assets/story/backpack-two-front-zipper-paths-detail.webp",
+      "../assets/story/backpack-two-front-zipper-paths-reference.webp"
+    ],
+    "url": "backpack-two-front-zipper-paths.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "제품 사진 판독"
+  },
+  {
+    "id": "backpack-front-buckle-hole-inspection",
+    "title": "백팩 앞 버클의 구멍 한 곳이 늘어나 보인다면",
+    "date": "2026-11-21",
+    "summary": "No.1010 네이비그레이 앞의 검은 띠를 보며, 촬영 각도 때문에 달라 보이는 구멍과 점검을 문의할 흔적을 구분합니다.",
+    "description": "No.1010 네이비그레이 앞의 검은 띠를 보며, 촬영 각도 때문에 달라 보이는 구멍과 점검을 문의할 흔적을 구분합니다.",
+    "tags": [
+      "버클",
+      "끈",
+      "가방 관리"
+    ],
+    "image": "../assets/story/backpack-front-buckle-hole-inspection.webp",
+    "imageAlt": "AI 연출. 회색 몸판과 네이비 덮개가 있는 No.1010의 짝지은 앞 버클",
+    "images": [
+      "../assets/story/backpack-front-buckle-hole-inspection.webp",
+      "../assets/story/backpack-front-buckle-hole-inspection-detail.webp",
+      "../assets/story/backpack-front-buckle-hole-inspection-reference.webp"
+    ],
+    "url": "backpack-front-buckle-hole-inspection.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "증상별 관리 판단"
+  },
+  {
     "id": "laptop-pouch-quilting-cushioning-evidence",
     "title": "노트북 파우치의 누빔 사진에서 완충 정도까지 읽을 수 있을까",
     "date": "2026-11-20",
