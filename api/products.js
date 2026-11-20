@@ -186,6 +186,7 @@ async function fetchRestock(request) {
 
 export async function fetch(request) {
   const route = new URL(request.url).searchParams.get('route');
+  if (route === 'visitor-view') return (await import('./_lib/visitor-traffic.js')).fetchVisitorView(request);
   if (route === 'black-friday-sitemap') return fetchBlackFridaySitemap(request);
   if (route === 'black-friday') return fetchBlackFriday(request);
   if (route === 'promotions') return fetchPromotions(request);

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="theme-color" content="#4f6b58">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <title>방문 통계 — Himawari</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="console-layout.css?v=20261008">
+    <link rel="stylesheet" href="product-csv.css">
+    <link rel="stylesheet" href="traffic.css">
+    <script src="traffic.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#admin-main">본문으로 바로가기</a>
+    <header class="admin-header admin-header--console">
+      <div class="admin-identity"><a class="admin-brand" href="/" aria-label="Himawari 공개 사이트 홈">HIMAWARI</a><span>관리자</span></div>
+      <nav class="admin-nav" aria-label="관리자 메뉴">
+        <a href="operations.html">운영 현황</a><a href="traffic.html" aria-current="page">방문 통계</a><a href="inquiries.html">문의 관리</a><a href="products.html">제품 관리</a><a href="orders.html">주문 관리</a><a href="members.html">회원 관리</a><a href="reviews.html">리뷰·재입고</a><a href="promotions.html">프로모션</a><a href="reels.html">영상 관리</a>
+      </nav>
+      <a class="admin-header__site" href="/">공개 사이트 보기 <span aria-hidden="true">↗</span></a>
+    </header>
+    <main id="admin-main" class="admin-main admin-main--orders traffic-main">
+      <section class="initial-state" data-initial aria-live="polite"><span class="loader" aria-hidden="true"></span><p>방문 통계를 불러오는 중입니다.</p></section>
+      <section class="login-view" data-login hidden aria-labelledby="traffic-login-title">
+        <div class="login-copy"><h1 id="traffic-login-title">방문 통계</h1><p>관리자로 로그인하면 방문 통계를 확인할 수 있습니다.</p></div>
+        <form class="login-form" data-login-form>
+          <div class="form-field">
+            <label for="traffic-password">관리자 비밀번호</label>
+            <div class="secret-control"><input id="traffic-password" name="password" type="password" autocomplete="current-password" maxlength="256" required><button type="button" data-password-toggle aria-pressed="false" aria-label="비밀번호 표시">표시</button></div>
+          </div>
+          <button class="button button--primary login-submit" type="submit">관리자 로그인</button>
+          <p class="form-status" data-login-status role="status"></p>
+        </form>
+      </section>
+      <section class="board-view" data-board hidden aria-labelledby="traffic-title">
+        <div class="board-head">
+          <div><h1 id="traffic-title" tabindex="-1">방문 통계</h1><p>하루 방문 수와 많이 본 페이지·상품을 확인하세요.</p></div>
+          <button class="button button--quiet" data-logout type="button">로그아웃</button>
+        </div>
+        <div class="traffic-filters" aria-label="조회 설정" role="group">
+          <label for="traffic-period">조회 기간</label>
+          <select id="traffic-period" data-period>
+            <option value="1">오늘</option><option value="7" selected>최근 7일</option><option value="30">최근 30일</option><option value="90">최근 90일</option><option value="date">날짜 지정</option>
+          </select>
+          <label class="sr-only" for="traffic-date">조회 날짜</label>
+          <input id="traffic-date" data-date type="date" hidden>
+          <button class="button button--quiet" data-refresh type="button">새로고침</button>
+        </div>
+        <p class="traffic-note">한국 시간 기준입니다. 같은 브라우저는 하루에 한 번 방문으로 세고, 페이지를 열 때마다 조회로 셉니다. 통계는 기능 적용일부터 쌓입니다.</p>
+        <p data-status class="traffic-status" role="status"></p>
+        <div data-report hidden>
+          <dl class="traffic-metrics">
+            <div><dt>기간 방문 합계</dt><dd data-total-visits></dd></div>
+            <div><dt>페이지 조회</dt><dd data-total-views></dd></div>
+            <div><dt>상품 상세 조회</dt><dd data-product-views></dd></div>
+          </dl>
+          <section class="traffic-panel" aria-labelledby="traffic-daily-title">
+            <h2 id="traffic-daily-title">일별 방문</h2>
+            <div class="traffic-table-wrap" tabindex="0" role="region" aria-label="일별 방문과 조회 수">
+              <table class="csv-table traffic-table">
+                <thead><tr><th scope="col">날짜</th><th scope="col">방문</th><th scope="col">조회</th></tr></thead>
+                <tbody data-daily></tbody>
+              </table>
+            </div>
+          </section>
+          <div class="traffic-rankings">
+            <section class="traffic-panel" aria-labelledby="traffic-pages-title">
+              <h2 id="traffic-pages-title">많이 본 페이지</h2><p class="traffic-panel-note">조회 수 기준 상위 10개</p><div data-top-pages></div>
+            </section>
+            <section class="traffic-panel" aria-labelledby="traffic-products-title">
+              <h2 id="traffic-products-title">많이 본 상품</h2><p class="traffic-panel-note">일반·행사 상품 상세 조회 기준 상위 10개</p><div data-top-products></div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

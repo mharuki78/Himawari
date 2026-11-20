@@ -40,6 +40,7 @@ function initializeSiteInsights() {
 }
 
 initializeSiteInsights();
+import('/assets/visitor-counter.js').then(({ startVisitorCounter }) => startVisitorCounter()).catch(() => {});
 
 function syncSiteNavigation() {
   const siteNavigation = document.querySelector('.site-nav');

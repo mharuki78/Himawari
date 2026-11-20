@@ -222,6 +222,7 @@ async function fetchBulkProducts(request) {
 
 async function handleRequest(request) {
   const route = new URL(request.url).searchParams.get('route');
+  if (route === 'visitor-traffic') return (await import('../_lib/visitor-traffic.js')).fetchVisitorTraffic(request);
   if (route === 'black-friday') return fetchBlackFriday(request);
   if (route === 'promotions') return fetchPromotions(request);
   if (route === 'reviews') return fetchReviews(request);

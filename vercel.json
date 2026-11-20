@@ -31,6 +31,8 @@
     }
   ],
   "rewrites": [
+    { "source": "/api/visitor-view", "destination": "/api/products?route=visitor-view" },
+    { "source": "/api/admin/visitor-traffic", "destination": "/api/admin/products?route=visitor-traffic" },
     { "source": "/api/npay/sync", "destination": "/api/orders?route=npay-sync" },
     { "source": "/api/kakaopay/config", "destination": "/api/orders?route=kakaopay-config" },
     { "source": "/api/kakaopay/ready", "destination": "/api/orders?route=kakaopay-ready" },

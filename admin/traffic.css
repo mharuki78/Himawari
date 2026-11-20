@@ -1,0 +1,45 @@
+.traffic-main { --color-base-100: var(--snow); --color-base-content: var(--ink); }
+.traffic-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.traffic-filters label { font-weight: 700; }
+.traffic-filters select, .traffic-filters input {
+  min-width: 0; min-height: 44px; max-width: 100%; padding: 6px 12px;
+  border: var(--line); border-radius: 12px; background: var(--snow); color: var(--ink);
+}
+.traffic-filters button { margin-inline-start: auto; }
+.traffic-note, .traffic-panel-note, .traffic-status { color: var(--admin-muted); font-size: .88rem; }
+.traffic-note { margin: 12px 0 4px; }
+.traffic-status { min-height: 1.5em; margin: 4px 0 12px; }
+.traffic-metrics, .traffic-rankings { display: grid; gap: 16px; }
+.traffic-metrics { margin: 0 0 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.traffic-rankings { margin-top: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.traffic-metrics > div, .traffic-panel { min-width: 0; padding: 18px 20px; border: var(--line); border-radius: var(--radius-soft); background: var(--snow); }
+.traffic-metrics dt { font-size: .9rem; font-weight: 700; }
+.traffic-metrics dd { margin: 4px 0 0; color: var(--deep-wave); font-size: clamp(1.25rem, 3vw, 2rem); font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; }
+.traffic-panel h2 { margin: 0; font-size: 1.15rem; color: var(--ink); }
+.traffic-panel-note { margin: 4px 0 12px; }
+.traffic-table-wrap { margin-top: 10px; max-height: 22rem; overflow: auto; }
+.traffic-table { font-variant-numeric: tabular-nums; }
+.traffic-table th, .traffic-table td { padding: 8px 10px; }
+.traffic-table thead th { position: sticky; top: 0; background: var(--sky-tint); color: var(--ink); }
+.traffic-table th:first-child, .traffic-table td:first-child { text-align: left; }
+.traffic-table th:nth-child(n+2), .traffic-table td:nth-child(n+2) { text-align: right; }
+.traffic-table tr { border-bottom: var(--line); }
+.traffic-table tbody tr:last-child { border-bottom: 0; }
+.traffic-rank-list { margin: 0; padding-inline-start: 1.65rem; font-variant-numeric: tabular-nums; }
+.traffic-rank-list > li { padding: 8px 0; border-bottom: var(--line); }
+.traffic-rank-list > li:last-child { border-bottom: 0; }
+.traffic-rank-list > li::marker { font-weight: 700; color: var(--harbor); }
+.traffic-rank-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 10px; }
+.traffic-rank-row a { text-decoration: underline; text-underline-offset: 3px; color: var(--deep-wave); }
+.traffic-rank-row span, .traffic-rank-row a { overflow-wrap: anywhere; }
+.traffic-rank-row strong { white-space: nowrap; }
+.traffic-rank-bar { height: 4px; margin-top: 5px; border-radius: var(--radius-pill); background: var(--sky-tint); }
+.traffic-rank-bar span { display: block; height: 100%; border-radius: inherit; background: var(--harbor); }
+
+@media (max-width: 680px) {
+  .traffic-rankings { grid-template-columns: minmax(0, 1fr); }
+  .traffic-metrics { gap: 8px; }
+  .traffic-metrics > div, .traffic-panel { padding: 12px; }
+  .traffic-metrics dt { font-size: .78rem; }
+  .traffic-filters button { margin-inline-start: 0; }
+}
