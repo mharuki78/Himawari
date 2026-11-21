@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-21-everyday-0423",
+    "date": "2026-11-21",
+    "category": "everyday",
+    "title": "정원 벤치에서 지도 보기",
+    "model": "0423",
+    "color": "브라운",
+    "productId": "coupang-e733b49430ffbe4d",
+    "scene": "회색 후드 차림에 갈색 포켓이 달린 백팩을 멨어요. 벤치에 앉아 정원 지도를 펼쳐 봐요.",
+    "alt": "AI 착용 연출. 정원 벤치에 앉아 지도를 펼친 사람이 No.0423 브라운 백팩을 양어깨에 멘 모습.",
+    "image": "/assets/lookbook/2026-11-21-everyday-0423.webp",
+    "thumbnail": "/assets/lookbook/2026-11-21-everyday-0423-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-21-city-9007",
+    "date": "2026-11-21",
+    "category": "city",
+    "title": "자전거를 밀고 가는 길",
+    "model": "9007",
+    "color": "블랙",
+    "productId": "coupang-7067b802d2a5407c",
+    "scene": "밝은 바람막이를 입고 검은 백팩을 손에 들었어요. 다른 손으로 자전거를 밀며 거치대 옆을 지나가요.",
+    "alt": "AI 착용 연출. 한 손으로 자전거를 밀며 다른 손으로 No.9007 블랙 백팩의 위 손잡이를 잡고 걷는 모습.",
+    "image": "/assets/lookbook/2026-11-21-city-9007.webp",
+    "thumbnail": "/assets/lookbook/2026-11-21-city-9007-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-20-everyday-1208",
     "date": "2026-11-20",
     "category": "everyday",

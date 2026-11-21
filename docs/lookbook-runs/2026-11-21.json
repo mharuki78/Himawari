@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-21",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-21T00:01:52.821Z",
+    "scheduledAt": "2026-11-21T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-21/deployment.json",
+  "baselineCommit": "70655eb94c3ad082e431016821e565f732bc20f9",
+  "baselineEvidence": "backups/lookbook-2026-11-21/baseline-deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-21/products.json",
+  "recentVisualReview": "backups/lookbook-2026-11-21/recent-visual-review.md",
+  "entries": [
+    {
+      "model": "0423",
+      "color": "브라운",
+      "productId": "coupang-e733b49430ffbe4d",
+      "category": "everyday",
+      "title": "정원 벤치에서 지도 보기",
+      "scene": "회색 후드 차림에 갈색 포켓이 달린 백팩을 멨어요. 벤치에 앉아 정원 지도를 펼쳐 봐요.",
+      "alt": "AI 착용 연출. 정원 벤치에 앉아 지도를 펼친 사람이 No.0423 브라운 백팩을 양어깨에 멘 모습.",
+      "composition": {
+        "approach": "elevated seated portrait with the backpack worn on both shoulders",
+        "angle": "elevated rear diagonal with face in profile",
+        "framing": "tight crop from head to bent knees, whole bag about 39 percent of frame height",
+        "activity": "unfolding a paper map in her lap on a wooden bench",
+        "setting": "garden courtyard with leafy plants beside a slatted wood bench"
+      },
+      "prompt": "Create a vertical 2:3 photograph, 1024 × 1536, a candid Korean streetwear editorial in a botanical garden courtyard. Sole product reference is the supplied actual Himawari No.0423 Brown (width 32, height 42, depth 13 cm). An attractive adult Korean woman in an ash-gray hoodie and stone chinos is seated on a wooden bench facing diagonally away, naturally unfolding a small cream paper garden map in her lap, expressive face in clean partial profile. Camera high above on a rear diagonal looking gently downward, head-to-hip crop, the entire worn backpack on her back fills about 33 percent of frame height and is the sharp subject. Two ordinary natural original black shoulder straps only, no crossing. Match exact product: rounded black main shell, huge light-brown asymmetrical dog-face zipped insert across top, matte brown oval nose on left, exactly two thin black vertical eyes, original big dark-brown hanging ear panel on right and no cartoon additions; black lower pouch with rounded zipper, cover and black loop pulls, black mesh side pocket, little white-outlined square black label at lower right reading precisely 'Himawari' in white on one line. Maintain outline, textures, folds, zipper paths, geometry and correct real-human scale. Show full bag without hand occlusion; never add pockets, jewelry, fake insignia, extra logo text or ears. Natural soft daylight; green planting, paper and warm bench around the portrait; no readable map text. No deformed or extra fingers.",
+      "id": "2026-11-21-everyday-0423",
+      "date": "2026-11-21",
+      "reference": "backups/lookbook-2026-11-21/reference-1.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e733b49430ffbe4d/main-brJHq1r30m8drE0LSnC7wTdrj4N74r.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9520244217",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 9페이지의 0423 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "dimensionsCm": [
+        32,
+        42,
+        13
+      ],
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-21/generated-1.png",
+      "image": "/assets/lookbook/2026-11-21-everyday-0423.webp",
+      "thumbnail": "/assets/lookbook/2026-11-21-everyday-0423-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "실제 대표 사진과 상세 후면 사진을 생성 원본과 나란히 대조했다. 검은 원단과 둥근 외곽, 밝은 갈색 포켓 위의 세로 눈 두 개와 타원형 코, 오른쪽 짙은 갈색 귀를 확인했다. 하단의 곡선 지퍼와 검은 손잡이, 옆면 망 포켓, 작은 사각 Himawari 로고의 위치와 색을 확인했다. 상세 후면 사진(reference-0423-side-back.jpg)에서 상단 검은 고리와 양쪽 어깨끈을 확인했다. 외형 치수 32 × 42 × 13 cm를 기준으로 착용 비율을 보고 지도에 닿은 손과 벤치에 앉은 자세를 확인했다.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-5a4229c4-0fa5-49f4-ae9b-2b1470676ea4.png",
+      "generatedSha256": "54b84b1b33a27f9dfa8515c3141ee5c6a8e7258ad3d9ab71a645219a797e6663"
+    },
+    {
+      "model": "9007",
+      "color": "블랙",
+      "productId": "coupang-7067b802d2a5407c",
+      "category": "city",
+      "title": "자전거를 밀고 가는 길",
+      "scene": "밝은 바람막이를 입고 검은 백팩을 손에 들었어요. 다른 손으로 자전거를 밀며 거치대 옆을 지나가요.",
+      "alt": "AI 착용 연출. 한 손으로 자전거를 밀며 다른 손으로 No.9007 블랙 백팩의 위 손잡이를 잡고 걷는 모습.",
+      "composition": {
+        "approach": "street photography with a hand-carried backpack in motion",
+        "angle": "low front three-quarter view",
+        "framing": "full figure and bicycle with bag below the hip, bag body about 20 percent of frame height",
+        "activity": "walking a bicycle while holding the backpack by its two top handles",
+        "setting": "outdoor paved passage beside a bicycle rack"
+      },
+      "prompt": "Produce a new 1024 × 1536 vertical 2:3 outdoor streetwear editorial, faithfully using provided real Himawari No.9007 Black backpack as exact reference (body W28 × H40 × D17 cm). At camera height about knee level from the front-side three-quarter, an adult Korean man with natural expressive face and short dark slightly wavy hair walks his pale steel city bicycle at an unhurried pace past a concrete bike shelter, wearing a light stone technical jacket, dark indigo straight trousers and off-white sneakers. Show full body and both well-grounded shoes in a realistic mid-step; one hand lightly on the near bicycle handlebar at his far side, his camera-side other hand naturally grips the backpack's two original black top handles together at the original small white wrap, hanging against outside of knee with front facing camera, entirely unobstructed by wheel or leg. Real product fills about 23 percent of image height. Exact same structured black crinkled fabric, paired handles, white round fasteners in original positions, thin white horizontal zipper across lower black front pocket, white Himawari single line wordmark in original small size centered on upper black panel, and little black baseball-cap charm attached by its original white clip on upper left with original small red stitch and white trim. Black shoulder straps behind bag gravity downward and do not add straps, pockets or arbitrary hardware. Natural limbs and correct strap tension, two hands only; see both feet and pedals, no exaggerated movement or additional text. Overcast daylight, contrast to bright clothing, street context with space above and below.",
+      "id": "2026-11-21-city-9007",
+      "date": "2026-11-21",
+      "reference": "backups/lookbook-2026-11-21/reference-2.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-7067b802d2a5407c/main-iEE4YsD1hT4vpoZCEzurS7KuI4fKIl.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9593416918",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 10페이지의 9007 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-21/generated-2.png",
+      "image": "/assets/lookbook/2026-11-21-city-9007.webp",
+      "thumbnail": "/assets/lookbook/2026-11-21-city-9007-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "실제 대표 사진과 생성 원본을 나란히 보고 검은 각형 몸체, 앞포켓의 흰 가로 지퍼, 흰 단추 두 개, 흰 클립과 빨간 포인트가 있는 모자 장식을 대조했다. 로고 확대 사진에서 앞판 중앙의 흰 Himawari 글자를 확인했다. 두 검은 손잡이를 한 손으로 잡아 손잡이 연결부 일부가 가려지고, 뒤쪽 어깨끈은 몸체 옆으로 보인다. 외형 치수 28 × 40 × 17 cm를 기준으로 손에 든 가방의 비율을 보고 두 손의 위치와 걷는 자세를 확인했다.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-f440a353-e37d-4571-b0ee-f4919ed20d2e.png",
+      "generatedSha256": "b745805f838f4d490290befd4b57d84483f392322dc7f8903f68b86e62af927d"
+    }
+  ],
+  "visualReview": "backups/lookbook-2026-11-21/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-21/optimization.json",
+  "languageReview": "backups/lookbook-2026-11-21/korean-copy-review.json",
+  "generationEvidence": "backups/lookbook-2026-11-21/accepted-images.json"
+}
