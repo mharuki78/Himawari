@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-two-top-buckles-open-in-turn",
+    "title": "백팩 윗단의 버클 두 개는 어떻게 풀어야 덜 비틀릴까",
+    "date": "2026-11-22",
+    "summary": "No.1682의 접힌 윗단을 받친 상태에서 두 버클을 하나씩 풉니다. 먼저 푼 쪽의 천이 들릴 때, 남은 버클을 눌러 보기 전에 살필 움직임을 짚습니다.",
+    "description": "No.1682의 접힌 윗단을 받친 상태에서 두 버클을 하나씩 풉니다. 먼저 푼 쪽의 천이 들릴 때, 남은 버클을 눌러 보기 전에 살필 움직임을 짚습니다.",
+    "tags": [
+      "백팩 버클",
+      "윗단",
+      "가방 사용"
+    ],
+    "image": "../assets/story/backpack-two-top-buckles-open-in-turn.webp",
+    "imageAlt": "AI 연출. 나무 벤치에 세워 둔 No.1682 백팩의 접힌 윗단과 버클 두 개.",
+    "images": [
+      "../assets/story/backpack-two-top-buckles-open-in-turn.webp",
+      "../assets/story/backpack-two-top-buckles-open-in-turn-detail.webp",
+      "../assets/story/backpack-two-top-buckles-open-in-turn-reference.webp"
+    ],
+    "url": "backpack-two-top-buckles-open-in-turn.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "사용 동작 재현"
+  },
+  {
+    "id": "backpack-handle-bands-free-loop-and-stitch",
+    "title": "백팩 앞판의 밝은 띠는 어디까지 손가락이 들어갈까",
+    "date": "2026-11-22",
+    "summary": "No.2505 블랙의 밝은 손잡이와 앞판을 따라 내려오는 띠를 살펴봅니다. 사진에서 손이 들어가는 자리와 봉제된 부분을 어떻게 구별할지 짚습니다.",
+    "description": "No.2505 블랙의 밝은 손잡이와 앞판을 따라 내려오는 띠를 살펴봅니다. 사진에서 손이 들어가는 자리와 봉제된 부분을 어떻게 구별할지 짚습니다.",
+    "tags": [
+      "백팩 손잡이",
+      "가방 구조",
+      "제품 사진"
+    ],
+    "image": "../assets/story/backpack-handle-bands-free-loop-and-stitch.webp",
+    "imageAlt": "AI 착용 연출. 회색 셔츠 위에 멘 No.2505 블랙 백팩과 앞판의 밝은 띠 두 줄.",
+    "images": [
+      "../assets/story/backpack-handle-bands-free-loop-and-stitch.webp",
+      "../assets/story/backpack-handle-bands-free-loop-and-stitch-detail.webp",
+      "../assets/story/backpack-handle-bands-free-loop-and-stitch-reference.webp"
+    ],
+    "url": "backpack-handle-bands-free-loop-and-stitch.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "제품 사진 판독"
+  },
+  {
+    "id": "backpack-two-tone-bottom-seam-cleaning",
+    "title": "회색 백팩의 갈색 밑단 경계에 때가 묻었다면",
+    "date": "2026-11-22",
+    "summary": "No.124S 그레이의 앞판과 갈색 밑단이 만나는 선을 봅니다. 먼지와 남은 자국을 구분하고, 양쪽을 한꺼번에 문지르지 않고 살피는 방법을 설명합니다.",
+    "description": "No.124S 그레이의 앞판과 갈색 밑단이 만나는 선을 봅니다. 먼지와 남은 자국을 구분하고, 양쪽을 한꺼번에 문지르지 않고 살피는 방법을 설명합니다.",
+    "tags": [
+      "백팩 밑단",
+      "배색",
+      "가방 관리"
+    ],
+    "image": "../assets/story/backpack-two-tone-bottom-seam-cleaning.webp",
+    "imageAlt": "AI 연출. 작업대 위 No.124S 그레이 백팩과 옆에 놓인 부드러운 천.",
+    "images": [
+      "../assets/story/backpack-two-tone-bottom-seam-cleaning.webp",
+      "../assets/story/backpack-two-tone-bottom-seam-cleaning-detail.webp",
+      "../assets/story/backpack-two-tone-bottom-seam-cleaning-reference.webp"
+    ],
+    "url": "backpack-two-tone-bottom-seam-cleaning.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "관리 질문과 사례"
+  },
+  {
     "id": "backpack-handle-anchor-one-side",
     "title": "백팩을 들 때 손잡이 한쪽만 당겨진다면",
     "date": "2026-11-21",
