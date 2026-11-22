@@ -6,7 +6,7 @@
     "scheduledAt": "2026-11-23T08:00:00+09:00"
   },
   "scheduledSlot": "2026-11-23T08:00:00+09:00",
-  "stage": "prepared-content",
+  "stage": "metadata-ready",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "publicationBaselineCommit": "d8fc56b2de4726606feadd8e6987be5119052794",
@@ -81,8 +81,17 @@
           "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/4419256b-1ebf-4c1b-a820-456c9e4e507e/main-JNlhfBlRE80ziG0hiBl20igi2NeiDb.jpg"
         }
       ],
-      "publicationStatus": "awaiting-first-deployment",
-      "bodyChars": 2639
+      "publicationStatus": "verified",
+      "bodyChars": 2639,
+      "publication": {
+        "publishedAt": "2026-11-22T23:24:16.206Z",
+        "modifiedAt": "2026-11-22T23:24:16.206Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-23/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-23/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-23/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-23/first-deployment-history.json",
+        "articleSha256": "b0bfcec322db76b7ea52eeb2e786cc2e7411b4f7ee91fda6968b015b056405cb"
+      }
     },
     {
       "id": "backpack-front-buckles-table-contact",
@@ -152,8 +161,17 @@
           "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/4e742056-98a1-4bb6-a43c-7220963eef84/main-xBR9EEBlKpEohLd9gHDRXGBBlIMZPQ.jpg"
         }
       ],
-      "publicationStatus": "awaiting-first-deployment",
-      "bodyChars": 2772
+      "publicationStatus": "verified",
+      "bodyChars": 2772,
+      "publication": {
+        "publishedAt": "2026-11-22T23:24:16.206Z",
+        "modifiedAt": "2026-11-22T23:24:16.206Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-23/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-23/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-23/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-23/first-deployment-history.json",
+        "articleSha256": "2f73bcd8ae3f814e0a60df9fe498edc6b485283245499427fe8ae88166bafe39"
+      }
     },
     {
       "id": "backpack-front-zipper-paper-catch",
@@ -223,8 +241,17 @@
           "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-11bd051a162f120b/main-5wbrlVTXbbG7fKLHymvuoqynDsrcy9.jpg"
         }
       ],
-      "publicationStatus": "awaiting-first-deployment",
-      "bodyChars": 2670
+      "publicationStatus": "verified",
+      "bodyChars": 2670,
+      "publication": {
+        "publishedAt": "2026-11-22T23:24:16.206Z",
+        "modifiedAt": "2026-11-22T23:24:16.206Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-23/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-23/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-23/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-23/first-deployment-history.json",
+        "articleSha256": "8e7bd975d5064e8fafb415f48ad61ff2e8e56f0dd593becf2e534b14475dc0f9"
+      }
     }
   ]
 }
