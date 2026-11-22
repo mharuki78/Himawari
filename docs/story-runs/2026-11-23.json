@@ -1,0 +1,230 @@
+{
+  "date": "2026-11-23",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-22T23:01:41.077Z",
+    "scheduledAt": "2026-11-23T08:00:00+09:00"
+  },
+  "scheduledSlot": "2026-11-23T08:00:00+09:00",
+  "stage": "prepared-content",
+  "expectedCount": 3,
+  "expectedGeneratedImages": 6,
+  "publicationBaselineCommit": "d8fc56b2de4726606feadd8e6987be5119052794",
+  "publicationBaselineEvidence": "backups/story-2026-11-23/baseline-deployment.json",
+  "completionReceipt": "backups/story-runs/2026-11-23.deployment.json",
+  "posts": [
+    {
+      "id": "backpack-mesh-pocket-card-visibility",
+      "title": "메쉬 앞포켓에 넣은 카드, 밖에서 어디까지 보일까",
+      "summary": "No.1230 민트의 메쉬 앞포켓을 살펴봅니다. 지퍼를 닫은 상태에서 색과 글씨가 얼마나 보이는지 확인하고 출입증을 둘 자리를 고릅니다.",
+      "editorialForm": "수납 위치 비교",
+      "coreQuestion": "앞포켓의 메쉬를 통해 카드나 종이의 색과 내용이 어느 거리와 빛에서 보이며, 쉽게 꺼내려는 물건을 어디에 둘까?",
+      "related": "backpack-mesh-by-location",
+      "model": "No.1230",
+      "productId": "no-1230-4419256b",
+      "url": "https://himawari.co.kr/story/backpack-mesh-pocket-card-visibility.html",
+      "dimensionsCm": {
+        "width": 32,
+        "height": 40,
+        "depth": 18
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 15페이지의 1230 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "tags": [
+        "메쉬 포켓",
+        "백팩 수납",
+        "출입증"
+      ],
+      "image": "assets/story/backpack-mesh-pocket-card-visibility.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-23/ref-1230.jpg",
+      "images": [
+        {
+          "image": "assets/story/backpack-mesh-pocket-card-visibility.webp",
+          "reference": "backups/story-2026-11-23/ref-1230.jpg",
+          "role": "메쉬 앞포켓이 뒤를 향하는 착용 장면",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 착용 연출. 전시장 입구에서 멘 No.1230 민트의 메쉬 앞포켓 두 개.",
+          "caption": "AI 착용 연출. 백팩을 메면 메쉬가 있는 앞판이 뒤쪽을 향합니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-23/generated-1230.png",
+          "prompt": "Exact object and construction from supplied actual Himawari No.1230 Mint; published outer dimensions 32 cm wide, 40 cm high, 18 cm deep. Rounded mint green body, original black semicircular upper zipper edging and two original black loop pulls; two symmetrical mint frontal pouches, each with a horizontal black zip and curved black mesh band; straight black inner trim lines down to near base; black triangular badge with small white Himawari wordmark on lower right pocket as on source, original simple black carry loop and mint/black shoulder straps. Match source with high fidelity. No other compartments, logo, images, decorations or writing. Do not show any legible writing on auxiliary objects.\nPhotorealistic Korean workwear street-style editorial. Wide horizontal 1536x1024 photograph, from rear nearly straight at upper-torso height. Stylish adult woman wearing charcoal wool jacket and No.1230 Mint with both straps arranged naturally, standing still next to a glass-and-light-concrete exhibition entrance; only shoulders to hip area is framed, distinct bag large and centered, no occlusion by hair or sleeve. Neutral daylight, realistic 40 cm scale, unobtrusive surroundings. Only show the bag front as in reference, do not invent side details.",
+          "fidelityNotes": "착용 원근에서 민트 몸판의 둥근 상단과 검정 테두리, 메쉬 포켓과 지퍼 둘씩, 삼각 로고의 위치, 끈과 몸통 비율을 대조함.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-mesh-pocket-card-visibility-detail.webp",
+          "reference": "backups/story-2026-11-23/ref-1230.jpg",
+          "role": "메쉬와 원단이 맞닿는 하단의 정면 상세",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. No.1230 민트의 검은 가로 지퍼, 메쉬와 민트색 원단을 가까이 본 모습.",
+          "caption": "AI 연출. 앞판 하단에서 메쉬와 천으로 덮인 부분의 위치를 비교했습니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-23/generated-1230-detail.png",
+          "prompt": "Exact object and construction from supplied actual Himawari No.1230 Mint; published outer dimensions 32 cm wide, 40 cm high, 18 cm deep. Rounded mint green body, original black semicircular upper zipper edging and two original black loop pulls; two symmetrical mint frontal pouches, each with a horizontal black zip and curved black mesh band; straight black inner trim lines down to near base; black triangular badge with small white Himawari wordmark on lower right pocket as on source, original simple black carry loop and mint/black shoulder straps. Match source with high fidelity. No other compartments, logo, images, decorations or writing. Do not show any legible writing on auxiliary objects.\nHorizontal 1536x1024 detailed editorial product still photograph, near straight-on but slightly low camera, crop the lower two thirds of the backpack: include the two original black mesh bands and the mint panels and triangle logo. Natural side light to reveal the fine mesh weave and show that the front has two different surfaces. Entirely empty pockets, closed and flat, no inserted object, no white patch or label anywhere beside exact original triangular badge. Backpack supported on a light grey fitting room counter. No graphic overlays.",
+          "fidelityNotes": "하단 구도에서 메쉬 두 줄과 각 지퍼·고리, 가운데 검정 선과 삼각형 배지, 민트색을 대조함. 상단·어깨끈은 상세 구도 밖.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-mesh-pocket-card-visibility-reference.webp",
+          "reference": "backups/story-2026-11-23/ref-1230.jpg",
+          "role": "정면 제품 자료",
+          "imageKind": "reference",
+          "width": 720,
+          "height": 720,
+          "alt": "실제 제품 사진. No.1230 민트의 정면과 메쉬 앞포켓 두 개.",
+          "caption": "No.1230 민트 앞쪽에는 검은 메쉬와 민트색 천이 이어집니다.",
+          "fidelityReviewed": true,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/4419256b-1ebf-4c1b-a820-456c9e4e507e/main-JNlhfBlRE80ziG0hiBl20igi2NeiDb.jpg"
+        }
+      ],
+      "publicationStatus": "awaiting-first-deployment",
+      "bodyChars": 2639
+    },
+    {
+      "id": "backpack-front-buckles-table-contact",
+      "title": "백팩 앞 버클이 책상에 닿지 않게 내려놓으려면",
+      "summary": "No.188L 블랙을 내려놓을 때 포켓과 버클이 어느 곳에 먼저 닿는지 살핍니다. 꺼낼 물건과 책상 공간에 맞춰 가방을 받치는 자세를 찾습니다.",
+      "editorialForm": "내려놓는 동작 재현",
+      "coreQuestion": "버클이 돌출된 백팩을 납작한 책상에 놓고 열 때, 부품이 먼저 닿는 자세를 알아보고 어떤 면으로 받칠까?",
+      "related": "backpack-stacked-storage-contact",
+      "model": "No.188L",
+      "productId": "coupang-4efcb6a5f2ae7b88",
+      "url": "https://himawari.co.kr/story/backpack-front-buckles-table-contact.html",
+      "dimensionsCm": {
+        "width": 28,
+        "height": 39,
+        "depth": 15
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 57페이지의 188L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "tags": [
+        "백팩 버클",
+        "포켓 구조",
+        "가방 사용"
+      ],
+      "image": "assets/story/backpack-front-buckles-table-contact.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-23/ref-188L.jpg",
+      "images": [
+        {
+          "image": "assets/story/backpack-front-buckles-table-contact.webp",
+          "reference": "backups/story-2026-11-23/ref-188L.jpg",
+          "role": "책상에 세운 백팩의 앞포켓과 버클",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. 나무 책상 위에 세운 No.188L 블랙과 앞포켓 덮개, 버클 두 개.",
+          "caption": "AI 연출. 바닥으로 가방을 받친 모습입니다. 앞포켓과 버클은 책상에 닿지 않습니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-23/generated-188L.png",
+          "prompt": "Exact object from the attached product photograph of Himawari No.188L Black, outer width 28 × height 39 × depth 15 cm. Boxy charcoal-black body, TWO broad handles arch up from front and back together above zipper, with original arch and X box stitching on two slim charcoal tabs where front handle meets two original rectangular gray slider fittings. Two short dark main zipper pulls at top. One original bulging front pouch with curved-squared black cover, a low contrast rectangular tonal Himawari patch centered on cover, two long narrow black tabs from matching round fasteners passed through original dark buckles, tiny copper hardware points as source. The black flat side slip pocket, original black padding and straps. Preserve stitching, fabric, badge proportions and all hardware and colors. No added hardware, tags, seams, branding or pockets.\nLandscape 1536x1024 photographic editorial. Whole bag rests upright naturally on the flat, pale wood work table, seen from front three-quarter right at 20 degrees, consistent with reference; no props touching the bag. Soft north-facing window light. There is open table surface so the dark front buckles and how they project from the front pocket are easy to distinguish. Keep entire bag and straps inside frame. No person.",
+          "fidelityNotes": "사각형 검은 몸판, 포켓 단차, 덮개·정면 버클 두 개, 위 손잡이의 스트랩과 회색 부품, 옆 포켓·등끈을 대조함.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-front-buckles-table-contact-detail.webp",
+          "reference": "backups/story-2026-11-23/ref-188L.jpg",
+          "role": "돌출된 앞포켓과 부품을 낮게 본 상세",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. 낮은 각도에서 본 No.188L 블랙의 덮개와 앞 버클 두 개.",
+          "caption": "AI 연출. 앞판에서 포켓과 버클이 나온 정도를 옆쪽에서 살펴봤습니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-23/generated-188L-detail.png",
+          "prompt": "Exact object from the attached product photograph of Himawari No.188L Black, outer width 28 × height 39 × depth 15 cm. Boxy charcoal-black body, TWO broad handles arch up from front and back together above zipper, with original arch and X box stitching on two slim charcoal tabs where front handle meets two original rectangular gray slider fittings. Two short dark main zipper pulls at top. One original bulging front pouch with curved-squared black cover, a low contrast rectangular tonal Himawari patch centered on cover, two long narrow black tabs from matching round fasteners passed through original dark buckles, tiny copper hardware points as source. The black flat side slip pocket, original black padding and straps. Preserve stitching, fabric, badge proportions and all hardware and colors. No added hardware, tags, seams, branding or pockets.\nLandscape 1536x1024 low angled close product photograph of the upright bag on the same type of plain table, 30-degree low near-profile angle at height of the pair of original black front closure buckles, focus on the cover seam, two buckle tabs and the shadow they cast on the pocket. Inspect intact pristine hardware, realistic color, visible table below and shallow depth of field without obscuring the relationship between buckle and cloth. Preserve exact pair of dark original closures with two original little copper points as source. No props, hands, or written captions.",
+          "fidelityNotes": "낮은 구도에서 덮개와 톤온톤 배지, 한 쌍의 검정 버클과 금속점, 옆 포켓, 끈과 바닥의 비율을 대조함.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-front-buckles-table-contact-reference.webp",
+          "reference": "backups/story-2026-11-23/ref-188L.jpg",
+          "role": "사선 제품 자료",
+          "imageKind": "reference",
+          "width": 720,
+          "height": 720,
+          "alt": "실제 제품 사진. No.188L 블랙의 앞판과 옆면, 앞포켓의 버클 두 개.",
+          "caption": "앞판의 덮개 아래에서 두 줄의 끈과 버클을 볼 수 있습니다.",
+          "fidelityReviewed": true,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/4e742056-98a1-4bb6-a43c-7220963eef84/main-xBR9EEBlKpEohLd9gHDRXGBBlIMZPQ.jpg"
+        }
+      ],
+      "publicationStatus": "awaiting-first-deployment",
+      "bodyChars": 2772
+    },
+    {
+      "id": "backpack-front-zipper-paper-catch",
+      "title": "백팩 앞포켓 지퍼에 영수증이 끼었다면",
+      "summary": "No.9004 연보라의 가로 지퍼 사진을 보며 얇은 종이가 앞포켓 입구에서 걸리는 상황을 살핍니다. 잡아당기기 전에 살필 곳과 종이 두는 방향을 문답으로 정리했습니다.",
+      "editorialForm": "포켓 관리 문답",
+      "coreQuestion": "가로 지퍼 앞포켓에 얇은 종이가 걸렸을 때 지퍼와 종이의 어느 부분을 먼저 보고, 다음에는 어떻게 넣을까?",
+      "related": "backpack-zipper-reopens-after-closing",
+      "model": "No.9004",
+      "productId": "coupang-11bd051a162f120b",
+      "url": "https://himawari.co.kr/story/backpack-front-zipper-paper-catch.html",
+      "dimensionsCm": {
+        "width": 28,
+        "height": 40,
+        "depth": 17
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 49페이지의 9004 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "tags": [
+        "앞포켓 지퍼",
+        "백팩 관리",
+        "종이 수납"
+      ],
+      "image": "assets/story/backpack-front-zipper-paper-catch.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-23/ref-9004.jpg",
+      "images": [
+        {
+          "image": "assets/story/backpack-front-zipper-paper-catch.webp",
+          "reference": "backups/story-2026-11-23/ref-9004.jpg",
+          "role": "포켓과 종이의 위치 비교",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. 책방 카운터의 No.9004 연보라와 옆에 놓인 무지 종이.",
+          "caption": "AI 연출. 종이는 가방 바깥에 두었습니다. 앞포켓 입구는 코랄색 면 위쪽에 있습니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-23/generated-9004.png",
+          "prompt": "Exact actual Himawari No.9004 Light Lavender with Coral front pocket, from supplied photograph, outer width 28 × height 40 × depth 17 cm. Light lavender softly rectangular body, two lavender rounded carrying handles joined by original taupe small snap band, two studs on each lavender handle patch, original small taupe diamond logo with white inverted U symbol on lavender upper, one large coral exterior pocket with ONE fine coral horizontal zipper near top and original taupe pull at left, small ORIGINAL quiet light rectangular woven Himawari badge low right on coral, slim greige binding along base of coral pocket, lavender side pocket and lavender shoulder straps. Preserve all source geometry, tones, zipper location, trim and words, no extra fasteners and no additions. Props never inside bag, no implied tested capacity.\nWide horizontal 1536x1024 photorealistic editorial shot, whole upright bag in three-quarter accurate front view exactly like product reference with all hardware clearly visible. At one side on pale gray wooden bookstore packing counter, separately on flat surface, a short blank warm-white paper slip and small plain flat gray card sleeve, without any printing, fully outside, no dimension promises. Soft clean daylight, no person. Match exact authentic source.",
+          "fidelityNotes": "연보라 몸판·손잡이, 베이지 밴드와 마름모 로고, 코랄색 포켓, 가로 지퍼·왼쪽 당김쇠·밑단과 옆 포켓을 대조함.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-front-zipper-paper-catch-detail.webp",
+          "reference": "backups/story-2026-11-23/ref-9004.jpg",
+          "role": "코랄색 앞포켓 지퍼 상세",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. No.9004 연보라의 코랄색 앞포켓 가로 지퍼와 왼쪽 손잡이.",
+          "caption": "AI 연출. 지퍼가 닫힌 상태에서 포켓 윗부분과 지퍼 길을 가까이 담았습니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-23/generated-9004-detail.png",
+          "prompt": "Exact actual Himawari No.9004 Light Lavender with Coral front pocket, from supplied photograph, outer width 28 × height 40 × depth 17 cm. Light lavender softly rectangular body, two lavender rounded carrying handles joined by original taupe small snap band, two studs on each lavender handle patch, original small taupe diamond logo with white inverted U symbol on lavender upper, one large coral exterior pocket with ONE fine coral horizontal zipper near top and original taupe pull at left, small ORIGINAL quiet light rectangular woven Himawari badge low right on coral, slim greige binding along base of coral pocket, lavender side pocket and lavender shoulder straps. Preserve all source geometry, tones, zipper location, trim and words, no extra fasteners and no additions. Props never inside bag, no implied tested capacity.\nWide horizontal 1536x1024 editorial material detail photographed from a shallow angle above the upright front pouch, close enough to see the thin horizontal coral zipper, its light pull on left, the short stretch of fabric above it, original stitching and some lavender body behind. Zipper remains completely closed as in reference. The props are absent. No hand, no words, faithful product geometry and warm coral cloth, no red or orange shift.",
+          "fidelityNotes": "코랄색 포켓의 단일 가로 지퍼와 왼쪽 손잡이, 겉면 로고 위치, 연보라 위쪽과 옆 포켓을 대조함. 몸통 손잡이는 상세 구도 밖.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-front-zipper-paper-catch-reference.webp",
+          "reference": "backups/story-2026-11-23/ref-9004.jpg",
+          "role": "사선 제품 자료",
+          "imageKind": "reference",
+          "width": 1000,
+          "height": 1000,
+          "alt": "실제 제품 사진. No.9004 연보라의 앞쪽 코랄색 포켓과 지퍼.",
+          "caption": "코랄색 앞포켓 위로 가로 지퍼와 밝은색 손잡이가 보입니다.",
+          "fidelityReviewed": true,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-11bd051a162f120b/main-5wbrlVTXbbG7fKLHymvuoqynDsrcy9.jpg"
+        }
+      ],
+      "publicationStatus": "awaiting-first-deployment",
+      "bodyChars": 2670
+    }
+  ]
+}

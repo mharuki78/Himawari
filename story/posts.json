@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-mesh-pocket-card-visibility",
+    "title": "메쉬 앞포켓에 넣은 카드, 밖에서 어디까지 보일까",
+    "date": "2026-11-23",
+    "summary": "No.1230 민트의 메쉬 앞포켓을 살펴봅니다. 지퍼를 닫은 상태에서 색과 글씨가 얼마나 보이는지 확인하고 출입증을 둘 자리를 고릅니다.",
+    "description": "No.1230 민트의 메쉬 앞포켓을 살펴봅니다. 지퍼를 닫은 상태에서 색과 글씨가 얼마나 보이는지 확인하고 출입증을 둘 자리를 고릅니다.",
+    "tags": [
+      "메쉬 포켓",
+      "백팩 수납",
+      "출입증"
+    ],
+    "image": "../assets/story/backpack-mesh-pocket-card-visibility.webp",
+    "imageAlt": "AI 착용 연출. 전시장 입구에서 멘 No.1230 민트의 메쉬 앞포켓 두 개.",
+    "images": [
+      "../assets/story/backpack-mesh-pocket-card-visibility.webp",
+      "../assets/story/backpack-mesh-pocket-card-visibility-detail.webp",
+      "../assets/story/backpack-mesh-pocket-card-visibility-reference.webp"
+    ],
+    "url": "backpack-mesh-pocket-card-visibility.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "수납 위치 비교"
+  },
+  {
+    "id": "backpack-front-buckles-table-contact",
+    "title": "백팩 앞 버클이 책상에 닿지 않게 내려놓으려면",
+    "date": "2026-11-23",
+    "summary": "No.188L 블랙을 내려놓을 때 포켓과 버클이 어느 곳에 먼저 닿는지 살핍니다. 꺼낼 물건과 책상 공간에 맞춰 가방을 받치는 자세를 찾습니다.",
+    "description": "No.188L 블랙을 내려놓을 때 포켓과 버클이 어느 곳에 먼저 닿는지 살핍니다. 꺼낼 물건과 책상 공간에 맞춰 가방을 받치는 자세를 찾습니다.",
+    "tags": [
+      "백팩 버클",
+      "포켓 구조",
+      "가방 사용"
+    ],
+    "image": "../assets/story/backpack-front-buckles-table-contact.webp",
+    "imageAlt": "AI 연출. 나무 책상 위에 세운 No.188L 블랙과 앞포켓 덮개, 버클 두 개.",
+    "images": [
+      "../assets/story/backpack-front-buckles-table-contact.webp",
+      "../assets/story/backpack-front-buckles-table-contact-detail.webp",
+      "../assets/story/backpack-front-buckles-table-contact-reference.webp"
+    ],
+    "url": "backpack-front-buckles-table-contact.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "내려놓는 동작 재현"
+  },
+  {
+    "id": "backpack-front-zipper-paper-catch",
+    "title": "백팩 앞포켓 지퍼에 영수증이 끼었다면",
+    "date": "2026-11-23",
+    "summary": "No.9004 연보라의 가로 지퍼 사진을 보며 얇은 종이가 앞포켓 입구에서 걸리는 상황을 살핍니다. 잡아당기기 전에 살필 곳과 종이 두는 방향을 문답으로 정리했습니다.",
+    "description": "No.9004 연보라의 가로 지퍼 사진을 보며 얇은 종이가 앞포켓 입구에서 걸리는 상황을 살핍니다. 잡아당기기 전에 살필 곳과 종이 두는 방향을 문답으로 정리했습니다.",
+    "tags": [
+      "앞포켓 지퍼",
+      "백팩 관리",
+      "종이 수납"
+    ],
+    "image": "../assets/story/backpack-front-zipper-paper-catch.webp",
+    "imageAlt": "AI 연출. 책방 카운터의 No.9004 연보라와 옆에 놓인 무지 종이.",
+    "images": [
+      "../assets/story/backpack-front-zipper-paper-catch.webp",
+      "../assets/story/backpack-front-zipper-paper-catch-detail.webp",
+      "../assets/story/backpack-front-zipper-paper-catch-reference.webp"
+    ],
+    "url": "backpack-front-zipper-paper-catch.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "포켓 관리 문답"
+  },
+  {
     "id": "backpack-two-top-buckles-open-in-turn",
     "title": "백팩 윗단의 버클 두 개는 어떻게 풀어야 덜 비틀릴까",
     "date": "2026-11-22",
