@@ -1,0 +1,101 @@
+{
+  "date": "2026-11-22",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-22T00:00:45.226Z",
+    "scheduledAt": "2026-11-22T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-22/deployment.json",
+  "baselineCommit": "9df90a5055b75e22ff584f3a60ea50a738cfdfbd",
+  "baselineEvidence": "backups/lookbook-2026-11-22/baseline-deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-22/products.json",
+  "recentVisualReview": "backups/lookbook-2026-11-22/recent-visual-review.md",
+  "entries": [
+    {
+      "model": "194L",
+      "color": "라벤더",
+      "productId": "coupang-08039b2ac81db358",
+      "category": "everyday",
+      "title": "엽서 고르기",
+      "scene": "연보라 백팩을 손에 들고 그림 엽서를 한 장 골라요.",
+      "alt": "AI 착용 연출. No.194L 라벤더 백팩을 손잡이로 들고 진열대에서 그림 엽서를 고르는 모습.",
+      "composition": {
+        "approach": "close product-led portrait with browsing gesture",
+        "angle": "slightly elevated front three-quarter looking down toward the display",
+        "framing": "tight portrait from the head to the lower skirt, full bag about 39 percent of frame height",
+        "activity": "choosing a postcard while holding the bag by its top handle",
+        "setting": "print shop beside a low wooden postcard display"
+      },
+      "prompt": "Photorealistic Korean editorial, vertical 1024 × 1536, use the provided actual Himawari No.194L Lavender product photo for the exact bag (W28 × H39 × D15 cm). At a small quiet print shop, a fictional adult Korean woman in a simple charcoal or olive jacket with a long slate skirt stands at a low wooden postcard display. One hand holds the bag at her hip by its two original short lavender top handles, with the beige wrap around them, while the other hand selects a postcard. Elevated front three-quarter camera looking gently downward from a position close to the bag, close framing from top of head to knee, with whole front face of bag nearly facing the lens and legible in lower foreground, bag occupies 37–40% of frame height. Keep the exact rounded rectangular pale lavender body, detached rear padded lavender straps falling naturally, original side zip with beige sliders, rounded front flap and single lower front pocket, exact two narrow sage beige leather-look buckle strips with a round metal rivet and rectangular metal buckle each, and two upper short beige box-X stitched tabs with rectangular rounded metal loops for the lavender handle. Preserve exact small pale lavender rectangular logo patch edged in beige on flap center, letters light beige 'Himawari'. No new pockets, new hardware, buckles, logo or strap, no long shoulder strap. Show natural hands with ordinary fingers, clear grip and good bag proportions. Warm daytime light, faint printed illustrations but no readable extra text, unstaged moment.",
+      "id": "2026-11-22-everyday-194l",
+      "date": "2026-11-22",
+      "reference": "backups/lookbook-2026-11-22/reference-1.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-08039b2ac81db358/main-mkrOsxkr3orTIBRMVe620YMpIMn39j.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8732967408",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 44페이지의 194L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": [
+        28,
+        39,
+        15
+      ],
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-22/generated-1.png",
+      "image": "/assets/lookbook/2026-11-22-everyday-194l.webp",
+      "thumbnail": "/assets/lookbook/2026-11-22-everyday-194l-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "정면 원본과 새 사진을 나란히 보고 둥근 모서리와 밝은 라벤더 몸판, 덮개가 달린 앞주머니, 회베이지 띠 두 줄과 금속 버클·원형 장식, 교차 봉제 탭과 위 손잡이 연결부, 옆에 놓인 지퍼 손잡이와 늘어진 라벤더 어깨끈을 확인했다. 로고 확대 비교에서 덮개 중앙의 밝은 사각 라벨과 Himawari 철자를 대조했다. 외부 치수 28 × 39 × 15 cm를 참고해 손에 들었을 때의 비율을 살피고, 엽서를 고르는 손과 손잡이를 잡은 손을 각각 확인했다.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-66c30e68-1897-41ae-891c-73b85b58178a.png",
+      "generatedSha256": "a3fe79597095be979a6711efe8467c51b50c73150dfe65693cd6d5ef60af016d"
+    },
+    {
+      "model": "1088M",
+      "color": "그린",
+      "productId": "store-13308752642",
+      "category": "city",
+      "title": "전시장에서 그림 보기",
+      "scene": "짙은 셔츠에 초록 백팩을 멨어요. 전시장에 서서 그림을 봐요.",
+      "alt": "AI 착용 연출. No.1088M 그린 백팩을 양어깨에 메고 전시장의 추상화를 바라보는 모습.",
+      "composition": {
+        "approach": "environmental full-body portrait of a person wearing the bag",
+        "angle": "eye-level rear three-quarter",
+        "framing": "full standing figure with artwork and gallery floor, bag body about 21 percent of frame height",
+        "activity": "pausing to look at a painting, arms resting",
+        "setting": "daylit gallery with a framed abstract work"
+      },
+      "prompt": "Photorealistic vertical 1024 × 1536 Korean streetwear lifestyle photograph. The attached catalog photo is ONLY a reference for the actual Himawari No.1088M Green backpack (W28 × H41.5 × D14 cm); the person in that catalog image is not a likeness or styling reference. Show a different fictional adult Korean man with short black hair in a neutral charcoal overshirt, straight dark brown pants and white shoes standing in a spacious modern gallery looking at an original abstract nonrepresentational framed work. His face in gentle profile and both hands relaxed at sides, plausible standing pose with two clear shoes. Eye-level medium-distance rear three-quarter view, full body plus large clean wall and matte grey floor, camera 25 degrees off his back so bag front remains legible and side visible. The backpack is worn by both mint shoulder straps, realistically proportional, about 27% of total frame height. Must preserve exact pale mint green rounded rectangular main body and mint low front zip pocket, dusty pink base edge, paired narrow dusty pink front webbing with original cream rectangular sliders and free ends, dusty pink paired top handles wrapped by a small cream piece, pale round brand badge centered under two original white zipper pulls with tiny accurate Himawari wordmark, one original white pull on front pocket, original mint side panel and mint rear shoulder straps. Keep product color positions and no added hardware, decorative patches or props on the bag. Soft museum daylight, no captions or wall lettering, clean floor visible under both feet.\n\n로고 보정 요청\nMake a narrowly localized photo edit to the FIRST attached portrait (1024×1536). Keep all pixels outside the small circular badge ideally unchanged: same man, pose, framed abstract painting, clothes, lobby, lighting, bag green and pink color layout, straps, cream sliders, both zipper pulls, all seams and scale. The only correction is the small brand lettering in the existing circular badge between the two pink bands, immediately below the two cream upper zipper pulls. On the same cream circle with thin blushed-pink border, set the exact top line 'Himawari' with the ordinary registered Himawari font as in reference THREE, tiny second line 'EST.2010'. The badge is small and seen on a slightly oblique plane, physically integrated at original size and position. Use the dusty light pink print from the actual GREEN product in reference TWO, not the contrasting black ink or any part of the pink variant. Reference THREE is the same model's large print sample and is for exact typography only. Absolutely do not add any additional words or replace the bag, painting, scene, or human. Return the same vertical photo with just the corrected round badge.",
+      "id": "2026-11-22-city-1088m",
+      "date": "2026-11-22",
+      "reference": "backups/lookbook-2026-11-22/reference-2.jpg",
+      "sourceUrl": "https://shop-phinf.pstatic.net/20260326_100/17745078126890NcU7_JPEG/593205736606817_1806444046.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13308752642",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 27페이지의 1088M 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "dimensionsCm": [
+        28,
+        41.5,
+        14
+      ],
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-22/generated-2.png",
+      "image": "/assets/lookbook/2026-11-22-city-1088m.webp",
+      "thumbnail": "/assets/lookbook/2026-11-22-city-1088m-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "그린 제품의 실제 착용 원본과 공식 상세 사진을 검수했다. 민트색 몸판과 앞 지퍼 포켓, 분홍색 밑단과 손잡이·세로 띠, 크림색 사각 조절구, 상단 두 지퍼 손잡이와 앞포켓의 흰 손잡이, 민트색 어깨끈을 대조했다. 첫 생성본의 원형 라벨 글자 모양이 흐려 라벨만 다시 요청했다. 보정본 확대에서 밝은 원형 바탕과 분홍 테두리, Himawari 상단 표기와 작은 두 번째 줄을 확인했다. 공식 상세 원본에서 작은 줄은 EST.2010으로 확인했으며 생성 사진의 작은 글줄은 구도상 세부 자형까지 선명하지 않다. 28 × 41.5 × 14 cm를 기준으로 몸에 멘 가방의 크기를 비교했다. 몸판·잠금부·두 어깨 착용과 양발의 서 있는 자세를 전체 사진에서 다시 봤다.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-aeb78fd8-7f61-41f4-9bea-6def735d5e4e.png",
+      "generatedSha256": "a8dca3e3570906b4645b373ec205cb60ef85ceb351e15ed4cfb8b474d031fa20",
+      "earlierGeneratedSource": "backups/lookbook-2026-11-22/candidate-generated-2.png",
+      "supplementalReferenceEvidence": "backups/lookbook-2026-11-22/reference-supplements.json",
+      "earlierReviewEvidence": "backups/lookbook-2026-11-22/rejected-photo-2.md"
+    }
+  ],
+  "visualReview": "backups/lookbook-2026-11-22/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-22/optimization.json",
+  "languageReview": "backups/lookbook-2026-11-22/korean-copy-review.json",
+  "generationEvidence": "backups/lookbook-2026-11-22/accepted-images.json"
+}

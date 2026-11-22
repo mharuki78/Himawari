@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-22-everyday-194l",
+    "date": "2026-11-22",
+    "category": "everyday",
+    "title": "엽서 고르기",
+    "model": "194L",
+    "color": "라벤더",
+    "productId": "coupang-08039b2ac81db358",
+    "scene": "연보라 백팩을 손에 들고 그림 엽서를 한 장 골라요.",
+    "alt": "AI 착용 연출. No.194L 라벤더 백팩을 손잡이로 들고 진열대에서 그림 엽서를 고르는 모습.",
+    "image": "/assets/lookbook/2026-11-22-everyday-194l.webp",
+    "thumbnail": "/assets/lookbook/2026-11-22-everyday-194l-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-22-city-1088m",
+    "date": "2026-11-22",
+    "category": "city",
+    "title": "전시장에서 그림 보기",
+    "model": "1088M",
+    "color": "그린",
+    "productId": "store-13308752642",
+    "scene": "짙은 셔츠에 초록 백팩을 멨어요. 전시장에 서서 그림을 봐요.",
+    "alt": "AI 착용 연출. No.1088M 그린 백팩을 양어깨에 메고 전시장의 추상화를 바라보는 모습.",
+    "image": "/assets/lookbook/2026-11-22-city-1088m.webp",
+    "thumbnail": "/assets/lookbook/2026-11-22-city-1088m-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-21-everyday-0423",
     "date": "2026-11-21",
     "category": "everyday",
