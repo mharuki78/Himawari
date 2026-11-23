@@ -1,0 +1,230 @@
+{
+  "date": "2026-11-24",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-23T23:00:00.080Z",
+    "scheduledAt": "2026-11-24T08:00:00+09:00"
+  },
+  "scheduledSlot": "2026-11-24T08:00:00+09:00",
+  "stage": "prepared-content",
+  "expectedCount": 3,
+  "expectedGeneratedImages": 6,
+  "publicationBaselineCommit": "c0da16a31bc3ac7864261b8de325984711f4e993",
+  "publicationBaselineEvidence": "backups/story-2026-11-24/baseline-deployment.json",
+  "completionReceipt": "backups/story-runs/2026-11-24.deployment.json",
+  "posts": [
+    {
+      "id": "backpack-covered-pocket-zip-closure-check",
+      "title": "덮개에 가린 백팩 앞포켓 지퍼, 어떻게 닫힌 걸 확인할까",
+      "summary": "No.1084H 그레이 앞포켓의 덮개와 손잡이를 실제 사진에서 봅니다. 겉에서 지퍼가 잘 보이지 않을 때 닫힌 끝을 손으로 확인하는 방법을 소개합니다.",
+      "coreQuestion": "겉감 덮개가 앞포켓의 가로 지퍼 길을 가릴 때 손잡이 위치와 닫힌 상태를 어떻게 따로 확인할까?",
+      "editorialForm": "겉면과 손끝의 단서 비교",
+      "related": "backpack-find-zipper-low-light",
+      "model": "No.1084H",
+      "productId": "no-1084h-a79f01fe",
+      "url": "https://himawari.co.kr/story/backpack-covered-pocket-zip-closure-check.html",
+      "dimensionsCm": {
+        "width": 28.5,
+        "height": 39,
+        "depth": 12
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 26페이지의 H1084 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "tags": [
+        "앞포켓",
+        "백팩 지퍼",
+        "가방 구조"
+      ],
+      "image": "assets/story/backpack-covered-pocket-zip-closure-check.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-24/ref-1084H.jpg",
+      "images": [
+        {
+          "image": "assets/story/backpack-covered-pocket-zip-closure-check.webp",
+          "reference": "backups/story-2026-11-24/ref-1084H.jpg",
+          "role": "선반에서 정면으로 본 덮개와 손잡이",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. 선반 위에 세운 No.1084H 그레이 백팩의 앞포켓과 검은 지퍼 손잡이.",
+          "caption": "AI 연출 이미지. 백팩을 정면에서 보면 검은 손잡이가 회색 덮개 아래로 내려옵니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-24/generated-1084H.png",
+          "prompt": "Actual Himawari No.1084H Gray, 28.5 W × 39 H × 12 D cm. Use attached product photo for exact bag. Slim rounded rectangular heather gray bag, black narrow bottom, original black paired top handles with two short black vertical anchor tabs, exact black centered round badge with irregular pale brush mark and small black Himawari wordmark, one large gray lower front pouch and a plain broad horizontal gray lip concealing the zipper, only original long black pull with silver rivet hanging from viewer left, gray shoulder pads and black adjusters. Faithful colors, stitches, materials, scale, no new features.\nLandscape 1536×1024 editorial photo of the whole bag upright on a pale wood shelf in a quiet entryway, seen almost head-on from slightly elevated camera, daylight. Front lip, badge, and original pull visible, no hands and no item touching it.",
+          "fidelityNotes": "원본의 둥근 사각 실루엣, 회색 직물 결, 검정 바닥띠와 패딩·조절끈, 손잡이 연결띠, 원형 배지와 밝은 붓 자국, 포켓 덮개와 왼쪽 당김쇠를 대조했다. 28.5 × 39 × 12 cm 외형 비율을 확인했다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-covered-pocket-zip-closure-check-detail.webp",
+          "reference": "backups/story-2026-11-24/ref-1084H.jpg",
+          "role": "덮개 아래 손잡이를 낮게 본 상세",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. No.1084H 그레이 앞포켓 덮개와 왼쪽 지퍼 손잡이를 낮게 본 모습.",
+          "caption": "AI 연출 이미지. 회색 덮개의 아래쪽 경계와 손잡이가 만나는 곳을 가까이 담았습니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-24/generated-1084H-detail.png",
+          "prompt": "Actual Himawari No.1084H Gray, 28.5 W × 39 H × 12 D cm. Use attached product photo for exact bag. Slim rounded rectangular heather gray bag, black narrow bottom, original black paired top handles with two short black vertical anchor tabs, exact black centered round badge with irregular pale brush mark and small black Himawari wordmark, one large gray lower front pouch and a plain broad horizontal gray lip concealing the zipper, only original long black pull with silver rivet hanging from viewer left, gray shoulder pads and black adjusters. Faithful colors, stitches, materials, scale, no new features.\nLandscape 1536×1024 macro of the existing single front pouch lip and original black pull head with silver rivet, low front-left oblique angle close to textile. Zipper remains closed under genuine gray lip. Only details visible in this angle; upper badge and handles out of frame, no hand or added part.",
+          "fidelityNotes": "낮은 사선으로 회색 덮개의 폭, 포켓 하단의 검은 띠, 왼쪽 길고 검은 손잡이와 금속점을 확인했다. 위쪽 로고·끈은 의도한 상세 구도 밖이다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-covered-pocket-zip-closure-check-reference.webp",
+          "reference": "backups/story-2026-11-24/ref-1084H.jpg",
+          "role": "정면 제품 자료",
+          "imageKind": "reference",
+          "width": 720,
+          "height": 720,
+          "alt": "실제 제품 사진. No.1084H 그레이의 회색 앞포켓과 검은 손잡이.",
+          "caption": "넓은 회색 덮개가 앞포켓의 지퍼 길을 가립니다.",
+          "fidelityReviewed": true,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/a79f01fe-083e-4e0c-97ab-89093bed8af3/main-Hlg4iDnhcTR3LX6nUe7EPsaAxDwy93.jpg"
+        }
+      ],
+      "publicationStatus": "awaiting-first-deployment",
+      "bodyChars": 2568
+    },
+    {
+      "id": "backpack-mini-pocket-flap-support",
+      "title": "백팩 작은 포켓의 덮개가 닫히지 않을 때 어느 쪽을 받칠까",
+      "summary": "No.8029 민트아이보리의 작은 앞포켓에는 둥근 여밈이 보입니다. 덮개가 비뚤어진 이유를 찾고, 몸판을 받쳐 닫는 동작을 짚습니다.",
+      "coreQuestion": "겉포켓 위에 붙은 작은 포켓의 덮개가 닫히지 않을 때 단단한 내용물을 누르지 않고 어느 부분을 받쳐볼까?",
+      "editorialForm": "고장 전 점검 문답",
+      "related": "layered-front-pocket-choices",
+      "model": "No.8029",
+      "productId": "coupang-be3846b95efc0237",
+      "url": "https://himawari.co.kr/story/backpack-mini-pocket-flap-support.html",
+      "dimensionsCm": {
+        "width": 27,
+        "height": 39,
+        "depth": 14
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 45페이지의 8029 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "tags": [
+        "포켓 덮개",
+        "가방 여밈",
+        "가방 관리"
+      ],
+      "image": "assets/story/backpack-mini-pocket-flap-support.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-24/ref-8029.jpg",
+      "images": [
+        {
+          "image": "assets/story/backpack-mini-pocket-flap-support.webp",
+          "reference": "backups/story-2026-11-24/ref-8029.jpg",
+          "role": "책상에 놓인 두 겹 포켓의 전경",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. 책상 위 No.8029 민트아이보리 백팩과 앞쪽의 작은 덮개 포켓.",
+          "caption": "AI 연출 이미지. 작은 아이보리색 포켓이 코랄색 포켓 위에 붙어 있습니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-24/generated-8029.png",
+          "prompt": "Actual Himawari No.8029 Mint Ivory, exterior width 27 × height 39 × depth 14 cm. Preserve source's warm ivory body, mint continuous outer zipper and top handle, cream straps, muted sage-gray upper zip compartment and exact small light rectangle label with original text at lower right, coral-orange lower zip compartment and original coral pull to viewer left, original small overlaid ivory pouch exactly centered on coral with gray curved flap and single mint round fastener. Correct seams and no extra hardware. No person, no extra writing.\nLandscape 1536×1024 full product view in softly daylit home workroom, front three-quarter view only slightly off-center, whole silhouette on gray wooden table. Front mini pouch and gray flap closed. True size and faithful source colors.",
+          "fidelityNotes": "민트 가장자리·손잡이, 아이보리 몸판과 끈, 회색과 코랄색 포켓의 위치, 원본과 같은 사각 라벨 위치 및 밝은 글자, 작은 덮개 중앙의 민트 원형 부품, 27 × 39 × 14 cm에 맞는 몸통 비율을 확인했다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-mini-pocket-flap-support-detail.webp",
+          "reference": "backups/story-2026-11-24/ref-8029.jpg",
+          "role": "작은 포켓 덮개와 원형 부품의 사선 상세",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. No.8029 민트아이보리 앞포켓의 회색 덮개와 둥근 민트색 부품.",
+          "caption": "AI 연출 이미지. 덮개 양쪽 가장자리와 가운데에 달린 원형 부품을 가까이 봤습니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-24/generated-8029-detail.png",
+          "prompt": "Actual Himawari No.8029 Mint Ivory, exterior width 27 × height 39 × depth 14 cm. Preserve source's warm ivory body, mint continuous outer zipper and top handle, cream straps, muted sage-gray upper zip compartment and exact small light rectangle label with original text at lower right, coral-orange lower zip compartment and original coral pull to viewer left, original small overlaid ivory pouch exactly centered on coral with gray curved flap and single mint round fastener. Correct seams and no extra hardware. No person, no extra writing.\nLandscape 1536×1024 close material study low and a little to viewer's left, shows lower coral pocket and overlay ivory pouch, curved gray flap and exact mint round fastener still closed. Show angle at flap edge without opening or inventing underside. Upper logo and handles cropped out. No hands, plain work surface.",
+          "fidelityNotes": "사진에 드러난 민트 지퍼, 코랄 포켓 가장자리와 당김쇠, 작은 아이보리 포켓과 회색 덮개 및 민트 원형 부품을 원본과 대조했다. 상단의 로고와 끈은 구도 밖이다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-mini-pocket-flap-support-reference.webp",
+          "reference": "backups/story-2026-11-24/ref-8029.jpg",
+          "role": "정면 제품 자료",
+          "imageKind": "reference",
+          "width": 1000,
+          "height": 1000,
+          "alt": "실제 제품 사진. No.8029 민트아이보리 백팩의 위아래 앞포켓과 작은 덮개.",
+          "caption": "앞판 상단의 회색 포켓과 하단의 코랄색 포켓, 그 위의 작은 덮개를 볼 수 있습니다.",
+          "fidelityReviewed": true,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-be3846b95efc0237/main-SDOd5VUWokWBvV5lBRW9vAh8bmpfEq.jpg"
+        }
+      ],
+      "publicationStatus": "awaiting-first-deployment",
+      "bodyChars": 2650
+    },
+    {
+      "id": "backpack-drawcord-transit-seat",
+      "title": "버스에서 스트링 백팩을 무릎에 두면 긴 조임끈은 어디에 둘까",
+      "summary": "No.0514Mini 화이트미니처럼 앞에 긴 조임끈이 있는 백팩을 살펴봅니다. 버스에서 가방을 무릎에 올리고 다시 들 때 끈이 남는 자리를 챙깁니다.",
+      "coreQuestion": "버스 좌석에서 스트링 백팩을 무릎에 두고 일어설 때 긴 앞 조임끈이 좌석 틈이나 무릎 아래로 떨어지지 않도록 어떻게 두고 들까?",
+      "editorialForm": "버스 탑승부터 하차까지",
+      "related": "backpack-loose-strap-ends",
+      "model": "No.0514",
+      "productId": "no-0514-df5a0abb",
+      "url": "https://himawari.co.kr/story/backpack-drawcord-transit-seat.html",
+      "dimensionsCm": {
+        "width": 27,
+        "height": 36,
+        "depth": 14
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 18페이지의 0514S 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "tags": [
+        "스트링 백팩",
+        "대중교통",
+        "가방 사용"
+      ],
+      "image": "assets/story/backpack-drawcord-transit-seat.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-24/ref-0514.jpg",
+      "images": [
+        {
+          "image": "assets/story/backpack-drawcord-transit-seat.webp",
+          "reference": "backups/story-2026-11-24/ref-0514.jpg",
+          "role": "버스 좌석에서 무릎에 가방을 둔 장면",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 착용 연출. 버스 좌석에 앉아 No.0514Mini 화이트미니를 무릎에 올리고 손잡이를 쥔 모습.",
+          "caption": "AI 착용 연출. 무릎 위의 가방을 손잡이로 받치고, 검은 조임끈은 앞판에 자연스럽게 둡니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-24/generated-0514.png",
+          "prompt": "Use exact actual Himawari No.0514Mini White Mini as full product reference, 27 W × 36 H × 14 D cm. Glossy silvery-white crinkled fabric as shown, one white top handle, very small black central stopper and long black pair of drawstring strands forming a single U loop against front, original short black side cord loops, white gathered side pockets, broad white front lip with original slim black pull to viewer left, small black inverted triangular patch on bottom right with original white stacked lettering, white mesh shoulder pads and white webbing. Preserve colors, proportions, all original pocket and strap geometry. No added knots, straps or pockets.\nWide 1536×1024 realistic Seoul lifestyle. Stylish fictional adult Korean woman in a dark olive jacket and dark pants seated naturally by window of a stationary quiet city bus. Camera medium seated side three-quarter view framed from chest to shins, face and feet can be out of frame. The backpack stands upright on her two thighs, facing camera, supported on her lap. One hand naturally steadies it at its actual top handle and does not hide the black cord stopper. Its long original cord loop hangs entirely along front without trailing into aisle. Keep full outline of bag, natural shoulders and limbs, soft transit daylight.",
+          "fidelityNotes": "빛을 받는 흰 원단, 위 손잡이·중앙의 조절구, 앞에 놓인 흑색 고리, 양쪽의 끈, 검정 삼각 라벨과 흰 글자, 앞포켓과 흰 어깨끈을 실제 원본과 비교했다. 무릎과 손잡이를 잡은 손을 보고 외부 27 × 36 × 14 cm 대비 크기와 자세를 확인했다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-drawcord-transit-seat-detail.webp",
+          "reference": "backups/story-2026-11-24/ref-0514.jpg",
+          "role": "조임끈 입구와 손잡이를 위에서 본 상세",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. No.0514Mini 화이트미니의 흰 손잡이, 검은 조절구와 끈 두 줄.",
+          "caption": "AI 연출 이미지. 손잡이 아래에서 검은 끈이 모이는 입구를 위에서 봤습니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-24/generated-0514-detail.png",
+          "prompt": "Use exact actual Himawari No.0514Mini White Mini as full product reference, 27 W × 36 H × 14 D cm. Glossy silvery-white crinkled fabric as shown, one white top handle, very small black central stopper and long black pair of drawstring strands forming a single U loop against front, original short black side cord loops, white gathered side pockets, broad white front lip with original slim black pull to viewer left, small black inverted triangular patch on bottom right with original white stacked lettering, white mesh shoulder pads and white webbing. Preserve colors, proportions, all original pocket and strap geometry. No added knots, straps or pockets.\nWide 1536×1024 still photograph close at a steep diagonal from above the upright bag against a plain fabric cushion. Focus only on actual gathered white opening, white handle, original small black stopper and the two black strands against upper front fabric. Lower loop and patch naturally out of frame with this close crop. No human, captions, tools or additions.",
+          "fidelityNotes": "위 사선에서 반짝이는 흰색 원단과 흰 손잡이, 조절구 하나와 검은 끈 두 줄 및 보이는 옆 포켓의 고리를 대조했다. 하단의 로고는 구도 밖이다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-drawcord-transit-seat-reference.webp",
+          "reference": "backups/story-2026-11-24/ref-0514.jpg",
+          "role": "정면 제품 자료",
+          "imageKind": "reference",
+          "width": 720,
+          "height": 720,
+          "alt": "실제 제품 사진. No.0514Mini 화이트미니의 상단 손잡이와 앞판까지 내려오는 검은 조임끈.",
+          "caption": "흰 손잡이 아래에서 검은 조임끈이 앞포켓 쪽으로 이어집니다.",
+          "fidelityReviewed": true,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/df5a0abb-c3df-413c-8734-a4a83dd5519d/main-EUIV2UeFMSphyCugktZssCIwt1iRdu.jpg"
+        }
+      ],
+      "publicationStatus": "awaiting-first-deployment",
+      "bodyChars": 2641
+    }
+  ]
+}

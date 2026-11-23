@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-covered-pocket-zip-closure-check",
+    "title": "덮개에 가린 백팩 앞포켓 지퍼, 어떻게 닫힌 걸 확인할까",
+    "date": "2026-11-24",
+    "summary": "No.1084H 그레이 앞포켓의 덮개와 손잡이를 실제 사진에서 봅니다. 겉에서 지퍼가 잘 보이지 않을 때 닫힌 끝을 손으로 확인하는 방법을 소개합니다.",
+    "description": "No.1084H 그레이 앞포켓의 덮개와 손잡이를 실제 사진에서 봅니다. 겉에서 지퍼가 잘 보이지 않을 때 닫힌 끝을 손으로 확인하는 방법을 소개합니다.",
+    "tags": [
+      "앞포켓",
+      "백팩 지퍼",
+      "가방 구조"
+    ],
+    "image": "../assets/story/backpack-covered-pocket-zip-closure-check.webp",
+    "imageAlt": "AI 연출. 선반 위에 세운 No.1084H 그레이 백팩의 앞포켓과 검은 지퍼 손잡이.",
+    "images": [
+      "../assets/story/backpack-covered-pocket-zip-closure-check.webp",
+      "../assets/story/backpack-covered-pocket-zip-closure-check-detail.webp",
+      "../assets/story/backpack-covered-pocket-zip-closure-check-reference.webp"
+    ],
+    "url": "backpack-covered-pocket-zip-closure-check.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "겉면과 손끝의 단서 비교"
+  },
+  {
+    "id": "backpack-mini-pocket-flap-support",
+    "title": "백팩 작은 포켓의 덮개가 닫히지 않을 때 어느 쪽을 받칠까",
+    "date": "2026-11-24",
+    "summary": "No.8029 민트아이보리의 작은 앞포켓에는 둥근 여밈이 보입니다. 덮개가 비뚤어진 이유를 찾고, 몸판을 받쳐 닫는 동작을 짚습니다.",
+    "description": "No.8029 민트아이보리의 작은 앞포켓에는 둥근 여밈이 보입니다. 덮개가 비뚤어진 이유를 찾고, 몸판을 받쳐 닫는 동작을 짚습니다.",
+    "tags": [
+      "포켓 덮개",
+      "가방 여밈",
+      "가방 관리"
+    ],
+    "image": "../assets/story/backpack-mini-pocket-flap-support.webp",
+    "imageAlt": "AI 연출. 책상 위 No.8029 민트아이보리 백팩과 앞쪽의 작은 덮개 포켓.",
+    "images": [
+      "../assets/story/backpack-mini-pocket-flap-support.webp",
+      "../assets/story/backpack-mini-pocket-flap-support-detail.webp",
+      "../assets/story/backpack-mini-pocket-flap-support-reference.webp"
+    ],
+    "url": "backpack-mini-pocket-flap-support.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "고장 전 점검 문답"
+  },
+  {
+    "id": "backpack-drawcord-transit-seat",
+    "title": "버스에서 스트링 백팩을 무릎에 두면 긴 조임끈은 어디에 둘까",
+    "date": "2026-11-24",
+    "summary": "No.0514Mini 화이트미니처럼 앞에 긴 조임끈이 있는 백팩을 살펴봅니다. 버스에서 가방을 무릎에 올리고 다시 들 때 끈이 남는 자리를 챙깁니다.",
+    "description": "No.0514Mini 화이트미니처럼 앞에 긴 조임끈이 있는 백팩을 살펴봅니다. 버스에서 가방을 무릎에 올리고 다시 들 때 끈이 남는 자리를 챙깁니다.",
+    "tags": [
+      "스트링 백팩",
+      "대중교통",
+      "가방 사용"
+    ],
+    "image": "../assets/story/backpack-drawcord-transit-seat.webp",
+    "imageAlt": "AI 착용 연출. 버스 좌석에 앉아 No.0514Mini 화이트미니를 무릎에 올리고 손잡이를 쥔 모습.",
+    "images": [
+      "../assets/story/backpack-drawcord-transit-seat.webp",
+      "../assets/story/backpack-drawcord-transit-seat-detail.webp",
+      "../assets/story/backpack-drawcord-transit-seat-reference.webp"
+    ],
+    "url": "backpack-drawcord-transit-seat.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "버스 탑승부터 하차까지"
+  },
+  {
     "id": "backpack-mesh-pocket-card-visibility",
     "title": "메쉬 앞포켓에 넣은 카드, 밖에서 어디까지 보일까",
     "date": "2026-11-23",
