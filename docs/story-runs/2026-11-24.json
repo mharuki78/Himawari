@@ -6,7 +6,7 @@
     "scheduledAt": "2026-11-24T08:00:00+09:00"
   },
   "scheduledSlot": "2026-11-24T08:00:00+09:00",
-  "stage": "prepared-content",
+  "stage": "metadata-ready",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "publicationBaselineCommit": "c0da16a31bc3ac7864261b8de325984711f4e993",
@@ -81,8 +81,17 @@
           "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/a79f01fe-083e-4e0c-97ab-89093bed8af3/main-Hlg4iDnhcTR3LX6nUe7EPsaAxDwy93.jpg"
         }
       ],
-      "publicationStatus": "awaiting-first-deployment",
-      "bodyChars": 2568
+      "publicationStatus": "verified",
+      "bodyChars": 2568,
+      "publication": {
+        "publishedAt": "2026-11-23T23:12:32.458Z",
+        "modifiedAt": "2026-11-23T23:12:32.458Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-24/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-24/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-24/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-24/first-deployment-history.json",
+        "articleSha256": "4144be6f14bd2a17382c3bb8b2a71248d11812fc6d79eb53ab32b429f1cb306d"
+      }
     },
     {
       "id": "backpack-mini-pocket-flap-support",
@@ -152,8 +161,17 @@
           "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-be3846b95efc0237/main-SDOd5VUWokWBvV5lBRW9vAh8bmpfEq.jpg"
         }
       ],
-      "publicationStatus": "awaiting-first-deployment",
-      "bodyChars": 2650
+      "publicationStatus": "verified",
+      "bodyChars": 2650,
+      "publication": {
+        "publishedAt": "2026-11-23T23:12:32.458Z",
+        "modifiedAt": "2026-11-23T23:12:32.458Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-24/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-24/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-24/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-24/first-deployment-history.json",
+        "articleSha256": "1873ad4d27e237c78d7925f7959c20623482d8fa671cc6637dc341c71b55ccb7"
+      }
     },
     {
       "id": "backpack-drawcord-transit-seat",
@@ -223,8 +241,17 @@
           "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/df5a0abb-c3df-413c-8734-a4a83dd5519d/main-EUIV2UeFMSphyCugktZssCIwt1iRdu.jpg"
         }
       ],
-      "publicationStatus": "awaiting-first-deployment",
-      "bodyChars": 2641
+      "publicationStatus": "verified",
+      "bodyChars": 2641,
+      "publication": {
+        "publishedAt": "2026-11-23T23:12:32.458Z",
+        "modifiedAt": "2026-11-23T23:12:32.458Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-24/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-24/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-24/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-24/first-deployment-history.json",
+        "articleSha256": "ae16bf21ff797f658264260fc50d0dad5a7fa48ea1c305fb89182024c79117fc"
+      }
     }
   ]
 }
