@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-23-city-124",
+    "date": "2026-11-23",
+    "category": "city",
+    "title": "역 앞 횡단보도",
+    "model": "124",
+    "color": "베이지",
+    "productId": "no-124-24bd7d42",
+    "scene": "짙은 코트 차림에 백팩을 손에 들고 역 앞 횡단보도를 건너요.",
+    "alt": "AI 착용 연출. 짙은 코트를 입고 No.124 베이지 백팩을 손에 든 채 역 앞 횡단보도를 건너는 모습.",
+    "image": "/assets/lookbook/2026-11-23-city-124.webp",
+    "thumbnail": "/assets/lookbook/2026-11-23-city-124-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-23-everyday-1084h",
+    "date": "2026-11-23",
+    "category": "everyday",
+    "title": "카페 창가에 앉아",
+    "model": "1084H",
+    "color": "그레이",
+    "productId": "no-1084h-a79f01fe",
+    "scene": "갈색 재킷에 회색 백팩을 멨어요. 창가 의자에 앉아 바깥을 봐요.",
+    "alt": "AI 착용 연출. 카페 창가 의자에 앉아 No.1084H 그레이 백팩을 양어깨에 멘 모습.",
+    "image": "/assets/lookbook/2026-11-23-everyday-1084h.webp",
+    "thumbnail": "/assets/lookbook/2026-11-23-everyday-1084h-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-22-everyday-194l",
     "date": "2026-11-22",
     "category": "everyday",

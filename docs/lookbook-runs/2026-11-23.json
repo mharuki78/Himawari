@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-23",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-23T00:04:39.884Z",
+    "scheduledAt": "2026-11-23T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-23/deployment.json",
+  "baselineCommit": "83ad3a5541f1a0ee8256c197e668c550b221c89d",
+  "baselineEvidence": "backups/lookbook-2026-11-23/baseline-deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-23/products.json",
+  "recentVisualReview": "backups/lookbook-2026-11-23/recent-visual-review.md",
+  "entries": [
+    {
+      "model": "124",
+      "color": "베이지",
+      "productId": "no-124-24bd7d42",
+      "category": "city",
+      "title": "역 앞 횡단보도",
+      "scene": "짙은 코트 차림에 백팩을 손에 들고 역 앞 횡단보도를 건너요.",
+      "alt": "AI 착용 연출. 짙은 코트를 입고 No.124 베이지 백팩을 손에 든 채 역 앞 횡단보도를 건너는 모습.",
+      "composition": {
+        "approach": "wide street observation with bag hand-carried in motion",
+        "angle": "slightly low front three-quarter across the crosswalk",
+        "framing": "full figure including both shoes and station façade, bag body about 19 percent of frame height",
+        "activity": "walking across a crossing with bag held by its original top handles",
+        "setting": "paved pedestrian crossing in front of a Seoul neighborhood railway station"
+      },
+      "prompt": "Vertical portrait 1024x1536, a realistic candid Seoul streetwear photograph. Exact photographed Himawari No.124 Beige (real listed outer width 28, height 40, depth 17 cm), supplied actual product photograph is the only product reference. The catalog color name is Beige but match its exact low-saturation cool pale green-gray/beige photographed fabric, not ivory or saturated mint. Exact squarish upright body, thin brown base strip, black padded rear straps, two matching curved top handles together under small black wrap, two black round studs on each stitched rectangular attachment panel, small rectangular black patch centered between them with the white Himawari wordmark, one plain black horizontal zipper with long black pull to viewer left and tall lower front pocket below, side pockets and black main pulls. A fictional stylish adult Korean man with a charcoal mid-length wool coat, dark straight trousers and tidy hair during late autumn, walking naturally across a pedestrian crossing directly outside a modern local railway station. He holds the original paired handles in one hand at thigh height with the broad face turned to lens, bag hangs vertically, both bag straps visible behind with no added strap. Medium-wide full-length shot with shoes, slightly low front three-quarter camera, simple masonry and painted white crosswalk, bag 22–25% of frame height. Show a clear genuine face and plausible walking legs and hands, softly overcast daytime, no other people near him, no captions or legible signs. Preserve all exact bag dimensions, silhouette, logo, pocket, zipper, material, handle and strap geometry from source.",
+      "id": "2026-11-23-city-124",
+      "date": "2026-11-23",
+      "reference": "backups/lookbook-2026-11-23/reference-1.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/24bd7d42-525d-4e89-807a-4d0bd7e737b2/main-La3nY1TTWGZnp1HnbwuKwtUwwIOF7J.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13326526882",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 35페이지의 124 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "dimensionsCm": [
+        28,
+        40,
+        17
+      ],
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-23/generated-1.png",
+      "image": "/assets/lookbook/2026-11-23-city-124.webp",
+      "thumbnail": "/assets/lookbook/2026-11-23-city-124-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "실제 정면과 생성본을 각각 확대해 옅은 회녹빛의 베이지 몸판, 좁은 갈색 밑단, 두 손잡이와 검정 묶음, 양쪽 봉제 직사각형의 짙은 단추 각 두 개, 검은 사각 Himawari 로고, 가로 검정 지퍼와 사진 왼쪽 손잡이, 옆 포켓과 뒤쪽 두 검정 어깨끈을 대조했다. 외부 28 × 40 × 17 cm에 비추어 손에 들었을 때 다리와의 비율, 손의 손잡이 그립과 양발이 따로 보이는 전진 자세를 확인했다.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-2f18c8bc-0ecd-4d3f-8e10-ddfe808b69c2.png",
+      "generatedSha256": "c8eaaba1334f72076ccea3282939aa6e505c0adc2b5f79bb95c844f5765c361a"
+    },
+    {
+      "model": "1084H",
+      "color": "그레이",
+      "productId": "no-1084h-a79f01fe",
+      "category": "everyday",
+      "title": "카페 창가에 앉아",
+      "scene": "갈색 재킷에 회색 백팩을 멨어요. 창가 의자에 앉아 바깥을 봐요.",
+      "alt": "AI 착용 연출. 카페 창가 의자에 앉아 No.1084H 그레이 백팩을 양어깨에 멘 모습.",
+      "composition": {
+        "approach": "close shoulder-carry portrait while seated",
+        "angle": "close near straight rear at shoulder level, turned slightly toward the window",
+        "framing": "head through seated upper thighs with stool and complete backpack, bag body about 46 percent of frame height",
+        "activity": "sitting on a backless stool looking out the window with both shoulder straps worn",
+        "setting": "neighborhood café window with side daylight"
+      },
+      "prompt": "1024 × 1536 portrait photograph, Korean neighborhood café editorial, polished natural style. Product identity must be exact from supplied real catalog image for Himawari No.1084H Gray, confirmed outer W28.5 × H39 × D12 cm. Copy exact heather gray fine weave, upright slim rounded-square body, thin black perimeter zipper line, contrasting black bottom band, TWO narrow BLACK front handle attachment strips ending high on body, original black paired top handles with central black join, a single black circular badge centered between attachment strips with irregular light gray brush-stroke inside and the tiny black Himawari wordmark from reference, large single gray lower front pocket with zip discreetly under an exact broad plain gray lip and a single long black pull with small silver stud near viewer left, original gray shoulder pads and dark straps. No extraneous pockets, zipper, labels or details. A fictional stylish adult Korean woman in textured warm medium-brown workwear jacket seated on a low backless stool at café window, looking outside in an off-axis profile with natural dark short hair and only shoulder to lap screen share, both original shoulder straps worn normally. Camera almost directly behind her at shoulder height, subtle three-degrees off center so that bag front is legible and large; frame from head to hip and show part of seat and window. Bag fills about 40–45 percent of total frame height, upright on torso and no foreground obstruction. Natural side lighting and no strong color cast on actual gray textile. Only faint streetscape and no lettering or extra bags. Respect anatomically natural posture, exact seams, bag logo, gray color, profile and realistic 39 cm scale.",
+      "id": "2026-11-23-everyday-1084h",
+      "date": "2026-11-23",
+      "reference": "backups/lookbook-2026-11-23/reference-2.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/a79f01fe-083e-4e0c-97ab-89093bed8af3/main-Hlg4iDnhcTR3LX6nUe7EPsaAxDwy93.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/11070897266",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 26페이지의 H1084 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": [
+        28.5,
+        39,
+        12
+      ],
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-23/generated-2.png",
+      "image": "/assets/lookbook/2026-11-23-everyday-1084h.webp",
+      "thumbnail": "/assets/lookbook/2026-11-23-everyday-1084h-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "실제 사진과 확대해 비교했다. 사각 모서리가 둥근 회색 직물 몸판, 넓은 앞포켓의 회색 덮개와 사진 왼쪽 검은 손잡이·밝은 금속점, 검은 바닥띠·외곽 지퍼선, 검은 손잡이 연결띠 두 줄과 중앙 묶음, 검은 원형 로고 위 밝은 붓 자국과 Himawari 글씨, 양어깨의 회색 패드를 대조했다. 등판 쪽 조절구는 착용 각도에서 가려진다. 외부 28.5 × 39 × 12 cm를 참고해 어깨와 몸통 대비 가방 크기를 확인했다. 앉은 사람의 허리, 허벅지와 팔의 방향이 자연스럽고 가방 전체가 카메라에 보인다.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-7a561a1a-3758-4216-b7b2-8d81c1acae8b.png",
+      "generatedSha256": "a0480d4367463404749cd9c84f0dc1541d21c9eab2c4083d328987c42753c7af"
+    }
+  ],
+  "visualReview": "backups/lookbook-2026-11-23/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-23/optimization.json",
+  "languageReview": "backups/lookbook-2026-11-23/korean-copy-review.json",
+  "generationEvidence": "backups/lookbook-2026-11-23/accepted-images.json"
+}
