@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-24-everyday-2505",
+    "date": "2026-11-24",
+    "category": "everyday",
+    "title": "작업실에서 종이를 고를 때",
+    "model": "2505",
+    "color": "블랙",
+    "productId": "coupang-e16e6315910fdd6b",
+    "scene": "작업실 서랍에서 종이 견본을 꺼내요. 검정 백팩 앞면에는 아이보리색 띠가 두 줄 있어요.",
+    "alt": "AI 착용 연출. 작업실에서 종이 견본을 꺼내며 앞면에 아이보리색 띠가 있는 No.2505 블랙 백팩을 멘 모습.",
+    "image": "/assets/lookbook/2026-11-24-everyday-2505.webp",
+    "thumbnail": "/assets/lookbook/2026-11-24-everyday-2505-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-24-travel-2301",
+    "date": "2026-11-24",
+    "category": "travel",
+    "title": "바닷가 데크에서",
+    "model": "2301",
+    "color": "네이비",
+    "productId": "coupang-c75f72bf26deba5f",
+    "scene": "바닷가 데크에 잠시 멈춰 바다를 봐요. 네이비 백팩은 윗손잡이를 잡아 들었어요.",
+    "alt": "AI 착용 연출. 바닷가 데크에서 No.2301 네이비 백팩을 한 손에 들고 바다를 보는 모습.",
+    "image": "/assets/lookbook/2026-11-24-travel-2301.webp",
+    "thumbnail": "/assets/lookbook/2026-11-24-travel-2301-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-23-city-124",
     "date": "2026-11-23",
     "category": "city",

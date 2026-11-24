@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-24",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-23T23:58:30.771Z",
+    "scheduledAt": "2026-11-24T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-24/deployment.json",
+  "baselineCommit": "0e1ef5004c36bf3a14f47c11c7cfe23c4d0af288",
+  "baselineEvidence": "backups/lookbook-2026-11-24/baseline-deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-24/products.json",
+  "recentVisualReview": "backups/lookbook-2026-11-24/recent-visual-review.md",
+  "entries": [
+    {
+      "model": "2505",
+      "color": "블랙",
+      "productId": "coupang-e16e6315910fdd6b",
+      "category": "everyday",
+      "title": "작업실에서 종이를 고를 때",
+      "scene": "작업실 서랍에서 종이 견본을 꺼내요. 검정 백팩 앞면에는 아이보리색 띠가 두 줄 있어요.",
+      "alt": "AI 착용 연출. 작업실에서 종이 견본을 꺼내며 앞면에 아이보리색 띠가 있는 No.2505 블랙 백팩을 멘 모습.",
+      "composition": {
+        "approach": "close working portrait with the front of the bag prominently in view",
+        "angle": "slightly elevated rear three-quarter toward her right side",
+        "framing": "head to upper thigh with the bag and both hands in view, bag about 47 percent of image height",
+        "activity": "pulling a cream sheet from a shallow drawer with the backpack worn over both shoulders",
+        "setting": "birch drawer cabinet by a daylit window in a paper workshop"
+      },
+      "prompt": "Generate one 1024×1536 vertical 2:3 natural Korean fashion editorial photograph with a fictional adult, using only the supplied product photograph as a reference for the bag. Exactly reproduce Himawari No.2505 Black, official outside width 30 cm × height 43 cm × depth 14 cm. Soft-padded matte black rounded backpack with broad flat black lower panel and real outside black perimeter zip. Precisely TWO long identical straight vertical cream canvas bands on the black face run from the lower horizontal seam upward to form the original paired top handles. Observe the source exactly for their width, square cross-stitch reinforcement near the upper third, short cream wrap with one black snap button at top, rounded oval top, black pulls on viewer left, low black side sleeves, and very small white Himawari lettering directly on the fabric centered between the bands slightly above mid-height. Original black rear shoulder straps, no branding patches or additional horizontal front zipper. In a light birch paper and bookbinding workshop, a stylish fictional adult East Asian woman in her early thirties, straight black bob tucked behind one ear, with muted rust cotton work jacket and faded dark denim is standing as she draws out a single cream paper swatch from a slim half-open wooden sample drawer. Both original backpack straps sit correctly on her shoulders. Photographer is elevated and looking down at roughly 32 degrees, rear three-quarter slightly toward her right so her profile is just visible but the complete bag's front is the main focus, filling around 37% of frame height. Frame head to mid-thigh, show the countertop and an orderly stack of paper but no text in scene. Soft diffuse daylight and a clean neutral color balance. Body weight planted normally, natural hands, realistic textile grain, exact product shape and logo. Straight handheld camera perspective with no fisheye distortion and no reflection. No signs, annotations, or typography except original small logo.",
+      "id": "2026-11-24-everyday-2505",
+      "date": "2026-11-24",
+      "reference": "backups/lookbook-2026-11-24/reference-1.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-e16e6315910fdd6b/main-rgxtYpMoAPOljowvNuFsQn7QcDh936.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/9593404917",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 5페이지의 2505 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": [
+        30,
+        43,
+        14
+      ],
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-24/generated-1.png",
+      "image": "/assets/lookbook/2026-11-24-everyday-2505.webp",
+      "thumbnail": "/assets/lookbook/2026-11-24-everyday-2505-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "제품 원본과 생성 사진을 나란히 직접 확인했다. 검정 본체의 둥근 윗부분과 검정 하단 재봉선, 아이보리 띠 두 줄과 X자 박음질, 손잡이를 묶은 검정 스냅, 띠 사이의 작은 흰색 Himawari 글자, 둘레 지퍼와 왼쪽 손잡이 및 옆 수납칸이 원본과 일치한다. 검정 어깨끈 두 개가 각 어깨를 지나가며 가방은 등 위에 놓인다. 높이 43cm가 몸통에 걸리는 비율로 보인다. 종이를 집은 손과 서랍을 잡은 손이 각각 한쪽 팔에 연결되고 어깨 자세가 자연스럽다.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-999c73e3-9649-45eb-b336-947e18fe66d7.png",
+      "generatedSha256": "fcdf42a5aa287a25a85752dc6c2a33d1a6572abd72a2549a2000b8192cf3c832"
+    },
+    {
+      "model": "2301",
+      "color": "네이비",
+      "productId": "coupang-c75f72bf26deba5f",
+      "category": "travel",
+      "title": "바닷가 데크에서",
+      "scene": "바닷가 데크에 잠시 멈춰 바다를 봐요. 네이비 백팩은 윗손잡이를 잡아 들었어요.",
+      "alt": "AI 착용 연출. 바닷가 데크에서 No.2301 네이비 백팩을 한 손에 들고 바다를 보는 모습.",
+      "composition": {
+        "approach": "outdoor environmental full-figure portrait with a hand-carried backpack",
+        "angle": "slightly low front three-quarter from the backpack side",
+        "framing": "full figure with both shoes and coastal horizon, bag body about 24 percent of image height",
+        "activity": "standing and looking out to sea, holding the original top handle with one hand and resting the other on the railing",
+        "setting": "wooden viewing deck above a rocky shore"
+      },
+      "prompt": "A single 1024×1536 vertical 2:3 true-to-life Korean everyday outdoor fashion photograph. Product reference is the supplied manufacturer product photograph: exact Himawari No.2301 Navy, W28×H42×D17 cm. Copy the squat tall rounded-rectangle solid deep navy fabric, original black top carry handle, padded original black shoulder straps hanging behind, exact front layout: one large padded rectangular zip compartment with a tiny black rectangle Himawari label centered high on the front, then a separate lower rectangular navy pocket with black mesh on the lower half under the straight black trim line. On the side closest to camera preserve the original two horizontal black compression strap buckles, upper and lower, slim pocket edge and black zippers. Match the source label scale precisely and preserve the natural proportions and navy-black contrast. Scene at a quiet wooden ocean-view deck above low rocky shore, clear late-autumn coastal air. Fictional stylish adult Korean man around 50 with lightly graying clean short hair in a stone-colored chore jacket, charcoal straight trousers and dark walking shoes. Paused comfortably with both feet fully planted and subtly staggered, looking sideways toward the water. Original top handle held naturally in one relaxed hand with gravity, bag at near thigh, front turned toward camera enough to see navy fabric, all front pockets and two side buckles. Other hand rests casually on deck railing. Wide environmental full body including both shoes and horizon, photographed from nearer to deck than waist at a low side-front three-quarter angle but 45–50 mm perspective, with bag occupying about one quarter of total frame height. Bag must hang straight and have realistic 42 cm scale relative to him. Clear silhouette of both arms, no crossing of knees or duplicated limbs, no printed scenery text, no other people, soft luminous overcast with a muted coastal palette. Render only existing product logo, no captions or border.",
+      "id": "2026-11-24-travel-2301",
+      "date": "2026-11-24",
+      "reference": "backups/lookbook-2026-11-24/reference-2.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-c75f72bf26deba5f/main-X6lFrqCjAhVFZPDpyvXClAUs5yGZxa.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8645626927",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 38페이지의 2301 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": [
+        28,
+        42,
+        17
+      ],
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-24/generated-2.png",
+      "image": "/assets/lookbook/2026-11-24-travel-2301.webp",
+      "thumbnail": "/assets/lookbook/2026-11-24-travel-2301-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "실제 원본과 비교해 짙은 남색 직사각형 본체와 검정 테두리, 윗주머니의 작은 검정 패치와 흰 글자, 아래 주머니의 검정 메시, 사진 왼쪽 옆면의 검정 버클 두 개와 지퍼를 확인했다. 가방을 잡은 검정 윗손잡이는 원본 위치와 같다. 손에 들어 어깨끈은 가방 뒤로 가려져 있다. 42cm 높이가 허벅지 옆에 드리운 비율과 맞는다. 발바닥 두 쪽이 데크에 닿고 팔과 손도 각각 자연스럽게 연결된다.",
+      "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-ae606fc4-3f93-4c8e-ae64-f48cfc07341b.png",
+      "generatedSha256": "e1f3d6dffff28f20aad9df56c59d188782f39590c04a89b48556a4e125f13d78"
+    }
+  ],
+  "visualReview": "backups/lookbook-2026-11-24/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-24/optimization.json",
+  "languageReview": "backups/lookbook-2026-11-24/korean-copy-review.json",
+  "generationEvidence": "backups/lookbook-2026-11-24/accepted-images.json"
+}
