@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-white-zipper-reflective-marking",
+    "title": "백팩의 흰 지퍼, 반사 기능은 어떻게 확인할까",
+    "date": "2026-11-25",
+    "summary": "No.9007 블랙 앞면에서 흰 지퍼와 작은 흰 부품을 찾아봅니다. 사진에서 눈에 띄는 색과 제품에 명시된 반사 기능을 어떻게 구별할지 살펴봅니다.",
+    "description": "No.9007 블랙 앞면에서 흰 지퍼와 작은 흰 부품을 찾아봅니다. 사진에서 눈에 띄는 색과 제품에 명시된 반사 기능을 어떻게 구별할지 살펴봅니다.",
+    "tags": [
+      "백팩 지퍼",
+      "반사 소재",
+      "가방 선택"
+    ],
+    "image": "../assets/story/backpack-white-zipper-reflective-marking.webp",
+    "imageAlt": "AI 착용 연출. 파란 재킷에 No.9007 블랙을 메고 백팩 앞의 흰 지퍼와 작은 모자 장식이 보이는 모습.",
+    "images": [
+      "../assets/story/backpack-white-zipper-reflective-marking.webp",
+      "../assets/story/backpack-white-zipper-reflective-marking-detail.webp",
+      "../assets/story/backpack-white-zipper-reflective-marking-reference.webp"
+    ],
+    "url": "backpack-white-zipper-reflective-marking.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "상세 사진과 기능 표기 대조"
+  },
+  {
+    "id": "backpack-handle-ring-attachment-check",
+    "title": "백팩 손잡이 고리가 움직일 때 같이 봐야 할 봉제선",
+    "date": "2026-11-25",
+    "summary": "No.9018 블랙의 손잡이와 앞판 사이에 고리와 박음질이 보입니다. 고리의 움직임과 몸판에 붙은 탭의 움직임을 따로 살피는 방법을 짚습니다.",
+    "description": "No.9018 블랙의 손잡이와 앞판 사이에 고리와 박음질이 보입니다. 고리의 움직임과 몸판에 붙은 탭의 움직임을 따로 살피는 방법을 짚습니다.",
+    "tags": [
+      "백팩 손잡이",
+      "봉제선",
+      "가방 관리"
+    ],
+    "image": "../assets/story/backpack-handle-ring-attachment-check.webp",
+    "imageAlt": "AI 제품 연출. No.9018 블랙을 세워 앞판의 고리와 사각 봉제 탭 두 곳을 본 모습.",
+    "images": [
+      "../assets/story/backpack-handle-ring-attachment-check.webp",
+      "../assets/story/backpack-handle-ring-attachment-check-detail.webp",
+      "../assets/story/backpack-handle-ring-attachment-check-reference.webp"
+    ],
+    "url": "backpack-handle-ring-attachment-check.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "손잡이에서 몸판으로 따라가는 구조 안내"
+  },
+  {
+    "id": "backpack-zipper-pull-grip-length",
+    "title": "백팩 지퍼 손잡이를 길게 달기 전에 잡는 면부터 볼까",
+    "date": "2026-11-25",
+    "summary": "No.1223 베이지 앞면의 두 지퍼는 손잡이가 놓이는 높이가 다릅니다. 손잡이를 잡기 어려울 때 잡는 면을 넓힐지 길이를 더할지 비교합니다.",
+    "description": "No.1223 베이지 앞면의 두 지퍼는 손잡이가 놓이는 높이가 다릅니다. 손잡이를 잡기 어려울 때 잡는 면을 넓힐지 길이를 더할지 비교합니다.",
+    "tags": [
+      "지퍼 손잡이",
+      "앞포켓",
+      "가방 사용"
+    ],
+    "image": "../assets/story/backpack-zipper-pull-grip-length.webp",
+    "imageAlt": "AI 제품 연출. No.1223 베이지와 폭과 길이가 다른 검은 천 견본 두 개.",
+    "images": [
+      "../assets/story/backpack-zipper-pull-grip-length.webp",
+      "../assets/story/backpack-zipper-pull-grip-length-detail.webp",
+      "../assets/story/backpack-zipper-pull-grip-length-reference.webp"
+    ],
+    "url": "backpack-zipper-pull-grip-length.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "사용 자세에 따른 지퍼 탭 선택"
+  },
+  {
     "id": "backpack-covered-pocket-zip-closure-check",
     "title": "덮개에 가린 백팩 앞포켓 지퍼, 어떻게 닫힌 걸 확인할까",
     "date": "2026-11-24",

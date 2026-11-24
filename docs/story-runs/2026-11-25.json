@@ -1,0 +1,236 @@
+{
+  "date": "2026-11-25",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-24T22:59:54.272Z",
+    "scheduledAt": "2026-11-25T08:00:00+09:00"
+  },
+  "scheduledSlot": "2026-11-25T08:00:00+09:00",
+  "stage": "prepared-content",
+  "expectedCount": 3,
+  "expectedGeneratedImages": 6,
+  "publicationBaselineCommit": "28311f4f0d8054bb09608b6cddefce93f819451b",
+  "publicationBaselineEvidence": "backups/story-2026-11-25/baseline-deployment.json",
+  "completionReceipt": "backups/story-runs/2026-11-25.deployment.json",
+  "posts": [
+    {
+      "id": "backpack-white-zipper-reflective-marking",
+      "title": "백팩의 흰 지퍼, 반사 기능은 어떻게 확인할까",
+      "summary": "No.9007 블랙 앞면에서 흰 지퍼와 작은 흰 부품을 찾아봅니다. 사진에서 눈에 띄는 색과 제품에 명시된 반사 기능을 어떻게 구별할지 살펴봅니다.",
+      "coreQuestion": "검은 백팩에서 선명하게 보이는 흰 앞포켓 지퍼가 반사 기능을 갖는지 구매 전에 어떤 제품 근거로 확인할까?",
+      "editorialForm": "상세 사진과 기능 표기 대조",
+      "related": "backpack-find-zipper-low-light",
+      "model": "No.9007",
+      "productId": "coupang-7067b802d2a5407c",
+      "url": "https://himawari.co.kr/story/backpack-white-zipper-reflective-marking.html",
+      "dimensionsCm": {
+        "width": 28,
+        "height": 40,
+        "depth": 17
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 10페이지의 9007 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "tags": [
+        "백팩 지퍼",
+        "반사 소재",
+        "가방 선택"
+      ],
+      "image": "assets/story/backpack-white-zipper-reflective-marking.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-25/ref-9007.jpg",
+      "images": [
+        {
+          "image": "assets/story/backpack-white-zipper-reflective-marking.webp",
+          "reference": "backups/story-2026-11-25/ref-9007.jpg",
+          "role": "낮에 백팩을 멨을 때 가로 흰 지퍼가 보이는 전경",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 착용 연출. 파란 재킷에 No.9007 블랙을 메고 백팩 앞의 흰 지퍼와 작은 모자 장식이 보이는 모습.",
+          "caption": "AI 착용 연출. 검은 백팩에서 흰 앞포켓 지퍼가 놓인 자리를 살펴봅니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-25/generated-9007.png",
+          "prompt": "Exact real Himawari No.9007 Black from the attached product-only original, outer 28 cm wide × 40 cm high × 17 cm deep. Black fabric boxy upright soft backpack with sloping top shoulders, broad original black shoulder straps behind, paired black arc top handles bundled with actual short white wrap and thin white edge on one handle, original front two black vertical attachment tapes with one small white round stud near the top of each, tiny white Himawari wordmark centered, original miniature black baseball-cap zip charm hanging from the viewer-left upper handle tab with its white hook and exact small icon, white horizontal FRONT POCKET ZIPPER with thin parallel white stitching and white pull and black dangling tab on viewer left across the lower front panel, with large plain black pouch below the straight white horizontal zipper. Tiny genuine woven vertical side tag. Exact reference geometry and color; all the white details are ordinary appearance under soft ambient daylight. Do not show extra reflective tape, simulated retroreflection, emission, glow, sparkle, headlights or lens flare. Landscape 3:2 editorial photograph, bright overcast daylight in a quiet pedestrian courtyard, slight rear three-quarter of a fictional stylish adult woman with short black hair, cobalt work jacket and gray straight trousers paused by a pale stone wall, hips and shoulders normally positioned. Backpack worn with both black straps, show bag from the back sharply and in full including white zipper and cap charm. Crop shoulders to hips where fabric contrast is clear. Soft ordinary daylight, no artificial demonstration, no lettering except product wordmark.",
+          "fidelityNotes": "원본의 검정 본체와 흰 가로 지퍼, 좌측 검은 당김 탭, 흰 스냅과 묶음, 작은 검정 모자 장식과 로고를 직접 대조했다. 양쪽 끈을 멘 자세와 40cm 몸판이 등에서 차지하는 크기가 자연스럽고 발광 표현이 없다.",
+          "generator": "imagegen",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-8fa0a3b4-4b6a-40a6-afbb-fc06fcc59817.png"
+        },
+        {
+          "image": "assets/story/backpack-white-zipper-reflective-marking-detail.webp",
+          "reference": "backups/story-2026-11-25/ref-9007.jpg",
+          "role": "책상 위에서 가까이 본 지퍼 테이프와 당김 끈",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 제품 연출. No.9007 블랙의 앞포켓 지퍼 테이프와 왼쪽 손잡이를 사선으로 본 모습.",
+          "caption": "AI 제품 연출. 흰 지퍼에서 검은 당김 끈이 이어지는 왼쪽 끝입니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-25/generated-9007-detail.png",
+          "prompt": "Exact real Himawari No.9007 Black from the attached product-only original, outer 28 cm wide × 40 cm high × 17 cm deep. Black fabric boxy upright soft backpack with sloping top shoulders, broad original black shoulder straps behind, paired black arc top handles bundled with actual short white wrap and thin white edge on one handle, original front two black vertical attachment tapes with one small white round stud near the top of each, tiny white Himawari wordmark centered, original miniature black baseball-cap zip charm hanging from the viewer-left upper handle tab with its white hook and exact small icon, white horizontal FRONT POCKET ZIPPER with thin parallel white stitching and white pull and black dangling tab on viewer left across the lower front panel, with large plain black pouch below the straight white horizontal zipper. Tiny genuine woven vertical side tag. Exact reference geometry and color; all the white details are ordinary appearance under soft ambient daylight. Do not show extra reflective tape, simulated retroreflection, emission, glow, sparkle, headlights or lens flare. Landscape 3:2 product detail on a neutral pale stone tabletop, low diagonal close-up across the white front pouch zipper with the white pull and dangling thin black tab at viewer left and little black cap charm just above. Clearly show thin zipper teeth and tape, lower plain black pocket finish and natural light contrast, diffuse ordinary indoor window daylight. No person, no lighting test, no arrows, no labels. Preserve original profile and exact detail from reference.",
+          "fidelityNotes": "가로 흰 테이프와 왼쪽 당김 탭, 검은 하단 포켓, 흰 부품과 모자 장식, 실제 로고 위치를 확인했다. 비스듬한 구도에서도 여밈 구조가 유지되고 광택을 시험 결과로 연출하지 않았다.",
+          "generator": "imagegen",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-3a275119-4068-49bb-bb83-e7dfe5905af2.png"
+        },
+        {
+          "image": "assets/story/backpack-white-zipper-reflective-marking-reference.webp",
+          "reference": "backups/story-2026-11-25/ref-9007.jpg",
+          "role": "실제 제품 정면",
+          "imageKind": "reference",
+          "width": 1000,
+          "height": 1000,
+          "alt": "실제 제품 사진. No.9007 블랙 앞면의 흰 지퍼와 모자 모양 장식.",
+          "caption": "No.9007 블랙 앞면에서 흰 지퍼와 주변 부품을 확인할 수 있습니다.",
+          "fidelityReviewed": true,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-7067b802d2a5407c/main-iEE4YsD1hT4vpoZCEzurS7KuI4fKIl.jpg"
+        }
+      ],
+      "publicationStatus": "awaiting-first-deployment",
+      "bodyChars": 2627
+    },
+    {
+      "id": "backpack-handle-ring-attachment-check",
+      "title": "백팩 손잡이 고리가 움직일 때 같이 봐야 할 봉제선",
+      "summary": "No.9018 블랙의 손잡이와 앞판 사이에 고리와 박음질이 보입니다. 고리의 움직임과 몸판에 붙은 탭의 움직임을 따로 살피는 방법을 짚습니다.",
+      "coreQuestion": "손잡이와 몸판 사이에 고리가 달린 백팩에서 고리의 각도 변화와 몸판 고정 탭의 들뜸을 어떻게 구별할까?",
+      "editorialForm": "손잡이에서 몸판으로 따라가는 구조 안내",
+      "related": "backpack-handle-anchor-one-side",
+      "model": "No.9018",
+      "productId": "coupang-5389b8e0597d3491",
+      "url": "https://himawari.co.kr/story/backpack-handle-ring-attachment-check.html",
+      "dimensionsCm": {
+        "width": 28,
+        "height": 40,
+        "depth": 17
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 40페이지의 9018 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "tags": [
+        "백팩 손잡이",
+        "봉제선",
+        "가방 관리"
+      ],
+      "image": "assets/story/backpack-handle-ring-attachment-check.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-25/ref-9018.jpg",
+      "images": [
+        {
+          "image": "assets/story/backpack-handle-ring-attachment-check.webp",
+          "reference": "backups/story-2026-11-25/ref-9018.jpg",
+          "role": "고리와 몸판을 함께 볼 수 있는 검정 백팩 정면",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 제품 연출. No.9018 블랙을 세워 앞판의 고리와 사각 봉제 탭 두 곳을 본 모습.",
+          "caption": "AI 제품 연출. 윗손잡이 아래 고리와 사각 탭이 양쪽에 보입니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-25/generated-9018.png",
+          "prompt": "Exact model Himawari No.9018 Black in the attached product-only real photo, W28 × H40 × D17 cm. Upright soft rectangular matte pure black cloth. At top paired short black carry handles joined by narrow black wrap; two rectangular dark rings on front shoulder carry handle ends directly above dark gray-black rectangular X-stitched attachment tabs, precisely as reference. Broad plain black shoulder straps behind. One horizontal black zipper across the front panel with slim dark zipper pull left, one external box pocket below with wide rounded flap, black rectangular tonal Himawari patch and two charcoal faux leather straps with dark buckles, small punched holes and accurately stitched square tabs. Side pockets and original black zipper pulls only. Preserve black-on-black finish and actual dark original patch and legible established Himawari lettering, no fantasy features. Landscape 3:2 realistic product editorial photo. In a softly window-lit workshop on a pale warm gray desk, complete standing bag viewed from just left of center, eye-level front, two tall shoulder straps and carry handle and both rings and entire bottom pocket visible. No hands. Neutral lighting that lets each sewn handle mounting surface read, no props except an out-of-focus notebook behind. Soft texture and product size. Black on black with no silver shine, preserve exact item.",
+          "fidelityNotes": "직접 비교 시 검은 본체와 같은 색의 정면 지퍼, 고리·교차 탭 두 쌍, 앞포켓 덮개·어두운 로고·버클, 뒤쪽 어깨끈이 보존됐다. 40cm 몸판의 세로 비례가 자연스럽다.",
+          "generator": "imagegen",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-b10b6164-47f6-44f0-85fa-015ed436426b.png"
+        },
+        {
+          "image": "assets/story/backpack-handle-ring-attachment-check-detail.webp",
+          "reference": "backups/story-2026-11-25/ref-9018.jpg",
+          "role": "한쪽 사각 탭과 교차 박음질을 살피는 사선 상세",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 제품 연출. No.9018 블랙 고리 아래의 교차 박음질을 손끝 옆에서 가까이 본 모습.",
+          "caption": "AI 제품 연출. 고리 아래의 사각 탭과 몸판이 만나는 경계입니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-25/generated-9018-detail.png",
+          "prompt": "Exact model Himawari No.9018 Black in the attached product-only real photo, W28 × H40 × D17 cm. Upright soft rectangular matte pure black cloth. At top paired short black carry handles joined by narrow black wrap; two rectangular dark rings on front shoulder carry handle ends directly above dark gray-black rectangular X-stitched attachment tabs, precisely as reference. Broad plain black shoulder straps behind. One horizontal black zipper across the front panel with slim dark zipper pull left, one external box pocket below with wide rounded flap, black rectangular tonal Himawari patch and two charcoal faux leather straps with dark buckles, small punched holes and accurately stitched square tabs. Side pockets and original black zipper pulls only. Preserve black-on-black finish and actual dark original patch and legible established Himawari lettering, no fantasy features. Landscape 3:2 close-up of the original upper right handle connection, side three-quarter and slightly high, on the same bag against a warm gray workshop bench. Show the single dark rectangular ring between the top woven handle and the dark gray-black square leather-looking tab, and real X stitch and outline with no damage, no modified seams. A few fingers of a fictional adult gently steady the nearby upper bag edge without inserting into ring or covering it. Opposite tab and top edge emerge toward soft focus, logo stays on the lower flap, outside crop. Exact attachment geometry with dark ring, tab, seam and handle. No writing, marks, repair or tools.",
+          "fidelityNotes": "오른쪽에 선명한 어두운 고리, 위 손잡이 연결과 아래 사각 탭의 교차 실선, 지퍼와 로고 위치를 확인했다. 사선에서 원본의 맞물림을 유지하고 인물 손은 제품을 가리지 않는다.",
+          "generator": "imagegen",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-8918126e-263d-4bc4-8a03-20f35de22ed7.png"
+        },
+        {
+          "image": "assets/story/backpack-handle-ring-attachment-check-reference.webp",
+          "reference": "backups/story-2026-11-25/ref-9018.jpg",
+          "role": "실제 제품 정면",
+          "imageKind": "reference",
+          "width": 1000,
+          "height": 1000,
+          "alt": "실제 제품 사진. No.9018 블랙 앞면에 있는 사각 고리, 봉제 탭, 두 버클.",
+          "caption": "No.9018 블랙의 손잡이 고리와 앞판의 두 버클을 구분할 수 있습니다.",
+          "fidelityReviewed": true,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-5389b8e0597d3491/main-wMewqA2hbkN5KTqrPCLwFHtGyMFmTC.jpg"
+        }
+      ],
+      "publicationStatus": "awaiting-first-deployment",
+      "bodyChars": 2548
+    },
+    {
+      "id": "backpack-zipper-pull-grip-length",
+      "title": "백팩 지퍼 손잡이를 길게 달기 전에 잡는 면부터 볼까",
+      "summary": "No.1223 베이지 앞면의 두 지퍼는 손잡이가 놓이는 높이가 다릅니다. 손잡이를 잡기 어려울 때 잡는 면을 넓힐지 길이를 더할지 비교합니다.",
+      "coreQuestion": "백팩 지퍼의 가느다란 손잡이가 잡기 어렵다면 손이 걸리는 면을 넓힐지 길이를 늘릴지 어떻게 정할까?",
+      "editorialForm": "사용 자세에 따른 지퍼 탭 선택",
+      "related": "backpack-keyring-placement-guide",
+      "model": "No.1223",
+      "productId": "no-1223-fc798f71",
+      "url": "https://himawari.co.kr/story/backpack-zipper-pull-grip-length.html",
+      "dimensionsCm": {
+        "width": 29,
+        "height": 40,
+        "depth": 14
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 29페이지의 1223 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "tags": [
+        "지퍼 손잡이",
+        "앞포켓",
+        "가방 사용"
+      ],
+      "image": "assets/story/backpack-zipper-pull-grip-length.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-25/ref-1223.jpg",
+      "images": [
+        {
+          "image": "assets/story/backpack-zipper-pull-grip-length.webp",
+          "reference": "backups/story-2026-11-25/ref-1223.jpg",
+          "role": "두 천 견본과 베이지 백팩의 지퍼 높이 비교",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 제품 연출. No.1223 베이지와 폭과 길이가 다른 검은 천 견본 두 개.",
+          "caption": "AI 제품 연출. 지퍼 손잡이의 폭과 길이를 설명하려고 천 견본을 가방 옆에 뒀습니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-25/generated-1223.png",
+          "prompt": "Use attached exact product only, Himawari No.1223 Beige, verified W29 × H40 × D14 cm. Soft rectangular beige backpack with smoothly curved squared off top, short narrow black carry loop, black upper perimeter zipper tracks on outer sides, original pale beige open side sleeves. Large padded almost rectangular front compartment traced by bold black U-shaped zipper whose two black slender straight pulls hang at LOWER LEFT near lower edge. A separate narrow horizontal black zipper runs across upper front panel inside U outline and HAS one narrow flat short black fabric pull dangling on the left, just left of small centered rectangular black Himawari badge. Keep original zipper shapes, accurate tiny Himawari words, beige textile sheen and black outline, stitch, pulls, strap placement and geometry. No fabricated pocket or zipper. Existing handles stay in the state and length in reference. Landscape 3:2 photorealistic product editorial photo full front at medium distance. Bag standing on clean pale maple bench, original three visible zipper pull positions and front pocket outline unobstructed. Two sample short black fabric strips, one broad rectangle, one much narrower and longer ribbon, arranged separately on table empty area well away to the right of the bag. Strips are unattached examples, plain black, no connectors or hardware. Natural warm Nordic sunlight and no signage, no other bag.",
+          "fidelityNotes": "베이지 몸판, 검은 위 고리, 앞의 짧은 가로 지퍼와 큰 테두리 지퍼, 옆 포켓, 검은 로고 및 40cm 세로 비례를 대조했다. 비교용 천 두 개는 제품 바깥에 따로 놓였다.",
+          "generator": "imagegen",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-b95ef966-59a7-4f98-84c5-7a22db19a29e.png"
+        },
+        {
+          "image": "assets/story/backpack-zipper-pull-grip-length-detail.webp",
+          "reference": "backups/story-2026-11-25/ref-1223.jpg",
+          "role": "짧은 가로 지퍼와 큰 포켓의 당김 탭을 가까이 본 상세",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 제품 연출. No.1223 베이지 가로 지퍼 손잡이와 옆쪽 큰 포켓의 지퍼를 가까이 본 모습.",
+          "caption": "AI 제품 연출. 작은 가로 지퍼와 큰 앞포켓 지퍼 손잡이의 위치를 비교합니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-25/generated-1223-detail.png",
+          "prompt": "Use attached exact product only, Himawari No.1223 Beige, verified W29 × H40 × D14 cm. Soft rectangular beige backpack with smoothly curved squared off top, short narrow black carry loop, black upper perimeter zipper tracks on outer sides, original pale beige open side sleeves. Large padded almost rectangular front compartment traced by bold black U-shaped zipper whose two black slender straight pulls hang at LOWER LEFT near lower edge. A separate narrow horizontal black zipper runs across upper front panel inside U outline and HAS one narrow flat short black fabric pull dangling on the left, just left of small centered rectangular black Himawari badge. Keep original zipper shapes, accurate tiny Himawari words, beige textile sheen and black outline, stitch, pulls, strap placement and geometry. No fabricated pocket or zipper. Existing handles stay in the state and length in reference. Landscape 3:2 product-detail photograph slant from lower left, close side three-quarter showing the front pocket upper left and the U-shaped closure left edge, the short slender original upper zipper pull, original lower pulls close to bottom and black logo at center-right if in frame. No person. Adult hand has natural anatomy. Beige fabric softly lit with neutral warm light, exact products and proportions. No captions, arrows, or ruler. Image 1 is the sole product authority. Image 2 is rejected because its upper-front zipper pull grew too large and used a different woven construction. Redo the detail photograph on a soft neutral light background with a left-oblique neck-down framing tight on the front pocket. Remove the hand completely. Honor these parts precisely: the REAL short narrow smooth matte-black flat rectangular pull at the little transverse zipper left, the short real fine connector visible in Image 1, and original long pulls down near bottom-left. The tiny upper assembly must stay in true proportions. There must be no large loop, no adjustable clip, no additional textile woven extension and no length comparison laid on the bag. Use a slightly lower lateral view to distinguish head versus width of original zipper tab; draw every piece precisely from source. Preserve beige satin color, original logo rectangular patch, U-shaped closure, pocket lip, left side pouch and all seams. Both zipper tracks are closed exactly as product shot. 3:2 landscape photo, even soft daylight.",
+          "fidelityNotes": "처음의 상세 후보는 상단 당김 탭 재질과 길이 차이로 제외했다. 수정본은 좁고 매끈한 짧은 검정 탭, 아래쪽 긴 탭, 베이지 몸판과 곡선 테두리, 옆포켓 및 로고를 원본과 대조했다. 손이나 연장 부품을 추가하지 않았다.",
+          "generator": "imagegen",
+          "toolOriginal": "C:\\Users\\UserK\\.codex\\generated_images\\01a08495-edb2-74e2-b203-1f9e52e791cd\\exec-bd48168a-4467-4291-b04c-52846a67533d.png"
+        },
+        {
+          "image": "assets/story/backpack-zipper-pull-grip-length-reference.webp",
+          "reference": "backups/story-2026-11-25/ref-1223.jpg",
+          "role": "실제 제품 정면",
+          "imageKind": "reference",
+          "width": 720,
+          "height": 720,
+          "alt": "실제 제품 사진. No.1223 베이지의 가로 지퍼와 큰 앞포켓을 두르는 검정 지퍼.",
+          "caption": "No.1223 베이지에서 검은 지퍼 두 개와 손잡이가 놓인 높이를 확인할 수 있습니다.",
+          "fidelityReviewed": true,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/fc798f71-e9f1-4a5f-abf8-ff9c0f38ecc6/main-SHYdM3e9eGxhpb2yxLHvx9WMIzrvRl.jpg"
+        }
+      ],
+      "publicationStatus": "awaiting-first-deployment",
+      "bodyChars": 2725
+    }
+  ]
+}
