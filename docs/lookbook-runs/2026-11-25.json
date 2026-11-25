@@ -1,0 +1,99 @@
+{
+  "date": "2026-11-25",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-25T00:00:22.493Z",
+    "scheduledAt": "2026-11-25T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-25/deployment.json",
+  "baselineCommit": "83ef3a2b2a7576765f823d2e86a415306a947e1f",
+  "baselineEvidence": "backups/lookbook-2026-11-25/baseline-deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-25/products.json",
+  "recentVisualReview": "backups/lookbook-2026-11-25/recent-visual-review.md",
+  "entries": [
+    {
+      "model": "1010",
+      "color": "네이비그레이",
+      "productId": "no-1010-51ed3695",
+      "category": "everyday",
+      "title": "체육관 관람석에서",
+      "scene": "붉은 카디건을 입고 체육관 관람석에 앉았어요. 옆에 둔 회색 백팩은 앞포켓 덮개가 남색이에요.",
+      "alt": "AI 착용 연출. 체육관 관람석에 앉아 No.1010 네이비그레이 백팩의 윗손잡이를 잡은 모습.",
+      "composition": {
+        "approach": "close seated portrait with the bag upright on the adjacent bench",
+        "angle": "front three-quarter at the sitter's eye level",
+        "framing": "head to knees with the full upright bag beside the sitter, bag body roughly 42 percent of frame height",
+        "activity": "sitting on bleachers with one hand holding the upright bag by its paired top handles and the other resting on the knee",
+        "setting": "wooden bleachers in an indoor community gym"
+      },
+      "prompt": "One original 1024x1536 portrait, 2:3, consistent real product geometry and genuinely photographic Seoul editorial. Create a fictional adult portrait, using only the attached product-only photo for the exact Himawari No.1010 Navy Gray backpack, manufacturer outside dimensions W33 x H45 x D15 centimeters. Preserve the original heather light gray squared rectangular front panel with softly rounded shoulders, solid black piping, black bottom and side fabric, original two broad black attach-webbings with slim oblong black rings over dark X-stitched tabs, paired curved black short top handles under their one black central wrap, two thin black zipper pulls at the top center, darker gray-black box front pocket under one slaty muted navy heather flap, two original slender black buckle straps with small holes, and its original tiny matte black rectangular Himawari patch centered on the navy flap with low-contrast Himawari lettering. Original black shoulder straps lie naturally behind bag. No front horizontal zipper or extra branding. Show an attractive fictional adult Korean woman aged around 35, an easy neat short tied hairstyle and brick red wool cardigan over pale oatmeal knit, charcoal trousers, seated naturally on indoor wooden bleachers in a quiet community sports hall with muted cream, green and oak colors. Her nearest hand holds original paired handles while she places the bag upright on the adjacent bench seat by her hip, respecting 45cm product height; the large bag face is unobstructed and directed toward lens with a small turn. Her other hand rests on her own knee. Tight head-through-knee environmental portrait, front three-quarter toward her nearer shoulder, at her seated eye height. The wood bench and a shallow glimpse of pale green gym floor add context. Soft natural light from high translucent gym windows, no hard color cast on bag, no other people, poster, letters, score text. Anatomically plausible hands, shoulder, lap and knees, no bag worn over clothing and no invented additional strap. Adult sits normally with both knees parallel, body relaxed and an authentic expression.",
+      "id": "2026-11-25-everyday-1010",
+      "date": "2026-11-25",
+      "reference": "backups/lookbook-2026-11-25/reference-1.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/51ed3695-c987-4f85-9e73-047b9613f264/main-P2YsPEoGKOqnDUqj8y60rxYeKs73UI.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/11086389316",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 50페이지의 1010 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": [
+        33,
+        45,
+        15
+      ],
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-25/generated-1.png",
+      "image": "/assets/lookbook/2026-11-25-everyday-1010.webp",
+      "thumbnail": "/assets/lookbook/2026-11-25-everyday-1010-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "실제 원본과 대조해 회색 직사각형 몸판, 검은 테두리와 아래쪽, 남색 덮개와 짙은 앞주머니, 버클 두 개, 덮개 가운데 흐린 검정 로고를 확인했다. 윗지퍼 두 손잡이와 앞 손잡이 띠의 고리 및 사각 박음질이 보인다. 손이 모아 잡아 가려진 부분을 제외하면 윗손잡이 곡선이 원본과 맞고 오른쪽 어깨끈은 몸판 뒤에 놓였다. 옆자리에 세웠을 때 높이 45cm 제품과 인물 상체의 비율이 자연스럽다. 착석 자세와 두 손의 위치도 확인했다.",
+      "generatedSha256": "43e67ef77050e85f57ba3c23cc2d807f40ff18a41510f1841f3e6b59934c5468"
+    },
+    {
+      "model": "1682",
+      "color": "카키",
+      "productId": "coupang-8af93fb01cbb013c",
+      "category": "travel",
+      "title": "돌담 옆에서 잠시",
+      "scene": "푸른 점퍼에 카키색 백팩을 멨어요. 돌담 옆 굽은 길에서 잠깐 멈춰 섰어요.",
+      "alt": "AI 착용 연출. 돌담 옆 굽은 길에서 No.1682 카키 백팩을 양어깨에 메고 서 있는 모습.",
+      "composition": {
+        "approach": "wide environmental portrait from a higher spot on the path",
+        "angle": "elevated oblique rear three-quarter from the subject's right",
+        "framing": "full figure with both shoes, generous curved path and stone wall, bag about 19 percent of frame height",
+        "activity": "standing still near the bend with the backpack worn on both shoulders",
+        "setting": "curving courtyard path with a low stone wall and dry autumn grasses"
+      },
+      "prompt": "Authentic modern Korean travel editorial photograph, portrait 1024x1536 aspect ratio 2:3. Use supplied single real backpack reference exactly: Himawari No.1682 Khaki, manufacturer exterior W30 x H50 x D14 cm. Match the actual muted pale gray olive/khaki body in supplied image, no saturated military-green cast, exact tall narrow taper, top blackish navy roll/fold across full width, two original black dark navy buckle straps vertically down the top panel, small original flat black top carry loop just above it, upper flap with curved black border and exact black Himawari wordmark centered low on khaki, twin slender dark pulls meeting at center immediately beneath flap, authentic thin black dark navy lower band, one slim diagonal face-pocket seam on viewer's right and tiny original dark accent viewer's left. Show original black backpack shoulder straps correctly emerging from body and lying on both shoulders, with no new attachments or decorative details. A fictional handsome adult Korean man in late 20s casually wearing a muted cool blue coach jacket, loose stone chinos and dark brown walking shoes in a garden where a light gray path bends around a low rough-stone wall with dry autumn grass beyond. His head faces forward along the path, no extreme head turn. Full-length confident natural mid-step, with distinct legs separated, both complete shoes visible, natural arms. Recording camera several metres away from a slightly elevated adjacent terrace, looking DOWN around 25 degrees from behind and to his right, never straight rear. Clear uncluttered context with the path winding diagonally across the whole frame, subject smaller than typical portrait, entire bag measures about 24–27 percent of frame height and reads crisply. Daytime mild neutral autumn light, no signs or text except genuine bag logo, no people in background, no stairs under feet and no distraction. Preserve the actual product shape, pocket layout, fabric color, dark hardware, logos, and proportions.\n\n착용 자세 보정 요청\nCreate a revised 1024×1536 vertical Korean LookBook travel photograph using FIRST image as only product authority. SECOND image is your scene/framing target, but its projecting crossed legs were rejected. Keep elevated oblique SIDE-REAR photographing from the right by the same meandering low stone wall with dried autumn grasses. Move the adult man's pose to standing still, looking toward the bend, with both feet naturally PLANTED on the pale path, about 20 cm apart and fully individually visible, both toes aimed along path, near foot only a small amount advanced, both knees straight but relaxed with clear negative space between trouser legs, no crossing. Natural proportions, same casual slightly faded slate-blue coach jacket, stop posture with arms at sides, dark brown shoes and fairly straight stone chinos, no clothes caught in backpack. Maintain whole figure with plenty of curving wall visible. The 50cm tall, 30cm wide and 14cm deep Himawari No.1682 Khaki from first image is worn on both original padded dark straps. Precisely preserve muted gray-olive front, dark blackish navy fold top straight bar and two original black buckles, slender central small black Himawari wordmark, twin zipper ends at center, pocket with diagonal seam on bag front-right, original small trim on bag front-left and dark base panel. Keep silhouette, relative product size, color and real scale exact. Sunlit overcast neutral balance and no people or graphics except small bag logo. This is a completely plausible standing pose viewed from slightly high back-side angle, not walking, no heavy tilt. Wider frame with head and both complete shoes in view and bag around a quarter of frame height.",
+      "id": "2026-11-25-travel-1682",
+      "date": "2026-11-25",
+      "reference": "backups/lookbook-2026-11-25/reference-2.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-8af93fb01cbb013c/main-dmPrQ42ZMAohhflhxoOcEjuo82IL7F.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8653683058",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 39페이지의 1682 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": [
+        30,
+        50,
+        14
+      ],
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-25/generated-2.png",
+      "image": "/assets/lookbook/2026-11-25-travel-1682.webp",
+      "thumbnail": "/assets/lookbook/2026-11-25-travel-1682-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "실제 No.1682 카키 원본의 회녹색 몸판과 짙은 접힌 윗단, 양쪽 검정 버클과 세로 띠, 작은 가운데 글자, 두 지퍼 손잡이, 오른쪽 사선 포켓과 어두운 밑단을 대조했다. 원래 양쪽 어깨끈을 착용한 위치와 폭이 자연스럽고 50cm 몸판이 등에서 차지하는 크기가 맞는다. 첫 후보는 높은 방향에서 보행 중 바짓가랑이와 다리가 교차돼 구분이 약했다. 수정본은 다리 두 개가 떨어져 있고 신발 밑창 두 쪽이 바닥에 닿아 서 있는 자세가 자연스럽다.",
+      "generatedSha256": "f5f40d4abfc41881ff9d7a7f9467a49271ecf58fff25a815e4e547d34fe539e2",
+      "earlierGeneratedSource": "backups/lookbook-2026-11-25/candidate-generated-2.png",
+      "supplementalReferenceEvidence": "backups/lookbook-2026-11-25/reference-supplements.json",
+      "earlierReviewEvidence": "backups/lookbook-2026-11-25/rejected-photo-2.md"
+    }
+  ],
+  "visualReview": "backups/lookbook-2026-11-25/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-25/optimization.json",
+  "languageReview": "backups/lookbook-2026-11-25/korean-copy-review.json",
+  "generationEvidence": "backups/lookbook-2026-11-25/accepted-images.json"
+}

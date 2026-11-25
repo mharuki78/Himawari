@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-25-everyday-1010",
+    "date": "2026-11-25",
+    "category": "everyday",
+    "title": "체육관 관람석에서",
+    "model": "1010",
+    "color": "네이비그레이",
+    "productId": "no-1010-51ed3695",
+    "scene": "붉은 카디건을 입고 체육관 관람석에 앉았어요. 옆에 둔 회색 백팩은 앞포켓 덮개가 남색이에요.",
+    "alt": "AI 착용 연출. 체육관 관람석에 앉아 No.1010 네이비그레이 백팩의 윗손잡이를 잡은 모습.",
+    "image": "/assets/lookbook/2026-11-25-everyday-1010.webp",
+    "thumbnail": "/assets/lookbook/2026-11-25-everyday-1010-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-25-travel-1682",
+    "date": "2026-11-25",
+    "category": "travel",
+    "title": "돌담 옆에서 잠시",
+    "model": "1682",
+    "color": "카키",
+    "productId": "coupang-8af93fb01cbb013c",
+    "scene": "푸른 점퍼에 카키색 백팩을 멨어요. 돌담 옆 굽은 길에서 잠깐 멈춰 섰어요.",
+    "alt": "AI 착용 연출. 돌담 옆 굽은 길에서 No.1682 카키 백팩을 양어깨에 메고 서 있는 모습.",
+    "image": "/assets/lookbook/2026-11-25-travel-1682.webp",
+    "thumbnail": "/assets/lookbook/2026-11-25-travel-1682-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-24-everyday-2505",
     "date": "2026-11-24",
     "category": "everyday",
