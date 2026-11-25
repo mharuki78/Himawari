@@ -6,7 +6,7 @@
     "scheduledAt": "2026-11-26T08:00:00+09:00"
   },
   "scheduledSlot": "2026-11-26T08:00:00+09:00",
-  "stage": "prepared-content",
+  "stage": "metadata-ready",
   "expectedCount": 3,
   "expectedGeneratedImages": 6,
   "publicationBaselineCommit": "e56c104210e8be153031625609ce2a179ef3fe48",
@@ -81,8 +81,17 @@
           "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/4419256b-1ebf-4c1b-a820-456c9e4e507e/main-JNlhfBlRE80ziG0hiBl20igi2NeiDb.jpg"
         }
       ],
-      "publicationStatus": "awaiting-first-deployment",
-      "bodyChars": 2630
+      "publicationStatus": "verified",
+      "bodyChars": 2630,
+      "publication": {
+        "publishedAt": "2026-11-25T23:21:38.555Z",
+        "modifiedAt": "2026-11-25T23:21:38.555Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-26/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-26/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-26/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-26/first-deployment-history.json",
+        "articleSha256": "3c6511b550378864a19a28db6e5a4c3519e2682fb83494f4aef9419a0c8a9630"
+      }
     },
     {
       "id": "backpack-bottom-clearance-seated",
@@ -152,8 +161,17 @@
           "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-8af93fb01cbb013c/main-dmPrQ42ZMAohhflhxoOcEjuo82IL7F.jpg"
         }
       ],
-      "publicationStatus": "awaiting-first-deployment",
-      "bodyChars": 2649
+      "publicationStatus": "verified",
+      "bodyChars": 2649,
+      "publication": {
+        "publishedAt": "2026-11-25T23:21:38.555Z",
+        "modifiedAt": "2026-11-25T23:21:38.555Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-26/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-26/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-26/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-26/first-deployment-history.json",
+        "articleSha256": "c97eb21702c72d125d2bc7fb847830d215a61524fffaf6e477d0dd9eeadc6ac4"
+      }
     },
     {
       "id": "laptop-pouch-gapped-seat-support",
@@ -223,8 +241,17 @@
           "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6c09e607c31fa331/main-6gVCtxywyhvmUsVIGgVwZKV6MYXaHZ.jpg"
         }
       ],
-      "publicationStatus": "awaiting-first-deployment",
-      "bodyChars": 2666
+      "publicationStatus": "verified",
+      "bodyChars": 2666,
+      "publication": {
+        "publishedAt": "2026-11-25T23:21:38.555Z",
+        "modifiedAt": "2026-11-25T23:21:38.555Z",
+        "firstDeploymentEvidence": "backups/story-2026-11-26/first-deployment.json",
+        "firstDeploymentHistoryEvidence": "backups/story-2026-11-26/first-deployment-history.json",
+        "modificationDeploymentEvidence": "backups/story-2026-11-26/first-deployment.json",
+        "modificationDeploymentHistoryEvidence": "backups/story-2026-11-26/first-deployment-history.json",
+        "articleSha256": "399f08656a3c1eca7f7a6f009af1c0cc44fdd7b835e24d3215c86418ef70a186"
+      }
     }
   ]
 }
