@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-light-fabric-contact-marks",
+    "title": "밝은 백팩에 어두운 자국이 생기면 어디부터 볼까",
+    "date": "2026-11-26",
+    "summary": "No.1230 민트의 밝은 몸판과 검은 테두리를 바탕으로 자국의 위치를 짚습니다. 옷이나 다른 가방이 닿은 방향을 비교하고 제품 관리 안내에 맞춰 다음 조치를 정합니다.",
+    "description": "No.1230 민트의 밝은 몸판과 검은 테두리를 바탕으로 자국의 위치를 짚습니다. 옷이나 다른 가방이 닿은 방향을 비교하고 제품 관리 안내에 맞춰 다음 조치를 정합니다.",
+    "tags": [
+      "백팩",
+      "관리",
+      "앞포켓"
+    ],
+    "image": "../assets/story/backpack-light-fabric-contact-marks.webp",
+    "imageAlt": "AI 연출. 밝은 나무 선반에 놓인 No.1230 민트 백팩과 간격을 두고 접어 둔 검은 데님",
+    "images": [
+      "../assets/story/backpack-light-fabric-contact-marks.webp",
+      "../assets/story/backpack-light-fabric-contact-marks-detail.webp",
+      "../assets/story/backpack-light-fabric-contact-marks-reference.webp"
+    ],
+    "url": "backpack-light-fabric-contact-marks.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "흔적의 위치를 좁히는 관찰 기록"
+  },
+  {
+    "id": "backpack-bottom-clearance-seated",
+    "title": "긴 백팩을 멘 채 앉으면 밑단이 좌판에 닿을까",
+    "date": "2026-11-26",
+    "summary": "No.1682 카키의 제조사 외부 높이와 어두운 밑단 위치를 살펴봅니다. 벤치와 등받이 있는 의자에서 가방을 벗을 순간을 각각 판단해 봅니다.",
+    "description": "No.1682 카키의 제조사 외부 높이와 어두운 밑단 위치를 살펴봅니다. 벤치와 등받이 있는 의자에서 가방을 벗을 순간을 각각 판단해 봅니다.",
+    "tags": [
+      "백팩",
+      "착용",
+      "가방끈"
+    ],
+    "image": "../assets/story/backpack-bottom-clearance-seated.webp",
+    "imageAlt": "AI 착용 연출. 등받이 없는 벤치에 앉은 사람과 좌판 위로 보이는 No.1682 카키의 검은 밑단",
+    "images": [
+      "../assets/story/backpack-bottom-clearance-seated.webp",
+      "../assets/story/backpack-bottom-clearance-seated-detail.webp",
+      "../assets/story/backpack-bottom-clearance-seated-reference.webp"
+    ],
+    "url": "backpack-bottom-clearance-seated.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "두 좌석에서 밑단과 등받이 비교"
+  },
+  {
+    "id": "laptop-pouch-gapped-seat-support",
+    "title": "얇은 노트북 파우치를 틈 있는 벤치에 내려놓을 때",
+    "date": "2026-11-26",
+    "summary": "외부 폭이 2cm로 표기된 No.2513 민트 파우치의 둥근 모서리와 넓은 면을 봅니다. 틈 있는 좌판과 평평한 상판에서 어디를 받쳐야 하는지 따라가 봅니다.",
+    "description": "외부 폭이 2cm로 표기된 No.2513 민트 파우치의 둥근 모서리와 넓은 면을 봅니다. 틈 있는 좌판과 평평한 상판에서 어디를 받쳐야 하는지 따라가 봅니다.",
+    "tags": [
+      "노트북 파우치",
+      "휴대",
+      "보관"
+    ],
+    "image": "../assets/story/laptop-pouch-gapped-seat-support.webp",
+    "imageAlt": "AI 연출. 틈이 있는 나무 좌판 위에 넓은 면을 대고 눕힌 No.2513 민트 파우치",
+    "images": [
+      "../assets/story/laptop-pouch-gapped-seat-support.webp",
+      "../assets/story/laptop-pouch-gapped-seat-support-detail.webp",
+      "../assets/story/laptop-pouch-gapped-seat-support-reference.webp"
+    ],
+    "url": "laptop-pouch-gapped-seat-support.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "내려놓는 손을 따라가는 짧은 상황극"
+  },
+  {
     "id": "backpack-white-zipper-reflective-marking",
     "title": "백팩의 흰 지퍼, 반사 기능은 어떻게 확인할까",
     "date": "2026-11-25",

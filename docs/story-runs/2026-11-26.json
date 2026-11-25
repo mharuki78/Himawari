@@ -1,0 +1,230 @@
+{
+  "date": "2026-11-26",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-25T23:01:19.372Z",
+    "scheduledAt": "2026-11-26T08:00:00+09:00"
+  },
+  "scheduledSlot": "2026-11-26T08:00:00+09:00",
+  "stage": "prepared-content",
+  "expectedCount": 3,
+  "expectedGeneratedImages": 6,
+  "publicationBaselineCommit": "e56c104210e8be153031625609ce2a179ef3fe48",
+  "publicationBaselineEvidence": "backups/story-2026-11-26/baseline-deployment.json",
+  "completionReceipt": "backups/story-runs/2026-11-26.deployment.json",
+  "posts": [
+    {
+      "id": "backpack-light-fabric-contact-marks",
+      "title": "밝은 백팩에 어두운 자국이 생기면 어디부터 볼까",
+      "summary": "No.1230 민트의 밝은 몸판과 검은 테두리를 바탕으로 자국의 위치를 짚습니다. 옷이나 다른 가방이 닿은 방향을 비교하고 제품 관리 안내에 맞춰 다음 조치를 정합니다.",
+      "coreQuestion": "밝은 백팩에서 어두운 자국을 발견했을 때 묻어난 색인지 추정하기 전에 어느 부분을 비교하고 어디까지 손질할까?",
+      "editorialForm": "흔적의 위치를 좁히는 관찰 기록",
+      "related": "grey-backpack-texture-or-mark",
+      "model": "No.1230",
+      "productId": "no-1230-4419256b",
+      "url": "https://himawari.co.kr/story/backpack-light-fabric-contact-marks.html",
+      "dimensionsCm": {
+        "width": 32,
+        "height": 40,
+        "depth": 18
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 15페이지의 1230 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "tags": [
+        "백팩",
+        "관리",
+        "앞포켓"
+      ],
+      "image": "assets/story/backpack-light-fabric-contact-marks.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-26/ref-1230.jpg",
+      "images": [
+        {
+          "image": "assets/story/backpack-light-fabric-contact-marks.webp",
+          "reference": "backups/story-2026-11-26/ref-1230.jpg",
+          "role": "선반에 가방을 둔 전체 구도",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. 밝은 나무 선반에 놓인 No.1230 민트 백팩과 간격을 두고 접어 둔 검은 데님",
+          "caption": "No.1230 민트의 밝은 몸판과 검은 테두리를 살펴보는 AI 연출입니다. 데님은 가방과 떨어져 있습니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-26/generated-1230.png",
+          "prompt": "Real exact Himawari No.1230 Mint photographed product only. Reference manufacturer outer W32 × H40 × D18 cm. Small unadorned black fabric arch loop, muted pale gray mint ripstop rounded body, thin black border around top main zipper, its two black loop pulls adjacent at top center. Two symmetrical high black mesh panels under narrow horizontal black zips; black figure-loop tabs, boxy mint lower pocket fronts beneath mesh, original deep dark narrow vertical seam at center with two black trims, one small black triangular Himawari patch only at lower viewer-right, original shoulder straps behind in dark and mint. Reproduce shape, color, front seam, black mesh and exact logo as reference. Fabric is clean. No stains, color tests, dye transfer simulation, fictional labels, extra pockets, or false wear. Landscape 1536×1024, natural home entry photography. Backpack upright facing camera on a low matte cream shelf, folded pair of dark indigo denim trousers sitting to its right with a clear air gap and no contact. Wide room at left with light from a translucent pane, stone wall and soft wood, close enough to see all bag structure, sightline approximately straight on at backpack eye level. Quiet everyday setup; clean product, no other props, no person, no captions.",
+          "fidelityNotes": "실제 원본과 나란히 확인. 둥근 실루엣, 민트색 몸판, 검은 메쉬 앞포켓과 테두리, 삼각 라벨, 상단 검은 손잡이와 끈 배치가 일치한다. 데님과 가방이 떨어져 있어 이염을 재현하지 않는다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-light-fabric-contact-marks-detail.webp",
+          "reference": "backups/story-2026-11-26/ref-1230.jpg",
+          "role": "앞포켓과 밝은 천 경계 상세",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. No.1230 민트의 앞포켓 두 개와 검은 메쉬 아래 밝은 천을 비스듬히 본 모습",
+          "caption": "앞포켓의 원래 검은 선과 자국이 생겼을 때 비교할 수 있는 밝은 천을 함께 보는 AI 연출입니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-26/generated-1230-detail.png",
+          "prompt": "Real exact Himawari No.1230 Mint photographed product only. Reference manufacturer outer W32 × H40 × D18 cm. Small unadorned black fabric arch loop, muted pale gray mint ripstop rounded body, thin black border around top main zipper, its two black loop pulls adjacent at top center. Two symmetrical high black mesh panels under narrow horizontal black zips; black figure-loop tabs, boxy mint lower pocket fronts beneath mesh, original deep dark narrow vertical seam at center with two black trims, one small black triangular Himawari patch only at lower viewer-right, original shoulder straps behind in dark and mint. Reproduce shape, color, front seam, black mesh and exact logo as reference. Fabric is clean. No stains, color tests, dye transfer simulation, fictional labels, extra pockets, or false wear. Landscape 1536×1024, controlled soft daylight close-up obliquely down from left across clean lower mint cloth and black edging of the two front pockets. Show triangular genuine small black Himawari patch on lower viewer right and black central trim. The background is a soft neutral shelf. Show exact weave and seams without artificial watermark or fibers. Detail clarifies which panels could be visually compared, not a stain or cleaning demo. No person, dark denim or signage in this close detail.",
+          "fidelityNotes": "실제 원본과 나란히 확인. 앞포켓 두 개, 검은 메쉬와 지퍼 라인, 민트색의 둥근 몸판과 삼각 라벨 위치를 확인했다. 상단 손잡이와 어깨끈 일부는 몸판 뒤로 보인다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-light-fabric-contact-marks-reference.webp",
+          "reference": "backups/story-2026-11-26/ref-1230.jpg",
+          "role": "실제 제품 정면과 배색 확인",
+          "imageKind": "reference",
+          "width": 720,
+          "height": 720,
+          "alt": "실제 제품 사진. No.1230 민트 정면의 검은 메쉬 포켓 두 개와 삼각 라벨",
+          "caption": "No.1230 민트의 실제 제품 사진입니다. 두 포켓의 테두리와 라벨 위치를 확인할 수 있습니다.",
+          "fidelityReviewed": true,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/4419256b-1ebf-4c1b-a820-456c9e4e507e/main-JNlhfBlRE80ziG0hiBl20igi2NeiDb.jpg"
+        }
+      ],
+      "publicationStatus": "awaiting-first-deployment",
+      "bodyChars": 2630
+    },
+    {
+      "id": "backpack-bottom-clearance-seated",
+      "title": "긴 백팩을 멘 채 앉으면 밑단이 좌판에 닿을까",
+      "summary": "No.1682 카키의 제조사 외부 높이와 어두운 밑단 위치를 살펴봅니다. 벤치와 등받이 있는 의자에서 가방을 벗을 순간을 각각 판단해 봅니다.",
+      "coreQuestion": "높이가 긴 백팩을 메고 의자에 앉을 때 가방 밑단과 좌판, 몸판과 등받이가 닿는 시점을 어떻게 구별할까?",
+      "editorialForm": "두 좌석에서 밑단과 등받이 비교",
+      "related": "tea-meeting-brewing-timer",
+      "model": "No.1682",
+      "productId": "coupang-8af93fb01cbb013c",
+      "url": "https://himawari.co.kr/story/backpack-bottom-clearance-seated.html",
+      "dimensionsCm": {
+        "width": 30,
+        "height": 50,
+        "depth": 14
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 39페이지의 1682 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "tags": [
+        "백팩",
+        "착용",
+        "가방끈"
+      ],
+      "image": "assets/story/backpack-bottom-clearance-seated.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-26/ref-1682.jpg",
+      "images": [
+        {
+          "image": "assets/story/backpack-bottom-clearance-seated.webp",
+          "reference": "backups/story-2026-11-26/ref-1682.jpg",
+          "role": "등받이 없는 벤치 착용 전경",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 착용 연출. 등받이 없는 벤치에 앉은 사람과 좌판 위로 보이는 No.1682 카키의 검은 밑단",
+          "caption": "벤치 좌판과 백팩 밑단 사이를 옆뒤에서 보여주는 AI 착용 연출입니다. 가방이 내려오는 위치는 체형과 끈 길이에 따라 달라집니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-26/generated-1682.png",
+          "prompt": "Reproduce the exact real Himawari No.1682 Khaki from supplied original, W30 × H50 × D14 cm. Tall narrow pale gray-olive body and authentic broad black-dark-navy one-fold top and blackish base band. Thin short carry loop at top center. Twin original vertical dark buckle straps with real hardware and centered little dark Himawari wordmark on muted green front flap. Rounded black border and original twin black zipper pulls at center just below flap. Preserve angled seam of original viewer-right pocket and small slim side accent viewer left, all original shoulder straps. No added parts or big logo. 3:2 photo. Landscape 1536×1024 travel editorial showing a fictional adult Korean man in grayish blue utility jacket and tan straight trousers seated normally on a wide simple backless wooden bench inside a quiet contemporary museum lobby. Focal product is the bag fully visible from back-side very mild three quarter; both real broad straps worn on his shoulders, with lower bag edge just above bench line (placement illustration, no physical test or promise). He looks sideways so profile is seen. Frame head to bench with both forearms resting forward and no lower legs or shoes in frame. Bag body's height and narrow footprint realistic on torso. Front face of bag toward lens, original top fold, buckles, pocket and logo readable. No hand plugging or occluding bag, no glass reflections, no other people, no lettering except product logo.",
+          "fidelityNotes": "실제 원본과 나란히 확인. 카키 몸판과 검은 접힘부·밑단의 비율, 버클과 중앙 두 지퍼 손잡이, 어두운 로고, 옆 봉제선의 위치를 확인했다. 양 어깨끈을 쓰는 착용 장면이며 밑단 아래의 보이는 간격을 수치로 해석하지 않는다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-bottom-clearance-seated-detail.webp",
+          "reference": "backups/story-2026-11-26/ref-1682.jpg",
+          "role": "백팩 밑단과 의자 접점 비교",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. 나무 상판에 선 No.1682 카키와 뒤쪽 나무 의자를 낮은 각도에서 본 모습",
+          "caption": "No.1682 카키의 밑단과 의자 좌판, 등받이 위치를 한 화면에서 살펴보는 AI 연출입니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-26/generated-1682-detail.png",
+          "prompt": "Reproduce the exact real Himawari No.1682 Khaki from supplied original, W30 × H50 × D14 cm. Tall narrow pale gray-olive body and authentic broad black-dark-navy one-fold top and blackish base band. Thin short carry loop at top center. Twin original vertical dark buckle straps with real hardware and centered little dark Himawari wordmark on muted green front flap. Rounded black border and original twin black zipper pulls at center just below flap. Preserve angled seam of original viewer-right pocket and small slim side accent viewer left, all original shoulder straps. No added parts or big logo. 3:2 photo. Landscape 1536×1024 close-oblique angle just above the level of a wooden open-backed chair seat next to a brick indoor wall. Whole same real exact backpack sitting upright on an adjacent low flat table, clearly separate from the chair, both objects visible. Camera favors the surface where naturally the 50-cm bag's dark base meets the table, and the line of chair seat and bottom rail visible to illustrate the separate surfaces, no test or tape measure. Original front pack face and side profile, correct muted gray olive, single folded roll bar and original buckle straps, centered monochrome label, full base. No person, exercise or storage claims.",
+          "fidelityNotes": "실제 원본과 나란히 확인. 카키 몸판, 검은 윗단과 버클, 중앙의 두 검은 지퍼 손잡이, 검은 밑단, 로고와 끈의 비율을 확인했다. 옆 의자와 가방의 하단은 각자 다른 물체로 식별된다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-bottom-clearance-seated-reference.webp",
+          "reference": "backups/story-2026-11-26/ref-1682.jpg",
+          "role": "실제 제품 윗단과 밑단 확인",
+          "imageKind": "reference",
+          "width": 1000,
+          "height": 1000,
+          "alt": "실제 제품 사진. No.1682 카키의 어두운 윗단과 버클, 카키 몸판과 어두운 밑단",
+          "caption": "No.1682 카키의 실제 제품 사진입니다. 제조사 카탈로그에는 외부 높이가 50cm로 안내돼 있습니다.",
+          "fidelityReviewed": true,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-8af93fb01cbb013c/main-dmPrQ42ZMAohhflhxoOcEjuo82IL7F.jpg"
+        }
+      ],
+      "publicationStatus": "awaiting-first-deployment",
+      "bodyChars": 2649
+    },
+    {
+      "id": "laptop-pouch-gapped-seat-support",
+      "title": "얇은 노트북 파우치를 틈 있는 벤치에 내려놓을 때",
+      "summary": "외부 폭이 2cm로 표기된 No.2513 민트 파우치의 둥근 모서리와 넓은 면을 봅니다. 틈 있는 좌판과 평평한 상판에서 어디를 받쳐야 하는지 따라가 봅니다.",
+      "coreQuestion": "얇은 파우치를 틈 있는 좌판에 잠깐 놓을 때 좁은 밑면과 넓은 면 가운데 어떤 면이 어디에서 받쳐지는지 어떻게 확인할까?",
+      "editorialForm": "내려놓는 손을 따라가는 짧은 상황극",
+      "related": "laptop-pouch-desk-clearance",
+      "model": "No.2513",
+      "productId": "coupang-6c09e607c31fa331",
+      "url": "https://himawari.co.kr/story/laptop-pouch-gapped-seat-support.html",
+      "dimensionsCm": {
+        "width": 36.5,
+        "height": 28,
+        "depth": 2
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 11페이지의 2513 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "tags": [
+        "노트북 파우치",
+        "휴대",
+        "보관"
+      ],
+      "image": "assets/story/laptop-pouch-gapped-seat-support.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-26/ref-2513.jpg",
+      "images": [
+        {
+          "image": "assets/story/laptop-pouch-gapped-seat-support.webp",
+          "reference": "backups/story-2026-11-26/ref-2513.jpg",
+          "role": "나무판을 가로지르는 몸판",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. 틈이 있는 나무 좌판 위에 넓은 면을 대고 눕힌 No.2513 민트 파우치",
+          "caption": "No.2513 민트 파우치를 여러 나무판에 걸쳐 놓은 AI 연출입니다. 손잡이와 장식 끈이 좌판에 보입니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-26/generated-2513.png",
+          "prompt": "Exact real Himawari No.2513 Mint laptop pouch, official closed exterior W36.5 × H28 × D2 cm. Product is a very thin softly quilted pale yellowish mint landscape sleeve with subtle true small diamond like quilting grid, narrow black piping and original slim black zipper edge. Big original dark blackish navy Himawari curved-font lettering centered across front. Single black speckled rope handle in high arc held by small silver wire rings top left/right. Two real thin black pattern strings with small silver beads hang at upper LEFT of logo along left margin, precise original length and color. Two real small slim metal zipper pulls at left, small bottom silver ring near left if visible. Skin texture where adult hands present, exact original model. Do not make pouch hard, padded thick, or boxy, no new features. Landscape 1536×1024 realistic Korean lifestyle product photograph. In a simple indoor workshop entry, a low open slatted wooden bench, 5 wide flat wooden planks visible with shallow narrow dark seams, exact mint sleeve lying face-up flat across more than one board so the supported broad surface is obvious. Rope handle lies naturally behind the pouch toward top, both long left-hand fabric cord ends remain visible arranged against mint front on its left, logo exactly readable. Whole closed pouch fully visible, from overhead oblique at 43 degrees. No electronics, no dimensions labels, no other accessories. Soft light and dark warm wood, pouch stands out.",
+          "fidelityNotes": "실제 원본과 나란히 확인. 연한 민트색의 넓은 앞판, 얇은 비율과 둥근 검은 둘레, 퀼팅, Himawari 글자, 금속 고리와 짧은 손잡이, 왼쪽 장식 끈과 지퍼 손잡이 두 개가 보인다. 몸판이 판 사이를 가로지르는 상황을 보여 준다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/laptop-pouch-gapped-seat-support-detail.webp",
+          "reference": "backups/story-2026-11-26/ref-2513.jpg",
+          "role": "세워 내리는 좁은 밑면",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. 손잡이를 잡고 좁은 밑면을 나무 좌판 가까이 내린 No.2513 민트 파우치",
+          "caption": "파우치를 든 채 밑면이 어느 판에 닿을지 살펴보는 AI 연출입니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-26/generated-2513-detail.png",
+          "prompt": "Exact real Himawari No.2513 Mint laptop pouch, official closed exterior W36.5 × H28 × D2 cm. Product is a very thin softly quilted pale yellowish mint landscape sleeve with subtle true small diamond like quilting grid, narrow black piping and original slim black zipper edge. Big original dark blackish navy Himawari curved-font lettering centered across front. Single black speckled rope handle in high arc held by small silver wire rings top left/right. Two real thin black pattern strings with small silver beads hang at upper LEFT of logo along left margin, precise original length and color. Two real small slim metal zipper pulls at left, small bottom silver ring near left if visible. Skin texture where adult hands present, exact original model. Do not make pouch hard, padded thick, or boxy, no new features. Landscape 1536×1024 tight low angle near edge of dark wooden slat bench. Same exact pouch held by its original handle by one natural adult hand from above, whole bag upright on its original thin lower edge while the hand still supports it. Solid wood directly under pouch rests across a single broad slat, with a nearby small separate gap running away from viewer. Show original lower ring if visible but never invent other rings, the thin profile and intact quilting, crest logo and attachments. Only a forearm/hand, no person or additional gadget. It is a careful illustration of checking placement before releasing, no object falling, no shape deformation, no mechanical effect.",
+          "fidelityNotes": "실제 원본과 나란히 확인. 얇은 민트 몸판, 검은 둘레, 손잡이와 고리, 장식 끈, 지퍼 손잡이, 라벨 비례를 확인했다. 손에 들고 밑면을 좌판 가까이 보여주는 연출이다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/laptop-pouch-gapped-seat-support-reference.webp",
+          "reference": "backups/story-2026-11-26/ref-2513.jpg",
+          "role": "실제 제품 손잡이와 장식 끈 확인",
+          "imageKind": "reference",
+          "width": 1000,
+          "height": 1000,
+          "alt": "실제 제품 사진. No.2513 민트 파우치의 검은 테두리와 짧은 손잡이, 옆 장식 끈",
+          "caption": "No.2513 민트의 실제 제품 사진입니다. 넓은 몸판과 장식 끈이 달린 위치를 볼 수 있습니다.",
+          "fidelityReviewed": true,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-6c09e607c31fa331/main-6gVCtxywyhvmUsVIGgVwZKV6MYXaHZ.jpg"
+        }
+      ],
+      "publicationStatus": "awaiting-first-deployment",
+      "bodyChars": 2666
+    }
+  ]
+}
