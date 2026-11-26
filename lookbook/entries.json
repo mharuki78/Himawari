@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-26-city-9001",
+    "date": "2026-11-26",
+    "category": "city",
+    "title": "역에서 지도를 보며",
+    "model": "9001",
+    "color": "네이비",
+    "productId": "no-9001-d60dec59",
+    "scene": "회색 재킷 차림으로 역에서 지도를 살펴봐요. 남색 백팩은 옆에 두고 손잡이를 잡았어요.",
+    "alt": "AI 착용 연출. 역에서 지도를 보며 No.9001 네이비 백팩을 옆에 두고 손잡이를 잡은 모습.",
+    "image": "/assets/lookbook/2026-11-26-city-9001.webp",
+    "thumbnail": "/assets/lookbook/2026-11-26-city-9001-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-26-travel-0514",
+    "date": "2026-11-26",
+    "category": "travel",
+    "title": "물가 데크에서",
+    "model": "0514",
+    "color": "화이트",
+    "productId": "no-0514-4ffd1ec6",
+    "scene": "어두운 재킷에 흰색 백팩을 메고 물가 데크에 서 있어요. 한 손을 난간에 올렸어요.",
+    "alt": "AI 착용 연출. 물가 데크에서 No.0514 화이트 백팩을 양어깨에 멘 모습.",
+    "image": "/assets/lookbook/2026-11-26-travel-0514.webp",
+    "thumbnail": "/assets/lookbook/2026-11-26-travel-0514-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-25-everyday-1010",
     "date": "2026-11-25",
     "category": "everyday",

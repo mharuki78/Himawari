@@ -1,0 +1,95 @@
+{
+  "date": "2026-11-26",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-26T00:00:46.265Z",
+    "scheduledAt": "2026-11-26T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups\\lookbook-2026-11-26\\deployment.json",
+  "baselineCommit": "dbf1f4d0c607e5faa2772a92fc48611b459c0d7a",
+  "sourceCatalog": "backups\\lookbook-2026-11-26\\products.json",
+  "recentVisualReview": "backups\\lookbook-2026-11-26\\recent-visual-review.md",
+  "entries": [
+    {
+      "id": "2026-11-26-city-9001",
+      "date": "2026-11-26",
+      "model": "9001",
+      "productId": "no-9001-d60dec59",
+      "category": "city",
+      "title": "역에서 지도를 보며",
+      "color": "네이비",
+      "scene": "회색 재킷 차림으로 역에서 지도를 살펴봐요. 남색 백팩은 옆에 두고 손잡이를 잡았어요.",
+      "alt": "AI 착용 연출. 역에서 지도를 보며 No.9001 네이비 백팩을 옆에 두고 손잡이를 잡은 모습.",
+      "composition": {
+        "approach": "station portrait with bag upright on ledge",
+        "angle": "front three-quarter at eye level",
+        "framing": "head to mid-thigh with full bag beside hip occupying roughly 37 percent of frame height",
+        "activity": "standing and reading a map while holding the bag by its short handles",
+        "setting": "daylit train station platform with a stone ledge"
+      },
+      "reference": "backups/lookbook-2026-11-26/reference-1.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/d60dec59-de7b-407e-bb1d-b3063041adb3/main-GGDS416RqOcgLLdS6HmwHUCqnnY10o.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13308595222",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 62페이지의 9001 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": [
+        28.0,
+        40.0,
+        17.0
+      ],
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-26/generated-1.png",
+      "prompt": "Create one vertical 2:3 realistic Korean LookBook photograph using attached real product as sole exact product authority. Himawari No.9001 navy backpack, verified external dimensions 28 wide x 40 high x 17 deep cm. Preserve faithfully the deep navy gently squared body, twin padded navy short top handles with two silver rivets at each handle base, central small rectangular navy label with fine white Himawari writing, one wide front compartment with pale gold horizontal zipper and long rusty brown pull on viewer left, navy side open pocket, main zipper with little brown end tabs, original dark blue backpack straps. A fictional adult Korean woman around 35, understated neat hair, wearing a warm gray blazer and black trousers, at an airy train station reading a folded paper while standing still. Photographed from front three-quarter, mid-thigh-up, natural eye level. The backpack rests upright on a broad stone ledge beside her hip, with her left hand lightly holding BOTH its existing short handles. Bag faces the camera and occupies about 40% of image height; accurately preserve original 40cm scale, realistic hands and fingers. Daylight and neutral color, subtle city atmosphere, no signage, no extra straps, no invented pockets, no other text.",
+      "image": "/assets/lookbook/2026-11-26-city-9001.webp",
+      "thumbnail": "/assets/lookbook/2026-11-26-city-9001-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "실제 네이비 원본과 생성본을 직접 비교해 몸판의 형태와 색, 위 손잡이와 두 줄의 은색 리벳, 가운데 네모 라벨, 밝은 앞 지퍼와 갈색 손잡이, 옆 포켓과 원래 어깨끈을 살폈다. 가방과 상체의 비율 및 지도와 손잡이를 잡은 손을 확인했다.",
+      "generatedSha256": "8a54ddf39f0605c58d2655af71f71807fa32f19605a5a9e00f97c8c026085d45"
+    },
+    {
+      "id": "2026-11-26-travel-0514",
+      "date": "2026-11-26",
+      "model": "0514",
+      "productId": "no-0514-4ffd1ec6",
+      "category": "travel",
+      "title": "물가 데크에서",
+      "color": "화이트",
+      "scene": "어두운 재킷에 흰색 백팩을 메고 물가 데크에 서 있어요. 한 손을 난간에 올렸어요.",
+      "alt": "AI 착용 연출. 물가 데크에서 No.0514 화이트 백팩을 양어깨에 멘 모습.",
+      "composition": {
+        "approach": "wearing the bag at a waterfront railing",
+        "angle": "rear at approximately shoulder height",
+        "framing": "head to knees with centered backpack occupying roughly 34 percent of frame height",
+        "activity": "standing still with backpack on both shoulders and one hand on the railing",
+        "setting": "wooden waterfront boardwalk with reeds"
+      },
+      "reference": "backups/lookbook-2026-11-26/reference-2.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/4ffd1ec6-000b-4ab1-9447-48902dc07ccb/main-rL7kz12UMS3kQNB2RXfrYDTFO3Whmk.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13326396057",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 19페이지의 0514 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "dimensionsCm": [
+        30.0,
+        43.0,
+        15.0
+      ],
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-26/generated-2.png",
+      "prompt": "Create one vertical 2:3 realistic Korean LookBook photograph using attached real product as sole exact product authority. Himawari No.0514 White backpack, verified outer dimensions W30 x H43 x D15 cm. Faithfully preserve the softly shiny pale silver-white fabric, gathered drawstring top, central black cord lock and two long black thin cords, horizontal padded upper front band, lower rectangular zip pocket with left black pull, small black inverted triangular Himawari patch on lower right, side pouches and pale shoulder straps. Fictional adult Korean man around 30 in a dark olive casual jacket and charcoal trousers, standing near a waterside boardwalk beside dried reeds on an overcast autumn afternoon, wearing the backpack on BOTH original straps. Camera from low side-rear three-quarter at waist height, medium environmental portrait showing person from shoulders down to below knees, bag central and unobstructed occupying around 34% of frame height, no face or feet needed. One hand rests naturally on a simple wood railing and the other relaxed by his side. Accurate 43cm scale relative to adult torso, clear correct arm and hand anatomy. Natural gray daylight, convincing unstylized photography, no other people, no signs, no extra zippers, ornaments or invented pockets.",
+      "image": "/assets/lookbook/2026-11-26-travel-0514.webp",
+      "thumbnail": "/assets/lookbook/2026-11-26-travel-0514-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "fidelityReview": "실제 화이트 원본과 생성본을 직접 비교해 흰색 광택 몸판과 조임끈, 앞면의 가로 띠와 지퍼 포켓, 왼쪽 검은 손잡이, 오른쪽 아래 삼각 로고, 양옆 포켓과 밝은 어깨끈을 확인했다. 양어깨 착용과 두 팔, 손을 살폈다.",
+      "generatedSha256": "cdfe412441af3a0d6255cc7b9536aa1dcdd38aecf18611a9b4db56a036303d57"
+    }
+  ],
+  "visualReview": "backups\\lookbook-2026-11-26\\output-review.md",
+  "optimizationEvidence": "backups\\lookbook-2026-11-26\\optimization.json",
+  "languageReview": "backups\\lookbook-2026-11-26\\korean-copy-review.json",
+  "generationEvidence": "backups\\lookbook-2026-11-26\\accepted-images.json"
+}
