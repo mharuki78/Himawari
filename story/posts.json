@@ -1,5 +1,71 @@
 [
   {
+    "id": "backpack-twin-front-pockets-balance",
+    "title": "나란한 백팩 앞포켓, 두 쪽을 같은 두께로 채워야 할까",
+    "date": "2026-11-28",
+    "summary": "No.1230의 나란한 앞포켓에 물건을 둘 때 개수와 부피를 나누어 보고, 여닫는 손과 가방의 모양을 함께 살핍니다.",
+    "description": "No.1230의 나란한 앞포켓에 물건을 둘 때 개수와 부피를 나누어 보고, 여닫는 손과 가방의 모양을 함께 살핍니다.",
+    "tags": [
+      "백팩",
+      "앞포켓",
+      "정리"
+    ],
+    "image": "../assets/story/backpack-twin-front-pockets-balance.webp",
+    "imageAlt": "AI 연출. No.1230 민트의 나란한 앞포켓",
+    "images": [
+      "../assets/story/backpack-twin-front-pockets-balance.webp",
+      "../assets/story/backpack-twin-front-pockets-balance-detail.webp",
+      "../assets/story/backpack-twin-front-pockets-balance-reference.webp"
+    ],
+    "url": "backpack-twin-front-pockets-balance.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "양쪽 포켓을 채우기 전후로 비교하는 상황 해설"
+  },
+  {
+    "id": "backpack-front-buckle-closure-photo",
+    "title": "백팩 앞의 버클, 사진만 보고 여밈 방식을 알 수 있을까",
+    "date": "2026-11-28",
+    "summary": "No.188L의 앞포켓 덮개와 두 띠를 보며 사진으로 보이는 부분과 여밈 방식을 알아보려 물어볼 내용을 나눕니다.",
+    "description": "No.188L의 앞포켓 덮개와 두 띠를 보며 사진으로 보이는 부분과 여밈 방식을 알아보려 물어볼 내용을 나눕니다.",
+    "tags": [
+      "백팩",
+      "버클",
+      "선택"
+    ],
+    "image": "../assets/story/backpack-front-buckle-closure-photo.webp",
+    "imageAlt": "AI 연출. No.188L 블랙의 앞포켓과 버클",
+    "images": [
+      "../assets/story/backpack-front-buckle-closure-photo.webp",
+      "../assets/story/backpack-front-buckle-closure-photo-detail.webp",
+      "../assets/story/backpack-front-buckle-closure-photo-reference.webp"
+    ],
+    "url": "backpack-front-buckle-closure-photo.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "사진에서 보이는 부품부터 문의까지 이어지는 해설"
+  },
+  {
+    "id": "backpack-side-pocket-opening-measurement",
+    "title": "백팩 옆주머니 입구가 사진에 가려졌다면 무엇을 물어볼까",
+    "date": "2026-11-28",
+    "summary": "No.9001 옆주머니의 위치를 살피고 외부 치수와 주머니 실측을 구분해 필요한 물건과 비교합니다.",
+    "description": "No.9001 옆주머니의 위치를 살피고 외부 치수와 주머니 실측을 구분해 필요한 물건과 비교합니다.",
+    "tags": [
+      "백팩",
+      "옆주머니",
+      "치수"
+    ],
+    "image": "../assets/story/backpack-side-pocket-opening-measurement.webp",
+    "imageAlt": "AI 연출. No.9001 네이비를 책상에서 손잡이로 잡은 모습",
+    "images": [
+      "../assets/story/backpack-side-pocket-opening-measurement.webp",
+      "../assets/story/backpack-side-pocket-opening-measurement-detail.webp",
+      "../assets/story/backpack-side-pocket-opening-measurement-reference.webp"
+    ],
+    "url": "backpack-side-pocket-opening-measurement.html",
+    "author": "히마와리 편집팀",
+    "editorialForm": "사진 판독과 치수 문의를 중심으로 한 선택 안내"
+  },
+  {
     "id": "backpack-light-fabric-contact-marks",
     "title": "밝은 백팩에 어두운 자국이 생기면 어디부터 볼까",
     "date": "2026-11-26",

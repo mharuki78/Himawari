@@ -1,0 +1,230 @@
+{
+  "date": "2026-11-28",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-27T22:58:10.969Z",
+    "scheduledAt": "2026-11-28T08:00:00+09:00"
+  },
+  "scheduledSlot": "2026-11-28T08:00:00+09:00",
+  "stage": "prepared-content",
+  "expectedCount": 3,
+  "expectedGeneratedImages": 6,
+  "publicationBaselineCommit": "96fd9f6c5e86a83c74d766cacf31933c259a3a55",
+  "publicationBaselineEvidence": "backups/story-2026-11-28/baseline-deployment.json",
+  "completionReceipt": "backups/story-runs/2026-11-28.deployment.json",
+  "posts": [
+    {
+      "id": "backpack-twin-front-pockets-balance",
+      "title": "나란한 백팩 앞포켓, 두 쪽을 같은 두께로 채워야 할까",
+      "summary": "No.1230의 나란한 앞포켓에 물건을 둘 때 개수와 부피를 나누어 보고, 여닫는 손과 가방의 모양을 함께 살핍니다.",
+      "coreQuestion": "나란한 앞포켓에 서로 다른 부피의 물건을 둘 때 무엇을 확인할까?",
+      "editorialForm": "양쪽 포켓을 채우기 전후로 비교하는 상황 해설",
+      "related": "backpack-mesh-pocket-card-visibility",
+      "model": "No.1230",
+      "productId": "no-1230-4419256b",
+      "url": "https://himawari.co.kr/story/backpack-twin-front-pockets-balance.html",
+      "dimensionsCm": {
+        "width": 32,
+        "height": 40,
+        "depth": 18
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 15페이지의 1230 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "tags": [
+        "백팩",
+        "앞포켓",
+        "정리"
+      ],
+      "image": "assets/story/backpack-twin-front-pockets-balance.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-28/ref-1230.jpg",
+      "images": [
+        {
+          "image": "assets/story/backpack-twin-front-pockets-balance.webp",
+          "reference": "backups/story-2026-11-28/ref-1230.jpg",
+          "role": "앞포켓 전체",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. No.1230 민트의 나란한 앞포켓",
+          "caption": "No.1230 민트의 앞포켓을 보여주는 AI 연출입니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-28/generated-1230.png",
+          "prompt": "Editorial landscape product photo, exact supplied Himawari No.1230 mint backpack (32x40x18cm), upright on a light wooden table in soft window light, complete front and sides visible. Faithfully show pale mint rounded body, short black top loop, two separate front pockets each with black mesh upper panel, black zipper line and black edging, small black triangular Himawari badge low on the right, and black shoulder straps. Bag only with folded plain cloth to one side; original structure, colors, no extra compartments or text.",
+          "fidelityNotes": "실제 사진과 민트 몸판, 검은 테두리, 나란한 망사 포켓과 지퍼, 삼각 로고를 비교했다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-twin-front-pockets-balance-detail.webp",
+          "reference": "backups/story-2026-11-28/ref-1230.jpg",
+          "role": "나란한 지퍼 위치",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. No.1230 민트 앞포켓의 좌우 지퍼",
+          "caption": "두 앞포켓과 지퍼의 위치를 보여주는 AI 연출입니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-28/generated-1230-detail.png",
+          "prompt": "Landscape editorial product photograph, close oblique angle of exact reference Himawari No.1230 mint backpack 32x40x18cm, whole front in frame at a slight angle on pale desk. Focus on the space between twin front pockets and the two separately closed black zipper lines. Preserve pale mint fabric, black zipper tracks and mesh pockets, black trim, triangular black label lower right, top loop, original body proportions; no invented zippers, no people, soft neutral light.",
+          "fidelityNotes": "실제 사진과 좌우 앞포켓, 검은 지퍼와 망사, 검은 삼각 로고 및 몸판 비율을 비교했다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-twin-front-pockets-balance-reference.webp",
+          "reference": "backups/story-2026-11-28/ref-1230.jpg",
+          "role": "실제 제품 앞면",
+          "imageKind": "reference",
+          "width": 720,
+          "height": 720,
+          "alt": "실제 제품 사진. No.1230 민트의 앞포켓",
+          "caption": "No.1230 민트의 실제 제품 사진입니다.",
+          "fidelityReviewed": true,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/4419256b-1ebf-4c1b-a820-456c9e4e507e/main-JNlhfBlRE80ziG0hiBl20igi2NeiDb.jpg"
+        }
+      ],
+      "publicationStatus": "awaiting-first-deployment",
+      "bodyChars": 2662
+    },
+    {
+      "id": "backpack-front-buckle-closure-photo",
+      "title": "백팩 앞의 버클, 사진만 보고 여밈 방식을 알 수 있을까",
+      "summary": "No.188L의 앞포켓 덮개와 두 띠를 보며 사진으로 보이는 부분과 여밈 방식을 알아보려 물어볼 내용을 나눕니다.",
+      "coreQuestion": "앞포켓 버클 사진만으로 알 수 있는 것과 확인해야 하는 동작은 무엇인가?",
+      "editorialForm": "사진에서 보이는 부품부터 문의까지 이어지는 해설",
+      "related": "backpack-front-buckles-table-contact",
+      "model": "No.188L",
+      "productId": "coupang-4efcb6a5f2ae7b88",
+      "url": "https://himawari.co.kr/story/backpack-front-buckle-closure-photo.html",
+      "dimensionsCm": {
+        "width": 28,
+        "height": 39,
+        "depth": 15
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 57페이지의 188L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "tags": [
+        "백팩",
+        "버클",
+        "선택"
+      ],
+      "image": "assets/story/backpack-front-buckle-closure-photo.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-28/ref-188L.jpg",
+      "images": [
+        {
+          "image": "assets/story/backpack-front-buckle-closure-photo.webp",
+          "reference": "backups/story-2026-11-28/ref-188L.jpg",
+          "role": "앞포켓 덮개 전체",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. No.188L 블랙의 앞포켓과 버클",
+          "caption": "No.188L 블랙의 앞포켓 덮개를 보여주는 AI 연출입니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-28/generated-188L.png",
+          "prompt": "Landscape realistic editorial product photo of exact reference Himawari No.188L black backpack 28x39x15cm standing upright on a quiet wooden shelf, viewed from the front three-quarter. Preserve black rectangular body, two short top handles, crossover stitched attachment patches, large protruding front pocket with flap, two original narrow buckled black straps, centered rectangular Himawari patch and side pocket and original shoulder straps. Whole bag is visible, soft daylight, no additional features or text.",
+          "fidelityNotes": "원본과 검은 네모 몸판, 손잡이의 봉제부, 앞 덮개와 두 버클 띠, 측면 포켓을 비교했다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-front-buckle-closure-photo-detail.webp",
+          "reference": "backups/story-2026-11-28/ref-188L.jpg",
+          "role": "두 버클과 띠",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. No.188L 블랙 앞포켓의 두 버클",
+          "caption": "앞포켓의 두 띠와 버클을 보여주는 AI 연출입니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-28/generated-188L-detail.png",
+          "prompt": "Landscape realistic product detail photograph of reference Himawari No.188L black backpack 28x39x15cm, viewed front from a slightly elevated angle on neutral pale tabletop. Keep whole front visible while drawing attention to the black front flap and two separate buckle straps. Precisely match actual black shape, rectangular patch on the flap, two black top handles and stitched tabs, side pocket, strap buckles, no extra pockets, no person.",
+          "fidelityNotes": "원본의 앞 덮개, 나란한 두 띠와 버클, 사각 로고와 양쪽 손잡이를 비교했다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-front-buckle-closure-photo-reference.webp",
+          "reference": "backups/story-2026-11-28/ref-188L.jpg",
+          "role": "실제 제품 사진",
+          "imageKind": "reference",
+          "width": 720,
+          "height": 720,
+          "alt": "실제 제품 사진. No.188L 블랙의 앞포켓",
+          "caption": "No.188L 블랙의 실제 제품 사진입니다.",
+          "fidelityReviewed": true,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/4e742056-98a1-4bb6-a43c-7220963eef84/main-xBR9EEBlKpEohLd9gHDRXGBBlIMZPQ.jpg"
+        }
+      ],
+      "publicationStatus": "awaiting-first-deployment",
+      "bodyChars": 2771
+    },
+    {
+      "id": "backpack-side-pocket-opening-measurement",
+      "title": "백팩 옆주머니 입구가 사진에 가려졌다면 무엇을 물어볼까",
+      "summary": "No.9001 옆주머니의 위치를 살피고 외부 치수와 주머니 실측을 구분해 필요한 물건과 비교합니다.",
+      "coreQuestion": "옆주머니 입구가 사진에 잘 보이지 않을 때 어떤 치수와 사용 조건을 확인할까?",
+      "editorialForm": "사진 판독과 치수 문의를 중심으로 한 선택 안내",
+      "related": "backpack-side-pocket-floor-contact",
+      "model": "No.9001",
+      "productId": "no-9001-d60dec59",
+      "url": "https://himawari.co.kr/story/backpack-side-pocket-opening-measurement.html",
+      "dimensionsCm": {
+        "width": 28,
+        "height": 40,
+        "depth": 17
+      },
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 62페이지의 9001 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "tags": [
+        "백팩",
+        "옆주머니",
+        "치수"
+      ],
+      "image": "assets/story/backpack-side-pocket-opening-measurement.webp",
+      "imageKind": "generated",
+      "reference": "backups/story-2026-11-28/ref-9001.jpg",
+      "images": [
+        {
+          "image": "assets/story/backpack-side-pocket-opening-measurement.webp",
+          "reference": "backups/story-2026-11-28/ref-9001.jpg",
+          "role": "가방을 들 때 옆면",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. No.9001 네이비를 책상에서 손잡이로 잡은 모습",
+          "caption": "책상 위에 놓인 No.9001 네이비의 AI 연출입니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-28/generated-9001.png",
+          "prompt": "Landscape editorial lifestyle image using supplied exact Himawari No.9001 navy backpack, dimensions 28x40x17cm. A fictional adult in a charcoal jacket stands beside a pale desk, one hand holds the two original short top handles and the closed backpack rests upright supported on the tabletop, whole bag front three quarter visible and about half the frame height. Preserve dark navy square body, paired navy top handles with silver rivets, centered small black brand label, single light cream horizontal front zipper with long rust brown pull on left, navy side pocket and original top zipper. Natural daylight, no invented pockets or extra text.",
+          "fidelityNotes": "네이비 몸판, 두 손잡이와 금속 연결부, 밝은 앞지퍼, 갈색 손잡이와 옆포켓을 비교했다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-side-pocket-opening-measurement-detail.webp",
+          "reference": "backups/story-2026-11-28/ref-9001.jpg",
+          "role": "옆주머니와 몸판",
+          "imageKind": "generated",
+          "width": 1440,
+          "height": 960,
+          "alt": "AI 연출. No.9001 네이비 백팩의 옆주머니",
+          "caption": "No.9001의 옆주머니 위치를 보여주는 AI 연출입니다.",
+          "fidelityReviewed": true,
+          "generatedSource": "backups/story-2026-11-28/generated-9001-detail.png",
+          "prompt": "Landscape studio editorial photograph showing the actual supplied Himawari No.9001 navy backpack on a plain pale table, seen from front right three-quarter, whole bag visible. Faithfully preserve navy squared body and side pocket, both navy top handles and their silver rivets, small center logo patch, single cream front pocket zipper with rust brown pull at left, main top zipper. Show side-pocket lip and front pocket as distinct original features, no added pockets or lettering, even natural light.",
+          "fidelityNotes": "원본의 네이비 외형과 옆 주머니, 두 손잡이, 밝은 앞지퍼와 갈색 손잡이를 비교했다.",
+          "generator": "imagegen"
+        },
+        {
+          "image": "assets/story/backpack-side-pocket-opening-measurement-reference.webp",
+          "reference": "backups/story-2026-11-28/ref-9001.jpg",
+          "role": "실제 제품 사진",
+          "imageKind": "reference",
+          "width": 720,
+          "height": 720,
+          "alt": "실제 제품 사진. No.9001 네이비의 옆주머니",
+          "caption": "No.9001 네이비의 실제 제품 사진입니다.",
+          "fidelityReviewed": true,
+          "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/d60dec59-de7b-407e-bb1d-b3063041adb3/main-GGDS416RqOcgLLdS6HmwHUCqnnY10o.jpg"
+        }
+      ],
+      "publicationStatus": "awaiting-first-deployment",
+      "bodyChars": 2805
+    }
+  ]
+}
