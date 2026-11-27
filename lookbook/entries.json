@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-27-everyday-1230",
+    "date": "2026-11-27",
+    "category": "everyday",
+    "title": "벤치에서 책 한 권",
+    "model": "1230",
+    "color": "민트",
+    "productId": "no-1230-4419256b",
+    "scene": "민트색 백팩을 옆에 두고 벤치에 앉았어요. 손에는 책을 들었어요.",
+    "alt": "AI 착용 연출. 공원 벤치에 앉은 사람과 옆에 놓인 No.1230 민트 백팩",
+    "image": "/assets/lookbook/2026-11-27-everyday-1230.webp",
+    "thumbnail": "/assets/lookbook/2026-11-27-everyday-1230-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-27-city-188l",
+    "date": "2026-11-27",
+    "category": "city",
+    "title": "계단을 오르는 길",
+    "model": "188L",
+    "color": "블랙",
+    "productId": "coupang-4efcb6a5f2ae7b88",
+    "scene": "검은 백팩을 메고 돌계단을 올라요. 앞포켓의 두 줄 버클이 보여요.",
+    "alt": "AI 착용 연출. 돌계단을 오르며 No.188L 블랙 백팩을 양어깨에 멘 모습",
+    "image": "/assets/lookbook/2026-11-27-city-188l.webp",
+    "thumbnail": "/assets/lookbook/2026-11-27-city-188l-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-26-city-9001",
     "date": "2026-11-26",
     "category": "city",

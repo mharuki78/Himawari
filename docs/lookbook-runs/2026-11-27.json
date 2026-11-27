@@ -1,0 +1,96 @@
+{
+  "date": "2026-11-27",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-27T00:01:46.892Z",
+    "scheduledAt": "2026-11-27T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-27/deployment.json",
+  "baselineCommit": "3fc6cadac06c8e0130197d3d1aba24b56188d1db",
+  "baselineEvidence": "backups/lookbook-2026-11-27/baseline-deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-27/products.json",
+  "recentVisualReview": "backups/lookbook-2026-11-27/recent-visual-review.md",
+  "entries": [
+    {
+      "model": "1230",
+      "color": "민트",
+      "category": "everyday",
+      "productId": "no-1230-4419256b",
+      "title": "벤치에서 책 한 권",
+      "scene": "민트색 백팩을 옆에 두고 벤치에 앉았어요. 손에는 책을 들었어요.",
+      "alt": "AI 착용 연출. 공원 벤치에 앉은 사람과 옆에 놓인 No.1230 민트 백팩",
+      "composition": {
+        "approach": "seated medium activity portrait",
+        "angle": "eye-level front three-quarter",
+        "framing": "seated head-to-shoes with large bag next to torso",
+        "activity": "sitting with closed book, backpack supported upright beside person",
+        "setting": "outdoor wooden park bench"
+      },
+      "fidelityReview": "실제 제품 사진과 밝은 민트 몸판, 둥근 상단과 검은 손잡이, 좌우 분리된 검은 망사 앞포켓 두 개와 각각의 가로 지퍼, 오른쪽 아래 삼각 로고를 직접 대조했다. 가방은 벤치 위에 세워져 있고 얼굴과 손 모양도 살폈다.",
+      "id": "2026-11-27-everyday-1230",
+      "date": "2026-11-27",
+      "reference": "backups/lookbook-2026-11-27/reference-1-1230.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/4419256b-1ebf-4c1b-a820-456c9e4e507e/main-JNlhfBlRE80ziG0hiBl20igi2NeiDb.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13308483412",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 15페이지의 1230 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": [
+        32,
+        40,
+        18
+      ],
+      "prompt": "Create one vertical 2:3 1024x1536 natural Korean street-style editorial LookBook photograph using the exact backpack in supplied product image as the authoritative model reference. This is Himawari No.1230 mint, external dimensions 32cm wide 40cm high 18cm deep. Attractive fictional adult woman, natural dark bob, charcoal cardigan, off-white wide trousers and plain sneakers, seated outdoors on a pale wooden park bench, her torso slightly turned toward camera; one original black shoulder strap rests normally over her shoulder and the backpack rests supported beside her hip on the bench, clearly facing camera; she holds a closed paperback in her other hand. Frame head to knees, medium eye-level front three-quarter shot, bag occupies one third frame height. Accurately reproduce original pale mint body, compact rounded top, black top handle and black zippers, TWO symmetric large separate front pockets, each with black-outlined black mesh upper section and horizontal black zipper, and original small black triangular Himawari label at lower right. Show both shoulder straps only where natural. No extra pockets, logos or strap. Soft autumn daylight, clean background, realistic anatomy, no readable background text.",
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-27/generated-1.png",
+      "image": "/assets/lookbook/2026-11-27-everyday-1230.webp",
+      "thumbnail": "/assets/lookbook/2026-11-27-everyday-1230-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "generatedSha256": "dbe1fd39ce775ce17dc586362b7c398325408023aca76384f8d4c4b435d016c9"
+    },
+    {
+      "model": "188L",
+      "color": "블랙",
+      "category": "city",
+      "productId": "coupang-4efcb6a5f2ae7b88",
+      "title": "계단을 오르는 길",
+      "scene": "검은 백팩을 메고 돌계단을 올라요. 앞포켓의 두 줄 버클이 보여요.",
+      "alt": "AI 착용 연출. 돌계단을 오르며 No.188L 블랙 백팩을 양어깨에 멘 모습",
+      "composition": {
+        "approach": "walking environmental portrait",
+        "angle": "low side-rear three-quarter",
+        "framing": "full-body with architecture and stairs",
+        "activity": "walking up stone steps with backpack on both shoulders",
+        "setting": "outdoor museum steps"
+      },
+      "fidelityReview": "실제 사진과 검은 사각 몸판과 둥근 상단, 가로 손잡이와 교차 박음질 부착부, 작은 사각 패치가 있는 덮개, 앞쪽 버클 두 개, 옆 포켓과 어깨끈을 직접 대조했다. 계단에서 다리와 발, 끈의 연결과 가방 크기도 살폈다.",
+      "id": "2026-11-27-city-188l",
+      "date": "2026-11-27",
+      "reference": "backups/lookbook-2026-11-27/reference-2-188L.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/4e742056-98a1-4bb6-a43c-7220963eef84/main-xBR9EEBlKpEohLd9gHDRXGBBlIMZPQ.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13307743197",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 57페이지의 188L 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": [
+        28,
+        39,
+        15
+      ],
+      "prompt": "Create one vertical 2:3 1024x1536 realistic Korean street-style editorial LookBook photograph. Supplied product photo is exact authoritative reference for Himawari No.188L black backpack, actual external size 28cm wide 39cm high 15cm deep. Attractive fictional adult man in dark blue chore jacket, light gray pants, black shoes walks up shallow outdoor stone stairs at a quiet urban museum, both original backpack shoulder straps worn naturally. Camera low at side rear three-quarter angle, full body including shoes, environment visible; his face in side profile, no other people, bag large and sharp enough to see every detail. Reproduce true compact rectangular black body with rounded top corners; original two short black top handles and their black cross-stitched mounting tabs, main zipper, big front pouch with flap and two narrow vertical black straps and buckles, small black rectangular logo patch on flap, side pocket and original shoulder straps. No added features, zipper, logos or dangling ornaments. Natural body proportions, clear autumn light, uncluttered scene, no text.",
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-27/generated-2.png",
+      "image": "/assets/lookbook/2026-11-27-city-188l.webp",
+      "thumbnail": "/assets/lookbook/2026-11-27-city-188l-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "generatedSha256": "be50a56624f9376cb434177ce912a800fb77d09f66eebf2b50242191ffcfc352"
+    }
+  ],
+  "visualReview": "backups/lookbook-2026-11-27/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-27/optimization.json",
+  "languageReview": "backups/lookbook-2026-11-27/korean-copy-review.json",
+  "generationEvidence": "backups/lookbook-2026-11-27/accepted-images.json"
+}
