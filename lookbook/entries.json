@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-11-28-everyday-1223",
+    "date": "2026-11-28",
+    "category": "everyday",
+    "title": "작업실 테이블에서",
+    "model": "1223",
+    "color": "베이지",
+    "productId": "no-1223-fc798f71",
+    "scene": "베이지 백팩을 테이블에 세우고 컵을 살펴봐요. 한 손으로 가방의 짧은 손잡이를 잡았어요.",
+    "alt": "AI 착용 연출. 작업실 테이블에 No.1223 베이지 백팩을 세우고 손잡이를 잡은 모습",
+    "image": "/assets/lookbook/2026-11-28-everyday-1223.webp",
+    "thumbnail": "/assets/lookbook/2026-11-28-everyday-1223-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
+    "id": "2026-11-28-city-9290",
+    "date": "2026-11-28",
+    "category": "city",
+    "title": "강변 길을 걸어요",
+    "model": "9290",
+    "color": "블랙",
+    "productId": "coupang-4861cd80cf7fce0c",
+    "scene": "검은 백팩을 양어깨에 메고 강변 길을 걸어요. 앞포켓의 흰 지퍼가 보여요.",
+    "alt": "AI 착용 연출. 강변 길에서 No.9290 블랙 백팩을 양어깨에 메고 걷는 모습",
+    "image": "/assets/lookbook/2026-11-28-city-9290.webp",
+    "thumbnail": "/assets/lookbook/2026-11-28-city-9290-640.webp",
+    "width": 1024,
+    "height": 1536
+  },
+  {
     "id": "2026-11-27-everyday-1230",
     "date": "2026-11-27",
     "category": "everyday",

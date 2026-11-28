@@ -1,0 +1,96 @@
+{
+  "date": "2026-11-28",
+  "automationId": "himawari",
+  "trigger": {
+    "receivedAt": "2026-11-28T00:00:38.093Z",
+    "scheduledAt": "2026-11-28T09:00:00+09:00",
+    "edition": "morning"
+  },
+  "expectedCount": 2,
+  "stage": "prepared",
+  "completionReceipt": "backups/lookbook-2026-11-28/deployment.json",
+  "baselineCommit": "7a2b94e4edbda04f90dfef40567b0de8126e6b0d",
+  "baselineEvidence": "backups/lookbook-2026-11-28/baseline-deployment.json",
+  "sourceCatalog": "backups/lookbook-2026-11-28/products.json",
+  "recentVisualReview": "backups/lookbook-2026-11-28/recent-visual-review.md",
+  "entries": [
+    {
+      "model": "1223",
+      "color": "베이지",
+      "category": "everyday",
+      "productId": "no-1223-fc798f71",
+      "title": "작업실 테이블에서",
+      "scene": "베이지 백팩을 테이블에 세우고 컵을 살펴봐요. 한 손으로 가방의 짧은 손잡이를 잡았어요.",
+      "alt": "AI 착용 연출. 작업실 테이블에 No.1223 베이지 백팩을 세우고 손잡이를 잡은 모습",
+      "composition": {
+        "approach": "standing table activity portrait",
+        "angle": "eye-level front three-quarter",
+        "framing": "head-to-upper-thigh with large bag in foreground",
+        "activity": "holding original top loop while placing a cup on the table",
+        "setting": "pottery studio by window"
+      },
+      "fidelityReview": "실제 사진과 베이지 사각 몸판, 검은 짧은 손잡이, 검은 테두리의 앞포켓과 가로 지퍼, 중앙 사각 로고, 왼쪽 지퍼 손잡이, 옆주머니를 직접 비교했다. 테이블이 가방 바닥을 받치며 손가락과 얼굴의 형태도 확인했다.",
+      "id": "2026-11-28-everyday-1223",
+      "date": "2026-11-28",
+      "reference": "backups/lookbook-2026-11-28/reference-1-1223.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/fc798f71-e9f1-4a5f-abf8-ff9c0f38ecc6/main-SHYdM3e9eGxhpb2yxLHvx9WMIzrvRl.jpg",
+      "productUrl": "https://smartstore.naver.com/baegot/products/13326074555",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 29페이지의 1223 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다. 용량·수납칸 중 새 카탈로그 미기재 항목은 기존 2026 제품 가이드북 정보를 유지했습니다.",
+      "dimensionsCm": [
+        29,
+        40,
+        14
+      ],
+      "prompt": "Create one portrait 2:3 1024×1536 photorealistic Korean street-style LookBook image using supplied actual product photograph as precise product reference: Himawari No.1223 BEIGE backpack, confirmed exterior 29cm wide × 40cm high × 14cm deep. A fictional stylish adult Korean woman with shoulder-length dark hair, navy wool jacket and simple gray trousers stands by a light wood table in a quiet pottery studio. Frame her head to upper thighs at eye level from front three-quarter. With one hand she holds the bag's original small black top handle while the whole bag rests upright on the table beside her; with the other she carefully arranges a small unbranded ceramic cup on the table. The entire bag front occupies about 40 percent of the frame height and is unobstructed. Preserve the reference exact warm beige rectangular body, dark short top loop, rounded rectangular front pocket outlined in black, horizontal black zipper across upper front pocket and small centered dark Himawari rectangular label beneath it, black zipper pulls on left side and original beige side pocket; no extra handles, pockets, colors, brand marks or made-up text. Natural proportions and hands, soft window light, understated background.",
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-28/generated-1.png",
+      "image": "/assets/lookbook/2026-11-28-everyday-1223.webp",
+      "thumbnail": "/assets/lookbook/2026-11-28-everyday-1223-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "generatedSha256": "2c647bd053109cce837ec1cd89e03815b2375fc4d587fccbc522c8ef0515c48c"
+    },
+    {
+      "model": "9290",
+      "color": "블랙",
+      "category": "city",
+      "productId": "coupang-4861cd80cf7fce0c",
+      "title": "강변 길을 걸어요",
+      "scene": "검은 백팩을 양어깨에 메고 강변 길을 걸어요. 앞포켓의 흰 지퍼가 보여요.",
+      "alt": "AI 착용 연출. 강변 길에서 No.9290 블랙 백팩을 양어깨에 메고 걷는 모습",
+      "composition": {
+        "approach": "walking environmental portrait",
+        "angle": "rear with slight side turn",
+        "framing": "full-body with riverside environment",
+        "activity": "walking while wearing backpack on both shoulders",
+        "setting": "tree-lined riverside pedestrian path"
+      },
+      "fidelityReview": "실제 사진과 검은 둥근 몸판, 흰 사각 라벨, 앞포켓의 흰 가로 지퍼와 흰 손잡이, 양옆의 흰 버클과 고리, 어깨끈을 직접 비교했다. 걸음과 팔, 신체 대비 가방 비율을 확인했다.",
+      "id": "2026-11-28-city-9290",
+      "date": "2026-11-28",
+      "reference": "backups/lookbook-2026-11-28/reference-2-9290.jpg",
+      "sourceUrl": "https://tmr3j3uaftki9tdw.public.blob.vercel-storage.com/product-media/coupang-import/coupang-4861cd80cf7fce0c/main-yXSjjIlJ9Fo5IBOAANpwjCu50SK8rJ.jpg",
+      "productUrl": "https://www.coupang.com/vp/products/8732967324",
+      "dimensionsSource": "2026-09-14 제조사 카탈로그 42페이지의 9290 기준. 외부 크기는 가로 × 세로 × 폭 순서이며 생산 시기·측정 방식에 따라 차이가 있을 수 있습니다.",
+      "dimensionsCm": [
+        30,
+        42,
+        18
+      ],
+      "prompt": "One portrait 2:3 1024×1536 realistic Korean street-style editorial LookBook scene, use supplied product reference for exact Himawari No.9290 BLACK backpack, confirmed 30cm wide × 42cm high × 18cm deep. A fictional stylish adult Korean man with dark short hair wears a brown overshirt, cream T-shirt and dark straight trousers, walking along a broad riverside pedestrian path. Camera is distant low side-rear three-quarter angle, full body from head to shoes with pavement and tree-lined river environment. He wears the original backpack straps on both shoulders naturally; body is turned enough to make the whole front of bag visible. Bag occupies about one quarter to one third of frame height and remains sharply legible. Preserve exact black rounded body with central white rectangular Himawari label, broad black front pocket with single white horizontal zipper and white pull at its left, white side buckles and lower white rectangular adjustment pieces, original black straps and top loop. No added pockets, ornaments or text. Natural gait, correct limbs and realistic scale, soft daylight.",
+      "imageKind": "generated",
+      "generatedSource": "backups/lookbook-2026-11-28/generated-2.png",
+      "image": "/assets/lookbook/2026-11-28-city-9290.webp",
+      "thumbnail": "/assets/lookbook/2026-11-28-city-9290-640.webp",
+      "width": 1024,
+      "height": 1536,
+      "fidelityReviewed": true,
+      "generatedSha256": "4f0a8bb7f03869435f21a36a82b8b3febf2e08daee6b55a9bb7e738cd1a97da8"
+    }
+  ],
+  "visualReview": "backups/lookbook-2026-11-28/output-review.md",
+  "optimizationEvidence": "backups/lookbook-2026-11-28/optimization.json",
+  "languageReview": "backups/lookbook-2026-11-28/korean-copy-review.json",
+  "generationEvidence": "backups/lookbook-2026-11-28/accepted-images.json"
+}
